@@ -4774,6 +4774,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_vod_packaging_group_with_options_async(request, runtime)
 
+    def create_yike_asset_upload_with_options(
+        self,
+        request: main_models.CreateYikeAssetUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeAssetUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ext):
+            query['FileExt'] = request.file_ext
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeAssetUpload',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeAssetUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_yike_asset_upload_with_options_async(
+        self,
+        request: main_models.CreateYikeAssetUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeAssetUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ext):
+            query['FileExt'] = request.file_ext
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeAssetUpload',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeAssetUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_yike_asset_upload(
+        self,
+        request: main_models.CreateYikeAssetUploadRequest,
+    ) -> main_models.CreateYikeAssetUploadResponse:
+        runtime = RuntimeOptions()
+        return self.create_yike_asset_upload_with_options(request, runtime)
+
+    async def create_yike_asset_upload_async(
+        self,
+        request: main_models.CreateYikeAssetUploadRequest,
+    ) -> main_models.CreateYikeAssetUploadResponse:
+        runtime = RuntimeOptions()
+        return await self.create_yike_asset_upload_with_options_async(request, runtime)
+
     def decrypt_kmsdata_key_with_options(
         self,
         request: main_models.DecryptKMSDataKeyRequest,
@@ -14386,6 +14456,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_workflow_task_with_options_async(request, runtime)
 
+    def get_yike_aiapp_job_with_options(
+        self,
+        request: main_models.GetYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_aiapp_job_with_options_async(
+        self,
+        request: main_models.GetYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_aiapp_job(
+        self,
+        request: main_models.GetYikeAIAppJobRequest,
+    ) -> main_models.GetYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_aiapp_job_with_options(request, runtime)
+
+    async def get_yike_aiapp_job_async(
+        self,
+        request: main_models.GetYikeAIAppJobRequest,
+    ) -> main_models.GetYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_aiapp_job_with_options_async(request, runtime)
+
+    def get_yike_asset_media_info_with_options(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAssetMediaInfo',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAssetMediaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_asset_media_info_with_options_async(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAssetMediaInfo',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAssetMediaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_asset_media_info(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_asset_media_info_with_options(request, runtime)
+
+    async def get_yike_asset_media_info_async(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_asset_media_info_with_options_async(request, runtime)
+
     def insert_media_to_search_lib_with_options(
         self,
         request: main_models.InsertMediaToSearchLibRequest,
@@ -19778,6 +19988,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_workflow_tasks_with_options_async(request, runtime)
 
+    def list_yike_asset_folders_with_options(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeAssetFolders',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeAssetFoldersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_yike_asset_folders_with_options_async(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeAssetFolders',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeAssetFoldersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_yike_asset_folders(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        runtime = RuntimeOptions()
+        return self.list_yike_asset_folders_with_options(request, runtime)
+
+    async def list_yike_asset_folders_async(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_yike_asset_folders_with_options_async(request, runtime)
+
+    def list_yike_productions_with_options(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeProductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeProductions',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeProductionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_yike_productions_with_options_async(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeProductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeProductions',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeProductionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_yike_productions(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+    ) -> main_models.ListYikeProductionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_yike_productions_with_options(request, runtime)
+
+    async def list_yike_productions_async(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+    ) -> main_models.ListYikeProductionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_yike_productions_with_options_async(request, runtime)
+
     def open_media_connect_flow_failover_with_options(
         self,
         request: main_models.OpenMediaConnectFlowFailoverRequest,
@@ -21359,6 +21729,88 @@ class Client(OpenApiClient):
     ) -> main_models.RegisterMediaStreamResponse:
         runtime = RuntimeOptions()
         return await self.register_media_stream_with_options_async(request, runtime)
+
+    def register_yike_asset_media_info_with_options(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.folder_id):
+            query['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.input_url):
+            query['InputURL'] = request.input_url
+        if not DaraCore.is_null(request.media_type):
+            query['MediaType'] = request.media_type
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterYikeAssetMediaInfo',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterYikeAssetMediaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_yike_asset_media_info_with_options_async(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.folder_id):
+            query['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.input_url):
+            query['InputURL'] = request.input_url
+        if not DaraCore.is_null(request.media_type):
+            query['MediaType'] = request.media_type
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterYikeAssetMediaInfo',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterYikeAssetMediaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_yike_asset_media_info(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return self.register_yike_asset_media_info_with_options(request, runtime)
+
+    async def register_yike_asset_media_info_async(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.register_yike_asset_media_info_with_options_async(request, runtime)
 
     def resume_media_connect_flow_output_with_options(
         self,
@@ -28335,6 +28787,88 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitVideoTranslationJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_video_translation_job_with_options_async(request, runtime)
+
+    def submit_yike_aiapp_job_with_options(
+        self,
+        request: main_models.SubmitYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeAIAppJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            body['AppParams'] = request.app_params
+        if not DaraCore.is_null(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.production_id):
+            body['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_aiapp_job_with_options_async(
+        self,
+        request: main_models.SubmitYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeAIAppJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            body['AppParams'] = request.app_params
+        if not DaraCore.is_null(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.production_id):
+            body['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_aiapp_job(
+        self,
+        request: main_models.SubmitYikeAIAppJobRequest,
+    ) -> main_models.SubmitYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_aiapp_job_with_options(request, runtime)
+
+    async def submit_yike_aiapp_job_async(
+        self,
+        request: main_models.SubmitYikeAIAppJobRequest,
+    ) -> main_models.SubmitYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_aiapp_job_with_options_async(request, runtime)
 
     def takeover_aiagent_call_with_options(
         self,

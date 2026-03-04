@@ -20,17 +20,35 @@ class AiRtcLicenseInfoDTO(DaraModel):
         type: int = None,
         valid_days: int = None,
     ):
+        # The remaining usage capacity of the batch.
         self.available_capacity = available_capacity
+        # The time when the batch became active.
         self.begin_on = begin_on
+        # The contract number.
         self.contract_no = contract_no
+        # The creation time.
         self.creation_time = creation_time
+        # The expiration time.
         self.expired_on = expired_on
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The total number of licenses contained within this batch.
         self.license_count = license_count
+        # The ID of the batch.
         self.license_item_id = license_item_id
+        # The update time.
         self.modification_time = modification_time
+        # The status of the batch. Valid values:
+        # 
+        # *   1: Active
+        # *   2\\. Expired
         self.status = status
+        # The license type. Valid values:
+        # 
+        # *   1: Audio call
+        # *   2: Vision call
         self.type = type
+        # The validity period of the licenses in this batch, in days.
         self.valid_days = valid_days
 
     def validate(self):

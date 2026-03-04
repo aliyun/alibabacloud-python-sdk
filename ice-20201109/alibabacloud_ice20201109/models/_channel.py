@@ -23,17 +23,29 @@ class Channel(DaraModel):
         playback_mode: str = None,
         state: int = None,
     ):
+        # Specifies whether to enable access control.
         self.access_policy = access_policy
+        # The token for accessing the channel.
         self.access_token = access_token
+        # The ARN of the channel.
         self.arn = arn
+        # The name of the channel.
         self.channel_name = channel_name
+        # The tier of the channel.
         self.channel_tier = channel_tier
+        # The source location of the filler slate.
         self.filler_source_location_name = filler_source_location_name
+        # The source name of the filler slate.
         self.filler_source_name = filler_source_name
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The output configurations.
         self.out_put_config_list = out_put_config_list
+        # The playback mode.
         self.playback_mode = playback_mode
+        # The state of the channel.
         self.state = state
 
     def validate(self):
@@ -140,11 +152,17 @@ class ChannelOutPutConfigList(DaraModel):
         playback_url: str = None,
         source_group_name: str = None,
     ):
+        # The name of the channel.
         self.channel_name = channel_name
+        # The format.
         self.format = format
+        # The manifest name.
         self.manifest_name = manifest_name
+        # The manifest settings.
         self.manifest_settings = manifest_settings
+        # The playback URL.
         self.playback_url = playback_url
+        # The name of the source group.
         self.source_group_name = source_group_name
 
     def validate(self):

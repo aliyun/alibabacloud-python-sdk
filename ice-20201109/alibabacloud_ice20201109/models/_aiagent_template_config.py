@@ -14,8 +14,11 @@ class AIAgentTemplateConfig(DaraModel):
         vision_chat: main_models.AIAgentTemplateConfigVisionChat = None,
         voice_chat: main_models.AIAgentTemplateConfigVoiceChat = None,
     ):
+        # The parameters of the 3D avatar.
         self.avatar_chat_3d = avatar_chat_3d
+        # The parameters of the visual intelligent agent.
         self.vision_chat = vision_chat
+        # The voice call parameters.
         self.voice_chat = voice_chat
 
     def validate(self):
@@ -91,28 +94,49 @@ class AIAgentTemplateConfigVoiceChat(DaraModel):
     ):
         self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
+        # The threshold used to determine the end of a sentence. If the duration of silence exceeds this threshold, the system determines that a sentence ends. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
         self.asr_max_silence = asr_max_silence
         self.avatar_url = avatar_url
         self.avatar_url_type = avatar_url_type
+        # The parameters of the application center of Alibaba Cloud Model Studio. For more information about the parameter format, see [Parameters of the application center of Alibaba Cloud Model Studio](https://help.aliyun.com/document_detail/2858132.html).
         self.bailian_app_params = bailian_app_params
         self.char_break = char_break
         self.enable_intelligent_segment = enable_intelligent_segment
+        # Specifies whether to enable the intercom mode. Default value: false.
         self.enable_push_to_talk = enable_push_to_talk
+        # Specifies whether the intelligent agent can be interrupted by voice. Default value: true.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # Specifies whether the intelligent agent supports graceful shutdown. Default value: false.
+        # 
+        # *   Graceful shutdown: When the intelligent agent is stopped, it completes its current sentence before stopping. However, the intelligent agent can speak for 10 seconds at most.
         self.graceful_shutdown = graceful_shutdown
+        # The greetings spoken by the intelligent agent when it joins the meeting. If you do not specify this parameter, the system uses the default greetings specified in the template of the intelligent agent. The value can be up to 128 characters in length.
         self.greeting = greeting
         self.interrupt_words = interrupt_words
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
         self.llm_system_prompt = llm_system_prompt
         self.max_idle_time = max_idle_time
+        # Specifies whether to enable voiceprint recognition. Default value: false.
         self.use_voiceprint = use_voiceprint
+        # The timeout period after the user leaves the meeting. Unit: seconds. Default value: 5.
         self.user_offline_timeout = user_offline_timeout
+        # The timeout period before the user joins the meeting. Unit: seconds. Default value: 60.
         self.user_online_timeout = user_online_timeout
         self.vad_level = vad_level
+        # The voice ID of the intelligent agent. The modification takes effect in the next sentence. If you do not specify this parameter, the system uses the default voice ID specified in the template of the intelligent agent. This parameter takes effect only for the preset TTS model. The ID can be up to 64 characters in length. For more information about the available voices, visit [https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example](url).
         self.voice_id = voice_id
         self.voice_id_list = voice_id_list
+        # The unique ID of the voiceprint. This parameter is empty by default.
         self.voiceprint_id = voiceprint_id
+        # The speech volume of the intelligent agent.
+        # 
+        # *   If this parameter is not specified, the adaptive volume mode recommended by Alibaba Cloud is used by default.
+        # *   To specify this parameter, enter a value between 0 and 400. The output volume is calculated by using the following formula: Output volume = Voice output volume specified in the workflow × Volume/100. Example:
+        # 
+        # 1.  If Volume is set to 0, the output volume is 0.
+        # 2.  If Volume is set to 100, the output volume is the voice output volume specified in the workflow.
+        # 3.  If Volume is set to 200, the output volume is twice the voice output volume specified in the workflow.
         self.volume = volume
         self.wake_up_query = wake_up_query
         self.workflow_override_params = workflow_override_params
@@ -367,26 +391,51 @@ class AIAgentTemplateConfigVisionChat(DaraModel):
     ):
         self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
+        # The threshold used to determine the end of a sentence. If the duration of silence exceeds this threshold, the system determines that a sentence ends. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
         self.asr_max_silence = asr_max_silence
+        # The parameters of the application center of Alibaba Cloud Model Studio. For more information about the parameter format, see [Parameters of the application center of Alibaba Cloud Model Studio](https://help.aliyun.com/document_detail/2858132.html).
         self.bailian_app_params = bailian_app_params
         self.char_break = char_break
+        # Specifies whether to enable intelligent sentence segmentation. This feature intelligently combines the segments of a speech into a single sentence if brief pauses occur when users are speaking. Default value: true.
         self.enable_intelligent_segment = enable_intelligent_segment
+        # Specifies whether to enable the intercom mode. Default value: false.
         self.enable_push_to_talk = enable_push_to_talk
+        # Specifies whether the intelligent agent can be interrupted by voice. Default value: true.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # Specifies whether the intelligent agent supports graceful shutdown. Default value: false.
+        # 
+        # Graceful shutdown: When the intelligent agent is stopped, it completes its current sentence before stopping. However, the intelligent agent can speak for 10 seconds at most.
         self.graceful_shutdown = graceful_shutdown
+        # The greetings spoken by the intelligent agent when it joins the meeting. If you do not specify this parameter, the system uses the default greetings specified in the template of the intelligent agent. The value can be up to 128 characters in length.
         self.greeting = greeting
         self.interrupt_words = interrupt_words
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
         self.llm_system_prompt = llm_system_prompt
         self.max_idle_time = max_idle_time
+        # Specifies whether to enable voiceprint recognition. Default value: false.
         self.use_voiceprint = use_voiceprint
+        # The timeout period after the user leaves the meeting. Unit: seconds. Default value: 5.
         self.user_offline_timeout = user_offline_timeout
+        # The timeout period before the user joins the meeting. Unit: seconds. Default value: 60.
         self.user_online_timeout = user_online_timeout
         self.vad_level = vad_level
+        # The voice ID of the intelligent agent. The modification takes effect in the next sentence. If you do not specify this parameter, the system uses the default voice ID specified in the template of the intelligent agent. This parameter takes effect only for the preset TTS model. The ID can be up to 64 characters in length. For more information about the available voices, visit [https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example](url).
         self.voice_id = voice_id
         self.voice_id_list = voice_id_list
+        # The unique ID of the voiceprint. This parameter is empty by default.
         self.voiceprint_id = voiceprint_id
+        # The speech volume of the intelligent agent.
+        # 
+        # If this parameter is not specified, the adaptive volume mode recommended by Alibaba Cloud is used by default.
+        # 
+        # To specify this parameter, enter a value between 0 and 400. The output volume is calculated by using the following formula: Output volume = Voice output volume specified in the workflow × Volume/100. Example:
+        # 
+        # If Volume is set to 0, the output volume is 0.
+        # 
+        # If Volume is set to 100, the output volume is the voice output volume specified in the workflow.
+        # 
+        # If Volume is set to 200, the output volume is twice the voice output volume specified in the workflow.
         self.volume = volume
         self.wake_up_query = wake_up_query
         self.workflow_override_params = workflow_override_params
@@ -630,27 +679,49 @@ class AIAgentTemplateConfigAvatarChat3D(DaraModel):
     ):
         self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
+        # The threshold used to determine the end of a sentence. If the duration of silence exceeds this threshold, the system determines that a sentence ends. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
         self.asr_max_silence = asr_max_silence
+        # The ID of the avatar.
         self.avatar_id = avatar_id
+        # The parameters of the application center of Alibaba Cloud Model Studio. For more information about the parameter format, see [Parameters of the application center of Alibaba Cloud Model Studio](https://help.aliyun.com/document_detail/2858132.html).
         self.bailian_app_params = bailian_app_params
         self.char_break = char_break
         self.enable_intelligent_segment = enable_intelligent_segment
+        # Specifies whether to enable the intercom mode. Default value: false.
         self.enable_push_to_talk = enable_push_to_talk
+        # Specifies whether the intelligent agent can be interrupted by voice. Default value: true.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # Specifies whether the intelligent agent supports graceful shutdown. Default value: false.
+        # 
+        # *   Graceful shutdown: When the intelligent agent is stopped, it completes its current sentence before stopping. However, the intelligent agent can speak for 10 seconds at most.
         self.graceful_shutdown = graceful_shutdown
+        # The greetings spoken by the intelligent agent when it joins the meeting. If you do not specify this parameter, the system uses the default greetings specified in the template of the intelligent agent. The greetings can be up to 128 characters in length.
         self.greeting = greeting
         self.interrupt_words = interrupt_words
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
         self.llm_system_prompt = llm_system_prompt
         self.max_idle_time = max_idle_time
+        # Specifies whether to enable voiceprint recognition. Default value: false.
         self.use_voiceprint = use_voiceprint
+        # The timeout period after the user leaves the meeting. Unit: seconds. Default value: 5.
         self.user_offline_timeout = user_offline_timeout
+        # The timeout period before the user joins the meeting. Unit: seconds. Default value: 60.
         self.user_online_timeout = user_online_timeout
         self.vad_level = vad_level
+        # The voice ID of the intelligent agent. The modification takes effect in the next sentence. If you do not specify this parameter, the system uses the default voice ID specified in the template of the intelligent agent. This parameter takes effect only for the preset TTS model. The ID can be up to 64 characters in length. For more information about the available voices, visit [https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example](url).
         self.voice_id = voice_id
         self.voice_id_list = voice_id_list
+        # The unique ID of the voiceprint. This parameter is empty by default.
         self.voiceprint_id = voiceprint_id
+        # The speech volume of the intelligent agent.
+        # 
+        # *   If this parameter is not specified, the adaptive volume mode recommended by Alibaba Cloud is used by default.
+        # *   To specify this parameter, enter a value between 0 and 400. The output volume is calculated by using the following formula: Output volume = Voice output volume specified in the workflow × Volume/100. Example:
+        # 
+        # 1.  If Volume is set to 0, the output volume is 0.
+        # 2.  If Volume is set to 100, the output volume is the voice output volume specified in the workflow.
+        # 3.  If Volume is set to 200, the output volume is twice the voice output volume specified in the workflow.
         self.volume = volume
         self.wake_up_query = wake_up_query
         self.workflow_override_params = workflow_override_params

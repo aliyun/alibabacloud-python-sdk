@@ -13,10 +13,47 @@ class MediaConvertVolume(DaraModel):
         method: str = None,
         true_peak: int = None,
     ):
+        # The output volume.
+        # 
+        # *   This parameter takes effect only if Method is set to dynamic.
+        # *   Unit: dB.
+        # *   Valid values: [-70,-5].
+        # *   Default value: -6.
         self.integrated_loudness_target = integrated_loudness_target
+        # The amount of gain to apply, relative to the input audio.
+        # 
+        # *   This parameter takes effect only if Method is set to linear.
+        # *   Unit: dB.
+        # *   Valid values: less than or equal to 20.
+        # *   Default value: -20.
         self.level = level
+        # The target loudness range.
+        # 
+        # *   This parameter takes effect only if Method is set to dynamic.
+        # *   Unit: dB.
+        # *   Valid values: [1,20].
+        # *   Default value: 8.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
+        # 
+        # *   auto
+        # *   dynamic
+        # *   linear
+        # *   Default value: dynamic.
+        # 
+        # <!---->
+        # 
+        # *
+        # *
+        # *
+        # *
         self.method = method
+        # The maximum volume.
+        # 
+        # *   This parameter takes effect only if Method is set to dynamic.
+        # *   Unit: dB.
+        # *   Valid values: [-9,0].
+        # *   Default value: -1.
         self.true_peak = true_peak
 
     def validate(self):

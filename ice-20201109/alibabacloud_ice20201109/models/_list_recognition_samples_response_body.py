@@ -22,7 +22,6 @@ class ListRecognitionSamplesResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The samples.
         self.samples = samples
         # The total number of samples.
         self.total_count = total_count
@@ -117,10 +116,8 @@ class ListRecognitionSamplesResponseBodySamplesSample(DaraModel):
         sample_id: str = None,
     ):
         self.entity_id = entity_id
-        # The URL of the image sample.
         self.image_url = image_url
         self.lib_id = lib_id
-        # The sample ID.
         self.sample_id = sample_id
 
     def validate(self):

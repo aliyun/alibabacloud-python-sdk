@@ -33,6 +33,7 @@ class UpdateEditingProjectRequest(DaraModel):
         self.project_id = project_id
         # The template ID. This parameter is used to quickly build a timeline with ease. Note: Only one of ProjectId, Timeline, and TemplateId can be specified. If TemplateId is specified, ClipsParam must also be specified.
         self.template_id = template_id
+        # The timeline of the online editing project, in the JSON format.
         self.timeline = timeline
         # The title of the online editing project.
         self.title = title

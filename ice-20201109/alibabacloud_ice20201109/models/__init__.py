@@ -225,6 +225,9 @@ from ._create_vod_packaging_configuration_response import CreateVodPackagingConf
 from ._create_vod_packaging_group_request import CreateVodPackagingGroupRequest
 from ._create_vod_packaging_group_response_body import CreateVodPackagingGroupResponseBody
 from ._create_vod_packaging_group_response import CreateVodPackagingGroupResponse
+from ._create_yike_asset_upload_request import CreateYikeAssetUploadRequest
+from ._create_yike_asset_upload_response_body import CreateYikeAssetUploadResponseBody
+from ._create_yike_asset_upload_response import CreateYikeAssetUploadResponse
 from ._decrypt_kmsdata_key_request import DecryptKMSDataKeyRequest
 from ._decrypt_kmsdata_key_response_body import DecryptKMSDataKeyResponseBody
 from ._decrypt_kmsdata_key_response import DecryptKMSDataKeyResponse
@@ -612,6 +615,12 @@ from ._get_vod_packaging_group_response import GetVodPackagingGroupResponse
 from ._get_workflow_task_request import GetWorkflowTaskRequest
 from ._get_workflow_task_response_body import GetWorkflowTaskResponseBody
 from ._get_workflow_task_response import GetWorkflowTaskResponse
+from ._get_yike_aiapp_job_request import GetYikeAIAppJobRequest
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBody
+from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
+from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
+from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
 from ._insert_media_to_search_lib_request import InsertMediaToSearchLibRequest
 from ._insert_media_to_search_lib_response_body import InsertMediaToSearchLibResponseBody
 from ._insert_media_to_search_lib_response import InsertMediaToSearchLibResponse
@@ -798,6 +807,12 @@ from ._list_vod_packaging_groups_response import ListVodPackagingGroupsResponse
 from ._list_workflow_tasks_request import ListWorkflowTasksRequest
 from ._list_workflow_tasks_response_body import ListWorkflowTasksResponseBody
 from ._list_workflow_tasks_response import ListWorkflowTasksResponse
+from ._list_yike_asset_folders_request import ListYikeAssetFoldersRequest
+from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBody
+from ._list_yike_asset_folders_response import ListYikeAssetFoldersResponse
+from ._list_yike_productions_request import ListYikeProductionsRequest
+from ._list_yike_productions_response_body import ListYikeProductionsResponseBody
+from ._list_yike_productions_response import ListYikeProductionsResponse
 from ._open_media_connect_flow_failover_request import OpenMediaConnectFlowFailoverRequest
 from ._open_media_connect_flow_failover_response_body import OpenMediaConnectFlowFailoverResponseBody
 from ._open_media_connect_flow_failover_response import OpenMediaConnectFlowFailoverResponse
@@ -856,6 +871,9 @@ from ._register_media_info_response import RegisterMediaInfoResponse
 from ._register_media_stream_request import RegisterMediaStreamRequest
 from ._register_media_stream_response_body import RegisterMediaStreamResponseBody
 from ._register_media_stream_response import RegisterMediaStreamResponse
+from ._register_yike_asset_media_info_request import RegisterYikeAssetMediaInfoRequest
+from ._register_yike_asset_media_info_response_body import RegisterYikeAssetMediaInfoResponseBody
+from ._register_yike_asset_media_info_response import RegisterYikeAssetMediaInfoResponse
 from ._resume_media_connect_flow_output_request import ResumeMediaConnectFlowOutputRequest
 from ._resume_media_connect_flow_output_response_body import ResumeMediaConnectFlowOutputResponseBody
 from ._resume_media_connect_flow_output_response import ResumeMediaConnectFlowOutputResponse
@@ -1108,6 +1126,9 @@ from ._submit_video_cognition_job_response import SubmitVideoCognitionJobRespons
 from ._submit_video_translation_job_request import SubmitVideoTranslationJobRequest
 from ._submit_video_translation_job_response_body import SubmitVideoTranslationJobResponseBody
 from ._submit_video_translation_job_response import SubmitVideoTranslationJobResponse
+from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
+from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
+from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
 from ._takeover_aiagent_call_request import TakeoverAIAgentCallRequest
 from ._takeover_aiagent_call_response_body import TakeoverAIAgentCallResponseBody
 from ._takeover_aiagent_call_response import TakeoverAIAgentCallResponse
@@ -1591,6 +1612,18 @@ from ._get_vod_packaging_asset_response_body import GetVodPackagingAssetResponse
 from ._get_vod_packaging_asset_response_body import GetVodPackagingAssetResponseBodyAsset
 from ._get_workflow_task_response_body import GetWorkflowTaskResponseBodyWorkflowTaskWorkflow
 from ._get_workflow_task_response_body import GetWorkflowTaskResponseBodyWorkflowTask
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultAudioResult
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultVideoResult
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResult
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoBizData
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
 from ._list_aiagent_dialogues_response_body import ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList
 from ._list_aiagent_dialogues_response_body import ListAIAgentDialoguesResponseBodyDialogues
 from ._list_aiagent_instance_response_body import ListAIAgentInstanceResponseBodyInstances
@@ -1736,6 +1769,8 @@ from ._list_vod_packaging_assets_response_body import ListVodPackagingAssetsResp
 from ._list_vod_packaging_assets_response_body import ListVodPackagingAssetsResponseBodyAssets
 from ._list_workflow_tasks_response_body import ListWorkflowTasksResponseBodyTaskListWorkflow
 from ._list_workflow_tasks_response_body import ListWorkflowTasksResponseBodyTaskList
+from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBodyFolderList
+from ._list_yike_productions_response_body import ListYikeProductionsResponseBodyProductionList
 from ._query_copyright_extract_job_response_body import QueryCopyrightExtractJobResponseBodyData
 from ._query_copyright_job_list_response_body import QueryCopyrightJobListResponseBodyDataInput
 from ._query_copyright_job_list_response_body import QueryCopyrightJobListResponseBodyDataOutput
@@ -2248,6 +2283,9 @@ __all__ = [
     CreateVodPackagingGroupRequest,
     CreateVodPackagingGroupResponseBody,
     CreateVodPackagingGroupResponse,
+    CreateYikeAssetUploadRequest,
+    CreateYikeAssetUploadResponseBody,
+    CreateYikeAssetUploadResponse,
     DecryptKMSDataKeyRequest,
     DecryptKMSDataKeyResponseBody,
     DecryptKMSDataKeyResponse,
@@ -2635,6 +2673,12 @@ __all__ = [
     GetWorkflowTaskRequest,
     GetWorkflowTaskResponseBody,
     GetWorkflowTaskResponse,
+    GetYikeAIAppJobRequest,
+    GetYikeAIAppJobResponseBody,
+    GetYikeAIAppJobResponse,
+    GetYikeAssetMediaInfoRequest,
+    GetYikeAssetMediaInfoResponseBody,
+    GetYikeAssetMediaInfoResponse,
     InsertMediaToSearchLibRequest,
     InsertMediaToSearchLibResponseBody,
     InsertMediaToSearchLibResponse,
@@ -2821,6 +2865,12 @@ __all__ = [
     ListWorkflowTasksRequest,
     ListWorkflowTasksResponseBody,
     ListWorkflowTasksResponse,
+    ListYikeAssetFoldersRequest,
+    ListYikeAssetFoldersResponseBody,
+    ListYikeAssetFoldersResponse,
+    ListYikeProductionsRequest,
+    ListYikeProductionsResponseBody,
+    ListYikeProductionsResponse,
     OpenMediaConnectFlowFailoverRequest,
     OpenMediaConnectFlowFailoverResponseBody,
     OpenMediaConnectFlowFailoverResponse,
@@ -2879,6 +2929,9 @@ __all__ = [
     RegisterMediaStreamRequest,
     RegisterMediaStreamResponseBody,
     RegisterMediaStreamResponse,
+    RegisterYikeAssetMediaInfoRequest,
+    RegisterYikeAssetMediaInfoResponseBody,
+    RegisterYikeAssetMediaInfoResponse,
     ResumeMediaConnectFlowOutputRequest,
     ResumeMediaConnectFlowOutputResponseBody,
     ResumeMediaConnectFlowOutputResponse,
@@ -3131,6 +3184,9 @@ __all__ = [
     SubmitVideoTranslationJobRequest,
     SubmitVideoTranslationJobResponseBody,
     SubmitVideoTranslationJobResponse,
+    SubmitYikeAIAppJobRequest,
+    SubmitYikeAIAppJobResponseBody,
+    SubmitYikeAIAppJobResponse,
     TakeoverAIAgentCallRequest,
     TakeoverAIAgentCallResponseBody,
     TakeoverAIAgentCallResponse,
@@ -3614,6 +3670,18 @@ __all__ = [
     GetVodPackagingAssetResponseBodyAsset,
     GetWorkflowTaskResponseBodyWorkflowTaskWorkflow,
     GetWorkflowTaskResponseBodyWorkflowTask,
+    GetYikeAIAppJobResponseBodyResultAudioResult,
+    GetYikeAIAppJobResponseBodyResultImageResult,
+    GetYikeAIAppJobResponseBodyResultVideoResult,
+    GetYikeAIAppJobResponseBodyResult,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoBizData,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
+    GetYikeAssetMediaInfoResponseBodyMediaInfo,
     ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList,
     ListAIAgentDialoguesResponseBodyDialogues,
     ListAIAgentInstanceResponseBodyInstances,
@@ -3759,6 +3827,8 @@ __all__ = [
     ListVodPackagingAssetsResponseBodyAssets,
     ListWorkflowTasksResponseBodyTaskListWorkflow,
     ListWorkflowTasksResponseBodyTaskList,
+    ListYikeAssetFoldersResponseBodyFolderList,
+    ListYikeProductionsResponseBodyProductionList,
     QueryCopyrightExtractJobResponseBodyData,
     QueryCopyrightJobListResponseBodyDataInput,
     QueryCopyrightJobListResponseBodyDataOutput,

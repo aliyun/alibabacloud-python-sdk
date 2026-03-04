@@ -25,19 +25,39 @@ class MediaConvertJob(DaraModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The idempotency key of the request for creating the task.
         self.client_token = client_token
+        # An error code returned if the task failed.
         self.code = code
+        # The task configuration.
         self.config = config
+        # The time the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time the task was completed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The ID of the task.
         self.job_id = job_id
+        # The reason for a failed task.
         self.message = message
+        # An array containing the results for each output.
         self.output_details = output_details
+        # The details of the output groups.
         self.output_group_details = output_group_details
+        # The completion percentage of the task.
         self.percent = percent
+        # The ID of the queue that processed the task.
         self.pipeline_id = pipeline_id
+        # The ID of the API request that created this task.
         self.request_id = request_id
+        # The task status.
+        # 
+        # *   Inited: Initialized
+        # *   Running
+        # *   Complete
+        # *   Error
+        # *   Cancelled
         self.state = state
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):

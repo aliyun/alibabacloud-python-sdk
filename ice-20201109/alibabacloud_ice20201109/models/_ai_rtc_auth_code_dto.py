@@ -21,6 +21,7 @@ class AiRtcAuthCodeDTO(DaraModel):
         self.auth_code = auth_code
         self.creation_time = creation_time
         self.device_id = device_id
+        # license。
         self.license = license
         self.license_item_id = license_item_id
         self.modification_time = modification_time

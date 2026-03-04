@@ -24,7 +24,6 @@ class QueryVideoCognitionJobResponseBody(DaraModel):
         self.job_status = job_status
         # The request ID.
         self.request_id = request_id
-        # An array of analysis result objects.
         self.results = results
         # The user-defined data.
         self.user_data = user_data
@@ -110,16 +109,7 @@ class QueryVideoCognitionJobResponseBodyResultsResult(DaraModel):
         data: str = None,
         type: str = None,
     ):
-        # A JSON string containing the detailed analysis data. The structure of this data depends on the Type field. For details, see the Result parameters section below.
         self.data = data
-        # The type of analysis result. Valid values:
-        # 
-        # 1.  TextLabel: Tags from text content.
-        # 2.  VideoLabel: Tags from video content.
-        # 3.  ASR: Raw speech recognition results. Not returned by default.
-        # 4.  OCR: Raw text recognition results. Not returned by default.
-        # 5.  NLP: Natural Language Processing results. Not returned by default.
-        # 6.  Process: URL to the raw algorithm output. Not returned by default.
         self.type = type
 
     def validate(self):

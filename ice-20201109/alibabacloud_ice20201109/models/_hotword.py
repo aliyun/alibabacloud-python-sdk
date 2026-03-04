@@ -15,9 +15,31 @@ class Hotword(DaraModel):
         transposition_result_list: List[main_models.TranspositionResult] = None,
         weight: int = None,
     ):
+        # The language of the hotword text. Valid values:
+        # 
+        # *   For structured media analysis and ASR: zh: Chinese en: English
+        # *   For video translation: Supports 53 languages.
+        # *
         self.language = language
+        # The text of the hotword.
+        # 
+        # *   For structured media analysis and ASR:
+        # *   *   Chinese: Up to 15 characters.
+        # *   *   English: Up to 10 words, separated by spaces.
+        # *   *   Mixed: Each letter is counted as one character (following the Chinese limit).
+        # *   For video translation: Up to 100 characters.
+        # *
         self.text = text
+        # *   Predefined translation results for the hotword.
+        # *   This field is only used in translation-related scenarios.
         self.transposition_result_list = transposition_result_list
+        # The weight of the hotword.
+        # 
+        # 1.  Valid values: [-6,5].
+        # 2.  A positive value increases the likelihood of the word being recognized, while a negative value decreases the likelihood.
+        # 3.  A value of -6 specifies that recognition of this word should be minimized.
+        # 4.  Recommended value: 2.
+        # 5.  If the desired effect is not achieved, you can increase the weight. However, excessively high weights may negatively impact the recognition accuracy of other words.
         self.weight = weight
 
     def validate(self):

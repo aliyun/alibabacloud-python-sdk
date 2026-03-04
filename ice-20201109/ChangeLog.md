@@ -1,3 +1,13 @@
+2026-03-04 Version: 6.11.0
+- Support API CreateYikeAssetUpload.
+- Support API GetYikeAIAppJob.
+- Support API GetYikeAssetMediaInfo.
+- Support API ListYikeAssetFolders.
+- Support API ListYikeProductions.
+- Support API RegisterYikeAssetMediaInfo.
+- Support API SubmitYikeAIAppJob.
+
+
 2026-02-05 Version: 6.10.1
 - Update API ClearAIAgentVoiceprint: add request parameters RegistrationMode.
 - Update API ListAIAgentVoiceprints: add request parameters RegistrationMode.

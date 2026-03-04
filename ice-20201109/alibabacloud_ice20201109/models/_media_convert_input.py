@@ -11,7 +11,9 @@ class MediaConvertInput(DaraModel):
         input_file: main_models.MediaObject = None,
         name: str = None,
     ):
+        # The input file.
         self.input_file = input_file
+        # The name of the input file. If Output contains InputRef, use this name to reference the input file.
         self.name = name
 
     def validate(self):

@@ -16,13 +16,21 @@ class ChannelAssemblySource(DaraModel):
         source_type: str = None,
         state: int = None,
     ):
+        # The ARN of the source.
         self.arn = arn
+        # The time when the source was created.
         self.gmt_create = gmt_create
+        # The time when the source was last modified.
         self.gmt_modified = gmt_modified
+        # The source configuration.
         self.http_package_configurations = http_package_configurations
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The source type. Valid values: vodSource and liveSource.
         self.source_type = source_type
+        # The status of the source. 0: normal. 1: deleted.
         self.state = state
 
     def validate(self):

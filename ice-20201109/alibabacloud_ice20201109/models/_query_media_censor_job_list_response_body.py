@@ -15,11 +15,9 @@ class QueryMediaCensorJobListResponseBody(DaraModel):
         non_exist_ids: main_models.QueryMediaCensorJobListResponseBodyNonExistIds = None,
         request_id: str = None,
     ):
-        # The queried content moderation jobs.
         self.media_censor_job_list = media_censor_job_list
         # A pagination token. It can be used in the next request to retrieve a new page of results. The value is 32-character UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
         self.next_page_token = next_page_token
-        # The IDs of the jobs that do not exist. This parameter is not returned if all the specified jobs are found.
         self.non_exist_ids = non_exist_ids
         # The request ID.
         self.request_id = request_id
@@ -149,41 +147,21 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob(DaraMo
         vensor_censor_result: main_models.QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult = None,
         video_censor_config: main_models.QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig = None,
     ):
-        # The moderation results of live comments.
         self.barrage_censor_result = barrage_censor_result
-        # The error code returned if the job failed. This parameter is not returned if the job is successful.
         self.code = code
-        # The moderation results of thumbnails.
         self.cover_image_censor_results = cover_image_censor_results
-        # The time when the content moderation job was created.
         self.creation_time = creation_time
-        # The moderation results of descriptions.
         self.desc_censor_result = desc_censor_result
-        # The time when the content moderation job was complete.
         self.finish_time = finish_time
-        # The information about the job input.
         self.input = input
-        # The ID of the content moderation job.
         self.job_id = job_id
-        # The error message returned if the job failed. This parameter is not returned if the job is successful.
         self.message = message
-        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
-        # The job state.
         self.state = state
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
-        # The moderation results of titles.
         self.title_censor_result = title_censor_result
-        # The user-defined data.
         self.user_data = user_data
-        # The moderation results of videos.
         self.vensor_censor_result = vensor_censor_result
-        # The video moderation configurations.
         self.video_censor_config = video_censor_config
 
     def validate(self):
@@ -323,16 +301,8 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCe
         output_file: main_models.QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile = None,
         video_censor: str = None,
     ):
-        # The moderation template. Default value: common. The default value indicates that the default template is used.
-        # 
-        # >  If the moderation template is not specified, the default value common is returned. If a custom moderation template that is created by submitting a ticket is specified, the UID of the template is returned.
         self.biz_type = biz_type
-        # The information about output snapshots.
         self.output_file = output_file
-        # Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
-        # 
-        # *   **true**: The video content needs to be moderated.
-        # *   **false**: The video content does not need to be moderated.
         self.video_censor = video_censor
 
     def validate(self):
@@ -376,13 +346,8 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCe
         location: str = None,
         object: str = None,
     ):
-        # The OSS bucket in which the output snapshot is stored.
         self.bucket = bucket
-        # The ID of the region in which the output snapshot resides.
         self.location = location
-        # The OSS object that is generated as the output snapshot.
-        # 
-        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg, output00002-****.jpg`, and so on.
         self.object = object
 
     def validate(self):
@@ -424,11 +389,8 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         next_page_token: str = None,
         video_timelines: main_models.QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines = None,
     ):
-        # A collection of moderation results. The information includes the summary about various scenarios such as pornographic content moderation and terrorist content moderation.
         self.censor_results = censor_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
-        # The moderation results that are sorted in ascending order by time.
         self.video_timelines = video_timelines
 
     def validate(self):
@@ -510,13 +472,8 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         object: str = None,
         timestamp: str = None,
     ):
-        # The moderation results that include information such as labels and scores.
         self.censor_results = censor_results
-        # The OSS object that is generated as the output snapshot.
-        # 
-        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
-        # The position in the video. Format: `hh:mm:ss[.SSS]`.
         self.timestamp = timestamp
 
     def validate(self):
@@ -596,74 +553,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result. Separate multiple labels with commas (,).
-        # 
-        # *   Valid values in the pornographic content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **sexy**: sexy content.
-        #     *   **porn**: pornographic content.
-        # 
-        # *   Valid values in the terrorist content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **bloody**: bloody content.
-        #     *   **explosion**: explosion and smoke.
-        #     *   **outfit**: special costume.
-        #     *   **logo**: special logo.
-        #     *   **weapon**: weapon.
-        #     *   **politics**: political content.
-        #     *   **violence**: violence.
-        #     *   **crowd**: crowd.
-        #     *   **parade**: parade.
-        #     *   **carcrash**: car accident.
-        #     *   **flag**: flag.
-        #     *   **location**: landmark.
-        #     *   **others**: other content.
-        # 
-        # *   Valid values in the ad moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **ad**: other ads.
-        #     *   **politics**: political content in text.
-        #     *   **porn**: pornographic content in text.
-        #     *   **abuse**: abuse in text.
-        #     *   **terrorism**: terrorist content in text.
-        #     *   **contraband**: prohibited content in text.
-        #     *   **spam**: spam in text.
-        #     *   **npx**: illegal ad.
-        #     *   **qrcode**: QR code.
-        #     *   **programCode**: mini program code.
-        # 
-        # *   Valid values in the undesirable scene moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **meaningless**: meaningless content, such as a black or white screen.
-        #     *   **PIP**: picture-in-picture.
-        #     *   **smoking**: smoking.
-        #     *   **drivelive**: live streaming in a running vehicle.
-        # 
-        # *   Valid values in the logo moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **TV**: controlled logo.
-        #     *   **trademark**: trademark.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn**: pornographic content moderation.
-        # *   **terrorism**: terrorist content moderation.
-        # *   **ad**: ad moderation.
-        # *   **live**: undesirable scene moderation.
-        # *   **logo**: logo moderation.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -747,74 +639,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result. Separate multiple labels with commas (,).
-        # 
-        # *   Valid values in the pornographic content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **sexy**: sexy content.
-        #     *   **porn**: pornographic content.
-        # 
-        # *   Valid values in the terrorist content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **bloody**: bloody content.
-        #     *   **explosion**: explosion and smoke.
-        #     *   **outfit**: special costume.
-        #     *   **logo**: special logo.
-        #     *   **weapon**: weapon.
-        #     *   **politics**: political content.
-        #     *   **violence**: violence.
-        #     *   **crowd**: crowd.
-        #     *   **parade**: parade.
-        #     *   **carcrash**: car accident.
-        #     *   **flag**: flag.
-        #     *   **location**: landmark.
-        #     *   **others**: other content.
-        # 
-        # *   Valid values in the ad moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **ad**: other ads.
-        #     *   **politics**: political content in text.
-        #     *   **porn**: pornographic content in text.
-        #     *   **abuse**: abuse in text.
-        #     *   **terrorism**: terrorist content in text.
-        #     *   **contraband**: prohibited content in text.
-        #     *   **spam**: spam in text.
-        #     *   **npx**: illegal ad.
-        #     *   **qrcode**: QR code.
-        #     *   **programCode**: mini program code.
-        # 
-        # *   Valid values in the undesirable scene moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **meaningless**: meaningless content, such as a black or white screen.
-        #     *   **PIP**: picture-in-picture.
-        #     *   **smoking**: smoking.
-        #     *   **drivelive**: live streaming in a running vehicle.
-        # 
-        # *   Valid values in the logo moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **TV**: controlled logo.
-        #     *   **trademark**: trademark.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn**: pornographic content moderation.
-        # *   **terrorism**: terrorist content moderation.
-        # *   **ad**: ad moderation.
-        # *   **live**: undesirable scene moderation.
-        # *   **logo**: logo moderation.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -863,25 +690,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCe
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result. Separate multiple labels with commas (,). Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **spam**: spam.
-        # *   **ad**: ads.
-        # *   **abuse**: abuse content.
-        # *   **flood**: excessive junk content.
-        # *   **contraband**: prohibited content.
-        # *   **meaningless**: meaningless content.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. The value is **antispam**.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -929,11 +740,8 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput(D
         location: str = None,
         object: str = None,
     ):
-        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
-        # The OSS region in which the input file resides.
         self.location = location
-        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -976,25 +784,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCen
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result. Separate multiple labels with commas (,). Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **spam**: spam.
-        # *   **ad**: ads.
-        # *   **abuse**: abuse content.
-        # *   **flood**: excessive junk content.
-        # *   **contraband**: prohibited content.
-        # *   **meaningless**: meaningless content.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. The value is **antispam**.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -1078,13 +870,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
         object: str = None,
         results: main_models.QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults = None,
     ):
-        # The OSS bucket in which the thumbnail is stored.
         self.bucket = bucket
-        # The OSS region in which the thumbnail resides.
         self.location = location
-        # The Object Storage Service (OSS) object that is used as the thumbnail.
         self.object = object
-        # The moderation results.
         self.results = results
 
     def validate(self):
@@ -1170,76 +958,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result. Separate multiple labels with commas (,).
-        # 
-        # *   Valid values in the pornographic content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **sexy**: sexy content.
-        #     *   **porn**: pornographic content.
-        # 
-        # *   Valid values in the terrorist content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **bloody**: bloody content.
-        #     *   **explosion**: explosion and smoke.
-        #     *   **outfit**: special costume.
-        #     *   **logo**: special logo.
-        #     *   **weapon**: weapon.
-        #     *   **politics**: political content.
-        #     *   **violence**: violence.
-        #     *   **crowd**: crowd.
-        #     *   **parade**: parade.
-        #     *   **carcrash**: car accident.
-        #     *   **flag**: flag.
-        #     *   **location**: landmark.
-        #     *   **others**: other content.
-        # 
-        # *   Valid values in the ad moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **ad**: other ads.
-        #     *   **politics**: political content in text.
-        #     *   **porn**: pornographic content in text.
-        #     *   **abuse**: abuse in text.
-        #     *   **terrorism**: terrorist content in text.
-        #     *   **contraband**: prohibited content in text.
-        #     *   **spam**: spam in text.
-        #     *   **npx**: illegal ad.
-        #     *   **qrcode**: QR code.
-        #     *   **programCode**: mini program code.
-        # 
-        # *   Valid values in the undesirable scene moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **meaningless**: meaningless content, such as a black or white screen.
-        #     *   **PIP**: picture-in-picture.
-        #     *   **smoking**: smoking.
-        #     *   **drivelive**: live streaming in a running vehicle.
-        # 
-        # *   Valid values in the logo moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **TV**: controlled logo.
-        #     *   **trademark**: trademark.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn**: pornographic content moderation.
-        # *   **terrorism**: terrorist content moderation.
-        # *   **ad**: ad moderation.
-        # *   **live**: undesirable scene moderation.
-        # *   **logo**: logo moderation.
         self.scene = scene
-        # The overall result of the moderation job. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
-        # 
-        # >  If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
         self.suggestion = suggestion
 
     def validate(self):
@@ -1288,25 +1009,9 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrage
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result. Separate multiple labels with commas (,). Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **spam**: spam.
-        # *   **ad**: ads.
-        # *   **abuse**: abuse content.
-        # *   **flood**: excessive junk content.
-        # *   **contraband**: prohibited content.
-        # *   **meaningless**: meaningless content.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. The value is **antispam**.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):

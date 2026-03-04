@@ -10,7 +10,16 @@ class MediaObject(DaraModel):
         media: str = None,
         type: str = None,
     ):
+        # The identifier for the media file.
+        # 
+        # *   If Type is set to OSS, the value is the URL of the media file. The following formats are supported: oss://... and https://...
+        # *   If Type is set to Media, the value is the ID of the media asset.
         self.media = media
+        # The type of media source. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
+        # *   ExternalURL: a publicly accessible external URL. This is not available for public use.
         self.type = type
 
     def validate(self):

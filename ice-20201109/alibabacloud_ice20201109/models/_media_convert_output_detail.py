@@ -17,13 +17,27 @@ class MediaConvertOutputDetail(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The error code for a failed task.
         self.code = code
+        # The time the output task was created, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z)
         self.create_time = create_time
+        # The time the output task finished, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z)
         self.finish_time = finish_time
+        # The reason for a task failure.
         self.message = message
+        # The name of the output.
         self.name = name
+        # The detailed output results.
         self.result = result
+        # The task status. Valid values:
+        # 
+        # *   Init: Initializing the task.
+        # *   Scheduled: The task is scheduled for processing.
+        # *   Success: The task is completed.
+        # *   Failed: The task failed.
+        # *   Skipped: The task was skipped.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -96,7 +110,9 @@ class MediaConvertOutputDetailResult(DaraModel):
         out_file_meta: main_models.MediaConvertOutputDetailFileMeta = None,
         output_file: main_models.MediaConvertOutputDetailResultOutputFile = None,
     ):
+        # The metadata of the audio and video streams.
         self.out_file_meta = out_file_meta
+        # Details about the generated output file.
         self.output_file = output_file
 
     def validate(self):
@@ -137,8 +153,17 @@ class MediaConvertOutputDetailResultOutputFile(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # The value depends on the Type field:
+        # 
+        # *   If Type is set to OSS, the value is the URL of the output file. The following formats are supported: oss://... and https://...
+        # *   If Type is set to Media, the value is the ID of the media asset.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
+        # If Type is set to Media, this field provides the actual storage URL of the media asset.
         self.url = url
 
     def validate(self):

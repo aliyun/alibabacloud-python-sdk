@@ -22,16 +22,27 @@ class Program(DaraModel):
         source_type: str = None,
         transition: str = None,
     ):
+        # The ad breaks.
         self.ad_breaks = ad_breaks
+        # The ARN of the program.
         self.arn = arn
+        # The name of the channel.
         self.channel_name = channel_name
+        # The information about the clip.
         self.clip_range = clip_range
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The name of the program.
         self.program_name = program_name
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The source type.
         self.source_type = source_type
+        # The program transition method.
         self.transition = transition
 
     def validate(self):
@@ -134,13 +145,21 @@ class ProgramAdBreaks(DaraModel):
         splice_insert_settings: str = None,
         time_signal_settings: str = None,
     ):
+        # The name of the channel.
         self.channel_name = channel_name
+        # MessageType
         self.message_type = message_type
+        # The offset.
         self.offset_millis = offset_millis
+        # The name of the program.
         self.program_name = program_name
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The SpliceInsert configurations.
         self.splice_insert_settings = splice_insert_settings
+        # The TimeSignal configurations.
         self.time_signal_settings = time_signal_settings
 
     def validate(self):

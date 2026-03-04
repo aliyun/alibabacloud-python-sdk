@@ -14,8 +14,11 @@ class MediaConvertOutputGroup(DaraModel):
         name: str = None,
         outputs: List[main_models.MediaConvertOutputGroupOutput] = None,
     ):
+        # The output group configuration.
         self.group_config = group_config
+        # The name of the output group.
         self.name = name
+        # A list of individual output stream configurations. Each object in this array defines a specific rendition.
         self.outputs = outputs
 
     def validate(self):

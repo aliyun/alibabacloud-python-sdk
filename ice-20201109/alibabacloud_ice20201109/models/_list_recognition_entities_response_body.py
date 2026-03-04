@@ -16,7 +16,6 @@ class ListRecognitionEntitiesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The entities.
         self.entities = entities
         # The page number.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class ListRecognitionEntitiesResponseBodyEntitiesEntity(DaraModel):
         entity_info: str = None,
         entity_name: str = None,
     ):
-        # The ID of the entity.
         self.entity_id = entity_id
-        # The additional information of the entity, in JSON format.
         self.entity_info = entity_info
-        # The name of the entity.
         self.entity_name = entity_name
 
     def validate(self):

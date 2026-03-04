@@ -25,7 +25,6 @@ class QuerySmarttagJobResponseBody(DaraModel):
         self.job_status = job_status
         # The request ID.
         self.request_id = request_id
-        # The analysis results of the smart tagging job. The value is an array.
         self.results = results
         self.usages = usages
         # The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
@@ -191,27 +190,7 @@ class QuerySmarttagJobResponseBodyResultsResult(DaraModel):
         data: str = None,
         type: str = None,
     ):
-        # The details of the analysis result. The value is a JSON string. For more information about the parameters of different result types, see the "Parameters of different result types" section of this topic.
         self.data = data
-        # The type of the analysis result.
-        # 
-        # *   The type of the analysis result based on Smart tagging V1.0. Valid values:
-        # 
-        # 1.  TextLabel: the text tag.
-        # 2.  VideoLabel: the video tag.
-        # 3.  ASR: the original result of automatic speech recognition (ASR). By default, this type of result is not returned.
-        # 4.  OCR: the original result of optical character recognition (OCR). By default, this type of result is not returned.
-        # 5.  NLP: the natural language processing (NLP)-based result. By default, this type of result is not returned.
-        # 
-        # *   The type of the analysis result based on Smart tagging V2.0. Valid values:
-        # 
-        # 1.  CPVLabel
-        # 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
-        # 
-        # *   The type of the analysis result based on Smart tagging V2.0-custom. Valid values:
-        # 
-        # 1.  CPVLabel
-        # 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
         self.type = type
 
     def validate(self):

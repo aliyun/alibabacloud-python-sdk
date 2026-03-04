@@ -12,8 +12,15 @@ class MediaConvertOutputGroupConfig(DaraModel):
         output_file_base: main_models.MediaObject = None,
         type: str = None,
     ):
+        # The filename for the manifest. This parameter is only applicable when Type is set to Hls or Dash.
         self.manifest_name = manifest_name
+        # The directory where all files for this output group are stored.
         self.output_file_base = output_file_base
+        # The type of the output group. Valid values:
+        # 
+        # *   File: Generates one or more standalone files.
+        # *   Hls: Generates HLS manifests.
+        # *   Dash: Generates DASH manifests.
         self.type = type
 
     def validate(self):

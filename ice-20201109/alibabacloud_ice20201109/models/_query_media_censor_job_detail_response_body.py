@@ -70,7 +70,6 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail(DaraModel):
         self.barrage_censor_result = barrage_censor_result
         # The error code returned if the job failed. This parameter is not returned if the job is successful.
         self.code = code
-        # The moderation results of thumbnails.
         self.cover_image_censor_results = cover_image_censor_results
         # The time when the content moderation job was created.
         self.creation_time = creation_time
@@ -341,11 +340,9 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         next_page_token: str = None,
         video_timelines: main_models.QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelines = None,
     ):
-        # A collection of moderation results. The information includes the summary about various scenarios such as pornographic content moderation and terrorist content moderation.
         self.censor_results = censor_results
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
-        # The moderation results that are sorted in ascending order by time.
         self.video_timelines = video_timelines
 
     def validate(self):
@@ -427,13 +424,8 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         object: str = None,
         timestamp: str = None,
     ):
-        # The moderation results that include information such as labels and scores.
         self.censor_results = censor_results
-        # The OSS object that is generated as the output snapshot.
-        # 
-        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
-        # The position in the video. Format: `hh:mm:ss[.SSS]`.
         self.timestamp = timestamp
 
     def validate(self):
@@ -513,74 +505,9 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result.
-        # 
-        # *   Valid values in the pornographic content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **sexy**: sexy content.
-        #     *   **porn**: pornographic content.
-        # 
-        # *   Valid values in the terrorist content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **bloody**: bloody content.
-        #     *   **explosion**: explosion and smoke.
-        #     *   **outfit**: special costume.
-        #     *   **logo**: special logo.
-        #     *   **weapon**: weapon.
-        #     *   **politics**: political content.
-        #     *   **violence**: violence.
-        #     *   **crowd**: crowd.
-        #     *   **parade**: parade.
-        #     *   **carcrash**: car accident.
-        #     *   **flag**: flag.
-        #     *   **location**: landmark.
-        #     *   **others**: other content.
-        # 
-        # *   Valid values in the ad moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **ad**: other ads.
-        #     *   **politics**: political content in text.
-        #     *   **porn**: pornographic content in text.
-        #     *   **abuse**: abuse in text.
-        #     *   **terrorism**: terrorist content in text.
-        #     *   **contraband**: prohibited content in text.
-        #     *   **spam**: spam in text.
-        #     *   **npx**: illegal ad.
-        #     *   **qrcode**: QR code.
-        #     *   **programCode**: mini program code.
-        # 
-        # *   Valid values in the undesirable scene moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **meaningless**: meaningless content, such as a black or white screen.
-        #     *   **PIP**: picture-in-picture.
-        #     *   **smoking**: smoking.
-        #     *   **drivelive**: live broadcasting in a running vehicle.
-        # 
-        # *   Valid values in the logo moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **TV**: controlled logo.
-        #     *   **trademark**: trademark.
         self.label = label
-        # The score.
         self.rate = rate
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn**: pornographic content moderation.
-        # *   **terrorism**: terrorist content moderation.
-        # *   **ad**: ad moderation.
-        # *   **live**: undesirable scene moderation.
-        # *   **logo**: logo moderation.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -664,74 +591,9 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result.
-        # 
-        # *   Valid values in the pornographic content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **sexy**: sexy content.
-        #     *   **porn**: pornographic content.
-        # 
-        # *   Valid values in the terrorist content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **bloody**: bloody content.
-        #     *   **explosion**: explosion and smoke.
-        #     *   **outfit**: special costume.
-        #     *   **logo**: special logo.
-        #     *   **weapon**: weapon.
-        #     *   **politics**: political content.
-        #     *   **violence**: violence.
-        #     *   **crowd**: crowd.
-        #     *   **parade**: parade.
-        #     *   **carcrash**: car accident.
-        #     *   **flag**: flag.
-        #     *   **location**: landmark.
-        #     *   **others**: other content.
-        # 
-        # *   Valid values in the ad moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **ad**: other ads.
-        #     *   **politics**: political content in text.
-        #     *   **porn**: pornographic content in text.
-        #     *   **abuse**: abuse in text.
-        #     *   **terrorism**: terrorist content in text.
-        #     *   **contraband**: prohibited content in text.
-        #     *   **spam**: spam in text.
-        #     *   **npx**: illegal ad.
-        #     *   **qrcode**: QR code.
-        #     *   **programCode**: mini program code.
-        # 
-        # *   Valid values in the undesirable scene moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **meaningless**: meaningless content, such as a black or white screen.
-        #     *   **PIP**: picture-in-picture.
-        #     *   **smoking**: smoking.
-        #     *   **drivelive**: live broadcasting in a running vehicle.
-        # 
-        # *   Valid values in the logo moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **TV**: controlled logo.
-        #     *   **trademark**: trademark.
         self.label = label
-        # The score.
         self.rate = rate
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn**: pornographic content moderation.
-        # *   **terrorism**: terrorist content moderation.
-        # *   **ad**: ad moderation.
-        # *   **live**: undesirable scene moderation.
-        # *   **logo**: logo moderation.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -995,13 +857,9 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         object: str = None,
         results: main_models.QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults = None,
     ):
-        # The OSS bucket in which the thumbnail is stored.
         self.bucket = bucket
-        # The OSS region in which the thumbnail resides.
         self.location = location
-        # The Object Storage Service (OSS) object that is used as the thumbnail.
         self.object = object
-        # The moderation results.
         self.results = results
 
     def validate(self):
@@ -1087,74 +945,9 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         scene: str = None,
         suggestion: str = None,
     ):
-        # The label of the moderation result.
-        # 
-        # *   Valid values in the pornographic content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **sexy**: sexy content.
-        #     *   **porn**: pornographic content.
-        # 
-        # *   Valid values in the terrorist content moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **bloody**: bloody content.
-        #     *   **explosion**: explosion and smoke.
-        #     *   **outfit**: special costume.
-        #     *   **logo**: special logo.
-        #     *   **weapon**: weapon.
-        #     *   **politics**: political content.
-        #     *   **violence**: violence.
-        #     *   **crowd**: crowd.
-        #     *   **parade**: parade.
-        #     *   **carcrash**: car accident.
-        #     *   **flag**: flag.
-        #     *   **location**: landmark.
-        #     *   **others**: other content.
-        # 
-        # *   Valid values in the ad moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **ad**: other ads.
-        #     *   **politics**: political content in text.
-        #     *   **porn**: pornographic content in text.
-        #     *   **abuse**: abuse in text.
-        #     *   **terrorism**: terrorist content in text.
-        #     *   **contraband**: prohibited content in text.
-        #     *   **spam**: spam in text.
-        #     *   **npx**: illegal ad.
-        #     *   **qrcode**: QR code.
-        #     *   **programCode**: mini program code.
-        # 
-        # *   Valid values in the undesirable scene moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **meaningless**: meaningless content, such as a black or white screen.
-        #     *   **PIP**: picture-in-picture.
-        #     *   **smoking**: smoking.
-        #     *   **drivelive**: live broadcasting in a running vehicle.
-        # 
-        # *   Valid values in the logo moderation scenario:
-        # 
-        #     *   **normal**: normal content.
-        #     *   **TV**: controlled logo.
-        #     *   **trademark**: trademark.
         self.label = label
-        # The score. Valid values: 0 to 100.
         self.rate = rate
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn**: pornographic content moderation.
-        # *   **terrorism**: terrorist content moderation.
-        # *   **ad**: ad moderation.
-        # *   **live**: undesirable scene moderation.
-        # *   **logo**: logo moderation.
         self.scene = scene
-        # The recommended subsequent operation. Valid values:
-        # 
-        # *   **pass**: The content passes the moderation.
-        # *   **review**: The content needs to be manually reviewed.
-        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):

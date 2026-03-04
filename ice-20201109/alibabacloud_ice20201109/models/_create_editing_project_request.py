@@ -43,6 +43,7 @@ class CreateEditingProjectRequest(DaraModel):
         # *   Timeline: a regular template.
         # *   VETemplate: an advanced template.
         self.template_type = template_type
+        # The timeline of the online editing project, in the JSON format.
         self.timeline = timeline
         # The title of the online editing project.
         # 

@@ -19,13 +19,27 @@ class MediaConvertOutputGroupDetail(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The error code for the failed output group task.
         self.code = code
+        # The time the task was created.
         self.create_time = create_time
+        # The end time of the task.
         self.finish_time = finish_time
+        # The reason for a task failure.
         self.message = message
+        # The name of the output group.
         self.name = name
+        # The output details.
         self.outputs = outputs
+        # The status of the output group task.
+        # 
+        # *   Init: The task is submitted.
+        # *   Running
+        # *   Success
+        # *   Failed
+        # *   Skipped
         self.status = status
+        # The ID of the output group task.
         self.task_id = task_id
 
     def validate(self):

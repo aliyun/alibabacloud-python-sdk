@@ -14,11 +14,17 @@ class MediaConvertOutputGroupOutput(DaraModel):
         priority: int = None,
         template_id: str = None,
     ):
+        # The feature parameters.
         self.features = features
+        # A name to label this output. This is for identification purposes only and does not affect the filename.
         self.name = name
+        # The filename for this output. This path is relative to OutputFileBase defined in MediaConvertOutputGroupConfig. The final output path is {OutputFileBase}/{OutputFileName}.
         self.output_file_name = output_file_name
+        # A JSON string containing parameters to override the settings from the associated transcoding template.
         self.override_params = override_params
+        # The processing priority for this output. Valid values: 1 to 10. A higher value indicates higher priority. Default value: 6.
         self.priority = priority
+        # The ID of the transcoding template.
         self.template_id = template_id
 
     def validate(self):

@@ -19,13 +19,26 @@ class ScheduleData(DaraModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # The information about ad breaks.
         self.ad_breaks = ad_breaks
+        # The scheduled playback duration.
         self.approximate_duration_seconds = approximate_duration_seconds
+        # The scheduled start time.
         self.approximate_start_time = approximate_start_time
+        # The entry type.
+        # 
+        # Valid values:
+        # 
+        # *   FillerSlate
+        # *   program
         self.entry_type = entry_type
+        # The name of the program.
         self.program_name = program_name
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The source type.
         self.source_type = source_type
 
     def validate(self):
@@ -108,11 +121,17 @@ class ScheduleDataAdBreaks(DaraModel):
         splice_insert_settings: str = None,
         time_signal_settings: str = None,
     ):
+        # MessageType
         self.message_type = message_type
+        # The time offset.
         self.offset_millis = offset_millis
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The SpliceInsert configurations.
         self.splice_insert_settings = splice_insert_settings
+        # The TimeSignal configurations.
         self.time_signal_settings = time_signal_settings
 
     def validate(self):

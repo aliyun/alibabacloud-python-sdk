@@ -16,6 +16,7 @@ class UpdateTemplateRequest(DaraModel):
         status: str = None,
         template_id: str = None,
     ):
+        # The template configurations. For more information, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
         self.config = config
         # The URL of the template thumbnail.
         self.cover_url = cover_url

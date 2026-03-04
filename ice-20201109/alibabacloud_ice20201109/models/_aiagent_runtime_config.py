@@ -15,11 +15,17 @@ class AIAgentRuntimeConfig(DaraModel):
         vision_chat: main_models.AIAgentRuntimeConfigVisionChat = None,
         voice_chat: main_models.AIAgentRuntimeConfigVoiceChat = None,
     ):
+        # The name of the agent in the ARTC channel.
         self.agent_user_id = agent_user_id
+        # The authentication token for the agent to join the channel. This must be generated using your AppKey.
         self.auth_token = auth_token
+        # The runtime parameters of the avatar call.
         self.avatar_chat_3d = avatar_chat_3d
+        # The ID of the ARTC channel.
         self.channel_id = channel_id
+        # The runtime parameters of the vision call.
         self.vision_chat = vision_chat
+        # The runtime parameters of the voice call.
         self.voice_chat = voice_chat
 
     def validate(self):
@@ -87,8 +93,11 @@ class AIAgentRuntimeConfigVoiceChat(DaraModel):
         auth_token: str = None,
         channel_id: str = None,
     ):
+        # Required. The name of the agent in the ARTC channel.
         self.agent_user_id = agent_user_id
+        # Required. The authentication token for the agent to join the channel. This must be generated using your AppKey.
         self.auth_token = auth_token
+        # Required. The ID of the ARTC channel.
         self.channel_id = channel_id
 
     def validate(self):
@@ -130,8 +139,11 @@ class AIAgentRuntimeConfigVisionChat(DaraModel):
         auth_token: str = None,
         channel_id: str = None,
     ):
+        # Required. The name of the agent in the ARTC channel.
         self.agent_user_id = agent_user_id
+        # Required. The authentication token for the agent to join the channel. This must be generated using your AppKey.
         self.auth_token = auth_token
+        # Required. The ID of the ARTC channel.
         self.channel_id = channel_id
 
     def validate(self):
@@ -173,8 +185,11 @@ class AIAgentRuntimeConfigAvatarChat3D(DaraModel):
         auth_token: str = None,
         channel_id: str = None,
     ):
+        # Required. The name of the agent in the ARTC channel.
         self.agent_user_id = agent_user_id
+        # Required. The authentication token for the agent to join the channel. This must be generated using your AppKey.
         self.auth_token = auth_token
+        # Required. The ID of the ARTC channel.
         self.channel_id = channel_id
 
     def validate(self):

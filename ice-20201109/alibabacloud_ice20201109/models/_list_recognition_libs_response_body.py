@@ -16,7 +16,6 @@ class ListRecognitionLibsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The recognition libraries.
         self.libs = libs
         # The page number.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class ListRecognitionLibsResponseBodyLibsLib(DaraModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
-        # The description of the recognition library.
         self.lib_description = lib_description
-        # The ID of the recognition library.
         self.lib_id = lib_id
-        # The name of the recognition library.
         self.lib_name = lib_name
 
     def validate(self):

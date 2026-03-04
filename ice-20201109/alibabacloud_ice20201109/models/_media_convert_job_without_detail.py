@@ -22,16 +22,33 @@ class MediaConvertJobWithoutDetail(DaraModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The idempotency token provided during the task creation request.
         self.client_token = client_token
+        # The error code for a failed task.
         self.code = code
+        # The task configuration.
         self.config = config
+        # The time the task was created, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z).
         self.create_time = create_time
+        # The time the task finished processing, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z).
         self.finish_time = finish_time
+        # The ID of the task.
         self.job_id = job_id
+        # The reason for a task failure.
         self.message = message
+        # The ID of the queue on which this task was processed.
         self.pipeline_id = pipeline_id
+        # The ID of the API request that created this task.
         self.request_id = request_id
+        # The status of the task.
+        # 
+        # *   Inited: The task is initialized.
+        # *   Running
+        # *   Complete
+        # *   Error
+        # *   Cancelled
         self.state = state
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -124,9 +141,13 @@ class MediaConvertJobWithoutDetailConfig(DaraModel):
         output_groups: List[main_models.MediaConvertOutputGroup] = None,
         outputs: List[main_models.MediaConvertOutput] = None,
     ):
+        # The input files for the task.
         self.inputs = inputs
+        # The task name.
         self.job_name = job_name
+        # The output groups.
         self.output_groups = output_groups
+        # The output configurations.
         self.outputs = outputs
 
     def validate(self):

@@ -15,11 +15,17 @@ class MediaConvertOutput(DaraModel):
         priority: int = None,
         template_id: str = None,
     ):
+        # The feature parameters.
         self.features = features
+        # The name of the output.
         self.name = name
+        # The output file.
         self.output_file = output_file
+        # A JSON string containing parameters to overwrite the corresponding settings of the template.
         self.override_params = override_params
+        # The priority. Valid values: 1 to 10. A larger value indicates a higher priority. Default value: 6.
         self.priority = priority
+        # The ID of the transcoding template.
         self.template_id = template_id
 
     def validate(self):

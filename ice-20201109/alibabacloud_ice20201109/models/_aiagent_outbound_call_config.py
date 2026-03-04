@@ -25,19 +25,28 @@ class AIAgentOutboundCallConfig(DaraModel):
         tts_config: main_models.AIAgentOutboundCallConfigTtsConfig = None,
         turn_detection_config: main_models.AIAgentOutboundCallConfigTurnDetectionConfig = None,
     ):
+        # Configuration for the ambient sound played during the call.
         self.ambient_sound_config = ambient_sound_config
+        # The configuration for Automatic Speech Recognition (ASR).
         self.asr_config = asr_config
         self.auto_speech_config = auto_speech_config
         self.back_channeling_config = back_channeling_config
         self.back_channeling_configs = back_channeling_configs
+        # If enabled, the system intelligently merges short, interim segments into a single sentence. Default value: true.
         self.enable_intelligent_segment = enable_intelligent_segment
         self.experimental_config = experimental_config
+        # The welcome message that the agent says upon joining. Changes take effect in the next session. Default value: None.
         self.greeting = greeting
+        # The delay before playing the welcome message. Unit: milliseconds. Valid values: 0 to 5000. Default value: 0.
         self.greeting_delay = greeting_delay
+        # The configuration for the speech interruption strategy.
         self.interrupt_config = interrupt_config
+        # The configuration for the large language model (LLM).
         self.llm_config = llm_config
         self.max_idle_time = max_idle_time
+        # The configuration for Text-to-Speech (TTS).
         self.tts_config = tts_config
+        # The configuration for detecting the end of a user\\"s conversational turn.
         self.turn_detection_config = turn_detection_config
 
     def validate(self):
@@ -179,8 +188,21 @@ class AIAgentOutboundCallConfigTurnDetectionConfig(DaraModel):
         turn_end_words: List[str] = None,
     ):
         self.eagerness = eagerness
+        # The mode of turn detection.
+        # 
+        # *   Normal: uses simple pause detection.
+        # *   Semantic: uses AI to analyze context.
+        # 
+        # Default value: Normal.
         self.mode = mode
+        # Specifies how long to wait after a user stops speaking for the agent to decide if the turn is over. Unit: milliseconds. Default value: -1.
+        # 
+        # *   \\-1: AI decides an appropriate wait time automatically.
+        # *   0 to 10000: A custom wait time. Recommended: 0 to 1500 ms.
+        # 
+        # Note: In Normal mode, this field is ignored.
         self.semantic_wait_duration = semantic_wait_duration
+        # Keywords that signify the end of the user\\"s turn.
         self.turn_end_words = turn_end_words
 
     def validate(self):
@@ -232,12 +254,55 @@ class AIAgentOutboundCallConfigTtsConfig(DaraModel):
         voice_id: str = None,
         voice_id_list: List[str] = None,
     ):
+        # Applies only to MiniMax models. Seven types of emotions are supported:
+        # 
+        # *   happy
+        # *   sad
+        # *   angry
+        # *   fearful
+        # *   disgusted
+        # *   surprised
+        # *   calm
         self.emotion = emotion
+        # Applies only to MiniMax models. By default, this parameter is left empty. This enhances speech recognition accuracy for specific languages and dialects. If the language type is unknown, set it to auto to have the model automatically detect it. Valid values:
+        # 
+        # **Supported languages**
+        # 
+        # *   Chinese
+        # *   Chinese,Yue
+        # *   English
+        # *   Arabic
+        # *   Russian
+        # *   Spanish
+        # *   French
+        # *   Portuguese
+        # *   German
+        # *   Turkish
+        # *   Dutch
+        # *   Ukrainian
+        # *   Vietnamese
+        # *   Indonesian
+        # *   Japanese
+        # *   Italian
+        # *   Korean
+        # *   Thai
+        # *   Polish
+        # *   Romanian
+        # *   Greek
+        # *   Czech
+        # *   Finnish
+        # *   Hindi
+        # *   auto
         self.language_id = language_id
+        # Applies only to MiniMax models. Valid values: speech-01-turbo and speech-02-turbo.
         self.model_id = model_id
+        # The pronunciation rules, executed in order. Maximum of 20 rules.
         self.pronunciation_rules = pronunciation_rules
+        # Supports all models. For CosyVoice, the default value is 1.0. Valid values: 0.5 to 2.0. For MiniMax, the default value is 1.0. Valid values: 0.5 to 2.0.
         self.speech_rate = speech_rate
+        # The voice ID. Changes take effect on the next sentence. If not set, the system uses the default voice ID specified in the agent template. This parameter takes effect only for the preset TTS model. Max length: 64 characters. Refer to [Intelligent voice samples](https://help.aliyun.com/document_detail/449563.html) for options.
         self.voice_id = voice_id
+        # Available voices.
         self.voice_id_list = voice_id_list
 
     def validate(self):
@@ -311,8 +376,13 @@ class AIAgentOutboundCallConfigTtsConfigPronunciationRules(DaraModel):
         type: str = None,
         word: str = None,
     ):
+        # The target pronunciation. The value supports up to 10 Chinese characters. Other characters, including spaces, are not supported.
         self.pronunciation = pronunciation
+        # The type of rule. Valid value:
+        # 
+        # *   replacement: replaces every occurrence of Word value with Pronunciation value.
         self.type = type
+        # The word to be replaced. The value supports up to 10 Chinese characters. Other characters, including spaces, are not supported.
         self.word = word
 
     def validate(self):
@@ -361,15 +431,24 @@ class AIAgentOutboundCallConfigLlmConfig(DaraModel):
         output_max_delay: str = None,
         output_min_length: int = None,
     ):
+        # Alibaba Cloud Model Studio Application Center parameters. Reference: [Model Studio Application Center Parameter](https://help.aliyun.com/document_detail/2858132.html)
         self.bailian_app_params = bailian_app_params
+        # Maps agent capabilities to LLM functions. Only supports function calling with custom LLMs that adhere to the OpenAI protocol.
         self.function_map = function_map
         self.history_sync_with_tts = history_sync_with_tts
+        # If true, the service sends the complete result from the LLM to the client in a single response after the generation process is finished.
         self.llm_complete_reply = llm_complete_reply
+        # The LLM/MLLM conversation history context.
         self.llm_history = llm_history
+        # The maximum number of conversational turns to retain in the history. Default value: 10.
         self.llm_history_limit = llm_history_limit
+        # The system prompt for the LLM.
         self.llm_system_prompt = llm_system_prompt
+        # Additional query parameters to be sent to the OpenAI-protocol LLM, formatted as a URL query string (key=value pairs separated by &). All values must be strings.
         self.open_aiextra_query = open_aiextra_query
+        # The maximum time (in milliseconds) to buffer text before it is forcibly sent to the client. Valid values: [1000,10000]. A value of 0 or an empty string (default) disables this limit.
         self.output_max_delay = output_max_delay
+        # The minimum number of characters that must be buffered before a text chunk is sent. Valid values: [0, 100]. A value of 0 or an empty string (default) disables this limit.
         self.output_min_length = output_min_length
 
     def validate(self):
@@ -469,7 +548,16 @@ class AIAgentOutboundCallConfigLlmConfigLlmHistory(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # The actual text content of the message for that role.
         self.content = content
+        # The role of the participant in the conversation. Valid values:
+        # 
+        # *   user
+        # *   assistant
+        # *   system
+        # *   function
+        # *   plugin
+        # *   tool
         self.role = role
 
     def validate(self):
@@ -504,7 +592,9 @@ class AIAgentOutboundCallConfigLlmConfigFunctionMap(DaraModel):
         function: str = None,
         match_function: str = None,
     ):
+        # The name of the built-in agent capability. Only hangup is supported.
         self.function = function
+        # The corresponding user-defined function name in your LLM. When the LLM calls this function, it will trigger the mapped agent capability.[](~~2839094~~)
         self.match_function = match_function
 
     def validate(self):
@@ -542,7 +632,9 @@ class AIAgentOutboundCallConfigInterruptConfig(DaraModel):
         no_interrupt_mode: str = None,
     ):
         self.eagerness = eagerness
+        # Specifies whether to allow the user to interrupt the agent by speaking. Default value: true.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # Words or phrases that will trigger an interruption.
         self.interrupt_words = interrupt_words
         self.no_interrupt_mode = no_interrupt_mode
 
@@ -980,11 +1072,23 @@ class AIAgentOutboundCallConfigAsrConfig(DaraModel):
         vad_duration: int = None,
         vad_level: int = None,
     ):
+        # Hotwords for ASR to improve recognition accuracy. Maximum of 128 hotwords.
         self.asr_hot_words = asr_hot_words
+        # The language ID for ASR. Valid values:
+        # 
+        # *   zh_mandarin: Chinese
+        # *   en: English
+        # *   zh_en: Chinese and English
+        # *   es: Spanish
+        # *   jp: Japanese
         self.asr_language_id = asr_language_id
+        # The silence threshold for sentence segmentation. A pause longer than this value is considered a sentence break. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
         self.asr_max_silence = asr_max_silence
+        # Passthrough parameters for ASR.
         self.custom_params = custom_params
+        # The minimum duration for voice activity detection, in milliseconds. This parameter controls the sensitivity of interruptions, preventing the agent from cutting off user speech too early during short pauses. 0: Disables this feature. Valid values: 200 to 2000. Recommended: 200 to 500 ms, which typically corresponds to the length of 1 to 4 words. By default, this parameter is left empty, which indicates the feature is disabled.
         self.vad_duration = vad_duration
+        # The VAD threshold for interruption. A higher value makes it harder to trigger interruptions. Valid values: 0 to 10. Default value: 1. The value of 0 specifies to disable the VAD feature.
         self.vad_level = vad_level
 
     def validate(self):
@@ -1043,7 +1147,9 @@ class AIAgentOutboundCallConfigAmbientSoundConfig(DaraModel):
         resource_id: str = None,
         volume: int = None,
     ):
+        # The ID of the ambient sound. This ID can be obtained from the advanced settings section of the agent configuration in the console.
         self.resource_id = resource_id
+        # The volume of the ambient sound. Valid values: [0, 100]. A value of 0 disables the ambient sound.
         self.volume = volume
 
     def validate(self):

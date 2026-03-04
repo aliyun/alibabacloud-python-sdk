@@ -15,12 +15,19 @@ class SourceLocation(DaraModel):
         source_location_name: str = None,
         state: int = None,
     ):
+        # The ARN of the source location.
         self.arn = arn
+        # The base URL of the source location.
         self.base_url = base_url
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The segment delivery server configurations.
         self.segment_delivery_configurations = segment_delivery_configurations
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The status of the source location. 0: normal. 1: deleted.
         self.state = state
 
     def validate(self):

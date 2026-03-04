@@ -12,6 +12,7 @@ class MediaConvertJobOverwiteParams(DaraModel):
         self,
         subtitles: List[main_models.MediaConvertJobOverwiteParamsSubtitles] = None,
     ):
+        # Subtitle stream configurations.
         self.subtitles = subtitles
 
     def validate(self):
@@ -47,6 +48,7 @@ class MediaConvertJobOverwiteParamsSubtitles(DaraModel):
         self,
         codec: str = None,
     ):
+        # The encoding format for the subtitle stream.
         self.codec = codec
 
     def validate(self):

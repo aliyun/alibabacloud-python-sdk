@@ -14,8 +14,11 @@ class MediaConvertOutputDetailFileMeta(DaraModel):
         file_basic_info: main_models.MediaConvertOutputDetailFileMetaFileBasicInfo = None,
         video_stream_info_list: List[main_models.MediaConvertOutputDetailFileMetaVideoStreamInfoList] = None,
     ):
+        # The audio stream information.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic information of the media file.
         self.file_basic_info = file_basic_info
+        # The video stream information.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -97,28 +100,55 @@ class MediaConvertOutputDetailFileMetaVideoStreamInfoList(DaraModel):
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The tag of the codec.
         self.codec_tag = codec_tag
+        # The tag of the codec.
         self.codec_tag_string = codec_tag_string
+        # The time base used by the codec.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains B-frames. Valid value:
+        # 
+        # *   0: None.
+        # *   1: One B-frame.
+        # *   2: Multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height of the video stream, in pixels.
         self.height = height
+        # The index of this stream within the file.
         self.index = index
+        # The language code for the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The rotation angle applied to the video. Valid values: 0, 90, 180, and 270. Default value: 0.
         self.rotate = rotate
+        # The sample aspect ratio.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base of the stream\\"s presentation timestamps.
         self.time_base = time_base
+        # The width of the video stream, in pixels.
         self.width = width
 
     def validate(self):
@@ -289,17 +319,29 @@ class MediaConvertOutputDetailFileMetaFileBasicInfo(DaraModel):
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The total duration of the media file. Unit: seconds.
         self.duration = duration
+        # The name of the file.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The status of the file.
         self.file_status = file_status
+        # Indicates if this is the source or a transcoded output. Valid values: source_file and transcode_file.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The container format name.
         self.format_name = format_name
+        # The height of the video, in pixels.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The storage region of the file.
         self.region = region
+        # The width of the video, in pixels.
         self.width = width
 
     def validate(self):
@@ -407,20 +449,35 @@ class MediaConvertOutputDetailFileMetaAudioStreamInfoList(DaraModel):
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The layout of the audio channels.
         self.channel_layout = channel_layout
+        # The number of audio channels.
         self.channels = channels
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The tag of the codec.
         self.codec_tag = codec_tag
+        # The tag of the codec.
         self.codec_tag_string = codec_tag_string
+        # The time base used by the codec.
         self.codec_time_base = codec_time_base
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The index of this stream within the file.
         self.index = index
+        # The language code for the stream.
         self.lang = lang
+        # The audio sample format.
         self.sample_fmt = sample_fmt
+        # The sample rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream. Unit: seconds.
         self.start_time = start_time
+        # The time base of the stream\\"s presentation timestamps.
         self.timebase = timebase
 
     def validate(self):

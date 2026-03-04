@@ -10,7 +10,11 @@ class TranspositionResult(DaraModel):
         target_language: str = None,
         translated_text: str = None,
     ):
+        # *   The target language of the translation.
+        # *   This field is only used in translation-related scenarios.
         self.target_language = target_language
+        # *   The translated text corresponding to the matched hotwords. Maximum length: 100 characters.
+        # *   This field is only used in translation-related scenarios.
         self.translated_text = translated_text
 
     def validate(self):
