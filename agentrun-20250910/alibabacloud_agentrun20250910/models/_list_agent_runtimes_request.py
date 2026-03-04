@@ -15,6 +15,7 @@ class ListAgentRuntimesRequest(DaraModel):
         search_mode: str = None,
         status: str = None,
         workspace_id: str = None,
+        workspace_ids: str = None,
     ):
         # 根据智能体运行时名称进行模糊匹配过滤
         self.agent_runtime_name = agent_runtime_name
@@ -31,6 +32,7 @@ class ListAgentRuntimesRequest(DaraModel):
         self.status = status
         # 根据工作空间ID进行过滤，用于资源隔离和权限管理
         self.workspace_id = workspace_id
+        self.workspace_ids = workspace_ids
 
     def validate(self):
         pass
@@ -64,6 +66,9 @@ class ListAgentRuntimesRequest(DaraModel):
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
+        if self.workspace_ids is not None:
+            result['workspaceIds'] = self.workspace_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -91,6 +96,9 @@ class ListAgentRuntimesRequest(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        if m.get('workspaceIds') is not None:
+            self.workspace_ids = m.get('workspaceIds')
 
         return self
 

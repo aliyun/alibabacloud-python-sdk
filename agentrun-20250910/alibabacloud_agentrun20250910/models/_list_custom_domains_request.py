@@ -8,12 +8,14 @@ class ListCustomDomainsRequest(DaraModel):
     def __init__(
         self,
         domain_name: str = None,
+        domain_type: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_name: str = None,
         resource_type: str = None,
     ):
         self.domain_name = domain_name
+        self.domain_type = domain_type
         self.page_number = page_number
         self.page_size = page_size
         self.resource_name = resource_name
@@ -29,6 +31,9 @@ class ListCustomDomainsRequest(DaraModel):
             result = _map
         if self.domain_name is not None:
             result['domainName'] = self.domain_name
+
+        if self.domain_type is not None:
+            result['domainType'] = self.domain_type
 
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -48,6 +53,9 @@ class ListCustomDomainsRequest(DaraModel):
         m = m or dict()
         if m.get('domainName') is not None:
             self.domain_name = m.get('domainName')
+
+        if m.get('domainType') is not None:
+            self.domain_type = m.get('domainType')
 
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')

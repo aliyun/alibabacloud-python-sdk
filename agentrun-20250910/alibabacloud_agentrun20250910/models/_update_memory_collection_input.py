@@ -16,6 +16,7 @@ class UpdateMemoryCollectionInput(DaraModel):
         llm_config: main_models.LLMConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
         vector_store_config: main_models.VectorStoreConfig = None,
+        workspace_id: str = None,
     ):
         self.description = description
         self.embedder_config = embedder_config
@@ -25,6 +26,7 @@ class UpdateMemoryCollectionInput(DaraModel):
         self.llm_config = llm_config
         self.network_configuration = network_configuration
         self.vector_store_config = vector_store_config
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.embedder_config:
@@ -65,6 +67,9 @@ class UpdateMemoryCollectionInput(DaraModel):
         if self.vector_store_config is not None:
             result['vectorStoreConfig'] = self.vector_store_config.to_map()
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -96,6 +101,9 @@ class UpdateMemoryCollectionInput(DaraModel):
         if m.get('vectorStoreConfig') is not None:
             temp_model = main_models.VectorStoreConfig()
             self.vector_store_config = temp_model.from_map(m.get('vectorStoreConfig'))
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

@@ -12,6 +12,7 @@ class PathConfig(DaraModel):
         agent_runtime_endpoint_name: str = None,
         methods: List[str] = None,
         path: str = None,
+        remove_base_path_on_forward: bool = None,
         resource_name: str = None,
         resource_type: str = None,
     ):
@@ -21,6 +22,7 @@ class PathConfig(DaraModel):
         self.methods = methods
         # 此条路由规则对应的请求路径。
         self.path = path
+        self.remove_base_path_on_forward = remove_base_path_on_forward
         # 资源名称
         self.resource_name = resource_name
         # 资源类型（和凭证关联资源类型一致）
@@ -43,6 +45,9 @@ class PathConfig(DaraModel):
         if self.path is not None:
             result['path'] = self.path
 
+        if self.remove_base_path_on_forward is not None:
+            result['removeBasePathOnForward'] = self.remove_base_path_on_forward
+
         if self.resource_name is not None:
             result['resourceName'] = self.resource_name
 
@@ -61,6 +66,9 @@ class PathConfig(DaraModel):
 
         if m.get('path') is not None:
             self.path = m.get('path')
+
+        if m.get('removeBasePathOnForward') is not None:
+            self.remove_base_path_on_forward = m.get('removeBasePathOnForward')
 
         if m.get('resourceName') is not None:
             self.resource_name = m.get('resourceName')

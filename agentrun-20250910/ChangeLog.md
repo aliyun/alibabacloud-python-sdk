@@ -1,3 +1,15 @@
+2026-03-04 Version: 5.4.0
+- Support API CreateWorkspace.
+- Support API DeleteWorkspace.
+- Support API GetWorkspace.
+- Support API GetWorkspaceDiscoveryEndpoints.
+- Support API UpdateWorkspace.
+- Support API UpdateWorkspaceDiscoveryEndpoints.
+- Update API ListAgentRuntimes: add request parameters workspaceIds.
+- Update API ListCustomDomains: add request parameters domainType.
+- Update API ListMemoryCollections: add request parameters workspaceId.
+
+
 2026-02-26 Version: 5.3.9
 - Update API ListTemplates: add request parameters workspaceId.
 

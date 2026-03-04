@@ -969,6 +969,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_template_with_options_async(request, headers, runtime)
 
+    def create_workspace_with_options(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workspace_with_options(request, headers, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workspace_with_options_async(request, headers, runtime)
+
     def delete_agent_runtime_with_options(
         self,
         agent_runtime_id: str,
@@ -1764,6 +1834,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_template_with_options_async(template_name, headers, runtime)
+
+    def delete_workspace_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace(
+        self,
+        workspace_id: str,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workspace_with_options(workspace_id, headers, runtime)
+
+    async def delete_workspace_async(
+        self,
+        workspace_id: str,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workspace_with_options_async(workspace_id, headers, runtime)
 
     def get_access_token_with_options(
         self,
@@ -2659,6 +2795,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_template_with_options_async(template_name, headers, runtime)
 
+    def get_workspace_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace(
+        self,
+        workspace_id: str,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_with_options(workspace_id, headers, runtime)
+
+    async def get_workspace_async(
+        self,
+        workspace_id: str,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_with_options_async(workspace_id, headers, runtime)
+
+    def get_workspace_discovery_endpoints_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceDiscoveryEndpointsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceDiscoveryEndpoints',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}/discovery/endpoints',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceDiscoveryEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_discovery_endpoints_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceDiscoveryEndpointsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceDiscoveryEndpoints',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}/discovery/endpoints',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceDiscoveryEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_discovery_endpoints(
+        self,
+        workspace_id: str,
+    ) -> main_models.GetWorkspaceDiscoveryEndpointsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_discovery_endpoints_with_options(workspace_id, headers, runtime)
+
+    async def get_workspace_discovery_endpoints_async(
+        self,
+        workspace_id: str,
+    ) -> main_models.GetWorkspaceDiscoveryEndpointsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_discovery_endpoints_with_options_async(workspace_id, headers, runtime)
+
     def list_agent_runtime_endpoints_with_options(
         self,
         agent_runtime_id: str,
@@ -2859,6 +3127,8 @@ class Client(OpenApiClient):
             query['status'] = request.status
         if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_ids):
+            query['workspaceIds'] = request.workspace_ids
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2903,6 +3173,8 @@ class Client(OpenApiClient):
             query['status'] = request.status
         if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_ids):
+            query['workspaceIds'] = request.workspace_ids
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3221,6 +3493,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain_name):
             query['domainName'] = request.domain_name
+        if not DaraCore.is_null(request.domain_type):
+            query['domainType'] = request.domain_type
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3259,6 +3533,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain_name):
             query['domainName'] = request.domain_name
+        if not DaraCore.is_null(request.domain_type):
+            query['domainType'] = request.domain_type
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3405,6 +3681,8 @@ class Client(OpenApiClient):
             query['status'] = request.status
         if not DaraCore.is_null(request.type):
             query['type'] = request.type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3443,6 +3721,8 @@ class Client(OpenApiClient):
             query['status'] = request.status
         if not DaraCore.is_null(request.type):
             query['type'] = request.type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4822,3 +5102,151 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_template_with_options_async(template_name, request, headers, runtime)
+
+    def update_workspace_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspace',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceRequest,
+    ) -> main_models.UpdateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def update_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceRequest,
+    ) -> main_models.UpdateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_workspace_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_workspace_discovery_endpoints_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceDiscoveryEndpointsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceDiscoveryEndpointsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspaceDiscoveryEndpoints',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}/discovery/endpoints',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceDiscoveryEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_discovery_endpoints_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceDiscoveryEndpointsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceDiscoveryEndpointsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspaceDiscoveryEndpoints',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/workspaces/{DaraURL.percent_encode(workspace_id)}/discovery/endpoints',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceDiscoveryEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace_discovery_endpoints(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceDiscoveryEndpointsRequest,
+    ) -> main_models.UpdateWorkspaceDiscoveryEndpointsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_workspace_discovery_endpoints_with_options(workspace_id, request, headers, runtime)
+
+    async def update_workspace_discovery_endpoints_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceDiscoveryEndpointsRequest,
+    ) -> main_models.UpdateWorkspaceDiscoveryEndpointsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_workspace_discovery_endpoints_with_options_async(workspace_id, request, headers, runtime)

@@ -251,6 +251,8 @@ from ._create_sandbox_request import CreateSandboxRequest
 from ._create_sandbox_response import CreateSandboxResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response import CreateTemplateResponse
+from ._create_workspace_request import CreateWorkspaceRequest
+from ._create_workspace_response import CreateWorkspaceResponse
 from ._delete_agent_runtime_response import DeleteAgentRuntimeResponse
 from ._delete_agent_runtime_endpoint_response import DeleteAgentRuntimeEndpointResponse
 from ._delete_browser_response import DeleteBrowserResponse
@@ -263,6 +265,7 @@ from ._delete_model_proxy_response import DeleteModelProxyResponse
 from ._delete_model_service_response import DeleteModelServiceResponse
 from ._delete_sandbox_response import DeleteSandboxResponse
 from ._delete_template_response import DeleteTemplateResponse
+from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._get_access_token_request import GetAccessTokenRequest
 from ._get_access_token_response_body import GetAccessTokenResponseBody
 from ._get_access_token_response import GetAccessTokenResponse
@@ -279,6 +282,8 @@ from ._get_model_proxy_response import GetModelProxyResponse
 from ._get_model_service_response import GetModelServiceResponse
 from ._get_sandbox_response import GetSandboxResponse
 from ._get_template_response import GetTemplateResponse
+from ._get_workspace_response import GetWorkspaceResponse
+from ._get_workspace_discovery_endpoints_response import GetWorkspaceDiscoveryEndpointsResponse
 from ._list_agent_runtime_endpoints_request import ListAgentRuntimeEndpointsRequest
 from ._list_agent_runtime_endpoints_response import ListAgentRuntimeEndpointsResponse
 from ._list_agent_runtime_versions_request import ListAgentRuntimeVersionsRequest
@@ -330,6 +335,10 @@ from ._update_model_service_request import UpdateModelServiceRequest
 from ._update_model_service_response import UpdateModelServiceResponse
 from ._update_template_request import UpdateTemplateRequest
 from ._update_template_response import UpdateTemplateResponse
+from ._update_workspace_request import UpdateWorkspaceRequest
+from ._update_workspace_response import UpdateWorkspaceResponse
+from ._update_workspace_discovery_endpoints_request import UpdateWorkspaceDiscoveryEndpointsRequest
+from ._update_workspace_discovery_endpoints_response import UpdateWorkspaceDiscoveryEndpointsResponse
 from ._credential_public_config import CredentialPublicConfigRemoteConfig
 from ._credential_public_config import CredentialPublicConfigUsers
 from ._embedder_config import EmbedderConfigConfig
@@ -597,6 +606,8 @@ __all__ = [
     CreateSandboxResponse,
     CreateTemplateRequest,
     CreateTemplateResponse,
+    CreateWorkspaceRequest,
+    CreateWorkspaceResponse,
     DeleteAgentRuntimeResponse,
     DeleteAgentRuntimeEndpointResponse,
     DeleteBrowserResponse,
@@ -609,6 +620,7 @@ __all__ = [
     DeleteModelServiceResponse,
     DeleteSandboxResponse,
     DeleteTemplateResponse,
+    DeleteWorkspaceResponse,
     GetAccessTokenRequest,
     GetAccessTokenResponseBody,
     GetAccessTokenResponse,
@@ -625,6 +637,8 @@ __all__ = [
     GetModelServiceResponse,
     GetSandboxResponse,
     GetTemplateResponse,
+    GetWorkspaceResponse,
+    GetWorkspaceDiscoveryEndpointsResponse,
     ListAgentRuntimeEndpointsRequest,
     ListAgentRuntimeEndpointsResponse,
     ListAgentRuntimeVersionsRequest,
@@ -676,6 +690,10 @@ __all__ = [
     UpdateModelServiceResponse,
     UpdateTemplateRequest,
     UpdateTemplateResponse,
+    UpdateWorkspaceRequest,
+    UpdateWorkspaceResponse,
+    UpdateWorkspaceDiscoveryEndpointsRequest,
+    UpdateWorkspaceDiscoveryEndpointsResponse,
     CredentialPublicConfigRemoteConfig,
     CredentialPublicConfigUsers,
     EmbedderConfigConfig,
