@@ -1,3 +1,8 @@
+2026-03-04 Version: 2.33.0
+- Support API ListNotificationRecords.
+- Support API UpdateSubscription.
+
+
 2026-02-28 Version: 2.32.1
 - Update API CreateUser: add request parameters NeedEmailNotification.
 - Update API GetConversationDetail: add request parameters AgentId.

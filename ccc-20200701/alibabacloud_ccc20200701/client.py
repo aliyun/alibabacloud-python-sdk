@@ -13036,6 +13036,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_multi_channel_recordings_with_options_async(request, runtime)
 
+    def list_notification_records_with_options(
+        self,
+        request: main_models.ListNotificationRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNotificationRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.notification_keys):
+            query['NotificationKeys'] = request.notification_keys
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNotificationRecords',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNotificationRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_notification_records_with_options_async(
+        self,
+        request: main_models.ListNotificationRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNotificationRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.notification_keys):
+            query['NotificationKeys'] = request.notification_keys
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNotificationRecords',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNotificationRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_notification_records(
+        self,
+        request: main_models.ListNotificationRecordsRequest,
+    ) -> main_models.ListNotificationRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.list_notification_records_with_options(request, runtime)
+
+    async def list_notification_records_async(
+        self,
+        request: main_models.ListNotificationRecordsRequest,
+    ) -> main_models.ListNotificationRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_notification_records_with_options_async(request, runtime)
+
     def list_outbound_numbers_of_user_with_options(
         self,
         request: main_models.ListOutboundNumbersOfUserRequest,
@@ -20803,6 +20877,112 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateSchemaPropertyResponse:
         runtime = RuntimeOptions()
         return await self.update_schema_property_with_options_async(request, runtime)
+
+    def update_subscription_with_options(
+        self,
+        request: main_models.UpdateSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point):
+            query['AccessPoint'] = request.access_point
+        if not DaraCore.is_null(request.aliyun_uid):
+            query['AliyunUid'] = request.aliyun_uid
+        if not DaraCore.is_null(request.default_topic):
+            query['DefaultTopic'] = request.default_topic
+        if not DaraCore.is_null(request.event_subscriptions_json):
+            query['EventSubscriptionsJson'] = request.event_subscriptions_json
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.mq_instance_id):
+            query['MqInstanceId'] = request.mq_instance_id
+        if not DaraCore.is_null(request.mq_type):
+            query['MqType'] = request.mq_type
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.producer_id):
+            query['ProducerId'] = request.producer_id
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSubscription',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_subscription_with_options_async(
+        self,
+        request: main_models.UpdateSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point):
+            query['AccessPoint'] = request.access_point
+        if not DaraCore.is_null(request.aliyun_uid):
+            query['AliyunUid'] = request.aliyun_uid
+        if not DaraCore.is_null(request.default_topic):
+            query['DefaultTopic'] = request.default_topic
+        if not DaraCore.is_null(request.event_subscriptions_json):
+            query['EventSubscriptionsJson'] = request.event_subscriptions_json
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.mq_instance_id):
+            query['MqInstanceId'] = request.mq_instance_id
+        if not DaraCore.is_null(request.mq_type):
+            query['MqType'] = request.mq_type
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.producer_id):
+            query['ProducerId'] = request.producer_id
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSubscription',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_subscription(
+        self,
+        request: main_models.UpdateSubscriptionRequest,
+    ) -> main_models.UpdateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return self.update_subscription_with_options(request, runtime)
+
+    async def update_subscription_async(
+        self,
+        request: main_models.UpdateSubscriptionRequest,
+    ) -> main_models.UpdateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_subscription_with_options_async(request, runtime)
 
     def update_ticket_with_options(
         self,

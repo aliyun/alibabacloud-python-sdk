@@ -481,6 +481,9 @@ from ._list_mono_recordings_response import ListMonoRecordingsResponse
 from ._list_multi_channel_recordings_request import ListMultiChannelRecordingsRequest
 from ._list_multi_channel_recordings_response_body import ListMultiChannelRecordingsResponseBody
 from ._list_multi_channel_recordings_response import ListMultiChannelRecordingsResponse
+from ._list_notification_records_request import ListNotificationRecordsRequest
+from ._list_notification_records_response_body import ListNotificationRecordsResponseBody
+from ._list_notification_records_response import ListNotificationRecordsResponse
 from ._list_outbound_numbers_of_user_request import ListOutboundNumbersOfUserRequest
 from ._list_outbound_numbers_of_user_response_body import ListOutboundNumbersOfUserResponseBody
 from ._list_outbound_numbers_of_user_response import ListOutboundNumbersOfUserResponse
@@ -760,6 +763,9 @@ from ._update_schema_property_request import UpdateSchemaPropertyRequest
 from ._update_schema_property_shrink_request import UpdateSchemaPropertyShrinkRequest
 from ._update_schema_property_response_body import UpdateSchemaPropertyResponseBody
 from ._update_schema_property_response import UpdateSchemaPropertyResponse
+from ._update_subscription_request import UpdateSubscriptionRequest
+from ._update_subscription_response_body import UpdateSubscriptionResponseBody
+from ._update_subscription_response import UpdateSubscriptionResponse
 from ._update_ticket_request import UpdateTicketRequest
 from ._update_ticket_response_body import UpdateTicketResponseBody
 from ._update_ticket_response import UpdateTicketResponse
@@ -1023,6 +1029,7 @@ from ._list_legacy_queue_event_logs_response_body import ListLegacyQueueEventLog
 from ._list_mono_recordings_response_body import ListMonoRecordingsResponseBodyData
 from ._list_multi_channel_recordings_response_body import ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments
 from ._list_multi_channel_recordings_response_body import ListMultiChannelRecordingsResponseBodyData
+from ._list_notification_records_response_body import ListNotificationRecordsResponseBodyData
 from ._list_outbound_numbers_of_user_response_body import ListOutboundNumbersOfUserResponseBodyDataList
 from ._list_outbound_numbers_of_user_response_body import ListOutboundNumbersOfUserResponseBodyData
 from ._list_personal_numbers_of_user_response_body import ListPersonalNumbersOfUserResponseBodyDataList
@@ -1145,6 +1152,8 @@ from ._unmute_call_response_body import UnmuteCallResponseBodyDataCallContext
 from ._unmute_call_response_body import UnmuteCallResponseBodyDataUserContext
 from ._unmute_call_response_body import UnmuteCallResponseBodyData
 from ._update_schema_property_request import UpdateSchemaPropertyRequestProperty
+from ._update_subscription_response_body import UpdateSubscriptionResponseBodyDataEventList
+from ._update_subscription_response_body import UpdateSubscriptionResponseBodyData
 
 __all__ = [
     DataPropertiesValue,
@@ -1626,6 +1635,9 @@ __all__ = [
     ListMultiChannelRecordingsRequest,
     ListMultiChannelRecordingsResponseBody,
     ListMultiChannelRecordingsResponse,
+    ListNotificationRecordsRequest,
+    ListNotificationRecordsResponseBody,
+    ListNotificationRecordsResponse,
     ListOutboundNumbersOfUserRequest,
     ListOutboundNumbersOfUserResponseBody,
     ListOutboundNumbersOfUserResponse,
@@ -1905,6 +1917,9 @@ __all__ = [
     UpdateSchemaPropertyShrinkRequest,
     UpdateSchemaPropertyResponseBody,
     UpdateSchemaPropertyResponse,
+    UpdateSubscriptionRequest,
+    UpdateSubscriptionResponseBody,
+    UpdateSubscriptionResponse,
     UpdateTicketRequest,
     UpdateTicketResponseBody,
     UpdateTicketResponse,
@@ -2168,6 +2183,7 @@ __all__ = [
     ListMonoRecordingsResponseBodyData,
     ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments,
     ListMultiChannelRecordingsResponseBodyData,
+    ListNotificationRecordsResponseBodyData,
     ListOutboundNumbersOfUserResponseBodyDataList,
     ListOutboundNumbersOfUserResponseBodyData,
     ListPersonalNumbersOfUserResponseBodyDataList,
@@ -2289,5 +2305,7 @@ __all__ = [
     UnmuteCallResponseBodyDataCallContext,
     UnmuteCallResponseBodyDataUserContext,
     UnmuteCallResponseBodyData,
-    UpdateSchemaPropertyRequestProperty
+    UpdateSchemaPropertyRequestProperty,
+    UpdateSubscriptionResponseBodyDataEventList,
+    UpdateSubscriptionResponseBodyData
 ]
