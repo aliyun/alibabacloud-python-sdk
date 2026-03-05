@@ -1,3 +1,15 @@
+2026-03-05 Version: 2.15.0
+- Support API BatchCheckResourceMeasure.
+- Support API CheckResourceMeasure.
+- Support API CreateAppTokenService.
+- Support API GetAppRecommendedCommodities.
+- Support API GetAppTokenService.
+- Support API PushResourceMeasure.
+- Support API QueryInspirationAccountDetails.
+- Support API QueryInspirationBalance.
+- Support API QueryInspirationConsumeRecords.
+
+
 2026-03-04 Version: 2.14.0
 - Support API ListAppCommoditySpecificationsForPartner.
 

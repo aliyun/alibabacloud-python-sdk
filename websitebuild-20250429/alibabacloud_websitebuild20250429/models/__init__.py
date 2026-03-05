@@ -15,15 +15,22 @@ from ._app_service import AppService
 from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
+from ._module_results_value import ModuleResultsValue
 from ._module_versions_value import ModuleVersionsValue
 from ._module_versions_value_components_value import ModuleVersionsValueComponentsValue
 from ._module_versions_value_components_value_properties_value import ModuleVersionsValueComponentsValuePropertiesValue
 from ._allocate_supabase_for_admin_request import AllocateSupabaseForAdminRequest
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBody
 from ._allocate_supabase_for_admin_response import AllocateSupabaseForAdminResponse
+from ._batch_check_resource_measure_request import BatchCheckResourceMeasureRequest
+from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasureResponseBody
+from ._batch_check_resource_measure_response import BatchCheckResourceMeasureResponse
 from ._bind_app_domain_request import BindAppDomainRequest
 from ._bind_app_domain_response_body import BindAppDomainResponseBody
 from ._bind_app_domain_response import BindAppDomainResponse
+from ._check_resource_measure_request import CheckResourceMeasureRequest
+from ._check_resource_measure_response_body import CheckResourceMeasureResponseBody
+from ._check_resource_measure_response import CheckResourceMeasureResponse
 from ._create_app_instance_request import CreateAppInstanceRequest
 from ._create_app_instance_shrink_request import CreateAppInstanceShrinkRequest
 from ._create_app_instance_response_body import CreateAppInstanceResponseBody
@@ -31,6 +38,9 @@ from ._create_app_instance_response import CreateAppInstanceResponse
 from ._create_app_instance_ticket_request import CreateAppInstanceTicketRequest
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBody
 from ._create_app_instance_ticket_response import CreateAppInstanceTicketResponse
+from ._create_app_token_service_request import CreateAppTokenServiceRequest
+from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBody
+from ._create_app_token_service_response import CreateAppTokenServiceResponse
 from ._create_logo_task_request import CreateLogoTaskRequest
 from ._create_logo_task_response_body import CreateLogoTaskResponseBody
 from ._create_logo_task_response import CreateLogoTaskResponse
@@ -66,6 +76,11 @@ from ._get_app_instance_response import GetAppInstanceResponse
 from ._get_app_plugin_config_request import GetAppPluginConfigRequest
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBody
 from ._get_app_plugin_config_response import GetAppPluginConfigResponse
+from ._get_app_recommended_commodities_request import GetAppRecommendedCommoditiesRequest
+from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBody
+from ._get_app_recommended_commodities_response import GetAppRecommendedCommoditiesResponse
+from ._get_app_token_service_response_body import GetAppTokenServiceResponseBody
+from ._get_app_token_service_response import GetAppTokenServiceResponse
 from ._get_create_logo_task_request import GetCreateLogoTaskRequest
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBody
 from ._get_create_logo_task_response import GetCreateLogoTaskResponse
@@ -125,6 +140,17 @@ from ._operate_app_service_for_partner_response import OperateAppServiceForPartn
 from ._operate_supabase_for_admin_request import OperateSupabaseForAdminRequest
 from ._operate_supabase_for_admin_response_body import OperateSupabaseForAdminResponseBody
 from ._operate_supabase_for_admin_response import OperateSupabaseForAdminResponse
+from ._push_resource_measure_request import PushResourceMeasureRequest
+from ._push_resource_measure_response_body import PushResourceMeasureResponseBody
+from ._push_resource_measure_response import PushResourceMeasureResponse
+from ._query_inspiration_account_details_request import QueryInspirationAccountDetailsRequest
+from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBody
+from ._query_inspiration_account_details_response import QueryInspirationAccountDetailsResponse
+from ._query_inspiration_balance_response_body import QueryInspirationBalanceResponseBody
+from ._query_inspiration_balance_response import QueryInspirationBalanceResponse
+from ._query_inspiration_consume_records_request import QueryInspirationConsumeRecordsRequest
+from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBody
+from ._query_inspiration_consume_records_response import QueryInspirationConsumeRecordsResponse
 from ._query_material_directory_tree_request import QueryMaterialDirectoryTreeRequest
 from ._query_material_directory_tree_response_body import QueryMaterialDirectoryTreeResponseBody
 from ._query_material_directory_tree_response import QueryMaterialDirectoryTreeResponse
@@ -185,10 +211,13 @@ from ._module_versions_value_components_value import ModuleVersionsValueComponen
 from ._module_versions_value_components_value import ModuleVersionsValueComponentsValueInstanceProperty
 from ._module_versions_value_components_value_properties_value import ModuleVersionsValueComponentsValuePropertiesValueValues
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBodyModule
+from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasureResponseBodyModule
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
+from ._check_resource_measure_response_body import CheckResourceMeasureResponseBodyModule
 from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
+from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBodyModule
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBodyModule
@@ -196,6 +225,9 @@ from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsR
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
 from ._export_material_file_response_body import ExportMaterialFileResponseBodyModule
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBodyModule
+from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModuleCommodities
+from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModule
+from ._get_app_token_service_response_body import GetAppTokenServiceResponseBodyModule
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBodyTask
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyDataOwnership
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
@@ -224,6 +256,13 @@ from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResp
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNext
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModule
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
+from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleData
+from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleNext
+from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModule
+from ._query_inspiration_balance_response_body import QueryInspirationBalanceResponseBodyModule
+from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBodyModuleData
+from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBodyModuleNext
+from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBodyModule
 from ._query_material_directory_tree_response_body import QueryMaterialDirectoryTreeResponseBodyModule
 from ._query_material_file_list_response_body import QueryMaterialFileListResponseBodyModule
 from ._query_material_file_summary_info_response_body import QueryMaterialFileSummaryInfoResponseBodyModule
@@ -256,15 +295,22 @@ __all__ = [
     AppServiceAggregate,
     AppServiceGroup,
     AppServiceProfile,
+    ModuleResultsValue,
     ModuleVersionsValue,
     ModuleVersionsValueComponentsValue,
     ModuleVersionsValueComponentsValuePropertiesValue,
     AllocateSupabaseForAdminRequest,
     AllocateSupabaseForAdminResponseBody,
     AllocateSupabaseForAdminResponse,
+    BatchCheckResourceMeasureRequest,
+    BatchCheckResourceMeasureResponseBody,
+    BatchCheckResourceMeasureResponse,
     BindAppDomainRequest,
     BindAppDomainResponseBody,
     BindAppDomainResponse,
+    CheckResourceMeasureRequest,
+    CheckResourceMeasureResponseBody,
+    CheckResourceMeasureResponse,
     CreateAppInstanceRequest,
     CreateAppInstanceShrinkRequest,
     CreateAppInstanceResponseBody,
@@ -272,6 +318,9 @@ __all__ = [
     CreateAppInstanceTicketRequest,
     CreateAppInstanceTicketResponseBody,
     CreateAppInstanceTicketResponse,
+    CreateAppTokenServiceRequest,
+    CreateAppTokenServiceResponseBody,
+    CreateAppTokenServiceResponse,
     CreateLogoTaskRequest,
     CreateLogoTaskResponseBody,
     CreateLogoTaskResponse,
@@ -307,6 +356,11 @@ __all__ = [
     GetAppPluginConfigRequest,
     GetAppPluginConfigResponseBody,
     GetAppPluginConfigResponse,
+    GetAppRecommendedCommoditiesRequest,
+    GetAppRecommendedCommoditiesResponseBody,
+    GetAppRecommendedCommoditiesResponse,
+    GetAppTokenServiceResponseBody,
+    GetAppTokenServiceResponse,
     GetCreateLogoTaskRequest,
     GetCreateLogoTaskResponseBody,
     GetCreateLogoTaskResponse,
@@ -366,6 +420,17 @@ __all__ = [
     OperateSupabaseForAdminRequest,
     OperateSupabaseForAdminResponseBody,
     OperateSupabaseForAdminResponse,
+    PushResourceMeasureRequest,
+    PushResourceMeasureResponseBody,
+    PushResourceMeasureResponse,
+    QueryInspirationAccountDetailsRequest,
+    QueryInspirationAccountDetailsResponseBody,
+    QueryInspirationAccountDetailsResponse,
+    QueryInspirationBalanceResponseBody,
+    QueryInspirationBalanceResponse,
+    QueryInspirationConsumeRecordsRequest,
+    QueryInspirationConsumeRecordsResponseBody,
+    QueryInspirationConsumeRecordsResponse,
     QueryMaterialDirectoryTreeRequest,
     QueryMaterialDirectoryTreeResponseBody,
     QueryMaterialDirectoryTreeResponse,
@@ -426,10 +491,13 @@ __all__ = [
     ModuleVersionsValueComponentsValueInstanceProperty,
     ModuleVersionsValueComponentsValuePropertiesValueValues,
     AllocateSupabaseForAdminResponseBodyModule,
+    BatchCheckResourceMeasureResponseBodyModule,
     BindAppDomainResponseBodyModule,
+    CheckResourceMeasureResponseBodyModule,
     CreateAppInstanceRequestTags,
     CreateAppInstanceResponseBodyModule,
     CreateAppInstanceTicketResponseBodyModule,
+    CreateAppTokenServiceResponseBodyModule,
     CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,
     DeleteAppDomainRedirectResponseBodyModule,
@@ -437,6 +505,9 @@ __all__ = [
     DispatchConsoleAPIForPartnerResponseBodyModule,
     ExportMaterialFileResponseBodyModule,
     GetAppPluginConfigResponseBodyModule,
+    GetAppRecommendedCommoditiesResponseBodyModuleCommodities,
+    GetAppRecommendedCommoditiesResponseBodyModule,
+    GetAppTokenServiceResponseBodyModule,
     GetCreateLogoTaskResponseBodyTask,
     GetDomainInfoForPartnerResponseBodyDataOwnership,
     GetDomainInfoForPartnerResponseBodyData,
@@ -465,6 +536,13 @@ __all__ = [
     ListAppInstanceDomainsResponseBodyModuleNext,
     ListAppInstanceDomainsResponseBodyModule,
     ModifyAppInstanceSpecResponseBodyModule,
+    QueryInspirationAccountDetailsResponseBodyModuleData,
+    QueryInspirationAccountDetailsResponseBodyModuleNext,
+    QueryInspirationAccountDetailsResponseBodyModule,
+    QueryInspirationBalanceResponseBodyModule,
+    QueryInspirationConsumeRecordsResponseBodyModuleData,
+    QueryInspirationConsumeRecordsResponseBodyModuleNext,
+    QueryInspirationConsumeRecordsResponseBodyModule,
     QueryMaterialDirectoryTreeResponseBodyModule,
     QueryMaterialFileListResponseBodyModule,
     QueryMaterialFileSummaryInfoResponseBodyModule,

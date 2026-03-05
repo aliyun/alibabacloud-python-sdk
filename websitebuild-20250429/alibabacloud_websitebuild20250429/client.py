@@ -130,6 +130,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.allocate_supabase_for_admin_with_options_async(request, runtime)
 
+    def batch_check_resource_measure_with_options(
+        self,
+        request: main_models.BatchCheckResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCheckResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.esp_biz_id):
+            query['EspBizId'] = request.esp_biz_id
+        if not DaraCore.is_null(request.order_component_params):
+            query['OrderComponentParams'] = request.order_component_params
+        if not DaraCore.is_null(request.resource_check_items):
+            query['ResourceCheckItems'] = request.resource_check_items
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCheckResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCheckResourceMeasureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_check_resource_measure_with_options_async(
+        self,
+        request: main_models.BatchCheckResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCheckResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.esp_biz_id):
+            query['EspBizId'] = request.esp_biz_id
+        if not DaraCore.is_null(request.order_component_params):
+            query['OrderComponentParams'] = request.order_component_params
+        if not DaraCore.is_null(request.resource_check_items):
+            query['ResourceCheckItems'] = request.resource_check_items
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCheckResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCheckResourceMeasureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_check_resource_measure(
+        self,
+        request: main_models.BatchCheckResourceMeasureRequest,
+    ) -> main_models.BatchCheckResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return self.batch_check_resource_measure_with_options(request, runtime)
+
+    async def batch_check_resource_measure_async(
+        self,
+        request: main_models.BatchCheckResourceMeasureRequest,
+    ) -> main_models.BatchCheckResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_check_resource_measure_with_options_async(request, runtime)
+
     def bind_app_domain_with_options(
         self,
         request: main_models.BindAppDomainRequest,
@@ -211,6 +301,100 @@ class Client(OpenApiClient):
     ) -> main_models.BindAppDomainResponse:
         runtime = RuntimeOptions()
         return await self.bind_app_domain_with_options_async(request, runtime)
+
+    def check_resource_measure_with_options(
+        self,
+        request: main_models.CheckResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.esp_biz_id):
+            query['EspBizId'] = request.esp_biz_id
+        if not DaraCore.is_null(request.order_component_params):
+            query['OrderComponentParams'] = request.order_component_params
+        if not DaraCore.is_null(request.resource_code):
+            query['ResourceCode'] = request.resource_code
+        if not DaraCore.is_null(request.resource_value):
+            query['ResourceValue'] = request.resource_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckResourceMeasureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_resource_measure_with_options_async(
+        self,
+        request: main_models.CheckResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.esp_biz_id):
+            query['EspBizId'] = request.esp_biz_id
+        if not DaraCore.is_null(request.order_component_params):
+            query['OrderComponentParams'] = request.order_component_params
+        if not DaraCore.is_null(request.resource_code):
+            query['ResourceCode'] = request.resource_code
+        if not DaraCore.is_null(request.resource_value):
+            query['ResourceValue'] = request.resource_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckResourceMeasureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_resource_measure(
+        self,
+        request: main_models.CheckResourceMeasureRequest,
+    ) -> main_models.CheckResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return self.check_resource_measure_with_options(request, runtime)
+
+    async def check_resource_measure_async(
+        self,
+        request: main_models.CheckResourceMeasureRequest,
+    ) -> main_models.CheckResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return await self.check_resource_measure_with_options_async(request, runtime)
 
     def create_app_instance_with_options(
         self,
@@ -411,6 +595,76 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAppInstanceTicketResponse:
         runtime = RuntimeOptions()
         return await self.create_app_instance_ticket_with_options_async(request, runtime)
+
+    def create_app_token_service_with_options(
+        self,
+        request: main_models.CreateAppTokenServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppTokenServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.create_action):
+            query['CreateAction'] = request.create_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppTokenService',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppTokenServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_token_service_with_options_async(
+        self,
+        request: main_models.CreateAppTokenServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppTokenServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.create_action):
+            query['CreateAction'] = request.create_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppTokenService',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppTokenServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_token_service(
+        self,
+        request: main_models.CreateAppTokenServiceRequest,
+    ) -> main_models.CreateAppTokenServiceResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_token_service_with_options(request, runtime)
+
+    async def create_app_token_service_async(
+        self,
+        request: main_models.CreateAppTokenServiceRequest,
+    ) -> main_models.CreateAppTokenServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_token_service_with_options_async(request, runtime)
 
     def create_logo_task_with_options(
         self,
@@ -1261,6 +1515,130 @@ class Client(OpenApiClient):
     ) -> main_models.GetAppPluginConfigResponse:
         runtime = RuntimeOptions()
         return await self.get_app_plugin_config_with_options_async(request, runtime)
+
+    def get_app_recommended_commodities_with_options(
+        self,
+        request: main_models.GetAppRecommendedCommoditiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppRecommendedCommoditiesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppRecommendedCommodities',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppRecommendedCommoditiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_recommended_commodities_with_options_async(
+        self,
+        request: main_models.GetAppRecommendedCommoditiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppRecommendedCommoditiesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppRecommendedCommodities',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppRecommendedCommoditiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_recommended_commodities(
+        self,
+        request: main_models.GetAppRecommendedCommoditiesRequest,
+    ) -> main_models.GetAppRecommendedCommoditiesResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_recommended_commodities_with_options(request, runtime)
+
+    async def get_app_recommended_commodities_async(
+        self,
+        request: main_models.GetAppRecommendedCommoditiesRequest,
+    ) -> main_models.GetAppRecommendedCommoditiesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_recommended_commodities_with_options_async(request, runtime)
+
+    def get_app_token_service_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppTokenServiceResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAppTokenService',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppTokenServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_token_service_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppTokenServiceResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAppTokenService',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppTokenServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_token_service(self) -> main_models.GetAppTokenServiceResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_token_service_with_options(runtime)
+
+    async def get_app_token_service_async(self) -> main_models.GetAppTokenServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_token_service_with_options_async(runtime)
 
     def get_create_logo_task_with_options(
         self,
@@ -2831,6 +3209,346 @@ class Client(OpenApiClient):
     ) -> main_models.OperateSupabaseForAdminResponse:
         runtime = RuntimeOptions()
         return await self.operate_supabase_for_admin_with_options_async(request, runtime)
+
+    def push_resource_measure_with_options(
+        self,
+        request: main_models.PushResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PushResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.measure_data):
+            query['MeasureData'] = request.measure_data
+        if not DaraCore.is_null(request.meta_data):
+            query['MetaData'] = request.meta_data
+        if not DaraCore.is_null(request.resource_code):
+            query['ResourceCode'] = request.resource_code
+        if not DaraCore.is_null(request.use_time):
+            query['UseTime'] = request.use_time
+        if not DaraCore.is_null(request.use_type):
+            query['UseType'] = request.use_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PushResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PushResourceMeasureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_resource_measure_with_options_async(
+        self,
+        request: main_models.PushResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PushResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.measure_data):
+            query['MeasureData'] = request.measure_data
+        if not DaraCore.is_null(request.meta_data):
+            query['MetaData'] = request.meta_data
+        if not DaraCore.is_null(request.resource_code):
+            query['ResourceCode'] = request.resource_code
+        if not DaraCore.is_null(request.use_time):
+            query['UseTime'] = request.use_time
+        if not DaraCore.is_null(request.use_type):
+            query['UseType'] = request.use_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PushResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PushResourceMeasureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_resource_measure(
+        self,
+        request: main_models.PushResourceMeasureRequest,
+    ) -> main_models.PushResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return self.push_resource_measure_with_options(request, runtime)
+
+    async def push_resource_measure_async(
+        self,
+        request: main_models.PushResourceMeasureRequest,
+    ) -> main_models.PushResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return await self.push_resource_measure_with_options_async(request, runtime)
+
+    def query_inspiration_account_details_with_options(
+        self,
+        request: main_models.QueryInspirationAccountDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationAccountDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationAccountDetails',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationAccountDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_inspiration_account_details_with_options_async(
+        self,
+        request: main_models.QueryInspirationAccountDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationAccountDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationAccountDetails',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationAccountDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_inspiration_account_details(
+        self,
+        request: main_models.QueryInspirationAccountDetailsRequest,
+    ) -> main_models.QueryInspirationAccountDetailsResponse:
+        runtime = RuntimeOptions()
+        return self.query_inspiration_account_details_with_options(request, runtime)
+
+    async def query_inspiration_account_details_async(
+        self,
+        request: main_models.QueryInspirationAccountDetailsRequest,
+    ) -> main_models.QueryInspirationAccountDetailsResponse:
+        runtime = RuntimeOptions()
+        return await self.query_inspiration_account_details_with_options_async(request, runtime)
+
+    def query_inspiration_balance_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationBalanceResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationBalance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationBalanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_inspiration_balance_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationBalanceResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationBalance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationBalanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_inspiration_balance(self) -> main_models.QueryInspirationBalanceResponse:
+        runtime = RuntimeOptions()
+        return self.query_inspiration_balance_with_options(runtime)
+
+    async def query_inspiration_balance_async(self) -> main_models.QueryInspirationBalanceResponse:
+        runtime = RuntimeOptions()
+        return await self.query_inspiration_balance_with_options_async(runtime)
+
+    def query_inspiration_consume_records_with_options(
+        self,
+        request: main_models.QueryInspirationConsumeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationConsumeRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationConsumeRecords',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationConsumeRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_inspiration_consume_records_with_options_async(
+        self,
+        request: main_models.QueryInspirationConsumeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationConsumeRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationConsumeRecords',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationConsumeRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_inspiration_consume_records(
+        self,
+        request: main_models.QueryInspirationConsumeRecordsRequest,
+    ) -> main_models.QueryInspirationConsumeRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.query_inspiration_consume_records_with_options(request, runtime)
+
+    async def query_inspiration_consume_records_async(
+        self,
+        request: main_models.QueryInspirationConsumeRecordsRequest,
+    ) -> main_models.QueryInspirationConsumeRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.query_inspiration_consume_records_with_options_async(request, runtime)
 
     def query_material_directory_tree_with_options(
         self,
