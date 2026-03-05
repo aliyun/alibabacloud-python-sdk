@@ -13,7 +13,6 @@ class DescribeAvailableResourceResponseBody(DaraModel):
         available_zones: main_models.DescribeAvailableResourceResponseBodyAvailableZones = None,
         request_id: str = None,
     ):
-        # Details about the zones.
         self.available_zones = available_zones
         # The ID of the request.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone(DaraModel
         zone_id: str = None,
         zone_name: str = None,
     ):
-        # An internal parameter.
         self.is_main_sale = is_main_sale
-        # The ID of the region.
         self.region_id = region_id
-        # The supported engines.
         self.supported_engines = supported_engines
-        # The ID of the zone in which the instance is located.
         self.zone_id = zone_id
-        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):
@@ -188,9 +182,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         engine: str = None,
         supported_edition_types: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes = None,
     ):
-        # The database engine of the instance.
         self.engine = engine
-        # The instance edition types.
         self.supported_edition_types = supported_edition_types
 
     def validate(self):
@@ -262,12 +254,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         edition_type: str = None,
         supported_series_types: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes = None,
     ):
-        # The edition of the instance. Valid values:
-        # 
-        # *   **Community**: Community Edition
-        # *   **Enterprise**: Enhanced Edition (Tair)
         self.edition_type = edition_type
-        # The instance series types.
         self.supported_series_types = supported_series_types
 
     def validate(self):
@@ -339,12 +326,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         series_type: str = None,
         supported_engine_versions: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions = None,
     ):
-        # The instance series. Valid values:
-        # 
-        # *   **enhanced_performance_type**: Tair (Enterprise Edition) DRAM-based instance
-        # *   **hybrid_storage**: Redis Open-Source Edition hybrid-storage instance
         self.series_type = series_type
-        # The available engine versions.
         self.supported_engine_versions = supported_engine_versions
 
     def validate(self):
@@ -416,9 +398,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         supported_architecture_types: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes = None,
         version: str = None,
     ):
-        # The available architectures.
         self.supported_architecture_types = supported_architecture_types
-        # The engine version of the instance.
         self.version = version
 
     def validate(self):
@@ -490,13 +470,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         architecture: str = None,
         supported_shard_numbers: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers = None,
     ):
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **standard**: standard architecture
-        # *   **cluster**: cluster architecture
-        # *   **rwsplit**: read/write splitting architecture
         self.architecture = architecture
-        # The numbers of available shards.
         self.supported_shard_numbers = supported_shard_numbers
 
     def validate(self):
@@ -568,9 +542,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         shard_number: str = None,
         supported_node_types: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes = None,
     ):
-        # The number of shards.
         self.shard_number = shard_number
-        # The supported node types.
         self.supported_node_types = supported_node_types
 
     def validate(self):
@@ -642,12 +614,7 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         available_resources: main_models.DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources = None,
         supported_node_type: str = None,
     ):
-        # The available instance types.
         self.available_resources = available_resources
-        # The node type of the instance. Valid values:
-        # 
-        # *   **single**: standalone
-        # *   **double**: master-replica
         self.supported_node_type = supported_node_type
 
     def validate(self):
@@ -720,11 +687,8 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedE
         instance_class: str = None,
         instance_class_remark: str = None,
     ):
-        # The memory size of the instance. Unit: MB.
         self.capacity = capacity
-        # The code of the instance type. If you want to view the code of an instance type, you can search for the code of the instance type in Help Center.
         self.instance_class = instance_class
-        # The description of the instance type.
         self.instance_class_remark = instance_class_remark
 
     def validate(self):

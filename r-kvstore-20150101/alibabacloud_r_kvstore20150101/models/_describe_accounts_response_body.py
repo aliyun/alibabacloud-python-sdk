@@ -13,7 +13,6 @@ class DescribeAccountsResponseBody(DaraModel):
         accounts: main_models.DescribeAccountsResponseBodyAccounts = None,
         request_id: str = None,
     ):
-        # Details about returned accounts of the instance.
         self.accounts = accounts
         # The ID of the request.
         self.request_id = request_id
@@ -91,23 +90,11 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
         database_privileges: main_models.DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges = None,
         instance_id: str = None,
     ):
-        # The description of the account.
         self.account_description = account_description
-        # The name of the account.
         self.account_name = account_name
-        # The state of the account. Valid values:
-        # 
-        # *   **Unavailable**: The account is unavailable.
-        # *   **Available**: The account is available.
         self.account_status = account_status
-        # The type of the account. Valid values:
-        # 
-        # *   **Normal**: standard account
-        # *   **Super**: super account
         self.account_type = account_type
-        # Details about account permissions.
         self.database_privileges = database_privileges
-        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -202,10 +189,6 @@ class DescribeAccountsResponseBodyAccountsAccountDatabasePrivilegesDatabasePrivi
         self,
         account_privilege: str = None,
     ):
-        # The permission of the account. Default value: RoleReadWrite. Valid values:
-        # 
-        # *   **RoleReadOnly**: The account has the read-only permissions.
-        # *   **RoleReadWrite**: The account has the read and write permissions.
         self.account_privilege = account_privilege
 
     def validate(self):

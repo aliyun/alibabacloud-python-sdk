@@ -1,3 +1,8 @@
+2026-03-05 Version: 6.2.2
+- Update API CreateInstance: add request parameters InstanceEndpointType.
+- Update API CreateTairInstance: add request parameters InstanceEndpointType.
+
+
 2026-02-03 Version: 6.2.1
 - Update API DescribeIntranetAttribute: add response parameters Body.IntranetBandWidthBurst.
 - Update API TransformInstanceChargeType: add request parameters CouponNo.

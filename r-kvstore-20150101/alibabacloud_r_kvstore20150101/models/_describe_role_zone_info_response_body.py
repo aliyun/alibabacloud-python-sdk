@@ -16,7 +16,6 @@ class DescribeRoleZoneInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about each node in the instance.
         self.node = node
         # The number of the returned page.
         self.page_number = page_number
@@ -124,49 +123,17 @@ class DescribeRoleZoneInfoResponseBodyNodeNodeInfo(DaraModel):
         role: str = None,
         zone_id: str = None,
     ):
-        # The current bandwidth of the node, which consists of the default bandwidth and the increased bandwidth. Unit: MB/s.
-        # 
-        # > *   You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to specify the increased bandwidth.
-        # > *   You can also use this parameter to calculate the increased bandwidth. For example, if the default bandwidth of the node is 96 MB/s and the returned value of this parameter is 100, the increased bandwidth is 4 MB/s.
         self.current_band_width = current_band_width
-        # The minor version of the node.
         self.current_minor_version = current_minor_version
-        # The ID of the data shard.
         self.custins_id = custins_id
-        # The default bandwidth of the node. Unit: MB/s.
         self.default_band_width = default_band_width
-        # The ID of the node.
         self.ins_name = ins_name
-        # Indicates whether the node is a read replica. If the node is a read replica, **3** is returned.
-        # 
-        # >  If the node is not a read replica, no value is returned.
         self.ins_type = ins_type
-        # Indicates whether the minor version is the latest version. Valid values:
-        # 
-        # *   **0**: The minor version is not the latest version.
-        # *   **1**: The minor version is the latest version.
-        # 
-        # >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/473777.html) operation.
         self.is_latest_version = is_latest_version
-        # Indicates whether the bandwidth of the node is increased. Valid values:
-        # 
-        # *   **true**: The bandwidth of the node is not increased.
-        # *   **false**: The bandwidth of the node is increased.
         self.is_open_band_width_service = is_open_band_width_service
-        # This parameter is used only for internal maintenance of instances.
         self.node_id = node_id
-        # The node type. Valid values:
-        # 
-        # *   **db**: data node.
-        # *   **proxy**: proxy node.
-        # *   **normal**: regular node. This value is returned when the instance runs in the standard architecture.
         self.node_type = node_type
-        # The role of the node. Valid values:
-        # 
-        # *   **master**: master node
-        # *   **slave**: replica node
         self.role = role
-        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

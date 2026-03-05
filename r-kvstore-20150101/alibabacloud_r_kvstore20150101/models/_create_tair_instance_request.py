@@ -26,6 +26,7 @@ class CreateTairInstanceRequest(DaraModel):
         global_instance_id: str = None,
         global_security_group_ids: str = None,
         instance_class: str = None,
+        instance_endpoint_type: str = None,
         instance_name: str = None,
         instance_type: str = None,
         owner_account: str = None,
@@ -126,6 +127,7 @@ class CreateTairInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_class = instance_class
+        self.instance_endpoint_type = instance_endpoint_type
         # The name of the instance. The name must meet the following requirements:
         # 
         # *   The name must be 2 to 80 characters in length.
@@ -312,6 +314,9 @@ class CreateTairInstanceRequest(DaraModel):
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
 
+        if self.instance_endpoint_type is not None:
+            result['InstanceEndpointType'] = self.instance_endpoint_type
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -455,6 +460,9 @@ class CreateTairInstanceRequest(DaraModel):
 
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
+
+        if m.get('InstanceEndpointType') is not None:
+            self.instance_endpoint_type = m.get('InstanceEndpointType')
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')

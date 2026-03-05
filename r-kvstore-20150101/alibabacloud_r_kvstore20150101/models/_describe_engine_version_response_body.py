@@ -271,7 +271,6 @@ class DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease(Dar
         release_info: main_models.DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo = None,
         version_changes_level: str = None,
     ):
-        # The information about the minor versions.
         self.release_info = release_info
         # The version update level, which indicates how strongly the update is recommended. Valid values:
         # 
@@ -352,19 +351,10 @@ class DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseRele
         release_note_en: str = None,
         release_version: str = None,
     ):
-        # The time when the version was released.
         self.create_time = create_time
-        # The version update level. Valid values:
-        # 
-        # *   **0**: regular
-        # *   **1**: recommended
-        # *   **2**: critical
         self.level = level
-        # The release notes.
         self.release_note = release_note
-        # The description of the minor versions to which the instance can be updated.
         self.release_note_en = release_note_en
-        # The release version of EMR.
         self.release_version = release_version
 
     def validate(self):
@@ -469,7 +459,6 @@ class DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease(DaraMo
         release_info: main_models.DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo = None,
         version_changes_level: str = None,
     ):
-        # The information about the minor versions.
         self.release_info = release_info
         # The version update level, which indicates how strongly the update is recommended. Valid values:
         # 
@@ -550,15 +539,10 @@ class DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseRelease
         release_note_en: str = None,
         release_version: str = None,
     ):
-        # The creation time of the instance.
         self.create_time = create_time
-        # The importance level.
         self.level = level
-        # The release notes.
         self.release_note = release_note
-        # The description of the minor versions to which the instance can be updated.
         self.release_note_en = release_note_en
-        # The release version of EMR.
         self.release_version = release_version
 
     def validate(self):

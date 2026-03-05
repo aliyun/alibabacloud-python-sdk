@@ -28,6 +28,7 @@ class CreateInstanceRequest(DaraModel):
         global_instance_id: str = None,
         global_security_group_ids: str = None,
         instance_class: str = None,
+        instance_endpoint_type: str = None,
         instance_name: str = None,
         instance_type: str = None,
         network_type: str = None,
@@ -148,6 +149,7 @@ class CreateInstanceRequest(DaraModel):
         # 
         # **Description** You must specify at least one of the **Capacity** and **InstanceClass** parameters when you call the CreateInstance operation.
         self.instance_class = instance_class
+        self.instance_endpoint_type = instance_endpoint_type
         # The name of the instance. The name must be 2 to 80 characters in length and must start with a letter. It cannot contain spaces or specific special characters. These special characters include `@ / : = " < > { [ ] }`
         self.instance_name = instance_name
         # The database engine of the instance. Valid values:
@@ -211,7 +213,6 @@ class CreateInstanceRequest(DaraModel):
         # 
         # > If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         self.secondary_zone_id = secondary_zone_id
-        # 系统自动生成的安全 Token，无需传入
         self.security_token = security_token
         # The number of shards. This parameter applies only to cloud-native cluster instances.
         self.shard_count = shard_count
@@ -300,6 +301,9 @@ class CreateInstanceRequest(DaraModel):
 
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
+
+        if self.instance_endpoint_type is not None:
+            result['InstanceEndpointType'] = self.instance_endpoint_type
 
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
@@ -450,6 +454,9 @@ class CreateInstanceRequest(DaraModel):
 
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
+
+        if m.get('InstanceEndpointType') is not None:
+            self.instance_endpoint_type = m.get('InstanceEndpointType')
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')

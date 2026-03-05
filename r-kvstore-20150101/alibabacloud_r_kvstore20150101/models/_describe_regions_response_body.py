@@ -13,7 +13,6 @@ class DescribeRegionsResponseBody(DaraModel):
         region_ids: main_models.DescribeRegionsResponseBodyRegionIds = None,
         request_id: str = None,
     ):
-        # The **region IDs**.
         self.region_ids = region_ids
         # The ID of the request.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeRegionsResponseBodyRegionIdsKVStoreRegion(DaraModel):
         zone_id_list: main_models.DescribeRegionsResponseBodyRegionIdsKVStoreRegionZoneIdList = None,
         zone_ids: str = None,
     ):
-        # The name of the region.
         self.local_name = local_name
-        # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
         self.region_id = region_id
-        # The zone IDs.
         self.zone_id_list = zone_id_list
-        # The IDs of the zones in the region.
         self.zone_ids = zone_ids
 
     def validate(self):

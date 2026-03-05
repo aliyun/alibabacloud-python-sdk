@@ -16,7 +16,6 @@ class DescribeParametersResponseBody(DaraModel):
         request_id: str = None,
         running_parameters: main_models.DescribeParametersResponseBodyRunningParameters = None,
     ):
-        # The configuration parameters that have not taken effect.
         self.config_parameters = config_parameters
         # The database engine that the instance runs.
         self.engine = engine
@@ -24,7 +23,6 @@ class DescribeParametersResponseBody(DaraModel):
         self.engine_version = engine_version
         # The ID of the request.
         self.request_id = request_id
-        # The running parameters.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -121,23 +119,11 @@ class DescribeParametersResponseBodyRunningParametersParameter(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The check code that indicates the valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether the instance must be restarted for the modifications to take effect. Valid values:
-        # 
-        # *   **True**: The instance must be restarted for the modifications to take effect.
-        # *   **False**: The instance does not need to be restarted for the modifications to take effect. Modifications immediately take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter can be reset. Valid values:
-        # 
-        # *   **False**: The parameter cannot be reset.
-        # *   **True**: The parameter can be reset.
         self.modifiable_status = modifiable_status
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -235,23 +221,11 @@ class DescribeParametersResponseBodyConfigParametersParameter(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The check code that indicates the valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether the instance must be restarted for the modifications to take effect. Valid values:
-        # 
-        # *   **True**: The instance must be restarted for the modifications to take effect.
-        # *   **False**: The instance does not need to be restarted for the modifications to take effect. Modifications immediately take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter can be reset. Valid values:
-        # 
-        # *   **False**: The parameter cannot be reset.
-        # *   **True**: The parameter can be reset.
         self.modifiable_status = modifiable_status
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):

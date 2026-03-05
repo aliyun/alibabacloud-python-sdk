@@ -22,7 +22,6 @@ class DescribeParameterTemplatesResponseBody(DaraModel):
         self.engine_version = engine_version
         # The number of parameters that are supported by the instance.
         self.parameter_count = parameter_count
-        # An array that consists of the details about the parameters returned.
         self.parameters = parameters
         # The ID of the request.
         self.request_id = request_id
@@ -118,23 +117,11 @@ class DescribeParameterTemplatesResponseBodyParametersTemplateRecord(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether the parameter can be reconfigured. Valid values:
-        # 
-        # *   **true**: The parameter can be reconfigured.
-        # *   **false**: The parameter cannot be reconfigured.
         self.force_modify = force_modify
-        # Indicates whether a restart of the instance is required after the parameter is reconfigured. Valid values:
-        # 
-        # *   **true**: After the parameter is reconfigured, you must restart the instance to make the new value of the parameter take effect.
-        # *   **false**: After the parameter is reconfigured, the new value of the parameter immediately takes effect. You do not need to restart the instance.
         self.force_restart = force_restart
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](https://help.aliyun.com/document_detail/259681.html).
         self.parameter_name = parameter_name
-        # The default value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):

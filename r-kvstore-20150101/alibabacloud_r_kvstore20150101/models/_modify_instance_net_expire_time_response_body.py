@@ -16,7 +16,6 @@ class ModifyInstanceNetExpireTimeResponseBody(DaraModel):
     ):
         # The ID of the instance.
         self.instance_id = instance_id
-        # Details about the extension period for which the classic network endpoint of the instance is retained.
         self.net_info_items = net_info_items
         # The ID of the request.
         self.request_id = request_id
@@ -99,15 +98,10 @@ class ModifyInstanceNetExpireTimeResponseBodyNetInfoItemsNetInfoItem(DaraModel):
         ipaddress: str = None,
         port: str = None,
     ):
-        # The endpoint of the classic network.
         self.connection_string = connection_string
-        # The network type of the instance. The returned value is **Classic**.
         self.dbinstance_net_type = dbinstance_net_type
-        # The expiration time of the classic network endpoint.
         self.expired_time = expired_time
-        # The IP address of the instance in the classic network.
         self.ipaddress = ipaddress
-        # The port number that is used to connect to the instance.
         self.port = port
 
     def validate(self):

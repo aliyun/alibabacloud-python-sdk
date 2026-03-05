@@ -13,10 +13,6 @@ class DescribeMonitorItemsResponseBody(DaraModel):
         monitor_items: main_models.DescribeMonitorItemsResponseBodyMonitorItems = None,
         request_id: str = None,
     ):
-        # The returned metrics.
-        # 
-        # > *   **memoryUsage**, **GetQps**, and **PutQps** are supported only by Tair instances that use Redis 4.0 or later. **GetQps** and **PutQps** require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html) and [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
-        # > *   When you use instances of Redis 2.8, if the **hit_rate** metric is not displayed, you must upgrade the minor version of the instance. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         self.monitor_items = monitor_items
         # The ID of the request.
         self.request_id = request_id
@@ -90,9 +86,7 @@ class DescribeMonitorItemsResponseBodyMonitorItemsKVStoreMonitorItem(DaraModel):
         monitor_key: str = None,
         unit: str = None,
     ):
-        # The metric.
         self.monitor_key = monitor_key
-        # The unit of the metric.
         self.unit = unit
 
     def validate(self):

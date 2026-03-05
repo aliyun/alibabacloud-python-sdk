@@ -18,7 +18,6 @@ class ListTagResourcesResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # Details about the instances and tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -98,13 +97,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID, which is also the ID of the instance.
         self.resource_id = resource_id
-        # The resource type. The return value is **ALIYUN::KVSTORE::INSTANCE**. This value indicates a Tair (Redis OSS-compatible) instance.
         self.resource_type = resource_type
-        # The keys of the tags.
         self.tag_key = tag_key
-        # The values of the tags.
         self.tag_value = tag_value
 
     def validate(self):

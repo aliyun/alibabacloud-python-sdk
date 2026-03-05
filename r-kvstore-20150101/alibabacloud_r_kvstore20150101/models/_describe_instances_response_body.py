@@ -16,7 +16,6 @@ class DescribeInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the instances.
         self.instances = instances
         # The page number of the returned page.
         self.page_number = page_number
@@ -156,159 +155,49 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The architecture of the instance. Default value: NULL. Valid values:
-        # 
-        # *   **cluster**: cluster architecture
-        # *   **standard**: standard architecture
-        # *   **rwsplit**: read/write splitting architecture
-        # *   **NULL**: all of the preceding architectures
         self.architecture_type = architecture_type
-        # The bandwidth of the instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The storage capacity of the instance. Unit: MB.
         self.capacity = capacity
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # This parameter is returned only when the instance is in a cloud box.
         self.cloud_type = cloud_type
-        # The type of the computing resource. Valid values:
-        # 
-        # *   **Ecs**: cloud-native computing service
-        # *   **Machine**: physical machine
         self.computing_type = computing_type
-        # The parameter configurations of the instance. For more information, see [Modify parameters of an instance](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
-        # The internal endpoint of the instance.
         self.connection_domain = connection_domain
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
         self.connection_mode = connection_mode
-        # The maximum number of connections supported by the instance.
         self.connections = connections
-        # The time when the instance was created.
         self.create_time = create_time
-        # The time when the instance was deleted.
         self.destroy_time = destroy_time
-        # The edition of the instance. Valid values:
-        # 
-        # *   **Community**: Redis Open-Source Edition
-        # *   **Enterprise**: Tair (Enterprise Edition)
         self.edition_type = edition_type
-        # The time when the subscription instance expires.
         self.end_time = end_time
-        # The database engine version of the instance.
         self.engine_version = engine_version
-        # The ID of the distributed instance.
-        # 
-        # >  This parameter is returned only if the instance is a child instance of a distributed instance.
         self.global_instance_id = global_instance_id
-        # Indicates whether your Alibaba Cloud account has pending orders for renewal and configuration change. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.has_renew_change_order = has_renew_change_order
-        # The instance class.
         self.instance_class = instance_class
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # The state of the instance. Valid values:
-        # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
-        # *   **Changing**: The configurations of the instance are being changed.
-        # *   **Inactive**: The instance is disabled.
-        # *   **Flushing**: The instance is being released.
-        # *   **Released**: The instance is released.
-        # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is unavailable.
-        # *   **Error**: The instance failed to be created.
-        # *   **Migrating**: The instance is being migrated.
-        # *   **BackupRecovering**: The instance is being restored from a backup.
-        # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
-        # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL configurations of the instance are being changed.
-        # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
         self.instance_status = instance_status
-        # The database engine of the instance. Valid values:
-        # 
-        # *   **Tair**
-        # *   **Redis**
-        # *   **Memcache**
         self.instance_type = instance_type
-        # Indicates whether the instance is managed by ApsaraDB RDS. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_rds = is_rds
-        # The network type of the instance. Valid values:
-        # 
-        # *   **CLASSIC**
-        # *   **VPC**
         self.network_type = network_type
-        # The node type. Valid values:
-        # 
-        # *   **double**: The instance contains a master node and a replica node.
-        # *   **single**: The instance contains only a master node. This node type is phased out.
         self.node_type = node_type
-        # The plan type. Valid values:
-        # 
-        # *   **standard**: standard plan
-        # *   **customized**: custom plan
         self.package_type = package_type
-        # The service port of the instance.
         self.port = port
-        # The private IP address.
-        # 
-        # >  This parameter is not returned when the instance is deployed in the classic network.
         self.private_ip = private_ip
-        # The number of queries per second (QPS).
         self.qps = qps
-        # The number of read replicas in the primary zone.
-        # 
-        # >  The **ReadOnlyCount** and **SlaveReadOnlyCount** parameters are applicable only to cloud-native instances for which read/write splitting is enabled. If the instance is a cluster instance, the preceding parameters indicate the number of read replicas **per node** in the primary and secondary zones of the instance.
         self.read_only_count = read_only_count
-        # The region ID.
         self.region_id = region_id
-        # The logical ID of the distributed instance.
         self.replacate_id = replacate_id
-        # The number of replica nodes in the primary zone.
-        # 
-        # >  The **ReplicaCount** and **SlaveReplicaCount** parameters are applicable only to cloud-native instances. If the instance is a cluster instance, the preceding parameters indicate the number of replica nodes **per node** in the primary and secondary zones of the instance.
         self.replica_count = replica_count
-        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the secondary zone.
-        # 
-        # >  If multiple zones are returned for **ZoneId**, such as cn-hangzhou-MAZ10(h,i), this parameter is ignored.
         self.secondary_zone_id = secondary_zone_id
-        # The shard class. For more information about shard classes, see [Overview](https://help.aliyun.com/document_detail/26350.html).
-        # 
-        # >  The overall performance of a cluster instance is calculated by multiplying the class of a single shard (ShardClass) by the number of shards (ShardCount).
         self.shard_class = shard_class
-        # The number of data shards in the cluster instance.
-        # 
-        # >  This parameter is returned only for cloud-native cluster instances or read/write splitting instances.
         self.shard_count = shard_count
-        # The number of read replicas in the secondary zone.
         self.slave_read_only_count = slave_read_only_count
-        # The number of replica nodes in the secondary zone.
         self.slave_replica_count = slave_replica_count
-        # Details about the tags.
         self.tags = tags
-        # The username used to connect to the instance. By default, a username named after the instance ID is included.
         self.user_name = user_name
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -632,9 +521,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstanceTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):

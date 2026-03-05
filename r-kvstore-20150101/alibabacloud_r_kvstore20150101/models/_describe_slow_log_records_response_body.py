@@ -24,7 +24,6 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
         self.engine = engine
         # The ID of the instance.
         self.instance_id = instance_id
-        # The slow query log entries.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -157,23 +156,14 @@ class DescribeSlowLogRecordsResponseBodyItemsLogRecords(DaraModel):
         ipaddress: str = None,
         node_id: str = None,
     ):
-        # The ID of the account.
         self.account = account
-        # The username of the account.
         self.account_name = account_name
-        # The slow query statement.
         self.command = command
-        # The database name.
         self.dbname = dbname
-        # The database name. This parameter serves the same purpose as the **DBName** parameter. We recommend that you use the **DBName** parameter.
         self.data_base_name = data_base_name
-        # The amount of time consumed to execute the slow query statement. Unit: microseconds.
         self.elapsed_time = elapsed_time
-        # The start time when the slow query statement was executed. The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format.
         self.execute_time = execute_time
-        # The IP address of the client.
         self.ipaddress = ipaddress
-        # The node ID.
         self.node_id = node_id
 
     def validate(self):

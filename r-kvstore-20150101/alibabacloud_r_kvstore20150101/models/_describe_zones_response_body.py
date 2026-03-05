@@ -15,7 +15,6 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The queried zones.
         self.zones = zones
 
     def validate(self):
@@ -91,23 +90,11 @@ class DescribeZonesResponseBodyZonesKVStoreZone(DaraModel):
         zone_id: str = None,
         zone_name: str = None,
     ):
-        # Indicates whether Tair (Redis OSS-compatible) instances can be created in the current zone. Valid values:
-        # 
-        # *   **true**: Tair (Redis OSS-compatible) instances cannot be created in the current zone.
-        # *   **false**: Tair (Redis OSS-compatible) instances can be created in the current zone.
         self.disabled = disabled
-        # Indicates whether the zone is managed by ApsaraDB RDS. The return value of this parameter is **true** in Tair (Redis OSS-compatible).
         self.is_rds = is_rds
-        # The ID of the region.
         self.region_id = region_id
-        # Indicates whether the network type of the instance can be changed from the classic network to Virtual Private Cloud (VPC). Valid values:
-        # 
-        # *   **true**: The network type of the instance can be changed from the classic network to VPC.
-        # *   **false**: The network type of the instance cannot be changed from the classic network to VPC.
         self.switch_network = switch_network
-        # The ID of the zone within the specified region.
         self.zone_id = zone_id
-        # The name of the zone within the specified region.
         self.zone_name = zone_name
 
     def validate(self):

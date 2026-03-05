@@ -14,7 +14,6 @@ class DescribeCacheAnalysisReportListResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The list of the offline key analysis reports.
         self.daily_tasks = daily_tasks
         # The ID of the instance.
         self.instance_id = instance_id
@@ -96,9 +95,7 @@ class DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTask(DaraModel):
         date: str = None,
         tasks: main_models.DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks = None,
     ):
-        # The date when the offline key analytics task was performed.
         self.date = date
-        # Details about the offline key analysis reports.
         self.tasks = tasks
 
     def validate(self):
@@ -172,16 +169,9 @@ class DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasksTask(Da
         status: str = None,
         task_id: str = None,
     ):
-        # The ID of the child node in the cluster instance.
         self.node_id = node_id
-        # The start time of the offline key analytics task.
         self.start_time = start_time
-        # The state of the offline key analytics task. Valid values:
-        # 
-        # *   **success**
-        # *   **running**
         self.status = status
-        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

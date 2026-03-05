@@ -23,7 +23,6 @@ class DescribeAuditRecordsResponseBody(DaraModel):
         self.end_time = end_time
         # The name of the instance.
         self.instance_name = instance_name
-        # The collection of returned audit log entries.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -148,25 +147,14 @@ class DescribeAuditRecordsResponseBodyItemsSQL(DaraModel):
         sqltype: str = None,
         total_execution_times: str = None,
     ):
-        # The username of the account.
         self.account_name = account_name
-        # The database name.
         self.database_name = database_name
-        # The time when the command was run.
         self.execute_time = execute_time
-        # The IP address of the client.
         self.host_address = host_address
-        # The IP address of the instance.
         self.ipaddress = ipaddress
-        # The ID of the node.
-        # 
-        # > A specific node ID is returned only if the instance uses the cluster or read/write splitting architecture.
         self.node_id = node_id
-        # The command that was run.
         self.sqltext = sqltext
-        # The type of the command.
         self.sqltype = sqltype
-        # The amount of time consumed to run the command.
         self.total_execution_times = total_execution_times
 
     def validate(self):

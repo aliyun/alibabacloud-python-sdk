@@ -1118,6 +1118,8 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.instance_class):
             query['InstanceClass'] = request.instance_class
+        if not DaraCore.is_null(request.instance_endpoint_type):
+            query['InstanceEndpointType'] = request.instance_endpoint_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
@@ -1240,6 +1242,8 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.instance_class):
             query['InstanceClass'] = request.instance_class
+        if not DaraCore.is_null(request.instance_endpoint_type):
+            query['InstanceEndpointType'] = request.instance_endpoint_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
@@ -1782,6 +1786,8 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.instance_class):
             query['InstanceClass'] = request.instance_class
+        if not DaraCore.is_null(request.instance_endpoint_type):
+            query['InstanceEndpointType'] = request.instance_endpoint_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
@@ -1900,6 +1906,8 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.instance_class):
             query['InstanceClass'] = request.instance_class
+        if not DaraCore.is_null(request.instance_endpoint_type):
+            query['InstanceEndpointType'] = request.instance_endpoint_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):

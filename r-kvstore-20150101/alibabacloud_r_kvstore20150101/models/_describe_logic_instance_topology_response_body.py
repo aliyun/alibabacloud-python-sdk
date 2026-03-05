@@ -17,9 +17,7 @@ class DescribeLogicInstanceTopologyResponseBody(DaraModel):
     ):
         # The ID of the instance.
         self.instance_id = instance_id
-        # The detailed proxy information, including information about proxy nodes.
         self.redis_proxy_list = redis_proxy_list
-        # Details of data shards, which includes node information such as NodeInfo.
         self.redis_shard_list = redis_shard_list
         # The ID of the request.
         self.request_id = request_id
@@ -112,22 +110,11 @@ class DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo(DaraModel)
         node_type: str = None,
         sub_instance_type: str = None,
     ):
-        # The bandwidth throttling of the node. Unit: MB/s.
         self.bandwidth = bandwidth
-        # The storage capacity of the node. Unit: MB.
         self.capacity = capacity
-        # The maximum number of connections.
         self.connection = connection
-        # The ID of the node.
         self.node_id = node_id
-        # The node type. Valid values:
-        # 
-        # *   **proxy**: proxy node
-        # *   **db**: data node
         self.node_type = node_type
-        # 子实例类型，返回值：
-        # * **master**：主节点类型。
-        # * **readonly**：只读实例类型。
         self.sub_instance_type = sub_instance_type
 
     def validate(self):
@@ -224,18 +211,10 @@ class DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo(DaraModel)
         node_id: str = None,
         node_type: str = None,
     ):
-        # The bandwidth throttling of the node. Unit: MB/s.
         self.bandwidth = bandwidth
-        # The storage capacity of the node. Unit: MB.
         self.capacity = capacity
-        # The maximum number of connections.
         self.connection = connection
-        # The ID of the node.
         self.node_id = node_id
-        # The node type. Valid values:
-        # 
-        # *   **proxy**: proxy node
-        # *   **db**: data node
         self.node_type = node_type
 
     def validate(self):

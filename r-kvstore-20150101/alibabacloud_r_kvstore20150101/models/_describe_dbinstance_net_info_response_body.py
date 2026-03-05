@@ -19,7 +19,6 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         # *   **CLASSIC**: The instance runs in a classic network.
         # *   **VPC**: The instance runs in a virtual private cloud (VPC).
         self.instance_network_type = instance_network_type
-        # The network information about the instance.
         self.net_info_items = net_info_items
         # The ID of the request.
         self.request_id = request_id
@@ -109,44 +108,17 @@ class DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo(DaraModel
         vpcinstance_id: str = None,
         v_switch_id: str = None,
     ):
-        # The endpoint of the instance.
         self.connection_string = connection_string
-        # The network type of the instance. Valid values:
-        # 
-        # *   **0**: Internet
-        # *   **1**: classic network
-        # *   **2**: Virtual Private Cloud (VPC)
         self.dbinstance_net_type = dbinstance_net_type
-        # Indicates whether the address is a private endpoint. Valid values:
-        # 
-        # *   **0**: The address is not a private endpoint.
-        # *   **1**: The address is a private endpoint.
         self.direct_connection = direct_connection
-        # The expiration time of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
-        # The IP address.
         self.ipaddress = ipaddress
-        # The network type of the IP address. Valid values:
-        # 
-        # *   **Public**: Internet
-        # *   **Inner**: classic network
-        # *   **Private**: VPC
         self.iptype = iptype
-        # Indicates whether the address is the endpoint for the secondary zone. Valid values: 1 and 0. A value of 1 indicates that the address is the endpoint for the secondary zone.
-        # 
-        # >  This parameter is returned only after you enable the multi-zone read/write splitting architecture for the instance.
         self.is_slave_proxy = is_slave_proxy
-        # The service port of the instance.
         self.port = port
-        # The remaining validity period of the classic network endpoint. Unit: seconds.
-        # 
-        # >  **A value of 0 indicates that the endpoint never expires.
         self.upgradeable = upgradeable
-        # The ID of the VPC to which the instance belongs.
         self.vpcid = vpcid
-        # The instance ID.
         self.vpcinstance_id = vpcinstance_id
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

@@ -13,7 +13,6 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         instances: main_models.DescribeInstanceAttributeResponseBodyInstances = None,
         request_id: str = None,
     ):
-        # Details about the instances.
         self.instances = instances
         # The ID of the request.
         self.request_id = request_id
@@ -142,199 +141,62 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(DaraMode
         zone_id: str = None,
         zone_type: str = None,
     ):
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **cluster**: cluster architecture
-        # *   **standard**: standard architecture
-        # *   **rwsplit**: read/write splitting architecture
         self.architecture_type = architecture_type
-        # The retention period of audit logs. Unit: day. A value of 0 indicates that the audit log feature is disabled. For information about how to enable the feature, see [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
         self.audit_log_retention = audit_log_retention
-        # Indicates whether a secondary zone is automatically allocated.
-        # 
-        # *   **true**
-        # *   **false**
         self.auto_secondary_zone = auto_secondary_zone
-        # The availability metric of the current month.
         self.availability_value = availability_value
-        # The earliest point in time to which data can be restored. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # > 
-        # 
-        # *   This parameter is returned only when the data flashback feature is enabled for the instance. For more information, see [Restore data to a point in time by using the data flashback feature](https://help.aliyun.com/document_detail/148479.html).
-        # 
-        # *   When you call the [RestoreInstance](https://help.aliyun.com/document_detail/473824.html) operation to implement data flashback, you can obtain the earliest point in time for data flashback from the return value of this parameter and set the **RestoreTime** parameter to this point in time.
         self.backup_log_start_time = backup_log_start_time
-        # The bandwidth of the instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The storage capacity of the instance. Unit: MB.
         self.capacity = capacity
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # This parameter is returned only when the instance is in a cloud box.
         self.cloud_type = cloud_type
         self.computing_type = computing_type
-        # The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](https://help.aliyun.com/document_detail/43885.html). You can use the [DescribeAuditLogConfig](https://help.aliyun.com/document_detail/473830.html) operation to query audit log configurations.
         self.config = config
-        # The internal endpoint of the instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections supported by the instance.
         self.connections = connections
-        # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the subscription expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The database engine of the instance. The return value is **Redis**.
         self.engine = engine
-        # The database engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
         self.engine_version = engine_version
-        # The ID of the distributed instance to which the instance belongs.
-        # 
-        # >  This parameter is returned only when the Tair (Redis OSS-compatible) instance is a child instance of a distributed instance.
         self.global_instance_id = global_instance_id
-        # Indicates whether your Alibaba Cloud account has pending orders for renewal and configuration change. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.has_renew_change_order = has_renew_change_order
-        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # Indicates whether the release protection feature is enabled for the instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.instance_release_protection = instance_release_protection
-        # The state of the instance. Valid values:
-        # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
-        # *   **Changing**: The configurations of the instance are being changed.
-        # *   **Inactive**: The instance is disabled.
-        # *   **Flushing**: The instance is being released.
-        # *   **Released**: The instance is released.
-        # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is unavailable.
-        # *   **Error**: The instance failed to be created.
-        # *   **Migrating**: The instance is being migrated.
-        # *   **BackupRecovering**: The instance is being restored from a backup.
-        # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
-        # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL configurations of the instance are being changed.
-        # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
-        # 
-        # >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
-        # The database engine of the instance. Valid values:
-        # 
-        # *   **Tair**
-        # *   **Redis**
-        # *   **Memcache**
         self.instance_type = instance_type
-        # Indicates whether the order for instance configuration change has reached the final state. Valid values:
-        # 
-        # *   **true**: The configuration change has been completed or has not been performed.
-        # *   **false**: The configurations of the instance are being changed.
         self.is_order_completed = is_order_completed
-        # Indicates whether the instance is managed by ApsaraDB RDS. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_rds = is_rds
-        # Indicates whether the transparent data encryption (TDE) feature is supported for the instance. Valid values:
-        # 
-        # *   **true**: This feature is supported only for DRAM-based classic instances.
-        # *   **false**: This feature is not supported.
         self.is_support_tde = is_support_tde
-        # The end time of the maintenance window. The time is in the *HH:mmZ* format. The time is displayed in UTC.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in the *HH:mmZ* format. The time is displayed in UTC.
         self.maintain_start_time = maintain_start_time
-        # The network type of the instance. Valid values:
-        # 
-        # *   **CLASSIC**
-        # *   **VPC**
         self.network_type = network_type
-        # The node type. Valid values:
-        # 
-        # *   **double**: The instance contains a master node and a replica node.
-        # *   **single**: The instance is a standalone instance.
         self.node_type = node_type
-        # The plan type. Valid values:
-        # 
-        # *   **standard**: standard plan.
-        # *   **customized**: custom plan. This plan type is phased out.
         self.package_type = package_type
-        # The service port of the instance.
         self.port = port
-        # The private IP address of the instance.
-        # 
-        # >  This parameter is not returned when the instance is deployed in the classic network.
         self.private_ip = private_ip
-        # The expected maximum queries per second (QPS).
         self.qps = qps
-        # The number of read replicas. This parameter is available only for read/write splitting instances that use cloud disks.
         self.read_only_count = read_only_count
-        # If the instance is a cluster instance that uses cloud disks, this parameter indicates the actual instance type of individual shards in the instance. The InstanceClass parameter indicates the virtual instance type.
-        # 
-        # >  To query fees for instances of the instance type, you can specify the instance type that is returned by this parameter in the [DescribePrice](https://help.aliyun.com/document_detail/473807.html) operation.
         self.real_instance_class = real_instance_class
-        # The region ID.
         self.region_id = region_id
-        # The number of replica nodes in the primary zone.
-        # 
-        # >  The **ReplicaCount** and **SlaveReplicaCount** parameters are applicable only to cloud-native instances. If the instance is a cluster instance, the preceding parameters indicate the number of replica nodes **per node** in the primary and secondary zones of the instance.
         self.replica_count = replica_count
-        # The ID of the replica node.
         self.replica_id = replica_id
-        # The architecture of the replica node. Valid values:
-        # 
-        # *   **master-slave**: the standard master-replica architecture.
-        # *   **cluster**: the cluster architecture, which includes the read/write splitting instances and cluster instances.
         self.replication_mode = replication_mode
-        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the secondary zone.
-        # 
-        # >  This parameter is returned only if the instance has a secondary zone ID.
         self.secondary_zone_id = secondary_zone_id
-        # The IP addresses in the whitelist.
         self.security_iplist = security_iplist
-        # The number of shards. This parameter is available only for instances that are purchased on the China site (aliyun.com).
         self.shard_count = shard_count
-        # The number of read replicas in the secondary zone. This parameter is returned only after read/write splitting is enabled for the instance across multiple zones.
         self.slave_read_only_count = slave_read_only_count
-        # The number of replica nodes in the secondary zone.
         self.slave_replica_count = slave_replica_count
-        # The storage capacity of the cloud disk.
         self.storage = storage
-        # The storage type.
         self.storage_type = storage_type
-        # Details about the tags.
         self.tags = tags
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # Indicates whether password authentication is enabled. Valid values:
-        # 
-        # *   **Open**: Password authentication is enabled.
-        # *   **Close**: Password authentication is disabled and [password-free access](https://help.aliyun.com/document_detail/85168.html) is enabled.
         self.vpc_auth_mode = vpc_auth_mode
-        # The ID of the instance in the VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
-        # The deployment type of the instance. Valid values:
-        # 
-        # *   **singlezone**: The instance is deployed in a single zone.
-        # *   **doublezone**: The instance is deployed in two zones of the same region.
         self.zone_type = zone_type
 
     def validate(self):
@@ -736,9 +598,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTagsTag(D
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

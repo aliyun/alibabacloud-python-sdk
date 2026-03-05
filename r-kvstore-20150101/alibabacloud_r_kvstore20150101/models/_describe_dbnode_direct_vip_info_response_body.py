@@ -14,7 +14,6 @@ class DescribeDBNodeDirectVipInfoResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The VIP information of shards in the cluster instance.
         self.direct_vip_info = direct_vip_info
         # The instance ID.
         self.instance_id = instance_id
@@ -98,15 +97,9 @@ class DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfoVipInfo(DaraModel):
         port: str = None,
         vip: str = None,
     ):
-        # The network type of the security group. Valid values:
-        # 
-        # *   **vpc**: Virtual Private Cloud (VPC)
         self.net_type = net_type
-        # The shard ID.
         self.node_id = node_id
-        # The port number. Valid values: **1024** to **65535**. Default value: **6379**.
         self.port = port
-        # The VIP of the shard.
         self.vip = vip
 
     def validate(self):

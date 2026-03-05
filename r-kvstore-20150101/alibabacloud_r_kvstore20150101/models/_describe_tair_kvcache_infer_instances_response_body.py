@@ -16,7 +16,6 @@ class DescribeTairKVCacheInferInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the returned Tair (Redis OSS-compatible) KVCache instance.
         self.instances = instances
         # The page number.
         self.page_number = page_number
@@ -138,62 +137,31 @@ class DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The ACK cluster ID corresponding to the virtual cluster instance.
         self.ack_id = ack_id
-        # The capacity of the KVCache. Unit: GB.
         self.capacity = capacity
-        # The billing method of the instance.
         self.charge_type = charge_type
-        # The number of compute units.
         self.compute_unit_num = compute_unit_num
-        # The creation time of the instance.
         self.create_time = create_time
-        # The time when the instance was deleted.
         self.destroy_time = destroy_time
         self.elastic_vnode_count = elastic_vnode_count
-        # The time when the subscription instance expires.
         self.end_time = end_time
         self.fixed_vnode_count = fixed_vnode_count
-        # The instance type.
         self.instance_class = instance_class
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The instance state. Valid values:
-        # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
         self.instance_status = instance_status
-        # The type of the instance. Valid values:
-        # 
-        # *   **TairInfer**: the inference operator instance
-        # *   **TairKVCacheVnode**: the virtual cluster instance.
-        # *   **TairKVCacheService**: the cache service instance.
         self.instance_type = instance_type
-        # The built-in model of the inference operator instance.
         self.model = model
-        # The number of model services of the inference operator instance.
         self.model_service_num = model_service_num
-        # The network type of the instance.
         self.network_type = network_type
-        # The private IP address of the instance. This parameter is deprecated.
         self.private_ip = private_ip
-        # The region ID of the instance.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Details of the tags.
         self.tags = tags
-        # The number of vNodes in the virtual cluster.
         self.vnode_count = vnode_count
-        # The list of vNode instance names under the virtual cluster instance. This parameter is deprecated.
         self.vnode_name = vnode_name
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID of the instance.
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -409,9 +377,7 @@ class DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

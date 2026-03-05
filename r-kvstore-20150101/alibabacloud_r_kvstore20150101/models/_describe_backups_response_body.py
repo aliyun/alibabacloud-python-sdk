@@ -22,7 +22,6 @@ class DescribeBackupsResponseBody(DaraModel):
     ):
         # The following parameters are no longer used. Ignore the parameters.
         self.access_denied_detail = access_denied_detail
-        # The queried backup sets.
         self.backups = backups
         # This parameter does not take effect. Ignore this parameter.
         self.free_size = free_size
@@ -171,52 +170,21 @@ class DescribeBackupsResponseBodyBackupsBackup(DaraModel):
         node_instance_id: str = None,
         recover_config_mode: str = None,
     ):
-        # The names of the databases that are backed up. The default value is **all**, which indicates that all databases are backed up.
         self.backup_dbnames = backup_dbnames
-        # The public download URL of the backup file.
         self.backup_download_url = backup_download_url
-        # The end time of the backup.
         self.backup_end_time = backup_end_time
-        # The ID of the backup file.
         self.backup_id = backup_id
-        # The internal download URL of the backup file.
-        # 
-        # >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the Tair instance. The ECS instance must belong to the same classic network or reside in the same virtual private cloud (VPC) as the Tair instance.
         self.backup_intranet_download_url = backup_intranet_download_url
-        # The ID of the backup task.
         self.backup_job_id = backup_job_id
-        # The backup method. Valid values:
-        # 
-        # *   **Logical**
-        # *   **Physical**
         self.backup_method = backup_method
-        # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.backup_mode = backup_mode
-        # The size of the backup file.
         self.backup_size = backup_size
-        # The start time of the backup.
         self.backup_start_time = backup_start_time
-        # The status of the backup. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
         self.backup_status = backup_status
-        # The backup type. Valid values:
-        # 
-        # *   **FullBackup**
-        # *   **IncrementalBackup**
         self.backup_type = backup_type
-        # The engine version (major version) of the instance.
         self.engine_version = engine_version
         self.expect_expire_time = expect_expire_time
-        # The node ID.
-        # 
-        # >  If the instance uses the standard architecture, this parameter returns the instance ID.
         self.node_instance_id = node_instance_id
-        # If the backup includes account information, kernel parameters and whitelist details.
         self.recover_config_mode = recover_config_mode
 
     def validate(self):

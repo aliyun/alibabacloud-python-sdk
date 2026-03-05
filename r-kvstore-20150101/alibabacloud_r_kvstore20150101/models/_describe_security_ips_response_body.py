@@ -15,7 +15,6 @@ class DescribeSecurityIpsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The whitelists of the instance.
         self.security_ip_groups = security_ip_groups
 
     def validate(self):
@@ -88,13 +87,8 @@ class DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup(DaraModel):
         security_ip_group_name: str = None,
         security_ip_list: str = None,
     ):
-        # The attribute of the whitelist. This parameter is empty by default.
-        # 
-        # >  If the instance is authorized to use a service such as Database Autonomy Service (DAS), Data Management (DMS), or Data Transmission Service (DTS), this service automatically generates a **hidden** whitelist for the instance. This type of whitelists cannot be modified or deleted.
         self.security_ip_group_attribute = security_ip_group_attribute
-        # The name of the whitelist.
         self.security_ip_group_name = security_ip_group_name
-        # The IP addresses in the whitelist. A maximum of 1,000 IP addresses can be specified in a whitelist.
         self.security_ip_list = security_ip_list
 
     def validate(self):

@@ -14,7 +14,6 @@ class CreateInstancesResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of instances that were created.
         self.instance_ids = instance_ids
         # The ID of the order.
         self.order_id = order_id

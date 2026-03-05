@@ -24,7 +24,6 @@ class DescribeRunningLogRecordsResponseBody(DaraModel):
         self.engine = engine
         # The ID of the instance.
         self.instance_id = instance_id
-        # Details about the log entries.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -152,15 +151,9 @@ class DescribeRunningLogRecordsResponseBodyItemsLogRecords(DaraModel):
         instance_id: str = None,
         node_id: str = None,
     ):
-        # The content of the log.
         self.content = content
-        # The time when the log was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the node.
-        # 
-        # >  If a standard instance is queried, `(null)` is returned.
         self.node_id = node_id
 
     def validate(self):

@@ -13,7 +13,6 @@ class DescribeEncryptionKeyListResponseBody(DaraModel):
         key_ids: main_models.DescribeEncryptionKeyListResponseBodyKeyIds = None,
         request_id: str = None,
     ):
-        # The custom keys that are available in the region.
         self.key_ids = key_ids
         # The ID of the request.
         self.request_id = request_id
