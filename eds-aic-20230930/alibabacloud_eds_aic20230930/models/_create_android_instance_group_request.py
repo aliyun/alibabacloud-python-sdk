@@ -373,6 +373,7 @@ class CreateAndroidInstanceGroupRequestNetworkInfo(DaraModel):
         pay_type: str = None,
         period: int = None,
         period_unit: str = None,
+        promotion_id: str = None,
         visible_type: str = None,
     ):
         self.auto_pay = auto_pay
@@ -386,6 +387,7 @@ class CreateAndroidInstanceGroupRequestNetworkInfo(DaraModel):
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
+        self.promotion_id = promotion_id
         self.visible_type = visible_type
 
     def validate(self):
@@ -429,6 +431,9 @@ class CreateAndroidInstanceGroupRequestNetworkInfo(DaraModel):
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
 
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+
         if self.visible_type is not None:
             result['VisibleType'] = self.visible_type
 
@@ -468,6 +473,9 @@ class CreateAndroidInstanceGroupRequestNetworkInfo(DaraModel):
 
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
 
         if m.get('VisibleType') is not None:
             self.visible_type = m.get('VisibleType')

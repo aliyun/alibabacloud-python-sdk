@@ -67,7 +67,9 @@ class SendFileResponseBodyData(DaraModel):
         android_instance_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the cloud phone instance.
         self.android_instance_id = android_instance_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

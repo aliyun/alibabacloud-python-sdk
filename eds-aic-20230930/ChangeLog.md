@@ -1,3 +1,7 @@
+2026-03-05 Version: 4.21.1
+- Update API CreateAndroidInstanceGroup: add request parameters NetworkInfo.PromotionId.
+
+
 2026-01-23 Version: 4.21.0
 - Support API GetNetworkBlacklist.
 - Support API SetNetworkBlacklist.
