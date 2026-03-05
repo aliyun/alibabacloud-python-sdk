@@ -5,7 +5,7 @@ English | [简体中文](README-CN.md)
 
 ## Requirements
 
-- Python >= 3.6
+- Python >= 3.7
 
 ## Installation
 
