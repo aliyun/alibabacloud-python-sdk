@@ -1361,8 +1361,11 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfig(DaraModel
         empty_dir_desc: List[main_models.DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDesc] = None,
         envs: str = None,
         image_url: str = None,
+        liveness: str = None,
         memory: int = None,
         name: str = None,
+        readiness: str = None,
+        secret_mount_desc: List[main_models.DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc] = None,
     ):
         # The ID of Container Registry Enterprise Edition instance. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
@@ -1411,10 +1414,13 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfig(DaraModel
         self.envs = envs
         # The URL of the image.
         self.image_url = image_url
+        self.liveness = liveness
         # Set the memory limit of the primary container that can be used by Sidecar container.
         self.memory = memory
         # The container name.
         self.name = name
+        self.readiness = readiness
+        self.secret_mount_desc = secret_mount_desc
 
     def validate(self):
         if self.config_map_mount_desc:
@@ -1423,6 +1429,10 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfig(DaraModel
                     v1.validate()
         if self.empty_dir_desc:
             for v1 in self.empty_dir_desc:
+                 if v1:
+                    v1.validate()
+        if self.secret_mount_desc:
+            for v1 in self.secret_mount_desc:
                  if v1:
                     v1.validate()
 
@@ -1459,11 +1469,22 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfig(DaraModel
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
 
+        if self.liveness is not None:
+            result['Liveness'] = self.liveness
+
         if self.memory is not None:
             result['Memory'] = self.memory
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.readiness is not None:
+            result['Readiness'] = self.readiness
+
+        result['SecretMountDesc'] = []
+        if self.secret_mount_desc is not None:
+            for k1 in self.secret_mount_desc:
+                result['SecretMountDesc'].append(k1.to_map() if k1 else None)
 
         return result
 
@@ -1499,11 +1520,74 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfig(DaraModel
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
 
+        if m.get('Liveness') is not None:
+            self.liveness = m.get('Liveness')
+
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Readiness') is not None:
+            self.readiness = m.get('Readiness')
+
+        self.secret_mount_desc = []
+        if m.get('SecretMountDesc') is not None:
+            for k1 in m.get('SecretMountDesc'):
+                temp_model = main_models.DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc()
+                self.secret_mount_desc.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        mount_path: str = None,
+        secret_id: int = None,
+        secret_name: str = None,
+    ):
+        self.key = key
+        self.mount_path = mount_path
+        self.secret_id = secret_id
+        self.secret_name = secret_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
 
         return self
 

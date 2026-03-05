@@ -15,8 +15,11 @@ class SidecarContainerConfig(DaraModel):
         empty_dir_desc: str = None,
         envs: str = None,
         image_url: str = None,
+        liveness: str = None,
         memory: int = None,
         name: str = None,
+        readiness: str = None,
+        secret_mount_desc: str = None,
     ):
         # The ID of the Container Registry Enterprise Edition instance. This parameter is required if the ImageUrl parameter is set to the URL of an image in a Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
@@ -34,10 +37,13 @@ class SidecarContainerConfig(DaraModel):
         self.envs = envs
         # The image address.
         self.image_url = image_url
+        self.liveness = liveness
         # Memory
         self.memory = memory
         # The container name.
         self.name = name
+        self.readiness = readiness
+        self.secret_mount_desc = secret_mount_desc
 
     def validate(self):
         pass
@@ -71,11 +77,20 @@ class SidecarContainerConfig(DaraModel):
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
 
+        if self.liveness is not None:
+            result['Liveness'] = self.liveness
+
         if self.memory is not None:
             result['Memory'] = self.memory
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.readiness is not None:
+            result['Readiness'] = self.readiness
+
+        if self.secret_mount_desc is not None:
+            result['SecretMountDesc'] = self.secret_mount_desc
 
         return result
 
@@ -105,11 +120,20 @@ class SidecarContainerConfig(DaraModel):
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
 
+        if m.get('Liveness') is not None:
+            self.liveness = m.get('Liveness')
+
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Readiness') is not None:
+            self.readiness = m.get('Readiness')
+
+        if m.get('SecretMountDesc') is not None:
+            self.secret_mount_desc = m.get('SecretMountDesc')
 
         return self
 
