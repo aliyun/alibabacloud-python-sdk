@@ -1,3 +1,8 @@
+2026-03-06 Version: 2.16.0
+- Support API GetAppInstanceForPartner.
+- Support API ListAppCommoditySpecificationsV2ForPartner.
+
+
 2026-03-05 Version: 2.15.0
 - Support API BatchCheckResourceMeasure.
 - Support API CheckResourceMeasure.

@@ -1442,6 +1442,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_app_instance_with_options_async(request, runtime)
 
+    def get_app_instance_for_partner_with_options(
+        self,
+        request: main_models.GetAppInstanceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppInstanceForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppInstanceForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppInstanceForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_instance_for_partner_with_options_async(
+        self,
+        request: main_models.GetAppInstanceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppInstanceForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppInstanceForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppInstanceForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_instance_for_partner(
+        self,
+        request: main_models.GetAppInstanceForPartnerRequest,
+    ) -> main_models.GetAppInstanceForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_instance_for_partner_with_options(request, runtime)
+
+    async def get_app_instance_for_partner_async(
+        self,
+        request: main_models.GetAppInstanceForPartnerRequest,
+    ) -> main_models.GetAppInstanceForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_instance_for_partner_with_options_async(request, runtime)
+
     def get_app_plugin_config_with_options(
         self,
         request: main_models.GetAppPluginConfigRequest,
@@ -2145,6 +2215,80 @@ class Client(OpenApiClient):
     async def list_app_commodity_specifications_for_partner_async(self) -> main_models.ListAppCommoditySpecificationsForPartnerResponse:
         runtime = RuntimeOptions()
         return await self.list_app_commodity_specifications_for_partner_with_options_async(runtime)
+
+    def list_app_commodity_specifications_v2for_partner_with_options(
+        self,
+        request: main_models.ListAppCommoditySpecificationsV2ForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppCommoditySpecificationsV2ForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppCommoditySpecificationsV2ForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppCommoditySpecificationsV2ForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_commodity_specifications_v2for_partner_with_options_async(
+        self,
+        request: main_models.ListAppCommoditySpecificationsV2ForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppCommoditySpecificationsV2ForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppCommoditySpecificationsV2ForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppCommoditySpecificationsV2ForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_commodity_specifications_v2for_partner(
+        self,
+        request: main_models.ListAppCommoditySpecificationsV2ForPartnerRequest,
+    ) -> main_models.ListAppCommoditySpecificationsV2ForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_commodity_specifications_v2for_partner_with_options(request, runtime)
+
+    async def list_app_commodity_specifications_v2for_partner_async(
+        self,
+        request: main_models.ListAppCommoditySpecificationsV2ForPartnerRequest,
+    ) -> main_models.ListAppCommoditySpecificationsV2ForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_commodity_specifications_v2for_partner_with_options_async(request, runtime)
 
     def list_app_domain_redirect_records_with_options(
         self,
