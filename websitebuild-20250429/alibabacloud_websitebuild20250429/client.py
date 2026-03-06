@@ -4278,6 +4278,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_material_task_list_with_options_async(request, runtime)
 
+    def query_supabase_auth_configs_for_admin_with_options(
+        self,
+        request: main_models.QuerySupabaseAuthConfigsForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySupabaseAuthConfigsForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySupabaseAuthConfigsForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySupabaseAuthConfigsForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_supabase_auth_configs_for_admin_with_options_async(
+        self,
+        request: main_models.QuerySupabaseAuthConfigsForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySupabaseAuthConfigsForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySupabaseAuthConfigsForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySupabaseAuthConfigsForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_supabase_auth_configs_for_admin(
+        self,
+        request: main_models.QuerySupabaseAuthConfigsForAdminRequest,
+    ) -> main_models.QuerySupabaseAuthConfigsForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.query_supabase_auth_configs_for_admin_with_options(request, runtime)
+
+    async def query_supabase_auth_configs_for_admin_async(
+        self,
+        request: main_models.QuerySupabaseAuthConfigsForAdminRequest,
+    ) -> main_models.QuerySupabaseAuthConfigsForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.query_supabase_auth_configs_for_admin_with_options_async(request, runtime)
+
+    def query_supabase_configs_for_admin_with_options(
+        self,
+        request: main_models.QuerySupabaseConfigsForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySupabaseConfigsForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySupabaseConfigsForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySupabaseConfigsForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_supabase_configs_for_admin_with_options_async(
+        self,
+        request: main_models.QuerySupabaseConfigsForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySupabaseConfigsForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySupabaseConfigsForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySupabaseConfigsForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_supabase_configs_for_admin(
+        self,
+        request: main_models.QuerySupabaseConfigsForAdminRequest,
+    ) -> main_models.QuerySupabaseConfigsForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.query_supabase_configs_for_admin_with_options(request, runtime)
+
+    async def query_supabase_configs_for_admin_async(
+        self,
+        request: main_models.QuerySupabaseConfigsForAdminRequest,
+    ) -> main_models.QuerySupabaseConfigsForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.query_supabase_configs_for_admin_with_options_async(request, runtime)
+
     def query_supabase_instance_info_for_admin_with_options(
         self,
         request: main_models.QuerySupabaseInstanceInfoForAdminRequest,

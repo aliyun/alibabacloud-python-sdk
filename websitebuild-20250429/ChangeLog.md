@@ -1,3 +1,8 @@
+2026-03-06 Version: 2.17.0
+- Support API QuerySupabaseAuthConfigsForAdmin.
+- Support API QuerySupabaseConfigsForAdmin.
+
+
 2026-03-06 Version: 2.16.0
 - Support API GetAppInstanceForPartner.
 - Support API ListAppCommoditySpecificationsV2ForPartner.
