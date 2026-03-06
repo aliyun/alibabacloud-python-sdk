@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class UpdateApiMcpServerUserConfigRequest(DaraModel):
+    def __init__(
+        self,
+        enable_public_access: bool = None,
+        vpc_whitelists: List[str] = None,
+    ):
+        # Specifies whether to enable public network access for all API MCP Servers in your account, including the system MCP Server. By default, public network access is enabled. If you disable it, you can only access the servers through their VPC domain names.
+        self.enable_public_access = enable_public_access
+        # The VPC whitelist. After disabling public network access, use this parameter to specify allowed source VPCs. If you do not set this parameter or leave it empty, all source VPCs are allowed.
+        self.vpc_whitelists = vpc_whitelists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_public_access is not None:
+            result['enablePublicAccess'] = self.enable_public_access
+
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enablePublicAccess') is not None:
+            self.enable_public_access = m.get('enablePublicAccess')
+
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
+
+        return self
+

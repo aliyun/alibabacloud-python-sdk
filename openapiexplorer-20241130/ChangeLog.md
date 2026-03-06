@@ -1,3 +1,8 @@
+2026-03-06 Version: 1.1.2
+- Update API GenerateCLICommand: add request parameters aggregatePagination.
+- Update API GenerateCLICommand: add response parameters Body.requestId.
+
+
 2025-12-09 Version: 1.2.0
 - Support API GetApiMcpServerUserConfig.
 - Support API UpdateApiMcpServerUserConfig.
