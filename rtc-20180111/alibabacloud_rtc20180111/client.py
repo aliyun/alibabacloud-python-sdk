@@ -218,6 +218,8 @@ class Client(OpenApiClient):
             query['BackChannelConfig'] = request.back_channel_config_shrink
         if not DaraCore.is_null(request.chat_mode):
             query['ChatMode'] = request.chat_mode
+        if not DaraCore.is_null(request.enable_video_understanding):
+            query['EnableVideoUnderstanding'] = request.enable_video_understanding
         if not DaraCore.is_null(request.greeting):
             query['Greeting'] = request.greeting
         if not DaraCore.is_null(request.interrupt_config_shrink):
@@ -228,6 +230,8 @@ class Client(OpenApiClient):
             query['LlmConfig'] = request.llm_config_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.prefer_video):
+            query['PreferVideo'] = request.prefer_video
         if not DaraCore.is_null(request.tts_config_shrink):
             query['TtsConfig'] = request.tts_config_shrink
         if not DaraCore.is_null(request.type):
@@ -286,6 +290,8 @@ class Client(OpenApiClient):
             query['BackChannelConfig'] = request.back_channel_config_shrink
         if not DaraCore.is_null(request.chat_mode):
             query['ChatMode'] = request.chat_mode
+        if not DaraCore.is_null(request.enable_video_understanding):
+            query['EnableVideoUnderstanding'] = request.enable_video_understanding
         if not DaraCore.is_null(request.greeting):
             query['Greeting'] = request.greeting
         if not DaraCore.is_null(request.interrupt_config_shrink):
@@ -296,6 +302,8 @@ class Client(OpenApiClient):
             query['LlmConfig'] = request.llm_config_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.prefer_video):
+            query['PreferVideo'] = request.prefer_video
         if not DaraCore.is_null(request.tts_config_shrink):
             query['TtsConfig'] = request.tts_config_shrink
         if not DaraCore.is_null(request.type):
@@ -7310,6 +7318,8 @@ class Client(OpenApiClient):
             query['BackChannelConfig'] = request.back_channel_config_shrink
         if not DaraCore.is_null(request.chat_mode):
             query['ChatMode'] = request.chat_mode
+        if not DaraCore.is_null(request.enable_video_understanding):
+            query['EnableVideoUnderstanding'] = request.enable_video_understanding
         if not DaraCore.is_null(request.greeting):
             query['Greeting'] = request.greeting
         if not DaraCore.is_null(request.id):
@@ -7322,6 +7332,8 @@ class Client(OpenApiClient):
             query['LlmConfig'] = request.llm_config_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.prefer_video):
+            query['PreferVideo'] = request.prefer_video
         if not DaraCore.is_null(request.tts_config_shrink):
             query['TtsConfig'] = request.tts_config_shrink
         if not DaraCore.is_null(request.type):
@@ -7380,6 +7392,8 @@ class Client(OpenApiClient):
             query['BackChannelConfig'] = request.back_channel_config_shrink
         if not DaraCore.is_null(request.chat_mode):
             query['ChatMode'] = request.chat_mode
+        if not DaraCore.is_null(request.enable_video_understanding):
+            query['EnableVideoUnderstanding'] = request.enable_video_understanding
         if not DaraCore.is_null(request.greeting):
             query['Greeting'] = request.greeting
         if not DaraCore.is_null(request.id):
@@ -7392,6 +7406,8 @@ class Client(OpenApiClient):
             query['LlmConfig'] = request.llm_config_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.prefer_video):
+            query['PreferVideo'] = request.prefer_video
         if not DaraCore.is_null(request.tts_config_shrink):
             query['TtsConfig'] = request.tts_config_shrink
         if not DaraCore.is_null(request.type):

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict, Any
+from typing import List, Any, Dict
 
 from alibabacloud_rtc20180111 import models as main_models
 from darabonba.model import DaraModel
@@ -92,22 +92,26 @@ class StartAgentRequestVoiceChatConfig(DaraModel):
         ambient_sound_config: main_models.StartAgentRequestVoiceChatConfigAmbientSoundConfig = None,
         back_channel_config: main_models.StartAgentRequestVoiceChatConfigBackChannelConfig = None,
         chat_mode: int = None,
+        enable_video_understanding: bool = None,
         greeting: str = None,
         interrupt_config: main_models.StartAgentRequestVoiceChatConfigInterruptConfig = None,
         interrupt_mode: int = None,
         llmconfig: main_models.StartAgentRequestVoiceChatConfigLLMConfig = None,
         ttsconfig: main_models.StartAgentRequestVoiceChatConfigTTSConfig = None,
+        prefer_video: int = None,
     ):
         self.asrconfig = asrconfig
         self.agent_silence_config = agent_silence_config
         self.ambient_sound_config = ambient_sound_config
         self.back_channel_config = back_channel_config
         self.chat_mode = chat_mode
+        self.enable_video_understanding = enable_video_understanding
         self.greeting = greeting
         self.interrupt_config = interrupt_config
         self.interrupt_mode = interrupt_mode
         self.llmconfig = llmconfig
         self.ttsconfig = ttsconfig
+        self.prefer_video = prefer_video
 
     def validate(self):
         if self.asrconfig:
@@ -145,6 +149,9 @@ class StartAgentRequestVoiceChatConfig(DaraModel):
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
 
+        if self.enable_video_understanding is not None:
+            result['EnableVideoUnderstanding'] = self.enable_video_understanding
+
         if self.greeting is not None:
             result['Greeting'] = self.greeting
 
@@ -159,6 +166,9 @@ class StartAgentRequestVoiceChatConfig(DaraModel):
 
         if self.ttsconfig is not None:
             result['TTSConfig'] = self.ttsconfig.to_map()
+
+        if self.prefer_video is not None:
+            result['preferVideo'] = self.prefer_video
 
         return result
 
@@ -183,6 +193,9 @@ class StartAgentRequestVoiceChatConfig(DaraModel):
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
 
+        if m.get('EnableVideoUnderstanding') is not None:
+            self.enable_video_understanding = m.get('EnableVideoUnderstanding')
+
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
 
@@ -200,6 +213,9 @@ class StartAgentRequestVoiceChatConfig(DaraModel):
         if m.get('TTSConfig') is not None:
             temp_model = main_models.StartAgentRequestVoiceChatConfigTTSConfig()
             self.ttsconfig = temp_model.from_map(m.get('TTSConfig'))
+
+        if m.get('preferVideo') is not None:
+            self.prefer_video = m.get('preferVideo')
 
         return self
 
@@ -291,6 +307,7 @@ class StartAgentRequestVoiceChatConfigLLMConfig(DaraModel):
         self,
         api_key: str = None,
         app_id: str = None,
+        biz_params: Any = None,
         history_depth: int = None,
         max_token: int = None,
         model: str = None,
@@ -305,6 +322,7 @@ class StartAgentRequestVoiceChatConfigLLMConfig(DaraModel):
     ):
         self.api_key = api_key
         self.app_id = app_id
+        self.biz_params = biz_params
         self.history_depth = history_depth
         self.max_token = max_token
         self.model = model
@@ -330,6 +348,9 @@ class StartAgentRequestVoiceChatConfigLLMConfig(DaraModel):
 
         if self.app_id is not None:
             result['AppId'] = self.app_id
+
+        if self.biz_params is not None:
+            result['BizParams'] = self.biz_params
 
         if self.history_depth is not None:
             result['HistoryDepth'] = self.history_depth
@@ -373,6 +394,9 @@ class StartAgentRequestVoiceChatConfigLLMConfig(DaraModel):
 
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+
+        if m.get('BizParams') is not None:
+            self.biz_params = m.get('BizParams')
 
         if m.get('HistoryDepth') is not None:
             self.history_depth = m.get('HistoryDepth')

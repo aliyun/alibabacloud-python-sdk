@@ -16,12 +16,14 @@ class ModifyAppAgentTemplateRequest(DaraModel):
         asr_config: main_models.ModifyAppAgentTemplateRequestAsrConfig = None,
         back_channel_config: main_models.ModifyAppAgentTemplateRequestBackChannelConfig = None,
         chat_mode: int = None,
+        enable_video_understanding: bool = None,
         greeting: str = None,
         id: str = None,
         interrupt_config: main_models.ModifyAppAgentTemplateRequestInterruptConfig = None,
         interrupt_mode: int = None,
         llm_config: main_models.ModifyAppAgentTemplateRequestLlmConfig = None,
         name: str = None,
+        prefer_video: int = None,
         tts_config: main_models.ModifyAppAgentTemplateRequestTtsConfig = None,
         type: int = None,
     ):
@@ -32,6 +34,7 @@ class ModifyAppAgentTemplateRequest(DaraModel):
         self.asr_config = asr_config
         self.back_channel_config = back_channel_config
         self.chat_mode = chat_mode
+        self.enable_video_understanding = enable_video_understanding
         self.greeting = greeting
         # This parameter is required.
         self.id = id
@@ -40,6 +43,7 @@ class ModifyAppAgentTemplateRequest(DaraModel):
         self.llm_config = llm_config
         # This parameter is required.
         self.name = name
+        self.prefer_video = prefer_video
         self.tts_config = tts_config
         self.type = type
 
@@ -82,6 +86,9 @@ class ModifyAppAgentTemplateRequest(DaraModel):
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
 
+        if self.enable_video_understanding is not None:
+            result['EnableVideoUnderstanding'] = self.enable_video_understanding
+
         if self.greeting is not None:
             result['Greeting'] = self.greeting
 
@@ -99,6 +106,9 @@ class ModifyAppAgentTemplateRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.prefer_video is not None:
+            result['PreferVideo'] = self.prefer_video
 
         if self.tts_config is not None:
             result['TtsConfig'] = self.tts_config.to_map()
@@ -132,6 +142,9 @@ class ModifyAppAgentTemplateRequest(DaraModel):
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
 
+        if m.get('EnableVideoUnderstanding') is not None:
+            self.enable_video_understanding = m.get('EnableVideoUnderstanding')
+
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
 
@@ -151,6 +164,9 @@ class ModifyAppAgentTemplateRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PreferVideo') is not None:
+            self.prefer_video = m.get('PreferVideo')
 
         if m.get('TtsConfig') is not None:
             temp_model = main_models.ModifyAppAgentTemplateRequestTtsConfig()

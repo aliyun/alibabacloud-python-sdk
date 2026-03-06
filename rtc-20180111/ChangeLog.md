@@ -1,3 +1,15 @@
+2026-03-06 Version: 5.3.4
+- Update API CreateAppAgentTemplate: add request parameters EnableVideoUnderstanding.
+- Update API CreateAppAgentTemplate: add request parameters PreferVideo.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.EnableVideoUnderstanding.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.PreferVideo.
+- Update API ModifyAppAgentTemplate: add request parameters EnableVideoUnderstanding.
+- Update API ModifyAppAgentTemplate: add request parameters PreferVideo.
+- Update API StartAgent: add request parameters VoiceChatConfig.EnableVideoUnderstanding.
+- Update API StartAgent: add request parameters VoiceChatConfig.preferVideo.
+- Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.BizParams.
+
+
 2026-02-28 Version: 5.3.3
 - Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.ToolExecutionConfig.
 - Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.Tools.

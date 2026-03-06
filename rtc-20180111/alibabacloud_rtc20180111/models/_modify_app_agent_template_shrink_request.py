@@ -13,12 +13,14 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
         asr_config_shrink: str = None,
         back_channel_config_shrink: str = None,
         chat_mode: int = None,
+        enable_video_understanding: bool = None,
         greeting: str = None,
         id: str = None,
         interrupt_config_shrink: str = None,
         interrupt_mode: int = None,
         llm_config_shrink: str = None,
         name: str = None,
+        prefer_video: int = None,
         tts_config_shrink: str = None,
         type: int = None,
     ):
@@ -29,6 +31,7 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
         self.asr_config_shrink = asr_config_shrink
         self.back_channel_config_shrink = back_channel_config_shrink
         self.chat_mode = chat_mode
+        self.enable_video_understanding = enable_video_understanding
         self.greeting = greeting
         # This parameter is required.
         self.id = id
@@ -37,6 +40,7 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
         self.llm_config_shrink = llm_config_shrink
         # This parameter is required.
         self.name = name
+        self.prefer_video = prefer_video
         self.tts_config_shrink = tts_config_shrink
         self.type = type
 
@@ -66,6 +70,9 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
 
+        if self.enable_video_understanding is not None:
+            result['EnableVideoUnderstanding'] = self.enable_video_understanding
+
         if self.greeting is not None:
             result['Greeting'] = self.greeting
 
@@ -83,6 +90,9 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.prefer_video is not None:
+            result['PreferVideo'] = self.prefer_video
 
         if self.tts_config_shrink is not None:
             result['TtsConfig'] = self.tts_config_shrink
@@ -112,6 +122,9 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
 
+        if m.get('EnableVideoUnderstanding') is not None:
+            self.enable_video_understanding = m.get('EnableVideoUnderstanding')
+
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
 
@@ -129,6 +142,9 @@ class ModifyAppAgentTemplateShrinkRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PreferVideo') is not None:
+            self.prefer_video = m.get('PreferVideo')
 
         if m.get('TtsConfig') is not None:
             self.tts_config_shrink = m.get('TtsConfig')
