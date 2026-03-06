@@ -6,6 +6,7 @@ from ._acs import ACS
 from ._action import Action
 from ._algorithm_spec import AlgorithmSpec
 from ._allocate_strategy_spec import AllocateStrategySpec
+from ._allocated_hyper_node_detail import AllocatedHyperNodeDetail
 from ._assign_node_spec import AssignNodeSpec
 from ._binding_policy import BindingPolicy
 from ._cache_info import CacheInfo
@@ -58,6 +59,7 @@ from ._quota_id_name import QuotaIdName
 from ._quota_job import QuotaJob
 from ._quota_job_view_metric import QuotaJobViewMetric
 from ._quota_metric import QuotaMetric
+from ._quota_node_statistics import QuotaNodeStatistics
 from ._quota_node_view_metric import QuotaNodeViewMetric
 from ._quota_topo import QuotaTopo
 from ._quota_user import QuotaUser
@@ -329,6 +331,7 @@ __all__ = [
     Action,
     AlgorithmSpec,
     AllocateStrategySpec,
+    AllocatedHyperNodeDetail,
     AssignNodeSpec,
     BindingPolicy,
     CacheInfo,
@@ -381,6 +384,7 @@ __all__ = [
     QuotaJob,
     QuotaJobViewMetric,
     QuotaMetric,
+    QuotaNodeStatistics,
     QuotaNodeViewMetric,
     QuotaTopo,
     QuotaUser,

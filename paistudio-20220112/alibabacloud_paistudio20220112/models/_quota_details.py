@@ -14,6 +14,7 @@ class QuotaDetails(DaraModel):
         ancestors_allocated_quota: main_models.ResourceAmount = None,
         descendants_allocated_quota: main_models.ResourceAmount = None,
         desired_min_quota: main_models.ResourceAmount = None,
+        node_statistics: main_models.QuotaNodeStatistics = None,
         requested_quota: main_models.ResourceAmount = None,
         self_allocated_quota: main_models.ResourceAmount = None,
         self_submitted_quota: main_models.ResourceAmount = None,
@@ -26,6 +27,7 @@ class QuotaDetails(DaraModel):
         self.ancestors_allocated_quota = ancestors_allocated_quota
         self.descendants_allocated_quota = descendants_allocated_quota
         self.desired_min_quota = desired_min_quota
+        self.node_statistics = node_statistics
         self.requested_quota = requested_quota
         self.self_allocated_quota = self_allocated_quota
         self.self_submitted_quota = self_submitted_quota
@@ -45,6 +47,8 @@ class QuotaDetails(DaraModel):
             self.descendants_allocated_quota.validate()
         if self.desired_min_quota:
             self.desired_min_quota.validate()
+        if self.node_statistics:
+            self.node_statistics.validate()
         if self.requested_quota:
             self.requested_quota.validate()
         if self.self_allocated_quota:
@@ -78,6 +82,9 @@ class QuotaDetails(DaraModel):
 
         if self.desired_min_quota is not None:
             result['DesiredMinQuota'] = self.desired_min_quota.to_map()
+
+        if self.node_statistics is not None:
+            result['NodeStatistics'] = self.node_statistics.to_map()
 
         if self.requested_quota is not None:
             result['RequestedQuota'] = self.requested_quota.to_map()
@@ -121,6 +128,10 @@ class QuotaDetails(DaraModel):
         if m.get('DesiredMinQuota') is not None:
             temp_model = main_models.ResourceAmount()
             self.desired_min_quota = temp_model.from_map(m.get('DesiredMinQuota'))
+
+        if m.get('NodeStatistics') is not None:
+            temp_model = main_models.QuotaNodeStatistics()
+            self.node_statistics = temp_model.from_map(m.get('NodeStatistics'))
 
         if m.get('RequestedQuota') is not None:
             temp_model = main_models.ResourceAmount()
