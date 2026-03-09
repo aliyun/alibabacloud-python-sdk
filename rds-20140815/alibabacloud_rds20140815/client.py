@@ -20909,6 +20909,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_rcmetric_list_with_options_async(request, runtime)
 
+    def describe_rcnetwork_interfaces_with_options(
+        self,
+        request: main_models.DescribeRCNetworkInterfacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRCNetworkInterfacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRCNetworkInterfaces',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRCNetworkInterfacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcnetwork_interfaces_with_options_async(
+        self,
+        request: main_models.DescribeRCNetworkInterfacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRCNetworkInterfacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRCNetworkInterfaces',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRCNetworkInterfacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcnetwork_interfaces(
+        self,
+        request: main_models.DescribeRCNetworkInterfacesRequest,
+    ) -> main_models.DescribeRCNetworkInterfacesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_rcnetwork_interfaces_with_options(request, runtime)
+
+    async def describe_rcnetwork_interfaces_async(
+        self,
+        request: main_models.DescribeRCNetworkInterfacesRequest,
+    ) -> main_models.DescribeRCNetworkInterfacesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_rcnetwork_interfaces_with_options_async(request, runtime)
+
     def describe_rcnode_pool_with_options(
         self,
         request: main_models.DescribeRCNodePoolRequest,

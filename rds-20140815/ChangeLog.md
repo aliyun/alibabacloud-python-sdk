@@ -1,3 +1,7 @@
+2026-03-09 Version: 15.6.0
+- Support API DescribeRCNetworkInterfaces.
+
+
 2026-02-27 Version: 15.5.1
 - Update API DescribeRCInstances: add response parameters Body.RCInstances.$.AutoRenew.
 - Update API RunRCInstances: add request parameters PrivateIpAddress.
