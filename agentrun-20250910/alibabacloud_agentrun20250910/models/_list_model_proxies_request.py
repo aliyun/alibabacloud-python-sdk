@@ -11,12 +11,14 @@ class ListModelProxiesRequest(DaraModel):
         page_size: int = None,
         proxy_mode: str = None,
         status: str = None,
+        workspace_id: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
         # proxyMode
         self.proxy_mode = proxy_mode
         self.status = status
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -38,6 +40,9 @@ class ListModelProxiesRequest(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +58,9 @@ class ListModelProxiesRequest(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

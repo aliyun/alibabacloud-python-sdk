@@ -28,6 +28,7 @@ class ModelProxy(DaraModel):
         service_region_id: str = None,
         status: str = None,
         status_reason: str = None,
+        workspace_id: str = None,
     ):
         self.cpu = cpu
         self.created_at = created_at
@@ -49,6 +50,7 @@ class ModelProxy(DaraModel):
         self.service_region_id = service_region_id
         self.status = status
         self.status_reason = status_reason
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.log_configuration:
@@ -123,6 +125,9 @@ class ModelProxy(DaraModel):
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -189,6 +194,9 @@ class ModelProxy(DaraModel):
 
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

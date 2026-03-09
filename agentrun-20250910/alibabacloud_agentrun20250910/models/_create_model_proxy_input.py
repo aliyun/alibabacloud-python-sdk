@@ -22,26 +22,37 @@ class CreateModelProxyInput(DaraModel):
         proxy_config: main_models.ProxyConfig = None,
         proxy_mode: str = None,
         service_region_id: str = None,
+        workspace_id: str = None,
     ):
         self.arms_configuration = arms_configuration
         # This parameter is required.
         self.cpu = cpu
+        # credentialName
         self.credential_name = credential_name
         self.description = description
         self.execution_role_arn = execution_role_arn
+        # litellmVersion
         self.litellm_version = litellm_version
         self.log_configuration = log_configuration
         # This parameter is required.
         self.memory = memory
+        # modelProxyName
+        # 
         # This parameter is required.
         self.model_proxy_name = model_proxy_name
         self.model_type = model_type
         self.network_configuration = network_configuration
+        # ProxyConfig
+        # 
         # This parameter is required.
         self.proxy_config = proxy_config
+        # proxyMode
+        # 
         # This parameter is required.
         self.proxy_mode = proxy_mode
+        # serviceRegionId
         self.service_region_id = service_region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.arms_configuration:
@@ -100,6 +111,9 @@ class CreateModelProxyInput(DaraModel):
         if self.service_region_id is not None:
             result['serviceRegionId'] = self.service_region_id
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -149,6 +163,9 @@ class CreateModelProxyInput(DaraModel):
 
         if m.get('serviceRegionId') is not None:
             self.service_region_id = m.get('serviceRegionId')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

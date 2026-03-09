@@ -18,10 +18,14 @@ class CreateModelServiceInput(DaraModel):
         network_configuration: main_models.NetworkConfiguration = None,
         provider: str = None,
         provider_settings: main_models.ProviderSettings = None,
+        workspace_id: str = None,
     ):
         self.credential_name = credential_name
         self.description = description
+        # modelInfoConfigs
         self.model_info_configs = model_info_configs
+        # modelServiceName
+        # 
         # This parameter is required.
         self.model_service_name = model_service_name
         # This parameter is required.
@@ -29,8 +33,11 @@ class CreateModelServiceInput(DaraModel):
         self.network_configuration = network_configuration
         # This parameter is required.
         self.provider = provider
+        # providerSettings
+        # 
         # This parameter is required.
         self.provider_settings = provider_settings
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.model_info_configs:
@@ -73,6 +80,9 @@ class CreateModelServiceInput(DaraModel):
         if self.provider_settings is not None:
             result['providerSettings'] = self.provider_settings.to_map()
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -105,6 +115,9 @@ class CreateModelServiceInput(DaraModel):
         if m.get('providerSettings') is not None:
             temp_model = main_models.ProviderSettings()
             self.provider_settings = temp_model.from_map(m.get('providerSettings'))
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

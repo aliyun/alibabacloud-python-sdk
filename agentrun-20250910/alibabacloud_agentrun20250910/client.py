@@ -3867,6 +3867,8 @@ class Client(OpenApiClient):
             query['proxyMode'] = request.proxy_mode
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3903,6 +3905,8 @@ class Client(OpenApiClient):
             query['proxyMode'] = request.proxy_mode
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3957,6 +3961,8 @@ class Client(OpenApiClient):
             query['provider'] = request.provider
         if not DaraCore.is_null(request.provider_type):
             query['providerType'] = request.provider_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3995,6 +4001,8 @@ class Client(OpenApiClient):
             query['provider'] = request.provider
         if not DaraCore.is_null(request.provider_type):
             query['providerType'] = request.provider_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

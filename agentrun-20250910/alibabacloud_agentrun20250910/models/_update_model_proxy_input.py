@@ -15,6 +15,7 @@ class UpdateModelProxyInput(DaraModel):
         log_configuration: main_models.LogConfiguration = None,
         network_configuration: main_models.NetworkConfiguration = None,
         proxy_config: main_models.ProxyConfig = None,
+        workspace_id: str = None,
     ):
         self.arms_configuration = arms_configuration
         self.credential_name = credential_name
@@ -23,6 +24,7 @@ class UpdateModelProxyInput(DaraModel):
         self.log_configuration = log_configuration
         self.network_configuration = network_configuration
         self.proxy_config = proxy_config
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.arms_configuration:
@@ -60,6 +62,9 @@ class UpdateModelProxyInput(DaraModel):
         if self.proxy_config is not None:
             result['proxyConfig'] = self.proxy_config.to_map()
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -88,6 +93,9 @@ class UpdateModelProxyInput(DaraModel):
         if m.get('proxyConfig') is not None:
             temp_model = main_models.ProxyConfig()
             self.proxy_config = temp_model.from_map(m.get('proxyConfig'))
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

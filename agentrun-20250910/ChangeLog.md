@@ -1,3 +1,8 @@
+2026-03-09 Version: 5.4.1
+- Update API ListModelProxies: add request parameters workspaceId.
+- Update API ListModelServices: add request parameters workspaceId.
+
+
 2026-03-04 Version: 5.4.0
 - Support API CreateWorkspace.
 - Support API DeleteWorkspace.
