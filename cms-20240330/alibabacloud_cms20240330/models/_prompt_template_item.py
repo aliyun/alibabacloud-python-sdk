@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class IndexJsonKey(DaraModel):
+class PromptTemplateItem(DaraModel):
     def __init__(
         self,
-        chn: bool = None,
-        type: str = None,
+        content: str = None,
+        role: str = None,
     ):
-        self.chn = chn
-        self.type = type
+        self.content = content
+        self.role = role
 
     def validate(self):
         pass
@@ -21,21 +21,21 @@ class IndexJsonKey(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.chn is not None:
-            result['chn'] = self.chn
+        if self.content is not None:
+            result['content'] = self.content
 
-        if self.type is not None:
-            result['type'] = self.type
+        if self.role is not None:
+            result['role'] = self.role
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('chn') is not None:
-            self.chn = m.get('chn')
+        if m.get('content') is not None:
+            self.content = m.get('content')
 
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('role') is not None:
+            self.role = m.get('role')
 
         return self
 

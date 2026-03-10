@@ -1,3 +1,19 @@
+2026-03-10 Version: 6.2.0
+- Support API AddMemories.
+- Support API CreateMemoryStore.
+- Support API DeleteMemories.
+- Support API DeleteMemory.
+- Support API DeleteMemoryStore.
+- Support API GetMemories.
+- Support API GetMemory.
+- Support API GetMemoryHistory.
+- Support API GetMemoryStore.
+- Support API ListMemoryStores.
+- Support API SearchMemories.
+- Support API UpdateMemory.
+- Support API UpdateMemoryStore.
+
+
 2026-02-24 Version: 6.1.0
 - Support API CreateDigitalEmployeeSkill.
 - Support API DeleteDigitalEmployeeSkill.

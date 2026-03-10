@@ -24,6 +24,7 @@ from ._alert_rule_time_span import AlertRuleTimeSpan
 from ._biz_trace_config import BizTraceConfig
 from ._cms_event_for_view import CmsEventForView
 from ._contact_for_incident_view import ContactForIncidentView
+from ._custom_extraction_strategy import CustomExtractionStrategy
 from ._data_storage_item import DataStorageItem
 from ._effect_time_range import EffectTimeRange
 from ._entity_discover_rule import EntityDiscoverRule
@@ -31,6 +32,9 @@ from ._entity_group_base import EntityGroupBase
 from ._evaluator import Evaluator
 from ._event_resource_for_event_view import EventResourceForEventView
 from ._event_resource_for_incident_view import EventResourceForIncidentView
+from ._experiment_config import ExperimentConfig
+from ._experiment_plan_data import ExperimentPlanData
+from ._experiment_record import ExperimentRecord
 from ._filter_setting import FilterSetting
 from ._incident_contact_struct import IncidentContactStruct
 from ._incident_escalation_policy_for_modify import IncidentEscalationPolicyForModify
@@ -60,10 +64,12 @@ from ._merge_contact import MergeContact
 from ._merge_contact_group import MergeContactGroup
 from ._merge_robot import MergeRobot
 from ._merge_webhook import MergeWebhook
+from ._model_parameters import ModelParameters
 from ._notify_channel import NotifyChannel
 from ._notify_strategy_for_modify import NotifyStrategyForModify
 from ._notify_strategy_for_view import NotifyStrategyForView
 from ._prometheus_managed_instance import PrometheusManagedInstance
+from ._prompt_template_item import PromptTemplateItem
 from ._pushing_setting import PushingSetting
 from ._repeat_notify_setting import RepeatNotifySetting
 from ._rum_dns_response import RumDnsResponse
@@ -74,6 +80,9 @@ from ._transform_action import TransformAction
 from ._transformer_for_modify import TransformerForModify
 from ._transformer_for_view import TransformerForView
 from ._workspace_filter_setting import WorkspaceFilterSetting
+from ._add_memories_request import AddMemoriesRequest
+from ._add_memories_response_body import AddMemoriesResponseBody
+from ._add_memories_response import AddMemoriesResponse
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
@@ -105,6 +114,9 @@ from ._create_entity_store_response import CreateEntityStoreResponse
 from ._create_integration_policy_request import CreateIntegrationPolicyRequest
 from ._create_integration_policy_response_body import CreateIntegrationPolicyResponseBody
 from ._create_integration_policy_response import CreateIntegrationPolicyResponse
+from ._create_memory_store_request import CreateMemoryStoreRequest
+from ._create_memory_store_response_body import CreateMemoryStoreResponseBody
+from ._create_memory_store_response import CreateMemoryStoreResponse
 from ._create_prometheus_instance_request import CreatePrometheusInstanceRequest
 from ._create_prometheus_instance_response_body import CreatePrometheusInstanceResponseBody
 from ._create_prometheus_instance_response import CreatePrometheusInstanceResponse
@@ -150,6 +162,13 @@ from ._delete_entity_store_response import DeleteEntityStoreResponse
 from ._delete_integration_policy_request import DeleteIntegrationPolicyRequest
 from ._delete_integration_policy_response_body import DeleteIntegrationPolicyResponseBody
 from ._delete_integration_policy_response import DeleteIntegrationPolicyResponse
+from ._delete_memories_request import DeleteMemoriesRequest
+from ._delete_memories_response_body import DeleteMemoriesResponseBody
+from ._delete_memories_response import DeleteMemoriesResponse
+from ._delete_memory_response_body import DeleteMemoryResponseBody
+from ._delete_memory_response import DeleteMemoryResponse
+from ._delete_memory_store_response_body import DeleteMemoryStoreResponseBody
+from ._delete_memory_store_response import DeleteMemoryStoreResponse
 from ._delete_prometheus_instance_response_body import DeletePrometheusInstanceResponseBody
 from ._delete_prometheus_instance_response import DeletePrometheusInstanceResponse
 from ._delete_prometheus_view_response_body import DeletePrometheusViewResponseBody
@@ -210,6 +229,15 @@ from ._get_integration_policy_response import GetIntegrationPolicyResponse
 from ._get_integration_version_for_csrequest import GetIntegrationVersionForCSRequest
 from ._get_integration_version_for_csresponse_body import GetIntegrationVersionForCSResponseBody
 from ._get_integration_version_for_csresponse import GetIntegrationVersionForCSResponse
+from ._get_memories_request import GetMemoriesRequest
+from ._get_memories_response_body import GetMemoriesResponseBody
+from ._get_memories_response import GetMemoriesResponse
+from ._get_memory_response_body import GetMemoryResponseBody
+from ._get_memory_response import GetMemoryResponse
+from ._get_memory_history_response_body import GetMemoryHistoryResponseBody
+from ._get_memory_history_response import GetMemoryHistoryResponse
+from ._get_memory_store_response_body import GetMemoryStoreResponseBody
+from ._get_memory_store_response import GetMemoryStoreResponse
 from ._get_prometheus_instance_request import GetPrometheusInstanceRequest
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBody
 from ._get_prometheus_instance_response import GetPrometheusInstanceResponse
@@ -291,6 +319,9 @@ from ._list_integration_policy_service_monitors_response import ListIntegrationP
 from ._list_integration_policy_storage_requirements_request import ListIntegrationPolicyStorageRequirementsRequest
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBody
 from ._list_integration_policy_storage_requirements_response import ListIntegrationPolicyStorageRequirementsResponse
+from ._list_memory_stores_request import ListMemoryStoresRequest
+from ._list_memory_stores_response_body import ListMemoryStoresResponseBody
+from ._list_memory_stores_response import ListMemoryStoresResponse
 from ._list_prometheus_dashboards_request import ListPrometheusDashboardsRequest
 from ._list_prometheus_dashboards_response_body import ListPrometheusDashboardsResponseBody
 from ._list_prometheus_dashboards_response import ListPrometheusDashboardsResponse
@@ -324,6 +355,9 @@ from ._list_workspaces_response import ListWorkspacesResponse
 from ._put_workspace_request import PutWorkspaceRequest
 from ._put_workspace_response_body import PutWorkspaceResponseBody
 from ._put_workspace_response import PutWorkspaceResponse
+from ._search_memories_request import SearchMemoriesRequest
+from ._search_memories_response_body import SearchMemoriesResponseBody
+from ._search_memories_response import SearchMemoriesResponse
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
@@ -355,6 +389,12 @@ from ._update_digital_employee_skill_response import UpdateDigitalEmployeeSkillR
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequest
 from ._update_integration_policy_response_body import UpdateIntegrationPolicyResponseBody
 from ._update_integration_policy_response import UpdateIntegrationPolicyResponse
+from ._update_memory_request import UpdateMemoryRequest
+from ._update_memory_response_body import UpdateMemoryResponseBody
+from ._update_memory_response import UpdateMemoryResponse
+from ._update_memory_store_request import UpdateMemoryStoreRequest
+from ._update_memory_store_response_body import UpdateMemoryStoreResponseBody
+from ._update_memory_store_response import UpdateMemoryStoreResponse
 from ._update_notify_strategy_request import UpdateNotifyStrategyRequest
 from ._update_notify_strategy_response_body import UpdateNotifyStrategyResponseBody
 from ._update_notify_strategy_response import UpdateNotifyStrategyResponse
@@ -443,6 +483,8 @@ from ._notify_strategy_for_view import NotifyStrategyForViewRoutesEffectTimeRang
 from ._notify_strategy_for_view import NotifyStrategyForViewRoutes
 from ._subscription_for_modify import SubscriptionForModifyPushingSetting
 from ._subscription_for_view import SubscriptionForViewPushingSetting
+from ._add_memories_request import AddMemoriesRequestMessages
+from ._add_memories_response_body import AddMemoriesResponseBodyResults
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBodyReleaseConditions
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBodyRelease
 from ._create_agg_task_group_request import CreateAggTaskGroupRequestTags
@@ -496,6 +538,10 @@ from ._get_integration_policy_response_body import GetIntegrationPolicyResponseB
 from ._get_integration_policy_response_body import GetIntegrationPolicyResponseBodyPolicyManagedInfo
 from ._get_integration_policy_response_body import GetIntegrationPolicyResponseBodyPolicyTags
 from ._get_integration_policy_response_body import GetIntegrationPolicyResponseBodyPolicy
+from ._get_memories_response_body import GetMemoriesResponseBodyRelations
+from ._get_memories_response_body import GetMemoriesResponseBodyResults
+from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResultsInput
+from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResults
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstanceTags
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstance
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances
@@ -572,6 +618,7 @@ from ._list_integration_policy_storage_requirements_response_body import ListInt
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
+from ._list_memory_stores_response_body import ListMemoryStoresResponseBodyMemoryStores
 from ._list_prometheus_dashboards_response_body import ListPrometheusDashboardsResponseBodyPrometheusDashboards
 from ._list_prometheus_instances_request import ListPrometheusInstancesRequestTag
 from ._list_prometheus_instances_response_body import ListPrometheusInstancesResponseBodyPrometheusInstances
@@ -585,6 +632,8 @@ from ._list_threads_request import ListThreadsRequestFilter
 from ._list_threads_response_body import ListThreadsResponseBodyThreadsVariables
 from ._list_threads_response_body import ListThreadsResponseBodyThreads
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
+from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
+from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledgesBailian
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledges
@@ -615,6 +664,7 @@ __all__ = [
     BizTraceConfig,
     CmsEventForView,
     ContactForIncidentView,
+    CustomExtractionStrategy,
     DataStorageItem,
     EffectTimeRange,
     EntityDiscoverRule,
@@ -622,6 +672,9 @@ __all__ = [
     Evaluator,
     EventResourceForEventView,
     EventResourceForIncidentView,
+    ExperimentConfig,
+    ExperimentPlanData,
+    ExperimentRecord,
     FilterSetting,
     IncidentContactStruct,
     IncidentEscalationPolicyForModify,
@@ -651,10 +704,12 @@ __all__ = [
     MergeContactGroup,
     MergeRobot,
     MergeWebhook,
+    ModelParameters,
     NotifyChannel,
     NotifyStrategyForModify,
     NotifyStrategyForView,
     PrometheusManagedInstance,
+    PromptTemplateItem,
     PushingSetting,
     RepeatNotifySetting,
     RumDnsResponse,
@@ -665,6 +720,9 @@ __all__ = [
     TransformerForModify,
     TransformerForView,
     WorkspaceFilterSetting,
+    AddMemoriesRequest,
+    AddMemoriesResponseBody,
+    AddMemoriesResponse,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
@@ -696,6 +754,9 @@ __all__ = [
     CreateIntegrationPolicyRequest,
     CreateIntegrationPolicyResponseBody,
     CreateIntegrationPolicyResponse,
+    CreateMemoryStoreRequest,
+    CreateMemoryStoreResponseBody,
+    CreateMemoryStoreResponse,
     CreatePrometheusInstanceRequest,
     CreatePrometheusInstanceResponseBody,
     CreatePrometheusInstanceResponse,
@@ -741,6 +802,13 @@ __all__ = [
     DeleteIntegrationPolicyRequest,
     DeleteIntegrationPolicyResponseBody,
     DeleteIntegrationPolicyResponse,
+    DeleteMemoriesRequest,
+    DeleteMemoriesResponseBody,
+    DeleteMemoriesResponse,
+    DeleteMemoryResponseBody,
+    DeleteMemoryResponse,
+    DeleteMemoryStoreResponseBody,
+    DeleteMemoryStoreResponse,
     DeletePrometheusInstanceResponseBody,
     DeletePrometheusInstanceResponse,
     DeletePrometheusViewResponseBody,
@@ -801,6 +869,15 @@ __all__ = [
     GetIntegrationVersionForCSRequest,
     GetIntegrationVersionForCSResponseBody,
     GetIntegrationVersionForCSResponse,
+    GetMemoriesRequest,
+    GetMemoriesResponseBody,
+    GetMemoriesResponse,
+    GetMemoryResponseBody,
+    GetMemoryResponse,
+    GetMemoryHistoryResponseBody,
+    GetMemoryHistoryResponse,
+    GetMemoryStoreResponseBody,
+    GetMemoryStoreResponse,
     GetPrometheusInstanceRequest,
     GetPrometheusInstanceResponseBody,
     GetPrometheusInstanceResponse,
@@ -882,6 +959,9 @@ __all__ = [
     ListIntegrationPolicyStorageRequirementsRequest,
     ListIntegrationPolicyStorageRequirementsResponseBody,
     ListIntegrationPolicyStorageRequirementsResponse,
+    ListMemoryStoresRequest,
+    ListMemoryStoresResponseBody,
+    ListMemoryStoresResponse,
     ListPrometheusDashboardsRequest,
     ListPrometheusDashboardsResponseBody,
     ListPrometheusDashboardsResponse,
@@ -915,6 +995,9 @@ __all__ = [
     PutWorkspaceRequest,
     PutWorkspaceResponseBody,
     PutWorkspaceResponse,
+    SearchMemoriesRequest,
+    SearchMemoriesResponseBody,
+    SearchMemoriesResponse,
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
@@ -946,6 +1029,12 @@ __all__ = [
     UpdateIntegrationPolicyRequest,
     UpdateIntegrationPolicyResponseBody,
     UpdateIntegrationPolicyResponse,
+    UpdateMemoryRequest,
+    UpdateMemoryResponseBody,
+    UpdateMemoryResponse,
+    UpdateMemoryStoreRequest,
+    UpdateMemoryStoreResponseBody,
+    UpdateMemoryStoreResponse,
     UpdateNotifyStrategyRequest,
     UpdateNotifyStrategyResponseBody,
     UpdateNotifyStrategyResponse,
@@ -1034,6 +1123,8 @@ __all__ = [
     NotifyStrategyForViewRoutes,
     SubscriptionForModifyPushingSetting,
     SubscriptionForViewPushingSetting,
+    AddMemoriesRequestMessages,
+    AddMemoriesResponseBodyResults,
     CreateAddonReleaseResponseBodyReleaseConditions,
     CreateAddonReleaseResponseBodyRelease,
     CreateAggTaskGroupRequestTags,
@@ -1087,6 +1178,10 @@ __all__ = [
     GetIntegrationPolicyResponseBodyPolicyManagedInfo,
     GetIntegrationPolicyResponseBodyPolicyTags,
     GetIntegrationPolicyResponseBodyPolicy,
+    GetMemoriesResponseBodyRelations,
+    GetMemoriesResponseBodyResults,
+    GetMemoryHistoryResponseBodyResultsInput,
+    GetMemoryHistoryResponseBodyResults,
     GetPrometheusInstanceResponseBodyPrometheusInstanceTags,
     GetPrometheusInstanceResponseBodyPrometheusInstance,
     GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances,
@@ -1163,6 +1258,7 @@ __all__ = [
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec,
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus,
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements,
+    ListMemoryStoresResponseBodyMemoryStores,
     ListPrometheusDashboardsResponseBodyPrometheusDashboards,
     ListPrometheusInstancesRequestTag,
     ListPrometheusInstancesResponseBodyPrometheusInstances,
@@ -1176,6 +1272,8 @@ __all__ = [
     ListThreadsResponseBodyThreadsVariables,
     ListThreadsResponseBodyThreads,
     ListWorkspacesResponseBodyWorkspaces,
+    SearchMemoriesResponseBodyRelations,
+    SearchMemoriesResponseBodyResults,
     UpdateAggTaskGroupRequestTags,
     UpdateDigitalEmployeeRequestKnowledgesBailian,
     UpdateDigitalEmployeeRequestKnowledges,
