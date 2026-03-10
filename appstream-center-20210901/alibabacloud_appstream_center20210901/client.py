@@ -2288,6 +2288,8 @@ class Client(OpenApiClient):
             query['Gpu'] = request.gpu
         if not DaraCore.is_null(request.gpu_memory):
             query['GpuMemory'] = request.gpu_memory
+        if not DaraCore.is_null(request.instance_type_for_modify):
+            query['InstanceTypeForModify'] = request.instance_type_for_modify
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
         if not DaraCore.is_null(request.memory):
@@ -2298,6 +2300,8 @@ class Client(OpenApiClient):
             query['NodeInstanceTypeFamily'] = request.node_instance_type_family
         if not DaraCore.is_null(request.order_by):
             query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.os_type):
             query['OsType'] = request.os_type
         if not DaraCore.is_null(request.page_number):
@@ -2342,6 +2346,8 @@ class Client(OpenApiClient):
             query['Gpu'] = request.gpu
         if not DaraCore.is_null(request.gpu_memory):
             query['GpuMemory'] = request.gpu_memory
+        if not DaraCore.is_null(request.instance_type_for_modify):
+            query['InstanceTypeForModify'] = request.instance_type_for_modify
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
         if not DaraCore.is_null(request.memory):
@@ -2352,6 +2358,8 @@ class Client(OpenApiClient):
             query['NodeInstanceTypeFamily'] = request.node_instance_type_family
         if not DaraCore.is_null(request.order_by):
             query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.os_type):
             query['OsType'] = request.os_type
         if not DaraCore.is_null(request.page_number):

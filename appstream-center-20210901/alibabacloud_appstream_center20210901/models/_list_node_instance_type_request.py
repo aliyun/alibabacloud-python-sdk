@@ -11,11 +11,13 @@ class ListNodeInstanceTypeRequest(DaraModel):
         cpu: float = None,
         gpu: float = None,
         gpu_memory: int = None,
+        instance_type_for_modify: str = None,
         language: str = None,
         memory: int = None,
         node_instance_type: str = None,
         node_instance_type_family: str = None,
         order_by: str = None,
+        order_type: str = None,
         os_type: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -32,6 +34,7 @@ class ListNodeInstanceTypeRequest(DaraModel):
         self.cpu = cpu
         self.gpu = gpu
         self.gpu_memory = gpu_memory
+        self.instance_type_for_modify = instance_type_for_modify
         # The language that you want to use.
         # 
         # Valid values:
@@ -44,6 +47,7 @@ class ListNodeInstanceTypeRequest(DaraModel):
         self.node_instance_type = node_instance_type
         self.node_instance_type_family = node_instance_type_family
         self.order_by = order_by
+        self.order_type = order_type
         # The operating system that is supported.
         # 
         # Valid value:
@@ -88,6 +92,9 @@ class ListNodeInstanceTypeRequest(DaraModel):
         if self.gpu_memory is not None:
             result['GpuMemory'] = self.gpu_memory
 
+        if self.instance_type_for_modify is not None:
+            result['InstanceTypeForModify'] = self.instance_type_for_modify
+
         if self.language is not None:
             result['Language'] = self.language
 
@@ -102,6 +109,9 @@ class ListNodeInstanceTypeRequest(DaraModel):
 
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
+
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
 
         if self.os_type is not None:
             result['OsType'] = self.os_type
@@ -134,6 +144,9 @@ class ListNodeInstanceTypeRequest(DaraModel):
         if m.get('GpuMemory') is not None:
             self.gpu_memory = m.get('GpuMemory')
 
+        if m.get('InstanceTypeForModify') is not None:
+            self.instance_type_for_modify = m.get('InstanceTypeForModify')
+
         if m.get('Language') is not None:
             self.language = m.get('Language')
 
@@ -148,6 +161,9 @@ class ListNodeInstanceTypeRequest(DaraModel):
 
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
+
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
 
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')

@@ -1,3 +1,8 @@
+2026-03-10 Version: 4.7.11
+- Update API ListNodeInstanceType: add request parameters InstanceTypeForModify.
+- Update API ListNodeInstanceType: add request parameters OrderType.
+
+
 2026-02-11 Version: 4.7.10
 - Update API ListImage: add response parameters Body.Data.$.SnapshotList.
 - Update API ListWuyingServer: add request parameters BizType.
