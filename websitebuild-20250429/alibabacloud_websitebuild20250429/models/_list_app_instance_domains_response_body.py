@@ -267,6 +267,7 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         domain_name: str = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleNextOwnership = None,
+        qualification: main_models.ListAppInstanceDomainsResponseBodyModuleNextQualification = None,
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleNextResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleNextVerification = None,
     ):
@@ -280,6 +281,7 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         self.overall_status = overall_status
         # Domain ownership information
         self.ownership = ownership
+        self.qualification = qualification
         # Domain resolution information
         self.resolution = resolution
         # Domain verification information
@@ -290,6 +292,8 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
             self.certificate.validate()
         if self.ownership:
             self.ownership.validate()
+        if self.qualification:
+            self.qualification.validate()
         if self.resolution:
             self.resolution.validate()
         if self.verification:
@@ -314,6 +318,9 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
 
         if self.ownership is not None:
             result['Ownership'] = self.ownership.to_map()
+
+        if self.qualification is not None:
+            result['Qualification'] = self.qualification.to_map()
 
         if self.resolution is not None:
             result['Resolution'] = self.resolution.to_map()
@@ -341,6 +348,10 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         if m.get('Ownership') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextOwnership()
             self.ownership = temp_model.from_map(m.get('Ownership'))
+
+        if m.get('Qualification') is not None:
+            temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextQualification()
+            self.qualification = temp_model.from_map(m.get('Qualification'))
 
         if m.get('Resolution') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextResolution()
@@ -540,6 +551,49 @@ class ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord(DaraModel)
 
         return self
 
+class ListAppInstanceDomainsResponseBodyModuleNextQualification(DaraModel):
+    def __init__(
+        self,
+        icp_record_number: str = None,
+        icp_site_record_number: str = None,
+        police_record_number: str = None,
+    ):
+        self.icp_record_number = icp_record_number
+        self.icp_site_record_number = icp_site_record_number
+        self.police_record_number = police_record_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.icp_record_number is not None:
+            result['IcpRecordNumber'] = self.icp_record_number
+
+        if self.icp_site_record_number is not None:
+            result['IcpSiteRecordNumber'] = self.icp_site_record_number
+
+        if self.police_record_number is not None:
+            result['PoliceRecordNumber'] = self.police_record_number
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IcpRecordNumber') is not None:
+            self.icp_record_number = m.get('IcpRecordNumber')
+
+        if m.get('IcpSiteRecordNumber') is not None:
+            self.icp_site_record_number = m.get('IcpSiteRecordNumber')
+
+        if m.get('PoliceRecordNumber') is not None:
+            self.police_record_number = m.get('PoliceRecordNumber')
+
+        return self
+
 class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
     def __init__(
         self,
@@ -640,6 +694,7 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         domain_name: str = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleDataOwnership = None,
+        qualification: main_models.ListAppInstanceDomainsResponseBodyModuleDataQualification = None,
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleDataResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleDataVerification = None,
     ):
@@ -653,6 +708,7 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         self.overall_status = overall_status
         # Domain ownership information
         self.ownership = ownership
+        self.qualification = qualification
         # Domain resolution information
         self.resolution = resolution
         # Domain verification information
@@ -663,6 +719,8 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
             self.certificate.validate()
         if self.ownership:
             self.ownership.validate()
+        if self.qualification:
+            self.qualification.validate()
         if self.resolution:
             self.resolution.validate()
         if self.verification:
@@ -687,6 +745,9 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
 
         if self.ownership is not None:
             result['Ownership'] = self.ownership.to_map()
+
+        if self.qualification is not None:
+            result['Qualification'] = self.qualification.to_map()
 
         if self.resolution is not None:
             result['Resolution'] = self.resolution.to_map()
@@ -714,6 +775,10 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if m.get('Ownership') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataOwnership()
             self.ownership = temp_model.from_map(m.get('Ownership'))
+
+        if m.get('Qualification') is not None:
+            temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataQualification()
+            self.qualification = temp_model.from_map(m.get('Qualification'))
 
         if m.get('Resolution') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataResolution()
@@ -919,6 +984,49 @@ class ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord(DaraModel)
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class ListAppInstanceDomainsResponseBodyModuleDataQualification(DaraModel):
+    def __init__(
+        self,
+        icp_record_number: str = None,
+        icp_site_record_number: str = None,
+        police_record_number: str = None,
+    ):
+        self.icp_record_number = icp_record_number
+        self.icp_site_record_number = icp_site_record_number
+        self.police_record_number = police_record_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.icp_record_number is not None:
+            result['IcpRecordNumber'] = self.icp_record_number
+
+        if self.icp_site_record_number is not None:
+            result['IcpSiteRecordNumber'] = self.icp_site_record_number
+
+        if self.police_record_number is not None:
+            result['PoliceRecordNumber'] = self.police_record_number
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IcpRecordNumber') is not None:
+            self.icp_record_number = m.get('IcpRecordNumber')
+
+        if m.get('IcpSiteRecordNumber') is not None:
+            self.icp_site_record_number = m.get('IcpSiteRecordNumber')
+
+        if m.get('PoliceRecordNumber') is not None:
+            self.police_record_number = m.get('PoliceRecordNumber')
 
         return self
 

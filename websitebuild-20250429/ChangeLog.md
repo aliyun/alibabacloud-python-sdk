@@ -1,3 +1,9 @@
+2026-03-10 Version: 2.17.1
+- Update API GetAppRecommendedCommodities: add request parameters ResourceConditions.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.Qualification.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Qualification.
+
+
 2026-03-06 Version: 2.17.0
 - Support API QuerySupabaseAuthConfigsForAdmin.
 - Support API QuerySupabaseConfigsForAdmin.

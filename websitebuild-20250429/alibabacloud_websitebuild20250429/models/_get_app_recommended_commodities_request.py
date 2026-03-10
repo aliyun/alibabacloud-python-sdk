@@ -8,9 +8,11 @@ class GetAppRecommendedCommoditiesRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        resource_conditions: str = None,
         scene: str = None,
     ):
         self.biz_id = biz_id
+        self.resource_conditions = resource_conditions
         self.scene = scene
 
     def validate(self):
@@ -24,6 +26,9 @@ class GetAppRecommendedCommoditiesRequest(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
+        if self.resource_conditions is not None:
+            result['ResourceConditions'] = self.resource_conditions
+
         if self.scene is not None:
             result['Scene'] = self.scene
 
@@ -33,6 +38,9 @@ class GetAppRecommendedCommoditiesRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('ResourceConditions') is not None:
+            self.resource_conditions = m.get('ResourceConditions')
 
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
