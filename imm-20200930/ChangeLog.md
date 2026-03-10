@@ -1,3 +1,7 @@
+2026-03-10 Version: 4.8.0
+- Support API CreateHighlightTask.
+
+
 2026-02-26 Version: 4.7.3
 - Update API CreateDataset: add request parameters DatasetConfig.
 - Update API UpdateDataset: add request parameters DatasetConfig.

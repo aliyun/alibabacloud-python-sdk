@@ -191,6 +191,10 @@ from ._create_file_uncompression_task_request import CreateFileUncompressionTask
 from ._create_file_uncompression_task_shrink_request import CreateFileUncompressionTaskShrinkRequest
 from ._create_file_uncompression_task_response_body import CreateFileUncompressionTaskResponseBody
 from ._create_file_uncompression_task_response import CreateFileUncompressionTaskResponse
+from ._create_highlight_task_request import CreateHighlightTaskRequest
+from ._create_highlight_task_shrink_request import CreateHighlightTaskShrinkRequest
+from ._create_highlight_task_response_body import CreateHighlightTaskResponseBody
+from ._create_highlight_task_response import CreateHighlightTaskResponse
 from ._create_image_moderation_task_request import CreateImageModerationTaskRequest
 from ._create_image_moderation_task_shrink_request import CreateImageModerationTaskShrinkRequest
 from ._create_image_moderation_task_response_body import CreateImageModerationTaskResponseBody
@@ -514,6 +518,14 @@ from ._create_customized_story_request import CreateCustomizedStoryRequestCover
 from ._create_customized_story_request import CreateCustomizedStoryRequestFiles
 from ._create_faces_searching_task_request import CreateFacesSearchingTaskRequestSources
 from ._create_file_compression_task_request import CreateFileCompressionTaskRequestSources
+from ._create_highlight_task_request import CreateHighlightTaskRequestEditBackgroundMusics
+from ._create_highlight_task_request import CreateHighlightTaskRequestEditTransitions
+from ._create_highlight_task_request import CreateHighlightTaskRequestEditVfxEffects
+from ._create_highlight_task_request import CreateHighlightTaskRequestEdit
+from ._create_highlight_task_request import CreateHighlightTaskRequestHighlight
+from ._create_highlight_task_request import CreateHighlightTaskRequestOutputSegment
+from ._create_highlight_task_request import CreateHighlightTaskRequestOutput
+from ._create_highlight_task_request import CreateHighlightTaskRequestSources
 from ._create_image_splicing_task_request import CreateImageSplicingTaskRequestSources
 from ._create_image_to_pdftask_request import CreateImageToPDFTaskRequestSources
 from ._create_location_date_clustering_task_request import CreateLocationDateClusteringTaskRequestDateOptions
@@ -740,6 +752,10 @@ __all__ = [
     CreateFileUncompressionTaskShrinkRequest,
     CreateFileUncompressionTaskResponseBody,
     CreateFileUncompressionTaskResponse,
+    CreateHighlightTaskRequest,
+    CreateHighlightTaskShrinkRequest,
+    CreateHighlightTaskResponseBody,
+    CreateHighlightTaskResponse,
     CreateImageModerationTaskRequest,
     CreateImageModerationTaskShrinkRequest,
     CreateImageModerationTaskResponseBody,
@@ -1063,6 +1079,14 @@ __all__ = [
     CreateCustomizedStoryRequestFiles,
     CreateFacesSearchingTaskRequestSources,
     CreateFileCompressionTaskRequestSources,
+    CreateHighlightTaskRequestEditBackgroundMusics,
+    CreateHighlightTaskRequestEditTransitions,
+    CreateHighlightTaskRequestEditVfxEffects,
+    CreateHighlightTaskRequestEdit,
+    CreateHighlightTaskRequestHighlight,
+    CreateHighlightTaskRequestOutputSegment,
+    CreateHighlightTaskRequestOutput,
+    CreateHighlightTaskRequestSources,
     CreateImageSplicingTaskRequestSources,
     CreateImageToPDFTaskRequestSources,
     CreateLocationDateClusteringTaskRequestDateOptions,

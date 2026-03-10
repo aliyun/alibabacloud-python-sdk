@@ -2473,6 +2473,152 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_file_uncompression_task_with_options_async(request, runtime)
 
+    def create_highlight_task_with_options(
+        self,
+        tmp_req: main_models.CreateHighlightTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHighlightTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreateHighlightTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.credential_config):
+            request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.edit):
+            request.edit_shrink = Utils.array_to_string_with_specified_style(tmp_req.edit, 'Edit', 'json')
+        if not DaraCore.is_null(tmp_req.highlight):
+            request.highlight_shrink = Utils.array_to_string_with_specified_style(tmp_req.highlight, 'Highlight', 'json')
+        if not DaraCore.is_null(tmp_req.notification):
+            request.notification_shrink = Utils.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not DaraCore.is_null(tmp_req.output):
+            request.output_shrink = Utils.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        if not DaraCore.is_null(tmp_req.sources):
+            request.sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        body = {}
+        if not DaraCore.is_null(request.credential_config_shrink):
+            body['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.edit_shrink):
+            body['Edit'] = request.edit_shrink
+        if not DaraCore.is_null(request.highlight_shrink):
+            body['Highlight'] = request.highlight_shrink
+        if not DaraCore.is_null(request.mode):
+            body['Mode'] = request.mode
+        if not DaraCore.is_null(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not DaraCore.is_null(request.output_shrink):
+            body['Output'] = request.output_shrink
+        if not DaraCore.is_null(request.sources_shrink):
+            body['Sources'] = request.sources_shrink
+        if not DaraCore.is_null(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHighlightTask',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHighlightTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_highlight_task_with_options_async(
+        self,
+        tmp_req: main_models.CreateHighlightTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHighlightTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreateHighlightTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.credential_config):
+            request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.edit):
+            request.edit_shrink = Utils.array_to_string_with_specified_style(tmp_req.edit, 'Edit', 'json')
+        if not DaraCore.is_null(tmp_req.highlight):
+            request.highlight_shrink = Utils.array_to_string_with_specified_style(tmp_req.highlight, 'Highlight', 'json')
+        if not DaraCore.is_null(tmp_req.notification):
+            request.notification_shrink = Utils.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not DaraCore.is_null(tmp_req.output):
+            request.output_shrink = Utils.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        if not DaraCore.is_null(tmp_req.sources):
+            request.sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        body = {}
+        if not DaraCore.is_null(request.credential_config_shrink):
+            body['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.edit_shrink):
+            body['Edit'] = request.edit_shrink
+        if not DaraCore.is_null(request.highlight_shrink):
+            body['Highlight'] = request.highlight_shrink
+        if not DaraCore.is_null(request.mode):
+            body['Mode'] = request.mode
+        if not DaraCore.is_null(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not DaraCore.is_null(request.output_shrink):
+            body['Output'] = request.output_shrink
+        if not DaraCore.is_null(request.sources_shrink):
+            body['Sources'] = request.sources_shrink
+        if not DaraCore.is_null(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHighlightTask',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHighlightTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_highlight_task(
+        self,
+        request: main_models.CreateHighlightTaskRequest,
+    ) -> main_models.CreateHighlightTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_highlight_task_with_options(request, runtime)
+
+    async def create_highlight_task_async(
+        self,
+        request: main_models.CreateHighlightTaskRequest,
+    ) -> main_models.CreateHighlightTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_highlight_task_with_options_async(request, runtime)
+
     def create_image_moderation_task_with_options(
         self,
         tmp_req: main_models.CreateImageModerationTaskRequest,
