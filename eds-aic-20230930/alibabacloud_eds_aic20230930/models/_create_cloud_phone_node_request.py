@@ -383,6 +383,7 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         ip_ratio: int = None,
         isp: str = None,
         limited_bandwidth: int = None,
+        paid_callback_url: str = None,
         pay_type: str = None,
         visible_type: str = None,
     ):
@@ -392,6 +393,7 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         self.ip_ratio = ip_ratio
         self.isp = isp
         self.limited_bandwidth = limited_bandwidth
+        self.paid_callback_url = paid_callback_url
         self.pay_type = pay_type
         self.visible_type = visible_type
 
@@ -421,6 +423,9 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         if self.limited_bandwidth is not None:
             result['LimitedBandwidth'] = self.limited_bandwidth
 
+        if self.paid_callback_url is not None:
+            result['PaidCallbackUrl'] = self.paid_callback_url
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -448,6 +453,9 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
 
         if m.get('LimitedBandwidth') is not None:
             self.limited_bandwidth = m.get('LimitedBandwidth')
+
+        if m.get('PaidCallbackUrl') is not None:
+            self.paid_callback_url = m.get('PaidCallbackUrl')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
