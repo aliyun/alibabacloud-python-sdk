@@ -1,3 +1,6 @@
+2026-03-11 Version: 5.4.2
+- Generated python 2025-09-10 for AgentRun.
+
 2026-03-09 Version: 5.4.1
 - Update API ListModelProxies: add request parameters workspaceId.
 - Update API ListModelServices: add request parameters workspaceId.

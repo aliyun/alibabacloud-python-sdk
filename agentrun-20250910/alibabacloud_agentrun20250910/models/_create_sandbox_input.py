@@ -10,6 +10,7 @@ class CreateSandboxInput(DaraModel):
         self,
         nas_config: main_models.NASConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
+        polar_fs_config: main_models.PolarFsConfig = None,
         sandbox_id: str = None,
         sandbox_idle_timeout_in_seconds: int = None,
         sandbox_idle_timeout_seconds: int = None,
@@ -17,6 +18,7 @@ class CreateSandboxInput(DaraModel):
     ):
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.polar_fs_config = polar_fs_config
         self.sandbox_id = sandbox_id
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
         # 沙箱空闲超时时间（秒）
@@ -31,6 +33,8 @@ class CreateSandboxInput(DaraModel):
             self.nas_config.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
+        if self.polar_fs_config:
+            self.polar_fs_config.validate()
 
     def to_map(self):
         result = dict()
@@ -42,6 +46,9 @@ class CreateSandboxInput(DaraModel):
 
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+
+        if self.polar_fs_config is not None:
+            result['polarFsConfig'] = self.polar_fs_config.to_map()
 
         if self.sandbox_id is not None:
             result['sandboxId'] = self.sandbox_id
@@ -66,6 +73,10 @@ class CreateSandboxInput(DaraModel):
         if m.get('ossMountConfig') is not None:
             temp_model = main_models.OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m.get('ossMountConfig'))
+
+        if m.get('polarFsConfig') is not None:
+            temp_model = main_models.PolarFsConfig()
+            self.polar_fs_config = temp_model.from_map(m.get('polarFsConfig'))
 
         if m.get('sandboxId') is not None:
             self.sandbox_id = m.get('sandboxId')
