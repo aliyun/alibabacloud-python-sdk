@@ -79,6 +79,9 @@ from ._export_material_file_response import ExportMaterialFileResponse
 from ._get_app_instance_request import GetAppInstanceRequest
 from ._get_app_instance_response_body import GetAppInstanceResponseBody
 from ._get_app_instance_response import GetAppInstanceResponse
+from ._get_app_instance_for_admin_request import GetAppInstanceForAdminRequest
+from ._get_app_instance_for_admin_response_body import GetAppInstanceForAdminResponseBody
+from ._get_app_instance_for_admin_response import GetAppInstanceForAdminResponse
 from ._get_app_instance_for_partner_request import GetAppInstanceForPartnerRequest
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBody
 from ._get_app_instance_for_partner_response import GetAppInstanceForPartnerResponse
@@ -410,6 +413,9 @@ __all__ = [
     GetAppInstanceRequest,
     GetAppInstanceResponseBody,
     GetAppInstanceResponse,
+    GetAppInstanceForAdminRequest,
+    GetAppInstanceForAdminResponseBody,
+    GetAppInstanceForAdminResponse,
     GetAppInstanceForPartnerRequest,
     GetAppInstanceForPartnerResponseBody,
     GetAppInstanceForPartnerResponse,

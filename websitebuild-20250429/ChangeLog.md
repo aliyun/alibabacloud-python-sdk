@@ -1,3 +1,7 @@
+2026-03-11 Version: 2.18.0
+- Support API GetAppInstanceForAdmin.
+
+
 2026-03-10 Version: 2.17.1
 - Update API GetAppRecommendedCommodities: add request parameters ResourceConditions.
 - Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.Qualification.

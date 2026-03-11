@@ -1442,6 +1442,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_app_instance_with_options_async(request, runtime)
 
+    def get_app_instance_for_admin_with_options(
+        self,
+        request: main_models.GetAppInstanceForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppInstanceForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppInstanceForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppInstanceForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_instance_for_admin_with_options_async(
+        self,
+        request: main_models.GetAppInstanceForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppInstanceForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppInstanceForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppInstanceForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_instance_for_admin(
+        self,
+        request: main_models.GetAppInstanceForAdminRequest,
+    ) -> main_models.GetAppInstanceForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_instance_for_admin_with_options(request, runtime)
+
+    async def get_app_instance_for_admin_async(
+        self,
+        request: main_models.GetAppInstanceForAdminRequest,
+    ) -> main_models.GetAppInstanceForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_instance_for_admin_with_options_async(request, runtime)
+
     def get_app_instance_for_partner_with_options(
         self,
         request: main_models.GetAppInstanceForPartnerRequest,
