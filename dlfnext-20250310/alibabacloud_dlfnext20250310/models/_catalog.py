@@ -28,6 +28,7 @@ class Catalog(DaraModel):
         self.is_shared = is_shared
         self.name = name
         self.options = options
+        # Owner。
         self.owner = owner
         self.share_id = share_id
         self.status = status

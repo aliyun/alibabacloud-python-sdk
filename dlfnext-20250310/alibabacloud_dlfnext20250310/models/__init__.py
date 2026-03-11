@@ -128,6 +128,8 @@ from ._get_table_token_response_body import GetTableTokenResponseBody
 from ._get_table_token_response import GetTableTokenResponse
 from ._get_user_request import GetUserRequest
 from ._get_user_response import GetUserResponse
+from ._get_vpc_config_response_body import GetVpcConfigResponseBody
+from ._get_vpc_config_response import GetVpcConfigResponse
 from ._grant_role_to_users_request import GrantRoleToUsersRequest
 from ._grant_role_to_users_response import GrantRoleToUsersResponse
 from ._list_catalogs_request import ListCatalogsRequest
@@ -214,6 +216,7 @@ from ._update_role_users_response import UpdateRoleUsersResponse
 from ._cache_cluster import CacheClusterVSwitches
 from ._permission import PermissionColumns
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._get_vpc_config_response_body import GetVpcConfigResponseBodyTrustedVpcs
 
 __all__ = [
     CacheCluster,
@@ -342,6 +345,8 @@ __all__ = [
     GetTableTokenResponse,
     GetUserRequest,
     GetUserResponse,
+    GetVpcConfigResponseBody,
+    GetVpcConfigResponse,
     GrantRoleToUsersRequest,
     GrantRoleToUsersResponse,
     ListCatalogsRequest,
@@ -427,5 +432,6 @@ __all__ = [
     UpdateRoleUsersResponse,
     CacheClusterVSwitches,
     PermissionColumns,
-    DescribeRegionsResponseBodyRegions
+    DescribeRegionsResponseBodyRegions,
+    GetVpcConfigResponseBodyTrustedVpcs
 ]

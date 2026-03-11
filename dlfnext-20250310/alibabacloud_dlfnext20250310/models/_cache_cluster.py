@@ -38,6 +38,7 @@ class CacheCluster(DaraModel):
         self.updated_at = updated_at
         self.updated_by = updated_by
         self.v_switches = v_switches
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):

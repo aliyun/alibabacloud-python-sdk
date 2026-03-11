@@ -21,6 +21,7 @@ class IcebergSnapshot(DaraModel):
         timestamp_millis: int = None,
     ):
         self.added_rows = added_rows
+        # id
         self.id = id
         self.id_string = id_string
         self.operation = operation

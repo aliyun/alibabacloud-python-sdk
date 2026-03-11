@@ -3193,6 +3193,64 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_user_with_options_async(request, headers, runtime)
 
+    def get_vpc_config_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVpcConfigResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVpcConfig',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/auth/vpc',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVpcConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vpc_config_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVpcConfigResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVpcConfig',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/auth/vpc',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVpcConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vpc_config(self) -> main_models.GetVpcConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_vpc_config_with_options(headers, runtime)
+
+    async def get_vpc_config_async(self) -> main_models.GetVpcConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_vpc_config_with_options_async(headers, runtime)
+
     def grant_role_to_users_with_options(
         self,
         request: main_models.GrantRoleToUsersRequest,

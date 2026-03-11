@@ -14,6 +14,7 @@ class IcebergNestedField(DaraModel):
         type: str = None,
     ):
         self.doc = doc
+        # id
         self.id = id
         self.name = name
         self.optional = optional
