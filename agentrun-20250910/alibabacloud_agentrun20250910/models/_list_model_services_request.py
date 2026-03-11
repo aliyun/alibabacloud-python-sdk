@@ -13,6 +13,7 @@ class ListModelServicesRequest(DaraModel):
         provider: str = None,
         provider_type: str = None,
         workspace_id: str = None,
+        workspace_ids: str = None,
     ):
         # This parameter is required.
         self.model_type = model_type
@@ -21,6 +22,7 @@ class ListModelServicesRequest(DaraModel):
         self.provider = provider
         self.provider_type = provider_type
         self.workspace_id = workspace_id
+        self.workspace_ids = workspace_ids
 
     def validate(self):
         pass
@@ -48,6 +50,9 @@ class ListModelServicesRequest(DaraModel):
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
+        if self.workspace_ids is not None:
+            result['workspaceIds'] = self.workspace_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -69,6 +74,9 @@ class ListModelServicesRequest(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        if m.get('workspaceIds') is not None:
+            self.workspace_ids = m.get('workspaceIds')
 
         return self
 

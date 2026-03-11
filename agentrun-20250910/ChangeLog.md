@@ -1,3 +1,9 @@
+2026-03-11 Version: 5.4.3
+- Update API ListMemoryCollections: add request parameters workspaceIds.
+- Update API ListModelProxies: add request parameters workspaceIds.
+- Update API ListModelServices: add request parameters workspaceIds.
+
+
 2026-03-11 Version: 5.4.2
 - Generated python 2025-09-10 for AgentRun.
 

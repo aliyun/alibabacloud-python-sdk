@@ -13,6 +13,7 @@ class ListMemoryCollectionsRequest(DaraModel):
         status: str = None,
         type: str = None,
         workspace_id: str = None,
+        workspace_ids: str = None,
     ):
         self.memory_collection_name = memory_collection_name
         self.page_number = page_number
@@ -20,6 +21,7 @@ class ListMemoryCollectionsRequest(DaraModel):
         self.status = status
         self.type = type
         self.workspace_id = workspace_id
+        self.workspace_ids = workspace_ids
 
     def validate(self):
         pass
@@ -47,6 +49,9 @@ class ListMemoryCollectionsRequest(DaraModel):
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
+        if self.workspace_ids is not None:
+            result['workspaceIds'] = self.workspace_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -68,6 +73,9 @@ class ListMemoryCollectionsRequest(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        if m.get('workspaceIds') is not None:
+            self.workspace_ids = m.get('workspaceIds')
 
         return self
 
