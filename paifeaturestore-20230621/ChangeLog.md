@@ -1,3 +1,7 @@
+2026-03-12 Version: 6.0.8
+- Update API ExportModelFeatureTrainingSetTable: add request parameters body.FeatureViewConfig.SecondJoinKey.
+
+
 2026-01-20 Version: 6.0.6
 - Update API ExportModelFeatureTrainingSetTable: add request parameters body.FeatureViewConfig.Snapshot.
 

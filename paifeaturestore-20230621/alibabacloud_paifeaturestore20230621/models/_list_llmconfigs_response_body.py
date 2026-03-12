@@ -82,6 +82,7 @@ class ListLLMConfigsResponseBodyLLMConfigs(DaraModel):
         api_key: str = None,
         base_url: str = None,
         batch_size: int = None,
+        embedding_dimension: int = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         llmconfig_id: str = None,
@@ -95,6 +96,7 @@ class ListLLMConfigsResponseBodyLLMConfigs(DaraModel):
         self.api_key = api_key
         self.base_url = base_url
         self.batch_size = batch_size
+        self.embedding_dimension = embedding_dimension
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.llmconfig_id = llmconfig_id
@@ -121,6 +123,9 @@ class ListLLMConfigsResponseBodyLLMConfigs(DaraModel):
 
         if self.batch_size is not None:
             result['BatchSize'] = self.batch_size
+
+        if self.embedding_dimension is not None:
+            result['EmbeddingDimension'] = self.embedding_dimension
 
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
@@ -161,6 +166,9 @@ class ListLLMConfigsResponseBodyLLMConfigs(DaraModel):
 
         if m.get('BatchSize') is not None:
             self.batch_size = m.get('BatchSize')
+
+        if m.get('EmbeddingDimension') is not None:
+            self.embedding_dimension = m.get('EmbeddingDimension')
 
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')

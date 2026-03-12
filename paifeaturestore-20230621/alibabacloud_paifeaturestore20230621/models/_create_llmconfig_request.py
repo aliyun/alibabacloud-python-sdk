@@ -10,6 +10,7 @@ class CreateLLMConfigRequest(DaraModel):
         api_key: str = None,
         base_url: str = None,
         batch_size: int = None,
+        embedding_dimension: int = None,
         max_tokens: int = None,
         model: str = None,
         name: str = None,
@@ -20,6 +21,7 @@ class CreateLLMConfigRequest(DaraModel):
         self.api_key = api_key
         self.base_url = base_url
         self.batch_size = batch_size
+        self.embedding_dimension = embedding_dimension
         self.max_tokens = max_tokens
         # This parameter is required.
         self.model = model
@@ -45,6 +47,9 @@ class CreateLLMConfigRequest(DaraModel):
 
         if self.batch_size is not None:
             result['BatchSize'] = self.batch_size
+
+        if self.embedding_dimension is not None:
+            result['EmbeddingDimension'] = self.embedding_dimension
 
         if self.max_tokens is not None:
             result['MaxTokens'] = self.max_tokens
@@ -73,6 +78,9 @@ class CreateLLMConfigRequest(DaraModel):
 
         if m.get('BatchSize') is not None:
             self.batch_size = m.get('BatchSize')
+
+        if m.get('EmbeddingDimension') is not None:
+            self.embedding_dimension = m.get('EmbeddingDimension')
 
         if m.get('MaxTokens') is not None:
             self.max_tokens = m.get('MaxTokens')

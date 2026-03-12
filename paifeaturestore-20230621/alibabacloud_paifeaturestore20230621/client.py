@@ -606,6 +606,8 @@ class Client(OpenApiClient):
             body['BaseUrl'] = request.base_url
         if not DaraCore.is_null(request.batch_size):
             body['BatchSize'] = request.batch_size
+        if not DaraCore.is_null(request.embedding_dimension):
+            body['EmbeddingDimension'] = request.embedding_dimension
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
@@ -651,6 +653,8 @@ class Client(OpenApiClient):
             body['BaseUrl'] = request.base_url
         if not DaraCore.is_null(request.batch_size):
             body['BatchSize'] = request.batch_size
+        if not DaraCore.is_null(request.embedding_dimension):
+            body['EmbeddingDimension'] = request.embedding_dimension
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
@@ -4741,6 +4745,8 @@ class Client(OpenApiClient):
             body['BaseUrl'] = request.base_url
         if not DaraCore.is_null(request.batch_size):
             body['BatchSize'] = request.batch_size
+        if not DaraCore.is_null(request.embedding_dimension):
+            body['EmbeddingDimension'] = request.embedding_dimension
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
@@ -4785,6 +4791,8 @@ class Client(OpenApiClient):
             body['BaseUrl'] = request.base_url
         if not DaraCore.is_null(request.batch_size):
             body['BatchSize'] = request.batch_size
+        if not DaraCore.is_null(request.embedding_dimension):
+            body['EmbeddingDimension'] = request.embedding_dimension
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
