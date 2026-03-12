@@ -1,3 +1,9 @@
+2026-03-12 Version: 6.12.0
+- Support API BatchGetYikeAIAppJob.
+- Support API BatchGetYikeAssetMediaInfos.
+- Support API DeleteYikeAssetMediaInfos.
+
+
 2026-03-04 Version: 6.11.0
 - Support API CreateYikeAssetUpload.
 - Support API GetYikeAIAppJob.

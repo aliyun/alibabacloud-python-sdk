@@ -1298,6 +1298,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_get_media_infos_with_options_async(request, runtime)
 
+    def batch_get_yike_aiapp_job_with_options(
+        self,
+        request: main_models.BatchGetYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetYikeAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_yike_aiapp_job_with_options_async(
+        self,
+        request: main_models.BatchGetYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetYikeAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_yike_aiapp_job(
+        self,
+        request: main_models.BatchGetYikeAIAppJobRequest,
+    ) -> main_models.BatchGetYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.batch_get_yike_aiapp_job_with_options(request, runtime)
+
+    async def batch_get_yike_aiapp_job_async(
+        self,
+        request: main_models.BatchGetYikeAIAppJobRequest,
+    ) -> main_models.BatchGetYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_get_yike_aiapp_job_with_options_async(request, runtime)
+
+    def batch_get_yike_asset_media_infos_with_options(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetYikeAssetMediaInfos',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetYikeAssetMediaInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_yike_asset_media_infos_with_options_async(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetYikeAssetMediaInfos',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetYikeAssetMediaInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_yike_asset_media_infos(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return self.batch_get_yike_asset_media_infos_with_options(request, runtime)
+
+    async def batch_get_yike_asset_media_infos_async(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_get_yike_asset_media_infos_with_options_async(request, runtime)
+
     def cancel_dnajob_with_options(
         self,
         request: main_models.CancelDNAJobRequest,
@@ -8135,6 +8275,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVodPackagingGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_vod_packaging_group_with_options_async(request, runtime)
+
+    def delete_yike_asset_media_infos_with_options(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.logic_delete):
+            query['LogicDelete'] = request.logic_delete
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteYikeAssetMediaInfos',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteYikeAssetMediaInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_yike_asset_media_infos_with_options_async(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.logic_delete):
+            query['LogicDelete'] = request.logic_delete
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteYikeAssetMediaInfos',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteYikeAssetMediaInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_yike_asset_media_infos(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return self.delete_yike_asset_media_infos_with_options(request, runtime)
+
+    async def delete_yike_asset_media_infos_async(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_yike_asset_media_infos_with_options_async(request, runtime)
 
     def describe_aiagent_instance_with_options(
         self,

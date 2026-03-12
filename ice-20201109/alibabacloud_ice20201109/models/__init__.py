@@ -96,6 +96,12 @@ from ._batch_create_vod_packaging_asset_response import BatchCreateVodPackagingA
 from ._batch_get_media_infos_request import BatchGetMediaInfosRequest
 from ._batch_get_media_infos_response_body import BatchGetMediaInfosResponseBody
 from ._batch_get_media_infos_response import BatchGetMediaInfosResponse
+from ._batch_get_yike_aiapp_job_request import BatchGetYikeAIAppJobRequest
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBody
+from ._batch_get_yike_aiapp_job_response import BatchGetYikeAIAppJobResponse
+from ._batch_get_yike_asset_media_infos_request import BatchGetYikeAssetMediaInfosRequest
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBody
+from ._batch_get_yike_asset_media_infos_response import BatchGetYikeAssetMediaInfosResponse
 from ._cancel_dnajob_request import CancelDNAJobRequest
 from ._cancel_dnajob_response_body import CancelDNAJobResponseBody
 from ._cancel_dnajob_response import CancelDNAJobResponse
@@ -361,6 +367,9 @@ from ._delete_vod_packaging_configuration_response import DeleteVodPackagingConf
 from ._delete_vod_packaging_group_request import DeleteVodPackagingGroupRequest
 from ._delete_vod_packaging_group_response_body import DeleteVodPackagingGroupResponseBody
 from ._delete_vod_packaging_group_response import DeleteVodPackagingGroupResponse
+from ._delete_yike_asset_media_infos_request import DeleteYikeAssetMediaInfosRequest
+from ._delete_yike_asset_media_infos_response_body import DeleteYikeAssetMediaInfosResponseBody
+from ._delete_yike_asset_media_infos_response import DeleteYikeAssetMediaInfosResponse
 from ._describe_aiagent_instance_request import DescribeAIAgentInstanceRequest
 from ._describe_aiagent_instance_response_body import DescribeAIAgentInstanceResponseBody
 from ._describe_aiagent_instance_response import DescribeAIAgentInstanceResponse
@@ -1362,6 +1371,16 @@ from ._batch_get_media_infos_response_body import BatchGetMediaInfosResponseBody
 from ._batch_get_media_infos_response_body import BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData
 from ._batch_get_media_infos_response_body import BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo
 from ._batch_get_media_infos_response_body import BatchGetMediaInfosResponseBodyMediaInfos
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultImageResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobList
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfos
 from ._cancel_iproduction_job_response_body import CancelIProductionJobResponseBodyAccessDeniedDetail
 from ._create_avatar_training_job_response_body import CreateAvatarTrainingJobResponseBodyData
 from ._create_custom_template_response_body import CreateCustomTemplateResponseBodyCustomTemplate
@@ -2154,6 +2173,12 @@ __all__ = [
     BatchGetMediaInfosRequest,
     BatchGetMediaInfosResponseBody,
     BatchGetMediaInfosResponse,
+    BatchGetYikeAIAppJobRequest,
+    BatchGetYikeAIAppJobResponseBody,
+    BatchGetYikeAIAppJobResponse,
+    BatchGetYikeAssetMediaInfosRequest,
+    BatchGetYikeAssetMediaInfosResponseBody,
+    BatchGetYikeAssetMediaInfosResponse,
     CancelDNAJobRequest,
     CancelDNAJobResponseBody,
     CancelDNAJobResponse,
@@ -2419,6 +2444,9 @@ __all__ = [
     DeleteVodPackagingGroupRequest,
     DeleteVodPackagingGroupResponseBody,
     DeleteVodPackagingGroupResponse,
+    DeleteYikeAssetMediaInfosRequest,
+    DeleteYikeAssetMediaInfosResponseBody,
+    DeleteYikeAssetMediaInfosResponse,
     DescribeAIAgentInstanceRequest,
     DescribeAIAgentInstanceResponseBody,
     DescribeAIAgentInstanceResponse,
@@ -3420,6 +3448,16 @@ __all__ = [
     BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData,
     BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo,
     BatchGetMediaInfosResponseBodyMediaInfos,
+    BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult,
+    BatchGetYikeAIAppJobResponseBodyJobListResultImageResult,
+    BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult,
+    BatchGetYikeAIAppJobResponseBodyJobListResult,
+    BatchGetYikeAIAppJobResponseBodyJobList,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfos,
     CancelIProductionJobResponseBodyAccessDeniedDetail,
     CreateAvatarTrainingJobResponseBodyData,
     CreateCustomTemplateResponseBodyCustomTemplate,
