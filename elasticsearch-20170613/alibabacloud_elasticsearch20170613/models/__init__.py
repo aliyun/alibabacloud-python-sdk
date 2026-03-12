@@ -206,6 +206,9 @@ from ._get_suggest_shrinkable_nodes_response import GetSuggestShrinkableNodesRes
 from ._get_transferable_nodes_request import GetTransferableNodesRequest
 from ._get_transferable_nodes_response_body import GetTransferableNodesResponseBody
 from ._get_transferable_nodes_response import GetTransferableNodesResponse
+from ._gray_publish_request import GrayPublishRequest
+from ._gray_publish_response_body import GrayPublishResponseBody
+from ._gray_publish_response import GrayPublishResponse
 from ._initialize_operation_role_request import InitializeOperationRoleRequest
 from ._initialize_operation_role_response_body import InitializeOperationRoleResponseBody
 from ._initialize_operation_role_response import InitializeOperationRoleResponse
@@ -1064,6 +1067,9 @@ __all__ = [
     GetTransferableNodesRequest,
     GetTransferableNodesResponseBody,
     GetTransferableNodesResponse,
+    GrayPublishRequest,
+    GrayPublishResponseBody,
+    GrayPublishResponse,
     InitializeOperationRoleRequest,
     InitializeOperationRoleResponseBody,
     InitializeOperationRoleResponse,

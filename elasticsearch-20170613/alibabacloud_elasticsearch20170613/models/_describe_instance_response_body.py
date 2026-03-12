@@ -71,6 +71,7 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         have_client_node: bool = None,
         have_kibana: bool = None,
         ik_hot_dicts: List[main_models.DescribeInstanceResponseBodyResultIkHotDicts] = None,
+        inited: bool = None,
         instance_category: str = None,
         instance_id: str = None,
         is_new_deployment: bool = None,
@@ -129,6 +130,7 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         self.have_client_node = have_client_node
         self.have_kibana = have_kibana
         self.ik_hot_dicts = ik_hot_dicts
+        self.inited = inited
         self.instance_category = instance_category
         self.instance_id = instance_id
         self.is_new_deployment = is_new_deployment
@@ -293,6 +295,9 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         if self.ik_hot_dicts is not None:
             for k1 in self.ik_hot_dicts:
                 result['ikHotDicts'].append(k1.to_map() if k1 else None)
+
+        if self.inited is not None:
+            result['inited'] = self.inited
 
         if self.instance_category is not None:
             result['instanceCategory'] = self.instance_category
@@ -489,6 +494,9 @@ class DescribeInstanceResponseBodyResult(DaraModel):
             for k1 in m.get('ikHotDicts'):
                 temp_model = main_models.DescribeInstanceResponseBodyResultIkHotDicts()
                 self.ik_hot_dicts.append(temp_model.from_map(k1))
+
+        if m.get('inited') is not None:
+            self.inited = m.get('inited')
 
         if m.get('instanceCategory') is not None:
             self.instance_category = m.get('instanceCategory')

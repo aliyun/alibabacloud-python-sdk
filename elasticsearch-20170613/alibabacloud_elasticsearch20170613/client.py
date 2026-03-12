@@ -5479,6 +5479,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
 
+    def gray_publish_with_options(
+        self,
+        instance_id: str,
+        request: main_models.GrayPublishRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GrayPublishResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.x_request_change_id):
+            query['X-Request-ChangeId'] = request.x_request_change_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GrayPublish',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/instances/{DaraURL.percent_encode(instance_id)}/actions/grayPublish',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GrayPublishResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def gray_publish_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.GrayPublishRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GrayPublishResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.x_request_change_id):
+            query['X-Request-ChangeId'] = request.x_request_change_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GrayPublish',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/instances/{DaraURL.percent_encode(instance_id)}/actions/grayPublish',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GrayPublishResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def gray_publish(
+        self,
+        instance_id: str,
+        request: main_models.GrayPublishRequest,
+    ) -> main_models.GrayPublishResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.gray_publish_with_options(instance_id, request, headers, runtime)
+
+    async def gray_publish_async(
+        self,
+        instance_id: str,
+        request: main_models.GrayPublishRequest,
+    ) -> main_models.GrayPublishResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.gray_publish_with_options_async(instance_id, request, headers, runtime)
+
     def initialize_operation_role_with_options(
         self,
         request: main_models.InitializeOperationRoleRequest,

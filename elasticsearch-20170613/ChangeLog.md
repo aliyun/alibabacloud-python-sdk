@@ -1,3 +1,7 @@
+2026-03-12 Version: 5.1.0
+- Support API GrayPublish.
+
+
 2026-01-27 Version: 5.0.1
 - Update API ListInstance: add response parameters Body.Result.$.zoneCount.
 - Update API ListInstance: add response parameters Body.Result.$.zoneInfos.

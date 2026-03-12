@@ -15,7 +15,6 @@ class ListConnectedClustersResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The return results.
         self.result = result
 
     def validate(self):
@@ -87,9 +86,7 @@ class ListConnectedClustersResponseBodyResultResult(DaraModel):
         instances: str = None,
         network_type: str = None,
     ):
-        # The ID of the remote instance that is connected to the network of the current instance.
         self.instances = instances
-        # The network type of the instance.
         self.network_type = network_type
 
     def validate(self):
