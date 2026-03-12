@@ -7,17 +7,17 @@ from typing import List
 from alibabacloud_pailangstudio20240710 import models as main_models
 from darabonba.model import DaraModel
 
-class Deployment(DaraModel):
+class GetDeploymentResponseBody(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
         auto_approval: bool = None,
-        chat_history_config: main_models.DeploymentChatHistoryConfig = None,
-        content_moderation_config: main_models.DeploymentContentModerationConfig = None,
+        chat_history_config: main_models.GetDeploymentResponseBodyChatHistoryConfig = None,
+        content_moderation_config: main_models.GetDeploymentResponseBodyContentModerationConfig = None,
         creator: str = None,
         deployment_config: str = None,
         deployment_id: str = None,
-        deployment_stages: List[main_models.DeploymentDeploymentStages] = None,
+        deployment_stages: List[main_models.GetDeploymentResponseBodyDeploymentStages] = None,
         deployment_status: str = None,
         description: str = None,
         enable_trace: bool = None,
@@ -25,6 +25,7 @@ class Deployment(DaraModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         operation_type: str = None,
+        request_id: str = None,
         resource_id: str = None,
         resource_snapshot_id: str = None,
         resource_type: str = None,
@@ -47,6 +48,7 @@ class Deployment(DaraModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.operation_type = operation_type
+        self.request_id = request_id
         self.resource_id = resource_id
         self.resource_snapshot_id = resource_snapshot_id
         self.resource_type = resource_type
@@ -116,6 +118,9 @@ class Deployment(DaraModel):
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
 
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
 
@@ -145,11 +150,11 @@ class Deployment(DaraModel):
             self.auto_approval = m.get('AutoApproval')
 
         if m.get('ChatHistoryConfig') is not None:
-            temp_model = main_models.DeploymentChatHistoryConfig()
+            temp_model = main_models.GetDeploymentResponseBodyChatHistoryConfig()
             self.chat_history_config = temp_model.from_map(m.get('ChatHistoryConfig'))
 
         if m.get('ContentModerationConfig') is not None:
-            temp_model = main_models.DeploymentContentModerationConfig()
+            temp_model = main_models.GetDeploymentResponseBodyContentModerationConfig()
             self.content_moderation_config = temp_model.from_map(m.get('ContentModerationConfig'))
 
         if m.get('Creator') is not None:
@@ -164,7 +169,7 @@ class Deployment(DaraModel):
         self.deployment_stages = []
         if m.get('DeploymentStages') is not None:
             for k1 in m.get('DeploymentStages'):
-                temp_model = main_models.DeploymentDeploymentStages()
+                temp_model = main_models.GetDeploymentResponseBodyDeploymentStages()
                 self.deployment_stages.append(temp_model.from_map(k1))
 
         if m.get('DeploymentStatus') is not None:
@@ -188,6 +193,9 @@ class Deployment(DaraModel):
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
 
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
 
@@ -208,7 +216,7 @@ class Deployment(DaraModel):
 
         return self
 
-class DeploymentDeploymentStages(DaraModel):
+class GetDeploymentResponseBodyDeploymentStages(DaraModel):
     def __init__(
         self,
         description: str = None,
@@ -299,7 +307,7 @@ class DeploymentDeploymentStages(DaraModel):
 
         return self
 
-class DeploymentContentModerationConfig(DaraModel):
+class GetDeploymentResponseBodyContentModerationConfig(DaraModel):
     def __init__(
         self,
         enable_input_moderation: bool = None,
@@ -345,7 +353,7 @@ class DeploymentContentModerationConfig(DaraModel):
 
         return self
 
-class DeploymentChatHistoryConfig(DaraModel):
+class GetDeploymentResponseBodyChatHistoryConfig(DaraModel):
     def __init__(
         self,
         connection_name: str = None,

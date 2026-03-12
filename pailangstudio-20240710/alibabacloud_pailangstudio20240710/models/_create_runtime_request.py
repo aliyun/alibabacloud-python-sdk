@@ -7,48 +7,34 @@ from typing import List
 from alibabacloud_pailangstudio20240710 import models as main_models
 from darabonba.model import DaraModel
 
-class Runtime(DaraModel):
+class CreateRuntimeRequest(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
-        creator: str = None,
-        credential_config: main_models.RuntimeCredentialConfig = None,
-        data_sources: List[main_models.RuntimeDataSources] = None,
-        ecs_spec: main_models.RuntimeEcsSpec = None,
-        envs: List[main_models.RuntimeEnvs] = None,
-        gmt_create_time: str = None,
-        gmt_modified_time: str = None,
-        labels: List[main_models.RuntimeLabels] = None,
+        credential_config: main_models.CreateRuntimeRequestCredentialConfig = None,
+        data_sources: List[main_models.CreateRuntimeRequestDataSources] = None,
+        ecs_spec: main_models.CreateRuntimeRequestEcsSpec = None,
+        envs: List[main_models.CreateRuntimeRequestEnvs] = None,
+        labels: List[main_models.CreateRuntimeRequestLabels] = None,
         resource_id: str = None,
         run_timeout: int = None,
-        runtime_id: str = None,
-        runtime_log: str = None,
         runtime_name: str = None,
-        runtime_status: str = None,
         runtime_type: str = None,
-        user_vpc: main_models.RuntimeUserVpc = None,
-        version: str = None,
+        user_vpc: main_models.CreateRuntimeRequestUserVpc = None,
         work_dir: str = None,
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
-        self.creator = creator
         self.credential_config = credential_config
         self.data_sources = data_sources
         self.ecs_spec = ecs_spec
         self.envs = envs
-        self.gmt_create_time = gmt_create_time
-        self.gmt_modified_time = gmt_modified_time
         self.labels = labels
         self.resource_id = resource_id
         self.run_timeout = run_timeout
-        self.runtime_id = runtime_id
-        self.runtime_log = runtime_log
         self.runtime_name = runtime_name
-        self.runtime_status = runtime_status
         self.runtime_type = runtime_type
         self.user_vpc = user_vpc
-        self.version = version
         self.work_dir = work_dir
         self.workspace_id = workspace_id
 
@@ -80,9 +66,6 @@ class Runtime(DaraModel):
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
 
-        if self.creator is not None:
-            result['Creator'] = self.creator
-
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
 
@@ -99,12 +82,6 @@ class Runtime(DaraModel):
             for k1 in self.envs:
                 result['Envs'].append(k1.to_map() if k1 else None)
 
-        if self.gmt_create_time is not None:
-            result['GmtCreateTime'] = self.gmt_create_time
-
-        if self.gmt_modified_time is not None:
-            result['GmtModifiedTime'] = self.gmt_modified_time
-
         result['Labels'] = []
         if self.labels is not None:
             for k1 in self.labels:
@@ -116,26 +93,14 @@ class Runtime(DaraModel):
         if self.run_timeout is not None:
             result['RunTimeout'] = self.run_timeout
 
-        if self.runtime_id is not None:
-            result['RuntimeId'] = self.runtime_id
-
-        if self.runtime_log is not None:
-            result['RuntimeLog'] = self.runtime_log
-
         if self.runtime_name is not None:
             result['RuntimeName'] = self.runtime_name
-
-        if self.runtime_status is not None:
-            result['RuntimeStatus'] = self.runtime_status
 
         if self.runtime_type is not None:
             result['RuntimeType'] = self.runtime_type
 
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
-
-        if self.version is not None:
-            result['Version'] = self.version
 
         if self.work_dir is not None:
             result['WorkDir'] = self.work_dir
@@ -150,39 +115,30 @@ class Runtime(DaraModel):
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
 
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
-
         if m.get('CredentialConfig') is not None:
-            temp_model = main_models.RuntimeCredentialConfig()
+            temp_model = main_models.CreateRuntimeRequestCredentialConfig()
             self.credential_config = temp_model.from_map(m.get('CredentialConfig'))
 
         self.data_sources = []
         if m.get('DataSources') is not None:
             for k1 in m.get('DataSources'):
-                temp_model = main_models.RuntimeDataSources()
+                temp_model = main_models.CreateRuntimeRequestDataSources()
                 self.data_sources.append(temp_model.from_map(k1))
 
         if m.get('EcsSpec') is not None:
-            temp_model = main_models.RuntimeEcsSpec()
+            temp_model = main_models.CreateRuntimeRequestEcsSpec()
             self.ecs_spec = temp_model.from_map(m.get('EcsSpec'))
 
         self.envs = []
         if m.get('Envs') is not None:
             for k1 in m.get('Envs'):
-                temp_model = main_models.RuntimeEnvs()
+                temp_model = main_models.CreateRuntimeRequestEnvs()
                 self.envs.append(temp_model.from_map(k1))
-
-        if m.get('GmtCreateTime') is not None:
-            self.gmt_create_time = m.get('GmtCreateTime')
-
-        if m.get('GmtModifiedTime') is not None:
-            self.gmt_modified_time = m.get('GmtModifiedTime')
 
         self.labels = []
         if m.get('Labels') is not None:
             for k1 in m.get('Labels'):
-                temp_model = main_models.RuntimeLabels()
+                temp_model = main_models.CreateRuntimeRequestLabels()
                 self.labels.append(temp_model.from_map(k1))
 
         if m.get('ResourceId') is not None:
@@ -191,27 +147,15 @@ class Runtime(DaraModel):
         if m.get('RunTimeout') is not None:
             self.run_timeout = m.get('RunTimeout')
 
-        if m.get('RuntimeId') is not None:
-            self.runtime_id = m.get('RuntimeId')
-
-        if m.get('RuntimeLog') is not None:
-            self.runtime_log = m.get('RuntimeLog')
-
         if m.get('RuntimeName') is not None:
             self.runtime_name = m.get('RuntimeName')
-
-        if m.get('RuntimeStatus') is not None:
-            self.runtime_status = m.get('RuntimeStatus')
 
         if m.get('RuntimeType') is not None:
             self.runtime_type = m.get('RuntimeType')
 
         if m.get('UserVpc') is not None:
-            temp_model = main_models.RuntimeUserVpc()
+            temp_model = main_models.CreateRuntimeRequestUserVpc()
             self.user_vpc = temp_model.from_map(m.get('UserVpc'))
-
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
 
         if m.get('WorkDir') is not None:
             self.work_dir = m.get('WorkDir')
@@ -221,7 +165,7 @@ class Runtime(DaraModel):
 
         return self
 
-class RuntimeUserVpc(DaraModel):
+class CreateRuntimeRequestUserVpc(DaraModel):
     def __init__(
         self,
         default_route: str = None,
@@ -285,7 +229,7 @@ class RuntimeUserVpc(DaraModel):
 
         return self
 
-class RuntimeLabels(DaraModel):
+class CreateRuntimeRequestLabels(DaraModel):
     def __init__(
         self,
         key: str = None,
@@ -322,7 +266,7 @@ class RuntimeLabels(DaraModel):
 
         return self
 
-class RuntimeEnvs(DaraModel):
+class CreateRuntimeRequestEnvs(DaraModel):
     def __init__(
         self,
         key: str = None,
@@ -359,7 +303,7 @@ class RuntimeEnvs(DaraModel):
 
         return self
 
-class RuntimeEcsSpec(DaraModel):
+class CreateRuntimeRequestEcsSpec(DaraModel):
     def __init__(
         self,
         cpu: int = None,
@@ -441,7 +385,7 @@ class RuntimeEcsSpec(DaraModel):
 
         return self
 
-class RuntimeDataSources(DaraModel):
+class CreateRuntimeRequestDataSources(DaraModel):
     def __init__(
         self,
         dataset_id: str = None,
@@ -487,11 +431,11 @@ class RuntimeDataSources(DaraModel):
 
         return self
 
-class RuntimeCredentialConfig(DaraModel):
+class CreateRuntimeRequestCredentialConfig(DaraModel):
     def __init__(
         self,
         aliyun_env_role_key: str = None,
-        credential_config_items: List[main_models.RuntimeCredentialConfigCredentialConfigItems] = None,
+        credential_config_items: List[main_models.CreateRuntimeRequestCredentialConfigCredentialConfigItems] = None,
         enable_credential_inject: bool = None,
     ):
         # AliyunEnvRoleKey
@@ -533,7 +477,7 @@ class RuntimeCredentialConfig(DaraModel):
         self.credential_config_items = []
         if m.get('CredentialConfigItems') is not None:
             for k1 in m.get('CredentialConfigItems'):
-                temp_model = main_models.RuntimeCredentialConfigCredentialConfigItems()
+                temp_model = main_models.CreateRuntimeRequestCredentialConfigCredentialConfigItems()
                 self.credential_config_items.append(temp_model.from_map(k1))
 
         if m.get('EnableCredentialInject') is not None:
@@ -541,11 +485,11 @@ class RuntimeCredentialConfig(DaraModel):
 
         return self
 
-class RuntimeCredentialConfigCredentialConfigItems(DaraModel):
+class CreateRuntimeRequestCredentialConfigCredentialConfigItems(DaraModel):
     def __init__(
         self,
         key: str = None,
-        roles: List[main_models.RuntimeCredentialConfigCredentialConfigItemsRoles] = None,
+        roles: List[main_models.CreateRuntimeRequestCredentialConfigCredentialConfigItemsRoles] = None,
         type: str = None,
     ):
         # Key
@@ -587,7 +531,7 @@ class RuntimeCredentialConfigCredentialConfigItems(DaraModel):
         self.roles = []
         if m.get('Roles') is not None:
             for k1 in m.get('Roles'):
-                temp_model = main_models.RuntimeCredentialConfigCredentialConfigItemsRoles()
+                temp_model = main_models.CreateRuntimeRequestCredentialConfigCredentialConfigItemsRoles()
                 self.roles.append(temp_model.from_map(k1))
 
         if m.get('Type') is not None:
@@ -595,7 +539,7 @@ class RuntimeCredentialConfigCredentialConfigItems(DaraModel):
 
         return self
 
-class RuntimeCredentialConfigCredentialConfigItemsRoles(DaraModel):
+class CreateRuntimeRequestCredentialConfigCredentialConfigItemsRoles(DaraModel):
     def __init__(
         self,
         assume_role_for: str = None,

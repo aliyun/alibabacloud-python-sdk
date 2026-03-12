@@ -2,8 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
+from alibabacloud_pailangstudio20240710 import models as main_models
 from darabonba.model import DaraModel
 
 class FlowTemplate(DaraModel):
@@ -19,6 +20,7 @@ class FlowTemplate(DaraModel):
         flow_storage_path: str = None,
         flow_template_id: str = None,
         flow_type: str = None,
+        labels: List[main_models.FlowTemplateLabels] = None,
         locale: str = None,
         reference_count: int = None,
         template_group: str = None,
@@ -37,6 +39,7 @@ class FlowTemplate(DaraModel):
         self.flow_storage_path = flow_storage_path
         self.flow_template_id = flow_template_id
         self.flow_type = flow_type
+        self.labels = labels
         self.locale = locale
         self.reference_count = reference_count
         self.template_group = template_group
@@ -46,7 +49,10 @@ class FlowTemplate(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.labels:
+            for v1 in self.labels:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -82,6 +88,11 @@ class FlowTemplate(DaraModel):
 
         if self.flow_type is not None:
             result['FlowType'] = self.flow_type
+
+        result['Labels'] = []
+        if self.labels is not None:
+            for k1 in self.labels:
+                result['Labels'].append(k1.to_map() if k1 else None)
 
         if self.locale is not None:
             result['Locale'] = self.locale
@@ -138,6 +149,12 @@ class FlowTemplate(DaraModel):
         if m.get('FlowType') is not None:
             self.flow_type = m.get('FlowType')
 
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k1 in m.get('Labels'):
+                temp_model = main_models.FlowTemplateLabels()
+                self.labels.append(temp_model.from_map(k1))
+
         if m.get('Locale') is not None:
             self.locale = m.get('Locale')
 
@@ -158,6 +175,43 @@ class FlowTemplate(DaraModel):
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class FlowTemplateLabels(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # 标签Key
+        self.key = key
+        # 标签Value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

@@ -209,7 +209,7 @@ class KnowledgeBaseJobUserVpc(DaraModel):
         self.security_group_id = security_group_id
         # 交换机ID
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):

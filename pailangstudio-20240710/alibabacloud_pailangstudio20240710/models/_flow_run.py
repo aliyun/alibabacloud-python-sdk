@@ -506,14 +506,23 @@ class FlowRunEvaluationConfigs(DaraModel):
         self,
         data_column_mapping: Dict[str, str] = None,
         flow_source: main_models.FlowRunEvaluationConfigsFlowSource = None,
+        inputs: str = None,
         inputs_override_config: str = None,
+        name: str = None,
+        type: str = None,
     ):
         # 映射配置
         self.data_column_mapping = data_column_mapping
         # 应用流来源
         self.flow_source = flow_source
+        # 评测输入
+        self.inputs = inputs
         # 输入配置
         self.inputs_override_config = inputs_override_config
+        # 评测名称
+        self.name = name
+        # 评测类型
+        self.type = type
 
     def validate(self):
         if self.flow_source:
@@ -530,8 +539,17 @@ class FlowRunEvaluationConfigs(DaraModel):
         if self.flow_source is not None:
             result['FlowSource'] = self.flow_source.to_map()
 
+        if self.inputs is not None:
+            result['Inputs'] = self.inputs
+
         if self.inputs_override_config is not None:
             result['InputsOverrideConfig'] = self.inputs_override_config
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.type is not None:
+            result['Type'] = self.type
 
         return result
 
@@ -544,8 +562,17 @@ class FlowRunEvaluationConfigs(DaraModel):
             temp_model = main_models.FlowRunEvaluationConfigsFlowSource()
             self.flow_source = temp_model.from_map(m.get('FlowSource'))
 
+        if m.get('Inputs') is not None:
+            self.inputs = m.get('Inputs')
+
         if m.get('InputsOverrideConfig') is not None:
             self.inputs_override_config = m.get('InputsOverrideConfig')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

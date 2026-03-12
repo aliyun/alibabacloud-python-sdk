@@ -41,6 +41,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_deployment_with_options(
+        self,
+        request: main_models.CreateDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeploymentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.auto_approval):
+            body['AutoApproval'] = request.auto_approval
+        if not DaraCore.is_null(request.chat_history_config):
+            body['ChatHistoryConfig'] = request.chat_history_config
+        if not DaraCore.is_null(request.content_moderation_config):
+            body['ContentModerationConfig'] = request.content_moderation_config
+        if not DaraCore.is_null(request.deployment_config):
+            body['DeploymentConfig'] = request.deployment_config
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_trace):
+            body['EnableTrace'] = request.enable_trace
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_snapshot_id):
+            body['ResourceSnapshotId'] = request.resource_snapshot_id
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_name):
+            body['ServiceName'] = request.service_name
+        if not DaraCore.is_null(request.work_dir):
+            body['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeploymentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_deployment_with_options_async(
+        self,
+        request: main_models.CreateDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeploymentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.auto_approval):
+            body['AutoApproval'] = request.auto_approval
+        if not DaraCore.is_null(request.chat_history_config):
+            body['ChatHistoryConfig'] = request.chat_history_config
+        if not DaraCore.is_null(request.content_moderation_config):
+            body['ContentModerationConfig'] = request.content_moderation_config
+        if not DaraCore.is_null(request.deployment_config):
+            body['DeploymentConfig'] = request.deployment_config
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_trace):
+            body['EnableTrace'] = request.enable_trace
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_snapshot_id):
+            body['ResourceSnapshotId'] = request.resource_snapshot_id
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_name):
+            body['ServiceName'] = request.service_name
+        if not DaraCore.is_null(request.work_dir):
+            body['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeploymentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_deployment(
+        self,
+        request: main_models.CreateDeploymentRequest,
+    ) -> main_models.CreateDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_deployment_with_options(request, headers, runtime)
+
+    async def create_deployment_async(
+        self,
+        request: main_models.CreateDeploymentRequest,
+    ) -> main_models.CreateDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_deployment_with_options_async(request, headers, runtime)
+
     def create_knowledge_base_with_options(
         self,
         request: main_models.CreateKnowledgeBaseRequest,
@@ -277,6 +401,318 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_knowledge_base_job_with_options_async(knowledge_base_id, request, headers, runtime)
 
+    def create_runtime_with_options(
+        self,
+        request: main_models.CreateRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRuntimeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
+        if not DaraCore.is_null(request.data_sources):
+            body['DataSources'] = request.data_sources
+        if not DaraCore.is_null(request.ecs_spec):
+            body['EcsSpec'] = request.ecs_spec
+        if not DaraCore.is_null(request.envs):
+            body['Envs'] = request.envs
+        if not DaraCore.is_null(request.labels):
+            body['Labels'] = request.labels
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.run_timeout):
+            body['RunTimeout'] = request.run_timeout
+        if not DaraCore.is_null(request.runtime_name):
+            body['RuntimeName'] = request.runtime_name
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        if not DaraCore.is_null(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
+        if not DaraCore.is_null(request.work_dir):
+            body['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_runtime_with_options_async(
+        self,
+        request: main_models.CreateRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRuntimeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
+        if not DaraCore.is_null(request.data_sources):
+            body['DataSources'] = request.data_sources
+        if not DaraCore.is_null(request.ecs_spec):
+            body['EcsSpec'] = request.ecs_spec
+        if not DaraCore.is_null(request.envs):
+            body['Envs'] = request.envs
+        if not DaraCore.is_null(request.labels):
+            body['Labels'] = request.labels
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.run_timeout):
+            body['RunTimeout'] = request.run_timeout
+        if not DaraCore.is_null(request.runtime_name):
+            body['RuntimeName'] = request.runtime_name
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        if not DaraCore.is_null(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
+        if not DaraCore.is_null(request.work_dir):
+            body['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_runtime(
+        self,
+        request: main_models.CreateRuntimeRequest,
+    ) -> main_models.CreateRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_runtime_with_options(request, headers, runtime)
+
+    async def create_runtime_async(
+        self,
+        request: main_models.CreateRuntimeRequest,
+    ) -> main_models.CreateRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_runtime_with_options_async(request, headers, runtime)
+
+    def create_snapshot_with_options(
+        self,
+        request: main_models.CreateSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSnapshotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.creation_type):
+            body['CreationType'] = request.creation_type
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.snapshot_name):
+            body['SnapshotName'] = request.snapshot_name
+        if not DaraCore.is_null(request.snapshot_resource_id):
+            body['SnapshotResourceId'] = request.snapshot_resource_id
+        if not DaraCore.is_null(request.snapshot_resource_type):
+            body['SnapshotResourceType'] = request.snapshot_resource_type
+        if not DaraCore.is_null(request.source_storage_path):
+            body['SourceStoragePath'] = request.source_storage_path
+        if not DaraCore.is_null(request.work_dir):
+            body['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_snapshot_with_options_async(
+        self,
+        request: main_models.CreateSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSnapshotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.creation_type):
+            body['CreationType'] = request.creation_type
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.snapshot_name):
+            body['SnapshotName'] = request.snapshot_name
+        if not DaraCore.is_null(request.snapshot_resource_id):
+            body['SnapshotResourceId'] = request.snapshot_resource_id
+        if not DaraCore.is_null(request.snapshot_resource_type):
+            body['SnapshotResourceType'] = request.snapshot_resource_type
+        if not DaraCore.is_null(request.source_storage_path):
+            body['SourceStoragePath'] = request.source_storage_path
+        if not DaraCore.is_null(request.work_dir):
+            body['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_snapshot(
+        self,
+        request: main_models.CreateSnapshotRequest,
+    ) -> main_models.CreateSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_snapshot_with_options(request, headers, runtime)
+
+    async def create_snapshot_async(
+        self,
+        request: main_models.CreateSnapshotRequest,
+    ) -> main_models.CreateSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_snapshot_with_options_async(request, headers, runtime)
+
+    def delete_deployment_with_options(
+        self,
+        deployment_id: str,
+        request: main_models.DeleteDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeploymentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments/{DaraURL.percent_encode(deployment_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeploymentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_deployment_with_options_async(
+        self,
+        deployment_id: str,
+        request: main_models.DeleteDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeploymentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments/{DaraURL.percent_encode(deployment_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeploymentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_deployment(
+        self,
+        deployment_id: str,
+        request: main_models.DeleteDeploymentRequest,
+    ) -> main_models.DeleteDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_deployment_with_options(deployment_id, request, headers, runtime)
+
+    async def delete_deployment_async(
+        self,
+        deployment_id: str,
+        request: main_models.DeleteDeploymentRequest,
+    ) -> main_models.DeleteDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_deployment_with_options_async(deployment_id, request, headers, runtime)
+
     def delete_knowledge_base_with_options(
         self,
         knowledge_base_id: str,
@@ -440,6 +876,246 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_knowledge_base_job_with_options_async(knowledge_base_id, knowledge_base_job_id, request, headers, runtime)
+
+    def delete_runtime_with_options(
+        self,
+        runtime_id: str,
+        request: main_models.DeleteRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes/{DaraURL.percent_encode(runtime_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_runtime_with_options_async(
+        self,
+        runtime_id: str,
+        request: main_models.DeleteRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes/{DaraURL.percent_encode(runtime_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_runtime(
+        self,
+        runtime_id: str,
+        request: main_models.DeleteRuntimeRequest,
+    ) -> main_models.DeleteRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_runtime_with_options(runtime_id, request, headers, runtime)
+
+    async def delete_runtime_async(
+        self,
+        runtime_id: str,
+        request: main_models.DeleteRuntimeRequest,
+    ) -> main_models.DeleteRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_runtime_with_options_async(runtime_id, request, headers, runtime)
+
+    def delete_snapshot_with_options(
+        self,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snapshot_with_options_async(
+        self,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snapshot(
+        self,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+    ) -> main_models.DeleteSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_snapshot_with_options(snapshot_id, request, headers, runtime)
+
+    async def delete_snapshot_async(
+        self,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+    ) -> main_models.DeleteSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_snapshot_with_options_async(snapshot_id, request, headers, runtime)
+
+    def get_deployment_with_options(
+        self,
+        deployment_id: str,
+        request: main_models.GetDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeploymentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments/{DaraURL.percent_encode(deployment_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeploymentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deployment_with_options_async(
+        self,
+        deployment_id: str,
+        request: main_models.GetDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeploymentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments/{DaraURL.percent_encode(deployment_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeploymentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deployment(
+        self,
+        deployment_id: str,
+        request: main_models.GetDeploymentRequest,
+    ) -> main_models.GetDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_deployment_with_options(deployment_id, request, headers, runtime)
+
+    async def get_deployment_async(
+        self,
+        deployment_id: str,
+        request: main_models.GetDeploymentRequest,
+    ) -> main_models.GetDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_deployment_with_options_async(deployment_id, request, headers, runtime)
 
     def get_knowledge_base_with_options(
         self,
@@ -608,6 +1284,298 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_knowledge_base_job_with_options_async(knowledge_base_id, knowledge_base_job_id, request, headers, runtime)
+
+    def get_runtime_with_options(
+        self,
+        runtime_id: str,
+        request: main_models.GetRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes/{DaraURL.percent_encode(runtime_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_runtime_with_options_async(
+        self,
+        runtime_id: str,
+        request: main_models.GetRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes/{DaraURL.percent_encode(runtime_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_runtime(
+        self,
+        runtime_id: str,
+        request: main_models.GetRuntimeRequest,
+    ) -> main_models.GetRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_runtime_with_options(runtime_id, request, headers, runtime)
+
+    async def get_runtime_async(
+        self,
+        runtime_id: str,
+        request: main_models.GetRuntimeRequest,
+    ) -> main_models.GetRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_runtime_with_options_async(runtime_id, request, headers, runtime)
+
+    def get_snapshot_with_options(
+        self,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_snapshot_with_options_async(
+        self,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_snapshot(
+        self,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+    ) -> main_models.GetSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_snapshot_with_options(snapshot_id, request, headers, runtime)
+
+    async def get_snapshot_async(
+        self,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+    ) -> main_models.GetSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_snapshot_with_options_async(snapshot_id, request, headers, runtime)
+
+    def list_deployments_with_options(
+        self,
+        request: main_models.ListDeploymentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeploymentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.deployment_id):
+            query['DeploymentId'] = request.deployment_id
+        if not DaraCore.is_null(request.deployment_status):
+            query['DeploymentStatus'] = request.deployment_status
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_snapshot_id):
+            query['ResourceSnapshotId'] = request.resource_snapshot_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeployments',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeploymentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_deployments_with_options_async(
+        self,
+        request: main_models.ListDeploymentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeploymentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.deployment_id):
+            query['DeploymentId'] = request.deployment_id
+        if not DaraCore.is_null(request.deployment_status):
+            query['DeploymentStatus'] = request.deployment_status
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_snapshot_id):
+            query['ResourceSnapshotId'] = request.resource_snapshot_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeployments',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeploymentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_deployments(
+        self,
+        request: main_models.ListDeploymentsRequest,
+    ) -> main_models.ListDeploymentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_deployments_with_options(request, headers, runtime)
+
+    async def list_deployments_async(
+        self,
+        request: main_models.ListDeploymentsRequest,
+    ) -> main_models.ListDeploymentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_deployments_with_options_async(request, headers, runtime)
 
     def list_knowledge_base_chunks_with_options(
         self,
@@ -937,6 +1905,250 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_knowledge_bases_with_options_async(request, headers, runtime)
 
+    def list_runtimes_with_options(
+        self,
+        request: main_models.ListRuntimesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRuntimesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_name):
+            query['RuntimeName'] = request.runtime_name
+        if not DaraCore.is_null(request.runtime_status):
+            query['RuntimeStatus'] = request.runtime_status
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        if not DaraCore.is_null(request.work_dir):
+            query['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRuntimes',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRuntimesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_runtimes_with_options_async(
+        self,
+        request: main_models.ListRuntimesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRuntimesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_name):
+            query['RuntimeName'] = request.runtime_name
+        if not DaraCore.is_null(request.runtime_status):
+            query['RuntimeStatus'] = request.runtime_status
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        if not DaraCore.is_null(request.work_dir):
+            query['WorkDir'] = request.work_dir
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRuntimes',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRuntimesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_runtimes(
+        self,
+        request: main_models.ListRuntimesRequest,
+    ) -> main_models.ListRuntimesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_runtimes_with_options(request, headers, runtime)
+
+    async def list_runtimes_async(
+        self,
+        request: main_models.ListRuntimesRequest,
+    ) -> main_models.ListRuntimesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_runtimes_with_options_async(request, headers, runtime)
+
+    def list_snapshots_with_options(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creation_type):
+            query['CreationType'] = request.creation_type
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        if not DaraCore.is_null(request.snapshot_resource_id):
+            query['SnapshotResourceId'] = request.snapshot_resource_id
+        if not DaraCore.is_null(request.snapshot_resource_type):
+            query['SnapshotResourceType'] = request.snapshot_resource_type
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_snapshots_with_options_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creation_type):
+            query['CreationType'] = request.creation_type
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        if not DaraCore.is_null(request.snapshot_resource_id):
+            query['SnapshotResourceId'] = request.snapshot_resource_id
+        if not DaraCore.is_null(request.snapshot_resource_type):
+            query['SnapshotResourceType'] = request.snapshot_resource_type
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_snapshots(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_snapshots_with_options(request, headers, runtime)
+
+    async def list_snapshots_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_snapshots_with_options_async(request, headers, runtime)
+
     def retrieve_knowledge_base_with_options(
         self,
         knowledge_base_id: str,
@@ -1052,6 +2264,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.retrieve_knowledge_base_with_options_async(knowledge_base_id, request, headers, runtime)
+
+    def update_deployment_with_options(
+        self,
+        deployment_id: str,
+        request: main_models.UpdateDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeploymentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_approval):
+            body['AutoApproval'] = request.auto_approval
+        if not DaraCore.is_null(request.deployment_config):
+            body['DeploymentConfig'] = request.deployment_config
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.stage_action):
+            body['StageAction'] = request.stage_action
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments/{DaraURL.percent_encode(deployment_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeploymentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_deployment_with_options_async(
+        self,
+        deployment_id: str,
+        request: main_models.UpdateDeploymentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeploymentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_approval):
+            body['AutoApproval'] = request.auto_approval
+        if not DaraCore.is_null(request.deployment_config):
+            body['DeploymentConfig'] = request.deployment_config
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.stage_action):
+            body['StageAction'] = request.stage_action
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeployment',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/deployments/{DaraURL.percent_encode(deployment_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeploymentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_deployment(
+        self,
+        deployment_id: str,
+        request: main_models.UpdateDeploymentRequest,
+    ) -> main_models.UpdateDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_deployment_with_options(deployment_id, request, headers, runtime)
+
+    async def update_deployment_async(
+        self,
+        deployment_id: str,
+        request: main_models.UpdateDeploymentRequest,
+    ) -> main_models.UpdateDeploymentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_deployment_with_options_async(deployment_id, request, headers, runtime)
 
     def update_knowledge_base_with_options(
         self,
@@ -1328,3 +2636,183 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_knowledge_base_job_with_options_async(knowledge_base_id, knowledge_base_job_id, request, headers, runtime)
+
+    def update_runtime_with_options(
+        self,
+        runtime_id: str,
+        request: main_models.UpdateRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRuntimeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['Action'] = request.action
+        if not DaraCore.is_null(request.run_timeout):
+            body['RunTimeout'] = request.run_timeout
+        if not DaraCore.is_null(request.version):
+            body['Version'] = request.version
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes/{DaraURL.percent_encode(runtime_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_runtime_with_options_async(
+        self,
+        runtime_id: str,
+        request: main_models.UpdateRuntimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRuntimeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['Action'] = request.action
+        if not DaraCore.is_null(request.run_timeout):
+            body['RunTimeout'] = request.run_timeout
+        if not DaraCore.is_null(request.version):
+            body['Version'] = request.version
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRuntime',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/runtimes/{DaraURL.percent_encode(runtime_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_runtime(
+        self,
+        runtime_id: str,
+        request: main_models.UpdateRuntimeRequest,
+    ) -> main_models.UpdateRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_runtime_with_options(runtime_id, request, headers, runtime)
+
+    async def update_runtime_async(
+        self,
+        runtime_id: str,
+        request: main_models.UpdateRuntimeRequest,
+    ) -> main_models.UpdateRuntimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_runtime_with_options_async(runtime_id, request, headers, runtime)
+
+    def update_snapshot_with_options(
+        self,
+        snapshot_id: str,
+        request: main_models.UpdateSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSnapshotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.snapshot_name):
+            body['SnapshotName'] = request.snapshot_name
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_snapshot_with_options_async(
+        self,
+        snapshot_id: str,
+        request: main_models.UpdateSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSnapshotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.snapshot_name):
+            body['SnapshotName'] = request.snapshot_name
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSnapshot',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_snapshot(
+        self,
+        snapshot_id: str,
+        request: main_models.UpdateSnapshotRequest,
+    ) -> main_models.UpdateSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_snapshot_with_options(snapshot_id, request, headers, runtime)
+
+    async def update_snapshot_async(
+        self,
+        snapshot_id: str,
+        request: main_models.UpdateSnapshotRequest,
+    ) -> main_models.UpdateSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_snapshot_with_options_async(snapshot_id, request, headers, runtime)
