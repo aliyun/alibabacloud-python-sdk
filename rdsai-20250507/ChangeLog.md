@@ -1,3 +1,12 @@
+2026-03-12 Version: 2.3.1
+- Update API CreateInspectionTask: add request parameters ReportLanguage.
+- Update API CreateScheduledTask: add request parameters ReportLanguage.
+- Update API GetScheduledReports: add response parameters Body.Reports.$.ReportLanguage.
+- Update API GetStandAloneReports: add response parameters Body.Reports.$.ReportLanguage.
+- Update API ListScheduledTasks: add response parameters Body.Schedules.$.ReportLanguage.
+- Update API ModifyScheduledTask: add request parameters ReportLanguage.
+
+
 2026-02-27 Version: 2.3.0
 - Support API CreateSkill.
 - Support API DeleteSkill.

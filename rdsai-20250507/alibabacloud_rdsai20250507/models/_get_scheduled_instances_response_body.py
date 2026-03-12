@@ -18,12 +18,19 @@ class GetScheduledInstancesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of instances included in the inspection configuration.
         self.instances = instances
+        # The response message.
         self.message = message
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of records on each page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -99,10 +106,15 @@ class GetScheduledInstancesResponseBodyInstances(DaraModel):
         region: str = None,
         status: str = None,
     ):
+        # The engine type.
         self.engine_type = engine_type
+        # The instance description.
         self.instance_desc = instance_desc
+        # The instance ID.
         self.instance_id = instance_id
+        # The region in which the instance resides.
         self.region = region
+        # The status of the instance.
         self.status = status
 
     def validate(self):

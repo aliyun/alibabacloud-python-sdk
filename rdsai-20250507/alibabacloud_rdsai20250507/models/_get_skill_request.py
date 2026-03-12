@@ -10,7 +10,15 @@ class GetSkillRequest(DaraModel):
         language: str = None,
         skill_id: str = None,
     ):
+        # The languages supported by the skill. Valid values:
+        # 
+        # *   zh-CN: Simplified Chinese
+        # *   zh-TW: Traditional Chinese
+        # *   en-US: English
+        # *   ja-JP: Japanese
         self.language = language
+        # The unique identifier of the skill.
+        # 
         # This parameter is required.
         self.skill_id = skill_id
 

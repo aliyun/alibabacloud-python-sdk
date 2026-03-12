@@ -549,6 +549,8 @@ class Client(OpenApiClient):
             query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -583,6 +585,8 @@ class Client(OpenApiClient):
             query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -633,6 +637,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.time_range):
@@ -671,6 +677,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.time_range):
@@ -3423,6 +3431,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
         if not DaraCore.is_null(request.scheduled_id):
             query['ScheduledId'] = request.scheduled_id
         if not DaraCore.is_null(request.start_time):
@@ -3463,6 +3473,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
         if not DaraCore.is_null(request.scheduled_id):
             query['ScheduledId'] = request.scheduled_id
         if not DaraCore.is_null(request.start_time):

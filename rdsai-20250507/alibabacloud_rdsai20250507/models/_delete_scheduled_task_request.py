@@ -9,6 +9,8 @@ class DeleteScheduledTaskRequest(DaraModel):
         self,
         scheduled_id: str = None,
     ):
+        # The ID of the scheduled inspection configuration.
+        # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
 

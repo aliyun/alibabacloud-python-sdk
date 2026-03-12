@@ -18,13 +18,21 @@ class CreateSkillResponseBody(DaraModel):
         request_id: str = None,
         skill_type: str = None,
     ):
+        # The database engine-specific content.
         self.content = content
+        # The creation time of the skill.
         self.created_at = created_at
+        # The list of database engines.
         self.dbtypes = dbtypes
+        # The description of the skill.
         self.description = description
+        # The unique identifier of the skill.
         self.id = id
+        # The name of the skill.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The type of the skill.
         self.skill_type = skill_type
 
     def validate(self):

@@ -11,8 +11,16 @@ class ListSkillRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The languages supported by the skills.
+        # 
+        # *   zh-CN: Simplified Chinese
+        # *   zh-TW: Traditional Chinese
+        # *   en-US: English
+        # *   ja-JP: Japanese
         self.language = language
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of records to return on each page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

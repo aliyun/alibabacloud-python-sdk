@@ -12,9 +12,13 @@ class CreateScheduledTaskResponseBody(DaraModel):
         scheduled_id: str = None,
         success: bool = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ID of the scheduled inspection configuration.
         self.scheduled_id = scheduled_id
+        # The returned results.
         self.success = success
 
     def validate(self):

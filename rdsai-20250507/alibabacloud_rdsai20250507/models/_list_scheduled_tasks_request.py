@@ -11,8 +11,11 @@ class ListScheduledTasksRequest(DaraModel):
         page_size: int = None,
         scheduled_id: str = None,
     ):
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of records on each page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The ID of the scheduled inspection configuration.
         self.scheduled_id = scheduled_id
 
     def validate(self):

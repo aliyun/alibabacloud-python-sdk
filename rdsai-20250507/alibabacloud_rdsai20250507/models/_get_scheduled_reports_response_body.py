@@ -18,12 +18,19 @@ class GetScheduledReportsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The response message.
         self.message = message
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of reports returned on each page.
         self.page_size = page_size
+        # The details of the report.
         self.reports = reports
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of returned reports.
         self.total_count = total_count
 
     def validate(self):
@@ -95,14 +102,21 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
         self,
         created_time: str = None,
         end_time: str = None,
+        report_language: str = None,
         start_time: str = None,
         status: str = None,
         task_id: str = None,
     ):
+        # The creation time of the task.
         self.created_time = created_time
+        # The end time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
+        self.report_language = report_language
+        # The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
+        # The status of the task.
         self.status = status
+        # The ID of the report.
         self.task_id = task_id
 
     def validate(self):
@@ -118,6 +132,9 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.report_language is not None:
+            result['ReportLanguage'] = self.report_language
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -137,6 +154,9 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('ReportLanguage') is not None:
+            self.report_language = m.get('ReportLanguage')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

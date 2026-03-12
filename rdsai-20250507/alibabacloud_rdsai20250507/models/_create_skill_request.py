@@ -14,11 +14,18 @@ class CreateSkillRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # The content of the skill.
         self.content = content
+        # The list of database engines.
+        # 
         # This parameter is required.
         self.dbtypes = dbtypes
+        # The description of the skill. It can be up to 1000 characters in length.
+        # 
         # This parameter is required.
         self.description = description
+        # The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+        # 
         # This parameter is required.
         self.name = name
 

@@ -13,11 +13,17 @@ class GetScheduledReportsRequest(DaraModel):
         scheduled_id: str = None,
         start_time: str = None,
     ):
+        # The task end time based on which the reports are filtered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. If you leave this parameter unspecified, all reports are returned.
         self.end_time = end_time
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of reports returned on each page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The inspection task ID.
+        # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
+        # The task start time based on which the reports are filtered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. If you leave this parameter unspecified, all reports are returned.
         self.start_time = start_time
 
     def validate(self):

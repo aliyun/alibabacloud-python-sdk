@@ -16,10 +16,15 @@ class ListSkillResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of skills.
         self.data = data
+        # The current page number.
         self.page_number = page_number
+        # The number of records returned on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of returned records.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,21 @@ class ListSkillResponseBodyData(DaraModel):
         skill_type: str = None,
         updated_at: str = None,
     ):
+        # The content of the skill.
         self.content = content
+        # The creation time of the skill.
         self.created_at = created_at
+        # The list of database engines.
         self.dbtypes = dbtypes
+        # The description of the skill.
         self.description = description
+        # The unique identifier of the skill.
         self.id = id
+        # The name of the skill.
         self.name = name
+        # The type of the skill.
         self.skill_type = skill_type
+        # The update time of the skill.
         self.updated_at = updated_at
 
     def validate(self):

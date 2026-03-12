@@ -11,17 +11,38 @@ class ModifyScheduledTaskRequest(DaraModel):
         frequency: str = None,
         instance_ids: str = None,
         name: str = None,
+        report_language: str = None,
         scheduled_id: str = None,
         start_time: str = None,
         time_range: str = None,
     ):
+        # The description of the new inspection configuration.
         self.description = description
+        # The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # 
+        # *   DAILY
+        # *   Monday
+        # *   Tuesday
+        # *   Wednesday
+        # *   Thursday
+        # *   Friday
+        # *   Saturday
+        # *   Sunday
+        # 
+        # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend will use DAILY as the inspection frequency.
         self.frequency = frequency
+        # The new list of related instances. Separate multiple instances with commas (,).
         self.instance_ids = instance_ids
+        # The name of the new inspection configuration.
         self.name = name
+        self.report_language = report_language
+        # The ID of the scheduled inspection configuration.
+        # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
+        # The new execution time of the inspection task. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
         self.time_range = time_range
 
     def validate(self):
@@ -43,6 +64,9 @@ class ModifyScheduledTaskRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.report_language is not None:
+            result['ReportLanguage'] = self.report_language
 
         if self.scheduled_id is not None:
             result['ScheduledId'] = self.scheduled_id
@@ -68,6 +92,9 @@ class ModifyScheduledTaskRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('ReportLanguage') is not None:
+            self.report_language = m.get('ReportLanguage')
 
         if m.get('ScheduledId') is not None:
             self.scheduled_id = m.get('ScheduledId')

@@ -9,6 +9,8 @@ class DeleteSkillRequest(DaraModel):
         self,
         skill_id: str = None,
     ):
+        # The unique identifier of the skill.
+        # 
         # This parameter is required.
         self.skill_id = skill_id
 
