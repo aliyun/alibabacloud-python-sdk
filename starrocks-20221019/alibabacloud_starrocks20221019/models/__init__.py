@@ -18,6 +18,12 @@ from ._create_service_linked_role_response import CreateServiceLinkedRoleRespons
 from ._delete_gateway_request import DeleteGatewayRequest
 from ._delete_gateway_response_body import DeleteGatewayResponseBody
 from ._delete_gateway_response import DeleteGatewayResponse
+from ._describe_config_history_request import DescribeConfigHistoryRequest
+from ._describe_config_history_response_body import DescribeConfigHistoryResponseBody
+from ._describe_config_history_response import DescribeConfigHistoryResponse
+from ._describe_instance_configs_request import DescribeInstanceConfigsRequest
+from ._describe_instance_configs_response_body import DescribeInstanceConfigsResponseBody
+from ._describe_instance_configs_response import DescribeInstanceConfigsResponse
 from ._describe_instances_request import DescribeInstancesRequest
 from ._describe_instances_shrink_request import DescribeInstancesShrinkRequest
 from ._describe_instances_response_body import DescribeInstancesResponseBody
@@ -61,6 +67,12 @@ from ._modify_disk_size_response import ModifyDiskSizeResponse
 from ._modify_disk_type_request import ModifyDiskTypeRequest
 from ._modify_disk_type_response_body import ModifyDiskTypeResponseBody
 from ._modify_disk_type_response import ModifyDiskTypeResponse
+from ._modify_instance_config_request import ModifyInstanceConfigRequest
+from ._modify_instance_config_response_body import ModifyInstanceConfigResponseBody
+from ._modify_instance_config_response import ModifyInstanceConfigResponse
+from ._modify_instance_config_pre_check_request import ModifyInstanceConfigPreCheckRequest
+from ._modify_instance_config_pre_check_response_body import ModifyInstanceConfigPreCheckResponseBody
+from ._modify_instance_config_pre_check_response import ModifyInstanceConfigPreCheckResponse
 from ._modify_node_number_request import ModifyNodeNumberRequest
 from ._modify_node_number_response_body import ModifyNodeNumberResponseBody
 from ._modify_node_number_response import ModifyNodeNumberResponse
@@ -88,6 +100,9 @@ from ._restore_instance_response import RestoreInstanceResponse
 from ._resume_instance_request import ResumeInstanceRequest
 from ._resume_instance_response_body import ResumeInstanceResponseBody
 from ._resume_instance_response import ResumeInstanceResponse
+from ._rollback_config_modification_request import RollbackConfigModificationRequest
+from ._rollback_config_modification_response_body import RollbackConfigModificationResponseBody
+from ._rollback_config_modification_response import RollbackConfigModificationResponse
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
@@ -114,6 +129,10 @@ from ._create_instance_v1request import CreateInstanceV1RequestObserverNodeGroup
 from ._create_instance_v1request import CreateInstanceV1RequestTags
 from ._create_instance_v1request import CreateInstanceV1RequestVSwitches
 from ._create_instance_v1response_body import CreateInstanceV1ResponseBodyData
+from ._describe_config_history_response_body import DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails
+from ._describe_config_history_response_body import DescribeConfigHistoryResponseBodyDataConfigMementos
+from ._describe_config_history_response_body import DescribeConfigHistoryResponseBodyData
+from ._describe_instance_configs_response_body import DescribeInstanceConfigsResponseBodyData
 from ._describe_instances_request import DescribeInstancesRequestTag
 from ._describe_instances_response_body import DescribeInstancesResponseBodyDataTags
 from ._describe_instances_response_body import DescribeInstancesResponseBodyDataVSwitches
@@ -149,6 +168,12 @@ __all__ = [
     DeleteGatewayRequest,
     DeleteGatewayResponseBody,
     DeleteGatewayResponse,
+    DescribeConfigHistoryRequest,
+    DescribeConfigHistoryResponseBody,
+    DescribeConfigHistoryResponse,
+    DescribeInstanceConfigsRequest,
+    DescribeInstanceConfigsResponseBody,
+    DescribeInstanceConfigsResponse,
     DescribeInstancesRequest,
     DescribeInstancesShrinkRequest,
     DescribeInstancesResponseBody,
@@ -192,6 +217,12 @@ __all__ = [
     ModifyDiskTypeRequest,
     ModifyDiskTypeResponseBody,
     ModifyDiskTypeResponse,
+    ModifyInstanceConfigRequest,
+    ModifyInstanceConfigResponseBody,
+    ModifyInstanceConfigResponse,
+    ModifyInstanceConfigPreCheckRequest,
+    ModifyInstanceConfigPreCheckResponseBody,
+    ModifyInstanceConfigPreCheckResponse,
     ModifyNodeNumberRequest,
     ModifyNodeNumberResponseBody,
     ModifyNodeNumberResponse,
@@ -219,6 +250,9 @@ __all__ = [
     ResumeInstanceRequest,
     ResumeInstanceResponseBody,
     ResumeInstanceResponse,
+    RollbackConfigModificationRequest,
+    RollbackConfigModificationResponseBody,
+    RollbackConfigModificationResponse,
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
@@ -245,6 +279,10 @@ __all__ = [
     CreateInstanceV1RequestTags,
     CreateInstanceV1RequestVSwitches,
     CreateInstanceV1ResponseBodyData,
+    DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails,
+    DescribeConfigHistoryResponseBodyDataConfigMementos,
+    DescribeConfigHistoryResponseBodyData,
+    DescribeInstanceConfigsResponseBodyData,
     DescribeInstancesRequestTag,
     DescribeInstancesResponseBodyDataTags,
     DescribeInstancesResponseBodyDataVSwitches,

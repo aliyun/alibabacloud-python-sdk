@@ -546,6 +546,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_gateway_with_options_async(request, headers, runtime)
 
+    def describe_config_history_with_options(
+        self,
+        request: main_models.DescribeConfigHistoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConfigHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.effect_statuses):
+            query['EffectStatuses'] = request.effect_statuses
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.need_total):
+            query['NeedTotal'] = request.need_total
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConfigHistory',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/describeConfigHistory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConfigHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_config_history_with_options_async(
+        self,
+        request: main_models.DescribeConfigHistoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConfigHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.effect_statuses):
+            query['EffectStatuses'] = request.effect_statuses
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.need_total):
+            query['NeedTotal'] = request.need_total
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConfigHistory',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/describeConfigHistory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConfigHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_config_history(
+        self,
+        request: main_models.DescribeConfigHistoryRequest,
+    ) -> main_models.DescribeConfigHistoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_config_history_with_options(request, headers, runtime)
+
+    async def describe_config_history_async(
+        self,
+        request: main_models.DescribeConfigHistoryRequest,
+    ) -> main_models.DescribeConfigHistoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_config_history_with_options_async(request, headers, runtime)
+
+    def describe_instance_configs_with_options(
+        self,
+        request: main_models.DescribeInstanceConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_modify):
+            query['AllowModify'] = request.allow_modify
+        if not DaraCore.is_null(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not DaraCore.is_null(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.need_total):
+            query['NeedTotal'] = request.need_total
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceConfigs',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/describeInstanceConfigs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_configs_with_options_async(
+        self,
+        request: main_models.DescribeInstanceConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_modify):
+            query['AllowModify'] = request.allow_modify
+        if not DaraCore.is_null(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not DaraCore.is_null(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.need_total):
+            query['NeedTotal'] = request.need_total
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceConfigs',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/describeInstanceConfigs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_configs(
+        self,
+        request: main_models.DescribeInstanceConfigsRequest,
+    ) -> main_models.DescribeInstanceConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_instance_configs_with_options(request, headers, runtime)
+
+    async def describe_instance_configs_async(
+        self,
+        request: main_models.DescribeInstanceConfigsRequest,
+    ) -> main_models.DescribeInstanceConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_instance_configs_with_options_async(request, headers, runtime)
+
     def describe_instances_with_options(
         self,
         tmp_req: main_models.DescribeInstancesRequest,
@@ -1810,6 +2018,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_disk_type_with_options_async(request, headers, runtime)
 
+    def modify_instance_config_with_options(
+        self,
+        request: main_models.ModifyInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_config_list):
+            query['AddConfigList'] = request.add_config_list
+        if not DaraCore.is_null(request.config_list):
+            query['ConfigList'] = request.config_list
+        if not DaraCore.is_null(request.delete_config_list):
+            query['DeleteConfigList'] = request.delete_config_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reason):
+            query['Reason'] = request.reason
+        body = {}
+        if not DaraCore.is_null(request.configs_to_add):
+            body['configsToAdd'] = request.configs_to_add
+        if not DaraCore.is_null(request.configs_to_delete):
+            body['configsToDelete'] = request.configs_to_delete
+        if not DaraCore.is_null(request.configs_to_update):
+            body['configsToUpdate'] = request.configs_to_update
+        if not DaraCore.is_null(request.fast_mode):
+            body['fastMode'] = request.fast_mode
+        if not DaraCore.is_null(request.restart):
+            body['restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceConfig',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/modifyInstanceConfig',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_config_with_options_async(
+        self,
+        request: main_models.ModifyInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_config_list):
+            query['AddConfigList'] = request.add_config_list
+        if not DaraCore.is_null(request.config_list):
+            query['ConfigList'] = request.config_list
+        if not DaraCore.is_null(request.delete_config_list):
+            query['DeleteConfigList'] = request.delete_config_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reason):
+            query['Reason'] = request.reason
+        body = {}
+        if not DaraCore.is_null(request.configs_to_add):
+            body['configsToAdd'] = request.configs_to_add
+        if not DaraCore.is_null(request.configs_to_delete):
+            body['configsToDelete'] = request.configs_to_delete
+        if not DaraCore.is_null(request.configs_to_update):
+            body['configsToUpdate'] = request.configs_to_update
+        if not DaraCore.is_null(request.fast_mode):
+            body['fastMode'] = request.fast_mode
+        if not DaraCore.is_null(request.restart):
+            body['restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceConfig',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/modifyInstanceConfig',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_config(
+        self,
+        request: main_models.ModifyInstanceConfigRequest,
+    ) -> main_models.ModifyInstanceConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_instance_config_with_options(request, headers, runtime)
+
+    async def modify_instance_config_async(
+        self,
+        request: main_models.ModifyInstanceConfigRequest,
+    ) -> main_models.ModifyInstanceConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_instance_config_with_options_async(request, headers, runtime)
+
+    def modify_instance_config_pre_check_with_options(
+        self,
+        request: main_models.ModifyInstanceConfigPreCheckRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceConfigPreCheckResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.configs_to_add):
+            body['configsToAdd'] = request.configs_to_add
+        if not DaraCore.is_null(request.configs_to_delete):
+            body['configsToDelete'] = request.configs_to_delete
+        if not DaraCore.is_null(request.configs_to_update):
+            body['configsToUpdate'] = request.configs_to_update
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceConfigPreCheck',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/modifyInstanceConfigPreCheck',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceConfigPreCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_config_pre_check_with_options_async(
+        self,
+        request: main_models.ModifyInstanceConfigPreCheckRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceConfigPreCheckResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.configs_to_add):
+            body['configsToAdd'] = request.configs_to_add
+        if not DaraCore.is_null(request.configs_to_delete):
+            body['configsToDelete'] = request.configs_to_delete
+        if not DaraCore.is_null(request.configs_to_update):
+            body['configsToUpdate'] = request.configs_to_update
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceConfigPreCheck',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/modifyInstanceConfigPreCheck',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceConfigPreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_config_pre_check(
+        self,
+        request: main_models.ModifyInstanceConfigPreCheckRequest,
+    ) -> main_models.ModifyInstanceConfigPreCheckResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_instance_config_pre_check_with_options(request, headers, runtime)
+
+    async def modify_instance_config_pre_check_async(
+        self,
+        request: main_models.ModifyInstanceConfigPreCheckRequest,
+    ) -> main_models.ModifyInstanceConfigPreCheckResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_instance_config_pre_check_with_options_async(request, headers, runtime)
+
     def modify_node_number_with_options(
         self,
         request: main_models.ModifyNodeNumberRequest,
@@ -2589,6 +3005,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.resume_instance_with_options_async(request, headers, runtime)
+
+    def rollback_config_modification_with_options(
+        self,
+        request: main_models.RollbackConfigModificationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackConfigModificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_history_id):
+            query['ConfigHistoryId'] = request.config_history_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackConfigModification',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/rollbackConfigModification',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackConfigModificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_config_modification_with_options_async(
+        self,
+        request: main_models.RollbackConfigModificationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackConfigModificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_history_id):
+            query['ConfigHistoryId'] = request.config_history_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackConfigModification',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/config/rollbackConfigModification',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackConfigModificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_config_modification(
+        self,
+        request: main_models.RollbackConfigModificationRequest,
+    ) -> main_models.RollbackConfigModificationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.rollback_config_modification_with_options(request, headers, runtime)
+
+    async def rollback_config_modification_async(
+        self,
+        request: main_models.RollbackConfigModificationRequest,
+    ) -> main_models.RollbackConfigModificationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.rollback_config_modification_with_options_async(request, headers, runtime)
 
     def tag_resources_with_options(
         self,

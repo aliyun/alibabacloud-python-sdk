@@ -1,3 +1,11 @@
+2026-03-12 Version: 1.4.0
+- Support API DescribeConfigHistory.
+- Support API DescribeInstanceConfigs.
+- Support API ModifyInstanceConfig.
+- Support API ModifyInstanceConfigPreCheck.
+- Support API RollbackConfigModification.
+
+
 2026-02-27 Version: 1.3.2
 - Update API DescribeNodeGroups: add request parameters body.tags.
 
