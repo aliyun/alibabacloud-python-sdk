@@ -1,3 +1,6 @@
+2026-03-12 Version: 2.12.1
+- Generated python 2020-01-16 for DAS.
+
 2026-03-03 Version: 2.12.0
 - Support API GetYaoChiAgent.
 
