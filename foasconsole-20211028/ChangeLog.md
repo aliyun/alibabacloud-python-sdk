@@ -1,3 +1,6 @@
+2026-03-12 Version: 2.2.1
+- Generated python 2021-10-28 for foasconsole.
+
 2026-01-12 Version: 2.2.0
 - Support API ModifyInstanceSpec.
 - Update API DescribeInstances: add request parameters Elastic.
