@@ -1,0 +1,131 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._check_domain_request import CheckDomainRequest
+from ._check_domain_response_body import CheckDomainResponseBody
+from ._check_domain_response import CheckDomainResponse
+from ._delete_contact_template_request import DeleteContactTemplateRequest
+from ._delete_contact_template_response_body import DeleteContactTemplateResponseBody
+from ._delete_contact_template_response import DeleteContactTemplateResponse
+from ._query_batch_task_detail_list_request import QueryBatchTaskDetailListRequest
+from ._query_batch_task_detail_list_response_body import QueryBatchTaskDetailListResponseBody
+from ._query_batch_task_detail_list_response import QueryBatchTaskDetailListResponse
+from ._query_batch_task_list_request import QueryBatchTaskListRequest
+from ._query_batch_task_list_response_body import QueryBatchTaskListResponseBody
+from ._query_batch_task_list_response import QueryBatchTaskListResponse
+from ._query_contact_request import QueryContactRequest
+from ._query_contact_response_body import QueryContactResponseBody
+from ._query_contact_response import QueryContactResponse
+from ._query_contact_template_request import QueryContactTemplateRequest
+from ._query_contact_template_response_body import QueryContactTemplateResponseBody
+from ._query_contact_template_response import QueryContactTemplateResponse
+from ._query_domain_by_sale_id_request import QueryDomainBySaleIdRequest
+from ._query_domain_by_sale_id_response_body import QueryDomainBySaleIdResponseBody
+from ._query_domain_by_sale_id_response import QueryDomainBySaleIdResponse
+from ._query_domain_list_request import QueryDomainListRequest
+from ._query_domain_list_response_body import QueryDomainListResponseBody
+from ._query_domain_list_response import QueryDomainListResponse
+from ._query_fail_reason_list_request import QueryFailReasonListRequest
+from ._query_fail_reason_list_response_body import QueryFailReasonListResponseBody
+from ._query_fail_reason_list_response import QueryFailReasonListResponse
+from ._save_contact_template_request import SaveContactTemplateRequest
+from ._save_contact_template_response_body import SaveContactTemplateResponseBody
+from ._save_contact_template_response import SaveContactTemplateResponse
+from ._save_contact_template_credential_request import SaveContactTemplateCredentialRequest
+from ._save_contact_template_credential_response_body import SaveContactTemplateCredentialResponseBody
+from ._save_contact_template_credential_response import SaveContactTemplateCredentialResponse
+from ._save_task_for_modifying_domain_dns_request import SaveTaskForModifyingDomainDnsRequest
+from ._save_task_for_modifying_domain_dns_response_body import SaveTaskForModifyingDomainDnsResponseBody
+from ._save_task_for_modifying_domain_dns_response import SaveTaskForModifyingDomainDnsResponse
+from ._save_task_for_submitting_domain_name_credential_request import SaveTaskForSubmittingDomainNameCredentialRequest
+from ._save_task_for_submitting_domain_name_credential_response_body import SaveTaskForSubmittingDomainNameCredentialResponseBody
+from ._save_task_for_submitting_domain_name_credential_response import SaveTaskForSubmittingDomainNameCredentialResponse
+from ._save_task_for_submitting_domain_name_credential_by_template_id_request import SaveTaskForSubmittingDomainNameCredentialByTemplateIdRequest
+from ._save_task_for_submitting_domain_name_credential_by_template_id_response_body import SaveTaskForSubmittingDomainNameCredentialByTemplateIdResponseBody
+from ._save_task_for_submitting_domain_name_credential_by_template_id_response import SaveTaskForSubmittingDomainNameCredentialByTemplateIdResponse
+from ._save_task_for_updating_contact_by_tempate_id_request import SaveTaskForUpdatingContactByTempateIdRequest
+from ._save_task_for_updating_contact_by_tempate_id_response_body import SaveTaskForUpdatingContactByTempateIdResponseBody
+from ._save_task_for_updating_contact_by_tempate_id_response import SaveTaskForUpdatingContactByTempateIdResponse
+from ._save_task_for_updating_contact_by_template_id_request import SaveTaskForUpdatingContactByTemplateIdRequest
+from ._save_task_for_updating_contact_by_template_id_response_body import SaveTaskForUpdatingContactByTemplateIdResponseBody
+from ._save_task_for_updating_contact_by_template_id_response import SaveTaskForUpdatingContactByTemplateIdResponse
+from ._whois_protection_request import WhoisProtectionRequest
+from ._whois_protection_response_body import WhoisProtectionResponseBody
+from ._whois_protection_response import WhoisProtectionResponse
+from ._query_batch_task_detail_list_response_body import QueryBatchTaskDetailListResponseBodyDataTaskDetail
+from ._query_batch_task_detail_list_response_body import QueryBatchTaskDetailListResponseBodyData
+from ._query_batch_task_list_response_body import QueryBatchTaskListResponseBodyDataTaskInfo
+from ._query_batch_task_list_response_body import QueryBatchTaskListResponseBodyData
+from ._query_contact_template_response_body import QueryContactTemplateResponseBodyContactTemplatesContactTemplate
+from ._query_contact_template_response_body import QueryContactTemplateResponseBodyContactTemplates
+from ._query_domain_by_sale_id_response_body import QueryDomainBySaleIdResponseBodyDnsList
+from ._query_domain_list_response_body import QueryDomainListResponseBodyDataDomain
+from ._query_domain_list_response_body import QueryDomainListResponseBodyData
+from ._query_fail_reason_list_response_body import QueryFailReasonListResponseBodyDataFailRecord
+from ._query_fail_reason_list_response_body import QueryFailReasonListResponseBodyData
+
+__all__ = [
+    CheckDomainRequest,
+    CheckDomainResponseBody,
+    CheckDomainResponse,
+    DeleteContactTemplateRequest,
+    DeleteContactTemplateResponseBody,
+    DeleteContactTemplateResponse,
+    QueryBatchTaskDetailListRequest,
+    QueryBatchTaskDetailListResponseBody,
+    QueryBatchTaskDetailListResponse,
+    QueryBatchTaskListRequest,
+    QueryBatchTaskListResponseBody,
+    QueryBatchTaskListResponse,
+    QueryContactRequest,
+    QueryContactResponseBody,
+    QueryContactResponse,
+    QueryContactTemplateRequest,
+    QueryContactTemplateResponseBody,
+    QueryContactTemplateResponse,
+    QueryDomainBySaleIdRequest,
+    QueryDomainBySaleIdResponseBody,
+    QueryDomainBySaleIdResponse,
+    QueryDomainListRequest,
+    QueryDomainListResponseBody,
+    QueryDomainListResponse,
+    QueryFailReasonListRequest,
+    QueryFailReasonListResponseBody,
+    QueryFailReasonListResponse,
+    SaveContactTemplateRequest,
+    SaveContactTemplateResponseBody,
+    SaveContactTemplateResponse,
+    SaveContactTemplateCredentialRequest,
+    SaveContactTemplateCredentialResponseBody,
+    SaveContactTemplateCredentialResponse,
+    SaveTaskForModifyingDomainDnsRequest,
+    SaveTaskForModifyingDomainDnsResponseBody,
+    SaveTaskForModifyingDomainDnsResponse,
+    SaveTaskForSubmittingDomainNameCredentialRequest,
+    SaveTaskForSubmittingDomainNameCredentialResponseBody,
+    SaveTaskForSubmittingDomainNameCredentialResponse,
+    SaveTaskForSubmittingDomainNameCredentialByTemplateIdRequest,
+    SaveTaskForSubmittingDomainNameCredentialByTemplateIdResponseBody,
+    SaveTaskForSubmittingDomainNameCredentialByTemplateIdResponse,
+    SaveTaskForUpdatingContactByTempateIdRequest,
+    SaveTaskForUpdatingContactByTempateIdResponseBody,
+    SaveTaskForUpdatingContactByTempateIdResponse,
+    SaveTaskForUpdatingContactByTemplateIdRequest,
+    SaveTaskForUpdatingContactByTemplateIdResponseBody,
+    SaveTaskForUpdatingContactByTemplateIdResponse,
+    WhoisProtectionRequest,
+    WhoisProtectionResponseBody,
+    WhoisProtectionResponse,
+    QueryBatchTaskDetailListResponseBodyDataTaskDetail,
+    QueryBatchTaskDetailListResponseBodyData,
+    QueryBatchTaskListResponseBodyDataTaskInfo,
+    QueryBatchTaskListResponseBodyData,
+    QueryContactTemplateResponseBodyContactTemplatesContactTemplate,
+    QueryContactTemplateResponseBodyContactTemplates,
+    QueryDomainBySaleIdResponseBodyDnsList,
+    QueryDomainListResponseBodyDataDomain,
+    QueryDomainListResponseBodyData,
+    QueryFailReasonListResponseBodyDataFailRecord,
+    QueryFailReasonListResponseBodyData
+]
