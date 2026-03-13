@@ -1,3 +1,7 @@
+2026-03-13 Version: 0.4.0
+- Support API GenerateEvaluationReport.
+
+
 2025-12-03 Version: 0.3.10
 - Update API ListEvaluationMetricDetails: add request parameters Date.
 - Update API ListEvaluationMetricDetails: add response parameters Body.Date.
