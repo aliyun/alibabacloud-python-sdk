@@ -13,8 +13,11 @@ class GetResourceTagsOutput(DaraModel):
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
+        # The name of the resource type. Valid values: ALIYUN::FC::FUNCTION and ALIYUN::FC::SERVICE. The former name is used in Function Compute 3.0, and the latter name is used in earlier versions of Function Compute.
         self.resouce_type = resouce_type
+        # The Alibaba Cloud Resource Name (ARN) of the resource.
         self.resource_arn = resource_arn
+        # The tag dictionary.
         self.tags = tags
 
     def validate(self):

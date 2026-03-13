@@ -10,7 +10,9 @@ class RegistryCertConfig(DaraModel):
         insecure: bool = None,
         root_ca_cert_base_64: str = None,
     ):
+        # Whether to skip certificate verification.
         self.insecure = insecure
+        # The certificate authority (CA) certificate of the image repository.
         self.root_ca_cert_base_64 = root_ca_cert_base_64
 
     def validate(self):

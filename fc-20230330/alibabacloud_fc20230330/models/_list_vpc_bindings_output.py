@@ -11,6 +11,7 @@ class ListVpcBindingsOutput(DaraModel):
         self,
         vpc_ids: List[str] = None,
     ):
+        # The VPC IDs.
         self.vpc_ids = vpc_ids
 
     def validate(self):

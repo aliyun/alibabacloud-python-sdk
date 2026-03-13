@@ -9,6 +9,7 @@ class PublishVersionInput(DaraModel):
         self,
         description: str = None,
     ):
+        # The description of the layer version.
         self.description = description
 
     def validate(self):

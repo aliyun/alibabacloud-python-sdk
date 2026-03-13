@@ -15,14 +15,42 @@ class CreateTriggerInput(DaraModel):
         trigger_name: str = None,
         trigger_type: str = None,
     ):
+        # The description of the trigger.
         self.description = description
+        # The RAM role that is used by the event source such as Object Storage Service (OSS) to invoke the function.
         self.invocation_role = invocation_role
+        # The version or alias of the function.
         self.qualifier = qualifier
+        # The Alibaba Cloud Resource Name (ARN) of the trigger event source.
         self.source_arn = source_arn
+        # The configurations of the trigger. The configurations vary based on the trigger type. The following items list the data structures for different types of triggers:
+        # 
+        # *   OSS triggers: [OSSTriggerConfig](https://help.aliyun.com/document_detail/2766465.html).
+        # *   Simple Log Service trigger: [LogTriggerConfig](https://help.aliyun.com/document_detail/2618711.html).
+        # *   Time triggers: [TimerTriggerConfig](https://help.aliyun.com/document_detail/2754638.html).
+        # *   HTTP triggers: [HTTPTriggerConfig](https://help.aliyun.com/document_detail/2766461.html).
+        # *   Tablestore triggers: Specify the **SourceArnm** parameter and leave this parameter empty.
+        # *   Alibaba Cloud CDN event triggers: [CDNEventsTriggerConfig](https://help.aliyun.com/document_detail/2766462.html).
+        # *   MNS topic triggers: [MnsTopicTriggerConfig](https://help.aliyun.com/document_detail/2766464.html).
+        # *   EventBridge-based triggers: [EventBridgeTriggerConfig](https://help.aliyun.com/document_detail/2766447.html).
+        # 
         # This parameter is required.
         self.trigger_config = trigger_config
+        # The name of the trigger. The name can contain only letters, digits, hyphens (-), and underscores (_). The name must be 1 to 128 characters in length and cannot start with a digit or a hyphen (-).
+        # 
         # This parameter is required.
         self.trigger_name = trigger_name
+        # The type of the trigger. Valid values:
+        # 
+        # *   **oss**: OSS event triggers. For more information, see [Overview](https://help.aliyun.com/document_detail/2513613.html).
+        # *   **log**: Simple Log Service triggers. For more information, see [Simple Log Service triggers](https://help.aliyun.com/document_detail/2513638.html).
+        # *   **timer**: time triggers. For more information, see [Time triggers](https://help.aliyun.com/document_detail/2513611.html).
+        # *   **http**: HTTP triggers. For more information, see [Overview](https://help.aliyun.com/document_detail/2513634.html).
+        # *   **tablestore**: Tablestore triggers. For more information, see [Tablestore triggers](https://help.aliyun.com/document_detail/2513640.html).
+        # *   **cdn_events**: CDN event triggers. For more information, see [Overview](https://help.aliyun.com/document_detail/2513636.html).
+        # *   **mns_topic**: Message Service (MNS) topic triggers. For more information, see [MNS topic triggers](https://help.aliyun.com/document_detail/2513641.html).
+        # *   **eventbridge**: EventBridge-based triggers.
+        # 
         # This parameter is required.
         self.trigger_type = trigger_type
 

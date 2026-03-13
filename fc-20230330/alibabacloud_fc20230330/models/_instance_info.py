@@ -17,10 +17,12 @@ class InstanceInfo(DaraModel):
     ):
         self.created_time_ms = created_time_ms
         self.destroyed_time_ms = destroyed_time_ms
+        # The instance ID.
         self.instance_id = instance_id
         self.qualifier = qualifier
         self.resource_type = resource_type
         self.status = status
+        # The version of the function to which the instance belongs. If the instance belongs to the LATEST alias, 0 is returned as the version.
         self.version_id = version_id
 
     def validate(self):

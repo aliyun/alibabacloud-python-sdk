@@ -11,10 +11,16 @@ class CertConfig(DaraModel):
         certificate: str = None,
         private_key: str = None,
     ):
+        # The name of the certificate.
+        # 
         # This parameter is required.
         self.cert_name = cert_name
+        # The certificate in the .pem format.
+        # 
         # This parameter is required.
         self.certificate = certificate
+        # The private key in the .pem format.
+        # 
         # This parameter is required.
         self.private_key = private_key
 

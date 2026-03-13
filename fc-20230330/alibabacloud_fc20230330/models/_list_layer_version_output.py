@@ -13,7 +13,9 @@ class ListLayerVersionOutput(DaraModel):
         layers: List[main_models.Layer] = None,
         next_version: int = None,
     ):
+        # The list of layer versions.
         self.layers = layers
+        # The next version, which is used to return more results.
         self.next_version = next_version
 
     def validate(self):

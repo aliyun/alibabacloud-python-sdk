@@ -12,9 +12,13 @@ class UpdateTriggerInput(DaraModel):
         qualifier: str = None,
         trigger_config: str = None,
     ):
+        # The description of the trigger.
         self.description = description
+        # The role that is used by the event source such as object Storage Service (OSS) to invoke the function.
         self.invocation_role = invocation_role
+        # The version or alias of the service to which the function belongs.
         self.qualifier = qualifier
+        # The configuration of the trigger. The configuration vary based on the trigger type.
         self.trigger_config = trigger_config
 
     def validate(self):

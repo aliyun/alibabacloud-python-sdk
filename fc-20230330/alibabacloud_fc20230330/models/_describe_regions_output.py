@@ -12,6 +12,7 @@ class DescribeRegionsOutput(DaraModel):
         self,
         regions: main_models.DescribeRegionsOutputRegions = None,
     ):
+        # The region information.
         self.regions = regions
 
     def validate(self):
@@ -41,6 +42,7 @@ class DescribeRegionsOutputRegions(DaraModel):
         self,
         region: List[main_models.DescribeRegionsOutputRegionsRegion] = None,
     ):
+        # The collection of region information.
         self.region = region
 
     def validate(self):
@@ -79,7 +81,9 @@ class DescribeRegionsOutputRegionsRegion(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The region name.
         self.local_name = local_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

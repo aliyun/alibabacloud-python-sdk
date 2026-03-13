@@ -12,9 +12,13 @@ class InputCodeLocation(DaraModel):
         oss_object_name: str = None,
         zip_file: str = None,
     ):
+        # The CRC-64 value of the function code package. If checksum is provided, Function Compute checks whether the checksum of the code package is the same as that provided.
         self.checksum = checksum
+        # The name of the OSS bucket where the ZIP package of the function code is stored.
         self.oss_bucket_name = oss_bucket_name
+        # The name of the OSS object where the ZIP package of the function code is stored.
         self.oss_object_name = oss_object_name
+        # The ZIP package of the function code that is encoded in Base64 format.
         self.zip_file = zip_file
 
     def validate(self):

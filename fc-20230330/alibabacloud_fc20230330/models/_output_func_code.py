@@ -10,7 +10,9 @@ class OutputFuncCode(DaraModel):
         checksum: str = None,
         url: str = None,
     ):
+        # The CRC-64 value of the function code package.
         self.checksum = checksum
+        # The URL of the function code package.
         self.url = url
 
     def validate(self):

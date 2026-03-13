@@ -22,17 +22,29 @@ class Layer(DaraModel):
         license: str = None,
         version: int = None,
     ):
+        # The permission of the layer. Valid value: 0 and 1. 0 specifies that the layer is private, and 1 specifies that the layer is public. By default, public layers are public. Custom layers can be set to private or public.
         self.acl = acl
+        # The information about the code package of the layer.
         self.code = code
+        # The crc64 verification code of the layer code package, which is calculated based on ECMA-182.
         self.code_checksum = code_checksum
+        # The size of the layer code package. Unit: bytes.
         self.code_size = code_size
+        # The runtimes that are supported by the layer.
         self.compatible_runtime = compatible_runtime
+        # The time when the layer version was created.
         self.create_time = create_time
+        # The description of the layer version.
         self.description = description
+        # The name of the layer.
+        # 
         # This parameter is required.
         self.layer_name = layer_name
+        # The name of the resource in the layer version. The name is in the acs:fc:{region}:{accountID}:layers/{layerName}/versions/{layerVersion} format.
         self.layer_version_arn = layer_version_arn
+        # The license agreement.
         self.license = license
+        # The layer version.
         self.version = version
 
     def validate(self):

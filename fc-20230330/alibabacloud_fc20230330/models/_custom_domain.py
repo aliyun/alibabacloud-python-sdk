@@ -12,6 +12,7 @@ class CustomDomain(DaraModel):
         api_version: str = None,
         auth_config: main_models.AuthConfig = None,
         cert_config: main_models.CertConfig = None,
+        cors_config: main_models.CORSConfig = None,
         created_time: str = None,
         domain_name: str = None,
         last_modified_time: str = None,
@@ -21,17 +22,30 @@ class CustomDomain(DaraModel):
         tls_config: main_models.TLSConfig = None,
         waf_config: main_models.WAFConfig = None,
     ):
+        # The ID of your Alibaba Cloud account.
         self.account_id = account_id
+        # The version of the Function Compute API.
         self.api_version = api_version
+        # The configuration of permission authentication.
         self.auth_config = auth_config
+        # The configuration of the HTTPS certificate.
         self.cert_config = cert_config
+        self.cors_config = cors_config
+        # The time when the custom domain name was created.
         self.created_time = created_time
+        # The domain name.
         self.domain_name = domain_name
+        # The time when the custom domain name was last updated.
         self.last_modified_time = last_modified_time
+        # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
         self.protocol = protocol
+        # The route table that maps paths to functions when the function is invoked by using the custom domain name.
         self.route_config = route_config
+        # The number of added subdomains.
         self.subdomain_count = subdomain_count
+        # The Transport Layer Security (TLS) configuration.
         self.tls_config = tls_config
+        # The Web Application Firewall (WAF) configuration.
         self.waf_config = waf_config
 
     def validate(self):
@@ -39,6 +53,8 @@ class CustomDomain(DaraModel):
             self.auth_config.validate()
         if self.cert_config:
             self.cert_config.validate()
+        if self.cors_config:
+            self.cors_config.validate()
         if self.route_config:
             self.route_config.validate()
         if self.tls_config:
@@ -62,6 +78,9 @@ class CustomDomain(DaraModel):
 
         if self.cert_config is not None:
             result['certConfig'] = self.cert_config.to_map()
+
+        if self.cors_config is not None:
+            result['corsConfig'] = self.cors_config.to_map()
 
         if self.created_time is not None:
             result['createdTime'] = self.created_time
@@ -104,6 +123,10 @@ class CustomDomain(DaraModel):
         if m.get('certConfig') is not None:
             temp_model = main_models.CertConfig()
             self.cert_config = temp_model.from_map(m.get('certConfig'))
+
+        if m.get('corsConfig') is not None:
+            temp_model = main_models.CORSConfig()
+            self.cors_config = temp_model.from_map(m.get('corsConfig'))
 
         if m.get('createdTime') is not None:
             self.created_time = m.get('createdTime')

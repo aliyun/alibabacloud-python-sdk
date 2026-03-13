@@ -14,8 +14,11 @@ class ListVersionsOutput(DaraModel):
         next_token: str = None,
         versions: List[main_models.Version] = None,
     ):
+        # The sorting method of versions.
         self.direction = direction
+        # The ID of the next version.
         self.next_token = next_token
+        # The version IDs.
         self.versions = versions
 
     def validate(self):

@@ -14,10 +14,16 @@ class CreateAliasInput(DaraModel):
         description: str = None,
         version_id: str = None,
     ):
+        # The weight of the canary release version.
         self.additional_version_weight = additional_version_weight
+        # The alias.
+        # 
         # This parameter is required.
         self.alias_name = alias_name
+        # The description of the alias.
         self.description = description
+        # The version to which the alias points.
+        # 
         # This parameter is required.
         self.version_id = version_id
 

@@ -13,6 +13,7 @@ class ListInstancesOutput(DaraModel):
         instances: List[main_models.InstanceInfo] = None,
         request_id: str = None,
     ):
+        # public
         self.instances = instances
         self.request_id = request_id
 

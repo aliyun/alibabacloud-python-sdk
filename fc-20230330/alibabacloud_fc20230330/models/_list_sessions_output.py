@@ -13,7 +13,9 @@ class ListSessionsOutput(DaraModel):
         next_token: str = None,
         sessions: List[main_models.Session] = None,
     ):
+        # The starting position for the next session list query.
         self.next_token = next_token
+        # The list of sessions.
         self.sessions = sessions
 
     def validate(self):

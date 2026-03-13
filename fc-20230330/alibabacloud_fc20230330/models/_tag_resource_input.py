@@ -12,8 +12,12 @@ class TagResourceInput(DaraModel):
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
+        # The resource descriptor.
+        # 
         # This parameter is required.
         self.resource_arn = resource_arn
+        # The tag dictionary.
+        # 
         # This parameter is required.
         self.tags = tags
 

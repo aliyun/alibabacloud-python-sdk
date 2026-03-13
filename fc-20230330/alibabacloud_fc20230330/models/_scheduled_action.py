@@ -14,14 +14,23 @@ class ScheduledAction(DaraModel):
         target: int = None,
         time_zone: str = None,
     ):
+        # The time when the policy expires.
         self.end_time = end_time
+        # The policy name.
+        # 
         # This parameter is required.
         self.name = name
+        # The schedule expression.
+        # 
         # This parameter is required.
         self.schedule_expression = schedule_expression
+        # The time when the policy takes effect.
         self.start_time = start_time
+        # The number of target provisioned instances.
+        # 
         # This parameter is required.
         self.target = target
+        # The time zone. If the time zone parameter is empty, the value of startTime, endTime, and scheduleExpression must be in UTC format.
         self.time_zone = time_zone
 
     def validate(self):

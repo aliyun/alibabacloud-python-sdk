@@ -16,13 +16,21 @@ class SourceDTSParameters(DaraModel):
         topic: str = None,
         username: str = None,
     ):
+        # The network address and port number of the change tracking instance.
         self.broker_url = broker_url
+        # The UNIX timestamp that is generated when the SDK client consumes the first data record.
         self.init_check_point = init_check_point
+        # The consumer group password.
         self.password = password
+        # The region of the DTS instance.
         self.region_id = region_id
+        # The consumer group ID.
         self.sid = sid
+        # The task ID.
         self.task_id = task_id
+        # The name of the tracked topic of the change tracking instance.
         self.topic = topic
+        # The account of the consumer group.
         self.username = username
 
     def validate(self):

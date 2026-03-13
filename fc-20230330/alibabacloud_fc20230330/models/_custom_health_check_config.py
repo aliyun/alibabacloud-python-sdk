@@ -14,11 +14,17 @@ class CustomHealthCheckConfig(DaraModel):
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
+        # The threshold for health check failures. When this value is reached, the system considers the health check failed. Valid values: 1 to 120. Default value: 3.
         self.failure_threshold = failure_threshold
+        # The health check URL of the custom container. The URL can be up to 2,048 characters in length.
         self.http_get_url = http_get_url
+        # The delay between the container startup and the health check. Valid values: 0 to 120. Default value: 0.
         self.initial_delay_seconds = initial_delay_seconds
+        # The health check period. Valid values: 1 to 120. Default value: 3.
         self.period_seconds = period_seconds
+        # The threshold for health check successes. When this value is reached, the system considers the health check successful. Valid values: 1 to 120. Default value: 1.
         self.success_threshold = success_threshold
+        # The timeout period of the health check. Unit: seconds. Valid values: 1 to 3. Default value: 1.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

@@ -13,9 +13,13 @@ class PutAsyncInvokeConfigInput(DaraModel):
         max_async_event_age_in_seconds: int = None,
         max_async_retry_attempts: int = None,
     ):
+        # Optional. Specify whether to enable the asynchronous task feature.
         self.async_task = async_task
+        # Optional. The struct of the destination of asynchronous invocations.
         self.destination_config = destination_config
+        # Optional. The maximum validity period of a message. Valid values: [1,604800]. Default value: 86400. Unit: seconds.
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
+        # Optional. The maximum number of retries if an asynchronous invocation fails. Valid values: [0,8]. If you do not configure this parameter, the default number of retries is 3.
         self.max_async_retry_attempts = max_async_retry_attempts
 
     def validate(self):

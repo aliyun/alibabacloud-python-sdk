@@ -16,11 +16,17 @@ class Alias(DaraModel):
         last_modified_time: str = None,
         version_id: str = None,
     ):
+        # The weight of the canary release version.
         self.additional_version_weight = additional_version_weight
+        # The name of the alias.
         self.alias_name = alias_name
+        # The time when the alias was created.
         self.created_time = created_time
+        # The description of the alias.
         self.description = description
+        # The time when the alias was modified.
         self.last_modified_time = last_modified_time
+        # The version to which the alias points.
         self.version_id = version_id
 
     def validate(self):

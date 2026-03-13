@@ -14,9 +14,13 @@ class VPCConfig(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The RAM role that is assumed by Function Compute to access VPC.
         self.role = role
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The list of vSwitches.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

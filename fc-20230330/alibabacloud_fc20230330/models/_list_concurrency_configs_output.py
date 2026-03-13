@@ -13,7 +13,9 @@ class ListConcurrencyConfigsOutput(DaraModel):
         configs: List[main_models.ConcurrencyConfig] = None,
         next_token: str = None,
     ):
+        # The list of concurrency configurations.
         self.configs = configs
+        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, all the concurrency configurations are returned.
         self.next_token = next_token
 
     def validate(self):

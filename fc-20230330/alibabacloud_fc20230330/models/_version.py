@@ -12,9 +12,13 @@ class Version(DaraModel):
         last_modified_time: str = None,
         version_id: str = None,
     ):
+        # The time when the version was created.
         self.created_time = created_time
+        # The description of the layer version.
         self.description = description
+        # The time when the version was last updated.
         self.last_modified_time = last_modified_time
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):

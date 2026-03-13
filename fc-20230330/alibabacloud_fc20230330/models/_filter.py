@@ -10,6 +10,7 @@ class Filter(DaraModel):
         self,
         key: main_models.Key = None,
     ):
+        # The description of the event filtering rule.
         self.key = key
 
     def validate(self):

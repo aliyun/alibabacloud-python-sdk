@@ -14,9 +14,13 @@ class CDNTriggerConfig(DaraModel):
         filter: Dict[str, List[str]] = None,
         notes: str = None,
     ):
+        # The name of the trigger event. For more information, see [CDN events](https://help.aliyun.com/document_detail/2513636.html).
         self.event_name = event_name
+        # The version of the trigger event. Only the 1.0.0 event version is supported.
         self.event_version = event_version
+        # The details of the event filtering rules.
         self.filter = filter
+        # The description of the trigger.
         self.notes = notes
 
     def validate(self):

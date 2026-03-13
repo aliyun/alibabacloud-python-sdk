@@ -13,9 +13,14 @@ class TLSConfig(DaraModel):
         max_version: str = None,
         min_version: str = None,
     ):
+        # The TLS cipher suites.
+        # 
         # This parameter is required.
         self.cipher_suites = cipher_suites
+        # The maximum TLS version. Valid values: TLSv1.3 and TLSv1.2.
         self.max_version = max_version
+        # The minimum TLS version. Valid values: TLSv1.3 and TLSv1.2.
+        # 
         # This parameter is required.
         self.min_version = min_version
 

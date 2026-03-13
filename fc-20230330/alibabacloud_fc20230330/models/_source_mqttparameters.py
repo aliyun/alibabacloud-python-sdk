@@ -11,8 +11,11 @@ class SourceMQTTParameters(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT instance.
         self.instance_id = instance_id
+        # The region in which the ApsaraMQ for MQTT instance resides.
         self.region_id = region_id
+        # The name of the topic in the ApsaraMQ for MQTT instance.
         self.topic = topic
 
     def validate(self):

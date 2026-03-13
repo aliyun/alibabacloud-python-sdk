@@ -10,6 +10,7 @@ class EventSinkConfig(DaraModel):
         self,
         delivery_option: main_models.DeliveryOption = None,
     ):
+        # The event push configurations.
         self.delivery_option = delivery_option
 
     def validate(self):

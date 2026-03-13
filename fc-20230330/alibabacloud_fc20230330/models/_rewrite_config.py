@@ -14,8 +14,11 @@ class RewriteConfig(DaraModel):
         regex_rules: List[main_models.RegexRule] = None,
         wildcard_rules: List[main_models.WildcardRule] = None,
     ):
+        # The exact match rules.
         self.equal_rules = equal_rules
+        # The regex matching rules.
         self.regex_rules = regex_rules
+        # The wildcard matching rules.
         self.wildcard_rules = wildcard_rules
 
     def validate(self):

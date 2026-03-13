@@ -12,9 +12,13 @@ class SourceRabbitMQParameters(DaraModel):
         region_id: str = None,
         virtual_host_name: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The queue name of the ApsaraMQ for RabbitMQ instance.
         self.queue_name = queue_name
+        # The region in which the ApsaraMQ for RabbitMQ instance resides.
         self.region_id = region_id
+        # The vhost name of the ApsaraMQ for RabbitMQ instance.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):

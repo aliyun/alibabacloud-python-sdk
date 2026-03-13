@@ -25,22 +25,39 @@ class SourceRocketMQParameters(DaraModel):
         timestamp: int = None,
         topic: str = None,
     ):
+        # The authentication type. Set the value to ACL or leave the value empty. The value ACL indicates that authentication is enabled. In this case, you must specify InstanceUsername and InstancePassword.
         self.auth_type = auth_type
+        # The message filter type.
         self.filter_type = filter_type
+        # The ID of the consumer group of the ApsaraMQ for RocketMQ instance.
         self.group_id = group_id
+        # The information about the endpoint of the ApsaraMQ for RocketMQ instance.
         self.instance_endpoint = instance_endpoint
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.instance_id = instance_id
+        # The network type.
         self.instance_network = instance_network
+        # The password of the ApsaraMQ for RocketMQ instance.
         self.instance_password = instance_password
+        # The security group ID.
         self.instance_security_group_id = instance_security_group_id
+        # The type of ApsaraMQ for RocketMQ instance.
         self.instance_type = instance_type
+        # The username of the ApsaraMQ for RocketMQ instance. If you use the Internet, you must configure the username and password of the instance in the SDK code for authentication.
         self.instance_username = instance_username
+        # The ID of the vSwitch associated with the instance.
         self.instance_vswitch_ids = instance_vswitch_ids
+        # The ID of the virtual private cloud (VPC) associated with the instance.
         self.instance_vpc_id = instance_vpc_id
+        # The consumer offset of the message. CONSUME_FROM_LAST_OFFSET: consumes messages from the latest offset. This is the default value. CONSUME_FROM_FIRST_OFFSET: consumes messages from the earliest offset. CONSUME_FROM_TIMESTAMP: consumes messages from the offset at the specified point in time.
         self.offset = offset
+        # The region to which the ApsaraMQ for RocketMQ queue belongs.
         self.region_id = region_id
+        # The tags that are used to filter messages.
         self.tag = tag
+        # The timestamp. This parameter is valid only when you set Offset to CONSUME_FROM_TIMESTAMP.
         self.timestamp = timestamp
+        # The name of the topic in the ApsaraMQ for RocketMQ instance.
         self.topic = topic
 
     def validate(self):

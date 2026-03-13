@@ -12,9 +12,23 @@ class AsyncTaskEvent(DaraModel):
         status: str = None,
         timestamp: int = None,
     ):
+        # The details of the event payload.
         self.event_detail = event_detail
+        # The event ID.
         self.event_id = event_id
+        # The state of the event.
+        # 
+        # *   Enqueued: The asynchronous invocation is enqueued and is waiting to be executed.
+        # *   Succeeded: The invocation is successful.
+        # *   Failed: The invocation fails.
+        # *   Running: The invocation is being executed.
+        # *   Stopped: The invocation is terminated.
+        # *   Stopping: The invocation is being terminated.
+        # *   Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
+        # *   Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period of has elapsed.
+        # *   Retrying: The asynchronous invocation is being retried due to an execution error.
         self.status = status
+        # The timestamp when the event occurred. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

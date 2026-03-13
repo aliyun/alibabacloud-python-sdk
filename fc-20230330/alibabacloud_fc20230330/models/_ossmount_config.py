@@ -12,6 +12,7 @@ class OSSMountConfig(DaraModel):
         self,
         mount_points: List[main_models.OSSMountPoint] = None,
     ):
+        # The OSS mount targets.
         self.mount_points = mount_points
 
     def validate(self):

@@ -14,7 +14,9 @@ class LifecycleHook(DaraModel):
         timeout: int = None,
     ):
         self.command = command
+        # The handler of the hook. The definition is similar to that of a request handler.
         self.handler = handler
+        # The timeout period of the hook. Unit: seconds.
         self.timeout = timeout
 
     def validate(self):

@@ -11,8 +11,11 @@ class NASMountConfig(DaraModel):
         mount_dir: str = None,
         server_addr: str = None,
     ):
+        # Specifies whether to use the Transport Layer Security (TLS) protocol to secure data transmission. Note: Only General-purpose NAS supports transmission encryption.
         self.enable_tls = enable_tls
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # The address of a NAS server.
         self.server_addr = server_addr
 
     def validate(self):

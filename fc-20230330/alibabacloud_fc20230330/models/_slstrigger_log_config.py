@@ -10,7 +10,9 @@ class SLSTriggerLogConfig(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
+        # The name of the Logstore. Exceptions and function execution statistics during function triggering are recorded in the Logstore.
         self.logstore = logstore
+        # The name of the project. Exceptions that occur during function triggering and execution statistics are recorded in the Logstore under the project.
         self.project = project
 
     def validate(self):

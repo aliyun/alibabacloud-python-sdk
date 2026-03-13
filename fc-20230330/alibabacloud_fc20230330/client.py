@@ -4300,6 +4300,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_vpc_bindings_with_options_async(function_name, headers, runtime)
 
+    def pause_session_with_options(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.PauseSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSession',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/sessions/{DaraURL.percent_encode(session_id)}/pause',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_session_with_options_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.PauseSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSession',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/sessions/{DaraURL.percent_encode(session_id)}/pause',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_session(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.PauseSessionRequest,
+    ) -> main_models.PauseSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.pause_session_with_options(function_name, session_id, request, headers, runtime)
+
+    async def pause_session_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.PauseSessionRequest,
+    ) -> main_models.PauseSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.pause_session_with_options_async(function_name, session_id, request, headers, runtime)
+
     def publish_function_version_with_options(
         self,
         function_name: str,
@@ -4777,6 +4861,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.put_scaling_config_with_options_async(function_name, request, headers, runtime)
+
+    def resume_session_with_options(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.ResumeSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSession',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/sessions/{DaraURL.percent_encode(session_id)}/resume',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_session_with_options_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.ResumeSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSession',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/sessions/{DaraURL.percent_encode(session_id)}/resume',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_session(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.ResumeSessionRequest,
+    ) -> main_models.ResumeSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resume_session_with_options(function_name, session_id, request, headers, runtime)
+
+    async def resume_session_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: main_models.ResumeSessionRequest,
+    ) -> main_models.ResumeSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resume_session_with_options_async(function_name, session_id, request, headers, runtime)
 
     def stop_async_task_with_options(
         self,

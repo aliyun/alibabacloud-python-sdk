@@ -17,14 +17,23 @@ class SourceKafkaParameters(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
+        # The group ID of the consumer that subscribes to the topic.
         self.consumer_group = consumer_group
+        # The ID of the EventBridge instance.
         self.instance_id = instance_id
+        # The network type. Default value: Default. The value PublicNetwork specifies a virtual private cloud (VPC) network.
         self.network = network
+        # The offset. earliest: consumes messages from the earliest offset. latest: consumes messages from the latest offset.
         self.offset_reset = offset_reset
+        # The region in which the ApsaraMQ for Kafka instance resides.
         self.region_id = region_id
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The name of the topic in the ApsaraMQ for Kafka instance.
         self.topic = topic
+        # The ID of the vSwitch.
         self.v_switch_ids = v_switch_ids
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

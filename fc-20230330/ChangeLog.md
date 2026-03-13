@@ -1,3 +1,8 @@
+2026-03-13 Version: 4.7.0
+- Support API PauseSession.
+- Support API ResumeSession.
+
+
 2026-01-16 Version: 4.6.7
 - Generated python 2023-03-30 for FC.
 

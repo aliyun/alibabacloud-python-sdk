@@ -4,13 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class Destination(DaraModel):
+class PauseSessionRequest(DaraModel):
     def __init__(
         self,
-        destination: str = None,
+        qualifier: str = None,
     ):
-        # The descriptor of the destination for the asynchronous invocation.
-        self.destination = destination
+        self.qualifier = qualifier
 
     def validate(self):
         pass
@@ -20,15 +19,15 @@ class Destination(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.destination is not None:
-            result['destination'] = self.destination
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('destination') is not None:
-            self.destination = m.get('destination')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
 
         return self
 

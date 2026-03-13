@@ -15,11 +15,17 @@ class EventSourceParameters(DaraModel):
         source_rabbit_mqparameters: main_models.SourceRabbitMQParameters = None,
         source_rocket_mqparameters: main_models.SourceRocketMQParameters = None,
     ):
+        # The custom configurations when the event source is Data Transmission Service (DTS).
         self.source_dtsparameters = source_dtsparameters
+        # The custom configurations when the event source is ApsaraMQ for Kafka.
         self.source_kafka_parameters = source_kafka_parameters
+        # The custom configurations when the event source is Simple Message Queue (formerly MNS).
         self.source_mnsparameters = source_mnsparameters
+        # The custom configurations when the event source is ApsaraMQ for MQTT.
         self.source_mqttparameters = source_mqttparameters
+        # The custom configurations when the event source is ApsaraMQ for RabbitMQ.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
+        # The custom configurations when the event source is ApsaraMQ for RocketMQ.
         self.source_rocket_mqparameters = source_rocket_mqparameters
 
     def validate(self):

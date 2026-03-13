@@ -10,7 +10,9 @@ class OutputCodeLocation(DaraModel):
         location: str = None,
         repository_type: str = None,
     ):
+        # The address of the code package.
         self.location = location
+        # The type of the code package.
         self.repository_type = repository_type
 
     def validate(self):

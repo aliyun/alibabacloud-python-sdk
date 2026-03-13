@@ -16,12 +16,19 @@ class AsyncConfig(DaraModel):
         max_async_event_age_in_seconds: int = None,
         max_async_retry_attempts: int = None,
     ):
+        # Specifies whether to enable the asynchronous task feature.
         self.async_task = async_task
+        # The time when the asynchronous invocation configuration was created.
         self.created_time = created_time
+        # The destination configuration.
         self.destination_config = destination_config
+        # The Alibaba Cloud Resource Name (ARN) of the function.
         self.function_arn = function_arn
+        # The time when the asynchronous invocation was last modified.
         self.last_modified_time = last_modified_time
+        # The maximum time to live (TTL) value of an event.
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
+        # The number of times when an asynchronous invocation is retried.
         self.max_async_retry_attempts = max_async_retry_attempts
 
     def validate(self):

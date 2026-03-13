@@ -10,16 +10,24 @@ class UpdateCustomDomainInput(DaraModel):
         self,
         auth_config: main_models.AuthConfig = None,
         cert_config: main_models.CertConfig = None,
+        cors_config: main_models.CORSConfig = None,
         protocol: str = None,
         route_config: main_models.RouteConfig = None,
         tls_config: main_models.TLSConfig = None,
         waf_config: main_models.WAFConfig = None,
     ):
+        # The configuration of permission authentication.
         self.auth_config = auth_config
+        # The configuration of the HTTPS certificate.
         self.cert_config = cert_config
+        self.cors_config = cors_config
+        # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
         self.protocol = protocol
+        # The route table that maps paths to functions when the function is invoked by using the custom domain name.
         self.route_config = route_config
+        # The Transport Layer Security (TLS) configuration.
         self.tls_config = tls_config
+        # The Web Application Firewall (WAF) configuration.
         self.waf_config = waf_config
 
     def validate(self):
@@ -27,6 +35,8 @@ class UpdateCustomDomainInput(DaraModel):
             self.auth_config.validate()
         if self.cert_config:
             self.cert_config.validate()
+        if self.cors_config:
+            self.cors_config.validate()
         if self.route_config:
             self.route_config.validate()
         if self.tls_config:
@@ -44,6 +54,9 @@ class UpdateCustomDomainInput(DaraModel):
 
         if self.cert_config is not None:
             result['certConfig'] = self.cert_config.to_map()
+
+        if self.cors_config is not None:
+            result['corsConfig'] = self.cors_config.to_map()
 
         if self.protocol is not None:
             result['protocol'] = self.protocol
@@ -68,6 +81,10 @@ class UpdateCustomDomainInput(DaraModel):
         if m.get('certConfig') is not None:
             temp_model = main_models.CertConfig()
             self.cert_config = temp_model.from_map(m.get('certConfig'))
+
+        if m.get('corsConfig') is not None:
+            temp_model = main_models.CORSConfig()
+            self.cors_config = temp_model.from_map(m.get('corsConfig'))
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')

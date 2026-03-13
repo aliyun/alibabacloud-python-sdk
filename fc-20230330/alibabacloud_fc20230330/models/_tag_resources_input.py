@@ -14,9 +14,14 @@ class TagResourcesInput(DaraModel):
         resource_type: str = None,
         tag: List[main_models.Tag] = None,
     ):
+        # The resource IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tags.
+        # 
         # This parameter is required.
         self.tag = tag
 

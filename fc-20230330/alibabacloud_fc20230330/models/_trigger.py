@@ -22,18 +22,31 @@ class Trigger(DaraModel):
         trigger_name: str = None,
         trigger_type: str = None,
     ):
+        # The time when the trigger was created.
         self.created_time = created_time
+        # The description of the trigger.
         self.description = description
+        # The information about the HTTP trigger.
         self.http_trigger = http_trigger
+        # The role that is used by the event source such as OSS to invoke the function.
         self.invocation_role = invocation_role
+        # The time when the trigger was last modified.
         self.last_modified_time = last_modified_time
+        # The version or alias of the function.
         self.qualifier = qualifier
+        # The Alibaba Cloud Resource Name (ARN) of the event source for the trigger.
         self.source_arn = source_arn
+        # The status of the trigger.
         self.status = status
+        # The ARN of the function.
         self.target_arn = target_arn
+        # The configurations of the trigger. The configurations vary based on trigger types.
         self.trigger_config = trigger_config
+        # The unique ID of the trigger.
         self.trigger_id = trigger_id
+        # The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
         self.trigger_name = trigger_name
+        # The type of the trigger.
         self.trigger_type = trigger_type
 
     def validate(self):

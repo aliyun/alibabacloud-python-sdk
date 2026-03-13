@@ -13,7 +13,9 @@ class ListTriggersOutput(DaraModel):
         next_token: str = None,
         triggers: List[main_models.Trigger] = None,
     ):
+        # The name of the next trigger. The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, all the layers are returned.
         self.next_token = next_token
+        # The triggers.
         self.triggers = triggers
 
     def validate(self):

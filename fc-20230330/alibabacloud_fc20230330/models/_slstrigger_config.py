@@ -16,10 +16,15 @@ class SLSTriggerConfig(DaraModel):
         log_config: main_models.SLSTriggerLogConfig = None,
         source_config: main_models.SourceConfig = None,
     ):
+        # Specifies whether to enable the trigger.
         self.enable = enable
+        # The invocation configurations. Simple Log Service passes the configurations into the function as part of the event. The configuration content must be a JSON string.
         self.function_parameter = function_parameter
+        # The interval at which the trigger reads logs, and the retry configuration upon errors.
         self.job_config = job_config
+        # The log configurations of the trigger.
         self.log_config = log_config
+        # The configurations of the trigger source.
         self.source_config = source_config
 
     def validate(self):

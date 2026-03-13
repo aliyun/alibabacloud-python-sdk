@@ -10,7 +10,9 @@ class SourceConfig(DaraModel):
         logstore: str = None,
         start_time: int = None,
     ):
+        # The name of the Logstore. The trigger periodically subscribes to data from this Logstore and then triggers the function.
         self.logstore = logstore
+        # The start time of consumption. Unit: seconds. If you do not specify this parameter, consumption starts from the latest data. If this parameter is specified, a trigger event is generated for data written after the specified time. For consumption of existing data, the trigger interval is ignored to catch up with the consumption delay until the real-time trigger progress is caught up. When the catch-up is complete, the trigger starts to trigger function invocations based on the specified trigger event interval without delay.
         self.start_time = start_time
 
     def validate(self):

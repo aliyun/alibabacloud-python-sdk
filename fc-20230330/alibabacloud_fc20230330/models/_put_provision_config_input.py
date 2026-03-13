@@ -19,7 +19,9 @@ class PutProvisionConfigInput(DaraModel):
     ):
         self.always_allocate_cpu = always_allocate_cpu
         self.always_allocate_gpu = always_allocate_gpu
+        # The number of target provisioned instances. Valid values: [0,10000].
         self.default_target = default_target
+        # public
         self.scheduled_actions = scheduled_actions
         # This parameter is required.
         self.target = target

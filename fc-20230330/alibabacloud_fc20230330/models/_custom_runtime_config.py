@@ -15,9 +15,13 @@ class CustomRuntimeConfig(DaraModel):
         health_check_config: main_models.CustomHealthCheckConfig = None,
         port: int = None,
     ):
+        # The arguments that are passed to the startup command.
         self.args = args
+        # The startup commands.
         self.command = command
+        # The custom health check configuration of the function.
         self.health_check_config = health_check_config
+        # The port on which the HTTP server is listening.
         self.port = port
 
     def validate(self):

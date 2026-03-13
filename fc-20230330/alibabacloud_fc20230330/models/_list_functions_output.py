@@ -13,7 +13,9 @@ class ListFunctionsOutput(DaraModel):
         functions: List[main_models.Function] = None,
         next_token: str = None,
     ):
+        # The information about functions.
         self.functions = functions
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
 
     def validate(self):

@@ -12,9 +12,15 @@ class TagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the resource.
         self.resource_id = resource_id
+        # The name of the resource type.
+        # 
+        # The function type in Function Compute 3.0 is ALIYUN::FC::FUNCTION, which is abbreviated as "function".
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

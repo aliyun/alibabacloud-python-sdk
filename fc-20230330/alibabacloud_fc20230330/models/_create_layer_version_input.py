@@ -15,9 +15,13 @@ class CreateLayerVersionInput(DaraModel):
         description: str = None,
         license: str = None,
     ):
+        # The code information of the layer.
         self.code = code
+        # The runtimes that are supported by the layer.
         self.compatible_runtime = compatible_runtime
+        # The description of the layer version.
         self.description = description
+        # The license agreement for the layer.
         self.license = license
 
     def validate(self):

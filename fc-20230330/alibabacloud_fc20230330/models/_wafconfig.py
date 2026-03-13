@@ -9,6 +9,7 @@ class WAFConfig(DaraModel):
         self,
         enable_waf: bool = None,
     ):
+        # Specifies whether to enable WAF protection.
         self.enable_waf = enable_waf
 
     def validate(self):

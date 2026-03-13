@@ -14,8 +14,11 @@ class NASConfig(DaraModel):
         mount_points: List[main_models.NASMountConfig] = None,
         user_id: int = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The mount targets.
         self.mount_points = mount_points
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):

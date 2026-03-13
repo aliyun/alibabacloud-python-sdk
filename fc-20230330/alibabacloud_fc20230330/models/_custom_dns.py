@@ -14,8 +14,11 @@ class CustomDNS(DaraModel):
         name_servers: List[str] = None,
         searches: List[str] = None,
     ):
+        # The DNS resolution configurations in the resolv.conf file. Each item corresponds to a key-value pair in the key:value format, in which the key is required.
         self.dns_options = dns_options
+        # The IP addresses of the DNS server.
         self.name_servers = name_servers
+        # The search domains of DNS server.
         self.searches = searches
 
     def validate(self):

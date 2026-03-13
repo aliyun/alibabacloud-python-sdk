@@ -10,7 +10,9 @@ class HTTPTrigger(DaraModel):
         url_internet: str = None,
         url_intranet: str = None,
     ):
+        # The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
         self.url_internet = url_internet
+        # The private endpoint. In a VPC, you can access HTTP triggers by using HTTP or HTTPS.
         self.url_intranet = url_intranet
 
     def validate(self):

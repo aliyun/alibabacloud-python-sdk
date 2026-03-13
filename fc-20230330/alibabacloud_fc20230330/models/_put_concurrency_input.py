@@ -9,6 +9,8 @@ class PutConcurrencyInput(DaraModel):
         self,
         reserved_concurrency: int = None,
     ):
+        # The reserved concurrency of the function. Other functions cannot use the concurrency. The reserved concurrency includes the total concurrency of provisioned instances and on-demand instances.
+        # 
         # This parameter is required.
         self.reserved_concurrency = reserved_concurrency
 

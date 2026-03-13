@@ -23,19 +23,30 @@ class Session(DaraModel):
         session_status: str = None,
         session_ttlin_seconds: int = None,
     ):
+        # The ID of the function instance associated with the session.
         self.container_id = container_id
+        # The time when the session was created.
         self.created_time = created_time
         self.disable_session_id_reuse = disable_session_id_reuse
+        # The name of the function to which the session belongs.
         self.function_name = function_name
+        # The time when the session was last updated.
         self.last_modified_time = last_modified_time
+        # The File Storage NAS (NAS) configuration. Once configured, the instance associated with the session can access designated NAS resources.
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
         self.polar_fs_config = polar_fs_config
+        # The qualifier specified when creating a session. If not provided, the default value is LATEST.
         self.qualifier = qualifier
+        # The session affinity type.
         self.session_affinity_type = session_affinity_type
+        # The unique identifier of the function session.
         self.session_id = session_id
+        # The timeout period for idle sessions.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        # The session status, which can be either Active (session is valid) or Expired (session has expired).
         self.session_status = session_status
+        # The maximum session lifecycle.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):

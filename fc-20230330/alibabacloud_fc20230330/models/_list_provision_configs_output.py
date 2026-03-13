@@ -13,7 +13,9 @@ class ListProvisionConfigsOutput(DaraModel):
         next_token: str = None,
         provision_configs: List[main_models.ProvisionConfig] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The provisioned configurations of the function.
         self.provision_configs = provision_configs
 
     def validate(self):

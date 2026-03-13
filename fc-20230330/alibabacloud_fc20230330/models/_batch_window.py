@@ -10,7 +10,9 @@ class BatchWindow(DaraModel):
         count_based_window: int = None,
         time_based_window: int = None,
     ):
+        # The maximum number of events that are allowed in the batch window. When this threshold is reached, data in the window is pushed downstream. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
         self.count_based_window = count_based_window
+        # The maximum period of time during which events are allowed in the batch window. Unit: seconds. When this threshold is reached, data in the window is pushed downstream. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
         self.time_based_window = time_based_window
 
     def validate(self):

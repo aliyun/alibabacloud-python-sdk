@@ -16,12 +16,19 @@ class PathConfig(DaraModel):
         qualifier: str = None,
         rewrite_config: main_models.RewriteConfig = None,
     ):
+        # The name of the function.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The supported methods.
         self.methods = methods
+        # The route matching rule.
+        # 
         # This parameter is required.
         self.path = path
+        # The version or alias.
         self.qualifier = qualifier
+        # The rewrite configuration.
         self.rewrite_config = rewrite_config
 
     def validate(self):

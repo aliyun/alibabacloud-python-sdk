@@ -9,6 +9,10 @@ class RetryStrategy(DaraModel):
         self,
         push_retry_strategy: str = None,
     ):
+        # The retry policy. Valid values:
+        # 
+        # *   **BACKOFF_RETRY**: retries with a fixed backoff interval.
+        # *   **EXPONENTIAL_DECAY_RETRY**: retries with exponential backoff.
         self.push_retry_strategy = push_retry_strategy
 
     def validate(self):

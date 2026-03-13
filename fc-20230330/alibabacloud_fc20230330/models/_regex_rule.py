@@ -10,8 +10,12 @@ class RegexRule(DaraModel):
         match: str = None,
         replacement: str = None,
     ):
+        # The matching rule.
+        # 
         # This parameter is required.
         self.match = match
+        # The replacement rule.
+        # 
         # This parameter is required.
         self.replacement = replacement
 

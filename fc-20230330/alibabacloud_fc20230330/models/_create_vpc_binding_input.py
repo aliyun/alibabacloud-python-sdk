@@ -9,6 +9,8 @@ class CreateVpcBindingInput(DaraModel):
         self,
         vpc_id: str = None,
     ):
+        # The ID of the VPC.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

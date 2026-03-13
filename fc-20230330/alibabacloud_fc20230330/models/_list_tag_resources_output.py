@@ -14,8 +14,11 @@ class ListTagResourcesOutput(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.TagResource] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The information about the queried resources and tags.
         self.tag_resources = tag_resources
 
     def validate(self):

@@ -10,6 +10,7 @@ from ._async_task_event import AsyncTaskEvent
 from ._auth_config import AuthConfig
 from ._batch_window import BatchWindow
 from ._cdntrigger_config import CDNTriggerConfig
+from ._corsconfig import CORSConfig
 from ._cert_config import CertConfig
 from ._change_resource_group_input import ChangeResourceGroupInput
 from ._change_resource_group_output import ChangeResourceGroupOutput
@@ -246,6 +247,8 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_triggers_request import ListTriggersRequest
 from ._list_triggers_response import ListTriggersResponse
 from ._list_vpc_bindings_response import ListVpcBindingsResponse
+from ._pause_session_request import PauseSessionRequest
+from ._pause_session_response import PauseSessionResponse
 from ._publish_function_version_request import PublishFunctionVersionRequest
 from ._publish_function_version_response import PublishFunctionVersionResponse
 from ._put_async_invoke_config_request import PutAsyncInvokeConfigRequest
@@ -258,6 +261,8 @@ from ._put_provision_config_request import PutProvisionConfigRequest
 from ._put_provision_config_response import PutProvisionConfigResponse
 from ._put_scaling_config_request import PutScalingConfigRequest
 from ._put_scaling_config_response import PutScalingConfigResponse
+from ._resume_session_request import ResumeSessionRequest
+from ._resume_session_response import ResumeSessionResponse
 from ._stop_async_task_request import StopAsyncTaskRequest
 from ._stop_async_task_response import StopAsyncTaskResponse
 from ._tag_resources_request import TagResourcesRequest
@@ -288,6 +293,7 @@ __all__ = [
     AuthConfig,
     BatchWindow,
     CDNTriggerConfig,
+    CORSConfig,
     CertConfig,
     ChangeResourceGroupInput,
     ChangeResourceGroupOutput,
@@ -524,6 +530,8 @@ __all__ = [
     ListTriggersRequest,
     ListTriggersResponse,
     ListVpcBindingsResponse,
+    PauseSessionRequest,
+    PauseSessionResponse,
     PublishFunctionVersionRequest,
     PublishFunctionVersionResponse,
     PutAsyncInvokeConfigRequest,
@@ -536,6 +544,8 @@ __all__ = [
     PutProvisionConfigResponse,
     PutScalingConfigRequest,
     PutScalingConfigResponse,
+    ResumeSessionRequest,
+    ResumeSessionResponse,
     StopAsyncTaskRequest,
     StopAsyncTaskResponse,
     TagResourcesRequest,

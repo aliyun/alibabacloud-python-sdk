@@ -10,19 +10,29 @@ class CreateCustomDomainInput(DaraModel):
         self,
         auth_config: main_models.AuthConfig = None,
         cert_config: main_models.CertConfig = None,
+        cors_config: main_models.CORSConfig = None,
         domain_name: str = None,
         protocol: str = None,
         route_config: main_models.RouteConfig = None,
         tls_config: main_models.TLSConfig = None,
         waf_config: main_models.WAFConfig = None,
     ):
+        # The configuration of permission authentication.
         self.auth_config = auth_config
+        # The configuration of the HTTPS certificate.
         self.cert_config = cert_config
+        self.cors_config = cors_config
+        # The domain name. Enter a custom domain name that has obtained an Internet content provider (ICP) filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
         self.protocol = protocol
+        # The route table that maps paths to functions when the function is invoked by using the custom domain name.
         self.route_config = route_config
+        # The Transport Layer Security (TLS) configuration.
         self.tls_config = tls_config
+        # The Web Application Firewall (WAF) configuration.
         self.waf_config = waf_config
 
     def validate(self):
@@ -30,6 +40,8 @@ class CreateCustomDomainInput(DaraModel):
             self.auth_config.validate()
         if self.cert_config:
             self.cert_config.validate()
+        if self.cors_config:
+            self.cors_config.validate()
         if self.route_config:
             self.route_config.validate()
         if self.tls_config:
@@ -47,6 +59,9 @@ class CreateCustomDomainInput(DaraModel):
 
         if self.cert_config is not None:
             result['certConfig'] = self.cert_config.to_map()
+
+        if self.cors_config is not None:
+            result['corsConfig'] = self.cors_config.to_map()
 
         if self.domain_name is not None:
             result['domainName'] = self.domain_name
@@ -74,6 +89,10 @@ class CreateCustomDomainInput(DaraModel):
         if m.get('certConfig') is not None:
             temp_model = main_models.CertConfig()
             self.cert_config = temp_model.from_map(m.get('certConfig'))
+
+        if m.get('corsConfig') is not None:
+            temp_model = main_models.CORSConfig()
+            self.cors_config = temp_model.from_map(m.get('corsConfig'))
 
         if m.get('domainName') is not None:
             self.domain_name = m.get('domainName')

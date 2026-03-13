@@ -11,7 +11,9 @@ class InstanceLifecycleConfig(DaraModel):
         initializer: main_models.LifecycleHook = None,
         pre_stop: main_models.LifecycleHook = None,
     ):
+        # The configurations of the Initializer hook.
         self.initializer = initializer
+        # The configurations of the PreStop hook.
         self.pre_stop = pre_stop
 
     def validate(self):

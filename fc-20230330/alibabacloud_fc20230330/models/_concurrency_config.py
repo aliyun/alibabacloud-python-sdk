@@ -10,7 +10,9 @@ class ConcurrencyConfig(DaraModel):
         function_arn: str = None,
         reserved_concurrency: int = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN).
         self.function_arn = function_arn
+        # The reserved concurrency of the function. Other functions cannot use the concurrency. The reserved concurrency includes the total concurrency of provisioned instances and on-demand instances.
         self.reserved_concurrency = reserved_concurrency
 
     def validate(self):

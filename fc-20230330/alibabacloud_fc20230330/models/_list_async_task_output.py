@@ -13,7 +13,9 @@ class ListAsyncTaskOutput(DaraModel):
         next_token: str = None,
         tasks: List[main_models.AsyncTask] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The asynchronous tasks.
         self.tasks = tasks
 
     def validate(self):

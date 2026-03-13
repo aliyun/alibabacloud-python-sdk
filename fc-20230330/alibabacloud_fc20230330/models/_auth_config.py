@@ -10,7 +10,9 @@ class AuthConfig(DaraModel):
         auth_info: str = None,
         auth_type: str = None,
     ):
+        # The authentication information.
         self.auth_info = auth_info
+        # The authentication type. Valid values: anonymous, function, and jwt.
         self.auth_type = auth_type
 
     def validate(self):

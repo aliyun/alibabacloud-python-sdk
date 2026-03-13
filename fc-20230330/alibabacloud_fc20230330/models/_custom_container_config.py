@@ -21,15 +21,25 @@ class CustomContainerConfig(DaraModel):
         registry_config: main_models.RegistryConfig = None,
         resolved_image_uri: str = None,
     ):
+        # The information about image acceleration.
         self.acceleration_info = acceleration_info
+        # Specifies whether to enable image acceleration. Valid values: Default: enables image acceleration. None: disables image acceleration.
         self.acceleration_type = acceleration_type
+        # The ID of the image repository for the Container Registry Enterprise Edition. You must specify this parameter if you use an image of Container Registry Enterprise Edition.
         self.acr_instance_id = acr_instance_id
+        # The startup parameter of the container.
         self.command = command
+        # The container startup command.
         self.entrypoint = entrypoint
+        # The custom health check configurations of the function.
         self.health_check_config = health_check_config
+        # The endpoint of the container image.
         self.image = image
+        # The port on which the HTTP server listens for the Custom Container runtime.
         self.port = port
+        # registry related
         self.registry_config = registry_config
+        # The actual digest version of the deployed image. The code version specified by digest is actually used when the function starts. This parameter is returned by GetFunction and is not required as a parameter.
         self.resolved_image_uri = resolved_image_uri
 
     def validate(self):

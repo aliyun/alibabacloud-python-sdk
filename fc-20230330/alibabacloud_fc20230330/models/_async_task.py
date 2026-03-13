@@ -26,20 +26,45 @@ class AsyncTask(DaraModel):
         task_id: str = None,
         task_payload: str = None,
     ):
+        # The number of retries after the asynchronous task fails.
         self.already_retried_times = already_retried_times
+        # The final state of the asynchronous task.
         self.destination_status = destination_status
+        # The execution duration of the asynchronous task.
         self.duration_ms = duration_ms
+        # The end time of the asynchronous task. Unit: milliseconds.
         self.end_time = end_time
+        # The events of the asynchronous task.
         self.events = events
+        # The Alibaba Cloud Resource Name (ARN) of the function.
         self.function_arn = function_arn
+        # The ID of the instance that corresponds to the asynchronous task.
         self.instance_id = instance_id
+        # The version or alias of the function.
         self.qualifier = qualifier
+        # The ID of the request corresponding to this asynchronous task.
         self.request_id = request_id
+        # The content of the response after the asynchronous task is executed. The maximum size is 1 MB. This parameter is in public preview. If you want to use this parameter, [contact us](https://help.aliyun.com/document_detail/2513733.html).
         self.return_payload = return_payload
+        # The start time of the asynchronous task. Unit: milliseconds.
         self.started_time = started_time
+        # The state of the asynchronous task.
+        # 
+        # *   Enqueued: The asynchronous invocation is enqueued and waiting to be executed.
+        # *   Succeeded: The invocation is successful.
+        # *   Failed: The invocation fails.
+        # *   Running: The invocation is being executed.
+        # *   Stopped: The invocation is terminated.
+        # *   Stopping: The invocation is being terminated.
+        # *   Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
+        # *   Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period of messages expires.
+        # *   Retrying: The asynchronous invocation is being retried due to an execution error.
         self.status = status
+        # The error message for an asynchronous task failure.
         self.task_error_message = task_error_message
+        # The ID of the asynchronous task.
         self.task_id = task_id
+        # The content of the input parameter during asynchronous task execution.
         self.task_payload = task_payload
 
     def validate(self):

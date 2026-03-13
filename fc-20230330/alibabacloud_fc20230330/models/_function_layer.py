@@ -10,7 +10,9 @@ class FunctionLayer(DaraModel):
         arn: str = None,
         size: int = None,
     ):
+        # The resource identifier of the layer version.
         self.arn = arn
+        # The size of the layer code package. Unit: bytes.
         self.size = size
 
     def validate(self):

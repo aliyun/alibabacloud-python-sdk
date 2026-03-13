@@ -9,6 +9,7 @@ class DeadLetterQueue(DaraModel):
         self,
         arn: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
         self.arn = arn
 
     def validate(self):

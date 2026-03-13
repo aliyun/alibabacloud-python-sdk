@@ -13,7 +13,9 @@ class OSSTriggerConfig(DaraModel):
         events: List[str] = None,
         filter: main_models.Filter = None,
     ):
+        # The list of events. Enter an event related to OSS. For more information about event types,see [OSS events](https://help.aliyun.com/document_detail/2513613.html).
         self.events = events
+        # The event filtering rule.
         self.filter = filter
 
     def validate(self):

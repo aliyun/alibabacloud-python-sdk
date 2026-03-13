@@ -11,8 +11,11 @@ class SourceMNSParameters(DaraModel):
         queue_name: str = None,
         region_id: str = None,
     ):
+        # Specify whether to enable Base64 encoding. Default value: true. Valid values: true false
         self.is_base_64decode = is_base_64decode
+        # The name of the queue of Simple Message Queue (formerly MNS).
         self.queue_name = queue_name
+        # The region to which the queue of Simple Message Queue (formerly MNS) belongs.
         self.region_id = region_id
 
     def validate(self):

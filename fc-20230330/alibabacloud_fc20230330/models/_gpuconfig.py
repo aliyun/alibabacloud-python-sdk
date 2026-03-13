@@ -10,7 +10,9 @@ class GPUConfig(DaraModel):
         gpu_memory_size: int = None,
         gpu_type: str = None,
     ):
+        # The GPU memory size. Unit: MB. The value is a multiple of 1024 MB.
         self.gpu_memory_size = gpu_memory_size
+        # The type of GPU cards. Valid values: fc.gpu.tesla.1: Tesla T4 fc.gpu.ampere.1: Ampere A10
         self.gpu_type = gpu_type
 
     def validate(self):

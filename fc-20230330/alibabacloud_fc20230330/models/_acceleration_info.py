@@ -9,6 +9,7 @@ class AccelerationInfo(DaraModel):
         self,
         status: str = None,
     ):
+        # The status of image acceleration.
         self.status = status
 
     def validate(self):

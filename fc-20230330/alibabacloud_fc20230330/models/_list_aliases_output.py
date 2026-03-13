@@ -13,7 +13,9 @@ class ListAliasesOutput(DaraModel):
         aliases: List[main_models.Alias] = None,
         next_token: str = None,
     ):
+        # The information about aliases.
         self.aliases = aliases
+        # The next version.
         self.next_token = next_token
 
     def validate(self):

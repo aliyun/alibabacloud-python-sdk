@@ -13,7 +13,9 @@ class ListAsyncInvokeConfigOutput(DaraModel):
         configs: List[main_models.AsyncConfig] = None,
         next_token: str = None,
     ):
+        # The configurations of the asynchronous invocation.
         self.configs = configs
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):

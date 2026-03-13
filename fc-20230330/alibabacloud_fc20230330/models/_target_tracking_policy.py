@@ -16,18 +16,31 @@ class TargetTrackingPolicy(DaraModel):
         start_time: str = None,
         time_zone: str = None,
     ):
+        # The end time of the policy, in UTC.
         self.end_time = end_time
+        # The maximum number of provisioned instances for scale-out.
+        # 
         # This parameter is required.
         self.max_capacity = max_capacity
+        # The threshold value for metric-based auto scaling.
+        # 
         # This parameter is required.
         self.metric_target = metric_target
+        # The metric type for tracing. ProvisionedConcurrencyUtilization: the concurrency utilization of provisioned instances. CPUUtilization: the CPU utilization. GPUMemUtilization: the GPU utilization.
+        # 
         # This parameter is required.
         self.metric_type = metric_type
+        # The minimum number of provisioned instances for scale-in.
+        # 
         # This parameter is required.
         self.min_capacity = min_capacity
+        # The policy name.
+        # 
         # This parameter is required.
         self.name = name
+        # The time when the policy starts to take effect, in UTC.
         self.start_time = start_time
+        # The time zone. If the time zone parameter is empty, the time of startTime and endTime must be in UTC format.
         self.time_zone = time_zone
 
     def validate(self):
