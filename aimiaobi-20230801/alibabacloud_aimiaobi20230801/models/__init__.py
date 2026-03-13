@@ -23,6 +23,7 @@ from ._async_create_clips_task_shrink_request import AsyncCreateClipsTaskShrinkR
 from ._async_create_clips_task_response_body import AsyncCreateClipsTaskResponseBody
 from ._async_create_clips_task_response import AsyncCreateClipsTaskResponse
 from ._async_create_clips_time_line_request import AsyncCreateClipsTimeLineRequest
+from ._async_create_clips_time_line_shrink_request import AsyncCreateClipsTimeLineShrinkRequest
 from ._async_create_clips_time_line_response_body import AsyncCreateClipsTimeLineResponseBody
 from ._async_create_clips_time_line_response import AsyncCreateClipsTimeLineResponse
 from ._async_edit_timeline_request import AsyncEditTimelineRequest
@@ -713,6 +714,7 @@ from ._async_create_clips_task_request import AsyncCreateClipsTaskRequestColorWo
 from ._async_create_clips_task_request import AsyncCreateClipsTaskRequestHighDefSourceVideos
 from ._async_create_clips_task_request import AsyncCreateClipsTaskRequestStickers
 from ._async_create_clips_task_response_body import AsyncCreateClipsTaskResponseBodyData
+from ._async_create_clips_time_line_request import AsyncCreateClipsTimeLineRequestHighLightConfig
 from ._async_create_clips_time_line_response_body import AsyncCreateClipsTimeLineResponseBodyData
 from ._async_edit_timeline_request import AsyncEditTimelineRequestTimelinesClips
 from ._async_edit_timeline_request import AsyncEditTimelineRequestTimelines
@@ -1000,6 +1002,7 @@ from ._run_book_brainmap_response_body import RunBookBrainmapResponseBodyPayload
 from ._run_book_brainmap_response_body import RunBookBrainmapResponseBodyPayloadUsage
 from ._run_book_brainmap_response_body import RunBookBrainmapResponseBodyPayload
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyHeader
+from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadOutputIntroductions
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadOutput
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadUsage
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayload
@@ -1358,6 +1361,7 @@ __all__ = [
     AsyncCreateClipsTaskResponseBody,
     AsyncCreateClipsTaskResponse,
     AsyncCreateClipsTimeLineRequest,
+    AsyncCreateClipsTimeLineShrinkRequest,
     AsyncCreateClipsTimeLineResponseBody,
     AsyncCreateClipsTimeLineResponse,
     AsyncEditTimelineRequest,
@@ -2048,6 +2052,7 @@ __all__ = [
     AsyncCreateClipsTaskRequestHighDefSourceVideos,
     AsyncCreateClipsTaskRequestStickers,
     AsyncCreateClipsTaskResponseBodyData,
+    AsyncCreateClipsTimeLineRequestHighLightConfig,
     AsyncCreateClipsTimeLineResponseBodyData,
     AsyncEditTimelineRequestTimelinesClips,
     AsyncEditTimelineRequestTimelines,
@@ -2335,6 +2340,7 @@ __all__ = [
     RunBookBrainmapResponseBodyPayloadUsage,
     RunBookBrainmapResponseBodyPayload,
     RunBookIntroductionResponseBodyHeader,
+    RunBookIntroductionResponseBodyPayloadOutputIntroductions,
     RunBookIntroductionResponseBodyPayloadOutput,
     RunBookIntroductionResponseBodyPayloadUsage,
     RunBookIntroductionResponseBodyPayload,

@@ -1,3 +1,10 @@
+2026-03-13 Version: 1.40.2
+- Update API AsyncCreateClipsTimeLine: add request parameters HighLightConfig.
+- Update API AsyncCreateClipsTimeLine: add request parameters RecommendAudio.
+- Update API AsyncCreateClipsTimeLine: add request parameters TimelineScene.
+- Update API RunBookIntroduction: add response parameters Body.Payload.Output.Introductions.
+
+
 2026-03-03 Version: 1.40.1
 - Generated python 2023-08-01 for AiMiaoBi.
 

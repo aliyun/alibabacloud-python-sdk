@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_aimiaobi20230801 import models as main_models
 from darabonba.model import DaraModel
 
@@ -140,20 +142,30 @@ class RunBookIntroductionResponseBodyPayloadUsage(DaraModel):
 class RunBookIntroductionResponseBodyPayloadOutput(DaraModel):
     def __init__(
         self,
+        introductions: List[main_models.RunBookIntroductionResponseBodyPayloadOutputIntroductions] = None,
         key_point: str = None,
         summary: str = None,
     ):
+        self.introductions = introductions
         self.key_point = key_point
         self.summary = summary
 
     def validate(self):
-        pass
+        if self.introductions:
+            for v1 in self.introductions:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Introductions'] = []
+        if self.introductions is not None:
+            for k1 in self.introductions:
+                result['Introductions'].append(k1.to_map() if k1 else None)
+
         if self.key_point is not None:
             result['KeyPoint'] = self.key_point
 
@@ -164,11 +176,52 @@ class RunBookIntroductionResponseBodyPayloadOutput(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.introductions = []
+        if m.get('Introductions') is not None:
+            for k1 in m.get('Introductions'):
+                temp_model = main_models.RunBookIntroductionResponseBodyPayloadOutputIntroductions()
+                self.introductions.append(temp_model.from_map(k1))
+
         if m.get('KeyPoint') is not None:
             self.key_point = m.get('KeyPoint')
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        return self
+
+class RunBookIntroductionResponseBodyPayloadOutputIntroductions(DaraModel):
+    def __init__(
+        self,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.summary is not None:
+            result['Summary'] = self.summary
+
+        if self.title is not None:
+            result['Title'] = self.title
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
 
         return self
 

@@ -406,21 +406,31 @@ class Client(OpenApiClient):
 
     def async_create_clips_time_line_with_options(
         self,
-        request: main_models.AsyncCreateClipsTimeLineRequest,
+        tmp_req: main_models.AsyncCreateClipsTimeLineRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AsyncCreateClipsTimeLineResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AsyncCreateClipsTimeLineShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.high_light_config):
+            request.high_light_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.high_light_config, 'HighLightConfig', 'json')
         body = {}
         if not DaraCore.is_null(request.additional_content):
             body['AdditionalContent'] = request.additional_content
         if not DaraCore.is_null(request.custom_content):
             body['CustomContent'] = request.custom_content
+        if not DaraCore.is_null(request.high_light_config_shrink):
+            body['HighLightConfig'] = request.high_light_config_shrink
         if not DaraCore.is_null(request.no_ref_video):
             body['NoRefVideo'] = request.no_ref_video
         if not DaraCore.is_null(request.process_prompt):
             body['ProcessPrompt'] = request.process_prompt
+        if not DaraCore.is_null(request.recommend_audio):
+            body['RecommendAudio'] = request.recommend_audio
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.timeline_scene):
+            body['TimelineScene'] = request.timeline_scene
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -444,21 +454,31 @@ class Client(OpenApiClient):
 
     async def async_create_clips_time_line_with_options_async(
         self,
-        request: main_models.AsyncCreateClipsTimeLineRequest,
+        tmp_req: main_models.AsyncCreateClipsTimeLineRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AsyncCreateClipsTimeLineResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AsyncCreateClipsTimeLineShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.high_light_config):
+            request.high_light_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.high_light_config, 'HighLightConfig', 'json')
         body = {}
         if not DaraCore.is_null(request.additional_content):
             body['AdditionalContent'] = request.additional_content
         if not DaraCore.is_null(request.custom_content):
             body['CustomContent'] = request.custom_content
+        if not DaraCore.is_null(request.high_light_config_shrink):
+            body['HighLightConfig'] = request.high_light_config_shrink
         if not DaraCore.is_null(request.no_ref_video):
             body['NoRefVideo'] = request.no_ref_video
         if not DaraCore.is_null(request.process_prompt):
             body['ProcessPrompt'] = request.process_prompt
+        if not DaraCore.is_null(request.recommend_audio):
+            body['RecommendAudio'] = request.recommend_audio
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.timeline_scene):
+            body['TimelineScene'] = request.timeline_scene
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
