@@ -1,3 +1,6 @@
+2026-03-13 Version: 1.2.5
+- Generated python 2021-09-01 for servicecatalog.
+
 2026-02-03 Version: 1.2.4
 - Update API AssociatePrincipalWithPortfolio: add request parameters PrincipalPattern.
 - Update API DisassociatePrincipalFromPortfolio: add request parameters PrincipalPattern.
