@@ -1,3 +1,14 @@
+2026-03-13 Version: 2.4.0
+- Support API CreateVideoSegmentationTask.
+- Support API CreateVideoSummarizationTask.
+- Support API GetVideoSegmentationTaskStatus.
+- Support API GetVideoSummarizationTaskStatus.
+- Update API CreateAudioAsrTask: add request parameters body.input.url.
+- Update API CreateVideoSnapshotTask: add request parameters body.input.url.
+- Update API GetDocumentAnalyzeTaskStatus: add response parameters Body.result.data.pages.
+- Update API GetWebSearch: add response parameters Body.result.search_result.$.meta_info.
+
+
 2025-12-15 Version: 2.3.0
 - Support API GetImageObjectDetection.
 - Support API GetMultiModalReranker.

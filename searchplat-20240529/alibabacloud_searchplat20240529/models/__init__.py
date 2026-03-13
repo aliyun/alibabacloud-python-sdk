@@ -1,0 +1,329 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_audio_asr_task_request import CreateAudioAsrTaskRequest
+from ._create_audio_asr_task_response_body import CreateAudioAsrTaskResponseBody
+from ._create_audio_asr_task_response import CreateAudioAsrTaskResponse
+from ._create_document_analyze_task_request import CreateDocumentAnalyzeTaskRequest
+from ._create_document_analyze_task_response_body import CreateDocumentAnalyzeTaskResponseBody
+from ._create_document_analyze_task_response import CreateDocumentAnalyzeTaskResponse
+from ._create_image_analyze_task_request import CreateImageAnalyzeTaskRequest
+from ._create_image_analyze_task_response_body import CreateImageAnalyzeTaskResponseBody
+from ._create_image_analyze_task_response import CreateImageAnalyzeTaskResponse
+from ._create_video_segmentation_task_request import CreateVideoSegmentationTaskRequest
+from ._create_video_segmentation_task_response_body import CreateVideoSegmentationTaskResponseBody
+from ._create_video_segmentation_task_response import CreateVideoSegmentationTaskResponse
+from ._create_video_snapshot_task_request import CreateVideoSnapshotTaskRequest
+from ._create_video_snapshot_task_response_body import CreateVideoSnapshotTaskResponseBody
+from ._create_video_snapshot_task_response import CreateVideoSnapshotTaskResponse
+from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequest
+from ._create_video_summarization_task_response_body import CreateVideoSummarizationTaskResponseBody
+from ._create_video_summarization_task_response import CreateVideoSummarizationTaskResponse
+from ._get_audio_asr_task_status_request import GetAudioAsrTaskStatusRequest
+from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBody
+from ._get_audio_asr_task_status_response import GetAudioAsrTaskStatusResponse
+from ._get_document_analyze_task_status_request import GetDocumentAnalyzeTaskStatusRequest
+from ._get_document_analyze_task_status_response_body import GetDocumentAnalyzeTaskStatusResponseBody
+from ._get_document_analyze_task_status_response import GetDocumentAnalyzeTaskStatusResponse
+from ._get_document_rank_request import GetDocumentRankRequest
+from ._get_document_rank_response_body import GetDocumentRankResponseBody
+from ._get_document_rank_response import GetDocumentRankResponse
+from ._get_document_split_request import GetDocumentSplitRequest
+from ._get_document_split_response_body import GetDocumentSplitResponseBody
+from ._get_document_split_response import GetDocumentSplitResponse
+from ._get_embedding_tuning_request import GetEmbeddingTuningRequest
+from ._get_embedding_tuning_response_body import GetEmbeddingTuningResponseBody
+from ._get_embedding_tuning_response import GetEmbeddingTuningResponse
+from ._get_image_analyze_task_status_request import GetImageAnalyzeTaskStatusRequest
+from ._get_image_analyze_task_status_response_body import GetImageAnalyzeTaskStatusResponseBody
+from ._get_image_analyze_task_status_response import GetImageAnalyzeTaskStatusResponse
+from ._get_image_object_detection_request import GetImageObjectDetectionRequest
+from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBody
+from ._get_image_object_detection_response import GetImageObjectDetectionResponse
+from ._get_multi_modal_embedding_request import GetMultiModalEmbeddingRequest
+from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBody
+from ._get_multi_modal_embedding_response import GetMultiModalEmbeddingResponse
+from ._get_multi_modal_reranker_request import GetMultiModalRerankerRequest
+from ._get_multi_modal_reranker_response_body import GetMultiModalRerankerResponseBody
+from ._get_multi_modal_reranker_response import GetMultiModalRerankerResponse
+from ._get_prediction_headers import GetPredictionHeaders
+from ._get_prediction_request import GetPredictionRequest
+from ._get_prediction_response import GetPredictionResponse
+from ._get_query_analysis_request import GetQueryAnalysisRequest
+from ._get_query_analysis_response_body import GetQueryAnalysisResponseBody
+from ._get_query_analysis_response import GetQueryAnalysisResponse
+from ._get_text_embedding_request import GetTextEmbeddingRequest
+from ._get_text_embedding_response_body import GetTextEmbeddingResponseBody
+from ._get_text_embedding_response import GetTextEmbeddingResponse
+from ._get_text_generation_request import GetTextGenerationRequest
+from ._get_text_generation_response_body import GetTextGenerationResponseBody
+from ._get_text_generation_response import GetTextGenerationResponse
+from ._get_text_sparse_embedding_request import GetTextSparseEmbeddingRequest
+from ._get_text_sparse_embedding_response_body import GetTextSparseEmbeddingResponseBody
+from ._get_text_sparse_embedding_response import GetTextSparseEmbeddingResponse
+from ._get_video_segmentation_task_status_request import GetVideoSegmentationTaskStatusRequest
+from ._get_video_segmentation_task_status_response_body import GetVideoSegmentationTaskStatusResponseBody
+from ._get_video_segmentation_task_status_response import GetVideoSegmentationTaskStatusResponse
+from ._get_video_snapshot_task_status_request import GetVideoSnapshotTaskStatusRequest
+from ._get_video_snapshot_task_status_response_body import GetVideoSnapshotTaskStatusResponseBody
+from ._get_video_snapshot_task_status_response import GetVideoSnapshotTaskStatusResponse
+from ._get_video_summarization_task_status_request import GetVideoSummarizationTaskStatusRequest
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBody
+from ._get_video_summarization_task_status_response import GetVideoSummarizationTaskStatusResponse
+from ._get_web_search_request import GetWebSearchRequest
+from ._get_web_search_response_body import GetWebSearchResponseBody
+from ._get_web_search_response import GetWebSearchResponse
+from ._create_audio_asr_task_request import CreateAudioAsrTaskRequestInput
+from ._create_audio_asr_task_request import CreateAudioAsrTaskRequestOutput
+from ._create_audio_asr_task_response_body import CreateAudioAsrTaskResponseBodyResult
+from ._create_document_analyze_task_request import CreateDocumentAnalyzeTaskRequestDocument
+from ._create_document_analyze_task_request import CreateDocumentAnalyzeTaskRequestOutput
+from ._create_document_analyze_task_request import CreateDocumentAnalyzeTaskRequestStrategy
+from ._create_document_analyze_task_response_body import CreateDocumentAnalyzeTaskResponseBodyResult
+from ._create_image_analyze_task_request import CreateImageAnalyzeTaskRequestDocument
+from ._create_image_analyze_task_response_body import CreateImageAnalyzeTaskResponseBodyResult
+from ._create_video_segmentation_task_request import CreateVideoSegmentationTaskRequestInput
+from ._create_video_segmentation_task_request import CreateVideoSegmentationTaskRequestOutput
+from ._create_video_segmentation_task_response_body import CreateVideoSegmentationTaskResponseBodyResult
+from ._create_video_snapshot_task_request import CreateVideoSnapshotTaskRequestInput
+from ._create_video_snapshot_task_request import CreateVideoSnapshotTaskRequestOutput
+from ._create_video_snapshot_task_response_body import CreateVideoSnapshotTaskResponseBodyResult
+from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequestInputChunksSnapshots
+from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequestInputChunks
+from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequestInput
+from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequestOutput
+from ._create_video_summarization_task_response_body import CreateVideoSummarizationTaskResponseBodyResult
+from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBodyResultData
+from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBodyResult
+from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBodyUsage
+from ._get_document_analyze_task_status_response_body import GetDocumentAnalyzeTaskStatusResponseBodyResultData
+from ._get_document_analyze_task_status_response_body import GetDocumentAnalyzeTaskStatusResponseBodyResult
+from ._get_document_analyze_task_status_response_body import GetDocumentAnalyzeTaskStatusResponseBodyUsage
+from ._get_document_rank_response_body import GetDocumentRankResponseBodyResultScores
+from ._get_document_rank_response_body import GetDocumentRankResponseBodyResult
+from ._get_document_rank_response_body import GetDocumentRankResponseBodyUsage
+from ._get_document_split_request import GetDocumentSplitRequestDocument
+from ._get_document_split_request import GetDocumentSplitRequestStrategy
+from ._get_document_split_response_body import GetDocumentSplitResponseBodyResultChunks
+from ._get_document_split_response_body import GetDocumentSplitResponseBodyResultRichTexts
+from ._get_document_split_response_body import GetDocumentSplitResponseBodyResultSentences
+from ._get_document_split_response_body import GetDocumentSplitResponseBodyResult
+from ._get_document_split_response_body import GetDocumentSplitResponseBodyUsage
+from ._get_embedding_tuning_response_body import GetEmbeddingTuningResponseBodyResult
+from ._get_embedding_tuning_response_body import GetEmbeddingTuningResponseBodyUsage
+from ._get_image_analyze_task_status_response_body import GetImageAnalyzeTaskStatusResponseBodyResultData
+from ._get_image_analyze_task_status_response_body import GetImageAnalyzeTaskStatusResponseBodyResult
+from ._get_image_analyze_task_status_response_body import GetImageAnalyzeTaskStatusResponseBodyUsage
+from ._get_image_object_detection_request import GetImageObjectDetectionRequestImage
+from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResultObjectsLocation
+from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResultObjects
+from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResult
+from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyUsage
+from ._get_multi_modal_embedding_request import GetMultiModalEmbeddingRequestInput
+from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBodyResultEmbeddings
+from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBodyResult
+from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBodyUsage
+from ._get_multi_modal_reranker_request import GetMultiModalRerankerRequestDocs
+from ._get_multi_modal_reranker_request import GetMultiModalRerankerRequestQuery
+from ._get_multi_modal_reranker_response_body import GetMultiModalRerankerResponseBodyResultScores
+from ._get_multi_modal_reranker_response_body import GetMultiModalRerankerResponseBodyResult
+from ._get_multi_modal_reranker_response_body import GetMultiModalRerankerResponseBodyUsage
+from ._get_query_analysis_request import GetQueryAnalysisRequestFunctions
+from ._get_query_analysis_request import GetQueryAnalysisRequestHistory
+from ._get_query_analysis_response_body import GetQueryAnalysisResponseBodyResult
+from ._get_query_analysis_response_body import GetQueryAnalysisResponseBodyUsage
+from ._get_text_embedding_response_body import GetTextEmbeddingResponseBodyResultEmbeddings
+from ._get_text_embedding_response_body import GetTextEmbeddingResponseBodyResult
+from ._get_text_embedding_response_body import GetTextEmbeddingResponseBodyUsage
+from ._get_text_generation_request import GetTextGenerationRequestMessages
+from ._get_text_generation_response_body import GetTextGenerationResponseBodyResultSearchResults
+from ._get_text_generation_response_body import GetTextGenerationResponseBodyResult
+from ._get_text_generation_response_body import GetTextGenerationResponseBodyUsage
+from ._get_text_sparse_embedding_response_body import GetTextSparseEmbeddingResponseBodyResultSparseEmbeddingsEmbedding
+from ._get_text_sparse_embedding_response_body import GetTextSparseEmbeddingResponseBodyResultSparseEmbeddings
+from ._get_text_sparse_embedding_response_body import GetTextSparseEmbeddingResponseBodyResult
+from ._get_text_sparse_embedding_response_body import GetTextSparseEmbeddingResponseBodyUsage
+from ._get_video_segmentation_task_status_response_body import GetVideoSegmentationTaskStatusResponseBodyResultDataSnapshots
+from ._get_video_segmentation_task_status_response_body import GetVideoSegmentationTaskStatusResponseBodyResultData
+from ._get_video_segmentation_task_status_response_body import GetVideoSegmentationTaskStatusResponseBodyResult
+from ._get_video_segmentation_task_status_response_body import GetVideoSegmentationTaskStatusResponseBodyUsage
+from ._get_video_snapshot_task_status_response_body import GetVideoSnapshotTaskStatusResponseBodyResultData
+from ._get_video_snapshot_task_status_response_body import GetVideoSnapshotTaskStatusResponseBodyResult
+from ._get_video_snapshot_task_status_response_body import GetVideoSnapshotTaskStatusResponseBodyUsage
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBodyResultDataChunksMetadata
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBodyResultDataChunks
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBodyResultDataVideoMetadata
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBodyResultData
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBodyResult
+from ._get_video_summarization_task_status_response_body import GetVideoSummarizationTaskStatusResponseBodyUsage
+from ._get_web_search_request import GetWebSearchRequestHistory
+from ._get_web_search_response_body import GetWebSearchResponseBodyResultSearchResult
+from ._get_web_search_response_body import GetWebSearchResponseBodyResult
+from ._get_web_search_response_body import GetWebSearchResponseBodyUsageFilterModel
+from ._get_web_search_response_body import GetWebSearchResponseBodyUsageRewriteModel
+from ._get_web_search_response_body import GetWebSearchResponseBodyUsage
+
+__all__ = [
+    CreateAudioAsrTaskRequest,
+    CreateAudioAsrTaskResponseBody,
+    CreateAudioAsrTaskResponse,
+    CreateDocumentAnalyzeTaskRequest,
+    CreateDocumentAnalyzeTaskResponseBody,
+    CreateDocumentAnalyzeTaskResponse,
+    CreateImageAnalyzeTaskRequest,
+    CreateImageAnalyzeTaskResponseBody,
+    CreateImageAnalyzeTaskResponse,
+    CreateVideoSegmentationTaskRequest,
+    CreateVideoSegmentationTaskResponseBody,
+    CreateVideoSegmentationTaskResponse,
+    CreateVideoSnapshotTaskRequest,
+    CreateVideoSnapshotTaskResponseBody,
+    CreateVideoSnapshotTaskResponse,
+    CreateVideoSummarizationTaskRequest,
+    CreateVideoSummarizationTaskResponseBody,
+    CreateVideoSummarizationTaskResponse,
+    GetAudioAsrTaskStatusRequest,
+    GetAudioAsrTaskStatusResponseBody,
+    GetAudioAsrTaskStatusResponse,
+    GetDocumentAnalyzeTaskStatusRequest,
+    GetDocumentAnalyzeTaskStatusResponseBody,
+    GetDocumentAnalyzeTaskStatusResponse,
+    GetDocumentRankRequest,
+    GetDocumentRankResponseBody,
+    GetDocumentRankResponse,
+    GetDocumentSplitRequest,
+    GetDocumentSplitResponseBody,
+    GetDocumentSplitResponse,
+    GetEmbeddingTuningRequest,
+    GetEmbeddingTuningResponseBody,
+    GetEmbeddingTuningResponse,
+    GetImageAnalyzeTaskStatusRequest,
+    GetImageAnalyzeTaskStatusResponseBody,
+    GetImageAnalyzeTaskStatusResponse,
+    GetImageObjectDetectionRequest,
+    GetImageObjectDetectionResponseBody,
+    GetImageObjectDetectionResponse,
+    GetMultiModalEmbeddingRequest,
+    GetMultiModalEmbeddingResponseBody,
+    GetMultiModalEmbeddingResponse,
+    GetMultiModalRerankerRequest,
+    GetMultiModalRerankerResponseBody,
+    GetMultiModalRerankerResponse,
+    GetPredictionHeaders,
+    GetPredictionRequest,
+    GetPredictionResponse,
+    GetQueryAnalysisRequest,
+    GetQueryAnalysisResponseBody,
+    GetQueryAnalysisResponse,
+    GetTextEmbeddingRequest,
+    GetTextEmbeddingResponseBody,
+    GetTextEmbeddingResponse,
+    GetTextGenerationRequest,
+    GetTextGenerationResponseBody,
+    GetTextGenerationResponse,
+    GetTextSparseEmbeddingRequest,
+    GetTextSparseEmbeddingResponseBody,
+    GetTextSparseEmbeddingResponse,
+    GetVideoSegmentationTaskStatusRequest,
+    GetVideoSegmentationTaskStatusResponseBody,
+    GetVideoSegmentationTaskStatusResponse,
+    GetVideoSnapshotTaskStatusRequest,
+    GetVideoSnapshotTaskStatusResponseBody,
+    GetVideoSnapshotTaskStatusResponse,
+    GetVideoSummarizationTaskStatusRequest,
+    GetVideoSummarizationTaskStatusResponseBody,
+    GetVideoSummarizationTaskStatusResponse,
+    GetWebSearchRequest,
+    GetWebSearchResponseBody,
+    GetWebSearchResponse,
+    CreateAudioAsrTaskRequestInput,
+    CreateAudioAsrTaskRequestOutput,
+    CreateAudioAsrTaskResponseBodyResult,
+    CreateDocumentAnalyzeTaskRequestDocument,
+    CreateDocumentAnalyzeTaskRequestOutput,
+    CreateDocumentAnalyzeTaskRequestStrategy,
+    CreateDocumentAnalyzeTaskResponseBodyResult,
+    CreateImageAnalyzeTaskRequestDocument,
+    CreateImageAnalyzeTaskResponseBodyResult,
+    CreateVideoSegmentationTaskRequestInput,
+    CreateVideoSegmentationTaskRequestOutput,
+    CreateVideoSegmentationTaskResponseBodyResult,
+    CreateVideoSnapshotTaskRequestInput,
+    CreateVideoSnapshotTaskRequestOutput,
+    CreateVideoSnapshotTaskResponseBodyResult,
+    CreateVideoSummarizationTaskRequestInputChunksSnapshots,
+    CreateVideoSummarizationTaskRequestInputChunks,
+    CreateVideoSummarizationTaskRequestInput,
+    CreateVideoSummarizationTaskRequestOutput,
+    CreateVideoSummarizationTaskResponseBodyResult,
+    GetAudioAsrTaskStatusResponseBodyResultData,
+    GetAudioAsrTaskStatusResponseBodyResult,
+    GetAudioAsrTaskStatusResponseBodyUsage,
+    GetDocumentAnalyzeTaskStatusResponseBodyResultData,
+    GetDocumentAnalyzeTaskStatusResponseBodyResult,
+    GetDocumentAnalyzeTaskStatusResponseBodyUsage,
+    GetDocumentRankResponseBodyResultScores,
+    GetDocumentRankResponseBodyResult,
+    GetDocumentRankResponseBodyUsage,
+    GetDocumentSplitRequestDocument,
+    GetDocumentSplitRequestStrategy,
+    GetDocumentSplitResponseBodyResultChunks,
+    GetDocumentSplitResponseBodyResultRichTexts,
+    GetDocumentSplitResponseBodyResultSentences,
+    GetDocumentSplitResponseBodyResult,
+    GetDocumentSplitResponseBodyUsage,
+    GetEmbeddingTuningResponseBodyResult,
+    GetEmbeddingTuningResponseBodyUsage,
+    GetImageAnalyzeTaskStatusResponseBodyResultData,
+    GetImageAnalyzeTaskStatusResponseBodyResult,
+    GetImageAnalyzeTaskStatusResponseBodyUsage,
+    GetImageObjectDetectionRequestImage,
+    GetImageObjectDetectionResponseBodyResultObjectsLocation,
+    GetImageObjectDetectionResponseBodyResultObjects,
+    GetImageObjectDetectionResponseBodyResult,
+    GetImageObjectDetectionResponseBodyUsage,
+    GetMultiModalEmbeddingRequestInput,
+    GetMultiModalEmbeddingResponseBodyResultEmbeddings,
+    GetMultiModalEmbeddingResponseBodyResult,
+    GetMultiModalEmbeddingResponseBodyUsage,
+    GetMultiModalRerankerRequestDocs,
+    GetMultiModalRerankerRequestQuery,
+    GetMultiModalRerankerResponseBodyResultScores,
+    GetMultiModalRerankerResponseBodyResult,
+    GetMultiModalRerankerResponseBodyUsage,
+    GetQueryAnalysisRequestFunctions,
+    GetQueryAnalysisRequestHistory,
+    GetQueryAnalysisResponseBodyResult,
+    GetQueryAnalysisResponseBodyUsage,
+    GetTextEmbeddingResponseBodyResultEmbeddings,
+    GetTextEmbeddingResponseBodyResult,
+    GetTextEmbeddingResponseBodyUsage,
+    GetTextGenerationRequestMessages,
+    GetTextGenerationResponseBodyResultSearchResults,
+    GetTextGenerationResponseBodyResult,
+    GetTextGenerationResponseBodyUsage,
+    GetTextSparseEmbeddingResponseBodyResultSparseEmbeddingsEmbedding,
+    GetTextSparseEmbeddingResponseBodyResultSparseEmbeddings,
+    GetTextSparseEmbeddingResponseBodyResult,
+    GetTextSparseEmbeddingResponseBodyUsage,
+    GetVideoSegmentationTaskStatusResponseBodyResultDataSnapshots,
+    GetVideoSegmentationTaskStatusResponseBodyResultData,
+    GetVideoSegmentationTaskStatusResponseBodyResult,
+    GetVideoSegmentationTaskStatusResponseBodyUsage,
+    GetVideoSnapshotTaskStatusResponseBodyResultData,
+    GetVideoSnapshotTaskStatusResponseBodyResult,
+    GetVideoSnapshotTaskStatusResponseBodyUsage,
+    GetVideoSummarizationTaskStatusResponseBodyResultDataChunksMetadata,
+    GetVideoSummarizationTaskStatusResponseBodyResultDataChunks,
+    GetVideoSummarizationTaskStatusResponseBodyResultDataVideoMetadata,
+    GetVideoSummarizationTaskStatusResponseBodyResultData,
+    GetVideoSummarizationTaskStatusResponseBodyResult,
+    GetVideoSummarizationTaskStatusResponseBodyUsage,
+    GetWebSearchRequestHistory,
+    GetWebSearchResponseBodyResultSearchResult,
+    GetWebSearchResponseBodyResult,
+    GetWebSearchResponseBodyUsageFilterModel,
+    GetWebSearchResponseBodyUsageRewriteModel,
+    GetWebSearchResponseBodyUsage
+]
