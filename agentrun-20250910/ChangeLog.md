@@ -1,3 +1,7 @@
+2026-03-13 Version: 5.5.0
+- Support API ListWorkspaces.
+
+
 2026-03-11 Version: 5.4.3
 - Update API ListMemoryCollections: add request parameters workspaceIds.
 - Update API ListModelProxies: add request parameters workspaceIds.

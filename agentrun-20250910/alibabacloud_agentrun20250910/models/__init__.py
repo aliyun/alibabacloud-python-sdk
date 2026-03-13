@@ -313,6 +313,8 @@ from ._list_sandboxes_request import ListSandboxesRequest
 from ._list_sandboxes_response import ListSandboxesResponse
 from ._list_templates_request import ListTemplatesRequest
 from ._list_templates_response import ListTemplatesResponse
+from ._list_workspaces_request import ListWorkspacesRequest
+from ._list_workspaces_response import ListWorkspacesResponse
 from ._publish_runtime_version_request import PublishRuntimeVersionRequest
 from ._publish_runtime_version_response import PublishRuntimeVersionResponse
 from ._stop_sandbox_response import StopSandboxResponse
@@ -668,6 +670,8 @@ __all__ = [
     ListSandboxesResponse,
     ListTemplatesRequest,
     ListTemplatesResponse,
+    ListWorkspacesRequest,
+    ListWorkspacesResponse,
     PublishRuntimeVersionRequest,
     PublishRuntimeVersionResponse,
     StopSandboxResponse,

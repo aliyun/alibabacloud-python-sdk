@@ -13,6 +13,8 @@ class CredentialPublicConfig(DaraModel):
         auth_config: Dict[str, str] = None,
         auth_type: str = None,
         header_key: str = None,
+        jwks: str = None,
+        prefix: str = None,
         provider: str = None,
         remote_config: main_models.CredentialPublicConfigRemoteConfig = None,
         users: List[main_models.CredentialPublicConfigUsers] = None,
@@ -20,6 +22,8 @@ class CredentialPublicConfig(DaraModel):
         self.auth_config = auth_config
         self.auth_type = auth_type
         self.header_key = header_key
+        self.jwks = jwks
+        self.prefix = prefix
         self.provider = provider
         self.remote_config = remote_config
         self.users = users
@@ -46,6 +50,12 @@ class CredentialPublicConfig(DaraModel):
         if self.header_key is not None:
             result['headerKey'] = self.header_key
 
+        if self.jwks is not None:
+            result['jwks'] = self.jwks
+
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+
         if self.provider is not None:
             result['provider'] = self.provider
 
@@ -69,6 +79,12 @@ class CredentialPublicConfig(DaraModel):
 
         if m.get('headerKey') is not None:
             self.header_key = m.get('headerKey')
+
+        if m.get('jwks') is not None:
+            self.jwks = m.get('jwks')
+
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
 
         if m.get('provider') is not None:
             self.provider = m.get('provider')

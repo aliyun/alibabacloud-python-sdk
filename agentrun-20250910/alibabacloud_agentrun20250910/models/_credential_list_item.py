@@ -12,6 +12,7 @@ class CredentialListItem(DaraModel):
         credential_id: str = None,
         credential_name: str = None,
         credential_source_type: str = None,
+        description: str = None,
         enabled: bool = None,
         related_resource_count: int = None,
         updated_at: str = None,
@@ -21,6 +22,7 @@ class CredentialListItem(DaraModel):
         self.credential_id = credential_id
         self.credential_name = credential_name
         self.credential_source_type = credential_source_type
+        self.description = description
         self.enabled = enabled
         self.related_resource_count = related_resource_count
         self.updated_at = updated_at
@@ -47,6 +49,9 @@ class CredentialListItem(DaraModel):
 
         if self.credential_source_type is not None:
             result['credentialSourceType'] = self.credential_source_type
+
+        if self.description is not None:
+            result['description'] = self.description
 
         if self.enabled is not None:
             result['enabled'] = self.enabled
@@ -75,6 +80,9 @@ class CredentialListItem(DaraModel):
 
         if m.get('credentialSourceType') is not None:
             self.credential_source_type = m.get('credentialSourceType')
+
+        if m.get('description') is not None:
+            self.description = m.get('description')
 
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')

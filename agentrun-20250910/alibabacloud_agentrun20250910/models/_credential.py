@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 
 from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
@@ -14,7 +14,7 @@ class Credential(DaraModel):
         credential_auth_type: str = None,
         credential_id: str = None,
         credential_name: str = None,
-        credential_public_config: Dict[str, str] = None,
+        credential_public_config: main_models.CredentialPublicConfig = None,
         credential_secret: str = None,
         credential_source_type: str = None,
         description: str = None,
@@ -35,6 +35,8 @@ class Credential(DaraModel):
         self.updated_at = updated_at
 
     def validate(self):
+        if self.credential_public_config:
+            self.credential_public_config.validate()
         if self.related_resources:
             for v1 in self.related_resources:
                  if v1:
@@ -58,7 +60,7 @@ class Credential(DaraModel):
             result['credentialName'] = self.credential_name
 
         if self.credential_public_config is not None:
-            result['credentialPublicConfig'] = self.credential_public_config
+            result['credentialPublicConfig'] = self.credential_public_config.to_map()
 
         if self.credential_secret is not None:
             result['credentialSecret'] = self.credential_secret
@@ -97,7 +99,8 @@ class Credential(DaraModel):
             self.credential_name = m.get('credentialName')
 
         if m.get('credentialPublicConfig') is not None:
-            self.credential_public_config = m.get('credentialPublicConfig')
+            temp_model = main_models.CredentialPublicConfig()
+            self.credential_public_config = temp_model.from_map(m.get('credentialPublicConfig'))
 
         if m.get('credentialSecret') is not None:
             self.credential_secret = m.get('credentialSecret')
