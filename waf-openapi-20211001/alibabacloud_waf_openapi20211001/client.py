@@ -6106,6 +6106,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_apisec_user_operations_with_options_async(request, runtime)
 
+    def describe_base_rule_change_log_with_options(
+        self,
+        request: main_models.DescribeBaseRuleChangeLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBaseRuleChangeLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBaseRuleChangeLog',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBaseRuleChangeLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_base_rule_change_log_with_options_async(
+        self,
+        request: main_models.DescribeBaseRuleChangeLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBaseRuleChangeLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBaseRuleChangeLog',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBaseRuleChangeLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_base_rule_change_log(
+        self,
+        request: main_models.DescribeBaseRuleChangeLogRequest,
+    ) -> main_models.DescribeBaseRuleChangeLogResponse:
+        runtime = RuntimeOptions()
+        return self.describe_base_rule_change_log_with_options(request, runtime)
+
+    async def describe_base_rule_change_log_async(
+        self,
+        request: main_models.DescribeBaseRuleChangeLogRequest,
+    ) -> main_models.DescribeBaseRuleChangeLogResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_base_rule_change_log_with_options_async(request, runtime)
+
     def describe_base_system_rules_with_options(
         self,
         request: main_models.DescribeBaseSystemRulesRequest,
@@ -9484,6 +9574,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_domains_with_options_async(request, runtime)
 
+    def describe_elastic_bills_with_options(
+        self,
+        request: main_models.DescribeElasticBillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeElasticBillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeElasticBills',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeElasticBillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_bills_with_options_async(
+        self,
+        request: main_models.DescribeElasticBillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeElasticBillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeElasticBills',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeElasticBillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_bills(
+        self,
+        request: main_models.DescribeElasticBillsRequest,
+    ) -> main_models.DescribeElasticBillsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_elastic_bills_with_options(request, runtime)
+
+    async def describe_elastic_bills_async(
+        self,
+        request: main_models.DescribeElasticBillsRequest,
+    ) -> main_models.DescribeElasticBillsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_elastic_bills_with_options_async(request, runtime)
+
     def describe_flow_chart_with_options(
         self,
         request: main_models.DescribeFlowChartRequest,
@@ -12451,6 +12627,92 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePocFunctionsResponse:
         runtime = RuntimeOptions()
         return await self.describe_poc_functions_with_options_async(request, runtime)
+
+    def describe_prepay_daily_bills_with_options(
+        self,
+        request: main_models.DescribePrepayDailyBillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrepayDailyBillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrepayDailyBills',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrepayDailyBillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_prepay_daily_bills_with_options_async(
+        self,
+        request: main_models.DescribePrepayDailyBillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrepayDailyBillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrepayDailyBills',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrepayDailyBillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_prepay_daily_bills(
+        self,
+        request: main_models.DescribePrepayDailyBillsRequest,
+    ) -> main_models.DescribePrepayDailyBillsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_prepay_daily_bills_with_options(request, runtime)
+
+    async def describe_prepay_daily_bills_async(
+        self,
+        request: main_models.DescribePrepayDailyBillsRequest,
+    ) -> main_models.DescribePrepayDailyBillsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_prepay_daily_bills_with_options_async(request, runtime)
 
     def describe_product_instances_with_options(
         self,

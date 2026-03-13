@@ -197,6 +197,9 @@ from ._describe_apisec_suggestions_response import DescribeApisecSuggestionsResp
 from ._describe_apisec_user_operations_request import DescribeApisecUserOperationsRequest
 from ._describe_apisec_user_operations_response_body import DescribeApisecUserOperationsResponseBody
 from ._describe_apisec_user_operations_response import DescribeApisecUserOperationsResponse
+from ._describe_base_rule_change_log_request import DescribeBaseRuleChangeLogRequest
+from ._describe_base_rule_change_log_response_body import DescribeBaseRuleChangeLogResponseBody
+from ._describe_base_rule_change_log_response import DescribeBaseRuleChangeLogResponse
 from ._describe_base_system_rules_request import DescribeBaseSystemRulesRequest
 from ._describe_base_system_rules_response_body import DescribeBaseSystemRulesResponseBody
 from ._describe_base_system_rules_response import DescribeBaseSystemRulesResponse
@@ -309,6 +312,9 @@ from ._describe_domain_used_ports_response import DescribeDomainUsedPortsRespons
 from ._describe_domains_request import DescribeDomainsRequest
 from ._describe_domains_response_body import DescribeDomainsResponseBody
 from ._describe_domains_response import DescribeDomainsResponse
+from ._describe_elastic_bills_request import DescribeElasticBillsRequest
+from ._describe_elastic_bills_response_body import DescribeElasticBillsResponseBody
+from ._describe_elastic_bills_response import DescribeElasticBillsResponse
 from ._describe_flow_chart_request import DescribeFlowChartRequest
 from ._describe_flow_chart_response_body import DescribeFlowChartResponseBody
 from ._describe_flow_chart_response import DescribeFlowChartResponse
@@ -413,6 +419,9 @@ from ._describe_peak_trend_response import DescribePeakTrendResponse
 from ._describe_poc_functions_request import DescribePocFunctionsRequest
 from ._describe_poc_functions_response_body import DescribePocFunctionsResponseBody
 from ._describe_poc_functions_response import DescribePocFunctionsResponse
+from ._describe_prepay_daily_bills_request import DescribePrepayDailyBillsRequest
+from ._describe_prepay_daily_bills_response_body import DescribePrepayDailyBillsResponseBody
+from ._describe_prepay_daily_bills_response import DescribePrepayDailyBillsResponse
 from ._describe_product_instances_request import DescribeProductInstancesRequest
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBody
 from ._describe_product_instances_response import DescribeProductInstancesResponse
@@ -760,6 +769,7 @@ from ._describe_apisec_sensitive_domain_statistic_response_body import DescribeA
 from ._describe_apisec_statistics_response_body import DescribeApisecStatisticsResponseBodyData
 from ._describe_apisec_suggestions_response_body import DescribeApisecSuggestionsResponseBodyData
 from ._describe_apisec_user_operations_response_body import DescribeApisecUserOperationsResponseBodyData
+from ._describe_base_rule_change_log_response_body import DescribeBaseRuleChangeLogResponseBodyRules
 from ._describe_base_system_rules_response_body import DescribeBaseSystemRulesResponseBodyRules
 from ._describe_bot_rule_labels_response_body import DescribeBotRuleLabelsResponseBodyRuleLabels
 from ._describe_cert_detail_response_body import DescribeCertDetailResponseBodyCertDetail
@@ -805,6 +815,7 @@ from ._describe_domains_response_body import DescribeDomainsResponseBodyDomainsB
 from ._describe_domains_response_body import DescribeDomainsResponseBodyDomainsBackeds
 from ._describe_domains_response_body import DescribeDomainsResponseBodyDomainsListenPorts
 from ._describe_domains_response_body import DescribeDomainsResponseBodyDomains
+from ._describe_elastic_bills_response_body import DescribeElasticBillsResponseBodyBills
 from ._describe_flow_chart_response_body import DescribeFlowChartResponseBodyFlowChart
 from ._describe_flow_top_resource_response_body import DescribeFlowTopResourceResponseBodyRuleHitsTopResource
 from ._describe_flow_top_url_response_body import DescribeFlowTopUrlResponseBodyRuleHitsTopUrl
@@ -852,6 +863,7 @@ from ._describe_network_flow_top_nmetric_response_body import DescribeNetworkFlo
 from ._describe_network_flow_top_nmetric_response_body import DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData
 from ._describe_peak_trend_response_body import DescribePeakTrendResponseBodyFlowChart
 from ._describe_poc_functions_response_body import DescribePocFunctionsResponseBodyFunctions
+from ._describe_prepay_daily_bills_response_body import DescribePrepayDailyBillsResponseBodyBills
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesResourcePorts
@@ -1126,6 +1138,9 @@ __all__ = [
     DescribeApisecUserOperationsRequest,
     DescribeApisecUserOperationsResponseBody,
     DescribeApisecUserOperationsResponse,
+    DescribeBaseRuleChangeLogRequest,
+    DescribeBaseRuleChangeLogResponseBody,
+    DescribeBaseRuleChangeLogResponse,
     DescribeBaseSystemRulesRequest,
     DescribeBaseSystemRulesResponseBody,
     DescribeBaseSystemRulesResponse,
@@ -1238,6 +1253,9 @@ __all__ = [
     DescribeDomainsRequest,
     DescribeDomainsResponseBody,
     DescribeDomainsResponse,
+    DescribeElasticBillsRequest,
+    DescribeElasticBillsResponseBody,
+    DescribeElasticBillsResponse,
     DescribeFlowChartRequest,
     DescribeFlowChartResponseBody,
     DescribeFlowChartResponse,
@@ -1342,6 +1360,9 @@ __all__ = [
     DescribePocFunctionsRequest,
     DescribePocFunctionsResponseBody,
     DescribePocFunctionsResponse,
+    DescribePrepayDailyBillsRequest,
+    DescribePrepayDailyBillsResponseBody,
+    DescribePrepayDailyBillsResponse,
     DescribeProductInstancesRequest,
     DescribeProductInstancesResponseBody,
     DescribeProductInstancesResponse,
@@ -1689,6 +1710,7 @@ __all__ = [
     DescribeApisecStatisticsResponseBodyData,
     DescribeApisecSuggestionsResponseBodyData,
     DescribeApisecUserOperationsResponseBodyData,
+    DescribeBaseRuleChangeLogResponseBodyRules,
     DescribeBaseSystemRulesResponseBodyRules,
     DescribeBotRuleLabelsResponseBodyRuleLabels,
     DescribeCertDetailResponseBodyCertDetail,
@@ -1734,6 +1756,7 @@ __all__ = [
     DescribeDomainsResponseBodyDomainsBackeds,
     DescribeDomainsResponseBodyDomainsListenPorts,
     DescribeDomainsResponseBodyDomains,
+    DescribeElasticBillsResponseBodyBills,
     DescribeFlowChartResponseBodyFlowChart,
     DescribeFlowTopResourceResponseBodyRuleHitsTopResource,
     DescribeFlowTopUrlResponseBodyRuleHitsTopUrl,
@@ -1781,6 +1804,7 @@ __all__ = [
     DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData,
     DescribePeakTrendResponseBodyFlowChart,
     DescribePocFunctionsResponseBodyFunctions,
+    DescribePrepayDailyBillsResponseBodyBills,
     DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols,
     DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates,
     DescribeProductInstancesResponseBodyProductInstancesResourcePorts,

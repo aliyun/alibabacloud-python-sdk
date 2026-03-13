@@ -1,3 +1,9 @@
+2026-03-13 Version: 7.6.0
+- Support API DescribeBaseRuleChangeLog.
+- Support API DescribeElasticBills.
+- Support API DescribePrepayDailyBills.
+
+
 2026-03-02 Version: 7.5.2
 - Update API DescribeDefenseResource: add response parameters Body.Resource.InstanceId.
 - Update API DescribeDefenseResources: add response parameters Body.Resources.$.InstanceId.
