@@ -231,17 +231,23 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         db_password: str = None,
         db_user: str = None,
         embedder_model: str = None,
+        embedder_model_dimension: int = None,
+        graph_llm_model: str = None,
         llm_model: str = None,
         project_name: str = None,
         reranker_model: str = None,
+        shard: int = None,
     ):
         self.db_name = db_name
         self.db_password = db_password
         self.db_user = db_user
         self.embedder_model = embedder_model
+        self.embedder_model_dimension = embedder_model_dimension
+        self.graph_llm_model = graph_llm_model
         self.llm_model = llm_model
         self.project_name = project_name
         self.reranker_model = reranker_model
+        self.shard = shard
 
     def validate(self):
         pass
@@ -263,6 +269,12 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         if self.embedder_model is not None:
             result['EmbedderModel'] = self.embedder_model
 
+        if self.embedder_model_dimension is not None:
+            result['EmbedderModelDimension'] = self.embedder_model_dimension
+
+        if self.graph_llm_model is not None:
+            result['GraphLlmModel'] = self.graph_llm_model
+
         if self.llm_model is not None:
             result['LlmModel'] = self.llm_model
 
@@ -271,6 +283,9 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
 
         if self.reranker_model is not None:
             result['RerankerModel'] = self.reranker_model
+
+        if self.shard is not None:
+            result['Shard'] = self.shard
 
         return result
 
@@ -288,6 +303,12 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         if m.get('EmbedderModel') is not None:
             self.embedder_model = m.get('EmbedderModel')
 
+        if m.get('EmbedderModelDimension') is not None:
+            self.embedder_model_dimension = m.get('EmbedderModelDimension')
+
+        if m.get('GraphLlmModel') is not None:
+            self.graph_llm_model = m.get('GraphLlmModel')
+
         if m.get('LlmModel') is not None:
             self.llm_model = m.get('LlmModel')
 
@@ -296,6 +317,9 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
 
         if m.get('RerankerModel') is not None:
             self.reranker_model = m.get('RerankerModel')
+
+        if m.get('Shard') is not None:
+            self.shard = m.get('Shard')
 
         return self
 

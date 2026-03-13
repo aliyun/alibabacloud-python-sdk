@@ -1,3 +1,9 @@
+2026-03-13 Version: 6.7.1
+- Update API CreateApplication: add request parameters MemApplicationSpec.EmbedderModelDimension.
+- Update API CreateApplication: add request parameters MemApplicationSpec.GraphLlmModel.
+- Update API CreateApplication: add request parameters MemApplicationSpec.Shard.
+
+
 2026-02-26 Version: 6.7.0
 - Support API DisableDBClusterDynamoDB.
 - Support API EnableDBClusterDynamoDB.
