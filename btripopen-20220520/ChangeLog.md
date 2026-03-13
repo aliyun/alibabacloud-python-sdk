@@ -1,3 +1,78 @@
+2026-03-13 Version: 5.1.0
+- Support API IeCarBillSettlementQuery.
+- Support API QueryCompenInfosForOp.
+- Update API ApplyInvoiceTask: add request parameters invoice_task_list.$.ie_vehicle_normal_invoice_fee.
+- Update API ApplyInvoiceTask: add request parameters invoice_task_list.$.meal_tc7_normal_invoice_fee.
+- Update API CarBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API CarBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API CarOrderQuery: add response parameters Body.module.order_base_info.car_order_source_type.
+- Update API CommonApplyQuery: add response parameters Body.module.order_id.
+- Update API CooperatorFlightBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API CooperatorFlightBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.before_ticket_no.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.segment_list.
+- Update API CooperatorHotelBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API CooperatorHotelBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API FlightBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API FlightBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.before_ticket_no.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.segment_list.
+- Update API FlightItineraryScanQuery: add request parameters order_id.
+- Update API FlightItineraryScanQuery: add response parameters Body.module.items.$.blue_or_red.
+- Update API FlightItineraryScanQuery: add response parameters Body.module.items.$.other_taxes.
+- Update API FlightItineraryScanQuery: add response parameters Body.module.items.$.xml_oss_url.
+- Update API FlightOrderListQuery: add response parameters Body.module.$.arr_apt_prefecture_ad_code.
+- Update API FlightOrderListQuery: add response parameters Body.module.$.arr_apt_prefecture_name.
+- Update API FlightOrderListQuery: add response parameters Body.module.$.dep_apt_prefecture_ad_code.
+- Update API FlightOrderListQuery: add response parameters Body.module.$.dep_apt_prefecture_name.
+- Update API FlightOtaItemDetail: add request parameters order_id.
+- Update API FlightOtaItemDetail: add request parameters out_order_id.
+- Update API FuPointBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API FuPointBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API HotelBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API HotelBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API HotelGoodsQuery: add response parameters Body.module.hotel_group_desc.
+- Update API HotelGoodsQuery: add response parameters Body.module.rooms.$.rates.$.company_assist_type.
+- Update API HotelGoodsQuery: add response parameters Body.module.rooms.$.rates.$.hotel_member_benefit.
+- Update API HotelGoodsQuery: add response parameters Body.module.rooms.$.rates.$.need_certificate.
+- Update API HotelGoodsQuery: add response parameters Body.module.rooms.$.rates.$.rate_key.
+- Update API HotelOrderCreate: add request parameters member_info.
+- Update API HotelOrderCreate: add request parameters occupant_info_list.$.cascade_dept_name.
+- Update API HotelOrderCreate: add request parameters occupant_info_list.$.cost_center_info.
+- Update API HotelOrderCreate: add request parameters occupant_info_list.$.is_booker.
+- Update API HotelOrderPreValidate: add request parameters rate_key.
+- Update API HotelOrderPreValidate: add response parameters Body.module.rate_plan_info.cert_type_list.
+- Update API HotelOrderQuery: add response parameters Body.module.hotel_info.star.
+- Update API IeFlightBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API IeFlightBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.segment_list.
+- Update API IeHotelBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API IeHotelBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API InvoiceAdd: add request parameters mail_third_part_id.
+- Update API InvoiceModify: add request parameters mail_third_part_id.
+- Update API MealApplyAdd: add request parameters extend_field.
+- Update API MealApplyQuery: add response parameters Body.module.extend_field.
+- Update API MealBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API MealBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API QueryReimbursementOrder: add response parameters Body.module.payment_infos.$.payee_account_number.
+- Update API TrainBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API TrainBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API TrainOrderQueryV2: add response parameters Body.module.order_base_info.replenish_order_ids.
+- Update API TrainOrderQueryV2: add response parameters Body.module.order_base_info.replenish_original_order_id.
+- Update API TrainTicketScanQuery: add request parameters invoice_date_end.
+- Update API TrainTicketScanQuery: add request parameters invoice_date_start.
+- Update API TrainTicketScanQuery: add request parameters order_id.
+- Update API TrainTicketScanQuery: add response parameters Body.module.items.$.electronic_ticket_no.
+- Update API TrainTicketScanQuery: add response parameters Body.module.items.$.has_changed.
+- Update API TrainTicketScanQuery: add response parameters Body.module.items.$.origin_ticket_no.
+- Update API TrainTicketScanQuery: add response parameters Body.module.items.$.xml_url.
+- Update API TripBusinessInstanceQuery: add response parameters Body.module.business_data.
+- Update API VasBillSettlementQuery: add request parameters bill_record_time_end.
+- Update API VasBillSettlementQuery: add request parameters bill_record_time_start.
+- Update API WaitApplyInvoiceTaskDetailQuery: add response parameters Body.module.$.ie_vehicle_normal_invoice_fee.
+- Update API WaitApplyInvoiceTaskDetailQuery: add response parameters Body.module.$.meal_tc7_normal_invoice_fee.
+
+
 2025-09-12 Version: 5.0.2
 - Generated python 2022-05-20 for btripOpen.
 

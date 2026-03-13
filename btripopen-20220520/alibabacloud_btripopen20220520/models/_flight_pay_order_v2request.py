@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class FlightPayOrderV2Request(DaraModel):
+    def __init__(
+        self,
+        isv_name: str = None,
+        order_id: str = None,
+        out_order_id: str = None,
+        total_price: int = None,
+        total_service_fee_price: int = None,
+    ):
+        self.isv_name = isv_name
+        self.order_id = order_id
+        self.out_order_id = out_order_id
+        self.total_price = total_price
+        self.total_service_fee_price = total_service_fee_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.isv_name is not None:
+            result['isv_name'] = self.isv_name
+
+        if self.order_id is not None:
+            result['order_id'] = self.order_id
+
+        if self.out_order_id is not None:
+            result['out_order_id'] = self.out_order_id
+
+        if self.total_price is not None:
+            result['total_price'] = self.total_price
+
+        if self.total_service_fee_price is not None:
+            result['total_service_fee_price'] = self.total_service_fee_price
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isv_name') is not None:
+            self.isv_name = m.get('isv_name')
+
+        if m.get('order_id') is not None:
+            self.order_id = m.get('order_id')
+
+        if m.get('out_order_id') is not None:
+            self.out_order_id = m.get('out_order_id')
+
+        if m.get('total_price') is not None:
+            self.total_price = m.get('total_price')
+
+        if m.get('total_service_fee_price') is not None:
+            self.total_service_fee_price = m.get('total_service_fee_price')
+
+        return self
+

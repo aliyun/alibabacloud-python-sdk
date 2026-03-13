@@ -1,0 +1,144 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class FlightRefundApplyShrinkRequest(DaraModel):
+    def __init__(
+        self,
+        corp_refund_price: int = None,
+        dis_order_id: str = None,
+        dis_sub_order_id: str = None,
+        display_refund_money: str = None,
+        extra_shrink: str = None,
+        is_voluntary: int = None,
+        item_unit_ids: str = None,
+        passenger_segment_info_list_shrink: str = None,
+        personal_refund_price: int = None,
+        reason_detail: str = None,
+        reason_type: int = None,
+        refund_voucher_info_shrink: str = None,
+        session_id: str = None,
+        total_refund_price: int = None,
+    ):
+        self.corp_refund_price = corp_refund_price
+        # This parameter is required.
+        self.dis_order_id = dis_order_id
+        # This parameter is required.
+        self.dis_sub_order_id = dis_sub_order_id
+        # This parameter is required.
+        self.display_refund_money = display_refund_money
+        self.extra_shrink = extra_shrink
+        # This parameter is required.
+        self.is_voluntary = is_voluntary
+        # This parameter is required.
+        self.item_unit_ids = item_unit_ids
+        self.passenger_segment_info_list_shrink = passenger_segment_info_list_shrink
+        self.personal_refund_price = personal_refund_price
+        self.reason_detail = reason_detail
+        # This parameter is required.
+        self.reason_type = reason_type
+        self.refund_voucher_info_shrink = refund_voucher_info_shrink
+        # This parameter is required.
+        self.session_id = session_id
+        self.total_refund_price = total_refund_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.corp_refund_price is not None:
+            result['corp_refund_price'] = self.corp_refund_price
+
+        if self.dis_order_id is not None:
+            result['dis_order_id'] = self.dis_order_id
+
+        if self.dis_sub_order_id is not None:
+            result['dis_sub_order_id'] = self.dis_sub_order_id
+
+        if self.display_refund_money is not None:
+            result['display_refund_money'] = self.display_refund_money
+
+        if self.extra_shrink is not None:
+            result['extra'] = self.extra_shrink
+
+        if self.is_voluntary is not None:
+            result['is_voluntary'] = self.is_voluntary
+
+        if self.item_unit_ids is not None:
+            result['item_unit_ids'] = self.item_unit_ids
+
+        if self.passenger_segment_info_list_shrink is not None:
+            result['passenger_segment_info_list'] = self.passenger_segment_info_list_shrink
+
+        if self.personal_refund_price is not None:
+            result['personal_refund_price'] = self.personal_refund_price
+
+        if self.reason_detail is not None:
+            result['reason_detail'] = self.reason_detail
+
+        if self.reason_type is not None:
+            result['reason_type'] = self.reason_type
+
+        if self.refund_voucher_info_shrink is not None:
+            result['refund_voucher_info'] = self.refund_voucher_info_shrink
+
+        if self.session_id is not None:
+            result['session_id'] = self.session_id
+
+        if self.total_refund_price is not None:
+            result['total_refund_price'] = self.total_refund_price
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('corp_refund_price') is not None:
+            self.corp_refund_price = m.get('corp_refund_price')
+
+        if m.get('dis_order_id') is not None:
+            self.dis_order_id = m.get('dis_order_id')
+
+        if m.get('dis_sub_order_id') is not None:
+            self.dis_sub_order_id = m.get('dis_sub_order_id')
+
+        if m.get('display_refund_money') is not None:
+            self.display_refund_money = m.get('display_refund_money')
+
+        if m.get('extra') is not None:
+            self.extra_shrink = m.get('extra')
+
+        if m.get('is_voluntary') is not None:
+            self.is_voluntary = m.get('is_voluntary')
+
+        if m.get('item_unit_ids') is not None:
+            self.item_unit_ids = m.get('item_unit_ids')
+
+        if m.get('passenger_segment_info_list') is not None:
+            self.passenger_segment_info_list_shrink = m.get('passenger_segment_info_list')
+
+        if m.get('personal_refund_price') is not None:
+            self.personal_refund_price = m.get('personal_refund_price')
+
+        if m.get('reason_detail') is not None:
+            self.reason_detail = m.get('reason_detail')
+
+        if m.get('reason_type') is not None:
+            self.reason_type = m.get('reason_type')
+
+        if m.get('refund_voucher_info') is not None:
+            self.refund_voucher_info_shrink = m.get('refund_voucher_info')
+
+        if m.get('session_id') is not None:
+            self.session_id = m.get('session_id')
+
+        if m.get('total_refund_price') is not None:
+            self.total_refund_price = m.get('total_refund_price')
+
+        return self
+
