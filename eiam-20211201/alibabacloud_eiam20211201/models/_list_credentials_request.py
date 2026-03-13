@@ -11,6 +11,7 @@ class ListCredentialsRequest(DaraModel):
     def __init__(
         self,
         credential_ids: List[str] = None,
+        credential_types: List[str] = None,
         filter: List[main_models.ListCredentialsRequestFilter] = None,
         instance_id: str = None,
         max_results: int = None,
@@ -18,6 +19,7 @@ class ListCredentialsRequest(DaraModel):
         statuses: List[str] = None,
     ):
         self.credential_ids = credential_ids
+        self.credential_types = credential_types
         self.filter = filter
         # IDaaS EIAM实例的ID。
         # 
@@ -43,6 +45,9 @@ class ListCredentialsRequest(DaraModel):
         if self.credential_ids is not None:
             result['CredentialIds'] = self.credential_ids
 
+        if self.credential_types is not None:
+            result['CredentialTypes'] = self.credential_types
+
         result['Filter'] = []
         if self.filter is not None:
             for k1 in self.filter:
@@ -66,6 +71,9 @@ class ListCredentialsRequest(DaraModel):
         m = m or dict()
         if m.get('CredentialIds') is not None:
             self.credential_ids = m.get('CredentialIds')
+
+        if m.get('CredentialTypes') is not None:
+            self.credential_types = m.get('CredentialTypes')
 
         self.filter = []
         if m.get('Filter') is not None:

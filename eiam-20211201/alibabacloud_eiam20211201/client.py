@@ -10682,6 +10682,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.generate_upload_auth_with_options_async(request, runtime)
 
+    def generate_web_authn_authenticator_registration_url_with_options(
+        self,
+        request: main_models.GenerateWebAuthnAuthenticatorRegistrationUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateWebAuthnAuthenticatorRegistrationUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateWebAuthnAuthenticatorRegistrationUrl',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateWebAuthnAuthenticatorRegistrationUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_web_authn_authenticator_registration_url_with_options_async(
+        self,
+        request: main_models.GenerateWebAuthnAuthenticatorRegistrationUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateWebAuthnAuthenticatorRegistrationUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateWebAuthnAuthenticatorRegistrationUrl',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateWebAuthnAuthenticatorRegistrationUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_web_authn_authenticator_registration_url(
+        self,
+        request: main_models.GenerateWebAuthnAuthenticatorRegistrationUrlRequest,
+    ) -> main_models.GenerateWebAuthnAuthenticatorRegistrationUrlResponse:
+        runtime = RuntimeOptions()
+        return self.generate_web_authn_authenticator_registration_url_with_options(request, runtime)
+
+    async def generate_web_authn_authenticator_registration_url_async(
+        self,
+        request: main_models.GenerateWebAuthnAuthenticatorRegistrationUrlRequest,
+    ) -> main_models.GenerateWebAuthnAuthenticatorRegistrationUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_web_authn_authenticator_registration_url_with_options_async(request, runtime)
+
     def get_application_with_options(
         self,
         request: main_models.GetApplicationRequest,
@@ -16777,6 +16855,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.credential_ids):
             query['CredentialIds'] = request.credential_ids
+        if not DaraCore.is_null(request.credential_types):
+            query['CredentialTypes'] = request.credential_types
         if not DaraCore.is_null(request.filter):
             query['Filter'] = request.filter
         if not DaraCore.is_null(request.instance_id):
@@ -16815,6 +16895,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.credential_ids):
             query['CredentialIds'] = request.credential_ids
+        if not DaraCore.is_null(request.credential_types):
+            query['CredentialTypes'] = request.credential_types
         if not DaraCore.is_null(request.filter):
             query['Filter'] = request.filter
         if not DaraCore.is_null(request.instance_id):
