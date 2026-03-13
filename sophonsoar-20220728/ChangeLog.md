@@ -1,3 +1,7 @@
+2026-03-13 Version: 4.0.1
+- Update API DescribeOpenApiList: add response parameters Body.Data.Versions.
+
+
 2025-12-24 Version: 4.0.0
 - Delete API BatchModifyInstanceStatus.
 - Delete API DescribeNodeUsedInfos.
