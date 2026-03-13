@@ -1,3 +1,7 @@
+2026-03-13 Version: 2.5.0
+- Support API UploadModule.
+
+
 2026-02-26 Version: 2.4.0
 - Support API ListResources.
 

@@ -222,6 +222,10 @@ from ._update_resource_export_task_attribute_response import UpdateResourceExpor
 from ._update_task_attribute_request import UpdateTaskAttributeRequest
 from ._update_task_attribute_response_body import UpdateTaskAttributeResponseBody
 from ._update_task_attribute_response import UpdateTaskAttributeResponse
+from ._upload_module_request import UploadModuleRequest
+from ._upload_module_advance_request import UploadModuleAdvanceRequest
+from ._upload_module_response_body import UploadModuleResponseBody
+from ._upload_module_response import UploadModuleResponse
 from ._validate_module_request import ValidateModuleRequest
 from ._validate_module_response_body import ValidateModuleResponseBody
 from ._validate_module_response import ValidateModuleResponse
@@ -538,6 +542,10 @@ __all__ = [
     UpdateTaskAttributeRequest,
     UpdateTaskAttributeResponseBody,
     UpdateTaskAttributeResponse,
+    UploadModuleRequest,
+    UploadModuleAdvanceRequest,
+    UploadModuleResponseBody,
+    UploadModuleResponse,
     ValidateModuleRequest,
     ValidateModuleResponseBody,
     ValidateModuleResponse,
