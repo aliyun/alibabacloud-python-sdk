@@ -1,3 +1,7 @@
+2026-03-13 Version: 2.8.2
+- Update API CreateIndex: add request parameters channelType.
+
+
 2026-01-29 Version: 2.8.1
 - Update API CreateIndex: add request parameters connectId.
 - Update API CreateIndex: add request parameters knowledgeScene.

@@ -808,6 +808,8 @@ class Client(OpenApiClient):
             query['StructureType'] = request.structure_type
         if not DaraCore.is_null(request.table_ids_shrink):
             query['TableIds'] = request.table_ids_shrink
+        if not DaraCore.is_null(request.channel_type):
+            query['channelType'] = request.channel_type
         if not DaraCore.is_null(request.chunk_mode):
             query['chunkMode'] = request.chunk_mode
         if not DaraCore.is_null(request.connect_id):
@@ -913,6 +915,8 @@ class Client(OpenApiClient):
             query['StructureType'] = request.structure_type
         if not DaraCore.is_null(request.table_ids_shrink):
             query['TableIds'] = request.table_ids_shrink
+        if not DaraCore.is_null(request.channel_type):
+            query['channelType'] = request.channel_type
         if not DaraCore.is_null(request.chunk_mode):
             query['chunkMode'] = request.chunk_mode
         if not DaraCore.is_null(request.connect_id):

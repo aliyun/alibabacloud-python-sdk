@@ -30,6 +30,7 @@ class CreateIndexRequest(DaraModel):
         source_type: str = None,
         structure_type: str = None,
         table_ids: List[str] = None,
+        channel_type: str = None,
         chunk_mode: str = None,
         connect_id: str = None,
         database: str = None,
@@ -50,6 +51,7 @@ class CreateIndexRequest(DaraModel):
         # 
         # > If `ChunkSize` is set to a value less than 100, `OverlapSize` is required. Or, if you do not pass these two parameters, the system uses the default values of the two.
         self.chunk_size = chunk_size
+        # > This parameter is not available. Do not specify this parameter.
         self.columns = columns
         # > This parameter is not available. Do not specify this parameter.
         self.create_index_type = create_index_type
@@ -131,6 +133,7 @@ class CreateIndexRequest(DaraModel):
         self.structure_type = structure_type
         # > This parameter is not available. Do not specify this parameter.
         self.table_ids = table_ids
+        self.channel_type = channel_type
         # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
         self.connect_id = connect_id
@@ -234,6 +237,9 @@ class CreateIndexRequest(DaraModel):
         if self.table_ids is not None:
             result['TableIds'] = self.table_ids
 
+        if self.channel_type is not None:
+            result['channelType'] = self.channel_type
+
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
 
@@ -336,6 +342,9 @@ class CreateIndexRequest(DaraModel):
 
         if m.get('TableIds') is not None:
             self.table_ids = m.get('TableIds')
+
+        if m.get('channelType') is not None:
+            self.channel_type = m.get('channelType')
 
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
@@ -590,10 +599,15 @@ class CreateIndexRequestColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # > This parameter is not available. Do not specify this parameter.
         self.column = column
+        # > This parameter is not available. Do not specify this parameter.
         self.is_recall = is_recall
+        # > This parameter is not available. Do not specify this parameter.
         self.is_search = is_search
+        # > This parameter is not available. Do not specify this parameter.
         self.name = name
+        # > This parameter is not available. Do not specify this parameter.
         self.type = type
 
     def validate(self):

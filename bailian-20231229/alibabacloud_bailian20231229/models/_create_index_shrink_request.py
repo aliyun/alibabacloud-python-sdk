@@ -27,6 +27,7 @@ class CreateIndexShrinkRequest(DaraModel):
         source_type: str = None,
         structure_type: str = None,
         table_ids_shrink: str = None,
+        channel_type: str = None,
         chunk_mode: str = None,
         connect_id: str = None,
         database: str = None,
@@ -47,6 +48,7 @@ class CreateIndexShrinkRequest(DaraModel):
         # 
         # > If `ChunkSize` is set to a value less than 100, `OverlapSize` is required. Or, if you do not pass these two parameters, the system uses the default values of the two.
         self.chunk_size = chunk_size
+        # > This parameter is not available. Do not specify this parameter.
         self.columns_shrink = columns_shrink
         # > This parameter is not available. Do not specify this parameter.
         self.create_index_type = create_index_type
@@ -128,6 +130,7 @@ class CreateIndexShrinkRequest(DaraModel):
         self.structure_type = structure_type
         # > This parameter is not available. Do not specify this parameter.
         self.table_ids_shrink = table_ids_shrink
+        self.channel_type = channel_type
         # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
         self.connect_id = connect_id
@@ -219,6 +222,9 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if self.table_ids_shrink is not None:
             result['TableIds'] = self.table_ids_shrink
+
+        if self.channel_type is not None:
+            result['channelType'] = self.channel_type
 
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
@@ -316,6 +322,9 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if m.get('TableIds') is not None:
             self.table_ids_shrink = m.get('TableIds')
+
+        if m.get('channelType') is not None:
+            self.channel_type = m.get('channelType')
 
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
