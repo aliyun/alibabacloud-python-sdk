@@ -69,6 +69,7 @@ class VideoModerationResultResponseBodyData(DaraModel):
         self,
         audio_result: main_models.VideoModerationResultResponseBodyDataAudioResult = None,
         data_id: str = None,
+        ext: main_models.VideoModerationResultResponseBodyDataExt = None,
         frame_result: main_models.VideoModerationResultResponseBodyDataFrameResult = None,
         live_id: str = None,
         manual_task_id: str = None,
@@ -79,6 +80,7 @@ class VideoModerationResultResponseBodyData(DaraModel):
         self.audio_result = audio_result
         # The value of dataId that is specified in the API request. If this parameter is not specified in the API request, the dataId field is not available in the response.
         self.data_id = data_id
+        self.ext = ext
         # The image moderation results. If the call is successful, the HTTP status code 200 and moderation results are returned. The moderation results contain a structure.
         self.frame_result = frame_result
         # The unique ID of the live stream.
@@ -92,6 +94,8 @@ class VideoModerationResultResponseBodyData(DaraModel):
     def validate(self):
         if self.audio_result:
             self.audio_result.validate()
+        if self.ext:
+            self.ext.validate()
         if self.frame_result:
             self.frame_result.validate()
 
@@ -105,6 +109,9 @@ class VideoModerationResultResponseBodyData(DaraModel):
 
         if self.data_id is not None:
             result['DataId'] = self.data_id
+
+        if self.ext is not None:
+            result['Ext'] = self.ext.to_map()
 
         if self.frame_result is not None:
             result['FrameResult'] = self.frame_result.to_map()
@@ -131,6 +138,10 @@ class VideoModerationResultResponseBodyData(DaraModel):
 
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+
+        if m.get('Ext') is not None:
+            temp_model = main_models.VideoModerationResultResponseBodyDataExt()
+            self.ext = temp_model.from_map(m.get('Ext'))
 
         if m.get('FrameResult') is not None:
             temp_model = main_models.VideoModerationResultResponseBodyDataFrameResult()
@@ -780,6 +791,147 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(DaraModel):
 
         if m.get('LabelSum') is not None:
             self.label_sum = m.get('LabelSum')
+
+        return self
+
+class VideoModerationResultResponseBodyDataExt(DaraModel):
+    def __init__(
+        self,
+        aigc_data: main_models.VideoModerationResultResponseBodyDataExtAigcData = None,
+    ):
+        self.aigc_data = aigc_data
+
+    def validate(self):
+        if self.aigc_data:
+            self.aigc_data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.aigc_data is not None:
+            result['AigcData'] = self.aigc_data.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AigcData') is not None:
+            temp_model = main_models.VideoModerationResultResponseBodyDataExtAigcData()
+            self.aigc_data = temp_model.from_map(m.get('AigcData'))
+
+        return self
+
+class VideoModerationResultResponseBodyDataExtAigcData(DaraModel):
+    def __init__(
+        self,
+        aigc: main_models.VideoModerationResultResponseBodyDataExtAigcDataAIGC = None,
+        result: str = None,
+    ):
+        self.aigc = aigc
+        self.result = result
+
+    def validate(self):
+        if self.aigc:
+            self.aigc.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.aigc is not None:
+            result['AIGC'] = self.aigc.to_map()
+
+        if self.result is not None:
+            result['Result'] = self.result
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIGC') is not None:
+            temp_model = main_models.VideoModerationResultResponseBodyDataExtAigcDataAIGC()
+            self.aigc = temp_model.from_map(m.get('AIGC'))
+
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+
+        return self
+
+class VideoModerationResultResponseBodyDataExtAigcDataAIGC(DaraModel):
+    def __init__(
+        self,
+        content_producer: str = None,
+        content_propagator: str = None,
+        label: str = None,
+        produce_id: str = None,
+        propagate_id: str = None,
+        reserved_code_1: str = None,
+        reserved_code_2: str = None,
+    ):
+        self.content_producer = content_producer
+        self.content_propagator = content_propagator
+        self.label = label
+        self.produce_id = produce_id
+        self.propagate_id = propagate_id
+        self.reserved_code_1 = reserved_code_1
+        self.reserved_code_2 = reserved_code_2
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content_producer is not None:
+            result['ContentProducer'] = self.content_producer
+
+        if self.content_propagator is not None:
+            result['ContentPropagator'] = self.content_propagator
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        if self.produce_id is not None:
+            result['ProduceID'] = self.produce_id
+
+        if self.propagate_id is not None:
+            result['PropagateID'] = self.propagate_id
+
+        if self.reserved_code_1 is not None:
+            result['ReservedCode1'] = self.reserved_code_1
+
+        if self.reserved_code_2 is not None:
+            result['ReservedCode2'] = self.reserved_code_2
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentProducer') is not None:
+            self.content_producer = m.get('ContentProducer')
+
+        if m.get('ContentPropagator') is not None:
+            self.content_propagator = m.get('ContentPropagator')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        if m.get('ProduceID') is not None:
+            self.produce_id = m.get('ProduceID')
+
+        if m.get('PropagateID') is not None:
+            self.propagate_id = m.get('PropagateID')
+
+        if m.get('ReservedCode1') is not None:
+            self.reserved_code_1 = m.get('ReservedCode1')
+
+        if m.get('ReservedCode2') is not None:
+            self.reserved_code_2 = m.get('ReservedCode2')
 
         return self
 

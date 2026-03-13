@@ -1,3 +1,7 @@
+2026-03-13 Version: 3.2.2
+- Update API VideoModerationResult: add response parameters Body.Data.Ext.
+
+
 2026-01-15 Version: 3.2.1
 - Update API TextModerationPlus: add response parameters Body.Data.Result.$.RiskPositions.
 
