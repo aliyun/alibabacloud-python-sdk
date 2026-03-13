@@ -1851,6 +1851,8 @@ class Client(OpenApiClient):
             query['InstancePatternInfos'] = request.instance_pattern_infos
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instance_type_candidate_options):
+            query['InstanceTypeCandidateOptions'] = request.instance_type_candidate_options
         if not DaraCore.is_null(request.instance_type_overrides):
             query['InstanceTypeOverrides'] = request.instance_type_overrides
         if not DaraCore.is_null(request.instance_types):
@@ -2003,6 +2005,8 @@ class Client(OpenApiClient):
             query['InstancePatternInfos'] = request.instance_pattern_infos
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instance_type_candidate_options):
+            query['InstanceTypeCandidateOptions'] = request.instance_type_candidate_options
         if not DaraCore.is_null(request.instance_type_overrides):
             query['InstanceTypeOverrides'] = request.instance_type_overrides
         if not DaraCore.is_null(request.instance_types):
@@ -8225,6 +8229,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_pattern_infos):
             query['InstancePatternInfos'] = request.instance_pattern_infos
+        if not DaraCore.is_null(request.instance_type_candidate_options):
+            query['InstanceTypeCandidateOptions'] = request.instance_type_candidate_options
         if not DaraCore.is_null(request.instance_type_overrides):
             query['InstanceTypeOverrides'] = request.instance_type_overrides
         if not DaraCore.is_null(request.instance_types):
@@ -8373,6 +8379,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_pattern_infos):
             query['InstancePatternInfos'] = request.instance_pattern_infos
+        if not DaraCore.is_null(request.instance_type_candidate_options):
+            query['InstanceTypeCandidateOptions'] = request.instance_type_candidate_options
         if not DaraCore.is_null(request.instance_type_overrides):
             query['InstanceTypeOverrides'] = request.instance_type_overrides
         if not DaraCore.is_null(request.instance_types):

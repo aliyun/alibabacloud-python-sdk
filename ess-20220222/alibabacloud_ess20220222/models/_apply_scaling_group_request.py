@@ -15,7 +15,6 @@ class ApplyScalingGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.content = content
-        # Optional. The format of the configuration file. Default value: YAML. Set the value to YAML.
         self.format = format
         # The region ID.
         self.region_id = region_id

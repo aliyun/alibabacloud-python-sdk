@@ -13,7 +13,6 @@ class QueryHistoricalMetricResponseBody(DaraModel):
         historical_metrics: main_models.QueryHistoricalMetricResponseBodyHistoricalMetrics = None,
         request_id: str = None,
     ):
-        # The monitoring metrics of the prediction rule.
         self.historical_metrics = historical_metrics
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class QueryHistoricalMetricResponseBodyHistoricalMetricsHistoricalMetric(DaraMod
         metric_value: str = None,
         time: str = None,
     ):
-        # The value of the metric.
         self.metric_value = metric_value
-        # The point in time of the monitoring metric. The value must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format.
         self.time = time
 
     def validate(self):

@@ -32,6 +32,7 @@ class ModifyScalingConfigurationShrinkRequest(DaraModel):
         instance_description: str = None,
         instance_name: str = None,
         instance_pattern_infos: List[main_models.ModifyScalingConfigurationShrinkRequestInstancePatternInfos] = None,
+        instance_type_candidate_options: main_models.ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions = None,
         instance_type_overrides: List[main_models.ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
@@ -157,6 +158,7 @@ class ModifyScalingConfigurationShrinkRequest(DaraModel):
         self.instance_name = instance_name
         # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
+        self.instance_type_candidate_options = instance_type_candidate_options
         # Details of the instance types.
         self.instance_type_overrides = instance_type_overrides
         # The instance types. If you specify InstanceTypes, InstanceType is ignored.
@@ -305,6 +307,8 @@ class ModifyScalingConfigurationShrinkRequest(DaraModel):
             for v1 in self.instance_pattern_infos:
                  if v1:
                     v1.validate()
+        if self.instance_type_candidate_options:
+            self.instance_type_candidate_options.validate()
         if self.instance_type_overrides:
             for v1 in self.instance_type_overrides:
                  if v1:
@@ -398,6 +402,9 @@ class ModifyScalingConfigurationShrinkRequest(DaraModel):
         if self.instance_pattern_infos is not None:
             for k1 in self.instance_pattern_infos:
                 result['InstancePatternInfos'].append(k1.to_map() if k1 else None)
+
+        if self.instance_type_candidate_options is not None:
+            result['InstanceTypeCandidateOptions'] = self.instance_type_candidate_options.to_map()
 
         result['InstanceTypeOverrides'] = []
         if self.instance_type_overrides is not None:
@@ -597,6 +604,10 @@ class ModifyScalingConfigurationShrinkRequest(DaraModel):
             for k1 in m.get('InstancePatternInfos'):
                 temp_model = main_models.ModifyScalingConfigurationShrinkRequestInstancePatternInfos()
                 self.instance_pattern_infos.append(temp_model.from_map(k1))
+
+        if m.get('InstanceTypeCandidateOptions') is not None:
+            temp_model = main_models.ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions()
+            self.instance_type_candidate_options = temp_model.from_map(m.get('InstanceTypeCandidateOptions'))
 
         self.instance_type_overrides = []
         if m.get('InstanceTypeOverrides') is not None:
@@ -968,6 +979,65 @@ class ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides(DaraModel):
 
         if m.get('WeightedCapacity') is not None:
             self.weighted_capacity = m.get('WeightedCapacity')
+
+        return self
+
+class ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions(DaraModel):
+    def __init__(
+        self,
+        allow_cidr_blocks: List[str] = None,
+        allow_cross_az: bool = None,
+        allow_different_generation: bool = None,
+        enabled: bool = None,
+        max_price: float = None,
+    ):
+        self.allow_cidr_blocks = allow_cidr_blocks
+        self.allow_cross_az = allow_cross_az
+        self.allow_different_generation = allow_different_generation
+        self.enabled = enabled
+        self.max_price = max_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allow_cidr_blocks is not None:
+            result['AllowCidrBlocks'] = self.allow_cidr_blocks
+
+        if self.allow_cross_az is not None:
+            result['AllowCrossAz'] = self.allow_cross_az
+
+        if self.allow_different_generation is not None:
+            result['AllowDifferentGeneration'] = self.allow_different_generation
+
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCidrBlocks') is not None:
+            self.allow_cidr_blocks = m.get('AllowCidrBlocks')
+
+        if m.get('AllowCrossAz') is not None:
+            self.allow_cross_az = m.get('AllowCrossAz')
+
+        if m.get('AllowDifferentGeneration') is not None:
+            self.allow_different_generation = m.get('AllowDifferentGeneration')
+
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
 
         return self
 

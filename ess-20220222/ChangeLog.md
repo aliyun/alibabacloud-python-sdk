@@ -1,3 +1,9 @@
+2026-03-13 Version: 1.12.3
+- Update API CreateScalingConfiguration: add request parameters InstanceTypeCandidateOptions.
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.InstanceTypeCandidateOptions.
+- Update API ModifyScalingConfiguration: add request parameters InstanceTypeCandidateOptions.
+
+
 2026-01-30 Version: 1.12.2
 - Update API CreateScalingConfiguration: add request parameters NetworkInterfaces.$.SecondaryPrivateIpAddressCount.
 - Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.NetworkInterfaces.$.SecondaryPrivateIpAddressCount.

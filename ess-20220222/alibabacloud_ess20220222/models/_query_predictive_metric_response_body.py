@@ -13,7 +13,6 @@ class QueryPredictiveMetricResponseBody(DaraModel):
         predictive_metrics: main_models.QueryPredictiveMetricResponseBodyPredictiveMetrics = None,
         request_id: str = None,
     ):
-        # Predicted monitoring metrics.
         self.predictive_metrics = predictive_metrics
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class QueryPredictiveMetricResponseBodyPredictiveMetricsPredictiveMetric(DaraMod
         metric_value: str = None,
         time: str = None,
     ):
-        # Predicted monitoring value.
         self.metric_value = metric_value
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time must be in UTC.
         self.time = time
 
     def validate(self):

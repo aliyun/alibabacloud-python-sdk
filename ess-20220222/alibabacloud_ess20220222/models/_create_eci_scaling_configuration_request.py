@@ -790,8 +790,16 @@ class CreateEciScalingConfigurationRequestVolumesNFSVolume(DaraModel):
         read_only: bool = None,
         server: str = None,
     ):
+        # The path to the NFS volume.
         self.path = path
+        # Specifies whether the permissions on the NFS volume are read-only. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.read_only = read_only
+        # The endpoint of the NFS server.
         self.server = server
 
     def validate(self):
@@ -832,7 +840,9 @@ class CreateEciScalingConfigurationRequestVolumesHostPathVolume(DaraModel):
         path: str = None,
         type: str = None,
     ):
+        # The absolute path on the host.
         self.path = path
+        # The type of host directory. For example: File, Directory, Socket, etc.
         self.type = type
 
     def validate(self):
@@ -868,8 +878,13 @@ class CreateEciScalingConfigurationRequestVolumesFlexVolume(DaraModel):
         fs_type: str = None,
         options: str = None,
     ):
+        # The name of the FlexVolume driver.
         self.driver = driver
+        # The type of the file system that you want to mount. The default value is determined by the script of FlexVolume.
         self.fs_type = fs_type
+        # The options of the FlexVolume object. Each option is a key-value pair in a JSON string.
+        # 
+        # For example, if you use FlexVolume to mount a disk, specify the value in the `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"} format`.
         self.options = options
 
     def validate(self):
@@ -910,7 +925,9 @@ class CreateEciScalingConfigurationRequestVolumesEmptyDirVolume(DaraModel):
         medium: str = None,
         size_limit: str = None,
     ):
+        # The storage medium of the emptyDir volume. By default, this parameter is left empty. In this case, the emptyDir volume uses the file system of the node as the storage medium. A value of memory specifies that the emptyDir volume uses the memory as the storage medium.
         self.medium = medium
+        # The size of the emptyDir volume. The value contains a unit. We recommend that you use Gi or Mi as the unit.
         self.size_limit = size_limit
 
     def validate(self):
@@ -946,8 +963,11 @@ class CreateEciScalingConfigurationRequestVolumesDiskVolume(DaraModel):
         disk_size: int = None,
         fs_type: str = None,
     ):
+        # The ID of the disk volume.
         self.disk_id = disk_id
+        # The size of the volume. Unit: GiB.
         self.disk_size = disk_size
+        # The type of the disk volume. We recommend that you specify `FlexVolume.FsType` instead of DiskVolume.FsType.
         self.fs_type = fs_type
 
     def validate(self):
@@ -1388,7 +1408,9 @@ class CreateEciScalingConfigurationRequestInitContainersSecurityContext(DaraMode
         run_as_user: int = None,
     ):
         self.capability = capability
+        # Specifies whether the root file system on which the init container runs is read-only. Valid value: true.
         self.read_only_root_filesystem = read_only_root_filesystem
+        # The ID of the user that runs the init container.
         self.run_as_user = run_as_user
 
     def validate(self):
@@ -1430,6 +1452,9 @@ class CreateEciScalingConfigurationRequestInitContainersSecurityContextCapabilit
         self,
         adds: List[str] = None,
     ):
+        # The permissions that you want to grant to the processes in the init container. Valid values: NET_ADMIN and NET_RAW.
+        # 
+        # >  To use NET_RAW, submit a ticket.
         self.adds = adds
 
     def validate(self):
@@ -2103,7 +2128,9 @@ class CreateEciScalingConfigurationRequestContainersSecurityContext(DaraModel):
         run_as_user: int = None,
     ):
         self.capability = capability
+        # Specifies whether the root file system on which the container runs is read-only.
         self.read_only_root_filesystem = read_only_root_filesystem
+        # The ID of the user that runs the container.
         self.run_as_user = run_as_user
 
     def validate(self):
@@ -2145,6 +2172,9 @@ class CreateEciScalingConfigurationRequestContainersSecurityContextCapability(Da
         self,
         add: List[str] = None,
     ):
+        # The permissions that you want to grant to the processes in the container. Valid values: NET_ADMIN and NET_RAW.
+        # 
+        # >  To use NET_RAW, you must submit a ticket.
         self.add = add
 
     def validate(self):
@@ -2180,12 +2210,17 @@ class CreateEciScalingConfigurationRequestContainersReadinessProbe(DaraModel):
         timeout_seconds: int = None,
     ):
         self.exec = exec
+        # The minimum count of consecutive failures that must occur for a readiness probe to be classified as failed. Default value: 3.
         self.failure_threshold = failure_threshold
         self.http_get = http_get
+        # The number of seconds that elapse from the startup of the container to the start time of a readiness probe. Unit: seconds.
         self.initial_delay_seconds = initial_delay_seconds
+        # The interval at which readiness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
         self.period_seconds = period_seconds
+        # The minimum count of consecutive successes that must occur for a readiness probe to be classified as successful. Default value: 1. Set the value to 1.
         self.success_threshold = success_threshold
         self.tcp_socket = tcp_socket
+        # The timeout limit for a readiness probe to be complete. Unit: seconds. Default value: 1. Minimum value: 1.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -2263,6 +2298,7 @@ class CreateEciScalingConfigurationRequestContainersReadinessProbeTcpSocket(Dara
         self,
         port: int = None,
     ):
+        # The port detected by TCP sockets for readiness probing.
         self.port = port
 
     def validate(self):
@@ -2292,8 +2328,14 @@ class CreateEciScalingConfigurationRequestContainersReadinessProbeHttpGet(DaraMo
         port: int = None,
         scheme: str = None,
     ):
+        # The path to which you want to send HTTP GET requests for readiness probing.
         self.path = path
+        # The port over which you want to send HTTP GET requests for readiness probing.
         self.port = port
+        # The protocol type of HTTP GET requests for readiness probing. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.scheme = scheme
 
     def validate(self):
@@ -2333,6 +2375,7 @@ class CreateEciScalingConfigurationRequestContainersReadinessProbeExec(DaraModel
         self,
         commands: List[str] = None,
     ):
+        # The commands executed in the container when using the command line to perform the health check.
         self.commands = commands
 
     def validate(self):
@@ -2368,12 +2411,19 @@ class CreateEciScalingConfigurationRequestContainersLivenessProbe(DaraModel):
         timeout_seconds: int = None,
     ):
         self.exec = exec
+        # The minimum count of consecutive failures that must occur for a liveness probe to be classified as failed.
+        # 
+        # Default value: 3.
         self.failure_threshold = failure_threshold
         self.http_get = http_get
+        # The number of seconds that elapse from the startup of the container to the start time of a liveness probe. Unit: seconds.
         self.initial_delay_seconds = initial_delay_seconds
+        # The interval at which liveness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
         self.period_seconds = period_seconds
+        # The minimum count of consecutive successes that must occur for a liveness probe to be classified as successful. Default value: 1. Set the value to 1.
         self.success_threshold = success_threshold
         self.tcp_socket = tcp_socket
+        # The timeout limit for a liveness probe to be complete. Unit: seconds. Default value: 1. Minimum value: 1.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -2451,6 +2501,7 @@ class CreateEciScalingConfigurationRequestContainersLivenessProbeTcpSocket(DaraM
         self,
         port: int = None,
     ):
+        # The port detected by TCP sockets for liveness probing.
         self.port = port
 
     def validate(self):
@@ -2480,8 +2531,14 @@ class CreateEciScalingConfigurationRequestContainersLivenessProbeHttpGet(DaraMod
         port: int = None,
         scheme: str = None,
     ):
+        # The path to which you want to send HTTP GET requests for liveness probing.
         self.path = path
+        # The port over which you want to send HTTP GET requests for liveness probing.
         self.port = port
+        # The protocol type of HTTP GET requests for liveness probing. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.scheme = scheme
 
     def validate(self):
@@ -2521,6 +2578,7 @@ class CreateEciScalingConfigurationRequestContainersLivenessProbeExec(DaraModel)
         self,
         commands: List[str] = None,
     ):
+        # The commands executed in the container when using the command line to perform the health check.
         self.commands = commands
 
     def validate(self):

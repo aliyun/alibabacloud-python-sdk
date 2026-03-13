@@ -106,6 +106,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
         instance_name: str = None,
         instance_pattern_infos: List[main_models.DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos] = None,
         instance_type: str = None,
+        instance_type_candidate_options: main_models.DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
         internet_max_bandwidth_in: int = None,
@@ -243,6 +244,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types of the ECS instances.
         self.instance_type = instance_type
+        self.instance_type_candidate_options = instance_type_candidate_options
         # The ECS instance types.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
@@ -282,7 +284,13 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
         self.password_inherit = password_inherit
         # Indicates whether a password is configured for the instance.
         self.password_setted = password_setted
+        # The ID of the private pool, which is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
         self.private_pool_options_id = private_pool_options_id
+        # The type of the private pool. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can specify a private pool for Auto Scaling to start instances. Valid values:
+        # 
+        # *   Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools exist, Auto Scaling uses the resources in the public pool to start instances.
+        # *   Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start instances. If the resources in the specified private pool are insufficient, instances cannot be started.
+        # *   None: no private pool. Auto Scaling does not use the resources in private pools to start instances.
         self.private_pool_options_match_criteria = private_pool_options_match_criteria
         # The name of the Resource Access Management (RAM) role assumed by the ECS instances. This name is provided and maintained by RAM. You can call the ListRoles operation to query the available RAM roles.
         self.ram_role_name = ram_role_name
@@ -404,6 +412,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
             for v1 in self.instance_pattern_infos:
                  if v1:
                     v1.validate()
+        if self.instance_type_candidate_options:
+            self.instance_type_candidate_options.validate()
         if self.network_interfaces:
             for v1 in self.network_interfaces:
                  if v1:
@@ -505,6 +515,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
 
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+
+        if self.instance_type_candidate_options is not None:
+            result['InstanceTypeCandidateOptions'] = self.instance_type_candidate_options.to_map()
 
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types
@@ -743,6 +756,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
 
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+
+        if m.get('InstanceTypeCandidateOptions') is not None:
+            temp_model = main_models.DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions()
+            self.instance_type_candidate_options = temp_model.from_map(m.get('InstanceTypeCandidateOptions'))
 
         if m.get('InstanceTypes') is not None:
             self.instance_types = m.get('InstanceTypes')
@@ -1145,6 +1162,65 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInter
 
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+
+        return self
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions(DaraModel):
+    def __init__(
+        self,
+        allow_cidr_blocks: List[str] = None,
+        allow_cross_az: bool = None,
+        allow_different_generation: bool = None,
+        enabled: bool = None,
+        max_price: float = None,
+    ):
+        self.allow_cidr_blocks = allow_cidr_blocks
+        self.allow_cross_az = allow_cross_az
+        self.allow_different_generation = allow_different_generation
+        self.enabled = enabled
+        self.max_price = max_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allow_cidr_blocks is not None:
+            result['AllowCidrBlocks'] = self.allow_cidr_blocks
+
+        if self.allow_cross_az is not None:
+            result['AllowCrossAz'] = self.allow_cross_az
+
+        if self.allow_different_generation is not None:
+            result['AllowDifferentGeneration'] = self.allow_different_generation
+
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCidrBlocks') is not None:
+            self.allow_cidr_blocks = m.get('AllowCidrBlocks')
+
+        if m.get('AllowCrossAz') is not None:
+            self.allow_cross_az = m.get('AllowCrossAz')
+
+        if m.get('AllowDifferentGeneration') is not None:
+            self.allow_different_generation = m.get('AllowDifferentGeneration')
+
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
 
         return self
 
