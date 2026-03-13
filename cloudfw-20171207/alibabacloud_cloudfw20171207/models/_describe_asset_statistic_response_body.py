@@ -10,10 +10,12 @@ from darabonba.model import DaraModel
 class DescribeAssetStatisticResponseBody(DaraModel):
     def __init__(
         self,
+        auto_resource_enable: bool = None,
         general_instance_spec_statistic: main_models.DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic = None,
         request_id: str = None,
         resource_spec_statistic: main_models.DescribeAssetStatisticResponseBodyResourceSpecStatistic = None,
     ):
+        self.auto_resource_enable = auto_resource_enable
         self.general_instance_spec_statistic = general_instance_spec_statistic
         # The request ID.
         self.request_id = request_id
@@ -31,6 +33,9 @@ class DescribeAssetStatisticResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_resource_enable is not None:
+            result['AutoResourceEnable'] = self.auto_resource_enable
+
         if self.general_instance_spec_statistic is not None:
             result['GeneralInstanceSpecStatistic'] = self.general_instance_spec_statistic.to_map()
 
@@ -44,6 +49,9 @@ class DescribeAssetStatisticResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoResourceEnable') is not None:
+            self.auto_resource_enable = m.get('AutoResourceEnable')
+
         if m.get('GeneralInstanceSpecStatistic') is not None:
             temp_model = main_models.DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic()
             self.general_instance_spec_statistic = temp_model.from_map(m.get('GeneralInstanceSpecStatistic'))

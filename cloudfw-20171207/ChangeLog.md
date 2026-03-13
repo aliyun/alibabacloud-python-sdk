@@ -1,3 +1,7 @@
+2026-03-13 Version: 8.0.3
+- Update API DescribeAssetStatistic: add response parameters Body.AutoResourceEnable.
+
+
 2026-02-03 Version: 8.0.2
 - Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentId.
 
