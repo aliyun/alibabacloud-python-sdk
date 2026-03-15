@@ -1,3 +1,10 @@
+2026-03-15 Version: 4.21.3
+- Update API BatchGetAcpConnectionTicket: add request parameters Ports.
+- Update API CreateAndroidInstanceGroup: add request parameters PaidCallBackUrl.
+- Update API DescribeCloudPhoneNodes: add request parameters Tags.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.Tags.
+
+
 2026-03-11 Version: 4.21.2
 - Update API CreateAndroidInstanceGroup: add request parameters NetworkInfo.PaidCallbackUrl.
 - Update API CreateCloudPhoneNode: add request parameters NetworkInfo.PaidCallbackUrl.

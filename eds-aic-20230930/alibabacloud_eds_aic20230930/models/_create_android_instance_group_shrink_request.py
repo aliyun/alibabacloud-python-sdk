@@ -29,6 +29,7 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         network_type: str = None,
         number_of_instances: int = None,
         office_site_id: str = None,
+        paid_call_back_url: str = None,
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
@@ -119,6 +120,7 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         # *   This parameter is required if you assign a shared network to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **shared network**. If no shared network is available in the Cloud Phone console, you can leave this parameter empty. The system automatically creates one when you create an instance group.
         # *   This parameter is required if you assign a virtual private cloud (VPC) to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **VPC**. If no VPC is available in the Cloud Phone console, you must first create one.
         self.office_site_id = office_site_id
+        self.paid_call_back_url = paid_call_back_url
         # The subscription duration. The unit is specified by PeriodUnit.
         self.period = period
         # The unit of the subscription duration.
@@ -209,6 +211,9 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
 
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
+
         if self.period is not None:
             result['Period'] = self.period
 
@@ -292,6 +297,9 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
 
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
+
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')

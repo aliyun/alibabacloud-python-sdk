@@ -491,6 +491,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_tasks):
             query['InstanceTasks'] = request.instance_tasks
+        if not DaraCore.is_null(request.ports):
+            query['Ports'] = request.ports
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -527,6 +529,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_tasks):
             query['InstanceTasks'] = request.instance_tasks
+        if not DaraCore.is_null(request.ports):
+            query['Ports'] = request.ports
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -805,6 +809,8 @@ class Client(OpenApiClient):
             query['NumberOfInstances'] = request.number_of_instances
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -887,6 +893,8 @@ class Client(OpenApiClient):
             query['NumberOfInstances'] = request.number_of_instances
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -2845,6 +2853,8 @@ class Client(OpenApiClient):
             query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2891,6 +2901,8 @@ class Client(OpenApiClient):
             query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

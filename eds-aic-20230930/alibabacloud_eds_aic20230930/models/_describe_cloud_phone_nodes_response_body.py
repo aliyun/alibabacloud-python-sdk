@@ -110,6 +110,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         share_data_volume: int = None,
         status: str = None,
         swap_size: int = None,
+        tags: List[main_models.DescribeCloudPhoneNodesResponseBodyNodeModelTags] = None,
         v_switch_id: str = None,
     ):
         self.bandwidth_package_id = bandwidth_package_id
@@ -153,6 +154,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         # The matrix status.
         self.status = status
         self.swap_size = swap_size
+        self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
@@ -167,6 +169,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
                     v1.validate()
         if self.phone_data_info:
             self.phone_data_info.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -251,6 +257,11 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
 
         if self.swap_size is not None:
             result['SwapSize'] = self.swap_size
+
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
@@ -341,8 +352,49 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         if m.get('SwapSize') is not None:
             self.swap_size = m.get('SwapSize')
 
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.DescribeCloudPhoneNodesResponseBodyNodeModelTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+
+        return self
+
+class DescribeCloudPhoneNodesResponseBodyNodeModelTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

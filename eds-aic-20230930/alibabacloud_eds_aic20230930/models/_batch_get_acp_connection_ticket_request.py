@@ -15,6 +15,7 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
         instance_group_id: str = None,
         instance_ids: List[str] = None,
         instance_tasks: List[main_models.BatchGetAcpConnectionTicketRequestInstanceTasks] = None,
+        ports: List[str] = None,
     ):
         self.connection_mode = connection_mode
         # The ID of the user to whom the cloud phone instance is assigned.
@@ -25,6 +26,7 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
         self.instance_ids = instance_ids
         # The instance connection tasks.
         self.instance_tasks = instance_tasks
+        self.ports = ports
 
     def validate(self):
         if self.instance_tasks:
@@ -54,6 +56,9 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
             for k1 in self.instance_tasks:
                 result['InstanceTasks'].append(k1.to_map() if k1 else None)
 
+        if self.ports is not None:
+            result['Ports'] = self.ports
+
         return result
 
     def from_map(self, m: dict = None):
@@ -75,6 +80,9 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
             for k1 in m.get('InstanceTasks'):
                 temp_model = main_models.BatchGetAcpConnectionTicketRequestInstanceTasks()
                 self.instance_tasks.append(temp_model.from_map(k1))
+
+        if m.get('Ports') is not None:
+            self.ports = m.get('Ports')
 
         return self
 
