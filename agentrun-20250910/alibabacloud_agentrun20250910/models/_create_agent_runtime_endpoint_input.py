@@ -10,11 +10,14 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
         self,
         agent_runtime_endpoint_name: str = None,
         description: str = None,
+        disable_public_network_access: bool = None,
         routing_configuration: main_models.RoutingConfiguration = None,
         target_version: str = None,
     ):
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
         self.description = description
+        # 是否禁用该端点的公网访问
+        self.disable_public_network_access = disable_public_network_access
         # 智能体运行时端点的路由配置，支持多版本权重分配
         self.routing_configuration = routing_configuration
         # 智能体运行时的目标版本
@@ -35,6 +38,9 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.disable_public_network_access is not None:
+            result['disablePublicNetworkAccess'] = self.disable_public_network_access
+
         if self.routing_configuration is not None:
             result['routingConfiguration'] = self.routing_configuration.to_map()
 
@@ -50,6 +56,9 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('disablePublicNetworkAccess') is not None:
+            self.disable_public_network_access = m.get('disablePublicNetworkAccess')
 
         if m.get('routingConfiguration') is not None:
             temp_model = main_models.RoutingConfiguration()

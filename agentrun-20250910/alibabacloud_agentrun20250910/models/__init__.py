@@ -184,6 +184,9 @@ from ._sandbox import Sandbox
 from ._sandbox_health_check_out import SandboxHealthCheckOut
 from ._sandbox_health_check_result import SandboxHealthCheckResult
 from ._sandbox_result import SandboxResult
+from ._scaling_config import ScalingConfig
+from ._scaling_status import ScalingStatus
+from ._scheduled_policy import ScheduledPolicy
 from ._service_config import ServiceConfig
 from ._service_result import ServiceResult
 from ._start_browser_session_input import StartBrowserSessionInput
@@ -541,6 +544,9 @@ __all__ = [
     SandboxHealthCheckOut,
     SandboxHealthCheckResult,
     SandboxResult,
+    ScalingConfig,
+    ScalingStatus,
+    ScheduledPolicy,
     ServiceConfig,
     ServiceResult,
     StartBrowserSessionInput,

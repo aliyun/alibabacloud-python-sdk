@@ -9,10 +9,13 @@ class AgentEndpointConfig(DaraModel):
         self,
         agent_name: str = None,
         custom_domain_url: str = None,
+        endpoint_name: str = None,
         endpoint_url: str = None,
     ):
         self.agent_name = agent_name
         self.custom_domain_url = custom_domain_url
+        # 端点名称
+        self.endpoint_name = endpoint_name
         self.endpoint_url = endpoint_url
 
     def validate(self):
@@ -29,6 +32,9 @@ class AgentEndpointConfig(DaraModel):
         if self.custom_domain_url is not None:
             result['customDomainUrl'] = self.custom_domain_url
 
+        if self.endpoint_name is not None:
+            result['endpointName'] = self.endpoint_name
+
         if self.endpoint_url is not None:
             result['endpointUrl'] = self.endpoint_url
 
@@ -41,6 +47,9 @@ class AgentEndpointConfig(DaraModel):
 
         if m.get('customDomainUrl') is not None:
             self.custom_domain_url = m.get('customDomainUrl')
+
+        if m.get('endpointName') is not None:
+            self.endpoint_name = m.get('endpointName')
 
         if m.get('endpointUrl') is not None:
             self.endpoint_url = m.get('endpointUrl')

@@ -10,6 +10,7 @@ class ProtocolSettings(DaraModel):
         a_2aagent_card: str = None,
         a_2a_agent_card: str = None,
         a_2a_agent_card_url: str = None,
+        config: str = None,
         headers: str = None,
         input_body_json_schema: str = None,
         method: str = None,
@@ -19,29 +20,33 @@ class ProtocolSettings(DaraModel):
         path_prefix: str = None,
         request_content_type: str = None,
         response_content_type: str = None,
+        type: str = None,
     ):
-        # A2A Agent Card
         self.a_2aagent_card = a_2aagent_card
         self.a_2a_agent_card = a_2a_agent_card
         self.a_2a_agent_card_url = a_2a_agent_card_url
+        # 协议配置的 JSON 字符串
+        self.config = config
         # 请求头
         self.headers = headers
         # 请求体JSON模式
         self.input_body_json_schema = input_body_json_schema
         # HTTP方法
         self.method = method
-        # 协议名称
+        # 可选展示名/别名，不再作为协议类型标识
         self.name = name
         # 响应体JSON模式
         self.output_body_json_schema = output_body_json_schema
         # 协议路径
         self.path = path
-        # 协议路径前缀
+        # 协议路径前缀，建议使用 config
         self.path_prefix = path_prefix
         # 请求内容类型
         self.request_content_type = request_content_type
         # 响应内容类型
         self.response_content_type = response_content_type
+        # 协议类型标识，用于校验与去重；合法取值由后端校验
+        self.type = type
 
     def validate(self):
         pass
@@ -59,6 +64,9 @@ class ProtocolSettings(DaraModel):
 
         if self.a_2a_agent_card_url is not None:
             result['a2aAgentCardUrl'] = self.a_2a_agent_card_url
+
+        if self.config is not None:
+            result['config'] = self.config
 
         if self.headers is not None:
             result['headers'] = self.headers
@@ -87,6 +95,9 @@ class ProtocolSettings(DaraModel):
         if self.response_content_type is not None:
             result['responseContentType'] = self.response_content_type
 
+        if self.type is not None:
+            result['type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -99,6 +110,9 @@ class ProtocolSettings(DaraModel):
 
         if m.get('a2aAgentCardUrl') is not None:
             self.a_2a_agent_card_url = m.get('a2aAgentCardUrl')
+
+        if m.get('config') is not None:
+            self.config = m.get('config')
 
         if m.get('headers') is not None:
             self.headers = m.get('headers')
@@ -126,6 +140,9 @@ class ProtocolSettings(DaraModel):
 
         if m.get('responseContentType') is not None:
             self.response_content_type = m.get('responseContentType')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

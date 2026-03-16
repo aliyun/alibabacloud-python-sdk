@@ -13,6 +13,7 @@ class AgentRuntimeEndpoint(DaraModel):
         agent_runtime_endpoint_name: str = None,
         agent_runtime_id: str = None,
         description: str = None,
+        disable_public_network_access: bool = None,
         endpoint_public_url: str = None,
         routing_configuration: main_models.RoutingConfiguration = None,
         status: str = None,
@@ -24,6 +25,8 @@ class AgentRuntimeEndpoint(DaraModel):
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
         self.agent_runtime_id = agent_runtime_id
         self.description = description
+        # 是否禁用该端点的公网访问
+        self.disable_public_network_access = disable_public_network_access
         # 智能体运行时端点的公网访问地址
         self.endpoint_public_url = endpoint_public_url
         # 智能体运行时端点的路由配置，支持多版本权重分配
@@ -55,6 +58,9 @@ class AgentRuntimeEndpoint(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.disable_public_network_access is not None:
+            result['disablePublicNetworkAccess'] = self.disable_public_network_access
 
         if self.endpoint_public_url is not None:
             result['endpointPublicUrl'] = self.endpoint_public_url
@@ -89,6 +95,9 @@ class AgentRuntimeEndpoint(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('disablePublicNetworkAccess') is not None:
+            self.disable_public_network_access = m.get('disablePublicNetworkAccess')
 
         if m.get('endpointPublicUrl') is not None:
             self.endpoint_public_url = m.get('endpointPublicUrl')

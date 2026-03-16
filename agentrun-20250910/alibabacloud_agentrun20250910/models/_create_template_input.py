@@ -27,6 +27,7 @@ class CreateTemplateInput(DaraModel):
         oss_configuration: List[main_models.OssConfiguration] = None,
         sandbox_idle_timeout_in_seconds: int = None,
         sandbox_ttlin_seconds: int = None,
+        scaling_config: main_models.ScalingConfig = None,
         template_configuration: Dict[str, Any] = None,
         template_name: str = None,
         template_type: str = None,
@@ -59,6 +60,7 @@ class CreateTemplateInput(DaraModel):
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
         # 沙箱存活时间（秒）
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        self.scaling_config = scaling_config
         # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
         self.template_configuration = template_configuration
         # 模板名称（要求账号唯一的）
@@ -86,6 +88,8 @@ class CreateTemplateInput(DaraModel):
             for v1 in self.oss_configuration:
                  if v1:
                     v1.validate()
+        if self.scaling_config:
+            self.scaling_config.validate()
 
     def to_map(self):
         result = dict()
@@ -144,6 +148,9 @@ class CreateTemplateInput(DaraModel):
 
         if self.sandbox_ttlin_seconds is not None:
             result['sandboxTTLInSeconds'] = self.sandbox_ttlin_seconds
+
+        if self.scaling_config is not None:
+            result['scalingConfig'] = self.scaling_config.to_map()
 
         if self.template_configuration is not None:
             result['templateConfiguration'] = self.template_configuration
@@ -220,6 +227,10 @@ class CreateTemplateInput(DaraModel):
 
         if m.get('sandboxTTLInSeconds') is not None:
             self.sandbox_ttlin_seconds = m.get('sandboxTTLInSeconds')
+
+        if m.get('scalingConfig') is not None:
+            temp_model = main_models.ScalingConfig()
+            self.scaling_config = temp_model.from_map(m.get('scalingConfig'))
 
         if m.get('templateConfiguration') is not None:
             self.template_configuration = m.get('templateConfiguration')

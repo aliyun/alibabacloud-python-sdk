@@ -31,6 +31,7 @@ class Template(DaraModel):
         resource_name: str = None,
         sandbox_idle_timeout_in_seconds: str = None,
         sandbox_ttlin_seconds: str = None,
+        scaling_status: main_models.ScalingStatus = None,
         status: str = None,
         status_reason: str = None,
         template_arn: str = None,
@@ -64,6 +65,7 @@ class Template(DaraModel):
         self.resource_name = resource_name
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        self.scaling_status = scaling_status
         self.status = status
         self.status_reason = status_reason
         self.template_arn = template_arn
@@ -95,6 +97,8 @@ class Template(DaraModel):
             for v1 in self.oss_configuration:
                  if v1:
                     v1.validate()
+        if self.scaling_status:
+            self.scaling_status.validate()
 
     def to_map(self):
         result = dict()
@@ -165,6 +169,9 @@ class Template(DaraModel):
 
         if self.sandbox_ttlin_seconds is not None:
             result['sandboxTTLInSeconds'] = self.sandbox_ttlin_seconds
+
+        if self.scaling_status is not None:
+            result['scalingStatus'] = self.scaling_status.to_map()
 
         if self.status is not None:
             result['status'] = self.status
@@ -269,6 +276,10 @@ class Template(DaraModel):
 
         if m.get('sandboxTTLInSeconds') is not None:
             self.sandbox_ttlin_seconds = m.get('sandboxTTLInSeconds')
+
+        if m.get('scalingStatus') is not None:
+            temp_model = main_models.ScalingStatus()
+            self.scaling_status = temp_model.from_map(m.get('scalingStatus'))
 
         if m.get('status') is not None:
             self.status = m.get('status')
