@@ -63,6 +63,7 @@ class ListUsersResponseBodyUsers(DaraModel):
         self,
         department: str = None,
         email: str = None,
+        full_department: List[str] = None,
         idp_name: str = None,
         phone: str = None,
         sase_user_id: str = None,
@@ -71,6 +72,7 @@ class ListUsersResponseBodyUsers(DaraModel):
     ):
         self.department = department
         self.email = email
+        self.full_department = full_department
         self.idp_name = idp_name
         self.phone = phone
         self.sase_user_id = sase_user_id
@@ -90,6 +92,9 @@ class ListUsersResponseBodyUsers(DaraModel):
 
         if self.email is not None:
             result['Email'] = self.email
+
+        if self.full_department is not None:
+            result['FullDepartment'] = self.full_department
 
         if self.idp_name is not None:
             result['IdpName'] = self.idp_name
@@ -115,6 +120,9 @@ class ListUsersResponseBodyUsers(DaraModel):
 
         if m.get('Email') is not None:
             self.email = m.get('Email')
+
+        if m.get('FullDepartment') is not None:
+            self.full_department = m.get('FullDepartment')
 
         if m.get('IdpName') is not None:
             self.idp_name = m.get('IdpName')

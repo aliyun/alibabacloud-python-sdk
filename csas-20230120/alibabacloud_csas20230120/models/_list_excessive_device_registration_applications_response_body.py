@@ -67,6 +67,7 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(DaraMo
         description: str = None,
         device_tag: str = None,
         device_type: str = None,
+        full_department: List[str] = None,
         hostname: str = None,
         is_used: bool = None,
         mac: str = None,
@@ -80,6 +81,7 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(DaraMo
         self.description = description
         self.device_tag = device_tag
         self.device_type = device_type
+        self.full_department = full_department
         self.hostname = hostname
         self.is_used = is_used
         self.mac = mac
@@ -112,6 +114,9 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(DaraMo
 
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
+
+        if self.full_department is not None:
+            result['FullDepartment'] = self.full_department
 
         if self.hostname is not None:
             result['Hostname'] = self.hostname
@@ -152,6 +157,9 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(DaraMo
 
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
+
+        if m.get('FullDepartment') is not None:
+            self.full_department = m.get('FullDepartment')
 
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')

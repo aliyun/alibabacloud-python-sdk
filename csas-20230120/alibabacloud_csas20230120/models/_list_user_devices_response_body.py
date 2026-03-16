@@ -65,6 +65,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         app_version: str = None,
         auto_login_status: str = None,
         cpu: str = None,
+        city: str = None,
+        continent: str = None,
+        country: str = None,
         create_time: str = None,
         department: str = None,
         device_belong: str = None,
@@ -76,15 +79,18 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         disk: str = None,
         dlp_status: str = None,
         edr_status: str = None,
+        full_department: List[str] = None,
         hostname: str = None,
         ia_status: str = None,
         inner_ip: str = None,
+        join_ad_domain: bool = None,
         mac: str = None,
         match_device_group_ids: List[str] = None,
         memory: str = None,
         nac_status: str = None,
         net_interface_info: List[main_models.ListUserDevicesResponseBodyDevicesNetInterfaceInfo] = None,
         pa_status: str = None,
+        province: str = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
         sn_base_board: str = None,
@@ -101,6 +107,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         self.app_version = app_version
         self.auto_login_status = auto_login_status
         self.cpu = cpu
+        self.city = city
+        self.continent = continent
+        self.country = country
         self.create_time = create_time
         self.department = department
         self.device_belong = device_belong
@@ -112,15 +121,18 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         self.disk = disk
         self.dlp_status = dlp_status
         self.edr_status = edr_status
+        self.full_department = full_department
         self.hostname = hostname
         self.ia_status = ia_status
         self.inner_ip = inner_ip
+        self.join_ad_domain = join_ad_domain
         self.mac = mac
         self.match_device_group_ids = match_device_group_ids
         self.memory = memory
         self.nac_status = nac_status
         self.net_interface_info = net_interface_info
         self.pa_status = pa_status
+        self.province = province
         self.sase_user_id = sase_user_id
         self.sharing_status = sharing_status
         self.sn_base_board = sn_base_board
@@ -156,6 +168,15 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if self.cpu is not None:
             result['CPU'] = self.cpu
 
+        if self.city is not None:
+            result['City'] = self.city
+
+        if self.continent is not None:
+            result['Continent'] = self.continent
+
+        if self.country is not None:
+            result['Country'] = self.country
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -189,6 +210,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if self.edr_status is not None:
             result['EdrStatus'] = self.edr_status
 
+        if self.full_department is not None:
+            result['FullDepartment'] = self.full_department
+
         if self.hostname is not None:
             result['Hostname'] = self.hostname
 
@@ -197,6 +221,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
 
         if self.inner_ip is not None:
             result['InnerIP'] = self.inner_ip
+
+        if self.join_ad_domain is not None:
+            result['JoinAdDomain'] = self.join_ad_domain
 
         if self.mac is not None:
             result['Mac'] = self.mac
@@ -217,6 +244,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
 
         if self.pa_status is not None:
             result['PaStatus'] = self.pa_status
+
+        if self.province is not None:
+            result['Province'] = self.province
 
         if self.sase_user_id is not None:
             result['SaseUserId'] = self.sase_user_id
@@ -267,6 +297,15 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if m.get('CPU') is not None:
             self.cpu = m.get('CPU')
 
+        if m.get('City') is not None:
+            self.city = m.get('City')
+
+        if m.get('Continent') is not None:
+            self.continent = m.get('Continent')
+
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -300,6 +339,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if m.get('EdrStatus') is not None:
             self.edr_status = m.get('EdrStatus')
 
+        if m.get('FullDepartment') is not None:
+            self.full_department = m.get('FullDepartment')
+
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
 
@@ -308,6 +350,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
 
         if m.get('InnerIP') is not None:
             self.inner_ip = m.get('InnerIP')
+
+        if m.get('JoinAdDomain') is not None:
+            self.join_ad_domain = m.get('JoinAdDomain')
 
         if m.get('Mac') is not None:
             self.mac = m.get('Mac')
@@ -329,6 +374,9 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
 
         if m.get('PaStatus') is not None:
             self.pa_status = m.get('PaStatus')
+
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
 
         if m.get('SaseUserId') is not None:
             self.sase_user_id = m.get('SaseUserId')

@@ -66,6 +66,7 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
         department: str = None,
         dev_tag: str = None,
         dev_type: str = None,
+        full_department: List[str] = None,
         hostname: str = None,
         idp_name: str = None,
         is_uninstall: bool = None,
@@ -80,6 +81,7 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
         self.department = department
         self.dev_tag = dev_tag
         self.dev_type = dev_type
+        self.full_department = full_department
         self.hostname = hostname
         self.idp_name = idp_name
         self.is_uninstall = is_uninstall
@@ -111,6 +113,9 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
 
         if self.dev_type is not None:
             result['DevType'] = self.dev_type
+
+        if self.full_department is not None:
+            result['FullDepartment'] = self.full_department
 
         if self.hostname is not None:
             result['Hostname'] = self.hostname
@@ -154,6 +159,9 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
 
         if m.get('DevType') is not None:
             self.dev_type = m.get('DevType')
+
+        if m.get('FullDepartment') is not None:
+            self.full_department = m.get('FullDepartment')
 
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')

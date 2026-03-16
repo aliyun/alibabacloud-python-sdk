@@ -1,3 +1,26 @@
+2026-03-16 Version: 1.10.20
+- Update API GetUserDevice: add response parameters Body.Device.BatteryHealthPercentage.
+- Update API GetUserDevice: add response parameters Body.Device.BatteryRemainingPercentage.
+- Update API GetUserDevice: add response parameters Body.Device.City.
+- Update API GetUserDevice: add response parameters Body.Device.Continent.
+- Update API GetUserDevice: add response parameters Body.Device.Country.
+- Update API GetUserDevice: add response parameters Body.Device.DiskAvailable.
+- Update API GetUserDevice: add response parameters Body.Device.DiskUsed.
+- Update API GetUserDevice: add response parameters Body.Device.JoinAdDomain.
+- Update API GetUserDevice: add response parameters Body.Device.Processes.
+- Update API GetUserDevice: add response parameters Body.Device.Province.
+- Update API GetUserDevice: add response parameters Body.Device.TerminalInfoCollectTime.
+- Update API ListExcessiveDeviceRegistrationApplications: add response parameters Body.Applications.$.FullDepartment.
+- Update API ListUninstallApplications: add response parameters Body.Applications.$.FullDepartment.
+- Update API ListUserDevices: add response parameters Body.Devices.$.City.
+- Update API ListUserDevices: add response parameters Body.Devices.$.Continent.
+- Update API ListUserDevices: add response parameters Body.Devices.$.Country.
+- Update API ListUserDevices: add response parameters Body.Devices.$.FullDepartment.
+- Update API ListUserDevices: add response parameters Body.Devices.$.JoinAdDomain.
+- Update API ListUserDevices: add response parameters Body.Devices.$.Province.
+- Update API ListUsers: add response parameters Body.Users.$.FullDepartment.
+
+
 2026-02-27 Version: 1.10.19
 - Update API ListUserApplications: add request parameters Address.
 

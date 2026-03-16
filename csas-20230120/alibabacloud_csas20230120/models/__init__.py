@@ -494,6 +494,7 @@ from ._get_registration_policy_response_body import GetRegistrationPolicyRespons
 from ._get_registration_policy_response_body import GetRegistrationPolicyResponseBodyLimitDetail
 from ._get_user_device_response_body import GetUserDeviceResponseBodyDeviceHistoryUsers
 from ._get_user_device_response_body import GetUserDeviceResponseBodyDeviceNetInterfaceInfo
+from ._get_user_device_response_body import GetUserDeviceResponseBodyDeviceProcesses
 from ._get_user_device_response_body import GetUserDeviceResponseBodyDevice
 from ._get_user_group_response_body import GetUserGroupResponseBodyUserGroupAttributes
 from ._get_user_group_response_body import GetUserGroupResponseBodyUserGroup
@@ -1152,6 +1153,7 @@ __all__ = [
     GetRegistrationPolicyResponseBodyLimitDetail,
     GetUserDeviceResponseBodyDeviceHistoryUsers,
     GetUserDeviceResponseBodyDeviceNetInterfaceInfo,
+    GetUserDeviceResponseBodyDeviceProcesses,
     GetUserDeviceResponseBodyDevice,
     GetUserGroupResponseBodyUserGroupAttributes,
     GetUserGroupResponseBodyUserGroup,
