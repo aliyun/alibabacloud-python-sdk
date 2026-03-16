@@ -1,3 +1,12 @@
+2026-03-16 Version: 2.0.1
+- Update API CreateFlow: add request parameters ResourceGroupId.
+- Update API CreateFlow: add response parameters Body.ResourceGroupId.
+- Update API DescribeFlow: add response parameters Body.ResourceGroupId.
+- Update API ListFlows: add request parameters ResourceGroupId.
+- Update API ListFlows: add response parameters Body.Flows.$.ResourceGroupId.
+- Update API UpdateFlow: add response parameters Body.ResourceGroupId.
+
+
 2025-10-27 Version: 2.0.0
 - Support API CreateFlowAlias.
 - Support API DeleteFlowAlias.
