@@ -8,6 +8,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
     def __init__(
         self,
         create_time: str = None,
+        dbsecurity_ip_list: str = None,
         dashboard_password: str = None,
         dashboard_user_name: str = None,
         disk_performance_level: str = None,
@@ -33,6 +34,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
     ):
         # The creation time.
         self.create_time = create_time
+        self.dbsecurity_ip_list = dbsecurity_ip_list
         # The Supabase Dashboard password (Not Used)
         self.dashboard_password = dashboard_password
         # The Supabase Dashboard user name (Not Used)
@@ -97,6 +99,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
             result = _map
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.dbsecurity_ip_list is not None:
+            result['DBSecurityIpList'] = self.dbsecurity_ip_list
 
         if self.dashboard_password is not None:
             result['DashboardPassword'] = self.dashboard_password
@@ -170,6 +175,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('DBSecurityIpList') is not None:
+            self.dbsecurity_ip_list = m.get('DBSecurityIpList')
 
         if m.get('DashboardPassword') is not None:
             self.dashboard_password = m.get('DashboardPassword')

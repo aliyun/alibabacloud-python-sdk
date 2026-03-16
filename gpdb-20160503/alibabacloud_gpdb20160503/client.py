@@ -18759,6 +18759,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.update_db):
+            query['UpdateDb'] = request.update_db
+        if not DaraCore.is_null(request.update_web):
+            query['UpdateWeb'] = request.update_web
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18791,6 +18795,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.update_db):
+            query['UpdateDb'] = request.update_db
+        if not DaraCore.is_null(request.update_web):
+            query['UpdateWeb'] = request.update_web
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

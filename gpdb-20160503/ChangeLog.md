@@ -1,3 +1,9 @@
+2026-03-16 Version: 5.0.3
+- Update API GetSupabaseProject: add response parameters Body.DBSecurityIpList.
+- Update API ModifySupabaseProjectSecurityIps: add request parameters UpdateDb.
+- Update API ModifySupabaseProjectSecurityIps: add request parameters UpdateWeb.
+
+
 2026-02-09 Version: 5.0.2
 - Update API CreateSupabaseProject: add request parameters PayType.
 - Update API CreateSupabaseProject: add request parameters Period.

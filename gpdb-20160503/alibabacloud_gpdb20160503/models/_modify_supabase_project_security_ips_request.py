@@ -10,6 +10,8 @@ class ModifySupabaseProjectSecurityIpsRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
         security_iplist: str = None,
+        update_db: bool = None,
+        update_web: bool = None,
     ):
         # The Supabase project ID.
         # 
@@ -26,6 +28,8 @@ class ModifySupabaseProjectSecurityIpsRequest(DaraModel):
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
+        self.update_db = update_db
+        self.update_web = update_web
 
     def validate(self):
         pass
@@ -44,6 +48,12 @@ class ModifySupabaseProjectSecurityIpsRequest(DaraModel):
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
 
+        if self.update_db is not None:
+            result['UpdateDb'] = self.update_db
+
+        if self.update_web is not None:
+            result['UpdateWeb'] = self.update_web
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +66,12 @@ class ModifySupabaseProjectSecurityIpsRequest(DaraModel):
 
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
+
+        if m.get('UpdateDb') is not None:
+            self.update_db = m.get('UpdateDb')
+
+        if m.get('UpdateWeb') is not None:
+            self.update_web = m.get('UpdateWeb')
 
         return self
 
