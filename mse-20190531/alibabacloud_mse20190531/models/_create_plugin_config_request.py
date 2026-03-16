@@ -19,6 +19,7 @@ class CreatePluginConfigRequest(DaraModel):
     ):
         # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
         self.config = config
         # The application scope of the plug-in. Valid values:
         # 

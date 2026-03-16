@@ -17,13 +17,21 @@ class GatewayService(DaraModel):
         namespace: str = None,
         source_type: str = None,
     ):
+        # The traffic policy of the service.
         self.gateway_traffic_policy = gateway_traffic_policy
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The name of the group to which the service belongs.
         self.group_name = group_name
+        # The ID of the service.
         self.id = id
+        # The metadata of the service.
         self.meta_info = meta_info
+        # The name of the service.
         self.name = name
+        # The namespace to which the service belongs.
         self.namespace = namespace
+        # The source type of the service.
         self.source_type = source_type
 
     def validate(self):

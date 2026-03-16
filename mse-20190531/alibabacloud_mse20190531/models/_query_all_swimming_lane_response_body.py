@@ -104,23 +104,39 @@ class QueryAllSwimmingLaneResponseBodyData(DaraModel):
         gmt_create: str = None,
         gmt_modified: str = None,
     ):
+        # 是否开启。
         self.enable = enable
+        # The ingress application rules.
         self.entry_rules = entry_rules
+        # 网关路由信息（使用云原生网关为入口时使用）
         self.gateway_swimming_lane_route = gateway_swimming_lane_route
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of the lane group.
         self.id = id
+        # The side on which canary release for messaging is implemented.
         self.message_queue_filter_side = message_queue_filter_side
+        # Indicates whether canary release for messaging is enabled.
         self.message_queue_gray_enable = message_queue_gray_enable
+        # The name of the lane group.
         self.name = name
+        # The Microservices Engine (MSE) namespace to which the lane belongs.
         self.namespace = namespace
         self.path_independent_percentage_enable = path_independent_percentage_enable
+        # Indicates whether request details were recorded (metrics of end-to-end canary release).
         self.record_canary_detail = record_canary_detail
+        # The region ID.
         self.region_id = region_id
+        # The tag of the lane.
         self.tag = tag
+        # The user ID of the lane group.
         self.user_id = user_id
+        # Indicates whether the rule is enabled.
         self.enable_rules = enable_rules
+        # The time when the lane was created.
         self.gmt_create = gmt_create
+        # The time when the lane was updated.
         self.gmt_modified = gmt_modified
 
     def validate(self):
@@ -269,12 +285,22 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(DaraModel):
         route_independent_percentage_enable: str = None,
         route_independent_percentage_list: List[main_models.QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList] = None,
     ):
+        # 全链路灰度模式：
+        # 
+        # - 0: 按请求内容路由
+        # 
+        # - 1: 按比例路由
         self.canary_model = canary_model
         self.condition = condition
+        # 匹配条件列表（按内容路由使用）
         self.conditions = conditions
+        # 网关ID
         self.gateway_id = gateway_id
+        # 网关唯一ID
         self.gateway_unique_id = gateway_unique_id
+        # 流量比例（按比例路由使用，取值0-100）
         self.percentage = percentage
+        # 路由ID列表
         self.route_id_list = route_id_list
         self.route_independent_percentage_enable = route_independent_percentage_enable
         self.route_independent_percentage_list = route_independent_percentage_list
@@ -408,10 +434,20 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions(Dar
         type: str = None,
         value: str = None,
     ):
+        # 条件：
+        # - PRE：前缀匹配
+        # - EQUAL：精确匹配
+        # - ERGULAR：正则匹配
         self.cond = cond
+        # 参数名称
         self.name = name
+        # NameList
         self.name_list = name_list
+        # 参数类型：
+        # - header：Header
+        # - param：Parameter
         self.type = type
+        # 参数值
         self.value = value
 
     def validate(self):
@@ -466,9 +502,13 @@ class QueryAllSwimmingLaneResponseBodyDataEntryRules(DaraModel):
         paths: List[str] = None,
         rest_items: List[main_models.QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems] = None,
     ):
+        # The condition.
         self.condition = condition
+        # The path.
         self.path = path
+        # The paths.
         self.paths = paths
+        # The RESTful matching rules.
         self.rest_items = rest_items
 
     def validate(self):
@@ -531,15 +571,25 @@ class QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The matching character.
         self.cond = cond
+        # The value.
         self.datum = datum
+        # The divisor.
         self.divisor = divisor
+        # The name of the matching rule.
         self.name = name
+        # The matching list.
         self.name_list = name_list
+        # The operator.
         self.operator = operator
+        # The percentage.
         self.rate = rate
+        # The remainder.
         self.remainder = remainder
+        # The matching type.
         self.type = type
+        # The value.
         self.value = value
 
     def validate(self):

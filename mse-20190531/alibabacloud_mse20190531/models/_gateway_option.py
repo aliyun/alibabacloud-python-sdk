@@ -14,10 +14,15 @@ class GatewayOption(DaraModel):
         log_config_details: main_models.GatewayOptionLogConfigDetails = None,
         trace_details: main_models.GatewayOptionTraceDetails = None,
     ):
+        # Specifies whether to disable the HTTP/2 protocol.
         self.disable_http_2alpn = disable_http_2alpn
+        # Specifies whether to enable hardware acceleration.
         self.enable_hardware_acceleration = enable_hardware_acceleration
+        # Specifies whether to enable Web Application Firewall (WAF).
         self.enable_waf = enable_waf
+        # The description of Simple Log Service.
         self.log_config_details = log_config_details
+        # The data structure.
         self.trace_details = trace_details
 
     def validate(self):
@@ -78,11 +83,35 @@ class GatewayOptionTraceDetails(DaraModel):
         trace_enabled: bool = None,
         trace_type: str = None,
     ):
+        # The sampling rate of Tracing Analysis.
         self.sample = sample
+        # The ID of the SkyWalking service. This parameter is required if TraceType is set to SKYWALKING.
         self.service_id = service_id
+        # The port of the SkyWalking service. This parameter is required if TraceType is set to SKYWALKING.
         self.service_port = service_port
+        # Specifies whether to activate Tracing Analysis.
+        # 
+        # Valid value:
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
         # This parameter is required.
         self.trace_enabled = trace_enabled
+        # The type of Tracing Analysis. Valid values: XTRACE and SKYWALKING.
         self.trace_type = trace_type
 
     def validate(self):
@@ -138,9 +167,31 @@ class GatewayOptionLogConfigDetails(DaraModel):
         log_store_name: str = None,
         project_name: str = None,
     ):
+        # Specifies whether to activate Simple Log Service.
+        # 
+        # Valid value:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
         # This parameter is required.
         self.log_enabled = log_enabled
+        # The name of the Logstore.
         self.log_store_name = log_store_name
+        # The name of the destination Simple Log Service project.
         self.project_name = project_name
 
     def validate(self):

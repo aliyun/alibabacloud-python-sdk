@@ -837,12 +837,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.ca_cert_identifier):
+            query['CaCertIdentifier'] = request.ca_cert_identifier
         if not DaraCore.is_null(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
         if not DaraCore.is_null(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not DaraCore.is_null(request.http_2):
             query['Http2'] = request.http_2
+        if not DaraCore.is_null(request.mtls_enabled):
+            query['MtlsEnabled'] = request.mtls_enabled
         if not DaraCore.is_null(request.must_https):
             query['MustHttps'] = request.must_https
         if not DaraCore.is_null(request.name):
@@ -887,12 +891,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.ca_cert_identifier):
+            query['CaCertIdentifier'] = request.ca_cert_identifier
         if not DaraCore.is_null(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
         if not DaraCore.is_null(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not DaraCore.is_null(request.http_2):
             query['Http2'] = request.http_2
+        if not DaraCore.is_null(request.mtls_enabled):
+            query['MtlsEnabled'] = request.mtls_enabled
         if not DaraCore.is_null(request.must_https):
             query['MustHttps'] = request.must_https
         if not DaraCore.is_null(request.name):
@@ -20123,6 +20131,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.ca_cert_identifier):
+            query['CaCertIdentifier'] = request.ca_cert_identifier
         if not DaraCore.is_null(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
         if not DaraCore.is_null(request.gateway_unique_id):
@@ -20131,6 +20141,8 @@ class Client(OpenApiClient):
             query['Http2'] = request.http_2
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
+        if not DaraCore.is_null(request.mtls_enabled):
+            query['MtlsEnabled'] = request.mtls_enabled
         if not DaraCore.is_null(request.must_https):
             query['MustHttps'] = request.must_https
         if not DaraCore.is_null(request.protocol):
@@ -20173,6 +20185,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.ca_cert_identifier):
+            query['CaCertIdentifier'] = request.ca_cert_identifier
         if not DaraCore.is_null(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
         if not DaraCore.is_null(request.gateway_unique_id):
@@ -20181,6 +20195,8 @@ class Client(OpenApiClient):
             query['Http2'] = request.http_2
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
+        if not DaraCore.is_null(request.mtls_enabled):
+            query['MtlsEnabled'] = request.mtls_enabled
         if not DaraCore.is_null(request.must_https):
             query['MustHttps'] = request.must_https
         if not DaraCore.is_null(request.protocol):

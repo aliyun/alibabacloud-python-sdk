@@ -95,18 +95,31 @@ class QuerySwimmingLaneByIdResponseBodyData(DaraModel):
         tag: str = None,
     ):
         self.path_independent_percentage_enable = path_independent_percentage_enable
+        # 泳道开关
         self.enable = enable
+        # 是否开启规则。
         self.enable_rules = enable_rules
+        # 入口应用规则
         self.entry_rule = entry_rule
+        # 入口应用规则详情
         self.entry_rules = entry_rules
+        # MSE网关路由规则
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
+        # 规则创建时间
         self.gmt_create = gmt_create
+        # 规则修改时间
         self.gmt_modified = gmt_modified
+        # 泳道组Id。
         self.group_id = group_id
+        # 泳道ID
         self.id = id
+        # 泳道名称
         self.name = name
+        # 区域ID。
         self.region_id = region_id
+        # 泳道状态
         self.status = status
+        # 泳道对应的标签。
         self.tag = tag
 
     def validate(self):
@@ -223,9 +236,13 @@ class QuerySwimmingLaneByIdResponseBodyDataEntryRules(DaraModel):
         paths: List[str] = None,
         rest_items: List[main_models.QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems] = None,
     ):
+        # 条件
         self.condition = condition
+        # 路径
         self.path = path
+        # 路径列表
         self.paths = paths
+        # Rest匹配规则列表
         self.rest_items = rest_items
 
     def validate(self):
@@ -288,15 +305,25 @@ class QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # 匹配符
         self.cond = cond
+        # 数值
         self.datum = datum
+        # 除数
         self.divisor = divisor
+        # 名称
         self.name = name
+        # 名称列表
         self.name_list = name_list
+        # 操作符
         self.operator = operator
+        # 百分比
         self.rate = rate
+        # 余数
         self.remainder = remainder
+        # 匹配类型
         self.type = type
+        # 值
         self.value = value
 
     def validate(self):

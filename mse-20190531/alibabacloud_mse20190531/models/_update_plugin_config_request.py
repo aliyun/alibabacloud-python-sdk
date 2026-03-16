@@ -25,6 +25,7 @@ class UpdatePluginConfigRequest(DaraModel):
         # 
         # zh: Chinese en: English
         self.accept_language = accept_language
+        # The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
         self.config = config
         # The application scope of the plug-in.
         # 

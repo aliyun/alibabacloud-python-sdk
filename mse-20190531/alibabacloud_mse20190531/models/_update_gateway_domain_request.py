@@ -11,10 +11,12 @@ class UpdateGatewayDomainRequest(DaraModel):
     def __init__(
         self,
         accept_language: str = None,
+        ca_cert_identifier: str = None,
         cert_identifier: str = None,
         gateway_unique_id: str = None,
         http_2: str = None,
         id: int = None,
+        mtls_enabled: bool = None,
         must_https: bool = None,
         protocol: str = None,
         tls_cipher_suites_config_json: main_models.UpdateGatewayDomainRequestTlsCipherSuitesConfigJSON = None,
@@ -26,6 +28,7 @@ class UpdateGatewayDomainRequest(DaraModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.ca_cert_identifier = ca_cert_identifier
         # The ID of the certificate.
         self.cert_identifier = cert_identifier
         # The unique ID of the gateway.
@@ -38,6 +41,7 @@ class UpdateGatewayDomainRequest(DaraModel):
         self.http_2 = http_2
         # The ID of the domain name that you want to update.
         self.id = id
+        self.mtls_enabled = mtls_enabled
         # Specifies whether to forcibly use HTTPS.
         self.must_https = must_https
         # The type of the protocol. Valid values:
@@ -63,6 +67,9 @@ class UpdateGatewayDomainRequest(DaraModel):
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
 
+        if self.ca_cert_identifier is not None:
+            result['CaCertIdentifier'] = self.ca_cert_identifier
+
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
 
@@ -74,6 +81,9 @@ class UpdateGatewayDomainRequest(DaraModel):
 
         if self.id is not None:
             result['Id'] = self.id
+
+        if self.mtls_enabled is not None:
+            result['MtlsEnabled'] = self.mtls_enabled
 
         if self.must_https is not None:
             result['MustHttps'] = self.must_https
@@ -97,6 +107,9 @@ class UpdateGatewayDomainRequest(DaraModel):
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
 
+        if m.get('CaCertIdentifier') is not None:
+            self.ca_cert_identifier = m.get('CaCertIdentifier')
+
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
 
@@ -108,6 +121,9 @@ class UpdateGatewayDomainRequest(DaraModel):
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('MtlsEnabled') is not None:
+            self.mtls_enabled = m.get('MtlsEnabled')
 
         if m.get('MustHttps') is not None:
             self.must_https = m.get('MustHttps')

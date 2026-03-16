@@ -112,19 +112,32 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(DaraModel):
         status: int = None,
         tag: str = None,
     ):
+        # Indicates whether the lane was enabled.
         self.enable = enable
+        # Indicates whether the rule is enabled.
         self.enable_rules = enable_rules
+        # The rule for the ingress application.
         self.entry_rule = entry_rule
+        # The name.
         self.entry_rules = entry_rules
+        # The routing rule for the MSE gateway.
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
+        # The time when the lane was created.
         self.gmt_create = gmt_create
+        # The time when the lane was updated.
         self.gmt_modified = gmt_modified
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of the lane.
         self.id = id
+        # The name of the lane.
         self.name = name
         self.path_independent_percentage_enable = path_independent_percentage_enable
+        # The ID of the region where the application is deployed.
         self.region_id = region_id
+        # The status of the lane.
         self.status = status
+        # The tag of the lane.
         self.tag = tag
 
     def validate(self):
@@ -241,9 +254,13 @@ class CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules(DaraModel):
         paths: List[str] = None,
         rest_items: List[main_models.CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems] = None,
     ):
+        # The condition.
         self.condition = condition
+        # The path of the code group.
         self.path = path
+        # The paths.
         self.paths = paths
+        # The conditions to be met.
         self.rest_items = rest_items
 
     def validate(self):
@@ -306,15 +323,25 @@ class CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The matching character.
         self.cond = cond
+        # The value.
         self.datum = datum
+        # The divisor.
         self.divisor = divisor
+        # The name.
         self.name = name
+        # The names.
         self.name_list = name_list
+        # The operator.
         self.operator = operator
+        # The percentage.
         self.rate = rate
+        # The remainder.
         self.remainder = remainder
+        # The matching type.
         self.type = type
+        # The value.
         self.value = value
 
     def validate(self):

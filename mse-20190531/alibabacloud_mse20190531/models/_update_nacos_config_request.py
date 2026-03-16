@@ -30,6 +30,7 @@ class UpdateNacosConfigRequest(DaraModel):
         self.app_name = app_name
         # The list of IP addresses where the beta release of the configuration is performed.
         self.beta_ips = beta_ips
+        # The content of the configuration.
         self.content = content
         # The ID of the configuration.
         # 

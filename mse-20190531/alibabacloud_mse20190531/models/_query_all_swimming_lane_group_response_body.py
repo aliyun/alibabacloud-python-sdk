@@ -129,18 +129,28 @@ class QueryAllSwimmingLaneGroupResponseBodyData(DaraModel):
         swim_version: int = None,
         user_id: str = None,
     ):
+        # The application IDs.
         self.app_ids = app_ids
         self.canary_model = canary_model
+        # The type and ID of the ingress application.
         self.entry_app = entry_app
+        # The ID of the lane group.
         self.id = id
+        # The side at which canary release for messaging was enabled.
         self.message_queue_filter_side = message_queue_filter_side
+        # Indicates whether canary release for messaging is enabled.
         self.message_queue_gray_enable = message_queue_gray_enable
+        # The name of the lane group.
         self.name = name
+        # The MSE namespace to which the lane belongs.
         self.namespace = namespace
         self.paths = paths
+        # Indicates whether the request details (metrics of end-to-end canary release) were recorded.
         self.record_canary_detail = record_canary_detail
+        # The region ID.
         self.region = region
         self.swim_version = swim_version
+        # The ID of the user to which the lane belongs.
         self.user_id = user_id
 
     def validate(self):

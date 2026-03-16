@@ -1,3 +1,12 @@
+2026-03-16 Version: 6.23.2
+- Update API AddGatewayDomain: add request parameters CaCertIdentifier.
+- Update API AddGatewayDomain: add request parameters MtlsEnabled.
+- Update API GetGatewayDomainDetail: add response parameters Body.Data.CaCertIdentifier.
+- Update API GetGatewayDomainDetail: add response parameters Body.Data.MtlsEnabled.
+- Update API UpdateGatewayDomain: add request parameters CaCertIdentifier.
+- Update API UpdateGatewayDomain: add request parameters MtlsEnabled.
+
+
 2026-01-20 Version: 6.23.1
 - Update API QueryConfig: add response parameters Body.Data.NacosRunningEnv.fencePolicy.serviceName.
 

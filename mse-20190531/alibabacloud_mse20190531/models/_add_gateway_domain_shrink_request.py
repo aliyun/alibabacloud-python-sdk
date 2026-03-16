@@ -8,9 +8,11 @@ class AddGatewayDomainShrinkRequest(DaraModel):
     def __init__(
         self,
         accept_language: str = None,
+        ca_cert_identifier: str = None,
         cert_identifier: str = None,
         gateway_unique_id: str = None,
         http_2: str = None,
+        mtls_enabled: bool = None,
         must_https: bool = None,
         name: str = None,
         protocol: str = None,
@@ -23,6 +25,7 @@ class AddGatewayDomainShrinkRequest(DaraModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.ca_cert_identifier = ca_cert_identifier
         # The ID of the certificate.
         self.cert_identifier = cert_identifier
         # The unique ID of the gateway.
@@ -33,6 +36,7 @@ class AddGatewayDomainShrinkRequest(DaraModel):
         # *   `close`: disables `HTTP/2`
         # *   `globalConfig`: uses global configurations
         self.http_2 = http_2
+        self.mtls_enabled = mtls_enabled
         # Specifies whether to enable HTTPS.
         self.must_https = must_https
         # The domain name.
@@ -59,6 +63,9 @@ class AddGatewayDomainShrinkRequest(DaraModel):
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
 
+        if self.ca_cert_identifier is not None:
+            result['CaCertIdentifier'] = self.ca_cert_identifier
+
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
 
@@ -67,6 +74,9 @@ class AddGatewayDomainShrinkRequest(DaraModel):
 
         if self.http_2 is not None:
             result['Http2'] = self.http_2
+
+        if self.mtls_enabled is not None:
+            result['MtlsEnabled'] = self.mtls_enabled
 
         if self.must_https is not None:
             result['MustHttps'] = self.must_https
@@ -93,6 +103,9 @@ class AddGatewayDomainShrinkRequest(DaraModel):
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
 
+        if m.get('CaCertIdentifier') is not None:
+            self.ca_cert_identifier = m.get('CaCertIdentifier')
+
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
 
@@ -101,6 +114,9 @@ class AddGatewayDomainShrinkRequest(DaraModel):
 
         if m.get('Http2') is not None:
             self.http_2 = m.get('Http2')
+
+        if m.get('MtlsEnabled') is not None:
+            self.mtls_enabled = m.get('MtlsEnabled')
 
         if m.get('MustHttps') is not None:
             self.must_https = m.get('MustHttps')

@@ -90,18 +90,27 @@ class CreateOrUpdateSwimmingLaneGroupResponseBodyData(DaraModel):
         region: str = None,
         user_id: str = None,
     ):
+        # The list of application IDs that are separated by commas (,).
         self.app_ids = app_ids
         self.canary_model = canary_model
         self.db_gray_enable = db_gray_enable
+        # The ingress application.
         self.entry_app = entry_app
+        # The ID of the lane group.
         self.id = id
+        # The side for message filtering when the canary release for messaging feature is enabled.
         self.message_queue_filter_side = message_queue_filter_side
+        # Specifies whether to enable canary release for messaging.
         self.message_queue_gray_enable = message_queue_gray_enable
         self.name = name
+        # The name of the MSE namespace.
         self.namespace = namespace
         self.paths = paths
+        # Specifies whether to record request details.
         self.record_canary_detail = record_canary_detail
+        # The region where the application resides.
         self.region = region
+        # The ID of the user to which the application belongs.
         self.user_id = user_id
 
     def validate(self):

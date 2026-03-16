@@ -11,7 +11,9 @@ class TrafficPolicy(DaraModel):
         load_balancer_settings: main_models.TrafficPolicyLoadBalancerSettings = None,
         tls_setting: main_models.TrafficPolicyTlsSetting = None,
     ):
+        # The load balancing settings.
         self.load_balancer_settings = load_balancer_settings
+        # The data structure.
         self.tls_setting = tls_setting
 
     def validate(self):
@@ -53,9 +55,18 @@ class TrafficPolicyTlsSetting(DaraModel):
         sni: str = None,
         tls_mode: str = None,
     ):
+        # The trusted CA certificate chain. In mTLS, if the backend service certificate is issued by a private certificate authority (CA), you must add its CA certificate to the trusted CA certificate chain.
         self.ca_cert_content = ca_cert_content
+        # The ID of the certificate that is managed in Alibaba Cloud Security.
         self.cert_id = cert_id
+        # The server name indication (SNI) that is used to establish TLS links.
         self.sni = sni
+        # The Transport Layer Security (TLS) mode that is used to distribute traffic to backend services. Valid values:
+        # 
+        # *   DISABLE: TLS is disabled. Plaintext is used.
+        # *   SIMPLE: TLS is enabled.
+        # *   MUTUAL: Mutual Transport Layer Security (mTLS) is enabled.
+        # 
         # This parameter is required.
         self.tls_mode = tls_mode
 
@@ -104,8 +115,16 @@ class TrafficPolicyLoadBalancerSettings(DaraModel):
         loadbalancer_type: str = None,
         warmup_duration: int = None,
     ):
+        # The data structure.
         self.consistent_hash_lbconfig = consistent_hash_lbconfig
+        # The load balancing type. Valid values:
+        # 
+        # *       ROUND_ROBIN: round robin 
+        # *       LEAST_CONN: least connection load balancing 
+        # *       RANDOM: random load balancing 
+        # *       CONSISTENT_HASH: consistent hashing load balancing
         self.loadbalancer_type = loadbalancer_type
+        # The prefetch duration. Unit: seconds.
         self.warmup_duration = warmup_duration
 
     def validate(self):
@@ -149,8 +168,16 @@ class TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig(DaraModel):
         http_cookie: main_models.TrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie = None,
         parameter_name: str = None,
     ):
+        # The type of the object based on which consistent hashing is performed. Valid values:
+        # 
+        # *   QUERY_PARAMETER: request parameter
+        # *   COOKIE: cookie
+        # *   SOURCE_IP: the source IP address
+        # *   HEADER: request header
         self.consistent_hash_lbtype = consistent_hash_lbtype
+        # You must specify this parameter only if ConsistentHashLBType is set to COOKIE.
         self.http_cookie = http_cookie
+        # The name of the object based on which consistent hashing is performed. If consistent hashing is performed based on a parameter, set the value to the parameter name. If consistent hashing is performed based on a header, set the value to the header name.
         self.parameter_name = parameter_name
 
     def validate(self):
@@ -194,8 +221,11 @@ class TrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie(DaraMode
         path: str = None,
         ttl: str = None,
     ):
+        # The name of the cookie.
         self.name = name
+        # The path of the cookie.
         self.path = path
+        # The lifecycle of the cookie.
         self.ttl = ttl
 
     def validate(self):

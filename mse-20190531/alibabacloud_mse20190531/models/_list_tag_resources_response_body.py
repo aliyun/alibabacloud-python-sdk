@@ -30,7 +30,6 @@ class ListTagResourcesResponseBody(DaraModel):
         # *   `true`: The request was successful.
         # *   `false`: The request failed.
         self.success = success
-        # The list of resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -128,13 +127,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the resource.
         self.resource_id = resource_id
-        # The type of the resource.
         self.resource_type = resource_type
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

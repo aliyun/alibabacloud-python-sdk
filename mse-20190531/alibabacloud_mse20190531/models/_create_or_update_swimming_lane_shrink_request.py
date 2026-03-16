@@ -32,6 +32,7 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(DaraModel):
         self.enable_rules = enable_rules
         # The JSON string.
         self.entry_rule = entry_rule
+        # The lane.
         self.entry_rules = entry_rules
         # The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
         self.gateway_swimming_lane_route_json_shrink = gateway_swimming_lane_route_json_shrink
@@ -163,9 +164,13 @@ class CreateOrUpdateSwimmingLaneShrinkRequestEntryRules(DaraModel):
         priority: int = None,
         rest_items: List[main_models.CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems] = None,
     ):
+        # Specifies how RESTful items are combined into the final condition.
         self.condition = condition
+        # The paths.
         self.paths = paths
+        # The priority.
         self.priority = priority
+        # The matching list.
         self.rest_items = rest_items
 
     def validate(self):
@@ -228,15 +233,25 @@ class CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The matching character.
         self.cond = cond
+        # The value.
         self.datum = datum
+        # The divisor.
         self.divisor = divisor
+        # The name.
         self.name = name
+        # The matching list.
         self.name_list = name_list
+        # The operator.
         self.operator = operator
+        # The percentage.
         self.rate = rate
+        # The remainder.
         self.remainder = remainder
+        # The matching type.
         self.type = type
+        # The value.
         self.value = value
 
     def validate(self):

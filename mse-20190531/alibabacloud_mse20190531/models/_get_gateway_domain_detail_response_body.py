@@ -91,6 +91,7 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         after_date: int = None,
         algorithm: str = None,
         before_date: int = None,
+        ca_cert_identifier: str = None,
         cert_identifier: str = None,
         cert_name: str = None,
         common_name: str = None,
@@ -104,6 +105,7 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         id: int = None,
         is_managed: bool = None,
         issuer: str = None,
+        mtls_enabled: bool = None,
         must_https: bool = None,
         name: str = None,
         protocol: str = None,
@@ -118,6 +120,7 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         self.algorithm = algorithm
         # The expiration time.
         self.before_date = before_date
+        self.ca_cert_identifier = ca_cert_identifier
         # The ID of the certificate.
         self.cert_identifier = cert_identifier
         # The name of the certificate.
@@ -147,6 +150,7 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         self.is_managed = is_managed
         # The issuer.
         self.issuer = issuer
+        self.mtls_enabled = mtls_enabled
         # Indicates whether HTTPS is forcibly used.
         self.must_https = must_https
         # The domain name.
@@ -178,6 +182,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
 
         if self.before_date is not None:
             result['BeforeDate'] = self.before_date
+
+        if self.ca_cert_identifier is not None:
+            result['CaCertIdentifier'] = self.ca_cert_identifier
 
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
@@ -218,6 +225,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         if self.issuer is not None:
             result['Issuer'] = self.issuer
 
+        if self.mtls_enabled is not None:
+            result['MtlsEnabled'] = self.mtls_enabled
+
         if self.must_https is not None:
             result['MustHttps'] = self.must_https
 
@@ -251,6 +261,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
 
         if m.get('BeforeDate') is not None:
             self.before_date = m.get('BeforeDate')
+
+        if m.get('CaCertIdentifier') is not None:
+            self.ca_cert_identifier = m.get('CaCertIdentifier')
 
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
@@ -290,6 +303,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
 
         if m.get('Issuer') is not None:
             self.issuer = m.get('Issuer')
+
+        if m.get('MtlsEnabled') is not None:
+            self.mtls_enabled = m.get('MtlsEnabled')
 
         if m.get('MustHttps') is not None:
             self.must_https = m.get('MustHttps')

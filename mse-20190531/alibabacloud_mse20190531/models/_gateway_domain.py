@@ -18,15 +18,25 @@ class GatewayDomain(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
+        # The ID of the certificate in use.
         self.cert_identifier = cert_identifier
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The name of the gateway.
         self.gateway_name = gateway_name
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The time when the gateway was created.
         self.gmt_create = gmt_create
+        # The time when the gateway was modified.
         self.gmt_modified = gmt_modified
+        # The domain ID.
         self.id = id
+        # Indicates whether HTTPS is forcibly used.
         self.must_https = must_https
+        # The domain name.
         self.name = name
+        # The domain protocol.
         self.protocol = protocol
 
     def validate(self):

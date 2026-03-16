@@ -19,13 +19,65 @@ class RulesValue(DaraModel):
         instance_num: int = None,
         rules: main_models.RulesValueRules = None,
     ):
+        # The status.
+        # 
+        # Valid values:
+        # 
+        # *   0
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The routing rule does not take effect
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   1
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The routing rule takes effect
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   2
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The routing rule is invalid
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.status = status
+        # The percentage.
         self.rate = rate
+        # Specifies whether to enable the routing rule.
         self.enable = enable
+        # The environment of the routing rule.
         self.tag = tag
+        # The name of the routing rule.
         self.name = name
+        # The ID of the routing rule.
         self.id = id
+        # The number of instances.
         self.instance_num = instance_num
+        # The details of the routing rule.
         self.rules = rules
 
     def validate(self):
@@ -98,7 +150,9 @@ class RulesValueRules(DaraModel):
         springcloud: List[main_models.RulesValueRulesSpringcloud] = None,
         dubbo: List[main_models.RulesValueRulesDubbo] = None,
     ):
+        # The rule of the Spring Cloud application.
         self.springcloud = springcloud
+        # The rules of the Dubbo application.
         self.dubbo = dubbo
 
     def validate(self):
@@ -158,15 +212,25 @@ class RulesValueRulesDubbo(DaraModel):
         condition: str = None,
         argument_items: List[main_models.RulesValueRulesDubboArgumentItems] = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The tags.
         self.tags = tags
+        # The policy type.
         self.trigger_policy = trigger_policy
+        # The service name (interface).
         self.service_name = service_name
+        # The group of the Dubbo application.
         self.group = group
+        # The version of the Dubbo application.
         self.version = version
+        # The method name of the Dubbo application.
         self.method_name = method_name
+        # The list of parameter data types.
         self.param_types = param_types
+        # The logical operation relationships. Valid values: AND and OR.
         self.condition = condition
+        # The list of parameter contents.
         self.argument_items = argument_items
 
     def validate(self):
@@ -265,15 +329,25 @@ class RulesValueRulesDubboArgumentItems(DaraModel):
         expr: str = None,
         value: Any = None,
     ):
+        # The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
         self.operator = operator
+        # The list of names.
         self.name_list = name_list
+        # The value on which operators such as rawvalue are performed.
         self.datum = datum
+        # The comparison operator. Valid values: >=, <=, >, <, and ==.
         self.cond = cond
+        # The divisor that is required by the mod operator.
         self.divisor = divisor
+        # The remainder.
         self.remainder = remainder
+        # The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
         self.rate = rate
+        # The position of the parameter, which starts from 0.
         self.index = index
+        # The expression.
         self.expr = expr
+        # The value that is used for comparison. The value obtained by the expression is compared with this value. If the list operator is used, data of the value parameter is separated by commas (,). For example, 1,2,3.
         self.value = value
 
     def validate(self):
@@ -363,14 +437,40 @@ class RulesValueRulesSpringcloud(DaraModel):
         paths: List[str] = None,
         path: str = None,
     ):
+        # The logical operation relationships. Valid values: AND and OR.
         self.condition = condition
         self.rest_items = rest_items
+        # The policy type.
+        # 
+        # Valid values:
+        # 
+        # *   PERCENT
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CONTENT
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.trigger_policy = trigger_policy
+        # Specifies whether to enable the routing rule.
         self.enable = enable
+        # The ID of the application.
         self.app_id = app_id
+        # The priority.
         self.priority = priority
+        # The tags.
         self.tags = tags
+        # The list of paths.
         self.paths = paths
+        # The path.
         self.path = path
 
     def validate(self):
@@ -463,15 +563,25 @@ class RulesValueRulesSpringcloudRestItems(DaraModel):
         name: str = None,
         value: Any = None,
     ):
+        # The value on which operators such as rawvalue are performed.
         self.datum = datum
+        # The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
         self.operator = operator
+        # Information about the fields that are required by the list operator.
         self.name_list = name_list
+        # The comparison operator. Valid values: >=, <=, >, <, and ==.
         self.cond = cond
+        # The divisor that is required by the mod operator.
         self.divisor = divisor
+        # The remainder.
         self.remainder = remainder
+        # The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
         self.rate = rate
+        # The type.
         self.type = type
+        # The name.
         self.name = name
+        # The value.
         self.value = value
 
     def validate(self):
