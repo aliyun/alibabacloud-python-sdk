@@ -493,6 +493,84 @@ class Client(OpenApiClient):
         add_image_resp = await self.add_image_with_options_async(add_image_req, runtime)
         return add_image_resp
 
+    def check_image_exists_with_options(
+        self,
+        request: main_models.CheckImageExistsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckImageExistsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.pic_name):
+            body['PicName'] = request.pic_name
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckImageExists',
+            version = '2020-12-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckImageExistsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_image_exists_with_options_async(
+        self,
+        request: main_models.CheckImageExistsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckImageExistsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.pic_name):
+            body['PicName'] = request.pic_name
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckImageExists',
+            version = '2020-12-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckImageExistsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_image_exists(
+        self,
+        request: main_models.CheckImageExistsRequest,
+    ) -> main_models.CheckImageExistsResponse:
+        runtime = RuntimeOptions()
+        return self.check_image_exists_with_options(request, runtime)
+
+    async def check_image_exists_async(
+        self,
+        request: main_models.CheckImageExistsRequest,
+    ) -> main_models.CheckImageExistsResponse:
+        runtime = RuntimeOptions()
+        return await self.check_image_exists_with_options_async(request, runtime)
+
     def compare_similar_by_image_with_options(
         self,
         request: main_models.CompareSimilarByImageRequest,

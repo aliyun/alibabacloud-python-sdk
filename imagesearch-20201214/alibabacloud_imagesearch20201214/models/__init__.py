@@ -6,6 +6,9 @@ from ._add_image_request import AddImageRequest
 from ._add_image_advance_request import AddImageAdvanceRequest
 from ._add_image_response_body import AddImageResponseBody
 from ._add_image_response import AddImageResponse
+from ._check_image_exists_request import CheckImageExistsRequest
+from ._check_image_exists_response_body import CheckImageExistsResponseBody
+from ._check_image_exists_response import CheckImageExistsResponse
 from ._compare_similar_by_image_request import CompareSimilarByImageRequest
 from ._compare_similar_by_image_advance_request import CompareSimilarByImageAdvanceRequest
 from ._compare_similar_by_image_response_body import CompareSimilarByImageResponseBody
@@ -41,7 +44,10 @@ from ._search_image_by_text_response import SearchImageByTextResponse
 from ._update_image_request import UpdateImageRequest
 from ._update_image_response_body import UpdateImageResponseBody
 from ._update_image_response import UpdateImageResponse
+from ._add_image_response_body import AddImageResponseBodyPicInfoAllCategories
+from ._add_image_response_body import AddImageResponseBodyPicInfoMultiRegion
 from ._add_image_response_body import AddImageResponseBodyPicInfo
+from ._check_image_exists_response_body import CheckImageExistsResponseBodyAuctions
 from ._compare_similar_by_image_response_body import CompareSimilarByImageResponseBodyAccessDeniedDetail
 from ._delete_image_response_body import DeleteImageResponseBodyData
 from ._detail_response_body import DetailResponseBodyInstance
@@ -73,6 +79,9 @@ __all__ = [
     AddImageAdvanceRequest,
     AddImageResponseBody,
     AddImageResponse,
+    CheckImageExistsRequest,
+    CheckImageExistsResponseBody,
+    CheckImageExistsResponse,
     CompareSimilarByImageRequest,
     CompareSimilarByImageAdvanceRequest,
     CompareSimilarByImageResponseBody,
@@ -108,7 +117,10 @@ __all__ = [
     UpdateImageRequest,
     UpdateImageResponseBody,
     UpdateImageResponse,
+    AddImageResponseBodyPicInfoAllCategories,
+    AddImageResponseBodyPicInfoMultiRegion,
     AddImageResponseBodyPicInfo,
+    CheckImageExistsResponseBodyAuctions,
     CompareSimilarByImageResponseBodyAccessDeniedDetail,
     DeleteImageResponseBodyData,
     DetailResponseBodyInstance,

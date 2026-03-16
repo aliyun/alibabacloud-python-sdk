@@ -54,7 +54,6 @@ class IncreaseListResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # A list of batch tasks.
         self.increments = increments
         # The number of the page to return.
         self.page_number = page_number
@@ -152,32 +151,15 @@ class IncreaseListResponseBodyDataIncrementsInstance(DaraModel):
         utc_create: str = None,
         utc_modified: int = None,
     ):
-        # The name of the Object Storage Service (OSS) bucket.
         self.bucket_name = bucket_name
-        # The callback address.
         self.callback_address = callback_address
-        # The error code returned.
-        # 
-        # *   A value of 0 indicates that the operation is successful.
-        # *   Values other than 0 indicate errors.
         self.code = code
-        # The address where you can download the result. The address is valid for 2 hours.
         self.error_url = error_url
-        # The ID of the task.
         self.id = id
-        # The error message returned.
         self.msg = msg
-        # The absolute path to the increment.meta file in the bucket. The path must start with a forward slash (/) and cannot end with a forward slash (/).
         self.path = path
-        # The status of the batch task.
-        # 
-        # *   PROCESSING: in progress
-        # *   FAIL: failed
-        # *   SUCCESS: successful
         self.status = status
-        # The time when the task was created. Unit: milliseconds.
         self.utc_create = utc_create
-        # The time when the task was updated. Unit: milliseconds.
         self.utc_modified = utc_modified
 
     def validate(self):

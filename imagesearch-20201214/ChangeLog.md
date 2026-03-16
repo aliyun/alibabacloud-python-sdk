@@ -1,3 +1,9 @@
+2026-03-16 Version: 4.3.0
+- Support API CheckImageExists.
+- Update API AddImage: add response parameters Body.PicInfo.AllCategories.
+- Update API AddImage: add response parameters Body.PicInfo.MultiRegion.
+
+
 2026-01-15 Version: 4.2.3
 - Update API SearchImageByName: add request parameters ScoreThreshold.
 - Update API SearchImageByPic: add request parameters ScoreThreshold.
