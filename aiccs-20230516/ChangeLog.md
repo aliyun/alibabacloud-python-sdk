@@ -1,3 +1,9 @@
+2026-03-16 Version: 1.2.2
+- Update API AddTask: add request parameters CallTimeStrList.
+- Update API EditTask: add request parameters CallTimeStrList.
+- Update API QuickAddTask: add request parameters CallTimeStrList.
+
+
 2026-01-29 Version: 1.2.1
 - Update API CallNumberDetail: add response parameters Body.Model.AiBill.
 - Update API CallNumberDetail: add response parameters Body.Model.AnswerTransferType.

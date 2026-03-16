@@ -328,6 +328,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.call_time_list):
             request.call_time_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_list, 'CallTimeList', 'json')
+        if not DaraCore.is_null(tmp_req.call_time_str_list):
+            request.call_time_str_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_str_list, 'CallTimeStrList', 'json')
         if not DaraCore.is_null(tmp_req.repeat_reason):
             request.repeat_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_reason, 'RepeatReason', 'json')
         if not DaraCore.is_null(tmp_req.repeat_times):
@@ -337,6 +339,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
+        if not DaraCore.is_null(request.call_time_str_list_shrink):
+            query['CallTimeStrList'] = request.call_time_str_list_shrink
         if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
         if not DaraCore.is_null(request.flash_sms_template_id):
@@ -408,6 +412,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.call_time_list):
             request.call_time_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_list, 'CallTimeList', 'json')
+        if not DaraCore.is_null(tmp_req.call_time_str_list):
+            request.call_time_str_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_str_list, 'CallTimeStrList', 'json')
         if not DaraCore.is_null(tmp_req.repeat_reason):
             request.repeat_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_reason, 'RepeatReason', 'json')
         if not DaraCore.is_null(tmp_req.repeat_times):
@@ -417,6 +423,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
+        if not DaraCore.is_null(request.call_time_str_list_shrink):
+            query['CallTimeStrList'] = request.call_time_str_list_shrink
         if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
         if not DaraCore.is_null(request.flash_sms_template_id):
@@ -1346,6 +1354,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.call_time_list):
             request.call_time_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_list, 'CallTimeList', 'json')
+        if not DaraCore.is_null(tmp_req.call_time_str_list):
+            request.call_time_str_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_str_list, 'CallTimeStrList', 'json')
         if not DaraCore.is_null(tmp_req.repeat_reason):
             request.repeat_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_reason, 'RepeatReason', 'json')
         if not DaraCore.is_null(tmp_req.repeat_times):
@@ -1355,6 +1365,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
+        if not DaraCore.is_null(request.call_time_str_list_shrink):
+            query['CallTimeStrList'] = request.call_time_str_list_shrink
         if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
         if not DaraCore.is_null(request.flash_sms_template_id):
@@ -1426,6 +1438,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.call_time_list):
             request.call_time_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_list, 'CallTimeList', 'json')
+        if not DaraCore.is_null(tmp_req.call_time_str_list):
+            request.call_time_str_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_str_list, 'CallTimeStrList', 'json')
         if not DaraCore.is_null(tmp_req.repeat_reason):
             request.repeat_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_reason, 'RepeatReason', 'json')
         if not DaraCore.is_null(tmp_req.repeat_times):
@@ -1435,6 +1449,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
+        if not DaraCore.is_null(request.call_time_str_list_shrink):
+            query['CallTimeStrList'] = request.call_time_str_list_shrink
         if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
         if not DaraCore.is_null(request.flash_sms_template_id):
@@ -2006,11 +2022,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.call_time_list):
             request.call_time_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_list, 'CallTimeList', 'json')
+        if not DaraCore.is_null(tmp_req.call_time_str_list):
+            request.call_time_str_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_str_list, 'CallTimeStrList', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_group_id):
             query['AgentGroupId'] = request.agent_group_id
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
+        if not DaraCore.is_null(request.call_time_str_list_shrink):
+            query['CallTimeStrList'] = request.call_time_str_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.owner_id):
@@ -2058,11 +2078,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.call_time_list):
             request.call_time_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_list, 'CallTimeList', 'json')
+        if not DaraCore.is_null(tmp_req.call_time_str_list):
+            request.call_time_str_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time_str_list, 'CallTimeStrList', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_group_id):
             query['AgentGroupId'] = request.agent_group_id
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
+        if not DaraCore.is_null(request.call_time_str_list_shrink):
+            query['CallTimeStrList'] = request.call_time_str_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.owner_id):

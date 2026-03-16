@@ -11,6 +11,7 @@ class AddTaskRequest(DaraModel):
     def __init__(
         self,
         call_time_list: List[main_models.AddTaskRequestCallTimeList] = None,
+        call_time_str_list: List[main_models.AddTaskRequestCallTimeStrList] = None,
         callback_url: str = None,
         flash_sms_template_id: int = None,
         flash_sms_type: int = None,
@@ -35,6 +36,8 @@ class AddTaskRequest(DaraModel):
     ):
         # 外呼时间
         self.call_time_list = call_time_list
+        # 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+        self.call_time_str_list = call_time_str_list
         # 回调地址
         self.callback_url = callback_url
         # 当发送闪信配置为1时，闪信模板ID必填
@@ -84,6 +87,10 @@ class AddTaskRequest(DaraModel):
             for v1 in self.call_time_list:
                  if v1:
                     v1.validate()
+        if self.call_time_str_list:
+            for v1 in self.call_time_str_list:
+                 if v1:
+                    v1.validate()
         if self.send_sms_plan:
             for v1 in self.send_sms_plan:
                  if v1:
@@ -98,6 +105,11 @@ class AddTaskRequest(DaraModel):
         if self.call_time_list is not None:
             for k1 in self.call_time_list:
                 result['CallTimeList'].append(k1.to_map() if k1 else None)
+
+        result['CallTimeStrList'] = []
+        if self.call_time_str_list is not None:
+            for k1 in self.call_time_str_list:
+                result['CallTimeStrList'].append(k1.to_map() if k1 else None)
 
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
@@ -173,6 +185,12 @@ class AddTaskRequest(DaraModel):
             for k1 in m.get('CallTimeList'):
                 temp_model = main_models.AddTaskRequestCallTimeList()
                 self.call_time_list.append(temp_model.from_map(k1))
+
+        self.call_time_str_list = []
+        if m.get('CallTimeStrList') is not None:
+            for k1 in m.get('CallTimeStrList'):
+                temp_model = main_models.AddTaskRequestCallTimeStrList()
+                self.call_time_str_list.append(temp_model.from_map(k1))
 
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
@@ -276,6 +294,33 @@ class AddTaskRequestSendSmsPlan(DaraModel):
 
         if m.get('SmsTemplateId') is not None:
             self.sms_template_id = m.get('SmsTemplateId')
+
+        return self
+
+class AddTaskRequestCallTimeStrList(DaraModel):
+    def __init__(
+        self,
+        call_time: List[str] = None,
+    ):
+        self.call_time = call_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.call_time is not None:
+            result['CallTime'] = self.call_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallTime') is not None:
+            self.call_time = m.get('CallTime')
 
         return self
 

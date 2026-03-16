@@ -117,6 +117,7 @@ from ._add_agent_response_body import AddAgentResponseBodyModel
 from ._add_agent_group_response_body import AddAgentGroupResponseBodyModel
 from ._add_blacklist_response_body import AddBlacklistResponseBodyModel
 from ._add_task_request import AddTaskRequestCallTimeList
+from ._add_task_request import AddTaskRequestCallTimeStrList
 from ._add_task_request import AddTaskRequestSendSmsPlan
 from ._add_task_response_body import AddTaskResponseBodyModel
 from ._agent_call_list_response_body import AgentCallListResponseBodyModelList
@@ -132,6 +133,7 @@ from ._call_number_detail_response_body import CallNumberDetailResponseBodyModel
 from ._details_response_body import DetailsResponseBodyModelList
 from ._details_response_body import DetailsResponseBodyModel
 from ._edit_task_request import EditTaskRequestCallTimeList
+from ._edit_task_request import EditTaskRequestCallTimeStrList
 from ._edit_task_request import EditTaskRequestSendSmsPlan
 from ._edit_task_response_body import EditTaskResponseBodyModel
 from ._import_number_request import ImportNumberRequestCustomers
@@ -143,6 +145,7 @@ from ._page_response_body import PageResponseBodyModel
 from ._query_agent_info_response_body import QueryAgentInfoResponseBodyModelAgentGroupList
 from ._query_agent_info_response_body import QueryAgentInfoResponseBodyModel
 from ._quick_add_task_request import QuickAddTaskRequestCallTimeList
+from ._quick_add_task_request import QuickAddTaskRequestCallTimeStrList
 from ._quick_add_task_response_body import QuickAddTaskResponseBodyModel
 from ._sms_template_page_list_response_body import SmsTemplatePageListResponseBodyModelList
 from ._sms_template_page_list_response_body import SmsTemplatePageListResponseBodyModel
@@ -273,6 +276,7 @@ __all__ = [
     AddAgentGroupResponseBodyModel,
     AddBlacklistResponseBodyModel,
     AddTaskRequestCallTimeList,
+    AddTaskRequestCallTimeStrList,
     AddTaskRequestSendSmsPlan,
     AddTaskResponseBodyModel,
     AgentCallListResponseBodyModelList,
@@ -288,6 +292,7 @@ __all__ = [
     DetailsResponseBodyModelList,
     DetailsResponseBodyModel,
     EditTaskRequestCallTimeList,
+    EditTaskRequestCallTimeStrList,
     EditTaskRequestSendSmsPlan,
     EditTaskResponseBodyModel,
     ImportNumberRequestCustomers,
@@ -299,6 +304,7 @@ __all__ = [
     QueryAgentInfoResponseBodyModelAgentGroupList,
     QueryAgentInfoResponseBodyModel,
     QuickAddTaskRequestCallTimeList,
+    QuickAddTaskRequestCallTimeStrList,
     QuickAddTaskResponseBodyModel,
     SmsTemplatePageListResponseBodyModelList,
     SmsTemplatePageListResponseBodyModel,

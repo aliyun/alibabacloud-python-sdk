@@ -9,6 +9,7 @@ class QuickAddTaskShrinkRequest(DaraModel):
         self,
         agent_group_id: int = None,
         call_time_list_shrink: str = None,
+        call_time_str_list_shrink: str = None,
         name: str = None,
         owner_id: int = None,
         reference_task_id: int = None,
@@ -23,6 +24,8 @@ class QuickAddTaskShrinkRequest(DaraModel):
         self.agent_group_id = agent_group_id
         # 外呼时间
         self.call_time_list_shrink = call_time_list_shrink
+        # 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+        self.call_time_str_list_shrink = call_time_str_list_shrink
         # 任务名称
         # 
         # This parameter is required.
@@ -56,6 +59,9 @@ class QuickAddTaskShrinkRequest(DaraModel):
 
         if self.call_time_list_shrink is not None:
             result['CallTimeList'] = self.call_time_list_shrink
+
+        if self.call_time_str_list_shrink is not None:
+            result['CallTimeStrList'] = self.call_time_str_list_shrink
 
         if self.name is not None:
             result['Name'] = self.name
@@ -93,6 +99,9 @@ class QuickAddTaskShrinkRequest(DaraModel):
 
         if m.get('CallTimeList') is not None:
             self.call_time_list_shrink = m.get('CallTimeList')
+
+        if m.get('CallTimeStrList') is not None:
+            self.call_time_str_list_shrink = m.get('CallTimeStrList')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

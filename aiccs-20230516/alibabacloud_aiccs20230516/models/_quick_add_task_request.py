@@ -12,6 +12,7 @@ class QuickAddTaskRequest(DaraModel):
         self,
         agent_group_id: int = None,
         call_time_list: List[main_models.QuickAddTaskRequestCallTimeList] = None,
+        call_time_str_list: List[main_models.QuickAddTaskRequestCallTimeStrList] = None,
         name: str = None,
         owner_id: int = None,
         reference_task_id: int = None,
@@ -26,6 +27,8 @@ class QuickAddTaskRequest(DaraModel):
         self.agent_group_id = agent_group_id
         # 外呼时间
         self.call_time_list = call_time_list
+        # 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+        self.call_time_str_list = call_time_str_list
         # 任务名称
         # 
         # This parameter is required.
@@ -51,6 +54,10 @@ class QuickAddTaskRequest(DaraModel):
             for v1 in self.call_time_list:
                  if v1:
                     v1.validate()
+        if self.call_time_str_list:
+            for v1 in self.call_time_str_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -64,6 +71,11 @@ class QuickAddTaskRequest(DaraModel):
         if self.call_time_list is not None:
             for k1 in self.call_time_list:
                 result['CallTimeList'].append(k1.to_map() if k1 else None)
+
+        result['CallTimeStrList'] = []
+        if self.call_time_str_list is not None:
+            for k1 in self.call_time_str_list:
+                result['CallTimeStrList'].append(k1.to_map() if k1 else None)
 
         if self.name is not None:
             result['Name'] = self.name
@@ -105,6 +117,12 @@ class QuickAddTaskRequest(DaraModel):
                 temp_model = main_models.QuickAddTaskRequestCallTimeList()
                 self.call_time_list.append(temp_model.from_map(k1))
 
+        self.call_time_str_list = []
+        if m.get('CallTimeStrList') is not None:
+            for k1 in m.get('CallTimeStrList'):
+                temp_model = main_models.QuickAddTaskRequestCallTimeStrList()
+                self.call_time_str_list.append(temp_model.from_map(k1))
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
@@ -131,6 +149,33 @@ class QuickAddTaskRequest(DaraModel):
 
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+
+        return self
+
+class QuickAddTaskRequestCallTimeStrList(DaraModel):
+    def __init__(
+        self,
+        call_time: List[str] = None,
+    ):
+        self.call_time = call_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.call_time is not None:
+            result['CallTime'] = self.call_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallTime') is not None:
+            self.call_time = m.get('CallTime')
 
         return self
 
