@@ -1,3 +1,7 @@
+2026-03-16 Version: 2.0.25
+- Update API CreateTask: add request parameters body.Parameters.ExtraParams.TranslationHotwordMap.
+
+
 2025-09-12 Version: 2.0.24
 - Update API CreateTask: add request parameters body.Parameters.AutoChapters.
 - Update API CreateTask: add request parameters body.Parameters.LlmOutputLanguage.

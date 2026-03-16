@@ -1,0 +1,99 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_task_request import CreateTaskRequest
+from ._create_task_response_body import CreateTaskResponseBody
+from ._create_task_response import CreateTaskResponse
+from ._create_transcription_phrases_request import CreateTranscriptionPhrasesRequest
+from ._create_transcription_phrases_response_body import CreateTranscriptionPhrasesResponseBody
+from ._create_transcription_phrases_response import CreateTranscriptionPhrasesResponse
+from ._delete_transcription_phrases_response_body import DeleteTranscriptionPhrasesResponseBody
+from ._delete_transcription_phrases_response import DeleteTranscriptionPhrasesResponse
+from ._get_task_info_response_body import GetTaskInfoResponseBody
+from ._get_task_info_response import GetTaskInfoResponse
+from ._get_transcription_phrases_response_body import GetTranscriptionPhrasesResponseBody
+from ._get_transcription_phrases_response import GetTranscriptionPhrasesResponse
+from ._list_transcription_phrases_response_body import ListTranscriptionPhrasesResponseBody
+from ._list_transcription_phrases_response import ListTranscriptionPhrasesResponse
+from ._update_transcription_phrases_request import UpdateTranscriptionPhrasesRequest
+from ._update_transcription_phrases_response_body import UpdateTranscriptionPhrasesResponseBody
+from ._update_transcription_phrases_response import UpdateTranscriptionPhrasesResponse
+from ._create_task_request import CreateTaskRequestInput
+from ._create_task_request import CreateTaskRequestParametersAutoChapters
+from ._create_task_request import CreateTaskRequestParametersContentExtractionExtractionContents
+from ._create_task_request import CreateTaskRequestParametersContentExtraction
+from ._create_task_request import CreateTaskRequestParametersCustomPromptContents
+from ._create_task_request import CreateTaskRequestParametersCustomPrompt
+from ._create_task_request import CreateTaskRequestParametersExtraParamsTranslationHotwordMap
+from ._create_task_request import CreateTaskRequestParametersExtraParams
+from ._create_task_request import CreateTaskRequestParametersIdentityRecognitionIdentityContents
+from ._create_task_request import CreateTaskRequestParametersIdentityRecognition
+from ._create_task_request import CreateTaskRequestParametersMeetingAssistance
+from ._create_task_request import CreateTaskRequestParametersServiceInspectionInspectionContents
+from ._create_task_request import CreateTaskRequestParametersServiceInspection
+from ._create_task_request import CreateTaskRequestParametersSummarization
+from ._create_task_request import CreateTaskRequestParametersTranscoding
+from ._create_task_request import CreateTaskRequestParametersTranscriptionDiarization
+from ._create_task_request import CreateTaskRequestParametersTranscription
+from ._create_task_request import CreateTaskRequestParametersTranslation
+from ._create_task_request import CreateTaskRequestParameters
+from ._create_task_response_body import CreateTaskResponseBodyData
+from ._create_transcription_phrases_response_body import CreateTranscriptionPhrasesResponseBodyData
+from ._delete_transcription_phrases_response_body import DeleteTranscriptionPhrasesResponseBodyData
+from ._get_task_info_response_body import GetTaskInfoResponseBodyDataResult
+from ._get_task_info_response_body import GetTaskInfoResponseBodyData
+from ._get_transcription_phrases_response_body import GetTranscriptionPhrasesResponseBodyDataPhrases
+from ._get_transcription_phrases_response_body import GetTranscriptionPhrasesResponseBodyData
+from ._list_transcription_phrases_response_body import ListTranscriptionPhrasesResponseBodyDataPhrases
+from ._list_transcription_phrases_response_body import ListTranscriptionPhrasesResponseBodyData
+from ._update_transcription_phrases_response_body import UpdateTranscriptionPhrasesResponseBodyData
+
+__all__ = [
+    CreateTaskRequest,
+    CreateTaskResponseBody,
+    CreateTaskResponse,
+    CreateTranscriptionPhrasesRequest,
+    CreateTranscriptionPhrasesResponseBody,
+    CreateTranscriptionPhrasesResponse,
+    DeleteTranscriptionPhrasesResponseBody,
+    DeleteTranscriptionPhrasesResponse,
+    GetTaskInfoResponseBody,
+    GetTaskInfoResponse,
+    GetTranscriptionPhrasesResponseBody,
+    GetTranscriptionPhrasesResponse,
+    ListTranscriptionPhrasesResponseBody,
+    ListTranscriptionPhrasesResponse,
+    UpdateTranscriptionPhrasesRequest,
+    UpdateTranscriptionPhrasesResponseBody,
+    UpdateTranscriptionPhrasesResponse,
+    CreateTaskRequestInput,
+    CreateTaskRequestParametersAutoChapters,
+    CreateTaskRequestParametersContentExtractionExtractionContents,
+    CreateTaskRequestParametersContentExtraction,
+    CreateTaskRequestParametersCustomPromptContents,
+    CreateTaskRequestParametersCustomPrompt,
+    CreateTaskRequestParametersExtraParamsTranslationHotwordMap,
+    CreateTaskRequestParametersExtraParams,
+    CreateTaskRequestParametersIdentityRecognitionIdentityContents,
+    CreateTaskRequestParametersIdentityRecognition,
+    CreateTaskRequestParametersMeetingAssistance,
+    CreateTaskRequestParametersServiceInspectionInspectionContents,
+    CreateTaskRequestParametersServiceInspection,
+    CreateTaskRequestParametersSummarization,
+    CreateTaskRequestParametersTranscoding,
+    CreateTaskRequestParametersTranscriptionDiarization,
+    CreateTaskRequestParametersTranscription,
+    CreateTaskRequestParametersTranslation,
+    CreateTaskRequestParameters,
+    CreateTaskResponseBodyData,
+    CreateTranscriptionPhrasesResponseBodyData,
+    DeleteTranscriptionPhrasesResponseBodyData,
+    GetTaskInfoResponseBodyDataResult,
+    GetTaskInfoResponseBodyData,
+    GetTranscriptionPhrasesResponseBodyDataPhrases,
+    GetTranscriptionPhrasesResponseBodyData,
+    ListTranscriptionPhrasesResponseBodyDataPhrases,
+    ListTranscriptionPhrasesResponseBodyData,
+    UpdateTranscriptionPhrasesResponseBodyData
+]
