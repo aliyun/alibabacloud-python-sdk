@@ -1,3 +1,11 @@
+2026-03-16 Version: 3.1.6
+- Update API SwitchGdnMemberRole: add request parameters DstMainConnectString.
+- Update API SwitchGdnMemberRole: add request parameters DstMainPort.
+- Update API SwitchGdnMemberRole: add request parameters IsModifyEndpoint.
+- Update API SwitchGdnMemberRole: add request parameters SrcMainConnectString.
+- Update API SwitchGdnMemberRole: add request parameters SrcMainPort.
+
+
 2026-03-04 Version: 3.1.5
 - Update API CreateDBInstance: add request parameters OriginMinorVersion.
 - Update API CreateDBInstance: add request parameters StorageType.

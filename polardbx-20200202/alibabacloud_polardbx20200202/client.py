@@ -10448,8 +10448,18 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.dst_main_connect_string):
+            query['DstMainConnectString'] = request.dst_main_connect_string
+        if not DaraCore.is_null(request.dst_main_port):
+            query['DstMainPort'] = request.dst_main_port
+        if not DaraCore.is_null(request.is_modify_endpoint):
+            query['IsModifyEndpoint'] = request.is_modify_endpoint
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.src_main_connect_string):
+            query['SrcMainConnectString'] = request.src_main_connect_string
+        if not DaraCore.is_null(request.src_main_port):
+            query['SrcMainPort'] = request.src_main_port
         if not DaraCore.is_null(request.switch_mode):
             query['SwitchMode'] = request.switch_mode
         if not DaraCore.is_null(request.task_timeout):
@@ -10482,8 +10492,18 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.dst_main_connect_string):
+            query['DstMainConnectString'] = request.dst_main_connect_string
+        if not DaraCore.is_null(request.dst_main_port):
+            query['DstMainPort'] = request.dst_main_port
+        if not DaraCore.is_null(request.is_modify_endpoint):
+            query['IsModifyEndpoint'] = request.is_modify_endpoint
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.src_main_connect_string):
+            query['SrcMainConnectString'] = request.src_main_connect_string
+        if not DaraCore.is_null(request.src_main_port):
+            query['SrcMainPort'] = request.src_main_port
         if not DaraCore.is_null(request.switch_mode):
             query['SwitchMode'] = request.switch_mode
         if not DaraCore.is_null(request.task_timeout):
