@@ -1,3 +1,56 @@
+2026-03-16 Version: 2.0.0
+- Update API BatchSetDesktopManager: add request parameters BusinessChannel.
+- Update API ChangeUserPassword: add request parameters BusinessChannel.
+- Update API CheckUsedProperty: add request parameters BusinessChannel.
+- Update API CheckUsedPropertyValue: add request parameters BusinessChannel.
+- Update API CreateGroup: add request parameters BusinessChannel.
+- Update API CreateOrg: add request parameters BusinessChannel.
+- Update API CreateProperty: add request parameters BusinessChannel.
+- Update API CreateResourceGroup: add request parameters BusinessChannel.
+- Update API CreateUsers: add request parameters BusinessChannel.
+- Update API DeleteResourceGroup: add request parameters BusinessChannel.
+- Update API DeleteUserPropertyValue: add request parameters BusinessChannel.
+- Update API DescribeGroupUser: add request parameters BusinessChannel.
+- Update API DescribeGroups: add request parameters BusinessChannel.
+- Update API DescribeMfaDevices: add request parameters BusinessChannel.
+- Update API DescribeOrgByLayer: add request parameters BusinessChannel.
+- Update API DescribeOrgs: add request parameters BusinessChannel.
+- Update API DescribeResourceGroups: add request parameters AliyunResourceGroupIds.
+- Update API DescribeResourceGroups: add request parameters BusinessChannel.
+- Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.AliyunResourceGroupId.
+- Update API DescribeUsers: add request parameters BusinessChannel.
+- Update API DescribeUsers: add request parameters FilterMap.
+- Update API FilterUsers: add request parameters BusinessChannel.
+- Update API FilterUsers: add request parameters FilterMap.
+- Update API FilterUsers: add request parameters IncludeEndUserIds.
+- Update API InitTenantAlias: add request parameters BusinessChannel.
+- Update API InitTenantAlias: add request The number of query or body parameters has changed from zero to many.
+- Update API ListProperty: add request parameters BusinessChannel.
+- Update API ListProperty: add request The number of query or body parameters has changed from zero to many.
+- Update API ListPropertyValue: add request parameters BusinessChannel.
+- Update API LockMfaDevice: add request parameters BusinessChannel.
+- Update API LockUsers: add request parameters BusinessChannel.
+- Update API ModifyGroup: add request parameters BusinessChannel.
+- Update API ModifyOrg: add request parameters BusinessChannel.
+- Update API ModifyUser: add request parameters BusinessChannel.
+- Update API MoveOrg: add request parameters BusinessChannel.
+- Update API MoveUserOrg: add request parameters BusinessChannel.
+- Update API QuerySyncStatusByAliUid: add request parameters BusinessChannel.
+- Update API QuerySyncStatusByAliUid: add request The number of query or body parameters has changed from zero to many.
+- Update API RemoveGroup: add request parameters BusinessChannel.
+- Update API RemoveMfaDevice: add request parameters BusinessChannel.
+- Update API RemoveOrg: add request parameters BusinessChannel.
+- Update API RemoveProperty: add request parameters BusinessChannel.
+- Update API RemoveUsers: add request parameters BusinessChannel.
+- Update API ResetUserPassword: add request parameters BusinessChannel.
+- Update API SetUserPropertyValue: add request parameters BusinessChannel.
+- Update API UnlockMfaDevice: add request parameters BusinessChannel.
+- Update API UnlockUsers: add request parameters BusinessChannel.
+- Update API UpdateProperty: add request parameters BusinessChannel.
+- Update API UserBatchJoinGroup: add request parameters BusinessChannel.
+- Update API UserBatchQuitGroup: add request parameters BusinessChannel.
+
+
 2025-11-27 Version: 1.6.5
 - Update API CreateUsers: add request parameters Users.$.GroupIdList.
 - Update API DescribeGroups: add request parameters IdpId.
