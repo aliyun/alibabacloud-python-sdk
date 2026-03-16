@@ -1,0 +1,509 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._commodity_value import CommodityValue
+from ._cancel_service_usage_request import CancelServiceUsageRequest
+from ._cancel_service_usage_response_body import CancelServiceUsageResponseBody
+from ._cancel_service_usage_response import CancelServiceUsageResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._check_service_deployable_request import CheckServiceDeployableRequest
+from ._check_service_deployable_response_body import CheckServiceDeployableResponseBody
+from ._check_service_deployable_response import CheckServiceDeployableResponse
+from ._continue_deploy_service_instance_request import ContinueDeployServiceInstanceRequest
+from ._continue_deploy_service_instance_response_body import ContinueDeployServiceInstanceResponseBody
+from ._continue_deploy_service_instance_response import ContinueDeployServiceInstanceResponse
+from ._create_backup_request import CreateBackupRequest
+from ._create_backup_response_body import CreateBackupResponseBody
+from ._create_backup_response import CreateBackupResponse
+from ._create_restore_task_request import CreateRestoreTaskRequest
+from ._create_restore_task_response_body import CreateRestoreTaskResponseBody
+from ._create_restore_task_response import CreateRestoreTaskResponse
+from ._create_service_instance_request import CreateServiceInstanceRequest
+from ._create_service_instance_shrink_request import CreateServiceInstanceShrinkRequest
+from ._create_service_instance_response_body import CreateServiceInstanceResponseBody
+from ._create_service_instance_response import CreateServiceInstanceResponse
+from ._create_service_usage_request import CreateServiceUsageRequest
+from ._create_service_usage_shrink_request import CreateServiceUsageShrinkRequest
+from ._create_service_usage_response_body import CreateServiceUsageResponseBody
+from ._create_service_usage_response import CreateServiceUsageResponse
+from ._delete_backup_request import DeleteBackupRequest
+from ._delete_backup_response_body import DeleteBackupResponseBody
+from ._delete_backup_response import DeleteBackupResponse
+from ._delete_service_instances_request import DeleteServiceInstancesRequest
+from ._delete_service_instances_response_body import DeleteServiceInstancesResponseBody
+from ._delete_service_instances_response import DeleteServiceInstancesResponse
+from ._deploy_service_instance_request import DeployServiceInstanceRequest
+from ._deploy_service_instance_response_body import DeployServiceInstanceResponseBody
+from ._deploy_service_instance_response import DeployServiceInstanceResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._generate_service_policy_request import GenerateServicePolicyRequest
+from ._generate_service_policy_response_body import GenerateServicePolicyResponseBody
+from ._generate_service_policy_response import GenerateServicePolicyResponse
+from ._get_backup_request import GetBackupRequest
+from ._get_backup_response_body import GetBackupResponseBody
+from ._get_backup_response import GetBackupResponse
+from ._get_network_available_zones_request import GetNetworkAvailableZonesRequest
+from ._get_network_available_zones_response_body import GetNetworkAvailableZonesResponseBody
+from ._get_network_available_zones_response import GetNetworkAvailableZonesResponse
+from ._get_service_request import GetServiceRequest
+from ._get_service_response_body import GetServiceResponseBody
+from ._get_service_response import GetServiceResponse
+from ._get_service_estimate_cost_request import GetServiceEstimateCostRequest
+from ._get_service_estimate_cost_shrink_request import GetServiceEstimateCostShrinkRequest
+from ._get_service_estimate_cost_response_body import GetServiceEstimateCostResponseBody
+from ._get_service_estimate_cost_response import GetServiceEstimateCostResponse
+from ._get_service_instance_request import GetServiceInstanceRequest
+from ._get_service_instance_response_body import GetServiceInstanceResponseBody
+from ._get_service_instance_response import GetServiceInstanceResponse
+from ._get_service_instance_subscription_estimate_cost_request import GetServiceInstanceSubscriptionEstimateCostRequest
+from ._get_service_instance_subscription_estimate_cost_response_body import GetServiceInstanceSubscriptionEstimateCostResponseBody
+from ._get_service_instance_subscription_estimate_cost_response import GetServiceInstanceSubscriptionEstimateCostResponse
+from ._get_service_provisions_request import GetServiceProvisionsRequest
+from ._get_service_provisions_shrink_request import GetServiceProvisionsShrinkRequest
+from ._get_service_provisions_response_body import GetServiceProvisionsResponseBody
+from ._get_service_provisions_response import GetServiceProvisionsResponse
+from ._get_service_template_parameter_constraints_request import GetServiceTemplateParameterConstraintsRequest
+from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBody
+from ._get_service_template_parameter_constraints_response import GetServiceTemplateParameterConstraintsResponse
+from ._get_user_information_request import GetUserInformationRequest
+from ._get_user_information_response_body import GetUserInformationResponseBody
+from ._get_user_information_response import GetUserInformationResponse
+from ._list_backups_request import ListBackupsRequest
+from ._list_backups_response_body import ListBackupsResponseBody
+from ._list_backups_response import ListBackupsResponse
+from ._list_policies_request import ListPoliciesRequest
+from ._list_policies_response_body import ListPoliciesResponseBody
+from ._list_policies_response import ListPoliciesResponse
+from ._list_restore_tasks_request import ListRestoreTasksRequest
+from ._list_restore_tasks_response_body import ListRestoreTasksResponseBody
+from ._list_restore_tasks_response import ListRestoreTasksResponse
+from ._list_service_categories_response_body import ListServiceCategoriesResponseBody
+from ._list_service_categories_response import ListServiceCategoriesResponse
+from ._list_service_instance_bill_request import ListServiceInstanceBillRequest
+from ._list_service_instance_bill_response_body import ListServiceInstanceBillResponseBody
+from ._list_service_instance_bill_response import ListServiceInstanceBillResponse
+from ._list_service_instance_logs_request import ListServiceInstanceLogsRequest
+from ._list_service_instance_logs_response_body import ListServiceInstanceLogsResponseBody
+from ._list_service_instance_logs_response import ListServiceInstanceLogsResponse
+from ._list_service_instance_resources_request import ListServiceInstanceResourcesRequest
+from ._list_service_instance_resources_response_body import ListServiceInstanceResourcesResponseBody
+from ._list_service_instance_resources_response import ListServiceInstanceResourcesResponse
+from ._list_service_instance_upgrade_history_request import ListServiceInstanceUpgradeHistoryRequest
+from ._list_service_instance_upgrade_history_response_body import ListServiceInstanceUpgradeHistoryResponseBody
+from ._list_service_instance_upgrade_history_response import ListServiceInstanceUpgradeHistoryResponse
+from ._list_service_instances_request import ListServiceInstancesRequest
+from ._list_service_instances_response_body import ListServiceInstancesResponseBody
+from ._list_service_instances_response import ListServiceInstancesResponse
+from ._list_service_usages_request import ListServiceUsagesRequest
+from ._list_service_usages_response_body import ListServiceUsagesResponseBody
+from ._list_service_usages_response import ListServiceUsagesResponse
+from ._list_services_request import ListServicesRequest
+from ._list_services_response_body import ListServicesResponseBody
+from ._list_services_response import ListServicesResponse
+from ._list_tag_keys_request import ListTagKeysRequest
+from ._list_tag_keys_response_body import ListTagKeysResponseBody
+from ._list_tag_keys_response import ListTagKeysResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_tag_values_request import ListTagValuesRequest
+from ._list_tag_values_response_body import ListTagValuesResponseBody
+from ._list_tag_values_response import ListTagValuesResponse
+from ._renew_service_instance_resources_request import RenewServiceInstanceResourcesRequest
+from ._renew_service_instance_resources_response_body import RenewServiceInstanceResourcesResponseBody
+from ._renew_service_instance_resources_response import RenewServiceInstanceResourcesResponse
+from ._restart_service_instance_request import RestartServiceInstanceRequest
+from ._restart_service_instance_response_body import RestartServiceInstanceResponseBody
+from ._restart_service_instance_response import RestartServiceInstanceResponse
+from ._rollback_service_instance_request import RollbackServiceInstanceRequest
+from ._rollback_service_instance_response_body import RollbackServiceInstanceResponseBody
+from ._rollback_service_instance_response import RollbackServiceInstanceResponse
+from ._start_service_instance_request import StartServiceInstanceRequest
+from ._start_service_instance_response_body import StartServiceInstanceResponseBody
+from ._start_service_instance_response import StartServiceInstanceResponse
+from ._stop_service_instance_request import StopServiceInstanceRequest
+from ._stop_service_instance_response_body import StopServiceInstanceResponseBody
+from ._stop_service_instance_response import StopServiceInstanceResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._un_tag_resources_request import UnTagResourcesRequest
+from ._un_tag_resources_response_body import UnTagResourcesResponseBody
+from ._un_tag_resources_response import UnTagResourcesResponse
+from ._update_service_instance_attributes_request import UpdateServiceInstanceAttributesRequest
+from ._update_service_instance_attributes_response_body import UpdateServiceInstanceAttributesResponseBody
+from ._update_service_instance_attributes_response import UpdateServiceInstanceAttributesResponse
+from ._update_service_instance_spec_request import UpdateServiceInstanceSpecRequest
+from ._update_service_instance_spec_shrink_request import UpdateServiceInstanceSpecShrinkRequest
+from ._update_service_instance_spec_response_body import UpdateServiceInstanceSpecResponseBody
+from ._update_service_instance_spec_response import UpdateServiceInstanceSpecResponse
+from ._update_service_usage_request import UpdateServiceUsageRequest
+from ._update_service_usage_shrink_request import UpdateServiceUsageShrinkRequest
+from ._update_service_usage_response_body import UpdateServiceUsageResponseBody
+from ._update_service_usage_response import UpdateServiceUsageResponse
+from ._update_user_information_request import UpdateUserInformationRequest
+from ._update_user_information_response_body import UpdateUserInformationResponseBody
+from ._update_user_information_response import UpdateUserInformationResponse
+from ._upgrade_service_instance_request import UpgradeServiceInstanceRequest
+from ._upgrade_service_instance_shrink_request import UpgradeServiceInstanceShrinkRequest
+from ._upgrade_service_instance_response_body import UpgradeServiceInstanceResponseBody
+from ._upgrade_service_instance_response import UpgradeServiceInstanceResponse
+from ._validate_service_instance_name_request import ValidateServiceInstanceNameRequest
+from ._validate_service_instance_name_response_body import ValidateServiceInstanceNameResponseBody
+from ._validate_service_instance_name_response import ValidateServiceInstanceNameResponse
+from ._commodity_value import CommodityValueResultOrder
+from ._commodity_value import CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs
+from ._commodity_value import CommodityValueResultSubOrdersSubOrderModuleInstance
+from ._commodity_value import CommodityValueResultSubOrdersSubOrder
+from ._commodity_value import CommodityValueResultSubOrders
+from ._commodity_value import CommodityValueResultCoupons
+from ._commodity_value import CommodityValueResult
+from ._check_service_deployable_response_body import CheckServiceDeployableResponseBodyCheckResults
+from ._continue_deploy_service_instance_response_body import ContinueDeployServiceInstanceResponseBodyDryRunResult
+from ._create_service_instance_request import CreateServiceInstanceRequestCommodity
+from ._create_service_instance_request import CreateServiceInstanceRequestOperationMetadata
+from ._create_service_instance_request import CreateServiceInstanceRequestTag
+from ._create_service_instance_shrink_request import CreateServiceInstanceShrinkRequestCommodity
+from ._create_service_instance_shrink_request import CreateServiceInstanceShrinkRequestOperationMetadata
+from ._create_service_instance_shrink_request import CreateServiceInstanceShrinkRequestTag
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._generate_service_policy_response_body import GenerateServicePolicyResponseBodyMissingPolicy
+from ._get_network_available_zones_response_body import GetNetworkAvailableZonesResponseBodyData
+from ._get_service_response_body import GetServiceResponseBodyCommodityCssMetadataComponentsMappings
+from ._get_service_response_body import GetServiceResponseBodyCommodityCssMetadata
+from ._get_service_response_body import GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings
+from ._get_service_response_body import GetServiceResponseBodyCommodityMarketplaceMetadata
+from ._get_service_response_body import GetServiceResponseBodyCommoditySpecifications
+from ._get_service_response_body import GetServiceResponseBodyCommodity
+from ._get_service_response_body import GetServiceResponseBodyComplianceMetadata
+from ._get_service_response_body import GetServiceResponseBodyInstanceRoleInfos
+from ._get_service_response_body import GetServiceResponseBodyServiceDocumentInfos
+from ._get_service_response_body import GetServiceResponseBodyServiceInfosAgreements
+from ._get_service_response_body import GetServiceResponseBodyServiceInfosSoftwares
+from ._get_service_response_body import GetServiceResponseBodyServiceInfos
+from ._get_service_response_body import GetServiceResponseBodyServiceLocaleConfigs
+from ._get_service_response_body import GetServiceResponseBodySupportContacts
+from ._get_service_response_body import GetServiceResponseBodyTags
+from ._get_service_estimate_cost_request import GetServiceEstimateCostRequestCommodity
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyGrantedPermission
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyNetworkConfig
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyServiceServiceInfos
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyServiceUpgradableServiceInfos
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyService
+from ._get_service_instance_response_body import GetServiceInstanceResponseBodyTags
+from ._get_service_instance_subscription_estimate_cost_request import GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod
+from ._get_service_instance_subscription_estimate_cost_response_body import GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos
+from ._get_service_instance_subscription_estimate_cost_response_body import GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules
+from ._get_service_instance_subscription_estimate_cost_response_body import GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices
+from ._get_service_provisions_response_body import GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions
+from ._get_service_provisions_response_body import GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation
+from ._get_service_provisions_response_body import GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles
+from ._get_service_provisions_response_body import GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision
+from ._get_service_provisions_response_body import GetServiceProvisionsResponseBodyServiceProvisions
+from ._get_service_template_parameter_constraints_request import GetServiceTemplateParameterConstraintsRequestParameters
+from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints
+from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors
+from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints
+from ._get_user_information_response_body import GetUserInformationResponseBodyDeliverySettings
+from ._list_backups_request import ListBackupsRequestFilter
+from ._list_backups_response_body import ListBackupsResponseBodyBackups
+from ._list_policies_response_body import ListPoliciesResponseBodyPolicies
+from ._list_restore_tasks_request import ListRestoreTasksRequestFilter
+from ._list_restore_tasks_response_body import ListRestoreTasksResponseBodyRestoreTasks
+from ._list_service_instance_bill_response_body import ListServiceInstanceBillResponseBodyItem
+from ._list_service_instance_logs_request import ListServiceInstanceLogsRequestFilter
+from ._list_service_instance_logs_response_body import ListServiceInstanceLogsResponseBodyServiceInstancesLogs
+from ._list_service_instance_resources_request import ListServiceInstanceResourcesRequestFilters
+from ._list_service_instance_resources_request import ListServiceInstanceResourcesRequestTag
+from ._list_service_instance_resources_response_body import ListServiceInstanceResourcesResponseBodyResources
+from ._list_service_instance_upgrade_history_response_body import ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory
+from ._list_service_instances_request import ListServiceInstancesRequestFilter
+from ._list_service_instances_request import ListServiceInstancesRequestTag
+from ._list_service_instances_response_body import ListServiceInstancesResponseBodyServiceInstancesGrantedPermission
+from ._list_service_instances_response_body import ListServiceInstancesResponseBodyServiceInstancesServiceCommodity
+from ._list_service_instances_response_body import ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos
+from ._list_service_instances_response_body import ListServiceInstancesResponseBodyServiceInstancesService
+from ._list_service_instances_response_body import ListServiceInstancesResponseBodyServiceInstancesTags
+from ._list_service_instances_response_body import ListServiceInstancesResponseBodyServiceInstances
+from ._list_service_usages_request import ListServiceUsagesRequestFilter
+from ._list_service_usages_response_body import ListServiceUsagesResponseBodyServiceUsages
+from ._list_services_request import ListServicesRequestFilter
+from ._list_services_request import ListServicesRequestTag
+from ._list_services_response_body import ListServicesResponseBodyServicesCommodity
+from ._list_services_response_body import ListServicesResponseBodyServicesServiceInfosSoftwares
+from ._list_services_response_body import ListServicesResponseBodyServicesServiceInfos
+from ._list_services_response_body import ListServicesResponseBodyServicesServiceLocaleConfigs
+from ._list_services_response_body import ListServicesResponseBodyServicesTags
+from ._list_services_response_body import ListServicesResponseBodyServices
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._renew_service_instance_resources_request import RenewServiceInstanceResourcesRequestResourcePeriod
+from ._renew_service_instance_resources_response_body import RenewServiceInstanceResourcesResponseBodyFailureDetails
+from ._renew_service_instance_resources_response_body import RenewServiceInstanceResourcesResponseBodyRenewalResult
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_service_instance_attributes_request import UpdateServiceInstanceAttributesRequestGrantedPermission
+from ._update_service_instance_spec_request import UpdateServiceInstanceSpecRequestCommodity
+from ._update_service_instance_spec_shrink_request import UpdateServiceInstanceSpecShrinkRequestCommodity
+from ._update_user_information_request import UpdateUserInformationRequestDeliverySettings
+
+__all__ = [
+    CommodityValue,
+    CancelServiceUsageRequest,
+    CancelServiceUsageResponseBody,
+    CancelServiceUsageResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CheckServiceDeployableRequest,
+    CheckServiceDeployableResponseBody,
+    CheckServiceDeployableResponse,
+    ContinueDeployServiceInstanceRequest,
+    ContinueDeployServiceInstanceResponseBody,
+    ContinueDeployServiceInstanceResponse,
+    CreateBackupRequest,
+    CreateBackupResponseBody,
+    CreateBackupResponse,
+    CreateRestoreTaskRequest,
+    CreateRestoreTaskResponseBody,
+    CreateRestoreTaskResponse,
+    CreateServiceInstanceRequest,
+    CreateServiceInstanceShrinkRequest,
+    CreateServiceInstanceResponseBody,
+    CreateServiceInstanceResponse,
+    CreateServiceUsageRequest,
+    CreateServiceUsageShrinkRequest,
+    CreateServiceUsageResponseBody,
+    CreateServiceUsageResponse,
+    DeleteBackupRequest,
+    DeleteBackupResponseBody,
+    DeleteBackupResponse,
+    DeleteServiceInstancesRequest,
+    DeleteServiceInstancesResponseBody,
+    DeleteServiceInstancesResponse,
+    DeployServiceInstanceRequest,
+    DeployServiceInstanceResponseBody,
+    DeployServiceInstanceResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    GenerateServicePolicyRequest,
+    GenerateServicePolicyResponseBody,
+    GenerateServicePolicyResponse,
+    GetBackupRequest,
+    GetBackupResponseBody,
+    GetBackupResponse,
+    GetNetworkAvailableZonesRequest,
+    GetNetworkAvailableZonesResponseBody,
+    GetNetworkAvailableZonesResponse,
+    GetServiceRequest,
+    GetServiceResponseBody,
+    GetServiceResponse,
+    GetServiceEstimateCostRequest,
+    GetServiceEstimateCostShrinkRequest,
+    GetServiceEstimateCostResponseBody,
+    GetServiceEstimateCostResponse,
+    GetServiceInstanceRequest,
+    GetServiceInstanceResponseBody,
+    GetServiceInstanceResponse,
+    GetServiceInstanceSubscriptionEstimateCostRequest,
+    GetServiceInstanceSubscriptionEstimateCostResponseBody,
+    GetServiceInstanceSubscriptionEstimateCostResponse,
+    GetServiceProvisionsRequest,
+    GetServiceProvisionsShrinkRequest,
+    GetServiceProvisionsResponseBody,
+    GetServiceProvisionsResponse,
+    GetServiceTemplateParameterConstraintsRequest,
+    GetServiceTemplateParameterConstraintsResponseBody,
+    GetServiceTemplateParameterConstraintsResponse,
+    GetUserInformationRequest,
+    GetUserInformationResponseBody,
+    GetUserInformationResponse,
+    ListBackupsRequest,
+    ListBackupsResponseBody,
+    ListBackupsResponse,
+    ListPoliciesRequest,
+    ListPoliciesResponseBody,
+    ListPoliciesResponse,
+    ListRestoreTasksRequest,
+    ListRestoreTasksResponseBody,
+    ListRestoreTasksResponse,
+    ListServiceCategoriesResponseBody,
+    ListServiceCategoriesResponse,
+    ListServiceInstanceBillRequest,
+    ListServiceInstanceBillResponseBody,
+    ListServiceInstanceBillResponse,
+    ListServiceInstanceLogsRequest,
+    ListServiceInstanceLogsResponseBody,
+    ListServiceInstanceLogsResponse,
+    ListServiceInstanceResourcesRequest,
+    ListServiceInstanceResourcesResponseBody,
+    ListServiceInstanceResourcesResponse,
+    ListServiceInstanceUpgradeHistoryRequest,
+    ListServiceInstanceUpgradeHistoryResponseBody,
+    ListServiceInstanceUpgradeHistoryResponse,
+    ListServiceInstancesRequest,
+    ListServiceInstancesResponseBody,
+    ListServiceInstancesResponse,
+    ListServiceUsagesRequest,
+    ListServiceUsagesResponseBody,
+    ListServiceUsagesResponse,
+    ListServicesRequest,
+    ListServicesResponseBody,
+    ListServicesResponse,
+    ListTagKeysRequest,
+    ListTagKeysResponseBody,
+    ListTagKeysResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListTagValuesRequest,
+    ListTagValuesResponseBody,
+    ListTagValuesResponse,
+    RenewServiceInstanceResourcesRequest,
+    RenewServiceInstanceResourcesResponseBody,
+    RenewServiceInstanceResourcesResponse,
+    RestartServiceInstanceRequest,
+    RestartServiceInstanceResponseBody,
+    RestartServiceInstanceResponse,
+    RollbackServiceInstanceRequest,
+    RollbackServiceInstanceResponseBody,
+    RollbackServiceInstanceResponse,
+    StartServiceInstanceRequest,
+    StartServiceInstanceResponseBody,
+    StartServiceInstanceResponse,
+    StopServiceInstanceRequest,
+    StopServiceInstanceResponseBody,
+    StopServiceInstanceResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UnTagResourcesRequest,
+    UnTagResourcesResponseBody,
+    UnTagResourcesResponse,
+    UpdateServiceInstanceAttributesRequest,
+    UpdateServiceInstanceAttributesResponseBody,
+    UpdateServiceInstanceAttributesResponse,
+    UpdateServiceInstanceSpecRequest,
+    UpdateServiceInstanceSpecShrinkRequest,
+    UpdateServiceInstanceSpecResponseBody,
+    UpdateServiceInstanceSpecResponse,
+    UpdateServiceUsageRequest,
+    UpdateServiceUsageShrinkRequest,
+    UpdateServiceUsageResponseBody,
+    UpdateServiceUsageResponse,
+    UpdateUserInformationRequest,
+    UpdateUserInformationResponseBody,
+    UpdateUserInformationResponse,
+    UpgradeServiceInstanceRequest,
+    UpgradeServiceInstanceShrinkRequest,
+    UpgradeServiceInstanceResponseBody,
+    UpgradeServiceInstanceResponse,
+    ValidateServiceInstanceNameRequest,
+    ValidateServiceInstanceNameResponseBody,
+    ValidateServiceInstanceNameResponse,
+    CommodityValueResultOrder,
+    CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs,
+    CommodityValueResultSubOrdersSubOrderModuleInstance,
+    CommodityValueResultSubOrdersSubOrder,
+    CommodityValueResultSubOrders,
+    CommodityValueResultCoupons,
+    CommodityValueResult,
+    CheckServiceDeployableResponseBodyCheckResults,
+    ContinueDeployServiceInstanceResponseBodyDryRunResult,
+    CreateServiceInstanceRequestCommodity,
+    CreateServiceInstanceRequestOperationMetadata,
+    CreateServiceInstanceRequestTag,
+    CreateServiceInstanceShrinkRequestCommodity,
+    CreateServiceInstanceShrinkRequestOperationMetadata,
+    CreateServiceInstanceShrinkRequestTag,
+    DescribeRegionsResponseBodyRegions,
+    GenerateServicePolicyResponseBodyMissingPolicy,
+    GetNetworkAvailableZonesResponseBodyData,
+    GetServiceResponseBodyCommodityCssMetadataComponentsMappings,
+    GetServiceResponseBodyCommodityCssMetadata,
+    GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings,
+    GetServiceResponseBodyCommodityMarketplaceMetadata,
+    GetServiceResponseBodyCommoditySpecifications,
+    GetServiceResponseBodyCommodity,
+    GetServiceResponseBodyComplianceMetadata,
+    GetServiceResponseBodyInstanceRoleInfos,
+    GetServiceResponseBodyServiceDocumentInfos,
+    GetServiceResponseBodyServiceInfosAgreements,
+    GetServiceResponseBodyServiceInfosSoftwares,
+    GetServiceResponseBodyServiceInfos,
+    GetServiceResponseBodyServiceLocaleConfigs,
+    GetServiceResponseBodySupportContacts,
+    GetServiceResponseBodyTags,
+    GetServiceEstimateCostRequestCommodity,
+    GetServiceInstanceResponseBodyGrantedPermission,
+    GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs,
+    GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections,
+    GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections,
+    GetServiceInstanceResponseBodyNetworkConfig,
+    GetServiceInstanceResponseBodyServiceServiceInfos,
+    GetServiceInstanceResponseBodyServiceUpgradableServiceInfos,
+    GetServiceInstanceResponseBodyService,
+    GetServiceInstanceResponseBodyTags,
+    GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod,
+    GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos,
+    GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules,
+    GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices,
+    GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions,
+    GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation,
+    GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles,
+    GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision,
+    GetServiceProvisionsResponseBodyServiceProvisions,
+    GetServiceTemplateParameterConstraintsRequestParameters,
+    GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints,
+    GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors,
+    GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints,
+    GetUserInformationResponseBodyDeliverySettings,
+    ListBackupsRequestFilter,
+    ListBackupsResponseBodyBackups,
+    ListPoliciesResponseBodyPolicies,
+    ListRestoreTasksRequestFilter,
+    ListRestoreTasksResponseBodyRestoreTasks,
+    ListServiceInstanceBillResponseBodyItem,
+    ListServiceInstanceLogsRequestFilter,
+    ListServiceInstanceLogsResponseBodyServiceInstancesLogs,
+    ListServiceInstanceResourcesRequestFilters,
+    ListServiceInstanceResourcesRequestTag,
+    ListServiceInstanceResourcesResponseBodyResources,
+    ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory,
+    ListServiceInstancesRequestFilter,
+    ListServiceInstancesRequestTag,
+    ListServiceInstancesResponseBodyServiceInstancesGrantedPermission,
+    ListServiceInstancesResponseBodyServiceInstancesServiceCommodity,
+    ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos,
+    ListServiceInstancesResponseBodyServiceInstancesService,
+    ListServiceInstancesResponseBodyServiceInstancesTags,
+    ListServiceInstancesResponseBodyServiceInstances,
+    ListServiceUsagesRequestFilter,
+    ListServiceUsagesResponseBodyServiceUsages,
+    ListServicesRequestFilter,
+    ListServicesRequestTag,
+    ListServicesResponseBodyServicesCommodity,
+    ListServicesResponseBodyServicesServiceInfosSoftwares,
+    ListServicesResponseBodyServicesServiceInfos,
+    ListServicesResponseBodyServicesServiceLocaleConfigs,
+    ListServicesResponseBodyServicesTags,
+    ListServicesResponseBodyServices,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    RenewServiceInstanceResourcesRequestResourcePeriod,
+    RenewServiceInstanceResourcesResponseBodyFailureDetails,
+    RenewServiceInstanceResourcesResponseBodyRenewalResult,
+    TagResourcesRequestTag,
+    UpdateServiceInstanceAttributesRequestGrantedPermission,
+    UpdateServiceInstanceSpecRequestCommodity,
+    UpdateServiceInstanceSpecShrinkRequestCommodity,
+    UpdateUserInformationRequestDeliverySettings
+]

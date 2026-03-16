@@ -1,3 +1,7 @@
+2026-03-16 Version: 4.3.3
+- Update API CheckServiceDeployable: add response parameters Body.CheckResults.$.Skippable.
+
+
 2025-11-10 Version: 4.3.2
 - Update API CancelServiceUsage: add request parameters RegionId.
 - Update API CreateServiceUsage: add request parameters RegionId.
