@@ -1215,6 +1215,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.generate_token_with_options_async(instance_id, application_id, request, headers, runtime)
 
+    def generate_token_by_authorization_server_with_options(
+        self,
+        instance_id: str,
+        authorization_server_id: str,
+        request: main_models.GenerateTokenByAuthorizationServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateTokenByAuthorizationServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_federated_credential_name):
+            query['application_federated_credential_name'] = request.application_federated_credential_name
+        if not DaraCore.is_null(request.client_assertion):
+            query['client_assertion'] = request.client_assertion
+        if not DaraCore.is_null(request.client_assertion_type):
+            query['client_assertion_type'] = request.client_assertion_type
+        if not DaraCore.is_null(request.client_id):
+            query['client_id'] = request.client_id
+        if not DaraCore.is_null(request.client_secret):
+            query['client_secret'] = request.client_secret
+        if not DaraCore.is_null(request.client_x509):
+            query['client_x509'] = request.client_x509
+        if not DaraCore.is_null(request.client_x509chain):
+            query['client_x509_chain'] = request.client_x509chain
+        if not DaraCore.is_null(request.code):
+            query['code'] = request.code
+        if not DaraCore.is_null(request.code_verifier):
+            query['code_verifier'] = request.code_verifier
+        if not DaraCore.is_null(request.device_code):
+            query['device_code'] = request.device_code
+        if not DaraCore.is_null(request.grant_type):
+            query['grant_type'] = request.grant_type
+        if not DaraCore.is_null(request.password):
+            query['password'] = request.password
+        if not DaraCore.is_null(request.redirect_uri):
+            query['redirect_uri'] = request.redirect_uri
+        if not DaraCore.is_null(request.refresh_token):
+            query['refresh_token'] = request.refresh_token
+        if not DaraCore.is_null(request.scope):
+            query['scope'] = request.scope
+        if not DaraCore.is_null(request.username):
+            query['username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateTokenByAuthorizationServer',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authorizationServer/{DaraURL.percent_encode(authorization_server_id)}/oauth2/token',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateTokenByAuthorizationServerResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def generate_token_by_authorization_server_with_options_async(
+        self,
+        instance_id: str,
+        authorization_server_id: str,
+        request: main_models.GenerateTokenByAuthorizationServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateTokenByAuthorizationServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_federated_credential_name):
+            query['application_federated_credential_name'] = request.application_federated_credential_name
+        if not DaraCore.is_null(request.client_assertion):
+            query['client_assertion'] = request.client_assertion
+        if not DaraCore.is_null(request.client_assertion_type):
+            query['client_assertion_type'] = request.client_assertion_type
+        if not DaraCore.is_null(request.client_id):
+            query['client_id'] = request.client_id
+        if not DaraCore.is_null(request.client_secret):
+            query['client_secret'] = request.client_secret
+        if not DaraCore.is_null(request.client_x509):
+            query['client_x509'] = request.client_x509
+        if not DaraCore.is_null(request.client_x509chain):
+            query['client_x509_chain'] = request.client_x509chain
+        if not DaraCore.is_null(request.code):
+            query['code'] = request.code
+        if not DaraCore.is_null(request.code_verifier):
+            query['code_verifier'] = request.code_verifier
+        if not DaraCore.is_null(request.device_code):
+            query['device_code'] = request.device_code
+        if not DaraCore.is_null(request.grant_type):
+            query['grant_type'] = request.grant_type
+        if not DaraCore.is_null(request.password):
+            query['password'] = request.password
+        if not DaraCore.is_null(request.redirect_uri):
+            query['redirect_uri'] = request.redirect_uri
+        if not DaraCore.is_null(request.refresh_token):
+            query['refresh_token'] = request.refresh_token
+        if not DaraCore.is_null(request.scope):
+            query['scope'] = request.scope
+        if not DaraCore.is_null(request.username):
+            query['username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateTokenByAuthorizationServer',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authorizationServer/{DaraURL.percent_encode(authorization_server_id)}/oauth2/token',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateTokenByAuthorizationServerResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def generate_token_by_authorization_server(
+        self,
+        instance_id: str,
+        authorization_server_id: str,
+        request: main_models.GenerateTokenByAuthorizationServerRequest,
+    ) -> main_models.GenerateTokenByAuthorizationServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.generate_token_by_authorization_server_with_options(instance_id, authorization_server_id, request, headers, runtime)
+
+    async def generate_token_by_authorization_server_async(
+        self,
+        instance_id: str,
+        authorization_server_id: str,
+        request: main_models.GenerateTokenByAuthorizationServerRequest,
+    ) -> main_models.GenerateTokenByAuthorizationServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.generate_token_by_authorization_server_with_options_async(instance_id, authorization_server_id, request, headers, runtime)
+
     def get_application_provisioning_scope_with_options(
         self,
         instance_id: str,

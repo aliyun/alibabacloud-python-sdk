@@ -36,6 +36,9 @@ from ._generate_device_code_response import GenerateDeviceCodeResponse
 from ._generate_token_request import GenerateTokenRequest
 from ._generate_token_response_body import GenerateTokenResponseBody
 from ._generate_token_response import GenerateTokenResponse
+from ._generate_token_by_authorization_server_request import GenerateTokenByAuthorizationServerRequest
+from ._generate_token_by_authorization_server_response_body import GenerateTokenByAuthorizationServerResponseBody
+from ._generate_token_by_authorization_server_response import GenerateTokenByAuthorizationServerResponse
 from ._get_application_provisioning_scope_headers import GetApplicationProvisioningScopeHeaders
 from ._get_application_provisioning_scope_response_body import GetApplicationProvisioningScopeResponseBody
 from ._get_application_provisioning_scope_response import GetApplicationProvisioningScopeResponse
@@ -176,6 +179,9 @@ __all__ = [
     GenerateTokenRequest,
     GenerateTokenResponseBody,
     GenerateTokenResponse,
+    GenerateTokenByAuthorizationServerRequest,
+    GenerateTokenByAuthorizationServerResponseBody,
+    GenerateTokenByAuthorizationServerResponse,
     GetApplicationProvisioningScopeHeaders,
     GetApplicationProvisioningScopeResponseBody,
     GetApplicationProvisioningScopeResponse,

@@ -1,3 +1,7 @@
+2026-03-17 Version: 1.4.0
+- Support API GenerateTokenByAuthorizationServer.
+
+
 2026-03-17 Version: 1.3.1
 - Generated python 2022-02-25 for Eiam-developerapi.
 
