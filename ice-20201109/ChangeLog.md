@@ -1,3 +1,14 @@
+2026-03-17 Version: 6.13.0
+- Support API GetYikeStoryboardJob.
+- Support API SubmitYikeStoryboardJob.
+- Update API AddMediaConnectFlowInput: add request parameters WithInternalVip.
+- Update API AddMediaConnectFlowInput: add response parameters Body.Content.InnerInputUrl.
+- Update API CreateYikeAssetUpload: add request parameters FileType.
+- Update API GetMediaConnectFlowInput: add request parameters WithInternalVip.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupInnerInputUrl.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.InnerInputUrl.
+
+
 2026-03-12 Version: 6.12.0
 - Support API BatchGetYikeAIAppJob.
 - Support API BatchGetYikeAssetMediaInfos.

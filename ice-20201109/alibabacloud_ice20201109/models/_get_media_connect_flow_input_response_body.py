@@ -67,6 +67,7 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
         self,
         backup_cidrs: str = None,
         backup_create_time: str = None,
+        backup_inner_input_url: str = None,
         backup_input_name: str = None,
         backup_input_status: str = None,
         backup_input_url: str = None,
@@ -76,6 +77,7 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
         backup_srt_pbkey_len: int = None,
         cidrs: str = None,
         create_time: str = None,
+        inner_input_url: str = None,
         input_name: str = None,
         input_protocol: str = None,
         input_status: str = None,
@@ -89,6 +91,7 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
     ):
         self.backup_cidrs = backup_cidrs
         self.backup_create_time = backup_create_time
+        self.backup_inner_input_url = backup_inner_input_url
         self.backup_input_name = backup_input_name
         self.backup_input_status = backup_input_status
         self.backup_input_url = backup_input_url
@@ -100,6 +103,7 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
         self.cidrs = cidrs
         # The time when the flow was created.
         self.create_time = create_time
+        self.inner_input_url = inner_input_url
         # The source name.
         self.input_name = input_name
         # The source type.
@@ -149,6 +153,9 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
         if self.backup_create_time is not None:
             result['BackupCreateTime'] = self.backup_create_time
 
+        if self.backup_inner_input_url is not None:
+            result['BackupInnerInputUrl'] = self.backup_inner_input_url
+
         if self.backup_input_name is not None:
             result['BackupInputName'] = self.backup_input_name
 
@@ -175,6 +182,9 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.inner_input_url is not None:
+            result['InnerInputUrl'] = self.inner_input_url
 
         if self.input_name is not None:
             result['InputName'] = self.input_name
@@ -216,6 +226,9 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
         if m.get('BackupCreateTime') is not None:
             self.backup_create_time = m.get('BackupCreateTime')
 
+        if m.get('BackupInnerInputUrl') is not None:
+            self.backup_inner_input_url = m.get('BackupInnerInputUrl')
+
         if m.get('BackupInputName') is not None:
             self.backup_input_name = m.get('BackupInputName')
 
@@ -242,6 +255,9 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('InnerInputUrl') is not None:
+            self.inner_input_url = m.get('InnerInputUrl')
 
         if m.get('InputName') is not None:
             self.input_name = m.get('InputName')

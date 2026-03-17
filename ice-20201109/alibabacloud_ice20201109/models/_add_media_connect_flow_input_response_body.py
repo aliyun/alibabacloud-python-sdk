@@ -65,8 +65,10 @@ class AddMediaConnectFlowInputResponseBody(DaraModel):
 class AddMediaConnectFlowInputResponseBodyContent(DaraModel):
     def __init__(
         self,
+        inner_input_url: str = None,
         input_url: str = None,
     ):
+        self.inner_input_url = inner_input_url
         # The source URL.
         self.input_url = input_url
 
@@ -78,6 +80,9 @@ class AddMediaConnectFlowInputResponseBodyContent(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.inner_input_url is not None:
+            result['InnerInputUrl'] = self.inner_input_url
+
         if self.input_url is not None:
             result['InputUrl'] = self.input_url
 
@@ -85,6 +90,9 @@ class AddMediaConnectFlowInputResponseBodyContent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InnerInputUrl') is not None:
+            self.inner_input_url = m.get('InnerInputUrl')
+
         if m.get('InputUrl') is not None:
             self.input_url = m.get('InputUrl')
 

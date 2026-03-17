@@ -630,6 +630,9 @@ from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
 from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
 from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
+from ._get_yike_storyboard_job_request import GetYikeStoryboardJobRequest
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBody
+from ._get_yike_storyboard_job_response import GetYikeStoryboardJobResponse
 from ._insert_media_to_search_lib_request import InsertMediaToSearchLibRequest
 from ._insert_media_to_search_lib_response_body import InsertMediaToSearchLibResponseBody
 from ._insert_media_to_search_lib_response import InsertMediaToSearchLibResponse
@@ -1138,6 +1141,9 @@ from ._submit_video_translation_job_response import SubmitVideoTranslationJobRes
 from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
 from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
 from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
+from ._submit_yike_storyboard_job_request import SubmitYikeStoryboardJobRequest
+from ._submit_yike_storyboard_job_response_body import SubmitYikeStoryboardJobResponseBody
+from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobResponse
 from ._takeover_aiagent_call_request import TakeoverAIAgentCallRequest
 from ._takeover_aiagent_call_response_body import TakeoverAIAgentCallResponseBody
 from ._takeover_aiagent_call_response import TakeoverAIAgentCallResponse
@@ -1643,6 +1649,8 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
 from ._list_aiagent_dialogues_response_body import ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList
 from ._list_aiagent_dialogues_response_body import ListAIAgentDialoguesResponseBodyDialogues
 from ._list_aiagent_instance_response_body import ListAIAgentInstanceResponseBodyInstances
@@ -2707,6 +2715,9 @@ __all__ = [
     GetYikeAssetMediaInfoRequest,
     GetYikeAssetMediaInfoResponseBody,
     GetYikeAssetMediaInfoResponse,
+    GetYikeStoryboardJobRequest,
+    GetYikeStoryboardJobResponseBody,
+    GetYikeStoryboardJobResponse,
     InsertMediaToSearchLibRequest,
     InsertMediaToSearchLibResponseBody,
     InsertMediaToSearchLibResponse,
@@ -3215,6 +3226,9 @@ __all__ = [
     SubmitYikeAIAppJobRequest,
     SubmitYikeAIAppJobResponseBody,
     SubmitYikeAIAppJobResponse,
+    SubmitYikeStoryboardJobRequest,
+    SubmitYikeStoryboardJobResponseBody,
+    SubmitYikeStoryboardJobResponse,
     TakeoverAIAgentCallRequest,
     TakeoverAIAgentCallResponseBody,
     TakeoverAIAgentCallResponse,
@@ -3720,6 +3734,8 @@ __all__ = [
     GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList,
     GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
     GetYikeAssetMediaInfoResponseBodyMediaInfo,
+    GetYikeStoryboardJobResponseBodyJobParams,
+    GetYikeStoryboardJobResponseBodyJobResult,
     ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList,
     ListAIAgentDialoguesResponseBodyDialogues,
     ListAIAgentInstanceResponseBodyInstances,

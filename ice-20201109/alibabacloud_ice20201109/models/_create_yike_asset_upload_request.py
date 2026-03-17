@@ -8,9 +8,11 @@ class CreateYikeAssetUploadRequest(DaraModel):
     def __init__(
         self,
         file_ext: str = None,
+        file_type: str = None,
     ):
         # This parameter is required.
         self.file_ext = file_ext
+        self.file_type = file_type
 
     def validate(self):
         pass
@@ -23,12 +25,18 @@ class CreateYikeAssetUploadRequest(DaraModel):
         if self.file_ext is not None:
             result['FileExt'] = self.file_ext
 
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FileExt') is not None:
             self.file_ext = m.get('FileExt')
+
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
 
         return self
 

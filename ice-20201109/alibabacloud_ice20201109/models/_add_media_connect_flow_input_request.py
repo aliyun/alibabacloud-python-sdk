@@ -18,6 +18,7 @@ class AddMediaConnectFlowInputRequest(DaraModel):
         srt_latency: int = None,
         srt_passphrase: str = None,
         srt_pbkey_len: str = None,
+        with_internal_vip: str = None,
     ):
         # The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
         self.cidrs = cidrs
@@ -62,6 +63,7 @@ class AddMediaConnectFlowInputRequest(DaraModel):
         # *   24
         # *   32
         self.srt_pbkey_len = srt_pbkey_len
+        self.with_internal_vip = with_internal_vip
 
     def validate(self):
         pass
@@ -104,6 +106,9 @@ class AddMediaConnectFlowInputRequest(DaraModel):
         if self.srt_pbkey_len is not None:
             result['SrtPbkeyLen'] = self.srt_pbkey_len
 
+        if self.with_internal_vip is not None:
+            result['WithInternalVip'] = self.with_internal_vip
+
         return result
 
     def from_map(self, m: dict = None):
@@ -140,6 +145,9 @@ class AddMediaConnectFlowInputRequest(DaraModel):
 
         if m.get('SrtPbkeyLen') is not None:
             self.srt_pbkey_len = m.get('SrtPbkeyLen')
+
+        if m.get('WithInternalVip') is not None:
+            self.with_internal_vip = m.get('WithInternalVip')
 
         return self
 
