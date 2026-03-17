@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -86,6 +86,7 @@ class ListThreadsResponseBody(DaraModel):
 class ListThreadsResponseBodyThreads(DaraModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         create_time: str = None,
         digital_employee_name: str = None,
         status: str = None,
@@ -95,6 +96,7 @@ class ListThreadsResponseBodyThreads(DaraModel):
         variables: main_models.ListThreadsResponseBodyThreadsVariables = None,
         version: int = None,
     ):
+        self.attributes = attributes
         self.create_time = create_time
         self.digital_employee_name = digital_employee_name
         self.status = status
@@ -113,6 +115,9 @@ class ListThreadsResponseBodyThreads(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
         if self.create_time is not None:
             result['createTime'] = self.create_time
 
@@ -141,6 +146,9 @@ class ListThreadsResponseBodyThreads(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
 

@@ -10,7 +10,6 @@ class Evaluator(DaraModel):
     def __init__(
         self,
         config: Dict[str, Any] = None,
-        data_scope: str = None,
         filters: Dict[str, str] = None,
         name: str = None,
         result_name: str = None,
@@ -18,7 +17,6 @@ class Evaluator(DaraModel):
         variable_mapping: Dict[str, str] = None,
     ):
         self.config = config
-        self.data_scope = data_scope
         self.filters = filters
         self.name = name
         self.result_name = result_name
@@ -35,9 +33,6 @@ class Evaluator(DaraModel):
             result = _map
         if self.config is not None:
             result['config'] = self.config
-
-        if self.data_scope is not None:
-            result['dataScope'] = self.data_scope
 
         if self.filters is not None:
             result['filters'] = self.filters
@@ -60,9 +55,6 @@ class Evaluator(DaraModel):
         m = m or dict()
         if m.get('config') is not None:
             self.config = m.get('config')
-
-        if m.get('dataScope') is not None:
-            self.data_scope = m.get('dataScope')
 
         if m.get('filters') is not None:
             self.filters = m.get('filters')

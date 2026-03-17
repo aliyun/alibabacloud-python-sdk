@@ -1904,6 +1904,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateThreadResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.title):
             body['title'] = request.title
         if not DaraCore.is_null(request.variables):
@@ -1937,6 +1939,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateThreadResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.title):
             body['title'] = request.title
         if not DaraCore.is_null(request.variables):
@@ -10391,6 +10395,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateThreadResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
         if not DaraCore.is_null(request.title):
@@ -10425,6 +10431,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateThreadResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
         if not DaraCore.is_null(request.title):

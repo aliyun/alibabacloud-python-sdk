@@ -2,12 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
 class GetThreadResponseBody(DaraModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         create_time: str = None,
         digital_employee_name: str = None,
         request_id: str = None,
@@ -18,6 +21,7 @@ class GetThreadResponseBody(DaraModel):
         variables: main_models.GetThreadResponseBodyVariables = None,
         version: int = None,
     ):
+        self.attributes = attributes
         self.create_time = create_time
         self.digital_employee_name = digital_employee_name
         # Id of the request
@@ -38,6 +42,9 @@ class GetThreadResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
         if self.create_time is not None:
             result['createTime'] = self.create_time
 
@@ -69,6 +76,9 @@ class GetThreadResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
 

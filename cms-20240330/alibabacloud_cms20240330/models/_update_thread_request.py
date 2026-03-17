@@ -2,14 +2,18 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from darabonba.model import DaraModel
 
 class UpdateThreadRequest(DaraModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         status: str = None,
         title: str = None,
     ):
+        self.attributes = attributes
         self.status = status
         self.title = title
 
@@ -21,6 +25,9 @@ class UpdateThreadRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
         if self.status is not None:
             result['status'] = self.status
 
@@ -31,6 +38,9 @@ class UpdateThreadRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
         if m.get('status') is not None:
             self.status = m.get('status')
 

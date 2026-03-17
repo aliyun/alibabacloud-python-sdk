@@ -2,15 +2,19 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateThreadRequest(DaraModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         title: str = None,
         variables: main_models.CreateThreadRequestVariables = None,
     ):
+        self.attributes = attributes
         self.title = title
         self.variables = variables
 
@@ -23,6 +27,9 @@ class CreateThreadRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
         if self.title is not None:
             result['title'] = self.title
 
@@ -33,6 +40,9 @@ class CreateThreadRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
         if m.get('title') is not None:
             self.title = m.get('title')
 

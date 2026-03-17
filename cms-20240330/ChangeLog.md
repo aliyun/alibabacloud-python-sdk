@@ -1,3 +1,10 @@
+2026-03-17 Version: 6.2.1
+- Update API CreateThread: add request parameters body.attributes.
+- Update API GetThread: add response parameters Body.attributes.
+- Update API ListThreads: add response parameters Body.threads.$.attributes.
+- Update API UpdateThread: add request parameters body.attributes.
+
+
 2026-03-10 Version: 6.2.0
 - Support API AddMemories.
 - Support API CreateMemoryStore.
