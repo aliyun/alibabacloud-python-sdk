@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateApplicationShrinkRequest(DaraModel):
     def __init__(
         self,
+        aidbcluster_id: str = None,
         application_type: str = None,
         architecture: str = None,
         auto_create_polar_fs: bool = None,
@@ -18,6 +19,11 @@ class CreateApplicationShrinkRequest(DaraModel):
         dry_run: bool = None,
         endpoints_shrink: str = None,
         mem_application_spec_shrink: str = None,
+        model_api: str = None,
+        model_api_key: str = None,
+        model_base_url: str = None,
+        model_from: str = None,
+        model_name: str = None,
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
@@ -30,6 +36,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.aidbcluster_id = aidbcluster_id
         # This parameter is required.
         self.application_type = application_type
         # This parameter is required.
@@ -43,6 +50,11 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.dry_run = dry_run
         self.endpoints_shrink = endpoints_shrink
         self.mem_application_spec_shrink = mem_application_spec_shrink
+        self.model_api = model_api
+        self.model_api_key = model_api_key
+        self.model_base_url = model_base_url
+        self.model_from = model_from
+        self.model_name = model_name
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -63,6 +75,9 @@ class CreateApplicationShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aidbcluster_id is not None:
+            result['AIDBClusterId'] = self.aidbcluster_id
+
         if self.application_type is not None:
             result['ApplicationType'] = self.application_type
 
@@ -95,6 +110,21 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.mem_application_spec_shrink is not None:
             result['MemApplicationSpec'] = self.mem_application_spec_shrink
+
+        if self.model_api is not None:
+            result['ModelApi'] = self.model_api
+
+        if self.model_api_key is not None:
+            result['ModelApiKey'] = self.model_api_key
+
+        if self.model_base_url is not None:
+            result['ModelBaseUrl'] = self.model_base_url
+
+        if self.model_from is not None:
+            result['ModelFrom'] = self.model_from
+
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -133,6 +163,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AIDBClusterId') is not None:
+            self.aidbcluster_id = m.get('AIDBClusterId')
+
         if m.get('ApplicationType') is not None:
             self.application_type = m.get('ApplicationType')
 
@@ -165,6 +198,21 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('MemApplicationSpec') is not None:
             self.mem_application_spec_shrink = m.get('MemApplicationSpec')
+
+        if m.get('ModelApi') is not None:
+            self.model_api = m.get('ModelApi')
+
+        if m.get('ModelApiKey') is not None:
+            self.model_api_key = m.get('ModelApiKey')
+
+        if m.get('ModelBaseUrl') is not None:
+            self.model_base_url = m.get('ModelBaseUrl')
+
+        if m.get('ModelFrom') is not None:
+            self.model_from = m.get('ModelFrom')
+
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')

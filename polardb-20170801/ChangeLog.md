@@ -1,3 +1,12 @@
+2026-03-17 Version: 6.7.2
+- Update API CreateApplication: add request parameters AIDBClusterId.
+- Update API CreateApplication: add request parameters ModelApi.
+- Update API CreateApplication: add request parameters ModelApiKey.
+- Update API CreateApplication: add request parameters ModelBaseUrl.
+- Update API CreateApplication: add request parameters ModelFrom.
+- Update API CreateApplication: add request parameters ModelName.
+
+
 2026-03-13 Version: 6.7.1
 - Update API CreateApplication: add request parameters MemApplicationSpec.EmbedderModelDimension.
 - Update API CreateApplication: add request parameters MemApplicationSpec.GraphLlmModel.

@@ -2408,6 +2408,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.mem_application_spec):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         query = {}
+        if not DaraCore.is_null(request.aidbcluster_id):
+            query['AIDBClusterId'] = request.aidbcluster_id
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
@@ -2430,6 +2432,16 @@ class Client(OpenApiClient):
             query['Endpoints'] = request.endpoints_shrink
         if not DaraCore.is_null(request.mem_application_spec_shrink):
             query['MemApplicationSpec'] = request.mem_application_spec_shrink
+        if not DaraCore.is_null(request.model_api):
+            query['ModelApi'] = request.model_api
+        if not DaraCore.is_null(request.model_api_key):
+            query['ModelApiKey'] = request.model_api_key
+        if not DaraCore.is_null(request.model_base_url):
+            query['ModelBaseUrl'] = request.model_base_url
+        if not DaraCore.is_null(request.model_from):
+            query['ModelFrom'] = request.model_from
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -2486,6 +2498,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.mem_application_spec):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         query = {}
+        if not DaraCore.is_null(request.aidbcluster_id):
+            query['AIDBClusterId'] = request.aidbcluster_id
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
@@ -2508,6 +2522,16 @@ class Client(OpenApiClient):
             query['Endpoints'] = request.endpoints_shrink
         if not DaraCore.is_null(request.mem_application_spec_shrink):
             query['MemApplicationSpec'] = request.mem_application_spec_shrink
+        if not DaraCore.is_null(request.model_api):
+            query['ModelApi'] = request.model_api
+        if not DaraCore.is_null(request.model_api_key):
+            query['ModelApiKey'] = request.model_api_key
+        if not DaraCore.is_null(request.model_base_url):
+            query['ModelBaseUrl'] = request.model_base_url
+        if not DaraCore.is_null(request.model_from):
+            query['ModelFrom'] = request.model_from
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
