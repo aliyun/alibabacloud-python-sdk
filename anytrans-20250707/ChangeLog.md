@@ -1,3 +1,6 @@
+2026-03-17 Version: 2.1.4
+- Generated python 2025-07-07 for AnyTrans.
+
 2026-03-17 Version: 2.1.3
 - Update API SubmitDocTranslateTask: add request parameters ext.trackingData.
 - Update API SubmitDocTranslateTask: add response parameters Body.data.trackingData.
