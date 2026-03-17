@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ClearSagCipherRequest(DaraModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sag_id: str = None,
+        sn_number: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the region where the SAG instance is deployed.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The ID of the SAG instance.
+        # 
+        # This parameter is required.
+        self.sag_id = sag_id
+        # The serial number of the SAG vCPE device.
+        # 
+        # This parameter is required.
+        self.sn_number = sn_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+
+        if self.sn_number is not None:
+            result['SnNumber'] = self.sn_number
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+
+        if m.get('SnNumber') is not None:
+            self.sn_number = m.get('SnNumber')
+
+        return self
+

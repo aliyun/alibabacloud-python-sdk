@@ -1,3 +1,9 @@
+2026-03-17 Version: 2.0.8
+- Update API DescribeCloudConnectNetworks: add response parameters Body.CloudConnectNetworks.$.NewAgw.
+- Update API DescribeCloudConnectNetworks: add response parameters Body.CloudConnectNetworks.$.Subnet.
+- Update API DescribeUserFlowStatistics: add response parameters Body.SagStatistics.$.TotalLeaveBytes.
+
+
 2023-01-03 Version: 2.0.7
 - Support  sts.
 
