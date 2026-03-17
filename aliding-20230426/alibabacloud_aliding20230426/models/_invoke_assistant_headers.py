@@ -11,10 +11,12 @@ class InvokeAssistantHeaders(DaraModel):
         self,
         common_headers: Dict[str, str] = None,
         account_id: str = None,
+        ai_log_context_json: str = None,
         aliding_sso_ticket: str = None,
     ):
         self.common_headers = common_headers
         self.account_id = account_id
+        self.ai_log_context_json = ai_log_context_json
         self.aliding_sso_ticket = aliding_sso_ticket
 
     def validate(self):
@@ -31,6 +33,9 @@ class InvokeAssistantHeaders(DaraModel):
         if self.account_id is not None:
             result['accountId'] = self.account_id
 
+        if self.ai_log_context_json is not None:
+            result['aiLogContextJson'] = self.ai_log_context_json
+
         if self.aliding_sso_ticket is not None:
             result['alidingSsoTicket'] = self.aliding_sso_ticket
 
@@ -43,6 +48,9 @@ class InvokeAssistantHeaders(DaraModel):
 
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+
+        if m.get('aiLogContextJson') is not None:
+            self.ai_log_context_json = m.get('aiLogContextJson')
 
         if m.get('alidingSsoTicket') is not None:
             self.aliding_sso_ticket = m.get('alidingSsoTicket')

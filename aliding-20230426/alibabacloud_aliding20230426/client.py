@@ -4548,8 +4548,12 @@ class Client(OpenApiClient):
             body['messages'] = request.messages
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.thread_id):
@@ -4595,8 +4599,12 @@ class Client(OpenApiClient):
             body['messages'] = request.messages
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.thread_id):
@@ -5312,8 +5320,12 @@ class Client(OpenApiClient):
             body['extLoginUser'] = request.ext_login_user
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -5370,8 +5382,12 @@ class Client(OpenApiClient):
             body['extLoginUser'] = request.ext_login_user
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -5428,8 +5444,12 @@ class Client(OpenApiClient):
             body['extLoginUser'] = request.ext_login_user
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -5477,8 +5497,12 @@ class Client(OpenApiClient):
             body['extLoginUser'] = request.ext_login_user
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -6314,8 +6338,12 @@ class Client(OpenApiClient):
             body['extLoginUser'] = request.ext_login_user
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         real_headers = {}
@@ -6359,8 +6387,12 @@ class Client(OpenApiClient):
             body['extLoginUser'] = request.ext_login_user
         if not DaraCore.is_null(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         real_headers = {}
@@ -10685,6 +10717,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.ai_log_context_json):
+            real_headers['aiLogContextJson'] = str(headers.ai_log_context_json)
         req = open_api_util_models.OpenApiRequest(
             headers = real_headers,
             body = Utils.parse_to_map(body)
@@ -10736,6 +10770,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.ai_log_context_json):
+            real_headers['aiLogContextJson'] = str(headers.ai_log_context_json)
         req = open_api_util_models.OpenApiRequest(
             headers = real_headers,
             body = Utils.parse_to_map(body)
@@ -19544,6 +19580,8 @@ class Client(OpenApiClient):
     ) -> Generator[main_models.InvokeAssistantResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.allow_struct_view_content):
+            body['allowStructViewContent'] = request.allow_struct_view_content
         if not DaraCore.is_null(request.assistant_id):
             body['assistantId'] = request.assistant_id
         if not DaraCore.is_null(request.client_enum):
@@ -19556,8 +19594,12 @@ class Client(OpenApiClient):
             body['originalAssistantId'] = request.original_assistant_id
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -19567,6 +19609,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.ai_log_context_json):
+            real_headers['aiLogContextJson'] = str(headers.ai_log_context_json)
         if not DaraCore.is_null(headers.aliding_sso_ticket):
             real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
@@ -19606,6 +19650,8 @@ class Client(OpenApiClient):
     ) -> AsyncGenerator[main_models.InvokeAssistantResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.allow_struct_view_content):
+            body['allowStructViewContent'] = request.allow_struct_view_content
         if not DaraCore.is_null(request.assistant_id):
             body['assistantId'] = request.assistant_id
         if not DaraCore.is_null(request.client_enum):
@@ -19618,8 +19664,12 @@ class Client(OpenApiClient):
             body['originalAssistantId'] = request.original_assistant_id
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -19629,6 +19679,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.ai_log_context_json):
+            real_headers['aiLogContextJson'] = str(headers.ai_log_context_json)
         if not DaraCore.is_null(headers.aliding_sso_ticket):
             real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
@@ -19668,6 +19720,8 @@ class Client(OpenApiClient):
     ) -> main_models.InvokeAssistantResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.allow_struct_view_content):
+            body['allowStructViewContent'] = request.allow_struct_view_content
         if not DaraCore.is_null(request.assistant_id):
             body['assistantId'] = request.assistant_id
         if not DaraCore.is_null(request.client_enum):
@@ -19680,8 +19734,12 @@ class Client(OpenApiClient):
             body['originalAssistantId'] = request.original_assistant_id
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -19691,6 +19749,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.ai_log_context_json):
+            real_headers['aiLogContextJson'] = str(headers.ai_log_context_json)
         if not DaraCore.is_null(headers.aliding_sso_ticket):
             real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
@@ -19721,6 +19781,8 @@ class Client(OpenApiClient):
     ) -> main_models.InvokeAssistantResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.allow_struct_view_content):
+            body['allowStructViewContent'] = request.allow_struct_view_content
         if not DaraCore.is_null(request.assistant_id):
             body['assistantId'] = request.assistant_id
         if not DaraCore.is_null(request.client_enum):
@@ -19733,8 +19795,12 @@ class Client(OpenApiClient):
             body['originalAssistantId'] = request.original_assistant_id
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         if not DaraCore.is_null(request.source_id_of_original_assistant_id):
             body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not DaraCore.is_null(request.source_type_of_assistant_id):
+            body['sourceTypeOfAssistantId'] = request.source_type_of_assistant_id
         if not DaraCore.is_null(request.source_type_of_original_assistant_id):
             body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not DaraCore.is_null(request.stream):
@@ -19744,6 +19810,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.ai_log_context_json):
+            real_headers['aiLogContextJson'] = str(headers.ai_log_context_json)
         if not DaraCore.is_null(headers.aliding_sso_ticket):
             real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(

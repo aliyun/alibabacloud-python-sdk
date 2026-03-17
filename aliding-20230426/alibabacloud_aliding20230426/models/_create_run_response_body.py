@@ -343,6 +343,7 @@ class CreateRunResponseBodyMessagesContentStructParts(DaraModel):
         append: bool = None,
         data_part: main_models.CreateRunResponseBodyMessagesContentStructPartsDataPart = None,
         finish: bool = None,
+        info_part: main_models.CreateRunResponseBodyMessagesContentStructPartsInfoPart = None,
         part_desc: str = None,
         part_id: str = None,
         reason_part: main_models.CreateRunResponseBodyMessagesContentStructPartsReasonPart = None,
@@ -354,6 +355,7 @@ class CreateRunResponseBodyMessagesContentStructParts(DaraModel):
         self.append = append
         self.data_part = data_part
         self.finish = finish
+        self.info_part = info_part
         self.part_desc = part_desc
         self.part_id = part_id
         self.reason_part = reason_part
@@ -366,6 +368,8 @@ class CreateRunResponseBodyMessagesContentStructParts(DaraModel):
     def validate(self):
         if self.data_part:
             self.data_part.validate()
+        if self.info_part:
+            self.info_part.validate()
         if self.reason_part:
             self.reason_part.validate()
         if self.recommend_part:
@@ -388,6 +392,9 @@ class CreateRunResponseBodyMessagesContentStructParts(DaraModel):
 
         if self.finish is not None:
             result['finish'] = self.finish
+
+        if self.info_part is not None:
+            result['infoPart'] = self.info_part.to_map()
 
         if self.part_desc is not None:
             result['partDesc'] = self.part_desc
@@ -423,6 +430,10 @@ class CreateRunResponseBodyMessagesContentStructParts(DaraModel):
 
         if m.get('finish') is not None:
             self.finish = m.get('finish')
+
+        if m.get('infoPart') is not None:
+            temp_model = main_models.CreateRunResponseBodyMessagesContentStructPartsInfoPart()
+            self.info_part = temp_model.from_map(m.get('infoPart'))
 
         if m.get('partDesc') is not None:
             self.part_desc = m.get('partDesc')
@@ -690,6 +701,49 @@ class CreateRunResponseBodyMessagesContentStructPartsReasonPart(DaraModel):
         m = m or dict()
         if m.get('reason') is not None:
             self.reason = m.get('reason')
+
+        return self
+
+class CreateRunResponseBodyMessagesContentStructPartsInfoPart(DaraModel):
+    def __init__(
+        self,
+        cate_id_list: List[str] = None,
+        need_feedback: bool = None,
+        origin: str = None,
+    ):
+        self.cate_id_list = cate_id_list
+        self.need_feedback = need_feedback
+        self.origin = origin
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cate_id_list is not None:
+            result['cateIdList'] = self.cate_id_list
+
+        if self.need_feedback is not None:
+            result['needFeedback'] = self.need_feedback
+
+        if self.origin is not None:
+            result['origin'] = self.origin
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cateIdList') is not None:
+            self.cate_id_list = m.get('cateIdList')
+
+        if m.get('needFeedback') is not None:
+            self.need_feedback = m.get('needFeedback')
+
+        if m.get('origin') is not None:
+            self.origin = m.get('origin')
 
         return self
 

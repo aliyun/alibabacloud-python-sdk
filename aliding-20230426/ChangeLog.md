@@ -1,3 +1,21 @@
+2026-03-17 Version: 2.48.3
+- Update API CreateMessage: add request parameters body.sourceIdOfAssistantId.
+- Update API CreateMessage: add request parameters body.sourceTypeOfAssistantId.
+- Update API CreateRun: add request parameters body.sourceIdOfAssistantId.
+- Update API CreateRun: add request parameters body.sourceTypeOfAssistantId.
+- Update API CreateRun: add response parameters Body.messages.$.contentStruct.parts.$.infoPart.
+- Update API CreateThread: add request parameters body.sourceIdOfAssistantId.
+- Update API CreateThread: add request parameters body.sourceTypeOfAssistantId.
+- Update API GetAssistantCapability: add request parameters aiLogContextJson.
+- Update API GetAssistantCapability: add response parameters Body.thread.
+- Update API InvokeAssistant: add request parameters aiLogContextJson.
+- Update API InvokeAssistant: add request parameters body.allowStructViewContent.
+- Update API InvokeAssistant: add request parameters body.sourceIdOfAssistantId.
+- Update API InvokeAssistant: add request parameters body.sourceTypeOfAssistantId.
+- Update API InvokeAssistant: add response parameters Body.messages.$.contentStruct.
+- Update API InvokeAssistant: add response parameters Body.messages.$.id.
+
+
 2026-03-02 Version: 2.48.2
 - Update API CreateRun: add response parameters Body.thread.
 - Update API InvokeAssistant: add response parameters Body.sessionStatus.

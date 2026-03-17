@@ -14,17 +14,20 @@ class CreateMessageRequest(DaraModel):
         ext_login_user: main_models.CreateMessageRequestExtLoginUser = None,
         messages: List[main_models.CreateMessageRequestMessages] = None,
         original_assistant_id: str = None,
+        source_id_of_assistant_id: str = None,
         source_id_of_original_assistant_id: str = None,
-        source_type_of_original_assistant_id: str = None,
+        source_type_of_assistant_id: int = None,
+        source_type_of_original_assistant_id: int = None,
         thread_id: str = None,
     ):
-        # This parameter is required.
         self.assistant_id = assistant_id
         self.ext_login_user = ext_login_user
         # This parameter is required.
         self.messages = messages
         self.original_assistant_id = original_assistant_id
+        self.source_id_of_assistant_id = source_id_of_assistant_id
         self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_assistant_id = source_type_of_assistant_id
         self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         # This parameter is required.
         self.thread_id = thread_id
@@ -56,8 +59,14 @@ class CreateMessageRequest(DaraModel):
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
 
+        if self.source_id_of_assistant_id is not None:
+            result['sourceIdOfAssistantId'] = self.source_id_of_assistant_id
+
         if self.source_id_of_original_assistant_id is not None:
             result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+
+        if self.source_type_of_assistant_id is not None:
+            result['sourceTypeOfAssistantId'] = self.source_type_of_assistant_id
 
         if self.source_type_of_original_assistant_id is not None:
             result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
@@ -85,8 +94,14 @@ class CreateMessageRequest(DaraModel):
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
 
+        if m.get('sourceIdOfAssistantId') is not None:
+            self.source_id_of_assistant_id = m.get('sourceIdOfAssistantId')
+
         if m.get('sourceIdOfOriginalAssistantId') is not None:
             self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+
+        if m.get('sourceTypeOfAssistantId') is not None:
+            self.source_type_of_assistant_id = m.get('sourceTypeOfAssistantId')
 
         if m.get('sourceTypeOfOriginalAssistantId') is not None:
             self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')

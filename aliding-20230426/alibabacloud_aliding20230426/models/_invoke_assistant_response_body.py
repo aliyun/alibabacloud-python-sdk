@@ -79,17 +79,23 @@ class InvokeAssistantResponseBodyMessages(DaraModel):
         self,
         content: main_models.InvokeAssistantResponseBodyMessagesContent = None,
         content_desc: str = None,
+        content_struct: main_models.InvokeAssistantResponseBodyMessagesContentStruct = None,
         create_at: int = None,
+        id: str = None,
         role: str = None,
     ):
         self.content = content
         self.content_desc = content_desc
+        self.content_struct = content_struct
         self.create_at = create_at
+        self.id = id
         self.role = role
 
     def validate(self):
         if self.content:
             self.content.validate()
+        if self.content_struct:
+            self.content_struct.validate()
 
     def to_map(self):
         result = dict()
@@ -102,8 +108,14 @@ class InvokeAssistantResponseBodyMessages(DaraModel):
         if self.content_desc is not None:
             result['contentDesc'] = self.content_desc
 
+        if self.content_struct is not None:
+            result['contentStruct'] = self.content_struct.to_map()
+
         if self.create_at is not None:
             result['createAt'] = self.create_at
+
+        if self.id is not None:
+            result['id'] = self.id
 
         if self.role is not None:
             result['role'] = self.role
@@ -119,11 +131,490 @@ class InvokeAssistantResponseBodyMessages(DaraModel):
         if m.get('contentDesc') is not None:
             self.content_desc = m.get('contentDesc')
 
+        if m.get('contentStruct') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStruct()
+            self.content_struct = temp_model.from_map(m.get('contentStruct'))
+
         if m.get('createAt') is not None:
             self.create_at = m.get('createAt')
 
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
         if m.get('role') is not None:
             self.role = m.get('role')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStruct(DaraModel):
+    def __init__(
+        self,
+        parts: List[main_models.InvokeAssistantResponseBodyMessagesContentStructParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for v1 in self.parts:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['parts'] = []
+        if self.parts is not None:
+            for k1 in self.parts:
+                result['parts'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k1 in m.get('parts'):
+                temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructParts()
+                self.parts.append(temp_model.from_map(k1))
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructParts(DaraModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: main_models.InvokeAssistantResponseBodyMessagesContentStructPartsDataPart = None,
+        finish: bool = None,
+        info_part: main_models.InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: main_models.InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart = None,
+        recommend_part: main_models.InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart = None,
+        reference_part: main_models.InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart = None,
+        text_part: main_models.InvokeAssistantResponseBodyMessagesContentStructPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.info_part = info_part
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.info_part:
+            self.info_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.append is not None:
+            result['append'] = self.append
+
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+
+        if self.finish is not None:
+            result['finish'] = self.finish
+
+        if self.info_part is not None:
+            result['infoPart'] = self.info_part.to_map()
+
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+
+        if m.get('dataPart') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsDataPart()
+            self.data_part = temp_model.from_map(m.get('dataPart'))
+
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+
+        if m.get('infoPart') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart()
+            self.info_part = temp_model.from_map(m.get('infoPart'))
+
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+
+        if m.get('reasonPart') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart()
+            self.reason_part = temp_model.from_map(m.get('reasonPart'))
+
+        if m.get('recommendPart') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m.get('recommendPart'))
+
+        if m.get('referencePart') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart()
+            self.reference_part = temp_model.from_map(m.get('referencePart'))
+
+        if m.get('textPart') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsTextPart()
+            self.text_part = temp_model.from_map(m.get('textPart'))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsTextPart(DaraModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.text is not None:
+            result['text'] = self.text
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart(DaraModel):
+    def __init__(
+        self,
+        references: List[main_models.InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for v1 in self.references:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['references'] = []
+        if self.references is not None:
+            for k1 in self.references:
+                result['references'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k1 in m.get('references'):
+                temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k1))
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences(DaraModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.index is not None:
+            result['index'] = self.index
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+
+        if self.summary is not None:
+            result['summary'] = self.summary
+
+        if self.title is not None:
+            result['title'] = self.title
+
+        if self.url is not None:
+            result['url'] = self.url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+
+        if m.get('title') is not None:
+            self.title = m.get('title')
+
+        if m.get('url') is not None:
+            self.url = m.get('url')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart(DaraModel):
+    def __init__(
+        self,
+        recommends: List[main_models.InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for v1 in self.recommends:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k1 in self.recommends:
+                result['recommends'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k1 in m.get('recommends'):
+                temp_model = main_models.InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k1))
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends(DaraModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
+        url: str = None,
+    ):
+        self.mobile_url = mobile_url
+        self.text = text
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+
+        if self.text is not None:
+            result['text'] = self.text
+
+        if self.url is not None:
+            result['url'] = self.url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+
+        if m.get('text') is not None:
+            self.text = m.get('text')
+
+        if m.get('url') is not None:
+            self.url = m.get('url')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart(DaraModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.reason is not None:
+            result['reason'] = self.reason
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart(DaraModel):
+    def __init__(
+        self,
+        cate_id_list: List[str] = None,
+        need_feedback: bool = None,
+        origin: str = None,
+    ):
+        self.cate_id_list = cate_id_list
+        self.need_feedback = need_feedback
+        self.origin = origin
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cate_id_list is not None:
+            result['cateIdList'] = self.cate_id_list
+
+        if self.need_feedback is not None:
+            result['needFeedback'] = self.need_feedback
+
+        if self.origin is not None:
+            result['origin'] = self.origin
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cateIdList') is not None:
+            self.cate_id_list = m.get('cateIdList')
+
+        if m.get('needFeedback') is not None:
+            self.need_feedback = m.get('needFeedback')
+
+        if m.get('origin') is not None:
+            self.origin = m.get('origin')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentStructPartsDataPart(DaraModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data is not None:
+            result['data'] = self.data
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
 
         return self
 

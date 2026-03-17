@@ -10,17 +10,20 @@ from darabonba.model import DaraModel
 class InvokeAssistantRequest(DaraModel):
     def __init__(
         self,
+        allow_struct_view_content: bool = None,
         assistant_id: str = None,
         client_enum: str = None,
         ext_login_user: main_models.InvokeAssistantRequestExtLoginUser = None,
         messages: List[main_models.InvokeAssistantRequestMessages] = None,
         original_assistant_id: str = None,
         session_id: str = None,
+        source_id_of_assistant_id: str = None,
         source_id_of_original_assistant_id: str = None,
-        source_type_of_original_assistant_id: str = None,
+        source_type_of_assistant_id: int = None,
+        source_type_of_original_assistant_id: int = None,
         stream: bool = None,
     ):
-        # This parameter is required.
+        self.allow_struct_view_content = allow_struct_view_content
         self.assistant_id = assistant_id
         self.client_enum = client_enum
         self.ext_login_user = ext_login_user
@@ -28,7 +31,9 @@ class InvokeAssistantRequest(DaraModel):
         self.messages = messages
         self.original_assistant_id = original_assistant_id
         self.session_id = session_id
+        self.source_id_of_assistant_id = source_id_of_assistant_id
         self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_assistant_id = source_type_of_assistant_id
         self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         self.stream = stream
 
@@ -45,6 +50,9 @@ class InvokeAssistantRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_struct_view_content is not None:
+            result['allowStructViewContent'] = self.allow_struct_view_content
+
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
 
@@ -65,8 +73,14 @@ class InvokeAssistantRequest(DaraModel):
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
+        if self.source_id_of_assistant_id is not None:
+            result['sourceIdOfAssistantId'] = self.source_id_of_assistant_id
+
         if self.source_id_of_original_assistant_id is not None:
             result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+
+        if self.source_type_of_assistant_id is not None:
+            result['sourceTypeOfAssistantId'] = self.source_type_of_assistant_id
 
         if self.source_type_of_original_assistant_id is not None:
             result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
@@ -78,6 +92,9 @@ class InvokeAssistantRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('allowStructViewContent') is not None:
+            self.allow_struct_view_content = m.get('allowStructViewContent')
+
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
 
@@ -100,8 +117,14 @@ class InvokeAssistantRequest(DaraModel):
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
 
+        if m.get('sourceIdOfAssistantId') is not None:
+            self.source_id_of_assistant_id = m.get('sourceIdOfAssistantId')
+
         if m.get('sourceIdOfOriginalAssistantId') is not None:
             self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+
+        if m.get('sourceTypeOfAssistantId') is not None:
+            self.source_type_of_assistant_id = m.get('sourceTypeOfAssistantId')
 
         if m.get('sourceTypeOfOriginalAssistantId') is not None:
             self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')

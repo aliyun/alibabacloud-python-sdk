@@ -11,9 +11,11 @@ class GetAssistantCapabilityHeaders(DaraModel):
         self,
         common_headers: Dict[str, str] = None,
         account_id: str = None,
+        ai_log_context_json: str = None,
     ):
         self.common_headers = common_headers
         self.account_id = account_id
+        self.ai_log_context_json = ai_log_context_json
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class GetAssistantCapabilityHeaders(DaraModel):
         if self.account_id is not None:
             result['accountId'] = self.account_id
 
+        if self.ai_log_context_json is not None:
+            result['aiLogContextJson'] = self.ai_log_context_json
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class GetAssistantCapabilityHeaders(DaraModel):
 
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+
+        if m.get('aiLogContextJson') is not None:
+            self.ai_log_context_json = m.get('aiLogContextJson')
 
         return self
 
