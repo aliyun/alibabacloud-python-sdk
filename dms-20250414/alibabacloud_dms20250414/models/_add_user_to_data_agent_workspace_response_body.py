@@ -66,8 +66,6 @@ class AddUserToDataAgentWorkspaceResponseBody(DaraModel):
 
         return self
 
-
-
 class AddUserToDataAgentWorkspaceResponseBodyData(DaraModel):
     def __init__(
         self,

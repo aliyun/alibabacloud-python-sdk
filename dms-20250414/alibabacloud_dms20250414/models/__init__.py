@@ -25,6 +25,7 @@ from ._one_meta_table_column import OneMetaTableColumn
 from ._one_meta_table_column_engine_meta import OneMetaTableColumnEngineMeta
 from ._one_meta_table_engine_meta import OneMetaTableEngineMeta
 from ._one_meta_table_index import OneMetaTableIndex
+from ._open_claw_instance_vo import OpenClawInstanceVO
 from ._partition_error import PartitionError
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
@@ -238,12 +239,15 @@ from ._update_data_lake_table_request import UpdateDataLakeTableRequest
 from ._update_data_lake_table_shrink_request import UpdateDataLakeTableShrinkRequest
 from ._update_data_lake_table_response_body import UpdateDataLakeTableResponseBody
 from ._update_data_lake_table_response import UpdateDataLakeTableResponse
+from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
+from ._create_custom_agent_request import CreateCustomAgentRequestCallbackConfig
 from ._create_custom_agent_request import CreateCustomAgentRequestExecutionConfig
 from ._create_custom_agent_request import CreateCustomAgentRequestKnowledgeConfigList
 from ._create_custom_agent_request import CreateCustomAgentRequestScheduleTaskConfig
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCallbackConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataExecutionConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataKnowledgeConfigList
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataScheduleTaskConfig
@@ -256,6 +260,7 @@ from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponse
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
+from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataCallbackConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
@@ -271,6 +276,7 @@ from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceI
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
 from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
 from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
+from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentCallbackConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentExecutionConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentKnowledgeConfigList
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentScheduleTaskConfig
@@ -286,9 +292,11 @@ from ._list_data_center_database_response_body import ListDataCenterDatabaseResp
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyDataContent
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyData
 from ._list_file_upload_response_body import ListFileUploadResponseBodyData
+from ._modify_custom_agent_request import ModifyCustomAgentRequestCallbackConfig
 from ._modify_custom_agent_request import ModifyCustomAgentRequestExecutionConfig
 from ._modify_custom_agent_request import ModifyCustomAgentRequestKnowledgeConfigList
 from ._modify_custom_agent_request import ModifyCustomAgentRequestScheduleTaskConfig
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataCallbackConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataExecutionConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataKnowledgeConfigList
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataScheduleTaskConfig
@@ -325,6 +333,7 @@ __all__ = [
     OneMetaTableColumnEngineMeta,
     OneMetaTableEngineMeta,
     OneMetaTableIndex,
+    OpenClawInstanceVO,
     PartitionError,
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,
@@ -538,12 +547,15 @@ __all__ = [
     UpdateDataLakeTableShrinkRequest,
     UpdateDataLakeTableResponseBody,
     UpdateDataLakeTableResponse,
+    OpenClawInstanceVOImageInfo,
     AddUserToDataAgentWorkspaceResponseBodyData,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
+    CreateCustomAgentRequestCallbackConfig,
     CreateCustomAgentRequestExecutionConfig,
     CreateCustomAgentRequestKnowledgeConfigList,
     CreateCustomAgentRequestScheduleTaskConfig,
+    CreateCustomAgentResponseBodyDataCallbackConfig,
     CreateCustomAgentResponseBodyDataExecutionConfig,
     CreateCustomAgentResponseBodyDataKnowledgeConfigList,
     CreateCustomAgentResponseBodyDataScheduleTaskConfig,
@@ -556,6 +568,7 @@ __all__ = [
     DeleteAirflowResponseBodyRoot,
     DeleteCustomAgentResponseBodyData,
     DeleteFileUploadResponseBodyData,
+    DescribeCustomAgentResponseBodyDataCallbackConfig,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
     DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
@@ -571,6 +584,7 @@ __all__ = [
     GetNotebookTaskStatusResponseBodyData,
     ListAirflowsResponseBodyRootList,
     ListAirflowsResponseBodyRoot,
+    ListCustomAgentResponseBodyDataContentCallbackConfig,
     ListCustomAgentResponseBodyDataContentExecutionConfig,
     ListCustomAgentResponseBodyDataContentKnowledgeConfigList,
     ListCustomAgentResponseBodyDataContentScheduleTaskConfig,
@@ -586,9 +600,11 @@ __all__ = [
     ListDataCenterTableResponseBodyDataContent,
     ListDataCenterTableResponseBodyData,
     ListFileUploadResponseBodyData,
+    ModifyCustomAgentRequestCallbackConfig,
     ModifyCustomAgentRequestExecutionConfig,
     ModifyCustomAgentRequestKnowledgeConfigList,
     ModifyCustomAgentRequestScheduleTaskConfig,
+    ModifyCustomAgentResponseBodyDataCallbackConfig,
     ModifyCustomAgentResponseBodyDataExecutionConfig,
     ModifyCustomAgentResponseBodyDataKnowledgeConfigList,
     ModifyCustomAgentResponseBodyDataScheduleTaskConfig,

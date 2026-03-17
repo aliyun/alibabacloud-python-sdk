@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateCustomAgentRequest(DaraModel):
     def __init__(
         self,
+        callback_config: main_models.CreateCustomAgentRequestCallbackConfig = None,
         dmsunit: str = None,
         data_json: str = None,
         description: str = None,
@@ -23,6 +24,7 @@ class CreateCustomAgentRequest(DaraModel):
         web_report_config: str = None,
         workspace_id: str = None,
     ):
+        self.callback_config = callback_config
         self.dmsunit = dmsunit
         self.data_json = data_json
         self.description = description
@@ -37,6 +39,8 @@ class CreateCustomAgentRequest(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.callback_config:
+            self.callback_config.validate()
         if self.execution_config:
             self.execution_config.validate()
         if self.knowledge_config_list:
@@ -51,6 +55,9 @@ class CreateCustomAgentRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.callback_config is not None:
+            result['CallbackConfig'] = self.callback_config.to_map()
+
         if self.dmsunit is not None:
             result['DMSUnit'] = self.dmsunit
 
@@ -93,6 +100,10 @@ class CreateCustomAgentRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CallbackConfig') is not None:
+            temp_model = main_models.CreateCustomAgentRequestCallbackConfig()
+            self.callback_config = temp_model.from_map(m.get('CallbackConfig'))
+
         if m.get('DMSUnit') is not None:
             self.dmsunit = m.get('DMSUnit')
 
@@ -262,6 +273,65 @@ class CreateCustomAgentRequestExecutionConfig(DaraModel):
 
         if m.get('SkipWebReportConfirm') is not None:
             self.skip_web_report_confirm = m.get('SkipWebReportConfirm')
+
+        return self
+
+class CreateCustomAgentRequestCallbackConfig(DaraModel):
+    def __init__(
+        self,
+        callback_args: str = None,
+        callback_prompt: str = None,
+        callback_time: int = None,
+        tool_id: str = None,
+        type: str = None,
+    ):
+        self.callback_args = callback_args
+        self.callback_prompt = callback_prompt
+        self.callback_time = callback_time
+        self.tool_id = tool_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.callback_args is not None:
+            result['CallbackArgs'] = self.callback_args
+
+        if self.callback_prompt is not None:
+            result['CallbackPrompt'] = self.callback_prompt
+
+        if self.callback_time is not None:
+            result['CallbackTime'] = self.callback_time
+
+        if self.tool_id is not None:
+            result['ToolId'] = self.tool_id
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackArgs') is not None:
+            self.callback_args = m.get('CallbackArgs')
+
+        if m.get('CallbackPrompt') is not None:
+            self.callback_prompt = m.get('CallbackPrompt')
+
+        if m.get('CallbackTime') is not None:
+            self.callback_time = m.get('CallbackTime')
+
+        if m.get('ToolId') is not None:
+            self.tool_id = m.get('ToolId')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

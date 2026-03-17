@@ -1,3 +1,12 @@
+2026-03-17 Version: 1.10.1
+- Update API CreateCustomAgent: add request parameters CallbackConfig.
+- Update API CreateCustomAgent: add response parameters Body.Data.CallbackConfig.
+- Update API DescribeCustomAgent: add response parameters Body.Data.CallbackConfig.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.CallbackConfig.
+- Update API ModifyCustomAgent: add request parameters CallbackConfig.
+- Update API ModifyCustomAgent: add response parameters Body.Data.CallbackConfig.
+
+
 2026-02-14 Version: 1.10.0
 - Support API CreateCustomAgent.
 - Support API DeleteCustomAgent.

@@ -74,6 +74,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self,
         aliyun_parent_uid: str = None,
         aliyun_uid: str = None,
+        callback_config: main_models.ModifyCustomAgentResponseBodyDataCallbackConfig = None,
         creator_user_name: str = None,
         custom_agent_id: str = None,
         dmsunit: str = None,
@@ -102,6 +103,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
     ):
         self.aliyun_parent_uid = aliyun_parent_uid
         self.aliyun_uid = aliyun_uid
+        self.callback_config = callback_config
         self.creator_user_name = creator_user_name
         self.custom_agent_id = custom_agent_id
         self.dmsunit = dmsunit
@@ -129,6 +131,8 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.callback_config:
+            self.callback_config.validate()
         if self.execution_config:
             self.execution_config.validate()
         if self.knowledge_config_list:
@@ -148,6 +152,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
 
         if self.aliyun_uid is not None:
             result['AliyunUid'] = self.aliyun_uid
+
+        if self.callback_config is not None:
+            result['CallbackConfig'] = self.callback_config.to_map()
 
         if self.creator_user_name is not None:
             result['CreatorUserName'] = self.creator_user_name
@@ -235,6 +242,10 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
 
         if m.get('AliyunUid') is not None:
             self.aliyun_uid = m.get('AliyunUid')
+
+        if m.get('CallbackConfig') is not None:
+            temp_model = main_models.ModifyCustomAgentResponseBodyDataCallbackConfig()
+            self.callback_config = temp_model.from_map(m.get('CallbackConfig'))
 
         if m.get('CreatorUserName') is not None:
             self.creator_user_name = m.get('CreatorUserName')
@@ -444,6 +455,65 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
 
         if m.get('SkipWebReportConfirm') is not None:
             self.skip_web_report_confirm = m.get('SkipWebReportConfirm')
+
+        return self
+
+class ModifyCustomAgentResponseBodyDataCallbackConfig(DaraModel):
+    def __init__(
+        self,
+        callback_args: str = None,
+        callback_prompt: str = None,
+        callback_time: int = None,
+        tool_id: str = None,
+        type: str = None,
+    ):
+        self.callback_args = callback_args
+        self.callback_prompt = callback_prompt
+        self.callback_time = callback_time
+        self.tool_id = tool_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.callback_args is not None:
+            result['CallbackArgs'] = self.callback_args
+
+        if self.callback_prompt is not None:
+            result['CallbackPrompt'] = self.callback_prompt
+
+        if self.callback_time is not None:
+            result['CallbackTime'] = self.callback_time
+
+        if self.tool_id is not None:
+            result['ToolId'] = self.tool_id
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackArgs') is not None:
+            self.callback_args = m.get('CallbackArgs')
+
+        if m.get('CallbackPrompt') is not None:
+            self.callback_prompt = m.get('CallbackPrompt')
+
+        if m.get('CallbackTime') is not None:
+            self.callback_time = m.get('CallbackTime')
+
+        if m.get('ToolId') is not None:
+            self.tool_id = m.get('ToolId')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

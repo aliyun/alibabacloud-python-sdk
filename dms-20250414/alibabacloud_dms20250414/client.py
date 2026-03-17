@@ -638,6 +638,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.callback_config):
+            request.callback_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.callback_config, 'CallbackConfig', 'json')
         if not DaraCore.is_null(tmp_req.execution_config):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
@@ -645,6 +647,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.callback_config_shrink):
+            query['CallbackConfig'] = request.callback_config_shrink
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.data_json):
@@ -696,6 +700,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.callback_config):
+            request.callback_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.callback_config, 'CallbackConfig', 'json')
         if not DaraCore.is_null(tmp_req.execution_config):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
@@ -703,6 +709,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.callback_config_shrink):
+            query['CallbackConfig'] = request.callback_config_shrink
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.data_json):
@@ -5036,6 +5044,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ModifyCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.callback_config):
+            request.callback_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.callback_config, 'CallbackConfig', 'json')
         if not DaraCore.is_null(tmp_req.execution_config):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
@@ -5043,6 +5053,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.callback_config_shrink):
+            query['CallbackConfig'] = request.callback_config_shrink
         if not DaraCore.is_null(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         if not DaraCore.is_null(request.dmsunit):
@@ -5096,6 +5108,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ModifyCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.callback_config):
+            request.callback_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.callback_config, 'CallbackConfig', 'json')
         if not DaraCore.is_null(tmp_req.execution_config):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
@@ -5103,6 +5117,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.callback_config_shrink):
+            query['CallbackConfig'] = request.callback_config_shrink
         if not DaraCore.is_null(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         if not DaraCore.is_null(request.dmsunit):

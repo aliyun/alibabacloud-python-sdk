@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateCustomAgentShrinkRequest(DaraModel):
     def __init__(
         self,
+        callback_config_shrink: str = None,
         dmsunit: str = None,
         data_json: str = None,
         description: str = None,
@@ -20,6 +21,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         web_report_config: str = None,
         workspace_id: str = None,
     ):
+        self.callback_config_shrink = callback_config_shrink
         self.dmsunit = dmsunit
         self.data_json = data_json
         self.description = description
@@ -41,6 +43,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.callback_config_shrink is not None:
+            result['CallbackConfig'] = self.callback_config_shrink
+
         if self.dmsunit is not None:
             result['DMSUnit'] = self.dmsunit
 
@@ -81,6 +86,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CallbackConfig') is not None:
+            self.callback_config_shrink = m.get('CallbackConfig')
+
         if m.get('DMSUnit') is not None:
             self.dmsunit = m.get('DMSUnit')
 
