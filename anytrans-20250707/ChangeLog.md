@@ -1,3 +1,14 @@
+2026-03-17 Version: 2.1.3
+- Update API SubmitDocTranslateTask: add request parameters ext.trackingData.
+- Update API SubmitDocTranslateTask: add response parameters Body.data.trackingData.
+- Update API SubmitHtmlTranslateTask: add request parameters ext.trackingData.
+- Update API SubmitHtmlTranslateTask: add response parameters Body.data.trackingData.
+- Update API SubmitImageTranslateTask: add request parameters ext.trackingData.
+- Update API SubmitImageTranslateTask: add response parameters Body.data.trackingData.
+- Update API SubmitLongTextTranslateTask: add request parameters ext.trackingData.
+- Update API SubmitLongTextTranslateTask: add response parameters Body.data.trackingData.
+
+
 2025-12-25 Version: 2.1.2
 - Update API BatchTranslate: add request parameters ext.paramMap.
 - Update API SubmitDocTranslateTask: add request parameters ext.paramMap.

@@ -98,6 +98,7 @@ class SubmitImageTranslateTaskRequestExt(DaraModel):
         sensitives: List[str] = None,
         terminologies: List[main_models.SubmitImageTranslateTaskRequestExtTerminologies] = None,
         text_transform: main_models.SubmitImageTranslateTaskRequestExtTextTransform = None,
+        tracking_data: str = None,
     ):
         self.domain_hint = domain_hint
         self.examples = examples
@@ -105,6 +106,7 @@ class SubmitImageTranslateTaskRequestExt(DaraModel):
         self.sensitives = sensitives
         self.terminologies = terminologies
         self.text_transform = text_transform
+        self.tracking_data = tracking_data
 
     def validate(self):
         if self.examples:
@@ -145,6 +147,9 @@ class SubmitImageTranslateTaskRequestExt(DaraModel):
         if self.text_transform is not None:
             result['textTransform'] = self.text_transform.to_map()
 
+        if self.tracking_data is not None:
+            result['trackingData'] = self.tracking_data
+
         return result
 
     def from_map(self, m: dict = None):
@@ -173,6 +178,9 @@ class SubmitImageTranslateTaskRequestExt(DaraModel):
         if m.get('textTransform') is not None:
             temp_model = main_models.SubmitImageTranslateTaskRequestExtTextTransform()
             self.text_transform = temp_model.from_map(m.get('textTransform'))
+
+        if m.get('trackingData') is not None:
+            self.tracking_data = m.get('trackingData')
 
         return self
 

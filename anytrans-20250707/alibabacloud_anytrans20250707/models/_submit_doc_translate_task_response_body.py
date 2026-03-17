@@ -79,9 +79,11 @@ class SubmitDocTranslateTaskResponseBodyData(DaraModel):
         self,
         status: str = None,
         task_id: str = None,
+        tracking_data: str = None,
     ):
         self.status = status
         self.task_id = task_id
+        self.tracking_data = tracking_data
 
     def validate(self):
         pass
@@ -97,6 +99,9 @@ class SubmitDocTranslateTaskResponseBodyData(DaraModel):
         if self.task_id is not None:
             result['taskId'] = self.task_id
 
+        if self.tracking_data is not None:
+            result['trackingData'] = self.tracking_data
+
         return result
 
     def from_map(self, m: dict = None):
@@ -106,6 +111,9 @@ class SubmitDocTranslateTaskResponseBodyData(DaraModel):
 
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+
+        if m.get('trackingData') is not None:
+            self.tracking_data = m.get('trackingData')
 
         return self
 

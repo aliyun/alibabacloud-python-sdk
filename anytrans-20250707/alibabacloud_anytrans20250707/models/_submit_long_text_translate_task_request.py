@@ -95,6 +95,7 @@ class SubmitLongTextTranslateTaskRequestExt(DaraModel):
         sensitives: List[str] = None,
         terminologies: List[main_models.SubmitLongTextTranslateTaskRequestExtTerminologies] = None,
         text_transform: main_models.SubmitLongTextTranslateTaskRequestExtTextTransform = None,
+        tracking_data: str = None,
     ):
         self.config = config
         self.domain_hint = domain_hint
@@ -103,6 +104,7 @@ class SubmitLongTextTranslateTaskRequestExt(DaraModel):
         self.sensitives = sensitives
         self.terminologies = terminologies
         self.text_transform = text_transform
+        self.tracking_data = tracking_data
 
     def validate(self):
         if self.config:
@@ -148,6 +150,9 @@ class SubmitLongTextTranslateTaskRequestExt(DaraModel):
         if self.text_transform is not None:
             result['textTransform'] = self.text_transform.to_map()
 
+        if self.tracking_data is not None:
+            result['trackingData'] = self.tracking_data
+
         return result
 
     def from_map(self, m: dict = None):
@@ -180,6 +185,9 @@ class SubmitLongTextTranslateTaskRequestExt(DaraModel):
         if m.get('textTransform') is not None:
             temp_model = main_models.SubmitLongTextTranslateTaskRequestExtTextTransform()
             self.text_transform = temp_model.from_map(m.get('textTransform'))
+
+        if m.get('trackingData') is not None:
+            self.tracking_data = m.get('trackingData')
 
         return self
 

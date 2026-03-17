@@ -95,11 +95,13 @@ class SubmitDocTranslateTaskRequestExt(DaraModel):
         domain_hint: str = None,
         param_map: Any = None,
         terminologies: List[main_models.SubmitDocTranslateTaskRequestExtTerminologies] = None,
+        tracking_data: str = None,
     ):
         self.config = config
         self.domain_hint = domain_hint
         self.param_map = param_map
         self.terminologies = terminologies
+        self.tracking_data = tracking_data
 
     def validate(self):
         if self.config:
@@ -128,6 +130,9 @@ class SubmitDocTranslateTaskRequestExt(DaraModel):
             for k1 in self.terminologies:
                 result['terminologies'].append(k1.to_map() if k1 else None)
 
+        if self.tracking_data is not None:
+            result['trackingData'] = self.tracking_data
+
         return result
 
     def from_map(self, m: dict = None):
@@ -147,6 +152,9 @@ class SubmitDocTranslateTaskRequestExt(DaraModel):
             for k1 in m.get('terminologies'):
                 temp_model = main_models.SubmitDocTranslateTaskRequestExtTerminologies()
                 self.terminologies.append(temp_model.from_map(k1))
+
+        if m.get('trackingData') is not None:
+            self.tracking_data = m.get('trackingData')
 
         return self
 
