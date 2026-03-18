@@ -403,14 +403,17 @@ class CreateJobRequestUserVpc(DaraModel):
 class CreateJobRequestDataSources(DaraModel):
     def __init__(
         self,
+        access_point_id: str = None,
         data_source_id: str = None,
         data_source_version: str = None,
         enable_cache: bool = None,
         mount_access: str = None,
         mount_path: str = None,
         options: str = None,
+        role_chain: str = None,
         uri: str = None,
     ):
+        self.access_point_id = access_point_id
         # The data source ID.
         self.data_source_id = data_source_id
         self.data_source_version = data_source_version
@@ -420,6 +423,7 @@ class CreateJobRequestDataSources(DaraModel):
         self.mount_path = mount_path
         # The mount attribute of the custom dataset. Set the value to OSS.
         self.options = options
+        self.role_chain = role_chain
         # The data source path.
         self.uri = uri
 
@@ -431,6 +435,9 @@ class CreateJobRequestDataSources(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_point_id is not None:
+            result['AccessPointId'] = self.access_point_id
+
         if self.data_source_id is not None:
             result['DataSourceId'] = self.data_source_id
 
@@ -449,6 +456,9 @@ class CreateJobRequestDataSources(DaraModel):
         if self.options is not None:
             result['Options'] = self.options
 
+        if self.role_chain is not None:
+            result['RoleChain'] = self.role_chain
+
         if self.uri is not None:
             result['Uri'] = self.uri
 
@@ -456,6 +466,9 @@ class CreateJobRequestDataSources(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessPointId') is not None:
+            self.access_point_id = m.get('AccessPointId')
+
         if m.get('DataSourceId') is not None:
             self.data_source_id = m.get('DataSourceId')
 
@@ -473,6 +486,9 @@ class CreateJobRequestDataSources(DaraModel):
 
         if m.get('Options') is not None:
             self.options = m.get('Options')
+
+        if m.get('RoleChain') is not None:
+            self.role_chain = m.get('RoleChain')
 
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')

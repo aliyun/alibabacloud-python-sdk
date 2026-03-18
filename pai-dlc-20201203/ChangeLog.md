@@ -1,3 +1,9 @@
+2026-03-18 Version: 1.6.11
+- Update API CreateJob: add request parameters body.DataSources.$.AccessPointId.
+- Update API CreateJob: add request parameters body.DataSources.$.RoleChain.
+- Update API GetJob: add response parameters Body.RoleSystemEnvs.
+
+
 2026-02-12 Version: 1.6.10
 - Update API CreateJob: add request parameters body.TemplateId.
 - Update API CreateJob: add request parameters body.TemplateVersion.

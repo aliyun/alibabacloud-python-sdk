@@ -20,6 +20,7 @@ class JobSpec(DaraModel):
         is_chief: bool = None,
         local_mount_specs: List[main_models.LocalMountSpec] = None,
         pod_count: int = None,
+        quota_id: str = None,
         resource_config: main_models.ResourceConfig = None,
         restart_policy: str = None,
         service_spec: main_models.ServiceSpec = None,
@@ -51,6 +52,7 @@ class JobSpec(DaraModel):
         self.local_mount_specs = local_mount_specs
         # The number of replicas.
         self.pod_count = pod_count
+        self.quota_id = quota_id
         # The resource configurations.
         self.resource_config = resource_config
         # The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
@@ -137,6 +139,9 @@ class JobSpec(DaraModel):
         if self.pod_count is not None:
             result['PodCount'] = self.pod_count
 
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+
         if self.resource_config is not None:
             result['ResourceConfig'] = self.resource_config.to_map()
 
@@ -203,6 +208,9 @@ class JobSpec(DaraModel):
 
         if m.get('PodCount') is not None:
             self.pod_count = m.get('PodCount')
+
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
 
         if m.get('ResourceConfig') is not None:
             temp_model = main_models.ResourceConfig()

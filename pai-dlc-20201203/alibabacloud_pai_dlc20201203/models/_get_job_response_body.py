@@ -42,6 +42,7 @@ class GetJobResponseBody(DaraModel):
         resource_type: str = None,
         restart_record: List[main_models.GetJobResponseBodyRestartRecord] = None,
         restart_times: str = None,
+        role_system_envs: Dict[str, dict] = None,
         settings: main_models.JobSettings = None,
         status: str = None,
         status_history: List[main_models.StatusTransitionItem] = None,
@@ -119,6 +120,7 @@ class GetJobResponseBody(DaraModel):
         self.restart_record = restart_record
         # The number of retries and the maximum number of retries used by the job.
         self.restart_times = restart_times
+        self.role_system_envs = role_system_envs
         # The additional parameter configurations of the job.
         self.settings = settings
         # The status of the job. Valid values:
@@ -311,6 +313,9 @@ class GetJobResponseBody(DaraModel):
         if self.restart_times is not None:
             result['RestartTimes'] = self.restart_times
 
+        if self.role_system_envs is not None:
+            result['RoleSystemEnvs'] = self.role_system_envs
+
         if self.settings is not None:
             result['Settings'] = self.settings.to_map()
 
@@ -469,6 +474,9 @@ class GetJobResponseBody(DaraModel):
 
         if m.get('RestartTimes') is not None:
             self.restart_times = m.get('RestartTimes')
+
+        if m.get('RoleSystemEnvs') is not None:
+            self.role_system_envs = m.get('RoleSystemEnvs')
 
         if m.get('Settings') is not None:
             temp_model = main_models.JobSettings()
