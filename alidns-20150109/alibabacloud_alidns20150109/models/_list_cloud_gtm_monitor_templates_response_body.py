@@ -23,7 +23,6 @@ class ListCloudGtmMonitorTemplatesResponseBody(DaraModel):
         self.page_size = page_size
         # Unique request identification code.
         self.request_id = request_id
-        # The health check templates.
         self.templates = templates
         # Total number of health check template entries retrieved.
         self.total_items = total_items
@@ -136,78 +135,20 @@ class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # Health check template creation time.
         self.create_time = create_time
-        # Health check template creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
-        # - 1 - 2 - 3
         self.evaluation_count = evaluation_count
-        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
-        # 
-        # *   HTTP or HTTPS:
-        # 
-        #     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
-        # 
-        #     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
-        # 
-        #     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
-        # 
-        #     *   400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must specify an exact URL for path if you set code to 400.
-        #     *   500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
-        # 
-        #     **sni**: indicates whether Server Name Indication (SNI) is enabled. This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
-        # 
-        #     *   true: SNI is enabled.
-        #     *   false: SNI is disabled.
-        # 
-        #     **followRedirect**: indicates whether 3XX redirects are followed. Valid values:
-        # 
-        #     *   true: 3XX redirects are followed. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
-        #     *   false: 3XX redirects are not followed.
-        # 
-        # *   ping:
-        # 
-        #     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
-        # 
-        #     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
-        # Percentage of selected node probe failures (%), that is, the percentage of unhealthy check points among total probe points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
-        # - 20
-        # - 50
-        # - 80
-        # - 100
         self.failure_rate = failure_rate
-        # The time interval between each check (in seconds), with a default of probing once every minute. The minimum supported health check interval is 15 seconds, available for flagship edition instances.
         self.interval = interval
-        # The IP address type of health check nodes. Valid values:
-        # 
-        # *   IPv4: applicable when health checks are performed on IPv4 addresses.
-        # *   IPv6: applicable when health checks are performed on IPv6 addresses.
         self.ip_version = ip_version
-        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
         self.isp_city_nodes = isp_city_nodes
-        # The name of the health check probe template, generally for the convenience of configuration personnel to distinguish and remember.
         self.name = name
-        # Protocol types for initiating probes to the target IP address:
-        # - ping
-        # - tcp
-        # - http
-        # - https
         self.protocol = protocol
-        # Remarks for the health check template.
         self.remark = remark
-        # The ID of the health check template. This ID uniquely identifies the health check template.
         self.template_id = template_id
-        # Probe timeout (in milliseconds), data packets not returned within the timeout period are deemed as health check timeouts:
-        # - 2000
-        # - 3000
-        # - 5000
-        # - 10000
         self.timeout = timeout
-        # Last modification time of the health check template.
         self.update_time = update_time
-        # Health check template configuration modification time (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -363,24 +304,13 @@ class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCi
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # City code.
         self.city_code = city_code
-        # City name.
         self.city_name = city_name
-        # Country code.
         self.country_code = country_code
-        # Country name.
         self.country_name = country_name
-        # Probe node group name.
         self.group_name = group_name
-        # Probe node group types:
-        # - BGP: BGP nodes
-        # - OVERSEAS: International nodes
-        # - ISP: Carrier nodes
         self.group_type = group_type
-        # Operator code.
         self.isp_code = isp_code
-        # Operator name.
         self.isp_name = isp_name
 
     def validate(self):

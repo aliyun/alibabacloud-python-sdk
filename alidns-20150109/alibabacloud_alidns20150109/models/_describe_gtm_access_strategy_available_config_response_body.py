@@ -15,9 +15,7 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBody(DaraModel):
         request_id: str = None,
         suggest_set_default_line: bool = None,
     ):
-        # The address pools.
         self.addr_pools = addr_pools
-        # The Domain Name System (DNS) request sources.
         self.lines = lines
         # The request ID.
         self.request_id = request_id
@@ -112,20 +110,11 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine(DaraModel):
         line_name: str = None,
         status: str = None,
     ):
-        # The code of the parent line. No value is returned if no parent line exists.
         self.father_code = father_code
-        # The group number of the DNS request source.
         self.group_code = group_code
-        # The group name of the DNS request source.
         self.group_name = group_name
-        # The code of the DNS request source.
         self.line_code = line_code
-        # The name of the DNS request source.
         self.line_name = line_name
-        # The state of the line. Valid values:
-        # 
-        # *   **FORBIDDEN**: The line is unavailable.
-        # *   **OPTIONAL**: The line is available.
         self.status = status
 
     def validate(self):
@@ -219,9 +208,7 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPoolsAddrPool(Dara
         addr_pool_id: str = None,
         addr_pool_name: str = None,
     ):
-        # The ID of the address pool.
         self.addr_pool_id = addr_pool_id
-        # The name of the address pool.
         self.addr_pool_name = addr_pool_name
 
     def validate(self):

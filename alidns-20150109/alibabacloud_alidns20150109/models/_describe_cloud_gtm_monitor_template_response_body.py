@@ -77,7 +77,6 @@ class DescribeCloudGtmMonitorTemplateResponseBody(DaraModel):
         # - IPv4: Applicable when the target address type is IPv4;
         # - IPv6: Applicable when the target address type is IPv6.
         self.ip_version = ip_version
-        # Probe node list, detailed information can be obtained by calling ListCloudGtmMonitorNodes.
         self.isp_city_nodes = isp_city_nodes
         # The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
         self.name = name
@@ -263,24 +262,13 @@ class DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode(DaraMod
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # City code
         self.city_code = city_code
-        # City name
         self.city_name = city_name
-        # Country Code
         self.country_code = country_code
-        # Country Name
         self.country_name = country_name
-        # Probe node group type name
         self.group_name = group_name
-        # Probe node group types:
-        # - BGP: BGP nodes
-        # - OVERSEAS: International nodes
-        # - ISP: Carrier nodes
         self.group_type = group_type
-        # Operator Code
         self.isp_code = isp_code
-        # Operator Name
         self.isp_name = isp_name
 
     def validate(self):

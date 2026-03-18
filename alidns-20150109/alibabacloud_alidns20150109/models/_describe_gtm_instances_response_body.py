@@ -17,7 +17,6 @@ class DescribeGtmInstancesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The list of queried instances.
         self.gtm_instances = gtm_instances
         # The returned page number.
         self.page_number = page_number
@@ -137,43 +136,21 @@ class DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance(DaraModel):
         user_domain_name: str = None,
         version_code: str = None,
     ):
-        # The number of access policies.
         self.access_strategy_num = access_strategy_num
-        # The number of address pools.
         self.address_pool_num = address_pool_num
-        # The name of the alert group.
         self.alert_group = alert_group
-        # The CNAME domain name that is used to access the instance.
         self.cname = cname
-        # The CNAME domain name used to access the instance. Valid values:
-        # 
-        # *   **SYSTEM_ASSIGN**: A CNAME domain name assigned by the system is used.
-        # *   **CUSTOM**: A custom CNAME domain name is used.
         self.cname_mode = cname_mode
-        # The time when the instance was created.
         self.create_time = create_time
-        # The UNIX timestamp that indicates when the instance was created.
         self.create_timestamp = create_timestamp
-        # The time when the instance expires.
         self.expire_time = expire_time
-        # The UNIX timestamp that indicates when the instance expires.
         self.expire_timestamp = expire_timestamp
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # The load balancing policy that is used. Valid values:
-        # 
-        # *   **ALL_RR**: Load balancing
-        # *   **RATIO**: Weighted round-robin
         self.lba_strategy = lba_strategy
-        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The global time to live (TTL).
         self.ttl = ttl
-        # The domain name of the user.
         self.user_domain_name = user_domain_name
-        # The version code of the instance.
         self.version_code = version_code
 
     def validate(self):

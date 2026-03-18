@@ -23,7 +23,6 @@ class DescribeDomainStatisticsSummaryResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The statistics on the Domain Name System (DNS) requests.
         self.statistics = statistics
         # The total number of data records.
         self.total_items = total_items
@@ -125,20 +124,9 @@ class DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic(DaraModel):
         domain_type: str = None,
         resolve_analysis_status: str = None,
     ):
-        # The number of DNS requests.
         self.count = count
-        # The domain name.
         self.domain_name = domain_name
-        # The type of the domain name. The parameter value is not case-sensitive. Valid values:
-        # 
-        # PUBLIC (default): hosted public domain name
-        # 
-        # CACHE: cache-accelerated domain name
         self.domain_type = domain_type
-        # Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
-        # 
-        # *   OPEN
-        # *   CLOSE
         self.resolve_analysis_status = resolve_analysis_status
 
     def validate(self):

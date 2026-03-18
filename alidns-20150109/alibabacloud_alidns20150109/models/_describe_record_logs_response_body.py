@@ -20,7 +20,6 @@ class DescribeRecordLogsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The operation logs.
         self.record_logs = record_logs
         # The request ID.
         self.request_id = request_id
@@ -117,15 +116,10 @@ class DescribeRecordLogsResponseBodyRecordLogsRecordLog(DaraModel):
         client_ip: str = None,
         message: str = None,
     ):
-        # The operation that you performed.
         self.action = action
-        # The time when you performed the operation.
         self.action_time = action_time
-        # The time when you performed the operation. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.action_timestamp = action_timestamp
-        # The IP address of the operator.
         self.client_ip = client_ip
-        # The operation message.
         self.message = message
 
     def validate(self):

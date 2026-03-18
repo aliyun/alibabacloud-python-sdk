@@ -13,7 +13,6 @@ class ListCloudGtmAvailableAlertGroupsResponseBody(DaraModel):
         alert_groups: main_models.ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups = None,
         request_id: str = None,
     ):
-        # The alert contact groups.
         self.alert_groups = alert_groups
         # The request ID.
         self.request_id = request_id
@@ -86,7 +85,6 @@ class ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup(DaraMode
         self,
         group_name: str = None,
     ):
-        # The name of the alert contact group.
         self.group_name = group_name
 
     def validate(self):

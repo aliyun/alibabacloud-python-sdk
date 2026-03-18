@@ -31,7 +31,6 @@ class DescribeDnsGtmMonitorConfigResponseBody(DaraModel):
         self.evaluation_count = evaluation_count
         # The health check interval. Unit: seconds.
         self.interval = interval
-        # The health check nodes.
         self.isp_city_nodes = isp_city_nodes
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
@@ -232,17 +231,11 @@ class DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode(DaraModel):
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The city code.
         self.city_code = city_code
-        # The display name of the city.
         self.city_name = city_name
-        # The code of the country or region.
         self.country_code = country_code
-        # The display name of the country or region.
         self.country_name = country_name
-        # The Internet service provider (ISP) code.
         self.isp_code = isp_code
-        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):

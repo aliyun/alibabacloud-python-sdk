@@ -22,7 +22,6 @@ class DescribeDNSSLBSubDomainsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The subdomains for which weighted round-robin is enabled.
         self.slb_sub_domains = slb_sub_domains
         # The total number of entries returned.
         self.total_count = total_count
@@ -117,15 +116,10 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain(DaraModel):
         sub_domain: str = None,
         type: str = None,
     ):
-        # The lines for which weighted round-robin is enabled.
         self.line_algorithms = line_algorithms
-        # Indicates whether weighted round-robin is enabled for the subdomain.
         self.open = open
-        # The number of DNS records added for the subdomain.
         self.record_count = record_count
-        # The name of the subdomain.
         self.sub_domain = sub_domain
-        # The type of the Domain Name System (DNS) record that supports weighted round-robin. Valid values: A, AAAA, and CNAME.
         self.type = type
 
     def validate(self):
@@ -215,12 +209,7 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithm
         line: str = None,
         open: bool = None,
     ):
-        # The DNS resolution line. The line can be China Telecom, China Mobile, and China Unicom.
         self.line = line
-        # Indicates whether weighted round-robin is enabled for the line. Valid values:
-        # 
-        # *   **true** (default): Weighted round-robin is enabled.
-        # *   **false**: Weighted round-robin is disabled.
         self.open = open
 
     def validate(self):

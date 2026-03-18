@@ -15,7 +15,6 @@ class DescribeDomainStatisticsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The statistics on the Domain Name System (DNS) requests.
         self.statistics = statistics
 
     def validate(self):
@@ -88,11 +87,8 @@ class DescribeDomainStatisticsResponseBodyStatisticsStatistic(DaraModel):
         domain_name: str = None,
         timestamp: int = None,
     ):
-        # The number of DNS requests.
         self.count = count
-        # The domain name.
         self.domain_name = domain_name
-        # The statistical timestamp. Unit: milliseconds. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):

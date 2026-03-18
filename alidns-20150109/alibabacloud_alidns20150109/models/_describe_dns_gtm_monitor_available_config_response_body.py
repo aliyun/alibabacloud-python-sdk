@@ -16,13 +16,9 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBody(DaraModel):
         ipv_6isp_city_nodes: main_models.DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes = None,
         request_id: str = None,
     ):
-        # The nodes that perform health checks on domain names that use public IPv4 addresses.
         self.domain_ipv_4isp_city_nodes = domain_ipv_4isp_city_nodes
-        # The nodes that perform health checks on domain names that use public IPv6 addresses.
         self.domain_ipv_6isp_city_nodes = domain_ipv_6isp_city_nodes
-        # The nodes that perform health checks on public IPv4 addresses.
         self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
-        # The nodes that perform health checks on public IPv6 addresses.
         self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
         # The request ID.
         self.request_id = request_id
@@ -129,25 +125,13 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCit
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The city code.
         self.city_code = city_code
-        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the node group.
         self.group_name = group_name
-        # The type of the node group. Valid values:
-        # 
-        # *   BGP: BGP node
-        # *   OVERSEAS: node outside the Chinese mainland
-        # *   ISP: ISP node
         self.group_type = group_type
-        # This parameter is not returned.
         self.ips = ips
-        # The ISP code.
         self.isp_code = isp_code
-        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -288,25 +272,13 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCit
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The city code.
         self.city_code = city_code
-        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the node group.
         self.group_name = group_name
-        # The type of the node group. Valid values:
-        # 
-        # *   BGP: Border Gateway Protocol (BGP) node
-        # *   OVERSEAS: node outside the Chinese mainland
-        # *   ISP: ISP node
         self.group_type = group_type
-        # The IP addresses of the health check nodes.
         self.ips = ips
-        # The Internet service provider (ISP) code.
         self.isp_code = isp_code
-        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -447,25 +419,13 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDoma
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The city code.
         self.city_code = city_code
-        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the node group.
         self.group_name = group_name
-        # The type of the node group. Valid values:
-        # 
-        # *   BGP: BGP node
-        # *   OVERSEAS: node outside the Chinese mainland
-        # *   ISP: ISP node
         self.group_type = group_type
-        # This parameter is not returned.
         self.ips = ips
-        # The ISP code.
         self.isp_code = isp_code
-        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -606,25 +566,13 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDoma
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The city code.
         self.city_code = city_code
-        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the node group.
         self.group_name = group_name
-        # The type of the node group. Valid values:
-        # 
-        # *   BGP: BGP node
-        # *   OVERSEAS: node outside the Chinese mainland
-        # *   ISP: ISP node
         self.group_type = group_type
-        # The IP addresses of the health check nodes.
         self.ips = ips
-        # The ISP code.
         self.isp_code = isp_code
-        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):

@@ -17,7 +17,6 @@ class DescribeGtmInstanceAddressPoolsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The returned list of address pools of the GTM instance.
         self.addr_pools = addr_pools
         # The number of the page returned.
         self.page_number = page_number
@@ -133,38 +132,17 @@ class DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.addr_pool_id = addr_pool_id
-        # The time when this address pool was created.
         self.create_time = create_time
         self.create_timestamp = create_timestamp
-        # The minimum number of available addresses in the address pool.
         self.min_available_addr_num = min_available_addr_num
-        # The health check ID of the address pool.
         self.monitor_config_id = monitor_config_id
-        # Indicates whether health check was enabled for the address pool. Valid values:
-        # 
-        # *   **OPEN**: Enabled
-        # *   **CLOSE**: Disabled
-        # *   **UNCONFIGURED**: Not configured
         self.monitor_status = monitor_status
-        # The name of the address pool.
         self.name = name
-        # The availability status of the address pool. Valid values:
-        # 
-        # *   **AVAILABLE**: Available
-        # *   **NOT_AVAILABLE**: Unavailable
         self.status = status
-        # The type of the address pool. Valid values:
-        # 
-        # *   **IP**: IP address
-        # *   **DOMAIN**: Domain name
         self.type = type
-        # The last time when the address pool was updated.
         self.update_time = update_time
-        # A timestamp that indicates the last time the address pool was updated.
         self.update_timestamp = update_timestamp
 
     def validate(self):

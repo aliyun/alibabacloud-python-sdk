@@ -16,7 +16,6 @@ class DescribeDomainLogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The operation logs.
         self.domain_logs = domain_logs
         # The page number.
         self.page_number = page_number
@@ -119,19 +118,12 @@ class DescribeDomainLogsResponseBodyDomainLogsDomainLog(DaraModel):
         message: str = None,
         zone_id: str = None,
     ):
-        # The operation.
         self.action = action
-        # The time when the operation is performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.action_time = action_time
-        # The time when the operation was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.action_timestamp = action_timestamp
-        # The IP address of the operator.
         self.client_ip = client_ip
-        # The domain name.
         self.domain_name = domain_name
-        # The message for the operation.
         self.message = message
-        # The ID of the private zone.
         self.zone_id = zone_id
 
     def validate(self):

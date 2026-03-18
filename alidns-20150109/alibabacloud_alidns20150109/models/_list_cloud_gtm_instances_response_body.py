@@ -17,7 +17,6 @@ class ListCloudGtmInstancesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The instances.
         self.instances = instances
         # Current page number, starting with **1**, default is **1**.
         self.page_number = page_number
@@ -139,42 +138,21 @@ class ListCloudGtmInstancesResponseBodyInstancesInstance(DaraModel):
         version_code: str = None,
     ):
         self.charge_type = charge_type
-        # The commodity code. Valid values:
-        # 
-        # *   dns_gtm_public_cn: commodity code on the China site (aliyun.com)
-        # *   dns_gtm_public_intl: commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
-        # Instance creation time.
         self.create_time = create_time
-        # Instance creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # Instance expiration time.
         self.expire_time = expire_time
-        # Instance expiration time (timestamp).
         self.expire_timestamp = expire_timestamp
-        # The ID of the GTM instance.
         self.instance_id = instance_id
-        # Instance name.
         self.instance_name = instance_name
-        # Monitor probe task quota.
         self.monitor_task_quota = monitor_task_quota
-        # Monthly email sending volume.
         self.monthly_email_used = monthly_email_used
-        # SMS quota, only supported on the China site as international sites do not support SMS.
         self.monthly_sms_quota = monthly_sms_quota
-        # Monthly SMS sending volume, only supported by the China site as international sites do not support SMS.
         self.monthly_sms_used = monthly_sms_used
-        # Monthly webhook send volume.
         self.monthly_webhook_used = monthly_webhook_used
-        # The access domain name, which consists of a hostname and a zone or a subzone.
         self.schedule_domain_name = schedule_domain_name
-        # The last time the instance was modified.
         self.update_time = update_time
-        # The last modification time of the instance (timestamp).
         self.update_timestamp = update_timestamp
-        # GTM instance version:
-        # - standard: Standard Edition
-        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):

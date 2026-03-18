@@ -67,7 +67,6 @@ class DescribeCloudGtmAddressResponseBody(DaraModel):
         # *   ok_no_monitor: The address does not reference a health check template.
         # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
-        # The health check tasks referenced by the address.
         self.health_tasks = health_tasks
         # The availability state of the address when AvailableMode is set to manual. Valid values:
         # 
@@ -257,17 +256,9 @@ class DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
-        # The state of the health check task. Valid values:
-        # 
-        # *   ok: The task is normal.
-        # *   alert: An alert is triggered.
-        # *   no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
         self.monitor_status = monitor_status
-        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
         self.port = port
-        # The ID of the health check template associated with the address.
         self.template_id = template_id
-        # The name of the health check template.
         self.template_name = template_name
 
     def validate(self):

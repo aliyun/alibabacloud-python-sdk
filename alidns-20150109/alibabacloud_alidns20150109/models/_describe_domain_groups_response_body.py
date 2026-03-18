@@ -16,7 +16,6 @@ class DescribeDomainGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The domain name groups.
         self.domain_groups = domain_groups
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -115,14 +114,8 @@ class DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # The number of domain name groups.
         self.domain_count = domain_count
-        # The ID of the domain name group. Valid values:
-        # 
-        # *   defaultGroup: the default group
-        # *   If an empty string is returned, it indicates the group that contains all domain names.
         self.group_id = group_id
-        # The name of the domain name group.
         self.group_name = group_name
 
     def validate(self):

@@ -21,9 +21,7 @@ class DescribeDomainNsResponseBody(DaraModel):
         self.all_ali_dns = all_ali_dns
         # The cause code of the detection failure.
         self.detect_failed_reason_code = detect_failed_reason_code
-        # The DNS server names configured for the domain name.
         self.dns_servers = dns_servers
-        # The Domain Name System (DNS) server names assigned by Alibaba Cloud DNS.
         self.expect_dns_servers = expect_dns_servers
         # Indicates whether the name servers include Alibaba Cloud DNS servers.
         self.include_ali_dns = include_ali_dns

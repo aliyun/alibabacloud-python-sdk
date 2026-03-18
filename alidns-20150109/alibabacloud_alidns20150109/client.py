@@ -9271,6 +9271,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.precise_sort):
+            query['PreciseSort'] = request.precise_sort
         if not DaraCore.is_null(request.query_condition):
             query['QueryCondition'] = request.query_condition
         if not DaraCore.is_null(request.recursion_protocol_type):
@@ -9317,6 +9319,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.precise_sort):
+            query['PreciseSort'] = request.precise_sort
         if not DaraCore.is_null(request.query_condition):
             query['QueryCondition'] = request.query_condition
         if not DaraCore.is_null(request.recursion_protocol_type):
@@ -12361,6 +12365,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.show_disabled_nodes):
+            query['ShowDisabledNodes'] = request.show_disabled_nodes
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12389,6 +12395,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.show_disabled_nodes):
+            query['ShowDisabledNodes'] = request.show_disabled_nodes
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

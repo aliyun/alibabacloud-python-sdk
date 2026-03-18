@@ -23,7 +23,6 @@ class DescribeDnsGtmAccessStrategiesResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The access policies.
         self.strategies = strategies
         # The total number of entries returned on all pages.
         self.total_items = total_items
@@ -130,33 +129,14 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy(DaraModel):
         strategy_id: str = None,
         strategy_name: str = None,
     ):
-        # The time when the access policy was created.
         self.create_time = create_time
-        # The timestamp that indicates when the access policy was created.
         self.create_timestamp = create_timestamp
-        # The type of the active address pool group. Valid values:
-        # 
-        # *   DEFAULT: the primary address pool group
-        # *   FAILOVER: the secondary address pool group
         self.effective_addr_pool_group_type = effective_addr_pool_group_type
-        # The type of the active address pools. Valid values:
-        # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
         self.effective_addr_pool_type = effective_addr_pool_type
-        # The active address pool groups.
         self.effective_addr_pools = effective_addr_pools
-        # The load balancing policy of the active address pool group. Data is returned when StrategyMode is set to GEO. Valid values: 
-        # 
-        # - ALL_RR: returns all addresses.
-        # - RATIO: returns addresses by weight.
         self.effective_lba_strategy = effective_lba_strategy
-        # The source regions. Data is returned when StrategyMode is set to GEO. Valid values:
         self.lines = lines
-        # The ID of the access policy.
         self.strategy_id = strategy_id
-        # The name of the access policy.
         self.strategy_name = strategy_name
 
     def validate(self):
@@ -275,13 +255,9 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine(Dara
         line_code: str = None,
         line_name: str = None,
     ):
-        # The code of the source region group.
         self.group_code = group_code
-        # The name of the source region group.
         self.group_name = group_name
-        # The line code of the source region.
         self.line_code = line_code
-        # The line name of the source region.
         self.line_name = line_name
 
     def validate(self):
@@ -365,13 +341,9 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrP
         lba_weight: int = None,
         name: str = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.id = id
-        # The weight of the address pool.
         self.lba_weight = lba_weight
-        # The name of the address pool.
         self.name = name
 
     def validate(self):

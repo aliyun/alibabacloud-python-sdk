@@ -16,7 +16,6 @@ class DescribeDomainRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned Domain Name System (DNS) records.
         self.domain_records = domain_records
         # The page number.
         self.page_number = page_number
@@ -127,34 +126,20 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(DaraModel):
         value: str = None,
         weight: int = None,
     ):
-        # The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.create_timestamp = create_timestamp
-        # The domain name.
         self.domain_name = domain_name
         self.lba_status = lba_status
-        # The resolution line.
         self.line = line
-        # Indicates whether the DNS record is locked.
         self.locked = locked
-        # The priority of the mail exchanger (MX) record.
         self.priority = priority
-        # The hostname.
         self.rr = rr
-        # The ID of the DNS record.
         self.record_id = record_id
-        # The description of the DNS record.
         self.remark = remark
-        # The status of the DNS record.
         self.status = status
-        # The time-to-live (TTL) of the cached DNS record. Unit: seconds.
         self.ttl = ttl
-        # The type of the DNS record.
         self.type = type
-        # The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.update_timestamp = update_timestamp
-        # The record value.
         self.value = value
-        # The weight of the DNS record.
         self.weight = weight
 
     def validate(self):

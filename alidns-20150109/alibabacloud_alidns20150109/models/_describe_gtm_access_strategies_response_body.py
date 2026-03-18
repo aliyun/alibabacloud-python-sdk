@@ -23,7 +23,6 @@ class DescribeGtmAccessStrategiesResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The returned list of access policies of the GTM instance.
         self.strategies = strategies
         # The total number of entries returned on all pages.
         self.total_items = total_items
@@ -138,52 +137,22 @@ class DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy(DaraModel):
         strategy_mode: str = None,
         strategy_name: str = None,
     ):
-        # The access policy. Valid values:
-        # 
-        # *   **AUTO**: Automatic switch
-        # *   **DEFAULT**: Default address pool
-        # *   **FAILOVER**: Failover address pool
         self.access_mode = access_mode
-        # The access status. Valid values:
-        # 
-        # *   **DEFAULT**: The default address pool is currently accessed.
-        # *   **FAILOVER**: The failover address pool is currently accessed.
         self.access_status = access_status
-        # The time when the access policy was created.
         self.create_time = create_time
         self.create_timestamp = create_timestamp
-        # The ID of the default address pool.
         self.default_addr_pool_id = default_addr_pool_id
-        # Indicates whether health check was enabled for the default address pool. Valid values:
-        # 
-        # *   **OPEN**: Enabled
-        # *   **CLOSE**: Disabled
-        # *   **UNCONFIGURED**: Not configured
         self.default_addr_pool_monitor_status = default_addr_pool_monitor_status
-        # The name of the default address pool.
         self.default_addr_pool_name = default_addr_pool_name
-        # The availability status of the default address pool. Valid values:
-        # 
-        # *   **AVAILABLE**: Available
-        # *   **NOT_AVAILABLE**: Unavailable
         self.default_addr_pool_status = default_addr_pool_status
-        # The ID of the failover address pool.
         self.failover_addr_pool_id = failover_addr_pool_id
-        # Indicates whether health check was enabled for the failover address pool.
         self.failover_addr_pool_monitor_status = failover_addr_pool_monitor_status
-        # The name of the failover address pool.
         self.failover_addr_pool_name = failover_addr_pool_name
-        # The availability status of the failover address pool.
         self.failover_addr_pool_status = failover_addr_pool_status
-        # The ID of the GTM instance whose access policies you want to query.
         self.instance_id = instance_id
-        # The returned lines of access regions.
         self.lines = lines
-        # The ID of the access policy.
         self.strategy_id = strategy_id
-        # The mode of the access policy. **SELF_DEFINED** indicates that the access policy is user-defined.
         self.strategy_mode = strategy_mode
-        # The name of the access policy.
         self.strategy_name = strategy_name
 
     def validate(self):
@@ -347,13 +316,9 @@ class DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine(DaraMod
         line_code: str = None,
         line_name: str = None,
     ):
-        # The code of the access region group.
         self.group_code = group_code
-        # The name of the access region group.
         self.group_name = group_name
-        # The code for the line of the access region.
         self.line_code = line_code
-        # The name for the line of the access region.
         self.line_name = line_name
 
     def validate(self):

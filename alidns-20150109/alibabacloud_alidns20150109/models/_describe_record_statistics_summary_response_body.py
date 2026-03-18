@@ -23,7 +23,6 @@ class DescribeRecordStatisticsSummaryResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The DNS requests.
         self.statistics = statistics
         # The total number of entries returned.
         self.total_items = total_items
@@ -123,9 +122,7 @@ class DescribeRecordStatisticsSummaryResponseBodyStatisticsStatistic(DaraModel):
         count: int = None,
         sub_domain: str = None,
     ):
-        # The number of DNS requests.
         self.count = count
-        # The subdomain.
         self.sub_domain = sub_domain
 
     def validate(self):

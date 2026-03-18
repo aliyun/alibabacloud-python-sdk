@@ -21,7 +21,6 @@ class DescribeGtmRecoveryPlansResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The details about the queried disaster recovery plans.
         self.recovery_plans = recovery_plans
         # The ID of the request.
         self.request_id = request_id
@@ -134,35 +133,18 @@ class DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the disaster recovery plan was created.
         self.create_time = create_time
-        # The UNIX timestamp that indicates when the disaster recovery plan was created.
         self.create_timestamp = create_timestamp
-        # The number of faulty address pools.
         self.fault_addr_pool_num = fault_addr_pool_num
-        # The last time when the disaster recovery plan was executed.
         self.last_execute_time = last_execute_time
-        # The UNIX timestamp that indicates the last time when the disaster recovery plan was executed.
         self.last_execute_timestamp = last_execute_timestamp
-        # The last time when the disaster recovery plan was rolled back.
         self.last_rollback_time = last_rollback_time
-        # The UNIX timestamp that indicates the last time when the disaster recovery plan was rolled back.
         self.last_rollback_timestamp = last_rollback_timestamp
-        # The name of the disaster recovery plan.
         self.name = name
-        # The ID of the disaster recovery plan.
         self.recovery_plan_id = recovery_plan_id
-        # The remarks about the disaster recovery plan.
         self.remark = remark
-        # The status of the disaster recovery plan. Valid values:
-        # 
-        # *   **UNEXECUTED**: The plan is not executed.
-        # *   **EXECUTED**: The plan is executed.
-        # *   **ROLLED_BACK**: The plan is rolled back.
         self.status = status
-        # The last time when the disaster recovery plan was updated.
         self.update_time = update_time
-        # The UNIX timestamp that indicates the last time when the disaster recovery plan was updated.
         self.update_timestamp = update_timestamp
 
     def validate(self):

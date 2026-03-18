@@ -16,7 +16,6 @@ class DescribeBatchResultDetailResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The detailed results of the batch operation.
         self.batch_result_details = batch_result_details
         # The page number.
         self.page_number = page_number
@@ -128,37 +127,21 @@ class DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail(D
         type: str = None,
         value: str = None,
     ):
-        # The type of the batch operation.
         self.batch_type = batch_type
-        # The domain name.
         self.domain = domain
-        # The line code.
         self.line = line
-        # The new hostname.
         self.new_rr = new_rr
-        # The new record value.
         self.new_value = new_value
-        # The time when the operation was performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.operate_date_str = operate_date_str
-        # The priority of the mail exchanger (MX) record.
         self.priority = priority
-        # The cause of the execution failure.
         self.reason = reason
-        # The ID of the DNS record.
         self.record_id = record_id
-        # The description of the DNS record.
         self.remark = remark
-        # The hostname.
         self.rr = rr
-        # The status of the DNS record.
         self.rr_status = rr_status
-        # The execution result of the batch operation. Valid values: **true**: The operation succeeded. **false**: The operation failed.
         self.status = status
-        # The time-to-live (TTL) of the DNS record.
         self.ttl = ttl
-        # The type of the DNS record.
         self.type = type
-        # The value of the DNS record.
         self.value = value
 
     def validate(self):

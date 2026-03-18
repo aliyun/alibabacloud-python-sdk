@@ -13,7 +13,6 @@ class DescribeGtmMonitorAvailableConfigResponseBody(DaraModel):
         isp_city_nodes: main_models.DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes = None,
         request_id: str = None,
     ):
-        # The monitored nodes.
         self.isp_city_nodes = isp_city_nodes
         # The ID of the request.
         self.request_id = request_id
@@ -93,28 +92,13 @@ class DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode(DaraM
         isp_name: str = None,
         mainland: bool = None,
     ):
-        # The code of the city where the monitored node is deployed.
         self.city_code = city_code
-        # The display name of the city where the monitored node is deployed.
         self.city_name = city_name
-        # Indicates whether the monitored node is selected for the health check by default.
         self.default_selected = default_selected
-        # The name of the group to which the monitored node belongs.
-        # 
-        # Valid values: Overseas Nodes, BGP Nodes, and ISP Nodes.
         self.group_name = group_name
-        # The type of the group to which the monitored node belongs.
-        # 
-        # Valid values: BGP, OVERSEAS, and ISP.
         self.group_type = group_type
-        # The code of the Internet service provider (ISP) to which the monitored node belongs.
-        # 
-        # *   If the value of the GroupType parameter is BGP or OVERSEAS, the value of IspCode is 465 by default.
-        # *   If the value of the GroupType parameter is not BGP or OVERSEAS, valid values of IspCode are 232, 132, and 5. and is used together with CityCode.
         self.isp_code = isp_code
-        # The display name of the ISP to which the monitored node belongs.
         self.isp_name = isp_name
-        # Indicates whether the monitored node is deployed in the Chinese mainland.
         self.mainland = mainland
 
     def validate(self):

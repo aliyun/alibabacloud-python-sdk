@@ -13,7 +13,6 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponseBody(DaraModel):
         attribute_infos: main_models.DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos = None,
         request_id: str = None,
     ):
-        # The supported source regions.
         self.attribute_infos = attribute_infos
         # The ID of the request.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttribut
         line_code: str = None,
         line_name: str = None,
     ):
-        # The parent line code of the source region.
         self.father_code = father_code
-        # The code of the source region group.
         self.group_code = group_code
-        # The name of the request source group.
         self.group_name = group_name
-        # The line code of the source region.
         self.line_code = line_code
-        # The line name of the source region.
         self.line_name = line_name
 
     def validate(self):

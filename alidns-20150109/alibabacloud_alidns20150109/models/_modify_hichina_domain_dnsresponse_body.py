@@ -14,9 +14,7 @@ class ModifyHichinaDomainDNSResponseBody(DaraModel):
         original_dns_servers: main_models.ModifyHichinaDomainDNSResponseBodyOriginalDnsServers = None,
         request_id: str = None,
     ):
-        # The DNS server names after modification.
         self.new_dns_servers = new_dns_servers
-        # The DNS server names before modification.
         self.original_dns_servers = original_dns_servers
         # The request ID.
         self.request_id = request_id

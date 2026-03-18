@@ -17,7 +17,6 @@ class DescribeDnsGtmInstanceAddressPoolsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The returned address pools.
         self.addr_pools = addr_pools
         # The page number of the returned page.
         self.page_number = page_number
@@ -132,38 +131,16 @@ class DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool(DaraModel)
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.addr_pool_id = addr_pool_id
-        # The time when the address pool was created.
         self.create_time = create_time
-        # The timestamp that indicates when the address pool was created.
         self.create_timestamp = create_timestamp
-        # The load balancing policy of the address pool. Valid values:
-        # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
         self.lba_strategy = lba_strategy
-        # The ID of the health check task.
         self.monitor_config_id = monitor_config_id
-        # Indicates whether health checks are configured. Valid values:
-        # 
-        # *   OPEN: enabled
-        # *   CLOSE: disabled
-        # *   UNCONFIGURED: not configured
         self.monitor_status = monitor_status
-        # The name of the address pool.
         self.name = name
-        # The type of the address pool. Valid values:
-        # 
-        # *   IPV4: IPv4 address
-        # *   IPV6: IPv6 address
-        # *   DOMAIN: domain name
         self.type = type
-        # The time when the address pool was updated.
         self.update_time = update_time
-        # The timestamp that indicates when the address pool was updated.
         self.update_timestamp = update_timestamp
 
     def validate(self):

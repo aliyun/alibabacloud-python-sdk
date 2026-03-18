@@ -42,7 +42,6 @@ class DescribeCloudGtmAddressPoolResponseBody(DaraModel):
         # - IPv6
         # - domain
         self.address_pool_type = address_pool_type
-        # The addresses.
         self.addresses = addresses
         # Address pool availability status:
         # - available: Available
@@ -256,72 +255,26 @@ class DescribeCloudGtmAddressPoolResponseBodyAddressesAddress(DaraModel):
         update_timestamp: int = None,
         weight_value: int = None,
     ):
-        # IP address or domain name.
         self.address = address
-        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
-        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
-        # The failover method that is used if the address fails health checks. Valid values:
-        # 
-        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
-        # Address availability status:
-        # - available: Address available
-        # - unavailable: Address unavailable
         self.available_status = available_status
-        # Address creation time.
         self.create_time = create_time
-        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # Address enable status, indicating whether the address is currently available:
-        # - enable: Enabled status
-        # - disable: Disabled status
         self.enable_status = enable_status
-        # The condition for determining the health status of the address. Valid values:
-        # 
-        # *   any_ok: The health check results of at least one health check template are normal.
-        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
-        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
-        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
-        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
-        # The health check state of the address. Valid values:
-        # 
-        # *   ok: The address passes all health checks of the referenced health check templates.
-        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
-        # *   ok_no_monitor: The address does not reference a health check template and is normal.
-        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
-        # Health check task list.
         self.health_tasks = health_tasks
-        # The availability state of the address when AvailableMode is set to manual. Valid values:
-        # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
-        # Address name.
         self.name = name
-        # Remarks for the address.
         self.remark = remark
-        # The request source list.
         self.request_source = request_source
-        # Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: - true: yes - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
-        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
-        # The address type. Valid values:
-        # 
-        # *   IPv4: IPv4 address
-        # *   IPv6: IPv6 address
-        # *   domain: domain name
         self.type = type
-        # The last time the address was modified.
         self.update_time = update_time
-        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
-        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address, enabling resolution queries to return addresses according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -538,11 +491,8 @@ class DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTa
         template_id: str = None,
         template_name: str = None,
     ):
-        # The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
         self.port = port
-        # ID of the health check template associated with the address.
         self.template_id = template_id
-        # Health check template name.
         self.template_name = template_name
 
     def validate(self):

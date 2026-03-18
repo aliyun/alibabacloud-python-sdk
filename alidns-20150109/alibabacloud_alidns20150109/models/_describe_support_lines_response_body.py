@@ -13,7 +13,6 @@ class DescribeSupportLinesResponseBody(DaraModel):
         record_lines: main_models.DescribeSupportLinesResponseBodyRecordLines = None,
         request_id: str = None,
     ):
-        # The Alibaba Cloud DNS lines.
         self.record_lines = record_lines
         self.request_id = request_id
 
@@ -88,13 +87,9 @@ class DescribeSupportLinesResponseBodyRecordLinesRecordLine(DaraModel):
         line_display_name: str = None,
         line_name: str = None,
     ):
-        # The code of the parent line. Currently, no data is returned.
         self.father_code = father_code
-        # The code of the child line.
         self.line_code = line_code
-        # The display name of the line.
         self.line_display_name = line_display_name
-        # The name of the child line.
         self.line_name = line_name
 
     def validate(self):

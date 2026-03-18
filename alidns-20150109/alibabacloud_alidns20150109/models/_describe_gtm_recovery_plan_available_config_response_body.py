@@ -13,7 +13,6 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBody(DaraModel):
         instances: main_models.DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances = None,
         request_id: str = None,
     ):
-        # The instances.
         self.instances = instances
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance(DaraMo
         instance_id: str = None,
         instance_name: str = None,
     ):
-        # The address pools.
         self.addr_pools = addr_pools
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -170,9 +166,7 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoo
         addr_pool_id: str = None,
         name: str = None,
     ):
-        # The address pool ID.
         self.addr_pool_id = addr_pool_id
-        # The name of the address pool.
         self.name = name
 
     def validate(self):

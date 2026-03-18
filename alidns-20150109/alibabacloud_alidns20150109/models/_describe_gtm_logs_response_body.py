@@ -17,7 +17,6 @@ class DescribeGtmLogsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The list of logs returned.
         self.logs = logs
         # The page number of the returned page.
         self.page_number = page_number
@@ -130,23 +129,14 @@ class DescribeGtmLogsResponseBodyLogsLog(DaraModel):
         oper_time: str = None,
         oper_timestamp: int = None,
     ):
-        # The formatted message content.
         self.content = content
-        # The ID of the object that was operated on.
         self.entity_id = entity_id
-        # The name of the object that was operated on.
         self.entity_name = entity_name
-        # The type of the object that was operated on.
         self.entity_type = entity_type
-        # The ID of the log record.
         self.id = id
-        # The operation performed.
         self.oper_action = oper_action
-        # The IP address subject to the operation.
         self.oper_ip = oper_ip
-        # The time when the operation was performed.
         self.oper_time = oper_time
-        # A timestamp that indicates the time when the operation was performed.
         self.oper_timestamp = oper_timestamp
 
     def validate(self):

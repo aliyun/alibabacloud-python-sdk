@@ -20,13 +20,9 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBody(DaraModel):
         selected_ipv_6lines: main_models.DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines = None,
         suggest_set_default_line: bool = None,
     ):
-        # The available address pools of the domain name type.
         self.domain_addr_pools = domain_addr_pools
-        # The available address pools of the IPv4 type.
         self.ipv_4addr_pools = ipv_4addr_pools
-        # The available address pools of the IPv6 type.
         self.ipv_6addr_pools = ipv_6addr_pools
-        # The source regions.
         self.lines = lines
         # The ID of the request.
         self.request_id = request_id
@@ -249,15 +245,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine(DaraModel
         line_code: str = None,
         line_name: str = None,
     ):
-        # The parent line code of the source region. Leave it blank if no parent line exists.
         self.father_code = father_code
-        # The line name of the source region.
         self.group_code = group_code
-        # The name of the source region group.
         self.group_name = group_name
-        # The line code of the source region.
         self.line_code = line_code
-        # The code of the source region group.
         self.line_name = line_name
 
     def validate(self):
@@ -346,11 +337,8 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6Ad
         id: str = None,
         name: str = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.id = id
-        # The name of the address pool.
         self.name = name
 
     def validate(self):
@@ -427,11 +415,8 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4Ad
         id: str = None,
         name: str = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.id = id
-        # The name of the address pool.
         self.name = name
 
     def validate(self):
@@ -508,11 +493,8 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDoma
         id: str = None,
         name: str = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.id = id
-        # The name of the address pool.
         self.name = name
 
     def validate(self):

@@ -14,9 +14,7 @@ class DescribeCloudGtmGlobalAlertResponseBody(DaraModel):
         alert_group: main_models.DescribeCloudGtmGlobalAlertResponseBodyAlertGroup = None,
         request_id: str = None,
     ):
-        # The alert configurations.
         self.alert_config = alert_config
-        # The alert contact groups.
         self.alert_group = alert_group
         # The request ID.
         self.request_id = request_id
@@ -129,29 +127,9 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
         sms_notice: bool = None,
         threshold: int = None,
     ):
-        # Indicates whether DingTalk notifications are configured. Valid values:
-        # 
-        # *   true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
-        # *   false: DingTalk notifications are not configured.
         self.dingtalk_notice = dingtalk_notice
-        # Indicates whether email notifications are configured. Valid values:
-        # 
-        # *   true: Email notifications are configured. Emails are sent when alerts are triggered.
-        # *   false: Email notifications are not configured.
         self.email_notice = email_notice
-        # The type of the alert event. Valid values:
-        # 
-        # *   addr_alert: The address is unavailable.
-        # *   addr_resume: The address becomes available.
-        # *   addr_pool_unavailable: The address pool is unavailable.
-        # *   addr_pool_available: The address pool becomes available.
         self.notice_type = notice_type
-        # Indicates whether text message notifications are configured. Valid values:
-        # 
-        # *   true: Text message notifications are configured. Text messages are sent when alerts are triggered.
-        # *   false: Text message notifications are not configured.
-        # 
-        # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
         self.threshold = threshold
 

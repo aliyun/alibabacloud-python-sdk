@@ -1,3 +1,10 @@
+2026-03-18 Version: 4.3.1
+- Update API DescribeInternetDnsLogs: add request parameters PreciseSort.
+- Update API ListCloudGtmMonitorNodes: add request parameters ShowDisabledNodes.
+- Update API ListCloudGtmMonitorNodes: add response parameters Body.Ipv4IspCityNodes.$.EnableStatus.
+- Update API ListCloudGtmMonitorNodes: add response parameters Body.Ipv6IspCityNodes.$.EnableStatus.
+
+
 2026-01-20 Version: 4.3.0
 - Support API AddRspDomainServerHoldStatusForGatewayOte.
 - Support API RemoveRspDomainServerHoldStatusForGatewayOte.

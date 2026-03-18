@@ -72,7 +72,6 @@ class DescribeDnsProductInstanceResponseBody(DaraModel):
         # *   basic: Basic DNS protection is provided.
         # *   advanced: Advanced DNS protection is provided.
         self.dns_security = dns_security
-        # The DNS servers configured for the domain names.
         self.dns_servers = dns_servers
         # The domain name that is bound to the paid instance.
         # 

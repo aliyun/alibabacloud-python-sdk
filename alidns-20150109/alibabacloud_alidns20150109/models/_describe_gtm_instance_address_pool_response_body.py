@@ -29,7 +29,6 @@ class DescribeGtmInstanceAddressPoolResponseBody(DaraModel):
         self.addr_count = addr_count
         # The ID of the address pool.
         self.addr_pool_id = addr_pool_id
-        # The addresses in the address pool.
         self.addrs = addrs
         # The time when the address pool was created.
         self.create_time = create_time
@@ -211,29 +210,14 @@ class DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr(DaraModel):
         update_timestamp: int = None,
         value: str = None,
     ):
-        # The ID of the address.
         self.addr_id = addr_id
-        # Indicates whether health check was enabled for the address. Valid values:
-        # 
-        # *   **OK**: Normal
-        # *   **ALERT**: Alert
         self.alert_status = alert_status
-        # The time when the address pool was created.
         self.create_time = create_time
         self.create_timestamp = create_timestamp
-        # The weight of the address.
         self.lba_weight = lba_weight
-        # The mode of the address. Valid values:
-        # 
-        # *   **SMART**: Intelligent return
-        # *   **ONLINE**: Always online
-        # *   **OFFLINE**: Always offline
         self.mode = mode
-        # The last time when the address was updated.
         self.update_time = update_time
-        # A timestamp that indicates the last time when the address was updated.
         self.update_timestamp = update_timestamp
-        # The address.
         self.value = value
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The domain names.
         self.domains = domains
         # The page number of the returned page.
         self.page_number = page_number
@@ -134,51 +133,27 @@ class DescribeDomainsResponseBodyDomainsDomain(DaraModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # Indicates whether the domain name was registered with Alibaba Cloud.
         self.ali_domain = ali_domain
-        # The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the domain name was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The names of the DNS servers configured for the domain name assigned by Alibaba Cloud DNS.
         self.dns_servers = dns_servers
-        # The ID of the domain name.
         self.domain_id = domain_id
-        # Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
-        # 
-        # *   OPEN
-        # *   CLOSE
         self.domain_logging_switch_status = domain_logging_switch_status
-        # The domain name.
         self.domain_name = domain_name
-        # The ID of the domain name group.
         self.group_id = group_id
-        # The name of the domain name group.
         self.group_name = group_name
-        # The time when the Alibaba Cloud DNS instance expires. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.instance_end_time = instance_end_time
-        # Indicates whether the Alibaba Cloud DNS instance expires.
         self.instance_expired = instance_expired
-        # The ID of the Alibaba Cloud DNS instance.
         self.instance_id = instance_id
-        # The Punycode for the domain name. This parameter is returned only for Chinese domain names.
         self.puny_code = puny_code
-        # The number of Domain Name System (DNS) records added for the domain name.
         self.record_count = record_count
-        # The email address of the registrant.
         self.registrant_email = registrant_email
-        # The description of the domain name.
         self.remark = remark
-        # The ID of the resource group to which the domain name belongs.
         self.resource_group_id = resource_group_id
         self.slave_dns_status = slave_dns_status
-        # Indicates whether the domain name was added to favorites.
         self.starmark = starmark
-        # The tags added to the resource.
         self.tags = tags
-        # The edition code of Alibaba Cloud DNS.
         self.version_code = version_code
-        # The edition of Alibaba Cloud DNS.
         self.version_name = version_name
 
     def validate(self):
@@ -373,9 +348,7 @@ class DescribeDomainsResponseBodyDomainsDomainTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
         self.key = key
-        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):

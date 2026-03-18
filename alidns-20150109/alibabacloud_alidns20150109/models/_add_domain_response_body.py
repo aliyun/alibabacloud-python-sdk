@@ -18,7 +18,6 @@ class AddDomainResponseBody(DaraModel):
         puny_code: str = None,
         request_id: str = None,
     ):
-        # The Domain Name System (DNS) servers configured for the domain name.
         self.dns_servers = dns_servers
         # The ID of the domain name.
         self.domain_id = domain_id

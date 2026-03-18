@@ -17,7 +17,6 @@ class SearchCloudGtmAddressesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The addresses.
         self.addresses = addresses
         # Current page number, starting from **1**, default is **1**.
         self.page_number = page_number
@@ -138,62 +137,22 @@ class SearchCloudGtmAddressesResponseBodyAddressesAddress(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # IP address or domain name.
         self.address = address
-        # ID of the address, unique identifier for the address.
         self.address_id = address_id
-        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
-        # The failover method that is used if the address fails health checks. Valid values:
-        # 
-        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
-        # The availability state of the address when AvailableMode is set to manual. Valid values:
-        # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.available_status = available_status
-        # Creation time of the address.
         self.create_time = create_time
-        # Creation time of the address (timestamp).
         self.create_timestamp = create_timestamp
-        # Current activation status of the address:
-        # - enable: Enabled status
-        # - disable: Disabled status
         self.enable_status = enable_status
-        # The condition for determining the health status of the address. Valid values:
-        # 
-        # *   any_ok: The health check results of at least one health check template are normal.
-        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
-        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
-        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
-        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
-        # The health check state of the address. Valid values:
-        # 
-        # *   ok: The address passes all health checks of the referenced health check templates.
-        # *   ok_alert: The address fails some health checks of the referenced health check templates, but the address is deemed available.
-        # *   ok_no_monitor: The address does not reference any health check template.
-        # *   exceptional: The address fails some or all health checks of the referenced health check templates, and the address is deemed unavailable.
         self.health_status = health_status
-        # The health check tasks.
         self.health_tasks = health_tasks
-        # The availability state of the address when AvailableMode is set to manual. Valid values:
-        # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
-        # Address name.
         self.name = name
-        # Remarks.
         self.remark = remark
-        # Address type:
-        # - IPv4: ipv4 address - IPv6: ipv6 address - domain: domain name
         self.type = type
-        # The last modification time of the address.
         self.update_time = update_time
-        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -357,17 +316,9 @@ class SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask(D
         template_id: str = None,
         template_name: str = None,
     ):
-        # The state of the health check task. Valid values:
-        # 
-        # *   ok: The task is normal.
-        # *   alert: The task has an alert.
-        # *   no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
         self.monitor_status = monitor_status
-        # The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
         self.port = port
-        # The ID of the health check template associated with the address.
         self.template_id = template_id
-        # Health check template name.
         self.template_name = template_name
 
     def validate(self):

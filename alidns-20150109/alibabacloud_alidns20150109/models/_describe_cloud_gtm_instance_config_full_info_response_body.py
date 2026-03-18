@@ -43,7 +43,6 @@ class DescribeCloudGtmInstanceConfigFullInfoResponseBody(DaraModel):
         # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
         # *   source_nearest: GTM returns different addresses based on the sources of DNS requests. This way, users can access nearby addresses.
         self.address_pool_lb_strategy = address_pool_lb_strategy
-        # The address pools.
         self.address_pools = address_pools
         # Alert notification configuration.
         self.alert_config = alert_config
@@ -339,68 +338,23 @@ class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool(
         update_timestamp: int = None,
         weight_value: int = None,
     ):
-        # Load balancing policy among addresses in the address pool:
-        # - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates their order for each request.
-        # - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, with smaller numbers having higher priority). If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
-        # - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
-        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
-        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
-        # Address pool name.
         self.address_pool_name = address_pool_name
-        # Address pool type:
-        # - IPv4
-        # - IPv6
-        # - domain
         self.address_pool_type = address_pool_type
-        # The addresses.
         self.addresses = addresses
-        # The availability state of the address pool. Valid values:
-        # 
-        # *   Available
-        # *   unavailable
         self.available_status = available_status
-        # Address pool creation time.
         self.create_time = create_time
-        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # The enabling state of the address pool. Valid values:
-        # 
-        # *   enable
-        # *   disable
         self.enable_status = enable_status
-        # The condition for determining the health state of the address pool. Valid values:
-        # 
-        # *   any_ok: At least one address in the address pool is available.
-        # *   p30_ok: At least 30% of the addresses in the address pool are available.
-        # *   p50_ok: At least 50% of the addresses in the address pool are available.
-        # *   p70_ok: At least 70% of the addresses in the address pool are available.
-        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
-        # Address pool health status:
-        # - ok: Normal, all addresses referenced by the address pool are available.
-        # - ok_alert: Warning, some addresses referenced by the address pool are unavailable, but the address pool status is deemed normal. In the warning state, available address pools are resolved normally, while unavailable ones stop resolving.
-        # - exceptional: Abnormal, some or all of the addresses referenced by the address pool are unavailable, and the address pool status is determined to be abnormal.
         self.health_status = health_status
-        # Parse the list of request sources.
         self.request_source = request_source
-        # Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: 
-        # - true: yes 
-        # - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
-        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
-        # 
-        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
-        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
-        # Sequence number. For any parsing request from any source, the address pool with the smaller sequence number is returned (the sequence number indicates the priority of the address pool returned, with smaller numbers having higher priority).
         self.serial_number = serial_number
-        # Last modification time of the address pool.
         self.update_time = update_time
-        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
-        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address pool, enabling resolution queries to return address pools according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -616,75 +570,25 @@ class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolA
         update_timestamp: int = None,
         weight_value: int = None,
     ):
-        # IP address or domain name.
         self.address = address
-        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
-        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
-        # The failover mode that is used when address exceptions are identified. Valid values:
-        # 
-        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
-        # The availability state of the address. Valid values:
-        # 
-        # *   available
-        # *   unavailable
         self.available_status = available_status
-        # Address creation time.
         self.create_time = create_time
-        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # The enabling state of the address. Valid values:
-        # 
-        # *   enable
-        # *   disable
         self.enable_status = enable_status
-        # The condition for determining the health state of the address. Valid values:
-        # 
-        # *   any_ok: The health check results of at least one health check template are normal.
-        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
-        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
-        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
-        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
-        # The health check state of the address. Valid values:
-        # 
-        # *   ok: The address passes all health checks of the referenced health check templates.
-        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
-        # *   ok_no_monitor: The address does not reference any health check template and is normal.
-        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
-        # The availability state of the address when AvailableMode is set to manual. Valid values:
-        # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
-        # Address name.
         self.name = name
-        # The remark of the address.
         self.remark = remark
-        # Request source list.
         self.request_source = request_source
-        # Indicates whether it is a sequential (non-preemptive) mode scheduling object, applicable to hybrid cloud management scenarios: 
-        # 
-        # - true: yes
-        # - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
-        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
-        # The type of the address. Valid values:
-        # 
-        # *   IPV4: the IPv4 address
-        # *   IPv6: the IPv6 address
-        # *   domain: the domain name
         self.type = type
-        # Last modified time of the address.
         self.update_time = update_time
-        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
-        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address, enabling resolution queries to return addresses in proportion to their weights.
         self.weight_value = weight_value
 
     def validate(self):

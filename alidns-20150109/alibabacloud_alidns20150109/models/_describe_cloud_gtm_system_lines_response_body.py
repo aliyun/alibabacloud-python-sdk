@@ -16,7 +16,6 @@ class DescribeCloudGtmSystemLinesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The system lines.
         self.system_lines = system_lines
         # The system lines, which are in a tree structure. Only a system line is listed in this example.
         self.system_lines_tree = system_lines_tree
@@ -99,18 +98,10 @@ class DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine(DaraModel):
         name: str = None,
         parent_code: str = None,
     ):
-        # The line code.
         self.code = code
-        # The display name of the line.
         self.display_name = display_name
-        # Indicates whether the line can be selected as the source of a Domain Name System (DNS) request. Valid values:
-        # 
-        # *   true
-        # *   false
         self.is_available = is_available
-        # The name of the line.
         self.name = name
-        # The code of the parent line.
         self.parent_code = parent_code
 
     def validate(self):

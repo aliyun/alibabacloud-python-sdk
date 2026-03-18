@@ -156,7 +156,6 @@ class SearchRecursionRecordsResponseBodyRecordsRecord(DaraModel):
         self.creator_type = creator_type
         self.enable_status = enable_status
         self.priority = priority
-        # record ID
         self.record_id = record_id
         self.remark = remark
         self.request_source = request_source
@@ -167,7 +166,6 @@ class SearchRecursionRecordsResponseBodyRecordsRecord(DaraModel):
         self.update_timestamp = update_timestamp
         self.value = value
         self.weight = weight
-        # zone ID
         self.zone_id = zone_id
 
     def validate(self):

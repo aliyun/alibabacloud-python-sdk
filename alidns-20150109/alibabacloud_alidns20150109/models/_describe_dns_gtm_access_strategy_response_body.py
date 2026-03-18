@@ -58,7 +58,6 @@ class DescribeDnsGtmAccessStrategyResponseBody(DaraModel):
         # *   IPV6
         # *   DOMAIN
         self.default_addr_pool_type = default_addr_pool_type
-        # The address pools in the primary address pool group.
         self.default_addr_pools = default_addr_pools
         # The number of available addresses in the primary address pool.
         self.default_available_addr_num = default_available_addr_num
@@ -92,7 +91,6 @@ class DescribeDnsGtmAccessStrategyResponseBody(DaraModel):
         # *   IPV6
         # *   DOMAIN
         self.failover_addr_pool_type = failover_addr_pool_type
-        # The address pools in the secondary address pool group.
         self.failover_addr_pools = failover_addr_pools
         # The number of available addresses in the secondary address pool.
         self.failover_available_addr_num = failover_available_addr_num
@@ -112,7 +110,6 @@ class DescribeDnsGtmAccessStrategyResponseBody(DaraModel):
         self.failover_min_available_addr_num = failover_min_available_addr_num
         # The ID of the associated instance.
         self.instance_id = instance_id
-        # The source regions.
         self.lines = lines
         # The ID of the request.
         self.request_id = request_id
@@ -347,13 +344,9 @@ class DescribeDnsGtmAccessStrategyResponseBodyLinesLine(DaraModel):
         line_code: str = None,
         line_name: str = None,
     ):
-        # The code of the source region group.
         self.group_code = group_code
-        # The name of the source region group.
         self.group_name = group_name
-        # The line code of the source region.
         self.line_code = line_code
-        # The line name of the source region.
         self.line_name = line_name
 
     def validate(self):
@@ -437,13 +430,9 @@ class DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool(
         lba_weight: int = None,
         name: str = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.id = id
-        # The weight of the address pool.
         self.lba_weight = lba_weight
-        # The name of the address pool.
         self.name = name
 
     def validate(self):
@@ -527,13 +516,9 @@ class DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool(Da
         lba_weight: int = None,
         name: str = None,
     ):
-        # The number of addresses in the address pool.
         self.addr_count = addr_count
-        # The ID of the address pool.
         self.id = id
-        # The weight of the address pool.
         self.lba_weight = lba_weight
-        # The name of the address pool.
         self.name = name
 
     def validate(self):

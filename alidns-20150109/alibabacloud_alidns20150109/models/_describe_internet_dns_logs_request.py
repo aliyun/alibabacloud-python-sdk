@@ -14,6 +14,7 @@ class DescribeInternetDnsLogsRequest(DaraModel):
         module: str = None,
         page_number: int = None,
         page_size: int = None,
+        precise_sort: bool = None,
         query_condition: str = None,
         recursion_protocol_type: str = None,
         start_timestamp: int = None,
@@ -38,6 +39,7 @@ class DescribeInternetDnsLogsRequest(DaraModel):
         self.page_number = page_number
         # Page size for query.
         self.page_size = page_size
+        self.precise_sort = precise_sort
         # Query parameters 
         # - sourceIp: Source IP address 
         # - queryNameFuzzy: Domain name (fuzzy value) 
@@ -79,6 +81,9 @@ class DescribeInternetDnsLogsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.precise_sort is not None:
+            result['PreciseSort'] = self.precise_sort
+
         if self.query_condition is not None:
             result['QueryCondition'] = self.query_condition
 
@@ -112,6 +117,9 @@ class DescribeInternetDnsLogsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('PreciseSort') is not None:
+            self.precise_sort = m.get('PreciseSort')
 
         if m.get('QueryCondition') is not None:
             self.query_condition = m.get('QueryCondition')

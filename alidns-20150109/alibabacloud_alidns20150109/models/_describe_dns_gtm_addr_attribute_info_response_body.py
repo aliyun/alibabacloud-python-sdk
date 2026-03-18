@@ -13,7 +13,6 @@ class DescribeDnsGtmAddrAttributeInfoResponseBody(DaraModel):
         addr: main_models.DescribeDnsGtmAddrAttributeInfoResponseBodyAddr = None,
         request_id: str = None,
     ):
-        # The address in the address pool.
         self.addr = addr
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr(DaraModel):
         addr: str = None,
         attribute_info: main_models.DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo = None,
     ):
-        # The address in the address pool.
         self.addr = addr
-        # The information about the source region of the address.
         self.attribute_info = attribute_info
 
     def validate(self):
@@ -129,15 +126,10 @@ class DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo(DaraModel
         line_code: str = None,
         line_name: str = None,
     ):
-        # The parent line code of the source region.
         self.father_code = father_code
-        # The code of the source region group.
         self.group_code = group_code
-        # The name of the source region group.
         self.group_name = group_name
-        # The line code of the source region.
         self.line_code = line_code
-        # The line name of the source region.
         self.line_name = line_name
 
     def validate(self):

@@ -52,7 +52,6 @@ class DescribeGtmAccessStrategyResponseBody(DaraModel):
         self.failover_addr_pool_status = failover_addr_pool_status
         # The ID of the GTM instance whose access policy details you want to query.
         self.instance_id = instance_id
-        # The returned lines of access regions.
         self.lines = lines
         # The ID of the request.
         self.request_id = request_id
@@ -218,13 +217,9 @@ class DescribeGtmAccessStrategyResponseBodyLinesLine(DaraModel):
         line_code: str = None,
         line_name: str = None,
     ):
-        # The code of the access region group.
         self.group_code = group_code
-        # The name of the access region group.
         self.group_name = group_name
-        # The code for the line of the access region.
         self.line_code = line_code
-        # The name for the line of the access region.
         self.line_name = line_name
 
     def validate(self):

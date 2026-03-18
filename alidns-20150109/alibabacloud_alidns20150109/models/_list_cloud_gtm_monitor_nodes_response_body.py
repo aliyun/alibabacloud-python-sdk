@@ -14,9 +14,7 @@ class ListCloudGtmMonitorNodesResponseBody(DaraModel):
         ipv_6isp_city_nodes: main_models.ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes = None,
         request_id: str = None,
     ):
-        # Public IPv4 monitoring node list.
         self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
-        # List of public IPv6 monitoring nodes.
         self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
         # Unique request identification code.
         self.request_id = request_id
@@ -101,6 +99,7 @@ class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode(DaraMo
         country_code: str = None,
         country_name: str = None,
         default_selected: bool = None,
+        enable_status: str = None,
         group_name: str = None,
         group_type: str = None,
         ips: main_models.ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps = None,
@@ -108,32 +107,17 @@ class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode(DaraMo
         isp_name: str = None,
         node_id: str = None,
     ):
-        # City code.
         self.city_code = city_code
-        # City name.
         self.city_name = city_name
-        # Country code.
         self.country_code = country_code
-        # Country name.
         self.country_name = country_name
-        # Monitor node default selection:
-        # - true: Selected by default
-        # - false: Not selected by default
         self.default_selected = default_selected
-        # Monitoring probe group name.
+        self.enable_status = enable_status
         self.group_name = group_name
-        # Monitoring node group type, currently supported:
-        # - BGP: BGP node
-        # - OVERSEAS: International node
-        # - ISP: Carrier node
         self.group_type = group_type
-        # List of node IP addresses.
         self.ips = ips
-        # Operator code.
         self.isp_code = isp_code
-        # Operator name.
         self.isp_name = isp_name
-        # Unique identifier ID of the probe node.
         self.node_id = node_id
 
     def validate(self):
@@ -159,6 +143,9 @@ class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode(DaraMo
 
         if self.default_selected is not None:
             result['DefaultSelected'] = self.default_selected
+
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
 
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -196,6 +183,9 @@ class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode(DaraMo
 
         if m.get('DefaultSelected') is not None:
             self.default_selected = m.get('DefaultSelected')
+
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
 
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
@@ -288,6 +278,7 @@ class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode(DaraMo
         country_code: str = None,
         country_name: str = None,
         default_selected: bool = None,
+        enable_status: str = None,
         group_name: str = None,
         group_type: str = None,
         ips: main_models.ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps = None,
@@ -295,32 +286,17 @@ class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode(DaraMo
         isp_name: str = None,
         node_id: str = None,
     ):
-        # City code.
         self.city_code = city_code
-        # City name.
         self.city_name = city_name
-        # Country code.
         self.country_code = country_code
-        # Country name.
         self.country_name = country_name
-        # Monitor node default selection:
-        # - true: Selected by default
-        # - false: Not selected by default
         self.default_selected = default_selected
-        # Monitor probe group name.
+        self.enable_status = enable_status
         self.group_name = group_name
-        # Monitoring node group type, currently supported:
-        # - BGP: BGP node
-        # - OVERSEAS: International node
-        # - ISP: Carrier node
         self.group_type = group_type
-        # List of node IP addresses.
         self.ips = ips
-        # Operator code.
         self.isp_code = isp_code
-        # Operator name.
         self.isp_name = isp_name
-        # Unique identifier ID of the probe node.
         self.node_id = node_id
 
     def validate(self):
@@ -346,6 +322,9 @@ class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode(DaraMo
 
         if self.default_selected is not None:
             result['DefaultSelected'] = self.default_selected
+
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
 
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -383,6 +362,9 @@ class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode(DaraMo
 
         if m.get('DefaultSelected') is not None:
             self.default_selected = m.get('DefaultSelected')
+
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
 
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')

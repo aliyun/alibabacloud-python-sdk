@@ -17,7 +17,6 @@ class SearchCloudGtmAddressPoolsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The address pools.
         self.address_pools = address_pools
         # Current page number, starting from 1, default is 1.
         self.page_number = page_number
@@ -136,59 +135,20 @@ class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # Load balancing policy among addresses in the address pool:
-        # - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates the order of all addresses each time.
-        # - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, the smaller the higher the priority). If the address with the smaller sequence number is unavailable, return the next address with a smaller sequence number.
-        # - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
-        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
-        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
-        # Address pool name.
         self.address_pool_name = address_pool_name
-        # Address pool type:
-        # - IPv4
-        # - IPv6
-        # - domain
         self.address_pool_type = address_pool_type
-        # The IP addresses or domain names.
         self.addresses = addresses
-        # Address pool availability status:
-        # - available: Available
-        # - unavailable: Unavailable
         self.available_status = available_status
-        # Address pool creation time.
         self.create_time = create_time
-        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # Address pool status:
-        # - enable: Enabled status
-        # - disable: Disabled status
         self.enable_status = enable_status
-        # The condition for determining the health status of the address pool. Valid values:
-        # 
-        # *   any_ok: At least one address in the address pool is available.
-        # *   p30_ok: At least 30% of the addresses in the address pool are available.
-        # *   p50_ok: At least 50% of the addresses in the address pool are available.
-        # *   p70_ok: At least 70% of the addresses in the address pool are available.
-        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
-        # The health state of the address pool. Valid values:
-        # 
-        # *   ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
-        # *   ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
-        # *   exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
-        # Address remarks.
         self.remark = remark
-        # The mode used if the address with the smallest sequence number is recovered. This parameter is returned only when the policy for load balancing between addresses is sequence. Valid values:
-        # 
-        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
-        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
-        # Last modification time of the address pool.
         self.update_time = update_time
-        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -356,67 +316,25 @@ class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddr
         update_timestamp: int = None,
         weight_value: int = None,
     ):
-        # IP address or domain name.
         self.address = address
-        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
-        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
-        # The failover method that is used if the address fails health checks. Valid values:
-        # 
-        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
-        # Address availability status:
-        # - available: Address is available
-        # - unavailable: Address is unavailable
         self.available_status = available_status
-        # Address creation time.
         self.create_time = create_time
-        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # Address enable status, indicating whether the address is currently available:
-        # - enable: Enabled status 
-        # - disable: Disabled status
         self.enable_status = enable_status
-        # The condition for determining the health status of the address. Valid values:
-        # 
-        # *   any_ok: The health check results of at least one health check template are normal.
-        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
-        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
-        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
-        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
-        # The health check state of the address. Valid values:
-        # 
-        # *   ok: The address passes all health checks of the referenced health check templates.
-        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
-        # *   ok_no_monitor: The address does not reference a health check template and is normal.
-        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
-        # The health check tasks.
         self.health_tasks = health_tasks
-        # The availability state of the address when AvailableMode is set to manual. Valid values:
-        # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
-        # Address name.
         self.name = name
-        # Remarks.
         self.remark = remark
-        # Request source, referring to the source of the request. GTM schedules based on the exit IP of the LocalDNS used by the terminal. If the LocalDNS supports ECS (edns-client-subnet), intelligent scheduling can also be performed based on the IP of the visiting terminal.
         self.request_source = request_source
-        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
-        # Address type:
-        # - IPv4: ipv4 address - IPv6: ipv6 address - domain: domain name
         self.type = type
-        # The last time the address was modified.
         self.update_time = update_time
-        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
-        # Weight value (an integer between 1 and 100), allowing different weight values to be set for each address, enabling resolution queries to return addresses according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -597,11 +515,8 @@ class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddr
         template_id: str = None,
         template_name: str = None,
     ):
-        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
         self.port = port
-        # The ID of the health check template associated with the address.
         self.template_id = template_id
-        # Health check template name.
         self.template_name = template_name
 
     def validate(self):

@@ -31,7 +31,6 @@ class DescribeGtmMonitorConfigResponseBody(DaraModel):
         self.evaluation_count = evaluation_count
         # The health check interval. Unit: seconds. The value is 60.
         self.interval = interval
-        # The monitored nodes.
         self.isp_city_nodes = isp_city_nodes
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
@@ -200,17 +199,11 @@ class DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode(DaraModel):
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The code of the city where the monitored node is deployed.
         self.city_code = city_code
-        # The display name of the city where the monitored node is deployed.
         self.city_name = city_name
-        # The code of the country where the monitored node is deployed.
         self.country_code = country_code
-        # The display name of the country where the monitored node is deployed.
         self.country_name = country_name
-        # The code of the Internet service provider (ISP) to which the monitored node belongs.
         self.isp_code = isp_code
-        # The display name of the ISP to which the monitored node belongs.
         self.isp_name = isp_name
 
     def validate(self):

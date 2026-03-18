@@ -28,7 +28,6 @@ class DescribeDnsGtmInstanceAddressPoolResponseBody(DaraModel):
         self.addr_count = addr_count
         # The ID of the address pool.
         self.addr_pool_id = addr_pool_id
-        # The addresses in the address pool.
         self.addrs = addrs
         # The time when the address pool was created.
         self.create_time = create_time
@@ -205,36 +204,15 @@ class DescribeDnsGtmInstanceAddressPoolResponseBodyAddrsAddr(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The address.
         self.addr = addr
-        # The status of the last health check on the address. Valid values:
-        # 
-        # *   OK: No active alerts are triggered.
-        # *   ALERT: Alerts are triggered based on the alert rules.
         self.alert_status = alert_status
-        # The source region of the address.
-        # 
-        # *   lineCode: the line code of the source region of the address. This parameter is deprecated, and lineCodes prevails.
-        # *   lineName: the line name of the source region of the address. This parameter is deprecated.
-        # *   lineCodes: the line codes of the source regions of the address.
         self.attribute_info = attribute_info
-        # The time when the address was added into the address pool.
         self.create_time = create_time
-        # The timestamp that indicates the time when the address was added into the address pool.
         self.create_timestamp = create_timestamp
-        # The weight of the address.
         self.lba_weight = lba_weight
-        # The mode of the address. Valid values:
-        # 
-        # *   SMART: smart return
-        # *   ONLINE: always online
-        # *   OFFLINE: always offline
         self.mode = mode
-        # The description of the address.
         self.remark = remark
-        # The time when the address was last updated.
         self.update_time = update_time
-        # The timestamp that indicates the time when the address was last updated.
         self.update_timestamp = update_timestamp
 
     def validate(self):

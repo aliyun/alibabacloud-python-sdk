@@ -16,7 +16,6 @@ class DescribeTransferDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The domain names that were transferred between accounts.
         self.domain_transfers = domain_transfers
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -118,17 +117,11 @@ class DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer(DaraModel
         id: int = None,
         target_user_id: int = None,
     ):
-        # The time when the domain name was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The domain name.
         self.domain_name = domain_name
-        # The user ID from which the domain name was transferred.
         self.from_user_id = from_user_id
-        # The ID of the domain name that was transferred.
         self.id = id
-        # The user ID to which the domain name was transferred.
         self.target_user_id = target_user_id
 
     def validate(self):

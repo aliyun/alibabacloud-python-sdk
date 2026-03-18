@@ -38,11 +38,9 @@ class DescribeDomainInfoResponseBody(DaraModel):
     ):
         # Indicates whether the domain name was registered in Alibaba Cloud.
         self.ali_domain = ali_domain
-        # The available time to live (TTL) values that can be configured for the domain name. Available TTL values are not returned by default. If you want to query such information, set NeedDetailAttributes to true.
         self.available_ttls = available_ttls
         # The time when the domain name was created.
         self.create_time = create_time
-        # The DNS servers that are used to resolve the domain name.
         self.dns_servers = dns_servers
         # The ID of the domain name.
         self.domain_id = domain_id
@@ -68,7 +66,6 @@ class DescribeDomainInfoResponseBody(DaraModel):
         self.puny_code = puny_code
         # The tree-structure DNS request lines.
         self.record_line_tree_json = record_line_tree_json
-        # The DNS request lines.
         self.record_lines = record_lines
         # Indicates whether the DNS request lines are regional lines.
         self.region_lines = region_lines
@@ -305,13 +302,9 @@ class DescribeDomainInfoResponseBodyRecordLinesRecordLine(DaraModel):
         line_display_name: str = None,
         line_name: str = None,
     ):
-        # The code of the parent line. This parameter is not returned if the line has no parent line.
         self.father_code = father_code
-        # The code of the line.
         self.line_code = line_code
-        # The name of the parent line.
         self.line_display_name = line_display_name
-        # The name of the line.
         self.line_name = line_name
 
     def validate(self):

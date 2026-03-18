@@ -32,7 +32,6 @@ class DescribeGtmRecoveryPlanResponseBody(DaraModel):
         self.create_timestamp = create_timestamp
         # The number of faulty address pools.
         self.fault_addr_pool_num = fault_addr_pool_num
-        # The faulty address pools.
         self.fault_addr_pools = fault_addr_pools
         # The time when the disaster recovery plan was last executed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.last_execute_time = last_execute_time
@@ -206,12 +205,9 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool(DaraModel):
         addrs: main_models.DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs = None,
         instance_id: str = None,
     ):
-        # The address pool ID.
         self.addr_pool_id = addr_pool_id
-        # The address pool name.
         self.addr_pool_name = addr_pool_name
         self.addrs = addrs
-        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -296,11 +292,8 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr(Da
         mode: str = None,
         value: str = None,
     ):
-        # The address ID.
         self.id = id
-        # The address mode.
         self.mode = mode
-        # The address.
         self.value = value
 
     def validate(self):

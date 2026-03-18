@@ -17,7 +17,6 @@ class SearchCloudGtmInstanceConfigsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The instances list.
         self.instance_configs = instance_configs
         # Current page number, starting from 1, default is 1.
         self.page_number = page_number
@@ -143,77 +142,27 @@ class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(Dar
         update_timestamp: int = None,
         version_code: str = None,
     ):
-        # The policy for load balancing between address pools. Valid values:
-        # 
-        # *   round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
-        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
-        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
-        # *   source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
         self.address_pool_lb_strategy = address_pool_lb_strategy
-        # The address pools.
         self.address_pools = address_pools
-        # The availability state of the access domain name. Valid values:
-        # 
-        # *   available: If the access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
-        # *   unavailable: If the access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
         self.available_status = available_status
-        # The commodity code. Valid values:
-        # 
-        # *   dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
-        # *   dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
-        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
         self.config_logging_switch_status = config_logging_switch_status
-        # Domain instance creation time.
         self.create_time = create_time
-        # Domain instance creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # The enabling state of the access domain name. Valid values:
-        # 
-        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
-        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
         self.enable_status = enable_status
-        # The health state of the access domain name. Valid values:
-        # 
-        # *   ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
-        # *   ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
-        # *   exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
-        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
-        # Remarks for the domain instance.
         self.remark = remark
-        # The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
-        # Host record of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
-        # DNS record types for the scheduling domain:
-        # - A: IPv4 address
-        # - AAAA: IPv6 address
-        # - CNAME: Domain name
         self.schedule_rr_type = schedule_rr_type
-        # The allocation mode of the access domain name. Valid values:
-        # 
-        # *   custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone that is hosted by the Public Authoritative DNS module within the account to which the GTM instance belongs to generate an access domain name.
-        # *   sys_assign: system allocation. This mode is not supported. Do not set ScheduleZoneMode to sys_assign.
         self.schedule_zone_mode = schedule_zone_mode
-        # The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
-        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
-        # 
-        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
-        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
-        # Global TTL (in seconds), the TTL value for resolving the access domain name to the address pool, which affects the caching time of DNS records in the operator\\"s LocalDNS. Supports custom TTL values.
         self.ttl = ttl
-        # The last modification time of the domain instance.
         self.update_time = update_time
-        # The last modification time of the domain instance (timestamp).
         self.update_timestamp = update_timestamp
-        # Global Traffic Management version 3.0 instance types:
-        # - standard: Standard Edition
-        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -420,65 +369,22 @@ class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddr
         update_timestamp: int = None,
         weight_value: int = None,
     ):
-        # Load balancing policy among addresses in the address pool:
-        # - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
-        # - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
-        # - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the ratio of weights in DNS query resolutions.
-        # - source_nearest: Source-nearest, referring to the intelligent resolution feature, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing the nearest server.
         self.address_lb_strategy = address_lb_strategy
-        # Address pool ID, uniquely identifying the address pool.
         self.address_pool_id = address_pool_id
-        # Address pool name.
         self.address_pool_name = address_pool_name
-        # Address pool type:
-        # - IPv4
-        # - IPv6
-        # - domain
         self.address_pool_type = address_pool_type
-        # Address pool availability status:
-        # - available: Available
-        # - unavailable: Unavailable
         self.available_status = available_status
-        # Address pool creation time.
         self.create_time = create_time
-        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # Address pool status:
-        # - enable: Enabled status
-        # - disable: Disabled status
         self.enable_status = enable_status
-        # The condition for determining the health status of the address pool. Valid values:
-        # 
-        # *   any_ok: At least one address in the address pool is available.
-        # *   p30_ok: At least 30% of the addresses in the address pool are available.
-        # *   p50_ok: At least 50% of the addresses in the address pool are available.
-        # *   p70_ok: At least 70% of the addresses in the address pool are available.
-        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
-        # The health state of the address pool. Valid values:
-        # 
-        # *   ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
-        # *   ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
-        # *   exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
-        # Parse the request source list.
         self.request_source = request_source
-        # Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: 
-        # - true: yes 
-        # - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
-        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when the policy for load balancing between addresses is sequence. Valid values:
-        # 
-        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
-        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
-        # Sequence number. For any parsing request, the address pool with the smaller sequence number (indicating the priority of the address pool returned, with smaller numbers having higher priority) will be returned.
         self.serial_number = serial_number
-        # Last modification time of the address pool.
         self.update_time = update_time
-        # Update time (timestamp).
         self.update_timestamp = update_timestamp
-        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address pool, implementing the return of address pools according to weight ratios in resolution queries.
         self.weight_value = weight_value
 
     def validate(self):

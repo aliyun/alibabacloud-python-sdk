@@ -17,7 +17,6 @@ class ListCloudGtmAlertLogsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The alert logs.
         self.logs = logs
         # Current page number, starting from 1, default is 1.
         self.page_number = page_number
@@ -125,19 +124,9 @@ class ListCloudGtmAlertLogsResponseBodyLogsLog(DaraModel):
         entity_type: str = None,
         timestamp: int = None,
     ):
-        # Alert type:
-        # - ALERT
-        # - RESUME
         self.action_type = action_type
-        # The alert content.
         self.content = content
-        # Alarm object types:
-        # - GTM_ADDRESS: Address
-        # - GTM_ADDRESS_POOL: Address Pool
-        # - GTM_INSTANCE: Instance
-        # - GTM_MONITOR_TEMPLATE: Health Check Template
         self.entity_type = entity_type
-        # Alert log time (timestamp).
         self.timestamp = timestamp
 
     def validate(self):

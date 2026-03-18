@@ -22,7 +22,6 @@ class DescribeInternetDnsLogsResponseBody(DaraModel):
         self.complete = complete
         # Current page number.
         self.cur_page = cur_page
-        # The queried logs.
         self.logs = logs
         # Page size for query.
         self.page_size = page_size
@@ -145,37 +144,20 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(DaraModel):
         value: main_models.DescribeInternetDnsLogsResponseBodyLogsLogValue = None,
         zone_name: str = None,
     ):
-        # Parse log ID (can be duplicated).
         self.dns_msg_id = dns_msg_id
         self.flags = flags
-        # Parse timestamp.
         self.log_time = log_time
-        # The protocol type of the domain name resolution query request:
-        # - UDP
-        # - TCP
-        # - HTTP
-        # - HTTPS
-        # - DOH
         self.protocol = protocol
         self.query_flags = query_flags
-        # The domain name for which you want to query Domain Name System (DNS) records.
         self.query_name = query_name
-        # Record type.
         self.query_type = query_type
         self.response_timestamp = response_timestamp
-        # Parse response time.
         self.rt = rt
-        # Parse server IP.
         self.server_ip = server_ip
-        # Source IP address.
         self.source_ip = source_ip
-        # Response status.
         self.status = status
-        # The value set for the edns-client-subnet option.
         self.subnet_ip = subnet_ip
-        # Array of parsing results.
         self.value = value
-        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):

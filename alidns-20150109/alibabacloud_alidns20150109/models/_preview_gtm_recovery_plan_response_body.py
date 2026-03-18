@@ -21,7 +21,6 @@ class PreviewGtmRecoveryPlanResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The returned preview information of the disaster recovery plan.
         self.previews = previews
         # The ID of the request.
         self.request_id = request_id
@@ -125,13 +124,9 @@ class PreviewGtmRecoveryPlanResponseBodyPreviewsPreview(DaraModel):
         switch_infos: main_models.PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos = None,
         user_domain_name: str = None,
     ):
-        # The ID of the GTM instance to which the previewed disaster recovery plan belongs.
         self.instance_id = instance_id
-        # The name of the GTM instance to which the previewed disaster recovery plan belongs.
         self.name = name
-        # The returned information of the switching policies for address pools.
         self.switch_infos = switch_infos
-        # The user\\"s domain name or domain name list.
         self.user_domain_name = user_domain_name
 
     def validate(self):
@@ -215,9 +210,7 @@ class PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfosSwitchInfo(Dar
         content: str = None,
         strategy_name: str = None,
     ):
-        # The formatted message content.
         self.content = content
-        # The name of the switching policy for address pools.
         self.strategy_name = strategy_name
 
     def validate(self):
