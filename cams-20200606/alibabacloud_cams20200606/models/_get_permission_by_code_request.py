@@ -16,10 +16,14 @@ class GetPermissionByCodeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Authorize code information.
+        # 
         # This parameter is required.
         self.code = code
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The permissions.
         self.permissions = permissions
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

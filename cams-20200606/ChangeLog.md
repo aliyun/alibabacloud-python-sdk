@@ -1,3 +1,7 @@
+2026-03-18 Version: 4.0.3
+- Update API SendChatappMessage: add request parameters Category.
+
+
 2026-02-06 Version: 4.0.2
 - Update API CreateFlow: add request parameters EndpointUri.
 - Update API GetFlow: add response parameters Body.Data.EndpointUri.

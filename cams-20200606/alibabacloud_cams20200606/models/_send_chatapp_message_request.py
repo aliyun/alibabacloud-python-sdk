@@ -11,6 +11,7 @@ class SendChatappMessageRequest(DaraModel):
     def __init__(
         self,
         ad_account_id: str = None,
+        category: str = None,
         channel_type: str = None,
         content: str = None,
         context_message_id: str = None,
@@ -45,6 +46,13 @@ class SendChatappMessageRequest(DaraModel):
         type: str = None,
     ):
         self.ad_account_id = ad_account_id
+        self.category = category
+        # The channel type. Valid values:
+        # 
+        # *   **whatsapp**
+        # *   **viber**
+        # *   **line** (under development)
+        # 
         # This parameter is required.
         self.channel_type = channel_type
         # The message content.
@@ -73,38 +81,104 @@ class SendChatappMessageRequest(DaraModel):
         # *   If you set **messageType** to **text_video**, you must specify **text**, **link**, **thumbnail**, **fileSize**, and **duration**.
         # *   If you set **messageType** to **text_video_button**, you must specify **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption**. In addition, you must not specify **action**.
         self.content = content
+        # The ID of the reply message.
         self.context_message_id = context_message_id
+        # The space ID of the user.
         self.cust_space_id = cust_space_id
+        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+        # 
+        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
+        # The content of the fallback message.
         self.fall_back_content = fall_back_content
+        # Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the **message fails to be sent** or **the message receipt that indicates the message is not delivered to clients** is received. Unit: seconds. Valid values: 60 to 43200.
         self.fall_back_duration = fall_back_duration
+        # The ID of the fallback policy. You can create a fallback policy and view the information in the Chat App Message Service console.
         self.fall_back_id = fall_back_id
+        # The fallback rule. Valid values:
+        # 
+        # *   **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
+        # *   **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
         self.fall_back_rule = fall_back_rule
+        # The Flow action.
         self.flow_action = flow_action
+        # The mobile phone number of the message sender.
+        # 
+        # >  You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the Chat App Message Service console.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The type of the Viber message. This parameter is required if ChannelType is set to viber. Valid values:
+        # 
+        # *   **promotion**
+        # *   **transaction**
         self.label = label
+        # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         self.message_campaign_id = message_campaign_id
+        # The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
+        # 
+        # **Valid values of MessageType when you set the ChannelType parameter to whatsapp:**
+        # 
+        # *   **text**: a text message.
+        # *   **image**: an image message.
+        # *   **video**: a video message.
+        # *   **audio**: an audio message.
+        # *   **document**: a document message.
+        # *   **interactive**: an interactive message.
+        # *   **contacts**: a contact message.
+        # *   **location**: a location message.
+        # *   **sticker**: a sticker message.
+        # *   **reaction**: a reaction message.
+        # 
+        # **Valid values of MessageType when you set the ChannelType parameter to viber:**
+        # 
+        # *   **text**: a text message.
+        # *   **image**: an image message.
+        # *   **video**: a video message.
+        # *   **document**: a document message.
+        # *   **text_button**: a message that contains the text and button media objects.
+        # *   **text_image_button**: a message that contains multiple media objects, including the text, image, and button.
+        # *   **text_video**: a message that contains the text and video media objects.
+        # *   **text_video_button**: a message that contains multiple media objects, including text, video, and button.
+        # *   **text_image**: a message that contains the text and image media objects.
+        # 
+        # > For more information, see [Parameters of a message template](https://help.aliyun.com/document_detail/454530.html).
         self.message_type = message_type
         self.owner_id = owner_id
         # The payload of the button.
         self.payload = payload
+        # The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
         self.product_action = product_action
         self.recipient_type = recipient_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag information of the Viber message.
         self.tag = tag
+        # The task ID.
         self.task_id = task_id
+        # The code of the message template. This parameter is required only if you set the Type parameter to **template**.
         self.template_code = template_code
+        # The name of the message template.
         self.template_name = template_name
+        # The variables of the message template.
         self.template_params = template_params
+        # The mobile phone number of the message receiver.
+        # 
         # This parameter is required.
         self.to = to
         self.token_type = token_type
+        # The tracking data of the Viber message.
         self.tracking_data = tracking_data
+        # The timeout period for sending the Viber message. Valid values: 30 to 1209600. Unit: seconds.
         self.ttl = ttl
+        # The message type. Valid values:
+        # 
+        # *   **template**: the template message. A template message is sent based on a template that is created and approved in the Chat App Message Service console. You can send template messages based on your business requirements.
+        # *   **message**: the custom message. You can send a custom WhatsApp message to a user only within 24 hours after you receive the last message from the user. This limit does not apply to custom Viber messages.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -121,6 +195,9 @@ class SendChatappMessageRequest(DaraModel):
             result = _map
         if self.ad_account_id is not None:
             result['AdAccountId'] = self.ad_account_id
+
+        if self.category is not None:
+            result['Category'] = self.category
 
         if self.channel_type is not None:
             result['ChannelType'] = self.channel_type
@@ -224,6 +301,9 @@ class SendChatappMessageRequest(DaraModel):
         m = m or dict()
         if m.get('AdAccountId') is not None:
             self.ad_account_id = m.get('AdAccountId')
+
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
 
         if m.get('ChannelType') is not None:
             self.channel_type = m.get('ChannelType')
@@ -331,7 +411,9 @@ class SendChatappMessageRequestProductAction(DaraModel):
         sections: List[main_models.SendChatappMessageRequestProductActionSections] = None,
         thumbnail_product_retailer_id: str = None,
     ):
+        # The products. Up to 30 products and 10 categories can be added.
         self.sections = sections
+        # The retailer ID of the product.
         self.thumbnail_product_retailer_id = thumbnail_product_retailer_id
 
     def validate(self):
@@ -374,7 +456,9 @@ class SendChatappMessageRequestProductActionSections(DaraModel):
         product_items: List[main_models.SendChatappMessageRequestProductActionSectionsProductItems] = None,
         title: str = None,
     ):
+        # The products.
         self.product_items = product_items
+        # The name of the category.
         self.title = title
 
     def validate(self):
@@ -416,6 +500,7 @@ class SendChatappMessageRequestProductActionSectionsProductItems(DaraModel):
         self,
         product_retailer_id: str = None,
     ):
+        # The retailer ID of the product.
         self.product_retailer_id = product_retailer_id
 
     def validate(self):
@@ -444,7 +529,9 @@ class SendChatappMessageRequestFlowAction(DaraModel):
         flow_action_data: Dict[str, Any] = None,
         flow_token: str = None,
     ):
+        # The default parameter of the Flow.
         self.flow_action_data = flow_action_data
+        # The Flow token.
         self.flow_token = flow_token
 
     def validate(self):

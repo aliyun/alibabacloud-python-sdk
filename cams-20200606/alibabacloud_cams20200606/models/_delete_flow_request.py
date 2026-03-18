@@ -13,7 +13,10 @@ class DeleteFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
+        # The Flow ID.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
         self.owner_id = owner_id

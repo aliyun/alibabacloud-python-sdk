@@ -13,8 +13,11 @@ class GetPhoneEncryptionPublicKeyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the user under the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account

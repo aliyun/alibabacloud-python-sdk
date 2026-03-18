@@ -15,13 +15,26 @@ class GetChatappVerifyCodeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the RAM user within the ISV account.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The language. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
         # This parameter is required.
         self.locale = locale
+        # The verification method.
+        # 
+        # Valid values:
+        # 
+        # *   Voice: sends the verification code via phone call.
+        # *   sms: sends the verification code via SMS.
+        # 
         # This parameter is required.
         self.method = method
         self.owner_id = owner_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account

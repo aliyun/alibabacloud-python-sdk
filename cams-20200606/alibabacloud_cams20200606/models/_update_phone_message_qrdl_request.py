@@ -16,14 +16,23 @@ class UpdatePhoneMessageQrdlRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # SpaceId/instance ID of ISV sub customer.
         self.cust_space_id = cust_space_id
+        # Produce QR code image format.
+        # 
         # This parameter is required.
         self.generate_qr_image = generate_qr_image
         self.owner_id = owner_id
+        # Number, enter the country/region code+number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
+        # Message content.
+        # 
         # This parameter is required.
         self.prefilled_message = prefilled_message
+        # QR code encoding.
+        # 
         # This parameter is required.
         self.qrdl_code = qrdl_code
         self.resource_owner_account = resource_owner_account

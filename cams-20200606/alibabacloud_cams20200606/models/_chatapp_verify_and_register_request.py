@@ -14,13 +14,19 @@ class ChatappVerifyAndRegisterRequest(DaraModel):
         resource_owner_id: int = None,
         verify_code: str = None,
     ):
+        # The space ID of the RAM user within the ISV account.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The verification code.
+        # 
         # This parameter is required.
         self.verify_code = verify_code
 

@@ -16,9 +16,18 @@ class IsvGetAppIdRequest(DaraModel):
     ):
         self.intl_version = intl_version
         self.owner_id = owner_id
+        # The permission.
+        # 
+        # Valid values:
+        # 
+        # *   whatsapp_business_messaging: sending permission on WhatsApp messages
+        # *   ads_management: management permission on advertisements
+        # *   catalog_management: management permission on catalogs
         self.permissions = permissions
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the app. Valid value: WHATSAPP.
+        # 
         # This parameter is required.
         self.type = type
 

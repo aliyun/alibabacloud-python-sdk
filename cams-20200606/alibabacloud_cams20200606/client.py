@@ -13461,6 +13461,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.ad_account_id):
             query['AdAccountId'] = request.ad_account_id
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
         if not DaraCore.is_null(request.channel_type):
             query['ChannelType'] = request.channel_type
         if not DaraCore.is_null(request.content):
@@ -13563,6 +13565,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.ad_account_id):
             query['AdAccountId'] = request.ad_account_id
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
         if not DaraCore.is_null(request.channel_type):
             query['ChannelType'] = request.channel_type
         if not DaraCore.is_null(request.content):

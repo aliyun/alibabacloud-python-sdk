@@ -14,10 +14,15 @@ class UpdatePhoneEncryptionPublicKeyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # SpaceId/instanceId of ISV sub clients.
         self.cust_space_id = cust_space_id
+        # Encrypt the public key.
+        # 
         # This parameter is required.
         self.encryption_public_key = encryption_public_key
         self.owner_id = owner_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account

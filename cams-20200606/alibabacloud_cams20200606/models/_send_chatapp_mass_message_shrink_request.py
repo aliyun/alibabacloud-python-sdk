@@ -28,28 +28,60 @@ class SendChatappMassMessageShrinkRequest(DaraModel):
         template_name: str = None,
         ttl: int = None,
     ):
+        # The type of the channel. Valid values:
+        # 
+        # *   **whatsapp**
+        # *   **viber**
+        # *   **line** (under development)
+        # 
         # This parameter is required.
         self.channel_type = channel_type
+        # The space ID of the user.
         self.cust_space_id = cust_space_id
+        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+        # 
+        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
+        # The content of the fallback message.
         self.fall_back_content = fall_back_content
+        # Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the message fails to be sent or the message receipt that indicates the message is not delivered to clients is received. Unit: seconds. Valid values: 60 to 43200.
         self.fall_back_duration = fall_back_duration
+        # The ID of the fallback policy.
         self.fall_back_id = fall_back_id
+        # The fallback rule. Valid values:
+        # 
+        # *   **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
+        # *   **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
         self.fall_back_rule = fall_back_rule
+        # The mobile phone number of the message sender.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The type of the Viber message. Valid values:
+        # 
+        # *   **promotion**
+        # *   **transaction**
         self.label = label
+        # The language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
         # This parameter is required.
         self.language = language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The mobile phone numbers of the message receivers.
         self.sender_list_shrink = sender_list_shrink
+        # The tag information when the ChannelType parameter is set to viber.
         self.tag = tag
+        # The task ID.
         self.task_id = task_id
+        # The template code.
         self.template_code = template_code
+        # The name of the message template.
         self.template_name = template_name
+        # The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
         self.ttl = ttl
 
     def validate(self):

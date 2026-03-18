@@ -15,9 +15,12 @@ class ListFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
+        # The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
         self.flow_name = flow_name
         self.owner_id = owner_id
+        # The returned pages.
         self.page = page
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -80,7 +83,9 @@ class ListFlowRequestPage(DaraModel):
         index: int = None,
         size: int = None,
     ):
+        # The page number.
         self.index = index
+        # The number of entries per page.
         self.size = size
 
     def validate(self):
