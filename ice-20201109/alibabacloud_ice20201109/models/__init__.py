@@ -828,6 +828,9 @@ from ._list_yike_productions_response import ListYikeProductionsResponse
 from ._open_media_connect_flow_failover_request import OpenMediaConnectFlowFailoverRequest
 from ._open_media_connect_flow_failover_response_body import OpenMediaConnectFlowFailoverResponseBody
 from ._open_media_connect_flow_failover_response import OpenMediaConnectFlowFailoverResponse
+from ._precheck_yike_aiapp_job_request import PrecheckYikeAIAppJobRequest
+from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBody
+from ._precheck_yike_aiapp_job_response import PrecheckYikeAIAppJobResponse
 from ._query_copyright_extract_job_request import QueryCopyrightExtractJobRequest
 from ._query_copyright_extract_job_response_body import QueryCopyrightExtractJobResponseBody
 from ._query_copyright_extract_job_response import QueryCopyrightExtractJobResponse
@@ -1798,6 +1801,7 @@ from ._list_workflow_tasks_response_body import ListWorkflowTasksResponseBodyTas
 from ._list_workflow_tasks_response_body import ListWorkflowTasksResponseBodyTaskList
 from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBodyFolderList
 from ._list_yike_productions_response_body import ListYikeProductionsResponseBodyProductionList
+from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBodyResult
 from ._query_copyright_extract_job_response_body import QueryCopyrightExtractJobResponseBodyData
 from ._query_copyright_job_list_response_body import QueryCopyrightJobListResponseBodyDataInput
 from ._query_copyright_job_list_response_body import QueryCopyrightJobListResponseBodyDataOutput
@@ -2913,6 +2917,9 @@ __all__ = [
     OpenMediaConnectFlowFailoverRequest,
     OpenMediaConnectFlowFailoverResponseBody,
     OpenMediaConnectFlowFailoverResponse,
+    PrecheckYikeAIAppJobRequest,
+    PrecheckYikeAIAppJobResponseBody,
+    PrecheckYikeAIAppJobResponse,
     QueryCopyrightExtractJobRequest,
     QueryCopyrightExtractJobResponseBody,
     QueryCopyrightExtractJobResponse,
@@ -3883,6 +3890,7 @@ __all__ = [
     ListWorkflowTasksResponseBodyTaskList,
     ListYikeAssetFoldersResponseBodyFolderList,
     ListYikeProductionsResponseBodyProductionList,
+    PrecheckYikeAIAppJobResponseBodyResult,
     QueryCopyrightExtractJobResponseBodyData,
     QueryCopyrightJobListResponseBodyDataInput,
     QueryCopyrightJobListResponseBodyDataOutput,

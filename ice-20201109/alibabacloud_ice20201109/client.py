@@ -20514,6 +20514,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.open_media_connect_flow_failover_with_options_async(request, runtime)
 
+    def precheck_yike_aiapp_job_with_options(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            query['AppParams'] = request.app_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckYikeAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def precheck_yike_aiapp_job_with_options_async(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            query['AppParams'] = request.app_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckYikeAIAppJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckYikeAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def precheck_yike_aiapp_job(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.precheck_yike_aiapp_job_with_options(request, runtime)
+
+    async def precheck_yike_aiapp_job_async(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.precheck_yike_aiapp_job_with_options_async(request, runtime)
+
     def query_copyright_extract_job_with_options(
         self,
         request: main_models.QueryCopyrightExtractJobRequest,
