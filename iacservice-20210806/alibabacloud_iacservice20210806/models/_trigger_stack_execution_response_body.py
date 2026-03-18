@@ -4,14 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UploadModuleResponseBody(DaraModel):
+class TriggerStackExecutionResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
-        version: str = None,
+        trigger_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
-        self.version = version
+        self.trigger_id = trigger_id
 
     def validate(self):
         pass
@@ -24,8 +25,8 @@ class UploadModuleResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        if self.version is not None:
-            result['version'] = self.version
+        if self.trigger_id is not None:
+            result['triggerId'] = self.trigger_id
 
         return result
 
@@ -34,8 +35,8 @@ class UploadModuleResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        if m.get('version') is not None:
-            self.version = m.get('version')
+        if m.get('triggerId') is not None:
+            self.trigger_id = m.get('triggerId')
 
         return self
 

@@ -1,3 +1,9 @@
+2026-03-18 Version: 2.6.0
+- Support API GetStackExecutionResult.
+- Support API TriggerStackExecution.
+- Update API UploadModule: add response parameters Body.version.
+
+
 2026-03-13 Version: 2.5.0
 - Support API UploadModule.
 

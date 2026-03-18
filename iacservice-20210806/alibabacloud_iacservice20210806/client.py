@@ -3736,6 +3736,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_resource_type_with_options_async(resource_type, request, headers, runtime)
 
+    def get_stack_execution_result_with_options(
+        self,
+        trigger_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStackExecutionResultResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStackExecutionResult',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/trigger/{DaraURL.percent_encode(trigger_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStackExecutionResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_stack_execution_result_with_options_async(
+        self,
+        trigger_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStackExecutionResultResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStackExecutionResult',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/trigger/{DaraURL.percent_encode(trigger_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStackExecutionResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_stack_execution_result(
+        self,
+        trigger_id: str,
+    ) -> main_models.GetStackExecutionResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_stack_execution_result_with_options(trigger_id, headers, runtime)
+
+    async def get_stack_execution_result_async(
+        self,
+        trigger_id: str,
+    ) -> main_models.GetStackExecutionResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_stack_execution_result_with_options_async(trigger_id, headers, runtime)
+
     def get_task_with_options(
         self,
         task_id: str,
@@ -6085,6 +6151,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.remove_shared_accounts_with_options_async(request, headers, runtime)
+
+    def trigger_stack_execution_with_options(
+        self,
+        request: main_models.TriggerStackExecutionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerStackExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.changed_folders):
+            body['changedFolders'] = request.changed_folders
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.code_package_path):
+            body['codePackagePath'] = request.code_package_path
+        if not DaraCore.is_null(request.code_version_id):
+            body['codeVersionId'] = request.code_version_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerStackExecution',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/trigger',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerStackExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_stack_execution_with_options_async(
+        self,
+        request: main_models.TriggerStackExecutionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerStackExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.changed_folders):
+            body['changedFolders'] = request.changed_folders
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.code_package_path):
+            body['codePackagePath'] = request.code_package_path
+        if not DaraCore.is_null(request.code_version_id):
+            body['codeVersionId'] = request.code_version_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerStackExecution',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/trigger',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerStackExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_stack_execution(
+        self,
+        request: main_models.TriggerStackExecutionRequest,
+    ) -> main_models.TriggerStackExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.trigger_stack_execution_with_options(request, headers, runtime)
+
+    async def trigger_stack_execution_async(
+        self,
+        request: main_models.TriggerStackExecutionRequest,
+    ) -> main_models.TriggerStackExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.trigger_stack_execution_with_options_async(request, headers, runtime)
 
     def update_explorer_module_attribute_with_options(
         self,

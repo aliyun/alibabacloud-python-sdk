@@ -115,6 +115,8 @@ from ._get_resource_export_task_response import GetResourceExportTaskResponse
 from ._get_resource_type_request import GetResourceTypeRequest
 from ._get_resource_type_response_body import GetResourceTypeResponseBody
 from ._get_resource_type_response import GetResourceTypeResponse
+from ._get_stack_execution_result_response_body import GetStackExecutionResultResponseBody
+from ._get_stack_execution_result_response import GetStackExecutionResultResponse
 from ._get_task_response_body import GetTaskResponseBody
 from ._get_task_response import GetTaskResponse
 from ._list_explorer_registry_module_examples_request import ListExplorerRegistryModuleExamplesRequest
@@ -195,6 +197,9 @@ from ._remove_shared_accounts_request import RemoveSharedAccountsRequest
 from ._remove_shared_accounts_shrink_request import RemoveSharedAccountsShrinkRequest
 from ._remove_shared_accounts_response_body import RemoveSharedAccountsResponseBody
 from ._remove_shared_accounts_response import RemoveSharedAccountsResponse
+from ._trigger_stack_execution_request import TriggerStackExecutionRequest
+from ._trigger_stack_execution_response_body import TriggerStackExecutionResponseBody
+from ._trigger_stack_execution_response import TriggerStackExecutionResponse
 from ._update_explorer_module_attribute_request import UpdateExplorerModuleAttributeRequest
 from ._update_explorer_module_attribute_response_body import UpdateExplorerModuleAttributeResponseBody
 from ._update_explorer_module_attribute_response import UpdateExplorerModuleAttributeResponse
@@ -264,6 +269,8 @@ from ._get_resource_export_task_response_body import GetResourceExportTaskRespon
 from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTask
 from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceTypeOperations
 from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceType
+from ._get_stack_execution_result_response_body import GetStackExecutionResultResponseBodyStackResultsDeployments
+from ._get_stack_execution_result_response_body import GetStackExecutionResultResponseBodyStackResults
 from ._get_task_response_body import GetTaskResponseBodyTaskGroupInfo
 from ._get_task_response_body import GetTaskResponseBodyTaskTags
 from ._get_task_response_body import GetTaskResponseBodyTaskTaskBackend
@@ -435,6 +442,8 @@ __all__ = [
     GetResourceTypeRequest,
     GetResourceTypeResponseBody,
     GetResourceTypeResponse,
+    GetStackExecutionResultResponseBody,
+    GetStackExecutionResultResponse,
     GetTaskResponseBody,
     GetTaskResponse,
     ListExplorerRegistryModuleExamplesRequest,
@@ -515,6 +524,9 @@ __all__ = [
     RemoveSharedAccountsShrinkRequest,
     RemoveSharedAccountsResponseBody,
     RemoveSharedAccountsResponse,
+    TriggerStackExecutionRequest,
+    TriggerStackExecutionResponseBody,
+    TriggerStackExecutionResponse,
     UpdateExplorerModuleAttributeRequest,
     UpdateExplorerModuleAttributeResponseBody,
     UpdateExplorerModuleAttributeResponse,
@@ -584,6 +596,8 @@ __all__ = [
     GetResourceExportTaskResponseBodyTask,
     GetResourceTypeResponseBodyResourceTypeOperations,
     GetResourceTypeResponseBodyResourceType,
+    GetStackExecutionResultResponseBodyStackResultsDeployments,
+    GetStackExecutionResultResponseBodyStackResults,
     GetTaskResponseBodyTaskGroupInfo,
     GetTaskResponseBodyTaskTags,
     GetTaskResponseBodyTaskTaskBackend,
