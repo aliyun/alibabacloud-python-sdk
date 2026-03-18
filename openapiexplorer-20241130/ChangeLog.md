@@ -1,3 +1,7 @@
+2026-03-18 Version: 1.1.3
+- Update API GenerateCLICommand: add response parameters Body.unifiedCli.
+
+
 2026-03-06 Version: 1.1.2
 - Update API GenerateCLICommand: add request parameters aggregatePagination.
 - Update API GenerateCLICommand: add response parameters Body.requestId.

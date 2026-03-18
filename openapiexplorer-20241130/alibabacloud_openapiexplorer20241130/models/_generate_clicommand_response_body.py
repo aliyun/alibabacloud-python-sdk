@@ -9,11 +9,13 @@ class GenerateCLICommandResponseBody(DaraModel):
         self,
         cli: str = None,
         request_id: str = None,
+        unified_cli: str = None,
     ):
-        # The CLI instruction.
+        # CLI command.
         self.cli = cli
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
+        self.unified_cli = unified_cli
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class GenerateCLICommandResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.unified_cli is not None:
+            result['unifiedCli'] = self.unified_cli
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class GenerateCLICommandResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('unifiedCli') is not None:
+            self.unified_cli = m.get('unifiedCli')
 
         return self
 
