@@ -30,9 +30,17 @@ from ._disable_user_headers import DisableUserHeaders
 from ._disable_user_response import DisableUserResponse
 from ._enable_user_headers import EnableUserHeaders
 from ._enable_user_response import EnableUserResponse
+from ._fetch_oauth_authentication_token_headers import FetchOAuthAuthenticationTokenHeaders
+from ._fetch_oauth_authentication_token_request import FetchOAuthAuthenticationTokenRequest
+from ._fetch_oauth_authentication_token_response_body import FetchOAuthAuthenticationTokenResponseBody
+from ._fetch_oauth_authentication_token_response import FetchOAuthAuthenticationTokenResponse
 from ._generate_device_code_request import GenerateDeviceCodeRequest
 from ._generate_device_code_response_body import GenerateDeviceCodeResponseBody
 from ._generate_device_code_response import GenerateDeviceCodeResponse
+from ._generate_jwt_authentication_token_headers import GenerateJwtAuthenticationTokenHeaders
+from ._generate_jwt_authentication_token_request import GenerateJwtAuthenticationTokenRequest
+from ._generate_jwt_authentication_token_response_body import GenerateJwtAuthenticationTokenResponseBody
+from ._generate_jwt_authentication_token_response import GenerateJwtAuthenticationTokenResponse
 from ._generate_token_request import GenerateTokenRequest
 from ._generate_token_response_body import GenerateTokenResponseBody
 from ._generate_token_response import GenerateTokenResponse
@@ -73,6 +81,10 @@ from ._get_user_id_by_username_response_body import GetUserIdByUsernameResponseB
 from ._get_user_id_by_username_response import GetUserIdByUsernameResponse
 from ._get_user_info_headers import GetUserInfoHeaders
 from ._get_user_info_response import GetUserInfoResponse
+from ._list_authentication_tokens_headers import ListAuthenticationTokensHeaders
+from ._list_authentication_tokens_request import ListAuthenticationTokensRequest
+from ._list_authentication_tokens_response_body import ListAuthenticationTokensResponseBody
+from ._list_authentication_tokens_response import ListAuthenticationTokensResponse
 from ._list_groups_headers import ListGroupsHeaders
 from ._list_groups_request import ListGroupsRequest
 from ._list_groups_response_body import ListGroupsResponseBody
@@ -104,6 +116,9 @@ from ._obtain_credential_headers import ObtainCredentialHeaders
 from ._obtain_credential_request import ObtainCredentialRequest
 from ._obtain_credential_response_body import ObtainCredentialResponseBody
 from ._obtain_credential_response import ObtainCredentialResponse
+from ._obtain_jwt_authentication_token_by_derived_short_token_request import ObtainJwtAuthenticationTokenByDerivedShortTokenRequest
+from ._obtain_jwt_authentication_token_by_derived_short_token_response_body import ObtainJwtAuthenticationTokenByDerivedShortTokenResponseBody
+from ._obtain_jwt_authentication_token_by_derived_short_token_response import ObtainJwtAuthenticationTokenByDerivedShortTokenResponse
 from ._patch_group_headers import PatchGroupHeaders
 from ._patch_group_request import PatchGroupRequest
 from ._patch_group_response import PatchGroupResponse
@@ -113,12 +128,24 @@ from ._patch_organizational_unit_response import PatchOrganizationalUnitResponse
 from ._patch_user_headers import PatchUserHeaders
 from ._patch_user_request import PatchUserRequest
 from ._patch_user_response import PatchUserResponse
+from ._reinstate_authentication_token_headers import ReinstateAuthenticationTokenHeaders
+from ._reinstate_authentication_token_request import ReinstateAuthenticationTokenRequest
+from ._reinstate_authentication_token_response import ReinstateAuthenticationTokenResponse
+from ._reinstate_authentication_token_by_consumer_headers import ReinstateAuthenticationTokenByConsumerHeaders
+from ._reinstate_authentication_token_by_consumer_request import ReinstateAuthenticationTokenByConsumerRequest
+from ._reinstate_authentication_token_by_consumer_response import ReinstateAuthenticationTokenByConsumerResponse
 from ._remove_user_from_organizational_units_headers import RemoveUserFromOrganizationalUnitsHeaders
 from ._remove_user_from_organizational_units_request import RemoveUserFromOrganizationalUnitsRequest
 from ._remove_user_from_organizational_units_response import RemoveUserFromOrganizationalUnitsResponse
 from ._remove_users_from_group_headers import RemoveUsersFromGroupHeaders
 from ._remove_users_from_group_request import RemoveUsersFromGroupRequest
 from ._remove_users_from_group_response import RemoveUsersFromGroupResponse
+from ._revoke_authentication_token_headers import RevokeAuthenticationTokenHeaders
+from ._revoke_authentication_token_request import RevokeAuthenticationTokenRequest
+from ._revoke_authentication_token_response import RevokeAuthenticationTokenResponse
+from ._revoke_authentication_token_by_consumer_headers import RevokeAuthenticationTokenByConsumerHeaders
+from ._revoke_authentication_token_by_consumer_request import RevokeAuthenticationTokenByConsumerRequest
+from ._revoke_authentication_token_by_consumer_response import RevokeAuthenticationTokenByConsumerResponse
 from ._revoke_token_request import RevokeTokenRequest
 from ._revoke_token_response import RevokeTokenResponse
 from ._set_user_primary_organizational_unit_headers import SetUserPrimaryOrganizationalUnitHeaders
@@ -127,11 +154,17 @@ from ._set_user_primary_organizational_unit_response import SetUserPrimaryOrgani
 from ._update_user_password_headers import UpdateUserPasswordHeaders
 from ._update_user_password_request import UpdateUserPasswordRequest
 from ._update_user_password_response import UpdateUserPasswordResponse
+from ._validate_authentication_token_request import ValidateAuthenticationTokenRequest
+from ._validate_authentication_token_response_body import ValidateAuthenticationTokenResponseBody
+from ._validate_authentication_token_response import ValidateAuthenticationTokenResponse
 from ._create_user_request import CreateUserRequestCustomFields
 from ._create_user_request import CreateUserRequestPasswordInitializationConfig
+from ._fetch_oauth_authentication_token_response_body import FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent
+from ._generate_jwt_authentication_token_response_body import GenerateJwtAuthenticationTokenResponseBodyJwtContent
 from ._get_user_response_body import GetUserResponseBodyCustomFields
 from ._get_user_response_body import GetUserResponseBodyGroups
 from ._get_user_response_body import GetUserResponseBodyOrganizationalUnits
+from ._list_authentication_tokens_response_body import ListAuthenticationTokensResponseBodyEntities
 from ._list_groups_response_body import ListGroupsResponseBodyData
 from ._list_groups_for_user_response_body import ListGroupsForUserResponseBodyData
 from ._list_organizational_units_response_body import ListOrganizationalUnitsResponseBodyData
@@ -142,6 +175,7 @@ from ._obtain_cloud_account_role_access_credential_response_body import ObtainCl
 from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialContentApiKeyContent
 from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialContentOauthClientContent
 from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialContent
+from ._obtain_jwt_authentication_token_by_derived_short_token_response_body import ObtainJwtAuthenticationTokenByDerivedShortTokenResponseBodyJwtContent
 from ._patch_user_request import PatchUserRequestCustomFields
 
 __all__ = [
@@ -173,9 +207,17 @@ __all__ = [
     DisableUserResponse,
     EnableUserHeaders,
     EnableUserResponse,
+    FetchOAuthAuthenticationTokenHeaders,
+    FetchOAuthAuthenticationTokenRequest,
+    FetchOAuthAuthenticationTokenResponseBody,
+    FetchOAuthAuthenticationTokenResponse,
     GenerateDeviceCodeRequest,
     GenerateDeviceCodeResponseBody,
     GenerateDeviceCodeResponse,
+    GenerateJwtAuthenticationTokenHeaders,
+    GenerateJwtAuthenticationTokenRequest,
+    GenerateJwtAuthenticationTokenResponseBody,
+    GenerateJwtAuthenticationTokenResponse,
     GenerateTokenRequest,
     GenerateTokenResponseBody,
     GenerateTokenResponse,
@@ -216,6 +258,10 @@ __all__ = [
     GetUserIdByUsernameResponse,
     GetUserInfoHeaders,
     GetUserInfoResponse,
+    ListAuthenticationTokensHeaders,
+    ListAuthenticationTokensRequest,
+    ListAuthenticationTokensResponseBody,
+    ListAuthenticationTokensResponse,
     ListGroupsHeaders,
     ListGroupsRequest,
     ListGroupsResponseBody,
@@ -247,6 +293,9 @@ __all__ = [
     ObtainCredentialRequest,
     ObtainCredentialResponseBody,
     ObtainCredentialResponse,
+    ObtainJwtAuthenticationTokenByDerivedShortTokenRequest,
+    ObtainJwtAuthenticationTokenByDerivedShortTokenResponseBody,
+    ObtainJwtAuthenticationTokenByDerivedShortTokenResponse,
     PatchGroupHeaders,
     PatchGroupRequest,
     PatchGroupResponse,
@@ -256,12 +305,24 @@ __all__ = [
     PatchUserHeaders,
     PatchUserRequest,
     PatchUserResponse,
+    ReinstateAuthenticationTokenHeaders,
+    ReinstateAuthenticationTokenRequest,
+    ReinstateAuthenticationTokenResponse,
+    ReinstateAuthenticationTokenByConsumerHeaders,
+    ReinstateAuthenticationTokenByConsumerRequest,
+    ReinstateAuthenticationTokenByConsumerResponse,
     RemoveUserFromOrganizationalUnitsHeaders,
     RemoveUserFromOrganizationalUnitsRequest,
     RemoveUserFromOrganizationalUnitsResponse,
     RemoveUsersFromGroupHeaders,
     RemoveUsersFromGroupRequest,
     RemoveUsersFromGroupResponse,
+    RevokeAuthenticationTokenHeaders,
+    RevokeAuthenticationTokenRequest,
+    RevokeAuthenticationTokenResponse,
+    RevokeAuthenticationTokenByConsumerHeaders,
+    RevokeAuthenticationTokenByConsumerRequest,
+    RevokeAuthenticationTokenByConsumerResponse,
     RevokeTokenRequest,
     RevokeTokenResponse,
     SetUserPrimaryOrganizationalUnitHeaders,
@@ -270,11 +331,17 @@ __all__ = [
     UpdateUserPasswordHeaders,
     UpdateUserPasswordRequest,
     UpdateUserPasswordResponse,
+    ValidateAuthenticationTokenRequest,
+    ValidateAuthenticationTokenResponseBody,
+    ValidateAuthenticationTokenResponse,
     CreateUserRequestCustomFields,
     CreateUserRequestPasswordInitializationConfig,
+    FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent,
+    GenerateJwtAuthenticationTokenResponseBodyJwtContent,
     GetUserResponseBodyCustomFields,
     GetUserResponseBodyGroups,
     GetUserResponseBodyOrganizationalUnits,
+    ListAuthenticationTokensResponseBodyEntities,
     ListGroupsResponseBodyData,
     ListGroupsForUserResponseBodyData,
     ListOrganizationalUnitsResponseBodyData,
@@ -285,5 +352,6 @@ __all__ = [
     ObtainCredentialResponseBodyCredentialContentApiKeyContent,
     ObtainCredentialResponseBodyCredentialContentOauthClientContent,
     ObtainCredentialResponseBodyCredentialContent,
+    ObtainJwtAuthenticationTokenByDerivedShortTokenResponseBodyJwtContent,
     PatchUserRequestCustomFields
 ]

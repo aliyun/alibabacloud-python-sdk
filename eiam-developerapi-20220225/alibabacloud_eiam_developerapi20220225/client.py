@@ -1003,6 +1003,100 @@ class Client(OpenApiClient):
         headers = main_models.EnableUserHeaders()
         return await self.enable_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
 
+    def fetch_oauth_authentication_token_with_options(
+        self,
+        instance_id: str,
+        request: main_models.FetchOAuthAuthenticationTokenRequest,
+        headers: main_models.FetchOAuthAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchOAuthAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchOAuthAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/fetchOAuthAccessToken',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchOAuthAuthenticationTokenResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def fetch_oauth_authentication_token_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.FetchOAuthAuthenticationTokenRequest,
+        headers: main_models.FetchOAuthAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchOAuthAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchOAuthAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/fetchOAuthAccessToken',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchOAuthAuthenticationTokenResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def fetch_oauth_authentication_token(
+        self,
+        instance_id: str,
+        request: main_models.FetchOAuthAuthenticationTokenRequest,
+    ) -> main_models.FetchOAuthAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.FetchOAuthAuthenticationTokenHeaders()
+        return self.fetch_oauth_authentication_token_with_options(instance_id, request, headers, runtime)
+
+    async def fetch_oauth_authentication_token_async(
+        self,
+        instance_id: str,
+        request: main_models.FetchOAuthAuthenticationTokenRequest,
+    ) -> main_models.FetchOAuthAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.FetchOAuthAuthenticationTokenHeaders()
+        return await self.fetch_oauth_authentication_token_with_options_async(instance_id, request, headers, runtime)
+
     def generate_device_code_with_options(
         self,
         instance_id: str,
@@ -1086,6 +1180,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.generate_device_code_with_options_async(instance_id, application_id, request, headers, runtime)
+
+    def generate_jwt_authentication_token_with_options(
+        self,
+        instance_id: str,
+        request: main_models.GenerateJwtAuthenticationTokenRequest,
+        headers: main_models.GenerateJwtAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateJwtAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.audiences):
+            body['audiences'] = request.audiences
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.custom_claims):
+            body['customClaims'] = request.custom_claims
+        if not DaraCore.is_null(request.expiration):
+            body['expiration'] = request.expiration
+        if not DaraCore.is_null(request.include_derived_short_token):
+            body['includeDerivedShortToken'] = request.include_derived_short_token
+        if not DaraCore.is_null(request.issuer):
+            body['issuer'] = request.issuer
+        if not DaraCore.is_null(request.subject):
+            body['subject'] = request.subject
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateJwtAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/generateJwt',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateJwtAuthenticationTokenResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def generate_jwt_authentication_token_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.GenerateJwtAuthenticationTokenRequest,
+        headers: main_models.GenerateJwtAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateJwtAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.audiences):
+            body['audiences'] = request.audiences
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.custom_claims):
+            body['customClaims'] = request.custom_claims
+        if not DaraCore.is_null(request.expiration):
+            body['expiration'] = request.expiration
+        if not DaraCore.is_null(request.include_derived_short_token):
+            body['includeDerivedShortToken'] = request.include_derived_short_token
+        if not DaraCore.is_null(request.issuer):
+            body['issuer'] = request.issuer
+        if not DaraCore.is_null(request.subject):
+            body['subject'] = request.subject
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateJwtAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/generateJwt',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateJwtAuthenticationTokenResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def generate_jwt_authentication_token(
+        self,
+        instance_id: str,
+        request: main_models.GenerateJwtAuthenticationTokenRequest,
+    ) -> main_models.GenerateJwtAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GenerateJwtAuthenticationTokenHeaders()
+        return self.generate_jwt_authentication_token_with_options(instance_id, request, headers, runtime)
+
+    async def generate_jwt_authentication_token_async(
+        self,
+        instance_id: str,
+        request: main_models.GenerateJwtAuthenticationTokenRequest,
+    ) -> main_models.GenerateJwtAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GenerateJwtAuthenticationTokenHeaders()
+        return await self.generate_jwt_authentication_token_with_options_async(instance_id, request, headers, runtime)
 
     def generate_token_with_options(
         self,
@@ -2257,6 +2465,116 @@ class Client(OpenApiClient):
         headers = main_models.GetUserInfoHeaders()
         return await self.get_user_info_with_options_async(instance_id, application_id, headers, runtime)
 
+    def list_authentication_tokens_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ListAuthenticationTokensRequest,
+        headers: main_models.ListAuthenticationTokensHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthenticationTokensResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_id):
+            query['consumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            query['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.expired):
+            query['expired'] = request.expired
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.revoked):
+            query['revoked'] = request.revoked
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthenticationTokens',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens',
+            method = 'GET',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthenticationTokensResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def list_authentication_tokens_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ListAuthenticationTokensRequest,
+        headers: main_models.ListAuthenticationTokensHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthenticationTokensResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_id):
+            query['consumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            query['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.expired):
+            query['expired'] = request.expired
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.revoked):
+            query['revoked'] = request.revoked
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthenticationTokens',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens',
+            method = 'GET',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthenticationTokensResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def list_authentication_tokens(
+        self,
+        instance_id: str,
+        request: main_models.ListAuthenticationTokensRequest,
+    ) -> main_models.ListAuthenticationTokensResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListAuthenticationTokensHeaders()
+        return self.list_authentication_tokens_with_options(instance_id, request, headers, runtime)
+
+    async def list_authentication_tokens_async(
+        self,
+        instance_id: str,
+        request: main_models.ListAuthenticationTokensRequest,
+    ) -> main_models.ListAuthenticationTokensResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListAuthenticationTokensHeaders()
+        return await self.list_authentication_tokens_with_options_async(instance_id, request, headers, runtime)
+
     def list_groups_with_options(
         self,
         instance_id: str,
@@ -3031,6 +3349,86 @@ class Client(OpenApiClient):
         headers = main_models.ObtainCredentialHeaders()
         return await self.obtain_credential_with_options_async(instance_id, request, headers, runtime)
 
+    def obtain_jwt_authentication_token_by_derived_short_token_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.derived_short_token):
+            body['derivedShortToken'] = request.derived_short_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ObtainJwtAuthenticationTokenByDerivedShortToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/obtainJwtByDerivedShortToken',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def obtain_jwt_authentication_token_by_derived_short_token_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.derived_short_token):
+            body['derivedShortToken'] = request.derived_short_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ObtainJwtAuthenticationTokenByDerivedShortToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/obtainJwtByDerivedShortToken',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def obtain_jwt_authentication_token_by_derived_short_token(
+        self,
+        instance_id: str,
+        request: main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenRequest,
+    ) -> main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.obtain_jwt_authentication_token_by_derived_short_token_with_options(instance_id, request, headers, runtime)
+
+    async def obtain_jwt_authentication_token_by_derived_short_token_async(
+        self,
+        instance_id: str,
+        request: main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenRequest,
+    ) -> main_models.ObtainJwtAuthenticationTokenByDerivedShortTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.obtain_jwt_authentication_token_by_derived_short_token_with_options_async(instance_id, request, headers, runtime)
+
     def patch_group_with_options(
         self,
         instance_id: str,
@@ -3357,6 +3755,194 @@ class Client(OpenApiClient):
         headers = main_models.PatchUserHeaders()
         return await self.patch_user_with_options_async(instance_id, application_id, user_id, request, headers, runtime)
 
+    def reinstate_authentication_token_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenRequest,
+        headers: main_models.ReinstateAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReinstateAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.token):
+            body['token'] = request.token
+        if not DaraCore.is_null(request.token_type_hint):
+            body['token_type_hint'] = request.token_type_hint
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReinstateAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/reinstate',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.ReinstateAuthenticationTokenResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def reinstate_authentication_token_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenRequest,
+        headers: main_models.ReinstateAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReinstateAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.token):
+            body['token'] = request.token
+        if not DaraCore.is_null(request.token_type_hint):
+            body['token_type_hint'] = request.token_type_hint
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReinstateAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/reinstate',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.ReinstateAuthenticationTokenResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def reinstate_authentication_token(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenRequest,
+    ) -> main_models.ReinstateAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ReinstateAuthenticationTokenHeaders()
+        return self.reinstate_authentication_token_with_options(instance_id, request, headers, runtime)
+
+    async def reinstate_authentication_token_async(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenRequest,
+    ) -> main_models.ReinstateAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ReinstateAuthenticationTokenHeaders()
+        return await self.reinstate_authentication_token_with_options_async(instance_id, request, headers, runtime)
+
+    def reinstate_authentication_token_by_consumer_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenByConsumerRequest,
+        headers: main_models.ReinstateAuthenticationTokenByConsumerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReinstateAuthenticationTokenByConsumerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_id):
+            body['consumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReinstateAuthenticationTokenByConsumer',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/reinstateByConsumer',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.ReinstateAuthenticationTokenByConsumerResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def reinstate_authentication_token_by_consumer_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenByConsumerRequest,
+        headers: main_models.ReinstateAuthenticationTokenByConsumerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReinstateAuthenticationTokenByConsumerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_id):
+            body['consumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReinstateAuthenticationTokenByConsumer',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/reinstateByConsumer',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.ReinstateAuthenticationTokenByConsumerResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def reinstate_authentication_token_by_consumer(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenByConsumerRequest,
+    ) -> main_models.ReinstateAuthenticationTokenByConsumerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ReinstateAuthenticationTokenByConsumerHeaders()
+        return self.reinstate_authentication_token_by_consumer_with_options(instance_id, request, headers, runtime)
+
+    async def reinstate_authentication_token_by_consumer_async(
+        self,
+        instance_id: str,
+        request: main_models.ReinstateAuthenticationTokenByConsumerRequest,
+    ) -> main_models.ReinstateAuthenticationTokenByConsumerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ReinstateAuthenticationTokenByConsumerHeaders()
+        return await self.reinstate_authentication_token_by_consumer_with_options_async(instance_id, request, headers, runtime)
+
     def remove_user_from_organizational_units_with_options(
         self,
         instance_id: str,
@@ -3552,6 +4138,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.RemoveUsersFromGroupHeaders()
         return await self.remove_users_from_group_with_options_async(instance_id, application_id, group_id, request, headers, runtime)
+
+    def revoke_authentication_token_with_options(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenRequest,
+        headers: main_models.RevokeAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.token):
+            body['token'] = request.token
+        if not DaraCore.is_null(request.token_type_hint):
+            body['token_type_hint'] = request.token_type_hint
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/revoke',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAuthenticationTokenResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def revoke_authentication_token_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenRequest,
+        headers: main_models.RevokeAuthenticationTokenHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.token):
+            body['token'] = request.token
+        if not DaraCore.is_null(request.token_type_hint):
+            body['token_type_hint'] = request.token_type_hint
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/revoke',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAuthenticationTokenResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def revoke_authentication_token(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenRequest,
+    ) -> main_models.RevokeAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.RevokeAuthenticationTokenHeaders()
+        return self.revoke_authentication_token_with_options(instance_id, request, headers, runtime)
+
+    async def revoke_authentication_token_async(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenRequest,
+    ) -> main_models.RevokeAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.RevokeAuthenticationTokenHeaders()
+        return await self.revoke_authentication_token_with_options_async(instance_id, request, headers, runtime)
+
+    def revoke_authentication_token_by_consumer_with_options(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenByConsumerRequest,
+        headers: main_models.RevokeAuthenticationTokenByConsumerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAuthenticationTokenByConsumerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_id):
+            body['consumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAuthenticationTokenByConsumer',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/revokeByConsumer',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAuthenticationTokenByConsumerResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def revoke_authentication_token_by_consumer_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenByConsumerRequest,
+        headers: main_models.RevokeAuthenticationTokenByConsumerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAuthenticationTokenByConsumerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumer_id):
+            body['consumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.credential_provider_identifier):
+            body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAuthenticationTokenByConsumer',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/revokeByConsumer',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAuthenticationTokenByConsumerResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def revoke_authentication_token_by_consumer(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenByConsumerRequest,
+    ) -> main_models.RevokeAuthenticationTokenByConsumerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.RevokeAuthenticationTokenByConsumerHeaders()
+        return self.revoke_authentication_token_by_consumer_with_options(instance_id, request, headers, runtime)
+
+    async def revoke_authentication_token_by_consumer_async(
+        self,
+        instance_id: str,
+        request: main_models.RevokeAuthenticationTokenByConsumerRequest,
+    ) -> main_models.RevokeAuthenticationTokenByConsumerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.RevokeAuthenticationTokenByConsumerHeaders()
+        return await self.revoke_authentication_token_by_consumer_with_options_async(instance_id, request, headers, runtime)
 
     def revoke_token_with_options(
         self,
@@ -3844,3 +4618,87 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.UpdateUserPasswordHeaders()
         return await self.update_user_password_with_options_async(instance_id, application_id, user_id, request, headers, runtime)
+
+    def validate_authentication_token_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ValidateAuthenticationTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.token):
+            body['token'] = request.token
+        if not DaraCore.is_null(request.token_type_hint):
+            body['token_type_hint'] = request.token_type_hint
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/validate',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateAuthenticationTokenResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def validate_authentication_token_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ValidateAuthenticationTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateAuthenticationTokenResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.token):
+            body['token'] = request.token
+        if not DaraCore.is_null(request.token_type_hint):
+            body['token_type_hint'] = request.token_type_hint
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateAuthenticationToken',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/authenticationTokens/_/actions/validate',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateAuthenticationTokenResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def validate_authentication_token(
+        self,
+        instance_id: str,
+        request: main_models.ValidateAuthenticationTokenRequest,
+    ) -> main_models.ValidateAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.validate_authentication_token_with_options(instance_id, request, headers, runtime)
+
+    async def validate_authentication_token_async(
+        self,
+        instance_id: str,
+        request: main_models.ValidateAuthenticationTokenRequest,
+    ) -> main_models.ValidateAuthenticationTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.validate_authentication_token_with_options_async(instance_id, request, headers, runtime)

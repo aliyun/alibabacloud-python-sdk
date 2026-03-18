@@ -1,3 +1,15 @@
+2026-03-18 Version: 1.5.0
+- Support API FetchOAuthAuthenticationToken.
+- Support API GenerateJwtAuthenticationToken.
+- Support API ListAuthenticationTokens.
+- Support API ObtainJwtAuthenticationTokenByDerivedShortToken.
+- Support API ReinstateAuthenticationToken.
+- Support API ReinstateAuthenticationTokenByConsumer.
+- Support API RevokeAuthenticationToken.
+- Support API RevokeAuthenticationTokenByConsumer.
+- Support API ValidateAuthenticationToken.
+
+
 2026-03-17 Version: 1.4.0
 - Support API GenerateTokenByAuthorizationServer.
 
