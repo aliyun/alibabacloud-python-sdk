@@ -1,3 +1,36 @@
+2026-03-18 Version: 3.0.0
+- Delete API ConfigSchedruleOnDemand.
+- Delete API CreateSchedruleOnDemand.
+- Delete API DeleteSchedruleOnDemand.
+- Delete API DescribeOnDemandDdosEvent.
+- Delete API DescribeOnDemandInstanceStatus.
+- Delete API QuerySchedruleOnDemand.
+- Delete API SetInstanceModeOnDemand.
+- Update API AttachToPolicy: add request parameters PortVersion.
+- Update API AttachToPolicy: add request parameters IpPortProtocolList.$.PortRange.
+- Update API CreatePolicy: add request parameters PortVersion.
+- Update API DetachFromPolicy: add request parameters PortVersion.
+- Update API DetachFromPolicy: add request parameters IpPortProtocolList.$.PortRange.
+- Update API ListPolicy: add response parameters Body.PolicyList.$.Content.PortVersion.
+- Update API ListPolicy: add response parameters Body.PolicyList.$.Content.L4RuleList.$.ConditionList.$.Content.
+- Update API ListPolicy: add response parameters Body.PolicyList.$.Content.L4RuleList.$.ConditionList.$.Encode.
+- Update API ListPolicy: add response parameters Body.PolicyList.$.Content.L4RuleList.$.ConditionList.$.Offset.
+- Update API ListPolicy: add response parameters Body.PolicyList.$.Content.L4RuleList.$.ConditionList.$.Pattern.
+- Update API ListPolicyAttachment: add request parameters PortVersion.
+- Update API ListPolicyAttachment: add request parameters IpPortProtocolList.$.PortRange.
+- Update API ListPolicyAttachment: add response parameters Body.AttachmentList.$.PortRange.
+- Update API ModifyPolicy: add request parameters PortVersion.
+- Update API ModifyPolicy: add request parameters Content.L4RuleList.$.ConditionList.$.Content.
+- Update API ModifyPolicy: add request parameters Content.L4RuleList.$.ConditionList.$.Encode.
+- Update API ModifyPolicy: add request parameters Content.L4RuleList.$.ConditionList.$.Offset.
+- Update API ModifyPolicy: add request parameters Content.L4RuleList.$.ConditionList.$.Pattern.
+- Update API ModifyPolicyContent: add request parameters PortVersion.
+- Update API ModifyPolicyContent: add request parameters Content.L4RuleList.$.ConditionList.$.Content.
+- Update API ModifyPolicyContent: add request parameters Content.L4RuleList.$.ConditionList.$.Encode.
+- Update API ModifyPolicyContent: add request parameters Content.L4RuleList.$.ConditionList.$.Offset.
+- Update API ModifyPolicyContent: add request parameters Content.L4RuleList.$.ConditionList.$.Pattern.
+
+
 2025-01-15 Version: 2.8.2
 - Update API DescribeDdosOriginInstanceBill: update response param.
 - Update API DescribeInstanceList: update response param.
