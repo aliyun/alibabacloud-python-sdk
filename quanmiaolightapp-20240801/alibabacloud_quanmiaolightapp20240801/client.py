@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 from darabonba.url import Url as DaraURL
 
@@ -1309,6 +1308,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.output_format):
             body['outputFormat'] = request.output_format
+        if not DaraCore.is_null(request.positive_filter):
+            body['positiveFilter'] = request.positive_filter
         if not DaraCore.is_null(request.source_trace):
             body['sourceTrace'] = request.source_trace
         if not DaraCore.is_null(request.tags_shrink):
@@ -1332,17 +1333,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunEnterpriseVocAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunEnterpriseVocAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_enterprise_voc_analysis_with_sse_async(
         self,
@@ -1373,6 +1374,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.output_format):
             body['outputFormat'] = request.output_format
+        if not DaraCore.is_null(request.positive_filter):
+            body['positiveFilter'] = request.positive_filter
         if not DaraCore.is_null(request.source_trace):
             body['sourceTrace'] = request.source_trace
         if not DaraCore.is_null(request.tags_shrink):
@@ -1396,17 +1399,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunEnterpriseVocAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunEnterpriseVocAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_enterprise_voc_analysis_with_options(
         self,
@@ -1437,6 +1440,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.output_format):
             body['outputFormat'] = request.output_format
+        if not DaraCore.is_null(request.positive_filter):
+            body['positiveFilter'] = request.positive_filter
         if not DaraCore.is_null(request.source_trace):
             body['sourceTrace'] = request.source_trace
         if not DaraCore.is_null(request.tags_shrink):
@@ -1492,6 +1497,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.output_format):
             body['outputFormat'] = request.output_format
+        if not DaraCore.is_null(request.positive_filter):
+            body['positiveFilter'] = request.positive_filter
         if not DaraCore.is_null(request.source_trace):
             body['sourceTrace'] = request.source_trace
         if not DaraCore.is_null(request.tags_shrink):
@@ -1576,17 +1583,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunEssayCorrectionResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunEssayCorrectionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_essay_correction_with_sse_async(
         self,
@@ -1628,17 +1635,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunEssayCorrectionResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunEssayCorrectionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_essay_correction_with_options(
         self,
@@ -1804,17 +1811,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunHotTopicChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunHotTopicChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_hot_topic_chat_with_sse_async(
         self,
@@ -1876,17 +1883,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunHotTopicChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunHotTopicChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_hot_topic_chat_with_options(
         self,
@@ -2070,17 +2077,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunHotTopicSummaryResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunHotTopicSummaryResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_hot_topic_summary_with_sse_async(
         self,
@@ -2120,17 +2127,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunHotTopicSummaryResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunHotTopicSummaryResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_hot_topic_summary_with_options(
         self,
@@ -2270,17 +2277,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunMarketingInformationExtractResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunMarketingInformationExtractResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_marketing_information_extract_with_sse_async(
         self,
@@ -2320,17 +2327,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunMarketingInformationExtractResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunMarketingInformationExtractResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_marketing_information_extract_with_options(
         self,
@@ -2492,17 +2499,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunMarketingInformationWritingResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunMarketingInformationWritingResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_marketing_information_writing_with_sse_async(
         self,
@@ -2564,17 +2571,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunMarketingInformationWritingResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunMarketingInformationWritingResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_marketing_information_writing_with_options(
         self,
@@ -2766,17 +2773,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunNetworkContentAuditResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunNetworkContentAuditResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_network_content_audit_with_sse_async(
         self,
@@ -2824,17 +2831,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunNetworkContentAuditResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunNetworkContentAuditResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_network_content_audit_with_options(
         self,
@@ -2984,17 +2991,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunOcrParseResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunOcrParseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_ocr_parse_with_sse_async(
         self,
@@ -3028,17 +3035,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunOcrParseResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunOcrParseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_ocr_parse_with_options(
         self,
@@ -3158,17 +3165,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_script_chat_with_sse_async(
         self,
@@ -3200,17 +3207,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_script_chat_with_options(
         self,
@@ -3328,17 +3335,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptContinueResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptContinueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_script_continue_with_sse_async(
         self,
@@ -3372,17 +3379,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptContinueResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptContinueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_script_continue_with_options(
         self,
@@ -3512,17 +3519,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptPlanningResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptPlanningResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_script_planning_with_sse_async(
         self,
@@ -3564,17 +3571,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptPlanningResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptPlanningResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_script_planning_with_options(
         self,
@@ -3708,17 +3715,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptRefineResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptRefineResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_script_refine_with_sse_async(
         self,
@@ -3748,17 +3755,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunScriptRefineResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunScriptRefineResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_script_refine_with_options(
         self,
@@ -3884,17 +3891,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunStyleWritingResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunStyleWritingResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_style_writing_with_sse_async(
         self,
@@ -3940,17 +3947,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunStyleWritingResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunStyleWritingResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_style_writing_with_options(
         self,
@@ -4110,17 +4117,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunTagMiningAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunTagMiningAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_tag_mining_analysis_with_sse_async(
         self,
@@ -4168,17 +4175,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunTagMiningAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunTagMiningAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_tag_mining_analysis_with_options(
         self,
@@ -4388,17 +4395,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunVideoAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunVideoAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_video_analysis_with_sse_async(
         self,
@@ -4492,17 +4499,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunVideoAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunVideoAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_video_analysis_with_options(
         self,
@@ -4772,17 +4779,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunVideoDetectShotResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunVideoDetectShotResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_video_detect_shot_with_sse_async(
         self,
@@ -4844,17 +4851,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunVideoDetectShotResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunVideoDetectShotResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_video_detect_shot_with_options(
         self,
@@ -5019,6 +5026,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
+        if not DaraCore.is_null(request.batch_task):
+            body['batchTask'] = request.batch_task
         if not DaraCore.is_null(request.contents_shrink):
             body['contents'] = request.contents_shrink
         if not DaraCore.is_null(request.extra_info):
@@ -5031,6 +5040,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.output_format):
             body['outputFormat'] = request.output_format
+        if not DaraCore.is_null(request.positive_filter):
+            body['positiveFilter'] = request.positive_filter
         if not DaraCore.is_null(request.source_trace):
             body['sourceTrace'] = request.source_trace
         if not DaraCore.is_null(request.tags_shrink):
@@ -5078,6 +5089,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
+        if not DaraCore.is_null(request.batch_task):
+            body['batchTask'] = request.batch_task
         if not DaraCore.is_null(request.contents_shrink):
             body['contents'] = request.contents_shrink
         if not DaraCore.is_null(request.extra_info):
@@ -5090,6 +5103,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.output_format):
             body['outputFormat'] = request.output_format
+        if not DaraCore.is_null(request.positive_filter):
+            body['positiveFilter'] = request.positive_filter
         if not DaraCore.is_null(request.source_trace):
             body['sourceTrace'] = request.source_trace
         if not DaraCore.is_null(request.tags_shrink):
@@ -5265,6 +5280,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
+        if not DaraCore.is_null(request.batch_task):
+            body['batchTask'] = request.batch_task
         if not DaraCore.is_null(request.business_type):
             body['businessType'] = request.business_type
         if not DaraCore.is_null(request.contents_shrink):
@@ -5318,6 +5335,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
+        if not DaraCore.is_null(request.batch_task):
+            body['batchTask'] = request.batch_task
         if not DaraCore.is_null(request.business_type):
             body['businessType'] = request.business_type
         if not DaraCore.is_null(request.contents_shrink):

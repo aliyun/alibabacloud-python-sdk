@@ -14,6 +14,7 @@ class RunEnterpriseVocAnalysisShrinkRequest(DaraModel):
         filter_tags_shrink: str = None,
         model_id: str = None,
         output_format: str = None,
+        positive_filter: bool = None,
         source_trace: bool = None,
         tags_shrink: str = None,
         task_description: str = None,
@@ -28,6 +29,7 @@ class RunEnterpriseVocAnalysisShrinkRequest(DaraModel):
         self.model_id = model_id
         # 指定返回结果的格式，支持json或text
         self.output_format = output_format
+        self.positive_filter = positive_filter
         self.source_trace = source_trace
         # 业务标签体系，用于对文本内容进行分类和分析。
         self.tags_shrink = tags_shrink
@@ -62,6 +64,9 @@ class RunEnterpriseVocAnalysisShrinkRequest(DaraModel):
         if self.output_format is not None:
             result['outputFormat'] = self.output_format
 
+        if self.positive_filter is not None:
+            result['positiveFilter'] = self.positive_filter
+
         if self.source_trace is not None:
             result['sourceTrace'] = self.source_trace
 
@@ -95,6 +100,9 @@ class RunEnterpriseVocAnalysisShrinkRequest(DaraModel):
 
         if m.get('outputFormat') is not None:
             self.output_format = m.get('outputFormat')
+
+        if m.get('positiveFilter') is not None:
+            self.positive_filter = m.get('positiveFilter')
 
         if m.get('sourceTrace') is not None:
             self.source_trace = m.get('sourceTrace')

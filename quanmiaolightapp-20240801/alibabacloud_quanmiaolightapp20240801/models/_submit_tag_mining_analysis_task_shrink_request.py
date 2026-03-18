@@ -8,6 +8,7 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(DaraModel):
     def __init__(
         self,
         api_key: str = None,
+        batch_task: bool = None,
         business_type: str = None,
         contents_shrink: str = None,
         extra_info: str = None,
@@ -18,6 +19,7 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(DaraModel):
         url: str = None,
     ):
         self.api_key = api_key
+        self.batch_task = batch_task
         self.business_type = business_type
         self.contents_shrink = contents_shrink
         self.extra_info = extra_info
@@ -37,6 +39,9 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(DaraModel):
             result = _map
         if self.api_key is not None:
             result['apiKey'] = self.api_key
+
+        if self.batch_task is not None:
+            result['batchTask'] = self.batch_task
 
         if self.business_type is not None:
             result['businessType'] = self.business_type
@@ -68,6 +73,9 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('apiKey') is not None:
             self.api_key = m.get('apiKey')
+
+        if m.get('batchTask') is not None:
+            self.batch_task = m.get('batchTask')
 
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
