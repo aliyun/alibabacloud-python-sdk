@@ -594,6 +594,9 @@ from ._save_material_document_request import SaveMaterialDocumentRequest
 from ._save_material_document_shrink_request import SaveMaterialDocumentShrinkRequest
 from ._save_material_document_response_body import SaveMaterialDocumentResponseBody
 from ._save_material_document_response import SaveMaterialDocumentResponse
+from ._save_or_update_oss_config_request import SaveOrUpdateOssConfigRequest
+from ._save_or_update_oss_config_response_body import SaveOrUpdateOssConfigResponseBody
+from ._save_or_update_oss_config_response import SaveOrUpdateOssConfigResponse
 from ._save_style_learning_result_request import SaveStyleLearningResultRequest
 from ._save_style_learning_result_shrink_request import SaveStyleLearningResultShrinkRequest
 from ._save_style_learning_result_response_body import SaveStyleLearningResultResponseBody
@@ -1266,6 +1269,7 @@ from ._run_writing_v2response_body import RunWritingV2ResponseBodyPayloadOutput
 from ._run_writing_v2response_body import RunWritingV2ResponseBodyPayloadUsage
 from ._run_writing_v2response_body import RunWritingV2ResponseBodyPayload
 from ._save_data_source_order_config_request import SaveDataSourceOrderConfigRequestUserConfigDataSourceList
+from ._save_or_update_oss_config_response_body import SaveOrUpdateOssConfigResponseBodyData
 from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos
 from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBodyDataDocuments
 from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBodyData
@@ -1932,6 +1936,9 @@ __all__ = [
     SaveMaterialDocumentShrinkRequest,
     SaveMaterialDocumentResponseBody,
     SaveMaterialDocumentResponse,
+    SaveOrUpdateOssConfigRequest,
+    SaveOrUpdateOssConfigResponseBody,
+    SaveOrUpdateOssConfigResponse,
     SaveStyleLearningResultRequest,
     SaveStyleLearningResultShrinkRequest,
     SaveStyleLearningResultResponseBody,
@@ -2604,6 +2611,7 @@ __all__ = [
     RunWritingV2ResponseBodyPayloadUsage,
     RunWritingV2ResponseBodyPayload,
     SaveDataSourceOrderConfigRequestUserConfigDataSourceList,
+    SaveOrUpdateOssConfigResponseBodyData,
     SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos,
     SearchDatasetDocumentsResponseBodyDataDocuments,
     SearchDatasetDocumentsResponseBodyData,

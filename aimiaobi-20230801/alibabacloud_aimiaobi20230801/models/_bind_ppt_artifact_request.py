@@ -8,11 +8,13 @@ class BindPptArtifactRequest(DaraModel):
     def __init__(
         self,
         artifact_id: int = None,
+        external_user_id: str = None,
         task_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.artifact_id = artifact_id
+        self.external_user_id = external_user_id
         # This parameter is required.
         self.task_id = task_id
         self.workspace_id = workspace_id
@@ -28,6 +30,9 @@ class BindPptArtifactRequest(DaraModel):
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
 
+        if self.external_user_id is not None:
+            result['ExternalUserId'] = self.external_user_id
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -40,6 +45,9 @@ class BindPptArtifactRequest(DaraModel):
         m = m or dict()
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
+
+        if m.get('ExternalUserId') is not None:
+            self.external_user_id = m.get('ExternalUserId')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

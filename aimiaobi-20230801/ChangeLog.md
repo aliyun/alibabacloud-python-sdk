@@ -1,3 +1,13 @@
+2026-03-18 Version: 1.40.4
+- Update API BindPptArtifact: add request parameters ExternalUserId.
+- Update API DeletePptArtifact: add request parameters ExternalUserId.
+- Update API GetPptArtifact: add request parameters ExternalUserId.
+- Update API GetPptConfig: add request parameters ExternalUserId.
+- Update API InitiatePptCreation: add request parameters ExternalUserId.
+- Update API ListPptArtifacts: add request parameters ExternalUserId.
+- Update API RunPptOutlineGeneration: add request parameters ExternalUserId.
+
+
 2026-03-13 Version: 1.40.2
 - Update API AsyncCreateClipsTimeLine: add request parameters HighLightConfig.
 - Update API AsyncCreateClipsTimeLine: add request parameters RecommendAudio.

@@ -14,6 +14,7 @@ class ListDatasetDocumentsResponseBody(DaraModel):
         data: List[main_models.ListDatasetDocumentsResponseBodyData] = None,
         http_status_code: int = None,
         message: str = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
@@ -24,6 +25,7 @@ class ListDatasetDocumentsResponseBody(DaraModel):
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
+        self.next_token = next_token
         self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
@@ -54,6 +56,9 @@ class ListDatasetDocumentsResponseBody(DaraModel):
 
         if self.message is not None:
             result['Message'] = self.message
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -88,6 +93,9 @@ class ListDatasetDocumentsResponseBody(DaraModel):
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

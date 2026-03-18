@@ -4,15 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeletePptArtifactRequest(DaraModel):
+class SaveOrUpdateOssConfigRequest(DaraModel):
     def __init__(
         self,
-        external_user_id: str = None,
-        ppt_artifact_id: str = None,
+        bucket_name: str = None,
+        end_point: str = None,
         workspace_id: str = None,
     ):
-        self.external_user_id = external_user_id
-        self.ppt_artifact_id = ppt_artifact_id
+        self.bucket_name = bucket_name
+        self.end_point = end_point
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -23,11 +24,11 @@ class DeletePptArtifactRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.external_user_id is not None:
-            result['ExternalUserId'] = self.external_user_id
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
 
-        if self.ppt_artifact_id is not None:
-            result['PptArtifactId'] = self.ppt_artifact_id
+        if self.end_point is not None:
+            result['EndPoint'] = self.end_point
 
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
@@ -36,11 +37,11 @@ class DeletePptArtifactRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExternalUserId') is not None:
-            self.external_user_id = m.get('ExternalUserId')
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
 
-        if m.get('PptArtifactId') is not None:
-            self.ppt_artifact_id = m.get('PptArtifactId')
+        if m.get('EndPoint') is not None:
+            self.end_point = m.get('EndPoint')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

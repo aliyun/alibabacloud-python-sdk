@@ -903,6 +903,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.artifact_id):
             body['ArtifactId'] = request.artifact_id
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
@@ -935,6 +937,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.artifact_id):
             body['ArtifactId'] = request.artifact_id
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
@@ -2747,6 +2751,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePptArtifactResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.ppt_artifact_id):
             body['PptArtifactId'] = request.ppt_artifact_id
         if not DaraCore.is_null(request.workspace_id):
@@ -2777,6 +2783,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePptArtifactResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.ppt_artifact_id):
             body['PptArtifactId'] = request.ppt_artifact_id
         if not DaraCore.is_null(request.workspace_id):
@@ -7021,6 +7029,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPptArtifactResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.ppt_artifact_id):
             body['PptArtifactId'] = request.ppt_artifact_id
         if not DaraCore.is_null(request.workspace_id):
@@ -7051,6 +7061,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPptArtifactResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.ppt_artifact_id):
             body['PptArtifactId'] = request.ppt_artifact_id
         if not DaraCore.is_null(request.workspace_id):
@@ -7095,6 +7107,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPptConfigResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -7123,6 +7137,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPptConfigResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -7789,6 +7805,8 @@ class Client(OpenApiClient):
     ) -> main_models.InitiatePptCreationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.outline):
             body['Outline'] = request.outline
         if not DaraCore.is_null(request.task_id):
@@ -7821,6 +7839,8 @@ class Client(OpenApiClient):
     ) -> main_models.InitiatePptCreationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.outline):
             body['Outline'] = request.outline
         if not DaraCore.is_null(request.task_id):
@@ -8965,6 +8985,8 @@ class Client(OpenApiClient):
             body['Extend3'] = request.extend_3
         if not DaraCore.is_null(request.include_fields_shrink):
             body['IncludeFields'] = request.include_fields_shrink
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -9051,6 +9073,8 @@ class Client(OpenApiClient):
             body['Extend3'] = request.extend_3
         if not DaraCore.is_null(request.include_fields_shrink):
             body['IncludeFields'] = request.include_fields_shrink
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -10816,6 +10840,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.query):
@@ -10852,6 +10878,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.query):
@@ -16205,6 +16233,8 @@ class Client(OpenApiClient):
     ) -> Generator[main_models.RunPptOutlineGenerationResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
         if not DaraCore.is_null(request.workspace_id):
@@ -16244,6 +16274,8 @@ class Client(OpenApiClient):
     ) -> AsyncGenerator[main_models.RunPptOutlineGenerationResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
         if not DaraCore.is_null(request.workspace_id):
@@ -16283,6 +16315,8 @@ class Client(OpenApiClient):
     ) -> main_models.RunPptOutlineGenerationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
         if not DaraCore.is_null(request.workspace_id):
@@ -16313,6 +16347,8 @@ class Client(OpenApiClient):
     ) -> main_models.RunPptOutlineGenerationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
         if not DaraCore.is_null(request.workspace_id):
@@ -19543,6 +19579,84 @@ class Client(OpenApiClient):
     ) -> main_models.SaveMaterialDocumentResponse:
         runtime = RuntimeOptions()
         return await self.save_material_document_with_options_async(request, runtime)
+
+    def save_or_update_oss_config_with_options(
+        self,
+        request: main_models.SaveOrUpdateOssConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveOrUpdateOssConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.bucket_name):
+            body['BucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.end_point):
+            body['EndPoint'] = request.end_point
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveOrUpdateOssConfig',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveOrUpdateOssConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_or_update_oss_config_with_options_async(
+        self,
+        request: main_models.SaveOrUpdateOssConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveOrUpdateOssConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.bucket_name):
+            body['BucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.end_point):
+            body['EndPoint'] = request.end_point
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveOrUpdateOssConfig',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveOrUpdateOssConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_or_update_oss_config(
+        self,
+        request: main_models.SaveOrUpdateOssConfigRequest,
+    ) -> main_models.SaveOrUpdateOssConfigResponse:
+        runtime = RuntimeOptions()
+        return self.save_or_update_oss_config_with_options(request, runtime)
+
+    async def save_or_update_oss_config_async(
+        self,
+        request: main_models.SaveOrUpdateOssConfigRequest,
+    ) -> main_models.SaveOrUpdateOssConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.save_or_update_oss_config_with_options_async(request, runtime)
 
     def save_style_learning_result_with_options(
         self,

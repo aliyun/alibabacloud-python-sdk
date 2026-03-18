@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class ListPptArtifactsRequest(DaraModel):
     def __init__(
         self,
+        external_user_id: str = None,
         max_results: int = None,
         next_token: str = None,
         query: str = None,
         workspace_id: str = None,
     ):
+        self.external_user_id = external_user_id
         self.max_results = max_results
         self.next_token = next_token
         self.query = query
@@ -25,6 +27,9 @@ class ListPptArtifactsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.external_user_id is not None:
+            result['ExternalUserId'] = self.external_user_id
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -41,6 +46,9 @@ class ListPptArtifactsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalUserId') is not None:
+            self.external_user_id = m.get('ExternalUserId')
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 

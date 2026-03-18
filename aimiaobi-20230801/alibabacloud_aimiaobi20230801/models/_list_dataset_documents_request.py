@@ -24,6 +24,7 @@ class ListDatasetDocumentsRequest(DaraModel):
         extend_2: str = None,
         extend_3: str = None,
         include_fields: List[str] = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
         query: str = None,
@@ -48,6 +49,7 @@ class ListDatasetDocumentsRequest(DaraModel):
         self.extend_2 = extend_2
         self.extend_3 = extend_3
         self.include_fields = include_fields
+        self.next_token = next_token
         self.page_number = page_number
         self.page_size = page_size
         self.query = query
@@ -110,6 +112,9 @@ class ListDatasetDocumentsRequest(DaraModel):
 
         if self.include_fields is not None:
             result['IncludeFields'] = self.include_fields
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -183,6 +188,9 @@ class ListDatasetDocumentsRequest(DaraModel):
 
         if m.get('IncludeFields') is not None:
             self.include_fields = m.get('IncludeFields')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
