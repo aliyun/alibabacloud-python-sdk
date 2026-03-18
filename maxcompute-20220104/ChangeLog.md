@@ -1,3 +1,11 @@
+2026-03-18 Version: 6.0.0
+- Support API CreateQuota.
+- Update API CreateMmsFetchMetadataJob: add request parameters body.
+- Update API CreateMmsFetchMetadataJob: add request The number of query or body parameters has changed from zero to many.
+- Update API GetMmsDataSource: add response parameters Body.data.config.$.subItems.
+- Update API QueryQuotaMetric: add request parameters body.subMetric.
+
+
 2025-11-25 Version: 5.2.1
 - Update API ListJobInfos: add request parameters body.extNodeNameList.
 - Update API ListJobInfos: add request parameters body.taskNameList.
