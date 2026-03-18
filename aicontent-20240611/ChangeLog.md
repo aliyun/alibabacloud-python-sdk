@@ -1,3 +1,34 @@
+2026-03-18 Version: 5.0.0
+- Support API AliyunConsoleOpenApiQueryPaidResource.
+- Support API ModelRouterChatCompletions.
+- Support API ModelRouterCopyApiKey.
+- Support API ModelRouterCreateApiKey.
+- Support API ModelRouterCreateClient.
+- Support API ModelRouterCreateConversation.
+- Support API ModelRouterCreateModel.
+- Support API ModelRouterDeleteApiKey.
+- Support API ModelRouterDeleteClient.
+- Support API ModelRouterDeleteConversation.
+- Support API ModelRouterDeleteModel.
+- Support API ModelRouterQueryApiKey.
+- Support API ModelRouterQueryApiKeyList.
+- Support API ModelRouterQueryClientList.
+- Support API ModelRouterQueryConversation.
+- Support API ModelRouterQueryConversationList.
+- Support API ModelRouterQueryModel.
+- Support API ModelRouterQueryModelList.
+- Support API ModelRouterQueryModelWithApiKey.
+- Support API ModelRouterQueryNacosProviders.
+- Support API ModelRouterQueryNacosTags.
+- Support API ModelRouterQueryObservationCharts.
+- Support API ModelRouterQueryObservationLogs.
+- Support API ModelRouterQueryObservationMetrics.
+- Support API ModelRouterUpdateClient.
+- Support API ModelRouterUpdateConversation.
+- Support API ModelRouterUpdateModel.
+- Delete API ExecuteHundredThousandWhysDialogue.
+
+
 2025-05-21 Version: 4.0.0
 - Update API ListTextbookAssistantArticleDetails: add response parameters Body.data.$.sceneList.$.sceneTranslate.
 - Update API ListTextbookAssistantArticleDetails: delete response parameters Body.data.$.sceneList.$.sceneTransLate.
