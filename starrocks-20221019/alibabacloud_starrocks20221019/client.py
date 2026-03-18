@@ -40,6 +40,106 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_backup_policy_with_options(
+        self,
+        request: main_models.AddBackupPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddBackupPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_days):
+            body['ExpireDays'] = request.expire_days
+        if not DaraCore.is_null(request.hour):
+            body['Hour'] = request.hour
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.minute):
+            body['Minute'] = request.minute
+        if not DaraCore.is_null(request.recurrence_type):
+            body['RecurrenceType'] = request.recurrence_type
+        if not DaraCore.is_null(request.recurrence_values):
+            body['RecurrenceValues'] = request.recurrence_values
+        if not DaraCore.is_null(request.timeout_seconds):
+            body['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddBackupPolicy',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_backup_policy_with_options_async(
+        self,
+        request: main_models.AddBackupPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddBackupPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_days):
+            body['ExpireDays'] = request.expire_days
+        if not DaraCore.is_null(request.hour):
+            body['Hour'] = request.hour
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.minute):
+            body['Minute'] = request.minute
+        if not DaraCore.is_null(request.recurrence_type):
+            body['RecurrenceType'] = request.recurrence_type
+        if not DaraCore.is_null(request.recurrence_values):
+            body['RecurrenceValues'] = request.recurrence_values
+        if not DaraCore.is_null(request.timeout_seconds):
+            body['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddBackupPolicy',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_backup_policy(
+        self,
+        request: main_models.AddBackupPolicyRequest,
+    ) -> main_models.AddBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_backup_policy_with_options(request, headers, runtime)
+
+    async def add_backup_policy_async(
+        self,
+        request: main_models.AddBackupPolicyRequest,
+    ) -> main_models.AddBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_backup_policy_with_options_async(request, headers, runtime)
+
     def add_gateway_with_options(
         self,
         request: main_models.AddGatewayRequest,
@@ -211,6 +311,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
+
+    def check_inventory_with_options(
+        self,
+        request: main_models.CheckInventoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInventoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_info):
+            query['ClusterInfo'] = request.cluster_info
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInventory',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/check/inventory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInventoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_inventory_with_options_async(
+        self,
+        request: main_models.CheckInventoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInventoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_info):
+            query['ClusterInfo'] = request.cluster_info
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInventory',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/check/inventory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInventoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_inventory(
+        self,
+        request: main_models.CheckInventoryRequest,
+    ) -> main_models.CheckInventoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.check_inventory_with_options(request, headers, runtime)
+
+    async def check_inventory_async(
+        self,
+        request: main_models.CheckInventoryRequest,
+    ) -> main_models.CheckInventoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.check_inventory_with_options_async(request, headers, runtime)
+
+    def create_agent_resource_with_options(
+        self,
+        request: main_models.CreateAgentResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.cu):
+            query['Cu'] = request.cu
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.spec_type):
+            query['SpecType'] = request.spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentResource',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/lifecycle/createAgentNodeGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_resource_with_options_async(
+        self,
+        request: main_models.CreateAgentResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.cu):
+            query['Cu'] = request.cu
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.spec_type):
+            query['SpecType'] = request.spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentResource',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/lifecycle/createAgentNodeGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent_resource(
+        self,
+        request: main_models.CreateAgentResourceRequest,
+    ) -> main_models.CreateAgentResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_agent_resource_with_options(request, headers, runtime)
+
+    async def create_agent_resource_async(
+        self,
+        request: main_models.CreateAgentResourceRequest,
+    ) -> main_models.CreateAgentResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_agent_resource_with_options_async(request, headers, runtime)
 
     def create_instance_v1with_options(
         self,
@@ -408,6 +692,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_v1with_options_async(request, headers, runtime)
 
+    def create_scaling_rule_with_options(
+        self,
+        request: main_models.CreateScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateScalingRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateScalingRule',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/createScalingRule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scaling_rule_with_options_async(
+        self,
+        request: main_models.CreateScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateScalingRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateScalingRule',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/createScalingRule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scaling_rule(
+        self,
+        request: main_models.CreateScalingRuleRequest,
+    ) -> main_models.CreateScalingRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_scaling_rule_with_options(request, headers, runtime)
+
+    async def create_scaling_rule_async(
+        self,
+        request: main_models.CreateScalingRuleRequest,
+    ) -> main_models.CreateScalingRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_scaling_rule_with_options_async(request, headers, runtime)
+
     def create_service_linked_role_with_options(
         self,
         headers: Dict[str, str],
@@ -465,6 +833,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_service_linked_role_with_options_async(headers, runtime)
+
+    def delete_backup_with_options(
+        self,
+        request: main_models.DeleteBackupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_task_id):
+            query['BackupTaskId'] = request.backup_task_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBackup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backup/manage/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_with_options_async(
+        self,
+        request: main_models.DeleteBackupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_task_id):
+            query['BackupTaskId'] = request.backup_task_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBackup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backup/manage/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup(
+        self,
+        request: main_models.DeleteBackupRequest,
+    ) -> main_models.DeleteBackupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_backup_with_options(request, headers, runtime)
+
+    async def delete_backup_async(
+        self,
+        request: main_models.DeleteBackupRequest,
+    ) -> main_models.DeleteBackupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_backup_with_options_async(request, headers, runtime)
+
+    def delete_backup_policy_with_options(
+        self,
+        request: main_models.DeleteBackupPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBackupPolicy',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_policy_with_options_async(
+        self,
+        request: main_models.DeleteBackupPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBackupPolicy',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup_policy(
+        self,
+        request: main_models.DeleteBackupPolicyRequest,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_backup_policy_with_options(request, headers, runtime)
+
+    async def delete_backup_policy_async(
+        self,
+        request: main_models.DeleteBackupPolicyRequest,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_backup_policy_with_options_async(request, headers, runtime)
 
     def delete_gateway_with_options(
         self,
@@ -545,6 +1077,434 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_gateway_with_options_async(request, headers, runtime)
+
+    def delete_inner_ip_whitelist_group_with_options(
+        self,
+        request: main_models.DeleteInnerIpWhitelistGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInnerIpWhitelistGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.inner_ip_whitelist_group_id):
+            body['InnerIpWhitelistGroupId'] = request.inner_ip_whitelist_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInnerIpWhitelistGroup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/securityGroup/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInnerIpWhitelistGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_inner_ip_whitelist_group_with_options_async(
+        self,
+        request: main_models.DeleteInnerIpWhitelistGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInnerIpWhitelistGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.inner_ip_whitelist_group_id):
+            body['InnerIpWhitelistGroupId'] = request.inner_ip_whitelist_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInnerIpWhitelistGroup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/securityGroup/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInnerIpWhitelistGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_inner_ip_whitelist_group(
+        self,
+        request: main_models.DeleteInnerIpWhitelistGroupRequest,
+    ) -> main_models.DeleteInnerIpWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_inner_ip_whitelist_group_with_options(request, headers, runtime)
+
+    async def delete_inner_ip_whitelist_group_async(
+        self,
+        request: main_models.DeleteInnerIpWhitelistGroupRequest,
+    ) -> main_models.DeleteInnerIpWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_inner_ip_whitelist_group_with_options_async(request, headers, runtime)
+
+    def delete_scaling_rule_with_options(
+        self,
+        request: main_models.DeleteScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteScalingRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.scaling_rule_id):
+            query['ScalingRuleId'] = request.scaling_rule_id
+        if not DaraCore.is_null(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteScalingRule',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/deleteScalingRule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scaling_rule_with_options_async(
+        self,
+        request: main_models.DeleteScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteScalingRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.scaling_rule_id):
+            query['ScalingRuleId'] = request.scaling_rule_id
+        if not DaraCore.is_null(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteScalingRule',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/deleteScalingRule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scaling_rule(
+        self,
+        request: main_models.DeleteScalingRuleRequest,
+    ) -> main_models.DeleteScalingRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_scaling_rule_with_options(request, headers, runtime)
+
+    async def delete_scaling_rule_async(
+        self,
+        request: main_models.DeleteScalingRuleRequest,
+    ) -> main_models.DeleteScalingRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_scaling_rule_with_options_async(request, headers, runtime)
+
+    def describe_available_zones_with_options(
+        self,
+        request: main_models.DescribeAvailableZonesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAvailableZonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAvailableZones',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/zone/describeZones',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_available_zones_with_options_async(
+        self,
+        request: main_models.DescribeAvailableZonesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAvailableZonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAvailableZones',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/zone/describeZones',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_available_zones(
+        self,
+        request: main_models.DescribeAvailableZonesRequest,
+    ) -> main_models.DescribeAvailableZonesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_available_zones_with_options(request, headers, runtime)
+
+    async def describe_available_zones_async(
+        self,
+        request: main_models.DescribeAvailableZonesRequest,
+    ) -> main_models.DescribeAvailableZonesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_available_zones_with_options_async(request, headers, runtime)
+
+    def describe_backup_policies_with_options(
+        self,
+        request: main_models.DescribeBackupPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBackupPolicies',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/describe',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBackupPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_policies_with_options_async(
+        self,
+        request: main_models.DescribeBackupPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBackupPolicies',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/describe',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBackupPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_policies(
+        self,
+        request: main_models.DescribeBackupPoliciesRequest,
+    ) -> main_models.DescribeBackupPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_backup_policies_with_options(request, headers, runtime)
+
+    async def describe_backup_policies_async(
+        self,
+        request: main_models.DescribeBackupPoliciesRequest,
+    ) -> main_models.DescribeBackupPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_backup_policies_with_options_async(request, headers, runtime)
+
+    def describe_backups_with_options(
+        self,
+        request: main_models.DescribeBackupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_task_id):
+            query['BackupTaskId'] = request.backup_task_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        if not DaraCore.is_null(request.time_period_end_time):
+            query['TimePeriodEndTime'] = request.time_period_end_time
+        if not DaraCore.is_null(request.time_period_start_time):
+            query['TimePeriodStartTime'] = request.time_period_start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBackups',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backup/manage/describe',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backups_with_options_async(
+        self,
+        request: main_models.DescribeBackupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_task_id):
+            query['BackupTaskId'] = request.backup_task_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        if not DaraCore.is_null(request.time_period_end_time):
+            query['TimePeriodEndTime'] = request.time_period_end_time
+        if not DaraCore.is_null(request.time_period_start_time):
+            query['TimePeriodStartTime'] = request.time_period_start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBackups',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backup/manage/describe',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backups(
+        self,
+        request: main_models.DescribeBackupsRequest,
+    ) -> main_models.DescribeBackupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_backups_with_options(request, headers, runtime)
+
+    async def describe_backups_async(
+        self,
+        request: main_models.DescribeBackupsRequest,
+    ) -> main_models.DescribeBackupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_backups_with_options_async(request, headers, runtime)
 
     def describe_config_history_with_options(
         self,
@@ -645,6 +1605,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_config_history_with_options_async(request, headers, runtime)
+
+    def describe_event_names_with_options(
+        self,
+        request: main_models.DescribeEventNamesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEventNamesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEventNames',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/event/describeEventNames',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEventNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_event_names_with_options_async(
+        self,
+        request: main_models.DescribeEventNamesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEventNamesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEventNames',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/event/describeEventNames',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEventNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_event_names(
+        self,
+        request: main_models.DescribeEventNamesRequest,
+    ) -> main_models.DescribeEventNamesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_event_names_with_options(request, headers, runtime)
+
+    async def describe_event_names_async(
+        self,
+        request: main_models.DescribeEventNamesRequest,
+    ) -> main_models.DescribeEventNamesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_event_names_with_options_async(request, headers, runtime)
+
+    def describe_inner_ip_whitelist_groups_with_options(
+        self,
+        request: main_models.DescribeInnerIpWhitelistGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInnerIpWhitelistGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInnerIpWhitelistGroups',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/securityGroup/list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInnerIpWhitelistGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inner_ip_whitelist_groups_with_options_async(
+        self,
+        request: main_models.DescribeInnerIpWhitelistGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInnerIpWhitelistGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInnerIpWhitelistGroups',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/securityGroup/list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInnerIpWhitelistGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inner_ip_whitelist_groups(
+        self,
+        request: main_models.DescribeInnerIpWhitelistGroupsRequest,
+    ) -> main_models.DescribeInnerIpWhitelistGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_inner_ip_whitelist_groups_with_options(request, headers, runtime)
+
+    async def describe_inner_ip_whitelist_groups_async(
+        self,
+        request: main_models.DescribeInnerIpWhitelistGroupsRequest,
+    ) -> main_models.DescribeInnerIpWhitelistGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_inner_ip_whitelist_groups_with_options_async(request, headers, runtime)
 
     def describe_instance_configs_with_options(
         self,
@@ -753,6 +1865,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_instance_configs_with_options_async(request, headers, runtime)
+
+    def describe_instance_diagnosis_result_with_options(
+        self,
+        request: main_models.DescribeInstanceDiagnosisResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceDiagnosisResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimension):
+            query['Dimension'] = request.dimension
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.report_date):
+            query['ReportDate'] = request.report_date
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceDiagnosisResult',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/diagnosis/describe',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceDiagnosisResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_diagnosis_result_with_options_async(
+        self,
+        request: main_models.DescribeInstanceDiagnosisResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceDiagnosisResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimension):
+            query['Dimension'] = request.dimension
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.report_date):
+            query['ReportDate'] = request.report_date
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceDiagnosisResult',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/diagnosis/describe',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceDiagnosisResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_diagnosis_result(
+        self,
+        request: main_models.DescribeInstanceDiagnosisResultRequest,
+    ) -> main_models.DescribeInstanceDiagnosisResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_instance_diagnosis_result_with_options(request, headers, runtime)
+
+    async def describe_instance_diagnosis_result_async(
+        self,
+        request: main_models.DescribeInstanceDiagnosisResultRequest,
+    ) -> main_models.DescribeInstanceDiagnosisResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_instance_diagnosis_result_with_options_async(request, headers, runtime)
+
+    def describe_instance_meta_token_with_options(
+        self,
+        request: main_models.DescribeInstanceMetaTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceMetaTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceMetaToken',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/migration/getMetaToken',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceMetaTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_meta_token_with_options_async(
+        self,
+        request: main_models.DescribeInstanceMetaTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceMetaTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceMetaToken',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/migration/getMetaToken',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceMetaTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_meta_token(
+        self,
+        request: main_models.DescribeInstanceMetaTokenRequest,
+    ) -> main_models.DescribeInstanceMetaTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_instance_meta_token_with_options(request, headers, runtime)
+
+    async def describe_instance_meta_token_async(
+        self,
+        request: main_models.DescribeInstanceMetaTokenRequest,
+    ) -> main_models.DescribeInstanceMetaTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_instance_meta_token_with_options_async(request, headers, runtime)
 
     def describe_instances_with_options(
         self,
@@ -978,6 +2262,300 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_node_groups_with_options_async(request, headers, runtime)
 
+    def describe_regions_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/region/list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/region/list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(self) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(headers, runtime)
+
+    async def describe_regions_async(self) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(headers, runtime)
+
+    def describe_resource_constraints_with_options(
+        self,
+        request: main_models.DescribeResourceConstraintsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResourceConstraintsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.architecture):
+            query['Architecture'] = request.architecture
+        if not DaraCore.is_null(request.package_type):
+            query['PackageType'] = request.package_type
+        if not DaraCore.is_null(request.run_mode):
+            query['RunMode'] = request.run_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeResourceConstraints',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/describeResourceConstraints',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeResourceConstraintsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_constraints_with_options_async(
+        self,
+        request: main_models.DescribeResourceConstraintsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResourceConstraintsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.architecture):
+            query['Architecture'] = request.architecture
+        if not DaraCore.is_null(request.package_type):
+            query['PackageType'] = request.package_type
+        if not DaraCore.is_null(request.run_mode):
+            query['RunMode'] = request.run_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeResourceConstraints',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/describeResourceConstraints',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeResourceConstraintsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_constraints(
+        self,
+        request: main_models.DescribeResourceConstraintsRequest,
+    ) -> main_models.DescribeResourceConstraintsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_resource_constraints_with_options(request, headers, runtime)
+
+    async def describe_resource_constraints_async(
+        self,
+        request: main_models.DescribeResourceConstraintsRequest,
+    ) -> main_models.DescribeResourceConstraintsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_resource_constraints_with_options_async(request, headers, runtime)
+
+    def describe_system_timezone_with_options(
+        self,
+        request: main_models.DescribeSystemTimezoneRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSystemTimezoneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSystemTimezone',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/timezone/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSystemTimezoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_system_timezone_with_options_async(
+        self,
+        request: main_models.DescribeSystemTimezoneRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSystemTimezoneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSystemTimezone',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/timezone/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSystemTimezoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_system_timezone(
+        self,
+        request: main_models.DescribeSystemTimezoneRequest,
+    ) -> main_models.DescribeSystemTimezoneResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_system_timezone_with_options(request, headers, runtime)
+
+    async def describe_system_timezone_async(
+        self,
+        request: main_models.DescribeSystemTimezoneRequest,
+    ) -> main_models.DescribeSystemTimezoneResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_system_timezone_with_options_async(request, headers, runtime)
+
+    def describe_time_trigger_scaling_rules_with_options(
+        self,
+        request: main_models.DescribeTimeTriggerScalingRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTimeTriggerScalingRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTimeTriggerScalingRules',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/describeTimeTriggerScalingRules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTimeTriggerScalingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_time_trigger_scaling_rules_with_options_async(
+        self,
+        request: main_models.DescribeTimeTriggerScalingRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTimeTriggerScalingRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTimeTriggerScalingRules',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/describeTimeTriggerScalingRules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTimeTriggerScalingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_time_trigger_scaling_rules(
+        self,
+        request: main_models.DescribeTimeTriggerScalingRulesRequest,
+    ) -> main_models.DescribeTimeTriggerScalingRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_time_trigger_scaling_rules_with_options(request, headers, runtime)
+
+    async def describe_time_trigger_scaling_rules_async(
+        self,
+        request: main_models.DescribeTimeTriggerScalingRulesRequest,
+    ) -> main_models.DescribeTimeTriggerScalingRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_time_trigger_scaling_rules_with_options_async(request, headers, runtime)
+
     def disable_sslconnection_with_options(
         self,
         request: main_models.DisableSSLConnectionRequest,
@@ -1053,6 +2631,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.disable_sslconnection_with_options_async(request, headers, runtime)
+
+    def enable_internal_slb_with_options(
+        self,
+        request: main_models.EnableInternalSlbRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableInternalSlbResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableInternalSlb',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/gateway/enableInternalSlb',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableInternalSlbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_internal_slb_with_options_async(
+        self,
+        request: main_models.EnableInternalSlbRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableInternalSlbResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableInternalSlb',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/gateway/enableInternalSlb',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableInternalSlbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_internal_slb(
+        self,
+        request: main_models.EnableInternalSlbRequest,
+    ) -> main_models.EnableInternalSlbResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_internal_slb_with_options(request, headers, runtime)
+
+    async def enable_internal_slb_async(
+        self,
+        request: main_models.EnableInternalSlbRequest,
+    ) -> main_models.EnableInternalSlbResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_internal_slb_with_options_async(request, headers, runtime)
+
+    def enable_multi_az_with_options(
+        self,
+        request: main_models.EnableMultiAzRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableMultiAzResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.observers):
+            body['observers'] = request.observers
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['promotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableMultiAz',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/lifecycle/enableMultiAz',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableMultiAzResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_multi_az_with_options_async(
+        self,
+        request: main_models.EnableMultiAzRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableMultiAzResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.observers):
+            body['observers'] = request.observers
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['promotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableMultiAz',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/lifecycle/enableMultiAz',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableMultiAzResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_multi_az(
+        self,
+        request: main_models.EnableMultiAzRequest,
+    ) -> main_models.EnableMultiAzResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_multi_az_with_options(request, headers, runtime)
+
+    async def enable_multi_az_async(
+        self,
+        request: main_models.EnableMultiAzRequest,
+    ) -> main_models.EnableMultiAzResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_multi_az_with_options_async(request, headers, runtime)
 
     def enable_sslconnection_with_options(
         self,
@@ -1226,6 +2964,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_feature_gate_with_options_async(request, headers, runtime)
 
+    def get_node_group_feature_gate_with_options(
+        self,
+        request: main_models.GetNodeGroupFeatureGateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNodeGroupFeatureGateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNodeGroupFeatureGate',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/features/nodeGroupFeatureGate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNodeGroupFeatureGateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_node_group_feature_gate_with_options_async(
+        self,
+        request: main_models.GetNodeGroupFeatureGateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNodeGroupFeatureGateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNodeGroupFeatureGate',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/features/nodeGroupFeatureGate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNodeGroupFeatureGateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_node_group_feature_gate(
+        self,
+        request: main_models.GetNodeGroupFeatureGateRequest,
+    ) -> main_models.GetNodeGroupFeatureGateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_node_group_feature_gate_with_options(request, headers, runtime)
+
+    async def get_node_group_feature_gate_async(
+        self,
+        request: main_models.GetNodeGroupFeatureGateRequest,
+    ) -> main_models.GetNodeGroupFeatureGateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_node_group_feature_gate_with_options_async(request, headers, runtime)
+
     def isolate_leader_with_options(
         self,
         request: main_models.IsolateLeaderRequest,
@@ -1381,6 +3199,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_gateway_with_options_async(request, headers, runtime)
+
+    def list_operation_activity_with_options(
+        self,
+        request: main_models.ListOperationActivityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperationActivityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_id):
+            query['OperationId'] = request.operation_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperationActivity',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/operation/listOperationActivity',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperationActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_activity_with_options_async(
+        self,
+        request: main_models.ListOperationActivityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperationActivityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_id):
+            query['OperationId'] = request.operation_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperationActivity',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/operation/listOperationActivity',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperationActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_activity(
+        self,
+        request: main_models.ListOperationActivityRequest,
+    ) -> main_models.ListOperationActivityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_operation_activity_with_options(request, headers, runtime)
+
+    async def list_operation_activity_async(
+        self,
+        request: main_models.ListOperationActivityRequest,
+    ) -> main_models.ListOperationActivityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_operation_activity_with_options_async(request, headers, runtime)
+
+    def list_operation_history_with_options(
+        self,
+        request: main_models.ListOperationHistoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperationHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not DaraCore.is_null(request.operation_status):
+            query['OperationStatus'] = request.operation_status
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperationHistory',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/operation/listOperationHistory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperationHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_history_with_options_async(
+        self,
+        request: main_models.ListOperationHistoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperationHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not DaraCore.is_null(request.operation_status):
+            query['OperationStatus'] = request.operation_status
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperationHistory',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/operation/listOperationHistory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperationHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_history(
+        self,
+        request: main_models.ListOperationHistoryRequest,
+    ) -> main_models.ListOperationHistoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_operation_history_with_options(request, headers, runtime)
+
+    async def list_operation_history_async(
+        self,
+        request: main_models.ListOperationHistoryRequest,
+    ) -> main_models.ListOperationHistoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_operation_history_with_options_async(request, headers, runtime)
 
     def modify_charge_type_with_options(
         self,
@@ -2018,6 +4020,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_disk_type_with_options_async(request, headers, runtime)
 
+    def modify_host_alias_with_options(
+        self,
+        request: main_models.ModifyHostAliasRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyHostAliasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.host_aliases):
+            body['hostAliases'] = request.host_aliases
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyHostAlias',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/network/modifyHostAlias',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyHostAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_host_alias_with_options_async(
+        self,
+        request: main_models.ModifyHostAliasRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyHostAliasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.host_aliases):
+            body['hostAliases'] = request.host_aliases
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyHostAlias',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/network/modifyHostAlias',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyHostAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_host_alias(
+        self,
+        request: main_models.ModifyHostAliasRequest,
+    ) -> main_models.ModifyHostAliasResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_host_alias_with_options(request, headers, runtime)
+
+    async def modify_host_alias_async(
+        self,
+        request: main_models.ModifyHostAliasRequest,
+    ) -> main_models.ModifyHostAliasResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_host_alias_with_options_async(request, headers, runtime)
+
     def modify_instance_config_with_options(
         self,
         request: main_models.ModifyInstanceConfigRequest,
@@ -2226,6 +4312,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_instance_config_pre_check_with_options_async(request, headers, runtime)
 
+    def modify_maintainable_time_with_options(
+        self,
+        request: main_models.ModifyMaintainableTimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaintainableTimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.maintainable_time_period):
+            query['MaintainableTimePeriod'] = request.maintainable_time_period
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaintainableTime',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/modifyMaintainableTime',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaintainableTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_maintainable_time_with_options_async(
+        self,
+        request: main_models.ModifyMaintainableTimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaintainableTimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.maintainable_time_period):
+            query['MaintainableTimePeriod'] = request.maintainable_time_period
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaintainableTime',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/modifyMaintainableTime',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaintainableTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_maintainable_time(
+        self,
+        request: main_models.ModifyMaintainableTimeRequest,
+    ) -> main_models.ModifyMaintainableTimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_maintainable_time_with_options(request, headers, runtime)
+
+    async def modify_maintainable_time_async(
+        self,
+        request: main_models.ModifyMaintainableTimeRequest,
+    ) -> main_models.ModifyMaintainableTimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_maintainable_time_with_options_async(request, headers, runtime)
+
     def modify_node_number_with_options(
         self,
         request: main_models.ModifyNodeNumberRequest,
@@ -2406,6 +4572,1606 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_node_number_pre_check_with_options_async(request, headers, runtime)
 
+    def modify_scaling_rule_with_options(
+        self,
+        request: main_models.ModifyScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyScalingRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.new_trigger_type):
+            query['NewTriggerType'] = request.new_trigger_type
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.old_trigger_type):
+            query['OldTriggerType'] = request.old_trigger_type
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.scaling_rule_id):
+            query['ScalingRuleId'] = request.scaling_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyScalingRule',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/modifyScalingRule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_scaling_rule_with_options_async(
+        self,
+        request: main_models.ModifyScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyScalingRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.new_trigger_type):
+            query['NewTriggerType'] = request.new_trigger_type
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.old_trigger_type):
+            query['OldTriggerType'] = request.old_trigger_type
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.scaling_rule_id):
+            query['ScalingRuleId'] = request.scaling_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyScalingRule',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/scalingRule/modifyScalingRule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_scaling_rule(
+        self,
+        request: main_models.ModifyScalingRuleRequest,
+    ) -> main_models.ModifyScalingRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_scaling_rule_with_options(request, headers, runtime)
+
+    async def modify_scaling_rule_async(
+        self,
+        request: main_models.ModifyScalingRuleRequest,
+    ) -> main_models.ModifyScalingRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_scaling_rule_with_options_async(request, headers, runtime)
+
+    def modify_spec_type_with_options(
+        self,
+        request: main_models.ModifySpecTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySpecTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.fast_mode):
+            query['FastMode'] = request.fast_mode
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target_spec_type):
+            query['TargetSpecType'] = request.target_spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySpecType',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/resourceChange/modifySpecType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySpecTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_spec_type_with_options_async(
+        self,
+        request: main_models.ModifySpecTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySpecTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.fast_mode):
+            query['FastMode'] = request.fast_mode
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target_spec_type):
+            query['TargetSpecType'] = request.target_spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySpecType',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/resourceChange/modifySpecType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySpecTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_spec_type(
+        self,
+        request: main_models.ModifySpecTypeRequest,
+    ) -> main_models.ModifySpecTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_spec_type_with_options(request, headers, runtime)
+
+    async def modify_spec_type_async(
+        self,
+        request: main_models.ModifySpecTypeRequest,
+    ) -> main_models.ModifySpecTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_spec_type_with_options_async(request, headers, runtime)
+
+    def modify_spec_type_pre_check_with_options(
+        self,
+        request: main_models.ModifySpecTypePreCheckRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySpecTypePreCheckResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.target_spec_type):
+            query['TargetSpecType'] = request.target_spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySpecTypePreCheck',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/resourceChange/modifySpecTypePreCheck',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySpecTypePreCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_spec_type_pre_check_with_options_async(
+        self,
+        request: main_models.ModifySpecTypePreCheckRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySpecTypePreCheckResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.target_spec_type):
+            query['TargetSpecType'] = request.target_spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySpecTypePreCheck',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/resourceChange/modifySpecTypePreCheck',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySpecTypePreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_spec_type_pre_check(
+        self,
+        request: main_models.ModifySpecTypePreCheckRequest,
+    ) -> main_models.ModifySpecTypePreCheckResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_spec_type_pre_check_with_options(request, headers, runtime)
+
+    async def modify_spec_type_pre_check_async(
+        self,
+        request: main_models.ModifySpecTypePreCheckRequest,
+    ) -> main_models.ModifySpecTypePreCheckResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_spec_type_pre_check_with_options_async(request, headers, runtime)
+
+    def modify_user_password_with_options(
+        self,
+        request: main_models.ModifyUserPasswordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyUserPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyUserPassword',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/password/modify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyUserPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_password_with_options_async(
+        self,
+        request: main_models.ModifyUserPasswordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyUserPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyUserPassword',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/password/modify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_password(
+        self,
+        request: main_models.ModifyUserPasswordRequest,
+    ) -> main_models.ModifyUserPasswordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_user_password_with_options(request, headers, runtime)
+
+    async def modify_user_password_async(
+        self,
+        request: main_models.ModifyUserPasswordRequest,
+    ) -> main_models.ModifyUserPasswordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_user_password_with_options_async(request, headers, runtime)
+
+    def query_enable_multi_az_price_with_options(
+        self,
+        request: main_models.QueryEnableMultiAzPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEnableMultiAzPriceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.observers):
+            body['observers'] = request.observers
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['promotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEnableMultiAzPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/enableMultiAz',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEnableMultiAzPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_enable_multi_az_price_with_options_async(
+        self,
+        request: main_models.QueryEnableMultiAzPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEnableMultiAzPriceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.observers):
+            body['observers'] = request.observers
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['promotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEnableMultiAzPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/enableMultiAz',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEnableMultiAzPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_enable_multi_az_price(
+        self,
+        request: main_models.QueryEnableMultiAzPriceRequest,
+    ) -> main_models.QueryEnableMultiAzPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_enable_multi_az_price_with_options(request, headers, runtime)
+
+    async def query_enable_multi_az_price_async(
+        self,
+        request: main_models.QueryEnableMultiAzPriceRequest,
+    ) -> main_models.QueryEnableMultiAzPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_enable_multi_az_price_with_options_async(request, headers, runtime)
+
+    def query_minor_version_with_options(
+        self,
+        request: main_models.QueryMinorVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMinorVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMinorVersion',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/queryAppDefineVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMinorVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_minor_version_with_options_async(
+        self,
+        request: main_models.QueryMinorVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMinorVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMinorVersion',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/queryAppDefineVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMinorVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_minor_version(
+        self,
+        request: main_models.QueryMinorVersionRequest,
+    ) -> main_models.QueryMinorVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_minor_version_with_options(request, headers, runtime)
+
+    async def query_minor_version_async(
+        self,
+        request: main_models.QueryMinorVersionRequest,
+    ) -> main_models.QueryMinorVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_minor_version_with_options_async(request, headers, runtime)
+
+    def query_modify_charge_type_price_with_options(
+        self,
+        request: main_models.QueryModifyChargeTypePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyChargeTypePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['BillingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyChargeTypePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/buy/query_modify_charge_type_price',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyChargeTypePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_charge_type_price_with_options_async(
+        self,
+        request: main_models.QueryModifyChargeTypePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyChargeTypePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['BillingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyChargeTypePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/buy/query_modify_charge_type_price',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyChargeTypePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_charge_type_price(
+        self,
+        request: main_models.QueryModifyChargeTypePriceRequest,
+    ) -> main_models.QueryModifyChargeTypePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_charge_type_price_with_options(request, headers, runtime)
+
+    async def query_modify_charge_type_price_async(
+        self,
+        request: main_models.QueryModifyChargeTypePriceRequest,
+    ) -> main_models.QueryModifyChargeTypePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_charge_type_price_with_options_async(request, headers, runtime)
+
+    def query_modify_cu_price_with_options(
+        self,
+        request: main_models.QueryModifyCuPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyCuPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyCuPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyCu',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyCuPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_cu_price_with_options_async(
+        self,
+        request: main_models.QueryModifyCuPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyCuPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyCuPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyCu',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyCuPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_cu_price(
+        self,
+        request: main_models.QueryModifyCuPriceRequest,
+    ) -> main_models.QueryModifyCuPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_cu_price_with_options(request, headers, runtime)
+
+    async def query_modify_cu_price_async(
+        self,
+        request: main_models.QueryModifyCuPriceRequest,
+    ) -> main_models.QueryModifyCuPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_cu_price_with_options_async(request, headers, runtime)
+
+    def query_modify_disk_number_price_with_options(
+        self,
+        request: main_models.QueryModifyDiskNumberPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskNumberPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskNumberPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskNumber',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskNumberPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_disk_number_price_with_options_async(
+        self,
+        request: main_models.QueryModifyDiskNumberPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskNumberPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskNumberPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskNumber',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskNumberPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_disk_number_price(
+        self,
+        request: main_models.QueryModifyDiskNumberPriceRequest,
+    ) -> main_models.QueryModifyDiskNumberPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_disk_number_price_with_options(request, headers, runtime)
+
+    async def query_modify_disk_number_price_async(
+        self,
+        request: main_models.QueryModifyDiskNumberPriceRequest,
+    ) -> main_models.QueryModifyDiskNumberPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_disk_number_price_with_options_async(request, headers, runtime)
+
+    def query_modify_disk_performance_level_price_with_options(
+        self,
+        request: main_models.QueryModifyDiskPerformanceLevelPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskPerformanceLevelPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskPerformanceLevelPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskPerformanceLevel',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskPerformanceLevelPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_disk_performance_level_price_with_options_async(
+        self,
+        request: main_models.QueryModifyDiskPerformanceLevelPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskPerformanceLevelPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskPerformanceLevelPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskPerformanceLevel',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskPerformanceLevelPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_disk_performance_level_price(
+        self,
+        request: main_models.QueryModifyDiskPerformanceLevelPriceRequest,
+    ) -> main_models.QueryModifyDiskPerformanceLevelPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_disk_performance_level_price_with_options(request, headers, runtime)
+
+    async def query_modify_disk_performance_level_price_async(
+        self,
+        request: main_models.QueryModifyDiskPerformanceLevelPriceRequest,
+    ) -> main_models.QueryModifyDiskPerformanceLevelPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_disk_performance_level_price_with_options_async(request, headers, runtime)
+
+    def query_modify_disk_size_price_with_options(
+        self,
+        request: main_models.QueryModifyDiskSizePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskSizePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskSizePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskSize',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskSizePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_disk_size_price_with_options_async(
+        self,
+        request: main_models.QueryModifyDiskSizePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskSizePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskSizePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskSize',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskSizePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_disk_size_price(
+        self,
+        request: main_models.QueryModifyDiskSizePriceRequest,
+    ) -> main_models.QueryModifyDiskSizePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_disk_size_price_with_options(request, headers, runtime)
+
+    async def query_modify_disk_size_price_async(
+        self,
+        request: main_models.QueryModifyDiskSizePriceRequest,
+    ) -> main_models.QueryModifyDiskSizePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_disk_size_price_with_options_async(request, headers, runtime)
+
+    def query_modify_disk_type_price_with_options(
+        self,
+        request: main_models.QueryModifyDiskTypePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskTypePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target_disk_type):
+            query['TargetDiskType'] = request.target_disk_type
+        if not DaraCore.is_null(request.target_performance_level):
+            query['TargetPerformanceLevel'] = request.target_performance_level
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskTypePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskTypePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_disk_type_price_with_options_async(
+        self,
+        request: main_models.QueryModifyDiskTypePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyDiskTypePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target_disk_type):
+            query['TargetDiskType'] = request.target_disk_type
+        if not DaraCore.is_null(request.target_performance_level):
+            query['TargetPerformanceLevel'] = request.target_performance_level
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyDiskTypePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyDiskType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyDiskTypePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_disk_type_price(
+        self,
+        request: main_models.QueryModifyDiskTypePriceRequest,
+    ) -> main_models.QueryModifyDiskTypePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_disk_type_price_with_options(request, headers, runtime)
+
+    async def query_modify_disk_type_price_async(
+        self,
+        request: main_models.QueryModifyDiskTypePriceRequest,
+    ) -> main_models.QueryModifyDiskTypePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_disk_type_price_with_options_async(request, headers, runtime)
+
+    def query_modify_node_number_price_with_options(
+        self,
+        request: main_models.QueryModifyNodeNumberPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyNodeNumberPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyNodeNumberPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyNodeNumber',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyNodeNumberPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_node_number_price_with_options_async(
+        self,
+        request: main_models.QueryModifyNodeNumberPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifyNodeNumberPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifyNodeNumberPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifyNodeNumber',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifyNodeNumberPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_node_number_price(
+        self,
+        request: main_models.QueryModifyNodeNumberPriceRequest,
+    ) -> main_models.QueryModifyNodeNumberPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_node_number_price_with_options(request, headers, runtime)
+
+    async def query_modify_node_number_price_async(
+        self,
+        request: main_models.QueryModifyNodeNumberPriceRequest,
+    ) -> main_models.QueryModifyNodeNumberPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_node_number_price_with_options_async(request, headers, runtime)
+
+    def query_modify_spec_type_price_with_options(
+        self,
+        request: main_models.QueryModifySpecTypePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifySpecTypePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target_spec_type):
+            query['TargetSpecType'] = request.target_spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifySpecTypePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifySpecType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifySpecTypePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_modify_spec_type_price_with_options_async(
+        self,
+        request: main_models.QueryModifySpecTypePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryModifySpecTypePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.target_spec_type):
+            query['TargetSpecType'] = request.target_spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryModifySpecTypePrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/priceInquiry/modifySpecType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryModifySpecTypePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_modify_spec_type_price(
+        self,
+        request: main_models.QueryModifySpecTypePriceRequest,
+    ) -> main_models.QueryModifySpecTypePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_modify_spec_type_price_with_options(request, headers, runtime)
+
+    async def query_modify_spec_type_price_async(
+        self,
+        request: main_models.QueryModifySpecTypePriceRequest,
+    ) -> main_models.QueryModifySpecTypePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_modify_spec_type_price_with_options_async(request, headers, runtime)
+
+    def query_price_v1with_options(
+        self,
+        request: main_models.QueryPriceV1Request,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPriceV1Response:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_node_group):
+            body['AgentNodeGroup'] = request.agent_node_group
+        if not DaraCore.is_null(request.backend_node_groups):
+            body['BackendNodeGroups'] = request.backend_node_groups
+        if not DaraCore.is_null(request.duration):
+            body['Duration'] = request.duration
+        if not DaraCore.is_null(request.frontend_node_groups):
+            body['FrontendNodeGroups'] = request.frontend_node_groups
+        if not DaraCore.is_null(request.observer_node_groups):
+            body['ObserverNodeGroups'] = request.observer_node_groups
+        if not DaraCore.is_null(request.package_type):
+            body['PackageType'] = request.package_type
+        if not DaraCore.is_null(request.pay_type):
+            body['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            body['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.run_mode):
+            body['RunMode'] = request.run_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPriceV1',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/price/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPriceV1Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_price_v1with_options_async(
+        self,
+        request: main_models.QueryPriceV1Request,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPriceV1Response:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_node_group):
+            body['AgentNodeGroup'] = request.agent_node_group
+        if not DaraCore.is_null(request.backend_node_groups):
+            body['BackendNodeGroups'] = request.backend_node_groups
+        if not DaraCore.is_null(request.duration):
+            body['Duration'] = request.duration
+        if not DaraCore.is_null(request.frontend_node_groups):
+            body['FrontendNodeGroups'] = request.frontend_node_groups
+        if not DaraCore.is_null(request.observer_node_groups):
+            body['ObserverNodeGroups'] = request.observer_node_groups
+        if not DaraCore.is_null(request.package_type):
+            body['PackageType'] = request.package_type
+        if not DaraCore.is_null(request.pay_type):
+            body['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            body['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['PromotionOptionNo'] = request.promotion_option_no
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.run_mode):
+            body['RunMode'] = request.run_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPriceV1',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/price/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPriceV1Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_price_v1(
+        self,
+        request: main_models.QueryPriceV1Request,
+    ) -> main_models.QueryPriceV1Response:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_price_v1with_options(request, headers, runtime)
+
+    async def query_price_v1_async(
+        self,
+        request: main_models.QueryPriceV1Request,
+    ) -> main_models.QueryPriceV1Response:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_price_v1with_options_async(request, headers, runtime)
+
+    def query_refund_price_with_options(
+        self,
+        request: main_models.QueryRefundPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRefundPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['billingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRefundPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/buy/queryRefundPrice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRefundPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_refund_price_with_options_async(
+        self,
+        request: main_models.QueryRefundPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRefundPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['billingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRefundPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/buy/queryRefundPrice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRefundPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_refund_price(
+        self,
+        request: main_models.QueryRefundPriceRequest,
+    ) -> main_models.QueryRefundPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_refund_price_with_options(request, headers, runtime)
+
+    async def query_refund_price_async(
+        self,
+        request: main_models.QueryRefundPriceRequest,
+    ) -> main_models.QueryRefundPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_refund_price_with_options_async(request, headers, runtime)
+
+    def query_renew_price_with_options(
+        self,
+        request: main_models.QueryRenewPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRenewPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['BillingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRenewPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/price/renew',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRenewPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_renew_price_with_options_async(
+        self,
+        request: main_models.QueryRenewPriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRenewPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['BillingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRenewPrice',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/price/renew',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRenewPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_renew_price(
+        self,
+        request: main_models.QueryRenewPriceRequest,
+    ) -> main_models.QueryRenewPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_renew_price_with_options(request, headers, runtime)
+
+    async def query_renew_price_async(
+        self,
+        request: main_models.QueryRenewPriceRequest,
+    ) -> main_models.QueryRenewPriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_renew_price_with_options_async(request, headers, runtime)
+
+    def query_unpaid_order_with_options(
+        self,
+        request: main_models.QueryUnpaidOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryUnpaidOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_id):
+            query['BillingInstanceId'] = request.billing_instance_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryUnpaidOrder',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/order/queryUnpaidOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryUnpaidOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_unpaid_order_with_options_async(
+        self,
+        request: main_models.QueryUnpaidOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryUnpaidOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_id):
+            query['BillingInstanceId'] = request.billing_instance_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryUnpaidOrder',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/order/queryUnpaidOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryUnpaidOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_unpaid_order(
+        self,
+        request: main_models.QueryUnpaidOrderRequest,
+    ) -> main_models.QueryUnpaidOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_unpaid_order_with_options(request, headers, runtime)
+
+    async def query_unpaid_order_async(
+        self,
+        request: main_models.QueryUnpaidOrderRequest,
+    ) -> main_models.QueryUnpaidOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_unpaid_order_with_options_async(request, headers, runtime)
+
     def query_upgradable_versions_with_options(
         self,
         request: main_models.QueryUpgradableVersionsRequest,
@@ -2486,6 +6252,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_upgradable_versions_with_options_async(request, headers, runtime)
 
+    def reboot_ecswith_options(
+        self,
+        request: main_models.RebootECSRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RebootECSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reboot_time):
+            query['RebootTime'] = request.reboot_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RebootECS',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/event/rebootEcs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RebootECSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_ecswith_options_async(
+        self,
+        request: main_models.RebootECSRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RebootECSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reboot_time):
+            query['RebootTime'] = request.reboot_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RebootECS',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/event/rebootEcs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RebootECSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_ecs(
+        self,
+        request: main_models.RebootECSRequest,
+    ) -> main_models.RebootECSResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.reboot_ecswith_options(request, headers, runtime)
+
+    async def reboot_ecs_async(
+        self,
+        request: main_models.RebootECSRequest,
+    ) -> main_models.RebootECSResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.reboot_ecswith_options_async(request, headers, runtime)
+
     def release_instance_with_options(
         self,
         request: main_models.ReleaseInstanceRequest,
@@ -2561,6 +6411,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.release_instance_with_options_async(request, headers, runtime)
+
+    def renew_instance_with_options(
+        self,
+        request: main_models.RenewInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['BillingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewInstance',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/order/renew_instance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_instance_with_options_async(
+        self,
+        request: main_models.RenewInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_instance_ids):
+            query['BillingInstanceIds'] = request.billing_instance_ids
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.promotion_option_no):
+            query['PromotionOptionNo'] = request.promotion_option_no
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewInstance',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/order/renew_instance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_instance(
+        self,
+        request: main_models.RenewInstanceRequest,
+    ) -> main_models.RenewInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.renew_instance_with_options(request, headers, runtime)
+
+    async def renew_instance_async(
+        self,
+        request: main_models.RenewInstanceRequest,
+    ) -> main_models.RenewInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.renew_instance_with_options_async(request, headers, runtime)
 
     def restart_instance_with_options(
         self,
@@ -3090,6 +7032,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.rollback_config_modification_with_options_async(request, headers, runtime)
 
+    def switch_active_standby_zones_with_options(
+        self,
+        request: main_models.SwitchActiveStandbyZonesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SwitchActiveStandbyZonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SwitchActiveStandbyZones',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/recovery/switchZones',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SwitchActiveStandbyZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_active_standby_zones_with_options_async(
+        self,
+        request: main_models.SwitchActiveStandbyZonesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SwitchActiveStandbyZonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SwitchActiveStandbyZones',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/recovery/switchZones',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SwitchActiveStandbyZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_active_standby_zones(
+        self,
+        request: main_models.SwitchActiveStandbyZonesRequest,
+    ) -> main_models.SwitchActiveStandbyZonesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.switch_active_standby_zones_with_options(request, headers, runtime)
+
+    async def switch_active_standby_zones_async(
+        self,
+        request: main_models.SwitchActiveStandbyZonesRequest,
+    ) -> main_models.SwitchActiveStandbyZonesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.switch_active_standby_zones_with_options_async(request, headers, runtime)
+
     def tag_resources_with_options(
         self,
         request: main_models.TagResourcesRequest,
@@ -3177,6 +7199,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def toggle_auto_minor_version_upgrade_with_options(
+        self,
+        request: main_models.ToggleAutoMinorVersionUpgradeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ToggleAutoMinorVersionUpgradeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_upgrade):
+            query['AutoUpgrade'] = request.auto_upgrade
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ToggleAutoMinorVersionUpgrade',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/toggleAutoMinorVersionUpgrade',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ToggleAutoMinorVersionUpgradeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def toggle_auto_minor_version_upgrade_with_options_async(
+        self,
+        request: main_models.ToggleAutoMinorVersionUpgradeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ToggleAutoMinorVersionUpgradeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_upgrade):
+            query['AutoUpgrade'] = request.auto_upgrade
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ToggleAutoMinorVersionUpgrade',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/toggleAutoMinorVersionUpgrade',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ToggleAutoMinorVersionUpgradeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def toggle_auto_minor_version_upgrade(
+        self,
+        request: main_models.ToggleAutoMinorVersionUpgradeRequest,
+    ) -> main_models.ToggleAutoMinorVersionUpgradeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.toggle_auto_minor_version_upgrade_with_options(request, headers, runtime)
+
+    async def toggle_auto_minor_version_upgrade_async(
+        self,
+        request: main_models.ToggleAutoMinorVersionUpgradeRequest,
+    ) -> main_models.ToggleAutoMinorVersionUpgradeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.toggle_auto_minor_version_upgrade_with_options_async(request, headers, runtime)
 
     def toggle_public_slb_with_options(
         self,
@@ -3366,6 +7468,194 @@ class Client(OpenApiClient):
         headers = {}
         return await self.un_tag_resources_with_options_async(request, headers, runtime)
 
+    def update_backup_with_options(
+        self,
+        request: main_models.UpdateBackupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.backup_task_id):
+            body['backupTaskId'] = request.backup_task_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBackup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backup/manage/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_backup_with_options_async(
+        self,
+        request: main_models.UpdateBackupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.backup_task_id):
+            body['backupTaskId'] = request.backup_task_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBackup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backup/manage/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_backup(
+        self,
+        request: main_models.UpdateBackupRequest,
+    ) -> main_models.UpdateBackupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_backup_with_options(request, headers, runtime)
+
+    async def update_backup_async(
+        self,
+        request: main_models.UpdateBackupRequest,
+    ) -> main_models.UpdateBackupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_backup_with_options_async(request, headers, runtime)
+
+    def update_backup_policy_with_options(
+        self,
+        request: main_models.UpdateBackupPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBackupPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_days):
+            body['ExpireDays'] = request.expire_days
+        if not DaraCore.is_null(request.hour):
+            body['Hour'] = request.hour
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.minute):
+            body['Minute'] = request.minute
+        if not DaraCore.is_null(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.recurrence_values):
+            body['RecurrenceValues'] = request.recurrence_values
+        if not DaraCore.is_null(request.timeout_seconds):
+            body['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBackupPolicy',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_backup_policy_with_options_async(
+        self,
+        request: main_models.UpdateBackupPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBackupPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_days):
+            body['ExpireDays'] = request.expire_days
+        if not DaraCore.is_null(request.hour):
+            body['Hour'] = request.hour
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.minute):
+            body['Minute'] = request.minute
+        if not DaraCore.is_null(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.recurrence_values):
+            body['RecurrenceValues'] = request.recurrence_values
+        if not DaraCore.is_null(request.timeout_seconds):
+            body['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBackupPolicy',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/backupRestore/policy/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_backup_policy(
+        self,
+        request: main_models.UpdateBackupPolicyRequest,
+    ) -> main_models.UpdateBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_backup_policy_with_options(request, headers, runtime)
+
+    async def update_backup_policy_async(
+        self,
+        request: main_models.UpdateBackupPolicyRequest,
+    ) -> main_models.UpdateBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_backup_policy_with_options_async(request, headers, runtime)
+
     def update_gateway_with_options(
         self,
         request: main_models.UpdateGatewayRequest,
@@ -3454,6 +7744,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_gateway_with_options_async(request, headers, runtime)
 
+    def update_inner_ip_whitelist_group_with_options(
+        self,
+        request: main_models.UpdateInnerIpWhitelistGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInnerIpWhitelistGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cidr_ip_list):
+            body['CidrIpList'] = request.cidr_ip_list
+        if not DaraCore.is_null(request.inner_ip_whitelist_group_id):
+            body['InnerIpWhitelistGroupId'] = request.inner_ip_whitelist_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInnerIpWhitelistGroup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/securityGroup/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInnerIpWhitelistGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_inner_ip_whitelist_group_with_options_async(
+        self,
+        request: main_models.UpdateInnerIpWhitelistGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInnerIpWhitelistGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cidr_ip_list):
+            body['CidrIpList'] = request.cidr_ip_list
+        if not DaraCore.is_null(request.inner_ip_whitelist_group_id):
+            body['InnerIpWhitelistGroupId'] = request.inner_ip_whitelist_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInnerIpWhitelistGroup',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/securityGroup/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInnerIpWhitelistGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_inner_ip_whitelist_group(
+        self,
+        request: main_models.UpdateInnerIpWhitelistGroupRequest,
+    ) -> main_models.UpdateInnerIpWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_inner_ip_whitelist_group_with_options(request, headers, runtime)
+
+    async def update_inner_ip_whitelist_group_async(
+        self,
+        request: main_models.UpdateInnerIpWhitelistGroupRequest,
+    ) -> main_models.UpdateInnerIpWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_inner_ip_whitelist_group_with_options_async(request, headers, runtime)
+
     def update_instance_name_with_options(
         self,
         request: main_models.UpdateInstanceNameRequest,
@@ -3533,6 +7907,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_instance_name_with_options_async(request, headers, runtime)
+
+    def update_node_group_description_with_options(
+        self,
+        request: main_models.UpdateNodeGroupDescriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNodeGroupDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.x_acs_ram_auth_context):
+            query['X-Acs-Ram-Auth-Context'] = request.x_acs_ram_auth_context
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNodeGroupDescription',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/nodegroup/updateDescription',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNodeGroupDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_node_group_description_with_options_async(
+        self,
+        request: main_models.UpdateNodeGroupDescriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNodeGroupDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.x_acs_ram_auth_context):
+            query['X-Acs-Ram-Auth-Context'] = request.x_acs_ram_auth_context
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNodeGroupDescription',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/nodegroup/updateDescription',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNodeGroupDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_node_group_description(
+        self,
+        request: main_models.UpdateNodeGroupDescriptionRequest,
+    ) -> main_models.UpdateNodeGroupDescriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_node_group_description_with_options(request, headers, runtime)
+
+    async def update_node_group_description_async(
+        self,
+        request: main_models.UpdateNodeGroupDescriptionRequest,
+    ) -> main_models.UpdateNodeGroupDescriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_node_group_description_with_options_async(request, headers, runtime)
+
+    def update_public_network_status_with_options(
+        self,
+        request: main_models.UpdatePublicNetworkStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePublicNetworkStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.component_type):
+            query['ComponentType'] = request.component_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.public_network_enabled):
+            query['PublicNetworkEnabled'] = request.public_network_enabled
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePublicNetworkStatus',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/network/updatePublicNetworkStatus',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePublicNetworkStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_public_network_status_with_options_async(
+        self,
+        request: main_models.UpdatePublicNetworkStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePublicNetworkStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.component_type):
+            query['ComponentType'] = request.component_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_group_id):
+            query['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.public_network_enabled):
+            query['PublicNetworkEnabled'] = request.public_network_enabled
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePublicNetworkStatus',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/network/updatePublicNetworkStatus',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePublicNetworkStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_public_network_status(
+        self,
+        request: main_models.UpdatePublicNetworkStatusRequest,
+    ) -> main_models.UpdatePublicNetworkStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_public_network_status_with_options(request, headers, runtime)
+
+    async def update_public_network_status_async(
+        self,
+        request: main_models.UpdatePublicNetworkStatusRequest,
+    ) -> main_models.UpdatePublicNetworkStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_public_network_status_with_options_async(request, headers, runtime)
 
     def upgrade_version_with_options(
         self,
