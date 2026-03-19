@@ -17,11 +17,17 @@ class TableKnowledgeInfo(DaraModel):
         summary: str = None,
         table_name: str = None,
     ):
+        # Table usage instructions, which are not editable in OpenAPI.
         self.asset_description = asset_description
+        # Last modified time.
         self.asset_modified_gmt = asset_modified_gmt
+        # The columns of the table.
         self.column_list = column_list
+        # Table description in the CREAT TABLE statement.
         self.description = description
+        # Table business description, which can be edited via EditMetaKnowledgeAsset.
         self.summary = summary
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

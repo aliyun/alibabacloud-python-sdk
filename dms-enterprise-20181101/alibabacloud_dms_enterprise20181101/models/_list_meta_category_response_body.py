@@ -17,7 +17,6 @@ class ListMetaCategoryResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The list of categories.
         self.category_list = category_list
         # The error code returned if the request fails.
         self.error_code = error_code

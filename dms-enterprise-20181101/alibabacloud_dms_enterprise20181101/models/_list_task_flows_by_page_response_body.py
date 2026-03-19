@@ -28,7 +28,6 @@ class ListTaskFlowsByPageResponseBody(DaraModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
-        # The details of the returned task flows.
         self.task_flow_list = task_flow_list
         # The total number of entries returned.
         self.total_count = total_count
@@ -144,59 +143,25 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(DaraModel):
         time_zone_id: str = None,
         trigger_type: int = None,
     ):
-        # The ID of the user who created the task flow.
         self.creator_id = creator_id
-        # The username of the user who created the task flow.
         self.creator_nick_name = creator_nick_name
-        # The start time of scheduled scheduling. The task flow is not scheduled before this point in time.
         self.cron_begin_date = cron_begin_date
-        # The end time of scheduled scheduling. The task flow is not scheduled after this point in time.
         self.cron_end_date = cron_end_date
-        # Scheduled Cron.
         self.cron_str = cron_str
-        # Whether to enable scheduled scheduling.
         self.cron_switch = cron_switch
-        # Scheduling cycle type. Valid values:
-        # - **2**: Hourly scheduling
-        # - **3**: Daily scheduling
-        # - **4**: Weekly scheduling
-        # - **5**: Monthly scheduling
         self.cron_type = cron_type
-        # The name of the task flow.
         self.dag_name = dag_name
-        # The user ID of the task flow owner.
         self.dag_owner_id = dag_owner_id
-        # The username of the owner of the task flow.
         self.dag_owner_nick_name = dag_owner_nick_name
-        # The ID of the last deployment record of the task flow.
         self.deploy_id = deploy_id
-        # The description of the task flow.
         self.description = description
-        # The ID of the task flow.
         self.id = id
-        # The status of the last execution of the task flow. Valid values:
-        # 
-        # *   **0**: invalid
-        # *   **1**: scheduling disabled
-        # *   **2**: waiting to be scheduled
         self.latest_instance_status = latest_instance_status
-        # The time when the last execution record was created.
         self.latest_instance_time = latest_instance_time
-        # The ID of the application scenario.
         self.scenario_id = scenario_id
-        # Event scheduling configuration, JSON string format.
         self.schedule_param = schedule_param
-        # The status of the task flow. Valid values:
-        # 
-        # *   **0**: invalid
-        # *   **1**: scheduling disabled
-        # *   **2**: waiting to be scheduled
         self.status = status
-        # Time zone setting. Default value: East 8(Asia/Shanghai).
         self.time_zone_id = time_zone_id
-        # The trigger type. Valid values:
-        # - **0**: Periodic scheduling
-        # - **1**: Run manually
         self.trigger_type = trigger_type
 
     def validate(self):

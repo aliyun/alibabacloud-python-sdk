@@ -19,13 +19,18 @@ class MetaCategory(DaraModel):
         parent_category_id: int = None,
         remark: str = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The creation time.
         self.create_time = create_time
+        # The level of the category. This parameter is set to 1 for a root category.
         self.depth = depth
         self.description = description
+        # The name of the category.
         self.name = name
         self.owner_ids = owner_ids
         self.owner_nick_names = owner_nick_names
+        # The ID of the parent category. This parameter is left empty for a root category.
         self.parent_category_id = parent_category_id
         self.remark = remark
 

@@ -88,7 +88,6 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(DaraModel):
     ):
         # The configurations of the ticket. This parameter is used to store the configuration information specific to a data change ticket type.
         self.config_detail = config_detail
-        # The information about the database in which data is changed.
         self.database_list = database_list
         # The execution mode of the ticket after the ticket is approved. Valid values:
         # 
@@ -98,7 +97,6 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(DaraModel):
         self.exec_mode = exec_mode
         # The details of the ticket.
         self.order_detail = order_detail
-        # The precheck details of the ticket.
         self.pre_check_detail = pre_check_detail
         # The specific state of the data change ticket. Valid values:
         # 
@@ -219,21 +217,8 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailT
         check_step: str = None,
         user_tip: str = None,
     ):
-        # The state of the precheck. Valid values:
-        # 
-        # *   **WAITING**: The ticket is pending precheck.
-        # *   **RUNNING**: The ticket is being prechecked.
-        # *   **SUCCESS**: The ticket passes the precheck.
-        # *   **FAIL**: The ticket fails the precheck.
         self.check_status = check_status
-        # The check step of the precheck. Valid values:
-        # 
-        # *   **SQL_PARSE**: The system checks the syntax of the SQL statement.
-        # *   **SQL_TYPE_CHECK**: The system checks the type of the SQL statement.
-        # *   **PERMISSION_CHECK**: The system checks the permissions required for the data change.
-        # *   **ROW_CHECK**: The system checks the number of affected rows.
         self.check_step = check_step
-        # The message that appears when a check step is executed.
         self.user_tip = user_tip
 
     def validate(self):
@@ -439,27 +424,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDat
         logic: bool = None,
         search_name: str = None,
     ):
-        # The database ID.
         self.db_id = db_id
-        # The engine of the database.
         self.db_type = db_type
-        # The type of the environment to which the database belongs. Valid values:
-        # 
-        # *   product: production environment.
-        # *   dev: development environment.
-        # *   pre: pre-release environment.
-        # *   test: test environment.
-        # *   sit: system integration testing (SIT) environment
-        # *   uat: user acceptance testing (UAT) environment.
-        # *   pet: stress testing environment.
-        # *   stag: staging environment.
         self.env_type = env_type
-        # Indicates whether the database is a logical database. Valid values:
-        # 
-        # *   **true.**: The database is a logical database.
-        # *   **false**: The database is a physical database.
         self.logic = logic
-        # The name that is used to search for the database.
         self.search_name = search_name
 
     def validate(self):

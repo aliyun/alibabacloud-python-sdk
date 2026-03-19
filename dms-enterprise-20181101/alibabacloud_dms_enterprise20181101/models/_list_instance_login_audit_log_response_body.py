@@ -21,7 +21,6 @@ class ListInstanceLoginAuditLogResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned.
         self.error_message = error_message
-        # The logon records of the instance.
         self.instance_login_audit_log_list = instance_login_audit_log_list
         # The ID of the request.
         self.request_id = request_id
@@ -131,19 +130,12 @@ class ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLogi
         user_id: int = None,
         user_name: str = None,
     ):
-        # The database account that is used to log on to the instance.
         self.db_user = db_user
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # The time when the user performed an operation on the instance.
         self.op_time = op_time
-        # The source IP address of the request.
         self.request_ip = request_ip
-        # The ID of the user.
         self.user_id = user_id
-        # The alias of the user.
         self.user_name = user_name
 
     def validate(self):

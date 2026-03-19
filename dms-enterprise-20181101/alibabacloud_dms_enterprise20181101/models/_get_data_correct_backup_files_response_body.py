@@ -16,7 +16,6 @@ class GetDataCorrectBackupFilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The download URL of the backup file for the ticket.
         self.data_correct_backup_files = data_correct_backup_files
         # The error code.
         self.error_code = error_code

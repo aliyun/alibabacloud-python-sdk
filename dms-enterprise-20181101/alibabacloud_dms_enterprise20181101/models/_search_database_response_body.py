@@ -23,7 +23,6 @@ class SearchDatabaseResponseBody(DaraModel):
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # The information about the databases.
         self.search_database_list = search_database_list
         # Indicates whether the request is successful. Valid values:
         # 
@@ -140,42 +139,21 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(DaraModel):
         search_name: str = None,
         sid: str = None,
     ):
-        # The alias of the database.
         self.alias = alias
-        # The name of the catalog to which the database belongs.
-        # 
-        # > If the type of the database engine is PostgreSQL, the name of the database is displayed.
         self.catalog_name = catalog_name
-        # The ID of the database.
         self.database_id = database_id
-        # The name of the data link for cross-database queries.
         self.datalink_name = datalink_name
-        # The type of the database engine.
         self.db_type = db_type
-        # The ID of the user who assumes the database administrator (DBA) role.
         self.dba_id = dba_id
-        # The encoding method of the database.
         self.encoding = encoding
-        # The environment type of the database. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
-        # The endpoint of the instance in which the database resides.
         self.host = host
-        # Indicates whether the database is a logical database. Valid values:
-        # 
-        # *   **true**: The database is a logical database.
-        # *   **false**: The database is not a logical database.
         self.logic = logic
-        # The IDs of the owners of the databases.
         self.owner_id_list = owner_id_list
-        # The nicknames of the database owners.
         self.owner_name_list = owner_name_list
-        # The port of the instance in which the database resides.
         self.port = port
-        # The name of the database.
         self.schema_name = schema_name
-        # The name that is used to search for the database.
         self.search_name = search_name
-        # The system ID (SID) of the instance in which the database resides.
         self.sid = sid
 
     def validate(self):

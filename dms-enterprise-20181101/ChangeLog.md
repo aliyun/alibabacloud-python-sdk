@@ -1,3 +1,20 @@
+2026-03-19 Version: 2.2.0
+- Support API GetAIOrderApprovalCommentSSE.
+- Update API CreateDifyInstance: add request parameters DifyInstanceName.
+- Update API CreateDifyInstance: add request parameters Tag.
+- Update API CreateDifyInstance: add response parameters Body.Data.DifyInstanceId.
+- Update API CreateDifyInstance: add response parameters Body.Data.DifyInstanceName.
+- Update API DescribeDifyAttribute: add response parameters Body.Tags.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.AppType.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.DifyInstanceId.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.DifyInstanceName.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.RegionId.
+- Update API ListDifyInstances: add response parameters Body.Tags.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.DifyInstanceId.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.DifyInstanceName.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.RegionId.
+
+
 2026-02-06 Version: 2.1.6
 - Update API ListDatabases: add request parameters SearchKey.
 

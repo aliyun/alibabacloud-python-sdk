@@ -16,7 +16,6 @@ class ListTaskFlowCooperatorsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The users that are involved in the task flow.
         self.cooperator_list = cooperator_list
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -119,13 +118,9 @@ class ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator(DaraModel):
         nick_name: str = None,
         user_id: str = None,
     ):
-        # The email address of the user.
         self.email = email
-        # The username.
         self.login_name = login_name
-        # The alias of the user.
         self.nick_name = nick_name
-        # userId.
         self.user_id = user_id
 
     def validate(self):

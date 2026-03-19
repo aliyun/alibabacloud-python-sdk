@@ -92,9 +92,7 @@ class GetTaskFlowGraphResponseBodyTaskFlowGraph(DaraModel):
         self.can_edit = can_edit
         # The name of the task flow.
         self.dag_name = dag_name
-        # The list of task flow edges.
         self.edges = edges
-        # The node list of the task flow.
         self.nodes = nodes
         # The status of the task flow. Valid values:
         # 
@@ -199,21 +197,13 @@ class GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode(DaraModel):
         node_type: int = None,
         time_variables: str = None,
     ):
-        # The ID of the task flow.
         self.dag_id = dag_id
-        # The position of the node in the DAG.
         self.graph_param = graph_param
-        # The advanced configuration of the node.
         self.node_config = node_config
-        # The configuration of the node.
         self.node_content = node_content
-        # The ID of the node.
         self.node_id = node_id
-        # The name of the node.
         self.node_name = node_name
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
-        # The time variables for the node.
         self.time_variables = time_variables
 
     def validate(self):
@@ -321,13 +311,9 @@ class GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge(DaraModel):
         node_end: int = None,
         node_from: int = None,
     ):
-        # The ID of the task flow.
         self.dag_id = dag_id
-        # The ID of the task flow edge.
         self.id = id
-        # The ID of the end node on the edge.
         self.node_end = node_end
-        # The ID of the start node on the edge.
         self.node_from = node_from
 
     def validate(self):

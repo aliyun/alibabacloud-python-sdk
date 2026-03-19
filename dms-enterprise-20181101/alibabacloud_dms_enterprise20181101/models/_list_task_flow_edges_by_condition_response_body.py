@@ -16,7 +16,6 @@ class ListTaskFlowEdgesByConditionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of task flow edges.
         self.edges = edges
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -118,11 +117,8 @@ class ListTaskFlowEdgesByConditionResponseBodyEdgesEdge(DaraModel):
         node_end: int = None,
         node_from: int = None,
     ):
-        # The ID of the task flow edge.
         self.id = id
-        # The ID of the end node on the edge.
         self.node_end = node_end
-        # The ID of the start node on the edge.
         self.node_from = node_from
 
     def validate(self):

@@ -21,7 +21,6 @@ class ListInstancesResponseBody(DaraModel):
         self.error_code = error_code
         # The error message that is returned.
         self.error_message = error_message
-        # The information about the database instances that are returned.
         self.instance_list = instance_list
         # The request ID.
         self.request_id = request_id
@@ -151,73 +150,32 @@ class ListInstancesResponseBodyInstanceListInstance(DaraModel):
         use_dsql: int = None,
         vpc_id: str = None,
     ):
-        # The name of the database link for the database instance.
         self.data_link_name = data_link_name
-        # The password that is used to log on to the database instance.
         self.database_password = database_password
-        # The account that is used to log on to the database.
         self.database_user = database_user
-        # The ID of the database administrator (DBA) of the database instance.
         self.dba_id = dba_id
-        # The nickname of the DBA of the instance.
         self.dba_nick_name = dba_nick_name
-        # Indicates whether the lock-free schema change feature is enabled for the database instance.
         self.ddl_online = ddl_online
-        # The ID of the ECS instance on which the database instance is deployed.
         self.ecs_instance_id = ecs_instance_id
-        # The ID of the region in which the database instance resides.
         self.ecs_region = ecs_region
-        # The type of the environment to which the database instance belongs. Valid values:
-        # 
-        # *   **product:** production environment
-        # *   **dev**: development environment
-        # *   **pre**: pre-release environment
-        # *   **test**: test environment
-        # *   **sit**: SIT environment
-        # *   **uat**: UAT environment
-        # *   **pet**: stress testing environment
-        # *   **stag:** staging environment
         self.env_type = env_type
-        # The timeout period for exporting data from the database instance.
         self.export_timeout = export_timeout
-        # The host address that is used to connect to the database instance.
         self.host = host
-        # The alias of the database instance.
         self.instance_alias = instance_alias
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The source of the database instance.
         self.instance_source = instance_source
-        # The type of the database instance.
         self.instance_type = instance_type
-        # The IDs of the owners of the database instance.
         self.owner_id_list = owner_id_list
-        # The nicknames of the owners of the database instance.
         self.owner_name_list = owner_name_list
-        # The port number that is used to connect to the database instance.
         self.port = port
-        # The timeout period for querying data in the database instance.
         self.query_timeout = query_timeout
-        # The ID of the security rule set of the database instance.
         self.safe_rule_id = safe_rule_id
-        # Indicates whether the sensitive data protection feature is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.sell_sitd = sell_sitd
         self.sell_trust = sell_trust
-        # The system ID (SID) of the database instance.
         self.sid = sid
-        # The control mode of the database instance.
         self.standard_group = standard_group
-        # The status of the database instance.
         self.state = state
-        # Indicates whether the cross-database query feature is enabled for the database instance. Valid values:
-        # 
-        # *   **0**: disabled
-        # *   **1:**: enabled
         self.use_dsql = use_dsql
-        # The ID of the VPC to which the database instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -410,13 +368,7 @@ class ListInstancesResponseBodyInstanceListInstanceStandardGroup(DaraModel):
         group_mode: str = None,
         group_name: str = None,
     ):
-        # The type of the control mode. Valid values:
-        # 
-        # *   **COMMON**: Security Collaboration
-        # *   **NONE_CONTROL**: Flexible Management
-        # *   **STABLE**: Stable Change
         self.group_mode = group_mode
-        # The name of the security rule corresponding to the control mode.
         self.group_name = group_name
 
     def validate(self):

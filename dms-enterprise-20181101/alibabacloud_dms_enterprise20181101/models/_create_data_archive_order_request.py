@@ -278,7 +278,18 @@ class CreateDataArchiveOrderRequestParamVariables(DaraModel):
         name: str = None,
         pattern: str = None,
     ):
+        # The name of the time variable. If the time variable is used as a filter condition for archiving data, the variable name must be the same as the one that is specified in **TableWhere**.
         self.name = name
+        # The format of the time variable. The format is used to define the value of the time variable. For more information, see [Configure variables](https://help.aliyun.com/document_detail/209323.html). The following examples show the formats of a time variable:
+        # 
+        # *   **yyyy-MM-dd|-3d**: three days before the point in time when the task is run.
+        # *   **yyyy-MM-dd|-1w**: seven days before the point in time when the task is run.
+        # *   **yyyy-MM-dd|-4M**: four months before the point in time when the task is run.
+        # *   **yyyy-MM-dd|-2y**: two years before the point in time when the task is run.
+        # *   **yyyy-MM-dd|-3h**: 3 hours before the point in time when the task is run.
+        # *   **yyyy-MM-dd|+5m**: 5 minutes after the point in time when the task is run.
+        # 
+        # >  In these examples, yyyy-MM-dd| indicates a fixed value. For the remaining part, a hyphen (-) indicates that the time is before that when the task is run, and a plus sign (+) indicates that the time is after that when the task is run.
         self.pattern = pattern
 
     def validate(self):

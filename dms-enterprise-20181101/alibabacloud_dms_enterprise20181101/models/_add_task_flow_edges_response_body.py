@@ -16,7 +16,6 @@ class AddTaskFlowEdgesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of task flow edge IDs.
         self.edge_ids = edge_ids
         # The error code returned if the request failed.
         self.error_code = error_code

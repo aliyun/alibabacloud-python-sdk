@@ -110,9 +110,7 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(DaraModel):
         self.origin_attachment_name = origin_attachment_name
         # The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](https://help.aliyun.com/document_detail/465865.html) operation.
         self.plugin_type = plugin_type
-        # The IDs of the operators that are related to the ticket.
         self.related_user_list = related_user_list
-        # The nicknames of the operators that are related to the ticket.
         self.related_user_nick_list = related_user_nick_list
         # The status code of the ticket. Valid values:
         # 

@@ -24,7 +24,6 @@ class ListWorkFlowNodesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The details of approval nodes.
         self.workflow_nodes = workflow_nodes
 
     def validate(self):
@@ -119,22 +118,12 @@ class ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode(DaraModel):
         node_name: str = None,
         node_type: str = None,
     ):
-        # The details about approvers.
         self.audit_users = audit_users
-        # The description of the approval template.
         self.comment = comment
-        # The ID of the creator. This ID is different from the ID of the Alibaba Cloud account of the creator.
         self.create_user_id = create_user_id
-        # The name of the user who creates the approval node.
         self.create_user_nick_name = create_user_nick_name
-        # The ID of the approval node.
         self.node_id = node_id
-        # The name of the approval node.
         self.node_name = node_name
-        # The type of the approval node. Valid values:
-        # 
-        # *   SYS: The approval node is predefined by the system.
-        # *   USER_LIST: The approval node is created by a user.
         self.node_type = node_type
 
     def validate(self):
@@ -237,11 +226,8 @@ class ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser(
         real_name: str = None,
         user_id: int = None,
     ):
-        # The nickname of the approver.
         self.nick_name = nick_name
-        # The real name of the approver.
         self.real_name = real_name
-        # The ID of the approver. The ID is different from the ID of the Alibaba Cloud account of the approver.
         self.user_id = user_id
 
     def validate(self):

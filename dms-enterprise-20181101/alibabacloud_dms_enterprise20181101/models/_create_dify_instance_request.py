@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_dms_enterprise20181101 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateDifyInstanceRequest(DaraModel):
@@ -22,6 +25,7 @@ class CreateDifyInstanceRequest(DaraModel):
         db_resource_id: int = None,
         db_storage_size: str = None,
         db_storage_type: str = None,
+        dify_instance_name: str = None,
         dry_run: bool = None,
         edition: str = None,
         enable_extra_endpoint: bool = None,
@@ -50,6 +54,7 @@ class CreateDifyInstanceRequest(DaraModel):
         seg_disk_performance_level: str = None,
         seg_node_num: int = None,
         storage_type: str = None,
+        tag: List[main_models.CreateDifyInstanceRequestTag] = None,
         v_switch_id: str = None,
         vectordb_account: str = None,
         vectordb_category: str = None,
@@ -84,6 +89,7 @@ class CreateDifyInstanceRequest(DaraModel):
         self.db_resource_id = db_resource_id
         self.db_storage_size = db_storage_size
         self.db_storage_type = db_storage_type
+        self.dify_instance_name = dify_instance_name
         self.dry_run = dry_run
         self.edition = edition
         self.enable_extra_endpoint = enable_extra_endpoint
@@ -114,6 +120,7 @@ class CreateDifyInstanceRequest(DaraModel):
         self.seg_disk_performance_level = seg_disk_performance_level
         self.seg_node_num = seg_node_num
         self.storage_type = storage_type
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
         self.vectordb_account = vectordb_account
@@ -132,11 +139,13 @@ class CreateDifyInstanceRequest(DaraModel):
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
         self.workspace_option = workspace_option
-        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for v1 in self.tag:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -187,6 +196,9 @@ class CreateDifyInstanceRequest(DaraModel):
 
         if self.db_storage_type is not None:
             result['DbStorageType'] = self.db_storage_type
+
+        if self.dify_instance_name is not None:
+            result['DifyInstanceName'] = self.dify_instance_name
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
@@ -271,6 +283,11 @@ class CreateDifyInstanceRequest(DaraModel):
 
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+
+        result['Tag'] = []
+        if self.tag is not None:
+            for k1 in self.tag:
+                result['Tag'].append(k1.to_map() if k1 else None)
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
@@ -372,6 +389,9 @@ class CreateDifyInstanceRequest(DaraModel):
         if m.get('DbStorageType') is not None:
             self.db_storage_type = m.get('DbStorageType')
 
+        if m.get('DifyInstanceName') is not None:
+            self.dify_instance_name = m.get('DifyInstanceName')
+
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 
@@ -456,6 +476,12 @@ class CreateDifyInstanceRequest(DaraModel):
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
 
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k1 in m.get('Tag'):
+                temp_model = main_models.CreateDifyInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k1))
+
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
 
@@ -506,6 +532,41 @@ class CreateDifyInstanceRequest(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class CreateDifyInstanceRequestTag(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

@@ -87,7 +87,6 @@ class PreviewWorkflowResponseBodyWorkflowDetail(DaraModel):
         self.comment = comment
         # The name of the approval template.
         self.wf_cate_name = wf_cate_name
-        # The approval nodes.
         self.workflow_node_list = workflow_node_list
 
     def validate(self):
@@ -167,19 +166,9 @@ class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode(Dara
         node_name: str = None,
         node_type: str = None,
     ):
-        # The approvers.
         self.audit_user_list = audit_user_list
-        # The remarks of the approval node.
         self.comment = comment
-        # The name of the approval node.
         self.node_name = node_name
-        # The type of the approval node.
-        # 
-        # Valid values:
-        # 
-        # *   USER_LIST: The approval node is created by a user.
-        # *   UNKNOWN: The source of the approval node is unknown.
-        # *   SYS: The approval node is predefined by the system.
         self.node_type = node_type
 
     def validate(self):
@@ -264,11 +253,8 @@ class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAudit
         real_name: str = None,
         user_id: int = None,
     ):
-        # The nickname of the approver.
         self.nick_name = nick_name
-        # The name of the approver.
         self.real_name = real_name
-        # The ID of the approver.
         self.user_id = user_id
 
     def validate(self):

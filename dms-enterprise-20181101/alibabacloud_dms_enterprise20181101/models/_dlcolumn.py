@@ -11,8 +11,11 @@ class DLColumn(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The comment of the column.
         self.comment = comment
+        # The name of the column.
         self.name = name
+        # The data type of the column, including array, bigint, binary, boolean, char, date, decimal, double, float, int, interval, map, set, smallint, string, struct, timestamp, tinyint, union, varchar.
         self.type = type
 
     def validate(self):

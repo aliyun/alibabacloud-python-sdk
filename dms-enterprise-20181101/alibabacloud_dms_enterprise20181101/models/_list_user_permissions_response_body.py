@@ -30,7 +30,6 @@ class ListUserPermissionsResponseBody(DaraModel):
         self.success = success
         # The total number of entries that meet the query conditions.
         self.total_count = total_count
-        # The details of the permissions that the user has.
         self.user_permissions = user_permissions
 
     def validate(self):
@@ -141,56 +140,22 @@ class ListUserPermissionsResponseBodyUserPermissionsUserPermission(DaraModel):
         user_id: str = None,
         user_nick_name: str = None,
     ):
-        # The alias of the instance.
         self.alias = alias
-        # The name of the field.
         self.column_name = column_name
-        # The ID of the database.
         self.db_id = db_id
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://www.alibabacloud.com/help/en/data-management-service/latest/dbtype-parameter).
         self.db_type = db_type
-        # The permissions on a specific type of objects that are granted to the user. Valid values: 
-        # 
-        # - DATABASE: permissions on physical databases
-        # - LOGIC_DATABASE: permissions on logical databases
-        # - TABLE: permissions on physical tables
-        # - LOGIC_TABLE: permissions on logical tables
         self.ds_type = ds_type
-        # The type of the environment to which the database belongs. Valid values:
-        # 
-        # - product: production environment
-        # - dev: development environment
-        # - pre: staging environment
-        # - test: test environment
-        # - sit: SIT environment
-        # - uat: UAT environment
-        # - pet: stress testing environment
-        # - stag: STAG environment
         self.env_type = env_type
-        # The endpoint that is used to connect the database.
         self.host = host
-        # The ID of the instance.
         self.instance_id = instance_id
-        # Indicates whether the database is a logical database. Valid values:
-        # 
-        # *   true: The database is a logical database.
-        # *   false: The database is a physical database.
         self.logic = logic
-        # The details of permissions.
         self.perm_details = perm_details
-        # The port that is used to connect to the instance.
         self.port = port
-        # The name of the database.
         self.schema_name = schema_name
-        # The name that is used to search for the database.
         self.search_name = search_name
-        # The ID of the table.
         self.table_id = table_id
-        # The name of the table.
         self.table_name = table_name
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_nick_name = user_nick_name
 
     def validate(self):
@@ -356,21 +321,11 @@ class ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPer
         perm_type: str = None,
         user_access_id: str = None,
     ):
-        # The time when the permissions were granted.
         self.create_date = create_date
-        # The time when the permissions expire.
         self.expire_date = expire_date
-        # This parameter is reserved.
         self.extra_data = extra_data
-        # The user who grants the permissions.
         self.origin_from = origin_from
-        # The type of the permissions. Valid values:
-        # 
-        # *   QUERY: the query permissions
-        # *   EXPORT: the export permissions
-        # *   CORRECT: the change permissions
         self.perm_type = perm_type
-        # The ID of the authorization record.
         self.user_access_id = user_access_id
 
     def validate(self):

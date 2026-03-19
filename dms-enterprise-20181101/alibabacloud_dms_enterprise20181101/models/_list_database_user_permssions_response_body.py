@@ -27,7 +27,6 @@ class ListDatabaseUserPermssionsResponseBody(DaraModel):
         self.success = success
         # The total number of entries returned.
         self.total_count = total_count
-        # The details of user permissions.
         self.user_permissions = user_permissions
 
     def validate(self):
@@ -136,35 +135,20 @@ class ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission(DaraMo
         user_id: str = None,
         user_nick_name: str = None,
     ):
-        # The alias of the database instance.
         self.alias = alias
-        # The name of a column.
         self.column_name = column_name
-        # The ID of the database.
         self.db_id = db_id
-        # The type of the database engine.
         self.db_type = db_type
-        # The type of resources on which the user has permissions.
         self.ds_type = ds_type
-        # The type of the environment to which the database belongs.
         self.env_type = env_type
-        # The ID of the instance.
         self.instance_id = instance_id
-        # Indicates whether the database is a logical database.
         self.logic = logic
-        # The details of user permissions.
         self.perm_details = perm_details
-        # The name of the database.
         self.schema_name = schema_name
-        # The name that is used to search for the database.
         self.search_name = search_name
-        # The ID of the table.
         self.table_id = table_id
-        # The name of the table.
         self.table_name = table_name
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_nick_name = user_nick_name
 
     def validate(self):
@@ -318,21 +302,11 @@ class ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDet
         perm_type: str = None,
         user_access_id: str = None,
     ):
-        # The time when the permission was created.
         self.create_date = create_date
-        # The time when the permissions expire.
         self.expire_date = expire_date
-        # The extra information. This parameter is reserved.
         self.extra_data = extra_data
-        # The description of the entity that authorizes the permission.
         self.origin_from = origin_from
-        # The type of the permission. Valid values:
-        # 
-        # *   QUERY: the query permissions
-        # *   EXPORT: the export permissions
-        # *   CORRECT: the change permissions
         self.perm_type = perm_type
-        # The ID of the authorization record.
         self.user_access_id = user_access_id
 
     def validate(self):

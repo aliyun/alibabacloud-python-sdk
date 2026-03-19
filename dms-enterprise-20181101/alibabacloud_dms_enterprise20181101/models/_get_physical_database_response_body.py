@@ -116,9 +116,7 @@ class GetPhysicalDatabaseResponseBodyDatabase(DaraModel):
         self.instance_alias = instance_alias
         # The instance ID of the destination database.
         self.instance_id = instance_id
-        # The user IDs of the database owners.
         self.owner_id_list = owner_id_list
-        # The nicknames of the database owners.
         self.owner_name_list = owner_name_list
         # The port that is used to connect to the database.
         self.port = port

@@ -2086,17 +2086,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatWithDesensitizeSSEResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatWithDesensitizeSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def chat_with_desensitize_ssewith_sse_async(
         self,
@@ -2191,17 +2191,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatWithDesensitizeSSEResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatWithDesensitizeSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def chat_with_desensitize_ssewith_options(
         self,
@@ -3994,6 +3994,8 @@ class Client(OpenApiClient):
             query['DbStorageSize'] = request.db_storage_size
         if not DaraCore.is_null(request.db_storage_type):
             query['DbStorageType'] = request.db_storage_type
+        if not DaraCore.is_null(request.dify_instance_name):
+            query['DifyInstanceName'] = request.dify_instance_name
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.edition):
@@ -4050,6 +4052,8 @@ class Client(OpenApiClient):
             query['SegNodeNum'] = request.seg_node_num
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.vectordb_account):
@@ -4140,6 +4144,8 @@ class Client(OpenApiClient):
             query['DbStorageSize'] = request.db_storage_size
         if not DaraCore.is_null(request.db_storage_type):
             query['DbStorageType'] = request.db_storage_type
+        if not DaraCore.is_null(request.dify_instance_name):
+            query['DifyInstanceName'] = request.dify_instance_name
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.edition):
@@ -4196,6 +4202,8 @@ class Client(OpenApiClient):
             query['SegNodeNum'] = request.seg_node_num
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.vectordb_account):
@@ -8994,6 +9002,158 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateSqlFromNLResponse:
         runtime = RuntimeOptions()
         return await self.generate_sql_from_nlwith_options_async(request, runtime)
+
+    def get_aiorder_approval_comment_ssewith_sse(
+        self,
+        request: main_models.GetAIOrderApprovalCommentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.GetAIOrderApprovalCommentSSEResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['OrderId'] = request.order_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIOrderApprovalCommentSSE',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetAIOrderApprovalCommentSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def get_aiorder_approval_comment_ssewith_sse_async(
+        self,
+        request: main_models.GetAIOrderApprovalCommentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.GetAIOrderApprovalCommentSSEResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['OrderId'] = request.order_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIOrderApprovalCommentSSE',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetAIOrderApprovalCommentSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def get_aiorder_approval_comment_ssewith_options(
+        self,
+        request: main_models.GetAIOrderApprovalCommentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIOrderApprovalCommentSSEResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['OrderId'] = request.order_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIOrderApprovalCommentSSE',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIOrderApprovalCommentSSEResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aiorder_approval_comment_ssewith_options_async(
+        self,
+        request: main_models.GetAIOrderApprovalCommentSSERequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIOrderApprovalCommentSSEResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order_id):
+            query['OrderId'] = request.order_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIOrderApprovalCommentSSE',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIOrderApprovalCommentSSEResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aiorder_approval_comment_sse(
+        self,
+        request: main_models.GetAIOrderApprovalCommentSSERequest,
+    ) -> main_models.GetAIOrderApprovalCommentSSEResponse:
+        runtime = RuntimeOptions()
+        return self.get_aiorder_approval_comment_ssewith_options(request, runtime)
+
+    async def get_aiorder_approval_comment_sse_async(
+        self,
+        request: main_models.GetAIOrderApprovalCommentSSERequest,
+    ) -> main_models.GetAIOrderApprovalCommentSSEResponse:
+        runtime = RuntimeOptions()
+        return await self.get_aiorder_approval_comment_ssewith_options_async(request, runtime)
 
     def get_abac_policy_with_options(
         self,

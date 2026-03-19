@@ -20,14 +20,29 @@ class DLFunctionInput(DaraModel):
         owner_type: str = None,
         resource_uris: List[main_models.DLResourceUri] = None,
     ):
+        # The JAVA class that contains the function code.
         self.class_name = class_name
+        # The time when the function was created.
         self.create_time = create_time
+        # The ID of the user who created the function.
         self.creator_id = creator_id
+        # The name of the function.
         self.function_name = function_name
+        # The type of the function.
         self.function_type = function_type
+        # The ID of the user who modified the function.
         self.modifier_id = modifier_id
+        # The owner of the function.
         self.owner_name = owner_name
+        # The type of the owner.
+        # 
+        # Valid values:
+        # 
+        # *   ROLE
+        # *   GROUP
+        # *   USER
         self.owner_type = owner_type
+        # The resource URIs of the function. You cannot modify the resource URIs after the function is created.
         self.resource_uris = resource_uris
 
     def validate(self):

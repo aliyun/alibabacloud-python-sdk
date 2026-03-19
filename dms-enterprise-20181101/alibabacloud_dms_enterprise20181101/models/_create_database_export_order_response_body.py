@@ -16,7 +16,6 @@ class CreateDatabaseExportOrderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the ticket.
         self.create_order_result = create_order_result
         # The error code returned.
         self.error_code = error_code

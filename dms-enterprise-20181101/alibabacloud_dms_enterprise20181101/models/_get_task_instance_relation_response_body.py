@@ -20,7 +20,6 @@ class GetTaskInstanceRelationResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned if the request fails.
         self.error_message = error_message
-        # The information about the nodes in the execution record of the task flow.
         self.node_list = node_list
         # The ID of the request.
         self.request_id = request_id
@@ -124,30 +123,14 @@ class GetTaskInstanceRelationResponseBodyNodeListNode(DaraModel):
         node_type: int = None,
         status: int = None,
     ):
-        # The business time of the node.
         self.business_time = business_time
-        # The time when the execution of the task flow was complete. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # The amount of time consumed for running the node. Unit: milliseconds.
         self.execute_time = execute_time
-        # The ID of the execution record of the task flow.
         self.id = id
-        # The description of the task.
         self.message = message
-        # The ID of the node.
         self.node_id = node_id
-        # The name of the node.
         self.node_name = node_name
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
-        # The status of the node. Valid values:
-        # 
-        # *   **0**: The node is waiting to be scheduled.
-        # *   **1**: The node is running.
-        # *   **2**: The node is suspended.
-        # *   **3**: The node failed to run.
-        # *   **4**: The node is run.
-        # *   **5**: The node is complete.
         self.status = status
 
     def validate(self):

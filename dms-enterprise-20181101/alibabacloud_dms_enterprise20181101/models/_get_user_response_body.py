@@ -146,9 +146,7 @@ class GetUserResponseBodyUser(DaraModel):
         # 
         # > An Alibaba Cloud account can contain one or more RAM users.
         self.parent_uid = parent_uid
-        # The list of role IDs.
         self.role_id_list = role_id_list
-        # The list of role names.
         self.role_name_list = role_name_list
         # The signature method that is used to secure connections when a webhook URL is used. Valid values:
         # 

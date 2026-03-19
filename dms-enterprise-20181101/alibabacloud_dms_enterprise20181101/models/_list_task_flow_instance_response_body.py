@@ -17,7 +17,6 @@ class ListTaskFlowInstanceResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The information about the execution records returned.
         self.daginstance_list = daginstance_list
         # The error code returned if the request fails.
         self.error_code = error_code
@@ -136,39 +135,17 @@ class ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance(DaraModel):
         trigger_type: int = None,
         start_time: str = None,
     ):
-        # The business time of the task flow. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
         self.business_time = business_time
-        # The ID of the task flow.
         self.dag_id = dag_id
-        # The name of the task flow.
         self.dag_name = dag_name
-        # The version of the task flow.
         self.dag_version = dag_version
-        # The time when the execution of the task flow was complete. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # The ID of the previously published version of the task flow.
         self.history_dag_id = history_dag_id
-        # The ID of the execution record.
         self.id = id
-        # The description of the task.
         self.message = message
-        # The name of the task flow owner.
         self.owner_name = owner_name
-        # The status of the task flow. Valid values:
-        # 
-        # *   **0**: The task flow is waiting to be scheduled.
-        # *   **1**: The task flow is being executed.
-        # *   **2**: The task flow is paused.
-        # *   **3**: The task flow failed.
-        # *   **4**: The task flow is executed.
-        # *   **5**: The task flow is complete.
         self.status = status
-        # The mode in which the task flow is triggered. Valid values:
-        # 
-        # *   **0**: The task flow is automatically triggered based on periodic scheduling.
-        # *   **1**: The task flow is manually triggered.
         self.trigger_type = trigger_type
-        # The time when the execution of the task flow was start. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

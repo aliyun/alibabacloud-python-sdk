@@ -94,7 +94,6 @@ class GetLogicDatabaseResponseBodyLogicDatabase(DaraModel):
         self.alias = alias
         # The ID of the logical database.
         self.database_id = database_id
-        # The IDs of database shards of the logical database.
         self.database_ids = database_ids
         # The database engine. For more information about the valid values of the DbType parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
@@ -111,9 +110,7 @@ class GetLogicDatabaseResponseBodyLogicDatabase(DaraModel):
         self.env_type = env_type
         # Indicates whether the database is a logical database. The return value is true.
         self.logic = logic
-        # The IDs of the owners of the logical database.
         self.owner_id_list = owner_id_list
-        # The names of the owners of the logical database.
         self.owner_name_list = owner_name_list
         # The name of the logical database.
         self.schema_name = schema_name

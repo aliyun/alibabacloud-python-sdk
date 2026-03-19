@@ -17,7 +17,6 @@ class GetAuthorityTemplateItemResponseBody(DaraModel):
         success: bool = None,
         tid: int = None,
     ):
-        # The permission templates.
         self.authority_template_item_list = authority_template_item_list
         # The error code.
         self.error_code = error_code
@@ -132,27 +131,13 @@ class GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemp
         table_name: str = None,
         template_id: int = None,
     ):
-        # The additional information. For example, permissions to log on to an instance are added to the permission template.
         self.attribute = attribute
-        # The ID of the database.
         self.db_id = db_id
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the resource.
         self.item_id = item_id
-        # The ID of the user who modifies the resource.
         self.modifier_id = modifier_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **INSTANCE**: instance
-        # *   **LOGIC_DB**: logical database
-        # *   **META_DB**: physical database
-        # *   **LOGIC_TABLE**: logical table
-        # *   **LOGIC_TABLE**: physical table
         self.resource_type = resource_type
-        # The name of the table.
         self.table_name = table_name
-        # The ID of the permission template.
         self.template_id = template_id
 
     def validate(self):

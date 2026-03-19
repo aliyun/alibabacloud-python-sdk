@@ -14,11 +14,17 @@ class ColumnKnowledgeInfo(DaraModel):
         description: str = None,
         position: int = None,
     ):
+        # User-edited business knowledge content, which can be modified via the EditMetaKnowledgeAsset API.
         self.asset_description = asset_description
+        # The last modified time of the field.
         self.asset_modified_gmt = asset_modified_gmt
+        # The name of the field.
         self.column_name = column_name
+        # The data type of the field.
         self.column_type = column_type
+        # Field description in the CREATE TABLE statement.
         self.description = description
+        # The field order in the CREATE TABLE statement.
         self.position = position
 
     def validate(self):

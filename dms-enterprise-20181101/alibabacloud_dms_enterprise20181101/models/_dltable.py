@@ -30,24 +30,43 @@ class DLTable(DaraModel):
         view_expanded_text: str = None,
         view_original_text: str = None,
     ):
+        # The name of the catalog to which the table belongs.
         self.catalog_name = catalog_name
+        # The time when the data table was created.
         self.create_time = create_time
+        # The ID of the user who created the table.
         self.creator_id = creator_id
+        # The ID of the database in which the table is stored.
         self.db_id = db_id
+        # The name of the database in which the table is stored.
         self.db_name = db_name
+        # The description of the application table.
         self.description = description
+        # The time when the table was last accessed.
         self.last_access_time = last_access_time
+        # The storage path of the table.
         self.location = location
+        # The ID of the user who last modified the table.
         self.modifier_id = modifier_id
+        # The name of the table.
         self.name = name
+        # The name of the table owner.
         self.owner = owner
+        # The type of the table owner. Valid values: USER, ROLE, and GROUP.
         self.owner_type = owner_type
+        # The key-value pair.
         self.parameters = parameters
+        # The column attributes of the table.
         self.partition_keys = partition_keys
+        # The retention period of the table.
         self.retention = retention
+        # The description of data storage, including the storage characteristics and format of the table.
         self.storage_descriptor = storage_descriptor
+        # The type of the table. Valid values: MANAGED_TABLE, EXTERNAL_TABLE, VIRTUAL_VIEW, INDEX_TABLE, and MATERIALIZED_VIEW.
         self.table_type = table_type
+        # The expanded text of the view if the table type is view.
         self.view_expanded_text = view_expanded_text
+        # The original text of the view if the table type is view.
         self.view_original_text = view_original_text
 
     def validate(self):

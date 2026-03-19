@@ -16,11 +16,17 @@ class DLDatabase(DaraModel):
         name: str = None,
         parameters: Dict[str, Any] = None,
     ):
+        # The name of the catalog.
         self.catalog_name = catalog_name
+        # The database ID.
         self.db_id = db_id
+        # The description of the database.
         self.description = description
+        # The storage path of the database.
         self.location = location
+        # The name of the database.
         self.name = name
+        # The parameters related to the database.
         self.parameters = parameters
 
     def validate(self):

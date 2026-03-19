@@ -17,7 +17,6 @@ class ListTablesInCategoryResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # List of table information associated with the asset category.
         self.entity_list = entity_list
         # The error code returned if the request failed.
         self.error_code = error_code

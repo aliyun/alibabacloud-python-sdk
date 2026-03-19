@@ -25,6 +25,7 @@ from ._meta_category import MetaCategory
 from ._meta_category_table_entity import MetaCategoryTableEntity
 from ._partition_error import PartitionError
 from ._project_details_lite_vo import ProjectDetailsLiteVO
+from ._skill_info_do import SkillInfoDO
 from ._sts_apply_vo import StsApplyVO
 from ._sts_token_vo import StsTokenVO
 from ._table_knowledge_info import TableKnowledgeInfo
@@ -344,6 +345,9 @@ from ._gen_meta_knowledge_asset_response import GenMetaKnowledgeAssetResponse
 from ._generate_sql_from_nlrequest import GenerateSqlFromNLRequest
 from ._generate_sql_from_nlresponse_body import GenerateSqlFromNLResponseBody
 from ._generate_sql_from_nlresponse import GenerateSqlFromNLResponse
+from ._get_aiorder_approval_comment_sserequest import GetAIOrderApprovalCommentSSERequest
+from ._get_aiorder_approval_comment_sseresponse_body import GetAIOrderApprovalCommentSSEResponseBody
+from ._get_aiorder_approval_comment_sseresponse import GetAIOrderApprovalCommentSSEResponse
 from ._get_abac_policy_request import GetAbacPolicyRequest
 from ._get_abac_policy_response_body import GetAbacPolicyResponseBody
 from ._get_abac_policy_response import GetAbacPolicyResponse
@@ -1035,6 +1039,7 @@ from ._create_data_track_order_request import CreateDataTrackOrderRequestParam
 from ._create_database_export_order_request import CreateDatabaseExportOrderRequestPluginParamConfig
 from ._create_database_export_order_request import CreateDatabaseExportOrderRequestPluginParam
 from ._create_database_export_order_response_body import CreateDatabaseExportOrderResponseBodyCreateOrderResult
+from ._create_dify_instance_request import CreateDifyInstanceRequestTag
 from ._create_dify_instance_response_body import CreateDifyInstanceResponseBodyData
 from ._create_free_lock_correct_order_request import CreateFreeLockCorrectOrderRequestParamDbItemList
 from ._create_free_lock_correct_order_request import CreateFreeLockCorrectOrderRequestParam
@@ -1049,6 +1054,7 @@ from ._create_struct_sync_order_request import CreateStructSyncOrderRequestParam
 from ._create_struct_sync_order_request import CreateStructSyncOrderRequestParam
 from ._create_upload_ossfile_job_request import CreateUploadOSSFileJobRequestUploadTarget
 from ._describe_dify_attribute_response_body import DescribeDifyAttributeResponseBodyRoot
+from ._describe_dify_attribute_response_body import DescribeDifyAttributeResponseBodyTags
 from ._describe_dify_default_vpc_response_body import DescribeDifyDefaultVpcResponseBodyData
 from ._describe_dify_editions_response_body import DescribeDifyEditionsResponseBodyData
 from ._describe_dify_regions_response_body import DescribeDifyRegionsResponseBodyData
@@ -1237,6 +1243,7 @@ from ._list_default_slarules_response_body import ListDefaultSLARulesResponseBod
 from ._list_desensitization_rule_response_body import ListDesensitizationRuleResponseBodyDesensitizationRuleList
 from ._list_dify_instances_response_body import ListDifyInstancesResponseBodyRootData
 from ._list_dify_instances_response_body import ListDifyInstancesResponseBodyRoot
+from ._list_dify_instances_response_body import ListDifyInstancesResponseBodyTags
 from ._list_effective_orders_response_body import ListEffectiveOrdersResponseBodyOrderSummaryOrderList
 from ._list_effective_orders_response_body import ListEffectiveOrdersResponseBodyOrderSummary
 from ._list_indexes_response_body import ListIndexesResponseBodyIndexListIndex
@@ -1395,6 +1402,7 @@ __all__ = [
     MetaCategoryTableEntity,
     PartitionError,
     ProjectDetailsLiteVO,
+    SkillInfoDO,
     StsApplyVO,
     StsTokenVO,
     TableKnowledgeInfo,
@@ -1714,6 +1722,9 @@ __all__ = [
     GenerateSqlFromNLRequest,
     GenerateSqlFromNLResponseBody,
     GenerateSqlFromNLResponse,
+    GetAIOrderApprovalCommentSSERequest,
+    GetAIOrderApprovalCommentSSEResponseBody,
+    GetAIOrderApprovalCommentSSEResponse,
     GetAbacPolicyRequest,
     GetAbacPolicyResponseBody,
     GetAbacPolicyResponse,
@@ -2405,6 +2416,7 @@ __all__ = [
     CreateDatabaseExportOrderRequestPluginParamConfig,
     CreateDatabaseExportOrderRequestPluginParam,
     CreateDatabaseExportOrderResponseBodyCreateOrderResult,
+    CreateDifyInstanceRequestTag,
     CreateDifyInstanceResponseBodyData,
     CreateFreeLockCorrectOrderRequestParamDbItemList,
     CreateFreeLockCorrectOrderRequestParam,
@@ -2419,6 +2431,7 @@ __all__ = [
     CreateStructSyncOrderRequestParam,
     CreateUploadOSSFileJobRequestUploadTarget,
     DescribeDifyAttributeResponseBodyRoot,
+    DescribeDifyAttributeResponseBodyTags,
     DescribeDifyDefaultVpcResponseBodyData,
     DescribeDifyEditionsResponseBodyData,
     DescribeDifyRegionsResponseBodyData,
@@ -2607,6 +2620,7 @@ __all__ = [
     ListDesensitizationRuleResponseBodyDesensitizationRuleList,
     ListDifyInstancesResponseBodyRootData,
     ListDifyInstancesResponseBodyRoot,
+    ListDifyInstancesResponseBodyTags,
     ListEffectiveOrdersResponseBodyOrderSummaryOrderList,
     ListEffectiveOrdersResponseBodyOrderSummary,
     ListIndexesResponseBodyIndexListIndex,

@@ -21,7 +21,6 @@ class GetOpLogResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned if the request failed.
         self.error_message = error_message
-        # The details of the operation log.
         self.op_log_details = op_log_details
         # The ID of the request.
         self.request_id = request_id
@@ -132,29 +131,13 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(DaraModel):
         user_id: str = None,
         user_nick: str = None,
     ):
-        # The endpoint of the database instance.
-        # 
-        # > 
-        # 
-        # *   This parameter is valid only for database instances of the LocalInstance type.
-        # 
-        # *   This parameter is valid only for operations on the functional modules related to tasks.
         self.database = database
-        # The functional module for which the operation log is queried.
         self.module = module
-        # The details of the operation.
         self.op_content = op_content
-        # The time when the operation was performed.
         self.op_time = op_time
-        # The ID of the user who performed the operation.
         self.op_user_id = op_user_id
-        # The ID of the ticket or task.
-        # 
-        # >  This parameter is valid only for operations on the functional modules related to tasks and the task management module in system management.
         self.order_id = order_id
-        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
-        # The display name of the user.
         self.user_nick = user_nick
 
     def validate(self):

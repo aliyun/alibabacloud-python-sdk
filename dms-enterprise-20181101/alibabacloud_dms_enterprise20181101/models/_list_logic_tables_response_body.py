@@ -21,7 +21,6 @@ class ListLogicTablesResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The details of the logical tables.
         self.logic_table_list = logic_table_list
         # The ID of the request.
         self.request_id = request_id
@@ -131,25 +130,15 @@ class ListLogicTablesResponseBodyLogicTableListLogicTable(DaraModel):
         table_id: str = None,
         table_name: str = None,
     ):
-        # The ID of the logical database.
         self.database_id = database_id
-        # Indicates whether the table is a logical table. The value is fixed to true.
         self.logic = logic
-        # The IDs of the owners of the logical tables.
         self.owner_id_list = owner_id_list
-        # The nicknames of the owners of the logical tables.
         self.owner_name_list = owner_name_list
-        # The logical database to which the logical table belongs.
         self.schema_name = schema_name
-        # The number of logical tables.
         self.table_count = table_count
-        # The expression of the logical table.
         self.table_expr = table_expr
-        # The GUID of the logical table.
         self.table_guid = table_guid
-        # The ID of the logical table.
         self.table_id = table_id
-        # The name of the logical table.
         self.table_name = table_name
 
     def validate(self):

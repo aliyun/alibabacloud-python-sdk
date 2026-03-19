@@ -16,7 +16,6 @@ class ListTaskFlowConstantsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # A list of constant key-value pairs for the task flow.
         self.dag_constants = dag_constants
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -117,9 +116,7 @@ class ListTaskFlowConstantsResponseBodyDagConstantsDagConstant(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The constant key.
         self.key = key
-        # The constant value.
         self.value = value
 
     def validate(self):

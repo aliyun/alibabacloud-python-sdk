@@ -21,7 +21,6 @@ class ListOrdersResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The details about the tickets.
         self.orders = orders
         # The ID of the request.
         self.request_id = request_id
@@ -133,32 +132,14 @@ class ListOrdersResponseBodyOrdersOrder(DaraModel):
         status_code: str = None,
         status_desc: str = None,
     ):
-        # The remarks of the ticket.
         self.comment = comment
-        # The user who submitted the ticket.
         self.committer = committer
-        # The ID of the user who submitted the ticket.
         self.committer_id = committer_id
-        # The time when the ticket was created.
         self.create_time = create_time
-        # The time when the ticket was last modified.
         self.last_modify_time = last_modify_time
-        # The ID of the ticket.
         self.order_id = order_id
-        # The type of the ticket.
         self.plugin_type = plugin_type
-        # The status code of the ticket. Valid values:
-        # 
-        # *   **fail**: The ticket fails to be executed.
-        # *   **toaudit**: The ticket is waiting for approval.
-        # *   **cancel**: The ticket is cancelled.
-        # *   **processing**: The ticket is being executed.
-        # *   **approved**: The ticket is approved.
-        # *   **reject**: The ticket is rejected.
-        # *   **success**: The ticket is executed.
-        # *   **closed**: The ticket is closed.
         self.status_code = status_code
-        # The status description of the ticket.
         self.status_desc = status_desc
 
     def validate(self):

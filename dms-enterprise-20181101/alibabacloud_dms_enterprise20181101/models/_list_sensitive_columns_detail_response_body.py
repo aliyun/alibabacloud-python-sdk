@@ -22,7 +22,6 @@ class ListSensitiveColumnsDetailResponseBody(DaraModel):
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # The details of the sensitive field.
         self.sensitive_columns_detail_list = sensitive_columns_detail_list
         # Indicates whether the request was successful. Valid values:
         # 
@@ -125,28 +124,15 @@ class ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailListSensitiveC
         search_name: str = None,
         table_name: str = None,
     ):
-        # The description of the field.
         self.column_description = column_description
-        # The name of the field.
         self.column_name = column_name
-        # The data type of the field.
         self.column_type = column_type
-        # The ID of the database.
         self.db_id = db_id
-        # The type of the database.
         self.db_type = db_type
-        # The type of the environment to which the database belongs.
         self.env_type = env_type
-        # Indicates whether the database is a logical database. Valid values:
-        # 
-        # *   **true**: The database is a logical database.
-        # *   **false**: The database is not a logical database.
         self.logic = logic
-        # The name of the database.
         self.schema_name = schema_name
-        # The name that is used to search for the database.
         self.search_name = search_name
-        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

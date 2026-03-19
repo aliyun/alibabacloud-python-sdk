@@ -87,7 +87,6 @@ class GetDataExportPreCheckDetailResponseBodyPreCheckResult(DaraModel):
         # - true
         # - false
         self.ignore_affect_rows = ignore_affect_rows
-        # The list of pre-check details.
         self.pre_check_detail_list = pre_check_detail_list
 
     def validate(self):
@@ -159,9 +158,7 @@ class GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailListPre
         affect_rows: int = None,
         sql: str = None,
     ):
-        # The estimated number of data rows to be affected.
         self.affect_rows = affect_rows
-        # The SQL statement.
         self.sql = sql
 
     def validate(self):

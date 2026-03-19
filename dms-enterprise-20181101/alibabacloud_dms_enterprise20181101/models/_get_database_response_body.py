@@ -126,9 +126,7 @@ class GetDatabaseResponseBodyDatabase(DaraModel):
         self.instance_alias = instance_alias
         # The ID of the instance.
         self.instance_id = instance_id
-        # The IDs of the owners of the database.
         self.owner_id_list = owner_id_list
-        # The names of the owners of the database.
         self.owner_name_list = owner_name_list
         # The port that is used to connect to the database.
         self.port = port

@@ -18,7 +18,6 @@ class ListAuthorityTemplateResponseBody(DaraModel):
         tid: int = None,
         total_count: int = None,
     ):
-        # The permission templates.
         self.authority_template_view_list = authority_template_view_list
         # The error code that is returned if the request failed.
         self.error_code = error_code
@@ -138,15 +137,10 @@ class ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplat
         name: str = None,
         template_id: int = None,
     ):
-        # The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The ID of the user who created the permission template.
         self.creator_id = creator_id
-        # The description of the permission template.
         self.description = description
-        # The name of the permission template.
         self.name = name
-        # The ID of the permission template.
         self.template_id = template_id
 
     def validate(self):

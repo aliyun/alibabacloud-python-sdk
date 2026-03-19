@@ -23,17 +23,29 @@ class DLStorageDescriptor(DaraModel):
         skewed_info: main_models.DLSkewedInfo = None,
         sort_cols: List[main_models.DLOrder] = None,
     ):
+        # The list of bucket column names, which determines the distribution of stored data based on hashes.
         self.bucket_cols = bucket_cols
+        # The description of the data columns.
         self.columns = columns
+        # The name of the input format class that is used to read data.
         self.input_format = input_format
+        # Specifies whether the stored data is compressed.
         self.is_compressed = is_compressed
+        # The location where the data is stored.
         self.location = location
+        # The number of buckets.
         self.num_buckets = num_buckets
+        # The description of the original column.
         self.original_columns = original_columns
+        # The name of the output format class that is used to write data.
         self.output_format = output_format
+        # Other parameter mappings of data storage.
         self.parameters = parameters
+        # The information about how to perform data serialization and deserialization.
         self.serde_info = serde_info
+        # The information about the skewed column.
         self.skewed_info = skewed_info
+        # The description of the column based on which you want to sort query results.
         self.sort_cols = sort_cols
 
     def validate(self):

@@ -27,7 +27,6 @@ class ListTaskFlowResponseBody(DaraModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
-        # The information about the task flows returned.
         self.task_flow_list = task_flow_list
 
     def validate(self):
@@ -123,29 +122,13 @@ class ListTaskFlowResponseBodyTaskFlowListTaskFlow(DaraModel):
         latest_instance_time: str = None,
         status: int = None,
     ):
-        # The ID of the user who creates the task flow.
         self.creator_id = creator_id
-        # The name of the user who creates the task flow.
         self.creator_nick_name = creator_nick_name
-        # The name of the task flow owner.
         self.dag_owner_nick_name = dag_owner_nick_name
-        # The ID of the latest deployment record.
         self.deploy_id = deploy_id
-        # The ID of the task flow.
         self.id = id
-        # The status of the latest execution. Valid values:
-        # 
-        # *   **0**: invalid.
-        # *   **1**: scheduling disabled.
-        # *   **2**: waiting to be scheduled.
         self.latest_instance_status = latest_instance_status
-        # The time when the latest execution record was generated.
         self.latest_instance_time = latest_instance_time
-        # The status of the task flow. Valid values:
-        # 
-        # *   **0**: The task flow is invalid.
-        # *   **1**: Scheduling is disabled for the task flow.
-        # *   **2**: The task flow is waiting to be scheduled.
         self.status = status
 
     def validate(self):

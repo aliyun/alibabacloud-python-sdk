@@ -19,6 +19,7 @@ class ListDifyInstancesResponseBody(DaraModel):
         request_id: str = None,
         root: main_models.ListDifyInstancesResponseBodyRoot = None,
         success: bool = None,
+        tags: List[main_models.ListDifyInstancesResponseBodyTags] = None,
     ):
         self.code = code
         self.error_code = error_code
@@ -29,10 +30,15 @@ class ListDifyInstancesResponseBody(DaraModel):
         self.request_id = request_id
         self.root = root
         self.success = success
+        self.tags = tags
 
     def validate(self):
         if self.root:
             self.root.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -66,6 +72,11 @@ class ListDifyInstancesResponseBody(DaraModel):
         if self.success is not None:
             result['Success'] = self.success
 
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -97,6 +108,47 @@ class ListDifyInstancesResponseBody(DaraModel):
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
+
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.ListDifyInstancesResponseBodyTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class ListDifyInstancesResponseBodyTags(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
 
         return self
 
@@ -141,6 +193,8 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         app_uuid: str = None,
         created_time: str = None,
         description: str = None,
+        dify_instance_id: str = None,
+        dify_instance_name: str = None,
         edition: str = None,
         enterprise_internet_url: str = None,
         enterprise_intranet_url: str = None,
@@ -150,6 +204,7 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         intranet_url: str = None,
         major_version: str = None,
         region_code: str = None,
+        region_id: str = None,
         security_group_id: str = None,
         status: str = None,
         v_switch_id: str = None,
@@ -160,6 +215,8 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         self.app_uuid = app_uuid
         self.created_time = created_time
         self.description = description
+        self.dify_instance_id = dify_instance_id
+        self.dify_instance_name = dify_instance_name
         self.edition = edition
         self.enterprise_internet_url = enterprise_internet_url
         self.enterprise_intranet_url = enterprise_intranet_url
@@ -169,6 +226,7 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         self.intranet_url = intranet_url
         self.major_version = major_version
         self.region_code = region_code
+        self.region_id = region_id
         self.security_group_id = security_group_id
         self.status = status
         self.v_switch_id = v_switch_id
@@ -192,6 +250,12 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.dify_instance_id is not None:
+            result['DifyInstanceId'] = self.dify_instance_id
+
+        if self.dify_instance_name is not None:
+            result['DifyInstanceName'] = self.dify_instance_name
 
         if self.edition is not None:
             result['Edition'] = self.edition
@@ -219,6 +283,9 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
 
         if self.region_code is not None:
             result['RegionCode'] = self.region_code
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
@@ -251,6 +318,12 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('DifyInstanceId') is not None:
+            self.dify_instance_id = m.get('DifyInstanceId')
+
+        if m.get('DifyInstanceName') is not None:
+            self.dify_instance_name = m.get('DifyInstanceName')
+
         if m.get('Edition') is not None:
             self.edition = m.get('Edition')
 
@@ -277,6 +350,9 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
 
         if m.get('RegionCode') is not None:
             self.region_code = m.get('RegionCode')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')

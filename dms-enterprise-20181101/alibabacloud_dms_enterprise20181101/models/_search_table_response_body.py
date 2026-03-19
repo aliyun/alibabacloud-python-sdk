@@ -23,7 +23,6 @@ class SearchTableResponseBody(DaraModel):
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # The details of the tables.
         self.search_table_list = search_table_list
         # Indicates whether the request was successful.
         self.success = success
@@ -136,47 +135,20 @@ class SearchTableResponseBodySearchTableListSearchTable(DaraModel):
         table_name: str = None,
         table_schema_name: str = None,
     ):
-        # The name that is used to search for the database to which the table belongs.
         self.dbsearch_name = dbsearch_name
-        # The ID of the database to which the table belongs.
         self.database_id = database_id
-        # The name of the database.
         self.db_name = db_name
-        # The type of the database. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **SQLServer**
-        # *   **PostgreSQL**
-        # *   **Oracle**
-        # *   **DRDS**
-        # *   **OceanBase**
-        # *   **Mongo**
-        # *   **Redis**
         self.db_type = db_type
-        # The description of the table.
         self.description = description
-        # The encoding format of the table.
         self.encoding = encoding
-        # The engine of the table.
         self.engine = engine
-        # The type of the environment to which the database belongs.
         self.env_type = env_type
-        # Indicates whether the table is a logical table. Valid values:
-        # 
-        # *   **true**: The table is a logical table.
-        # *   **false**: The table is not a logical table.
         self.logic = logic
-        # The IDs of the table owners.
         self.owner_id_list = owner_id_list
-        # The nicknames of the table owners.
         self.owner_name_list = owner_name_list
-        # The GUID of the table.
         self.table_guid = table_guid
-        # The ID of the table.
         self.table_id = table_id
-        # The name of the table.
         self.table_name = table_name
-        # The name of the database to which the table belongs.
         self.table_schema_name = table_schema_name
 
     def validate(self):

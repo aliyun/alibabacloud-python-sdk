@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_dms_enterprise20181101 import models as main_models
 from darabonba.model import DaraModel
 
@@ -15,6 +17,7 @@ class DescribeDifyAttributeResponseBody(DaraModel):
         request_id: str = None,
         root: main_models.DescribeDifyAttributeResponseBodyRoot = None,
         success: bool = None,
+        tags: List[main_models.DescribeDifyAttributeResponseBodyTags] = None,
     ):
         self.code = code
         self.error_code = error_code
@@ -23,10 +26,15 @@ class DescribeDifyAttributeResponseBody(DaraModel):
         self.request_id = request_id
         self.root = root
         self.success = success
+        self.tags = tags
 
     def validate(self):
         if self.root:
             self.root.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -54,6 +62,11 @@ class DescribeDifyAttributeResponseBody(DaraModel):
         if self.success is not None:
             result['Success'] = self.success
 
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -80,15 +93,60 @@ class DescribeDifyAttributeResponseBody(DaraModel):
         if m.get('Success') is not None:
             self.success = m.get('Success')
 
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.DescribeDifyAttributeResponseBodyTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeDifyAttributeResponseBodyTags(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+
         return self
 
 class DescribeDifyAttributeResponseBodyRoot(DaraModel):
     def __init__(
         self,
+        app_type: str = None,
         app_uuid: str = None,
         billing_instance_id: str = None,
         charge_type: str = None,
+        dify_instance_id: str = None,
+        dify_instance_name: str = None,
         expire_time: int = None,
+        region_id: str = None,
         replicas: str = None,
         resource_quota: str = None,
         security_group_id: str = None,
@@ -99,10 +157,14 @@ class DescribeDifyAttributeResponseBodyRoot(DaraModel):
         workspace_id: str = None,
         zone_id: str = None,
     ):
+        self.app_type = app_type
         self.app_uuid = app_uuid
         self.billing_instance_id = billing_instance_id
         self.charge_type = charge_type
+        self.dify_instance_id = dify_instance_id
+        self.dify_instance_name = dify_instance_name
         self.expire_time = expire_time
+        self.region_id = region_id
         self.replicas = replicas
         self.resource_quota = resource_quota
         self.security_group_id = security_group_id
@@ -121,6 +183,9 @@ class DescribeDifyAttributeResponseBodyRoot(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+
         if self.app_uuid is not None:
             result['AppUuid'] = self.app_uuid
 
@@ -130,8 +195,17 @@ class DescribeDifyAttributeResponseBodyRoot(DaraModel):
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
+        if self.dify_instance_id is not None:
+            result['DifyInstanceId'] = self.dify_instance_id
+
+        if self.dify_instance_name is not None:
+            result['DifyInstanceName'] = self.dify_instance_name
+
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
 
         if self.replicas is not None:
             result['Replicas'] = self.replicas
@@ -164,6 +238,9 @@ class DescribeDifyAttributeResponseBodyRoot(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+
         if m.get('AppUuid') is not None:
             self.app_uuid = m.get('AppUuid')
 
@@ -173,8 +250,17 @@ class DescribeDifyAttributeResponseBodyRoot(DaraModel):
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 
+        if m.get('DifyInstanceId') is not None:
+            self.dify_instance_id = m.get('DifyInstanceId')
+
+        if m.get('DifyInstanceName') is not None:
+            self.dify_instance_name = m.get('DifyInstanceName')
+
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')

@@ -30,7 +30,6 @@ class ListInstanceUserPermissionsResponseBody(DaraModel):
         self.success = success
         # The total number of returned entries.
         self.total_count = total_count
-        # The permissions of the user on the instance.
         self.user_permissions = user_permissions
 
     def validate(self):
@@ -128,13 +127,9 @@ class ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission(DaraM
         user_id: str = None,
         user_nick_name: str = None,
     ):
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The details of permissions.
         self.perm_details = perm_details
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_nick_name = user_nick_name
 
     def validate(self):
@@ -222,20 +217,11 @@ class ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDe
         perm_type: str = None,
         user_access_id: str = None,
     ):
-        # The time when the permissions were granted.
         self.create_date = create_date
-        # The time when the permissions expire.
         self.expire_date = expire_date
-        # This parameter is reserved.
         self.extra_data = extra_data
-        # The user who grants the permissions.
         self.origin_from = origin_from
-        # The type of the permissions. Valid values:
-        # 
-        # *   LOGIN: the logon permissions
-        # *   PERF: the query permissions on the instance
         self.perm_type = perm_type
-        # The ID of the authorization record.
         self.user_access_id = user_access_id
 
     def validate(self):

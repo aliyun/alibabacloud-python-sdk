@@ -17,7 +17,6 @@ class ListDatabasesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details of the databases.
         self.database_list = database_list
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -137,42 +136,21 @@ class ListDatabasesResponseBodyDatabaseListDatabase(DaraModel):
         sid: str = None,
         state: str = None,
     ):
-        # The name of the catalog to which the database belongs.
         self.catalog_name = catalog_name
-        # The ID of the database.
         self.database_id = database_id
-        # The type of the database engine.
         self.db_type = db_type
-        # The ID of the DBA.
         self.dba_id = dba_id
-        # The nickname of the Database administrator (DBA) to which the database belongs.
         self.dba_name = dba_name
-        # The encoding format of the database.
         self.encoding = encoding
-        # The type of the environment to which the database belongs.
         self.env_type = env_type
-        # The endpoint of the instance to which the database belongs.
         self.host = host
-        # The ID of the instance to which the database belongs.
         self.instance_id = instance_id
-        # The IDs of the owners of the database.
         self.owner_id_list = owner_id_list
-        # The nicknames of the database owners.
         self.owner_name_list = owner_name_list
-        # The connection port of the instance to which the database belongs.
         self.port = port
-        # The name of the database.
         self.schema_name = schema_name
-        # The name that is used for searching the database.
         self.search_name = search_name
-        # The system ID (SID) of the instance to which the database belongs.
         self.sid = sid
-        # The state of the database. Valid values:
-        # 
-        # *   NORMAL: The database is normal.
-        # *   DISABLE: The database is disabled.
-        # *   OFFLINE: The database is unpublished.
-        # *   NOT_EXIST: The database does not exist.
         self.state = state
 
     def validate(self):

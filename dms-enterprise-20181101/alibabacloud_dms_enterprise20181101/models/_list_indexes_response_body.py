@@ -20,7 +20,6 @@ class ListIndexesResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The details of indexes.
         self.index_list = index_list
         # The ID of the request.
         self.request_id = request_id
@@ -117,21 +116,10 @@ class ListIndexesResponseBodyIndexListIndex(DaraModel):
         index_type: str = None,
         table_id: str = None,
     ):
-        # The description of the index.
         self.index_comment = index_comment
-        # The ID of the index.
         self.index_id = index_id
-        # The name of the index.
         self.index_name = index_name
-        # The type of the index. Valid values:
-        # 
-        # *   Primary
-        # *   Unique
-        # *   Normal
-        # *   FullText
-        # *   Spatial
         self.index_type = index_type
-        # The ID of the table.
         self.table_id = table_id
 
     def validate(self):

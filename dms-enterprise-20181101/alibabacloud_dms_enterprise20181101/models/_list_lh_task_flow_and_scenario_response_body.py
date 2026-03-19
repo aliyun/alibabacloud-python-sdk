@@ -21,11 +21,9 @@ class ListLhTaskFlowAndScenarioResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned if the request fails.
         self.error_message = error_message
-        # The task flows in the default business scenario.
         self.raw_daglist = raw_daglist
         # The ID of the request.
         self.request_id = request_id
-        # The task flows in other business scenarios.
         self.scenario_daglist = scenario_daglist
         # Indicates whether the request is successful. Valid values:
         # 
@@ -129,9 +127,7 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG(DaraModel)
         dag_list: main_models.ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList = None,
         scenario: main_models.ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario = None,
     ):
-        # The list of task flows.
         self.dag_list = dag_list
-        # The information about the business scenario.
         self.scenario = scenario
 
     def validate(self):
@@ -172,11 +168,8 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario(Da
         description: str = None,
         scenario_name: str = None,
     ):
-        # The ID of the user who creates the business scenario.
         self.creator_id = creator_id
-        # The description of the business scenario.
         self.description = description
-        # The name of the business scenario.
         self.scenario_name = scenario_name
 
     def validate(self):
@@ -266,51 +259,21 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag(
         space_id: int = None,
         status: int = None,
     ):
-        # Indicates whether the task flow can be modified. Valid values:
-        # 
-        # - **true**: The task flow can be modified.
-        # - **false**: The task flow cannot be modified.
         self.can_edit = can_edit
-        # The ID of the user who creates the task flow.
         self.creator_id = creator_id
-        # The name of the user who creates the workspace.
         self.creator_nick_name = creator_nick_name
-        # The name of the task flow.
         self.dag_name = dag_name
-        # The user ID of the task flow owner.
         self.dag_owner_id = dag_owner_id
-        # The name of the task flow owner.
         self.dag_owner_nick_name = dag_owner_nick_name
-        # The extended field. No meaning is specified for this field.
         self.data_flow_id = data_flow_id
-        # The extended field. No meaning is specified for this field.
         self.demo_id = demo_id
-        # The ID of the latest deployment record.
         self.deploy_id = deploy_id
-        # The ID of the task flow.
         self.id = id
-        # Indicates whether the task flow is deleted. Valid values:
-        # 
-        # - **true**: deleted
-        # - **false**: not deleted
         self.is_deleted = is_deleted
-        # The status of the latest execution. Valid values:
-        # 
-        # - 0: invalid
-        # - 1: scheduling disabled
-        # - 2: waiting to be scheduled
         self.latest_instance_status = latest_instance_status
-        # The time when the latest execution record was generated.
         self.latest_instance_time = latest_instance_time
-        # The ID of the business scenario.
         self.scenario_id = scenario_id
-        # The ID of the workspace.
         self.space_id = space_id
-        # The status of the task flow. Valid values:
-        # 
-        # - **0**: invalid
-        # - **1**: scheduling disabled
-        # - **2**: waiting to be scheduled
         self.status = status
 
     def validate(self):
@@ -478,51 +441,21 @@ class ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag(DaraModel):
         space_id: int = None,
         status: int = None,
     ):
-        # Indicates whether the task flow can be modified. Valid values:
-        # 
-        # *   **true**: The task flow can be modified.
-        # *   **false**: The task flow cannot be modified.
         self.can_edit = can_edit
-        # The ID of the user who creates the task flow.
         self.creator_id = creator_id
-        # The name of the user who creates the workspace.
         self.creator_nick_name = creator_nick_name
-        # The name of the task flow.
         self.dag_name = dag_name
-        # The user ID of the task flow owner.
         self.dag_owner_id = dag_owner_id
-        # The name of the task flow owner.
         self.dag_owner_nick_name = dag_owner_nick_name
-        # The extended field. No meaning is specified for this field.
         self.data_flow_id = data_flow_id
-        # The extended field. No meaning is specified for this field.
         self.demo_id = demo_id
-        # The ID of the latest deployment record.
         self.deploy_id = deploy_id
-        # The ID of the task flow.
         self.id = id
-        # Indicates whether the task flow is deleted. Valid values:
-        # 
-        # *   **true**: deleted
-        # *   **false**: not deleted
         self.is_deleted = is_deleted
-        # The status of the latest execution. Valid values:
-        # 
-        # *   **0**: invalid
-        # *   **1**: scheduling disabled
-        # *   **2**: waiting to be scheduled
         self.latest_instance_status = latest_instance_status
-        # The time when the latest execution record was generated.
         self.latest_instance_time = latest_instance_time
-        # The ID of the business scenario.
         self.scenario_id = scenario_id
-        # The ID of the workspace.
         self.space_id = space_id
-        # The status of the task flow. Valid values:
-        # 
-        # *   **0**: invalid
-        # *   **1**: scheduling disabled
-        # *   **2**: waiting to be scheduled
         self.status = status
 
     def validate(self):

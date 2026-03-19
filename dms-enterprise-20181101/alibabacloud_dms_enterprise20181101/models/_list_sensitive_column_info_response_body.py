@@ -23,7 +23,6 @@ class ListSensitiveColumnInfoResponseBody(DaraModel):
         self.error_message = error_message
         # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The details of the sensitive field.
         self.sensitive_column_list = sensitive_column_list
         # Indicates whether the request was successful. Valid values:
         # 
@@ -135,31 +134,16 @@ class ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn(Dara
         table_name: str = None,
         user_sensitivity_level: str = None,
     ):
-        # The name of the category.
         self.category_name = category_name
-        # The name of the sensitive field.
         self.column_name = column_name
-        # The information about the default masking algorithm.
         self.default_desensitization_rule = default_desensitization_rule
-        # The ID of the instance.
         self.instance_id = instance_id
-        # Indicates whether the sensitive field is displayed in plaintext.
         self.is_plain = is_plain
-        # The sample data.
         self.sample_data = sample_data
-        # The name of the database.
         self.schema_name = schema_name
-        # The sensitivity level of the field. Valid values:
-        # 
-        # *   Low
-        # *   Medium
-        # *   High
         self.security_level = security_level
-        # The list of partial masking algorithms.
         self.semi_desensitization_rule_list = semi_desensitization_rule_list
-        # The name of the table.
         self.table_name = table_name
-        # The user-defined sensitivity level.
         self.user_sensitivity_level = user_sensitivity_level
 
     def validate(self):
@@ -288,9 +272,7 @@ class ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiD
         rule_id: int = None,
         rule_name: str = None,
     ):
-        # The ID of the partial masking algorithm.
         self.rule_id = rule_id
-        # The partial masking algorithm name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -325,9 +307,7 @@ class ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefau
         rule_id: int = None,
         rule_name: str = None,
     ):
-        # The masking algorithm ID.
         self.rule_id = rule_id
-        # The masking algorithm name.
         self.rule_name = rule_name
 
     def validate(self):

@@ -253,11 +253,8 @@ class GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoCo
         # *   **STRUCT**: The schema of the database was exported.
         # *   **DATA_STRUCT**: The data and schema of the database were exported.
         self.export_content = export_content
-        # The type of schema that was exported.
         self.export_types = export_types
-        # The extension options of the SQL script.
         self.sqlext_option = sqlext_option
-        # The tables that were exported from the database.
         self.selected_tables = selected_tables
         # The format in which the database was exported. Valid values:
         # 

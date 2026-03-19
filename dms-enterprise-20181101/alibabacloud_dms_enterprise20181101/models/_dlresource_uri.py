@@ -10,7 +10,15 @@ class DLResourceUri(DaraModel):
         resource_type: str = None,
         uri: str = None,
     ):
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   ARCHIVE
+        # *   JAR
+        # *   FILE
         self.resource_type = resource_type
+        # The URL used to access the resource.
         self.uri = uri
 
     def validate(self):

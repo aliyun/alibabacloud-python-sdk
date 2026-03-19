@@ -21,7 +21,6 @@ class ListLogicDatabasesResponseBody(DaraModel):
         self.error_code = error_code
         # The error message that is returned.
         self.error_message = error_message
-        # The details of logical databases.
         self.logic_database_list = logic_database_list
         # The ID of the request.
         self.request_id = request_id
@@ -134,36 +133,15 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(DaraModel):
         schema_name: str = None,
         search_name: str = None,
     ):
-        # The alias of the logical database.
         self.alias = alias
-        # The ID of the logical database.
         self.database_id = database_id
-        # Logical database sub-ID list.
         self.database_ids = database_ids
-        # The type of the logical database. For more information about the valid values of this parameter, see [DbType parameter](https://www.alibabacloud.com/help/en/data-management-service/latest/dbtype-parameter).
         self.db_type = db_type
-        # The type of the environment to which the logical database belongs. Valid values:
-        # 
-        # - **product**: production environment
-        # - **dev**: development environment
-        # - **pre**: staging environment
-        # - **test**: test environment
-        # - **sit**: system integration testing (SIT) environment
-        # - **uat**: user acceptance testing (UAT) environment
-        # - **pet**: stress testing environment
-        # - **stag**: STAG environment
         self.env_type = env_type
-        # Indicates whether the database is a logical database. The return value is true.
         self.logic = logic
-        # The IDs of the owners of the logical database.
         self.owner_id_list = owner_id_list
-        # The names of the owners of the logical database.
         self.owner_name_list = owner_name_list
-        # The name of the logical database.
         self.schema_name = schema_name
-        # The name that is used to search for the logical database.
-        # 
-        # > We recommend that you do not use this parameter for business development. The format of the parameter value may be modified in later versions.
         self.search_name = search_name
 
     def validate(self):

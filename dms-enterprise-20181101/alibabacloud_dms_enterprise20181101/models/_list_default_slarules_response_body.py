@@ -22,7 +22,6 @@ class ListDefaultSLARulesResponseBody(DaraModel):
         self.error_message = error_message
         # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
-        # The list of SLA rules.
         self.slarule_list = slarule_list
         # Indicates whether the request was successful. Valid values:
         # 
@@ -120,18 +119,10 @@ class ListDefaultSLARulesResponseBodySLARuleListSLARule(DaraModel):
         node_id: int = None,
         rule_type: int = None,
     ):
-        # The ID of the task flow.
         self.dag_id = dag_id
-        # The ID of the SLA rule.
         self.id = id
-        # The timeout period. Unit: minutes.
         self.interval_minutes = interval_minutes
-        # The ID of the task node.
         self.node_id = node_id
-        # The type of the rule. Valid values:
-        # 
-        # *   **0**: an SLA rule for a task flow
-        # *   **1**: an SLA rule for a task node
         self.rule_type = rule_type
 
     def validate(self):

@@ -27,7 +27,6 @@ class ListTasksInTaskFlowResponseBody(DaraModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
-        # The tasks in the task flow.
         self.tasks = tasks
 
     def validate(self):
@@ -123,21 +122,13 @@ class ListTasksInTaskFlowResponseBodyTasksTask(DaraModel):
         node_type: str = None,
         time_variables: str = None,
     ):
-        # The position of the node on the Directed Acyclic Graph (DAG).
         self.graph_param = graph_param
-        # The advanced configuration for the node.
         self.node_config = node_config
-        # The configuration for the node.
         self.node_content = node_content
-        # The ID of the node.
         self.node_id = node_id
-        # The name of the node.
         self.node_name = node_name
-        # The output variables for the task.
         self.node_output = node_output
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
-        # The time variables configured for the node.
         self.time_variables = time_variables
 
     def validate(self):

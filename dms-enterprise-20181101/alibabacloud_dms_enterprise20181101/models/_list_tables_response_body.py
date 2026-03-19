@@ -28,7 +28,6 @@ class ListTablesResponseBody(DaraModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
-        # The details of the tables.
         self.table_list = table_list
         # The total number of tables that meet the query conditions.
         self.total_count = total_count
@@ -137,31 +136,18 @@ class ListTablesResponseBodyTableListTable(DaraModel):
         table_schema_name: str = None,
         table_type: str = None,
     ):
-        # The ID of the physical database.
         self.database_id = database_id
-        # The description of the table.
         self.description = description
-        # The encoding format of the table.
         self.encoding = encoding
-        # The engine of the table.
         self.engine = engine
-        # The number of rows in the table. This is a statistical value and does not indicate the actual number of rows.
         self.num_rows = num_rows
-        # The ID list of the table owners.
         self.owner_id_list = owner_id_list
-        # The nickname list of the table owners.
         self.owner_name_list = owner_name_list
-        # The storage space that is occupied by the table. This is a statistical value and does not indicate the accurate storage space. Unit: MB.
         self.store_capacity = store_capacity
-        # The GUID of the table in DMS.
         self.table_guid = table_guid
-        # The ID of the table.
         self.table_id = table_id
-        # The table name.
         self.table_name = table_name
-        # The database in which the table resides.
         self.table_schema_name = table_schema_name
-        # The type of the table. Default value: NORMAL.
         self.table_type = table_type
 
     def validate(self):

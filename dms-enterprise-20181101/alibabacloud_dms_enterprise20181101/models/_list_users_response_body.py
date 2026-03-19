@@ -30,7 +30,6 @@ class ListUsersResponseBody(DaraModel):
         self.success = success
         # The total number of entries returned.
         self.total_count = total_count
-        # The details of users.
         self.user_list = user_list
 
     def validate(self):
@@ -142,78 +141,23 @@ class ListUsersResponseBodyUserListUser(DaraModel):
         user_id: str = None,
         webhook: str = None,
     ):
-        # The number of queries that were performed on the current day.
         self.cur_execute_count = cur_execute_count
-        # The number of rows that were queried on the current day.
         self.cur_result_count = cur_result_count
-        # The DingTalk chatbot URL that is used to receive notifications.
-        # 
-        # > 
-        # 
-        # *   The system returns this parameter if you have set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # 
-        # *   The system does not return this parameter if you have not set a DingTalk chatbot URL.
         self.ding_robot = ding_robot
-        # The email address that is used to receive notifications.
-        # 
-        # > 
-        # 
-        # *   The system returns this parameter if you have set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # 
-        # *   The system does not return this parameter if you have not set an email address.
         self.email = email
-        # The time when the user last logged on to the console.
         self.last_login_time = last_login_time
-        # The maximum number of queries that can be performed on the current day.
         self.max_execute_count = max_execute_count
-        # The maximum number of rows that can be queried on the current day.
         self.max_result_count = max_result_count
-        # The mobile phone number of the user.
-        # 
-        # > 
-        # 
-        # *   The system returns this parameter if you have set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # 
-        # *   The system does not return this parameter if you have not set a mobile phone number.
         self.mobile = mobile
-        # The nickname of the user.
         self.nick_name = nick_name
-        # The notification method. The system returns one or more values. Valid values:
-        # 
-        # *   **SMS**: text message
-        # *   **EMAIL**: email.
-        # *   **DINGDING**: DingTalk.
-        # *   **DINGROBOT**: DingTalk chatbot.
-        # *   **WEBHOOK**: webhook.
         self.notification_mode = notification_mode
-        # The ID of the Alibaba Cloud account of the user.
         self.parent_uid = parent_uid
-        # The IDs of the roles.
         self.role_id_list = role_id_list
-        # The names of roles.
         self.role_name_list = role_name_list
-        # The signature method that is used to secure connections when a webhook URL is used. Valid values:
-        # 
-        # *   **NONE**: no signature.
-        # *   **HMAC_SHA1**: HMAC_SHA1.
         self.signature_method = signature_method
-        # The status of the user. Valid values:
-        # 
-        # *   **NORMAL**: The user is normal.
-        # *   **DISABLE**: The user is disabled.
-        # *   **DELETE**: The user is deleted.
         self.state = state
-        # The ID of the Alibaba Cloud account.
         self.uid = uid
-        # The ID of the user.
         self.user_id = user_id
-        # The webhook URL that is used to receive notifications.
-        # 
-        # > 
-        # 
-        # *   If you have set a webhook URL, DMS sends notifications to the specified URL.
-        # 
-        # *   The system does not return this parameter if you have not set a webhook URL.
         self.webhook = webhook
 
     def validate(self):

@@ -27,7 +27,6 @@ class ListTaskFlowTimeVariablesResponseBody(DaraModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
-        # The time variables for the task flow.
         self.time_variables = time_variables
 
     def validate(self):
@@ -117,9 +116,7 @@ class ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable(DaraModel):
         name: str = None,
         pattern: str = None,
     ):
-        # The name of the time variable.
         self.name = name
-        # The format of the time variable.
         self.pattern = pattern
 
     def validate(self):

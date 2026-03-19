@@ -16,7 +16,6 @@ class ListColumnsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about columns.
         self.column_list = column_list
         # The error code returned.
         self.error_code = error_code
@@ -128,51 +127,18 @@ class ListColumnsResponseBodyColumnListColumn(DaraModel):
         security_level: str = None,
         sensitive: bool = None,
     ):
-        # Indicates whether the column is an auto-increment column. Valid values:
-        # 
-        # *   true: The column is an auto-increment column.
-        # *   false: The column is not an auto-increment column.
         self.auto_increment = auto_increment
-        # The ID of the column.
         self.column_id = column_id
-        # The name of the column.
         self.column_name = column_name
-        # The data type of the column.
         self.column_type = column_type
-        # The length of the field.
         self.data_length = data_length
-        # The number of valid digits for the field.
         self.data_precision = data_precision
-        # The number of decimal places for the field.
         self.data_scale = data_scale
-        # The default value of the column.
         self.default_value = default_value
-        # The description of the column.
         self.description = description
-        # The type of the masking algorithm that is used for the field. Valid values:
-        # 
-        # *   null: No masking algorithm is used.
-        # *   DEFAULT: A full masking algorithm is used.
-        # *   FIX_POS: The fixed position is masked.
-        # *   FIX_CHAR: The fixed characters are replaced.
         self.function_type = function_type
-        # Indicates whether the column can be empty. Valid values:
-        # 
-        # *   **true**: The column can be empty.
-        # *   **false**: The column cannot be empty.
         self.nullable = nullable
-        # The security level of the column. Valid values:
-        # 
-        # *   INNER: The column is an internal column but not sensitive.
-        # *   SENSITIVE: The column is a sensitive column.
-        # *   CONFIDENTIAL: The column is a confidential column.
-        # 
-        # > For more information, see [Sensitivity levels of fields](https://help.aliyun.com/document_detail/66091.html).
         self.security_level = security_level
-        # Indicates whether the column is a sensitive column. Valid values:
-        # 
-        # *   **true**: The column is a sensitive column.
-        # *   **false**: The column is not a sensitive column.
         self.sensitive = sensitive
 
     def validate(self):

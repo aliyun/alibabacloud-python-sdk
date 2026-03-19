@@ -10,7 +10,9 @@ class DLOrder(DaraModel):
         col: str = None,
         order: int = None,
     ):
+        # The name of the column.
         self.col = col
+        # The position of the column in the sort.
         self.order = order
 
     def validate(self):

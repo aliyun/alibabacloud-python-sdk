@@ -17,7 +17,6 @@ class ListDAGVersionsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The information about the published versions.
         self.dag_version_list = dag_version_list
         # The error code returned if the request fails.
         self.error_code = error_code
@@ -130,17 +129,11 @@ class ListDAGVersionsResponseBodyDagVersionListDagVersion(DaraModel):
         version_comments: str = None,
         version_id: int = None,
     ):
-        # The name of the task flow.
         self.dag_name = dag_name
-        # The ID of the task flow owner.
         self.dag_owner_id = dag_owner_id
-        # The name of the task flow owner.
         self.dag_owner_nick_name = dag_owner_nick_name
-        # The ID of the previously published version.
         self.last_version_id = last_version_id
-        # The description of the version.
         self.version_comments = version_comments
-        # The ID of the version.
         self.version_id = version_id
 
     def validate(self):

@@ -19,7 +19,6 @@ class ListWorkspacesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The dataset.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -161,43 +160,24 @@ class ListWorkspacesResponseBodyDataBaseWorkspaces(DaraModel):
         workspace_id: int = None,
         workspace_name: str = None,
     ):
-        # Whether the current user has joined the workspace.
         self.already_joined = already_joined
-        # The ID of the creator.
         self.creator_id = creator_id
-        # The nickname of the creator.
         self.creator_nick_name = creator_nick_name
-        # The Alibaba Cloud account UID of the creator.
         self.creator_uid = creator_uid
-        # The description of the workspace.
         self.description = description
-        # The creation time.
         self.gmt_create = gmt_create
-        # The update time.
         self.gmt_modified = gmt_modified
-        # The name of the workspace.
         self.name = name
-        # The owner ID.
         self.owner_id = owner_id
-        # The nickname of the owner.
         self.owner_nick_name = owner_nick_name
-        # The Alibaba Cloud UID of the owner.
         self.owner_uid = owner_uid
-        # The region ID.
         self.region = region
-        # The ID of the service account.
         self.service_account_id = service_account_id
-        # The nickname of the service account.
         self.service_account_nick_name = service_account_nick_name
-        # The Alibaba Cloud account UID of the service account.
         self.service_account_uid = service_account_uid
-        # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
-        # The VPC ID.
         self.vpc_id = vpc_id
-        # The workspace ID.
         self.workspace_id = workspace_id
-        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

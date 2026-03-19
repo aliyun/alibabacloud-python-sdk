@@ -21,7 +21,6 @@ class ListProxySQLExecAuditLogResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned.
         self.error_message = error_message
-        # The audit information about the database instance that is provided by the secure access proxy feature.
         self.proxy_sqlexec_audit_log_list = proxy_sqlexec_audit_log_list
         # The ID of the request.
         self.request_id = request_id
@@ -136,40 +135,17 @@ class ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAu
         user_id: int = None,
         user_name: str = None,
     ):
-        # Indicates the total number of rows returned after the SQL statement was executed. If an SELECT SQL statement is executed, the return value of this parameter indicates the total number of the queried data rows.
         self.affect_rows = affect_rows
-        # The amount of time that is consumed to execute the SQL statement. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The execution status of the SQL statement. Valid values:
-        # 
-        # *   **FAIL**: The execution of the SQL statement fails.
-        # *   **CANCEL**: The execution of the SQL statement is canceled.
-        # *   **SUCCESS**: The SQL statement is executed.
         self.exec_state = exec_state
-        # The ID of the database instance.
         self.instance_id = instance_id
-        # The name of the database instance.
         self.instance_name = instance_name
-        # The time at which the user executes the SQL statement on the database instance. The value of this parameter must be a timestamp that follows the UNIX time format.
         self.op_time = op_time
-        # The description.
         self.remark = remark
-        # The SQL statement that was executed.
         self.sql = sql
-        # The type of the SQL statement. Valid values:
-        # 
-        # *   **SELECT**
-        # *   **INSERT**
-        # *   **DELETE**
-        # *   **CREATE_TABLE**
-        # 
-        # >  You can choose Operation Audit > Secure Access Proxy in the top navigation bar of the DMS console to view more types of SQL statements.
         self.sqltype = sqltype
-        # The name of the database.
         self.schema_name = schema_name
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_name = user_name
 
     def validate(self):

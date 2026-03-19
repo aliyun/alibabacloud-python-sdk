@@ -95,7 +95,6 @@ class GetAuthorityTemplateResponseBodyAuthorityTemplateView(DaraModel):
         name: str = None,
         template_id: int = None,
     ):
-        # The resource information in the permission template.
         self.authority_template_item_list = authority_template_item_list
         # The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.create_time = create_time
@@ -207,27 +206,13 @@ class GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItem
         table_name: str = None,
         template_id: int = None,
     ):
-        # Other information. For example, you can add the logon permission on an instance to the permission template.
         self.attribute = attribute
-        # The ID of the database.
         self.db_id = db_id
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the resource.
         self.item_id = item_id
-        # The ID of the user who modified the resource.
         self.modifier_id = modifier_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **INSTANCE**: instance
-        # *   **LOGIC_DB**: logical database
-        # *   **META_DB**: physical database
-        # *   **LOGIC_TABLE**: logical table
-        # *   **SINGLE_TABLE**: physical table
         self.resource_type = resource_type
-        # The name of the table.
         self.table_name = table_name
-        # The ID of the permission template.
         self.template_id = template_id
 
     def validate(self):

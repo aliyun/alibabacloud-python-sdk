@@ -17,7 +17,6 @@ class ListUserOwnedResourcesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # Indicates whether the request was successful. Valid values:
         self.data = data
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -134,34 +133,18 @@ class ListUserOwnedResourcesResponseBodyDataResourceList(DaraModel):
         table_id: str = None,
         table_name: str = None,
     ):
-        # The alias of the instance.
         self.alias = alias
-        # The ID of the database in DMS.
         self.db_id = db_id
-        # The ID of the instance to which the database belongs.
         self.db_instance_id = db_instance_id
-        # The database engine type. For more information about the valid values of the DbType parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
-        # The type of the environment to which the database instance belongs.
         self.env_type = env_type
-        # The endpoint of the instance to which the database belongs.
         self.host = host
-        # The ID of the instance.
         self.instance_id = instance_id
-        # Indicates whether the database is a logical database. Valid values:
-        # 
-        # *   **true**: The database is a logical database
-        # *   **false**: The database is a physical database.
         self.logic = logic
-        # The connection port of the instance to which the database belongs.
         self.port = port
-        # The name of the database.
         self.schema_name = schema_name
-        # The query name of the database.
         self.search_name = search_name
-        # The table ID.
         self.table_id = table_id
-        # The table name.
         self.table_name = table_name
 
     def validate(self):

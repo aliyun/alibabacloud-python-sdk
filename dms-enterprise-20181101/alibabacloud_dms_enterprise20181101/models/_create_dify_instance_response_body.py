@@ -86,6 +86,8 @@ class CreateDifyInstanceResponseBodyData(DaraModel):
     def __init__(
         self,
         app_uuid: str = None,
+        dify_instance_id: str = None,
+        dify_instance_name: str = None,
         instance_id: str = None,
         instance_name: str = None,
         replicas: int = None,
@@ -98,6 +100,8 @@ class CreateDifyInstanceResponseBodyData(DaraModel):
         zone_id: str = None,
     ):
         self.app_uuid = app_uuid
+        self.dify_instance_id = dify_instance_id
+        self.dify_instance_name = dify_instance_name
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.replicas = replicas
@@ -119,6 +123,12 @@ class CreateDifyInstanceResponseBodyData(DaraModel):
             result = _map
         if self.app_uuid is not None:
             result['AppUuid'] = self.app_uuid
+
+        if self.dify_instance_id is not None:
+            result['DifyInstanceId'] = self.dify_instance_id
+
+        if self.dify_instance_name is not None:
+            result['DifyInstanceName'] = self.dify_instance_name
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -156,6 +166,12 @@ class CreateDifyInstanceResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AppUuid') is not None:
             self.app_uuid = m.get('AppUuid')
+
+        if m.get('DifyInstanceId') is not None:
+            self.dify_instance_id = m.get('DifyInstanceId')
+
+        if m.get('DifyInstanceName') is not None:
+            self.dify_instance_name = m.get('DifyInstanceName')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

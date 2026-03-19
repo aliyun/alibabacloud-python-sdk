@@ -19,13 +19,21 @@ class DLPartition(DaraModel):
         table_name: str = None,
         values: List[str] = None,
     ):
+        # The name of the catalog.
         self.catalog_name = catalog_name
+        # The time when the partition was created. The value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
+        # The name of the database.
         self.db_name = db_name
+        # The time when the table was last accessed.
         self.last_access_time = last_access_time
+        # The key-value pair of the partition.
         self.parameters = parameters
+        # The description of the data storage.
         self.sd = sd
+        # The table name.
         self.table_name = table_name
+        # The values in a partition key column.
         self.values = values
 
     def validate(self):

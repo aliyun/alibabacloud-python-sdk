@@ -24,7 +24,6 @@ class ListWorkFlowTemplatesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The approval templates.
         self.work_flow_templates = work_flow_templates
 
     def validate(self):
@@ -119,25 +118,12 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate(DaraMod
         template_name: str = None,
         workflow_nodes: main_models.ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes = None,
     ):
-        # The description of the approval template.
         self.comment = comment
-        # The ID of the creator.
         self.create_user_id = create_user_id
-        # Indicates whether the approval template is enabled. Valid values:
-        # 
-        # *   Y: The approval template is enabled.
-        # *   N: The approval template is disabled.
         self.enabled = enabled
-        # Indicates whether the approval template is predefined by the system. Valid values:
-        # 
-        # *   1: The approval template is predefined by the system.
-        # *   0: The approval template is not predefined by the system.
         self.is_system = is_system
-        # The ID of the approval template.
         self.template_id = template_id
-        # The name of the approval template.
         self.template_name = template_name
-        # The details of approval nodes.
         self.workflow_nodes = workflow_nodes
 
     def validate(self):
@@ -244,22 +230,12 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflow
         position: int = None,
         template_id: int = None,
     ):
-        # The description of the approval node.
         self.comment = comment
-        # The ID of the creator.
         self.create_user_id = create_user_id
-        # The ID of the approval node.
         self.node_id = node_id
-        # The name of the approval node.
         self.node_name = node_name
-        # The type of the approval node. Valid values:
-        # 
-        # *   SYS: The approval node is predefined by the system.
-        # *   USER_LIST: The approval node is created by a user.
         self.node_type = node_type
-        # The position of the approval node.
         self.position = position
-        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):

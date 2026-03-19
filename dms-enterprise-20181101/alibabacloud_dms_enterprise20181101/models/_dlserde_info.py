@@ -17,12 +17,19 @@ class DLSerdeInfo(DaraModel):
         serialization_lib: str = None,
         serializer_class: str = None,
     ):
+        # The description of serialization.
         self.description = description
+        # The name of the class used for deserialization.
         self.deserializer_class = deserializer_class
+        # The name of serialization.
         self.name = name
+        # Serialization-related parameters in key-value pairs.
         self.parameters = parameters
+        # The type of serialization.
         self.serde_type = serde_type
+        # The class name of the serialization library.
         self.serialization_lib = serialization_lib
+        # The name of class used for serialization.
         self.serializer_class = serializer_class
 
     def validate(self):

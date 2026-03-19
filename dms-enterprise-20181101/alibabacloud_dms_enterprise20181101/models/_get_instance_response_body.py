@@ -146,9 +146,7 @@ class GetInstanceResponseBodyInstance(DaraModel):
         self.instance_source = instance_source
         # The type of the database instance.
         self.instance_type = instance_type
-        # The IDs of the owners for the database instance.
         self.owner_id_list = owner_id_list
-        # The nicknames of the owners for the database instance.
         self.owner_name_list = owner_name_list
         # The port number that is used to connect to the database instance.
         self.port = port

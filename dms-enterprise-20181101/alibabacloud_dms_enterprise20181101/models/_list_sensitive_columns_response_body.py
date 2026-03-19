@@ -23,7 +23,6 @@ class ListSensitiveColumnsResponseBody(DaraModel):
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # The sensitive fields.
         self.sensitive_column_list = sensitive_column_list
         # Indicates whether the request is successful. Valid values:
         # 
@@ -130,24 +129,11 @@ class ListSensitiveColumnsResponseBodySensitiveColumnListSensitiveColumn(DaraMod
         security_level: str = None,
         table_name: str = None,
     ):
-        # The number of sensitive fields.
         self.column_count = column_count
-        # The name of the field.
         self.column_name = column_name
-        # The type of the de-identification algorithm. Valid values:
-        # 
-        # *   DEFAULT: All characters are masked. This is the default value.
-        # *   FIX_POS: The characters at specific positions are masked.
-        # *   FIX_CHAR: Specific characters are masked.
         self.function_type = function_type
-        # The name of the database.
         self.schema_name = schema_name
-        # The sensitivity level of the field. Valid values:
-        # 
-        # *   SENSITIVE
-        # *   CONFIDENTIAL
         self.security_level = security_level
-        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

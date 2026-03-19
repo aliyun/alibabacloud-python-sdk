@@ -97,7 +97,6 @@ class GetApprovalDetailResponseBodyApprovalDetail(DaraModel):
         self.audit_id = audit_id
         # The time when the approval process was created.
         self.create_time = create_time
-        # The information about the approver.
         self.current_handlers = current_handlers
         # The description of the approval process.
         self.description = description
@@ -114,7 +113,6 @@ class GetApprovalDetailResponseBodyApprovalDetail(DaraModel):
         # *   **OWNER_APPLY**: an owner role application ticket
         # *   **SENSITIVITY**: a column sensitivity level change ticket
         self.order_type = order_type
-        # The reasons for the approval.
         self.reason_list = reason_list
         # The ID of the workflow template.
         self.template_id = template_id
@@ -133,7 +131,6 @@ class GetApprovalDetailResponseBodyApprovalDetail(DaraModel):
         # 
         # > An approval process contains multiple approval nodes, and this parameter is returned for each approval node.
         self.workflow_ins_code = workflow_ins_code
-        # The details of approval nodes.
         self.workflow_nodes = workflow_nodes
 
     def validate(self):
@@ -281,24 +278,11 @@ class GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode(DaraM
         operator_id: int = None,
         workflow_ins_code: str = None,
     ):
-        # The IDs of the approvers.
         self.audit_user_id_list = audit_user_id_list
-        # The name of the approval node.
         self.node_name = node_name
-        # The remarks of the approval.
         self.operate_comment = operate_comment
-        # The time when the ticket was submitted.
         self.operate_time = operate_time
-        # The ID of the user who submitted the ticket.
         self.operator_id = operator_id
-        # The approval status of the ticket. Valid values:
-        # 
-        # *   **START**: The ticket was submitted.
-        # *   **ERROR**: An error occurred.
-        # *   **AUDITING**: The ticket is being reviewed.
-        # *   **REJECT**: The ticket was rejected.
-        # *   **CANCEL**: The ticket was revoked.
-        # *   **APPROVED**: The ticket was approved.
         self.workflow_ins_code = workflow_ins_code
 
     def validate(self):
@@ -448,9 +432,7 @@ class GetApprovalDetailResponseBodyApprovalDetailCurrentHandlersCurrentHandler(D
         id: int = None,
         nick_name: str = None,
     ):
-        # The ID of the user.
         self.id = id
-        # The nickname of the user.
         self.nick_name = nick_name
 
     def validate(self):

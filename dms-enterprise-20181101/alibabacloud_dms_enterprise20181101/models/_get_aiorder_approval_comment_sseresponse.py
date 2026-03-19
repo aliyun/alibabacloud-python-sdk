@@ -7,14 +7,14 @@ from typing import Dict
 from alibabacloud_dms_enterprise20181101 import models as main_models
 from darabonba.model import DaraModel
 
-class ChatWithDesensitizeSSEResponse(DaraModel):
+class GetAIOrderApprovalCommentSSEResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
         id: str = None,
         event: str = None,
-        body: main_models.ChatWithDesensitizeSSEResponseBody = None,
+        body: main_models.GetAIOrderApprovalCommentSSEResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -63,7 +63,7 @@ class ChatWithDesensitizeSSEResponse(DaraModel):
             self.event = m.get('event')
 
         if m.get('body') is not None:
-            temp_model = main_models.ChatWithDesensitizeSSEResponseBody()
+            temp_model = main_models.GetAIOrderApprovalCommentSSEResponseBody()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

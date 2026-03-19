@@ -23,7 +23,6 @@ class ListSQLExecAuditLogResponseBody(DaraModel):
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # The entries returned.
         self.sqlexec_audit_log_list = sqlexec_audit_log_list
         # Indicates whether the request was successful. Valid values:
         # 
@@ -138,51 +137,19 @@ class ListSQLExecAuditLogResponseBodySQLExecAuditLogListSQLExecAuditLog(DaraMode
         user_id: int = None,
         user_name: str = None,
     ):
-        # The number of rows affected by the SQL statement. For example, if you execute an SQL statement to query data, the number of retrieved rows is returned.
         self.affect_rows = affect_rows
-        # The ID of the database.
         self.db_id = db_id
-        # The amount of time consumed by the execution of the SQL statement. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The execution status of the SQL statement. Valid values:
-        # 
-        # *   **FAIL**: The SQL statement fails to be executed.
-        # *   **NOEXE**: The SQL statement has not been executed.
-        # *   **RUNNING**: The SQL statement is being executed.
-        # *   **CANCEL**: The execution of the SQL statement is canceled.
-        # *   **SUCCESS**: The SQL statement is executed.
         self.exec_state = exec_state
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the database.
-        # 
-        # >  If the SQL statement takes effect on an instance, the name of the instance is returned.
         self.instance_name = instance_name
-        # Indicates whether the database is a logical database. Valid values:
-        # 
-        # *   **true**: The database is a logical database.
-        # *   **false**: The database is a physical database.
         self.logic = logic
-        # The time when the operation specified by the SQL statement was performed on the instance or database.
         self.op_time = op_time
-        # The comment on the SQL statement.
         self.remark = remark
-        # The SQL statement that was written.
         self.sql = sql
-        # The type of the SQL statement. Valid values:
-        # 
-        # *   **SELECT**: the SQL statement that is used to query data.
-        # *   **INSERT**: the SQL statement that is used to insert data.
-        # *   **DELETE**: the SQL statement that is used to delete data.
-        # *   **CREATE_TABLE**: the SQL statement that is used to create tables.
-        # 
-        # >  To view more types of SQL statements, log on to the DMS console and click Security and Specifications. In the left-side navigation pane, click **Operation Audit**. Then, you can view all supported types of SQL statements from the **SQL type** drop-down list.
         self.sqltype = sqltype
-        # The name of the database.
         self.schema_name = schema_name
-        # The ID of the user who wrote the SQL statement.
         self.user_id = user_id
-        # The nickname of the user who wrote the SQL statement.
         self.user_name = user_name
 
     def validate(self):

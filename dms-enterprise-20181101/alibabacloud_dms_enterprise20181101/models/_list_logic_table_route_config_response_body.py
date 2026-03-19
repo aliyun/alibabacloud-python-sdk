@@ -20,7 +20,6 @@ class ListLogicTableRouteConfigResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned.
         self.error_message = error_message
-        # The routing algorithms.
         self.logic_table_route_config_list = logic_table_route_config_list
         # The ID of the request.
         self.request_id = request_id
@@ -118,11 +117,8 @@ class ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRo
         route_key: str = None,
         table_id: int = None,
     ):
-        # The routing algorithm expression.
         self.route_expr = route_expr
-        # The unique key of the routing algorithm.
         self.route_key = route_key
-        # The ID of the logical table.
         self.table_id = table_id
 
     def validate(self):
