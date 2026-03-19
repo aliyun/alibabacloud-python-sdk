@@ -542,6 +542,7 @@ from ._get_memories_response_body import GetMemoriesResponseBodyRelations
 from ._get_memories_response_body import GetMemoriesResponseBodyResults
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResultsInput
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResults
+from ._get_memory_store_response_body import GetMemoryStoreResponseBodyShortTermStorage
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstanceTags
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstance
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances
@@ -1182,6 +1183,7 @@ __all__ = [
     GetMemoriesResponseBodyResults,
     GetMemoryHistoryResponseBodyResultsInput,
     GetMemoryHistoryResponseBodyResults,
+    GetMemoryStoreResponseBodyShortTermStorage,
     GetPrometheusInstanceResponseBodyPrometheusInstanceTags,
     GetPrometheusInstanceResponseBodyPrometheusInstance,
     GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances,

@@ -1,3 +1,8 @@
+2026-03-19 Version: 6.2.2
+- Update API GetMemoryStore: add response parameters Body.shortTermStorage.
+- Update API ListMemoryStores: add response parameters Body.total.
+
+
 2026-03-17 Version: 6.2.1
 - Update API CreateThread: add request parameters body.attributes.
 - Update API GetThread: add response parameters Body.attributes.

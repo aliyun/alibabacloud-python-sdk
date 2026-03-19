@@ -14,11 +14,13 @@ class ListMemoryStoresResponseBody(DaraModel):
         memory_stores: List[main_models.ListMemoryStoresResponseBodyMemoryStores] = None,
         next_token: str = None,
         request_id: str = None,
+        total: int = None,
     ):
         self.max_results = max_results
         self.memory_stores = memory_stores
         self.next_token = next_token
         self.request_id = request_id
+        self.total = total
 
     def validate(self):
         if self.memory_stores:
@@ -45,6 +47,9 @@ class ListMemoryStoresResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.total is not None:
+            result['total'] = self.total
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +68,9 @@ class ListMemoryStoresResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('total') is not None:
+            self.total = m.get('total')
 
         return self
 
