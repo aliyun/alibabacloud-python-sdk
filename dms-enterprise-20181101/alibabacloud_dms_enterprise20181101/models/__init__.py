@@ -1065,6 +1065,7 @@ from ._generate_sql_from_nlresponse_body import GenerateSqlFromNLResponseBodyDat
 from ._generate_sql_from_nlresponse_body import GenerateSqlFromNLResponseBodyDataSimilarSql
 from ._generate_sql_from_nlresponse_body import GenerateSqlFromNLResponseBodyDataTables
 from ._generate_sql_from_nlresponse_body import GenerateSqlFromNLResponseBodyData
+from ._get_aiorder_approval_comment_sseresponse_body import GetAIOrderApprovalCommentSSEResponseBodyOutput
 from ._get_abac_policy_response_body import GetAbacPolicyResponseBodyPolicy
 from ._get_approval_detail_response_body import GetApprovalDetailResponseBodyApprovalDetailCurrentHandlersCurrentHandler
 from ._get_approval_detail_response_body import GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers
@@ -2442,6 +2443,7 @@ __all__ = [
     GenerateSqlFromNLResponseBodyDataSimilarSql,
     GenerateSqlFromNLResponseBodyDataTables,
     GenerateSqlFromNLResponseBodyData,
+    GetAIOrderApprovalCommentSSEResponseBodyOutput,
     GetAbacPolicyResponseBodyPolicy,
     GetApprovalDetailResponseBodyApprovalDetailCurrentHandlersCurrentHandler,
     GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers,

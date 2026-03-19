@@ -1,3 +1,7 @@
+2026-03-19 Version: 2.2.1
+- Update API GetAIOrderApprovalCommentSSE: add response parameters Body.Output.
+
+
 2026-03-19 Version: 2.2.0
 - Support API GetAIOrderApprovalCommentSSE.
 - Update API CreateDifyInstance: add request parameters DifyInstanceName.
