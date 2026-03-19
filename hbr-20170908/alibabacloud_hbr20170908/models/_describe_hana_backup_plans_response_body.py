@@ -21,7 +21,6 @@ class DescribeHanaBackupPlansResponseBody(DaraModel):
     ):
         # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The details of the backup plan.
         self.hana_backup_plans = hana_backup_plans
         # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
@@ -152,34 +151,15 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(DaraModel
         schedule: str = None,
         vault_id: str = None,
     ):
-        # The backup prefix.
         self.backup_prefix = backup_prefix
-        # The backup type. Valid values:
-        # 
-        # *   COMPLETE: full backup
-        # *   INCREMENTAL: incremental backup
-        # *   DIFFERENTIAL: differential backup
         self.backup_type = backup_type
         self.business_status = business_status
-        # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The database name.
         self.database_name = database_name
-        # Indicates whether the backup plan is disabled. Valid values:
-        # 
-        # *   true: The backup plan is disabled.
-        # *   false: The backup plan is enabled.
         self.disabled = disabled
-        # The ID of the backup plan.
         self.plan_id = plan_id
-        # The name of the backup plan.
         self.plan_name = plan_name
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
-        # 
-        # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
-        # The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):

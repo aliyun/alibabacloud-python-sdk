@@ -160,6 +160,210 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_container_cluster_with_options_async(request, runtime)
 
+    def add_cross_account_with_options(
+        self,
+        request: main_models.AddCrossAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCrossAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not DaraCore.is_null(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not DaraCore.is_null(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddCrossAccount',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddCrossAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_cross_account_with_options_async(
+        self,
+        request: main_models.AddCrossAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCrossAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not DaraCore.is_null(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not DaraCore.is_null(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddCrossAccount',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddCrossAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_cross_account(
+        self,
+        request: main_models.AddCrossAccountRequest,
+    ) -> main_models.AddCrossAccountResponse:
+        runtime = RuntimeOptions()
+        return self.add_cross_account_with_options(request, runtime)
+
+    async def add_cross_account_async(
+        self,
+        request: main_models.AddCrossAccountRequest,
+    ) -> main_models.AddCrossAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.add_cross_account_with_options_async(request, runtime)
+
+    def browse_files_with_options(
+        self,
+        request: main_models.BrowseFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BrowseFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.absolute_path):
+            query['AbsolutePath'] = request.absolute_path
+        if not DaraCore.is_null(request.client_id):
+            query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.edition):
+            query['Edition'] = request.edition
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.restore_id):
+            query['RestoreId'] = request.restore_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.snapshot_hash):
+            query['SnapshotHash'] = request.snapshot_hash
+        if not DaraCore.is_null(request.storage_class):
+            query['StorageClass'] = request.storage_class
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        if not DaraCore.is_null(request.vault_id):
+            query['VaultId'] = request.vault_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BrowseFiles',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BrowseFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def browse_files_with_options_async(
+        self,
+        request: main_models.BrowseFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BrowseFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.absolute_path):
+            query['AbsolutePath'] = request.absolute_path
+        if not DaraCore.is_null(request.client_id):
+            query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.edition):
+            query['Edition'] = request.edition
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.restore_id):
+            query['RestoreId'] = request.restore_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.snapshot_hash):
+            query['SnapshotHash'] = request.snapshot_hash
+        if not DaraCore.is_null(request.storage_class):
+            query['StorageClass'] = request.storage_class
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        if not DaraCore.is_null(request.vault_id):
+            query['VaultId'] = request.vault_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BrowseFiles',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BrowseFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def browse_files(
+        self,
+        request: main_models.BrowseFilesRequest,
+    ) -> main_models.BrowseFilesResponse:
+        runtime = RuntimeOptions()
+        return self.browse_files_with_options(request, runtime)
+
+    async def browse_files_async(
+        self,
+        request: main_models.BrowseFilesRequest,
+    ) -> main_models.BrowseFilesResponse:
+        runtime = RuntimeOptions()
+        return await self.browse_files_with_options_async(request, runtime)
+
     def cancel_backup_job_with_options(
         self,
         request: main_models.CancelBackupJobRequest,
@@ -659,6 +863,8 @@ class Client(OpenApiClient):
             query['Detail'] = request.detail_shrink
         if not DaraCore.is_null(request.disabled):
             query['Disabled'] = request.disabled
+        if not DaraCore.is_null(request.edition):
+            query['Edition'] = request.edition
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
         if not DaraCore.is_null(request.keep_latest_snapshots):
@@ -759,6 +965,8 @@ class Client(OpenApiClient):
             query['Detail'] = request.detail_shrink
         if not DaraCore.is_null(request.disabled):
             query['Disabled'] = request.disabled
+        if not DaraCore.is_null(request.edition):
+            query['Edition'] = request.edition
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
         if not DaraCore.is_null(request.keep_latest_snapshots):
@@ -2412,6 +2620,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_client_with_options_async(request, runtime)
 
+    def delete_container_cluster_with_options(
+        self,
+        request: main_models.DeleteContainerClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContainerClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContainerCluster',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContainerClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_container_cluster_with_options_async(
+        self,
+        request: main_models.DeleteContainerClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContainerClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContainerCluster',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContainerClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_container_cluster(
+        self,
+        request: main_models.DeleteContainerClusterRequest,
+    ) -> main_models.DeleteContainerClusterResponse:
+        runtime = RuntimeOptions()
+        return self.delete_container_cluster_with_options(request, runtime)
+
+    async def delete_container_cluster_async(
+        self,
+        request: main_models.DeleteContainerClusterRequest,
+    ) -> main_models.DeleteContainerClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_container_cluster_with_options_async(request, runtime)
+
+    def delete_cross_account_with_options(
+        self,
+        request: main_models.DeleteCrossAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCrossAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not DaraCore.is_null(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not DaraCore.is_null(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCrossAccount',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCrossAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cross_account_with_options_async(
+        self,
+        request: main_models.DeleteCrossAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCrossAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not DaraCore.is_null(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not DaraCore.is_null(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCrossAccount',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCrossAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cross_account(
+        self,
+        request: main_models.DeleteCrossAccountRequest,
+    ) -> main_models.DeleteCrossAccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cross_account_with_options(request, runtime)
+
+    async def delete_cross_account_async(
+        self,
+        request: main_models.DeleteCrossAccountRequest,
+    ) -> main_models.DeleteCrossAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cross_account_with_options_async(request, runtime)
+
     def delete_hana_backup_plan_with_options(
         self,
         request: main_models.DeleteHanaBackupPlanRequest,
@@ -3607,6 +3967,92 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeContainerClusterResponse:
         runtime = RuntimeOptions()
         return await self.describe_container_cluster_with_options_async(request, runtime)
+
+    def describe_container_resource_with_options(
+        self,
+        request: main_models.DescribeContainerResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContainerResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContainerResource',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContainerResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_resource_with_options_async(
+        self,
+        request: main_models.DescribeContainerResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContainerResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContainerResource',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContainerResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_resource(
+        self,
+        request: main_models.DescribeContainerResourceRequest,
+    ) -> main_models.DescribeContainerResourceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_container_resource_with_options(request, runtime)
+
+    async def describe_container_resource_async(
+        self,
+        request: main_models.DescribeContainerResourceRequest,
+    ) -> main_models.DescribeContainerResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_container_resource_with_options_async(request, runtime)
 
     def describe_cross_accounts_with_options(
         self,
@@ -5891,6 +6337,76 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateRamPolicyResponse:
         runtime = RuntimeOptions()
         return await self.generate_ram_policy_with_options_async(request, runtime)
+
+    def get_basic_statistics_with_options(
+        self,
+        request: main_models.GetBasicStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBasicStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBasicStatistics',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBasicStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_basic_statistics_with_options_async(
+        self,
+        request: main_models.GetBasicStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBasicStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBasicStatistics',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBasicStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_basic_statistics(
+        self,
+        request: main_models.GetBasicStatisticsRequest,
+    ) -> main_models.GetBasicStatisticsResponse:
+        runtime = RuntimeOptions()
+        return self.get_basic_statistics_with_options(request, runtime)
+
+    async def get_basic_statistics_async(
+        self,
+        request: main_models.GetBasicStatisticsRequest,
+    ) -> main_models.GetBasicStatisticsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_basic_statistics_with_options_async(request, runtime)
 
     def get_temp_file_download_link_with_options(
         self,

@@ -21,7 +21,6 @@ class DescribeHanaDatabasesResponseBody(DaraModel):
     ):
         # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The information about SAP HANA databases.
         self.hana_databases = hana_databases
         # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
@@ -148,20 +147,11 @@ class DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase(DaraModel):
         service_name: str = None,
         sql_port: int = None,
     ):
-        # Indicates whether the database is started. Valid values:
-        # 
-        # *   **YES**: The database is started.
-        # *   **NO**: The database is not started.
         self.active_status = active_status
-        # The database name.
         self.database_name = database_name
-        # The detailed information.
         self.detail = detail
-        # The hostname.
         self.host = host
-        # The service name.
         self.service_name = service_name
-        # The port number.
         self.sql_port = sql_port
 
     def validate(self):

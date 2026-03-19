@@ -12,9 +12,13 @@ class Report(DaraModel):
         success_files: str = None,
         total_files: str = None,
     ):
+        # The report path of failed files.
         self.failed_files = failed_files
+        # The report path of skipped files.
         self.skipped_files = skipped_files
+        # The report path of success files.
         self.success_files = success_files
+        # The report path of total files.
         self.total_files = total_files
 
     def validate(self):

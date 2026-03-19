@@ -29,7 +29,6 @@ class DescribeRestoreJobs2ResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried restore jobs.
         self.restore_jobs = restore_jobs
         # Indicates whether the request was successful. Valid values:
         # 
@@ -191,122 +190,54 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(DaraModel):
         updated_time: int = None,
         vault_id: str = None,
     ):
-        # The actual amount of data that is restored after duplicates are removed. Unit: bytes.
         self.actual_bytes = actual_bytes
-        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the actual number of objects that are restored by the restore job.
         self.actual_items = actual_items
-        # The amount of data that was restored. Unit: bytes.
         self.bytes_done = bytes_done
-        # The total amount of data that was backed up from the data source. Unit: bytes.
         self.bytes_total = bytes_total
-        # The ID of the client group used for restoration.
         self.cluster_id = cluster_id
-        # The time when the restore job was completed. This value is a UNIX timestamp. Unit: seconds.
         self.complete_time = complete_time
-        # The time when the restore job was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
-        # Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The files that failed to be restored.
         self.error_file = error_file
-        # The error message that is returned for the restore job.
         self.error_message = error_message
-        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the restore job. The value can be up to 255 characters in length.
         self.exclude = exclude
-        # The time when the restore job expires.
         self.expire_time = expire_time
-        # The details about the VMware failback task.
         self.failback_detail = failback_detail
-        # The paths to the files that are included in the restore job.
         self.include = include
-        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the number of restored objects.
         self.items_done = items_done
-        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
         self.items_total = items_total
-        # The amount of data that was restored. Unit: bytes. This parameter is valid only if the StorageClass parameter is set to ARCHIVE. The minimum billable size of the data stored at the Archive tier is 1 MB.
         self.metering_bytes_done = metering_bytes_done
-        # The total amount of data that was backed up from the data source. Unit: bytes. This parameter is valid only if the StorageClass parameter is set to ARCHIVE. The minimum billable size of the data stored at the Archive tier is 1 MB.
         self.metering_bytes_total = metering_bytes_total
-        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a restoration path.
-        # 
-        # *   This parameter is available only for Windows ECS instances.
-        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-        # *   If you use VSS, you cannot restore data from multiple directories.
         self.options = options
-        # The details about the Tablestore instance.
         self.ots_detail = ots_detail
-        # The ID of the parent job.
         self.parent_id = parent_id
-        # The progress of the restore job. Valid values: [0,10000]. For example, 10000 indicates that the progress is 100%.
         self.progress = progress
-        # The report of the restore job.
         self.report = report
-        # The ID of the restore job.
         self.restore_id = restore_id
-        # The type of the restore job.
         self.restore_type = restore_type
-        # The hash value of the backup snapshot.
         self.snapshot_hash = snapshot_hash
-        # The ID of the snapshot used for restoration.
         self.snapshot_id = snapshot_id
         self.source_instance_id = source_instance_id
-        # The type of the data source. Valid values:
-        # 
-        # *   **ECS_FILE**: ECS files
-        # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
-        # *   **OTS_TABLE**: Tablestore instances
-        # *   **UDM_ECS**: ECS instances
         self.source_type = source_type
-        # The average speed at which data is backed up. Unit: KB/s.
         self.speed = speed
-        # The time when the restore job started. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
-        # The status of the restore job. Valid values:
-        # 
-        # *   **COMPLETE**: The job is completed.
-        # *   **PARTIAL_COMPLETE**: The job is partially completed.
-        # *   **FAILED**: The job failed.
         self.status = status
-        # The storage class of the backup data. Valid values:
-        # 
-        # *   **STANDARD**
-        # *   **ARCHIVE**
         self.storage_class = storage_class
-        # The name of the destination OSS bucket. This parameter is returned only for OSS buckets.
         self.target_bucket = target_bucket
-        # The ID of the destination client.
         self.target_client_id = target_client_id
-        # The time when the file system was created. This parameter is returned only for NAS file systems.
         self.target_create_time = target_create_time
-        # The ID of the destination data source.
         self.target_data_source_id = target_data_source_id
-        # The ID of the destination NAS file system. This parameter is returned only for NAS file systems.
         self.target_file_system_id = target_file_system_id
-        # The ID of the destination instance for the restore job.
         self.target_instance_id = target_instance_id
-        # The name of the destination Tablestore instance.
         self.target_instance_name = target_instance_name
-        # The destination file path of the restore job.
         self.target_path = target_path
-        # The prefix of the objects that are restored. This parameter is returned only for OSS buckets.
         self.target_prefix = target_prefix
-        # The name of the destination table in the Tablestore instance.
         self.target_table_name = target_table_name
-        # The time when the Tablestore instance was backed up. This value is a UNIX timestamp. Unit: seconds.
         self.target_time = target_time
-        # The details about Elastic Compute Service (ECS) instance backup.
         self.udm_detail = udm_detail
-        # The time when the restore job was updated. This value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
-        # The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):
@@ -631,15 +562,10 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport(DaraModel):
         success_files: str = None,
         total_files: str = None,
     ):
-        # The files that failed to be executed.
         self.failed_files = failed_files
-        # The status of the report generation.
         self.report_task_status = report_task_status
-        # The skipped files.
         self.skipped_files = skipped_files
-        # The files that are successfully executed.
         self.success_files = success_files
-        # The full files that are restored based on the file list.
         self.total_files = total_files
 
     def validate(self):
@@ -692,9 +618,7 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail(DaraModel):
         batch_channel_count: int = None,
         overwrite_existing: bool = None,
     ):
-        # The number of channels processed by each Tablestore restore job.
         self.batch_channel_count = batch_channel_count
-        # Indicates whether the existing Tablestore restore job was overwritten.
         self.overwrite_existing = overwrite_existing
 
     def validate(self):

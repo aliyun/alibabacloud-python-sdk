@@ -9,6 +9,12 @@ from ._rule import Rule
 from ._add_container_cluster_request import AddContainerClusterRequest
 from ._add_container_cluster_response_body import AddContainerClusterResponseBody
 from ._add_container_cluster_response import AddContainerClusterResponse
+from ._add_cross_account_request import AddCrossAccountRequest
+from ._add_cross_account_response_body import AddCrossAccountResponseBody
+from ._add_cross_account_response import AddCrossAccountResponse
+from ._browse_files_request import BrowseFilesRequest
+from ._browse_files_response_body import BrowseFilesResponseBody
+from ._browse_files_response import BrowseFilesResponse
 from ._cancel_backup_job_request import CancelBackupJobRequest
 from ._cancel_backup_job_response_body import CancelBackupJobResponseBody
 from ._cancel_backup_job_response import CancelBackupJobResponse
@@ -82,6 +88,12 @@ from ._delete_backup_plan_response import DeleteBackupPlanResponse
 from ._delete_client_request import DeleteClientRequest
 from ._delete_client_response_body import DeleteClientResponseBody
 from ._delete_client_response import DeleteClientResponse
+from ._delete_container_cluster_request import DeleteContainerClusterRequest
+from ._delete_container_cluster_response_body import DeleteContainerClusterResponseBody
+from ._delete_container_cluster_response import DeleteContainerClusterResponse
+from ._delete_cross_account_request import DeleteCrossAccountRequest
+from ._delete_cross_account_response_body import DeleteCrossAccountResponseBody
+from ._delete_cross_account_response import DeleteCrossAccountResponse
 from ._delete_hana_backup_plan_request import DeleteHanaBackupPlanRequest
 from ._delete_hana_backup_plan_response_body import DeleteHanaBackupPlanResponseBody
 from ._delete_hana_backup_plan_response import DeleteHanaBackupPlanResponse
@@ -126,6 +138,9 @@ from ._describe_clients_response import DescribeClientsResponse
 from ._describe_container_cluster_request import DescribeContainerClusterRequest
 from ._describe_container_cluster_response_body import DescribeContainerClusterResponseBody
 from ._describe_container_cluster_response import DescribeContainerClusterResponse
+from ._describe_container_resource_request import DescribeContainerResourceRequest
+from ._describe_container_resource_response_body import DescribeContainerResourceResponseBody
+from ._describe_container_resource_response import DescribeContainerResourceResponse
 from ._describe_cross_accounts_request import DescribeCrossAccountsRequest
 from ._describe_cross_accounts_response_body import DescribeCrossAccountsResponseBody
 from ._describe_cross_accounts_response import DescribeCrossAccountsResponse
@@ -205,6 +220,9 @@ from ._execute_policy_v2response import ExecutePolicyV2Response
 from ._generate_ram_policy_request import GenerateRamPolicyRequest
 from ._generate_ram_policy_response_body import GenerateRamPolicyResponseBody
 from ._generate_ram_policy_response import GenerateRamPolicyResponse
+from ._get_basic_statistics_request import GetBasicStatisticsRequest
+from ._get_basic_statistics_response_body import GetBasicStatisticsResponseBody
+from ._get_basic_statistics_response import GetBasicStatisticsResponse
 from ._get_temp_file_download_link_request import GetTempFileDownloadLinkRequest
 from ._get_temp_file_download_link_response_body import GetTempFileDownloadLinkResponseBody
 from ._get_temp_file_download_link_response import GetTempFileDownloadLinkResponse
@@ -274,6 +292,8 @@ from ._upgrade_backup_clients_response import UpgradeBackupClientsResponse
 from ._upgrade_client_request import UpgradeClientRequest
 from ._upgrade_client_response_body import UpgradeClientResponseBody
 from ._upgrade_client_response import UpgradeClientResponse
+from ._browse_files_response_body import BrowseFilesResponseBodyNodesNode
+from ._browse_files_response_body import BrowseFilesResponseBodyNodes
 from ._create_backup_plan_request import CreateBackupPlanRequestRule
 from ._create_backup_plan_shrink_request import CreateBackupPlanShrinkRequestRule
 from ._create_clients_response_body import CreateClientsResponseBodyInstanceStatusesInstanceStatus
@@ -321,6 +341,7 @@ from ._describe_backup_plans_response_body import DescribeBackupPlansResponseBod
 from ._describe_clients_response_body import DescribeClientsResponseBodyClientsClient
 from ._describe_clients_response_body import DescribeClientsResponseBodyClients
 from ._describe_container_cluster_response_body import DescribeContainerClusterResponseBodyClusters
+from ._describe_container_resource_response_body import DescribeContainerResourceResponseBodyResources
 from ._describe_cross_accounts_response_body import DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount
 from ._describe_cross_accounts_response_body import DescribeCrossAccountsResponseBodyCrossAccounts
 from ._describe_hana_backup_plans_response_body import DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan
@@ -373,6 +394,8 @@ from ._describe_vaults_response_body import DescribeVaultsResponseBodyVaultsVaul
 from ._describe_vaults_response_body import DescribeVaultsResponseBodyVaultsVaultTrialInfo
 from ._describe_vaults_response_body import DescribeVaultsResponseBodyVaultsVault
 from ._describe_vaults_response_body import DescribeVaultsResponseBodyVaults
+from ._get_basic_statistics_response_body import GetBasicStatisticsResponseBodyGlobalStatistics
+from ._get_basic_statistics_response_body import GetBasicStatisticsResponseBodyRegionStatistics
 from ._install_backup_clients_response_body import InstallBackupClientsResponseBodyInstanceStatuses
 from ._list_protected_resources_response_body import ListProtectedResourcesResponseBodyProtectedResources
 from ._search_historical_snapshots_response_body import SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths
@@ -399,6 +422,12 @@ __all__ = [
     AddContainerClusterRequest,
     AddContainerClusterResponseBody,
     AddContainerClusterResponse,
+    AddCrossAccountRequest,
+    AddCrossAccountResponseBody,
+    AddCrossAccountResponse,
+    BrowseFilesRequest,
+    BrowseFilesResponseBody,
+    BrowseFilesResponse,
     CancelBackupJobRequest,
     CancelBackupJobResponseBody,
     CancelBackupJobResponse,
@@ -472,6 +501,12 @@ __all__ = [
     DeleteClientRequest,
     DeleteClientResponseBody,
     DeleteClientResponse,
+    DeleteContainerClusterRequest,
+    DeleteContainerClusterResponseBody,
+    DeleteContainerClusterResponse,
+    DeleteCrossAccountRequest,
+    DeleteCrossAccountResponseBody,
+    DeleteCrossAccountResponse,
     DeleteHanaBackupPlanRequest,
     DeleteHanaBackupPlanResponseBody,
     DeleteHanaBackupPlanResponse,
@@ -516,6 +551,9 @@ __all__ = [
     DescribeContainerClusterRequest,
     DescribeContainerClusterResponseBody,
     DescribeContainerClusterResponse,
+    DescribeContainerResourceRequest,
+    DescribeContainerResourceResponseBody,
+    DescribeContainerResourceResponse,
     DescribeCrossAccountsRequest,
     DescribeCrossAccountsResponseBody,
     DescribeCrossAccountsResponse,
@@ -595,6 +633,9 @@ __all__ = [
     GenerateRamPolicyRequest,
     GenerateRamPolicyResponseBody,
     GenerateRamPolicyResponse,
+    GetBasicStatisticsRequest,
+    GetBasicStatisticsResponseBody,
+    GetBasicStatisticsResponse,
     GetTempFileDownloadLinkRequest,
     GetTempFileDownloadLinkResponseBody,
     GetTempFileDownloadLinkResponse,
@@ -664,6 +705,8 @@ __all__ = [
     UpgradeClientRequest,
     UpgradeClientResponseBody,
     UpgradeClientResponse,
+    BrowseFilesResponseBodyNodesNode,
+    BrowseFilesResponseBodyNodes,
     CreateBackupPlanRequestRule,
     CreateBackupPlanShrinkRequestRule,
     CreateClientsResponseBodyInstanceStatusesInstanceStatus,
@@ -711,6 +754,7 @@ __all__ = [
     DescribeClientsResponseBodyClientsClient,
     DescribeClientsResponseBodyClients,
     DescribeContainerClusterResponseBodyClusters,
+    DescribeContainerResourceResponseBodyResources,
     DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount,
     DescribeCrossAccountsResponseBodyCrossAccounts,
     DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan,
@@ -763,6 +807,8 @@ __all__ = [
     DescribeVaultsResponseBodyVaultsVaultTrialInfo,
     DescribeVaultsResponseBodyVaultsVault,
     DescribeVaultsResponseBodyVaults,
+    GetBasicStatisticsResponseBodyGlobalStatistics,
+    GetBasicStatisticsResponseBodyRegionStatistics,
     InstallBackupClientsResponseBodyInstanceStatuses,
     ListProtectedResourcesResponseBodyProtectedResources,
     SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths,

@@ -15,12 +15,19 @@ class OtsTableRestoreDetail(DaraModel):
         restore_search_index: bool = None,
         search_index_name_suffix: str = None,
     ):
+        # The number of concurrent processes for each restore job.
         self.batch_channel_count = batch_channel_count
+        # The name prefixes of the indexes that you want to restore.
         self.index_name_suffix = index_name_suffix
+        # Specifies whether to overwrite existing tables.
         self.overwrite_existing = overwrite_existing
+        # Specifies whether to regenerate auto-increment primary keys.
         self.re_generate_auto_increment_pk = re_generate_auto_increment_pk
+        # Specifies whether to restore indexes.
         self.restore_index = restore_index
+        # Specifies whether to restore search indexes.
         self.restore_search_index = restore_search_index
+        # The name prefixes of the search indexes that you want to restore.
         self.search_index_name_suffix = search_index_name_suffix
 
     def validate(self):

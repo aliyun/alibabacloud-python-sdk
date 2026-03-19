@@ -19,7 +19,6 @@ class DescribeClientsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The Cloud Backup clients.
         self.clients = clients
         # The response code. The status code 200 indicates that the request was successful.
         self.code = code
@@ -159,58 +158,22 @@ class DescribeClientsResponseBodyClientsClient(DaraModel):
         use_https: bool = None,
         vault_id: str = None,
     ):
-        # The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
         self.alert_setting = alert_setting
-        # The ID of the Cloud Backup client.
         self.client_id = client_id
-        # The client name.
         self.client_name = client_name
-        # The type of the Cloud Backup client. Valid value: **ECS_AGENT**, which indicates an SAP HANA backup client.
         self.client_type = client_type
-        # The version number of the Cloud Backup client.
         self.client_version = client_version
-        # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The time when the Cloud Backup client was created.
         self.created_time = created_time
-        # The latest heartbeat time of the Cloud Backup client. This value is a UNIX timestamp. Unit: seconds.
         self.heart_beat_time = heart_beat_time
-        # The instance ID.
         self.instance_id = instance_id
-        # The name of the ECS instance.
         self.instance_name = instance_name
-        # The maximum version number of the Cloud Backup client.
         self.max_version = max_version
-        # The network type. Valid values:
-        # 
-        # *   **CLASSIC**: the classic network
-        # *   **VPC**: the virtual private cloud (VPC)
         self.network_type = network_type
-        # The status of the Cloud Backup client. Valid values:
-        # 
-        # *   **REGISTERED**: The backup client is registered.
-        # *   **ACTIVATED**: The backup client is activated.
-        # *   **DEACTIVATED**: The backup client fails to be activated.
-        # *   **INSTALLING**: The backup client is being installed.
-        # *   **INSTALL_FAILED**: The backup client fails to be installed.
-        # *   **NOT_INSTALLED**: The backup client is not installed.
-        # *   **UPGRADING**: The backup client is being upgraded.
-        # *   **UPGRADE_FAILED**: The backup client fails to be upgraded.
-        # *   **UNINSTALLING**: The backup client is being uninstalled.
-        # *   **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
-        # *   **STOPPED**: The backup client is out of service.
-        # *   **UNKNOWN**: The backup client is disconnected.
         self.status = status
-        # The status information.
         self.status_message = status_message
-        # The time when the Cloud Backup client was updated. This value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
-        # Indicates whether data is transmitted over HTTPS. Valid values:
-        # 
-        # *   true: Data is transmitted over HTTPS.
-        # *   false: Data is transmitted over HTTP.
         self.use_https = use_https
-        # The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):

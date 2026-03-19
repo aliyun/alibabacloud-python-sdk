@@ -21,7 +21,6 @@ class DescribeCrossAccountsResponseBody(DaraModel):
     ):
         # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The information about the accounts used in cross-account backup.
         self.cross_accounts = cross_accounts
         # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
@@ -150,20 +149,13 @@ class DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount(DaraModel):
         owner_id: int = None,
         updated_time: int = None,
     ):
-        # The account alias. The value can be up to 32 bits in length.
         self.alias = alias
-        # The time when the account was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The ID of the backup type.
         self.id = id
-        # The ID of the current account.
         self.owner_id = owner_id
-        # The time when the account information was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
 
     def validate(self):

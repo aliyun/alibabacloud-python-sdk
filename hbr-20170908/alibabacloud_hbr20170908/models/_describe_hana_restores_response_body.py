@@ -21,7 +21,6 @@ class DescribeHanaRestoresResponseBody(DaraModel):
     ):
         # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The information about restore jobs.
         self.hana_restore = hana_restore
         # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
@@ -171,81 +170,34 @@ class DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores(DaraModel):
         vault_id: str = None,
         volume_id: int = None,
     ):
-        # The backup ID.
         self.backup_id = backup_id
-        # The backup prefix.
         self.backup_prefix = backup_prefix
-        # Indicates whether the differential backup and log backup are validated. Valid values:
-        # 
-        # *   true: Cloud Backup checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, Cloud Backup does not start the restore job.
-        # *   false: Cloud Backup does not check whether the required differential backup and log backup are available before the restore job starts.
         self.check_access = check_access
-        # Indicates whether all log entries are deleted from the log area after the log entries are restored. Valid values: true and false. If the return value is false, all log entries are deleted from the log area after the log entries are restored.
         self.clear_log = clear_log
-        # The ID of the SAP HANA instance that is restored.
         self.cluster_id = cluster_id
-        # The current recovery phase. This value is obtained from SAP HANA.
         self.current_phase = current_phase
-        # The current progress. This value is obtained from SAP HANA.
         self.current_progress = current_progress
-        # The database name.
         self.database_name = database_name
-        # The ID of the database recovery.
         self.database_restore_id = database_restore_id
-        # The time when the restore job ends. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The log position to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
         self.log_position = log_position
-        # The maximum recovery phase. This value is obtained from SAP HANA.
         self.max_phase = max_phase
-        # The maximum progress. This value is obtained from SAP HANA.
         self.max_progress = max_progress
-        # The details of the recovery phase.
         self.message = message
-        # The recovery mode. Valid values:
-        # 
-        # *   **RECOVERY_TO_MOST_RECENT**: The database is restored to the recently available state to which the database has been backed up.
-        # *   **RECOVERY_TO_POINT_IN_TIME**: The database is restored to a specified point in time.
-        # *   **RECOVERY_TO_SPECIFIC_BACKUP**: The database is restored to a specified backup.
-        # *   **RECOVERY_TO_LOG_POSITION**: The database is restored to a specified log position.
         self.mode = mode
-        # The recovery phase.
         self.phase = phase
-        # The point in time at which the database is restored.
         self.reached_time = reached_time
-        # The point in time to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_POINT_IN_TIME**. Cloud Backup restores the database to a state closest to the specified point in time.
         self.recovery_point_in_time = recovery_point_in_time
-        # The ID of the restore job.
         self.restore_id = restore_id
-        # The name of the source system. This parameter indicates the name of the source database that is restored. Format: `<Source database name>@SID`.
         self.source = source
-        # The ID of the source SAP HANA instance.
         self.source_cluster_id = source_cluster_id
-        # The time when the restore job starts. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
-        # The recovery status. This value is obtained from SAP HANA.
         self.state = state
-        # The status of the restore job. Valid values:
-        # 
-        # *   **RUNNING**: The job is running.
-        # *   **COMPLETE**: The job is completed.
-        # *   **PARTIAL_COMPLETE**: The job is partially completed.
-        # *   **FAILED**: The job failed.
-        # *   **CANCELED**: The job is canceled.
-        # *   **EXPIRED**: The job timed out.
         self.status = status
-        # Indicates whether the database is restored to a different instance. Valid values:
-        # 
-        # *   true: The database is restored to a different instance.
-        # *   false: The database is restored within the same instance.
         self.system_copy = system_copy
-        # Indicates whether a catalog backup is used to restore the database. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_SPECIFIC_BACKUP**. If the return value is false, Cloud Backup finds the backup file based on the specified prefix and then restores the backup file.
         self.use_catalog = use_catalog
-        # Indicates whether a differential backup or an incremental backup is used to restore the database. Valid values: true and false. If the return value is true, Cloud Backup uses a differential backup or an incremental backup to restore the database. If the return value is false, Cloud Backup uses a log backup to restore the database.
         self.use_delta = use_delta
-        # The ID of the backup vault.
         self.vault_id = vault_id
-        # The ID of the volume that is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
         self.volume_id = volume_id
 
     def validate(self):

@@ -24,6 +24,7 @@ class CreateBackupPlanRequest(DaraModel):
         dest_source_type: str = None,
         detail: Dict[str, Any] = None,
         disabled: bool = None,
+        edition: str = None,
         exclude: str = None,
         file_system_id: str = None,
         include: str = None,
@@ -78,6 +79,7 @@ class CreateBackupPlanRequest(DaraModel):
         self.detail = detail
         # Is the plan disabled by default
         self.disabled = disabled
+        self.edition = edition
         # This parameter is required only when **SourceType** is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
         self.exclude = exclude
         # This parameter is required when **SourceType** is set to **NAS**. It represents the file system ID.
@@ -192,6 +194,9 @@ class CreateBackupPlanRequest(DaraModel):
         if self.disabled is not None:
             result['Disabled'] = self.disabled
 
+        if self.edition is not None:
+            result['Edition'] = self.edition
+
         if self.exclude is not None:
             result['Exclude'] = self.exclude
 
@@ -294,6 +299,9 @@ class CreateBackupPlanRequest(DaraModel):
         if m.get('Disabled') is not None:
             self.disabled = m.get('Disabled')
 
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
+
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
 
@@ -353,8 +361,6 @@ class CreateBackupPlanRequest(DaraModel):
             self.vault_id = m.get('VaultId')
 
         return self
-
-
 
 class CreateBackupPlanRequestRule(DaraModel):
     def __init__(

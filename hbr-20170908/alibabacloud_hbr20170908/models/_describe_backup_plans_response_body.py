@@ -19,7 +19,6 @@ class DescribeBackupPlansResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The queried backup plans.
         self.backup_plans = backup_plans
         # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
@@ -186,114 +185,49 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(DaraModel):
         updated_time: int = None,
         vault_id: str = None,
     ):
-        # The ID of the data source group.
         self.backup_source_group_id = backup_source_group_id
-        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
-        # This parameter is valid only when **SourceType** is set to **OSS**. This parameter indicates the name of the OSS bucket.
         self.bucket = bucket
         self.business_status = business_status
-        # The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
         self.change_list_path = change_list_path
-        # The ID of the backup client.
         self.client_id = client_id
-        # The ID of the client group.
         self.cluster_id = cluster_id
-        # This parameter is valid only when **SourceType** is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # Indicates whether a backup plan is automatically created based on tags.
         self.created_by_tag = created_by_tag
-        # The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
-        # Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT
-        # *   CROSS_ACCOUNT
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The ID of the data source.
         self.data_source_id = data_source_id
-        # The data source details at the destination. This parameter is returned only for data synchronization.
         self.dest_data_source_detail = dest_data_source_detail
-        # The data source ID at the destination. This parameter is returned only for data synchronization.
         self.dest_data_source_id = dest_data_source_id
-        # The data source type at the destination. This parameter is returned only for data synchronization.
         self.dest_source_type = dest_source_type
-        # The details about ECS instance backup.
         self.detail = detail
-        # Indicates whether the backup plan is disabled. Valid values:
-        # 
-        # *   true: The backup plan is disabled.
-        # *   false: The backup plan is enabled.
         self.disabled = disabled
-        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job.
         self.exclude = exclude
-        # This parameter is valid only when **SourceType** is set to **NAS**. This parameter indicates the ID of the NAS file system.
         self.file_system_id = file_system_id
-        # The matched tag rules.
         self.hit_tags = hit_tags
-        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
         self.include = include
-        # The ID of the instance group.
         self.instance_group_id = instance_group_id
-        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
         self.instance_id = instance_id
-        # The name of the Tablestore instance.
         self.instance_name = instance_name
-        # Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
-        # 
-        # *   0: The feature is disabled.
-        # *   1: The feature is enabled.
         self.keep_latest_snapshots = keep_latest_snapshots
-        # The latest execution job id of plan.
         self.latest_execute_job_id = latest_execute_job_id
         self.latest_finish_job_id = latest_finish_job_id
-        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
         self.options = options
-        # The details about the Tablestore instance.
         self.ots_detail = ots_detail
-        # The source paths. This parameter is valid only when **SourceType** is set to **ECS_FILE**.
         self.paths = paths
-        # The ID of the backup plan.
         self.plan_id = plan_id
-        # The name of the backup plan.
         self.plan_name = plan_name
-        # This parameter is valid only when **SourceType** is set to **OSS**. This parameter indicates the prefix of the objects that are backed up.
         self.prefix = prefix
-        # The backup resources. This parameter is valid only for disk backup.
         self.resources = resources
-        # The retention period of the backup data. Unit: days.
         self.retention = retention
-        # The backup policies. This parameter is valid only for disk backup.
         self.rules = rules
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
-        # 
-        # *   **startTime**: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-        # *   **interval**: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
-        # The type of the data source. Valid values:
-        # 
-        # *   **ECS_FILE**: ECS files
-        # *   **OSS**: OSS buckets
-        # *   **NAS**: NAS file systems
-        # *   **OTS**: Tablestore instances
-        # *   **UDM_ECS**: ECS instances
-        # *   **SYNC**: data synchronization
         self.source_type = source_type
-        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}|{end}|{bandwidth}`. Multiple throttling rules are separated with vertical bars (`|`). A time range cannot overlap with another one.
-        # 
-        # *   start: the start hour.
-        # *   end: the end hour.
-        # *   bandwidth: the bandwidth. Unit: KB.
         self.speed_limit = speed_limit
-        # The free trial information.
         self.trial_info = trial_info
-        # The time when the backup plan was updated. This value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
-        # The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):
@@ -599,13 +533,9 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo(DaraModel):
         trial_start_time: int = None,
         trial_vault_release_time: int = None,
     ):
-        # Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
         self.keep_after_trial_expiration = keep_after_trial_expiration
-        # The expiration time of the free trial.
         self.trial_expire_time = trial_expire_time
-        # The start time of the free trial.
         self.trial_start_time = trial_start_time
-        # The time when the free-trial backup vault is released.
         self.trial_vault_release_time = trial_vault_release_time
 
     def validate(self):
@@ -694,26 +624,14 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule(DaraModel):
         rule_name: str = None,
         schedule: str = None,
     ):
-        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
-        # The ID of the region in which the remote backup vault resides.
         self.destination_region_id = destination_region_id
-        # The retention period of the backup data in remote backup mode. Unit: days.
         self.destination_retention = destination_retention
-        # Indicates whether the policy is disabled.
         self.disabled = disabled
-        # Indicates whether the snapshot data is backed up to the backup vault.
         self.do_copy = do_copy
-        # The retention period of the backup data. Unit: days.
         self.retention = retention
-        # The policy ID.
         self.rule_id = rule_id
-        # The policy name.
         self.rule_name = rule_name
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
-        # 
-        # *   `startTime`: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-        # *   `interval`: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
 
     def validate(self):
@@ -826,11 +744,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanResourcesResource(Dara
         resource_id: str = None,
         source_type: str = None,
     ):
-        # Additional information about the data source.
         self.extra = extra
-        # The ID of the data source.
         self.resource_id = resource_id
-        # The type of the data source. Valid value: **UDM_DISK**.
         self.source_type = source_type
 
     def validate(self):
@@ -897,7 +812,6 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail(DaraModel):
         self,
         table_names: main_models.DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetailTableNames = None,
     ):
-        # The names of the tables in the Tablestore instance.
         self.table_names = table_names
 
     def validate(self):
@@ -991,14 +905,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag(DaraMode
         operator: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag-based matching rule. Valid values:
-        # 
-        # *   **EQUAL**: Both the tag key and tag value are matched.
-        # *   **NOT**: The tag key is matched and the tag value is not matched.
         self.operator = operator
-        # The tag value.
         self.value = value
 
     def validate(self):

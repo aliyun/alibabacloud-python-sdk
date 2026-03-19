@@ -20,7 +20,6 @@ class DescribeVaultReplicationRegionsResponseBody(DaraModel):
         self.code = code
         # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
         self.message = message
-        # The regions that support cross-region replication.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id

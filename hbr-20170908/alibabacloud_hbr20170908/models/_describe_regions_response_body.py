@@ -20,7 +20,6 @@ class DescribeRegionsResponseBody(DaraModel):
         self.code = code
         # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The regions returned.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -117,9 +116,7 @@ class DescribeRegionsResponseBodyRegionsRegion(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # The region name.
         self.local_name = local_name
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -1,3 +1,9 @@
+2026-03-19 Version: 2.4.0
+- Support API BrowseFiles.
+- Support API GetBasicStatistics.
+- Update API CreateBackupPlan: add request parameters Edition.
+
+
 2026-01-06 Version: 2.3.1
 - Update API DescribeCrossAccounts: add response parameters Body.CrossAccounts.$.CrossAccountType.
 

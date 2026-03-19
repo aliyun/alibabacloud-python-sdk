@@ -19,7 +19,6 @@ class CreateClientsResponseBody(DaraModel):
     ):
         # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
-        # The status of the ECS instance. If you specify more than one instance IDs in the request and the status of an ECS instance does not meet the requirements to install an HBR client, an error message is returned based on the value of this parameter.
         self.instance_statuses = instance_statuses
         # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
         self.message = message
@@ -126,12 +125,7 @@ class CreateClientsResponseBodyInstanceStatusesInstanceStatus(DaraModel):
         instance_id: str = None,
         valid_instance: bool = None,
     ):
-        # The ID of the ECS instance.
         self.instance_id = instance_id
-        # Indicates whether an HBR client can be installed on the ECS instance. Valid values:
-        # 
-        # *   true: An HBR client can be installed on the ECS instance.
-        # *   false: An HBR client cannot be installed on the ECS instance.
         self.valid_instance = valid_instance
 
     def validate(self):

@@ -34,7 +34,6 @@ class DescribeVaultsResponseBody(DaraModel):
         self.success = success
         # Returns the total number of backup repositories.
         self.total_count = total_count
-        # The backup vaults.
         self.vaults = vaults
 
     def validate(self):
@@ -187,122 +186,52 @@ class DescribeVaultsResponseBodyVaultsVault(DaraModel):
         vault_type: str = None,
         worm_enabled: bool = None,
     ):
-        # Archival tier backup data volume. Unit: bytes.
         self.archive_bytes_done = archive_bytes_done
-        # The billable storage usage of the Archive tier. Unit: bytes.
         self.archive_storage_size = archive_storage_size
-        # The statistics of backup plans that use the backup vault.
         self.backup_plan_statistics = backup_plan_statistics
-        # The name of the OSS bucket used by the backup vault.
         self.bucket_name = bucket_name
-        # The amount of data that is backed up. Unit: bytes.
         self.bytes_done = bytes_done
-        # The billing method of the backup vault.
         self.charge_type = charge_type
-        # The billable storage usage of the archive vault. Unit: bytes.
         self.charged_storage_size = charged_storage_size
-        # The encryption algorithm used to compress the backup vault. Valid values:
-        # 
-        # *   DISABLED: The backup vault is not compressed.
-        # *   SNAPPY: The backup vault is compressed by using the SNAPPY encryption algorithm.
-        # *   ZSTD: The backup vault is compressed by using Zstandard, a fast lossless compression algorithm.
         self.compression_algorithm = compression_algorithm
-        # The time when the backup vault was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # Indicates whether the deduplication feature is enabled.
         self.dedup = dedup
-        # The description of the backup vault.
         self.description = description
-        # The encryption type of the backup vault. Valid values:
-        # 
-        # *   NONE: The backup vault is not encrypted.
-        # *   HBR_PRIVATE (default): The backup vault is encrypted by using a key provided by Cloud Backup.
-        # *   KMS: The backup vault is encrypted by using a custom master key (CMK) created in Key Management Service (KMS).
         self.encrypt_type = encrypt_type
-        # Indicates whether indexes are available. Indexes are available when they are not being updated.
         self.index_available = index_available
-        # The index level.
-        # 
-        # *   OFF: No indexes are created.
-        # *   META: Metadata indexes are created.
-        # *   ALL: Full-text indexes are created.
         self.index_level = index_level
-        # The time when the index was updated.
         self.index_update_time = index_update_time
-        # The ID or alias of the CMK created in KMS. This parameter is returned only when EncryptType is set to KMS.
         self.kms_key_id = kms_key_id
-        # The time when the last remote backup was synchronized. The value is a UNIX timestamp. Unit: seconds.
         self.latest_replication_time = latest_replication_time
-        # The data redundancy type of the backup vault. Valid values:
-        # 
-        # *   LRS: Locally redundant storage (LRS) is enabled for the backup vault. Cloud Backup stores the copies of each object on multiple devices of different facilities in the same zone. This way, Cloud Backup ensures data durability and availability even if hardware failures occur.
-        # *   ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. Cloud Backup uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
         self.redundancy_type = redundancy_type
-        # Indicates whether the backup vault is a remote backup vault. Valid values:
-        # 
-        # *   true: The backup vault is a remote backup vault.
-        # *   false: The backup vault is a local backup vault.
         self.replication = replication
-        # The progress of data synchronization from the backup vault to the mirror vault.
         self.replication_progress = replication_progress
         self.replication_source_owner_id = replication_source_owner_id
-        # The ID of the region in which the source vault resides. This parameter is valid only for remote backup vaults.
         self.replication_source_region_id = replication_source_region_id
-        # Indicate whether the backup vault is the source vault that corresponds to the remote backup vault. Valid values:
-        # 
-        # *   true
-        # *   false
         self.replication_source_vault = replication_source_vault
-        # The ID of the source vault that corresponds to the remote backup vault.
         self.replication_source_vault_id = replication_source_vault_id
         self.replication_status = replication_status
         self.replication_target_owner_id = replication_target_owner_id
-        # Target region for remote backup repository.
         self.replication_target_region_id = replication_target_region_id
         self.replication_target_vault_id = replication_target_vault_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The retention period of the backup vault. Unit: days.
         self.retention = retention
         self.rs_target_account_ids = rs_target_account_ids
-        # Indicates whether the backup search feature is enabled.
         self.search_enabled = search_enabled
-        # The number of snapshots in the backup vault.
         self.snapshot_count = snapshot_count
-        # The data source types of the backup vault.
         self.source_types = source_types
-        # The status of the backup vault. Valid values:
-        # 
-        # *   **UNKNOWN**: The backup vault is in an unknown state.
-        # *   **INITIALIZING**: The backup vault is being initialized.
-        # *   **CREATED**: The backup vault is created.
-        # *   **ERROR**: An error occurs on the backup vault.
         self.status = status
-        # The usage of the backup vault. Unit: bytes.
         self.storage_size = storage_size
-        # The tags of the backup vault.
         self.tags = tags
-        # The free trial information.
         self.trial_info = trial_info
-        # The time when the backup vault was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
-        # The ID of the backup vault.
         self.vault_id = vault_id
-        # The name of the backup vault.
         self.vault_name = vault_name
         self.vault_owner_id = vault_owner_id
-        # The ID of the region in which the backup vault resides.
         self.vault_region_id = vault_region_id
-        # The status message that is returned when the backup vault is in the ERROR state. This parameter is valid only for remote backup vaults. Valid values:
-        # 
-        # *   **UNKNOWN_ERROR**: An unknown error occurs.
-        # *   **SOURCE_VAULT_ALREADY_HAS_REPLICATION**: A mirror vault is configured for the source vault.
         self.vault_status_message = vault_status_message
-        # The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
         self.vault_storage_class = vault_storage_class
-        # The type of the backup vault. Valid value: **STANDARD**, which indicates a standard backup vault.
         self.vault_type = vault_type
-        # Indicates whether the immutable backup feature is enabled.
         self.worm_enabled = worm_enabled
 
     def validate(self):
@@ -626,13 +555,9 @@ class DescribeVaultsResponseBodyVaultsVaultTrialInfo(DaraModel):
         trial_start_time: int = None,
         trial_vault_release_time: int = None,
     ):
-        # Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
         self.keep_after_trial_expiration = keep_after_trial_expiration
-        # The expiration time of the free trial.
         self.trial_expire_time = trial_expire_time
-        # The start time of the free trial.
         self.trial_start_time = trial_start_time
-        # The time when the free-trial backup vault is released.
         self.trial_vault_release_time = trial_vault_release_time
 
     def validate(self):
@@ -714,17 +639,7 @@ class DescribeVaultsResponseBodyVaultsVaultTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the backup vault. Valid values of N: 1 to 20.
-        # 
-        # *   The tag key cannot start with `aliyun` or `acs:`.
-        # *   The tag key cannot contain `http://` or `https://`.
-        # *   The tag key cannot be an empty string.
         self.key = key
-        # The tag value of the backup vault. Valid values of N: 1 to 20.
-        # 
-        # *   The tag value cannot start with `aliyun` or `acs:`.
-        # *   The tag value cannot contain `http://` or `https://`.
-        # *   The tag value cannot be an empty string.
         self.value = value
 
     def validate(self):
@@ -813,9 +728,7 @@ class DescribeVaultsResponseBodyVaultsVaultReplicationProgress(DaraModel):
         historical_replication_progress: int = None,
         new_replication_progress: int = None,
     ):
-        # The progress of historical data synchronization from the backup vault to the mirror vault. Valid values: 0 to 100.
         self.historical_replication_progress = historical_replication_progress
-        # The latest synchronization time of incremental data in the mirror vault.
         self.new_replication_progress = new_replication_progress
 
     def validate(self):
@@ -863,35 +776,20 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(DaraModel):
         ots: int = None,
         sql_server: int = None,
     ):
-        # The number of archive plans.
         self.archive = archive
-        # The number of Cloud Parallel File Storage (CPFS) backup plans.
         self.common_file_system = common_file_system
-        # The number of backup plans for General-purpose NAS file systems.
         self.common_nas = common_nas
-        # The number of backup plans for Cloud Storage Gateway (CSG) gateways.
         self.csg = csg
-        # The number of backup plans for ECS files.
         self.ecs_file = ecs_file
-        # The number of backup plans for SAP HANA instances.
         self.ecs_hana = ecs_hana
-        # The number of backup plans for Isilon storage systems.
         self.isilon = isilon
-        # The number of backup plans for on-premises servers.
         self.local_file = local_file
-        # The number of backup plans for on-premises virtual machines (VMs).
         self.local_vm = local_vm
-        # The number of backup plans for MySQL databases.
         self.my_sql = my_sql
-        # The number of backup plans for NAS file systems.
         self.nas = nas
-        # The number of backup plans for Oracle databases.
         self.oracle = oracle
-        # The number of backup plans for OSS buckets.
         self.oss = oss
-        # The number of backup plans for Tablestore instances.
         self.ots = ots
-        # The number of backup plans for SQL Server databases.
         self.sql_server = sql_server
 
     def validate(self):
