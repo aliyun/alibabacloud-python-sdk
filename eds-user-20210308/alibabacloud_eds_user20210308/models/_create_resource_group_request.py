@@ -8,11 +8,13 @@ class CreateResourceGroupRequest(DaraModel):
     def __init__(
         self,
         business_channel: str = None,
+        enable_aliyun_resource_group: bool = None,
         is_resource_group_with_office_site: int = None,
         platform: str = None,
         resource_group_name: str = None,
     ):
         self.business_channel = business_channel
+        self.enable_aliyun_resource_group = enable_aliyun_resource_group
         # >  This parameter is not publicly available.
         self.is_resource_group_with_office_site = is_resource_group_with_office_site
         # >  Set the value to AliyunConsole.
@@ -33,6 +35,9 @@ class CreateResourceGroupRequest(DaraModel):
         if self.business_channel is not None:
             result['BusinessChannel'] = self.business_channel
 
+        if self.enable_aliyun_resource_group is not None:
+            result['EnableAliyunResourceGroup'] = self.enable_aliyun_resource_group
+
         if self.is_resource_group_with_office_site is not None:
             result['IsResourceGroupWithOfficeSite'] = self.is_resource_group_with_office_site
 
@@ -48,6 +53,9 @@ class CreateResourceGroupRequest(DaraModel):
         m = m or dict()
         if m.get('BusinessChannel') is not None:
             self.business_channel = m.get('BusinessChannel')
+
+        if m.get('EnableAliyunResourceGroup') is not None:
+            self.enable_aliyun_resource_group = m.get('EnableAliyunResourceGroup')
 
         if m.get('IsResourceGroupWithOfficeSite') is not None:
             self.is_resource_group_with_office_site = m.get('IsResourceGroupWithOfficeSite')

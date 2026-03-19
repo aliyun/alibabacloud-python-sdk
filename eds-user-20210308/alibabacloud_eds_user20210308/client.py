@@ -603,6 +603,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.enable_aliyun_resource_group):
+            query['EnableAliyunResourceGroup'] = request.enable_aliyun_resource_group
         if not DaraCore.is_null(request.is_resource_group_with_office_site):
             query['IsResourceGroupWithOfficeSite'] = request.is_resource_group_with_office_site
         if not DaraCore.is_null(request.platform):
@@ -637,6 +639,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.enable_aliyun_resource_group):
+            query['EnableAliyunResourceGroup'] = request.enable_aliyun_resource_group
         if not DaraCore.is_null(request.is_resource_group_with_office_site):
             query['IsResourceGroupWithOfficeSite'] = request.is_resource_group_with_office_site
         if not DaraCore.is_null(request.platform):

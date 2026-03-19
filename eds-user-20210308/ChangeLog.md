@@ -1,3 +1,7 @@
+2026-03-19 Version: 2.0.1
+- Update API CreateResourceGroup: add request parameters EnableAliyunResourceGroup.
+
+
 2026-03-16 Version: 2.0.0
 - Update API BatchSetDesktopManager: add request parameters BusinessChannel.
 - Update API ChangeUserPassword: add request parameters BusinessChannel.
