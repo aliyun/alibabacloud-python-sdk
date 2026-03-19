@@ -4183,6 +4183,10 @@ class Client(OpenApiClient):
             body['baseUrl'] = request.base_url
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.max_input_length):
+            body['maxInputLength'] = request.max_input_length
+        if not DaraCore.is_null(request.max_output_length):
+            body['maxOutputLength'] = request.max_output_length
         if not DaraCore.is_null(request.model_id):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.model_type):
@@ -4227,6 +4231,10 @@ class Client(OpenApiClient):
             body['baseUrl'] = request.base_url
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.max_input_length):
+            body['maxInputLength'] = request.max_input_length
+        if not DaraCore.is_null(request.max_output_length):
+            body['maxOutputLength'] = request.max_output_length
         if not DaraCore.is_null(request.model_id):
             body['modelId'] = request.model_id
         if not DaraCore.is_null(request.model_type):
@@ -5186,72 +5194,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_query_model_list_with_options_async(request, headers, runtime)
-
-    def model_router_query_model_with_api_key_with_options(
-        self,
-        id: str,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.ModelRouterQueryModelWithApiKeyResponse:
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers
-        )
-        params = open_api_util_models.Params(
-            action = 'ModelRouterQueryModelWithApiKey',
-            version = '20240611',
-            protocol = 'HTTPS',
-            pathname = f'/api/v1/modelRouter/open/models/{DaraURL.percent_encode(id)}/with-api-key',
-            method = 'GET',
-            auth_type = 'AK',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ModelRouterQueryModelWithApiKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def model_router_query_model_with_api_key_with_options_async(
-        self,
-        id: str,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.ModelRouterQueryModelWithApiKeyResponse:
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers
-        )
-        params = open_api_util_models.Params(
-            action = 'ModelRouterQueryModelWithApiKey',
-            version = '20240611',
-            protocol = 'HTTPS',
-            pathname = f'/api/v1/modelRouter/open/models/{DaraURL.percent_encode(id)}/with-api-key',
-            method = 'GET',
-            auth_type = 'AK',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ModelRouterQueryModelWithApiKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def model_router_query_model_with_api_key(
-        self,
-        id: str,
-    ) -> main_models.ModelRouterQueryModelWithApiKeyResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.model_router_query_model_with_api_key_with_options(id, headers, runtime)
-
-    async def model_router_query_model_with_api_key_async(
-        self,
-        id: str,
-    ) -> main_models.ModelRouterQueryModelWithApiKeyResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.model_router_query_model_with_api_key_with_options_async(id, headers, runtime)
 
     def model_router_query_nacos_providers_with_options(
         self,

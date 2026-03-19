@@ -194,8 +194,6 @@ from ._model_router_query_model_response import ModelRouterQueryModelResponse
 from ._model_router_query_model_list_request import ModelRouterQueryModelListRequest
 from ._model_router_query_model_list_response_body import ModelRouterQueryModelListResponseBody
 from ._model_router_query_model_list_response import ModelRouterQueryModelListResponse
-from ._model_router_query_model_with_api_key_response_body import ModelRouterQueryModelWithApiKeyResponseBody
-from ._model_router_query_model_with_api_key_response import ModelRouterQueryModelWithApiKeyResponse
 from ._model_router_query_nacos_providers_request import ModelRouterQueryNacosProvidersRequest
 from ._model_router_query_nacos_providers_response_body import ModelRouterQueryNacosProvidersResponseBody
 from ._model_router_query_nacos_providers_response import ModelRouterQueryNacosProvidersResponse
@@ -569,8 +567,6 @@ __all__ = [
     ModelRouterQueryModelListRequest,
     ModelRouterQueryModelListResponseBody,
     ModelRouterQueryModelListResponse,
-    ModelRouterQueryModelWithApiKeyResponseBody,
-    ModelRouterQueryModelWithApiKeyResponse,
     ModelRouterQueryNacosProvidersRequest,
     ModelRouterQueryNacosProvidersResponseBody,
     ModelRouterQueryNacosProvidersResponse,

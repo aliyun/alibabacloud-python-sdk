@@ -10,6 +10,8 @@ class ModelRouterCreateModelRequest(DaraModel):
         api_key: str = None,
         base_url: str = None,
         description: str = None,
+        max_input_length: str = None,
+        max_output_length: str = None,
         model_id: str = None,
         model_type: str = None,
         name: str = None,
@@ -21,6 +23,8 @@ class ModelRouterCreateModelRequest(DaraModel):
         # Base URL
         self.base_url = base_url
         self.description = description
+        self.max_input_length = max_input_length
+        self.max_output_length = max_output_length
         self.model_id = model_id
         self.model_type = model_type
         self.name = name
@@ -43,6 +47,12 @@ class ModelRouterCreateModelRequest(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.max_input_length is not None:
+            result['maxInputLength'] = self.max_input_length
+
+        if self.max_output_length is not None:
+            result['maxOutputLength'] = self.max_output_length
 
         if self.model_id is not None:
             result['modelId'] = self.model_id
@@ -71,6 +81,12 @@ class ModelRouterCreateModelRequest(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('maxInputLength') is not None:
+            self.max_input_length = m.get('maxInputLength')
+
+        if m.get('maxOutputLength') is not None:
+            self.max_output_length = m.get('maxOutputLength')
 
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')

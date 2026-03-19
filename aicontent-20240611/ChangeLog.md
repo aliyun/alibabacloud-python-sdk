@@ -1,3 +1,9 @@
+2026-03-19 Version: 6.0.0
+- Delete API ModelRouterQueryModelWithApiKey.
+- Update API ModelRouterCreateModel: add request parameters body.maxInputLength.
+- Update API ModelRouterCreateModel: add request parameters body.maxOutputLength.
+
+
 2026-03-18 Version: 5.0.0
 - Support API AliyunConsoleOpenApiQueryPaidResource.
 - Support API ModelRouterChatCompletions.
