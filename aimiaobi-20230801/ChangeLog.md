@@ -1,3 +1,10 @@
+2026-03-19 Version: 1.41.0
+- Support API ExportPptArtifact.
+- Support API GetPptArtifactExportResult.
+- Support API GetPptTemplateSelector.
+- Support API ListPptTemplates.
+
+
 2026-03-19 Version: 1.40.5
 - Generated python 2023-08-01 for AiMiaoBi.
 

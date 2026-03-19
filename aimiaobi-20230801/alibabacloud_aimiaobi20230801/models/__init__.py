@@ -156,6 +156,9 @@ from ._export_hot_topic_planning_proposals_response import ExportHotTopicPlannin
 from ._export_intervenes_request import ExportIntervenesRequest
 from ._export_intervenes_response_body import ExportIntervenesResponseBody
 from ._export_intervenes_response import ExportIntervenesResponse
+from ._export_ppt_artifact_request import ExportPptArtifactRequest
+from ._export_ppt_artifact_response_body import ExportPptArtifactResponseBody
+from ._export_ppt_artifact_response import ExportPptArtifactResponse
 from ._feedback_dialogue_request import FeedbackDialogueRequest
 from ._feedback_dialogue_shrink_request import FeedbackDialogueShrinkRequest
 from ._feedback_dialogue_response_body import FeedbackDialogueResponseBody
@@ -285,9 +288,15 @@ from ._get_material_by_id_response import GetMaterialByIdResponse
 from ._get_ppt_artifact_request import GetPptArtifactRequest
 from ._get_ppt_artifact_response_body import GetPptArtifactResponseBody
 from ._get_ppt_artifact_response import GetPptArtifactResponse
+from ._get_ppt_artifact_export_result_request import GetPptArtifactExportResultRequest
+from ._get_ppt_artifact_export_result_response_body import GetPptArtifactExportResultResponseBody
+from ._get_ppt_artifact_export_result_response import GetPptArtifactExportResultResponse
 from ._get_ppt_config_request import GetPptConfigRequest
 from ._get_ppt_config_response_body import GetPptConfigResponseBody
 from ._get_ppt_config_response import GetPptConfigResponse
+from ._get_ppt_template_selector_request import GetPptTemplateSelectorRequest
+from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBody
+from ._get_ppt_template_selector_response import GetPptTemplateSelectorResponse
 from ._get_properties_request import GetPropertiesRequest
 from ._get_properties_response_body import GetPropertiesResponseBody
 from ._get_properties_response import GetPropertiesResponse
@@ -416,6 +425,9 @@ from ._list_planning_proposal_response import ListPlanningProposalResponse
 from ._list_ppt_artifacts_request import ListPptArtifactsRequest
 from ._list_ppt_artifacts_response_body import ListPptArtifactsResponseBody
 from ._list_ppt_artifacts_response import ListPptArtifactsResponse
+from ._list_ppt_templates_request import ListPptTemplatesRequest
+from ._list_ppt_templates_response_body import ListPptTemplatesResponseBody
+from ._list_ppt_templates_response import ListPptTemplatesResponse
 from ._list_search_task_dialogue_datas_request import ListSearchTaskDialogueDatasRequest
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBody
 from ._list_search_task_dialogue_datas_response import ListSearchTaskDialogueDatasResponse
@@ -753,6 +765,7 @@ from ._document_extraction_response_body import DocumentExtractionResponseBodyDa
 from ._download_bidding_doc_response_body import DownloadBiddingDocResponseBodyData
 from ._edit_bidding_doc_response_body import EditBiddingDocResponseBodyData
 from ._export_intervenes_response_body import ExportIntervenesResponseBodyData
+from ._export_ppt_artifact_response_body import ExportPptArtifactResponseBodyData
 from ._fetch_export_terms_task_response_body import FetchExportTermsTaskResponseBodyData
 from ._fetch_export_word_task_response_body import FetchExportWordTaskResponseBodyData
 from ._fetch_image_task_response_body import FetchImageTaskResponseBodyDataTaskInfoListImageList
@@ -852,7 +865,13 @@ from ._get_intervene_template_file_url_response_body import GetInterveneTemplate
 from ._get_material_by_id_response_body import GetMaterialByIdResponseBodyData
 from ._get_ppt_artifact_response_body import GetPptArtifactResponseBodyDataFileAttr
 from ._get_ppt_artifact_response_body import GetPptArtifactResponseBodyData
+from ._get_ppt_artifact_export_result_response_body import GetPptArtifactExportResultResponseBodyData
 from ._get_ppt_config_response_body import GetPptConfigResponseBodyData
+from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataCareer
+from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataColour
+from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataSuitScene
+from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataSuitStyle
+from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyData
 from ._get_properties_response_body import GetPropertiesResponseBodyDataConsoleConfig
 from ._get_properties_response_body import GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources
 from ._get_properties_response_body import GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles
@@ -961,6 +980,7 @@ from ._list_planning_proposal_response_body import ListPlanningProposalResponseB
 from ._list_planning_proposal_response_body import ListPlanningProposalResponseBodyData
 from ._list_ppt_artifacts_response_body import ListPptArtifactsResponseBodyDataFileAttr
 from ._list_ppt_artifacts_response_body import ListPptArtifactsResponseBodyData
+from ._list_ppt_templates_response_body import ListPptTemplatesResponseBodyData
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBodyArticles
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBodyAudios
@@ -1498,6 +1518,9 @@ __all__ = [
     ExportIntervenesRequest,
     ExportIntervenesResponseBody,
     ExportIntervenesResponse,
+    ExportPptArtifactRequest,
+    ExportPptArtifactResponseBody,
+    ExportPptArtifactResponse,
     FeedbackDialogueRequest,
     FeedbackDialogueShrinkRequest,
     FeedbackDialogueResponseBody,
@@ -1627,9 +1650,15 @@ __all__ = [
     GetPptArtifactRequest,
     GetPptArtifactResponseBody,
     GetPptArtifactResponse,
+    GetPptArtifactExportResultRequest,
+    GetPptArtifactExportResultResponseBody,
+    GetPptArtifactExportResultResponse,
     GetPptConfigRequest,
     GetPptConfigResponseBody,
     GetPptConfigResponse,
+    GetPptTemplateSelectorRequest,
+    GetPptTemplateSelectorResponseBody,
+    GetPptTemplateSelectorResponse,
     GetPropertiesRequest,
     GetPropertiesResponseBody,
     GetPropertiesResponse,
@@ -1758,6 +1787,9 @@ __all__ = [
     ListPptArtifactsRequest,
     ListPptArtifactsResponseBody,
     ListPptArtifactsResponse,
+    ListPptTemplatesRequest,
+    ListPptTemplatesResponseBody,
+    ListPptTemplatesResponse,
     ListSearchTaskDialogueDatasRequest,
     ListSearchTaskDialogueDatasResponseBody,
     ListSearchTaskDialogueDatasResponse,
@@ -2095,6 +2127,7 @@ __all__ = [
     DownloadBiddingDocResponseBodyData,
     EditBiddingDocResponseBodyData,
     ExportIntervenesResponseBodyData,
+    ExportPptArtifactResponseBodyData,
     FetchExportTermsTaskResponseBodyData,
     FetchExportWordTaskResponseBodyData,
     FetchImageTaskResponseBodyDataTaskInfoListImageList,
@@ -2194,7 +2227,13 @@ __all__ = [
     GetMaterialByIdResponseBodyData,
     GetPptArtifactResponseBodyDataFileAttr,
     GetPptArtifactResponseBodyData,
+    GetPptArtifactExportResultResponseBodyData,
     GetPptConfigResponseBodyData,
+    GetPptTemplateSelectorResponseBodyDataCareer,
+    GetPptTemplateSelectorResponseBodyDataColour,
+    GetPptTemplateSelectorResponseBodyDataSuitScene,
+    GetPptTemplateSelectorResponseBodyDataSuitStyle,
+    GetPptTemplateSelectorResponseBodyData,
     GetPropertiesResponseBodyDataConsoleConfig,
     GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources,
     GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles,
@@ -2303,6 +2342,7 @@ __all__ = [
     ListPlanningProposalResponseBodyData,
     ListPptArtifactsResponseBodyDataFileAttr,
     ListPptArtifactsResponseBodyData,
+    ListPptTemplatesResponseBodyData,
     ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias,
     ListSearchTaskDialogueDatasResponseBodyArticles,
     ListSearchTaskDialogueDatasResponseBodyAudios,
