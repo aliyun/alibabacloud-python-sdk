@@ -1494,6 +1494,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.clone_dbinstance_with_options_async(request, runtime)
 
+    def create_aiservice_with_options(
+        self,
+        request: main_models.CreateAIServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.service_account):
+            query['ServiceAccount'] = request.service_account
+        if not DaraCore.is_null(request.service_account_password):
+            query['ServiceAccountPassword'] = request.service_account_password
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aiservice_with_options_async(
+        self,
+        request: main_models.CreateAIServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.service_account):
+            query['ServiceAccount'] = request.service_account
+        if not DaraCore.is_null(request.service_account_password):
+            query['ServiceAccountPassword'] = request.service_account_password
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aiservice(
+        self,
+        request: main_models.CreateAIServiceRequest,
+    ) -> main_models.CreateAIServiceResponse:
+        runtime = RuntimeOptions()
+        return self.create_aiservice_with_options(request, runtime)
+
+    async def create_aiservice_async(
+        self,
+        request: main_models.CreateAIServiceRequest,
+    ) -> main_models.CreateAIServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aiservice_with_options_async(request, runtime)
+
     def create_account_with_options(
         self,
         request: main_models.CreateAccountRequest,
@@ -4366,6 +4456,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_ainode_with_options_async(request, runtime)
 
+    def delete_aiservice_with_options(
+        self,
+        request: main_models.DeleteAIServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aiservice_with_options_async(
+        self,
+        request: main_models.DeleteAIServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aiservice(
+        self,
+        request: main_models.DeleteAIServiceRequest,
+    ) -> main_models.DeleteAIServiceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_aiservice_with_options(request, runtime)
+
+    async def delete_aiservice_async(
+        self,
+        request: main_models.DeleteAIServiceRequest,
+    ) -> main_models.DeleteAIServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_aiservice_with_options_async(request, runtime)
+
     def delete_account_with_options(
         self,
         request: main_models.DeleteAccountRequest,
@@ -6583,6 +6751,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeployPrivateRAGServiceResponse:
         runtime = RuntimeOptions()
         return await self.deploy_private_ragservice_with_options_async(request, runtime)
+
+    def describe_aiservice_with_options(
+        self,
+        request: main_models.DescribeAIServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aiservice_with_options_async(
+        self,
+        request: main_models.DescribeAIServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aiservice(
+        self,
+        request: main_models.DescribeAIServiceRequest,
+    ) -> main_models.DescribeAIServiceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aiservice_with_options(request, runtime)
+
+    async def describe_aiservice_async(
+        self,
+        request: main_models.DescribeAIServiceRequest,
+    ) -> main_models.DescribeAIServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aiservice_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
@@ -14486,6 +14732,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_ainode_pools_with_options_async(request, runtime)
 
+    def list_aiservices_with_options(
+        self,
+        request: main_models.ListAIServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIServices',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aiservices_with_options_async(
+        self,
+        request: main_models.ListAIServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIServices',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aiservices(
+        self,
+        request: main_models.ListAIServicesRequest,
+    ) -> main_models.ListAIServicesResponse:
+        runtime = RuntimeOptions()
+        return self.list_aiservices_with_options(request, runtime)
+
+    async def list_aiservices_async(
+        self,
+        request: main_models.ListAIServicesRequest,
+    ) -> main_models.ListAIServicesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_aiservices_with_options_async(request, runtime)
+
     def list_backup_jobs_with_options(
         self,
         request: main_models.ListBackupJobsRequest,
@@ -16577,6 +16905,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListTagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def modify_aiservice_security_ips_with_options(
+        self,
+        request: main_models.ModifyAIServiceSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAIServiceSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAIServiceSecurityIps',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAIServiceSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_aiservice_security_ips_with_options_async(
+        self,
+        request: main_models.ModifyAIServiceSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAIServiceSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAIServiceSecurityIps',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAIServiceSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_aiservice_security_ips(
+        self,
+        request: main_models.ModifyAIServiceSecurityIpsRequest,
+    ) -> main_models.ModifyAIServiceSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_aiservice_security_ips_with_options(request, runtime)
+
+    async def modify_aiservice_security_ips_async(
+        self,
+        request: main_models.ModifyAIServiceSecurityIpsRequest,
+    ) -> main_models.ModifyAIServiceSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_aiservice_security_ips_with_options_async(request, runtime)
 
     def modify_account_description_with_options(
         self,
@@ -19058,6 +19468,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.pause_instance_with_options_async(request, runtime)
 
+    def pause_supabase_project_with_options(
+        self,
+        request: main_models.PauseSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSupabaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_supabase_project_with_options_async(
+        self,
+        request: main_models.PauseSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSupabaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_supabase_project(
+        self,
+        request: main_models.PauseSupabaseProjectRequest,
+    ) -> main_models.PauseSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.pause_supabase_project_with_options(request, runtime)
+
+    async def pause_supabase_project_async(
+        self,
+        request: main_models.PauseSupabaseProjectRequest,
+    ) -> main_models.PauseSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.pause_supabase_project_with_options_async(request, runtime)
+
     def query_collection_data_with_options(
         self,
         tmp_req: main_models.QueryCollectionDataRequest,
@@ -20411,6 +20895,80 @@ class Client(OpenApiClient):
     ) -> main_models.ResumeInstanceResponse:
         runtime = RuntimeOptions()
         return await self.resume_instance_with_options_async(request, runtime)
+
+    def resume_supabase_project_with_options(
+        self,
+        request: main_models.ResumeSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSupabaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_supabase_project_with_options_async(
+        self,
+        request: main_models.ResumeSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSupabaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_supabase_project(
+        self,
+        request: main_models.ResumeSupabaseProjectRequest,
+    ) -> main_models.ResumeSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.resume_supabase_project_with_options(request, runtime)
+
+    async def resume_supabase_project_async(
+        self,
+        request: main_models.ResumeSupabaseProjectRequest,
+    ) -> main_models.ResumeSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_supabase_project_with_options_async(request, runtime)
 
     def set_dbinstance_plan_status_with_options(
         self,

@@ -1,3 +1,13 @@
+2026-03-19 Version: 5.1.0
+- Support API CreateAIService.
+- Support API DeleteAIService.
+- Support API DescribeAIService.
+- Support API ListAIServices.
+- Support API ModifyAIServiceSecurityIps.
+- Support API PauseSupabaseProject.
+- Support API ResumeSupabaseProject.
+
+
 2026-03-16 Version: 5.0.3
 - Update API GetSupabaseProject: add response parameters Body.DBSecurityIpList.
 - Update API ModifySupabaseProjectSecurityIps: add request parameters UpdateDb.

@@ -47,6 +47,9 @@ from ._check_service_linked_role_response import CheckServiceLinkedRoleResponse
 from ._clone_dbinstance_request import CloneDBInstanceRequest
 from ._clone_dbinstance_response_body import CloneDBInstanceResponseBody
 from ._clone_dbinstance_response import CloneDBInstanceResponse
+from ._create_aiservice_request import CreateAIServiceRequest
+from ._create_aiservice_response_body import CreateAIServiceResponseBody
+from ._create_aiservice_response import CreateAIServiceResponse
 from ._create_account_request import CreateAccountRequest
 from ._create_account_response_body import CreateAccountResponseBody
 from ._create_account_response import CreateAccountResponse
@@ -130,6 +133,9 @@ from ._create_vector_index_response import CreateVectorIndexResponse
 from ._delete_ainode_request import DeleteAINodeRequest
 from ._delete_ainode_response_body import DeleteAINodeResponseBody
 from ._delete_ainode_response import DeleteAINodeResponse
+from ._delete_aiservice_request import DeleteAIServiceRequest
+from ._delete_aiservice_response_body import DeleteAIServiceResponseBody
+from ._delete_aiservice_response import DeleteAIServiceResponse
 from ._delete_account_request import DeleteAccountRequest
 from ._delete_account_response_body import DeleteAccountResponseBody
 from ._delete_account_response import DeleteAccountResponse
@@ -211,6 +217,9 @@ from ._delete_vector_index_response import DeleteVectorIndexResponse
 from ._deploy_private_ragservice_request import DeployPrivateRAGServiceRequest
 from ._deploy_private_ragservice_response_body import DeployPrivateRAGServiceResponseBody
 from ._deploy_private_ragservice_response import DeployPrivateRAGServiceResponse
+from ._describe_aiservice_request import DescribeAIServiceRequest
+from ._describe_aiservice_response_body import DescribeAIServiceResponseBody
+from ._describe_aiservice_response import DescribeAIServiceResponse
 from ._describe_accounts_request import DescribeAccountsRequest
 from ._describe_accounts_response_body import DescribeAccountsResponseBody
 from ._describe_accounts_response import DescribeAccountsResponse
@@ -487,6 +496,9 @@ from ._init_vector_database_response import InitVectorDatabaseResponse
 from ._list_ainode_pools_request import ListAINodePoolsRequest
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBody
 from ._list_ainode_pools_response import ListAINodePoolsResponse
+from ._list_aiservices_request import ListAIServicesRequest
+from ._list_aiservices_response_body import ListAIServicesResponseBody
+from ._list_aiservices_response import ListAIServicesResponse
 from ._list_backup_jobs_request import ListBackupJobsRequest
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBody
 from ._list_backup_jobs_response import ListBackupJobsResponse
@@ -559,6 +571,9 @@ from ._list_tables_response import ListTablesResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_aiservice_security_ips_request import ModifyAIServiceSecurityIpsRequest
+from ._modify_aiservice_security_ips_response_body import ModifyAIServiceSecurityIpsResponseBody
+from ._modify_aiservice_security_ips_response import ModifyAIServiceSecurityIpsResponse
 from ._modify_account_description_request import ModifyAccountDescriptionRequest
 from ._modify_account_description_response_body import ModifyAccountDescriptionResponseBody
 from ._modify_account_description_response import ModifyAccountDescriptionResponse
@@ -645,6 +660,9 @@ from ._pause_data_redistribute_response import PauseDataRedistributeResponse
 from ._pause_instance_request import PauseInstanceRequest
 from ._pause_instance_response_body import PauseInstanceResponseBody
 from ._pause_instance_response import PauseInstanceResponse
+from ._pause_supabase_project_request import PauseSupabaseProjectRequest
+from ._pause_supabase_project_response_body import PauseSupabaseProjectResponseBody
+from ._pause_supabase_project_response import PauseSupabaseProjectResponse
 from ._query_collection_data_request import QueryCollectionDataRequest
 from ._query_collection_data_shrink_request import QueryCollectionDataShrinkRequest
 from ._query_collection_data_response_body import QueryCollectionDataResponseBody
@@ -686,6 +704,9 @@ from ._resume_data_redistribute_response import ResumeDataRedistributeResponse
 from ._resume_instance_request import ResumeInstanceRequest
 from ._resume_instance_response_body import ResumeInstanceResponseBody
 from ._resume_instance_response import ResumeInstanceResponse
+from ._resume_supabase_project_request import ResumeSupabaseProjectRequest
+from ._resume_supabase_project_response_body import ResumeSupabaseProjectResponseBody
+from ._resume_supabase_project_response import ResumeSupabaseProjectResponse
 from ._set_dbinstance_plan_status_request import SetDBInstancePlanStatusRequest
 from ._set_dbinstance_plan_status_response_body import SetDBInstancePlanStatusResponseBody
 from ._set_dbinstance_plan_status_response import SetDBInstancePlanStatusResponse
@@ -906,6 +927,7 @@ from ._get_upsert_collection_data_job_response_body import GetUpsertCollectionDa
 from ._handle_active_sqlrecord_response_body import HandleActiveSQLRecordResponseBodyResults
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodePoolInfos
+from ._list_aiservices_response_body import ListAIServicesResponseBodyServices
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItemsBackupJob
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItems
 from ._list_collections_response_body import ListCollectionsResponseBodyCollections
@@ -1031,6 +1053,9 @@ __all__ = [
     CloneDBInstanceRequest,
     CloneDBInstanceResponseBody,
     CloneDBInstanceResponse,
+    CreateAIServiceRequest,
+    CreateAIServiceResponseBody,
+    CreateAIServiceResponse,
     CreateAccountRequest,
     CreateAccountResponseBody,
     CreateAccountResponse,
@@ -1114,6 +1139,9 @@ __all__ = [
     DeleteAINodeRequest,
     DeleteAINodeResponseBody,
     DeleteAINodeResponse,
+    DeleteAIServiceRequest,
+    DeleteAIServiceResponseBody,
+    DeleteAIServiceResponse,
     DeleteAccountRequest,
     DeleteAccountResponseBody,
     DeleteAccountResponse,
@@ -1195,6 +1223,9 @@ __all__ = [
     DeployPrivateRAGServiceRequest,
     DeployPrivateRAGServiceResponseBody,
     DeployPrivateRAGServiceResponse,
+    DescribeAIServiceRequest,
+    DescribeAIServiceResponseBody,
+    DescribeAIServiceResponse,
     DescribeAccountsRequest,
     DescribeAccountsResponseBody,
     DescribeAccountsResponse,
@@ -1471,6 +1502,9 @@ __all__ = [
     ListAINodePoolsRequest,
     ListAINodePoolsResponseBody,
     ListAINodePoolsResponse,
+    ListAIServicesRequest,
+    ListAIServicesResponseBody,
+    ListAIServicesResponse,
     ListBackupJobsRequest,
     ListBackupJobsResponseBody,
     ListBackupJobsResponse,
@@ -1543,6 +1577,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ModifyAIServiceSecurityIpsRequest,
+    ModifyAIServiceSecurityIpsResponseBody,
+    ModifyAIServiceSecurityIpsResponse,
     ModifyAccountDescriptionRequest,
     ModifyAccountDescriptionResponseBody,
     ModifyAccountDescriptionResponse,
@@ -1629,6 +1666,9 @@ __all__ = [
     PauseInstanceRequest,
     PauseInstanceResponseBody,
     PauseInstanceResponse,
+    PauseSupabaseProjectRequest,
+    PauseSupabaseProjectResponseBody,
+    PauseSupabaseProjectResponse,
     QueryCollectionDataRequest,
     QueryCollectionDataShrinkRequest,
     QueryCollectionDataResponseBody,
@@ -1670,6 +1710,9 @@ __all__ = [
     ResumeInstanceRequest,
     ResumeInstanceResponseBody,
     ResumeInstanceResponse,
+    ResumeSupabaseProjectRequest,
+    ResumeSupabaseProjectResponseBody,
+    ResumeSupabaseProjectResponse,
     SetDBInstancePlanStatusRequest,
     SetDBInstancePlanStatusResponseBody,
     SetDBInstancePlanStatusResponse,
@@ -1890,6 +1933,7 @@ __all__ = [
     HandleActiveSQLRecordResponseBodyResults,
     ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos,
     ListAINodePoolsResponseBodyAINodePoolInfos,
+    ListAIServicesResponseBodyServices,
     ListBackupJobsResponseBodyItemsBackupJob,
     ListBackupJobsResponseBodyItems,
     ListCollectionsResponseBodyCollections,
