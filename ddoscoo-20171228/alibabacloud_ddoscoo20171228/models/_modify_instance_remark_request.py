@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ModifyInstanceRemarkRequest(DaraModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        remark: str = None,
+        source_ip: str = None,
+    ):
+        self.instance_id = instance_id
+        self.remark = remark
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.remark is not None:
+            result['Remark'] = self.remark
+
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+
+        return self
+
