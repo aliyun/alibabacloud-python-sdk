@@ -1367,6 +1367,7 @@ class QueryJobListResponseBodyJobListJobOutputProperties(DaraModel):
         bitrate: str = None,
         duration: str = None,
         file_format: str = None,
+        file_md_5: str = None,
         file_size: str = None,
         format: main_models.QueryJobListResponseBodyJobListJobOutputPropertiesFormat = None,
         fps: str = None,
@@ -1378,6 +1379,7 @@ class QueryJobListResponseBodyJobListJobOutputProperties(DaraModel):
         self.bitrate = bitrate
         self.duration = duration
         self.file_format = file_format
+        self.file_md_5 = file_md_5
         self.file_size = file_size
         self.format = format
         self.fps = fps
@@ -1407,6 +1409,9 @@ class QueryJobListResponseBodyJobListJobOutputProperties(DaraModel):
 
         if self.file_format is not None:
             result['FileFormat'] = self.file_format
+
+        if self.file_md_5 is not None:
+            result['FileMd5'] = self.file_md_5
 
         if self.file_size is not None:
             result['FileSize'] = self.file_size
@@ -1441,6 +1446,9 @@ class QueryJobListResponseBodyJobListJobOutputProperties(DaraModel):
 
         if m.get('FileFormat') is not None:
             self.file_format = m.get('FileFormat')
+
+        if m.get('FileMd5') is not None:
+            self.file_md_5 = m.get('FileMd5')
 
         if m.get('FileSize') is not None:
             self.file_size = m.get('FileSize')

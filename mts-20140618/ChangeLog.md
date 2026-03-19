@@ -1,3 +1,7 @@
+2026-03-19 Version: 6.0.3
+- Update API QueryJobList: add response parameters Body.JobList.$.Output.Properties.FileMd5.
+
+
 2026-02-25 Version: 6.0.2
 - Update API QueryMediaInfoJobList: add response parameters Body.MediaInfoJobList.$.Properties.Format.Tags.
 - Update API QueryMediaInfoJobList: add response parameters Body.MediaInfoJobList.$.Properties.Streams.VideoStreamList.$.DolbyVision.
