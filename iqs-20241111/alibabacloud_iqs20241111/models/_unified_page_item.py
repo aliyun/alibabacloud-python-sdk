@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from darabonba.model import DaraModel
 
@@ -22,6 +22,7 @@ class UnifiedPageItem(DaraModel):
         rich_main_body: str = None,
         snippet: str = None,
         summary: str = None,
+        tags: Dict[str, Any] = None,
         title: str = None,
         website_authority_score: int = None,
     ):
@@ -38,6 +39,7 @@ class UnifiedPageItem(DaraModel):
         self.rich_main_body = rich_main_body
         self.snippet = snippet
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.website_authority_score = website_authority_score
 
@@ -88,6 +90,9 @@ class UnifiedPageItem(DaraModel):
         if self.summary is not None:
             result['summary'] = self.summary
 
+        if self.tags is not None:
+            result['tags'] = self.tags
+
         if self.title is not None:
             result['title'] = self.title
 
@@ -136,6 +141,9 @@ class UnifiedPageItem(DaraModel):
 
         if m.get('summary') is not None:
             self.summary = m.get('summary')
+
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
 
         if m.get('title') is not None:
             self.title = m.get('title')
