@@ -56,6 +56,7 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         config: Dict[str, Any] = None,
         created_at: str = None,
         description: str = None,
+        end_time: int = None,
         endpoint_list: List[main_models.DescribeLogstashResponseBodyResultEndpointList] = None,
         instance_id: str = None,
         network_config: main_models.DescribeLogstashResponseBodyResultNetworkConfig = None,
@@ -92,6 +93,7 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         self.created_at = created_at
         # The time when the instance was created.
         self.description = description
+        self.end_time = end_time
         # The ID of the zone where the node resides.
         self.endpoint_list = endpoint_list
         # The access information of the node.
@@ -161,6 +163,9 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+
         result['endpointList'] = []
         if self.endpoint_list is not None:
             for k1 in self.endpoint_list:
@@ -223,6 +228,9 @@ class DescribeLogstashResponseBodyResult(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
 
         self.endpoint_list = []
         if m.get('endpointList') is not None:

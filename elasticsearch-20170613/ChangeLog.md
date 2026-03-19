@@ -1,3 +1,11 @@
+2026-03-19 Version: 5.2.0
+- Support API ListEventRecords.
+- Support API ListStatsEventRecords.
+- Support API ModifyScheduleExecuteTime.
+- Update API DescribeLogstash: add response parameters Body.Result.endTime.
+- Update API ListLogstash: add response parameters Body.Result.$.endTime.
+
+
 2026-03-12 Version: 5.1.0
 - Support API GrayPublish.
 

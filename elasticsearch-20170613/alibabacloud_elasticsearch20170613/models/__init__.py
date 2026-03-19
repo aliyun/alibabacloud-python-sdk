@@ -290,6 +290,9 @@ from ._list_dicts_response import ListDictsResponse
 from ._list_ecs_instances_request import ListEcsInstancesRequest
 from ._list_ecs_instances_response_body import ListEcsInstancesResponseBody
 from ._list_ecs_instances_response import ListEcsInstancesResponse
+from ._list_event_records_request import ListEventRecordsRequest
+from ._list_event_records_response_body import ListEventRecordsResponseBody
+from ._list_event_records_response import ListEventRecordsResponse
 from ._list_extendfiles_response_body import ListExtendfilesResponseBody
 from ._list_extendfiles_response import ListExtendfilesResponse
 from ._list_ilmpolicies_request import ListILMPoliciesRequest
@@ -342,6 +345,9 @@ from ._list_shard_recoveries_response_body import ListShardRecoveriesResponseBod
 from ._list_shard_recoveries_response import ListShardRecoveriesResponse
 from ._list_snapshot_repos_by_instance_id_response_body import ListSnapshotReposByInstanceIdResponseBody
 from ._list_snapshot_repos_by_instance_id_response import ListSnapshotReposByInstanceIdResponse
+from ._list_stats_event_records_request import ListStatsEventRecordsRequest
+from ._list_stats_event_records_response_body import ListStatsEventRecordsResponseBody
+from ._list_stats_event_records_response import ListStatsEventRecordsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -363,6 +369,9 @@ from ._modify_elastictask_response import ModifyElastictaskResponse
 from ._modify_instance_maintain_time_request import ModifyInstanceMaintainTimeRequest
 from ._modify_instance_maintain_time_response_body import ModifyInstanceMaintainTimeResponseBody
 from ._modify_instance_maintain_time_response import ModifyInstanceMaintainTimeResponse
+from ._modify_schedule_execute_time_request import ModifyScheduleExecuteTimeRequest
+from ._modify_schedule_execute_time_response_body import ModifyScheduleExecuteTimeResponseBody
+from ._modify_schedule_execute_time_response import ModifyScheduleExecuteTimeResponse
 from ._modify_white_ips_request import ModifyWhiteIpsRequest
 from ._modify_white_ips_response_body import ModifyWhiteIpsResponseBody
 from ._modify_white_ips_response import ModifyWhiteIpsResponse
@@ -748,6 +757,10 @@ from ._list_ecs_instances_response_body import ListEcsInstancesResponseBodyResul
 from ._list_ecs_instances_response_body import ListEcsInstancesResponseBodyResultCollectors
 from ._list_ecs_instances_response_body import ListEcsInstancesResponseBodyResultIpAddress
 from ._list_ecs_instances_response_body import ListEcsInstancesResponseBodyResult
+from ._list_event_records_response_body import ListEventRecordsResponseBodyResultResultShowContentActionSuggest
+from ._list_event_records_response_body import ListEventRecordsResponseBodyResultResultShowContent
+from ._list_event_records_response_body import ListEventRecordsResponseBodyResultResult
+from ._list_event_records_response_body import ListEventRecordsResponseBodyResult
 from ._list_extendfiles_response_body import ListExtendfilesResponseBodyResult
 from ._list_ilmpolicies_response_body import ListILMPoliciesResponseBodyResult
 from ._list_index_templates_response_body import ListIndexTemplatesResponseBodyResultTemplate
@@ -793,6 +806,8 @@ from ._list_search_log_response_body import ListSearchLogResponseBodyHeaders
 from ._list_search_log_response_body import ListSearchLogResponseBodyResult
 from ._list_shard_recoveries_response_body import ListShardRecoveriesResponseBodyResult
 from ._list_snapshot_repos_by_instance_id_response_body import ListSnapshotReposByInstanceIdResponseBodyResult
+from ._list_stats_event_records_response_body import ListStatsEventRecordsResponseBodyResultResult
+from ._list_stats_event_records_response_body import ListStatsEventRecordsResponseBodyResult
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyHeaders
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -1151,6 +1166,9 @@ __all__ = [
     ListEcsInstancesRequest,
     ListEcsInstancesResponseBody,
     ListEcsInstancesResponse,
+    ListEventRecordsRequest,
+    ListEventRecordsResponseBody,
+    ListEventRecordsResponse,
     ListExtendfilesResponseBody,
     ListExtendfilesResponse,
     ListILMPoliciesRequest,
@@ -1203,6 +1221,9 @@ __all__ = [
     ListShardRecoveriesResponse,
     ListSnapshotReposByInstanceIdResponseBody,
     ListSnapshotReposByInstanceIdResponse,
+    ListStatsEventRecordsRequest,
+    ListStatsEventRecordsResponseBody,
+    ListStatsEventRecordsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -1224,6 +1245,9 @@ __all__ = [
     ModifyInstanceMaintainTimeRequest,
     ModifyInstanceMaintainTimeResponseBody,
     ModifyInstanceMaintainTimeResponse,
+    ModifyScheduleExecuteTimeRequest,
+    ModifyScheduleExecuteTimeResponseBody,
+    ModifyScheduleExecuteTimeResponse,
     ModifyWhiteIpsRequest,
     ModifyWhiteIpsResponseBody,
     ModifyWhiteIpsResponse,
@@ -1609,6 +1633,10 @@ __all__ = [
     ListEcsInstancesResponseBodyResultCollectors,
     ListEcsInstancesResponseBodyResultIpAddress,
     ListEcsInstancesResponseBodyResult,
+    ListEventRecordsResponseBodyResultResultShowContentActionSuggest,
+    ListEventRecordsResponseBodyResultResultShowContent,
+    ListEventRecordsResponseBodyResultResult,
+    ListEventRecordsResponseBodyResult,
     ListExtendfilesResponseBodyResult,
     ListILMPoliciesResponseBodyResult,
     ListIndexTemplatesResponseBodyResultTemplate,
@@ -1654,6 +1682,8 @@ __all__ = [
     ListSearchLogResponseBodyResult,
     ListShardRecoveriesResponseBodyResult,
     ListSnapshotReposByInstanceIdResponseBodyResult,
+    ListStatsEventRecordsResponseBodyResultResult,
+    ListStatsEventRecordsResponseBodyResult,
     ListTagResourcesResponseBodyHeaders,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,

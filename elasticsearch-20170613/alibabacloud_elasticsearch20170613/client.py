@@ -7909,6 +7909,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_ecs_instances_with_options_async(request, headers, runtime)
 
+    def list_event_records_with_options(
+        self,
+        event_type: str,
+        request: main_models.ListEventRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEventRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['beginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.term_content):
+            query['termContent'] = request.term_content
+        if not DaraCore.is_null(request.term_type):
+            query['termType'] = request.term_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEventRecords',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/{DaraURL.percent_encode(event_type)}/listEventRecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEventRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_event_records_with_options_async(
+        self,
+        event_type: str,
+        request: main_models.ListEventRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEventRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['beginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.term_content):
+            query['termContent'] = request.term_content
+        if not DaraCore.is_null(request.term_type):
+            query['termType'] = request.term_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEventRecords',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/{DaraURL.percent_encode(event_type)}/listEventRecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEventRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_event_records(
+        self,
+        event_type: str,
+        request: main_models.ListEventRecordsRequest,
+    ) -> main_models.ListEventRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_event_records_with_options(event_type, request, headers, runtime)
+
+    async def list_event_records_async(
+        self,
+        event_type: str,
+        request: main_models.ListEventRecordsRequest,
+    ) -> main_models.ListEventRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_event_records_with_options_async(event_type, request, headers, runtime)
+
     def list_extendfiles_with_options(
         self,
         instance_id: str,
@@ -9543,6 +9643,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_snapshot_repos_by_instance_id_with_options_async(instance_id, headers, runtime)
 
+    def list_stats_event_records_with_options(
+        self,
+        request: main_models.ListStatsEventRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListStatsEventRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_type):
+            query['eventType'] = request.event_type
+        if not DaraCore.is_null(request.level):
+            query['level'] = request.level
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListStatsEventRecords',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/event/statsEventRecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListStatsEventRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_stats_event_records_with_options_async(
+        self,
+        request: main_models.ListStatsEventRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListStatsEventRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_type):
+            query['eventType'] = request.event_type
+        if not DaraCore.is_null(request.level):
+            query['level'] = request.level
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListStatsEventRecords',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/event/statsEventRecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListStatsEventRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_stats_event_records(
+        self,
+        request: main_models.ListStatsEventRecordsRequest,
+    ) -> main_models.ListStatsEventRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_stats_event_records_with_options(request, headers, runtime)
+
+    async def list_stats_event_records_async(
+        self,
+        request: main_models.ListStatsEventRecordsRequest,
+    ) -> main_models.ListStatsEventRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_stats_event_records_with_options_async(request, headers, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: main_models.ListTagResourcesRequest,
@@ -10122,6 +10306,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.modify_instance_maintain_time_with_options_async(instance_id, request, headers, runtime)
+
+    def modify_schedule_execute_time_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ModifyScheduleExecuteTimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyScheduleExecuteTimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['eventId'] = request.event_id
+        if not DaraCore.is_null(request.schedule_execute_time):
+            query['scheduleExecuteTime'] = request.schedule_execute_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyScheduleExecuteTime',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/event/{DaraURL.percent_encode(instance_id)}/actions/modify-execute-time',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyScheduleExecuteTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_schedule_execute_time_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ModifyScheduleExecuteTimeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyScheduleExecuteTimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['eventId'] = request.event_id
+        if not DaraCore.is_null(request.schedule_execute_time):
+            query['scheduleExecuteTime'] = request.schedule_execute_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyScheduleExecuteTime',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/event/{DaraURL.percent_encode(instance_id)}/actions/modify-execute-time',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyScheduleExecuteTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_schedule_execute_time(
+        self,
+        instance_id: str,
+        request: main_models.ModifyScheduleExecuteTimeRequest,
+    ) -> main_models.ModifyScheduleExecuteTimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_schedule_execute_time_with_options(instance_id, request, headers, runtime)
+
+    async def modify_schedule_execute_time_async(
+        self,
+        instance_id: str,
+        request: main_models.ModifyScheduleExecuteTimeRequest,
+    ) -> main_models.ModifyScheduleExecuteTimeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_schedule_execute_time_with_options_async(instance_id, request, headers, runtime)
 
     def modify_white_ips_with_options(
         self,

@@ -70,6 +70,7 @@ class ListLogstashResponseBodyResult(DaraModel):
         tags: List[main_models.ListLogstashResponseBodyResultTags] = None,
         created_at: str = None,
         description: str = None,
+        end_time: int = None,
         instance_id: str = None,
         network_config: main_models.ListLogstashResponseBodyResultNetworkConfig = None,
         node_amount: int = None,
@@ -86,6 +87,7 @@ class ListLogstashResponseBodyResult(DaraModel):
         self.created_at = created_at
         # The time when the instance was last updated.
         self.description = description
+        self.end_time = end_time
         # The tag value of the cloud disk.
         self.instance_id = instance_id
         # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
@@ -133,6 +135,9 @@ class ListLogstashResponseBodyResult(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
 
@@ -175,6 +180,9 @@ class ListLogstashResponseBodyResult(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
 
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
