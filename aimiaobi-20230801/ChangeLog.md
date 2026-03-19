@@ -1,3 +1,6 @@
+2026-03-19 Version: 1.40.5
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2026-03-18 Version: 1.40.4
 - Update API BindPptArtifact: add request parameters ExternalUserId.
 - Update API DeletePptArtifact: add request parameters ExternalUserId.
