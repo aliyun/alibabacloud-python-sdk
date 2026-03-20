@@ -18,6 +18,7 @@ class AddMemoriesRequest(DaraModel):
         messages: List[main_models.AddMemoriesRequestMessages] = None,
         metadata: Dict[str, Any] = None,
         run_id: str = None,
+        timestamp: int = None,
         user_id: str = None,
     ):
         self.agent_id = agent_id
@@ -28,6 +29,7 @@ class AddMemoriesRequest(DaraModel):
         self.messages = messages
         self.metadata = metadata
         self.run_id = run_id
+        self.timestamp = timestamp
         self.user_id = user_id
 
     def validate(self):
@@ -67,6 +69,9 @@ class AddMemoriesRequest(DaraModel):
         if self.run_id is not None:
             result['runId'] = self.run_id
 
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+
         if self.user_id is not None:
             result['userId'] = self.user_id
 
@@ -100,6 +105,9 @@ class AddMemoriesRequest(DaraModel):
 
         if m.get('runId') is not None:
             self.run_id = m.get('runId')
+
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
 
         if m.get('userId') is not None:
             self.user_id = m.get('userId')

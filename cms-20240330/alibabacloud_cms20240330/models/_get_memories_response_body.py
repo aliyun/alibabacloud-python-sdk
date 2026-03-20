@@ -72,6 +72,7 @@ class GetMemoriesResponseBodyResults(DaraModel):
         self,
         actor_id: str = None,
         agent_id: str = None,
+        app_id: str = None,
         created_at: str = None,
         hash: str = None,
         id: str = None,
@@ -85,6 +86,7 @@ class GetMemoriesResponseBodyResults(DaraModel):
     ):
         self.actor_id = actor_id
         self.agent_id = agent_id
+        self.app_id = app_id
         self.created_at = created_at
         self.hash = hash
         self.id = id
@@ -109,6 +111,9 @@ class GetMemoriesResponseBodyResults(DaraModel):
 
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
+
+        if self.app_id is not None:
+            result['appId'] = self.app_id
 
         if self.created_at is not None:
             result['createdAt'] = self.created_at
@@ -149,6 +154,9 @@ class GetMemoriesResponseBodyResults(DaraModel):
 
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
+
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
 
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')

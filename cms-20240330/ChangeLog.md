@@ -1,3 +1,12 @@
+2026-03-20 Version: 6.2.3
+- Update API AddMemories: add request parameters body.timestamp.
+- Update API GetMemories: add response parameters Body.results.$.appId.
+- Update API GetMemory: add response parameters Body.agentId.
+- Update API GetMemory: add response parameters Body.appId.
+- Update API GetMemory: add response parameters Body.runId.
+- Update API GetMemory: add response parameters Body.userId.
+
+
 2026-03-19 Version: 6.2.2
 - Update API GetMemoryStore: add response parameters Body.shortTermStorage.
 - Update API ListMemoryStores: add response parameters Body.total.

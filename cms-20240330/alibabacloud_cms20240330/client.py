@@ -69,6 +69,8 @@ class Client(OpenApiClient):
             body['metadata'] = request.metadata
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
+        if not DaraCore.is_null(request.timestamp):
+            body['timestamp'] = request.timestamp
         if not DaraCore.is_null(request.user_id):
             body['userId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -117,6 +119,8 @@ class Client(OpenApiClient):
             body['metadata'] = request.metadata
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
+        if not DaraCore.is_null(request.timestamp):
+            body['timestamp'] = request.timestamp
         if not DaraCore.is_null(request.user_id):
             body['userId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
