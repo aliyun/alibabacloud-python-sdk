@@ -1,3 +1,12 @@
+2026-03-20 Version: 2.0.3
+- Update API CreateServerGroup: add request parameters HealthCheckConfig.HealthCheckExp.
+- Update API CreateServerGroup: add request parameters HealthCheckConfig.HealthCheckReq.
+- Update API ListServerGroups: add response parameters Body.ServerGroups.$.HealthCheckConfig.HealthCheckExp.
+- Update API ListServerGroups: add response parameters Body.ServerGroups.$.HealthCheckConfig.HealthCheckReq.
+- Update API UpdateServerGroupAttribute: add request parameters HealthCheckConfig.HealthCheckExp.
+- Update API UpdateServerGroupAttribute: add request parameters HealthCheckConfig.HealthCheckReq.
+
+
 2025-07-10 Version: 2.0.2
 - Update API CreateListener: add request parameters TcpIdleTimeout.
 - Update API GetListenerAttribute: add response parameters Body.TcpIdleTimeout.
