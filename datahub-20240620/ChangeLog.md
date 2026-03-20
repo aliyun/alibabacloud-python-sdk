@@ -1,3 +1,12 @@
+2026-03-20 Version: 1.3.0
+- Support API CreateProject.
+- Support API CreateTopic.
+- Support API DeleteProject.
+- Support API DeleteTopic.
+- Support API UpdateProject.
+- Support API UpdateTopic.
+
+
 2026-01-23 Version: 1.2.0
 - Support API GetRecords.
 - Support API PutRecords.

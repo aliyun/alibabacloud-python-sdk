@@ -2,6 +2,18 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._create_project_request import CreateProjectRequest
+from ._create_project_response_body import CreateProjectResponseBody
+from ._create_project_response import CreateProjectResponse
+from ._create_topic_request import CreateTopicRequest
+from ._create_topic_response_body import CreateTopicResponseBody
+from ._create_topic_response import CreateTopicResponse
+from ._delete_project_request import DeleteProjectRequest
+from ._delete_project_response_body import DeleteProjectResponseBody
+from ._delete_project_response import DeleteProjectResponse
+from ._delete_topic_request import DeleteTopicRequest
+from ._delete_topic_response_body import DeleteTopicResponseBody
+from ._delete_topic_response import DeleteTopicResponse
 from ._get_connector_request import GetConnectorRequest
 from ._get_connector_response_body import GetConnectorResponseBody
 from ._get_connector_response import GetConnectorResponse
@@ -45,6 +57,12 @@ from ._put_records_request import PutRecordsRequest
 from ._put_records_shrink_request import PutRecordsShrinkRequest
 from ._put_records_response_body import PutRecordsResponseBody
 from ._put_records_response import PutRecordsResponse
+from ._update_project_request import UpdateProjectRequest
+from ._update_project_response_body import UpdateProjectResponseBody
+from ._update_project_response import UpdateProjectResponse
+from ._update_topic_request import UpdateTopicRequest
+from ._update_topic_response_body import UpdateTopicResponseBody
+from ._update_topic_response import UpdateTopicResponse
 from ._get_records_response_body import GetRecordsResponseBodyRecords
 from ._list_connectors_response_body import ListConnectorsResponseBodyListConnector
 from ._list_connectors_response_body import ListConnectorsResponseBodyList
@@ -59,6 +77,18 @@ from ._list_topics_response_body import ListTopicsResponseBodyList
 from ._put_records_request import PutRecordsRequestRecords
 
 __all__ = [
+    CreateProjectRequest,
+    CreateProjectResponseBody,
+    CreateProjectResponse,
+    CreateTopicRequest,
+    CreateTopicResponseBody,
+    CreateTopicResponse,
+    DeleteProjectRequest,
+    DeleteProjectResponseBody,
+    DeleteProjectResponse,
+    DeleteTopicRequest,
+    DeleteTopicResponseBody,
+    DeleteTopicResponse,
     GetConnectorRequest,
     GetConnectorResponseBody,
     GetConnectorResponse,
@@ -102,6 +132,12 @@ __all__ = [
     PutRecordsShrinkRequest,
     PutRecordsResponseBody,
     PutRecordsResponse,
+    UpdateProjectRequest,
+    UpdateProjectResponseBody,
+    UpdateProjectResponse,
+    UpdateTopicRequest,
+    UpdateTopicResponseBody,
+    UpdateTopicResponse,
     GetRecordsResponseBodyRecords,
     ListConnectorsResponseBodyListConnector,
     ListConnectorsResponseBodyList,

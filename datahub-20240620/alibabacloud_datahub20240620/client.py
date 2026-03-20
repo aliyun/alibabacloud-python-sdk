@@ -40,6 +40,326 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_project_with_options(
+        self,
+        request: main_models.CreateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProject',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        request: main_models.CreateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProject',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: main_models.CreateProjectRequest,
+    ) -> main_models.CreateProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_project_with_options(request, runtime)
+
+    async def create_project_async(
+        self,
+        request: main_models.CreateProjectRequest,
+    ) -> main_models.CreateProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_project_with_options_async(request, runtime)
+
+    def create_topic_with_options(
+        self,
+        request: main_models.CreateTopicRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTopicResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.enable_schema_registry):
+            query['EnableSchemaRegistry'] = request.enable_schema_registry
+        if not DaraCore.is_null(request.expand_mode):
+            query['ExpandMode'] = request.expand_mode
+        if not DaraCore.is_null(request.lifecycle):
+            query['Lifecycle'] = request.lifecycle
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.record_schema):
+            query['RecordSchema'] = request.record_schema
+        if not DaraCore.is_null(request.record_type):
+            query['RecordType'] = request.record_type
+        if not DaraCore.is_null(request.shard_count):
+            query['ShardCount'] = request.shard_count
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTopic',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_topic_with_options_async(
+        self,
+        request: main_models.CreateTopicRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTopicResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.enable_schema_registry):
+            query['EnableSchemaRegistry'] = request.enable_schema_registry
+        if not DaraCore.is_null(request.expand_mode):
+            query['ExpandMode'] = request.expand_mode
+        if not DaraCore.is_null(request.lifecycle):
+            query['Lifecycle'] = request.lifecycle
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.record_schema):
+            query['RecordSchema'] = request.record_schema
+        if not DaraCore.is_null(request.record_type):
+            query['RecordType'] = request.record_type
+        if not DaraCore.is_null(request.shard_count):
+            query['ShardCount'] = request.shard_count
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTopic',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_topic(
+        self,
+        request: main_models.CreateTopicRequest,
+    ) -> main_models.CreateTopicResponse:
+        runtime = RuntimeOptions()
+        return self.create_topic_with_options(request, runtime)
+
+    async def create_topic_async(
+        self,
+        request: main_models.CreateTopicRequest,
+    ) -> main_models.CreateTopicResponse:
+        runtime = RuntimeOptions()
+        return await self.create_topic_with_options_async(request, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: main_models.DeleteProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProject',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: main_models.DeleteProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProject',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: main_models.DeleteProjectRequest,
+    ) -> main_models.DeleteProjectResponse:
+        runtime = RuntimeOptions()
+        return self.delete_project_with_options(request, runtime)
+
+    async def delete_project_async(
+        self,
+        request: main_models.DeleteProjectRequest,
+    ) -> main_models.DeleteProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_project_with_options_async(request, runtime)
+
+    def delete_topic_with_options(
+        self,
+        request: main_models.DeleteTopicRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTopicResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTopic',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_topic_with_options_async(
+        self,
+        request: main_models.DeleteTopicRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTopicResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTopic',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_topic(
+        self,
+        request: main_models.DeleteTopicRequest,
+    ) -> main_models.DeleteTopicResponse:
+        runtime = RuntimeOptions()
+        return self.delete_topic_with_options(request, runtime)
+
+    async def delete_topic_async(
+        self,
+        request: main_models.DeleteTopicRequest,
+    ) -> main_models.DeleteTopicResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_topic_with_options_async(request, runtime)
+
     def get_connector_with_options(
         self,
         request: main_models.GetConnectorRequest,
@@ -1199,3 +1519,155 @@ class Client(OpenApiClient):
     ) -> main_models.PutRecordsResponse:
         runtime = RuntimeOptions()
         return await self.put_records_with_options_async(request, runtime)
+
+    def update_project_with_options(
+        self,
+        request: main_models.UpdateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProject',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_with_options_async(
+        self,
+        request: main_models.UpdateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProject',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project(
+        self,
+        request: main_models.UpdateProjectRequest,
+    ) -> main_models.UpdateProjectResponse:
+        runtime = RuntimeOptions()
+        return self.update_project_with_options(request, runtime)
+
+    async def update_project_async(
+        self,
+        request: main_models.UpdateProjectRequest,
+    ) -> main_models.UpdateProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.update_project_with_options_async(request, runtime)
+
+    def update_topic_with_options(
+        self,
+        request: main_models.UpdateTopicRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTopicResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTopic',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_topic_with_options_async(
+        self,
+        request: main_models.UpdateTopicRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTopicResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTopic',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_topic(
+        self,
+        request: main_models.UpdateTopicRequest,
+    ) -> main_models.UpdateTopicResponse:
+        runtime = RuntimeOptions()
+        return self.update_topic_with_options(request, runtime)
+
+    async def update_topic_async(
+        self,
+        request: main_models.UpdateTopicRequest,
+    ) -> main_models.UpdateTopicResponse:
+        runtime = RuntimeOptions()
+        return await self.update_topic_with_options_async(request, runtime)
