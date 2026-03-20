@@ -629,6 +629,7 @@ class AIAgentOutboundCallConfigInterruptConfig(DaraModel):
         eagerness: str = None,
         enable_voice_interrupt: bool = None,
         interrupt_words: List[str] = None,
+        keep_interrupt_words_for_llm: bool = None,
         no_interrupt_mode: str = None,
     ):
         self.eagerness = eagerness
@@ -636,6 +637,7 @@ class AIAgentOutboundCallConfigInterruptConfig(DaraModel):
         self.enable_voice_interrupt = enable_voice_interrupt
         # Words or phrases that will trigger an interruption.
         self.interrupt_words = interrupt_words
+        self.keep_interrupt_words_for_llm = keep_interrupt_words_for_llm
         self.no_interrupt_mode = no_interrupt_mode
 
     def validate(self):
@@ -655,6 +657,9 @@ class AIAgentOutboundCallConfigInterruptConfig(DaraModel):
         if self.interrupt_words is not None:
             result['InterruptWords'] = self.interrupt_words
 
+        if self.keep_interrupt_words_for_llm is not None:
+            result['KeepInterruptWordsForLLM'] = self.keep_interrupt_words_for_llm
+
         if self.no_interrupt_mode is not None:
             result['NoInterruptMode'] = self.no_interrupt_mode
 
@@ -670,6 +675,9 @@ class AIAgentOutboundCallConfigInterruptConfig(DaraModel):
 
         if m.get('InterruptWords') is not None:
             self.interrupt_words = m.get('InterruptWords')
+
+        if m.get('KeepInterruptWordsForLLM') is not None:
+            self.keep_interrupt_words_for_llm = m.get('KeepInterruptWordsForLLM')
 
         if m.get('NoInterruptMode') is not None:
             self.no_interrupt_mode = m.get('NoInterruptMode')
