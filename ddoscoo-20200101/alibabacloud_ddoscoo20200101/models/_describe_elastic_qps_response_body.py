@@ -62,6 +62,7 @@ class DescribeElasticQpsResponseBodyElasticQps(DaraModel):
         status_2: int = None,
         status_3: int = None,
         status_4: int = None,
+        status_410pv: int = None,
         status_5: int = None,
         ups: int = None,
     ):
@@ -79,6 +80,7 @@ class DescribeElasticQpsResponseBodyElasticQps(DaraModel):
         self.status_3 = status_3
         # The total number of HTTP 4xx status codes during the step size period.
         self.status_4 = status_4
+        self.status_410pv = status_410pv
         # The total number of HTTP 5xx status codes during the step size period.
         self.status_5 = status_5
         # The total number of origin requests during the step size period.
@@ -113,6 +115,9 @@ class DescribeElasticQpsResponseBodyElasticQps(DaraModel):
         if self.status_4 is not None:
             result['Status4'] = self.status_4
 
+        if self.status_410pv is not None:
+            result['Status410Pv'] = self.status_410pv
+
         if self.status_5 is not None:
             result['Status5'] = self.status_5
 
@@ -143,6 +148,9 @@ class DescribeElasticQpsResponseBodyElasticQps(DaraModel):
 
         if m.get('Status4') is not None:
             self.status_4 = m.get('Status4')
+
+        if m.get('Status410Pv') is not None:
+            self.status_410pv = m.get('Status410Pv')
 
         if m.get('Status5') is not None:
             self.status_5 = m.get('Status5')

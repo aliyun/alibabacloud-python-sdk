@@ -18,7 +18,6 @@ class DescribeTagResourcesResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The tags that are added to the Anti-DDoS Proxy (Chinese Mainland) instance.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -98,13 +97,9 @@ class DescribeTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the Anti-DDoS Proxy (Chinese Mainland) instance.
         self.resource_id = resource_id
-        # The resource type. The value is fixed as **INSTANCE**, which indicates an Anti-DDoS Proxy instance.
         self.resource_type = resource_type
-        # The key of the tag that is added to the Anti-DDoS Proxy (Chinese Mainland) instance.
         self.tag_key = tag_key
-        # The value of the tag that is added to the Anti-DDoS Proxy (Chinese Mainland) instance.
         self.tag_value = tag_value
 
     def validate(self):

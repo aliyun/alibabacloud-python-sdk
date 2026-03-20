@@ -5219,6 +5219,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -5253,6 +5255,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -5881,6 +5885,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -5919,6 +5925,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -5969,6 +5977,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -6005,6 +6015,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -6055,6 +6067,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -6091,6 +6105,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -6141,6 +6157,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
@@ -6177,6 +6195,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):

@@ -1,3 +1,12 @@
+2026-03-20 Version: 4.0.2
+- Update API DescribeDomainH2Fingerprint: add request parameters QueryType.
+- Update API DescribeDomainTopFingerprint: add request parameters QueryType.
+- Update API DescribeDomainTopHttpMethod: add request parameters QueryType.
+- Update API DescribeDomainTopReferer: add request parameters QueryType.
+- Update API DescribeDomainTopUserAgent: add request parameters QueryType.
+- Update API DescribeElasticQps: add response parameters Body.ElasticQps.$.Status410Pv.
+
+
 2026-02-02 Version: 4.0.1
 - Update API DescribeHeaders: add response parameters Body.EmbeddedHeaders.
 - Update API ModifyHeaders: add request parameters EmbeddedHeaders.

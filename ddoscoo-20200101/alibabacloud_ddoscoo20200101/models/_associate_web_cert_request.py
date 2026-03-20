@@ -15,17 +15,33 @@ class AssociateWebCertRequest(DaraModel):
         domain: str = None,
         key: str = None,
     ):
+        # The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+        # 
+        # >  If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         self.cert = cert
+        # The ID of the certificate.
+        # 
+        # >  If you specify a certificate ID, you do not need to specify a value for the CertName, Cert, and Key parameters. You can specify only one of this parameter and the CertIdentifier parameter.
         self.cert_id = cert_id
         # The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
         # 
         # >  You can specify only one of this parameter and the CertId parameter.
         self.cert_identifier = cert_identifier
+        # The name of the certificate.
+        # 
+        # >  You can specify the name of the certificate that you want to associate. This parameter must be used together with the Cert and Key parameters.
         self.cert_name = cert_name
         # The region of the certificate. Valid values: **cn-hangzhou** and **ap-southeast-1**. Default value: **cn-hangzhou**.
         self.cert_region = cert_region
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+        # 
+        # >  If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         self.key = key
 
     def validate(self):

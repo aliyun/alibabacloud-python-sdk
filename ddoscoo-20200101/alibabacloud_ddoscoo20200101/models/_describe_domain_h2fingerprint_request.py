@@ -10,6 +10,7 @@ class DescribeDomainH2FingerprintRequest(DaraModel):
         domain: str = None,
         end_time: int = None,
         limit: int = None,
+        query_type: str = None,
         start_time: int = None,
     ):
         # The domain name of the website.
@@ -24,6 +25,7 @@ class DescribeDomainH2FingerprintRequest(DaraModel):
         # 
         # This parameter is required.
         self.limit = limit
+        self.query_type = query_type
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
@@ -48,6 +50,9 @@ class DescribeDomainH2FingerprintRequest(DaraModel):
         if self.limit is not None:
             result['Limit'] = self.limit
 
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -63,6 +68,9 @@ class DescribeDomainH2FingerprintRequest(DaraModel):
 
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

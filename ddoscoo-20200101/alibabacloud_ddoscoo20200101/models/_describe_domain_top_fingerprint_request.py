@@ -11,6 +11,7 @@ class DescribeDomainTopFingerprintRequest(DaraModel):
         end_time: int = None,
         interval: int = None,
         limit: int = None,
+        query_type: str = None,
         region: str = None,
         start_time: int = None,
     ):
@@ -32,6 +33,7 @@ class DescribeDomainTopFingerprintRequest(DaraModel):
         # 
         # This parameter is required.
         self.limit = limit
+        self.query_type = query_type
         # The region in which your service is deployed. Valid values:
         # 
         # *   **cn**: a region in the Chinese mainland.
@@ -66,6 +68,9 @@ class DescribeDomainTopFingerprintRequest(DaraModel):
         if self.limit is not None:
             result['Limit'] = self.limit
 
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+
         if self.region is not None:
             result['Region'] = self.region
 
@@ -87,6 +92,9 @@ class DescribeDomainTopFingerprintRequest(DaraModel):
 
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
 
         if m.get('Region') is not None:
             self.region = m.get('Region')
