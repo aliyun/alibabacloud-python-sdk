@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_schedulerx220190430 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_schedulerx220190430 import models as schedulerx_220190430_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
@@ -41,7000 +40,5206 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def batch_delete_jobs_with_options(
         self,
-        request: schedulerx_220190430_models.BatchDeleteJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
-        """
-        @summary Deletes multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDeleteJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchDeleteJobsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchDeleteJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteJobsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchDeleteJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchDeleteJobsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchDeleteJobsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_delete_jobs_with_options_async(
         self,
-        request: schedulerx_220190430_models.BatchDeleteJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
-        """
-        @summary Deletes multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDeleteJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchDeleteJobsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchDeleteJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteJobsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchDeleteJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchDeleteJobsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchDeleteJobsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_delete_jobs(
         self,
-        request: schedulerx_220190430_models.BatchDeleteJobsRequest,
-    ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
-        """
-        @summary Deletes multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDeleteJobsRequest
-        @return: BatchDeleteJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchDeleteJobsRequest,
+    ) -> main_models.BatchDeleteJobsResponse:
+        runtime = RuntimeOptions()
         return self.batch_delete_jobs_with_options(request, runtime)
 
     async def batch_delete_jobs_async(
         self,
-        request: schedulerx_220190430_models.BatchDeleteJobsRequest,
-    ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
-        """
-        @summary Deletes multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDeleteJobsRequest
-        @return: BatchDeleteJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchDeleteJobsRequest,
+    ) -> main_models.BatchDeleteJobsResponse:
+        runtime = RuntimeOptions()
         return await self.batch_delete_jobs_with_options_async(request, runtime)
 
     def batch_delete_route_strategy_with_options(
         self,
-        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: BatchDeleteRouteStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchDeleteRouteStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchDeleteRouteStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteRouteStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchDeleteRouteStrategy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteRouteStrategy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchDeleteRouteStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.BatchDeleteRouteStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_delete_route_strategy_with_options_async(
         self,
-        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: BatchDeleteRouteStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchDeleteRouteStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchDeleteRouteStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteRouteStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchDeleteRouteStrategy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteRouteStrategy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchDeleteRouteStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.BatchDeleteRouteStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_delete_route_strategy(
         self,
-        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
-    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: BatchDeleteRouteStrategyRequest
-        @return: BatchDeleteRouteStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchDeleteRouteStrategyRequest,
+    ) -> main_models.BatchDeleteRouteStrategyResponse:
+        runtime = RuntimeOptions()
         return self.batch_delete_route_strategy_with_options(request, runtime)
 
     async def batch_delete_route_strategy_async(
         self,
-        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
-    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: BatchDeleteRouteStrategyRequest
-        @return: BatchDeleteRouteStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchDeleteRouteStrategyRequest,
+    ) -> main_models.BatchDeleteRouteStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.batch_delete_route_strategy_with_options_async(request, runtime)
 
     def batch_disable_jobs_with_options(
         self,
-        request: schedulerx_220190430_models.BatchDisableJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
-        """
-        @summary Disables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDisableJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchDisableJobsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchDisableJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDisableJobsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchDisableJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchDisableJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchDisableJobsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchDisableJobsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_disable_jobs_with_options_async(
         self,
-        request: schedulerx_220190430_models.BatchDisableJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
-        """
-        @summary Disables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDisableJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchDisableJobsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchDisableJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDisableJobsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchDisableJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchDisableJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchDisableJobsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchDisableJobsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_disable_jobs(
         self,
-        request: schedulerx_220190430_models.BatchDisableJobsRequest,
-    ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
-        """
-        @summary Disables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDisableJobsRequest
-        @return: BatchDisableJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchDisableJobsRequest,
+    ) -> main_models.BatchDisableJobsResponse:
+        runtime = RuntimeOptions()
         return self.batch_disable_jobs_with_options(request, runtime)
 
     async def batch_disable_jobs_async(
         self,
-        request: schedulerx_220190430_models.BatchDisableJobsRequest,
-    ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
-        """
-        @summary Disables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchDisableJobsRequest
-        @return: BatchDisableJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchDisableJobsRequest,
+    ) -> main_models.BatchDisableJobsResponse:
+        runtime = RuntimeOptions()
         return await self.batch_disable_jobs_with_options_async(request, runtime)
 
     def batch_enable_jobs_with_options(
         self,
-        request: schedulerx_220190430_models.BatchEnableJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
-        """
-        @summary Enables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchEnableJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchEnableJobsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchEnableJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchEnableJobsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchEnableJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchEnableJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchEnableJobsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchEnableJobsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_enable_jobs_with_options_async(
         self,
-        request: schedulerx_220190430_models.BatchEnableJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
-        """
-        @summary Enables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchEnableJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchEnableJobsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BatchEnableJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchEnableJobsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.job_id_list):
+        if not DaraCore.is_null(request.job_id_list):
             body['JobIdList'] = request.job_id_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BatchEnableJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchEnableJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.BatchEnableJobsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchEnableJobsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_enable_jobs(
         self,
-        request: schedulerx_220190430_models.BatchEnableJobsRequest,
-    ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
-        """
-        @summary Enables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchEnableJobsRequest
-        @return: BatchEnableJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchEnableJobsRequest,
+    ) -> main_models.BatchEnableJobsResponse:
+        runtime = RuntimeOptions()
         return self.batch_enable_jobs_with_options(request, runtime)
 
     async def batch_enable_jobs_async(
         self,
-        request: schedulerx_220190430_models.BatchEnableJobsRequest,
-    ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
-        """
-        @summary Enables multiple jobs at a time.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.4</version>
-        </dependency>
-        ```
-        
-        @param request: BatchEnableJobsRequest
-        @return: BatchEnableJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchEnableJobsRequest,
+    ) -> main_models.BatchEnableJobsResponse:
+        runtime = RuntimeOptions()
         return await self.batch_enable_jobs_with_options_async(request, runtime)
 
     def create_app_group_with_options(
         self,
-        request: schedulerx_220190430_models.CreateAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateAppGroupResponse:
-        """
-        @summary Creates an application group. The AppKey is returned.
-        
-        @param request: CreateAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAppGroupResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.CreateAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppGroupResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAppGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_app_group_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateAppGroupResponse:
-        """
-        @summary Creates an application group. The AppKey is returned.
-        
-        @param request: CreateAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAppGroupResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.CreateAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppGroupResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAppGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_app_group(
         self,
-        request: schedulerx_220190430_models.CreateAppGroupRequest,
-    ) -> schedulerx_220190430_models.CreateAppGroupResponse:
-        """
-        @summary Creates an application group. The AppKey is returned.
-        
-        @param request: CreateAppGroupRequest
-        @return: CreateAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAppGroupRequest,
+    ) -> main_models.CreateAppGroupResponse:
+        runtime = RuntimeOptions()
         return self.create_app_group_with_options(request, runtime)
 
     async def create_app_group_async(
         self,
-        request: schedulerx_220190430_models.CreateAppGroupRequest,
-    ) -> schedulerx_220190430_models.CreateAppGroupResponse:
-        """
-        @summary Creates an application group. The AppKey is returned.
-        
-        @param request: CreateAppGroupRequest
-        @return: CreateAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAppGroupRequest,
+    ) -> main_models.CreateAppGroupResponse:
+        runtime = RuntimeOptions()
         return await self.create_app_group_with_options_async(request, runtime)
 
     def create_job_with_options(
         self,
-        request: schedulerx_220190430_models.CreateJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateJobResponse:
-        """
-        @summary Creates a job and obtains the job ID.
-        
-        @param request: CreateJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateJobResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateJobResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.attempt_interval):
+        if not DaraCore.is_null(request.attempt_interval):
             body['AttemptInterval'] = request.attempt_interval
-        if not UtilClient.is_unset(request.calendar):
+        if not DaraCore.is_null(request.calendar):
             body['Calendar'] = request.calendar
-        if not UtilClient.is_unset(request.class_name):
+        if not DaraCore.is_null(request.class_name):
             body['ClassName'] = request.class_name
-        if not UtilClient.is_unset(request.consumer_size):
+        if not DaraCore.is_null(request.consumer_size):
             body['ConsumerSize'] = request.consumer_size
-        if not UtilClient.is_unset(request.contact_info):
+        if not DaraCore.is_null(request.contact_info):
             body['ContactInfo'] = request.contact_info
-        if not UtilClient.is_unset(request.content):
+        if not DaraCore.is_null(request.content):
             body['Content'] = request.content
-        if not UtilClient.is_unset(request.data_offset):
+        if not DaraCore.is_null(request.data_offset):
             body['DataOffset'] = request.data_offset
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dispatcher_size):
+        if not DaraCore.is_null(request.dispatcher_size):
             body['DispatcherSize'] = request.dispatcher_size
-        if not UtilClient.is_unset(request.execute_mode):
+        if not DaraCore.is_null(request.execute_mode):
             body['ExecuteMode'] = request.execute_mode
-        if not UtilClient.is_unset(request.fail_enable):
+        if not DaraCore.is_null(request.fail_enable):
             body['FailEnable'] = request.fail_enable
-        if not UtilClient.is_unset(request.fail_times):
+        if not DaraCore.is_null(request.fail_times):
             body['FailTimes'] = request.fail_times
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_type):
+        if not DaraCore.is_null(request.job_type):
             body['JobType'] = request.job_type
-        if not UtilClient.is_unset(request.max_attempt):
+        if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.miss_worker_enable):
+        if not DaraCore.is_null(request.miss_worker_enable):
             body['MissWorkerEnable'] = request.miss_worker_enable
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['Parameters'] = request.parameters
-        if not UtilClient.is_unset(request.queue_size):
+        if not DaraCore.is_null(request.queue_size):
             body['QueueSize'] = request.queue_size
-        if not UtilClient.is_unset(request.send_channel):
+        if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             body['Status'] = request.status
-        if not UtilClient.is_unset(request.success_notice_enable):
+        if not DaraCore.is_null(request.success_notice_enable):
             body['SuccessNoticeEnable'] = request.success_notice_enable
-        if not UtilClient.is_unset(request.task_attempt_interval):
+        if not DaraCore.is_null(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
-        if not UtilClient.is_unset(request.task_max_attempt):
+        if not DaraCore.is_null(request.task_max_attempt):
             body['TaskMaxAttempt'] = request.task_max_attempt
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.timeout):
+        if not DaraCore.is_null(request.timeout):
             body['Timeout'] = request.timeout
-        if not UtilClient.is_unset(request.timeout_enable):
+        if not DaraCore.is_null(request.timeout_enable):
             body['TimeoutEnable'] = request.timeout_enable
-        if not UtilClient.is_unset(request.timeout_kill_enable):
+        if not DaraCore.is_null(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
-        if not UtilClient.is_unset(request.timezone):
+        if not DaraCore.is_null(request.timezone):
             body['Timezone'] = request.timezone
-        if not UtilClient.is_unset(request.xattrs):
+        if not DaraCore.is_null(request.xattrs):
             body['XAttrs'] = request.xattrs
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateJobResponse(),
+        return DaraCore.from_map(
+            main_models.CreateJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateJobResponse:
-        """
-        @summary Creates a job and obtains the job ID.
-        
-        @param request: CreateJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateJobResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateJobResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.attempt_interval):
+        if not DaraCore.is_null(request.attempt_interval):
             body['AttemptInterval'] = request.attempt_interval
-        if not UtilClient.is_unset(request.calendar):
+        if not DaraCore.is_null(request.calendar):
             body['Calendar'] = request.calendar
-        if not UtilClient.is_unset(request.class_name):
+        if not DaraCore.is_null(request.class_name):
             body['ClassName'] = request.class_name
-        if not UtilClient.is_unset(request.consumer_size):
+        if not DaraCore.is_null(request.consumer_size):
             body['ConsumerSize'] = request.consumer_size
-        if not UtilClient.is_unset(request.contact_info):
+        if not DaraCore.is_null(request.contact_info):
             body['ContactInfo'] = request.contact_info
-        if not UtilClient.is_unset(request.content):
+        if not DaraCore.is_null(request.content):
             body['Content'] = request.content
-        if not UtilClient.is_unset(request.data_offset):
+        if not DaraCore.is_null(request.data_offset):
             body['DataOffset'] = request.data_offset
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dispatcher_size):
+        if not DaraCore.is_null(request.dispatcher_size):
             body['DispatcherSize'] = request.dispatcher_size
-        if not UtilClient.is_unset(request.execute_mode):
+        if not DaraCore.is_null(request.execute_mode):
             body['ExecuteMode'] = request.execute_mode
-        if not UtilClient.is_unset(request.fail_enable):
+        if not DaraCore.is_null(request.fail_enable):
             body['FailEnable'] = request.fail_enable
-        if not UtilClient.is_unset(request.fail_times):
+        if not DaraCore.is_null(request.fail_times):
             body['FailTimes'] = request.fail_times
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_type):
+        if not DaraCore.is_null(request.job_type):
             body['JobType'] = request.job_type
-        if not UtilClient.is_unset(request.max_attempt):
+        if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.miss_worker_enable):
+        if not DaraCore.is_null(request.miss_worker_enable):
             body['MissWorkerEnable'] = request.miss_worker_enable
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['Parameters'] = request.parameters
-        if not UtilClient.is_unset(request.queue_size):
+        if not DaraCore.is_null(request.queue_size):
             body['QueueSize'] = request.queue_size
-        if not UtilClient.is_unset(request.send_channel):
+        if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             body['Status'] = request.status
-        if not UtilClient.is_unset(request.success_notice_enable):
+        if not DaraCore.is_null(request.success_notice_enable):
             body['SuccessNoticeEnable'] = request.success_notice_enable
-        if not UtilClient.is_unset(request.task_attempt_interval):
+        if not DaraCore.is_null(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
-        if not UtilClient.is_unset(request.task_max_attempt):
+        if not DaraCore.is_null(request.task_max_attempt):
             body['TaskMaxAttempt'] = request.task_max_attempt
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.timeout):
+        if not DaraCore.is_null(request.timeout):
             body['Timeout'] = request.timeout
-        if not UtilClient.is_unset(request.timeout_enable):
+        if not DaraCore.is_null(request.timeout_enable):
             body['TimeoutEnable'] = request.timeout_enable
-        if not UtilClient.is_unset(request.timeout_kill_enable):
+        if not DaraCore.is_null(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
-        if not UtilClient.is_unset(request.timezone):
+        if not DaraCore.is_null(request.timezone):
             body['Timezone'] = request.timezone
-        if not UtilClient.is_unset(request.xattrs):
+        if not DaraCore.is_null(request.xattrs):
             body['XAttrs'] = request.xattrs
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateJobResponse(),
+        return DaraCore.from_map(
+            main_models.CreateJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_job(
         self,
-        request: schedulerx_220190430_models.CreateJobRequest,
-    ) -> schedulerx_220190430_models.CreateJobResponse:
-        """
-        @summary Creates a job and obtains the job ID.
-        
-        @param request: CreateJobRequest
-        @return: CreateJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateJobRequest,
+    ) -> main_models.CreateJobResponse:
+        runtime = RuntimeOptions()
         return self.create_job_with_options(request, runtime)
 
     async def create_job_async(
         self,
-        request: schedulerx_220190430_models.CreateJobRequest,
-    ) -> schedulerx_220190430_models.CreateJobResponse:
-        """
-        @summary Creates a job and obtains the job ID.
-        
-        @param request: CreateJobRequest
-        @return: CreateJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateJobRequest,
+    ) -> main_models.CreateJobResponse:
+        runtime = RuntimeOptions()
         return await self.create_job_with_options_async(request, runtime)
 
     def create_namespace_with_options(
         self,
-        request: schedulerx_220190430_models.CreateNamespaceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
-        """
-        @summary Creates a namespace.
-        
-        @param request: CreateNamespaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNamespaceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNamespaceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.uid):
+        if not DaraCore.is_null(request.uid):
             query['Uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateNamespace',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateNamespace',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateNamespaceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateNamespaceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_namespace_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateNamespaceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
-        """
-        @summary Creates a namespace.
-        
-        @param request: CreateNamespaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNamespaceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNamespaceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.uid):
+        if not DaraCore.is_null(request.uid):
             query['Uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateNamespace',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateNamespace',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateNamespaceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateNamespaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_namespace(
         self,
-        request: schedulerx_220190430_models.CreateNamespaceRequest,
-    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
-        """
-        @summary Creates a namespace.
-        
-        @param request: CreateNamespaceRequest
-        @return: CreateNamespaceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateNamespaceRequest,
+    ) -> main_models.CreateNamespaceResponse:
+        runtime = RuntimeOptions()
         return self.create_namespace_with_options(request, runtime)
 
     async def create_namespace_async(
         self,
-        request: schedulerx_220190430_models.CreateNamespaceRequest,
-    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
-        """
-        @summary Creates a namespace.
-        
-        @param request: CreateNamespaceRequest
-        @return: CreateNamespaceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateNamespaceRequest,
+    ) -> main_models.CreateNamespaceResponse:
+        runtime = RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
 
     def create_route_strategy_with_options(
         self,
-        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
-        """
-        @summary Creates a routing policy.
-        
-        @param request: CreateRouteStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRouteStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRouteStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.strategy_content):
+        if not DaraCore.is_null(request.strategy_content):
             query['StrategyContent'] = request.strategy_content
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRouteStrategy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRouteStrategy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateRouteStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRouteStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_route_strategy_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
-        """
-        @summary Creates a routing policy.
-        
-        @param request: CreateRouteStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRouteStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRouteStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.strategy_content):
+        if not DaraCore.is_null(request.strategy_content):
             query['StrategyContent'] = request.strategy_content
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRouteStrategy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRouteStrategy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateRouteStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRouteStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_route_strategy(
         self,
-        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
-    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
-        """
-        @summary Creates a routing policy.
-        
-        @param request: CreateRouteStrategyRequest
-        @return: CreateRouteStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRouteStrategyRequest,
+    ) -> main_models.CreateRouteStrategyResponse:
+        runtime = RuntimeOptions()
         return self.create_route_strategy_with_options(request, runtime)
 
     async def create_route_strategy_async(
         self,
-        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
-    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
-        """
-        @summary Creates a routing policy.
-        
-        @param request: CreateRouteStrategyRequest
-        @return: CreateRouteStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRouteStrategyRequest,
+    ) -> main_models.CreateRouteStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.create_route_strategy_with_options_async(request, runtime)
 
     def create_schedulerx_calendar_with_options(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
-        """
-        @summary Creates a calendar.
-        
-        @param request: CreateSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSchedulerxCalendarResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             body['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.month_days_content):
+        if not DaraCore.is_null(request.month_days_content):
             body['MonthDaysContent'] = request.month_days_content
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             body['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSchedulerxCalendarResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_schedulerx_calendar_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
-        """
-        @summary Creates a calendar.
-        
-        @param request: CreateSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSchedulerxCalendarResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             body['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.month_days_content):
+        if not DaraCore.is_null(request.month_days_content):
             body['MonthDaysContent'] = request.month_days_content
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             body['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSchedulerxCalendarResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_schedulerx_calendar(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
-        """
-        @summary Creates a calendar.
-        
-        @param request: CreateSchedulerxCalendarRequest
-        @return: CreateSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSchedulerxCalendarRequest,
+    ) -> main_models.CreateSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return self.create_schedulerx_calendar_with_options(request, runtime)
 
     async def create_schedulerx_calendar_async(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
-        """
-        @summary Creates a calendar.
-        
-        @param request: CreateSchedulerxCalendarRequest
-        @return: CreateSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSchedulerxCalendarRequest,
+    ) -> main_models.CreateSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return await self.create_schedulerx_calendar_with_options_async(request, runtime)
 
     def create_schedulerx_notification_policy_with_options(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
-        """
-        @summary Creates a notification policy.
-        
-        @param request: CreateSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSchedulerxNotificationPolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel_time_range):
+        if not DaraCore.is_null(request.channel_time_range):
             body['ChannelTimeRange'] = request.channel_time_range
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             body['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSchedulerxNotificationPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_schedulerx_notification_policy_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
-        """
-        @summary Creates a notification policy.
-        
-        @param request: CreateSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSchedulerxNotificationPolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel_time_range):
+        if not DaraCore.is_null(request.channel_time_range):
             body['ChannelTimeRange'] = request.channel_time_range
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             body['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSchedulerxNotificationPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_schedulerx_notification_policy(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
-        """
-        @summary Creates a notification policy.
-        
-        @param request: CreateSchedulerxNotificationPolicyRequest
-        @return: CreateSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSchedulerxNotificationPolicyRequest,
+    ) -> main_models.CreateSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return self.create_schedulerx_notification_policy_with_options(request, runtime)
 
     async def create_schedulerx_notification_policy_async(
         self,
-        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
-        """
-        @summary Creates a notification policy.
-        
-        @param request: CreateSchedulerxNotificationPolicyRequest
-        @return: CreateSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSchedulerxNotificationPolicyRequest,
+    ) -> main_models.CreateSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.create_schedulerx_notification_policy_with_options_async(request, runtime)
 
     def create_workflow_with_options(
         self,
-        request: schedulerx_220190430_models.CreateWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
-        """
-        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
-        
-        @param request: CreateWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateWorkflowResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.timezone):
+        if not DaraCore.is_null(request.timezone):
             body['Timezone'] = request.timezone
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.CreateWorkflowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_workflow_with_options_async(
         self,
-        request: schedulerx_220190430_models.CreateWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
-        """
-        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
-        
-        @param request: CreateWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateWorkflowResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.timezone):
+        if not DaraCore.is_null(request.timezone):
             body['Timezone'] = request.timezone
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.CreateWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.CreateWorkflowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_workflow(
         self,
-        request: schedulerx_220190430_models.CreateWorkflowRequest,
-    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
-        """
-        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
-        
-        @param request: CreateWorkflowRequest
-        @return: CreateWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateWorkflowRequest,
+    ) -> main_models.CreateWorkflowResponse:
+        runtime = RuntimeOptions()
         return self.create_workflow_with_options(request, runtime)
 
     async def create_workflow_async(
         self,
-        request: schedulerx_220190430_models.CreateWorkflowRequest,
-    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
-        """
-        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
-        
-        @param request: CreateWorkflowRequest
-        @return: CreateWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateWorkflowRequest,
+    ) -> main_models.CreateWorkflowResponse:
+        runtime = RuntimeOptions()
         return await self.create_workflow_with_options_async(request, runtime)
 
     def delete_app_group_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: DeleteAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAppGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.delete_jobs):
+        if not DaraCore.is_null(request.delete_jobs):
             query['DeleteJobs'] = request.delete_jobs
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAppGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_app_group_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: DeleteAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAppGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.delete_jobs):
+        if not DaraCore.is_null(request.delete_jobs):
             query['DeleteJobs'] = request.delete_jobs
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAppGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_app_group(
         self,
-        request: schedulerx_220190430_models.DeleteAppGroupRequest,
-    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: DeleteAppGroupRequest
-        @return: DeleteAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAppGroupRequest,
+    ) -> main_models.DeleteAppGroupResponse:
+        runtime = RuntimeOptions()
         return self.delete_app_group_with_options(request, runtime)
 
     async def delete_app_group_async(
         self,
-        request: schedulerx_220190430_models.DeleteAppGroupRequest,
-    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
-        """
-        @summary The additional information that is returned.
-        
-        @param request: DeleteAppGroupRequest
-        @return: DeleteAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAppGroupRequest,
+    ) -> main_models.DeleteAppGroupResponse:
+        runtime = RuntimeOptions()
         return await self.delete_app_group_with_options_async(request, runtime)
 
     def delete_job_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteJobResponse:
-        """
-        @summary Deletes a specified job.
-        
-        @param request: DeleteJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DeleteJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteJobResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteJobResponse:
-        """
-        @summary Deletes a specified job.
-        
-        @param request: DeleteJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DeleteJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteJobResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_job(
         self,
-        request: schedulerx_220190430_models.DeleteJobRequest,
-    ) -> schedulerx_220190430_models.DeleteJobResponse:
-        """
-        @summary Deletes a specified job.
-        
-        @param request: DeleteJobRequest
-        @return: DeleteJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteJobRequest,
+    ) -> main_models.DeleteJobResponse:
+        runtime = RuntimeOptions()
         return self.delete_job_with_options(request, runtime)
 
     async def delete_job_async(
         self,
-        request: schedulerx_220190430_models.DeleteJobRequest,
-    ) -> schedulerx_220190430_models.DeleteJobResponse:
-        """
-        @summary Deletes a specified job.
-        
-        @param request: DeleteJobRequest
-        @return: DeleteJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteJobRequest,
+    ) -> main_models.DeleteJobResponse:
+        runtime = RuntimeOptions()
         return await self.delete_job_with_options_async(request, runtime)
 
     def delete_namespace_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteNamespaceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
-        """
-        @summary Deletes a namespace.
-        
-        @param request: DeleteNamespaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteNamespaceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNamespaceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteNamespace',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteNamespace',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteNamespaceResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteNamespaceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_namespace_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteNamespaceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
-        """
-        @summary Deletes a namespace.
-        
-        @param request: DeleteNamespaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteNamespaceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNamespaceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteNamespace',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteNamespace',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteNamespaceResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteNamespaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_namespace(
         self,
-        request: schedulerx_220190430_models.DeleteNamespaceRequest,
-    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
-        """
-        @summary Deletes a namespace.
-        
-        @param request: DeleteNamespaceRequest
-        @return: DeleteNamespaceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteNamespaceRequest,
+    ) -> main_models.DeleteNamespaceResponse:
+        runtime = RuntimeOptions()
         return self.delete_namespace_with_options(request, runtime)
 
     async def delete_namespace_async(
         self,
-        request: schedulerx_220190430_models.DeleteNamespaceRequest,
-    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
-        """
-        @summary Deletes a namespace.
-        
-        @param request: DeleteNamespaceRequest
-        @return: DeleteNamespaceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteNamespaceRequest,
+    ) -> main_models.DeleteNamespaceResponse:
+        runtime = RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
     def delete_route_strategy_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
-        """
-        @summary Deletes a routing policy.
-        
-        @param request: DeleteRouteStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRouteStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteRouteStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteRouteStrategy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteStrategy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteRouteStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteRouteStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_route_strategy_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
-        """
-        @summary Deletes a routing policy.
-        
-        @param request: DeleteRouteStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRouteStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteRouteStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteRouteStrategy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteStrategy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteRouteStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteRouteStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_route_strategy(
         self,
-        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
-    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
-        """
-        @summary Deletes a routing policy.
-        
-        @param request: DeleteRouteStrategyRequest
-        @return: DeleteRouteStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteRouteStrategyRequest,
+    ) -> main_models.DeleteRouteStrategyResponse:
+        runtime = RuntimeOptions()
         return self.delete_route_strategy_with_options(request, runtime)
 
     async def delete_route_strategy_async(
         self,
-        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
-    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
-        """
-        @summary Deletes a routing policy.
-        
-        @param request: DeleteRouteStrategyRequest
-        @return: DeleteRouteStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteRouteStrategyRequest,
+    ) -> main_models.DeleteRouteStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_route_strategy_with_options_async(request, runtime)
 
     def delete_schedulerx_calendar_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
-        """
-        @summary Deletes a calendar.
-        
-        @param request: DeleteSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSchedulerxCalendarResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             body['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             body['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteSchedulerxCalendarResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_schedulerx_calendar_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
-        """
-        @summary Deletes a calendar.
-        
-        @param request: DeleteSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSchedulerxCalendarResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             body['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             body['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteSchedulerxCalendarResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_schedulerx_calendar(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
-        """
-        @summary Deletes a calendar.
-        
-        @param request: DeleteSchedulerxCalendarRequest
-        @return: DeleteSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteSchedulerxCalendarRequest,
+    ) -> main_models.DeleteSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return self.delete_schedulerx_calendar_with_options(request, runtime)
 
     async def delete_schedulerx_calendar_async(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
-        """
-        @summary Deletes a calendar.
-        
-        @param request: DeleteSchedulerxCalendarRequest
-        @return: DeleteSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteSchedulerxCalendarRequest,
+    ) -> main_models.DeleteSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return await self.delete_schedulerx_calendar_with_options_async(request, runtime)
 
     def delete_schedulerx_notification_policy_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
-        """
-        @summary Deletes a notification policy.
-        
-        @param request: DeleteSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSchedulerxNotificationPolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             body['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteSchedulerxNotificationPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_schedulerx_notification_policy_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
-        """
-        @summary Deletes a notification policy.
-        
-        @param request: DeleteSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSchedulerxNotificationPolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             body['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteSchedulerxNotificationPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_schedulerx_notification_policy(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
-        """
-        @summary Deletes a notification policy.
-        
-        @param request: DeleteSchedulerxNotificationPolicyRequest
-        @return: DeleteSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteSchedulerxNotificationPolicyRequest,
+    ) -> main_models.DeleteSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return self.delete_schedulerx_notification_policy_with_options(request, runtime)
 
     async def delete_schedulerx_notification_policy_async(
         self,
-        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
-        """
-        @summary Deletes a notification policy.
-        
-        @param request: DeleteSchedulerxNotificationPolicyRequest
-        @return: DeleteSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteSchedulerxNotificationPolicyRequest,
+    ) -> main_models.DeleteSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_schedulerx_notification_policy_with_options_async(request, runtime)
 
     def delete_workflow_with_options(
         self,
-        request: schedulerx_220190430_models.DeleteWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
-        """
-        @summary Deletes a workflow.
-        
-        @param request: DeleteWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DeleteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_workflow_with_options_async(
         self,
-        request: schedulerx_220190430_models.DeleteWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
-        """
-        @summary Deletes a workflow.
-        
-        @param request: DeleteWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DeleteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DeleteWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_workflow(
         self,
-        request: schedulerx_220190430_models.DeleteWorkflowRequest,
-    ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
-        """
-        @summary Deletes a workflow.
-        
-        @param request: DeleteWorkflowRequest
-        @return: DeleteWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteWorkflowRequest,
+    ) -> main_models.DeleteWorkflowResponse:
+        runtime = RuntimeOptions()
         return self.delete_workflow_with_options(request, runtime)
 
     async def delete_workflow_async(
         self,
-        request: schedulerx_220190430_models.DeleteWorkflowRequest,
-    ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
-        """
-        @summary Deletes a workflow.
-        
-        @param request: DeleteWorkflowRequest
-        @return: DeleteWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteWorkflowRequest,
+    ) -> main_models.DeleteWorkflowResponse:
+        runtime = RuntimeOptions()
         return await self.delete_workflow_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
-        request: schedulerx_220190430_models.DescribeRegionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DescribeRegionsResponse:
-        """
-        @summary Returns available regions.
-        
-        @param request: DescribeRegionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRegionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeRegionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DescribeRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
         self,
-        request: schedulerx_220190430_models.DescribeRegionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DescribeRegionsResponse:
-        """
-        @summary Returns available regions.
-        
-        @param request: DescribeRegionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRegionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeRegionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DescribeRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
         self,
-        request: schedulerx_220190430_models.DescribeRegionsRequest,
-    ) -> schedulerx_220190430_models.DescribeRegionsResponse:
-        """
-        @summary Returns available regions.
-        
-        @param request: DescribeRegionsRequest
-        @return: DescribeRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
     async def describe_regions_async(
         self,
-        request: schedulerx_220190430_models.DescribeRegionsRequest,
-    ) -> schedulerx_220190430_models.DescribeRegionsResponse:
-        """
-        @summary Returns available regions.
-        
-        @param request: DescribeRegionsRequest
-        @return: DescribeRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
     def designate_workers_with_options(
         self,
-        request: schedulerx_220190430_models.DesignateWorkersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DesignateWorkersResponse:
-        """
-        @summary Designates machines.
-        
-        @param request: DesignateWorkersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DesignateWorkersResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DesignateWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DesignateWorkersResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DesignateWorkers',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DesignateWorkers',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DesignateWorkersResponse(),
+        return DaraCore.from_map(
+            main_models.DesignateWorkersResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def designate_workers_with_options_async(
         self,
-        request: schedulerx_220190430_models.DesignateWorkersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DesignateWorkersResponse:
-        """
-        @summary Designates machines.
-        
-        @param request: DesignateWorkersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DesignateWorkersResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DesignateWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DesignateWorkersResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DesignateWorkers',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DesignateWorkers',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DesignateWorkersResponse(),
+        return DaraCore.from_map(
+            main_models.DesignateWorkersResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def designate_workers(
         self,
-        request: schedulerx_220190430_models.DesignateWorkersRequest,
-    ) -> schedulerx_220190430_models.DesignateWorkersResponse:
-        """
-        @summary Designates machines.
-        
-        @param request: DesignateWorkersRequest
-        @return: DesignateWorkersResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DesignateWorkersRequest,
+    ) -> main_models.DesignateWorkersResponse:
+        runtime = RuntimeOptions()
         return self.designate_workers_with_options(request, runtime)
 
     async def designate_workers_async(
         self,
-        request: schedulerx_220190430_models.DesignateWorkersRequest,
-    ) -> schedulerx_220190430_models.DesignateWorkersResponse:
-        """
-        @summary Designates machines.
-        
-        @param request: DesignateWorkersRequest
-        @return: DesignateWorkersResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DesignateWorkersRequest,
+    ) -> main_models.DesignateWorkersResponse:
+        runtime = RuntimeOptions()
         return await self.designate_workers_with_options_async(request, runtime)
 
     def disable_job_with_options(
         self,
-        request: schedulerx_220190430_models.DisableJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DisableJobResponse:
-        """
-        @summary Disables a job.
-        
-        @param request: DisableJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DisableJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DisableJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DisableJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DisableJobResponse(),
+        return DaraCore.from_map(
+            main_models.DisableJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def disable_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.DisableJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DisableJobResponse:
-        """
-        @summary Disables a job.
-        
-        @param request: DisableJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DisableJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DisableJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DisableJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DisableJobResponse(),
+        return DaraCore.from_map(
+            main_models.DisableJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def disable_job(
         self,
-        request: schedulerx_220190430_models.DisableJobRequest,
-    ) -> schedulerx_220190430_models.DisableJobResponse:
-        """
-        @summary Disables a job.
-        
-        @param request: DisableJobRequest
-        @return: DisableJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DisableJobRequest,
+    ) -> main_models.DisableJobResponse:
+        runtime = RuntimeOptions()
         return self.disable_job_with_options(request, runtime)
 
     async def disable_job_async(
         self,
-        request: schedulerx_220190430_models.DisableJobRequest,
-    ) -> schedulerx_220190430_models.DisableJobResponse:
-        """
-        @summary Disables a job.
-        
-        @param request: DisableJobRequest
-        @return: DisableJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DisableJobRequest,
+    ) -> main_models.DisableJobResponse:
+        runtime = RuntimeOptions()
         return await self.disable_job_with_options_async(request, runtime)
 
     def disable_workflow_with_options(
         self,
-        request: schedulerx_220190430_models.DisableWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DisableWorkflowResponse:
-        """
-        @summary Disables a specified workflow.
-        
-        @param request: DisableWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DisableWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DisableWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DisableWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DisableWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.DisableWorkflowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def disable_workflow_with_options_async(
         self,
-        request: schedulerx_220190430_models.DisableWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.DisableWorkflowResponse:
-        """
-        @summary Disables a specified workflow.
-        
-        @param request: DisableWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DisableWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DisableWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DisableWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.DisableWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.DisableWorkflowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def disable_workflow(
         self,
-        request: schedulerx_220190430_models.DisableWorkflowRequest,
-    ) -> schedulerx_220190430_models.DisableWorkflowResponse:
-        """
-        @summary Disables a specified workflow.
-        
-        @param request: DisableWorkflowRequest
-        @return: DisableWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DisableWorkflowRequest,
+    ) -> main_models.DisableWorkflowResponse:
+        runtime = RuntimeOptions()
         return self.disable_workflow_with_options(request, runtime)
 
     async def disable_workflow_async(
         self,
-        request: schedulerx_220190430_models.DisableWorkflowRequest,
-    ) -> schedulerx_220190430_models.DisableWorkflowResponse:
-        """
-        @summary Disables a specified workflow.
-        
-        @param request: DisableWorkflowRequest
-        @return: DisableWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DisableWorkflowRequest,
+    ) -> main_models.DisableWorkflowResponse:
+        runtime = RuntimeOptions()
         return await self.disable_workflow_with_options_async(request, runtime)
 
     def enable_job_with_options(
         self,
-        request: schedulerx_220190430_models.EnableJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.EnableJobResponse:
-        """
-        @summary Enables a job.
-        
-        @param request: EnableJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.EnableJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='EnableJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'EnableJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.EnableJobResponse(),
+        return DaraCore.from_map(
+            main_models.EnableJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.EnableJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.EnableJobResponse:
-        """
-        @summary Enables a job.
-        
-        @param request: EnableJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.EnableJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='EnableJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'EnableJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.EnableJobResponse(),
+        return DaraCore.from_map(
+            main_models.EnableJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def enable_job(
         self,
-        request: schedulerx_220190430_models.EnableJobRequest,
-    ) -> schedulerx_220190430_models.EnableJobResponse:
-        """
-        @summary Enables a job.
-        
-        @param request: EnableJobRequest
-        @return: EnableJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.EnableJobRequest,
+    ) -> main_models.EnableJobResponse:
+        runtime = RuntimeOptions()
         return self.enable_job_with_options(request, runtime)
 
     async def enable_job_async(
         self,
-        request: schedulerx_220190430_models.EnableJobRequest,
-    ) -> schedulerx_220190430_models.EnableJobResponse:
-        """
-        @summary Enables a job.
-        
-        @param request: EnableJobRequest
-        @return: EnableJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.EnableJobRequest,
+    ) -> main_models.EnableJobResponse:
+        runtime = RuntimeOptions()
         return await self.enable_job_with_options_async(request, runtime)
 
     def enable_workflow_with_options(
         self,
-        request: schedulerx_220190430_models.EnableWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.EnableWorkflowResponse:
-        """
-        @summary Enables a specified workflow.
-        
-        @param request: EnableWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.EnableWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='EnableWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'EnableWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.EnableWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.EnableWorkflowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_workflow_with_options_async(
         self,
-        request: schedulerx_220190430_models.EnableWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.EnableWorkflowResponse:
-        """
-        @summary Enables a specified workflow.
-        
-        @param request: EnableWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.EnableWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='EnableWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'EnableWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.EnableWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.EnableWorkflowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def enable_workflow(
         self,
-        request: schedulerx_220190430_models.EnableWorkflowRequest,
-    ) -> schedulerx_220190430_models.EnableWorkflowResponse:
-        """
-        @summary Enables a specified workflow.
-        
-        @param request: EnableWorkflowRequest
-        @return: EnableWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.EnableWorkflowRequest,
+    ) -> main_models.EnableWorkflowResponse:
+        runtime = RuntimeOptions()
         return self.enable_workflow_with_options(request, runtime)
 
     async def enable_workflow_async(
         self,
-        request: schedulerx_220190430_models.EnableWorkflowRequest,
-    ) -> schedulerx_220190430_models.EnableWorkflowResponse:
-        """
-        @summary Enables a specified workflow.
-        
-        @param request: EnableWorkflowRequest
-        @return: EnableWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.EnableWorkflowRequest,
+    ) -> main_models.EnableWorkflowResponse:
+        runtime = RuntimeOptions()
         return await self.enable_workflow_with_options_async(request, runtime)
 
     def execute_job_with_options(
         self,
-        request: schedulerx_220190430_models.ExecuteJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ExecuteJobResponse:
-        """
-        @summary Triggers a job to immediately run once.
-        
-        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
-        
-        @param request: ExecuteJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ExecuteJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ExecuteJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ExecuteJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ExecuteJobResponse(),
+        return DaraCore.from_map(
+            main_models.ExecuteJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def execute_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.ExecuteJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ExecuteJobResponse:
-        """
-        @summary Triggers a job to immediately run once.
-        
-        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
-        
-        @param request: ExecuteJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteJobResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ExecuteJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteJobResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ExecuteJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ExecuteJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ExecuteJobResponse(),
+        return DaraCore.from_map(
+            main_models.ExecuteJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def execute_job(
         self,
-        request: schedulerx_220190430_models.ExecuteJobRequest,
-    ) -> schedulerx_220190430_models.ExecuteJobResponse:
-        """
-        @summary Triggers a job to immediately run once.
-        
-        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
-        
-        @param request: ExecuteJobRequest
-        @return: ExecuteJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ExecuteJobRequest,
+    ) -> main_models.ExecuteJobResponse:
+        runtime = RuntimeOptions()
         return self.execute_job_with_options(request, runtime)
 
     async def execute_job_async(
         self,
-        request: schedulerx_220190430_models.ExecuteJobRequest,
-    ) -> schedulerx_220190430_models.ExecuteJobResponse:
-        """
-        @summary Triggers a job to immediately run once.
-        
-        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
-        
-        @param request: ExecuteJobRequest
-        @return: ExecuteJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ExecuteJobRequest,
+    ) -> main_models.ExecuteJobResponse:
+        runtime = RuntimeOptions()
         return await self.execute_job_with_options_async(request, runtime)
 
     def execute_workflow_with_options(
         self,
-        request: schedulerx_220190430_models.ExecuteWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
-        """
-        @summary Immediately triggers a workflow.
-        
-        @param request: ExecuteWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ExecuteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ExecuteWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ExecuteWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ExecuteWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.ExecuteWorkflowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def execute_workflow_with_options_async(
         self,
-        request: schedulerx_220190430_models.ExecuteWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
-        """
-        @summary Immediately triggers a workflow.
-        
-        @param request: ExecuteWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteWorkflowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ExecuteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteWorkflowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ExecuteWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ExecuteWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ExecuteWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.ExecuteWorkflowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def execute_workflow(
         self,
-        request: schedulerx_220190430_models.ExecuteWorkflowRequest,
-    ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
-        """
-        @summary Immediately triggers a workflow.
-        
-        @param request: ExecuteWorkflowRequest
-        @return: ExecuteWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ExecuteWorkflowRequest,
+    ) -> main_models.ExecuteWorkflowResponse:
+        runtime = RuntimeOptions()
         return self.execute_workflow_with_options(request, runtime)
 
     async def execute_workflow_async(
         self,
-        request: schedulerx_220190430_models.ExecuteWorkflowRequest,
-    ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
-        """
-        @summary Immediately triggers a workflow.
-        
-        @param request: ExecuteWorkflowRequest
-        @return: ExecuteWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ExecuteWorkflowRequest,
+    ) -> main_models.ExecuteWorkflowResponse:
+        runtime = RuntimeOptions()
         return await self.execute_workflow_with_options_async(request, runtime)
 
     def get_app_group_with_options(
         self,
-        request: schedulerx_220190430_models.GetAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetAppGroupResponse:
-        """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
-        
-        @param request: GetAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAppGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.GetAppGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_app_group_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetAppGroupResponse:
-        """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
-        
-        @param request: GetAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAppGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.GetAppGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_app_group(
         self,
-        request: schedulerx_220190430_models.GetAppGroupRequest,
-    ) -> schedulerx_220190430_models.GetAppGroupResponse:
-        """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
-        
-        @param request: GetAppGroupRequest
-        @return: GetAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAppGroupRequest,
+    ) -> main_models.GetAppGroupResponse:
+        runtime = RuntimeOptions()
         return self.get_app_group_with_options(request, runtime)
 
     async def get_app_group_async(
         self,
-        request: schedulerx_220190430_models.GetAppGroupRequest,
-    ) -> schedulerx_220190430_models.GetAppGroupResponse:
-        """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
-        
-        @param request: GetAppGroupRequest
-        @return: GetAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAppGroupRequest,
+    ) -> main_models.GetAppGroupResponse:
+        runtime = RuntimeOptions()
         return await self.get_app_group_with_options_async(request, runtime)
 
     def get_job_info_with_options(
         self,
-        request: schedulerx_220190430_models.GetJobInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetJobInfoResponse:
-        """
-        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
-        
-        @param request: GetJobInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetJobInfoResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetJobInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInfoResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetJobInfo',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetJobInfo',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetJobInfoResponse(),
+        return DaraCore.from_map(
+            main_models.GetJobInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_job_info_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetJobInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetJobInfoResponse:
-        """
-        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
-        
-        @param request: GetJobInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetJobInfoResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetJobInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInfoResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetJobInfo',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetJobInfo',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetJobInfoResponse(),
+        return DaraCore.from_map(
+            main_models.GetJobInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_job_info(
         self,
-        request: schedulerx_220190430_models.GetJobInfoRequest,
-    ) -> schedulerx_220190430_models.GetJobInfoResponse:
-        """
-        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
-        
-        @param request: GetJobInfoRequest
-        @return: GetJobInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetJobInfoRequest,
+    ) -> main_models.GetJobInfoResponse:
+        runtime = RuntimeOptions()
         return self.get_job_info_with_options(request, runtime)
 
     async def get_job_info_async(
         self,
-        request: schedulerx_220190430_models.GetJobInfoRequest,
-    ) -> schedulerx_220190430_models.GetJobInfoResponse:
-        """
-        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
-        
-        @param request: GetJobInfoRequest
-        @return: GetJobInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetJobInfoRequest,
+    ) -> main_models.GetJobInfoResponse:
+        runtime = RuntimeOptions()
         return await self.get_job_info_with_options_async(request, runtime)
 
     def get_job_instance_with_options(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetJobInstanceResponse:
-        """
-        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
-        
-        @param request: GetJobInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetJobInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetJobInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetJobInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetJobInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetJobInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.GetJobInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_job_instance_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetJobInstanceResponse:
-        """
-        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
-        
-        @param request: GetJobInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetJobInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetJobInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetJobInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetJobInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetJobInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.GetJobInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_job_instance(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceRequest,
-    ) -> schedulerx_220190430_models.GetJobInstanceResponse:
-        """
-        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
-        
-        @param request: GetJobInstanceRequest
-        @return: GetJobInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetJobInstanceRequest,
+    ) -> main_models.GetJobInstanceResponse:
+        runtime = RuntimeOptions()
         return self.get_job_instance_with_options(request, runtime)
 
     async def get_job_instance_async(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceRequest,
-    ) -> schedulerx_220190430_models.GetJobInstanceResponse:
-        """
-        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
-        
-        @param request: GetJobInstanceRequest
-        @return: GetJobInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetJobInstanceRequest,
+    ) -> main_models.GetJobInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.get_job_instance_with_options_async(request, runtime)
 
     def get_job_instance_list_with_options(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
-        """
-        @summary Queries the most recent 10 execution instances of a job.
-        
-        @param request: GetJobInstanceListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetJobInstanceListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetJobInstanceListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInstanceListResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetJobInstanceList',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetJobInstanceList',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetJobInstanceListResponse(),
+        return DaraCore.from_map(
+            main_models.GetJobInstanceListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_job_instance_list_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
-        """
-        @summary Queries the most recent 10 execution instances of a job.
-        
-        @param request: GetJobInstanceListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetJobInstanceListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetJobInstanceListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInstanceListResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetJobInstanceList',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetJobInstanceList',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetJobInstanceListResponse(),
+        return DaraCore.from_map(
+            main_models.GetJobInstanceListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_job_instance_list(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceListRequest,
-    ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
-        """
-        @summary Queries the most recent 10 execution instances of a job.
-        
-        @param request: GetJobInstanceListRequest
-        @return: GetJobInstanceListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetJobInstanceListRequest,
+    ) -> main_models.GetJobInstanceListResponse:
+        runtime = RuntimeOptions()
         return self.get_job_instance_list_with_options(request, runtime)
 
     async def get_job_instance_list_async(
         self,
-        request: schedulerx_220190430_models.GetJobInstanceListRequest,
-    ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
-        """
-        @summary Queries the most recent 10 execution instances of a job.
-        
-        @param request: GetJobInstanceListRequest
-        @return: GetJobInstanceListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetJobInstanceListRequest,
+    ) -> main_models.GetJobInstanceListResponse:
+        runtime = RuntimeOptions()
         return await self.get_job_instance_list_with_options_async(request, runtime)
 
     def get_log_with_options(
         self,
-        request: schedulerx_220190430_models.GetLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetLogResponse:
-        """
-        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
-        
-        @param request: GetLogRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetLogResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLogResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetLog',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetLog',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetLogResponse(),
+        return DaraCore.from_map(
+            main_models.GetLogResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_log_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetLogResponse:
-        """
-        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
-        
-        @param request: GetLogRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetLogResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLogResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetLog',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetLog',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetLogResponse(),
+        return DaraCore.from_map(
+            main_models.GetLogResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_log(
         self,
-        request: schedulerx_220190430_models.GetLogRequest,
-    ) -> schedulerx_220190430_models.GetLogResponse:
-        """
-        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
-        
-        @param request: GetLogRequest
-        @return: GetLogResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetLogRequest,
+    ) -> main_models.GetLogResponse:
+        runtime = RuntimeOptions()
         return self.get_log_with_options(request, runtime)
 
     async def get_log_async(
         self,
-        request: schedulerx_220190430_models.GetLogRequest,
-    ) -> schedulerx_220190430_models.GetLogResponse:
-        """
-        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
-        
-        @param request: GetLogRequest
-        @return: GetLogResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetLogRequest,
+    ) -> main_models.GetLogResponse:
+        runtime = RuntimeOptions()
         return await self.get_log_with_options_async(request, runtime)
 
     def get_overview_with_options(
         self,
-        request: schedulerx_220190430_models.GetOverviewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetOverviewResponse:
-        """
-        @summary Retrieves job scheduling data for Professional Edition applications.
-        
-        @param request: GetOverviewRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetOverviewResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOverviewResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.metric_type):
+        if not DaraCore.is_null(request.metric_type):
             query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.operate):
+        if not DaraCore.is_null(request.operate):
             query['Operate'] = request.operate
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetOverview',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetOverview',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetOverviewResponse(),
+        return DaraCore.from_map(
+            main_models.GetOverviewResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_overview_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetOverviewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetOverviewResponse:
-        """
-        @summary Retrieves job scheduling data for Professional Edition applications.
-        
-        @param request: GetOverviewRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetOverviewResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOverviewResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.metric_type):
+        if not DaraCore.is_null(request.metric_type):
             query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.operate):
+        if not DaraCore.is_null(request.operate):
             query['Operate'] = request.operate
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetOverview',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetOverview',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetOverviewResponse(),
+        return DaraCore.from_map(
+            main_models.GetOverviewResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_overview(
         self,
-        request: schedulerx_220190430_models.GetOverviewRequest,
-    ) -> schedulerx_220190430_models.GetOverviewResponse:
-        """
-        @summary Retrieves job scheduling data for Professional Edition applications.
-        
-        @param request: GetOverviewRequest
-        @return: GetOverviewResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetOverviewRequest,
+    ) -> main_models.GetOverviewResponse:
+        runtime = RuntimeOptions()
         return self.get_overview_with_options(request, runtime)
 
     async def get_overview_async(
         self,
-        request: schedulerx_220190430_models.GetOverviewRequest,
-    ) -> schedulerx_220190430_models.GetOverviewResponse:
-        """
-        @summary Retrieves job scheduling data for Professional Edition applications.
-        
-        @param request: GetOverviewRequest
-        @return: GetOverviewResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetOverviewRequest,
+    ) -> main_models.GetOverviewResponse:
+        runtime = RuntimeOptions()
         return await self.get_overview_with_options_async(request, runtime)
 
     def get_work_flow_with_options(
         self,
-        request: schedulerx_220190430_models.GetWorkFlowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetWorkFlowResponse:
-        """
-        @summary Obtains the information about a workflow.
-        
-        @param request: GetWorkFlowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWorkFlowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetWorkFlowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkFlowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWorkFlow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWorkFlow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetWorkFlowResponse(),
+        return DaraCore.from_map(
+            main_models.GetWorkFlowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_work_flow_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetWorkFlowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetWorkFlowResponse:
-        """
-        @summary Obtains the information about a workflow.
-        
-        @param request: GetWorkFlowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWorkFlowResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetWorkFlowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkFlowResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWorkFlow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWorkFlow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetWorkFlowResponse(),
+        return DaraCore.from_map(
+            main_models.GetWorkFlowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_work_flow(
         self,
-        request: schedulerx_220190430_models.GetWorkFlowRequest,
-    ) -> schedulerx_220190430_models.GetWorkFlowResponse:
-        """
-        @summary Obtains the information about a workflow.
-        
-        @param request: GetWorkFlowRequest
-        @return: GetWorkFlowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWorkFlowRequest,
+    ) -> main_models.GetWorkFlowResponse:
+        runtime = RuntimeOptions()
         return self.get_work_flow_with_options(request, runtime)
 
     async def get_work_flow_async(
         self,
-        request: schedulerx_220190430_models.GetWorkFlowRequest,
-    ) -> schedulerx_220190430_models.GetWorkFlowResponse:
-        """
-        @summary Obtains the information about a workflow.
-        
-        @param request: GetWorkFlowRequest
-        @return: GetWorkFlowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWorkFlowRequest,
+    ) -> main_models.GetWorkFlowResponse:
+        runtime = RuntimeOptions()
         return await self.get_work_flow_with_options_async(request, runtime)
 
     def get_worker_list_with_options(
         self,
-        request: schedulerx_220190430_models.GetWorkerListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetWorkerListResponse:
-        """
-        @summary Obtains the list of workers that are connected to an application.
-        
-        @param request: GetWorkerListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWorkerListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetWorkerListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkerListResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWorkerList',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWorkerList',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetWorkerListResponse(),
+        return DaraCore.from_map(
+            main_models.GetWorkerListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_worker_list_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetWorkerListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetWorkerListResponse:
-        """
-        @summary Obtains the list of workers that are connected to an application.
-        
-        @param request: GetWorkerListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWorkerListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetWorkerListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkerListResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWorkerList',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWorkerList',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetWorkerListResponse(),
+        return DaraCore.from_map(
+            main_models.GetWorkerListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_worker_list(
         self,
-        request: schedulerx_220190430_models.GetWorkerListRequest,
-    ) -> schedulerx_220190430_models.GetWorkerListResponse:
-        """
-        @summary Obtains the list of workers that are connected to an application.
-        
-        @param request: GetWorkerListRequest
-        @return: GetWorkerListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWorkerListRequest,
+    ) -> main_models.GetWorkerListResponse:
+        runtime = RuntimeOptions()
         return self.get_worker_list_with_options(request, runtime)
 
     async def get_worker_list_async(
         self,
-        request: schedulerx_220190430_models.GetWorkerListRequest,
-    ) -> schedulerx_220190430_models.GetWorkerListResponse:
-        """
-        @summary Obtains the list of workers that are connected to an application.
-        
-        @param request: GetWorkerListRequest
-        @return: GetWorkerListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWorkerListRequest,
+    ) -> main_models.GetWorkerListResponse:
+        runtime = RuntimeOptions()
         return await self.get_worker_list_with_options_async(request, runtime)
 
     def get_workflow_instance_with_options(
         self,
-        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
-        """
-        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
-        
-        @param request: GetWorkflowInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWorkflowInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetWorkflowInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWorkflowInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetWorkflowInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.GetWorkflowInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_workflow_instance_with_options_async(
         self,
-        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
-        """
-        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
-        
-        @param request: GetWorkflowInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWorkflowInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetWorkflowInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWorkflowInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GetWorkflowInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.GetWorkflowInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_workflow_instance(
         self,
-        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
-    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
-        """
-        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
-        
-        @param request: GetWorkflowInstanceRequest
-        @return: GetWorkflowInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWorkflowInstanceRequest,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
         return self.get_workflow_instance_with_options(request, runtime)
 
     async def get_workflow_instance_async(
         self,
-        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
-    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
-        """
-        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
-        
-        @param request: GetWorkflowInstanceRequest
-        @return: GetWorkflowInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWorkflowInstanceRequest,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.get_workflow_instance_with_options_async(request, runtime)
 
     def grant_permission_with_options(
         self,
-        request: schedulerx_220190430_models.GrantPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GrantPermissionResponse:
-        """
-        @summary Grants permissions to an application group.
-        
-        @param request: GrantPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GrantPermissionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GrantPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GrantPermissionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.grant_option):
+        if not DaraCore.is_null(request.grant_option):
             query['GrantOption'] = request.grant_option
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GrantPermission',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GrantPermission',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GrantPermissionResponse(),
+        return DaraCore.from_map(
+            main_models.GrantPermissionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def grant_permission_with_options_async(
         self,
-        request: schedulerx_220190430_models.GrantPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.GrantPermissionResponse:
-        """
-        @summary Grants permissions to an application group.
-        
-        @param request: GrantPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GrantPermissionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GrantPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GrantPermissionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.grant_option):
+        if not DaraCore.is_null(request.grant_option):
             query['GrantOption'] = request.grant_option
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GrantPermission',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GrantPermission',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.GrantPermissionResponse(),
+        return DaraCore.from_map(
+            main_models.GrantPermissionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def grant_permission(
         self,
-        request: schedulerx_220190430_models.GrantPermissionRequest,
-    ) -> schedulerx_220190430_models.GrantPermissionResponse:
-        """
-        @summary Grants permissions to an application group.
-        
-        @param request: GrantPermissionRequest
-        @return: GrantPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GrantPermissionRequest,
+    ) -> main_models.GrantPermissionResponse:
+        runtime = RuntimeOptions()
         return self.grant_permission_with_options(request, runtime)
 
     async def grant_permission_async(
         self,
-        request: schedulerx_220190430_models.GrantPermissionRequest,
-    ) -> schedulerx_220190430_models.GrantPermissionResponse:
-        """
-        @summary Grants permissions to an application group.
-        
-        @param request: GrantPermissionRequest
-        @return: GrantPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GrantPermissionRequest,
+    ) -> main_models.GrantPermissionResponse:
+        runtime = RuntimeOptions()
         return await self.grant_permission_with_options_async(request, runtime)
 
     def list_groups_with_options(
         self,
-        request: schedulerx_220190430_models.ListGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListGroupsResponse:
-        """
-        @summary Queries a list of applications.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        ```
-        
-        @param request: ListGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListGroupsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.app_group_name):
+        if not DaraCore.is_null(request.app_group_name):
             query['AppGroupName'] = request.app_group_name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListGroups',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListGroups',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListGroupsResponse(),
+        return DaraCore.from_map(
+            main_models.ListGroupsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_groups_with_options_async(
         self,
-        request: schedulerx_220190430_models.ListGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListGroupsResponse:
-        """
-        @summary Queries a list of applications.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        ```
-        
-        @param request: ListGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListGroupsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.app_group_name):
+        if not DaraCore.is_null(request.app_group_name):
             query['AppGroupName'] = request.app_group_name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListGroups',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListGroups',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListGroupsResponse(),
+        return DaraCore.from_map(
+            main_models.ListGroupsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_groups(
         self,
-        request: schedulerx_220190430_models.ListGroupsRequest,
-    ) -> schedulerx_220190430_models.ListGroupsResponse:
-        """
-        @summary Queries a list of applications.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        ```
-        
-        @param request: ListGroupsRequest
-        @return: ListGroupsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListGroupsRequest,
+    ) -> main_models.ListGroupsResponse:
+        runtime = RuntimeOptions()
         return self.list_groups_with_options(request, runtime)
 
     async def list_groups_async(
         self,
-        request: schedulerx_220190430_models.ListGroupsRequest,
-    ) -> schedulerx_220190430_models.ListGroupsResponse:
-        """
-        @summary Queries a list of applications.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        ```xml
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        ```
-        
-        @param request: ListGroupsRequest
-        @return: ListGroupsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListGroupsRequest,
+    ) -> main_models.ListGroupsResponse:
+        runtime = RuntimeOptions()
         return await self.list_groups_with_options_async(request, runtime)
 
     def list_job_script_history_with_options(
         self,
-        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
-        """
-        @summary Queries historical scripts of a job.
-        
-        @param request: ListJobScriptHistoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListJobScriptHistoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListJobScriptHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobScriptHistoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListJobScriptHistory',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListJobScriptHistory',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListJobScriptHistoryResponse(),
+        return DaraCore.from_map(
+            main_models.ListJobScriptHistoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_job_script_history_with_options_async(
         self,
-        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
-        """
-        @summary Queries historical scripts of a job.
-        
-        @param request: ListJobScriptHistoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListJobScriptHistoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListJobScriptHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobScriptHistoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListJobScriptHistory',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListJobScriptHistory',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListJobScriptHistoryResponse(),
+        return DaraCore.from_map(
+            main_models.ListJobScriptHistoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_job_script_history(
         self,
-        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
-    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
-        """
-        @summary Queries historical scripts of a job.
-        
-        @param request: ListJobScriptHistoryRequest
-        @return: ListJobScriptHistoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListJobScriptHistoryRequest,
+    ) -> main_models.ListJobScriptHistoryResponse:
+        runtime = RuntimeOptions()
         return self.list_job_script_history_with_options(request, runtime)
 
     async def list_job_script_history_async(
         self,
-        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
-    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
-        """
-        @summary Queries historical scripts of a job.
-        
-        @param request: ListJobScriptHistoryRequest
-        @return: ListJobScriptHistoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListJobScriptHistoryRequest,
+    ) -> main_models.ListJobScriptHistoryResponse:
+        runtime = RuntimeOptions()
         return await self.list_job_script_history_with_options_async(request, runtime)
 
     def list_jobs_with_options(
         self,
-        request: schedulerx_220190430_models.ListJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListJobsResponse:
-        """
-        @summary Queries jobs.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListJobsResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ListJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListJobsResponse(),
+        return DaraCore.from_map(
+            main_models.ListJobsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_jobs_with_options_async(
         self,
-        request: schedulerx_220190430_models.ListJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListJobsResponse:
-        """
-        @summary Queries jobs.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListJobsResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ListJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListJobs',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListJobs',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListJobsResponse(),
+        return DaraCore.from_map(
+            main_models.ListJobsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_jobs(
         self,
-        request: schedulerx_220190430_models.ListJobsRequest,
-    ) -> schedulerx_220190430_models.ListJobsResponse:
-        """
-        @summary Queries jobs.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListJobsRequest
-        @return: ListJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListJobsRequest,
+    ) -> main_models.ListJobsResponse:
+        runtime = RuntimeOptions()
         return self.list_jobs_with_options(request, runtime)
 
     async def list_jobs_async(
         self,
-        request: schedulerx_220190430_models.ListJobsRequest,
-    ) -> schedulerx_220190430_models.ListJobsResponse:
-        """
-        @summary Queries jobs.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListJobsRequest
-        @return: ListJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListJobsRequest,
+    ) -> main_models.ListJobsResponse:
+        runtime = RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
 
     def list_namespaces_with_options(
         self,
-        request: schedulerx_220190430_models.ListNamespacesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListNamespacesResponse:
-        """
-        @summary Queries namespaces.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListNamespacesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListNamespacesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListNamespacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNamespacesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_name):
+        if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListNamespaces',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListNamespaces',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListNamespacesResponse(),
+        return DaraCore.from_map(
+            main_models.ListNamespacesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_namespaces_with_options_async(
         self,
-        request: schedulerx_220190430_models.ListNamespacesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListNamespacesResponse:
-        """
-        @summary Queries namespaces.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListNamespacesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListNamespacesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListNamespacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNamespacesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_name):
+        if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListNamespaces',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListNamespaces',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListNamespacesResponse(),
+        return DaraCore.from_map(
+            main_models.ListNamespacesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_namespaces(
         self,
-        request: schedulerx_220190430_models.ListNamespacesRequest,
-    ) -> schedulerx_220190430_models.ListNamespacesResponse:
-        """
-        @summary Queries namespaces.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListNamespacesRequest
-        @return: ListNamespacesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListNamespacesRequest,
+    ) -> main_models.ListNamespacesResponse:
+        runtime = RuntimeOptions()
         return self.list_namespaces_with_options(request, runtime)
 
     async def list_namespaces_async(
         self,
-        request: schedulerx_220190430_models.ListNamespacesRequest,
-    ) -> schedulerx_220190430_models.ListNamespacesResponse:
-        """
-        @summary Queries namespaces.
-        
-        @description Before you call this operation, you must add the following dependency to the pom.xml file:
-        <dependency>
-        <groupId>com.aliyun</groupId>
-        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-        <version>1.0.5</version>
-        </dependency>
-        
-        @param request: ListNamespacesRequest
-        @return: ListNamespacesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListNamespacesRequest,
+    ) -> main_models.ListNamespacesResponse:
+        runtime = RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
 
     def list_work_flows_with_options(
         self,
-        request: schedulerx_220190430_models.ListWorkFlowsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
-        """
-        @summary Queries the information of a workflow.
-        
-        @param request: ListWorkFlowsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListWorkFlowsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListWorkFlowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkFlowsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.workflow_name):
+        if not DaraCore.is_null(request.workflow_name):
             query['WorkflowName'] = request.workflow_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListWorkFlows',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListWorkFlows',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListWorkFlowsResponse(),
+        return DaraCore.from_map(
+            main_models.ListWorkFlowsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_work_flows_with_options_async(
         self,
-        request: schedulerx_220190430_models.ListWorkFlowsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
-        """
-        @summary Queries the information of a workflow.
-        
-        @param request: ListWorkFlowsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListWorkFlowsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListWorkFlowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkFlowsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.workflow_name):
+        if not DaraCore.is_null(request.workflow_name):
             query['WorkflowName'] = request.workflow_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListWorkFlows',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListWorkFlows',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListWorkFlowsResponse(),
+        return DaraCore.from_map(
+            main_models.ListWorkFlowsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_work_flows(
         self,
-        request: schedulerx_220190430_models.ListWorkFlowsRequest,
-    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
-        """
-        @summary Queries the information of a workflow.
-        
-        @param request: ListWorkFlowsRequest
-        @return: ListWorkFlowsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListWorkFlowsRequest,
+    ) -> main_models.ListWorkFlowsResponse:
+        runtime = RuntimeOptions()
         return self.list_work_flows_with_options(request, runtime)
 
     async def list_work_flows_async(
         self,
-        request: schedulerx_220190430_models.ListWorkFlowsRequest,
-    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
-        """
-        @summary Queries the information of a workflow.
-        
-        @param request: ListWorkFlowsRequest
-        @return: ListWorkFlowsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListWorkFlowsRequest,
+    ) -> main_models.ListWorkFlowsResponse:
+        runtime = RuntimeOptions()
         return await self.list_work_flows_with_options_async(request, runtime)
 
     def list_workflow_instance_with_options(
         self,
-        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
-        """
-        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: ListWorkflowInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListWorkflowInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ListWorkflowInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListWorkflowInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListWorkflowInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.ListWorkflowInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_workflow_instance_with_options_async(
         self,
-        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
-        """
-        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: ListWorkflowInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListWorkflowInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.ListWorkflowInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListWorkflowInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ListWorkflowInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.ListWorkflowInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_workflow_instance(
         self,
-        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
-    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
-        """
-        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: ListWorkflowInstanceRequest
-        @return: ListWorkflowInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListWorkflowInstanceRequest,
+    ) -> main_models.ListWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
         return self.list_workflow_instance_with_options(request, runtime)
 
     async def list_workflow_instance_async(
         self,
-        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
-    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
-        """
-        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: ListWorkflowInstanceRequest
-        @return: ListWorkflowInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListWorkflowInstanceRequest,
+    ) -> main_models.ListWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.list_workflow_instance_with_options_async(request, runtime)
 
     def manage_schedulerx_calendar_with_options(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
-        """
-        @summary Updates a calendar.
-        
-        @param request: ManageSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManageSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageSchedulerxCalendarResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             body['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.incremental):
+        if not DaraCore.is_null(request.incremental):
             body['Incremental'] = request.incremental
-        if not UtilClient.is_unset(request.month_days_content):
+        if not DaraCore.is_null(request.month_days_content):
             body['MonthDaysContent'] = request.month_days_content
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             body['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManageSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManageSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ManageSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.ManageSchedulerxCalendarResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def manage_schedulerx_calendar_with_options_async(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
-        """
-        @summary Updates a calendar.
-        
-        @param request: ManageSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManageSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageSchedulerxCalendarResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             body['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.incremental):
+        if not DaraCore.is_null(request.incremental):
             body['Incremental'] = request.incremental
-        if not UtilClient.is_unset(request.month_days_content):
+        if not DaraCore.is_null(request.month_days_content):
             body['MonthDaysContent'] = request.month_days_content
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             body['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManageSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManageSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ManageSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.ManageSchedulerxCalendarResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def manage_schedulerx_calendar(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
-        """
-        @summary Updates a calendar.
-        
-        @param request: ManageSchedulerxCalendarRequest
-        @return: ManageSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManageSchedulerxCalendarRequest,
+    ) -> main_models.ManageSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return self.manage_schedulerx_calendar_with_options(request, runtime)
 
     async def manage_schedulerx_calendar_async(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
-        """
-        @summary Updates a calendar.
-        
-        @param request: ManageSchedulerxCalendarRequest
-        @return: ManageSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManageSchedulerxCalendarRequest,
+    ) -> main_models.ManageSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return await self.manage_schedulerx_calendar_with_options_async(request, runtime)
 
     def manage_schedulerx_job_sync_with_options(
         self,
-        tmp_req: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
-        """
-        @summary Synchronizes tasks across namespaces.
-        
-        @param tmp_req: ManageSchedulerxJobSyncRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageSchedulerxJobSyncResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = schedulerx_220190430_models.ManageSchedulerxJobSyncShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.job_id_list):
-            request.job_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
+        tmp_req: main_models.ManageSchedulerxJobSyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageSchedulerxJobSyncResponse:
+        tmp_req.validate()
+        request = main_models.ManageSchedulerxJobSyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.job_id_list):
+            request.job_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
         body = {}
-        if not UtilClient.is_unset(request.job_id_list_shrink):
+        if not DaraCore.is_null(request.job_id_list_shrink):
             body['JobIdList'] = request.job_id_list_shrink
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.original_group_id):
+        if not DaraCore.is_null(request.original_group_id):
             body['OriginalGroupId'] = request.original_group_id
-        if not UtilClient.is_unset(request.original_namespace):
+        if not DaraCore.is_null(request.original_namespace):
             body['OriginalNamespace'] = request.original_namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.target_group_id):
+        if not DaraCore.is_null(request.target_group_id):
             body['TargetGroupId'] = request.target_group_id
-        if not UtilClient.is_unset(request.target_namespace):
+        if not DaraCore.is_null(request.target_namespace):
             body['TargetNamespace'] = request.target_namespace
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManageSchedulerxJobSync',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManageSchedulerxJobSync',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ManageSchedulerxJobSyncResponse(),
+        return DaraCore.from_map(
+            main_models.ManageSchedulerxJobSyncResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def manage_schedulerx_job_sync_with_options_async(
         self,
-        tmp_req: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
-        """
-        @summary Synchronizes tasks across namespaces.
-        
-        @param tmp_req: ManageSchedulerxJobSyncRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageSchedulerxJobSyncResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = schedulerx_220190430_models.ManageSchedulerxJobSyncShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.job_id_list):
-            request.job_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
+        tmp_req: main_models.ManageSchedulerxJobSyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageSchedulerxJobSyncResponse:
+        tmp_req.validate()
+        request = main_models.ManageSchedulerxJobSyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.job_id_list):
+            request.job_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
         body = {}
-        if not UtilClient.is_unset(request.job_id_list_shrink):
+        if not DaraCore.is_null(request.job_id_list_shrink):
             body['JobIdList'] = request.job_id_list_shrink
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.original_group_id):
+        if not DaraCore.is_null(request.original_group_id):
             body['OriginalGroupId'] = request.original_group_id
-        if not UtilClient.is_unset(request.original_namespace):
+        if not DaraCore.is_null(request.original_namespace):
             body['OriginalNamespace'] = request.original_namespace
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.target_group_id):
+        if not DaraCore.is_null(request.target_group_id):
             body['TargetGroupId'] = request.target_group_id
-        if not UtilClient.is_unset(request.target_namespace):
+        if not DaraCore.is_null(request.target_namespace):
             body['TargetNamespace'] = request.target_namespace
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManageSchedulerxJobSync',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManageSchedulerxJobSync',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ManageSchedulerxJobSyncResponse(),
+        return DaraCore.from_map(
+            main_models.ManageSchedulerxJobSyncResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def manage_schedulerx_job_sync(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
-    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
-        """
-        @summary Synchronizes tasks across namespaces.
-        
-        @param request: ManageSchedulerxJobSyncRequest
-        @return: ManageSchedulerxJobSyncResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManageSchedulerxJobSyncRequest,
+    ) -> main_models.ManageSchedulerxJobSyncResponse:
+        runtime = RuntimeOptions()
         return self.manage_schedulerx_job_sync_with_options(request, runtime)
 
     async def manage_schedulerx_job_sync_async(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
-    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
-        """
-        @summary Synchronizes tasks across namespaces.
-        
-        @param request: ManageSchedulerxJobSyncRequest
-        @return: ManageSchedulerxJobSyncResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManageSchedulerxJobSyncRequest,
+    ) -> main_models.ManageSchedulerxJobSyncResponse:
+        runtime = RuntimeOptions()
         return await self.manage_schedulerx_job_sync_with_options_async(request, runtime)
 
     def manage_schedulerx_notification_policy_with_options(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
-        """
-        @summary Updates a notification policy.
-        
-        @param request: ManageSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManageSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageSchedulerxNotificationPolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel_time_range):
+        if not DaraCore.is_null(request.channel_time_range):
             body['ChannelTimeRange'] = request.channel_time_range
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             body['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManageSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManageSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ManageSchedulerxNotificationPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def manage_schedulerx_notification_policy_with_options_async(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
-        """
-        @summary Updates a notification policy.
-        
-        @param request: ManageSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManageSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageSchedulerxNotificationPolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel_time_range):
+        if not DaraCore.is_null(request.channel_time_range):
             body['ChannelTimeRange'] = request.channel_time_range
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             body['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManageSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManageSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ManageSchedulerxNotificationPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def manage_schedulerx_notification_policy(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
-        """
-        @summary Updates a notification policy.
-        
-        @param request: ManageSchedulerxNotificationPolicyRequest
-        @return: ManageSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManageSchedulerxNotificationPolicyRequest,
+    ) -> main_models.ManageSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return self.manage_schedulerx_notification_policy_with_options(request, runtime)
 
     async def manage_schedulerx_notification_policy_async(
         self,
-        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
-        """
-        @summary Updates a notification policy.
-        
-        @param request: ManageSchedulerxNotificationPolicyRequest
-        @return: ManageSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManageSchedulerxNotificationPolicyRequest,
+    ) -> main_models.ManageSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.manage_schedulerx_notification_policy_with_options_async(request, runtime)
 
     def read_schedulerx_calendar_with_options(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
-        """
-        @summary Retrieves the information of a calendar.
-        
-        @param request: ReadSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxCalendarResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             query['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.fetch_calendar_detail):
+        if not DaraCore.is_null(request.fetch_calendar_detail):
             query['FetchCalendarDetail'] = request.fetch_calendar_detail
-        if not UtilClient.is_unset(request.fetch_system_calendar):
+        if not DaraCore.is_null(request.fetch_system_calendar):
             query['FetchSystemCalendar'] = request.fetch_system_calendar
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             query['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxCalendarResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def read_schedulerx_calendar_with_options_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
-        """
-        @summary Retrieves the information of a calendar.
-        
-        @param request: ReadSchedulerxCalendarRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxCalendarResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxCalendarResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.calendar_name):
+        if not DaraCore.is_null(request.calendar_name):
             query['CalendarName'] = request.calendar_name
-        if not UtilClient.is_unset(request.fetch_calendar_detail):
+        if not DaraCore.is_null(request.fetch_calendar_detail):
             query['FetchCalendarDetail'] = request.fetch_calendar_detail
-        if not UtilClient.is_unset(request.fetch_system_calendar):
+        if not DaraCore.is_null(request.fetch_system_calendar):
             query['FetchSystemCalendar'] = request.fetch_system_calendar
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.year):
+        if not DaraCore.is_null(request.year):
             query['Year'] = request.year
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxCalendar',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxCalendar',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxCalendarResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxCalendarResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def read_schedulerx_calendar(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
-        """
-        @summary Retrieves the information of a calendar.
-        
-        @param request: ReadSchedulerxCalendarRequest
-        @return: ReadSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxCalendarRequest,
+    ) -> main_models.ReadSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return self.read_schedulerx_calendar_with_options(request, runtime)
 
     async def read_schedulerx_calendar_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
-        """
-        @summary Retrieves the information of a calendar.
-        
-        @param request: ReadSchedulerxCalendarRequest
-        @return: ReadSchedulerxCalendarResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxCalendarRequest,
+    ) -> main_models.ReadSchedulerxCalendarResponse:
+        runtime = RuntimeOptions()
         return await self.read_schedulerx_calendar_with_options_async(request, runtime)
 
     def read_schedulerx_designate_detail_with_options(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
-        """
-        @summary Queries detailed information of the workers specified by a job.
-        
-        @param request: ReadSchedulerxDesignateDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxDesignateDetailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxDesignateDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxDesignateDetailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.designate_type):
+        if not DaraCore.is_null(request.designate_type):
             query['DesignateType'] = request.designate_type
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxDesignateDetail',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxDesignateDetail',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxDesignateDetailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def read_schedulerx_designate_detail_with_options_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
-        """
-        @summary Queries detailed information of the workers specified by a job.
-        
-        @param request: ReadSchedulerxDesignateDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxDesignateDetailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxDesignateDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxDesignateDetailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.designate_type):
+        if not DaraCore.is_null(request.designate_type):
             query['DesignateType'] = request.designate_type
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxDesignateDetail',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxDesignateDetail',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxDesignateDetailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def read_schedulerx_designate_detail(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
-        """
-        @summary Queries detailed information of the workers specified by a job.
-        
-        @param request: ReadSchedulerxDesignateDetailRequest
-        @return: ReadSchedulerxDesignateDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxDesignateDetailRequest,
+    ) -> main_models.ReadSchedulerxDesignateDetailResponse:
+        runtime = RuntimeOptions()
         return self.read_schedulerx_designate_detail_with_options(request, runtime)
 
     async def read_schedulerx_designate_detail_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
-        """
-        @summary Queries detailed information of the workers specified by a job.
-        
-        @param request: ReadSchedulerxDesignateDetailRequest
-        @return: ReadSchedulerxDesignateDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxDesignateDetailRequest,
+    ) -> main_models.ReadSchedulerxDesignateDetailResponse:
+        runtime = RuntimeOptions()
         return await self.read_schedulerx_designate_detail_with_options_async(request, runtime)
 
     def read_schedulerx_designate_info_with_options(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
-        """
-        @summary Queries the basic information of specified workers.
-        
-        @param request: ReadSchedulerxDesignateInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxDesignateInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxDesignateInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxDesignateInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxDesignateInfo',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxDesignateInfo',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxDesignateInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def read_schedulerx_designate_info_with_options_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
-        """
-        @summary Queries the basic information of specified workers.
-        
-        @param request: ReadSchedulerxDesignateInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxDesignateInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxDesignateInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxDesignateInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxDesignateInfo',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxDesignateInfo',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxDesignateInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def read_schedulerx_designate_info(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
-        """
-        @summary Queries the basic information of specified workers.
-        
-        @param request: ReadSchedulerxDesignateInfoRequest
-        @return: ReadSchedulerxDesignateInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxDesignateInfoRequest,
+    ) -> main_models.ReadSchedulerxDesignateInfoResponse:
+        runtime = RuntimeOptions()
         return self.read_schedulerx_designate_info_with_options(request, runtime)
 
     async def read_schedulerx_designate_info_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
-        """
-        @summary Queries the basic information of specified workers.
-        
-        @param request: ReadSchedulerxDesignateInfoRequest
-        @return: ReadSchedulerxDesignateInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxDesignateInfoRequest,
+    ) -> main_models.ReadSchedulerxDesignateInfoResponse:
+        runtime = RuntimeOptions()
         return await self.read_schedulerx_designate_info_with_options_async(request, runtime)
 
     def read_schedulerx_notification_policy_with_options(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
-        """
-        @summary Queries notification policies.
-        
-        @param request: ReadSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxNotificationPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxNotificationPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def read_schedulerx_notification_policy_with_options_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
-        """
-        @summary Queries notification policies.
-        
-        @param request: ReadSchedulerxNotificationPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadSchedulerxNotificationPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReadSchedulerxNotificationPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadSchedulerxNotificationPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ReadSchedulerxNotificationPolicy',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadSchedulerxNotificationPolicy',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ReadSchedulerxNotificationPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def read_schedulerx_notification_policy(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
-        """
-        @summary Queries notification policies.
-        
-        @param request: ReadSchedulerxNotificationPolicyRequest
-        @return: ReadSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxNotificationPolicyRequest,
+    ) -> main_models.ReadSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return self.read_schedulerx_notification_policy_with_options(request, runtime)
 
     async def read_schedulerx_notification_policy_async(
         self,
-        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
-    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
-        """
-        @summary Queries notification policies.
-        
-        @param request: ReadSchedulerxNotificationPolicyRequest
-        @return: ReadSchedulerxNotificationPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadSchedulerxNotificationPolicyRequest,
+    ) -> main_models.ReadSchedulerxNotificationPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.read_schedulerx_notification_policy_with_options_async(request, runtime)
 
     def rerun_job_with_options(
         self,
-        request: schedulerx_220190430_models.RerunJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.RerunJobResponse:
-        """
-        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
-        
-        @param request: RerunJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RerunJobResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RerunJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RerunJobResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.data_time):
+        if not DaraCore.is_null(request.data_time):
             body['DataTime'] = request.data_time
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             body['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             body['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='RerunJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RerunJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.RerunJobResponse(),
+        return DaraCore.from_map(
+            main_models.RerunJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def rerun_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.RerunJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.RerunJobResponse:
-        """
-        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
-        
-        @param request: RerunJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RerunJobResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RerunJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RerunJobResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.data_time):
+        if not DaraCore.is_null(request.data_time):
             body['DataTime'] = request.data_time
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             body['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             body['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='RerunJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RerunJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.RerunJobResponse(),
+        return DaraCore.from_map(
+            main_models.RerunJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def rerun_job(
         self,
-        request: schedulerx_220190430_models.RerunJobRequest,
-    ) -> schedulerx_220190430_models.RerunJobResponse:
-        """
-        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
-        
-        @param request: RerunJobRequest
-        @return: RerunJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RerunJobRequest,
+    ) -> main_models.RerunJobResponse:
+        runtime = RuntimeOptions()
         return self.rerun_job_with_options(request, runtime)
 
     async def rerun_job_async(
         self,
-        request: schedulerx_220190430_models.RerunJobRequest,
-    ) -> schedulerx_220190430_models.RerunJobResponse:
-        """
-        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
-        
-        @param request: RerunJobRequest
-        @return: RerunJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RerunJobRequest,
+    ) -> main_models.RerunJobResponse:
+        runtime = RuntimeOptions()
         return await self.rerun_job_with_options_async(request, runtime)
 
     def retry_job_instance_with_options(
         self,
-        request: schedulerx_220190430_models.RetryJobInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
-        """
-        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
-        
-        @param request: RetryJobInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RetryJobInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RetryJobInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryJobInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.job_instance_id):
+        if not DaraCore.is_null(request.job_instance_id):
             query['JobInstanceId'] = request.job_instance_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RetryJobInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RetryJobInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.RetryJobInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.RetryJobInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def retry_job_instance_with_options_async(
         self,
-        request: schedulerx_220190430_models.RetryJobInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
-        """
-        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
-        
-        @param request: RetryJobInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RetryJobInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RetryJobInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryJobInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.job_instance_id):
+        if not DaraCore.is_null(request.job_instance_id):
             query['JobInstanceId'] = request.job_instance_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RetryJobInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RetryJobInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.RetryJobInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.RetryJobInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def retry_job_instance(
         self,
-        request: schedulerx_220190430_models.RetryJobInstanceRequest,
-    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
-        """
-        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
-        
-        @param request: RetryJobInstanceRequest
-        @return: RetryJobInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RetryJobInstanceRequest,
+    ) -> main_models.RetryJobInstanceResponse:
+        runtime = RuntimeOptions()
         return self.retry_job_instance_with_options(request, runtime)
 
     async def retry_job_instance_async(
         self,
-        request: schedulerx_220190430_models.RetryJobInstanceRequest,
-    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
-        """
-        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
-        
-        @param request: RetryJobInstanceRequest
-        @return: RetryJobInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RetryJobInstanceRequest,
+    ) -> main_models.RetryJobInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.retry_job_instance_with_options_async(request, runtime)
 
     def revoke_permission_with_options(
         self,
-        request: schedulerx_220190430_models.RevokePermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.RevokePermissionResponse:
-        """
-        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
-        
-        @param request: RevokePermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RevokePermissionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RevokePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokePermissionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RevokePermission',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RevokePermission',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.RevokePermissionResponse(),
+        return DaraCore.from_map(
+            main_models.RevokePermissionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def revoke_permission_with_options_async(
         self,
-        request: schedulerx_220190430_models.RevokePermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.RevokePermissionResponse:
-        """
-        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
-        
-        @param request: RevokePermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RevokePermissionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RevokePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokePermissionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RevokePermission',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RevokePermission',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.RevokePermissionResponse(),
+        return DaraCore.from_map(
+            main_models.RevokePermissionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def revoke_permission(
         self,
-        request: schedulerx_220190430_models.RevokePermissionRequest,
-    ) -> schedulerx_220190430_models.RevokePermissionResponse:
-        """
-        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
-        
-        @param request: RevokePermissionRequest
-        @return: RevokePermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RevokePermissionRequest,
+    ) -> main_models.RevokePermissionResponse:
+        runtime = RuntimeOptions()
         return self.revoke_permission_with_options(request, runtime)
 
     async def revoke_permission_async(
         self,
-        request: schedulerx_220190430_models.RevokePermissionRequest,
-    ) -> schedulerx_220190430_models.RevokePermissionResponse:
-        """
-        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
-        
-        @param request: RevokePermissionRequest
-        @return: RevokePermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RevokePermissionRequest,
+    ) -> main_models.RevokePermissionResponse:
+        runtime = RuntimeOptions()
         return await self.revoke_permission_with_options_async(request, runtime)
 
     def set_job_instance_success_with_options(
         self,
-        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetJobInstanceSuccessRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetJobInstanceSuccessResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetJobInstanceSuccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetJobInstanceSuccessResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.job_instance_id):
+        if not DaraCore.is_null(request.job_instance_id):
             query['JobInstanceId'] = request.job_instance_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetJobInstanceSuccess',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetJobInstanceSuccess',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.SetJobInstanceSuccessResponse(),
+        return DaraCore.from_map(
+            main_models.SetJobInstanceSuccessResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def set_job_instance_success_with_options_async(
         self,
-        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetJobInstanceSuccessRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetJobInstanceSuccessResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetJobInstanceSuccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetJobInstanceSuccessResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.job_instance_id):
+        if not DaraCore.is_null(request.job_instance_id):
             query['JobInstanceId'] = request.job_instance_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetJobInstanceSuccess',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetJobInstanceSuccess',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.SetJobInstanceSuccessResponse(),
+        return DaraCore.from_map(
+            main_models.SetJobInstanceSuccessResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def set_job_instance_success(
         self,
-        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
-    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetJobInstanceSuccessRequest
-        @return: SetJobInstanceSuccessResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetJobInstanceSuccessRequest,
+    ) -> main_models.SetJobInstanceSuccessResponse:
+        runtime = RuntimeOptions()
         return self.set_job_instance_success_with_options(request, runtime)
 
     async def set_job_instance_success_async(
         self,
-        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
-    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetJobInstanceSuccessRequest
-        @return: SetJobInstanceSuccessResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetJobInstanceSuccessRequest,
+    ) -> main_models.SetJobInstanceSuccessResponse:
+        runtime = RuntimeOptions()
         return await self.set_job_instance_success_with_options_async(request, runtime)
 
     def set_wf_instance_success_with_options(
         self,
-        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetWfInstanceSuccessRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetWfInstanceSuccessResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetWfInstanceSuccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWfInstanceSuccessResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.wf_instance_id):
+        if not DaraCore.is_null(request.wf_instance_id):
             query['WfInstanceId'] = request.wf_instance_id
-        if not UtilClient.is_unset(request.workflow_id):
+        if not DaraCore.is_null(request.workflow_id):
             query['WorkflowId'] = request.workflow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetWfInstanceSuccess',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetWfInstanceSuccess',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.SetWfInstanceSuccessResponse(),
+        return DaraCore.from_map(
+            main_models.SetWfInstanceSuccessResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def set_wf_instance_success_with_options_async(
         self,
-        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetWfInstanceSuccessRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetWfInstanceSuccessResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetWfInstanceSuccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWfInstanceSuccessResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             query['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.wf_instance_id):
+        if not DaraCore.is_null(request.wf_instance_id):
             query['WfInstanceId'] = request.wf_instance_id
-        if not UtilClient.is_unset(request.workflow_id):
+        if not DaraCore.is_null(request.workflow_id):
             query['WorkflowId'] = request.workflow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetWfInstanceSuccess',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetWfInstanceSuccess',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.SetWfInstanceSuccessResponse(),
+        return DaraCore.from_map(
+            main_models.SetWfInstanceSuccessResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def set_wf_instance_success(
         self,
-        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
-    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetWfInstanceSuccessRequest
-        @return: SetWfInstanceSuccessResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetWfInstanceSuccessRequest,
+    ) -> main_models.SetWfInstanceSuccessResponse:
+        runtime = RuntimeOptions()
         return self.set_wf_instance_success_with_options(request, runtime)
 
     async def set_wf_instance_success_async(
         self,
-        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
-    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
-        """
-        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
-        
-        @param request: SetWfInstanceSuccessRequest
-        @return: SetWfInstanceSuccessResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetWfInstanceSuccessRequest,
+    ) -> main_models.SetWfInstanceSuccessResponse:
+        runtime = RuntimeOptions()
         return await self.set_wf_instance_success_with_options_async(request, runtime)
 
     def stop_instance_with_options(
         self,
-        request: schedulerx_220190430_models.StopInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.StopInstanceResponse:
-        """
-        @summary Stops a job instance in the running state.
-        
-        @param request: StopInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.StopInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StopInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StopInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.StopInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.StopInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def stop_instance_with_options_async(
         self,
-        request: schedulerx_220190430_models.StopInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.StopInstanceResponse:
-        """
-        @summary Stops a job instance in the running state.
-        
-        @param request: StopInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.StopInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopInstanceResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StopInstance',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StopInstance',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.StopInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.StopInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def stop_instance(
         self,
-        request: schedulerx_220190430_models.StopInstanceRequest,
-    ) -> schedulerx_220190430_models.StopInstanceResponse:
-        """
-        @summary Stops a job instance in the running state.
-        
-        @param request: StopInstanceRequest
-        @return: StopInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StopInstanceRequest,
+    ) -> main_models.StopInstanceResponse:
+        runtime = RuntimeOptions()
         return self.stop_instance_with_options(request, runtime)
 
     async def stop_instance_async(
         self,
-        request: schedulerx_220190430_models.StopInstanceRequest,
-    ) -> schedulerx_220190430_models.StopInstanceResponse:
-        """
-        @summary Stops a job instance in the running state.
-        
-        @param request: StopInstanceRequest
-        @return: StopInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StopInstanceRequest,
+    ) -> main_models.StopInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
     def update_app_group_with_options(
         self,
-        request: schedulerx_220190430_models.UpdateAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
-        """
-        @summary Updates the application group.
-        
-        @param request: UpdateAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAppGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAppGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.app_version):
+        if not DaraCore.is_null(request.app_version):
             query['AppVersion'] = request.app_version
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.enable_log):
+        if not DaraCore.is_null(request.enable_log):
             query['EnableLog'] = request.enable_log
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.monitor_config_json):
+        if not DaraCore.is_null(request.monitor_config_json):
             query['MonitorConfigJson'] = request.monitor_config_json
-        if not UtilClient.is_unset(request.monitor_contacts_json):
+        if not DaraCore.is_null(request.monitor_contacts_json):
             query['MonitorContactsJson'] = request.monitor_contacts_json
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.notification_policy_name):
+        if not DaraCore.is_null(request.notification_policy_name):
             query['NotificationPolicyName'] = request.notification_policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAppGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_app_group_with_options_async(
         self,
-        request: schedulerx_220190430_models.UpdateAppGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
-        """
-        @summary Updates the application group.
-        
-        @param request: UpdateAppGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAppGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAppGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAppGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.app_version):
+        if not DaraCore.is_null(request.app_version):
             query['AppVersion'] = request.app_version
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.enable_log):
+        if not DaraCore.is_null(request.enable_log):
             query['EnableLog'] = request.enable_log
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.monitor_config_json):
+        if not DaraCore.is_null(request.monitor_config_json):
             query['MonitorConfigJson'] = request.monitor_config_json
-        if not UtilClient.is_unset(request.monitor_contacts_json):
+        if not DaraCore.is_null(request.monitor_contacts_json):
             query['MonitorContactsJson'] = request.monitor_contacts_json
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.notification_policy_name):
+        if not DaraCore.is_null(request.notification_policy_name):
             query['NotificationPolicyName'] = request.notification_policy_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAppGroup',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAppGroup',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateAppGroupResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAppGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_app_group(
         self,
-        request: schedulerx_220190430_models.UpdateAppGroupRequest,
-    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
-        """
-        @summary Updates the application group.
-        
-        @param request: UpdateAppGroupRequest
-        @return: UpdateAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAppGroupRequest,
+    ) -> main_models.UpdateAppGroupResponse:
+        runtime = RuntimeOptions()
         return self.update_app_group_with_options(request, runtime)
 
     async def update_app_group_async(
         self,
-        request: schedulerx_220190430_models.UpdateAppGroupRequest,
-    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
-        """
-        @summary Updates the application group.
-        
-        @param request: UpdateAppGroupRequest
-        @return: UpdateAppGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAppGroupRequest,
+    ) -> main_models.UpdateAppGroupResponse:
+        runtime = RuntimeOptions()
         return await self.update_app_group_with_options_async(request, runtime)
 
     def update_job_with_options(
         self,
-        request: schedulerx_220190430_models.UpdateJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateJobResponse:
-        """
-        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
-        
-        @param request: UpdateJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateJobResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.attempt_interval):
+        if not DaraCore.is_null(request.attempt_interval):
             body['AttemptInterval'] = request.attempt_interval
-        if not UtilClient.is_unset(request.calendar):
+        if not DaraCore.is_null(request.calendar):
             body['Calendar'] = request.calendar
-        if not UtilClient.is_unset(request.class_name):
+        if not DaraCore.is_null(request.class_name):
             body['ClassName'] = request.class_name
-        if not UtilClient.is_unset(request.consumer_size):
+        if not DaraCore.is_null(request.consumer_size):
             body['ConsumerSize'] = request.consumer_size
-        if not UtilClient.is_unset(request.contact_info):
+        if not DaraCore.is_null(request.contact_info):
             body['ContactInfo'] = request.contact_info
-        if not UtilClient.is_unset(request.content):
+        if not DaraCore.is_null(request.content):
             body['Content'] = request.content
-        if not UtilClient.is_unset(request.data_offset):
+        if not DaraCore.is_null(request.data_offset):
             body['DataOffset'] = request.data_offset
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dispatcher_size):
+        if not DaraCore.is_null(request.dispatcher_size):
             body['DispatcherSize'] = request.dispatcher_size
-        if not UtilClient.is_unset(request.execute_mode):
+        if not DaraCore.is_null(request.execute_mode):
             body['ExecuteMode'] = request.execute_mode
-        if not UtilClient.is_unset(request.fail_enable):
+        if not DaraCore.is_null(request.fail_enable):
             body['FailEnable'] = request.fail_enable
-        if not UtilClient.is_unset(request.fail_times):
+        if not DaraCore.is_null(request.fail_times):
             body['FailTimes'] = request.fail_times
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.max_attempt):
+        if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.miss_worker_enable):
+        if not DaraCore.is_null(request.miss_worker_enable):
             body['MissWorkerEnable'] = request.miss_worker_enable
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['Parameters'] = request.parameters
-        if not UtilClient.is_unset(request.queue_size):
+        if not DaraCore.is_null(request.queue_size):
             body['QueueSize'] = request.queue_size
-        if not UtilClient.is_unset(request.send_channel):
+        if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
-        if not UtilClient.is_unset(request.success_notice_enable):
+        if not DaraCore.is_null(request.success_notice_enable):
             body['SuccessNoticeEnable'] = request.success_notice_enable
-        if not UtilClient.is_unset(request.task_attempt_interval):
+        if not DaraCore.is_null(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
-        if not UtilClient.is_unset(request.task_dispatch_mode):
+        if not DaraCore.is_null(request.task_dispatch_mode):
             body['TaskDispatchMode'] = request.task_dispatch_mode
-        if not UtilClient.is_unset(request.task_max_attempt):
+        if not DaraCore.is_null(request.task_max_attempt):
             body['TaskMaxAttempt'] = request.task_max_attempt
-        if not UtilClient.is_unset(request.template):
+        if not DaraCore.is_null(request.template):
             body['Template'] = request.template
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.timeout):
+        if not DaraCore.is_null(request.timeout):
             body['Timeout'] = request.timeout
-        if not UtilClient.is_unset(request.timeout_enable):
+        if not DaraCore.is_null(request.timeout_enable):
             body['TimeoutEnable'] = request.timeout_enable
-        if not UtilClient.is_unset(request.timeout_kill_enable):
+        if not DaraCore.is_null(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
-        if not UtilClient.is_unset(request.timezone):
+        if not DaraCore.is_null(request.timezone):
             body['Timezone'] = request.timezone
-        if not UtilClient.is_unset(request.xattrs):
+        if not DaraCore.is_null(request.xattrs):
             body['XAttrs'] = request.xattrs
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateJobResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateJobResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_job_with_options_async(
         self,
-        request: schedulerx_220190430_models.UpdateJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateJobResponse:
-        """
-        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
-        
-        @param request: UpdateJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateJobResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.attempt_interval):
+        if not DaraCore.is_null(request.attempt_interval):
             body['AttemptInterval'] = request.attempt_interval
-        if not UtilClient.is_unset(request.calendar):
+        if not DaraCore.is_null(request.calendar):
             body['Calendar'] = request.calendar
-        if not UtilClient.is_unset(request.class_name):
+        if not DaraCore.is_null(request.class_name):
             body['ClassName'] = request.class_name
-        if not UtilClient.is_unset(request.consumer_size):
+        if not DaraCore.is_null(request.consumer_size):
             body['ConsumerSize'] = request.consumer_size
-        if not UtilClient.is_unset(request.contact_info):
+        if not DaraCore.is_null(request.contact_info):
             body['ContactInfo'] = request.contact_info
-        if not UtilClient.is_unset(request.content):
+        if not DaraCore.is_null(request.content):
             body['Content'] = request.content
-        if not UtilClient.is_unset(request.data_offset):
+        if not DaraCore.is_null(request.data_offset):
             body['DataOffset'] = request.data_offset
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dispatcher_size):
+        if not DaraCore.is_null(request.dispatcher_size):
             body['DispatcherSize'] = request.dispatcher_size
-        if not UtilClient.is_unset(request.execute_mode):
+        if not DaraCore.is_null(request.execute_mode):
             body['ExecuteMode'] = request.execute_mode
-        if not UtilClient.is_unset(request.fail_enable):
+        if not DaraCore.is_null(request.fail_enable):
             body['FailEnable'] = request.fail_enable
-        if not UtilClient.is_unset(request.fail_times):
+        if not DaraCore.is_null(request.fail_times):
             body['FailTimes'] = request.fail_times
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.max_attempt):
+        if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
-        if not UtilClient.is_unset(request.max_concurrency):
+        if not DaraCore.is_null(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
-        if not UtilClient.is_unset(request.miss_worker_enable):
+        if not DaraCore.is_null(request.miss_worker_enable):
             body['MissWorkerEnable'] = request.miss_worker_enable
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['Parameters'] = request.parameters
-        if not UtilClient.is_unset(request.queue_size):
+        if not DaraCore.is_null(request.queue_size):
             body['QueueSize'] = request.queue_size
-        if not UtilClient.is_unset(request.send_channel):
+        if not DaraCore.is_null(request.send_channel):
             body['SendChannel'] = request.send_channel
-        if not UtilClient.is_unset(request.success_notice_enable):
+        if not DaraCore.is_null(request.success_notice_enable):
             body['SuccessNoticeEnable'] = request.success_notice_enable
-        if not UtilClient.is_unset(request.task_attempt_interval):
+        if not DaraCore.is_null(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
-        if not UtilClient.is_unset(request.task_dispatch_mode):
+        if not DaraCore.is_null(request.task_dispatch_mode):
             body['TaskDispatchMode'] = request.task_dispatch_mode
-        if not UtilClient.is_unset(request.task_max_attempt):
+        if not DaraCore.is_null(request.task_max_attempt):
             body['TaskMaxAttempt'] = request.task_max_attempt
-        if not UtilClient.is_unset(request.template):
+        if not DaraCore.is_null(request.template):
             body['Template'] = request.template
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.timeout):
+        if not DaraCore.is_null(request.timeout):
             body['Timeout'] = request.timeout
-        if not UtilClient.is_unset(request.timeout_enable):
+        if not DaraCore.is_null(request.timeout_enable):
             body['TimeoutEnable'] = request.timeout_enable
-        if not UtilClient.is_unset(request.timeout_kill_enable):
+        if not DaraCore.is_null(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
-        if not UtilClient.is_unset(request.timezone):
+        if not DaraCore.is_null(request.timezone):
             body['Timezone'] = request.timezone
-        if not UtilClient.is_unset(request.xattrs):
+        if not DaraCore.is_null(request.xattrs):
             body['XAttrs'] = request.xattrs
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateJob',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateJob',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateJobResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_job(
         self,
-        request: schedulerx_220190430_models.UpdateJobRequest,
-    ) -> schedulerx_220190430_models.UpdateJobResponse:
-        """
-        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
-        
-        @param request: UpdateJobRequest
-        @return: UpdateJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateJobRequest,
+    ) -> main_models.UpdateJobResponse:
+        runtime = RuntimeOptions()
         return self.update_job_with_options(request, runtime)
 
     async def update_job_async(
         self,
-        request: schedulerx_220190430_models.UpdateJobRequest,
-    ) -> schedulerx_220190430_models.UpdateJobResponse:
-        """
-        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
-        
-        @param request: UpdateJobRequest
-        @return: UpdateJobResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateJobRequest,
+    ) -> main_models.UpdateJobResponse:
+        runtime = RuntimeOptions()
         return await self.update_job_with_options_async(request, runtime)
 
     def update_job_script_with_options(
         self,
-        request: schedulerx_220190430_models.UpdateJobScriptRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
-        """
-        @summary Updates the execution script of a job.
-        
-        @param request: UpdateJobScriptRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateJobScriptResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateJobScriptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobScriptResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.script_content):
+        if not DaraCore.is_null(request.script_content):
             body['ScriptContent'] = request.script_content
-        if not UtilClient.is_unset(request.version_description):
+        if not DaraCore.is_null(request.version_description):
             body['VersionDescription'] = request.version_description
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateJobScript',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateJobScript',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateJobScriptResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateJobScriptResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_job_script_with_options_async(
         self,
-        request: schedulerx_220190430_models.UpdateJobScriptRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
-        """
-        @summary Updates the execution script of a job.
-        
-        @param request: UpdateJobScriptRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateJobScriptResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateJobScriptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobScriptResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.script_content):
+        if not DaraCore.is_null(request.script_content):
             body['ScriptContent'] = request.script_content
-        if not UtilClient.is_unset(request.version_description):
+        if not DaraCore.is_null(request.version_description):
             body['VersionDescription'] = request.version_description
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateJobScript',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateJobScript',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateJobScriptResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateJobScriptResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_job_script(
         self,
-        request: schedulerx_220190430_models.UpdateJobScriptRequest,
-    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
-        """
-        @summary Updates the execution script of a job.
-        
-        @param request: UpdateJobScriptRequest
-        @return: UpdateJobScriptResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateJobScriptRequest,
+    ) -> main_models.UpdateJobScriptResponse:
+        runtime = RuntimeOptions()
         return self.update_job_script_with_options(request, runtime)
 
     async def update_job_script_async(
         self,
-        request: schedulerx_220190430_models.UpdateJobScriptRequest,
-    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
-        """
-        @summary Updates the execution script of a job.
-        
-        @param request: UpdateJobScriptRequest
-        @return: UpdateJobScriptResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateJobScriptRequest,
+    ) -> main_models.UpdateJobScriptResponse:
+        runtime = RuntimeOptions()
         return await self.update_job_script_with_options_async(request, runtime)
 
     def update_namespace_with_options(
         self,
-        request: schedulerx_220190430_models.UpdateNamespaceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
-        """
-        @summary Updates a namespace.
-        
-        @param request: UpdateNamespaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateNamespaceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNamespaceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_name):
+        if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateNamespace',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateNamespace',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateNamespaceResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateNamespaceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_namespace_with_options_async(
         self,
-        request: schedulerx_220190430_models.UpdateNamespaceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
-        """
-        @summary Updates a namespace.
-        
-        @param request: UpdateNamespaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateNamespaceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNamespaceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_name):
+        if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateNamespace',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateNamespace',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateNamespaceResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateNamespaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_namespace(
         self,
-        request: schedulerx_220190430_models.UpdateNamespaceRequest,
-    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
-        """
-        @summary Updates a namespace.
-        
-        @param request: UpdateNamespaceRequest
-        @return: UpdateNamespaceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateNamespaceRequest,
+    ) -> main_models.UpdateNamespaceResponse:
+        runtime = RuntimeOptions()
         return self.update_namespace_with_options(request, runtime)
 
     async def update_namespace_async(
         self,
-        request: schedulerx_220190430_models.UpdateNamespaceRequest,
-    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
-        """
-        @summary Updates a namespace.
-        
-        @param request: UpdateNamespaceRequest
-        @return: UpdateNamespaceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateNamespaceRequest,
+    ) -> main_models.UpdateNamespaceResponse:
+        runtime = RuntimeOptions()
         return await self.update_namespace_with_options_async(request, runtime)
 
     def update_workflow_with_options(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
-        """
-        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateWorkflowResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.workflow_id):
+        if not DaraCore.is_null(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_workflow_with_options_async(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
-        """
-        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateWorkflowResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.time_expression):
+        if not DaraCore.is_null(request.time_expression):
             body['TimeExpression'] = request.time_expression
-        if not UtilClient.is_unset(request.time_type):
+        if not DaraCore.is_null(request.time_type):
             body['TimeType'] = request.time_type
-        if not UtilClient.is_unset(request.workflow_id):
+        if not DaraCore.is_null(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateWorkflow',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflow',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateWorkflowResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_workflow(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowRequest,
-    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
-        """
-        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowRequest
-        @return: UpdateWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateWorkflowRequest,
+    ) -> main_models.UpdateWorkflowResponse:
+        runtime = RuntimeOptions()
         return self.update_workflow_with_options(request, runtime)
 
     async def update_workflow_async(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowRequest,
-    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
-        """
-        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowRequest
-        @return: UpdateWorkflowResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateWorkflowRequest,
+    ) -> main_models.UpdateWorkflowResponse:
+        runtime = RuntimeOptions()
         return await self.update_workflow_with_options_async(request, runtime)
 
     def update_workflow_dag_with_options(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
-        """
-        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowDagRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateWorkflowDagResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateWorkflowDagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowDagResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.dag_json):
+        if not DaraCore.is_null(request.dag_json):
             body['DagJson'] = request.dag_json
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.workflow_id):
+        if not DaraCore.is_null(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateWorkflowDag',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowDag',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateWorkflowDagResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowDagResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_workflow_dag_with_options_async(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
-        """
-        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowDagRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateWorkflowDagResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateWorkflowDagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowDagResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.dag_json):
+        if not DaraCore.is_null(request.dag_json):
             body['DagJson'] = request.dag_json
-        if not UtilClient.is_unset(request.group_id):
+        if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.namespace_source):
+        if not DaraCore.is_null(request.namespace_source):
             body['NamespaceSource'] = request.namespace_source
-        if not UtilClient.is_unset(request.workflow_id):
+        if not DaraCore.is_null(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateWorkflowDag',
-            version='2019-04-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowDag',
+            version = '2019-04-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            schedulerx_220190430_models.UpdateWorkflowDagResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowDagResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_workflow_dag(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
-    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
-        """
-        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowDagRequest
-        @return: UpdateWorkflowDagResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateWorkflowDagRequest,
+    ) -> main_models.UpdateWorkflowDagResponse:
+        runtime = RuntimeOptions()
         return self.update_workflow_dag_with_options(request, runtime)
 
     async def update_workflow_dag_async(
         self,
-        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
-    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
-        """
-        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
-        
-        @param request: UpdateWorkflowDagRequest
-        @return: UpdateWorkflowDagResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateWorkflowDagRequest,
+    ) -> main_models.UpdateWorkflowDagResponse:
+        runtime = RuntimeOptions()
         return await self.update_workflow_dag_with_options_async(request, runtime)

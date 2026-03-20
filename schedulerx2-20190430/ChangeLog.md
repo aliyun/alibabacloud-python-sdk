@@ -1,3 +1,11 @@
+2026-03-20 Version: 2.2.1
+- Update API ListJobs: add request parameters PageNum.
+- Update API ListJobs: add request parameters PageSize.
+- Update API ListJobs: add response parameters Body.Data.PageNumber.
+- Update API ListJobs: add response parameters Body.Data.PageSize.
+- Update API ListJobs: add response parameters Body.Data.Total.
+
+
 2025-12-16 Version: 2.2.0
 - Support API CreateSchedulerxCalendar.
 - Support API CreateSchedulerxNotificationPolicy.
