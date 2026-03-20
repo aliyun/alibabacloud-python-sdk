@@ -40,35 +40,70 @@ class Instance(DaraModel):
         total_processes: int = None,
         zone: str = None,
     ):
+        # The current hourly price of the spot instance.
         self.current_amount = current_amount
         self.detached = detached
+        # The IP address of the instance in the user-created VPC.
         self.external_ip = external_ip
+        # The port number of the instance in the user-created VPC.
         self.external_instance_port = external_instance_port
+        # The IP address of the host where the instance resides.
         self.host_ip = host_ip
+        # The name of the host where the instance resides.
         self.host_name = host_name
+        # The internal IP address of the instance.
         self.inner_ip = inner_ip
+        # The instance name.
         self.instance_name = instance_name
+        # The network port of the instance.
         self.instance_port = instance_port
+        # The instance specification.
         self.instance_type = instance_type
         self.is_latest = is_latest
         self.is_replica = is_replica
+        # Indicates whether the instance is a spot instance.
         self.is_spot = is_spot
+        # Indicates whether the instance is isolated.
         self.isolated = isolated
+        # The last state of the instance.
         self.last_state = last_state
+        # The namespace of the instance.
         self.namespace = namespace
+        # The original hourly price of the spot instance before a discount is used.
         self.original_amount = original_amount
+        # The number of processes that have started for the instance.
         self.ready_processes = ready_processes
+        # The reason for which the instance is in the current state.
         self.reason = reason
         self.replica_name = replica_name
+        # The type of the resource group to which the instance belongs. Valid values: PublicResource and PrivateResource.
         self.resource_type = resource_type
+        # The number of times for which the instance is restarted.
         self.restart_count = restart_count
+        # The service role of the instance. Valid values: Queue, DataLoader, and Standard.
         self.role = role
+        # The time when the instance was started. This parameter is deprecated. StartTime is used instead.
         self.start_at = start_at
+        # The time when the instance was started.
         self.start_time = start_time
+        # The current state of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   Terminating
+        # *   Succeeded
+        # *   Unknown
+        # *   Failed
+        # *   Running
+        # *   Pending
         self.status = status
+        # The IP address of the host in the VPC.
         self.tenant_host_ip = tenant_host_ip
+        # The IP address of the instance in the VPC.
         self.tenant_instance_ip = tenant_instance_ip
+        # The total number of processes that the instance contains.
         self.total_processes = total_processes
+        # The zone to which the instance belongs.
         self.zone = zone
 
     def validate(self):

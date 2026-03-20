@@ -1574,6 +1574,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
+    def create_service_instance_token_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: main_models.CreateServiceInstanceTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceInstanceTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.action_type):
+            query['ActionType'] = request.action_type
+        if not DaraCore.is_null(request.worker_name):
+            query['WorkerName'] = request.worker_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceInstanceToken',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/instances/{DaraURL.percent_encode(instance_name)}/token',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceInstanceTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_instance_token_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: main_models.CreateServiceInstanceTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceInstanceTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.action_type):
+            query['ActionType'] = request.action_type
+        if not DaraCore.is_null(request.worker_name):
+            query['WorkerName'] = request.worker_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceInstanceToken',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/instances/{DaraURL.percent_encode(instance_name)}/token',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceInstanceTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_instance_token(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: main_models.CreateServiceInstanceTokenRequest,
+    ) -> main_models.CreateServiceInstanceTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_service_instance_token_with_options(cluster_id, service_name, instance_name, request, headers, runtime)
+
+    async def create_service_instance_token_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: main_models.CreateServiceInstanceTokenRequest,
+    ) -> main_models.CreateServiceInstanceTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_service_instance_token_with_options_async(cluster_id, service_name, instance_name, request, headers, runtime)
+
     def create_service_mirror_with_options(
         self,
         cluster_id: str,

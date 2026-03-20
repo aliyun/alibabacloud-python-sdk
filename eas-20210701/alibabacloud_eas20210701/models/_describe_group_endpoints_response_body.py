@@ -80,11 +80,29 @@ class DescribeGroupEndpointsResponseBodyEndpoints(DaraModel):
         path_type: str = None,
         port: int = None,
     ):
+        # The backend access ID, which varies based on the value of the EndpointType parameter.
+        # 
+        # *   If you set EndpointType to DefaultGateway, the value of this parameter is default.
+        # *   If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+        # *   If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+        # *   If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
         self.backend_id = backend_id
+        # The service endpoint type. Valid values:
+        # 
+        # *   DefaultGateway: the shared gateway.
+        # *   PrivateGateway: the dedicated gateway.
+        # *   Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+        # *   Nacos: Associate the service with the Nacos instance.
         self.endpoint_type = endpoint_type
+        # The full endpoint.
         self.internet_endpoints = internet_endpoints
+        # The full endpoint.
         self.intranet_endpoints = intranet_endpoints
+        # The path type. Valid values:
+        # 
+        # *   Group: the path of the service group.
         self.path_type = path_type
+        # The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
         self.port = port
 
     def validate(self):

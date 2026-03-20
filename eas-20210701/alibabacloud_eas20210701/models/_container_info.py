@@ -19,16 +19,53 @@ class ContainerInfo(DaraModel):
         ready: bool = None,
         restart_count: int = None,
     ):
+        # The reason why the container is in the current state.
         self.current_reaon = current_reaon
+        # The current state of the container. Valid values:
+        # 
+        # *   Waiting
+        # *   Running
+        # *   Terminated
         self.current_status = current_status
+        # The time when the container entered the current state.
         self.current_timestamp = current_timestamp
+        # The image.
         self.image = image
+        # The reason why the container is in the last state.
         self.last_reason = last_reason
+        # The last state of the container. Valid values:
+        # 
+        # *   Waiting
+        # *   Running
+        # *   Terminated
         self.last_status = last_status
+        # The time when the container entered the last state.
         self.last_timestamp = last_timestamp
+        # The container name.
         self.name = name
+        # The port number.
         self.port = port
+        # Indicates whether the container passed the health check.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.ready = ready
+        # The number of times the container restarted.
         self.restart_count = restart_count
 
     def validate(self):

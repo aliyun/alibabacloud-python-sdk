@@ -17,14 +17,28 @@ class Group(DaraModel):
         traffic_mode: str = None,
         update_time: str = None,
     ):
+        # The token that is used to access the service group.
         self.access_token = access_token
+        # The region where the service group resides.
         self.cluster_id = cluster_id
+        # The time when the service group was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The public endpoint of the service group.
         self.internet_endpoint = internet_endpoint
+        # The internal endpoint of the service group.
         self.intranet_endpoint = intranet_endpoint
+        # The name of the service group.
         self.name = name
+        # The queue service that is included in the service group.
         self.queue_service = queue_service
+        # The traffic mode.
+        # 
+        # Valid values:
+        # 
+        # *   auto: The traffic is automatically allocated based on the number of instances.
+        # *   customized: The traffic is allocated based on the custom weight.
         self.traffic_mode = traffic_mode
+        # The time when the service group was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

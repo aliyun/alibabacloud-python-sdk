@@ -61,6 +61,9 @@ from ._create_service_auto_scaler_response import CreateServiceAutoScalerRespons
 from ._create_service_cron_scaler_request import CreateServiceCronScalerRequest
 from ._create_service_cron_scaler_response_body import CreateServiceCronScalerResponseBody
 from ._create_service_cron_scaler_response import CreateServiceCronScalerResponse
+from ._create_service_instance_token_request import CreateServiceInstanceTokenRequest
+from ._create_service_instance_token_response_body import CreateServiceInstanceTokenResponseBody
+from ._create_service_instance_token_response import CreateServiceInstanceTokenResponse
 from ._create_service_mirror_request import CreateServiceMirrorRequest
 from ._create_service_mirror_response_body import CreateServiceMirrorResponseBody
 from ._create_service_mirror_response import CreateServiceMirrorResponse
@@ -419,6 +422,9 @@ __all__ = [
     CreateServiceCronScalerRequest,
     CreateServiceCronScalerResponseBody,
     CreateServiceCronScalerResponse,
+    CreateServiceInstanceTokenRequest,
+    CreateServiceInstanceTokenResponseBody,
+    CreateServiceInstanceTokenResponse,
     CreateServiceMirrorRequest,
     CreateServiceMirrorResponseBody,
     CreateServiceMirrorResponse,

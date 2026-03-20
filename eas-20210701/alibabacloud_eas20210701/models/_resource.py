@@ -33,28 +33,51 @@ class Resource(DaraModel):
         update_time: str = None,
         vendor: str = None,
     ):
+        # The information about the clusters.
         self.cluster_id = cluster_id
+        # The total number of CPU cores.
         self.cpu_count = cpu_count
         self.cpu_used = cpu_used
+        # The time when the instance was created.
         self.create_time = create_time
+        # The additional information.
         self.extra_data = extra_data
         self.features = features
+        # The total number of GPUs.
         self.gpu_count = gpu_count
         self.gpu_used = gpu_used
+        # The total number of instances. It is equal to the number of subscription instances plus the number of pay-as-you-go instances.
         self.instance_count = instance_count
         self.instance_max_allocatable_cpu = instance_max_allocatable_cpu
         self.instance_max_allocatable_gpu = instance_max_allocatable_gpu
         self.instance_max_allocatable_memory = instance_max_allocatable_memory
         self.memory = memory
         self.memory_used = memory_used
+        # The latest message about the resource group.
         self.message = message
+        # The number of pay-as-you-go instances.
         self.post_paid_instance_count = post_paid_instance_count
+        # The number of subscription instances.
         self.pre_paid_instance_count = pre_paid_instance_count
+        # The resource group ID.
         self.resource_id = resource_id
+        # The name of the resource group.
         self.resource_name = resource_name
+        # The type of the resource group. Valid values:
+        # 
+        # *   Dedicated: the dedicated resource group.
+        # *   SelfManaged: the self-managed resource group.
         self.resource_type = resource_type
+        # The status of the resource group.
         self.status = status
+        # The time when the instance was last updated.
         self.update_time = update_time
+        # The vendor of the resource group instances.
+        # 
+        # Valid values:
+        # 
+        # *   ECS
+        # *   BareMetal
         self.vendor = vendor
 
     def validate(self):

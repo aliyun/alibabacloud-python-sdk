@@ -20,17 +20,79 @@ class ResourceInstanceWorker(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The maximum number of CPU cores.
         self.cpu_limit = cpu_limit
+        # The number of CPU cores that you applied for.
         self.cpu_request = cpu_request
+        # The maximum number of GPUs.
         self.gpu_limit = gpu_limit
+        # The number of GPUs that you applied for.
         self.gpu_request = gpu_request
+        # The maximum memory size.
         self.memory_limit = memory_limit
+        # The memory size that you applied for.
         self.memory_rquest = memory_rquest
+        # The name of the service instance.
         self.name = name
+        # Indicates whether the instance worker is ready.
         self.ready = ready
+        # The number of times the instance worker restarted.
         self.restart_count = restart_count
+        # The service name.
         self.service_name = service_name
+        # The time when the instance worker started.
         self.start_time = start_time
+        # The instance state.
+        # 
+        # Valid values:
+        # 
+        # *   Terminating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Succeeded
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Unknown
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Failed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Pending
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):

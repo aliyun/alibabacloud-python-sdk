@@ -63,57 +63,131 @@ class Service(DaraModel):
         weight: int = None,
         workspace_id: str = None,
     ):
+        # The token that is used to access the service.
         self.access_token = access_token
+        # The application service configuration.
         self.app_config = app_config
+        # The name of the application service specification.
         self.app_spec_name = app_spec_name
+        # The application service type.
         self.app_type = app_type
+        # The application service version.
         self.app_version = app_version
         self.autoscaler_enabled = autoscaler_enabled
+        # The user ID (UID) of the Alibaba Cloud account that is used to create the service.
         self.caller_uid = caller_uid
+        # The number of CPU cores that you applied for each instance.
         self.cpu = cpu
+        # The time when the service was created. The time is displayed in the UTC RFC3339 format.
         self.create_time = create_time
         self.cronscaler_enabled = cronscaler_enabled
+        # The version of the model that is running.
         self.current_version = current_version
+        # The additional information about the service.
         self.extra_data = extra_data
         self.gpucore_percentage = gpucore_percentage
         self.gpumemory = gpumemory
+        # The ID of the dedicated gateway for the service. This parameter is available only for services that are associated with dedicated gateways.
         self.gateway = gateway
+        # The number of GPUs that you applied for each instance.
         self.gpu = gpu
+        # The data image of the service.
         self.image = image
         self.instance_count_in_resource = instance_count_in_resource
+        # The public endpoint of the service. This parameter is returned only in the DescribeService API operation.
         self.internet_endpoint = internet_endpoint
+        # The internal endpoint of the service. This parameter is returned only in the DescribeService API operation.
         self.intranet_endpoint = intranet_endpoint
+        # The labels.
         self.labels = labels
+        # The latest version of the service.
         self.latest_version = latest_version
+        # The memory size that you applied for each instance. Unit: MB.
         self.memory = memory
+        # The service summary.
         self.message = message
+        # The namespace in which the service resides.
         self.namespace = namespace
+        # The UID of the Alibaba Cloud account that is used to create the service.
         self.parent_uid = parent_uid
+        # The number of instances for the pending service.
         self.pending_instance = pending_instance
+        # The quota ID for the service. This parameter is available only for services deployed by using Lingjun resource quotas.
         self.quota_id = quota_id
+        # The reason for which the service is in the current state.
         self.reason = reason
+        # The region in which the service resides.
         self.region = region
+        # The request ID.
         self.request_id = request_id
+        # The resource group to which the service belongs.
         self.resource = resource
+        # The alias of the resource group to which the service belongs.
         self.resource_alias = resource_alias
         self.resource_burstable = resource_burstable
+        # The service role.
         self.role = role
+        # The additional attributes of the service role. This parameter is returned only in the DescribeService API operation.
         self.role_attrs = role_attrs
+        # The number of instances for the running service.
         self.running_instance = running_instance
+        # The security lock of the service.
+        # 
+        # Valid values:
+        # 
+        # *   all: forbids all operations.
+        # *   dangerous: forbids the operation of deleting or stopping the service.
+        # *   none: forbids no operations.
         self.safety_lock = safety_lock
+        # The public endpoint that is used in the asynchronization request of the service. This parameter is returned only in the DescribeService API operation.
         self.secondary_internet_endpoint = secondary_internet_endpoint
+        # The internal endpoint that is used in the asynchronization request of the service. This parameter is returned only in the DescribeService API operation.
         self.secondary_intranet_endpoint = secondary_intranet_endpoint
+        # The service configurations.
         self.service_config = service_config
+        # The group to which the service belongs.
         self.service_group = service_group
+        # The unique ID of the service.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The service ID. ServiceUid has the same meaning as ServiceId, and the values of the two parameters are the same.
         self.service_uid = service_uid
+        # The source from which the service deployment request is initiated.
         self.source = source
+        # The service status.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   Deploying
+        # *   Stopped
+        # *   Failed
+        # *   Updating
+        # *   Stopping
+        # *   Waiting
+        # *   HotUpdate
+        # *   Starting
+        # *   DeleteFailed
+        # *   Running
+        # *   Scaling
+        # *   Pending
+        # *   Deleting
         self.status = status
+        # The total number of instances for the service.
         self.total_instance = total_instance
+        # The traffic state.
+        # 
+        # Valid values:
+        # 
+        # *   standalone: independent traffic.
+        # *   grouping: grouped traffic.
         self.traffic_state = traffic_state
+        # The time when the service was updated. The time is displayed in the UTC RFC3339 format.
         self.update_time = update_time
+        # The weight of the service in canary release.
         self.weight = weight
+        # The ID of the workspace to which the service belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -459,7 +533,9 @@ class ServiceLabels(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
+        # The label key.
         self.label_key = label_key
+        # The label value.
         self.label_value = label_value
 
     def validate(self):
