@@ -11,6 +11,19 @@
 - Update API RunRCInstances: add request parameters NetworkOptions.
 
 
+2026-03-20 Version: 15.7.0
+- Support API AuthorizeBackupEncryption.
+- Support API CheckBackupEncryptionAuthorized.
+- Support API CheckRegionSupportBackupEncryption.
+- Support API DescribeVpcs.
+- Support API EnableBackupEncryption.
+- Support API ModifyRCDeploymentSetAttribute.
+- Update API DescribeRCInstanceTypes: add response parameters Body.InstanceTypes.InstanceType.$.JumboFrameSupport.
+- Update API ModifyDBInstanceSpec: add request parameters AllocateStrategy.
+- Update API ModifyRCInstanceAttribute: add request parameters EnableJumboFrame.
+- Update API RunRCInstances: add request parameters NetworkOptions.
+
+
 2026-03-09 Version: 15.6.0
 - Support API DescribeRCNetworkInterfaces.
 
