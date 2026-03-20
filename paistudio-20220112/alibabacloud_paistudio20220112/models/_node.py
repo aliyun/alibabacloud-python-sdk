@@ -25,6 +25,7 @@ class Node(DaraModel):
         gpumemory: str = None,
         gputype: str = None,
         gmt_create_time: str = None,
+        gmt_created_time: str = None,
         gmt_expired_time: str = None,
         gmt_modified_time: str = None,
         hyper_zone: str = None,
@@ -68,6 +69,7 @@ class Node(DaraModel):
         self.gpumemory = gpumemory
         self.gputype = gputype
         self.gmt_create_time = gmt_create_time
+        self.gmt_created_time = gmt_created_time
         self.gmt_expired_time = gmt_expired_time
         self.gmt_modified_time = gmt_modified_time
         self.hyper_zone = hyper_zone
@@ -157,6 +159,9 @@ class Node(DaraModel):
 
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
 
         if self.gmt_expired_time is not None:
             result['GmtExpiredTime'] = self.gmt_expired_time
@@ -292,6 +297,9 @@ class Node(DaraModel):
 
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
 
         if m.get('GmtExpiredTime') is not None:
             self.gmt_expired_time = m.get('GmtExpiredTime')
