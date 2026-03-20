@@ -33,6 +33,7 @@ class RunRCInstancesRequest(DaraModel):
         internet_max_bandwidth_out: int = None,
         io_optimized: str = None,
         key_pair_name: str = None,
+        network_options: main_models.RunRCInstancesRequestNetworkOptions = None,
         password: str = None,
         password_inherit: bool = None,
         period: int = None,
@@ -108,6 +109,7 @@ class RunRCInstancesRequest(DaraModel):
         self.io_optimized = io_optimized
         # The name of the AccessKey pair. You can specify only one name.
         self.key_pair_name = key_pair_name
+        self.network_options = network_options
         # The password of the account that is used to log on to the instance.
         self.password = password
         self.password_inherit = password_inherit
@@ -158,6 +160,8 @@ class RunRCInstancesRequest(DaraModel):
             for v1 in self.data_disk:
                  if v1:
                     v1.validate()
+        if self.network_options:
+            self.network_options.validate()
         if self.system_disk:
             self.system_disk.validate()
         if self.tag:
@@ -240,6 +244,9 @@ class RunRCInstancesRequest(DaraModel):
 
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+
+        if self.network_options is not None:
+            result['NetworkOptions'] = self.network_options.to_map()
 
         if self.password is not None:
             result['Password'] = self.password
@@ -379,6 +386,10 @@ class RunRCInstancesRequest(DaraModel):
 
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+
+        if m.get('NetworkOptions') is not None:
+            temp_model = main_models.RunRCInstancesRequestNetworkOptions()
+            self.network_options = temp_model.from_map(m.get('NetworkOptions'))
 
         if m.get('Password') is not None:
             self.password = m.get('Password')
@@ -523,6 +534,33 @@ class RunRCInstancesRequestSystemDisk(DaraModel):
 
         if m.get('Size') is not None:
             self.size = m.get('Size')
+
+        return self
+
+class RunRCInstancesRequestNetworkOptions(DaraModel):
+    def __init__(
+        self,
+        enable_jumbo_frame: bool = None,
+    ):
+        self.enable_jumbo_frame = enable_jumbo_frame
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_jumbo_frame is not None:
+            result['EnableJumboFrame'] = self.enable_jumbo_frame
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableJumboFrame') is not None:
+            self.enable_jumbo_frame = m.get('EnableJumboFrame')
 
         return self
 

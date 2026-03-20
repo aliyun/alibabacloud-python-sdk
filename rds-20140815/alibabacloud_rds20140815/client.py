@@ -917,6 +917,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.attach_whitelist_template_to_instance_with_options_async(request, runtime)
 
+    def authorize_backup_encryption_with_options(
+        self,
+        request: main_models.AuthorizeBackupEncryptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeBackupEncryptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeBackupEncryption',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeBackupEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def authorize_backup_encryption_with_options_async(
+        self,
+        request: main_models.AuthorizeBackupEncryptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeBackupEncryptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeBackupEncryption',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeBackupEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def authorize_backup_encryption(
+        self,
+        request: main_models.AuthorizeBackupEncryptionRequest,
+    ) -> main_models.AuthorizeBackupEncryptionResponse:
+        runtime = RuntimeOptions()
+        return self.authorize_backup_encryption_with_options(request, runtime)
+
+    async def authorize_backup_encryption_async(
+        self,
+        request: main_models.AuthorizeBackupEncryptionRequest,
+    ) -> main_models.AuthorizeBackupEncryptionResponse:
+        runtime = RuntimeOptions()
+        return await self.authorize_backup_encryption_with_options_async(request, runtime)
+
     def authorize_rcsecurity_group_permission_with_options(
         self,
         tmp_req: main_models.AuthorizeRCSecurityGroupPermissionRequest,
@@ -1260,6 +1334,80 @@ class Client(OpenApiClient):
     ) -> main_models.CheckAccountNameAvailableResponse:
         runtime = RuntimeOptions()
         return await self.check_account_name_available_with_options_async(request, runtime)
+
+    def check_backup_encryption_authorized_with_options(
+        self,
+        request: main_models.CheckBackupEncryptionAuthorizedRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckBackupEncryptionAuthorizedResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckBackupEncryptionAuthorized',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckBackupEncryptionAuthorizedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_backup_encryption_authorized_with_options_async(
+        self,
+        request: main_models.CheckBackupEncryptionAuthorizedRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckBackupEncryptionAuthorizedResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckBackupEncryptionAuthorized',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckBackupEncryptionAuthorizedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_backup_encryption_authorized(
+        self,
+        request: main_models.CheckBackupEncryptionAuthorizedRequest,
+    ) -> main_models.CheckBackupEncryptionAuthorizedResponse:
+        runtime = RuntimeOptions()
+        return self.check_backup_encryption_authorized_with_options(request, runtime)
+
+    async def check_backup_encryption_authorized_async(
+        self,
+        request: main_models.CheckBackupEncryptionAuthorizedRequest,
+    ) -> main_models.CheckBackupEncryptionAuthorizedResponse:
+        runtime = RuntimeOptions()
+        return await self.check_backup_encryption_authorized_with_options_async(request, runtime)
 
     def check_cloud_resource_authorized_with_options(
         self,
@@ -1738,6 +1886,84 @@ class Client(OpenApiClient):
     ) -> main_models.CheckRdsCustomInitResponse:
         runtime = RuntimeOptions()
         return await self.check_rds_custom_init_with_options_async(request, runtime)
+
+    def check_region_support_backup_encryption_with_options(
+        self,
+        request: main_models.CheckRegionSupportBackupEncryptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckRegionSupportBackupEncryptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceID'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckRegionSupportBackupEncryption',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckRegionSupportBackupEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_region_support_backup_encryption_with_options_async(
+        self,
+        request: main_models.CheckRegionSupportBackupEncryptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckRegionSupportBackupEncryptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceID'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckRegionSupportBackupEncryption',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckRegionSupportBackupEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_region_support_backup_encryption(
+        self,
+        request: main_models.CheckRegionSupportBackupEncryptionRequest,
+    ) -> main_models.CheckRegionSupportBackupEncryptionResponse:
+        runtime = RuntimeOptions()
+        return self.check_region_support_backup_encryption_with_options(request, runtime)
+
+    async def check_region_support_backup_encryption_async(
+        self,
+        request: main_models.CheckRegionSupportBackupEncryptionRequest,
+    ) -> main_models.CheckRegionSupportBackupEncryptionResponse:
+        runtime = RuntimeOptions()
+        return await self.check_region_support_backup_encryption_with_options_async(request, runtime)
 
     def check_service_linked_role_with_options(
         self,
@@ -24027,6 +24253,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
 
+    def describe_vpcs_with_options(
+        self,
+        request: main_models.DescribeVpcsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product):
+            query['Product'] = request.product
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcs',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpcs_with_options_async(
+        self,
+        request: main_models.DescribeVpcsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product):
+            query['Product'] = request.product
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcs',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpcs(
+        self,
+        request: main_models.DescribeVpcsRequest,
+    ) -> main_models.DescribeVpcsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vpcs_with_options(request, runtime)
+
+    async def describe_vpcs_async(
+        self,
+        request: main_models.DescribeVpcsRequest,
+    ) -> main_models.DescribeVpcsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vpcs_with_options_async(request, runtime)
+
     def describe_whitelist_template_with_options(
         self,
         request: main_models.DescribeWhitelistTemplateRequest,
@@ -24546,6 +24886,84 @@ class Client(OpenApiClient):
     ) -> main_models.DetachWhitelistTemplateToInstanceResponse:
         runtime = RuntimeOptions()
         return await self.detach_whitelist_template_to_instance_with_options_async(request, runtime)
+
+    def enable_backup_encryption_with_options(
+        self,
+        request: main_models.EnableBackupEncryptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableBackupEncryptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableBackupEncryption',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableBackupEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_backup_encryption_with_options_async(
+        self,
+        request: main_models.EnableBackupEncryptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableBackupEncryptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableBackupEncryption',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableBackupEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_backup_encryption(
+        self,
+        request: main_models.EnableBackupEncryptionRequest,
+    ) -> main_models.EnableBackupEncryptionResponse:
+        runtime = RuntimeOptions()
+        return self.enable_backup_encryption_with_options(request, runtime)
+
+    async def enable_backup_encryption_async(
+        self,
+        request: main_models.EnableBackupEncryptionRequest,
+    ) -> main_models.EnableBackupEncryptionResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_backup_encryption_with_options_async(request, runtime)
 
     def evaluate_local_extend_disk_with_options(
         self,
@@ -29554,6 +29972,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.serverless_configuration):
             request.serverless_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.serverless_configuration, 'ServerlessConfiguration', 'json')
         query = {}
+        if not DaraCore.is_null(request.allocate_strategy):
+            query['AllocateStrategy'] = request.allocate_strategy
         if not DaraCore.is_null(request.allow_major_version_upgrade):
             query['AllowMajorVersionUpgrade'] = request.allow_major_version_upgrade
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -29648,6 +30068,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.serverless_configuration):
             request.serverless_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.serverless_configuration, 'ServerlessConfiguration', 'json')
         query = {}
+        if not DaraCore.is_null(request.allocate_strategy):
+            query['AllocateStrategy'] = request.allocate_strategy
         if not DaraCore.is_null(request.allow_major_version_upgrade):
             query['AllowMajorVersionUpgrade'] = request.allow_major_version_upgrade
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -32065,6 +32487,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_parameter_timed_schedule_task_with_options_async(request, runtime)
 
+    def modify_rcdeployment_set_attribute_with_options(
+        self,
+        request: main_models.ModifyRCDeploymentSetAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRCDeploymentSetAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.deployment_set_name):
+            query['DeploymentSetName'] = request.deployment_set_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRCDeploymentSetAttribute',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRCDeploymentSetAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rcdeployment_set_attribute_with_options_async(
+        self,
+        request: main_models.ModifyRCDeploymentSetAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRCDeploymentSetAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.deployment_set_name):
+            query['DeploymentSetName'] = request.deployment_set_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRCDeploymentSetAttribute',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRCDeploymentSetAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rcdeployment_set_attribute(
+        self,
+        request: main_models.ModifyRCDeploymentSetAttributeRequest,
+    ) -> main_models.ModifyRCDeploymentSetAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_rcdeployment_set_attribute_with_options(request, runtime)
+
+    async def modify_rcdeployment_set_attribute_async(
+        self,
+        request: main_models.ModifyRCDeploymentSetAttributeRequest,
+    ) -> main_models.ModifyRCDeploymentSetAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_rcdeployment_set_attribute_with_options_async(request, runtime)
+
     def modify_rcdisk_attribute_with_options(
         self,
         request: main_models.ModifyRCDiskAttributeRequest,
@@ -32566,6 +33070,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.enable_jumbo_frame):
+            query['EnableJumboFrame'] = request.enable_jumbo_frame
         if not DaraCore.is_null(request.host_name):
             query['HostName'] = request.host_name
         if not DaraCore.is_null(request.instance_id):
@@ -32618,6 +33124,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.enable_jumbo_frame):
+            query['EnableJumboFrame'] = request.enable_jumbo_frame
         if not DaraCore.is_null(request.host_name):
             query['HostName'] = request.host_name
         if not DaraCore.is_null(request.instance_id):
@@ -37149,6 +37657,8 @@ class Client(OpenApiClient):
             request.create_ack_edge_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_ack_edge_param, 'CreateAckEdgeParam', 'json')
         if not DaraCore.is_null(tmp_req.data_disk):
             request.data_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
+        if not DaraCore.is_null(tmp_req.network_options):
+            request.network_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.network_options, 'NetworkOptions', 'json')
         if not DaraCore.is_null(tmp_req.security_group_ids):
             request.security_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
         if not DaraCore.is_null(tmp_req.system_disk):
@@ -37200,6 +37710,8 @@ class Client(OpenApiClient):
             query['IoOptimized'] = request.io_optimized
         if not DaraCore.is_null(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
+        if not DaraCore.is_null(request.network_options_shrink):
+            query['NetworkOptions'] = request.network_options_shrink
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
         if not DaraCore.is_null(request.password_inherit):
@@ -37271,6 +37783,8 @@ class Client(OpenApiClient):
             request.create_ack_edge_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_ack_edge_param, 'CreateAckEdgeParam', 'json')
         if not DaraCore.is_null(tmp_req.data_disk):
             request.data_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
+        if not DaraCore.is_null(tmp_req.network_options):
+            request.network_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.network_options, 'NetworkOptions', 'json')
         if not DaraCore.is_null(tmp_req.security_group_ids):
             request.security_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
         if not DaraCore.is_null(tmp_req.system_disk):
@@ -37322,6 +37836,8 @@ class Client(OpenApiClient):
             query['IoOptimized'] = request.io_optimized
         if not DaraCore.is_null(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
+        if not DaraCore.is_null(request.network_options_shrink):
+            query['NetworkOptions'] = request.network_options_shrink
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
         if not DaraCore.is_null(request.password_inherit):

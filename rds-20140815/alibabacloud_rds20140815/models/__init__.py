@@ -30,6 +30,9 @@ from ._attach_rcinstances_response import AttachRCInstancesResponse
 from ._attach_whitelist_template_to_instance_request import AttachWhitelistTemplateToInstanceRequest
 from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBody
 from ._attach_whitelist_template_to_instance_response import AttachWhitelistTemplateToInstanceResponse
+from ._authorize_backup_encryption_request import AuthorizeBackupEncryptionRequest
+from ._authorize_backup_encryption_response_body import AuthorizeBackupEncryptionResponseBody
+from ._authorize_backup_encryption_response import AuthorizeBackupEncryptionResponse
 from ._authorize_rcsecurity_group_permission_request import AuthorizeRCSecurityGroupPermissionRequest
 from ._authorize_rcsecurity_group_permission_shrink_request import AuthorizeRCSecurityGroupPermissionShrinkRequest
 from ._authorize_rcsecurity_group_permission_response_body import AuthorizeRCSecurityGroupPermissionResponseBody
@@ -43,6 +46,9 @@ from ._cancel_active_operation_tasks_response import CancelActiveOperationTasksR
 from ._check_account_name_available_request import CheckAccountNameAvailableRequest
 from ._check_account_name_available_response_body import CheckAccountNameAvailableResponseBody
 from ._check_account_name_available_response import CheckAccountNameAvailableResponse
+from ._check_backup_encryption_authorized_request import CheckBackupEncryptionAuthorizedRequest
+from ._check_backup_encryption_authorized_response_body import CheckBackupEncryptionAuthorizedResponseBody
+from ._check_backup_encryption_authorized_response import CheckBackupEncryptionAuthorizedResponse
 from ._check_cloud_resource_authorized_request import CheckCloudResourceAuthorizedRequest
 from ._check_cloud_resource_authorized_response_body import CheckCloudResourceAuthorizedResponseBody
 from ._check_cloud_resource_authorized_response import CheckCloudResourceAuthorizedResponse
@@ -58,6 +64,9 @@ from ._check_instance_exist_response import CheckInstanceExistResponse
 from ._check_rds_custom_init_request import CheckRdsCustomInitRequest
 from ._check_rds_custom_init_response_body import CheckRdsCustomInitResponseBody
 from ._check_rds_custom_init_response import CheckRdsCustomInitResponse
+from ._check_region_support_backup_encryption_request import CheckRegionSupportBackupEncryptionRequest
+from ._check_region_support_backup_encryption_response_body import CheckRegionSupportBackupEncryptionResponseBody
+from ._check_region_support_backup_encryption_response import CheckRegionSupportBackupEncryptionResponse
 from ._check_service_linked_role_request import CheckServiceLinkedRoleRequest
 from ._check_service_linked_role_response_body import CheckServiceLinkedRoleResponseBody
 from ._check_service_linked_role_response import CheckServiceLinkedRoleResponse
@@ -746,6 +755,9 @@ from ._describe_vswitch_list_response import DescribeVSwitchListResponse
 from ._describe_vswitches_request import DescribeVSwitchesRequest
 from ._describe_vswitches_response_body import DescribeVSwitchesResponseBody
 from ._describe_vswitches_response import DescribeVSwitchesResponse
+from ._describe_vpcs_request import DescribeVpcsRequest
+from ._describe_vpcs_response_body import DescribeVpcsResponseBody
+from ._describe_vpcs_response import DescribeVpcsResponse
 from ._describe_whitelist_template_request import DescribeWhitelistTemplateRequest
 from ._describe_whitelist_template_response_body import DescribeWhitelistTemplateResponseBody
 from ._describe_whitelist_template_response import DescribeWhitelistTemplateResponse
@@ -764,6 +776,9 @@ from ._detach_rcdisk_response import DetachRCDiskResponse
 from ._detach_whitelist_template_to_instance_request import DetachWhitelistTemplateToInstanceRequest
 from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBody
 from ._detach_whitelist_template_to_instance_response import DetachWhitelistTemplateToInstanceResponse
+from ._enable_backup_encryption_request import EnableBackupEncryptionRequest
+from ._enable_backup_encryption_response_body import EnableBackupEncryptionResponseBody
+from ._enable_backup_encryption_response import EnableBackupEncryptionResponse
 from ._evaluate_local_extend_disk_request import EvaluateLocalExtendDiskRequest
 from ._evaluate_local_extend_disk_response_body import EvaluateLocalExtendDiskResponseBody
 from ._evaluate_local_extend_disk_response import EvaluateLocalExtendDiskResponse
@@ -991,6 +1006,9 @@ from ._modify_parameter_group_response import ModifyParameterGroupResponse
 from ._modify_parameter_timed_schedule_task_request import ModifyParameterTimedScheduleTaskRequest
 from ._modify_parameter_timed_schedule_task_response_body import ModifyParameterTimedScheduleTaskResponseBody
 from ._modify_parameter_timed_schedule_task_response import ModifyParameterTimedScheduleTaskResponse
+from ._modify_rcdeployment_set_attribute_request import ModifyRCDeploymentSetAttributeRequest
+from ._modify_rcdeployment_set_attribute_response_body import ModifyRCDeploymentSetAttributeResponseBody
+from ._modify_rcdeployment_set_attribute_response import ModifyRCDeploymentSetAttributeResponse
 from ._modify_rcdisk_attribute_request import ModifyRCDiskAttributeRequest
 from ._modify_rcdisk_attribute_response_body import ModifyRCDiskAttributeResponseBody
 from ._modify_rcdisk_attribute_response import ModifyRCDiskAttributeResponse
@@ -1611,6 +1629,8 @@ from ._describe_upgrade_major_version_precheck_task_response_body import Describ
 from ._describe_upgrade_major_version_tasks_response_body import DescribeUpgradeMajorVersionTasksResponseBodyItems
 from ._describe_vswitch_list_response_body import DescribeVSwitchListResponseBodyVSwitches
 from ._describe_vswitches_response_body import DescribeVSwitchesResponseBodyVSwitchs
+from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcsVSwitchs
+from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcs
 from ._describe_whitelist_template_response_body import DescribeWhitelistTemplateResponseBodyDataTemplate
 from ._describe_whitelist_template_response_body import DescribeWhitelistTemplateResponseBodyData
 from ._describe_whitelist_template_linked_instance_response_body import DescribeWhitelistTemplateLinkedInstanceResponseBodyData
@@ -1652,6 +1672,7 @@ from ._run_rccommand_request import RunRCCommandRequestResourceTags
 from ._run_rccommand_request import RunRCCommandRequestTags
 from ._run_rcinstances_request import RunRCInstancesRequestCreateAckEdgeParam
 from ._run_rcinstances_request import RunRCInstancesRequestDataDisk
+from ._run_rcinstances_request import RunRCInstancesRequestNetworkOptions
 from ._run_rcinstances_request import RunRCInstancesRequestSystemDisk
 from ._run_rcinstances_request import RunRCInstancesRequestTag
 from ._run_rcinstances_shrink_request import RunRCInstancesShrinkRequestTag
@@ -1688,6 +1709,9 @@ __all__ = [
     AttachWhitelistTemplateToInstanceRequest,
     AttachWhitelistTemplateToInstanceResponseBody,
     AttachWhitelistTemplateToInstanceResponse,
+    AuthorizeBackupEncryptionRequest,
+    AuthorizeBackupEncryptionResponseBody,
+    AuthorizeBackupEncryptionResponse,
     AuthorizeRCSecurityGroupPermissionRequest,
     AuthorizeRCSecurityGroupPermissionShrinkRequest,
     AuthorizeRCSecurityGroupPermissionResponseBody,
@@ -1701,6 +1725,9 @@ __all__ = [
     CheckAccountNameAvailableRequest,
     CheckAccountNameAvailableResponseBody,
     CheckAccountNameAvailableResponse,
+    CheckBackupEncryptionAuthorizedRequest,
+    CheckBackupEncryptionAuthorizedResponseBody,
+    CheckBackupEncryptionAuthorizedResponse,
     CheckCloudResourceAuthorizedRequest,
     CheckCloudResourceAuthorizedResponseBody,
     CheckCloudResourceAuthorizedResponse,
@@ -1716,6 +1743,9 @@ __all__ = [
     CheckRdsCustomInitRequest,
     CheckRdsCustomInitResponseBody,
     CheckRdsCustomInitResponse,
+    CheckRegionSupportBackupEncryptionRequest,
+    CheckRegionSupportBackupEncryptionResponseBody,
+    CheckRegionSupportBackupEncryptionResponse,
     CheckServiceLinkedRoleRequest,
     CheckServiceLinkedRoleResponseBody,
     CheckServiceLinkedRoleResponse,
@@ -2404,6 +2434,9 @@ __all__ = [
     DescribeVSwitchesRequest,
     DescribeVSwitchesResponseBody,
     DescribeVSwitchesResponse,
+    DescribeVpcsRequest,
+    DescribeVpcsResponseBody,
+    DescribeVpcsResponse,
     DescribeWhitelistTemplateRequest,
     DescribeWhitelistTemplateResponseBody,
     DescribeWhitelistTemplateResponse,
@@ -2422,6 +2455,9 @@ __all__ = [
     DetachWhitelistTemplateToInstanceRequest,
     DetachWhitelistTemplateToInstanceResponseBody,
     DetachWhitelistTemplateToInstanceResponse,
+    EnableBackupEncryptionRequest,
+    EnableBackupEncryptionResponseBody,
+    EnableBackupEncryptionResponse,
     EvaluateLocalExtendDiskRequest,
     EvaluateLocalExtendDiskResponseBody,
     EvaluateLocalExtendDiskResponse,
@@ -2649,6 +2685,9 @@ __all__ = [
     ModifyParameterTimedScheduleTaskRequest,
     ModifyParameterTimedScheduleTaskResponseBody,
     ModifyParameterTimedScheduleTaskResponse,
+    ModifyRCDeploymentSetAttributeRequest,
+    ModifyRCDeploymentSetAttributeResponseBody,
+    ModifyRCDeploymentSetAttributeResponse,
     ModifyRCDiskAttributeRequest,
     ModifyRCDiskAttributeResponseBody,
     ModifyRCDiskAttributeResponse,
@@ -3269,6 +3308,8 @@ __all__ = [
     DescribeUpgradeMajorVersionTasksResponseBodyItems,
     DescribeVSwitchListResponseBodyVSwitches,
     DescribeVSwitchesResponseBodyVSwitchs,
+    DescribeVpcsResponseBodyVpcsVSwitchs,
+    DescribeVpcsResponseBodyVpcs,
     DescribeWhitelistTemplateResponseBodyDataTemplate,
     DescribeWhitelistTemplateResponseBodyData,
     DescribeWhitelistTemplateLinkedInstanceResponseBodyData,
@@ -3310,6 +3351,7 @@ __all__ = [
     RunRCCommandRequestTags,
     RunRCInstancesRequestCreateAckEdgeParam,
     RunRCInstancesRequestDataDisk,
+    RunRCInstancesRequestNetworkOptions,
     RunRCInstancesRequestSystemDisk,
     RunRCInstancesRequestTag,
     RunRCInstancesShrinkRequestTag,

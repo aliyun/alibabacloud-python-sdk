@@ -89,6 +89,7 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         disk_quantity: int = None,
         instance_type_family: str = None,
         instance_type_id: str = None,
+        jumbo_frame_support: bool = None,
         memory_size: int = None,
     ):
         # The maximum number of CPU cores.
@@ -98,6 +99,7 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         self.instance_type_family = instance_type_family
         # The instance type of the instance.
         self.instance_type_id = instance_type_id
+        self.jumbo_frame_support = jumbo_frame_support
         # The memory size of the instance type. Unit: GiB.
         self.memory_size = memory_size
 
@@ -121,6 +123,9 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         if self.instance_type_id is not None:
             result['InstanceTypeId'] = self.instance_type_id
 
+        if self.jumbo_frame_support is not None:
+            result['JumboFrameSupport'] = self.jumbo_frame_support
+
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
 
@@ -139,6 +144,9 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
 
         if m.get('InstanceTypeId') is not None:
             self.instance_type_id = m.get('InstanceTypeId')
+
+        if m.get('JumboFrameSupport') is not None:
+            self.jumbo_frame_support = m.get('JumboFrameSupport')
 
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')

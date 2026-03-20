@@ -33,6 +33,7 @@ class RunRCInstancesShrinkRequest(DaraModel):
         internet_max_bandwidth_out: int = None,
         io_optimized: str = None,
         key_pair_name: str = None,
+        network_options_shrink: str = None,
         password: str = None,
         password_inherit: bool = None,
         period: int = None,
@@ -108,6 +109,7 @@ class RunRCInstancesShrinkRequest(DaraModel):
         self.io_optimized = io_optimized
         # The name of the AccessKey pair. You can specify only one name.
         self.key_pair_name = key_pair_name
+        self.network_options_shrink = network_options_shrink
         # The password of the account that is used to log on to the instance.
         self.password = password
         self.password_inherit = password_inherit
@@ -230,6 +232,9 @@ class RunRCInstancesShrinkRequest(DaraModel):
 
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+
+        if self.network_options_shrink is not None:
+            result['NetworkOptions'] = self.network_options_shrink
 
         if self.password is not None:
             result['Password'] = self.password
@@ -365,6 +370,9 @@ class RunRCInstancesShrinkRequest(DaraModel):
 
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+
+        if m.get('NetworkOptions') is not None:
+            self.network_options_shrink = m.get('NetworkOptions')
 
         if m.get('Password') is not None:
             self.password = m.get('Password')

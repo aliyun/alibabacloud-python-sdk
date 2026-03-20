@@ -10,6 +10,7 @@ class ModifyRCInstanceAttributeRequest(DaraModel):
     def __init__(
         self,
         deletion_protection: bool = None,
+        enable_jumbo_frame: bool = None,
         host_name: str = None,
         instance_id: str = None,
         instance_ids: List[str] = None,
@@ -25,6 +26,7 @@ class ModifyRCInstanceAttributeRequest(DaraModel):
         # - **true**: enables the release protection feature.
         # - **false** (default): does not enable the release protection feature.
         self.deletion_protection = deletion_protection
+        self.enable_jumbo_frame = enable_jumbo_frame
         # The hostname of the instance.
         self.host_name = host_name
         # The instance ID.
@@ -57,6 +59,9 @@ class ModifyRCInstanceAttributeRequest(DaraModel):
             result = _map
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
+
+        if self.enable_jumbo_frame is not None:
+            result['EnableJumboFrame'] = self.enable_jumbo_frame
 
         if self.host_name is not None:
             result['HostName'] = self.host_name
@@ -91,6 +96,9 @@ class ModifyRCInstanceAttributeRequest(DaraModel):
         m = m or dict()
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
+
+        if m.get('EnableJumboFrame') is not None:
+            self.enable_jumbo_frame = m.get('EnableJumboFrame')
 
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')

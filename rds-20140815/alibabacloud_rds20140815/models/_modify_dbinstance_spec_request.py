@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class ModifyDBInstanceSpecRequest(DaraModel):
     def __init__(
         self,
+        allocate_strategy: str = None,
         allow_major_version_upgrade: bool = None,
         auto_use_coupon: bool = None,
         bursting_enabled: bool = None,
@@ -41,6 +42,7 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         zone_id: str = None,
         zone_id_slave_1: str = None,
     ):
+        self.allocate_strategy = allocate_strategy
         # Specifies whether to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance. For more information, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/127458.html). Valid values:
         # 
         # *   **true**
@@ -212,6 +214,9 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allocate_strategy is not None:
+            result['AllocateStrategy'] = self.allocate_strategy
+
         if self.allow_major_version_upgrade is not None:
             result['AllowMajorVersionUpgrade'] = self.allow_major_version_upgrade
 
@@ -312,6 +317,9 @@ class ModifyDBInstanceSpecRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllocateStrategy') is not None:
+            self.allocate_strategy = m.get('AllocateStrategy')
+
         if m.get('AllowMajorVersionUpgrade') is not None:
             self.allow_major_version_upgrade = m.get('AllowMajorVersionUpgrade')
 
