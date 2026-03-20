@@ -1,3 +1,7 @@
+2026-03-20 Version: 1.6.1
+- Update API CreateBroadcastVideoFromTemplate: add request parameters body.videoOptions.languageHints.
+
+
 2026-02-04 Version: 1.6.0
 - Support API CreateBroadcastAudio.
 - Support API ListBroadcastAudiosById.

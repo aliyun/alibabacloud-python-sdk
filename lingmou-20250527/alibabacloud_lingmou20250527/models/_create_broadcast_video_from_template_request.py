@@ -73,10 +73,12 @@ class CreateBroadcastVideoFromTemplateRequestVideoOptions(DaraModel):
     def __init__(
         self,
         fps: int = None,
+        language_hints: List[str] = None,
         resolution: str = None,
         watermark: bool = None,
     ):
         self.fps = fps
+        self.language_hints = language_hints
         self.resolution = resolution
         self.watermark = watermark
 
@@ -91,6 +93,9 @@ class CreateBroadcastVideoFromTemplateRequestVideoOptions(DaraModel):
         if self.fps is not None:
             result['fps'] = self.fps
 
+        if self.language_hints is not None:
+            result['languageHints'] = self.language_hints
+
         if self.resolution is not None:
             result['resolution'] = self.resolution
 
@@ -103,6 +108,9 @@ class CreateBroadcastVideoFromTemplateRequestVideoOptions(DaraModel):
         m = m or dict()
         if m.get('fps') is not None:
             self.fps = m.get('fps')
+
+        if m.get('languageHints') is not None:
+            self.language_hints = m.get('languageHints')
 
         if m.get('resolution') is not None:
             self.resolution = m.get('resolution')
