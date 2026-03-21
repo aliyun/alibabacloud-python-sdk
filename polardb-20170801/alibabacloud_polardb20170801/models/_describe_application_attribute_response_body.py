@@ -20,10 +20,13 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         endpoints: List[main_models.DescribeApplicationAttributeResponseBodyEndpoints] = None,
         expire_time: str = None,
         expired: bool = None,
+        is_latest_version: bool = None,
+        latest_version: str = None,
         lock_mode: str = None,
         maintain_end_time: str = None,
         maintain_start_time: str = None,
         mem_application_attribute: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute = None,
+        minor_version: str = None,
         pay_type: str = None,
         polar_fsinstance_id: str = None,
         region_id: str = None,
@@ -48,10 +51,13 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.endpoints = endpoints
         self.expire_time = expire_time
         self.expired = expired
+        self.is_latest_version = is_latest_version
+        self.latest_version = latest_version
         self.lock_mode = lock_mode
         self.maintain_end_time = maintain_end_time
         self.maintain_start_time = maintain_start_time
         self.mem_application_attribute = mem_application_attribute
+        self.minor_version = minor_version
         self.pay_type = pay_type
         self.polar_fsinstance_id = polar_fsinstance_id
         self.region_id = region_id
@@ -127,6 +133,12 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.expired is not None:
             result['Expired'] = self.expired
 
+        if self.is_latest_version is not None:
+            result['IsLatestVersion'] = self.is_latest_version
+
+        if self.latest_version is not None:
+            result['LatestVersion'] = self.latest_version
+
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
 
@@ -138,6 +150,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.mem_application_attribute is not None:
             result['MemApplicationAttribute'] = self.mem_application_attribute.to_map()
+
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -222,6 +237,12 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
 
+        if m.get('IsLatestVersion') is not None:
+            self.is_latest_version = m.get('IsLatestVersion')
+
+        if m.get('LatestVersion') is not None:
+            self.latest_version = m.get('LatestVersion')
+
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
 
@@ -234,6 +255,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('MemApplicationAttribute') is not None:
             temp_model = main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute()
             self.mem_application_attribute = temp_model.from_map(m.get('MemApplicationAttribute'))
+
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
