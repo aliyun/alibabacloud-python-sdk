@@ -391,13 +391,19 @@ from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPol
 from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfo
+from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBodyTasksChildTasks
+from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBodyTasks
 from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBodyData
 from ._recover_app_response_body import RecoverAppResponseBodyData
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
+from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
+from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._send_file_response_body import SendFileResponseBodyData
 from ._set_adb_secure_response_body import SetAdbSecureResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_instance_image_response_body import UpdateInstanceImageResponseBodyTasksChildTasks
+from ._update_instance_image_response_body import UpdateInstanceImageResponseBodyTasks
 
 __all__ = [
     DataImageRegionDistributeMapValue,
@@ -789,11 +795,17 @@ __all__ = [
     ModifyPolicyGroupRequestWatermark,
     ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
     ModifySystemPropertyTemplateRequestSystemPropertyInfo,
+    RebootAndroidInstancesInGroupResponseBodyTasksChildTasks,
+    RebootAndroidInstancesInGroupResponseBodyTasks,
     RecoverAndroidInstanceResponseBodyData,
     RecoverAppResponseBodyData,
     RecoveryFileResponseBodyData,
+    ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
+    ResetAndroidInstancesInGroupResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
     SendFileResponseBodyData,
     SetAdbSecureResponseBodyData,
-    TagResourcesRequestTag
+    TagResourcesRequestTag,
+    UpdateInstanceImageResponseBodyTasksChildTasks,
+    UpdateInstanceImageResponseBodyTasks
 ]
