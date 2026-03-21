@@ -4,6 +4,12 @@
 - Update API UpdateInstanceImage: add response parameters Body.Tasks.
 
 
+2026-03-21 Version: 4.21.4
+- Update API RebootAndroidInstancesInGroup: add response parameters Body.Tasks.
+- Update API ResetAndroidInstancesInGroup: add response parameters Body.Tasks.
+- Update API UpdateInstanceImage: add response parameters Body.Tasks.
+
+
 2026-03-15 Version: 4.21.3
 - Update API BatchGetAcpConnectionTicket: add request parameters Ports.
 - Update API CreateAndroidInstanceGroup: add request parameters PaidCallBackUrl.
