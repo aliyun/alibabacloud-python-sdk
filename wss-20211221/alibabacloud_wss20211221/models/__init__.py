@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_multi_order_request import CreateMultiOrderRequest
+from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequest
+from ._create_multi_order_response_body import CreateMultiOrderResponseBody
+from ._create_multi_order_response import CreateMultiOrderResponse
+from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBody
+from ._describe_delivery_address_response import DescribeDeliveryAddressResponse
+from ._describe_multi_price_request import DescribeMultiPriceRequest
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBody
+from ._describe_multi_price_response import DescribeMultiPriceResponse
+from ._describe_package_deductions_request import DescribePackageDeductionsRequest
+from ._describe_package_deductions_response_body import DescribePackageDeductionsResponseBody
+from ._describe_package_deductions_response import DescribePackageDeductionsResponse
+from ._modify_instance_properties_request import ModifyInstancePropertiesRequest
+from ._modify_instance_properties_response_body import ModifyInstancePropertiesResponseBody
+from ._modify_instance_properties_response import ModifyInstancePropertiesResponse
+from ._create_multi_order_request import CreateMultiOrderRequestOrderItemsComponents
+from ._create_multi_order_request import CreateMultiOrderRequestOrderItems
+from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItemsComponents
+from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItems
+from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesArea
+from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesCity
+from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesProvince
+from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesTown
+from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddresses
+from ._describe_multi_price_request import DescribeMultiPriceRequestOrderItemsComponents
+from ._describe_multi_price_request import DescribeMultiPriceRequestOrderItems
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPricePromotions
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPrice
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoRules
+from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfo
+from ._describe_package_deductions_response_body import DescribePackageDeductionsResponseBodyDeductions
+
+__all__ = [
+    CreateMultiOrderRequest,
+    CreateMultiOrderShrinkRequest,
+    CreateMultiOrderResponseBody,
+    CreateMultiOrderResponse,
+    DescribeDeliveryAddressResponseBody,
+    DescribeDeliveryAddressResponse,
+    DescribeMultiPriceRequest,
+    DescribeMultiPriceResponseBody,
+    DescribeMultiPriceResponse,
+    DescribePackageDeductionsRequest,
+    DescribePackageDeductionsResponseBody,
+    DescribePackageDeductionsResponse,
+    ModifyInstancePropertiesRequest,
+    ModifyInstancePropertiesResponseBody,
+    ModifyInstancePropertiesResponse,
+    CreateMultiOrderRequestOrderItemsComponents,
+    CreateMultiOrderRequestOrderItems,
+    CreateMultiOrderShrinkRequestOrderItemsComponents,
+    CreateMultiOrderShrinkRequestOrderItems,
+    DescribeDeliveryAddressResponseBodyAddressesArea,
+    DescribeDeliveryAddressResponseBodyAddressesCity,
+    DescribeDeliveryAddressResponseBodyAddressesProvince,
+    DescribeDeliveryAddressResponseBodyAddressesTown,
+    DescribeDeliveryAddressResponseBodyAddresses,
+    DescribeMultiPriceRequestOrderItemsComponents,
+    DescribeMultiPriceRequestOrderItems,
+    DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails,
+    DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail,
+    DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails,
+    DescribeMultiPriceResponseBodyPriceInfoPricePromotions,
+    DescribeMultiPriceResponseBodyPriceInfoPrice,
+    DescribeMultiPriceResponseBodyPriceInfoRules,
+    DescribeMultiPriceResponseBodyPriceInfo,
+    DescribePackageDeductionsResponseBodyDeductions
+]
