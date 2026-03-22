@@ -10,6 +10,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         aidbcluster_id: str = None,
         application_type: str = None,
         architecture: str = None,
+        auto_allocate_public_eip: bool = None,
         auto_create_polar_fs: bool = None,
         auto_renew: bool = None,
         auto_use_coupon: bool = None,
@@ -41,6 +42,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.application_type = application_type
         # This parameter is required.
         self.architecture = architecture
+        self.auto_allocate_public_eip = auto_allocate_public_eip
         self.auto_create_polar_fs = auto_create_polar_fs
         self.auto_renew = auto_renew
         self.auto_use_coupon = auto_use_coupon
@@ -83,6 +85,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.architecture is not None:
             result['Architecture'] = self.architecture
+
+        if self.auto_allocate_public_eip is not None:
+            result['AutoAllocatePublicEip'] = self.auto_allocate_public_eip
 
         if self.auto_create_polar_fs is not None:
             result['AutoCreatePolarFs'] = self.auto_create_polar_fs
@@ -171,6 +176,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('Architecture') is not None:
             self.architecture = m.get('Architecture')
+
+        if m.get('AutoAllocatePublicEip') is not None:
+            self.auto_allocate_public_eip = m.get('AutoAllocatePublicEip')
 
         if m.get('AutoCreatePolarFs') is not None:
             self.auto_create_polar_fs = m.get('AutoCreatePolarFs')

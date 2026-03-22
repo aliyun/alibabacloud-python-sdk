@@ -1,3 +1,7 @@
+2026-03-22 Version: 6.7.4
+- Update API CreateApplication: add request parameters AutoAllocatePublicEip.
+
+
 2026-03-21 Version: 6.7.3
 - Update API DescribeApplicationAttribute: add response parameters Body.IsLatestVersion.
 - Update API DescribeApplicationAttribute: add response parameters Body.LatestVersion.
