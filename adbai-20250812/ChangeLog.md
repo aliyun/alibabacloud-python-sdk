@@ -1,3 +1,7 @@
+2026-03-23 Version: 1.5.0
+- Support API DeleteAgentPlatform.
+
+
 2026-02-16 Version: 1.4.0
 - Support API LockEmbodiedAIPlatform.
 - Support API UnlockEmbodiedAIPlatform.

@@ -10,6 +10,9 @@ from ._create_embodied_aiplatform_request import CreateEmbodiedAIPlatformRequest
 from ._create_embodied_aiplatform_shrink_request import CreateEmbodiedAIPlatformShrinkRequest
 from ._create_embodied_aiplatform_response_body import CreateEmbodiedAIPlatformResponseBody
 from ._create_embodied_aiplatform_response import CreateEmbodiedAIPlatformResponse
+from ._delete_agent_platform_request import DeleteAgentPlatformRequest
+from ._delete_agent_platform_response_body import DeleteAgentPlatformResponseBody
+from ._delete_agent_platform_response import DeleteAgentPlatformResponse
 from ._delete_embodied_aiplatform_request import DeleteEmbodiedAIPlatformRequest
 from ._delete_embodied_aiplatform_response_body import DeleteEmbodiedAIPlatformResponseBody
 from ._delete_embodied_aiplatform_response import DeleteEmbodiedAIPlatformResponse
@@ -50,6 +53,9 @@ __all__ = [
     CreateEmbodiedAIPlatformShrinkRequest,
     CreateEmbodiedAIPlatformResponseBody,
     CreateEmbodiedAIPlatformResponse,
+    DeleteAgentPlatformRequest,
+    DeleteAgentPlatformResponseBody,
+    DeleteAgentPlatformResponse,
     DeleteEmbodiedAIPlatformRequest,
     DeleteEmbodiedAIPlatformResponseBody,
     DeleteEmbodiedAIPlatformResponse,

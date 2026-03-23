@@ -224,6 +224,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_embodied_aiplatform_with_options_async(request, runtime)
 
+    def delete_agent_platform_with_options(
+        self,
+        request: main_models.DeleteAgentPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentPlatformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_platform_with_options_async(
+        self,
+        request: main_models.DeleteAgentPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentPlatformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent_platform(
+        self,
+        request: main_models.DeleteAgentPlatformRequest,
+    ) -> main_models.DeleteAgentPlatformResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agent_platform_with_options(request, runtime)
+
+    async def delete_agent_platform_async(
+        self,
+        request: main_models.DeleteAgentPlatformRequest,
+    ) -> main_models.DeleteAgentPlatformResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agent_platform_with_options_async(request, runtime)
+
     def delete_embodied_aiplatform_with_options(
         self,
         request: main_models.DeleteEmbodiedAIPlatformRequest,
