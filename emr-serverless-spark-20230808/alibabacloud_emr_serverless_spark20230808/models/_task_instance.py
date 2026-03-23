@@ -17,13 +17,21 @@ class TaskInstance(DaraModel):
         task_status: str = None,
         workspace_biz_id: str = None,
     ):
+        # The ID of the folder.
         self.biz_id = biz_id
+        # The ID of the user who creates the job.
         self.creator = creator
+        # The job run ID.
         self.fenix_run_id = fenix_run_id
+        # The time when the job was created.
         self.gmt_created = gmt_created
+        # The ID of the data development job.
         self.task_biz_id = task_biz_id
+        # The details of the job.
         self.task_info = task_info
+        # The job run ID.
         self.task_status = task_status
+        # The workspace ID.
         self.workspace_biz_id = workspace_biz_id
 
     def validate(self):

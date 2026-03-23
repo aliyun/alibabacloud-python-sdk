@@ -11,8 +11,11 @@ class Configuration(DaraModel):
         config_item_key: str = None,
         config_item_value: str = None,
     ):
+        # The name of the configuration file.
         self.config_file_name = config_file_name
+        # The name of the configuration item.
         self.config_item_key = config_item_key
+        # The value of the configuration item.
         self.config_item_value = config_item_value
 
     def validate(self):

@@ -4,16 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class Tag(DaraModel):
+class StartRayClusterRequest(DaraModel):
     def __init__(
         self,
-        key: str = None,
-        value: str = None,
+        client_token: str = None,
     ):
-        # The tag key.
-        self.key = key
-        # The tag value.
-        self.value = value
+        self.client_token = client_token
 
     def validate(self):
         pass
@@ -23,21 +19,15 @@ class Tag(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.key is not None:
-            result['key'] = self.key
-
-        if self.value is not None:
-            result['value'] = self.value
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
 
         return self
 

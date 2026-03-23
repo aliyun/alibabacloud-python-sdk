@@ -9,6 +9,8 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
         self,
         application_id: str = None,
         application_name: str = None,
+        end_time_shrink: str = None,
+        latest_sql_statement_statuses: str = None,
         max_results: int = None,
         min_duration: int = None,
         next_token: str = None,
@@ -16,11 +18,14 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
         resource_queue_id: str = None,
         sort: str = None,
         start_time_shrink: str = None,
+        states: str = None,
     ):
         # The ID of the application that is submitted by using a Kyuubi gateway.
         self.application_id = application_id
         # The name of the Spark application that is submitted by using a Kyuubi gateway.
         self.application_name = application_name
+        self.end_time_shrink = end_time_shrink
+        self.latest_sql_statement_statuses = latest_sql_statement_statuses
         # The maximum number of entries to return.
         self.max_results = max_results
         self.min_duration = min_duration
@@ -31,6 +36,7 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
         self.sort = sort
         # The range of start time.
         self.start_time_shrink = start_time_shrink
+        self.states = states
 
     def validate(self):
         pass
@@ -45,6 +51,12 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
 
         if self.application_name is not None:
             result['applicationName'] = self.application_name
+
+        if self.end_time_shrink is not None:
+            result['endTime'] = self.end_time_shrink
+
+        if self.latest_sql_statement_statuses is not None:
+            result['latestSqlStatementStatuses'] = self.latest_sql_statement_statuses
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
@@ -67,6 +79,9 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
         if self.start_time_shrink is not None:
             result['startTime'] = self.start_time_shrink
 
+        if self.states is not None:
+            result['states'] = self.states
+
         return result
 
     def from_map(self, m: dict = None):
@@ -76,6 +91,12 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
 
         if m.get('applicationName') is not None:
             self.application_name = m.get('applicationName')
+
+        if m.get('endTime') is not None:
+            self.end_time_shrink = m.get('endTime')
+
+        if m.get('latestSqlStatementStatuses') is not None:
+            self.latest_sql_statement_statuses = m.get('latestSqlStatementStatuses')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
@@ -97,6 +118,9 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
 
         if m.get('startTime') is not None:
             self.start_time_shrink = m.get('startTime')
+
+        if m.get('states') is not None:
+            self.states = m.get('states')
 
         return self
 

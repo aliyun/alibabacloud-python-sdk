@@ -10,9 +10,9 @@ class TimeRange(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # 时间范围结束时间。
+        # The end time of the time range.
         self.end_time = end_time
-        # 时间范围开始时间。
+        # The start time of the time range.
         self.start_time = start_time
 
     def validate(self):

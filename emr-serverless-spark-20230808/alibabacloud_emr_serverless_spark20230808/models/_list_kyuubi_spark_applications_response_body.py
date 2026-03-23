@@ -90,6 +90,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         kyuubi_service_id: str = None,
         latest_sql_statement_status: str = None,
         mb_seconds: int = None,
+        priority: str = None,
         resource_queue_id: str = None,
         run_log: main_models.RunLog = None,
         start_time: str = None,
@@ -111,6 +112,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         self.latest_sql_statement_status = latest_sql_statement_status
         # The total amount of memory allocated to the job multiplied by the running duration (seconds).
         self.mb_seconds = mb_seconds
+        self.priority = priority
         # The name of the resource queue on which the Spark jobs run.
         self.resource_queue_id = resource_queue_id
         self.run_log = run_log
@@ -165,6 +167,9 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         if self.mb_seconds is not None:
             result['mbSeconds'] = self.mb_seconds
 
+        if self.priority is not None:
+            result['priority'] = self.priority
+
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
 
@@ -215,6 +220,9 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
 
         if m.get('mbSeconds') is not None:
             self.mb_seconds = m.get('mbSeconds')
+
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
 
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')

@@ -12,9 +12,13 @@ class RunLog(DaraModel):
         driver_std_out: str = None,
         driver_syslog: str = None,
     ):
+        # The path of the startup file.
         self.driver_startup = driver_startup
+        # The path of the stderr file.
         self.driver_std_error = driver_std_error
+        # The path of the stdout file.
         self.driver_std_out = driver_std_out
+        # The path of the syslog file.
         self.driver_syslog = driver_syslog
 
     def validate(self):

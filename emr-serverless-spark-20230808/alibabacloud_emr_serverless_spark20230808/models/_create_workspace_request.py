@@ -18,11 +18,13 @@ class CreateWorkspaceRequest(DaraModel):
         dlf_catalog_id: str = None,
         dlf_type: str = None,
         duration: str = None,
+        gpu_spec: List[str] = None,
         oss_bucket: str = None,
         payment_duration_unit: str = None,
         payment_type: str = None,
         ram_role_name: str = None,
         release_type: str = None,
+        resource_group_id: str = None,
         resource_spec: main_models.CreateWorkspaceRequestResourceSpec = None,
         tag: List[main_models.CreateWorkspaceRequestTag] = None,
         workspace_name: str = None,
@@ -44,6 +46,7 @@ class CreateWorkspaceRequest(DaraModel):
         self.dlf_type = dlf_type
         # The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
         self.duration = duration
+        self.gpu_spec = gpu_spec
         # The name of the Object Storage Service (OSS) bucket.
         self.oss_bucket = oss_bucket
         # The unit of the subscription duration.
@@ -57,6 +60,7 @@ class CreateWorkspaceRequest(DaraModel):
         self.ram_role_name = ram_role_name
         # The type of the version.
         self.release_type = release_type
+        self.resource_group_id = resource_group_id
         # The resource specifications.
         self.resource_spec = resource_spec
         self.tag = tag
@@ -102,6 +106,9 @@ class CreateWorkspaceRequest(DaraModel):
         if self.duration is not None:
             result['duration'] = self.duration
 
+        if self.gpu_spec is not None:
+            result['gpuSpec'] = self.gpu_spec
+
         if self.oss_bucket is not None:
             result['ossBucket'] = self.oss_bucket
 
@@ -116,6 +123,9 @@ class CreateWorkspaceRequest(DaraModel):
 
         if self.release_type is not None:
             result['releaseType'] = self.release_type
+
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.resource_spec is not None:
             result['resourceSpec'] = self.resource_spec.to_map()
@@ -159,6 +169,9 @@ class CreateWorkspaceRequest(DaraModel):
         if m.get('duration') is not None:
             self.duration = m.get('duration')
 
+        if m.get('gpuSpec') is not None:
+            self.gpu_spec = m.get('gpuSpec')
+
         if m.get('ossBucket') is not None:
             self.oss_bucket = m.get('ossBucket')
 
@@ -173,6 +186,9 @@ class CreateWorkspaceRequest(DaraModel):
 
         if m.get('releaseType') is not None:
             self.release_type = m.get('releaseType')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('resourceSpec') is not None:
             temp_model = main_models.CreateWorkspaceRequestResourceSpec()
@@ -231,9 +247,11 @@ class CreateWorkspaceRequestResourceSpec(DaraModel):
     def __init__(
         self,
         cu: str = None,
+        gpu: int = None,
     ):
         # The maximum resource quota for a workspace.
         self.cu = cu
+        self.gpu = gpu
 
     def validate(self):
         pass
@@ -246,12 +264,18 @@ class CreateWorkspaceRequestResourceSpec(DaraModel):
         if self.cu is not None:
             result['cu'] = self.cu
 
+        if self.gpu is not None:
+            result['gpu'] = self.gpu
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cu') is not None:
             self.cu = m.get('cu')
+
+        if m.get('gpu') is not None:
+            self.gpu = m.get('gpu')
 
         return self
 

@@ -30,33 +30,59 @@ class Template(DaraModel):
         template_type: str = None,
     ):
         self.biz_id = biz_id
+        # The user ID of the job creator.
+        # 
         # This parameter is required.
         self.creator = creator
+        # The displayed version of the Spark engine.
         self.display_spark_version = display_spark_version
+        # Indicates whether Fusion engine is enabled for acceleration.
         self.fusion = fusion
+        # The creation time.
+        # 
         # This parameter is required.
         self.gmt_created = gmt_created
+        # The time when the job was last modified.
+        # 
         # This parameter is required.
         self.gmt_modified = gmt_modified
         self.is_default = is_default
+        # The ID of the user who last modified the job.
+        # 
         # This parameter is required.
         self.modifier = modifier
         self.name = name
+        # The SparkConf objects.
         self.spark_conf = spark_conf
+        # The number of driver cores of the Spark job.
+        # 
         # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
+        # The size of driver memory of the Spark job.
+        # 
         # This parameter is required.
         self.spark_driver_memory = spark_driver_memory
+        # The number of executor cores of the Spark job.
+        # 
         # This parameter is required.
         self.spark_executor_cores = spark_executor_cores
+        # The size of executor memory of the Spark job.
+        # 
         # This parameter is required.
         self.spark_executor_memory = spark_executor_memory
+        # The level of the Spark log.
+        # 
         # This parameter is required.
         self.spark_log_level = spark_log_level
+        # The path where the operational logs of the Spark job are stored.
+        # 
         # This parameter is required.
         self.spark_log_path = spark_log_path
+        # The engine version of Spark.
+        # 
         # This parameter is required.
         self.spark_version = spark_version
+        # The template type.
         self.template_type = template_type
 
     def validate(self):

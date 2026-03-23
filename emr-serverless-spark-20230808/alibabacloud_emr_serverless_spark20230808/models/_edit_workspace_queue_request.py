@@ -11,12 +11,14 @@ class EditWorkspaceQueueRequest(DaraModel):
     def __init__(
         self,
         environments: List[str] = None,
+        gpu_spec: List[str] = None,
         resource_spec: main_models.EditWorkspaceQueueRequestResourceSpec = None,
         workspace_id: str = None,
         workspace_queue_name: str = None,
         region_id: str = None,
     ):
         self.environments = environments
+        self.gpu_spec = gpu_spec
         self.resource_spec = resource_spec
         self.workspace_id = workspace_id
         self.workspace_queue_name = workspace_queue_name
@@ -33,6 +35,9 @@ class EditWorkspaceQueueRequest(DaraModel):
             result = _map
         if self.environments is not None:
             result['environments'] = self.environments
+
+        if self.gpu_spec is not None:
+            result['gpuSpec'] = self.gpu_spec
 
         if self.resource_spec is not None:
             result['resourceSpec'] = self.resource_spec.to_map()
@@ -53,6 +58,9 @@ class EditWorkspaceQueueRequest(DaraModel):
         if m.get('environments') is not None:
             self.environments = m.get('environments')
 
+        if m.get('gpuSpec') is not None:
+            self.gpu_spec = m.get('gpuSpec')
+
         if m.get('resourceSpec') is not None:
             temp_model = main_models.EditWorkspaceQueueRequestResourceSpec()
             self.resource_spec = temp_model.from_map(m.get('resourceSpec'))
@@ -72,9 +80,11 @@ class EditWorkspaceQueueRequestResourceSpec(DaraModel):
     def __init__(
         self,
         cu: int = None,
+        gpu: int = None,
         max_cu: int = None,
     ):
         self.cu = cu
+        self.gpu = gpu
         self.max_cu = max_cu
 
     def validate(self):
@@ -88,6 +98,9 @@ class EditWorkspaceQueueRequestResourceSpec(DaraModel):
         if self.cu is not None:
             result['cu'] = self.cu
 
+        if self.gpu is not None:
+            result['gpu'] = self.gpu
+
         if self.max_cu is not None:
             result['maxCu'] = self.max_cu
 
@@ -97,6 +110,9 @@ class EditWorkspaceQueueRequestResourceSpec(DaraModel):
         m = m or dict()
         if m.get('cu') is not None:
             self.cu = m.get('cu')
+
+        if m.get('gpu') is not None:
+            self.gpu = m.get('gpu')
 
         if m.get('maxCu') is not None:
             self.max_cu = m.get('maxCu')

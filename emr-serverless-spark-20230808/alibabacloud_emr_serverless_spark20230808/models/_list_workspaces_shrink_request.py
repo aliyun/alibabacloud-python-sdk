@@ -11,6 +11,7 @@ class ListWorkspacesShrinkRequest(DaraModel):
         name: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         state: str = None,
         tag_shrink: str = None,
     ):
@@ -22,6 +23,7 @@ class ListWorkspacesShrinkRequest(DaraModel):
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The state of the workspace.
         self.state = state
         self.tag_shrink = tag_shrink
@@ -46,6 +48,9 @@ class ListWorkspacesShrinkRequest(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.state is not None:
             result['state'] = self.state
 
@@ -67,6 +72,9 @@ class ListWorkspacesShrinkRequest(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('state') is not None:
             self.state = m.get('state')

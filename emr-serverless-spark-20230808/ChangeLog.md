@@ -1,3 +1,31 @@
+2026-03-23 Version: 1.19.2
+- Update API CreateRayCluster: add request parameters body.volumeIds.
+- Update API CreateRayCluster: add request parameters body.headSpec.gpuSpec.
+- Update API CreateRayCluster: add request parameters body.workerSpec.$.gpuSpec.
+- Update API CreateWorkspace: add request parameters body.gpuSpec.
+- Update API CreateWorkspace: add request parameters body.resourceSpec.gpu.
+- Update API EditWorkspaceQueue: add request parameters body.gpuSpec.
+- Update API EditWorkspaceQueue: add request parameters body.resourceSpec.gpu.
+- Update API GetJobRun: add response parameters Body.jobRun.priority.
+- Update API GetRayCluster: add response parameters Body.jobUrlInner.
+- Update API GetRayCluster: add response parameters Body.volumeIds.
+- Update API GetRayCluster: add response parameters Body.headSpec.gpuSpec.
+- Update API GetRayCluster: add response parameters Body.workerSpec.$.gpuSpec.
+- Update API ListJobRuns: add response parameters Body.jobRuns.$.priority.
+- Update API ListKyuubiSparkApplications: add request parameters endTime.
+- Update API ListKyuubiSparkApplications: add request parameters latestSqlStatementStatuses.
+- Update API ListKyuubiSparkApplications: add request parameters states.
+- Update API ListKyuubiSparkApplications: add response parameters Body.applications.$.priority.
+- Update API ListRayCluster: add response parameters Body.rayClusters.$.headSpec.gpuSpec.
+- Update API ListRayCluster: add response parameters Body.rayClusters.$.workerSpec.$.gpuSpec.
+- Update API ListWorkspaceQueues: add response parameters Body.queues.$.gpuSpec.
+- Update API ListWorkspaceQueues: add response parameters Body.queues.$.queueCategory.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.gpuSpec.
+- Update API UpdateRayCluster: add request parameters body.volumeIds.
+- Update API UpdateRayCluster: add request parameters body.headSpec.gpuSpec.
+- Update API UpdateRayCluster: add request parameters body.workerSpec.$.gpuSpec.
+
+
 2026-01-19 Version: 1.19.0
 - Support API ListLivyComputeSessions.
 

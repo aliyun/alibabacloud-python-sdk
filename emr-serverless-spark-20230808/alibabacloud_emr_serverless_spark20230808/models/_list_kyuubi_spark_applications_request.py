@@ -12,6 +12,8 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         self,
         application_id: str = None,
         application_name: str = None,
+        end_time: main_models.ListKyuubiSparkApplicationsRequestEndTime = None,
+        latest_sql_statement_statuses: str = None,
         max_results: int = None,
         min_duration: int = None,
         next_token: str = None,
@@ -19,11 +21,14 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         resource_queue_id: str = None,
         sort: str = None,
         start_time: main_models.ListKyuubiSparkApplicationsRequestStartTime = None,
+        states: str = None,
     ):
         # The ID of the application that is submitted by using a Kyuubi gateway.
         self.application_id = application_id
         # The name of the Spark application that is submitted by using a Kyuubi gateway.
         self.application_name = application_name
+        self.end_time = end_time
+        self.latest_sql_statement_statuses = latest_sql_statement_statuses
         # The maximum number of entries to return.
         self.max_results = max_results
         self.min_duration = min_duration
@@ -34,8 +39,11 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         self.sort = sort
         # The range of start time.
         self.start_time = start_time
+        self.states = states
 
     def validate(self):
+        if self.end_time:
+            self.end_time.validate()
         if self.start_time:
             self.start_time.validate()
 
@@ -49,6 +57,12 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
 
         if self.application_name is not None:
             result['applicationName'] = self.application_name
+
+        if self.end_time is not None:
+            result['endTime'] = self.end_time.to_map()
+
+        if self.latest_sql_statement_statuses is not None:
+            result['latestSqlStatementStatuses'] = self.latest_sql_statement_statuses
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
@@ -71,6 +85,9 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         if self.start_time is not None:
             result['startTime'] = self.start_time.to_map()
 
+        if self.states is not None:
+            result['states'] = self.states
+
         return result
 
     def from_map(self, m: dict = None):
@@ -80,6 +97,13 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
 
         if m.get('applicationName') is not None:
             self.application_name = m.get('applicationName')
+
+        if m.get('endTime') is not None:
+            temp_model = main_models.ListKyuubiSparkApplicationsRequestEndTime()
+            self.end_time = temp_model.from_map(m.get('endTime'))
+
+        if m.get('latestSqlStatementStatuses') is not None:
+            self.latest_sql_statement_statuses = m.get('latestSqlStatementStatuses')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
@@ -103,6 +127,9 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
             temp_model = main_models.ListKyuubiSparkApplicationsRequestStartTime()
             self.start_time = temp_model.from_map(m.get('startTime'))
 
+        if m.get('states') is not None:
+            self.states = m.get('states')
+
         return self
 
 class ListKyuubiSparkApplicationsRequestStartTime(DaraModel):
@@ -114,6 +141,41 @@ class ListKyuubiSparkApplicationsRequestStartTime(DaraModel):
         # The end of the start time range.
         self.end_time = end_time
         # The beginning of the start time range.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+
+        return self
+
+class ListKyuubiSparkApplicationsRequestEndTime(DaraModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
         self.start_time = start_time
 
     def validate(self):

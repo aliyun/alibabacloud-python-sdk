@@ -86,11 +86,13 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         create_time: int = None,
         creator: str = None,
         environments: List[str] = None,
+        gpu_spec: List[str] = None,
         max_resource: str = None,
         min_resource: str = None,
         payment_type: str = None,
         preheat: bool = None,
         properties: str = None,
+        queue_category: str = None,
         queue_name: str = None,
         queue_scope: str = None,
         queue_status: str = None,
@@ -107,6 +109,7 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         self.creator = creator
         # The environment types of the queue.
         self.environments = environments
+        self.gpu_spec = gpu_spec
         # The maximum capacity of resources that can be used in the queue.
         self.max_resource = max_resource
         # The minimum capacity of resources that can be used in the queue.
@@ -119,6 +122,7 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         self.preheat = preheat
         # The queue label.
         self.properties = properties
+        self.queue_category = queue_category
         # The name of the queue.
         self.queue_name = queue_name
         # The queue architecture.
@@ -162,6 +166,9 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         if self.environments is not None:
             result['environments'] = self.environments
 
+        if self.gpu_spec is not None:
+            result['gpuSpec'] = self.gpu_spec
+
         if self.max_resource is not None:
             result['maxResource'] = self.max_resource
 
@@ -176,6 +183,9 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
 
         if self.properties is not None:
             result['properties'] = self.properties
+
+        if self.queue_category is not None:
+            result['queueCategory'] = self.queue_category
 
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
@@ -217,6 +227,9 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         if m.get('environments') is not None:
             self.environments = m.get('environments')
 
+        if m.get('gpuSpec') is not None:
+            self.gpu_spec = m.get('gpuSpec')
+
         if m.get('maxResource') is not None:
             self.max_resource = m.get('maxResource')
 
@@ -231,6 +244,9 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
 
         if m.get('properties') is not None:
             self.properties = m.get('properties')
+
+        if m.get('queueCategory') is not None:
+            self.queue_category = m.get('queueCategory')
 
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')

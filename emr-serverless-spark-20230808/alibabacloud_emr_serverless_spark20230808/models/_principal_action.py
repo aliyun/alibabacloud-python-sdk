@@ -10,7 +10,9 @@ class PrincipalAction(DaraModel):
         action_arn: str = None,
         principal_arn: str = None,
     ):
+        # The ARN of the behavior.
         self.action_arn = action_arn
+        # The ARN of the principal.
         self.principal_arn = principal_arn
 
     def validate(self):

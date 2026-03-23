@@ -14,6 +14,7 @@ class ListWorkspacesRequest(DaraModel):
         name: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         state: str = None,
         tag: List[main_models.ListWorkspacesRequestTag] = None,
     ):
@@ -25,6 +26,7 @@ class ListWorkspacesRequest(DaraModel):
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The state of the workspace.
         self.state = state
         self.tag = tag
@@ -52,6 +54,9 @@ class ListWorkspacesRequest(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.state is not None:
             result['state'] = self.state
 
@@ -75,6 +80,9 @@ class ListWorkspacesRequest(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('state') is not None:
             self.state = m.get('state')

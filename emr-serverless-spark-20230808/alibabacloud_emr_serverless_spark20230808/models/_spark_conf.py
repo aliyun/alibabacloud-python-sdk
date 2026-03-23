@@ -10,8 +10,12 @@ class SparkConf(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the SparkConf object.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the SparkConf object.
+        # 
         # This parameter is required.
         self.value = value
 

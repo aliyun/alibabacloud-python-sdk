@@ -45,6 +45,9 @@ from ._create_process_definition_with_schedule_request import CreateProcessDefin
 from ._create_process_definition_with_schedule_shrink_request import CreateProcessDefinitionWithScheduleShrinkRequest
 from ._create_process_definition_with_schedule_response_body import CreateProcessDefinitionWithScheduleResponseBody
 from ._create_process_definition_with_schedule_response import CreateProcessDefinitionWithScheduleResponse
+from ._create_ray_cluster_request import CreateRayClusterRequest
+from ._create_ray_cluster_response_body import CreateRayClusterResponseBody
+from ._create_ray_cluster_response import CreateRayClusterResponse
 from ._create_session_cluster_request import CreateSessionClusterRequest
 from ._create_session_cluster_response_body import CreateSessionClusterResponseBody
 from ._create_session_cluster_response import CreateSessionClusterResponse
@@ -65,6 +68,8 @@ from ._delete_livy_compute_response import DeleteLivyComputeResponse
 from ._delete_livy_compute_token_request import DeleteLivyComputeTokenRequest
 from ._delete_livy_compute_token_response_body import DeleteLivyComputeTokenResponseBody
 from ._delete_livy_compute_token_response import DeleteLivyComputeTokenResponse
+from ._delete_ray_cluster_response_body import DeleteRayClusterResponseBody
+from ._delete_ray_cluster_response import DeleteRayClusterResponse
 from ._edit_workspace_queue_request import EditWorkspaceQueueRequest
 from ._edit_workspace_queue_response_body import EditWorkspaceQueueResponseBody
 from ._edit_workspace_queue_response import EditWorkspaceQueueResponse
@@ -91,6 +96,8 @@ from ._get_livy_compute_response import GetLivyComputeResponse
 from ._get_livy_compute_token_request import GetLivyComputeTokenRequest
 from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBody
 from ._get_livy_compute_token_response import GetLivyComputeTokenResponse
+from ._get_ray_cluster_response_body import GetRayClusterResponseBody
+from ._get_ray_cluster_response import GetRayClusterResponse
 from ._get_run_configuration_request import GetRunConfigurationRequest
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBody
 from ._get_run_configuration_response import GetRunConfigurationResponse
@@ -140,6 +147,9 @@ from ._list_log_contents_response import ListLogContentsResponse
 from ._list_members_request import ListMembersRequest
 from ._list_members_response_body import ListMembersResponseBody
 from ._list_members_response import ListMembersResponse
+from ._list_ray_cluster_request import ListRayClusterRequest
+from ._list_ray_cluster_response_body import ListRayClusterResponseBody
+from ._list_ray_cluster_response import ListRayClusterResponse
 from ._list_release_versions_request import ListReleaseVersionsRequest
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBody
 from ._list_release_versions_response import ListReleaseVersionsResponse
@@ -173,6 +183,9 @@ from ._start_livy_compute_response import StartLivyComputeResponse
 from ._start_process_instance_request import StartProcessInstanceRequest
 from ._start_process_instance_response_body import StartProcessInstanceResponseBody
 from ._start_process_instance_response import StartProcessInstanceResponse
+from ._start_ray_cluster_request import StartRayClusterRequest
+from ._start_ray_cluster_response_body import StartRayClusterResponseBody
+from ._start_ray_cluster_response import StartRayClusterResponse
 from ._start_session_cluster_request import StartSessionClusterRequest
 from ._start_session_cluster_response_body import StartSessionClusterResponseBody
 from ._start_session_cluster_response import StartSessionClusterResponse
@@ -181,6 +194,9 @@ from ._stop_kyuubi_service_response import StopKyuubiServiceResponse
 from ._stop_livy_compute_request import StopLivyComputeRequest
 from ._stop_livy_compute_response_body import StopLivyComputeResponseBody
 from ._stop_livy_compute_response import StopLivyComputeResponse
+from ._stop_ray_cluster_request import StopRayClusterRequest
+from ._stop_ray_cluster_response_body import StopRayClusterResponseBody
+from ._stop_ray_cluster_response import StopRayClusterResponse
 from ._stop_session_cluster_request import StopSessionClusterRequest
 from ._stop_session_cluster_response_body import StopSessionClusterResponseBody
 from ._stop_session_cluster_response import StopSessionClusterResponse
@@ -200,6 +216,9 @@ from ._update_process_definition_with_schedule_request import UpdateProcessDefin
 from ._update_process_definition_with_schedule_shrink_request import UpdateProcessDefinitionWithScheduleShrinkRequest
 from ._update_process_definition_with_schedule_response_body import UpdateProcessDefinitionWithScheduleResponseBody
 from ._update_process_definition_with_schedule_response import UpdateProcessDefinitionWithScheduleResponse
+from ._update_ray_cluster_request import UpdateRayClusterRequest
+from ._update_ray_cluster_response_body import UpdateRayClusterResponseBody
+from ._update_ray_cluster_response import UpdateRayClusterResponse
 from ._configuration_overrides import ConfigurationOverridesConfigurations
 from ._job_driver import JobDriverSparkSubmit
 from ._sql_output import SqlOutputRows
@@ -223,6 +242,8 @@ from ._create_process_definition_with_schedule_request import CreateProcessDefin
 from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson
 from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskRelationJson
 from ._create_process_definition_with_schedule_response_body import CreateProcessDefinitionWithScheduleResponseBodyData
+from ._create_ray_cluster_request import CreateRayClusterRequestHeadSpec
+from ._create_ray_cluster_request import CreateRayClusterRequestWorkerSpec
 from ._create_session_cluster_request import CreateSessionClusterRequestApplicationConfigs
 from ._create_session_cluster_request import CreateSessionClusterRequestAutoStartConfiguration
 from ._create_session_cluster_request import CreateSessionClusterRequestAutoStopConfiguration
@@ -242,6 +263,9 @@ from ._get_livy_compute_response_body import GetLivyComputeResponseBodyDataAutoS
 from ._get_livy_compute_response_body import GetLivyComputeResponseBodyData
 from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration
 from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBodyData
+from ._get_ray_cluster_response_body import GetRayClusterResponseBodyHeadSpec
+from ._get_ray_cluster_response_body import GetRayClusterResponseBodyInstances
+from ._get_ray_cluster_response_body import GetRayClusterResponseBodyWorkerSpec
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationLogConfig
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfiguration
@@ -262,6 +286,7 @@ from ._list_job_runs_response_body import ListJobRunsResponseBodyJobRunsStateCha
 from ._list_job_runs_response_body import ListJobRunsResponseBodyJobRuns
 from ._list_kyuubi_services_response_body import ListKyuubiServicesResponseBodyDataKyuubiServices
 from ._list_kyuubi_services_response_body import ListKyuubiServicesResponseBodyData
+from ._list_kyuubi_spark_applications_request import ListKyuubiSparkApplicationsRequestEndTime
 from ._list_kyuubi_spark_applications_request import ListKyuubiSparkApplicationsRequestStartTime
 from ._list_kyuubi_spark_applications_response_body import ListKyuubiSparkApplicationsResponseBodyApplications
 from ._list_kyuubi_token_response_body import ListKyuubiTokenResponseBodyDataTokens
@@ -277,6 +302,9 @@ from ._list_members_response_body import ListMembersResponseBodyMembersActions
 from ._list_members_response_body import ListMembersResponseBodyMembersRolesActions
 from ._list_members_response_body import ListMembersResponseBodyMembersRoles
 from ._list_members_response_body import ListMembersResponseBodyMembers
+from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClustersHeadSpec
+from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClustersWorkerSpec
+from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClusters
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBodyReleaseVersions
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersApplicationConfigs
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStartConfiguration
@@ -305,6 +333,8 @@ from ._update_process_definition_with_schedule_request import UpdateProcessDefin
 from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson
 from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskRelationJson
 from ._update_process_definition_with_schedule_response_body import UpdateProcessDefinitionWithScheduleResponseBodyData
+from ._update_ray_cluster_request import UpdateRayClusterRequestHeadSpec
+from ._update_ray_cluster_request import UpdateRayClusterRequestWorkerSpec
 
 __all__ = [
     Artifact,
@@ -350,6 +380,9 @@ __all__ = [
     CreateProcessDefinitionWithScheduleShrinkRequest,
     CreateProcessDefinitionWithScheduleResponseBody,
     CreateProcessDefinitionWithScheduleResponse,
+    CreateRayClusterRequest,
+    CreateRayClusterResponseBody,
+    CreateRayClusterResponse,
     CreateSessionClusterRequest,
     CreateSessionClusterResponseBody,
     CreateSessionClusterResponse,
@@ -370,6 +403,8 @@ __all__ = [
     DeleteLivyComputeTokenRequest,
     DeleteLivyComputeTokenResponseBody,
     DeleteLivyComputeTokenResponse,
+    DeleteRayClusterResponseBody,
+    DeleteRayClusterResponse,
     EditWorkspaceQueueRequest,
     EditWorkspaceQueueResponseBody,
     EditWorkspaceQueueResponse,
@@ -396,6 +431,8 @@ __all__ = [
     GetLivyComputeTokenRequest,
     GetLivyComputeTokenResponseBody,
     GetLivyComputeTokenResponse,
+    GetRayClusterResponseBody,
+    GetRayClusterResponse,
     GetRunConfigurationRequest,
     GetRunConfigurationResponseBody,
     GetRunConfigurationResponse,
@@ -445,6 +482,9 @@ __all__ = [
     ListMembersRequest,
     ListMembersResponseBody,
     ListMembersResponse,
+    ListRayClusterRequest,
+    ListRayClusterResponseBody,
+    ListRayClusterResponse,
     ListReleaseVersionsRequest,
     ListReleaseVersionsResponseBody,
     ListReleaseVersionsResponse,
@@ -478,6 +518,9 @@ __all__ = [
     StartProcessInstanceRequest,
     StartProcessInstanceResponseBody,
     StartProcessInstanceResponse,
+    StartRayClusterRequest,
+    StartRayClusterResponseBody,
+    StartRayClusterResponse,
     StartSessionClusterRequest,
     StartSessionClusterResponseBody,
     StartSessionClusterResponse,
@@ -486,6 +529,9 @@ __all__ = [
     StopLivyComputeRequest,
     StopLivyComputeResponseBody,
     StopLivyComputeResponse,
+    StopRayClusterRequest,
+    StopRayClusterResponseBody,
+    StopRayClusterResponse,
     StopSessionClusterRequest,
     StopSessionClusterResponseBody,
     StopSessionClusterResponse,
@@ -505,6 +551,9 @@ __all__ = [
     UpdateProcessDefinitionWithScheduleShrinkRequest,
     UpdateProcessDefinitionWithScheduleResponseBody,
     UpdateProcessDefinitionWithScheduleResponse,
+    UpdateRayClusterRequest,
+    UpdateRayClusterResponseBody,
+    UpdateRayClusterResponse,
     ConfigurationOverridesConfigurations,
     JobDriverSparkSubmit,
     SqlOutputRows,
@@ -528,6 +577,8 @@ __all__ = [
     CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson,
     CreateProcessDefinitionWithScheduleRequestTaskRelationJson,
     CreateProcessDefinitionWithScheduleResponseBodyData,
+    CreateRayClusterRequestHeadSpec,
+    CreateRayClusterRequestWorkerSpec,
     CreateSessionClusterRequestApplicationConfigs,
     CreateSessionClusterRequestAutoStartConfiguration,
     CreateSessionClusterRequestAutoStopConfiguration,
@@ -547,6 +598,9 @@ __all__ = [
     GetLivyComputeResponseBodyData,
     GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration,
     GetLivyComputeTokenResponseBodyData,
+    GetRayClusterResponseBodyHeadSpec,
+    GetRayClusterResponseBodyInstances,
+    GetRayClusterResponseBodyWorkerSpec,
     GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs,
     GetRunConfigurationResponseBodyRunConfigurationLogConfig,
     GetRunConfigurationResponseBodyRunConfiguration,
@@ -567,6 +621,7 @@ __all__ = [
     ListJobRunsResponseBodyJobRuns,
     ListKyuubiServicesResponseBodyDataKyuubiServices,
     ListKyuubiServicesResponseBodyData,
+    ListKyuubiSparkApplicationsRequestEndTime,
     ListKyuubiSparkApplicationsRequestStartTime,
     ListKyuubiSparkApplicationsResponseBodyApplications,
     ListKyuubiTokenResponseBodyDataTokens,
@@ -582,6 +637,9 @@ __all__ = [
     ListMembersResponseBodyMembersRolesActions,
     ListMembersResponseBodyMembersRoles,
     ListMembersResponseBodyMembers,
+    ListRayClusterResponseBodyRayClustersHeadSpec,
+    ListRayClusterResponseBodyRayClustersWorkerSpec,
+    ListRayClusterResponseBodyRayClusters,
     ListReleaseVersionsResponseBodyReleaseVersions,
     ListSessionClustersResponseBodySessionClustersApplicationConfigs,
     ListSessionClustersResponseBodySessionClustersAutoStartConfiguration,
@@ -609,5 +667,7 @@ __all__ = [
     UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams,
     UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson,
     UpdateProcessDefinitionWithScheduleRequestTaskRelationJson,
-    UpdateProcessDefinitionWithScheduleResponseBodyData
+    UpdateProcessDefinitionWithScheduleResponseBodyData,
+    UpdateRayClusterRequestHeadSpec,
+    UpdateRayClusterRequestWorkerSpec
 ]

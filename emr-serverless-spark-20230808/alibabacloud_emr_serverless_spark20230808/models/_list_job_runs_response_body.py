@@ -95,6 +95,7 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         log: main_models.RunLog = None,
         mb_seconds: int = None,
         name: str = None,
+        priority: str = None,
         release_version: str = None,
         resource_queue_id: str = None,
         state: str = None,
@@ -137,6 +138,7 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         self.mb_seconds = mb_seconds
         # The job name.
         self.name = name
+        self.priority = priority
         # The version of Spark on which the jobs run.
         self.release_version = release_version
         self.resource_queue_id = resource_queue_id
@@ -213,6 +215,9 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.priority is not None:
+            result['priority'] = self.priority
+
         if self.release_version is not None:
             result['releaseVersion'] = self.release_version
 
@@ -287,6 +292,9 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
 
         if m.get('releaseVersion') is not None:
             self.release_version = m.get('releaseVersion')

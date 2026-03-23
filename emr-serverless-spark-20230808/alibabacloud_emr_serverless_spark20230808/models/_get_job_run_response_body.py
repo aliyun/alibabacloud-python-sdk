@@ -61,6 +61,7 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         log: main_models.RunLog = None,
         name: str = None,
         notebook_access_url: str = None,
+        priority: str = None,
         release_version: str = None,
         resource_owner_id: str = None,
         resource_queue_id: str = None,
@@ -98,6 +99,7 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         # The job name.
         self.name = name
         self.notebook_access_url = notebook_access_url
+        self.priority = priority
         # The version of the Spark engine on which the job runs.
         self.release_version = release_version
         # The ID of the user who created the job.
@@ -172,6 +174,9 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         if self.notebook_access_url is not None:
             result['notebookAccessUrl'] = self.notebook_access_url
 
+        if self.priority is not None:
+            result['priority'] = self.priority
+
         if self.release_version is not None:
             result['releaseVersion'] = self.release_version
 
@@ -243,6 +248,9 @@ class GetJobRunResponseBodyJobRun(DaraModel):
 
         if m.get('notebookAccessUrl') is not None:
             self.notebook_access_url = m.get('notebookAccessUrl')
+
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
 
         if m.get('releaseVersion') is not None:
             self.release_version = m.get('releaseVersion')

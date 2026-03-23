@@ -4,16 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class Tag(DaraModel):
+class StopRayClusterResponseBody(DaraModel):
     def __init__(
         self,
-        key: str = None,
-        value: str = None,
+        request_id: str = None,
     ):
-        # The tag key.
-        self.key = key
-        # The tag value.
-        self.value = value
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -23,21 +19,15 @@ class Tag(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.key is not None:
-            result['key'] = self.key
-
-        if self.value is not None:
-            result['value'] = self.value
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
 
         return self
 

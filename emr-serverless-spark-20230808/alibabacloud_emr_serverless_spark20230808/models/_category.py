@@ -16,19 +16,34 @@ class Category(DaraModel):
         parent_biz_id: str = None,
         type: str = None,
     ):
+        # The folder ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The ID of the user who creates the folder.
+        # 
         # This parameter is required.
         self.creator = creator
+        # The time when the folder was created.
+        # 
         # This parameter is required.
         self.gmt_created = gmt_created
+        # The time when the folder was last updated.
+        # 
         # This parameter is required.
         self.gmt_modified = gmt_modified
+        # The ID of the user who last modifies the folder.
+        # 
         # This parameter is required.
         self.modifier = modifier
+        # The name of the folder.
+        # 
         # This parameter is required.
         self.name = name
+        # The parent folder ID.
         self.parent_biz_id = parent_biz_id
+        # The type of the folder.
+        # 
         # This parameter is required.
         self.type = type
 

@@ -91,12 +91,14 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         duration: int = None,
         end_time: int = None,
         fail_reason: str = None,
+        gpu_spec: List[str] = None,
         payment_duration_unit: str = None,
         payment_status: str = None,
         payment_type: str = None,
         pre_paid_quota: main_models.ListWorkspacesResponseBodyWorkspacesPrePaidQuota = None,
         region_id: str = None,
         release_type: str = None,
+        resource_group_id: str = None,
         resource_spec: str = None,
         state_change_reason: main_models.ListWorkspacesResponseBodyWorkspacesStateChangeReason = None,
         storage: str = None,
@@ -123,6 +125,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         self.end_time = end_time
         # The failure reason.
         self.fail_reason = fail_reason
+        self.gpu_spec = gpu_spec
         # The unit of the subscription duration.
         self.payment_duration_unit = payment_duration_unit
         # The status of the payment.
@@ -138,6 +141,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         self.region_id = region_id
         # The reason why the workspace is released.
         self.release_type = release_type
+        self.resource_group_id = resource_group_id
         # The resource specifications.
         self.resource_spec = resource_spec
         # The reason of the job status change.
@@ -194,6 +198,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         if self.fail_reason is not None:
             result['failReason'] = self.fail_reason
 
+        if self.gpu_spec is not None:
+            result['gpuSpec'] = self.gpu_spec
+
         if self.payment_duration_unit is not None:
             result['paymentDurationUnit'] = self.payment_duration_unit
 
@@ -211,6 +218,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if self.release_type is not None:
             result['releaseType'] = self.release_type
+
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.resource_spec is not None:
             result['resourceSpec'] = self.resource_spec
@@ -266,6 +276,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         if m.get('failReason') is not None:
             self.fail_reason = m.get('failReason')
 
+        if m.get('gpuSpec') is not None:
+            self.gpu_spec = m.get('gpuSpec')
+
         if m.get('paymentDurationUnit') is not None:
             self.payment_duration_unit = m.get('paymentDurationUnit')
 
@@ -284,6 +297,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if m.get('releaseType') is not None:
             self.release_type = m.get('releaseType')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('resourceSpec') is not None:
             self.resource_spec = m.get('resourceSpec')
