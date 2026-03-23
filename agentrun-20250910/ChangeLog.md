@@ -1,3 +1,11 @@
+2026-03-23 Version: 5.5.2
+- Update API ListCredentials: add request parameters workspaceId.
+- Update API ListCredentials: add request parameters workspaceIds.
+- Update API ListKnowledgeBases: add request parameters workspaceId.
+- Update API ListKnowledgeBases: add request parameters workspaceIds.
+- Update API ListTemplates: add request parameters workspaceIds.
+
+
 2026-03-16 Version: 5.5.1
 - Generated python 2025-09-10 for AgentRun.
 

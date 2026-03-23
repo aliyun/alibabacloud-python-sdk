@@ -15,6 +15,7 @@ class CreateCredentialInput(DaraModel):
         credential_source_type: str = None,
         description: str = None,
         enabled: bool = None,
+        workspace_id: str = None,
     ):
         # This parameter is required.
         self.credential_auth_type = credential_auth_type
@@ -26,6 +27,7 @@ class CreateCredentialInput(DaraModel):
         self.credential_source_type = credential_source_type
         self.description = description
         self.enabled = enabled
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.credential_public_config:
@@ -57,6 +59,9 @@ class CreateCredentialInput(DaraModel):
         if self.enabled is not None:
             result['enabled'] = self.enabled
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -82,6 +87,9 @@ class CreateCredentialInput(DaraModel):
 
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

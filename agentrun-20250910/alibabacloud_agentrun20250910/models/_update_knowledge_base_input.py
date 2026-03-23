@@ -13,11 +13,13 @@ class UpdateKnowledgeBaseInput(DaraModel):
         description: str = None,
         provider_settings: Dict[str, Any] = None,
         retrieve_settings: Dict[str, Any] = None,
+        workspace_id: str = None,
     ):
         self.credential_name = credential_name
         self.description = description
         self.provider_settings = provider_settings
         self.retrieve_settings = retrieve_settings
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -39,6 +41,9 @@ class UpdateKnowledgeBaseInput(DaraModel):
         if self.retrieve_settings is not None:
             result['retrieveSettings'] = self.retrieve_settings
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +59,9 @@ class UpdateKnowledgeBaseInput(DaraModel):
 
         if m.get('retrieveSettings') is not None:
             self.retrieve_settings = m.get('retrieveSettings')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

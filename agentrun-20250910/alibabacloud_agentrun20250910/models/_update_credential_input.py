@@ -12,11 +12,13 @@ class UpdateCredentialInput(DaraModel):
         credential_secret: str = None,
         description: str = None,
         enabled: bool = None,
+        workspace_id: str = None,
     ):
         self.credential_public_config = credential_public_config
         self.credential_secret = credential_secret
         self.description = description
         self.enabled = enabled
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.credential_public_config:
@@ -39,6 +41,9 @@ class UpdateCredentialInput(DaraModel):
         if self.enabled is not None:
             result['enabled'] = self.enabled
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +60,9 @@ class UpdateCredentialInput(DaraModel):
 
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

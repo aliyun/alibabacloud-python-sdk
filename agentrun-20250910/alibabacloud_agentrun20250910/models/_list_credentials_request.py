@@ -14,6 +14,8 @@ class ListCredentialsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         provider: str = None,
+        workspace_id: str = None,
+        workspace_ids: str = None,
     ):
         # credentialAuthType
         self.credential_auth_type = credential_auth_type
@@ -25,6 +27,8 @@ class ListCredentialsRequest(DaraModel):
         self.page_number = page_number
         self.page_size = page_size
         self.provider = provider
+        self.workspace_id = workspace_id
+        self.workspace_ids = workspace_ids
 
     def validate(self):
         pass
@@ -55,6 +59,12 @@ class ListCredentialsRequest(DaraModel):
         if self.provider is not None:
             result['provider'] = self.provider
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
+        if self.workspace_ids is not None:
+            result['workspaceIds'] = self.workspace_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -79,6 +89,12 @@ class ListCredentialsRequest(DaraModel):
 
         if m.get('provider') is not None:
             self.provider = m.get('provider')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+
+        if m.get('workspaceIds') is not None:
+            self.workspace_ids = m.get('workspaceIds')
 
         return self
 

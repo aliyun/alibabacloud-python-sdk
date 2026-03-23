@@ -16,6 +16,7 @@ class CredentialListItem(DaraModel):
         enabled: bool = None,
         related_resource_count: int = None,
         updated_at: str = None,
+        workspace_id: str = None,
     ):
         self.created_at = created_at
         self.credential_auth_type = credential_auth_type
@@ -26,6 +27,7 @@ class CredentialListItem(DaraModel):
         self.enabled = enabled
         self.related_resource_count = related_resource_count
         self.updated_at = updated_at
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -62,6 +64,9 @@ class CredentialListItem(DaraModel):
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -92,6 +97,9 @@ class CredentialListItem(DaraModel):
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 
