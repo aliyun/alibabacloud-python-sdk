@@ -10,7 +10,9 @@ class CreateInspectionTaskRequest(DaraModel):
         end_time: str = None,
         inspection_items: str = None,
         instance_ids: str = None,
+        region_id: str = None,
         report_language: str = None,
+        report_type: str = None,
         start_time: str = None,
     ):
         # The end time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. By default, the time range of the task is the latest 24 hours.
@@ -33,10 +35,10 @@ class CreateInspectionTaskRequest(DaraModel):
         # *   schema_object_analysis
         self.inspection_items = inspection_items
         # The instances covered by the task. Separates multiple instance IDs with commas (,).
-        # 
-        # This parameter is required.
         self.instance_ids = instance_ids
+        self.region_id = region_id
         self.report_language = report_language
+        self.report_type = report_type
         # The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. By default, the time range of the task is the latest 24 hours.
         self.start_time = start_time
 
@@ -57,8 +59,14 @@ class CreateInspectionTaskRequest(DaraModel):
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
         if self.report_language is not None:
             result['ReportLanguage'] = self.report_language
+
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -76,8 +84,14 @@ class CreateInspectionTaskRequest(DaraModel):
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
 
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
         if m.get('ReportLanguage') is not None:
             self.report_language = m.get('ReportLanguage')
+
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

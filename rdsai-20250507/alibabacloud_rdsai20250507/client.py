@@ -536,6 +536,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_custom_agent_with_options_async(request, runtime)
 
+    def create_edge_function_with_options(
+        self,
+        tmp_req: main_models.CreateEdgeFunctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEdgeFunctionResponse:
+        tmp_req.validate()
+        request = main_models.CreateEdgeFunctionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.code):
+            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
+        if not DaraCore.is_null(tmp_req.custom_config):
+            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
+        if not DaraCore.is_null(tmp_req.envs):
+            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.code_shrink):
+            query['Code'] = request.code_shrink
+        if not DaraCore.is_null(request.custom_config_shrink):
+            query['CustomConfig'] = request.custom_config_shrink
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.envs_shrink):
+            query['Envs'] = request.envs_shrink
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEdgeFunction',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEdgeFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_edge_function_with_options_async(
+        self,
+        tmp_req: main_models.CreateEdgeFunctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEdgeFunctionResponse:
+        tmp_req.validate()
+        request = main_models.CreateEdgeFunctionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.code):
+            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
+        if not DaraCore.is_null(tmp_req.custom_config):
+            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
+        if not DaraCore.is_null(tmp_req.envs):
+            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.code_shrink):
+            query['Code'] = request.code_shrink
+        if not DaraCore.is_null(request.custom_config_shrink):
+            query['CustomConfig'] = request.custom_config_shrink
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.envs_shrink):
+            query['Envs'] = request.envs_shrink
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEdgeFunction',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEdgeFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_edge_function(
+        self,
+        request: main_models.CreateEdgeFunctionRequest,
+    ) -> main_models.CreateEdgeFunctionResponse:
+        runtime = RuntimeOptions()
+        return self.create_edge_function_with_options(request, runtime)
+
+    async def create_edge_function_async(
+        self,
+        request: main_models.CreateEdgeFunctionRequest,
+    ) -> main_models.CreateEdgeFunctionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_edge_function_with_options_async(request, runtime)
+
     def create_inspection_task_with_options(
         self,
         request: main_models.CreateInspectionTaskRequest,
@@ -549,8 +659,12 @@ class Client(OpenApiClient):
             query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -585,8 +699,12 @@ class Client(OpenApiClient):
             query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -637,8 +755,12 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.time_range):
@@ -677,8 +799,12 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.time_range):
@@ -957,6 +1083,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
+
+    def delete_edge_function_with_options(
+        self,
+        request: main_models.DeleteEdgeFunctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEdgeFunctionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEdgeFunction',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEdgeFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_edge_function_with_options_async(
+        self,
+        request: main_models.DeleteEdgeFunctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEdgeFunctionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEdgeFunction',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEdgeFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_edge_function(
+        self,
+        request: main_models.DeleteEdgeFunctionRequest,
+    ) -> main_models.DeleteEdgeFunctionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_edge_function_with_options(request, runtime)
+
+    async def delete_edge_function_async(
+        self,
+        request: main_models.DeleteEdgeFunctionRequest,
+    ) -> main_models.DeleteEdgeFunctionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_edge_function_with_options_async(request, runtime)
 
     def delete_scheduled_task_with_options(
         self,
@@ -1257,6 +1465,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAppInstancesResponse:
         runtime = RuntimeOptions()
         return await self.describe_app_instances_with_options_async(request, runtime)
+
+    def describe_edge_functions_with_options(
+        self,
+        request: main_models.DescribeEdgeFunctionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEdgeFunctionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEdgeFunctions',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEdgeFunctionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_edge_functions_with_options_async(
+        self,
+        request: main_models.DescribeEdgeFunctionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEdgeFunctionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEdgeFunctions',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEdgeFunctionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_edge_functions(
+        self,
+        request: main_models.DescribeEdgeFunctionsRequest,
+    ) -> main_models.DescribeEdgeFunctionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_edge_functions_with_options(request, runtime)
+
+    async def describe_edge_functions_async(
+        self,
+        request: main_models.DescribeEdgeFunctionsRequest,
+    ) -> main_models.DescribeEdgeFunctionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_edge_functions_with_options_async(request, runtime)
 
     def describe_events_list_with_options(
         self,
@@ -1957,6 +2247,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -1987,6 +2279,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -2355,6 +2649,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -2389,6 +2685,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -3919,6 +4217,116 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.update_custom_agent_with_options_async(request, runtime)
+
+    def update_edge_function_with_options(
+        self,
+        tmp_req: main_models.UpdateEdgeFunctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEdgeFunctionResponse:
+        tmp_req.validate()
+        request = main_models.UpdateEdgeFunctionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.code):
+            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
+        if not DaraCore.is_null(tmp_req.custom_config):
+            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
+        if not DaraCore.is_null(tmp_req.envs):
+            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.code_shrink):
+            query['Code'] = request.code_shrink
+        if not DaraCore.is_null(request.custom_config_shrink):
+            query['CustomConfig'] = request.custom_config_shrink
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.envs_shrink):
+            query['Envs'] = request.envs_shrink
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEdgeFunction',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEdgeFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_edge_function_with_options_async(
+        self,
+        tmp_req: main_models.UpdateEdgeFunctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEdgeFunctionResponse:
+        tmp_req.validate()
+        request = main_models.UpdateEdgeFunctionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.code):
+            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
+        if not DaraCore.is_null(tmp_req.custom_config):
+            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
+        if not DaraCore.is_null(tmp_req.envs):
+            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.code_shrink):
+            query['Code'] = request.code_shrink
+        if not DaraCore.is_null(request.custom_config_shrink):
+            query['CustomConfig'] = request.custom_config_shrink
+        if not DaraCore.is_null(request.edge_function_name):
+            query['EdgeFunctionName'] = request.edge_function_name
+        if not DaraCore.is_null(request.envs_shrink):
+            query['Envs'] = request.envs_shrink
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEdgeFunction',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEdgeFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_edge_function(
+        self,
+        request: main_models.UpdateEdgeFunctionRequest,
+    ) -> main_models.UpdateEdgeFunctionResponse:
+        runtime = RuntimeOptions()
+        return self.update_edge_function_with_options(request, runtime)
+
+    async def update_edge_function_async(
+        self,
+        request: main_models.UpdateEdgeFunctionRequest,
+    ) -> main_models.UpdateEdgeFunctionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_edge_function_with_options_async(request, runtime)
 
     def update_skill_with_options(
         self,

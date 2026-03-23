@@ -11,7 +11,9 @@ class CreateScheduledTaskRequest(DaraModel):
         frequency: str = None,
         instance_ids: str = None,
         name: str = None,
+        region_id: str = None,
         report_language: str = None,
+        report_type: str = None,
         start_time: str = None,
         time_range: str = None,
     ):
@@ -30,14 +32,14 @@ class CreateScheduledTaskRequest(DaraModel):
         # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend uses DAILY as the inspection frequency.
         self.frequency = frequency
         # The IDs of the related instances. Separate multiple IDs with commas (,).
-        # 
-        # This parameter is required.
         self.instance_ids = instance_ids
         # The name of the scheduled inspection task. The name cannot exceed 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
+        self.region_id = region_id
         self.report_language = report_language
+        self.report_type = report_type
         # The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
         self.start_time = start_time
         # The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
@@ -63,8 +65,14 @@ class CreateScheduledTaskRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
         if self.report_language is not None:
             result['ReportLanguage'] = self.report_language
+
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -88,8 +96,14 @@ class CreateScheduledTaskRequest(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
         if m.get('ReportLanguage') is not None:
             self.report_language = m.get('ReportLanguage')
+
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

@@ -17,6 +17,10 @@ from ._create_custom_agent_request import CreateCustomAgentRequest
 from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
 from ._create_custom_agent_response import CreateCustomAgentResponse
+from ._create_edge_function_request import CreateEdgeFunctionRequest
+from ._create_edge_function_shrink_request import CreateEdgeFunctionShrinkRequest
+from ._create_edge_function_response_body import CreateEdgeFunctionResponseBody
+from ._create_edge_function_response import CreateEdgeFunctionResponse
 from ._create_inspection_task_request import CreateInspectionTaskRequest
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBody
 from ._create_inspection_task_response import CreateInspectionTaskResponse
@@ -33,6 +37,9 @@ from ._delete_app_instance_response import DeleteAppInstanceResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
+from ._delete_edge_function_request import DeleteEdgeFunctionRequest
+from ._delete_edge_function_response_body import DeleteEdgeFunctionResponseBody
+from ._delete_edge_function_response import DeleteEdgeFunctionResponse
 from ._delete_scheduled_task_request import DeleteScheduledTaskRequest
 from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBody
 from ._delete_scheduled_task_response import DeleteScheduledTaskResponse
@@ -45,6 +52,9 @@ from ._describe_app_instance_attribute_response import DescribeAppInstanceAttrib
 from ._describe_app_instances_request import DescribeAppInstancesRequest
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBody
 from ._describe_app_instances_response import DescribeAppInstancesResponse
+from ._describe_edge_functions_request import DescribeEdgeFunctionsRequest
+from ._describe_edge_functions_response_body import DescribeEdgeFunctionsResponseBody
+from ._describe_edge_functions_response import DescribeEdgeFunctionsResponse
 from ._describe_events_list_request import DescribeEventsListRequest
 from ._describe_events_list_response_body import DescribeEventsListResponseBody
 from ._describe_events_list_response import DescribeEventsListResponse
@@ -148,6 +158,10 @@ from ._update_custom_agent_request import UpdateCustomAgentRequest
 from ._update_custom_agent_shrink_request import UpdateCustomAgentShrinkRequest
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBody
 from ._update_custom_agent_response import UpdateCustomAgentResponse
+from ._update_edge_function_request import UpdateEdgeFunctionRequest
+from ._update_edge_function_shrink_request import UpdateEdgeFunctionShrinkRequest
+from ._update_edge_function_response_body import UpdateEdgeFunctionResponseBody
+from ._update_edge_function_response import UpdateEdgeFunctionResponse
 from ._update_skill_request import UpdateSkillRequest
 from ._update_skill_shrink_request import UpdateSkillShrinkRequest
 from ._update_skill_response_body import UpdateSkillResponseBody
@@ -155,8 +169,10 @@ from ._update_skill_response import UpdateSkillResponse
 from ._chat_messages_request import ChatMessagesRequestInputs
 from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
+from ._create_edge_function_request import CreateEdgeFunctionRequestCode
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstances
+from ._describe_edge_functions_response_body import DescribeEdgeFunctionsResponseBodyEdgeFunctions
 from ._describe_events_list_response_body import DescribeEventsListResponseBodyEvents
 from ._describe_instance_auth_info_response_body import DescribeInstanceAuthInfoResponseBodyApiKeys
 from ._describe_instance_auth_info_response_body import DescribeInstanceAuthInfoResponseBodyConfigList
@@ -186,6 +202,7 @@ from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigReques
 from ._modify_instance_ragconfig_request import ModifyInstanceRAGConfigRequestConfigList
 from ._modify_instance_storage_config_request import ModifyInstanceStorageConfigRequestConfigList
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodySkills
+from ._update_edge_function_request import UpdateEdgeFunctionRequestCode
 
 __all__ = [
     ChatMessagesRequest,
@@ -203,6 +220,10 @@ __all__ = [
     CreateCustomAgentShrinkRequest,
     CreateCustomAgentResponseBody,
     CreateCustomAgentResponse,
+    CreateEdgeFunctionRequest,
+    CreateEdgeFunctionShrinkRequest,
+    CreateEdgeFunctionResponseBody,
+    CreateEdgeFunctionResponse,
     CreateInspectionTaskRequest,
     CreateInspectionTaskResponseBody,
     CreateInspectionTaskResponse,
@@ -219,6 +240,9 @@ __all__ = [
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
+    DeleteEdgeFunctionRequest,
+    DeleteEdgeFunctionResponseBody,
+    DeleteEdgeFunctionResponse,
     DeleteScheduledTaskRequest,
     DeleteScheduledTaskResponseBody,
     DeleteScheduledTaskResponse,
@@ -231,6 +255,9 @@ __all__ = [
     DescribeAppInstancesRequest,
     DescribeAppInstancesResponseBody,
     DescribeAppInstancesResponse,
+    DescribeEdgeFunctionsRequest,
+    DescribeEdgeFunctionsResponseBody,
+    DescribeEdgeFunctionsResponse,
     DescribeEventsListRequest,
     DescribeEventsListResponseBody,
     DescribeEventsListResponse,
@@ -334,6 +361,10 @@ __all__ = [
     UpdateCustomAgentShrinkRequest,
     UpdateCustomAgentResponseBody,
     UpdateCustomAgentResponse,
+    UpdateEdgeFunctionRequest,
+    UpdateEdgeFunctionShrinkRequest,
+    UpdateEdgeFunctionResponseBody,
+    UpdateEdgeFunctionResponse,
     UpdateSkillRequest,
     UpdateSkillShrinkRequest,
     UpdateSkillResponseBody,
@@ -341,8 +372,10 @@ __all__ = [
     ChatMessagesRequestInputs,
     CreateAppInstanceRequestDBInstanceConfig,
     CreateCustomAgentResponseBodySkills,
+    CreateEdgeFunctionRequestCode,
     CreateInspectionTaskResponseBodyData,
     DescribeAppInstancesResponseBodyInstances,
+    DescribeEdgeFunctionsResponseBodyEdgeFunctions,
     DescribeEventsListResponseBodyEvents,
     DescribeInstanceAuthInfoResponseBodyApiKeys,
     DescribeInstanceAuthInfoResponseBodyConfigList,
@@ -371,5 +404,6 @@ __all__ = [
     ModifyInstanceAuthConfigRequestConfigList,
     ModifyInstanceRAGConfigRequestConfigList,
     ModifyInstanceStorageConfigRequestConfigList,
-    UpdateCustomAgentResponseBodySkills
+    UpdateCustomAgentResponseBodySkills,
+    UpdateEdgeFunctionRequestCode
 ]

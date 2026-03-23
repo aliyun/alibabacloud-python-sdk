@@ -105,7 +105,9 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         frequency: str = None,
         instance_count: int = None,
         name: str = None,
+        region_id: str = None,
         report_language: str = None,
+        report_type: str = None,
         scheduled_id: str = None,
         task_start_time: str = None,
         time_range: str = None,
@@ -131,7 +133,9 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         self.instance_count = instance_count
         # The name of the task.
         self.name = name
+        self.region_id = region_id
         self.report_language = report_language
+        self.report_type = report_type
         # The ID of the scheduled inspection configuration.
         self.scheduled_id = scheduled_id
         # The actual start time of the task.
@@ -162,8 +166,14 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
         if self.report_language is not None:
             result['ReportLanguage'] = self.report_language
+
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
 
         if self.scheduled_id is not None:
             result['ScheduledId'] = self.scheduled_id
@@ -193,8 +203,14 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
         if m.get('ReportLanguage') is not None:
             self.report_language = m.get('ReportLanguage')
+
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
 
         if m.get('ScheduledId') is not None:
             self.scheduled_id = m.get('ScheduledId')

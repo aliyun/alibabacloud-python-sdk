@@ -1,3 +1,22 @@
+2026-03-23 Version: 2.4.0
+- Support API CreateEdgeFunction.
+- Support API DeleteEdgeFunction.
+- Support API DescribeEdgeFunctions.
+- Support API UpdateEdgeFunction.
+- Update API CreateInspectionTask: add request parameters RegionId.
+- Update API CreateInspectionTask: add request parameters ReportType.
+- Update API CreateScheduledTask: add request parameters RegionId.
+- Update API CreateScheduledTask: add request parameters ReportType.
+- Update API GetInspectionReport: add request parameters ReportType.
+- Update API GetScheduledReports: add response parameters Body.Reports.$.RegionId.
+- Update API GetScheduledReports: add response parameters Body.Reports.$.ReportType.
+- Update API GetStandAloneReports: add request parameters ReportType.
+- Update API GetStandAloneReports: add response parameters Body.Reports.$.RegionId.
+- Update API GetStandAloneReports: add response parameters Body.Reports.$.ReportType.
+- Update API ListScheduledTasks: add response parameters Body.Schedules.$.RegionId.
+- Update API ListScheduledTasks: add response parameters Body.Schedules.$.ReportType.
+
+
 2026-03-12 Version: 2.3.1
 - Update API CreateInspectionTask: add request parameters ReportLanguage.
 - Update API CreateScheduledTask: add request parameters ReportLanguage.
