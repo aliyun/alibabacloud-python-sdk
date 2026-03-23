@@ -19803,6 +19803,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tables_in_category_with_options_async(request, runtime)
 
+    def list_tag_meta_asset_with_options(
+        self,
+        request: main_models.ListTagMetaAssetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagMetaAssetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.meta_parent_id):
+            query['MetaParentId'] = request.meta_parent_id
+        if not DaraCore.is_null(request.meta_type):
+            query['MetaType'] = request.meta_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not DaraCore.is_null(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagMetaAsset',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagMetaAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_meta_asset_with_options_async(
+        self,
+        request: main_models.ListTagMetaAssetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagMetaAssetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.meta_parent_id):
+            query['MetaParentId'] = request.meta_parent_id
+        if not DaraCore.is_null(request.meta_type):
+            query['MetaType'] = request.meta_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not DaraCore.is_null(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagMetaAsset',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagMetaAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_meta_asset(
+        self,
+        request: main_models.ListTagMetaAssetRequest,
+    ) -> main_models.ListTagMetaAssetResponse:
+        runtime = RuntimeOptions()
+        return self.list_tag_meta_asset_with_options(request, runtime)
+
+    async def list_tag_meta_asset_async(
+        self,
+        request: main_models.ListTagMetaAssetRequest,
+    ) -> main_models.ListTagMetaAssetResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tag_meta_asset_with_options_async(request, runtime)
+
     def list_task_flow_with_options(
         self,
         request: main_models.ListTaskFlowRequest,

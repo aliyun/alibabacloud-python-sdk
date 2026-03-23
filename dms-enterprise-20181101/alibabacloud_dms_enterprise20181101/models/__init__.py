@@ -742,6 +742,9 @@ from ._list_tables_response import ListTablesResponse
 from ._list_tables_in_category_request import ListTablesInCategoryRequest
 from ._list_tables_in_category_response_body import ListTablesInCategoryResponseBody
 from ._list_tables_in_category_response import ListTablesInCategoryResponse
+from ._list_tag_meta_asset_request import ListTagMetaAssetRequest
+from ._list_tag_meta_asset_response_body import ListTagMetaAssetResponseBody
+from ._list_tag_meta_asset_response import ListTagMetaAssetResponse
 from ._list_task_flow_request import ListTaskFlowRequest
 from ._list_task_flow_response_body import ListTaskFlowResponseBody
 from ._list_task_flow_response import ListTaskFlowResponse
@@ -1313,6 +1316,7 @@ from ._list_tables_response_body import ListTablesResponseBodyTableListTableOwne
 from ._list_tables_response_body import ListTablesResponseBodyTableListTable
 from ._list_tables_response_body import ListTablesResponseBodyTableList
 from ._list_tables_in_category_response_body import ListTablesInCategoryResponseBodyEntityList
+from ._list_tag_meta_asset_response_body import ListTagMetaAssetResponseBodyData
 from ._list_task_flow_response_body import ListTaskFlowResponseBodyTaskFlowListTaskFlow
 from ._list_task_flow_response_body import ListTaskFlowResponseBodyTaskFlowList
 from ._list_task_flow_constants_response_body import ListTaskFlowConstantsResponseBodyDagConstantsDagConstant
@@ -2120,6 +2124,9 @@ __all__ = [
     ListTablesInCategoryRequest,
     ListTablesInCategoryResponseBody,
     ListTablesInCategoryResponse,
+    ListTagMetaAssetRequest,
+    ListTagMetaAssetResponseBody,
+    ListTagMetaAssetResponse,
     ListTaskFlowRequest,
     ListTaskFlowResponseBody,
     ListTaskFlowResponse,
@@ -2691,6 +2698,7 @@ __all__ = [
     ListTablesResponseBodyTableListTable,
     ListTablesResponseBodyTableList,
     ListTablesInCategoryResponseBodyEntityList,
+    ListTagMetaAssetResponseBodyData,
     ListTaskFlowResponseBodyTaskFlowListTaskFlow,
     ListTaskFlowResponseBodyTaskFlowList,
     ListTaskFlowConstantsResponseBodyDagConstantsDagConstant,
