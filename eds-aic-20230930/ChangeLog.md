@@ -1,3 +1,7 @@
+2026-03-23 Version: 4.22.0
+- Support API RunSyncCommand.
+
+
 2026-03-21 Version: 4.21.4
 - Update API RebootAndroidInstancesInGroup: add response parameters Body.Tasks.
 - Update API ResetAndroidInstancesInGroup: add response parameters Body.Tasks.

@@ -246,6 +246,9 @@ from ._reset_android_instances_in_group_response import ResetAndroidInstancesInG
 from ._run_command_request import RunCommandRequest
 from ._run_command_response_body import RunCommandResponseBody
 from ._run_command_response import RunCommandResponse
+from ._run_sync_command_request import RunSyncCommandRequest
+from ._run_sync_command_response_body import RunSyncCommandResponseBody
+from ._run_sync_command_response import RunSyncCommandResponse
 from ._send_file_request import SendFileRequest
 from ._send_file_response_body import SendFileResponseBody
 from ._send_file_response import SendFileResponse
@@ -399,6 +402,7 @@ from ._recovery_file_response_body import RecoveryFileResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
+from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
 from ._send_file_response_body import SendFileResponseBodyData
 from ._set_adb_secure_response_body import SetAdbSecureResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
@@ -650,6 +654,9 @@ __all__ = [
     RunCommandRequest,
     RunCommandResponseBody,
     RunCommandResponse,
+    RunSyncCommandRequest,
+    RunSyncCommandResponseBody,
+    RunSyncCommandResponse,
     SendFileRequest,
     SendFileResponseBody,
     SendFileResponse,
@@ -803,6 +810,7 @@ __all__ = [
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
+    RunSyncCommandResponseBodyData,
     SendFileResponseBodyData,
     SetAdbSecureResponseBodyData,
     TagResourcesRequestTag,

@@ -7020,6 +7020,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.run_command_with_options_async(request, runtime)
 
+    def run_sync_command_with_options(
+        self,
+        request: main_models.RunSyncCommandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunSyncCommandResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.command_content):
+            query['CommandContent'] = request.command_content
+        if not DaraCore.is_null(request.content_encoding):
+            query['ContentEncoding'] = request.content_encoding
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.wait_time):
+            query['WaitTime'] = request.wait_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunSyncCommand',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunSyncCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_sync_command_with_options_async(
+        self,
+        request: main_models.RunSyncCommandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunSyncCommandResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.command_content):
+            query['CommandContent'] = request.command_content
+        if not DaraCore.is_null(request.content_encoding):
+            query['ContentEncoding'] = request.content_encoding
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.wait_time):
+            query['WaitTime'] = request.wait_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunSyncCommand',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunSyncCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_sync_command(
+        self,
+        request: main_models.RunSyncCommandRequest,
+    ) -> main_models.RunSyncCommandResponse:
+        runtime = RuntimeOptions()
+        return self.run_sync_command_with_options(request, runtime)
+
+    async def run_sync_command_async(
+        self,
+        request: main_models.RunSyncCommandRequest,
+    ) -> main_models.RunSyncCommandResponse:
+        runtime = RuntimeOptions()
+        return await self.run_sync_command_with_options_async(request, runtime)
+
     def send_file_with_options(
         self,
         request: main_models.SendFileRequest,
