@@ -1,3 +1,7 @@
+2026-03-23 Version: 2.6.1
+- Update API GetStackExecutionResult: add response parameters Body.triggeredStatus.
+
+
 2026-03-18 Version: 2.6.0
 - Support API GetStackExecutionResult.
 - Support API TriggerStackExecution.

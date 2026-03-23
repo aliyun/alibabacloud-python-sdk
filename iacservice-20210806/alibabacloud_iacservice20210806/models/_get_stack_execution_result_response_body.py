@@ -13,11 +13,13 @@ class GetStackExecutionResultResponseBody(DaraModel):
         request_id: str = None,
         stack_results: List[main_models.GetStackExecutionResultResponseBodyStackResults] = None,
         trigger_id: str = None,
+        triggered_status: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         self.stack_results = stack_results
         self.trigger_id = trigger_id
+        self.triggered_status = triggered_status
 
     def validate(self):
         if self.stack_results:
@@ -41,6 +43,9 @@ class GetStackExecutionResultResponseBody(DaraModel):
         if self.trigger_id is not None:
             result['triggerId'] = self.trigger_id
 
+        if self.triggered_status is not None:
+            result['triggeredStatus'] = self.triggered_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +61,9 @@ class GetStackExecutionResultResponseBody(DaraModel):
 
         if m.get('triggerId') is not None:
             self.trigger_id = m.get('triggerId')
+
+        if m.get('triggeredStatus') is not None:
+            self.triggered_status = m.get('triggeredStatus')
 
         return self
 
