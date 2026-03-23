@@ -1,3 +1,11 @@
+2026-03-23 Version: 6.8.0
+- Support API ApplyApplicationPrompts.
+- Support API CreateApplicationPrompt.
+- Support API DeleteApplicationPrompt.
+- Support API DescribeApplicationPrompts.
+- Support API ModifyApplicationPrompt.
+
+
 2026-03-22 Version: 6.7.4
 - Update API CreateApplication: add request parameters AutoAllocatePublicEip.
 

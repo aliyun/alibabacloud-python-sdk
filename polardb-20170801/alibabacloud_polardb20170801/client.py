@@ -541,6 +541,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_sqlrate_limiting_rules_with_options_async(request, runtime)
 
+    def apply_application_prompts_with_options(
+        self,
+        tmp_req: main_models.ApplyApplicationPromptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyApplicationPromptsResponse:
+        tmp_req.validate()
+        request = main_models.ApplyApplicationPromptsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.disabled_prompt_ids):
+            request.disabled_prompt_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.disabled_prompt_ids, 'DisabledPromptIds', 'json')
+        if not DaraCore.is_null(tmp_req.enabled_prompt_ids):
+            request.enabled_prompt_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.enabled_prompt_ids, 'EnabledPromptIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.disabled_prompt_ids_shrink):
+            query['DisabledPromptIds'] = request.disabled_prompt_ids_shrink
+        if not DaraCore.is_null(request.enabled_prompt_ids_shrink):
+            query['EnabledPromptIds'] = request.enabled_prompt_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyApplicationPrompts',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyApplicationPromptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_application_prompts_with_options_async(
+        self,
+        tmp_req: main_models.ApplyApplicationPromptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyApplicationPromptsResponse:
+        tmp_req.validate()
+        request = main_models.ApplyApplicationPromptsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.disabled_prompt_ids):
+            request.disabled_prompt_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.disabled_prompt_ids, 'DisabledPromptIds', 'json')
+        if not DaraCore.is_null(tmp_req.enabled_prompt_ids):
+            request.enabled_prompt_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.enabled_prompt_ids, 'EnabledPromptIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.disabled_prompt_ids_shrink):
+            query['DisabledPromptIds'] = request.disabled_prompt_ids_shrink
+        if not DaraCore.is_null(request.enabled_prompt_ids_shrink):
+            query['EnabledPromptIds'] = request.enabled_prompt_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyApplicationPrompts',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyApplicationPromptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_application_prompts(
+        self,
+        request: main_models.ApplyApplicationPromptsRequest,
+    ) -> main_models.ApplyApplicationPromptsResponse:
+        runtime = RuntimeOptions()
+        return self.apply_application_prompts_with_options(request, runtime)
+
+    async def apply_application_prompts_async(
+        self,
+        request: main_models.ApplyApplicationPromptsRequest,
+    ) -> main_models.ApplyApplicationPromptsResponse:
+        runtime = RuntimeOptions()
+        return await self.apply_application_prompts_with_options_async(request, runtime)
+
     def attach_application_polar_fswith_options(
         self,
         request: main_models.AttachApplicationPolarFSRequest,
@@ -2668,6 +2758,88 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApplicationEndpointAddressResponse:
         runtime = RuntimeOptions()
         return await self.create_application_endpoint_address_with_options_async(request, runtime)
+
+    def create_application_prompt_with_options(
+        self,
+        request: main_models.CreateApplicationPromptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.prompt_name):
+            query['PromptName'] = request.prompt_name
+        if not DaraCore.is_null(request.prompt_type):
+            query['PromptType'] = request.prompt_type
+        if not DaraCore.is_null(request.prompt_value):
+            query['PromptValue'] = request.prompt_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationPrompt',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_prompt_with_options_async(
+        self,
+        request: main_models.CreateApplicationPromptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.prompt_name):
+            query['PromptName'] = request.prompt_name
+        if not DaraCore.is_null(request.prompt_type):
+            query['PromptType'] = request.prompt_type
+        if not DaraCore.is_null(request.prompt_value):
+            query['PromptValue'] = request.prompt_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationPrompt',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_prompt(
+        self,
+        request: main_models.CreateApplicationPromptRequest,
+    ) -> main_models.CreateApplicationPromptResponse:
+        runtime = RuntimeOptions()
+        return self.create_application_prompt_with_options(request, runtime)
+
+    async def create_application_prompt_async(
+        self,
+        request: main_models.CreateApplicationPromptRequest,
+    ) -> main_models.CreateApplicationPromptResponse:
+        runtime = RuntimeOptions()
+        return await self.create_application_prompt_with_options_async(request, runtime)
 
     def create_backup_with_options(
         self,
@@ -5600,6 +5772,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteApplicationEndpointAddressResponse:
         runtime = RuntimeOptions()
         return await self.delete_application_endpoint_address_with_options_async(request, runtime)
+
+    def delete_application_prompt_with_options(
+        self,
+        request: main_models.DeleteApplicationPromptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.prompt_id):
+            query['PromptId'] = request.prompt_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationPrompt',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_prompt_with_options_async(
+        self,
+        request: main_models.DeleteApplicationPromptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.prompt_id):
+            query['PromptId'] = request.prompt_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationPrompt',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_prompt(
+        self,
+        request: main_models.DeleteApplicationPromptRequest,
+    ) -> main_models.DeleteApplicationPromptResponse:
+        runtime = RuntimeOptions()
+        return self.delete_application_prompt_with_options(request, runtime)
+
+    async def delete_application_prompt_async(
+        self,
+        request: main_models.DeleteApplicationPromptRequest,
+    ) -> main_models.DeleteApplicationPromptResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_application_prompt_with_options_async(request, runtime)
 
     def delete_backup_with_options(
         self,
@@ -8764,6 +9010,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeApplicationParametersResponse:
         runtime = RuntimeOptions()
         return await self.describe_application_parameters_with_options_async(request, runtime)
+
+    def describe_application_prompts_with_options(
+        self,
+        request: main_models.DescribeApplicationPromptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationPromptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationPrompts',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationPromptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_prompts_with_options_async(
+        self,
+        request: main_models.DescribeApplicationPromptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationPromptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationPrompts',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationPromptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_prompts(
+        self,
+        request: main_models.DescribeApplicationPromptsRequest,
+    ) -> main_models.DescribeApplicationPromptsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_prompts_with_options(request, runtime)
+
+    async def describe_application_prompts_async(
+        self,
+        request: main_models.DescribeApplicationPromptsRequest,
+    ) -> main_models.DescribeApplicationPromptsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_prompts_with_options_async(request, runtime)
 
     def describe_application_serverless_conf_with_options(
         self,
@@ -21146,6 +21470,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyApplicationParameterResponse:
         runtime = RuntimeOptions()
         return await self.modify_application_parameter_with_options_async(request, runtime)
+
+    def modify_application_prompt_with_options(
+        self,
+        request: main_models.ModifyApplicationPromptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.prompt_id):
+            query['PromptId'] = request.prompt_id
+        if not DaraCore.is_null(request.prompt_name):
+            query['PromptName'] = request.prompt_name
+        if not DaraCore.is_null(request.prompt_value):
+            query['PromptValue'] = request.prompt_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationPrompt',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_prompt_with_options_async(
+        self,
+        request: main_models.ModifyApplicationPromptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.prompt_id):
+            query['PromptId'] = request.prompt_id
+        if not DaraCore.is_null(request.prompt_name):
+            query['PromptName'] = request.prompt_name
+        if not DaraCore.is_null(request.prompt_value):
+            query['PromptValue'] = request.prompt_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationPrompt',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_prompt(
+        self,
+        request: main_models.ModifyApplicationPromptRequest,
+    ) -> main_models.ModifyApplicationPromptResponse:
+        runtime = RuntimeOptions()
+        return self.modify_application_prompt_with_options(request, runtime)
+
+    async def modify_application_prompt_async(
+        self,
+        request: main_models.ModifyApplicationPromptRequest,
+    ) -> main_models.ModifyApplicationPromptResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_application_prompt_with_options_async(request, runtime)
 
     def modify_application_serverless_conf_with_options(
         self,

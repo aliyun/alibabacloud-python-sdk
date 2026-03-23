@@ -17,6 +17,10 @@ from ._add_polar_fs_quota_response import AddPolarFsQuotaResponse
 from ._add_sqlrate_limiting_rules_request import AddSQLRateLimitingRulesRequest
 from ._add_sqlrate_limiting_rules_response_body import AddSQLRateLimitingRulesResponseBody
 from ._add_sqlrate_limiting_rules_response import AddSQLRateLimitingRulesResponse
+from ._apply_application_prompts_request import ApplyApplicationPromptsRequest
+from ._apply_application_prompts_shrink_request import ApplyApplicationPromptsShrinkRequest
+from ._apply_application_prompts_response_body import ApplyApplicationPromptsResponseBody
+from ._apply_application_prompts_response import ApplyApplicationPromptsResponse
 from ._attach_application_polar_fsrequest import AttachApplicationPolarFSRequest
 from ._attach_application_polar_fsresponse_body import AttachApplicationPolarFSResponseBody
 from ._attach_application_polar_fsresponse import AttachApplicationPolarFSResponse
@@ -84,6 +88,9 @@ from ._create_application_response import CreateApplicationResponse
 from ._create_application_endpoint_address_request import CreateApplicationEndpointAddressRequest
 from ._create_application_endpoint_address_response_body import CreateApplicationEndpointAddressResponseBody
 from ._create_application_endpoint_address_response import CreateApplicationEndpointAddressResponse
+from ._create_application_prompt_request import CreateApplicationPromptRequest
+from ._create_application_prompt_response_body import CreateApplicationPromptResponseBody
+from ._create_application_prompt_response import CreateApplicationPromptResponse
 from ._create_backup_request import CreateBackupRequest
 from ._create_backup_response_body import CreateBackupResponseBody
 from ._create_backup_response import CreateBackupResponse
@@ -162,6 +169,9 @@ from ._delete_application_response import DeleteApplicationResponse
 from ._delete_application_endpoint_address_request import DeleteApplicationEndpointAddressRequest
 from ._delete_application_endpoint_address_response_body import DeleteApplicationEndpointAddressResponseBody
 from ._delete_application_endpoint_address_response import DeleteApplicationEndpointAddressResponse
+from ._delete_application_prompt_request import DeleteApplicationPromptRequest
+from ._delete_application_prompt_response_body import DeleteApplicationPromptResponseBody
+from ._delete_application_prompt_response import DeleteApplicationPromptResponse
 from ._delete_backup_request import DeleteBackupRequest
 from ._delete_backup_response_body import DeleteBackupResponseBody
 from ._delete_backup_response import DeleteBackupResponse
@@ -265,6 +275,9 @@ from ._describe_application_parameters_request import DescribeApplicationParamet
 from ._describe_application_parameters_shrink_request import DescribeApplicationParametersShrinkRequest
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBody
 from ._describe_application_parameters_response import DescribeApplicationParametersResponse
+from ._describe_application_prompts_request import DescribeApplicationPromptsRequest
+from ._describe_application_prompts_response_body import DescribeApplicationPromptsResponseBody
+from ._describe_application_prompts_response import DescribeApplicationPromptsResponse
 from ._describe_application_serverless_conf_request import DescribeApplicationServerlessConfRequest
 from ._describe_application_serverless_conf_response_body import DescribeApplicationServerlessConfResponseBody
 from ._describe_application_serverless_conf_response import DescribeApplicationServerlessConfResponse
@@ -649,6 +662,9 @@ from ._modify_application_parameter_request import ModifyApplicationParameterReq
 from ._modify_application_parameter_shrink_request import ModifyApplicationParameterShrinkRequest
 from ._modify_application_parameter_response_body import ModifyApplicationParameterResponseBody
 from ._modify_application_parameter_response import ModifyApplicationParameterResponse
+from ._modify_application_prompt_request import ModifyApplicationPromptRequest
+from ._modify_application_prompt_response_body import ModifyApplicationPromptResponseBody
+from ._modify_application_prompt_response import ModifyApplicationPromptResponse
 from ._modify_application_serverless_conf_request import ModifyApplicationServerlessConfRequest
 from ._modify_application_serverless_conf_response_body import ModifyApplicationServerlessConfResponseBody
 from ._modify_application_serverless_conf_response import ModifyApplicationServerlessConfResponse
@@ -923,6 +939,7 @@ from ._describe_application_parameters_response_body import DescribeApplicationP
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParametersComponentParametersParameters
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParametersComponentParameters
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParameters
+from ._describe_application_prompts_response_body import DescribeApplicationPromptsResponseBodyItems
 from ._describe_application_serverless_conf_response_body import DescribeApplicationServerlessConfResponseBodyServerlessConfItems
 from ._describe_applications_request import DescribeApplicationsRequestTag
 from ._describe_applications_response_body import DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint
@@ -1143,6 +1160,10 @@ __all__ = [
     AddSQLRateLimitingRulesRequest,
     AddSQLRateLimitingRulesResponseBody,
     AddSQLRateLimitingRulesResponse,
+    ApplyApplicationPromptsRequest,
+    ApplyApplicationPromptsShrinkRequest,
+    ApplyApplicationPromptsResponseBody,
+    ApplyApplicationPromptsResponse,
     AttachApplicationPolarFSRequest,
     AttachApplicationPolarFSResponseBody,
     AttachApplicationPolarFSResponse,
@@ -1210,6 +1231,9 @@ __all__ = [
     CreateApplicationEndpointAddressRequest,
     CreateApplicationEndpointAddressResponseBody,
     CreateApplicationEndpointAddressResponse,
+    CreateApplicationPromptRequest,
+    CreateApplicationPromptResponseBody,
+    CreateApplicationPromptResponse,
     CreateBackupRequest,
     CreateBackupResponseBody,
     CreateBackupResponse,
@@ -1288,6 +1312,9 @@ __all__ = [
     DeleteApplicationEndpointAddressRequest,
     DeleteApplicationEndpointAddressResponseBody,
     DeleteApplicationEndpointAddressResponse,
+    DeleteApplicationPromptRequest,
+    DeleteApplicationPromptResponseBody,
+    DeleteApplicationPromptResponse,
     DeleteBackupRequest,
     DeleteBackupResponseBody,
     DeleteBackupResponse,
@@ -1391,6 +1418,9 @@ __all__ = [
     DescribeApplicationParametersShrinkRequest,
     DescribeApplicationParametersResponseBody,
     DescribeApplicationParametersResponse,
+    DescribeApplicationPromptsRequest,
+    DescribeApplicationPromptsResponseBody,
+    DescribeApplicationPromptsResponse,
     DescribeApplicationServerlessConfRequest,
     DescribeApplicationServerlessConfResponseBody,
     DescribeApplicationServerlessConfResponse,
@@ -1775,6 +1805,9 @@ __all__ = [
     ModifyApplicationParameterShrinkRequest,
     ModifyApplicationParameterResponseBody,
     ModifyApplicationParameterResponse,
+    ModifyApplicationPromptRequest,
+    ModifyApplicationPromptResponseBody,
+    ModifyApplicationPromptResponse,
     ModifyApplicationServerlessConfRequest,
     ModifyApplicationServerlessConfResponseBody,
     ModifyApplicationServerlessConfResponse,
@@ -2049,6 +2082,7 @@ __all__ = [
     DescribeApplicationParametersResponseBodyParametersComponentParametersParameters,
     DescribeApplicationParametersResponseBodyParametersComponentParameters,
     DescribeApplicationParametersResponseBodyParameters,
+    DescribeApplicationPromptsResponseBodyItems,
     DescribeApplicationServerlessConfResponseBodyServerlessConfItems,
     DescribeApplicationsRequestTag,
     DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint,
