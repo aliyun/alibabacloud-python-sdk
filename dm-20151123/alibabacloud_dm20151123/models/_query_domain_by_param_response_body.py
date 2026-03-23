@@ -24,7 +24,6 @@ class QueryDomainByParamResponseBody(DaraModel):
         self.request_id = request_id
         # Total count
         self.total_count = total_count
-        # List of domains
         self.data = data
 
     def validate(self):
@@ -123,33 +122,16 @@ class QueryDomainByParamResponseBodyDataDomain(DaraModel):
         spf_auth_status: str = None,
         utc_create_time: int = None,
     ):
-        # Track verification
         self.cname_auth_status = cname_auth_status
-        # CName verification status, success: 0; failure: 1
         self.confirm_status = confirm_status
-        # Creation time
         self.create_time = create_time
-        # Domain ID
         self.domain_id = domain_id
-        # Domain name
         self.domain_name = domain_name
-        # Domain record
         self.domain_record = domain_record
-        # Domain status.
-        # 
-        # - 0: Available, verified
-        # - 1: Unavailable, verification failed
         self.domain_status = domain_status
-        # ICP filing status.
-        # 
-        # - 1 indicates filed
-        # - 0 indicates not filed
         self.icp_status = icp_status
-        # MX authentication status, success: 0, failure: 1.
         self.mx_auth_status = mx_auth_status
-        # SPF authentication status, success: 0, failure: 1.
         self.spf_auth_status = spf_auth_status
-        # Creation time in UTC format.
         self.utc_create_time = utc_create_time
 
     def validate(self):

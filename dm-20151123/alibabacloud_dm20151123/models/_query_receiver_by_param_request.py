@@ -15,21 +15,20 @@ class QueryReceiverByParamRequest(DaraModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
-        # Keyword, defaults to all information if not specified
+        # Search keyword. Default value: all information.
         self.key_word = key_word
         self.owner_id = owner_id
-        # Current page number
+        # Page number.
         self.page_no = page_no
-        # Number of items per page, default: 10
+        # Number of entries per page. Default value: 10.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Delivery result. If not filled, it represents all statuses. Values:
+        # List status. Valid values:
         # 
-        # - 0: Success
-        # - 2: Invalid address
-        # - 3: Spam
-        # - 4: Failure
+        # - 0: uploading
+        # 
+        # - 1: upload complete
         self.status = status
 
     def validate(self):

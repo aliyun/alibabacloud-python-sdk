@@ -19,20 +19,20 @@ class GetTrackListResponseBody(DaraModel):
         total_pages: int = None,
         data: main_models.GetTrackListResponseBodyData = None,
     ):
-        # Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
+        # Used for pagination. Do not set this parameter for the first request. For subsequent requests, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated.)
         self.offset_create_time = offset_create_time
-        # (This field is deprecated)
+        # (This field is deprecated.)
         self.offset_create_time_desc = offset_create_time_desc
-        # Current page number
+        # The current page number.
         self.page_no = page_no
-        # Number of items per page
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Request ID
+        # The unique identifier for the request.
         self.request_id = request_id
-        # Total number of items
+        # The total number of matching records.
         self.total = total
+        # The total number of pages.
         self.total_pages = total_pages
-        # Tracking data records
         self.data = data
 
     def validate(self):
@@ -148,25 +148,15 @@ class GetTrackListResponseBodyDataStat(DaraModel):
         rcpt_unique_open_rate: str = None,
         total_number: str = None,
     ):
-        # Creation time
         self.create_time = create_time
-        # Click count
         self.rcpt_click_count = rcpt_click_count
-        # Click rate
         self.rcpt_click_rate = rcpt_click_rate
-        # Number of Opens
         self.rcpt_open_count = rcpt_open_count
-        # Open rate
         self.rcpt_open_rate = rcpt_open_rate
-        # Unique click count
         self.rcpt_unique_click_count = rcpt_unique_click_count
-        # Unique click rate
         self.rcpt_unique_click_rate = rcpt_unique_click_rate
-        # Unique open count
         self.rcpt_unique_open_count = rcpt_unique_open_count
-        # Unique open rate
         self.rcpt_unique_open_rate = rcpt_unique_open_rate
-        # Total number
         self.total_number = total_number
 
     def validate(self):

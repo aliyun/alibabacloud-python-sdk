@@ -11,9 +11,7 @@ class GetUserResponseBody(DaraModel):
         data: main_models.GetUserResponseBodyData = None,
         request_id: str = None,
     ):
-        # Returned Content
         self.data = data
-        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +47,6 @@ class GetUserResponseBodyData(DaraModel):
         self,
         enable_eventbridge: bool = None,
     ):
-        # Whether EventBridge is enabled
         self.enable_eventbridge = enable_eventbridge
 
     def validate(self):

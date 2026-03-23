@@ -14,11 +14,11 @@ class SenderStatisticsByTagNameAndBatchIDResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.SenderStatisticsByTagNameAndBatchIDResponseBodyData = None,
     ):
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Total count
+        # The total count of data records.
         self.total_count = total_count
-        # Data records
+        # Contains the statistical data.
         self.data = data
 
     def validate(self):
@@ -101,19 +101,12 @@ class SenderStatisticsByTagNameAndBatchIDResponseBodyDataStat(DaraModel):
         unavailable_count: str = None,
         unavailable_percent: str = None,
     ):
-        # Creation time
         self.create_time = create_time
-        # Failure count
         self.faild_count = faild_count
-        # Request count
         self.request_count = request_count
-        # Success rate
         self.succeeded_percent = succeeded_percent
-        # Success count
         self.success_count = success_count
-        # Invalid count
         self.unavailable_count = unavailable_count
-        # Unavailability rate
         self.unavailable_percent = unavailable_percent
 
     def validate(self):

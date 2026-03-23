@@ -16,15 +16,14 @@ class QueryMailAddressByParamResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.QueryMailAddressByParamResponseBodyData = None,
     ):
-        # Current page number
+        # The current page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total count
+        # The total number of entries.
         self.total_count = total_count
-        # List of sending addresses
         self.data = data
 
     def validate(self):
@@ -126,34 +125,19 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
         reply_status: str = None,
         sendtype: str = None,
     ):
-        # Sending address
         self.account_name = account_name
-        # Account status, frozen: 1, normal: 0.
         self.account_status = account_status
         self.config_set_id = config_set_id
         self.config_set_name = config_set_name
-        # Creation time
         self.create_time = create_time
-        # Daily quota limit
         self.daily_count = daily_count
-        # Daily quota
         self.daily_req_count = daily_req_count
-        # Domain status, 0 indicates normal, 1 indicates abnormal.
         self.domain_status = domain_status
-        # Sending address ID
         self.mail_address_id = mail_address_id
-        # Monthly quota limit
         self.month_count = month_count
-        # Monthly quota
         self.month_req_count = month_req_count
-        # Reply address
         self.reply_address = reply_address
-        # Reply address status
         self.reply_status = reply_status
-        # Sending address type. Values:
-        # 
-        # - batch: bulk email
-        # - trigger: triggered email
         self.sendtype = sendtype
 
     def validate(self):

@@ -17,17 +17,17 @@ class DedicatedIpListResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
-        # Current page
+        # The current page number.
         self.current_page = current_page
-        # Whether there is a next page
+        # Indicates whether the next page exists.
         self.has_more = has_more
-        # IP list
+        # The list of IP addresses.
         self.ips = ips
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total amount of purchased IP data
+        # The total number of purchased IP addresses.
         self.total_counts = total_counts
 
     def validate(self):
@@ -103,25 +103,25 @@ class DedicatedIpListResponseBodyIps(DaraModel):
         warmup_type: str = None,
         zone_id: str = None,
     ):
-        # Expiration time
+        # The expiration time.
         self.expired_time = expired_time
-        # IP ID, consistent with the purchased instance ID
+        # The IP address ID. This is the same as the purchased instance ID.
         self.id = id
-        # Purchased instance ID
+        # The ID of the purchased instance.
         self.instance_id = instance_id
-        # IP address
+        # The IP address.
         self.ip = ip
-        # Extended information
+        # The extended information.
         self.ip_ext = ip_ext
-        # Name of the IP pool
+        # The name of the IP pool to which the IP address belongs.
         self.ip_pool_name = ip_pool_name
-        # Purchase time
+        # The purchase time.
         self.start_time = start_time
-        # IP status
+        # The status of the IP address.
         self.status = status
-        # Warm-up status
+        # The prefetch status.
         self.warmup_status = warmup_status
-        # Warm-up method
+        # The prefetch method.
         self.warmup_type = warmup_type
         self.zone_id = zone_id
 
@@ -214,9 +214,9 @@ class DedicatedIpListResponseBodyIpsIpExt(DaraModel):
         has_send_mail: bool = None,
         last_warm_up_type_changed_time: str = None,
     ):
-        # Whether auto-renewal is enabled
+        # Indicates whether auto-renewal is enabled.
         self.auto_renewal = auto_renewal
-        # Whether an email has been sent
+        # Indicates whether emails have been sent.
         self.has_send_mail = has_send_mail
         self.last_warm_up_type_changed_time = last_warm_up_type_changed_time
 

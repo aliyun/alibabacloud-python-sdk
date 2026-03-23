@@ -20,31 +20,31 @@ class SendTestByTemplateRequest(DaraModel):
         template_params: str = None,
         user_name: str = None,
     ):
-        # Sender address, with a maximum length of 60 characters
+        # The sender address. The length cannot exceed 60 characters.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # Birthday, with a maximum length of 30 characters
+        # The birthday. The length cannot exceed 30 characters.
         self.birthday = birthday
-        # Recipient address, with a maximum length of 60 characters
+        # The recipient email address. The length cannot exceed 60 characters.
         # 
         # This parameter is required.
         self.email = email
-        # Gender, with a maximum length of 30 characters
+        # The gender. The length cannot exceed 30 characters.
         self.gender = gender
-        # Mobile, with a maximum length of 30 characters
+        # The mobile number. The length cannot exceed 30 characters.
         self.mobile = mobile
-        # NickName, with a maximum length of 30 characters
+        # The nickname. The length cannot exceed 30 characters.
         self.nick_name = nick_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Template ID
+        # The template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
         self.template_params = template_params
-        # UserName, with a maximum length of 30 characters
+        # The user name. The length cannot exceed 30 characters.
         self.user_name = user_name
 
     def validate(self):

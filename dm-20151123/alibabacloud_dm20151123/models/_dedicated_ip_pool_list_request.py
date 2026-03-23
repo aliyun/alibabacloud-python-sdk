@@ -11,14 +11,17 @@ class DedicatedIpPoolListRequest(DaraModel):
         keyword: str = None,
         page_index: int = None,
         page_size: int = None,
+        pool_id: str = None,
     ):
+        # Specifies whether to return all entries.
         self.all = all
-        # Search keyword for the name
+        # The keyword to search for IP pools by name.
         self.keyword = keyword
-        # Page index, starting from 1
+        # The page number to return, starting from 1.
         self.page_index = page_index
-        # Number of items per page
+        # The number of entries per page.
         self.page_size = page_size
+        self.pool_id = pool_id
 
     def validate(self):
         pass
@@ -40,6 +43,9 @@ class DedicatedIpPoolListRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.pool_id is not None:
+            result['PoolId'] = self.pool_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +61,9 @@ class DedicatedIpPoolListRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('PoolId') is not None:
+            self.pool_id = m.get('PoolId')
 
         return self
 

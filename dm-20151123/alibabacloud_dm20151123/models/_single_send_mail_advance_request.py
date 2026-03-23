@@ -34,33 +34,143 @@ class SingleSendMailAdvanceRequest(DaraModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
+        # The sender address configured in the Direct Mail console.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The address type. Valid values:
+        # 
+        # 0: Random account
+        # 
+        # 1: Sender address
+        # 
         # This parameter is required.
         self.address_type = address_type
+        # This feature is available only in the latest software development kit (SDK). It is not supported by OpenAPI or signature mechanisms. For more information, see [How do I send an email with attachments using an SDK?]().
         self.attachments = attachments
+        # - The list of blind carbon copy (BCC) recipients.
+        # 
+        # - A copy of the email is sent to each BCC address. The BCC information is not visible to any recipient, including those in the ToAddress and BccAddress fields.
+        # 
+        # - To protect the privacy of BCC recipients, email tracking is disabled by default for emails sent to BCC addresses. This means that behavioral data, such as open rates and click-through rates, is not recorded for BCC emails. However, billing, sending details, and sending status statistics are the same as for regular emails.
+        # 
+        # - You can specify up to two BCC recipients for each email.
         self.bcc_address = bcc_address
+        # 1: Enables data tracking.
+        # 
+        # 0 (default): Disables data tracking.
         self.click_trace = click_trace
+        # Enable domain-level authentication.
+        # 
+        # - true
+        # 
+        # - false
+        # 
+        # Use this only for domain-level authentication. Ignore it for sender address-level authentication.
+        # 
+        # 1\\. Create the \\`domain-auth-created-by-system\\@example.com\\` address in the console. Keep the prefix before the at sign (@) fixed and use your own domain as the suffix.
+        # 
+        # 2\\.
+        # 
+        # **API scenario**
+        # 
+        # Set \\`AccountName\\` to your domain. The recipient sees the sender as \\`domain-auth-created-by-system\\@example.com\\`.
+        # 
+        # **SMTP scenario**
+        # 
+        # a. Set the domain password using the \\`ModifyPWByDomain\\` API.
+        # 
+        # b. Authenticate using the domain and the set password. For the actual sender, pass a custom address, such as \\`user\\@example.com\\`, in the \\`mailfrom\\` field. The recipient sees the sender as \\`user\\@example.com\\`.
         self.domain_auth = domain_auth
+        # The nickname of the sender. The nickname must be fewer than 15 characters.
+        # 
+        # For example, if you set the nickname to "Xiao Hong" and the sender address is test\\*\\*\\*@example.net, the recipient sees the sender as "Xiao Hong" \\<test\\*\\*\\*@example.net>.
         self.from_alias = from_alias
+        # Message header settings
+        # 
+        # Both standard and non-standard fields must follow the syntax rules for message headers. The API supports a maximum of 10 headers in the headers field. Any headers exceeding this limit are ignored. SMTP, however, does not have this limit.
+        # 
+        # 1\\. Standard fields
+        # 
+        # Message-ID, List-Unsubscribe, List-Unsubscribe-Post
+        # 
+        # Standard fields overwrite existing values in the message header.
+        # 
+        # 2\\. Non-standard fields
+        # 
+        # Case-insensitive
+        # 
+        # a. Fields that start with X-User- (These are not pushed to the EventBridge event bus or Message Service MNS. They are required only for the API, whereas SMTP supports any custom header.)
+        # 
+        # b. Fields that start with X-User-Notify- (These are pushed to the EventBridge event bus and Message Service MNS, and are supported by both the API and SMTP.)
+        # 
+        # When pushed to EventBridge or MNS, these fields appear in the header field.
         self.headers = headers
+        # The HTML body of the email.
+        # 
+        # Note: Specify HtmlBody or TextBody.
+        # 
+        # - The size of the parameter passed in a URL is limited to approximately 80 KB.
+        # 
+        # - The new SDK limits the body parameter to approximately 8 MB (Java 1.4.0 and later, Python 3 1.4.0 and later, PHP 1.4.0 and later).
         self.html_body = html_body
+        # The ID of the dedicated IP address pool. If you purchased dedicated IP addresses, use this parameter to specify the outbound IP address for the current email. For more information, see [Dedicated IPs]().
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
+        # The reply-to address.
         self.reply_address = reply_address
+        # The nickname of the reply-to address.
         self.reply_address_alias = reply_address_alias
+        # Specifies whether to use the reply-to address configured in the console. The reply-to address must be verified. Valid values: true and false.
+        # 
         # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The subject of the email. The subject cannot exceed 256 characters in length.
+        # 
         # This parameter is required.
         self.subject = subject
+        # The email tag that you create in the Direct Mail console. Use tags to classify email batches and query the sending status of each batch. If email tracking is enabled, you must specify an email tag.
+        # The tag can be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
         self.tag_name = tag_name
+        # The template information for sending template-based emails.
         self.template = template
+        # The text body of the email.
+        # 
+        # Note: Specify HtmlBody or TextBody.
+        # 
+        # - The size of the parameter passed in a URL is limited to approximately 80 KB.
+        # 
+        # - The new SDK limits the body parameter to approximately 8 MB (Java 1.4.0 and later, Python 3 1.4.0 and later, PHP 1.4.0 and later).
         self.text_body = text_body
+        # The destination address. To specify multiple addresses, separate them with commas (,). You can specify a maximum of 100 addresses. Recipient groups are supported.
+        # 
         # This parameter is required.
         self.to_address = to_address
+        # The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism]().
+        # 
+        # disabled: No filtering.
+        # 
+        # default: The default policy is used. Batch addresses are filtered at the sender address level.
+        # 
+        # mailfrom: Filters at the sender address level.
+        # 
+        # mailfrom_domain: Filters at the email domain level.
+        # 
+        # edm_id: Filters at the account level.
         self.un_subscribe_filter_level = un_subscribe_filter_level
+        # disabled: No link is generated.
+        # 
+        # default: The default policy is used. An unsubscribe link is generated for batch emails sent to specific domains, such as domains that contain keywords like "gmail", "yahoo",
+        # "google", "aol.com", "hotmail",
+        # "outlook", or "ymail.com". For more information, see [Unsubscribe link generation and filtering mechanism]().
+        # 
+        # The display language is automatically detected based on the recipient\\"s browser settings.
+        # 
+        # "outlook", or "ymail.com". For more information, see [Unsubscribe link generation and filtering mechanism]().
+        # 
+        # The display language is automatically detected based on the recipient\\"s browser settings.
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -232,7 +342,9 @@ class SingleSendMailAdvanceRequestTemplate(DaraModel):
         template_data: Dict[str, str] = None,
         template_id: str = None,
     ):
+        # The variables and their values in the template.
         self.template_data = template_data
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -267,7 +379,9 @@ class SingleSendMailAdvanceRequestAttachments(DaraModel):
         attachment_name: str = None,
         attachment_url_object: BinaryIO = None,
     ):
+        # This feature is available only in the latest SDK. It is not supported by OpenAPI or signature mechanisms.
         self.attachment_name = attachment_name
+        # This feature is available only in the latest SDK. It is not supported by OpenAPI or signature mechanisms.
         self.attachment_url_object = attachment_url_object
 
     def validate(self):

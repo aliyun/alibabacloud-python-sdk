@@ -10,9 +10,9 @@ class BatchSendMailResponseBody(DaraModel):
         env_id: str = None,
         request_id: str = None,
     ):
-        # Event ID
+        # The event ID.
         self.env_id = env_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

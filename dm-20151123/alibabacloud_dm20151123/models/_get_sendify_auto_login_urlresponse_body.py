@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SingleSendMailResponseBody(DaraModel):
+class GetSendifyAutoLoginURLResponseBody(DaraModel):
     def __init__(
         self,
-        env_id: str = None,
+        auto_login_url: str = None,
         request_id: str = None,
     ):
-        # The event ID.
-        self.env_id = env_id
-        # The request ID.
+        self.auto_login_url = auto_login_url
         self.request_id = request_id
 
     def validate(self):
@@ -23,8 +21,8 @@ class SingleSendMailResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.env_id is not None:
-            result['EnvId'] = self.env_id
+        if self.auto_login_url is not None:
+            result['AutoLoginURL'] = self.auto_login_url
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +31,8 @@ class SingleSendMailResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EnvId') is not None:
-            self.env_id = m.get('EnvId')
+        if m.get('AutoLoginURL') is not None:
+            self.auto_login_url = m.get('AutoLoginURL')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

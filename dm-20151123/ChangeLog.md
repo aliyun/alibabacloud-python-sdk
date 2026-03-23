@@ -1,3 +1,12 @@
+2026-03-23 Version: 1.9.0
+- Support API GetSendifyAutoLoginURL.
+- Support API GetSendifyInfo.
+- Support API OpenSendifyTrialService.
+- Update API DedicatedIpPoolList: add request parameters PoolId.
+- Update API GetTrackList: add request parameters Domain.
+- Update API SenderStatisticsByTagNameAndBatchID: add request parameters Domain.
+
+
 2026-01-27 Version: 1.8.3
 - Generated python 2015-11-23 for Dm.
 

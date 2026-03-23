@@ -24,7 +24,6 @@ class GetIpfilterListResponseBody(DaraModel):
         self.request_id = request_id
         # Total count
         self.total_count = total_count
-        # Data records
         self.data = data
 
     def validate(self):
@@ -115,11 +114,8 @@ class GetIpfilterListResponseBodyDataIpfilters(DaraModel):
         id: str = None,
         ip_address: str = None,
     ):
-        # timestamp
         self.create_time = create_time
-        # Record ID
         self.id = id
-        # IP address/IP range/IP segment
         self.ip_address = ip_address
 
     def validate(self):

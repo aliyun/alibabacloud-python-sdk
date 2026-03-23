@@ -11,17 +11,19 @@ class UnblockSendingRequest(DaraModel):
         block_type: str = None,
         sender_email: str = None,
     ):
-        # Blacklisted recipient\\"s email address
+        # The blacklisted recipient address.
         # 
         # This parameter is required.
         self.block_email = block_email
-        # Blacklist type
+        # The blacklist type.
+        # 
         # - UNSUB: Unsubscribe
-        # - REPORT: Report
+        # 
+        # - REPORT: Complaint
         # 
         # This parameter is required.
         self.block_type = block_type
-        # Sender\\"s email address
+        # The sender address.
         # 
         # This parameter is required.
         self.sender_email = sender_email

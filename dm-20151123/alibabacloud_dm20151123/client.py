@@ -2226,6 +2226,8 @@ class Client(OpenApiClient):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.pool_id):
+            query['PoolId'] = request.pool_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2260,6 +2262,8 @@ class Client(OpenApiClient):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.pool_id):
+            query['PoolId'] = request.pool_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3581,6 +3585,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_ipfilter_list_with_options_async(request, runtime)
 
+    def get_sendify_auto_login_urlwith_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSendifyAutoLoginURLResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetSendifyAutoLoginURL',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSendifyAutoLoginURLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sendify_auto_login_urlwith_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSendifyAutoLoginURLResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetSendifyAutoLoginURL',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSendifyAutoLoginURLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sendify_auto_login_url(self) -> main_models.GetSendifyAutoLoginURLResponse:
+        runtime = RuntimeOptions()
+        return self.get_sendify_auto_login_urlwith_options(runtime)
+
+    async def get_sendify_auto_login_url_async(self) -> main_models.GetSendifyAutoLoginURLResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sendify_auto_login_urlwith_options_async(runtime)
+
+    def get_sendify_info_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSendifyInfoResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetSendifyInfo',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSendifyInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sendify_info_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSendifyInfoResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetSendifyInfo',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSendifyInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sendify_info(self) -> main_models.GetSendifyInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_sendify_info_with_options(runtime)
+
+    async def get_sendify_info_async(self) -> main_models.GetSendifyInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sendify_info_with_options_async(runtime)
+
     def get_suppression_list_level_with_options(
         self,
         request: main_models.GetSuppressionListLevelRequest,
@@ -3674,6 +3778,8 @@ class Client(OpenApiClient):
             query['DedicatedIp'] = request.dedicated_ip
         if not DaraCore.is_null(request.dedicated_ip_pool_id):
             query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.esp):
@@ -3734,6 +3840,8 @@ class Client(OpenApiClient):
             query['DedicatedIp'] = request.dedicated_ip
         if not DaraCore.is_null(request.dedicated_ip_pool_id):
             query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.esp):
@@ -4718,6 +4826,56 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyTagResponse:
         runtime = RuntimeOptions()
         return await self.modify_tag_with_options_async(request, runtime)
+
+    def open_sendify_trial_service_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenSendifyTrialServiceResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'OpenSendifyTrialService',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenSendifyTrialServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_sendify_trial_service_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenSendifyTrialServiceResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'OpenSendifyTrialService',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenSendifyTrialServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_sendify_trial_service(self) -> main_models.OpenSendifyTrialServiceResponse:
+        runtime = RuntimeOptions()
+        return self.open_sendify_trial_service_with_options(runtime)
+
+    async def open_sendify_trial_service_async(self) -> main_models.OpenSendifyTrialServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.open_sendify_trial_service_with_options_async(runtime)
 
     def query_domain_by_param_with_options(
         self,
@@ -6022,6 +6180,8 @@ class Client(OpenApiClient):
             query['DedicatedIp'] = request.dedicated_ip
         if not DaraCore.is_null(request.dedicated_ip_pool_id):
             query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.esp):
@@ -6068,6 +6228,8 @@ class Client(OpenApiClient):
             query['DedicatedIp'] = request.dedicated_ip
         if not DaraCore.is_null(request.dedicated_ip_pool_id):
             query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.esp):

@@ -24,7 +24,6 @@ class QueryReceiverDetailResponseBody(DaraModel):
         self.request_id = request_id
         # Total count (deprecated field, kept for historical compatibility)
         self.total_count = total_count
-        # Detailed information
         self.data = data
 
     def validate(self):
@@ -116,13 +115,9 @@ class QueryReceiverDetailResponseBodyDataDetail(DaraModel):
         email: str = None,
         utc_create_time: int = None,
     ):
-        # Creation Time
         self.create_time = create_time
-        # Content
         self.data = data
-        # Recipient address
         self.email = email
-        # Creation time in UTC format
         self.utc_create_time = utc_create_time
 
     def validate(self):

@@ -9,7 +9,6 @@ class UpdateUserShrinkRequest(DaraModel):
         self,
         user_shrink: str = None,
     ):
-        # User Information
         self.user_shrink = user_shrink
 
     def validate(self):

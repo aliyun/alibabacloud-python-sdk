@@ -15,19 +15,20 @@ class QueryMailAddressByParamRequest(DaraModel):
         resource_owner_id: int = None,
         sendtype: str = None,
     ):
-        # Email address, length 1-60, supports numbers, letters, ., -, @.
+        # The email address. The length is 1 to 60 characters. It supports digits, letters, periods (.), hyphens (-), and at signs (@).
         self.key_word = key_word
         self.owner_id = owner_id
-        # Current page number, default: 1
+        # The current page number. The default value is 1.
         self.page_no = page_no
-        # Page size, default: 10
+        # The number of entries per page. The default value is 10.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Sending address type. Values:
+        # The type of the sender address. Valid values:
         # 
-        # - batch: bulk email
-        # - trigger: triggered email
+        # - batch: batch emails
+        # 
+        # - trigger: triggered emails
         self.sendtype = sendtype
 
     def validate(self):

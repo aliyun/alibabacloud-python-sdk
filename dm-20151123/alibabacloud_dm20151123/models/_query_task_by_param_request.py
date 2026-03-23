@@ -15,16 +15,16 @@ class QueryTaskByParamRequest(DaraModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
-        # Keyword, defaults to all information
+        # The keyword for the query. If you leave this blank, all tasks are returned.
         self.key_word = key_word
         self.owner_id = owner_id
-        # Current page number, default is 1
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # Page size, default is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Status, defaults to all statuses
+        # The task status. If you leave this blank, tasks in all states are returned.
         self.status = status
 
     def validate(self):

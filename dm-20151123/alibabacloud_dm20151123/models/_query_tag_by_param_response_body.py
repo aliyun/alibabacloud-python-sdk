@@ -24,7 +24,6 @@ class QueryTagByParamResponseBody(DaraModel):
         self.request_id = request_id
         # Total count
         self.total_count = total_count
-        # Data records
         self.data = data
 
     def validate(self):
@@ -115,11 +114,8 @@ class QueryTagByParamResponseBodyDataTag(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # Tag description
         self.tag_description = tag_description
-        # Tag ID
         self.tag_id = tag_id
-        # Tag name
         self.tag_name = tag_name
 
     def validate(self):

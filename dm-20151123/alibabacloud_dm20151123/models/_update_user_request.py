@@ -10,7 +10,6 @@ class UpdateUserRequest(DaraModel):
         self,
         user: main_models.UpdateUserRequestUser = None,
     ):
-        # User Information
         self.user = user
 
     def validate(self):
@@ -40,7 +39,6 @@ class UpdateUserRequestUser(DaraModel):
         self,
         enable_eventbridge: bool = None,
     ):
-        # Whether EventBridge is enabled
         self.enable_eventbridge = enable_eventbridge
 
     def validate(self):

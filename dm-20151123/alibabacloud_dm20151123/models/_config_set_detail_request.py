@@ -9,6 +9,7 @@ class ConfigSetDetailRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the configuration set. This parameter is required.
         self.id = id
 
     def validate(self):

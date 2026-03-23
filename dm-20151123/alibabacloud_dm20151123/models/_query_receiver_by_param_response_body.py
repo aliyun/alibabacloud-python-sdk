@@ -16,15 +16,14 @@ class QueryReceiverByParamResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.QueryReceiverByParamResponseBodyData = None,
     ):
-        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
+        # Used for paging. If more results are available, set this value as the NextStart parameter in your next request.
         self.next_start = next_start
-        # Number of items displayed per page.
+        # Number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # Request ID.
         self.request_id = request_id
-        # Total count
+        # Total number of entries.
         self.total_count = total_count
-        # Detailed information of the recipient list
         self.data = data
 
     def validate(self):
@@ -120,24 +119,13 @@ class QueryReceiverByParamResponseBodyDataReceiver(DaraModel):
         receivers_status: str = None,
         utc_create_time: int = None,
     ):
-        # Total number of recipient addresses
         self.count = count
-        # Creation time
         self.create_time = create_time
-        # Description
         self.desc = desc
-        # Recipient list ID
         self.receiver_id = receiver_id
-        # Recipient list alias
         self.receivers_alias = receivers_alias
-        # Recipient list name
         self.receivers_name = receivers_name
-        # List status. Values:
-        # 
-        # - 0: Uploading
-        # - 1: Upload completed
         self.receivers_status = receivers_status
-        # UTC formatted creation time
         self.utc_create_time = utc_create_time
 
     def validate(self):

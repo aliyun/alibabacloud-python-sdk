@@ -11,11 +11,11 @@ class DedicatedIpListRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
-        # IP search keyword
+        # The keyword for searching IP addresses.
         self.keyword = keyword
-        # Pagination index, starting from 1
+        # The page number. The value starts from 1.
         self.page_index = page_index
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

@@ -16,7 +16,6 @@ class ListUserSuppressionResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Returned results.
         self.data = data
         # Page number
         self.page_number = page_number
@@ -117,17 +116,10 @@ class ListUserSuppressionResponseBodyDataUserSuppressions(DaraModel):
         suppression_id: int = None,
         type: str = None,
     ):
-        # Email address or domain name
         self.address = address
-        # Creation time, timestamp, accurate to the second.
         self.create_time = create_time
-        # Last bounce hit time, timestamp, accurate to the second.
         self.last_bounce_time = last_bounce_time
-        # Invalid address ID
         self.suppression_id = suppression_id
-        # Source of entry, invalid address type
-        # - system
-        # - user
         self.type = type
 
     def validate(self):

@@ -11,8 +11,11 @@ class GetValidationQuotaResponseBody(DaraModel):
         total_quota: int = None,
         used_quota: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total available quota.
         self.total_quota = total_quota
+        # The used quota.
         self.used_quota = used_quota
 
     def validate(self):

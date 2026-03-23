@@ -13,9 +13,9 @@ class DedicatedIpNonePoolListResponseBody(DaraModel):
         ips: List[main_models.DedicatedIpNonePoolListResponseBodyIps] = None,
         request_id: str = None,
     ):
-        # Information on IPs not added to the IP pool
+        # The IP addresses that are not added to an IP pool.
         self.ips = ips
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,10 +59,11 @@ class DedicatedIpNonePoolListResponseBodyIps(DaraModel):
         ip: str = None,
         zone_id: str = None,
     ):
-        # Purchased instance ID
+        # The ID of the purchased instance.
         self.id = id
-        # IP address
+        # The IP address.
         self.ip = ip
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

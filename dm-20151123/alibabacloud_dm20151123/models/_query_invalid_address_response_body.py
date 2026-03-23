@@ -21,7 +21,6 @@ class QueryInvalidAddressResponseBody(DaraModel):
         self.request_id = request_id
         # Total count.
         self.total_count = total_count
-        # Records.
         self.data = data
 
     def validate(self):
@@ -106,11 +105,8 @@ class QueryInvalidAddressResponseBodyDataMailDetail(DaraModel):
         to_address: str = None,
         utc_last_update_time: int = None,
     ):
-        # Update time.
         self.last_update_time = last_update_time
-        # Recipient address.
         self.to_address = to_address
-        # Update time (in timestamp format).
         self.utc_last_update_time = utc_last_update_time
 
     def validate(self):

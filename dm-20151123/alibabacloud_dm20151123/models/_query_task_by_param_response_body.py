@@ -16,15 +16,14 @@ class QueryTaskByParamResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.QueryTaskByParamResponseBodyData = None,
     ):
-        # Current page number
+        # The page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total count
+        # The total number of entries.
         self.total_count = total_count
-        # Returned results
         self.data = data
 
     def validate(self):
@@ -125,29 +124,18 @@ class QueryTaskByParamResponseBodyDataTask(DaraModel):
         template_name: str = None,
         utc_create_time: int = None,
     ):
-        # Address type, sending address: 1; random address: 0;
         self.address_type = address_type
         self.config_set_id = config_set_id
         self.config_set_name = config_set_name
-        # Creation time
         self.create_time = create_time
-        # dedicated IP pool ID.
         self.ip_pool_id = ip_pool_id
-        # dedicated IP pool name.
         self.ip_pool_name = ip_pool_name
-        # Receiver\\"s name
         self.receivers_name = receivers_name
-        # Request count
         self.request_count = request_count
-        # Tag
         self.tag_name = tag_name
-        # Task ID
         self.task_id = task_id
-        # Task status, sent successfully: 1
         self.task_status = task_status
-        # Template name
         self.template_name = template_name
-        # Creation time in UTC format
         self.utc_create_time = utc_create_time
 
     def validate(self):

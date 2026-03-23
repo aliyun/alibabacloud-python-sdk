@@ -14,11 +14,10 @@ class SenderStatisticsDetailByParamResponseBody(DaraModel):
         request_id: str = None,
         data: main_models.SenderStatisticsDetailByParamResponseBodyData = None,
     ):
-        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
+        # Used for paging. If more results are available, set the \\`NextStart\\` parameter in your next request to this return value.
         self.next_start = next_start
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Detailed records
         self.data = data
 
     def validate(self):
@@ -106,26 +105,17 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(DaraModel):
         to_address: str = None,
         utc_last_update_time: str = None,
     ):
-        # Sending address
         self.account_name = account_name
         self.config_set_id = config_set_id
         self.config_set_name = config_set_name
-        # Detailed classification of error reasons: - SendOk - SmtpNxBox
-        # etc.
         self.error_classification = error_classification
         self.ip_pool_id = ip_pool_id
         self.ip_pool_name = ip_pool_name
-        # Update time
         self.last_update_time = last_update_time
-        # Delivery detail information
         self.message = message
-        # Delivery status: 0 Success, 2 Invalid Address, 3 Spam, 4 Other Failures
         self.status = status
-        # Email subject
         self.subject = subject
-        # Recipient address
         self.to_address = to_address
-        # UTC formatted update time
         self.utc_last_update_time = utc_last_update_time
 
     def validate(self):

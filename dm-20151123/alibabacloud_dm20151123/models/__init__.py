@@ -127,6 +127,10 @@ from ._get_ip_protection_response import GetIpProtectionResponse
 from ._get_ipfilter_list_request import GetIpfilterListRequest
 from ._get_ipfilter_list_response_body import GetIpfilterListResponseBody
 from ._get_ipfilter_list_response import GetIpfilterListResponse
+from ._get_sendify_auto_login_urlresponse_body import GetSendifyAutoLoginURLResponseBody
+from ._get_sendify_auto_login_urlresponse import GetSendifyAutoLoginURLResponse
+from ._get_sendify_info_response_body import GetSendifyInfoResponseBody
+from ._get_sendify_info_response import GetSendifyInfoResponse
 from ._get_suppression_list_level_request import GetSuppressionListLevelRequest
 from ._get_suppression_list_level_response_body import GetSuppressionListLevelResponseBody
 from ._get_suppression_list_level_response import GetSuppressionListLevelResponse
@@ -164,6 +168,8 @@ from ._modify_pwby_domain_response import ModifyPWByDomainResponse
 from ._modify_tag_request import ModifyTagRequest
 from ._modify_tag_response_body import ModifyTagResponseBody
 from ._modify_tag_response import ModifyTagResponse
+from ._open_sendify_trial_service_response_body import OpenSendifyTrialServiceResponseBody
+from ._open_sendify_trial_service_response import OpenSendifyTrialServiceResponse
 from ._query_domain_by_param_request import QueryDomainByParamRequest
 from ._query_domain_by_param_response_body import QueryDomainByParamResponseBody
 from ._query_domain_by_param_response import QueryDomainByParamResponse
@@ -405,6 +411,10 @@ __all__ = [
     GetIpfilterListRequest,
     GetIpfilterListResponseBody,
     GetIpfilterListResponse,
+    GetSendifyAutoLoginURLResponseBody,
+    GetSendifyAutoLoginURLResponse,
+    GetSendifyInfoResponseBody,
+    GetSendifyInfoResponse,
     GetSuppressionListLevelRequest,
     GetSuppressionListLevelResponseBody,
     GetSuppressionListLevelResponse,
@@ -442,6 +452,8 @@ __all__ = [
     ModifyTagRequest,
     ModifyTagResponseBody,
     ModifyTagResponse,
+    OpenSendifyTrialServiceResponseBody,
+    OpenSendifyTrialServiceResponse,
     QueryDomainByParamRequest,
     QueryDomainByParamResponseBody,
     QueryDomainByParamResponse,

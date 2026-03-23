@@ -11,11 +11,11 @@ class DedicatedIpPoolUpdateRequest(DaraModel):
         id: str = None,
         update_resource: bool = None,
     ):
-        # Purchased IP instance IDs, separated by commas; sourced from the DedicatedIpNonePoolList API\\"s returned IP purchase instance IDs
+        # The IDs of the purchased IP instances. Separate multiple IDs with commas. Obtain these IDs from the response of the DedicatedIpNonePoolList operation.
         self.buy_resource_ids = buy_resource_ids
-        # IP pool ID
+        # The ID of the IP pool.
         self.id = id
-        # Whether to change the associated IP, enter true
+        # Specifies whether to change the associated IP addresses. Set this parameter to true.
         self.update_resource = update_resource
 
     def validate(self):
