@@ -23,13 +23,16 @@ class ModelDTO(DaraModel):
         symbol: str = None,
         tag_names: str = None,
         tags: str = None,
+        version: int = None,
     ):
         self.api_key_preview = api_key_preview
+        # Base URL
         self.base_url = base_url
         self.delete_tag = delete_tag
         self.description = description
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        # ID
         self.id = id
         self.is_custom = is_custom
         self.max_input_length = max_input_length
@@ -40,6 +43,7 @@ class ModelDTO(DaraModel):
         self.symbol = symbol
         self.tag_names = tag_names
         self.tags = tags
+        self.version = version
 
     def validate(self):
         pass
@@ -97,6 +101,9 @@ class ModelDTO(DaraModel):
         if self.tags is not None:
             result['tags'] = self.tags
 
+        if self.version is not None:
+            result['version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -148,6 +155,9 @@ class ModelDTO(DaraModel):
 
         if m.get('tags') is not None:
             self.tags = m.get('tags')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 

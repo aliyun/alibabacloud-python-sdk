@@ -10,17 +10,21 @@ class ApiKeyDTO(DaraModel):
         self,
         client: main_models.ClientDTO = None,
         client_id: int = None,
+        delete_tag: int = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         id: int = None,
+        key: str = None,
         key_preview: str = None,
         name: str = None,
     ):
         self.client = client
         self.client_id = client_id
+        self.delete_tag = delete_tag
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        self.key = key
         self.key_preview = key_preview
         self.name = name
 
@@ -39,6 +43,9 @@ class ApiKeyDTO(DaraModel):
         if self.client_id is not None:
             result['clientId'] = self.client_id
 
+        if self.delete_tag is not None:
+            result['deleteTag'] = self.delete_tag
+
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
 
@@ -47,6 +54,9 @@ class ApiKeyDTO(DaraModel):
 
         if self.id is not None:
             result['id'] = self.id
+
+        if self.key is not None:
+            result['key'] = self.key
 
         if self.key_preview is not None:
             result['keyPreview'] = self.key_preview
@@ -65,6 +75,9 @@ class ApiKeyDTO(DaraModel):
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
 
+        if m.get('deleteTag') is not None:
+            self.delete_tag = m.get('deleteTag')
+
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
 
@@ -73,6 +86,9 @@ class ApiKeyDTO(DaraModel):
 
         if m.get('id') is not None:
             self.id = m.get('id')
+
+        if m.get('key') is not None:
+            self.key = m.get('key')
 
         if m.get('keyPreview') is not None:
             self.key_preview = m.get('keyPreview')

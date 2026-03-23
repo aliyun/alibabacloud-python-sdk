@@ -9,11 +9,13 @@ class RequestLogDTO(DaraModel):
         self,
         api_key_id: int = None,
         client_id: int = None,
+        client_uuid: str = None,
         completion_tokens: int = None,
         delete_tag: int = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         id: int = None,
+        model_code: str = None,
         model_id: int = None,
         model_name: str = None,
         prompt_tokens: int = None,
@@ -22,16 +24,20 @@ class RequestLogDTO(DaraModel):
         request_time: str = None,
         response_body: str = None,
         response_time_ms: int = None,
+        status: str = None,
         status_code: int = None,
+        symbol: str = None,
         total_tokens: int = None,
     ):
         self.api_key_id = api_key_id
         self.client_id = client_id
+        self.client_uuid = client_uuid
         self.completion_tokens = completion_tokens
         self.delete_tag = delete_tag
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        self.model_code = model_code
         self.model_id = model_id
         self.model_name = model_name
         self.prompt_tokens = prompt_tokens
@@ -40,7 +46,9 @@ class RequestLogDTO(DaraModel):
         self.request_time = request_time
         self.response_body = response_body
         self.response_time_ms = response_time_ms
+        self.status = status
         self.status_code = status_code
+        self.symbol = symbol
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -57,6 +65,9 @@ class RequestLogDTO(DaraModel):
         if self.client_id is not None:
             result['clientId'] = self.client_id
 
+        if self.client_uuid is not None:
+            result['clientUuid'] = self.client_uuid
+
         if self.completion_tokens is not None:
             result['completionTokens'] = self.completion_tokens
 
@@ -71,6 +82,9 @@ class RequestLogDTO(DaraModel):
 
         if self.id is not None:
             result['id'] = self.id
+
+        if self.model_code is not None:
+            result['modelCode'] = self.model_code
 
         if self.model_id is not None:
             result['modelId'] = self.model_id
@@ -96,8 +110,14 @@ class RequestLogDTO(DaraModel):
         if self.response_time_ms is not None:
             result['responseTimeMs'] = self.response_time_ms
 
+        if self.status is not None:
+            result['status'] = self.status
+
         if self.status_code is not None:
             result['statusCode'] = self.status_code
+
+        if self.symbol is not None:
+            result['symbol'] = self.symbol
 
         if self.total_tokens is not None:
             result['totalTokens'] = self.total_tokens
@@ -111,6 +131,9 @@ class RequestLogDTO(DaraModel):
 
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
+
+        if m.get('clientUuid') is not None:
+            self.client_uuid = m.get('clientUuid')
 
         if m.get('completionTokens') is not None:
             self.completion_tokens = m.get('completionTokens')
@@ -126,6 +149,9 @@ class RequestLogDTO(DaraModel):
 
         if m.get('id') is not None:
             self.id = m.get('id')
+
+        if m.get('modelCode') is not None:
+            self.model_code = m.get('modelCode')
 
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')
@@ -151,8 +177,14 @@ class RequestLogDTO(DaraModel):
         if m.get('responseTimeMs') is not None:
             self.response_time_ms = m.get('responseTimeMs')
 
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+
+        if m.get('symbol') is not None:
+            self.symbol = m.get('symbol')
 
         if m.get('totalTokens') is not None:
             self.total_tokens = m.get('totalTokens')

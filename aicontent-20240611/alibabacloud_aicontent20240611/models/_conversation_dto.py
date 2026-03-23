@@ -20,6 +20,7 @@ class ConversationDTO(DaraModel):
         self.delete_tag = delete_tag
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        # ID
         self.id = id
         self.message_count = message_count
         self.model_ids = model_ids

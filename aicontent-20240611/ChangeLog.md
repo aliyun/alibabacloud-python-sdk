@@ -1,3 +1,66 @@
+2026-03-23 Version: 7.0.0
+- Update API ModelRouterQueryApiKeyList: update response parameters Body.data' type has changed.
+- Update API ModelRouterQueryApiKeyList: delete response parameters Body.data.$.
+- Update API ModelRouterQueryApiKeyList: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryApiKeyList: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryApiKeyList: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryApiKeyList: delete response parameters Body.skip.
+- Update API ModelRouterQueryApiKeyList: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryClientList: update response parameters Body.data' type has changed.
+- Update API ModelRouterQueryClientList: delete response parameters Body.data.$.
+- Update API ModelRouterQueryClientList: delete response parameters Body.maxResults.
+- Update API ModelRouterQueryClientList: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryClientList: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryClientList: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryClientList: delete response parameters Body.skip.
+- Update API ModelRouterQueryClientList: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryConversationList: update response parameters Body.data' type has changed.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.data.$.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.maxResults.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.skip.
+- Update API ModelRouterQueryConversationList: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryModelList: update response parameters Body.data' type has changed.
+- Update API ModelRouterQueryModelList: delete response parameters Body.data.$.
+- Update API ModelRouterQueryModelList: delete response parameters Body.maxResults.
+- Update API ModelRouterQueryModelList: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryModelList: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryModelList: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryModelList: delete response parameters Body.skip.
+- Update API ModelRouterQueryModelList: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryNacosProviders: update response parameters Body.data.$' type has changed.
+- Update API ModelRouterQueryNacosProviders: delete response parameters Body.maxResults.
+- Update API ModelRouterQueryNacosProviders: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryNacosProviders: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryNacosProviders: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryNacosProviders: delete response parameters Body.skip.
+- Update API ModelRouterQueryNacosProviders: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryNacosTags: update response parameters Body.data.$' type has changed.
+- Update API ModelRouterQueryNacosTags: delete response parameters Body.maxResults.
+- Update API ModelRouterQueryNacosTags: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryNacosTags: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryNacosTags: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryNacosTags: delete response parameters Body.skip.
+- Update API ModelRouterQueryNacosTags: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryObservationLogs: update response parameters Body.data' type has changed.
+- Update API ModelRouterQueryObservationLogs: delete response parameters Body.data.$.
+- Update API ModelRouterQueryObservationLogs: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryObservationLogs: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryObservationLogs: delete response parameters Body.skip.
+- Update API ModelRouterQueryObservationLogs: delete response parameters Body.totalCount.
+- Update API ModelRouterQueryObservationMetrics: update response parameters Body.data' type has changed.
+- Update API ModelRouterQueryObservationMetrics: update response parameters Body.data' ref has changed.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.data.$.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.maxResults.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.nextToken.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.pageIndex.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.pageSize.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.skip.
+- Update API ModelRouterQueryObservationMetrics: delete response parameters Body.totalCount.
+
+
 2026-03-19 Version: 6.0.0
 - Delete API ModelRouterQueryModelWithApiKey.
 - Update API ModelRouterCreateModel: add request parameters body.maxInputLength.

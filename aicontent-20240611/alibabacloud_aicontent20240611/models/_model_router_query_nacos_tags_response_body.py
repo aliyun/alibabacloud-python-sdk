@@ -4,50 +4,41 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_aicontent20240611 import models as main_models
 from darabonba.model import DaraModel
 
 class ModelRouterQueryNacosTagsResponseBody(DaraModel):
     def __init__(
         self,
-        data: List[str] = None,
+        data: List[main_models.ModelRouterQueryNacosTagsResponseBodyData] = None,
         err_code: str = None,
         err_message: str = None,
         http_status_code: int = None,
-        max_results: int = None,
-        next_token: str = None,
-        page_index: int = None,
-        page_size: int = None,
         request_id: str = None,
-        skip: int = None,
         success: bool = None,
-        total_count: int = None,
     ):
         self.data = data
         self.err_code = err_code
         self.err_message = err_message
         self.http_status_code = http_status_code
-        # maxResults
-        self.max_results = max_results
-        # nextToken
-        self.next_token = next_token
-        self.page_index = page_index
-        self.page_size = page_size
         self.request_id = request_id
-        # skip
-        self.skip = skip
         self.success = success
-        self.total_count = total_count
 
     def validate(self):
-        pass
+        if self.data:
+            for v1 in self.data:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['data'] = []
         if self.data is not None:
-            result['data'] = self.data
+            for k1 in self.data:
+                result['data'].append(k1.to_map() if k1 else None)
 
         if self.err_code is not None:
             result['errCode'] = self.err_code
@@ -58,36 +49,21 @@ class ModelRouterQueryNacosTagsResponseBody(DaraModel):
         if self.http_status_code is not None:
             result['httpStatusCode'] = self.http_status_code
 
-        if self.max_results is not None:
-            result['maxResults'] = self.max_results
-
-        if self.next_token is not None:
-            result['nextToken'] = self.next_token
-
-        if self.page_index is not None:
-            result['pageIndex'] = self.page_index
-
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        if self.skip is not None:
-            result['skip'] = self.skip
-
         if self.success is not None:
             result['success'] = self.success
-
-        if self.total_count is not None:
-            result['totalCount'] = self.total_count
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = []
         if m.get('data') is not None:
-            self.data = m.get('data')
+            for k1 in m.get('data'):
+                temp_model = main_models.ModelRouterQueryNacosTagsResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
 
         if m.get('errCode') is not None:
             self.err_code = m.get('errCode')
@@ -98,29 +74,46 @@ class ModelRouterQueryNacosTagsResponseBody(DaraModel):
         if m.get('httpStatusCode') is not None:
             self.http_status_code = m.get('httpStatusCode')
 
-        if m.get('maxResults') is not None:
-            self.max_results = m.get('maxResults')
-
-        if m.get('nextToken') is not None:
-            self.next_token = m.get('nextToken')
-
-        if m.get('pageIndex') is not None:
-            self.page_index = m.get('pageIndex')
-
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-
-        if m.get('skip') is not None:
-            self.skip = m.get('skip')
 
         if m.get('success') is not None:
             self.success = m.get('success')
 
-        if m.get('totalCount') is not None:
-            self.total_count = m.get('totalCount')
+        return self
+
+class ModelRouterQueryNacosTagsResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        tag: str = None,
+        tag_name: str = None,
+    ):
+        self.tag = tag
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag is not None:
+            result['tag'] = self.tag
+
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
+
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
 
         return self
 

@@ -189,8 +189,6 @@ class OpenApiMultiResponseData(DaraModel):
 
         return self
 
-
-
 class OpenApiMultiResponseDataInferenceJobList(DaraModel):
     def __init__(
         self,

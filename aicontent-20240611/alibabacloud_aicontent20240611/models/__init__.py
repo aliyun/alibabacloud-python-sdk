@@ -255,6 +255,7 @@ from ._query_purchased_service_response import QueryPurchasedServiceResponse
 from ._update_project_request import UpdateProjectRequest
 from ._update_project_response_body import UpdateProjectResponseBody
 from ._update_project_response import UpdateProjectResponse
+from ._observation_charts_dto import ObservationChartsDTOSuccessRate
 from ._open_api_multi_response import OpenApiMultiResponseDataInferenceJobList
 from ._open_api_multi_response import OpenApiMultiResponseData
 from ._open_api_single_response import OpenApiSingleResponseData
@@ -351,6 +352,14 @@ from ._list_textbook_assistant_scene_details_response_body import ListTextbookAs
 from ._list_textbook_assistant_scene_details_response_body import ListTextbookAssistantSceneDetailsResponseBodyDataTopic
 from ._list_textbook_assistant_scene_details_response_body import ListTextbookAssistantSceneDetailsResponseBodyDataWordList
 from ._list_textbook_assistant_scene_details_response_body import ListTextbookAssistantSceneDetailsResponseBodyData
+from ._model_router_query_api_key_list_response_body import ModelRouterQueryApiKeyListResponseBodyData
+from ._model_router_query_client_list_response_body import ModelRouterQueryClientListResponseBodyData
+from ._model_router_query_conversation_list_response_body import ModelRouterQueryConversationListResponseBodyData
+from ._model_router_query_model_list_response_body import ModelRouterQueryModelListResponseBodyData
+from ._model_router_query_nacos_providers_response_body import ModelRouterQueryNacosProvidersResponseBodyDataModels
+from ._model_router_query_nacos_providers_response_body import ModelRouterQueryNacosProvidersResponseBodyData
+from ._model_router_query_nacos_tags_response_body import ModelRouterQueryNacosTagsResponseBodyData
+from ._model_router_query_observation_logs_response_body import ModelRouterQueryObservationLogsResponseBodyData
 from ._personalized_text_to_image_add_inference_job_response_body import PersonalizedTextToImageAddInferenceJobResponseBodyData
 from ._personalized_text_to_image_query_pre_model_inference_job_info_response_body import PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData
 from ._personalizedtxt_2img_add_inference_job_response_body import Personalizedtxt2imgAddInferenceJobResponseBodyData
@@ -628,6 +637,7 @@ __all__ = [
     UpdateProjectRequest,
     UpdateProjectResponseBody,
     UpdateProjectResponse,
+    ObservationChartsDTOSuccessRate,
     OpenApiMultiResponseDataInferenceJobList,
     OpenApiMultiResponseData,
     OpenApiSingleResponseData,
@@ -724,6 +734,14 @@ __all__ = [
     ListTextbookAssistantSceneDetailsResponseBodyDataTopic,
     ListTextbookAssistantSceneDetailsResponseBodyDataWordList,
     ListTextbookAssistantSceneDetailsResponseBodyData,
+    ModelRouterQueryApiKeyListResponseBodyData,
+    ModelRouterQueryClientListResponseBodyData,
+    ModelRouterQueryConversationListResponseBodyData,
+    ModelRouterQueryModelListResponseBodyData,
+    ModelRouterQueryNacosProvidersResponseBodyDataModels,
+    ModelRouterQueryNacosProvidersResponseBodyData,
+    ModelRouterQueryNacosTagsResponseBodyData,
+    ModelRouterQueryObservationLogsResponseBodyData,
     PersonalizedTextToImageAddInferenceJobResponseBodyData,
     PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData,
     Personalizedtxt2imgAddInferenceJobResponseBodyData,

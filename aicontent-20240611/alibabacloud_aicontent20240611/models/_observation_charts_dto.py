@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Any
 
 from alibabacloud_aicontent20240611 import models as main_models
 from darabonba.model import DaraModel
@@ -14,7 +14,7 @@ class ObservationChartsDTO(DaraModel):
         concurrency: List[main_models.TimeSeriesPointDTO] = None,
         qpm: List[main_models.TimeSeriesPointDTO] = None,
         response_time: List[main_models.TimeSeriesPointDTO] = None,
-        success_rate: List[main_models.TimeSeriesPointDTO] = None,
+        success_rate: List[main_models.ObservationChartsDTOSuccessRate] = None,
         tpm: List[main_models.TimeSeriesPointDTO] = None,
     ):
         self.call_volume = call_volume
@@ -116,7 +116,7 @@ class ObservationChartsDTO(DaraModel):
         self.success_rate = []
         if m.get('successRate') is not None:
             for k1 in m.get('successRate'):
-                temp_model = main_models.TimeSeriesPointDTO()
+                temp_model = main_models.ObservationChartsDTOSuccessRate()
                 self.success_rate.append(temp_model.from_map(k1))
 
         self.tpm = []
@@ -124,6 +124,51 @@ class ObservationChartsDTO(DaraModel):
             for k1 in m.get('tpm'):
                 temp_model = main_models.TimeSeriesPointDTO()
                 self.tpm.append(temp_model.from_map(k1))
+
+        return self
+
+
+
+class ObservationChartsDTOSuccessRate(DaraModel):
+    def __init__(
+        self,
+        label: str = None,
+        timestamp: str = None,
+        value: Any = None,
+    ):
+        self.label = label
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.label is not None:
+            result['label'] = self.label
+
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('label') is not None:
+            self.label = m.get('label')
+
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
