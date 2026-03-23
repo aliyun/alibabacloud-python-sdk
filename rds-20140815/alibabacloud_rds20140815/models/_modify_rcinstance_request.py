@@ -25,6 +25,11 @@ class ModifyRCInstanceRequest(DaraModel):
         # 
         # >  If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
         self.auto_pay = auto_pay
+        # Specifies whether to automatically use a coupon. Valid values:
+        # * **true** (default): Yes.
+        # * **false**: No.
+        # 
+        # > If you use a coupon and later decrease the quota, the amount offset by the coupon will not be refunded.
         self.auto_use_coupon = auto_use_coupon
         # The type of the change that you want to perform on the instance. Valid values:
         # 
@@ -42,8 +47,17 @@ class ModifyRCInstanceRequest(DaraModel):
         self.instance_id = instance_id
         # The new instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types of RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
+        # The coupon code.
         self.promotion_code = promotion_code
+        # The restart time of the instance.
+        # 
+        # - If **RebootWhenFinished** is set to **false**, you **must** specify a restart time within 48 hours.
+        # - The time must follow the ISO 8601 standard in UTC+0. Format: `yyyy-MM-ddTHH:mmZ`.
         self.reboot_time = reboot_time
+        # Whether to restart the instance immediately after the upgrade/downgrade operation ends. Valid values:
+        # - **true** (default): Yes.
+        # - **false**: No.
+        # > If the instance is in the **paused** status, it remains in that status even if you set `RebootWhenFinished=true`, and the restart operation will not be executed.
         self.reboot_when_finished = reboot_when_finished
         # The region ID of the instance.
         self.region_id = region_id

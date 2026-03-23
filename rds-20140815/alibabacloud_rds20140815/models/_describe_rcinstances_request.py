@@ -22,11 +22,18 @@ class DescribeRCInstancesRequest(DaraModel):
         vpc_id: str = None,
     ):
         self.description = description
+        # Query by instance host IP address.
         self.host_ip = host_ip
         self.image_id = image_id
         # The instance ID.
         self.instance_id = instance_id
+        # Instance ID.
+        # 
+        # This parameter is used to query multiple instances simultaneously. Separate instance IDs with English commas (,), and up to 100 IDs are supported. The input format is: `["instance ID 1","instance ID 2"]`.
+        # 
+        # > When both **InstanceIds** and **instanceId** are provided, the value of **InstanceIds** takes precedence.
         self.instance_ids = instance_ids
+        # Instance Name
         self.instance_name = instance_name
         # The page number.
         # 
@@ -40,10 +47,19 @@ class DescribeRCInstancesRequest(DaraModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        # Query by instance public IP address.
         self.public_ip = public_ip
         # The region ID.
         self.region_id = region_id
+        # Instance status. Valid values:  
+        # 
+        # - **Pending**: Creation in progress.  
+        # - **Running**: Running.  
+        # - **Starting**: Starting.  
+        # - **Stopping**: Pausing.  
+        # - **Stopped**: Paused.
         self.status = status
+        # Query by specified tag. The input format is: `{"TagKey":"TagValue"}`.
         self.tag = tag
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id

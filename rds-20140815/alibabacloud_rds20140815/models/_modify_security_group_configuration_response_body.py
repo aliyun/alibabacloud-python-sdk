@@ -14,10 +14,8 @@ class ModifySecurityGroupConfigurationResponseBody(DaraModel):
         items: main_models.ModifySecurityGroupConfigurationResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The instance ID.
         self.dbinstance_name = dbinstance_name
         self.items = items
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -15,13 +15,9 @@ class DescribeAvailableMetricsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # Details of the Enhanced Monitoring metric.
         self.items = items
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of enhanced monitoring metrics that are available for the instance.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -83,30 +79,14 @@ class DescribeAvailableMetricsResponseBodyItems(DaraModel):
         sort_rule: int = None,
         unit: str = None,
     ):
-        # The description of the Enhanced Monitoring metric.
         self.description = description
-        # The category of the Enhanced Monitoring metric. Valid values:
-        # 
-        # *   **os**: OS metric
-        # *   **db**: database metric
         self.dimension = dimension
-        # The key of the group to which the Enhanced Monitoring metric belongs.
         self.group_key = group_key
-        # The name of the group to which the Enhanced Monitoring metric belongs.
         self.group_key_type = group_key_type
-        # The method that is used to aggregate the monitoring data of the Enhanced Monitoring metric. Valid values:
-        # 
-        # *   **avg**: The system calculates the average value of the Enhanced Monitoring metric.
-        # *   **min**: The system calculates the minimum value of the Enhanced Monitoring metric.
-        # *   **max**: The system calculates the maximum value of the Enhanced Monitoring metric.
         self.method = method
-        # The key of the Enhanced Monitoring metric.
         self.metrics_key = metrics_key
-        # The alias of the Enhanced Monitoring metric.
         self.metrics_key_alias = metrics_key_alias
-        # The serial number of the Enhanced Monitoring metric.
         self.sort_rule = sort_rule
-        # The unit of the Enhanced Monitoring metric.
         self.unit = unit
 
     def validate(self):

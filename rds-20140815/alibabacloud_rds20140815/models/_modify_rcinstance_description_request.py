@@ -11,13 +11,8 @@ class ModifyRCInstanceDescriptionRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The instance name.
-        # 
-        # >  The name must be 2 to 255 characters in length and can contain letters, digits, `underscores (_)`, and `hyphens (-)`. It must start with a letter.
         self.instance_description = instance_description
-        # The instance ID.
         self.instance_id = instance_id
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

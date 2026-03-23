@@ -11,14 +11,8 @@ class DescribeRCInstanceVncUrlRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The database engine. Valid values:
-        # 
-        # *   **mssql**: SQL Server
-        # *   **mysql**: MySQL
         self.db_type = db_type
-        # The instance ID.
         self.instance_id = instance_id
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

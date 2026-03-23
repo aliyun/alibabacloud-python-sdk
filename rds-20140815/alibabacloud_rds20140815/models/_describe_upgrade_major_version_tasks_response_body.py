@@ -156,10 +156,23 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(DaraModel):
         # *   **clone**: The system does not migrate data to the new instance and does not switch your workloads over to the new instance.
         # *   **switch**: The system migrates data to the new instance and switches your workloads over to the new instance.
         self.upgrade_mode = upgrade_mode
+        # Indicates whether a switch is performed.
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
         self.cut_over = cut_over
+        # Estimated synchronization time for logical replication delay, in seconds.  
+        # > This is used only for **zero-downtime** major version upgrades.
         self.total_logic_rep_delay_time = total_logic_rep_delay_time
+        # Logical replication delay size, in MB.
+        # 
+        # > Applies only to **zero-downtime** major version upgrades.
         self.total_logic_rep_latency_mb = total_logic_rep_latency_mb
+        # Temporary internal endpoint for zero-downtime major version upgrade, in the format `****.pg.rds.aliyuncs.com`.  
+        # > Applies only to **zero-downtime** major version upgrades.
         self.zero_down_time_connection_string = zero_down_time_connection_string
+        # Port of the higher-version instance, which is the same as the source instance port.  
+        # > Applies only to **zero-downtime** major version upgrades.
         self.zero_down_time_port = zero_down_time_port
 
     def validate(self):

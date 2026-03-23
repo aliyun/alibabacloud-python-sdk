@@ -13,10 +13,7 @@ class DescribeBackupDatabaseRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the backup set.
         self.backup_id = backup_id
-        # The ID of the instance.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id

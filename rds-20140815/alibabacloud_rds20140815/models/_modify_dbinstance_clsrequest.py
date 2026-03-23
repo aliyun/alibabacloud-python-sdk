@@ -20,19 +20,53 @@ class ModifyDBInstanceCLSRequest(DaraModel):
         role_arn: str = None,
         white_list_mode: bool = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Encryption algorithm to use. Valid values:
+        # 
+        # - AES_128_CBC
+        # - AES_128_GCM
+        # - AES_128_CTR
+        # - AES_128_ECB
+        # - AES_256_CBC
+        # - AES_256_GCM
+        # - AES_256_CTR
+        # - AES_256_ECB
+        # - SM4_128_CBC
+        # - SM4_128_GCM
+        # - SM4_128_CTR
+        # - SM4_128_ECB
         self.encryption_algorithm = encryption_algorithm
+        # Encryption key ID. This parameter is required when using a KMS key.
         self.encryption_key = encryption_key
+        # Column encryption key mode. Valid values:
+        # 
+        # - client_key (configure a randomly generated user key on the client side)
+        # - kms_key (use a custom key configured via Alibaba Cloud KMS)
+        # 
+        # Note:
+        # Once an instance is configured to use a KMS key, it can no longer use the client-side random key configuration method.
         self.encryption_key_mode = encryption_key_mode
+        # Column encryption status. Valid values:
+        # - 1 (Enabled)
+        # - 0 (Disabled)
+        # 
         # This parameter is required.
         self.encryption_status = encryption_status
+        # Whether to rotate the key
         self.is_rotate = is_rotate
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Global Resource Descriptor (GRD) of the role used to specify the exact role. For more information, see RAM Role Overview.
+        # 
+        # Note:
+        # This parameter takes effect only when the column encryption key mode is set to kms_key. If not provided, the system uses an internal default value.
         self.role_arn = role_arn
+        # Whether to enable whitelist mode. true indicates that only columns in the whitelist are encrypted; false indicates that all columns are encrypted.
         self.white_list_mode = white_list_mode
 
     def validate(self):

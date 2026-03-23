@@ -130,6 +130,7 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
         self.progress = progress
         # The region ID.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
@@ -160,6 +161,7 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
         # *   accomplished: The snapshot is created.
         # *   failed: The snapshot fails to be created.
         self.status = status
+        # Tag Details.
         self.tag = tag
         # Indicates whether the snapshot is used to create custom images or disks. Valid values:
         # 
@@ -317,7 +319,9 @@ class DescribeRCSnapshotsResponseBodySnapshotsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # tag key.
         self.tag_key = tag_key
+        # tag value.
         self.tag_value = tag_value
 
     def validate(self):

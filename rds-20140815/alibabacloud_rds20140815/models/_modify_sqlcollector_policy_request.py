@@ -15,21 +15,13 @@ class ModifySQLCollectorPolicyRequest(DaraModel):
         resource_owner_id: int = None,
         sqlcollector_status: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. You can call theDescribeDBInstanceAttribute operation to query the most recent region list.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to enable the SQL Explorer (SQL Audit) feature. Valid values:
-        # 
-        # *   **Enable**
-        # *   **Disabled**
-        # 
         # This parameter is required.
         self.sqlcollector_status = sqlcollector_status
 

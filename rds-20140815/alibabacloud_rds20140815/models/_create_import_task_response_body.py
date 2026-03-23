@@ -12,6 +12,7 @@ class CreateImportTaskResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Import job ID
         self.task_id = task_id
 
     def validate(self):

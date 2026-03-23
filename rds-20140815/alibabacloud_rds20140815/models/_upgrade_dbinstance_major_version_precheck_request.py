@@ -21,6 +21,11 @@ class UpgradeDBInstanceMajorVersionPrecheckRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_major_version = target_major_version
+        # Upgrade mode. Valid values:  
+        # 
+        # - **zeroDownTimeUpgrade**: Zero downtime.  
+        # - **inPlaceUpgrade**: In-place upgrade.  
+        # - **greenBlueDeployment**: Blue-green deployment.
         self.upgrade_mode = upgrade_mode
 
     def validate(self):

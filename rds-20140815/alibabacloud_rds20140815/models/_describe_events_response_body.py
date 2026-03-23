@@ -17,13 +17,9 @@ class DescribeEventsResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.event_items = event_items
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):

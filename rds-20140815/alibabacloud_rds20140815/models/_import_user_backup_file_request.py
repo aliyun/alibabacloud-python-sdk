@@ -35,6 +35,11 @@ class ImportUserBackupFileRequest(DaraModel):
         self.backup_file = backup_file
         # The region ID of the OSS bucket where the full backup file of the self-managed MySQL database is located. You can call the DescribeRegions operation to query the most recent region list.
         self.bucket_region = bucket_region
+        # Specifies whether to automatically set up replication. Valid values:
+        # - true: Yes. The `MasterInfo` parameter is required.
+        # - false: No.
+        # 
+        # > This applies only to native replication instances and requires the `DBInstanceId` parameter to be passed when invoking the API.
         self.build_replication = build_replication
         # The description of the full backup file.
         self.comment = comment
@@ -42,7 +47,24 @@ class ImportUserBackupFileRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The version of the database engine that is run on the self-managed MySQL database and ApsaraDB RDS for MySQL instance. Set the value to **5.7**.
         self.engine_version = engine_version
+        # A case-sensitive JSON array containing the Master information for setting up MySQL replication. Example:
+        # 
+        # ```
+        # {"masterIp":"172.20.xx.xx","masterPort":"3306","masterUser":"replica","masterPassword":"W33uopkehBQ="}
+        # ```
+        # 
+        # The parameters in the array are described as follows:
+        # - `masterIp`: Primary database IP address.
+        # - `masterPort`: Primary database port.
+        # - `masterUser`: Replication account for the primary database.
+        # - `masterPassword`: Password for the replication account of the primary database, which must be Base64-encoded.
+        # 
+        # > This applies only to native replication instances and requires the `DBInstanceId` parameter to be passed when invoking the API.
         self.master_info = master_info
+        # Import mode. Valid values:
+        # 
+        # - oss: Download the backup from OSS and import it.
+        # - stream: Import the backup over the network.
         self.mode = mode
         self.owner_id = owner_id
         # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
@@ -63,6 +85,19 @@ class ImportUserBackupFileRequest(DaraModel):
         self.restore_size = restore_size
         # The retention period of the full backup file. Unit: days. Valid values: any **non-zero** positive integer.
         self.retention = retention
+        # A case-sensitive JSON array that provides the source information for a full backup. Example:
+        # 
+        # ```
+        # {"sourceIp":"172.20.xx.xx","sourcePort":"9999"}
+        # ```
+        # 
+        # The parameters in the array are described as follows:
+        # 
+        # - `sourceIp`: Source IP address.
+        # 
+        # - `sourcePort`: Port on which Netcat listens at the source.
+        # 
+        # > This applies only to native replication instances and requires the `DBInstanceId` parameter to be passed when invoking the API.
         self.source_info = source_info
         # The zone ID. You can call the DescribeRegions operation to query the zone ID.
         # 

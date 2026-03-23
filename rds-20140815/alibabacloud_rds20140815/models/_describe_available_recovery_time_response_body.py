@@ -13,15 +13,10 @@ class DescribeAvailableRecoveryTimeResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cross-region data backup file.
         self.cross_backup_id = cross_backup_id
-        # The start time from which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.recovery_begin_time = recovery_begin_time
-        # The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.recovery_end_time = recovery_end_time
-        # The region where the source instance resides.
         self.region_id = region_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

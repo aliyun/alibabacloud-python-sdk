@@ -13,16 +13,11 @@ class DescribeHistoryEventsStatRequest(DaraModel):
         security_token: str = None,
         to_start_time: str = None,
     ):
-        # The status of the asset instance. Valid values: **starting**, **running**, **stopping**, and **stopped**.
         self.archive_status = archive_status
-        # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
         self.from_start_time = from_start_time
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.security_token = security_token
-        # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.to_start_time = to_start_time
 
     def validate(self):

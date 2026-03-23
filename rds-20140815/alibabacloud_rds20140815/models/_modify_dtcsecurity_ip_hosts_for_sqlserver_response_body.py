@@ -12,16 +12,9 @@ class ModifyDTCSecurityIpHostsForSQLServerResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The result of the IP address whitelist configuration. Valid values:
-        # 
-        # *   **Success**
-        # *   **Fail**
         self.dtcset_result = dtcset_result
-        # The request ID.
         self.request_id = request_id
-        # The task ID.
         self.task_id = task_id
 
     def validate(self):

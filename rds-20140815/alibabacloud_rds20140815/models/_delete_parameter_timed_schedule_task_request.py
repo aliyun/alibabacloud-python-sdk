@@ -10,7 +10,9 @@ class DeleteParameterTimedScheduleTaskRequest(DaraModel):
         dbinstance_name: str = None,
         task_id: int = None,
     ):
+        # The instance Name.
         self.dbinstance_name = dbinstance_name
+        # The ID of the scheduled task for parameter modification.
         self.task_id = task_id
 
     def validate(self):

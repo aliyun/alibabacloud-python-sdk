@@ -13,9 +13,7 @@ class DescribeAvailableZonesResponseBody(DaraModel):
         available_zones: List[main_models.DescribeAvailableZonesResponseBodyAvailableZones] = None,
         request_id: str = None,
     ):
-        # The available zones in the region.
         self.available_zones = available_zones
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +57,8 @@ class DescribeAvailableZonesResponseBodyAvailableZones(DaraModel):
         supported_engines: List[main_models.DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines] = None,
         zone_id: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
-        # The database engines that are available for purchase.
         self.supported_engines = supported_engines
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -112,9 +107,7 @@ class DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines(DaraModel
         engine: str = None,
         supported_engine_versions: List[main_models.DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions] = None,
     ):
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine versions that are available for purchase.
         self.supported_engine_versions = supported_engine_versions
 
     def validate(self):
@@ -157,9 +150,7 @@ class DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedE
         supported_categorys: List[main_models.DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys] = None,
         version: str = None,
     ):
-        # The RDS editions that are available that are available for purchase.
         self.supported_categorys = supported_categorys
-        # The database engine version.
         self.version = version
 
     def validate(self):
@@ -202,9 +193,7 @@ class DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedE
         category: str = None,
         supported_storage_types: List[main_models.DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes] = None,
     ):
-        # The RDS edition of the instance.
         self.category = category
-        # The storage types that are available for purchase.
         self.supported_storage_types = supported_storage_types
 
     def validate(self):
@@ -246,7 +235,6 @@ class DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedE
         self,
         storage_type: str = None,
     ):
-        # The storage type of the instance.
         self.storage_type = storage_type
 
     def validate(self):

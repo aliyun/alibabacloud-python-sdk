@@ -15,12 +15,9 @@ class DescribeOssDownloadsResponseBody(DaraModel):
         migrate_task_id: str = None,
         request_id: str = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.items = items
-        # The ID of the migration task.
         self.migrate_task_id = migrate_task_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

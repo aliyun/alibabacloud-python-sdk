@@ -16,31 +16,31 @@ class CreateDBInstanceReplicationRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # 复制通道名称，用于标识复制链路
+        # The name of the replication channel, used to identify the replication link.
         self.channel_name = channel_name
-        # 目标RDS实例ID，复制链路将在此实例上创建
+        # The instance ID. You can obtain it by invoking DescribeDBInstances.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # 主数据库主机地址，支持IP或域名
+        # The host address of the master database, which can be an IP address or a domain name.
         # 
         # This parameter is required.
         self.master_host = master_host
-        # 主数据库密码，用于验证复制用户，需要提前经过Base64编码
+        # The password of the master database, used to authenticate the replication user. It must be Base64-encoded in advance.
         # 
         # This parameter is required.
         self.master_password = master_password
-        # 主数据库端口号，通常为3306（MySQL）或5432（PostgreSQL）
+        # The port number of the master database, typically 3306 for MySQL.
         # 
         # This parameter is required.
         self.master_port = master_port
-        # 主数据库用户名，用于建立复制连接
+        # The username of the master database, used to establish the replication connection.
         # 
         # This parameter is required.
         self.master_user = master_user
         # 阿里云账号ID，用于指定资源的所有者
         self.owner_id = owner_id
-        # 地域ID，表示RDS实例所在的地域
+        # The ID of the Region where the instance is located.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -62,6 +62,10 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         vpc_attributes: main_models.DescribeRCInstanceAttributeResponseBodyVpcAttributes = None,
         zone_id: str = None,
     ):
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
+        # 
+        # * **true**: Yes
+        # * **false**: No
         self.auto_renew = auto_renew
         # The ID of the cluster to which the instance belongs.
         # 
@@ -69,15 +73,26 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The number of CPU cores.
         self.cpu = cpu
+        # Indicates whether the instance is added to an ACK cluster. Valid values:  
+        # 
+        # - **1**: Yes  
+        # - **0**: No
         self.create_mode = create_mode
         # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The performance mode of the burstable instance.
         self.credit_specification = credit_specification
         self.data_disks = data_disks
+        # The database type. Valid values:
+        # 
+        # - **mssql**: SQL Server
+        # - **mysql**: MySQL
         self.db_type = db_type
         # The attributes of the dedicated hosts.
         self.dedicated_host_attribute = dedicated_host_attribute
+        # Whether deletion protection is enabled. Valid values:
+        # * **true**: Enabled
+        # * **false**: Disabled
         self.deletion_protection = deletion_protection
         # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
@@ -96,7 +111,9 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.enable_jumbo_frame = enable_jumbo_frame
         # The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
         self.expired_time = expired_time
+        # Number of GPUs.
         self.gpu = gpu
+        # The GPU type.
         self.gpu_types = gpu_types
         # The instance hostname.
         self.host_name = host_name
@@ -108,6 +125,9 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         # The image ID of the instance.
         self.image_id = image_id
         self.inner_ip_address = inner_ip_address
+        # Billing method. Valid values:
+        # * **PrePaid**: subscription
+        # * **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
@@ -140,6 +160,7 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.key_pair_name = key_pair_name
         # The memory capacity of the instance. Unit: MiB.
         self.memory = memory
+        # The File Type. When the value is **rds_vnode**, it indicates that the node is a container node.
         self.node_type = node_type
         self.operation_locks = operation_locks
         self.public_ip_address = public_ip_address
@@ -147,10 +168,15 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
         # The serial number of the instance.
         self.serial_number = serial_number
+        # The spot strategy for pay-as-you-go instances. Valid values:
+        # 
+        # - **NoSpot**: Normal pay-as-you-go instance.
+        # - **SpotAsPriceGo**: The system automatically bids based on the current marketplace price.
         self.spot_strategy = spot_strategy
         # The instance status. Valid values:
         # 
@@ -166,8 +192,12 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         # *   **StopCharging**: The billing of the instance stops after the instance is stopped. After the instance is stopped, resources such as CPU cores, memory resources, and public IP address are released. The instance may be unable to restart if some required resources are out of stock in the current region.
         # *   **Not-applicable**: The No Fees for Stopped Instances feature is not supported for the instance.
         self.stopped_mode = stopped_mode
+        # System disk specifications.
         self.system_disk = system_disk
         self.tags = tags
+        # The custom data of the instance, formatted as a base64-encoded string.
+        # 
+        # > If the instance does not have custom data, an empty string is returned.
         self.user_data = user_data
         # The virtual LAN (VLAN) ID of the instance.
         # 
@@ -705,10 +735,28 @@ class DescribeRCInstanceAttributeResponseBodySystemDisk(DaraModel):
         system_disk_performance_level: str = None,
         system_disk_size: int = None,
     ):
+        # A backup parameter.
         self.delete_with_instance = delete_with_instance
+        # Specifies whether to encrypt the disk. Valid values:
+        # 
+        # - **true**: Yes
+        # - **false**: No
         self.encrypted = encrypted
+        # The system disk category. Valid values:
+        # 
+        # - **cloud_efficiency**: ultra disk.
+        # - **cloud_ssd**: standard SSD.
+        # - **cloud_essd**: enterprise SSD (ESSD).
+        # - **cloud_auto**: premium performance disk.
         self.system_disk_category = system_disk_category
+        # Performance level of the system disk when it is an enterprise SSD (ESSD). Valid values:
+        # 
+        # - **PL0**
+        # - **PL1**
+        # - **PL2**
+        # - **PL3**
         self.system_disk_performance_level = system_disk_performance_level
+        # System disk size, in GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

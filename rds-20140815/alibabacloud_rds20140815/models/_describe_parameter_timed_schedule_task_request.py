@@ -9,6 +9,8 @@ class DescribeParameterTimedScheduleTaskRequest(DaraModel):
         self,
         db_instance_name: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.db_instance_name = db_instance_name
 

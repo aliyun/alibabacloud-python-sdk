@@ -13,7 +13,9 @@ class DescribeParameterTimedScheduleTaskResponseBody(DaraModel):
         request_id: str = None,
         task_list: List[main_models.DescribeParameterTimedScheduleTaskResponseBodyTaskList] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # List of scan jobs.
         self.task_list = task_list
 
     def validate(self):
@@ -59,10 +61,19 @@ class DescribeParameterTimedScheduleTaskResponseBodyTaskList(DaraModel):
         switch_time: str = None,
         task_id: str = None,
     ):
+        # Instance name.
         self.dbinstance_name = dbinstance_name
+        # Modified parameter settings.
         self.parameters = parameters
+        # Status. Valid values:
+        # * **PENDING**: Pending execution.
+        # * **EXECUTING**: Executing.
+        # * **COMPLETED**: Completed.
+        # * **EXECUTING**: Failed.
         self.status = status
+        # Effective period for the parameter modification.
         self.switch_time = switch_time
+        # Scheduled task ID for parameter modification.
         self.task_id = task_id
 
     def validate(self):

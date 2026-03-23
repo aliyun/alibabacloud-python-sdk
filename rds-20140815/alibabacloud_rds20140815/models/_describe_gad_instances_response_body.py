@@ -13,9 +13,7 @@ class DescribeGadInstancesResponseBody(DaraModel):
         gad_instances: List[main_models.DescribeGadInstancesResponseBodyGadInstances] = None,
         request_id: str = None,
     ):
-        # The details about the global active database cluster.
         self.gad_instances = gad_instances
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,25 +61,12 @@ class DescribeGadInstancesResponseBodyGadInstances(DaraModel):
         service: str = None,
         status: str = None,
     ):
-        # The time when the global active database cluster was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The name of the cluster.
         self.description = description
-        # The information about each node in the cluster.
         self.gad_instance_members = gad_instance_members
-        # The ID of the global active database cluster.
         self.gad_instance_name = gad_instance_name
-        # The time when the most recent modification was made to the global active database cluster. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The database engine that is run by the global active database cluster.
-        # 
-        # >  The value of this parameter is fixed as **mysql**.
         self.service = service
-        # The status of the cluster. Valid values:
-        # 
-        # *   **activation**: The cluster is running.
-        # *   **creating**: The cluster is being created.
-        # *   **replica_adding**: Nodes are being added to the cluster.
         self.status = status
 
     def validate(self):
@@ -160,31 +145,13 @@ class DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers(DaraModel):
         role: str = None,
         status: str = None,
     ):
-        # The ID of the node.
         self.dbinstance_id = dbinstance_id
-        # A JSON array that consists of the details about the Data Transmission Service (DTS) synchronization task.
-        # 
-        # >  Each unit node (secondary node) synchronizes data from the central node (primary node) by using DTS. This parameter contains the synchronization link ID and request ID of DTS.
         self.dts_instance = dts_instance
-        # The database engine that is run by the node.
-        # 
-        # >  The value of this parameter is fixed as **mysql**.
         self.engine = engine
-        # The database engine version that is run by the node.
         self.engine_version = engine_version
-        # The ID of the region where the node resides.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The type of the node. Valid values:
-        # 
-        # *   **CENTRAL**: The node is a central node. Each global active database cluster has only one central node. All unit nodes synchronize data from the central node.
-        # *   **UNIT**: The node is a unit node. Each global active database cluster can have up to 10 unit nodes. All unit nodes synchronize data from the central node.
         self.role = role
-        # The node status. Valid values:
-        # 
-        # *   **activation**: The node is running.
-        # *   **creating**: The node is being created.
         self.status = status
 
     def validate(self):

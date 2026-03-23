@@ -18,26 +18,16 @@ class CloneParameterGroupRequest(DaraModel):
         target_region_id: str = None,
     ):
         self.owner_id = owner_id
-        # The description of the parameter template in the destination region.
         self.parameter_group_desc = parameter_group_desc
-        # The ID of the parameter template. You can call the DescribeParameterGroups operation to query the parameter template ID.
-        # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id
-        # The name of the parameter template in the destination region.
-        # 
         # This parameter is required.
         self.parameter_group_name = parameter_group_name
-        # The ID of the source region to which the parameter template belongs. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the destination region. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.target_region_id = target_region_id
 

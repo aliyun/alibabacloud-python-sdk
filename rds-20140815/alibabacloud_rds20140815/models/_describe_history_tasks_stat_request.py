@@ -22,44 +22,21 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
-        # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-        # 
         # This parameter is required.
         self.from_start_time = from_start_time
-        # The instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The status of the task. Valid values:
-        # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
-        # 
-        # Separate multiple statuses with commas (,). By default, this parameter is left empty. This indicates that tasks in all statuses are queried.
         self.status = status
-        # The task ID.
         self.task_id = task_id
-        # The task type.
         self.task_type = task_type
-        # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
-        # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-        # 
         # This parameter is required.
         self.to_start_time = to_start_time
 

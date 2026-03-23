@@ -13,8 +13,6 @@ class DescribeAvailableCrossRegionRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent zone list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

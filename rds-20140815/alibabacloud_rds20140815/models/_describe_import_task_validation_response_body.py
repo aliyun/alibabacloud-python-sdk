@@ -12,10 +12,16 @@ class DescribeImportTaskValidationResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # Job details.
         self.detail = detail
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Job status. The parameter is invalid.
         self.status = status
+        # Indicates whether the request succeeded. The values have the following meanings:
+        # 
+        # - **true**: Succeeded
+        # - **false**: Failed
         self.success = success
 
     def validate(self):

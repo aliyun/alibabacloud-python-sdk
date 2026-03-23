@@ -20,39 +20,19 @@ class CreateReplicationLinkRequest(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The ID of the DR instance.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to perform a dry run before the system creates the DR instance. Valid values:
-        # 
-        # *   **true**: performs a dry run but does not create the instance. The system checks the request parameters, request syntax, limits, and available resources.
-        # *   **false** (default): performs a dry run and the actual request. If the request passes the dry run, the instance is directly created.
-        # 
         # This parameter is required.
         self.dry_run = dry_run
-        # The account of the database that is used for data synchronization.
         self.replicator_account = replicator_account
-        # The password of the account.
         self.replicator_password = replicator_password
-        # The endpoint of the source ApsaraDB RDS for PostgreSQL instance or the IP address of the source ApsaraDB RDS for SQL Server instance.
         self.source_address = source_address
-        # The type of the source instance. Valid values:
-        # 
-        # *   **other**: other instances. **SQL Server instances are not supported.**
-        # *   **aliyunRDS**: an ApsaraDB RDS instance.
         self.source_category = source_category
-        # The name of the source instance. If you set **SourceCategory** to **aliyunRDS**, this parameter is required.
         self.source_instance_name = source_instance_name
-        # The region ID of the source instance. If you set **SourceCategory** to **aliyunRDS**, this parameter is required.
         self.source_instance_region_id = source_instance_region_id
-        # The port of the source instance.
         self.source_port = source_port
-        # The IP address of the DR instance of the ApsaraDB RDS for SQL Server instance.
         self.target_address = target_address
-        # The task ID of the successful dry run.
         self.task_id = task_id
-        # The task name of the dry run. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
         self.task_name = task_name
 
     def validate(self):

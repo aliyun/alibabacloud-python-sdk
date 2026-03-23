@@ -14,6 +14,7 @@ class DescribeSQLServerUpgradeVersionsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.items = items
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -85,7 +86,9 @@ class DescribeSQLServerUpgradeVersionsResponseBodyItemsItem(DaraModel):
         current_version: str = None,
         sqlserver_upgrade_versions: main_models.DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersions = None,
     ):
+        # 当前的版本。若传DBInstanceId，则返回实例版本。若未传DBInstanceId，但传了EngineVersion，则返回EngineVersion。
         self.current_version = current_version
+        # 一个列表，显示是否支持升级到目标版本
         self.sqlserver_upgrade_versions = sqlserver_upgrade_versions
 
     def validate(self):
@@ -158,8 +161,11 @@ class DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersi
         enable_upgrade: str = None,
         version: str = None,
     ):
+        # 一个列表，描述了每个版本是否可以成为升级目标
         self.dbinstance_class_items = dbinstance_class_items
+        # 是否支持升级到该版本
         self.enable_upgrade = enable_upgrade
+        # 版本值
         self.version = version
 
     def validate(self):
@@ -240,10 +246,15 @@ class DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersi
         group: str = None,
         memory: str = None,
     ):
+        # 可升级的版本规格的CPU大小
         self.cpu = cpu
+        # 可升级的版本规格
         self.dbinstance_class = dbinstance_class
+        # 可升级的版本规格的类型
         self.dbinstance_class_type = dbinstance_class_type
+        # 组类型
         self.group = group
+        # 可升级的版本规格的内存大小
         self.memory = memory
 
     def validate(self):

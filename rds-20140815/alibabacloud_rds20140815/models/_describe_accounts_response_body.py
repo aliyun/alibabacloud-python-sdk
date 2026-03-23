@@ -19,24 +19,11 @@ class DescribeAccountsResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.accounts = accounts
-        # The page number.
         self.page_number = page_number
-        # The request ID.
         self.request_id = request_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The first time when the system admin account was enabled. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.system_admin_account_first_activation_time = system_admin_account_first_activation_time
-        # Indicates whether the system admin account was enabled. Valid values:
-        # 
-        # *   **true**: The system admin account was enabled.
-        # *   **false**: The system admin account was disabled.
-        # 
-        # >  The [system admin account](https://help.aliyun.com/document_detail/170736.html) is supported only for the instances that run SQL Server. If the instance runs SQL Server, a value is returned for this parameter. If the instance runs a different database engine, no value is returned for this parameter.
         self.system_admin_account_status = system_admin_account_status
-        # The total number of entries that are returned.
         self.total_record_count = total_record_count
 
     def validate(self):

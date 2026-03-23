@@ -27394,6 +27394,10 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyBackupPolicyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.advanced_data_policies):
+            query['AdvancedDataPolicies'] = request.advanced_data_policies
+        if not DaraCore.is_null(request.advanced_log_policies):
+            query['AdvancedLogPolicies'] = request.advanced_log_policies
         if not DaraCore.is_null(request.archive_backup_keep_count):
             query['ArchiveBackupKeepCount'] = request.archive_backup_keep_count
         if not DaraCore.is_null(request.archive_backup_keep_policy):
@@ -27418,6 +27422,8 @@ class Client(OpenApiClient):
             query['CompressType'] = request.compress_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.enable_advanced_backup_policy):
+            query['EnableAdvancedBackupPolicy'] = request.enable_advanced_backup_policy
         if not DaraCore.is_null(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
         if not DaraCore.is_null(request.enable_increment_data_backup):
@@ -27474,6 +27480,10 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyBackupPolicyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.advanced_data_policies):
+            query['AdvancedDataPolicies'] = request.advanced_data_policies
+        if not DaraCore.is_null(request.advanced_log_policies):
+            query['AdvancedLogPolicies'] = request.advanced_log_policies
         if not DaraCore.is_null(request.archive_backup_keep_count):
             query['ArchiveBackupKeepCount'] = request.archive_backup_keep_count
         if not DaraCore.is_null(request.archive_backup_keep_policy):
@@ -27498,6 +27508,8 @@ class Client(OpenApiClient):
             query['CompressType'] = request.compress_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.enable_advanced_backup_policy):
+            query['EnableAdvancedBackupPolicy'] = request.enable_advanced_backup_policy
         if not DaraCore.is_null(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
         if not DaraCore.is_null(request.enable_increment_data_backup):

@@ -19,39 +19,19 @@ class ModifyDBInstanceConfigRequest(DaraModel):
         switch_time: str = None,
         switch_time_mode: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The name of the configuration item that you want to modify. Valid values:
-        # 
-        # *   **pgbouncer**. This configuration item is supported for ApsaraDB RDS for PostgreSQL instances.
-        # *   **clear_errorlog**. This configuration item is supported for ApsaraDB RDS for SQL Server instances.
-        # 
         # This parameter is required.
         self.config_name = config_name
-        # The value of the configuration item that you want to modify. Valid values:
-        # 
-        # *   If you set ConfigName to pgbouncer, the valid values are **true** and **false**.
-        # *   If you set ConfigName to clear_errorlog, set the value to **1**. The value 1 indicates that error logs are cleaned up.
-        # 
         # This parameter is required.
         self.config_value = config_value
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute to obtain the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The update time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.switch_time = switch_time
-        # The time at which the modification takes effect. Valid values:
-        # 
-        # - **Immediate**: immediately modifies the parameter. This is the default value.
-        # - **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
-        # - **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):

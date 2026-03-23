@@ -13,15 +13,11 @@ class ModifySecurityGroupConfigurationRequest(DaraModel):
         resource_owner_id: int = None,
         security_group_id: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the ECS security group. Each instance can be added to up to 10 security groups. Separate multiple security groups with commas (,). To delete an ECS security group, leave this parameter empty. You can call the DescribeSecurityGroups operation to query the ID of the ECS security group.
-        # 
         # This parameter is required.
         self.security_group_id = security_group_id
 

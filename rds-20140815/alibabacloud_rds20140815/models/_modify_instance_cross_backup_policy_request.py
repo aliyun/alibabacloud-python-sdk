@@ -19,38 +19,18 @@ class ModifyInstanceCrossBackupPolicyRequest(DaraModel):
         retent_type: int = None,
         retention: int = None,
     ):
-        # Specifies whether to enable the cross-region backup feature on the instance. This parameter specifies whether you can back up data and logs. Valid values:
-        # 
-        # *   **0**: disables the feature.
-        # *   **1:** enables the feature.
-        # 
-        # > Before you enable the cross-region backup feature, you must configure the CrossBackupRegion parameter.
         self.backup_enabled = backup_enabled
-        # The ID of the region in which the cross-region backup files of the instance are stored.
         self.cross_backup_region = cross_backup_region
-        # The policy that is used to save the cross-region backup files of the instance. Set the value to **1**. The value 1 specifies that all cross-region backup files are saved.
         self.cross_backup_type = cross_backup_type
-        # The instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to enable the cross-region log backup feature on the instance. Valid values:
-        # 
-        # *   **0**: disables the feature.
-        # *   **1:** enables the feature.
-        # 
-        # > You can enable the cross-region log backup feature only when the cross-region backup feature is enabled.
         self.log_backup_enabled = log_backup_enabled
         self.owner_id = owner_id
-        # The region ID of the source instance. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The policy that is used to retain the cross-region backup files of the instance. Set the value to 1. The value **1** specifies that the cross-region backup files of the instance are retained based on the specified retention period.
         self.retent_type = retent_type
-        # The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
         self.retention = retention
 
     def validate(self):

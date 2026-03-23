@@ -17,20 +17,9 @@ class DescribeDBInstanceTDEResponseBody(DaraModel):
         tdestatus: str = None,
     ):
         self.databases = databases
-        # The ID of the custom key.
         self.encryption_key = encryption_key
-        # The ID of the request.
         self.request_id = request_id
-        # The method that is used to generate the key for TDE at the instance level. Valid values:
-        # 
-        # *   **Aliyun_Generate_Key**
-        # *   **Customer_Provided_Key**
-        # *   **Unknown**
         self.tdemode = tdemode
-        # The TDE status of the instance. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
         self.tdestatus = tdestatus
 
     def validate(self):

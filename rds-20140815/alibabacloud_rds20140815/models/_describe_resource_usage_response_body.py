@@ -24,37 +24,21 @@ class DescribeResourceUsageResponseBody(DaraModel):
         request_id: str = None,
         sqlsize: int = None,
     ):
-        # The storage that is occupied by archived backup files on the instance. Unit: bytes.
         self.archive_backup_size = archive_backup_size
-        # The storage that is occupied by data backup files, excluding archived backup files, on the instance. Unit: bytes.
         self.backup_data_size = backup_data_size
-        # The storage capacity that is used to store the snapshot backup files of the **RDS for SQL Server** instance. Unit: bytes. The value 0 indicates that no snapshot backup files are stored for the instance.
         self.backup_ecs_snapshot_size = backup_ecs_snapshot_size
-        # The storage that is occupied by log backup files, excluding archived backup files, on the instance. Unit: bytes.
         self.backup_log_size = backup_log_size
-        # The size of data backup files that are stored in Object Storage Service (OSS) buckets. Unit: bytes. The value 0 indicates no data backup files are stored in OSS buckets.
         self.backup_oss_data_size = backup_oss_data_size
-        # The size of log backup files that are stored in OSS buckets. Unit: bytes. The value 0 indicates no log backup files are stored in OSS buckets.
         self.backup_oss_log_size = backup_oss_log_size
-        # The storage that is used to store backup files. Unit: bytes. The value -1 indicates that no backup files are stored.
         self.backup_size = backup_size
-        # The storage that is used to store cold backup files. Unit: bytes. The value -1 indicates that no cold backup files are stored.
         self.cold_backup_size = cold_backup_size
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The storage that is used to store data files. Unit: bytes. The value -1 indicates that no data files are stored.
         self.data_size = data_size
-        # The total storage that is occupied by data files and log files on the instance. Unit: bytes. The value -1 indicates that no data files or log files are stored on the instance.
         self.disk_used = disk_used
-        # The database engine of the instance.
         self.engine = engine
-        # The storage that is used to store log files. Unit: bytes. The value -1 indicates that no log files are stored.
         self.log_size = log_size
-        # The backup storage for which you must pay. The system provides a free quota on backup storage. You must pay for the backup storage that exceeds the free quota. Unit: bytes.
         self.paid_backup_size = paid_backup_size
-        # The request ID.
         self.request_id = request_id
-        # The storage that is occupied to execute SQL statements on the instance. Unit: bytes. The value -1 indicates that no SQL statements are executed.
         self.sqlsize = sqlsize
 
     def validate(self):

@@ -11,11 +11,8 @@ class DescribeDBInstanceIpHostnameResponseBody(DaraModel):
         ip_hostname_infos: str = None,
         request_id: str = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The internal IP addresses and hostnames of the ECS instance on which a primary ApsaraDB RDS for SQL Server instance and its secondary RDS instance reside. Format: `IP address 1, Hostname 1; IP address 2, Hostname 2`.
         self.ip_hostname_infos = ip_hostname_infos
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

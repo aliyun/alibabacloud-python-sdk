@@ -13,15 +13,10 @@ class CreateDBInstanceForRebuildResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The response parameters.
         self.message = message
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
-        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

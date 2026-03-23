@@ -15,8 +15,14 @@ class ListImportTasksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # None
         self.items = items
+        # Number of records per page. Valid values: **1–100**.
+        # 
+        # Default value: **30**.  
+        # >If this parameter is specified, the **PageSize** and **PageNumber** parameters are unavailable.
         self.max_results = max_results
+        # Paging cursor identity.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -78,12 +84,19 @@ class ListImportTasksResponseBodyItems(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # Creation time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
+        # Milvus version number.
         self.db_version = db_version
+        # Job status.
         self.status = status
+        # Target instance ID.
         self.target_instance_name = target_instance_name
+        # Job ID.
         self.task_id = task_id
+        # Job name.
         self.task_name = task_name
+        # Job type.
         self.task_type = task_type
 
     def validate(self):

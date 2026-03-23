@@ -12,16 +12,9 @@ class DeleteSecretResponseBody(DaraModel):
         secret_name: str = None,
         success: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The ARN of the credential for the Data API account.
         self.secret_arn = secret_arn
-        # The name of the credential.
         self.secret_name = secret_name
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.success = success
 
     def validate(self):

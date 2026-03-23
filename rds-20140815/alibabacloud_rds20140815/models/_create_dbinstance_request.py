@@ -303,6 +303,9 @@ class CreateDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.engine_version = engine_version
+        # Enable or disable [RDS MySQL native replication](https://help.aliyun.com/document_detail/2856526.html). Valid values:
+        # - **ON**: Enabled.
+        # - **OFF**: Disabled.
         self.external_replication = external_replication
         # The network type of the instance. Valid values:
         # 

@@ -11,11 +11,8 @@ class UnassociateEipAddressWithRCInstanceRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The EIP ID.
         self.allocation_id = allocation_id
-        # The instance ID.
         self.instance_id = instance_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

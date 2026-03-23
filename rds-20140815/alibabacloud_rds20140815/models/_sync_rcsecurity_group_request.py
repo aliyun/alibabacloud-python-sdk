@@ -11,11 +11,8 @@ class SyncRCSecurityGroupRequest(DaraModel):
         region_id: str = None,
         security_group_id: str = None,
     ):
-        # The instance ID.
         self.instance_id = instance_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
-        # The security group ID.
         self.security_group_id = security_group_id
 
     def validate(self):

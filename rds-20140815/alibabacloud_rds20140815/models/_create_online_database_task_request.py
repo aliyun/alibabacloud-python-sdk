@@ -17,27 +17,13 @@ class CreateOnlineDatabaseTaskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The consistency check method after the database is open. Valid values:
-        # 
-        # *   **SyncExecuteDBCheck**: synchronous database check
-        # *   **AsyncExecuteDBCheck**: asynchronous database check
-        # 
-        # > The check methods are supported for RDS instances that run SQL Server 2008 R2.
-        # 
         # This parameter is required.
         self.check_dbmode = check_dbmode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database.
-        # 
         # This parameter is required.
         self.dbname = dbname
-        # The ID of the migration task.
-        # 
         # This parameter is required.
         self.migrate_task_id = migrate_task_id
         self.owner_account = owner_account

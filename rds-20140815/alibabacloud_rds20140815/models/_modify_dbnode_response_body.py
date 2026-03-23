@@ -12,16 +12,9 @@ class ModifyDBNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The ID of the order.
         self.order_id = order_id
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):

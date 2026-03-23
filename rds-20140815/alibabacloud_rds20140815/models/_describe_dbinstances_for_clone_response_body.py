@@ -17,13 +17,9 @@ class DescribeDBInstancesForCloneResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.items = items
-        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):

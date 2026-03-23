@@ -14,9 +14,13 @@ class ModifyMaskingRulesResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Returned data
         self.data = data
+        # Return message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):

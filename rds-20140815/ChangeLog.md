@@ -1,3 +1,12 @@
+2026-03-23 Version: 15.7.1
+- Update API DescribeBackupPolicy: add response parameters Body.AdvancedBackupPolicyEnabled.
+- Update API DescribeBackupPolicy: add response parameters Body.AdvancedDataPolicies.
+- Update API DescribeBackupPolicy: add response parameters Body.AdvancedLogPolicies.
+- Update API ModifyBackupPolicy: add request parameters AdvancedDataPolicies.
+- Update API ModifyBackupPolicy: add request parameters AdvancedLogPolicies.
+- Update API ModifyBackupPolicy: add request parameters EnableAdvancedBackupPolicy.
+
+
 2026-03-20 Version: 15.7.0
 - Support API AuthorizeBackupEncryption.
 - Support API CheckBackupEncryptionAuthorized.

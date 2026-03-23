@@ -16,23 +16,12 @@ class ModifySQLCollectorRetentionRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The log retention period that is allowed by the SQL Explorer feature on the instance. Valid values:
-        # 
-        # *   30: 30 days
-        # *   180: 180 days
-        # *   365: one year
-        # *   1095: three years
-        # *   1825: five years
-        # 
         # This parameter is required.
         self.config_value = config_value
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

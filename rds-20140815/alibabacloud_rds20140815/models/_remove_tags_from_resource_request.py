@@ -23,27 +23,17 @@ class RemoveTagsFromResourceRequest(DaraModel):
         proxy_id: str = None,
     ):
         self.tag = tag
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the ListResourceGroups operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # A set of a TagKey and a TagValue that you use to unbind the tag. Format: {"key1":"value1"}.
-        # 
-        # >  You cannot specify an empty string for TagKey. You can specify an empty string for TagValue.
         self.tags = tags
-        # The ID of the proxy mode.
         self.proxy_id = proxy_id
 
     def validate(self):
@@ -140,9 +130,7 @@ class RemoveTagsFromResourceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The TagKey of the first tag that you want to unbind. Each tag consists of a TagKey and a TagValue. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
         self.key = key
-        # The TagValue of the first tag that you want to unbind. Each tag consists of a TagKey and a TagValue. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
         self.value = value
 
     def validate(self):

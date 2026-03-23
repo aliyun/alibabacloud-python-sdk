@@ -16,15 +16,10 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The events.
         self.items = items
-        # The page number. Valid values: any non-zero positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,21 +86,13 @@ class DescribeHistoryEventsResponseBodyItems(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The details of the data.
         self.data = data
-        # The task ID
         self.id = id
-        # The region ID.
         self.region = region
-        # The event source.
         self.source = source
-        # The database engine version.
         self.specversion = specversion
-        # The name of the pending event.
         self.subject = subject
-        # The amount of time that has elapsed from the start time of the query. Unit: seconds.
         self.time = time
-        # The event type. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.type = type
 
     def validate(self):
@@ -203,67 +190,32 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         start_time: str = None,
         uid: str = None,
     ):
-        # The cloud service type of the application group. Valid values: **web** and native. The value web indicates a web application. The value **native** indicates a local application.
         self.cms_product = cms_product
-        # The database engine.
         self.db_type = db_type
-        # The pagination parameter.
         self.detail_impact = detail_impact
-        # The details of the instance operation.
         self.detail_reason = detail_reason
-        # The time when the alert was closed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_category = event_category
-        # The event code.
         self.event_code = event_code
-        # The event details.
         self.event_detail = event_detail
-        # The event ID.
         self.event_id = event_id
-        # The event impact.
         self.event_impact = event_impact
-        # The event level. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_level = event_level
-        # The event source.
         self.event_reason = event_reason
-        # The status of the alert event. Valid values:
-        # 
-        # *   **1**: pending
-        # *   **2**: ignored
-        # *   **4**: confirmed
-        # *   **8**: marked as false positive
-        # *   **16**: handling
-        # *   **32**: handled
-        # *   **64**: expired
         self.event_status = event_status
-        # The event type. Valid values:
         self.event_type = event_type
-        # The creation time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The update time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # The handling status.
         self.handle_status = handle_status
-        # Indicates whether the event has a lifecycle.
         self.has_life_cycle = has_life_cycle
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # Indicates whether the alert is closed. Valid values: **0**: closed. **1**: not closed.
         self.is_closed = is_closed
-        # The service name.
         self.product = product
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
-        # The resource type. The value is fixed as **INSTANCE**.
         self.resource_type = resource_type
-        # The type of the source data.
         self.source_type = source_type
-        # The start time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The ID of the resource owner.
         self.uid = uid
 
     def validate(self):

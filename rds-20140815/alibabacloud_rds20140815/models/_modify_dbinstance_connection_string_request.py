@@ -55,7 +55,16 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         self.port = port
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to retain the virtual IP address (VIP) when swapping connection addresses.  
+        # 
+        # - **true**: Retains the VIP.  
+        # - **false** (default): Does not retain the VIP.  
+        # 
+        # > This parameter is supported only for RDS PostgreSQL instances.
         self.retain_vip = retain_vip
+        # The ID of the target RDS PostgreSQL instance whose connection address you want to swap with the current instance.  
+        # 
+        # > This parameter is supported only for RDS PostgreSQL instances.
         self.target_dbinstance_id = target_dbinstance_id
 
     def validate(self):

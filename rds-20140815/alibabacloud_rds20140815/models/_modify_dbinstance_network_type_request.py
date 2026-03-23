@@ -21,40 +21,20 @@ class ModifyDBInstanceNetworkTypeRequest(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The number of days for which you want to retain the classic network endpoint. Valid values: **1 to 120**. Default value: **7**.
-        # 
-        # > If you set the **RetainClassic** parameter to **True**, you must also specify this parameter.
         self.classic_expired_days = classic_expired_days
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type after the modification. Set the value to **VPC**.
-        # 
         # This parameter is required.
         self.instance_network_type = instance_network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The internal IP address of the instance. The internal IP address must be within the CIDR block supported by the specified vSwitch. The system automatically assigns a private IP address to an instance based on the values of **VPCId** and **VSwitchId**.
         self.private_ip_address = private_ip_address
-        # The number of days for which you want to retain the read/write splitting endpoint of the classic network type. Valid values: **1 to 120**. Default value: **7**.
-        # 
-        # >  This parameter takes effect only when a read/write splitting endpoint of the classic network type exists and the **RetainClassic** parameter is set to **True**.
         self.read_write_splitting_classic_expired_days = read_write_splitting_classic_expired_days
-        # The internal IP address that corresponds to the read/write splitting endpoint of the instance. The internal IP address must be within the CIDR block supported by the specified vSwitch. The system automatically assigns a private IP address to an instance based on the values of **VPCId** and **VSwitchId**.
-        # 
-        # >  This parameter is valid when a read/write splitting endpoint of the classic network type exists.
         self.read_write_splitting_private_ip_address = read_write_splitting_private_ip_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to retain the classic network endpoint. Valid values:
-        # 
-        # *   **True**: retains the classic network endpoint.
-        # *   **False** (default): does not retain the classic network endpoint.
         self.retain_classic = retain_classic
-        # The VPC ID.
         self.vpcid = vpcid
-        # The ID of the vSwitch. This parameter is required if the **VPCId** parameter is specified.
         self.v_switch_id = v_switch_id
 
     def validate(self):

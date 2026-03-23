@@ -15,24 +15,12 @@ class DescribeDBInstancePromoteActivityResponseBody(DaraModel):
         is_activity: str = None,
         request_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # *   China site: 26842
-        # *   International site: 26888
         self.bid = bid
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The type of the database engine. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
         self.dbtype = dbtype
-        # The activity information about the instance. For more information, see [Instance activities](https://help.aliyun.com/document_detail/2391834.html).
         self.is_activity = is_activity
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

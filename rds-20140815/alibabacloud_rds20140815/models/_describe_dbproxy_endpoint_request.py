@@ -16,18 +16,12 @@ class DescribeDBProxyEndpointRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The proxy endpoint that you want to query. You can call the DescribeDBProxy interface to query the proxy endpoint.
         self.dbproxy_connect_string = dbproxy_connect_string
-        # The name of the proxy terminal. You can call the DescribeDBProxy interface to query the name of the proxy terminal.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

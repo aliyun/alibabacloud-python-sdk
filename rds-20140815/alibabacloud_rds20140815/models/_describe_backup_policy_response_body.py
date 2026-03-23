@@ -2,11 +2,17 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_rds20140815 import models as main_models
 from darabonba.model import DaraModel
 
 class DescribeBackupPolicyResponseBody(DaraModel):
     def __init__(
         self,
+        advanced_backup_policy_enabled: bool = None,
+        advanced_data_policies: main_models.DescribeBackupPolicyResponseBodyAdvancedDataPolicies = None,
+        advanced_log_policies: main_models.DescribeBackupPolicyResponseBodyAdvancedLogPolicies = None,
         archive_backup_keep_count: str = None,
         archive_backup_keep_policy: str = None,
         archive_backup_retention_period: str = None,
@@ -37,142 +43,59 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         support_volume_shadow_copy: int = None,
         supports_high_frequency_backup: int = None,
     ):
-        # The number of archived backup files that are retained.
+        self.advanced_backup_policy_enabled = advanced_backup_policy_enabled
+        self.advanced_data_policies = advanced_data_policies
+        self.advanced_log_policies = advanced_log_policies
         self.archive_backup_keep_count = archive_backup_keep_count
-        # The cycle based on which archived backup files are retained.
         self.archive_backup_keep_policy = archive_backup_keep_policy
-        # The number of days for which archived backup files are retained.
         self.archive_backup_retention_period = archive_backup_retention_period
-        # The backup interval. Unit: minutes.
-        # 
-        # *   If the instance runs MySQL, the interval is the same as the value of the Snapshot Backup Start Time parameter rather than the Snapshot Backup Period parameter in the ApsaraDB RDS console. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
-        # *   If the instance runs SQL Server, the interval is the same as the log backup frequency.
         self.backup_interval = backup_interval
-        # Indicates whether the log backup feature is enabled. Valid values:
-        # 
-        # *   **Enable**
-        # *   **Disabled**
         self.backup_log = backup_log
-        # The backup method of the instance. Valid values:
-        # 
-        # *   **Physical**: physical backup
-        # *   **Snapshot**: snapshot backup
-        # 
-        # > This parameter is returned only when the instance runs SQL Server and uses cloud disks.
         self.backup_method = backup_method
-        # The backup settings of the secondary instance. Valid values:
-        # 
-        # *   **1**: Secondary instance preferred
-        # *   **2**: Primary instance preferred
-        # 
-        # >  This parameter is available only for instances that run SQL Server on RDS Cluster Edition. This parameter is returned only when SupportModifyBackupPriority is set to True.
         self.backup_priority = backup_priority
-        # The number of days for which data backup files are retained.
         self.backup_retention_period = backup_retention_period
-        # Indicates whether to enable the single-digit second backup feature. This feature allows ApsaraDB RDS to complete a backup within single-digit seconds. Valid values:
-        # 
-        # *   **Flash**: The single-digit second backup feature is enabled.
-        # *   **Standard**: The single-digit second backup feature is disabled.
-        # 
-        # > This parameter takes effect only when you set the **BackupPolicyMode** parameter to **DataBackupPolicy**.
         self.category = category
-        # The method that is used to compress backup data. Valid values:
-        # 
-        # *   **0**: Backup data is not compressed.
-        # *   **1**: Backup data is compressed by using zlib.
-        # *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
-        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
         self.compress_type = compress_type
-        # Indicates whether the log backup feature is enabled. Valid values:
-        # 
-        # *   **1**: enabled
-        # *   **0**: disabled
         self.enable_backup_log = enable_backup_log
-        # Indicates whether incremental backup is enabled. Valid values:
-        # 
-        # *   **True**: Incremental backup is enabled.
-        # *   **False**: Incremental backup is disabled.
         self.enable_increment_data_backup = enable_increment_data_backup
-        # Indicates whether the point-in-time restoration (PITR) feature is enabled. The PITR feature is an enhancement of the log backup feature. Valid values:
-        # 
-        # *   **True**
-        # *   **False**
-        # 
-        # >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](https://help.aliyun.com/document_detail/2666046.html).
         self.enable_pitr_protection = enable_pitr_protection
-        # Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
-        # 
-        # *   **Disable**
-        # *   **Enable**
         self.high_space_usage_protection = high_space_usage_protection
-        # The number of hours for which log backup files are retained on the instance.
         self.local_log_retention_hours = local_log_retention_hours
-        # The maximum storage usage that is allowed for log files on the instance.
         self.local_log_retention_space = local_log_retention_space
-        # The backup frequency of logs. Valid values:
-        # 
-        # *   **LogInterval**: Log backups are performed every 30 minutes.
-        # *   Default value: same as the value of the **PreferredBackupPeriod** parameter.
-        # 
-        # >  This parameter is returned only when the instance runs SQL Server.
         self.log_backup_frequency = log_backup_frequency
-        # The number of binary log files that you want to retain on the instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
-        # The number of days for which log backup files are retained.
         self.log_backup_retention_period = log_backup_retention_period
-        # The number of days during which you can restore data of the instance to any point in time.
         self.pitr_retention_period = pitr_retention_period
-        # The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
         self.preferred_backup_period = preferred_backup_period
-        # The time when a data backup is performed. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
         self.preferred_backup_time = preferred_backup_time
-        # The time when the next backup is performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.preferred_next_backup_time = preferred_next_backup_time
-        # The policy that is used to retain archived backup files if the instance is released. Valid values:
-        # 
-        # *   **None**: No archived backup files are retained.
-        # *   **Lastest**: Only the last archived backup file is retained.
-        # *   **All**: All archived backup files are retained.
         self.released_keep_policy = released_keep_policy
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the backup settings of a secondary instance can be modified. Valid values:
-        # 
-        # *   **True**
-        # *   **False**
         self.support_modify_backup_priority = support_modify_backup_priority
-        # A reserved parameter.
         self.support_released_keep = support_released_keep
-        # Indicates whether the instance supports snapshot backups. Valid values:
-        # 
-        # *   **1**: The instance supports snapshot backups.
-        # *   **0**: The instance does not support snapshot backups.
-        # 
-        # >  This parameter is returned only when the instance runs SQL Server.
         self.support_volume_shadow_copy = support_volume_shadow_copy
-        # Indicates whether log backups for SQL Server are performed verery five minutes.
-        # 
-        # *   0: No
-        # *   1: Yes
         self.supports_high_frequency_backup = supports_high_frequency_backup
 
     def validate(self):
-        pass
+        if self.advanced_data_policies:
+            self.advanced_data_policies.validate()
+        if self.advanced_log_policies:
+            self.advanced_log_policies.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.advanced_backup_policy_enabled is not None:
+            result['AdvancedBackupPolicyEnabled'] = self.advanced_backup_policy_enabled
+
+        if self.advanced_data_policies is not None:
+            result['AdvancedDataPolicies'] = self.advanced_data_policies.to_map()
+
+        if self.advanced_log_policies is not None:
+            result['AdvancedLogPolicies'] = self.advanced_log_policies.to_map()
+
         if self.archive_backup_keep_count is not None:
             result['ArchiveBackupKeepCount'] = self.archive_backup_keep_count
 
@@ -264,6 +187,17 @@ class DescribeBackupPolicyResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedBackupPolicyEnabled') is not None:
+            self.advanced_backup_policy_enabled = m.get('AdvancedBackupPolicyEnabled')
+
+        if m.get('AdvancedDataPolicies') is not None:
+            temp_model = main_models.DescribeBackupPolicyResponseBodyAdvancedDataPolicies()
+            self.advanced_data_policies = temp_model.from_map(m.get('AdvancedDataPolicies'))
+
+        if m.get('AdvancedLogPolicies') is not None:
+            temp_model = main_models.DescribeBackupPolicyResponseBodyAdvancedLogPolicies()
+            self.advanced_log_policies = temp_model.from_map(m.get('AdvancedLogPolicies'))
+
         if m.get('ArchiveBackupKeepCount') is not None:
             self.archive_backup_keep_count = m.get('ArchiveBackupKeepCount')
 
@@ -350,6 +284,314 @@ class DescribeBackupPolicyResponseBody(DaraModel):
 
         if m.get('SupportsHighFrequencyBackup') is not None:
             self.supports_high_frequency_backup = m.get('SupportsHighFrequencyBackup')
+
+        return self
+
+class DescribeBackupPolicyResponseBodyAdvancedLogPolicies(DaraModel):
+    def __init__(
+        self,
+        advanced_log_policy: List[main_models.DescribeBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy] = None,
+    ):
+        self.advanced_log_policy = advanced_log_policy
+
+    def validate(self):
+        if self.advanced_log_policy:
+            for v1 in self.advanced_log_policy:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['AdvancedLogPolicy'] = []
+        if self.advanced_log_policy is not None:
+            for k1 in self.advanced_log_policy:
+                result['AdvancedLogPolicy'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advanced_log_policy = []
+        if m.get('AdvancedLogPolicy') is not None:
+            for k1 in m.get('AdvancedLogPolicy'):
+                temp_model = main_models.DescribeBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy()
+                self.advanced_log_policy.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy(DaraModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        dest_region: str = None,
+        dest_type: str = None,
+        enable_log_backup: int = None,
+        filter_key: str = None,
+        filter_value: str = None,
+        log_retention_type: str = None,
+        log_retention_value: int = None,
+        src_region: str = None,
+        src_type: str = None,
+        strategy_id: str = None,
+    ):
+        self.action_type = action_type
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.enable_log_backup = enable_log_backup
+        self.filter_key = filter_key
+        self.filter_value = filter_value
+        self.log_retention_type = log_retention_type
+        self.log_retention_value = log_retention_value
+        self.src_region = src_region
+        self.src_type = src_type
+        self.strategy_id = strategy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+
+        if self.enable_log_backup is not None:
+            result['EnableLogBackup'] = self.enable_log_backup
+
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+
+        if self.log_retention_type is not None:
+            result['LogRetentionType'] = self.log_retention_type
+
+        if self.log_retention_value is not None:
+            result['LogRetentionValue'] = self.log_retention_value
+
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+
+        if self.strategy_id is not None:
+            result['StrategyId'] = self.strategy_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+
+        if m.get('EnableLogBackup') is not None:
+            self.enable_log_backup = m.get('EnableLogBackup')
+
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+
+        if m.get('LogRetentionType') is not None:
+            self.log_retention_type = m.get('LogRetentionType')
+
+        if m.get('LogRetentionValue') is not None:
+            self.log_retention_value = m.get('LogRetentionValue')
+
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+
+        if m.get('StrategyId') is not None:
+            self.strategy_id = m.get('StrategyId')
+
+        return self
+
+class DescribeBackupPolicyResponseBodyAdvancedDataPolicies(DaraModel):
+    def __init__(
+        self,
+        advanced_data_policy: List[main_models.DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy] = None,
+    ):
+        self.advanced_data_policy = advanced_data_policy
+
+    def validate(self):
+        if self.advanced_data_policy:
+            for v1 in self.advanced_data_policy:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['AdvancedDataPolicy'] = []
+        if self.advanced_data_policy is not None:
+            for k1 in self.advanced_data_policy:
+                result['AdvancedDataPolicy'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advanced_data_policy = []
+        if m.get('AdvancedDataPolicy') is not None:
+            for k1 in m.get('AdvancedDataPolicy'):
+                temp_model = main_models.DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy()
+                self.advanced_data_policy.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy(DaraModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        bak_type: str = None,
+        dest_region: str = None,
+        dest_type: str = None,
+        filter_key: str = None,
+        filter_type: str = None,
+        filter_value: str = None,
+        only_preserve_one_each_day: bool = None,
+        only_preserve_one_each_hour: bool = None,
+        retention_type: str = None,
+        retention_value: int = None,
+        src_region: str = None,
+        src_type: str = None,
+        strategy_id: str = None,
+    ):
+        self.action_type = action_type
+        self.bak_type = bak_type
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.filter_key = filter_key
+        self.filter_type = filter_type
+        self.filter_value = filter_value
+        self.only_preserve_one_each_day = only_preserve_one_each_day
+        self.only_preserve_one_each_hour = only_preserve_one_each_hour
+        self.retention_type = retention_type
+        self.retention_value = retention_value
+        self.src_region = src_region
+        self.src_type = src_type
+        self.strategy_id = strategy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+
+        if self.bak_type is not None:
+            result['BakType'] = self.bak_type
+
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
+
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+
+        if self.only_preserve_one_each_day is not None:
+            result['OnlyPreserveOneEachDay'] = self.only_preserve_one_each_day
+
+        if self.only_preserve_one_each_hour is not None:
+            result['OnlyPreserveOneEachHour'] = self.only_preserve_one_each_hour
+
+        if self.retention_type is not None:
+            result['RetentionType'] = self.retention_type
+
+        if self.retention_value is not None:
+            result['RetentionValue'] = self.retention_value
+
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+
+        if self.strategy_id is not None:
+            result['StrategyId'] = self.strategy_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+
+        if m.get('BakType') is not None:
+            self.bak_type = m.get('BakType')
+
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
+
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+
+        if m.get('OnlyPreserveOneEachDay') is not None:
+            self.only_preserve_one_each_day = m.get('OnlyPreserveOneEachDay')
+
+        if m.get('OnlyPreserveOneEachHour') is not None:
+            self.only_preserve_one_each_hour = m.get('OnlyPreserveOneEachHour')
+
+        if m.get('RetentionType') is not None:
+            self.retention_type = m.get('RetentionType')
+
+        if m.get('RetentionValue') is not None:
+            self.retention_value = m.get('RetentionValue')
+
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+
+        if m.get('StrategyId') is not None:
+            self.strategy_id = m.get('StrategyId')
 
         return self
 

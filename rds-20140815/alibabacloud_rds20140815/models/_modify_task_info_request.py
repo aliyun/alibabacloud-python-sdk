@@ -16,29 +16,14 @@ class ModifyTaskInfoRequest(DaraModel):
         task_action: str = None,
         task_id: str = None,
     ):
-        # The action-related parameters. You can add action-related parameters based on your business requirements. If you set the TaskAction parameter to modifySwitchTime, you must set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
-        # 
-        # The recoverMode field specifies the task restoration mode. valid values:
-        # 
-        # *   **timePoint**: The task is executed at a specified point in time.
-        # *   **Immediate**: The task is executed immediately.
-        # *   **maintainTime**: The task is executed based on the O\\&M time.
-        # 
-        # The recoverTime field specifies restoration time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If you set the recoverMode field to timePoint, you must also specify the recoverTime field.
         self.action_params = action_params
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The name of the execution step.
         self.step_name = step_name
-        # The task action. Set the value to modifySwitchTime. The value specifies that you want to change the switching time or restoration time.
         self.task_action = task_action
-        # The task ID. You can call the DescribeTasks operation to query task IDs.
-        # 
         # This parameter is required.
         self.task_id = task_id
 

@@ -16,22 +16,15 @@ class UpdateUserBackupFileRequest(DaraModel):
         resource_owner_id: int = None,
         retention: int = None,
     ):
-        # The backup ID. You can call the ListUserBackupFiles operation to query the backup ID.
-        # 
         # This parameter is required.
         self.backup_id = backup_id
-        # The new description of the full backup file.
         self.comment = comment
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new retention period of the full backup file. Unit: days. Valid values: any non-zero positive integer.
         self.retention = retention
 
     def validate(self):

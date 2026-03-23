@@ -17,31 +17,13 @@ class DescribeDatabasesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database.
         self.dbname = dbname
-        # The status of the database. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Running**
-        # *   **Deleting**
         self.dbstatus = dbstatus
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from 1.
-        # 
-        # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Valid values:
-        # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
-        # 
-        # Default value: 30.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

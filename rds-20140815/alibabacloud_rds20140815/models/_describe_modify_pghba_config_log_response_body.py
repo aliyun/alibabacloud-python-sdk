@@ -15,12 +15,9 @@ class DescribeModifyPGHbaConfigLogResponseBody(DaraModel):
         log_item_count: int = None,
         request_id: str = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.hba_log_items = hba_log_items
-        # The number of modification records.
         self.log_item_count = log_item_count
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

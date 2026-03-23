@@ -13,19 +13,11 @@ class AttachRCInstancesShrinkRequest(DaraModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
-        # The node IDs.
-        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The key pair of the node.
         self.key_pair = key_pair
-        # The logon password of the node.
         self.password = password
-        # The region ID.
         self.region_id = region_id
-        # The virtual private cloud (VPC) ID.
-        # 
-        # > This is a reserved parameter.
         self.vpc_id = vpc_id
 
     def validate(self):

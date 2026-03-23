@@ -13,15 +13,10 @@ class ModifyCollationTimeZoneResponseBody(DaraModel):
         task_id: str = None,
         timezone: str = None,
     ):
-        # The character set collation of the instance.
         self.collation = collation
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The request ID.
         self.request_id = request_id
-        # The task ID.
         self.task_id = task_id
-        # The time zone.
         self.timezone = timezone
 
     def validate(self):

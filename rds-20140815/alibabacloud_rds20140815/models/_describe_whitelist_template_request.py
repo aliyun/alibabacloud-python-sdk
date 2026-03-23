@@ -13,14 +13,10 @@ class DescribeWhitelistTemplateRequest(DaraModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the whitelist template. You can call the [DescribeAllWhitelistTemplate](https://help.aliyun.com/document_detail/2412075.html) operation to obtain the ID of the whitelist template.
-        # 
         # This parameter is required.
         self.template_id = template_id
 

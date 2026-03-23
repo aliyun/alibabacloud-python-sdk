@@ -19,21 +19,13 @@ class CreateDBNodesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-        # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The details of the node.
-        # 
         # This parameter is required.
         self.dbnode = dbnode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -115,14 +107,9 @@ class CreateDBNodesRequestDBNode(DaraModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
-        # The specification information of the node.
-        # 
         # This parameter is required.
         self.class_code = class_code
-        # The vSwitch ID of the node.
         self.vswitch_id = vswitch_id
-        # The ID of the zone in which the node is deployed.
-        # 
         # This parameter is required.
         self.zone_id = zone_id
 

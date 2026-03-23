@@ -12,16 +12,9 @@ class ModifyRCInstanceKeyPairRequest(DaraModel):
         reboot: bool = None,
         region_id: str = None,
     ):
-        # The instance ID.
         self.instance_id = instance_id
-        # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # Specifies whether to restart the instance.
-        # 
-        # *   **true**
-        # *   **false**
         self.reboot = reboot
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

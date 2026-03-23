@@ -18,6 +18,8 @@ class DescribeRCMetricListRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # Custom for SQL Server to batch query monitoring data for specified resources.  
+        # Format: a collection of key:value pairs.
         self.dimensions = dimensions
         # The end of the time range to query. The end time must be later than the start time. Example: `2024-08-06 10:15:00`.
         self.end_time = end_time

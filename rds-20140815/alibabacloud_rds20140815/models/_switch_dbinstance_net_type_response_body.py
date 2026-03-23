@@ -11,11 +11,8 @@ class SwitchDBInstanceNetTypeResponseBody(DaraModel):
         old_connection_string: str = None,
         request_id: str = None,
     ):
-        # The endpoint that is used to connect to the instance after the switch of endpoints.
         self.new_connection_string = new_connection_string
-        # The endpoint that is used to connect to the instance before the switch of endpoints.
         self.old_connection_string = old_connection_string
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

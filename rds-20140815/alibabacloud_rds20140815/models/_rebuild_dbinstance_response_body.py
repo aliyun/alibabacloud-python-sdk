@@ -11,11 +11,8 @@ class RebuildDBInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The serial number of the task in the rebuild task queue. When the serial number becomes 0, the system starts to rebuild the secondary instance.
         self.migration_id = migration_id
-        # The request ID.
         self.request_id = request_id
-        # The task ID.
         self.task_id = task_id
 
     def validate(self):

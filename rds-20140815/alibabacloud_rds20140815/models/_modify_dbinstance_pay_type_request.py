@@ -13,26 +13,13 @@ class ModifyDBInstancePayTypeRequest(DaraModel):
         resource_owner_id: int = None,
         used_time: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The billing method of the instance. The value is fixed as **Prepaid**, which indicates the subscription billing method.
-        # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The renewal cycle of the instance.
-        # 
-        # *   **Year**
-        # *   **Month**
-        # 
         # This parameter is required.
         self.period = period
         self.resource_owner_id = resource_owner_id
-        # The subscription duration of the instance. Valid values:
-        # 
-        # *   If you set the **Period** parameter to **Year**, the value of the **UsedTime** parameter ranges from 1 to 5.
-        # *   If you set the **Period** parameter to **Month**, the value of the **UsedTime** parameter ranges from 1 to 11.
         self.used_time = used_time
 
     def validate(self):

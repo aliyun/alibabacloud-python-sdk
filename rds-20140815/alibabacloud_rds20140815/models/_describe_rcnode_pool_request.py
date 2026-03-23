@@ -11,11 +11,8 @@ class DescribeRCNodePoolRequest(DaraModel):
         node_pool_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the ACK Edge cluster in which the RDS Custom instance resides.
         self.cluster_id = cluster_id
-        # The node pool ID.
         self.node_pool_id = node_pool_id
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

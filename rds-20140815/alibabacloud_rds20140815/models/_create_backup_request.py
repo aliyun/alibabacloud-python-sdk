@@ -28,6 +28,7 @@ class CreateBackupRequest(DaraModel):
         # > *   For more information about the supported backup types, see [Use the data backup feature](https://help.aliyun.com/document_detail/98818.html).
         # > *   When you perform a snapshot backup on an ApsaraDB RDS for SQL Server instance that uses cloud disks, you must set this parameter to **Snapshot**.
         self.backup_method = backup_method
+        # When the **BackupStrategy** of an SQL Server instance is set to **db**, the **BackupMethod** is **Physical**, and the **BackupType** is **FullBackup**, you can specify the retention period for the backup set. Valid values are 7 to 730 days or -1 (permanent retention).
         self.backup_retention_period = backup_retention_period
         # The backup policy. Valid values:
         # 

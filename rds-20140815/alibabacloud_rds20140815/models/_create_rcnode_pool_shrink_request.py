@@ -45,113 +45,43 @@ class CreateRCNodePoolShrinkRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
-        # 
-        # Valid values: **1** to **5**. Default value: **1**.
         self.amount = amount
-        # Specifies whether to enable automatic payment. Valid values:
-        # 
-        # *   **true**: enables the feature. Make sure that your account balance is sufficient when you enable automatic payment.
-        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
-        # 
-        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. If you specify the subscription billing method for the instance, you must specify this parameter. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # > 
-        # 
-        # *   Monthly subscription: The auto-renewal period is one month.
-        # 
-        # *   Annually: The auto-renewal period is one year.
         self.auto_renew = auto_renew
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the ACK cluster to which the RDS Custom instance belongs.
-        # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Specifies whether to add the instance to the ACK cluster. If this parameter is set to **1**, the created instances can be added to the ACK cluster. This allows you to efficiently manage container applications. Valid values:
-        # 
-        # *   **1**: adds the instance to the ACK cluster.
-        # *   **0** (default): does not add the instance to the ACK cluster.
         self.create_mode = create_mode
-        # The data disks.
         self.data_disk_shrink = data_disk_shrink
-        # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
-        # The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to perform a dry run. Default value: false. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
         self.dry_run = dry_run
-        # The instance hostname.
         self.host_name = host_name
-        # The ID of the image used by the instance.
         self.image_id = image_id
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Prepaid**: subscription.
-        # *   **Postpaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
-        # The instance name.
         self.instance_name = instance_name
-        # The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
-        # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The reserved parameter. This parameter is not supported.
         self.internet_charge_type = internet_charge_type
-        # The reserved parameter. This parameter is not supported.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The reserved parameter. This parameter is not supported.
         self.io_optimized = io_optimized
-        # The name of the AccessKey pair. You can specify only one name.
         self.key_pair_name = key_pair_name
-        # The name of the node pool.
         self.node_pool_name = node_pool_name
-        # The password for the root account of the instance.
         self.password = password
-        # The subscription duration of the instance. Default value: **1**.
         self.period = period
-        # The unit of the subscription duration. Valid values:
-        # 
-        # *   **Year**
-        # *   **Month** (default)
         self.period_unit = period_unit
-        # The region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
-        # The ID of the security group. You can enter an existing security group ID. If no security groups exist, a security group is automatically created.
         self.security_group_id = security_group_id
-        # The reserved parameter. This parameter is not supported.
         self.spot_strategy = spot_strategy
-        # The supported scenario. If you set the **createMode** parameter to **1**, you must also specify the SupportCase parameter. Valid value: **edge**.
         self.support_case = support_case
-        # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
-        # The tags.
         self.tag = tag
-        # The reserved parameter. This parameter is not supported.
         self.user_data = user_data
-        # The vSwitch ID.
-        # 
-        # >  The vSwitch must belong to the same zone as the instance.
-        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The zone ID of the instance.
-        # 
-        # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -386,9 +316,7 @@ class CreateRCNodePoolShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can create N tag keys at a time. Valid values of N: **1 to 20**. This parameter cannot be an empty string.
         self.key = key
-        # The tag value. You can create N tag values at a time. Valid values of N: **1** to **20**. This parameter can be an empty string.
         self.value = value
 
     def validate(self):

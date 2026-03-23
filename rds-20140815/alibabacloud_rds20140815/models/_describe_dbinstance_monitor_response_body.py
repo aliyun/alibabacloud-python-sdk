@@ -10,9 +10,7 @@ class DescribeDBInstanceMonitorResponseBody(DaraModel):
         period: str = None,
         request_id: str = None,
     ):
-        # The monitoring frequency. Unit: seconds.
         self.period = period
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

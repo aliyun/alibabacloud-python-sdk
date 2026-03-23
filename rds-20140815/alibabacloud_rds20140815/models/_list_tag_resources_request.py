@@ -19,24 +19,15 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token required to obtain more results. This parameter is not required in the first query. If a query does not return all results, you can specify the token returned from the previous query for the next query to obtain more results.
         self.next_token = next_token
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The instance ID. You can specify a maximum of **50** instance IDs.****
-        # 
-        # >  You must specify at least one of the **ResourceId** and **Key** parameters.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **INSTANCE**.
-        # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -115,11 +106,7 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can query N tag keys at a time. Valid values of N: **1** to **20**. The value cannot be an empty string.
-        # 
-        # >  You must specify at least one of the **ResourceId** and **Key** parameters.
         self.key = key
-        # The tag value that is associated with the specified tag key. You can specify N tag values at a time. Valid values of N: **1** to **20**. The value can be an empty string.
         self.value = value
 
     def validate(self):

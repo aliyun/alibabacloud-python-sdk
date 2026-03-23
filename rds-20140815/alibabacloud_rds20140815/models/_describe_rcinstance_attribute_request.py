@@ -15,8 +15,14 @@ class DescribeRCInstanceAttributeRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
+        # The instance name
         self.instance_name = instance_name
+        # Set the upper limit for the number of instance disks in the return result. The valid range is 10 to 500.  
+        # - If no value is set, the default value is 20.  
+        # - If the set value is less than 10, it is fixed to 10.  
+        # - If the set value is greater than or equal to 10 and less than or equal to 500, the set value is used.
         self.max_disks_results = max_disks_results
+        # The VPC network IP address of the instance, that is, the private IP address.
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id

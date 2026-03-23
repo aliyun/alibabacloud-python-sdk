@@ -10,9 +10,7 @@ class ModifyRCDiskSpecResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The order ID.
         self.order_id = order_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

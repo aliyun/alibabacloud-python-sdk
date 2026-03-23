@@ -10,11 +10,8 @@ class DeleteRCDiskRequest(DaraModel):
         disk_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk that you want to release.
-        # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

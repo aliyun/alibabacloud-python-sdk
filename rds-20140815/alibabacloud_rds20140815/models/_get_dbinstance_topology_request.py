@@ -11,8 +11,6 @@ class GetDBInstanceTopologyRequest(DaraModel):
         owner_id: int = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id

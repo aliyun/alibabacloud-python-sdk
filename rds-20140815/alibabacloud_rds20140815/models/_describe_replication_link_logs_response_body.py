@@ -15,13 +15,9 @@ class DescribeReplicationLinkLogsResponseBody(DaraModel):
         request_id: str = None,
         total_size: int = None,
     ):
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The items.
         self.items = items
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -90,56 +86,21 @@ class DescribeReplicationLinkLogsResponseBodyItems(DaraModel):
         task_status: str = None,
         task_type: str = None,
     ):
-        # The details of the task.
         self.detail = detail
-        # The creation time. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The modification time. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # The synchronization information. This parameter is a reserved parameter.
         self.replication_info = replication_info
-        # The status of the synchronization. Valid values:
-        # 
-        # *   **steaming**: The synchronization is in progress.
-        # *   **finish**: The synchronization is complete.
-        # *   **disconnect**: The synchronization is disconnected.
         self.replication_state = replication_state
-        # The account of the database that is used for data synchronization.
         self.replicator_account = replicator_account
-        # The password of the account.
         self.replicator_password = replicator_password
-        # The endpoint of the source instance.
         self.source_address = source_address
-        # The type of the source instance. Valid values:
-        # 
-        # *   other: other instances
-        # *   aliyunRDS: an ApsaraDB RDS instance
         self.source_category = source_category
-        # The port number of the source instance.
         self.source_port = source_port
-        # The destination instance ID.
         self.target_instance_id = target_instance_id
-        # The ID of the task.
         self.task_id = task_id
-        # The name of the task.
         self.task_name = task_name
-        # The stage of the task. Valid values:
-        # 
-        # *   **precheck**: the precheck stage.
-        # *   **basebackup**: the basic backup stage.
-        # *   **startup**: the startup stage.
-        # *   **increment**: the incremental synchronization stage.
         self.task_stage = task_stage
-        # The status of the task. Valid values:
-        # 
-        # *   **success**
-        # *   **failure**
-        # *   **running**
         self.task_status = task_status
-        # The type of the task. Valid values:
-        # 
-        # *   **create**: creates a synchronization link.
-        # *   **create-dryrun**: performs a precheck before a synchronization link is created.
         self.task_type = task_type
 
     def validate(self):

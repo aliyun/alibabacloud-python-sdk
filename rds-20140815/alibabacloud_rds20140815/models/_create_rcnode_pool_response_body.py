@@ -14,13 +14,9 @@ class CreateRCNodePoolResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The instance IDs.
         self.instance_id_sets = instance_id_sets
-        # The node pool ID.
         self.node_pool_id = node_pool_id
-        # The order ID.
         self.order_id = order_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

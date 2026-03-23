@@ -132,6 +132,7 @@ class DescribeDBInstancesRequest(DaraModel):
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # Reserved parameter. No configuration is required.
         self.query_auto_renewal = query_auto_renewal
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 

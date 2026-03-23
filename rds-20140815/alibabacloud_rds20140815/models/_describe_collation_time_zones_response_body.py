@@ -14,7 +14,6 @@ class DescribeCollationTimeZonesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.collation_time_zones = collation_time_zones
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

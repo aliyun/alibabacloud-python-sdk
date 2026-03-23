@@ -13,7 +13,9 @@ class DescribeAccountMaskingPrivilegeResponseBody(DaraModel):
         data: main_models.DescribeAccountMaskingPrivilegeResponseBodyData = None,
         request_id: str = None,
     ):
+        # Returned data
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeAccountMaskingPrivilegeResponseBodyData(DaraModel):
         self,
         user_privilege: List[main_models.DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege] = None,
     ):
+        # List of user encryption or data masking permissions
         self.user_privilege = user_privilege
 
     def validate(self):
@@ -86,8 +89,11 @@ class DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege(DaraModel):
         privilege: str = None,
         user_name: str = None,
     ):
+        # Permission expiration time in UTC format
         self.expire_time = expire_time
+        # Permission type. restrictedAccess indicates restricted access (data masking required)
         self.privilege = privilege
+        # Account name
         self.user_name = user_name
 
     def validate(self):

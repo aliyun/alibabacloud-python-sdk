@@ -34,91 +34,32 @@ class DescribeDBInstancesForCloneRequest(DaraModel):
         zone_id: str = None,
         proxy_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
-        # 
-        # By default, this operation queries the instances that use any of the supported connection modes.
         self.connection_mode = connection_mode
-        # The ID of the current instance.
         self.current_instance_id = current_instance_id
-        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
-        # The role of the instance that you want to query. Valid values:
-        # 
-        # *   **Primary**: primary instance
-        # *   **Readonly**: read-only instance
-        # *   **Guard**: disaster recovery instance
-        # *   **Temp**: temporary instance
-        # 
-        # By default, this operation queries the instances of all roles.
         self.dbinstance_type = dbinstance_type
-        # The database engine of the instance. Valid values:
-        # 
-        # *   MySQL
-        # *   SQLServer
-        # *   PostgreSQL
-        # *   PPAS
-        # *   MariaDB
-        # 
-        # By default, this operation queries the instances that run any of the supported database engine types.
         self.engine = engine
-        # The version of the database engine.
         self.engine_version = engine_version
-        # Specifies whether the instance expires. Valid values:
-        # 
-        # *   **True**: queries the instances that have expired.
-        # *   **False**: does not query instances that have expired.
         self.expired = expired
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**
-        # *   **VPC**
         self.instance_network_type = instance_network_type
-        # The type of the database node. Valid values:
-        # 
-        # *   **Master**: the primary node
-        # *   **Slave**: the secondary node
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1 to 100**.
-        # 
-        # Default value: **30**.
         self.page_size = page_size
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
-        # 
-        # By default, this operation queries the instances that use any of the supported billing methods.
         self.pay_type = pay_type
-        # The region ID of the instance.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The keyword that is used for the search. The keyword can be part of an instance ID or an instance description.
         self.search_key = search_key
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
         self.zone_id = zone_id
-        # The ID of the proxy mode.
         self.proxy_id = proxy_id
 
     def validate(self):

@@ -31,6 +31,7 @@ class DescribeRCSnapshotsRequest(DaraModel):
         # 
         # You can specify a maximum of 100 IDs. Separate multiple IDs with commas (,).
         self.snapshot_ids = snapshot_ids
+        # Tag Details.
         self.tag = tag
 
     def validate(self):
@@ -103,7 +104,9 @@ class DescribeRCSnapshotsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag value.
         self.key = key
+        # The tag key.
         self.value = value
 
     def validate(self):

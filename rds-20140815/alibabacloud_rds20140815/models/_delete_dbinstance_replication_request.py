@@ -12,15 +12,15 @@ class DeleteDBInstanceReplicationRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # 复制通道名称，用于标识需要删除的复制链路
+        # The name of the replication channel, used to identify the replication link.
         self.channel_name = channel_name
-        # 目标RDS实例ID，复制链路将从此实例上删除
+        # Instance ID. You can invoke DescribeDBInstances to obtain it.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
         # 阿里云账号ID，用于指定资源的所有者
         self.owner_id = owner_id
-        # 地域ID，表示RDS实例所在的地域
+        # Region ID. You can invoke DescribeRegions to obtain it.
         # 
         # This parameter is required.
         self.region_id = region_id

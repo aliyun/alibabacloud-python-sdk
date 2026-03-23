@@ -16,15 +16,10 @@ class DescribeCloudMigrationResultResponseBody(DaraModel):
         request_id: str = None,
         total_size: int = None,
     ):
-        # The details about the cloud migration task.
         self.items = items
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -99,53 +94,21 @@ class DescribeCloudMigrationResultResponseBodyItems(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The details about the migration task.
         self.detail = detail
-        # The time when the task was created.
         self.gmt_created = gmt_created
-        # The time when the task was modified.
         self.gmt_modified = gmt_modified
-        # The migration phase of the migration task.
-        # 
-        # *   **precheck**: precheck
-        # *   **basebackup**: full data backup
-        # *   **startup**: link establishment
-        # *   **increment**: incremental data synchronization
-        # *   **switch**: cloud migration-triggered switchover
-        # *   **success**: cloud migration completed
         self.migrate_stage = migrate_stage
-        # The information about the replication link.
         self.replication_info = replication_info
-        # The status of data replication.
-        # 
-        # *   **unstarted**
-        # *   **catchup**
-        # *   **streaming**
-        # *   **disconnect**
-        # *   **finish**
         self.replication_state = replication_state
-        # The username.
         self.source_account = source_account
-        # The environment in which the self-managed PostgreSQL instance runs.
-        # 
-        # *   **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
-        # *   **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
         self.source_category = source_category
-        # The private IP address that is used to connect to the self-managed PostgreSQL instance.
         self.source_ip_address = source_ip_address
-        # The password.
         self.source_password = source_password
-        # The port number that is used to connect to the self-managed PostgreSQL instance.
         self.source_port = source_port
-        # The time when the switchover was performed.
         self.switch_time = switch_time
-        # A reserved parameter. The return value of this parameter is empty.
         self.target_eip = target_eip
-        # The ID of the destination instance.
         self.target_instance_name = target_instance_name
-        # The task ID.
         self.task_id = task_id
-        # The task name.
         self.task_name = task_name
 
     def validate(self):

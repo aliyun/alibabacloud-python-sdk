@@ -15,13 +15,9 @@ class DescribePostgresExtensionsResponseBody(DaraModel):
         request_id: str = None,
         uninstalled_extensions: List[main_models.DescribePostgresExtensionsResponseBodyUninstalledExtensions] = None,
     ):
-        # The list of extensions that are installed on the specified database.
         self.installed_extensions = installed_extensions
-        # The overview of the extension.
         self.overview = overview
-        # The request ID.
         self.request_id = request_id
-        # The list of extensions that are not installed on the specified database.
         self.uninstalled_extensions = uninstalled_extensions
 
     def validate(self):
@@ -92,25 +88,14 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(DaraModel):
         requires: str = None,
         uid: str = None,
     ):
-        # The category of the extension.
         self.category = category
-        # The purpose of the extension.
         self.comment = comment
-        # The default version of the extension.
         self.default_version = default_version
-        # The current version of the extension.
         self.installed_version = installed_version
-        # The name of the extension.
         self.name = name
-        # The user of the extension.
         self.owner = owner
-        # The priority of the extension.
         self.priority = priority
-        # The extensions on which the current extension depends when it is installed.
         self.requires = requires
-        # The ID of the Alibaba Cloud account.
-        # 
-        # >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):
@@ -194,40 +179,14 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(DaraModel):
         requires: str = None,
         uid: str = None,
     ):
-        # The category of the extension.
-        # 
-        # *   **external_access**
-        # *   **index_support**
-        # *   **information_stat**
-        # *   **geography_space**
-        # *   **vector_engine**
-        # *   **timing_engine**
-        # *   **data_type**
-        # *   **encrypt_secure**
-        # *   **text_process**
-        # *   **operation_maintenance**
-        # *   **self_develop**
         self.category = category
-        # The purpose of the extension.
         self.comment = comment
-        # The default version of the extension.
         self.default_version = default_version
-        # The current version of the extension.
         self.installed_version = installed_version
-        # The name of the extension.
         self.name = name
-        # The user of the extension.
         self.owner = owner
-        # The priority of the extension.
-        # 
-        # *   **0**: The extension is displayed by default.
-        # *   **1**: The extension is preferentially displayed.
         self.priority = priority
-        # The extensions on which the current extension depends when it is installed.
         self.requires = requires
-        # The ID of the Alibaba Cloud account.
-        # 
-        # >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):

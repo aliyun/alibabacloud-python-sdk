@@ -16,30 +16,12 @@ class DescribeBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup type. Valid values:
-        # 
-        # *   **DataBackupPolicy**: data backup
-        # *   **LogBackupPolicy**: log backup
         self.backup_policy_mode = backup_policy_mode
-        # The method that is used to compress backup data. Valid values:
-        # 
-        # *   **0**: Backup data is not compressed.
-        # *   **1**: Backup data is compressed by using zlib.
-        # *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
-        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
         self.compress_type = compress_type
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The policy that is used to retain archived backup files if the instance is released. Valid values:
-        # 
-        # *   **None**: No archived backup files are retained.
-        # *   **Lastest**: Only the last archived backup file is retained.
-        # *   **All**: All archived backup files are retained.
         self.released_keep_policy = released_keep_policy
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

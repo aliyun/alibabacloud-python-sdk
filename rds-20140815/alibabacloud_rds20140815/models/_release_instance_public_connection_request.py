@@ -14,12 +14,8 @@ class ReleaseInstancePublicConnectionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The public endpoint. You can call the DescribeDBInstanceNetInfo operation to query the public endpoint.
-        # 
         # This parameter is required.
         self.current_connection_string = current_connection_string
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account

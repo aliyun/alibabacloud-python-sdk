@@ -13,29 +13,13 @@ class DeleteDBProxyEndpointAddressRequest(DaraModel):
         dbproxy_engine_type: str = None,
         region_id: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type of the proxy endpoint. Valid values:
-        # 
-        # *   **Public**: Internet
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **Classic**: classic network
-        # 
-        # If the instance runs MySQL, the default value of this parameter is **Classic**.
-        # 
-        # > If the instance runs PostgreSQL, you must set this parameter to **Public** or **VPC**.
-        # 
         # This parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The proxy endpoint ID. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
-        # 
         # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

@@ -15,13 +15,9 @@ class GetDBInstanceTopologyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # An internal parameter. You can ignore this parameter.
         self.code = code
-        # The details about the topology.
         self.data = data
-        # An internal parameter. You can ignore this parameter.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +67,8 @@ class GetDBInstanceTopologyResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         nodes: List[main_models.GetDBInstanceTopologyResponseBodyDataNodes] = None,
     ):
-        # The network connection information of the instance.
         self.connections = connections
-        # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The queried nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -137,26 +130,11 @@ class GetDBInstanceTopologyResponseBodyDataNodes(DaraModel):
         role: str = None,
         zone_id: str = None,
     ):
-        # The ID of the instance.
         self.dbinstance_name = dbinstance_name
-        # The ID of the dedicated cluster.
-        # 
-        # > : If the instance does not reside in the specified dedicated cluster, no value is returned.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The host ID of the instance in the dedicated cluster.
-        # 
-        # > : If the instance does not reside in the specified dedicated cluster, no value is returned.
         self.dedicated_host_id = dedicated_host_id
-        # The ID of the instance.
-        # 
-        # > : The value \\*\\*-1\\*\\* is returned for an instance that does not reside in a dedicated cluster.
         self.node_id = node_id
-        # The type of the node. The following result is returned:
-        # 
-        # *   **Master**: a primary node
-        # *   **Slave**: a secondary node
         self.role = role
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -217,16 +195,9 @@ class GetDBInstanceTopologyResponseBodyDataConnections(DaraModel):
         net_type: str = None,
         zone_id: str = None,
     ):
-        # The endpoint that is used to connect to the database instance.
         self.connection_string = connection_string
-        # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The network type of the endpoint. Valid values:
-        # 
-        # *   **vpc**
-        # *   **public**
         self.net_type = net_type
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):

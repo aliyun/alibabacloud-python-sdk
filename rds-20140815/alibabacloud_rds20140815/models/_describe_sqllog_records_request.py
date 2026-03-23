@@ -23,50 +23,23 @@ class DescribeSQLLogRecordsRequest(DaraModel):
         start_time: str = None,
         user: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database. You can enter only one database name. If you specify this parameter, this operation returns the logs that are generated only for the specified database. If you do not specify this parameter, this operation returns the logs that are generated for all databases on the instance.
         self.database = database
-        # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 15 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to generate an SQL audit log file or return SQL audit logs. Valid values:
-        # 
-        # *   **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the DescribeSQLLogFiles operation to obtain the download URL of the SQL audit log file.
-        # *   **Stream** (default): If you set this parameter to Stream, this operation returns SQL audit logs.
-        # 
-        # >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million logs are returned.
         self.form = form
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from 1.
-        # 
-        # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
-        # The keyword that is used for the query.
-        # 
-        # *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, you cannot filter log entries by keyword.
-        # *   You can specify up to 10 keywords. The keywords are evaluated by using the **AND** operator. Separate multiple keywords with spaces.
-        # *   If a field name in the specified SQL statement is enclosed in grave accents (\\`) and you want to use the field name as a keyword, you must enter the grave accents (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
-        # 
-        # >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords** parameters. The parameters are evaluated by using the **AND** operator.
         self.query_keywords = query_keywords
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique ID of the SQL statement.
         self.sqlid = sqlid
-        # The beginning of the time range to query. You can query data in the last 15 days before the current date. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
         # This parameter is required.
         self.start_time = start_time
-        # The username of the account. You can enter only one username. If you specify this parameter, this operation returns the logs that are generated only for the specified account. If you do not specify this parameter, this operation returns the logs that are generated for all accounts on the instance.
         self.user = user
 
     def validate(self):

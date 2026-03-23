@@ -10,9 +10,7 @@ class CreateTempDBInstanceResponseBody(DaraModel):
         request_id: str = None,
         temp_dbinstance_id: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The temporary instance ID.
         self.temp_dbinstance_id = temp_dbinstance_id
 
     def validate(self):

@@ -12,17 +12,11 @@ class DetachGadInstanceMemberRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the global active database cluster.
-        # 
         # This parameter is required.
         self.gad_instance_name = gad_instance_name
-        # The ID of the instance that serves as the unit node you want to remove. You can call the DescribeGadInstances query the instance ID.
-        # 
         # This parameter is required.
         self.member_instance_name = member_instance_name
-        # The region ID of the central node. You can call the DescribeGadInstances operation to query the region ID.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

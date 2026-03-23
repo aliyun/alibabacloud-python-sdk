@@ -18,28 +18,14 @@ class DescribeCrossBackupMetaListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cross-region backup file that you want to use. You can call the [DescribeCrossRegionBackups](https://help.aliyun.com/document_detail/121733.html) operation to query the ID of the cross-region backup file.
-        # 
         # This parameter is required.
         self.backup_set_id = backup_set_id
-        # The name of the database that you want to query. The system implements exact match based on the value of this parameter and returns the name of the matched database and the names of the tables in the matched database.
         self.get_db_name = get_db_name
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer.
-        # 
-        # > This parameter only takes effect when you specify the **PageSize** parameter.
         self.page_index = page_index
-        # The number of entries to return per page. Default value: **1**.
-        # 
-        # > This parameter only takes effect when you specify the **PageIndex** parameter.
         self.page_size = page_size
-        # The name of the database that you want to query. The system implements fuzzy match based on the value of this parameter and returns only the name of the matched database.
-        # 
-        # > You can implement fuzzy match and then exact match. For example, you can set the Pattern parameter to test to query the testdb1 and testdb2 databases. Then, you can specify the **GetDbName** parameter to query only the matched database and the tables in the matched database.
         self.pattern = pattern
-        # The region ID of the instance.
         self.region = region
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

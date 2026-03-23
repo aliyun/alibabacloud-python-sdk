@@ -10,11 +10,7 @@ class CheckInstanceExistResponseBody(DaraModel):
         is_exist_instance: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance exists. Valid values:
-        # - **true**: The instance exists.
-        # - **false**: The instance does not exist.
         self.is_exist_instance = is_exist_instance
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

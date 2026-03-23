@@ -14,7 +14,6 @@ class DescribeTagsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.items = items
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

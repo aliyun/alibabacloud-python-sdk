@@ -18,50 +18,15 @@ class RenewInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to enable automatic payment during the renewal. Valid values:
-        # 
-        # *   **True**: enables automatic payment. Make sure that your Alibaba Cloud account has adequate balance.
-        # *   **False** (default): disables automatic payment. You have to manually pay the order in the console.
-        # 
-        # >  For more information about how to renew the instance in the console, see the following topics:
-        # 
-        # *   [Manually renew an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96050.html)
-        # 
-        # *   [Manually renew an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96741.html)
-        # 
-        # *   [Manually renew an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95637.html)
-        # 
-        # *   [Manually renew an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97122.html)
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Valid values:
-        # 
-        # *   **true**.
-        # *   **false** (default)
         self.auto_renew = auto_renew
-        # Specifies whether to use a coupon. Valid values:
-        # 
-        # *   **true**: uses a coupon.
-        # *   **false** (default): does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The duration of the subscription renewal. Unit: month. Valid values:
-        # 
-        # *   **1~9**
-        # *   **12**
-        # *   **24**
-        # *   **36**
-        # *   **48**
-        # *   **60**
-        # 
         # This parameter is required.
         self.period = period
-        # The coupon code.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

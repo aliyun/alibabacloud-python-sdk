@@ -14,21 +14,12 @@ class ModifyDBInstanceEndpointShrinkRequest(DaraModel):
         node_items_shrink: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-        # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The user-defined description of the endpoint.
         self.dbinstance_endpoint_description = dbinstance_endpoint_description
-        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
-        # 
         # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about the endpoint.
         self.node_items_shrink = node_items_shrink
         self.resource_owner_id = resource_owner_id
 

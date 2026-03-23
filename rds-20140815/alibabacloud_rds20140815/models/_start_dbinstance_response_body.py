@@ -11,11 +11,8 @@ class StartDBInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The migration task ID. This parameter is available only for instances that are created in dedicated clusters.
         self.migration_id = migration_id
-        # The ID of the request.
         self.request_id = request_id
-        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

@@ -17,30 +17,11 @@ class DescribeWhitelistTemplateLinkedInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **401**: identity authentication failed
-        # *   **404**: request page not found
-        # *   **500**: server error
         self.code = code
-        # The data returned.
         self.data = data
-        # The HTTP status code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **500**: server error
         self.http_status_code = http_status_code
-        # The returned message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.success = success
 
     def validate(self):
@@ -101,9 +82,7 @@ class DescribeWhitelistTemplateLinkedInstanceResponseBodyData(DaraModel):
         ins_name: List[str] = None,
         template_id: int = None,
     ):
-        # The information about the instance.
         self.ins_name = ins_name
-        # The ID of the whitelist template.
         self.template_id = template_id
 
     def validate(self):

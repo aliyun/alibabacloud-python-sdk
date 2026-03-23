@@ -13,9 +13,7 @@ class QueryNotifyResponseBody(DaraModel):
         data: main_models.QueryNotifyResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +52,9 @@ class QueryNotifyResponseBodyData(DaraModel):
         page_size: int = None,
         total_record_count: int = None,
     ):
-        # The details of notifications.
         self.notify_item_list = notify_item_list
-        # The page number of the page returned.
         self.page_number = page_number
-        # The number of entries returned on each page.
         self.page_size = page_size
-        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -125,58 +119,17 @@ class QueryNotifyResponseBodyDataNotifyItemList(DaraModel):
         template_name: str = None,
         type: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # Indicates whether the notification has been confirmed. You can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.confirm_flag = confirm_flag
-        # The UID of the contact who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. The contact belongs to the current Alibaba Cloud account.
-        # 
-        # The value **0** indicates that the notification is automatically confirmed by the system.
         self.confirmor = confirmor
-        # The time when the notification was created.
         self.gmt_created = gmt_created
-        # The time when the notification was modified.
         self.gmt_modified = gmt_modified
-        # The ID of the notification.
         self.id = id
-        # The number of times that repeatedly sent notifications are blocked.
         self.idempotent_count = idempotent_count
-        # This parameter ensures the idempotence of the notification and prevents the notification from being repeatedly sent.
         self.idempotent_id = idempotent_id
-        # The level of the notification. Valid values:
-        # 
-        # *   **help**
-        # *   **success**
-        # *   **warning**
-        # *   **error**
-        # *   **loading**
-        # *   **notice**
         self.level = level
-        # The element in the notification template. This parameter is a JSON string. Fields in the JSON string vary based on the value of the **TemplateName** parameter.
-        # 
-        # *   If the **TemplateName** parameter is **RenewalRecommend**, the JSON string contains the following fields:
-        # 
-        #     *   **instanceName**: the ID of the instance that is about to expire
-        #     *   **reservedTime**: the remaining validity period of the instance in days
-        # 
-        # *   If the **TemplateName** parameter is **InstanceCreateFailed**, the JSON string contains the following fields:
-        # 
-        #     *   **orderId**: the ID of the order to purchase the instance
-        #     *   **reason**: the cause of the instance creation failure
         self.notify_element = notify_element
-        # The template of the notification. Valid values:
-        # 
-        # *   **RenewalRecommend**: The template that is used to notify of renewal suggestions.
-        # *   **InstanceCreateFailed**: The template that is used to notify that an instance fails to be created and is refunded.
         self.template_name = template_name
-        # The type of the notification. Valid values:
-        # 
-        # *   **Sell**: sales notification
-        # *   **Operation**: O\\&M notification
-        # *   **Promotion**: promotion notification
         self.type = type
 
     def validate(self):

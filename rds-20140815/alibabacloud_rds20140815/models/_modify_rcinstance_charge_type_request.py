@@ -23,55 +23,22 @@ class ModifyRCInstanceChargeTypeRequest(DaraModel):
         region_id: str = None,
         used_time: int = None,
     ):
-        # The reserved parameter. This parameter is not supported.
         self.auto_pay = auto_pay
-        # Specifies whether to enable the auto-renewal feature. Valid values:
-        # * **true**
-        # * **false**
-        # > *   This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
-        # > *   All strings except **true** are considered **false**.
         self.auto_renew = auto_renew
-        # Specifies whether to use a coupon. Valid values:
-        # * **true** (default)
-        # * **false**
         self.auto_use_coupon = auto_use_coupon
-        # The additional business information about the instance.
         self.business_info = business_info
-        # The custom client token that is used to ensure the idempotence of the request.
-        # > The value can contain ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
-        # The reserved parameter. This parameter is not supported.
         self.dry_run = dry_run
-        # The reserved parameter. This parameter is not supported.
         self.include_data_disks = include_data_disks
-        # The reserved parameter. This parameter is not supported.
         self.instance_charge_type = instance_charge_type
-        # The ID of the instance or disk.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The reserved parameter. This parameter is not supported.
         self.instance_ids = instance_ids
-        # The new billing method of the instance. Valid values:
-        # * **Prepaid**: subscription.
-        # * **Postpaid**: pay-as-you-go.
         self.pay_type = pay_type
-        # The renewal cycle of the instance. Valid values:
-        # * **Year**
-        # * **Month**
-        # > This parameter must be specified if you set the PayType parameter to **Prepaid**.
         self.period = period
-        # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The subscription duration of the instance.
-        # *   If you set the **Period** parameter to **Year**, the value of the **UsedTime** parameter ranges from **1** to **5**.
-        # *   If the **Period** parameter is set to **Month**, the value of the **UsedTime** parameter ranges from **1** to **11**.
-        # 
-        # > If you set the **PayType** parameter to **Prepaid**, you must specify this parameter.
         self.used_time = used_time
 
     def validate(self):

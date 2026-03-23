@@ -17,22 +17,11 @@ class DescribeDBInstanceNetInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The type of the endpoint. Valid values:
-        # 
-        # *   **Normal**: regular endpoint
-        # *   **ReadWriteSplitting**: read/write splitting endpoint
-        # 
-        # > By default, the system returns both types of endpoints.
         self.dbinstance_net_rwsplit_type = dbinstance_net_rwsplit_type
-        # A reserved parameter. You do not need to specify this parameter.
         self.flag = flag
-        # The name of the dedicated cluster to which the instance belongs. This parameter takes effect only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
         self.general_group_name = general_group_name
         self.owner_account = owner_account
         self.owner_id = owner_id

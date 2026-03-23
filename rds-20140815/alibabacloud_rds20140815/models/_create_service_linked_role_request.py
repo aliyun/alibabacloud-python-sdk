@@ -14,17 +14,10 @@ class CreateServiceLinkedRoleRequest(DaraModel):
         service_linked_role: str = None,
     ):
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the service-linked role.
-        # 
-        # *   **AliyunServiceRoleForRdsPgsqlOnEcs**: the service-linked role for ApsaraDB RDS for PostgreSQL.
-        # *   **AliyunServiceRoleForRDSProxyOnEcs**: the service-linked role for the database proxy feature of ApsaraDB RDS for PostgreSQL.
-        # 
         # This parameter is required.
         self.service_linked_role = service_linked_role
 

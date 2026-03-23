@@ -11,9 +11,13 @@ class DescribeImportTaskValidationRequest(DaraModel):
         owner_id: int = None,
         task_id: int = None,
     ):
+        # Instance ID. You can obtain it by calling DescribeDBInstances.
+        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
         self.owner_id = owner_id
+        # Job ID. This is the job ID returned when you invoke the **ValidateImportTask** API to create a precheck for an import job.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

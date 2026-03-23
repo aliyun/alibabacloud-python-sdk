@@ -18,6 +18,7 @@ class SwitchOverMajorVersionUpgradeRequest(DaraModel):
         switchover_timeout: int = None,
         type: str = None,
     ):
+        # Used to ensure the idempotence of the request and prevent duplicate submissions. The client generates this parameter value, which must be unique across different requests. It can contain a maximum of 64 ASCII characters and must not include non-ASCII characters.
         self.client_token = client_token
         # The instance name.
         self.dbinstance_name = dbinstance_name
@@ -25,6 +26,7 @@ class SwitchOverMajorVersionUpgradeRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

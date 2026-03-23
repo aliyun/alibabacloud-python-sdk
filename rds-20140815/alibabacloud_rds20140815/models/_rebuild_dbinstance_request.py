@@ -16,25 +16,13 @@ class RebuildDBInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
-        # 
         # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The ID of the host on which the system rebuilds the secondary instance.
-        # 
-        # >  If you do not specify this parameter, the system preferentially rebuilds the secondary instance on the original host on which the secondary instance resides. If the remaining storage of the original host is insufficient, the system rebuilds the secondary instance on a host on which the primary instance does not reside. If no suitable hosts are found, the system reports an error that indicates insufficient storage.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # The role of the secondary instance that you want to rebuild. Valid values:
-        # 
-        # *   **FOLLOWER**: secondary instance
-        # *   **LOG**: logger instance
         self.rebuild_node_type = rebuild_node_type
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

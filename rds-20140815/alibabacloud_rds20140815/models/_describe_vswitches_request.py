@@ -20,28 +20,17 @@ class DescribeVSwitchesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID. If you specify this parameter, the details of all VSwitches in the VPC to which the dedicated cluster belongs are returned.
-        # 
-        # >  You must specify this parameter or the **VpcId** parameter.
         self.dedicated_host_group_id = dedicated_host_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1 to 50**. Default value: **30**.
         self.page_size = page_size
-        # The region ID of the VSwitch. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the VPC to which the vSwitch belongs.
-        # 
-        # > You must configure this parameter or **DedicatedHostGroupId**.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the VSwitch that is deployed in the specified zone are returned.
         self.zone_id = zone_id
 
     def validate(self):

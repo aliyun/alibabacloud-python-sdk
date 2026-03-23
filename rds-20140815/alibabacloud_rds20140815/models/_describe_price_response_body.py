@@ -19,22 +19,13 @@ class DescribePriceResponseBody(DaraModel):
         trade_max_rcuamount: float = None,
         trade_min_rcuamount: float = None,
     ):
-        # The order parameters.
-        # 
-        # >  If the **OrderParamOut** parameter is set to **true**, the value of the OrderParams parameter is returned.
         self.order_params = order_params
-        # The price information.
         self.price_info = price_info
-        # The ID of the request.
         self.request_id = request_id
         self.rules = rules
-        # The pricing information about a serverless RDS instance.
         self.serverless_price = serverless_price
-        # Indicates whether discounts can be used.
         self.show_discount = show_discount
-        # The estimated hourly fee that is calculated based on the maximum number of RCUs.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # The estimated hourly fee that is calculated based on the minimum number of RCUs.
         self.trade_min_rcuamount = trade_min_rcuamount
 
     def validate(self):
@@ -121,25 +112,15 @@ class DescribePriceResponseBodyServerlessPrice(DaraModel):
         trade_min_rcuamount: float = None,
         storage_discount_amount: float = None,
     ):
-        # The discount amount of the maximum number of RCUs.
         self.rcudiscount_max_amount = rcudiscount_max_amount
-        # The discount amount of the minimum number of RCUs.
         self.rcudiscount_min_amount = rcudiscount_min_amount
-        # The price of the maximum number of RCUs.
         self.rcuoriginal_max_amount = rcuoriginal_max_amount
-        # The price of the minimum number of RCUs.
         self.rcuoriginal_min_amount = rcuoriginal_min_amount
-        # The original price of the disk capacity.
         self.storage_original_amount = storage_original_amount
-        # The maximum total price before the discount.
         self.total_original_max_amount = total_original_max_amount
-        # The minimum total price before the discount.
         self.total_original_min_amount = total_original_min_amount
-        # The transaction price of the maximum number of RCUs.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # The transaction price of the minimum number of RCUs.
         self.trade_min_rcuamount = trade_min_rcuamount
-        # The discounted price of the disk capacity.
         self.storage_discount_amount = storage_discount_amount
 
     def validate(self):
@@ -308,23 +289,15 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
         trade_min_rcuamount: float = None,
         trade_price: float = None,
     ):
-        # The information about the promotion.
         self.activity_info = activity_info
         self.coupons = coupons
-        # The currency unit.
         self.currency = currency
-        # The discount.
         self.discount_price = discount_price
-        # The order information.
         self.order_lines = order_lines
-        # The original price.
         self.original_price = original_price
         self.rule_ids = rule_ids
-        # The estimated hourly cost that is calculated based on the maximum number of RCUs you specify.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # The estimated hourly cost that is calculated based on the minimum number of RCUs you specify.
         self.trade_min_rcuamount = trade_min_rcuamount
-        # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -529,11 +502,8 @@ class DescribePriceResponseBodyPriceInfoActivityInfo(DaraModel):
         error_code: str = None,
         success: str = None,
     ):
-        # The returned message.
         self.check_err_msg = check_err_msg
-        # The error code that is returned.
         self.error_code = error_code
-        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

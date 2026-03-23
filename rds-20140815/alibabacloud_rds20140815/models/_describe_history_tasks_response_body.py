@@ -16,15 +16,10 @@ class DescribeHistoryTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The tasks.
         self.items = items
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
         self.request_id = request_id
-        # The total number of tasks that meet these constraints without taking pagination into account.
         self.total_count = total_count
 
     def validate(self):
@@ -103,75 +98,25 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         task_type: str = None,
         uid: str = None,
     ):
-        # A set of allowed actions that can be taken on the task. The system matches the current step name and status of the task to the available actions specified by ActionInfo. If no matching action is found, the current status of the task does not support any action. Example:
-        # 
-        #       "steps": [
-        #         {
-        #           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.      "action_info": {    // The actions supported for this step.        "Waiting": [      // The status, which matches Status.          "modifySwitchTime" // The action. Multiple actions are supported.        ]
-        #           }
-        #         },
-        #         {
-        #           "step_name": "init_task", // The name of the step.      "action_info": {    // The actions supported for this step.        "Running": [      // The status.          "cancel",       // The action.          "pause"
-        #             ]
-        #           }
-        #         }
-        #       ]
-        #     }
-        # 
-        # The system may support the following actions:
-        # 
-        # *   **retry**: retries the action.
-        # *   **cancel**: cancels the action.
-        # *   **modifySwitchTime**: changes the switching time or restoration time.
         self.action_info = action_info
-        # The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
         self.caller_source = caller_source
-        # The source of the request. Valid values:
-        # 
-        # *   **System**
-        # *   **User**
         self.caller_uid = caller_uid
-        # The name of the current step. If this parameter is left empty, the task is not started.
         self.current_step_name = current_step_name
-        # The database type.
         self.db_type = db_type
-        # The end time of the task.
         self.end_time = end_time
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The instance category.
         self.instance_type = instance_type
-        # The service name.
         self.product = product
-        # Indicates the task progress.
         self.progress = progress
-        # The reason why the current task was initiated.
         self.reason_code = reason_code
-        # The region ID.
         self.region_id = region_id
-        # The estimated amount of time remaining to complete the task. Unit: seconds.
         self.remain_time = remain_time
-        # The start time of the task.
         self.start_time = start_time
-        # The task status. Valid values:
-        # 
-        # *   Scheduled
-        # *   Running
-        # *   Succeed
-        # *   Failed
-        # *   Cancelling
-        # *   Canceled
-        # *   Waiting
         self.status = status
-        # The task details.
         self.task_detail = task_detail
-        # The task ID.
         self.task_id = task_id
-        # The task type.
         self.task_type = task_type
-        # The ID of the user to which the resources belong.
         self.uid = uid
 
     def validate(self):
