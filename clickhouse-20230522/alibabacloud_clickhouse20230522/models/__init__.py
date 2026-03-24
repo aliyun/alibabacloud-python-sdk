@@ -79,6 +79,8 @@ from ._describe_endpoints_response import DescribeEndpointsResponse
 from ._describe_process_list_request import DescribeProcessListRequest
 from ._describe_process_list_response_body import DescribeProcessListResponseBody
 from ._describe_process_list_response import DescribeProcessListResponse
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
 from ._describe_security_iplist_request import DescribeSecurityIPListRequest
 from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBody
 from ._describe_security_iplist_response import DescribeSecurityIPListResponse
@@ -192,6 +194,10 @@ from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyData
 from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyData
 from ._describe_process_list_response_body import DescribeProcessListResponseBodyDataResultSet
 from ._describe_process_list_response_body import DescribeProcessListResponseBodyData
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegionZonesZone
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegionZones
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegion
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBodyDataGroupItems
 from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBodyData
 from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBodyDataResultSet
@@ -307,6 +313,8 @@ __all__ = [
     DescribeProcessListRequest,
     DescribeProcessListResponseBody,
     DescribeProcessListResponse,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
     DescribeSecurityIPListRequest,
     DescribeSecurityIPListResponseBody,
     DescribeSecurityIPListResponse,
@@ -420,6 +428,10 @@ __all__ = [
     DescribeEndpointsResponseBodyData,
     DescribeProcessListResponseBodyDataResultSet,
     DescribeProcessListResponseBodyData,
+    DescribeRegionsResponseBodyRegionsRegionZonesZone,
+    DescribeRegionsResponseBodyRegionsRegionZones,
+    DescribeRegionsResponseBodyRegionsRegion,
+    DescribeRegionsResponseBodyRegions,
     DescribeSecurityIPListResponseBodyDataGroupItems,
     DescribeSecurityIPListResponseBodyData,
     DescribeSlowLogRecordsResponseBodyDataResultSet,

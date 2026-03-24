@@ -1,3 +1,7 @@
+2026-03-24 Version: 2.5.0
+- Support API DescribeRegions.
+
+
 2026-01-20 Version: 2.4.1
 - Update API DescribeEndpoints: add request parameters ComputingGroupId.
 - Update API DescribeEndpoints: add response parameters Body.Data.Endpoints.$.EndpointName.

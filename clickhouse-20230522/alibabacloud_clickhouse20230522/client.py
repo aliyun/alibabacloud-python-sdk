@@ -2228,6 +2228,56 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_process_list_with_options_async(request, runtime)
 
+    def describe_regions_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(self) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_regions_with_options(runtime)
+
+    async def describe_regions_async(self) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_regions_with_options_async(runtime)
+
     def describe_security_iplist_with_options(
         self,
         request: main_models.DescribeSecurityIPListRequest,
