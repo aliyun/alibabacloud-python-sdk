@@ -9,11 +9,13 @@ class Conversation(DaraModel):
         self,
         created_at: int = None,
         id: str = None,
+        status: str = None,
         title: str = None,
         updated_at: int = None,
     ):
         self.created_at = created_at
         self.id = id
+        self.status = status
         self.title = title
         self.updated_at = updated_at
 
@@ -31,6 +33,9 @@ class Conversation(DaraModel):
         if self.id is not None:
             result['Id'] = self.id
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -46,6 +51,9 @@ class Conversation(DaraModel):
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')

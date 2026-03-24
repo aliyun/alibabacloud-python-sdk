@@ -46,6 +46,7 @@ class TestEventSourceConfigRequestSourceMySQLParameters(DaraModel):
         port: int = None,
         region_id: str = None,
         security_group_id: str = None,
+        snapshot_mode: str = None,
         table_names: str = None,
         user: str = None,
         v_switch_ids: str = None,
@@ -71,6 +72,7 @@ class TestEventSourceConfigRequestSourceMySQLParameters(DaraModel):
         self.region_id = region_id
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.snapshot_mode = snapshot_mode
         # The table name. The name must be prefixed with the database name. ${DatabaseName}.${TableName}
         self.table_names = table_names
         # The username that is used to log on to the database.
@@ -112,6 +114,9 @@ class TestEventSourceConfigRequestSourceMySQLParameters(DaraModel):
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
 
+        if self.snapshot_mode is not None:
+            result['SnapshotMode'] = self.snapshot_mode
+
         if self.table_names is not None:
             result['TableNames'] = self.table_names
 
@@ -151,6 +156,9 @@ class TestEventSourceConfigRequestSourceMySQLParameters(DaraModel):
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('SnapshotMode') is not None:
+            self.snapshot_mode = m.get('SnapshotMode')
 
         if m.get('TableNames') is not None:
             self.table_names = m.get('TableNames')

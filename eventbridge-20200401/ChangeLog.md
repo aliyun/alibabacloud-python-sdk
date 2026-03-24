@@ -1,3 +1,7 @@
+2026-03-24 Version: 8.0.6
+- Update API TestEventSourceConfig: add request parameters SourceMySQLParameters.SnapshotMode.
+
+
 2026-03-03 Version: 8.0.5
 - Update API CreateEventStreaming: add request parameters Sink.SinkEventHouseParameters.
 - Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkEventHouseParameters.
