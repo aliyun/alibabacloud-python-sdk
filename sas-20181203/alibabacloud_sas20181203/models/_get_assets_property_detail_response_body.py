@@ -107,11 +107,13 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         uuid: str = None,
         web_path: str = None,
     ):
+        # Agent
         self.agent = agent
         # Container name.
         self.container_name = container_name
         # The timestamp of the latest asset fingerprint scan, in milliseconds.
         self.create_timestamp = create_timestamp
+        # Asset description.
         self.description = description
         # Web site domain. 
         # > Only returned when **Biz** is **web_server**.
@@ -123,6 +125,7 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         # Kernel module file path.
         # > Returned only when **Biz** is **lkm**.
         self.filepath = filepath
+        # 镜像Digest
         self.image_digest = image_digest
         # Image name.
         self.image_name = image_name
@@ -141,6 +144,7 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         # Web site process listening protocol. 
         # >Only returned when **Biz** is **web_server**.
         self.listen_protocol = listen_protocol
+        # MCP name.
         self.mcp_name = mcp_name
         # AI tool name
         self.middleware_name = middleware_name
@@ -169,7 +173,9 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         self.process_started = process_started
         # The ID of the region where the instance is located.
         self.region_id = region_id
+        # 镜像的RepoName
         self.repo_name = repo_name
+        # 镜像Repo命名空间
         self.repo_namespace = repo_namespace
         # Web site type.
         # > Returned only when **Biz** is **web_server**.
@@ -177,8 +183,11 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         # Kernel module size.
         # > Returned only when **Biz** is **lkm**.
         self.size = size
+        # Skill name
         self.skills_name = skills_name
+        # 标签
         self.tag = tag
+        # Transmission name.
         self.transport_name = transport_name
         # Number of dependencies for the kernel module.
         # > Returned only when **Biz** is **lkm**.

@@ -102,6 +102,7 @@ class ExportVulRequest(DaraModel):
         # 
         # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the IDs of VPCs.
         self.vpc_instance_ids = vpc_instance_ids
+        # 漏洞组件信息列表
         self.vul_entity_list = vul_entity_list
 
     def validate(self):
@@ -240,7 +241,9 @@ class ExportVulRequestVulEntityList(DaraModel):
         entity_name: str = None,
         entity_version: str = None,
     ):
+        # 组件名称
         self.entity_name = entity_name
+        # 组件版本
         self.entity_version = entity_version
 
     def validate(self):

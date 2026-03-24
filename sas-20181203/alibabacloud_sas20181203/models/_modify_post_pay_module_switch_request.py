@@ -119,6 +119,7 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         # - **0**: Off
         # - **1**: On
         self.agentless = agentless
+        # AI Digitization
         self.ai_digital = ai_digital
         # Anti-Ransomware Module. Values:
         # - **0**: Off

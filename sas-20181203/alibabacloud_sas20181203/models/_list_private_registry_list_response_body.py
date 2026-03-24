@@ -62,6 +62,7 @@ class ListPrivateRegistryListResponseBodyImageRegistryInfos(DaraModel):
         net_type: int = None,
         password: str = None,
         persistence_day: int = None,
+        port: int = None,
         protocol_type: int = None,
         region_id: str = None,
         registry_host_ip: str = None,
@@ -91,6 +92,7 @@ class ListPrivateRegistryListResponseBodyImageRegistryInfos(DaraModel):
         self.password = password
         # The number of days during which assets can be retained.
         self.persistence_day = persistence_day
+        self.port = port
         # The type of the protocol. Valid values:
         # 
         # *   **1**: HTTP
@@ -154,6 +156,9 @@ class ListPrivateRegistryListResponseBodyImageRegistryInfos(DaraModel):
         if self.persistence_day is not None:
             result['PersistenceDay'] = self.persistence_day
 
+        if self.port is not None:
+            result['Port'] = self.port
+
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
 
@@ -211,6 +216,9 @@ class ListPrivateRegistryListResponseBodyImageRegistryInfos(DaraModel):
 
         if m.get('PersistenceDay') is not None:
             self.persistence_day = m.get('PersistenceDay')
+
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
 
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')

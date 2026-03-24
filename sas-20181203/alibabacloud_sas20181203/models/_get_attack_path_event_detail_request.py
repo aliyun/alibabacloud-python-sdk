@@ -14,9 +14,9 @@ class GetAttackPathEventDetailRequest(DaraModel):
         # Event ID.
         # > You can call [ListAttackPathEvent](~~ListAttackPathEvent~~) to query the event ID.
         self.event_id = event_id
-        # 数据来源。默认值为**default**。取值：
-        # - **caasm**：攻击面
-        # - **default**：攻击路径
+        # Data source. The default value is **default**. Values:
+        #  - **caasm**: Attack surface
+        #  - **default**: Attack path
         self.event_source = event_source
         # The language type for request and response, default is **zh**. Values:
         # - **zh**: Chinese

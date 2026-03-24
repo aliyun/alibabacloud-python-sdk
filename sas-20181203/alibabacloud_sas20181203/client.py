@@ -33313,6 +33313,56 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_suspicious_overall_config_with_options_async(request, runtime)
 
+    def describe_suspicious_security_eventy_statistics_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSuspiciousSecurityEventyStatisticsResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeSuspiciousSecurityEventyStatistics',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSuspiciousSecurityEventyStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_suspicious_security_eventy_statistics_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSuspiciousSecurityEventyStatisticsResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeSuspiciousSecurityEventyStatistics',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSuspiciousSecurityEventyStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_suspicious_security_eventy_statistics(self) -> main_models.DescribeSuspiciousSecurityEventyStatisticsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_suspicious_security_eventy_statistics_with_options(runtime)
+
+    async def describe_suspicious_security_eventy_statistics_async(self) -> main_models.DescribeSuspiciousSecurityEventyStatisticsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_suspicious_security_eventy_statistics_with_options_async(runtime)
+
     def describe_suspicious_uuidconfig_with_options(
         self,
         request: main_models.DescribeSuspiciousUUIDConfigRequest,
@@ -40467,6 +40517,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_assets_property_item_with_options_async(request, runtime)
 
+    def get_attack_event_dashboard_with_options(
+        self,
+        request: main_models.GetAttackEventDashboardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAttackEventDashboardResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAttackEventDashboard',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAttackEventDashboardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_attack_event_dashboard_with_options_async(
+        self,
+        request: main_models.GetAttackEventDashboardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAttackEventDashboardResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAttackEventDashboard',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAttackEventDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_attack_event_dashboard(
+        self,
+        request: main_models.GetAttackEventDashboardRequest,
+    ) -> main_models.GetAttackEventDashboardResponse:
+        runtime = RuntimeOptions()
+        return self.get_attack_event_dashboard_with_options(request, runtime)
+
+    async def get_attack_event_dashboard_async(
+        self,
+        request: main_models.GetAttackEventDashboardRequest,
+    ) -> main_models.GetAttackEventDashboardResponse:
+        runtime = RuntimeOptions()
+        return await self.get_attack_event_dashboard_with_options_async(request, runtime)
+
+    def get_attack_event_detail_with_options(
+        self,
+        request: main_models.GetAttackEventDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAttackEventDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAttackEventDetail',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAttackEventDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_attack_event_detail_with_options_async(
+        self,
+        request: main_models.GetAttackEventDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAttackEventDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAttackEventDetail',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAttackEventDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_attack_event_detail(
+        self,
+        request: main_models.GetAttackEventDetailRequest,
+    ) -> main_models.GetAttackEventDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_attack_event_detail_with_options(request, runtime)
+
+    async def get_attack_event_detail_async(
+        self,
+        request: main_models.GetAttackEventDetailRequest,
+    ) -> main_models.GetAttackEventDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_attack_event_detail_with_options_async(request, runtime)
+
     def get_attack_path_event_detail_with_options(
         self,
         request: main_models.GetAttackPathEventDetailRequest,
@@ -42270,6 +42472,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetClusterCheckItemWarningStatisticsResponse:
         runtime = RuntimeOptions()
         return await self.get_cluster_check_item_warning_statistics_with_options_async(request, runtime)
+
+    def get_cluster_check_summary_with_options(
+        self,
+        request: main_models.GetClusterCheckSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetClusterCheckSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetClusterCheckSummary',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetClusterCheckSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_check_summary_with_options_async(
+        self,
+        request: main_models.GetClusterCheckSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetClusterCheckSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetClusterCheckSummary',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetClusterCheckSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_check_summary(
+        self,
+        request: main_models.GetClusterCheckSummaryRequest,
+    ) -> main_models.GetClusterCheckSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.get_cluster_check_summary_with_options(request, runtime)
+
+    async def get_cluster_check_summary_async(
+        self,
+        request: main_models.GetClusterCheckSummaryRequest,
+    ) -> main_models.GetClusterCheckSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.get_cluster_check_summary_with_options_async(request, runtime)
 
     def get_cluster_rule_summary_with_options(
         self,
@@ -47419,6 +47691,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_lang_with_options_async(runtime)
 
+    def get_valid_deduct_instances_with_options(
+        self,
+        request: main_models.GetValidDeductInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetValidDeductInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.modules):
+            query['Modules'] = request.modules
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetValidDeductInstances',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetValidDeductInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_valid_deduct_instances_with_options_async(
+        self,
+        request: main_models.GetValidDeductInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetValidDeductInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.modules):
+            query['Modules'] = request.modules
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetValidDeductInstances',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetValidDeductInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_valid_deduct_instances(
+        self,
+        request: main_models.GetValidDeductInstancesRequest,
+    ) -> main_models.GetValidDeductInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.get_valid_deduct_instances_with_options(request, runtime)
+
+    async def get_valid_deduct_instances_async(
+        self,
+        request: main_models.GetValidDeductInstancesRequest,
+    ) -> main_models.GetValidDeductInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_valid_deduct_instances_with_options_async(request, runtime)
+
     def get_virus_scan_config_with_options(
         self,
         request: main_models.GetVirusScanConfigRequest,
@@ -50089,6 +50439,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_asset_selection_target_with_options_async(request, runtime)
 
+    def list_attack_event_info_with_options(
+        self,
+        request: main_models.ListAttackEventInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAttackEventInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attack_instance):
+            query['AttackInstance'] = request.attack_instance
+        if not DaraCore.is_null(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.dst_port):
+            query['DstPort'] = request.dst_port
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAttackEventInfo',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAttackEventInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_attack_event_info_with_options_async(
+        self,
+        request: main_models.ListAttackEventInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAttackEventInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attack_instance):
+            query['AttackInstance'] = request.attack_instance
+        if not DaraCore.is_null(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.dst_port):
+            query['DstPort'] = request.dst_port
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAttackEventInfo',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAttackEventInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_attack_event_info(
+        self,
+        request: main_models.ListAttackEventInfoRequest,
+    ) -> main_models.ListAttackEventInfoResponse:
+        runtime = RuntimeOptions()
+        return self.list_attack_event_info_with_options(request, runtime)
+
+    async def list_attack_event_info_async(
+        self,
+        request: main_models.ListAttackEventInfoRequest,
+    ) -> main_models.ListAttackEventInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.list_attack_event_info_with_options_async(request, runtime)
+
     def list_attack_path_event_with_options(
         self,
         request: main_models.ListAttackPathEventRequest,
@@ -52250,6 +52702,104 @@ class Client(OpenApiClient):
     ) -> main_models.ListCloudVendorRegionsResponse:
         runtime = RuntimeOptions()
         return await self.list_cloud_vendor_regions_with_options_async(request, runtime)
+
+    def list_cluster_check_result_with_options(
+        self,
+        request: main_models.ListClusterCheckResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClusterCheckResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.check_key):
+            query['CheckKey'] = request.check_key
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk_levels):
+            query['RiskLevels'] = request.risk_levels
+        if not DaraCore.is_null(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListClusterCheckResult',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListClusterCheckResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_check_result_with_options_async(
+        self,
+        request: main_models.ListClusterCheckResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClusterCheckResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.check_key):
+            query['CheckKey'] = request.check_key
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk_levels):
+            query['RiskLevels'] = request.risk_levels
+        if not DaraCore.is_null(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListClusterCheckResult',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListClusterCheckResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_check_result(
+        self,
+        request: main_models.ListClusterCheckResultRequest,
+    ) -> main_models.ListClusterCheckResultResponse:
+        runtime = RuntimeOptions()
+        return self.list_cluster_check_result_with_options(request, runtime)
+
+    async def list_cluster_check_result_async(
+        self,
+        request: main_models.ListClusterCheckResultRequest,
+    ) -> main_models.ListClusterCheckResultResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cluster_check_result_with_options_async(request, runtime)
 
     def list_cluster_cnnf_status_detail_with_options(
         self,
@@ -54972,6 +55522,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListK8sAccessInfoResponse:
         runtime = RuntimeOptions()
         return await self.list_k8s_access_info_with_options_async(request, runtime)
+
+    def list_kspm_instances_with_options(
+        self,
+        request: main_models.ListKspmInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKspmInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_asset_types):
+            query['CloudAssetTypes'] = request.cloud_asset_types
+        if not DaraCore.is_null(request.criteria):
+            query['Criteria'] = request.criteria
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.logical_exp):
+            query['LogicalExp'] = request.logical_exp
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKspmInstances',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKspmInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kspm_instances_with_options_async(
+        self,
+        request: main_models.ListKspmInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKspmInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_asset_types):
+            query['CloudAssetTypes'] = request.cloud_asset_types
+        if not DaraCore.is_null(request.criteria):
+            query['Criteria'] = request.criteria
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.logical_exp):
+            query['LogicalExp'] = request.logical_exp
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKspmInstances',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKspmInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kspm_instances(
+        self,
+        request: main_models.ListKspmInstancesRequest,
+    ) -> main_models.ListKspmInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.list_kspm_instances_with_options(request, runtime)
+
+    async def list_kspm_instances_async(
+        self,
+        request: main_models.ListKspmInstancesRequest,
+    ) -> main_models.ListKspmInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_kspm_instances_with_options_async(request, runtime)
 
     def list_log_shipper_regions_with_options(
         self,
@@ -61137,6 +61777,13 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ModifyImageRegistryResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.registry_host_ip):
+            query['RegistryHostIp'] = request.registry_host_ip
         body = {}
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
@@ -61147,6 +61794,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -61171,6 +61819,13 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ModifyImageRegistryResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.registry_host_ip):
+            query['RegistryHostIp'] = request.registry_host_ip
         body = {}
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
@@ -61181,6 +61836,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -68454,6 +69110,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.baseline_item_list):
             query['BaselineItemList'] = request.baseline_item_list
+        if not DaraCore.is_null(request.image_vul_clean):
+            query['ImageVulClean'] = request.image_vul_clean
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.source):
@@ -68490,6 +69148,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.baseline_item_list):
             query['BaselineItemList'] = request.baseline_item_list
+        if not DaraCore.is_null(request.image_vul_clean):
+            query['ImageVulClean'] = request.image_vul_clean
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.source):

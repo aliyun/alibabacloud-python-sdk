@@ -59,64 +59,62 @@ class GetCloudAssetSummaryRequestCloudAssetTypes(DaraModel):
         asset_type: int = None,
         vendor: int = None,
     ):
-        # 云产品的子类型。
-        # 资产的类型-子类型。取值：
-        # 
-        # - **0**：云服务器 ECS 
-        #     *  **1**：磁盘（存储）
-        #     *  **2**：安全组
-        #     *  **100**：实例
-        # - **1**：负载均衡
-        #     *  **0**：负载均衡
-        #     *  **1**：应用型负载均衡
-        # - **3**：云数据库 RDS
-        #     *  **0**：实例
-        # - **4**：云数据库 MongoDB 版
-        #     *  **0**：实例
-        # - **5**：云数据库 Tair（兼容 Redis）
-        #     *  **0**：实例
-        # - **6**：容器镜像服务
-        #     *  **1**：企业版
-        #     *  **2**：个人版
-        # - **8**：容器服务Kubernetes版
-        #     *  **0**：集群
-        # - **9**：专有网络VPC
-        #     *  **0**：NAT网关
-        #     *  **1**：EIP
-        #     *  **2**：VPN
-        #     *  **3**：FLOW_LOG
-        # - **11**：操作审计
-        #     *  **0**：跟踪
-        # - **12**：CDN
-        #     *  **0**：实例
-        # - **13**：数字证书管理服务（原SSL证书）
-        #     *  **0**：证书
-        # - **14**：云效
-        #     *  **0**：组织
-        # - **16**：DDoS防护
-        #     *  **0**：实例
-        # - **17**：Web应用防火墙
-        #     *  **0**：域名
-        # - **18**：对象存储
-        #     *  **0**：Bucket
-        # - **19**：云原生关系型数据库 PolarDB
-        #     *  **0**：集群
-        # - **20**：云数据库 PostgreSQL 版
-        #     *  **0**：实例
-        # - **21**：微服务引擎
-        #     *  **0**：集群
-        # - **22**：文件存储NAS
-        #     *  **0**：文件系统
-        # - **23**：数据安全中心
-        #     *  **0**：实例
-        # - **24**：弹性公网IP
-        #     *  **0**：任播弹性公网IP
-        # - **25**：云身份服务-EIAM
-        #     *  **0**：实例
-        # - **26**：PolarDB-X
-        #     *  **0**：实例
-        # - **27**：Elasticsearch
-        #     *  **0**：实例
+        # Subtypes of cloud products. Asset type-subtype. Values:
+        # - **0**: ECS (Elastic Compute Service)
+        #   *  **1**: Disk (Storage)
+        #   *  **2**: Security Group
+        #   *  **100**: Instance
+        # - **1**: Load Balancer 
+        #   *  **0**: Load Balancer 
+        #   *  **1**: Application Load Balancer 
+        # - **3**: ApsaraDB RDS 
+        #   *  **0**: Instance 
+        # - **4**: ApsaraDB for MongoDB 
+        #   *  **0**: Instance 
+        # - **5**: ApsaraDB Tair (Redis Compatible) 
+        #   *  **0**: Instance 
+        # - **6**: Container Registry 
+        #   *  **1**: Enterprise Edition 
+        #   *  **2**: Personal Edition 
+        # - **8**: Container Service for Kubernetes 
+        #   *  **0**: Cluster 
+        # - **9**: Virtual Private Cloud (VPC) 
+        #   *  **0**: NAT Gateway 
+        #   *  **1**: EIP (Elastic IP) 
+        #   *  **2**: VPN 
+        #   *  **3**: FLOW_LOG 
+        # - **11**: ActionTrail 
+        #   *  **0**: Trail 
+        # - **12**: CDN 
+        #   *  **0**: Instance 
+        # - **13**: Digital Certificate Management Service (formerly SSL Certificates) 
+        #   *  **0**: Certificate 
+        # - **14**: DevOps 
+        #   *  **0**: Organization 
+        # - **16**: DDoS Protection 
+        #   *  **0**: Instance 
+        # - **17**: Web Application Firewall 
+        #   *  **0**: Domain 
+        # - **18**: Object Storage 
+        #   *  **0**: Bucket 
+        # - **19**: PolarDB (Cloud-Native Relational Database) 
+        #   *  **0**: Cluster 
+        # - **20**: ApsaraDB for PostgreSQL 
+        #   *  **0**: Instance 
+        # - **21**: Microservices Engine 
+        #   *  **0**: Cluster 
+        # - **22**: File Storage NAS 
+        #   *  **0**: File System 
+        # - **23**: Data Security Center 
+        #   *  **0**: Instance 
+        # - **24**: Elastic Public IP 
+        #   *  **0**: Anycast Elastic Public IP 
+        # - **25**: Cloud Identity Service - EIAM 
+        #   *  **0**: Instance 
+        # - **26**: PolarDB-X 
+        #   *  **0**: Instance 
+        # - **27**: Elasticsearch 
+        #   *  **0**: Instance
         self.asset_sub_type = asset_sub_type
         # The type of asset. Values:
         # - **0**: Elastic Compute Service (ECS) 

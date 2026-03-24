@@ -413,7 +413,7 @@ class ListMultiUserInstancesResponseBodySaleInstanceListVersionSummaryEcsCount(D
         count: int = None,
         used: int = None,
     ):
-        # 已分配已购授权台数。
+        # Number of purchased licenses allocated.
         self.assigned = assigned
         # Number of ECS authorizations allocated.
         self.count = count

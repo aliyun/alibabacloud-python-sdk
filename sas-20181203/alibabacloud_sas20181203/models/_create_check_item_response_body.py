@@ -49,7 +49,7 @@ class CreateCheckItemResponseBodyData(DaraModel):
         self,
         check_id: int = None,
     ):
-        # 创建成功返回的检查项ID。
+        # The ID of the inspection item returned upon successful creation.
         self.check_id = check_id
 
     def validate(self):

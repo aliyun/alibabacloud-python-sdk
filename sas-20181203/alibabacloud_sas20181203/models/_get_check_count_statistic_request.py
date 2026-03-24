@@ -14,6 +14,7 @@ class GetCheckCountStatisticRequest(DaraModel):
         task_sources: List[str] = None,
         vendors: List[str] = None,
     ):
+        # 语言参数
         self.lang = lang
         # The type of the statistics. Valid values:
         # 

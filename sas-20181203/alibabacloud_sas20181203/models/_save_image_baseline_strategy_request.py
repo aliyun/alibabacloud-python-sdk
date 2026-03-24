@@ -8,6 +8,7 @@ class SaveImageBaselineStrategyRequest(DaraModel):
     def __init__(
         self,
         baseline_item_list: str = None,
+        image_vul_clean: int = None,
         lang: str = None,
         source: str = None,
         strategy_id: int = None,
@@ -19,6 +20,7 @@ class SaveImageBaselineStrategyRequest(DaraModel):
         # 
         # This parameter is required.
         self.baseline_item_list = baseline_item_list
+        self.image_vul_clean = image_vul_clean
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
         # *   **zh**: Chinese
@@ -47,6 +49,9 @@ class SaveImageBaselineStrategyRequest(DaraModel):
         if self.baseline_item_list is not None:
             result['BaselineItemList'] = self.baseline_item_list
 
+        if self.image_vul_clean is not None:
+            result['ImageVulClean'] = self.image_vul_clean
+
         if self.lang is not None:
             result['Lang'] = self.lang
 
@@ -65,6 +70,9 @@ class SaveImageBaselineStrategyRequest(DaraModel):
         m = m or dict()
         if m.get('BaselineItemList') is not None:
             self.baseline_item_list = m.get('BaselineItemList')
+
+        if m.get('ImageVulClean') is not None:
+            self.image_vul_clean = m.get('ImageVulClean')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')

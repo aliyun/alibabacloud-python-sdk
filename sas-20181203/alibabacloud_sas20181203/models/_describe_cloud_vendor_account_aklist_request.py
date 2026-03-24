@@ -34,6 +34,9 @@ class DescribeCloudVendorAccountAKListRequest(DaraModel):
         self.status = status
         # The username of the sub-account of the cloud service provider to which the AccessKey pair belongs.
         self.sub_account_name = sub_account_name
+        # Cloud asset vendor. Values:
+        #  - **Tencent**: Tencent Cloud 
+        # - **AWS**: Amazon Web Services
         self.vendor = vendor
         # The name of the AccessKey pair.
         self.vendor_auth_alias = vendor_auth_alias

@@ -106,6 +106,7 @@ class GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules(Dar
     def __init__(
         self,
         module: str = None,
+        module_auth: bool = None,
         module_disp: str = None,
     ):
         # The code of the module. Valid values:
@@ -115,6 +116,10 @@ class GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules(Dar
         # *   **SIEM**: CloudSiem
         # *   **TRIAL**: log audit
         self.module = module
+        # Module authorization switch indicator. Values: 
+        # - **true**: Enabled
+        #  - **false**: Not enabled
+        self.module_auth = module_auth
         # The display name of the module.
         self.module_disp = module_disp
 
@@ -129,6 +134,9 @@ class GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules(Dar
         if self.module is not None:
             result['Module'] = self.module
 
+        if self.module_auth is not None:
+            result['ModuleAuth'] = self.module_auth
+
         if self.module_disp is not None:
             result['ModuleDisp'] = self.module_disp
 
@@ -138,6 +146,9 @@ class GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules(Dar
         m = m or dict()
         if m.get('Module') is not None:
             self.module = m.get('Module')
+
+        if m.get('ModuleAuth') is not None:
+            self.module_auth = m.get('ModuleAuth')
 
         if m.get('ModuleDisp') is not None:
             self.module_disp = m.get('ModuleDisp')

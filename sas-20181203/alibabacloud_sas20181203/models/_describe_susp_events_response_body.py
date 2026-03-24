@@ -192,6 +192,7 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         self.desc = desc
         # The details of the alert event.
         self.details = details
+        # Source of discovery (invalid field)
         self.detect_source = detect_source
         # Indicates whether the alert event can be detected by cloud sandbox. Valid values:
         # 

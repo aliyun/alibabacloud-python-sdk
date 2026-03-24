@@ -18,31 +18,29 @@ class GetHoneypotAttackStatisticsRequest(DaraModel):
         start_time_stamp: int = None,
         statistics_type: str = None,
     ):
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # Set the page number from which to start displaying the query results. The starting value is **1**. The default value is **1**, indicating that the display starts from the **1st** page.
         self.current_page = current_page
-        # The end time. The value is a UNIX timestamp.
+        # End time, in timestamp format.
         self.end_time_stamp = end_time_stamp
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # Sets the language type for requests and received messages, default is **zh**. Values:
+        # - **zh**: Chinese 
+        # - **en**: English
         self.lang = lang
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page. We recommend that you do not leave this parameter empty.
+        # Specifies the maximum number of data entries displayed per page for paginated queries. The default number of entries displayed per page is 20. If the pagesize parameter is empty, 20 entries will be returned by default. It is recommended that the pagesize value should not be empty.
         self.page_size = page_size
-        # The risk levels.
+        # List of risk levels
         self.risk_level_list = risk_level_list
-        # The source IP address of the attack.
+        # Attacker\\"s IP
         # 
         # This parameter is required.
         self.src_ip = src_ip
-        # The start time. The value is a UNIX timestamp.
+        # Start time, in timestamp format.
         self.start_time_stamp = start_time_stamp
-        # The type of the attack source statistics. Valid values:
-        # 
-        # *   **TOP_ATTACKED_AGENT**: the top 5 probes that are attacked the most frequently
-        # *   **TOP_ATTACKED_IP**: the top 5 IP addresses that are attacked the most frequently
-        # *   **ATTACK_EVENT_TYPE**: the type of the intrusion event
-        # *   **ATTACK_HONEYPOT_TYPE**: the type of the attacked honeypot
+        # The type of attack source statistics. Values:
+        # - **TOP_ATTACKED_AGENT**: Top 5 most attacked probes. 
+        # - **TOP_ATTACKED_IP**: Top 5 most attacked IP addresses.
+        #  - **ATTACK_EVENT_TYPE**: Type of intrusion event. 
+        # - **ATTACK_HONEYPOT_TYPE**: Type of compromised honeypot.
         # 
         # This parameter is required.
         self.statistics_type = statistics_type

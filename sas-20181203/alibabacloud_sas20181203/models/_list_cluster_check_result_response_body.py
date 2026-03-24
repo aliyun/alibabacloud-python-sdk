@@ -7,18 +7,18 @@ from typing import List
 from alibabacloud_sas20181203 import models as main_models
 from darabonba.model import DaraModel
 
-class ListCheckResultResponseBody(DaraModel):
+class ListClusterCheckResultResponseBody(DaraModel):
     def __init__(
         self,
-        checks: List[main_models.ListCheckResultResponseBodyChecks] = None,
-        page_info: main_models.ListCheckResultResponseBodyPageInfo = None,
+        checks: List[main_models.ListClusterCheckResultResponseBodyChecks] = None,
+        page_info: main_models.ListClusterCheckResultResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The check items.
+        # Information on check results.
         self.checks = checks
-        # The pagination information.
+        # Pagination information.
         self.page_info = page_info
-        # The ID of the request.
+        # The ID of the current request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +52,11 @@ class ListCheckResultResponseBody(DaraModel):
         self.checks = []
         if m.get('Checks') is not None:
             for k1 in m.get('Checks'):
-                temp_model = main_models.ListCheckResultResponseBodyChecks()
+                temp_model = main_models.ListClusterCheckResultResponseBodyChecks()
                 self.checks.append(temp_model.from_map(k1))
 
         if m.get('PageInfo') is not None:
-            temp_model = main_models.ListCheckResultResponseBodyPageInfo()
+            temp_model = main_models.ListClusterCheckResultResponseBodyPageInfo()
             self.page_info = temp_model.from_map(m.get('PageInfo'))
 
         if m.get('RequestId') is not None:
@@ -64,7 +64,7 @@ class ListCheckResultResponseBody(DaraModel):
 
         return self
 
-class ListCheckResultResponseBodyPageInfo(DaraModel):
+class ListClusterCheckResultResponseBodyPageInfo(DaraModel):
     def __init__(
         self,
         count: int = None,
@@ -72,13 +72,13 @@ class ListCheckResultResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of data entries displayed on the current page during pagination.
         self.count = count
-        # The page number.
+        # Page number in the pagination query.
         self.current_page = current_page
-        # The number of entries per page.
+        # Number of items per page in the pagination query. The default value is **20**, indicating that 20 items are displayed per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of data entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,155 +119,89 @@ class ListCheckResultResponseBodyPageInfo(DaraModel):
 
         return self
 
-class ListCheckResultResponseBodyChecks(DaraModel):
+class ListClusterCheckResultResponseBodyChecks(DaraModel):
     def __init__(
         self,
         asset_sub_type: int = None,
         asset_type: int = None,
-        asset_vendor: int = None,
         check_id: int = None,
-        check_policies: List[main_models.ListCheckResultResponseBodyChecksCheckPolicies] = None,
-        check_sale_type: int = None,
+        check_policies: List[main_models.ListClusterCheckResultResponseBodyChecksCheckPolicies] = None,
         check_show_name: str = None,
         check_type: str = None,
         instance_sub_type: str = None,
         instance_type: str = None,
         last_check_time: int = None,
-        operation_type: str = None,
         risk_level: str = None,
         status: str = None,
-        status_message: str = None,
-        task_id: str = None,
         trial_permission: bool = None,
         trial_permission_type: int = None,
         vendor: str = None,
-        vendor_show_name: str = None,
     ):
-        # The subtype of the cloud service.
+        # Subtype of the cloud product.
         self.asset_sub_type = asset_sub_type
-        # The type of the asset. Valid values:
-        # 
-        # *   **0**: an ECS instance
-        # *   **1**: a SLB instance
-        # *   **2**: a NAT gateway
-        # *   **3**: an ApsaraDB RDS instance
-        # *   **4**: an ApsaraDB for MongoDB instance
-        # *   **5**: an ApsaraDB for Redis instance
-        # *   **6**: a container image
-        # *   **7**: a container
+        # Asset type.
         self.asset_type = asset_type
-        # The service provider of the asset. Valid values:
-        # 
-        # *   **0**: Alibaba Cloud
-        # *   **3**: Huawei Cloud
-        # *   **4**: Microsoft Azure
-        # *   **5**: AWS
-        # *   **7**: Tencent Cloud
-        self.asset_vendor = asset_vendor
-        # The ID of the check item.
+        # ID of the check item.
         self.check_id = check_id
-        # The check policies.
+        # Information about the standards, requirements, and sections associated with the check result.
         self.check_policies = check_policies
-        # The type of the check item. Valid values:
-        # 
-        # *   **0**: paid
-        # *   **1**: free
-        self.check_sale_type = check_sale_type
-        # The name of the check item.
+        # Name of the check item.
         self.check_show_name = check_show_name
-        # The source type of the situation awareness check item: 
-        # - **CUSTOM**: User-defined 
-        # - **SYSTEM**: Predefined by the situation awareness platform
+        # Source type of the security check item:
+        #  - **CUSTOM**：User-defined
+        #  - **SYSTEM**：Predefined by the Security Platform
         self.check_type = check_type
-        # The asset subtype of the cloud service. Valid values:
+        # Subtype of the cloud product asset. Values:
         # 
-        # *   If the **InstanceType** parameter is set to **ECS**, this parameter supports the following valid values:
-        # 
-        #     *   **INSTANCE**
-        #     *   **DISK**
-        #     *   **SECURITY_GROUP**
-        # 
-        # *   If the **InstanceType** parameter is set to **ACR**, this parameter supports the following valid values:
-        # 
-        #     *   **REPOSITORY_ENTERPRISE**
-        #     *   **REPOSITORY_PERSON**
-        # 
-        # *   If the **InstanceType** parameter is set to **RAM**, this parameter supports the following valid values:
-        # 
-        #     *   **ALIAS**
-        #     *   **USER**
-        #     *   **POLICY**
-        #     *   **GROUP**
-        # 
-        # *   If the **InstanceType** parameter is set to **WAF**, this parameter supports the following valid values:
-        # 
-        #     *   **DOMAIN**
-        # 
-        # *   If the **InstanceType** parameter is set to other values, this parameter supports the following valid values:
-        # 
-        #     *   **INSTANCE**
+        # - When **InstanceType** is **ECS**, this parameter can take the following values:
+        #     - **INSTANCE**
+        #     - **DISK**
+        #     - **SECURITY_GROUP**
+        # - When **InstanceType** is **ACR**, this parameter can take the following values:
+        #     - **REPOSITORY_ENTERPRISE**
+        #     - **REPOSITORY_PERSON**
+        # - When **InstanceType** is **RAM**, this parameter can take the following values:
+        #     - **ALIAS**
+        #     - **USER**
+        #     - **POLICY**
+        #     - **GROUP**
+        # - When **InstanceType** is **WAF**, this parameter can take the following values:
+        #     - **DOMAIN**
+        # - For other **InstanceType** values, this parameter can take the following value:
+        #     - **INSTANCE**
         self.instance_sub_type = instance_sub_type
-        # The asset type of the cloud service. Valid values:
-        # 
-        # *   **ECS**: ECS
-        # *   **SLB**: SLB
-        # *   **RDS**: ApsaraDB RDS
-        # *   **MONGODB**: MongoDB
-        # *   **KVSTORE**: Redis
-        # *   **ACR**: Container Registry
-        # *   **CSK**: ACK
-        # *   **VPC**: VPC
-        # *   **ACTIONTRAIL**: ActionTrail
-        # *   **CDN**: CDN
-        # *   **CAS**: Certificate Management Service (formerly SSL Certificates Service)
-        # *   **RDC**: Apsara Devops
-        # *   **RAM**: RAM
-        # *   **DDOS**: Anti-DDoS
-        # *   **WAF**: WAF
-        # *   **OSS**: OSS
-        # *   **POLARDB**: PolarDB
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
-        # *   **MSE**: MSE
-        # *   **NAS**: NAS
-        # *   **SDDP**: SDDP
-        # *   **EIP**: EIP
+        # Asset type of the cloud product.
         self.instance_type = instance_type
-        # The timestamp when the last check was performed. Unit: milliseconds.
+        # Timestamp of the latest check, in milliseconds.
         self.last_check_time = last_check_time
-        # Indicates whether fixing is supported. Valid values:
+        # Risk level of the check item. Possible values:
         # 
-        # *   **SUPPORT_REPAIR**
-        # *   **NOT_SUPPORT_REPAIR**
-        self.operation_type = operation_type
-        # The risk level of the check item. Valid values:
-        # 
-        # *   **HIGH**
-        # *   **MEDIUM**
-        # *   **LOW**
+        # - **HIGH**：High
+        # - **MEDIUM**：Medium
+        # - **LOW**：Low
         self.risk_level = risk_level
-        # The status of the check item. Valid values:
+        # Status of the check item. Values:
         # 
-        # *   **PASS**: passed
-        # *   **NOT_PASS**: failed
-        # *   **CHECKING**: being checked
-        # *   **NOT_CHECK**: not checked
-        # *   **WHITELIST**: added to the whitelist
-        # *   **FAILED**: failed
+        # - **PASS**: Passed
+        # - **NOT_PASS**: Not passed
+        # - **CHECKING**: Checking
+        # - **NOT_CHECK**: Not checked
+        # - **WHITELIST**: Whitelisted
         self.status = status
-        # The message returned if the status of the check item is abnormal.
-        self.status_message = status_message
-        # The ID of the check task.
-        self.task_id = task_id
-        # Indicates whether the TRIAL permission is required.
+        # Whether the check depends on TRIAL permissions.
         self.trial_permission = trial_permission
-        # Check whether the data delivery period for ActionTrail is enabled for more than 30 days to establish a baseline of behaviour.
-        # *   **0**: REQUIRED
-        # *   **1**: NOT REQUIRED
+        # Whether the check item requires enabling data delivery of operation audit for more than 30 days to build a behavior baseline.
+        # - **1**：Required
+        # - **0**：Not Required
         self.trial_permission_type = trial_permission_type
-        # The cloud service provider.
+        # Vendor of the asset. Values:
+        # 
+        # 0: Alibaba Cloud
+        # 3: Other cloud
+        # 4: Other cloud
+        # 5: Other cloud
+        # 7: Other cloud
         self.vendor = vendor
-        # The name of the cloud service provider.
-        self.vendor_show_name = vendor_show_name
 
     def validate(self):
         if self.check_policies:
@@ -286,9 +220,6 @@ class ListCheckResultResponseBodyChecks(DaraModel):
         if self.asset_type is not None:
             result['AssetType'] = self.asset_type
 
-        if self.asset_vendor is not None:
-            result['AssetVendor'] = self.asset_vendor
-
         if self.check_id is not None:
             result['CheckId'] = self.check_id
 
@@ -296,9 +227,6 @@ class ListCheckResultResponseBodyChecks(DaraModel):
         if self.check_policies is not None:
             for k1 in self.check_policies:
                 result['CheckPolicies'].append(k1.to_map() if k1 else None)
-
-        if self.check_sale_type is not None:
-            result['CheckSaleType'] = self.check_sale_type
 
         if self.check_show_name is not None:
             result['CheckShowName'] = self.check_show_name
@@ -315,20 +243,11 @@ class ListCheckResultResponseBodyChecks(DaraModel):
         if self.last_check_time is not None:
             result['LastCheckTime'] = self.last_check_time
 
-        if self.operation_type is not None:
-            result['OperationType'] = self.operation_type
-
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
 
         if self.status is not None:
             result['Status'] = self.status
-
-        if self.status_message is not None:
-            result['StatusMessage'] = self.status_message
-
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
 
         if self.trial_permission is not None:
             result['TrialPermission'] = self.trial_permission
@@ -338,9 +257,6 @@ class ListCheckResultResponseBodyChecks(DaraModel):
 
         if self.vendor is not None:
             result['Vendor'] = self.vendor
-
-        if self.vendor_show_name is not None:
-            result['VendorShowName'] = self.vendor_show_name
 
         return result
 
@@ -352,20 +268,14 @@ class ListCheckResultResponseBodyChecks(DaraModel):
         if m.get('AssetType') is not None:
             self.asset_type = m.get('AssetType')
 
-        if m.get('AssetVendor') is not None:
-            self.asset_vendor = m.get('AssetVendor')
-
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
 
         self.check_policies = []
         if m.get('CheckPolicies') is not None:
             for k1 in m.get('CheckPolicies'):
-                temp_model = main_models.ListCheckResultResponseBodyChecksCheckPolicies()
+                temp_model = main_models.ListClusterCheckResultResponseBodyChecksCheckPolicies()
                 self.check_policies.append(temp_model.from_map(k1))
-
-        if m.get('CheckSaleType') is not None:
-            self.check_sale_type = m.get('CheckSaleType')
 
         if m.get('CheckShowName') is not None:
             self.check_show_name = m.get('CheckShowName')
@@ -382,20 +292,11 @@ class ListCheckResultResponseBodyChecks(DaraModel):
         if m.get('LastCheckTime') is not None:
             self.last_check_time = m.get('LastCheckTime')
 
-        if m.get('OperationType') is not None:
-            self.operation_type = m.get('OperationType')
-
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
-
-        if m.get('StatusMessage') is not None:
-            self.status_message = m.get('StatusMessage')
-
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
 
         if m.get('TrialPermission') is not None:
             self.trial_permission = m.get('TrialPermission')
@@ -406,12 +307,9 @@ class ListCheckResultResponseBodyChecks(DaraModel):
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')
 
-        if m.get('VendorShowName') is not None:
-            self.vendor_show_name = m.get('VendorShowName')
-
         return self
 
-class ListCheckResultResponseBodyChecksCheckPolicies(DaraModel):
+class ListClusterCheckResultResponseBodyChecksCheckPolicies(DaraModel):
     def __init__(
         self,
         requirement_id: int = None,
@@ -421,17 +319,17 @@ class ListCheckResultResponseBodyChecksCheckPolicies(DaraModel):
         standard_id: int = None,
         standard_show_name: str = None,
     ):
-        # The ID of the requirement item for the check item.
+        # Requirement ID of the check item.
         self.requirement_id = requirement_id
-        # The display name of the requirement item for the check item.
+        # Display name of the requirement for the check item.
         self.requirement_show_name = requirement_show_name
-        # The ID of the section for the check item.
+        # Section ID of the check item.
         self.section_id = section_id
-        # The display name of the section for the check item.
+        # Display name of the section for the check item.
         self.section_show_name = section_show_name
-        # The standard ID of the check item.
+        # Standard ID of the check item.
         self.standard_id = standard_id
-        # The standard display name of the check item.
+        # Display name of the standard for the check item.
         self.standard_show_name = standard_show_name
 
     def validate(self):

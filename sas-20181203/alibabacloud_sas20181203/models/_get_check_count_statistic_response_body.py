@@ -116,6 +116,7 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         vendor_show_name: str = None,
         vpc_instance_id: str = None,
     ):
+        # 检查项展示名称
         self.check_show_name = check_show_name
         # The number of the CPU cores used by the host instance.
         self.cores = cores
@@ -208,6 +209,7 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         # *   **MICROSOFT**: Microsoft Azure.
         # *   **AWS**: AWS.
         self.vendor = vendor
+        # 厂商名称
         self.vendor_show_name = vendor_show_name
         # The ID of the VPC to which the host instance belongs.
         self.vpc_instance_id = vpc_instance_id

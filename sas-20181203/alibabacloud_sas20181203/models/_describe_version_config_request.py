@@ -10,11 +10,10 @@ class DescribeVersionConfigRequest(DaraModel):
         resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
-        # The ID of the Alibaba Cloud account that uses Security Center.
-        # 
-        # >  You can call the [GetUser](https://help.aliyun.com/document_detail/28681.html) operation to query the IDs of Alibaba Cloud accounts.
+        # The Alibaba Cloud account ID using the Cloud Security Center service.   
+        # > Call the [GetUser](https://help.aliyun.com/document_detail/28681.html) API to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

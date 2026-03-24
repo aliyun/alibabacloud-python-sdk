@@ -291,9 +291,9 @@ class GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList(DaraM
         node_uuid: str = None,
         sensitive_asset_flag: int = None,
     ):
-        # AI资产标识。取值：
-        # - **0**：非AI资产。
-        # - **1**：AI资产。
+        # AI asset identifier. Values: 
+        # - **0**: Not an AI asset. 
+        # - **1**: AI asset.
         self.ai_asset_flag = ai_asset_flag
         # Node element type.
         self.element_type = element_type

@@ -143,7 +143,7 @@ class ListCheckItemsResponseBodyCheckItems(DaraModel):
         self.check_id = check_id
         # A list of standard, regulation, and section information associated with the check result.
         self.check_policies = check_policies
-        # 自定义检查项定义规则。
+        # Define rules for custom inspection items.
         self.check_rule = check_rule
         # The name of the check item.
         self.check_show_name = check_show_name
@@ -385,7 +385,7 @@ class ListCheckItemsResponseBodyCheckItemsCheckPolicies(DaraModel):
         self.section_id = section_id
         # The display name of the section for the check item.
         self.section_show_name = section_show_name
-        # 检查项的标准ID。
+        # Standard ID of the inspection item.
         self.standard_id = standard_id
         # The display name of the standard for the check item.
         self.standard_show_name = standard_show_name

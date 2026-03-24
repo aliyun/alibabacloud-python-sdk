@@ -56,171 +56,172 @@ class DescribeVersionConfigResponseBody(DaraModel):
         web_lock: int = None,
         web_lock_auth_count: int = None,
     ):
-        # The quota for agentless detection.
-        # 
-        # >  The agentless detection feature is unavailable for purchase. You can ignore this parameter.
+        # Number of agentless detections. 
+        # >Agentless detection is not yet available for sale, so there\\"s no need to pay attention to this field at the moment.
         self.agentless_capacity = agentless_capacity
-        # Indicates whether the pay-as-you-go billing method is supported.
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Whether to allow pay-as-you-go purchases.
+        # - **0**: Not allowed 
+        # - **1**: Allowed
         self.allow_partial_buy = allow_partial_buy
-        # 防勒索备份容量，单位GB。
+        # Ransomware protection backup capacity, in GB.
         self.anti_ransomware_capacity = anti_ransomware_capacity
-        # Switch of anti-ransomware hosting service. Valid values:
-        # 
-        # *   **0**: off
-        # *   **1**: on
+        # Ransomware Guardian Service. Values:
+        #  - **0**: Not activated
+        #  - **1**: Activated
         self.anti_ransomware_service = anti_ransomware_service
-        # Indicates whether the application whitelist feature is enabled. Valid values:
-        # 
-        # *   **0**: no
-        # *   **2**: yes
+        # Whether to enable the application whitelist. Values: 
+        # - **0**: Not enabled 
+        # - **2**: Enabled
         self.app_white_list = app_white_list
-        # The quota for the application whitelist feature.
-        # 
-        # >  The quantity of servers that are allowed by the quota is deducted by one each time you apply an application whitelist to a server. After you enable the application whitelist feature, the quota is 20 by default.
+        # Number of application whitelist authorizations. 
+        # > One authorization allows the application of a whitelist policy to one server. After enabling the application whitelist function, the account will have 20 authorizations by default.
         self.app_white_list_auth_count = app_white_list_auth_count
-        # The quota for servers that can be protected.
+        # Number of purchased server licenses.
         self.asset_level = asset_level
-        # Whether it supports the activation of a postpaid trial package. Values:
-        #  - **0**: Not supported 
-        # - **1**: Supported
+        # Whether it supports the activation of a post-paid trial package. Values: 
+        # - **0**: Not supported
+        #  - **1**: Supported
         self.can_try_post_paid_package = can_try_post_paid_package
-        # The purchased quota for configuration assessment. Unit: times/month.
+        # Purchased cloud platform configuration check scan count. Unit: times/month.
         self.cspm_capacity = cspm_capacity
-        # The most advanced edition that is used. Valid values:
-        # 
-        # *   **1**: Basic edition
-        # *   **3**: Enterprise edition
-        # *   **5**: Advanced edition
-        # *   **6**: Anti-virus edition
-        # *   **7**: Ultimate edition
-        # *   **10**: Value-added Plan edition
-        # 
-        # >  If you purchase the Multi-version edition of Security Center, the value indicates the most advanced edition that is used in the Multi-version edition. If you do not purchase the Multi-version edition of Security Center, the value indicates the edition of Security Center.
+        # Purchase the highest version of the Security Center. Values:
+        #  - **1**: Free Edition 
+        # - **3**: Enterprise Edition 
+        # - **5**: Advanced Edition 
+        # - **6**: Anti-Virus Edition
+        #  - **7**: Flagship Edition 
+        # - **10**: Purchase Additional Services Only 
+        # > When purchasing a single version, it indicates the corresponding version. When purchasing multiple versions, this value represents the highest version among the purchased multi-versions of Cloud Security Center.
         self.highest_version = highest_version
-        # The purchased quota for the cloud honeypot feature.
+        # Number of purchased honeypot licenses.
         self.honeypot_capacity = honeypot_capacity
-        # The purchased quota for the container image scan feature.
+        # Number of purchased image scanning authorizations.
         self.image_scan_capacity = image_scan_capacity
-        # Instance purchase type. Values: - **0**: Self-purchased - **1**: Multi-account allocation
+        # Instance purchase type. Values: 
+        # - **0**: Self-purchased
+        #  - **1**: Allocated from multiple accounts
         self.instance_buy_type = instance_buy_type
-        # The ID of purchased Security Center.
+        # ID of the purchased Cloud Security Center instance.
         self.instance_id = instance_id
+        # AI digital human analyzes traffic
         self.intelligent_analysis_flow = intelligent_analysis_flow
-        # Indicates whether Security Center runs the latest version of the Ultimate edition.
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Whether it is the new flagship version.
+        # - **true**: It is the latest version
+        # - **false**: It is not the latest version
         self.is_new_container_version = is_new_container_version
-        # Indicates whether Security Center runs the latest version of the Multi-version edition. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Whether it is the latest multi-version.
+        # - **true**: It is the latest multi-version 
+        # - **false**: It is not the latest multi-version
         self.is_new_multi_version = is_new_multi_version
-        # Indicates whether the number of existing servers exceeds the purchased quota. Valid values:
-        # 
-        # *   **false**: no
-        # *   **true**: yes
-        # >Notice: This parameter is deprecated. You can ignore it.
+        # Whether the number of existing servers exceeds the maximum authorized purchase quantity. Values: 
+        # - **false**: Not exceeded 
+        # - **true**: Exceeded
+        # >Notice: This parameter is deprecated, and you do not need to pay attention to it.
         self.is_over_balance = is_over_balance
-        # Indicates whether the pay-as-you-go billing method is used. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # Whether to enable pay-as-you-go. Values: 
+        # - **false**: Not enabled 
+        # - **true**: Enabled
         self.is_postpay = is_postpay
-        # Indicates whether Security Center runs the free trial edition. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether the current Cloud Security Center version is a trial version. Values: 
+        # - **0**: Not a trial version 
+        # - **1**: Trial version
         self.is_trial_version = is_trial_version
-        # The timestamp when the last trial of Security Center ends. Unit: milliseconds.
+        # The timestamp of the last trial expiration for Cloud Security Center, in milliseconds.
         self.last_trail_end_time = last_trail_end_time
-        # The total quota in the Multi-version edition of purchased Security Center.
+        # Total number of licenses when purchasing multiple versions.
         self.mvauth_count = mvauth_count
-        # The total remaining quota in the Multi-version edition of purchased Security Center.
+        # Total remaining licenses when purchasing multiple versions.
         self.mvunused_auth_count = mvunused_auth_count
-        # When both the annual/monthly and pay-as-you-go services of Cloud Security Center\\"s host and container security are activated, the higher protection version among the two is selected. Values: - **1**: Free Edition - **6**: Anti-Virus Edition - **5**: Advanced Edition - **3**: Enterprise Edition - **7**: Ultimate Edition
+        # When both the annual/monthly and pay-as-you-go services for Cloud Security Center\\"s host and container security are activated, the higher protection version of the two is selected. Values: 
+        # - **1**: Free Edition
+        #  - **6**: Anti-Virus Edition 
+        # - **5**: Advanced Edition 
+        # - **3**: Enterprise Edition 
+        # - **7**: Ultimate Edition
         self.merged_version = merged_version
         # Usage of multiple version numbers and license counts
         self.multi_version = multi_version
-        # Indicates whether the new version of the threat analysis and response feature is enabled. With the new version, you can purchase the amount of log data that you want to add to the feature and log storage capacity. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Whether to enable the new version of Threat Analysis and Response service. The new version of Threat Analysis and Response service refers to the one that supports purchasing access traffic and log storage capacity. Values: 
+        # - **0**: No 
+        # - **1**: Yes
         self.new_threat_analysis = new_threat_analysis
+        # AI Digital Human Management Instance
         self.onboarded_assets = onboarded_assets
-        # The timestamp when Security Center is purchased. Unit: milliseconds.
+        # Service activation timestamp, unit: milliseconds.
         self.open_time = open_time
-        # When activating the pay-as-you-go service for host and container security, this represents the highest protection version for the already bound assets. The values are as follows: - **1**: Free Edition - **3**: Enterprise Edition - **5**: Advanced Edition - **6**: Anti-Virus Edition - **7**: Flagship Edition
+        # When activating the pay-as-you-go service for host and container security, it represents the highest protection version of the already bound assets. Values: 
+        # - **1**: Free Edition
+        #  - **3**: Enterprise Edition
+        #  - **5**: Advanced Edition
+        #  - **6**: Anti-Virus Edition 
+        # - **7**: Flagship Edition
         self.post_pay_host_version = post_pay_host_version
-        # The instance ID of Security Center that uses the pay-as-you-go billing method.
+        # Pay-As-You-Go instance ID.
         self.post_pay_instance_id = post_pay_instance_id
-        # The configuration of the pay-as-you-go module. Valid values:
-        # 
-        # *   **VUL**: vulnerability fixing module
+        # Pay-as-you-go module switch status, in the format of JsonString, with values as follows:
+        #  - Key:
+        #    * **VUL**: Vulnerability Repair Module 
+        #    * **CSPM**: Cloud Security Posture Management Module 
+        #    * **AGENTLESS**: Agentless Detection Module 
+        #    * **SERVERLESS**: Serverless Security Module 
+        #    * **CTDR**: Threat Analysis and Response Module 
+        #    * **POST_HOST**: Host and Container Security Module 
+        #    *  **SDK**: Malicious File Detection SDK Module 
+        #    * **RASP**: Application Protection Module 
+        #  - Value: 0 indicates off, 1 indicates on
         self.post_pay_module_switch = post_pay_module_switch
-        # The creation time of Security Center that uses the pay-as-you-go billing method.
+        # Pay-as-you-go activation time
         self.post_pay_open_time = post_pay_open_time
-        # The status of Security Center that uses the pay-as-you-go billing method. Valid values:
-        # 
-        # *   **1**: The instance runs as expected.
-        # *   **2**: The instance is stopped due to overdue payments.
+        # Pay-As-You-Go instance status. Values: 
+        # - **1**: Normal 
+        # - **2**: Stopped due to unpaid bills
         self.post_pay_status = post_pay_status
-        # The purchased quota for application protection. Unit: process/month.
+        # Number of purchased application protections. Unit: per month.
         self.rasp_capacity = rasp_capacity
-        # The timestamp when the Security Center subscription ends. Unit: milliseconds.
-        # 
-        # >  If you do not renew the subscription within seven days after the expiration date, Security Center of a paid edition is automatically downgraded to Security Center Basic. In this case, you can no longer use the features of the paid edition or view the existing configurations or statistics such as DDoS alerts in Security Center. You must purchase Security Center of a paid edition to use relevant features. For more information, see [Purchase Security Center](https://help.aliyun.com/document_detail/42308.html).
+        # The timestamp of when the Cloud Security Center instance will expire, in milliseconds.
+        # > If you do not renew the service within 7 days after it expires, your paid instance will be downgraded to a free version, and you will no longer be able to use the features of the paid version. Your previous Cloud Security Center configuration data and historical alert data (e.g., DDoS alerts) will become inaccessible. At this point, you can only re-enable the paid version of Cloud Security Center by repurchasing it. For more information, see [Purchasing Cloud Security Center](https://help.aliyun.com/document_detail/42308.html).
         self.release_time = release_time
-        # The ID of the request.
+        # The unique identifier generated by Alibaba Cloud for this request.
         self.request_id = request_id
-        # Indicates whether log analysis is purchased. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Whether log analysis has been purchased. Values: 
+        # - **0**: Not purchased 
+        # - **1**: Purchased
         self.sas_log = sas_log
-        # Indicates whether the security screen feature is purchased. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Whether the security dashboard has been purchased. Values: 
+        # - **0**: Not purchased 
+        # - **1**: Purchased
         self.sas_screen = sas_screen
-        # The purchased quota for malicious file detection SDK. Unit: process/month.
+        # Number of SDK authorizations for malicious file detection
         self.sdk_capacity = sdk_capacity
-        # The log storage capacity that you purchase. Unit: GB. Valid values: 0 to 200000.
+        # Purchased log storage capacity in GB. Range: 0 to 200000.
         self.sls_capacity = sls_capacity
-        # The purchased log storage capacity for threat analysis. Unit: GB.
+        # Purchased threat analysis capacity. Unit: GB.
         self.threat_analysis_capacity = threat_analysis_capacity
-        # The amount of log data that you purchase for the threat analysis and response feature. Unit: GB-day.
+        # Purchased threat analysis and response log access traffic. Unit is GB/day.
         self.threat_analysis_flow = threat_analysis_flow
-        # Indicates whether the custom alert feature is enabled. Valid values:
-        # 
-        # *   **0**: no
-        # *   **2**: yes
+        # Whether to enable the custom alarm function. Values:
+        #  - **0**: Not enabled 
+        # - **2**: Enabled
         self.user_defined_alarms = user_defined_alarms
-        # The edition of purchased Security Center. Valid values:
-        # 
-        # *   **1**: Basic edition
-        # *   **3**: Enterprise edition
-        # *   **5**: Advanced edition
-        # *   **6**: Anti-virus edition
-        # *   **7**: Ultimate edition
-        # *   **8**: Multi-version edition
-        # *   **10**: Value-added Plan edition
+        # Purchased Cloud Security Center version. Values:   
+        # - **1**: Free Edition 
+        #  - **3**: Enterprise Edition 
+        # - **5**: Advanced Edition 
+        # - **6**: Anti-Virus Edition     
+        # - **7**: Flagship Edition   
+        #  - **8**: Multi-Edition  
+        #   - **10**: Value-Added Services Only
         self.version = version
-        # The quota for the cores of servers that can be protected.
+        # Number of authorized cores purchased.
         self.vm_cores = vm_cores
-        # The purchased quota for vulnerability fixing. Unit: times/month.
+        # Number of purchased vulnerability fixes. Unit: times/month.
         self.vul_fix_capacity = vul_fix_capacity
-        # Indicates whether the web tamper proofing feature is enabled. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether the web tamper-proof service is enabled. Values: 
+        # - **0**: Not enabled 
+        # - **1**: Enabled
         self.web_lock = web_lock
-        # The quota for the web tamper proofing feature. The quantity of servers that are allowed by the quota is deducted by one each time a server is protected by the web tamper proofing feature. Valid values: 0 to N.
-        # 
-        # >  N indicates the number of servers that you own.
+        # The number of purchased web tamper-proof licenses. One license can enable web tamper protection for one server. Value range: 0~N.
+        #  >N is the number of servers you have.
         self.web_lock_auth_count = web_lock_auth_count
 
     def validate(self):

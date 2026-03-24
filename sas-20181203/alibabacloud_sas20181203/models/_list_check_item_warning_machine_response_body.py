@@ -145,7 +145,7 @@ class ListCheckItemWarningMachineResponseBodyList(DaraModel):
         uuid: str = None,
         warning_risk_list: List[main_models.ListCheckItemWarningMachineResponseBodyListWarningRiskList] = None,
     ):
-        # 云产品资产的类型。
+        # Type of cloud product assets
         self.asset_type = asset_type
         # The edition of Security Center that is authorized to protect the asset. Valid values:
         # 

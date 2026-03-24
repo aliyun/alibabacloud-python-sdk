@@ -75,6 +75,7 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         client_version: str = None,
         created_time: int = None,
         error_file: str = None,
+        expire_time: int = None,
         instance_id: str = None,
         items_done: int = None,
         items_total: int = None,
@@ -110,6 +111,8 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         self.created_time = created_time
         # The file that records the information about backup failures, including the information about partially completed backup tasks.
         self.error_file = error_file
+        # Snapshot expiration timestamp. Unit: milliseconds.
+        self.expire_time = expire_time
         # The ID of the ECS instance.
         self.instance_id = instance_id
         # The number of backup objects.
@@ -188,6 +191,9 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         if self.error_file is not None:
             result['ErrorFile'] = self.error_file
 
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -263,6 +269,9 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
 
         if m.get('ErrorFile') is not None:
             self.error_file = m.get('ErrorFile')
+
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

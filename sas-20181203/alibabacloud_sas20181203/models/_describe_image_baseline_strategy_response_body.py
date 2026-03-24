@@ -51,6 +51,7 @@ class DescribeImageBaselineStrategyResponseBodyStrategy(DaraModel):
         self,
         baseline_item: str = None,
         baseline_item_list: List[main_models.DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList] = None,
+        image_vul_clean: int = None,
         selected_item_count: int = None,
         strategy_id: int = None,
         strategy_name: str = None,
@@ -61,6 +62,7 @@ class DescribeImageBaselineStrategyResponseBodyStrategy(DaraModel):
         self.baseline_item = baseline_item
         # An array that contains the baselines.
         self.baseline_item_list = baseline_item_list
+        self.image_vul_clean = image_vul_clean
         # The number of selected baseline check items.
         self.selected_item_count = selected_item_count
         # The ID of the baseline check policy.
@@ -95,6 +97,9 @@ class DescribeImageBaselineStrategyResponseBodyStrategy(DaraModel):
             for k1 in self.baseline_item_list:
                 result['BaselineItemList'].append(k1.to_map() if k1 else None)
 
+        if self.image_vul_clean is not None:
+            result['ImageVulClean'] = self.image_vul_clean
+
         if self.selected_item_count is not None:
             result['SelectedItemCount'] = self.selected_item_count
 
@@ -122,6 +127,9 @@ class DescribeImageBaselineStrategyResponseBodyStrategy(DaraModel):
             for k1 in m.get('BaselineItemList'):
                 temp_model = main_models.DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList()
                 self.baseline_item_list.append(temp_model.from_map(k1))
+
+        if m.get('ImageVulClean') is not None:
+            self.image_vul_clean = m.get('ImageVulClean')
 
         if m.get('SelectedItemCount') is not None:
             self.selected_item_count = m.get('SelectedItemCount')

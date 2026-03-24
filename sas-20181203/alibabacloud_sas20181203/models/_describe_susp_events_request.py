@@ -79,6 +79,7 @@ class DescribeSuspEventsRequest(DaraModel):
         # *   **N**: unhandled
         # *   **Y**: handled
         self.dealed = dealed
+        # Source of discovery (invalid field)
         self.detect_source = detect_source
         # The subtype of the alert event. Separate multiple subtypes with commas (,).
         self.event_names = event_names
@@ -187,7 +188,7 @@ class DescribeSuspEventsRequest(DaraModel):
         # *   N: no
         # *   Y: Yes
         self.strict_mode = strict_mode
-        # 告警支持的操作类型列表。
+        # List of supported alarm operation types
         self.support_operate_code_list = support_operate_code_list
         # The tactic ID of ATT\\&CK.
         self.tactic_id = tactic_id

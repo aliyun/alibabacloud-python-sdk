@@ -87,6 +87,7 @@ class DescribePropertyScaDetailRequest(DaraModel):
         self.sca_name_pattern = sca_name_pattern
         # The version of the middleware, database, or web service.
         self.sca_version = sca_version
+        # 搜索条件列表
         self.search_criteria_list = search_criteria_list
         # The search keyword. You must specify this parameter based on the value of the **SearchItem** parameter.
         # 
@@ -303,7 +304,9 @@ class DescribePropertyScaDetailRequestSearchCriteriaList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # 搜索条件名称
         self.name = name
+        # 搜索条件过滤值
         self.value = value
 
     def validate(self):

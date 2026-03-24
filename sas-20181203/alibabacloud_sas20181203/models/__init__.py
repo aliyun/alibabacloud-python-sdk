@@ -1205,6 +1205,8 @@ from ._describe_susp_events_response import DescribeSuspEventsResponse
 from ._describe_suspicious_overall_config_request import DescribeSuspiciousOverallConfigRequest
 from ._describe_suspicious_overall_config_response_body import DescribeSuspiciousOverallConfigResponseBody
 from ._describe_suspicious_overall_config_response import DescribeSuspiciousOverallConfigResponse
+from ._describe_suspicious_security_eventy_statistics_response_body import DescribeSuspiciousSecurityEventyStatisticsResponseBody
+from ._describe_suspicious_security_eventy_statistics_response import DescribeSuspiciousSecurityEventyStatisticsResponse
 from ._describe_suspicious_uuidconfig_request import DescribeSuspiciousUUIDConfigRequest
 from ._describe_suspicious_uuidconfig_response_body import DescribeSuspiciousUUIDConfigResponseBody
 from ._describe_suspicious_uuidconfig_response import DescribeSuspiciousUUIDConfigResponse
@@ -1461,6 +1463,12 @@ from ._get_assets_property_detail_response import GetAssetsPropertyDetailRespons
 from ._get_assets_property_item_request import GetAssetsPropertyItemRequest
 from ._get_assets_property_item_response_body import GetAssetsPropertyItemResponseBody
 from ._get_assets_property_item_response import GetAssetsPropertyItemResponse
+from ._get_attack_event_dashboard_request import GetAttackEventDashboardRequest
+from ._get_attack_event_dashboard_response_body import GetAttackEventDashboardResponseBody
+from ._get_attack_event_dashboard_response import GetAttackEventDashboardResponse
+from ._get_attack_event_detail_request import GetAttackEventDetailRequest
+from ._get_attack_event_detail_response_body import GetAttackEventDetailResponseBody
+from ._get_attack_event_detail_response import GetAttackEventDetailResponse
 from ._get_attack_path_event_detail_request import GetAttackPathEventDetailRequest
 from ._get_attack_path_event_detail_response_body import GetAttackPathEventDetailResponseBody
 from ._get_attack_path_event_detail_response import GetAttackPathEventDetailResponse
@@ -1532,6 +1540,9 @@ from ._get_cloud_asset_summary_response import GetCloudAssetSummaryResponse
 from ._get_cluster_check_item_warning_statistics_request import GetClusterCheckItemWarningStatisticsRequest
 from ._get_cluster_check_item_warning_statistics_response_body import GetClusterCheckItemWarningStatisticsResponseBody
 from ._get_cluster_check_item_warning_statistics_response import GetClusterCheckItemWarningStatisticsResponse
+from ._get_cluster_check_summary_request import GetClusterCheckSummaryRequest
+from ._get_cluster_check_summary_response_body import GetClusterCheckSummaryResponseBody
+from ._get_cluster_check_summary_response import GetClusterCheckSummaryResponse
 from ._get_cluster_rule_summary_request import GetClusterRuleSummaryRequest
 from ._get_cluster_rule_summary_response_body import GetClusterRuleSummaryResponseBody
 from ._get_cluster_rule_summary_response import GetClusterRuleSummaryResponse
@@ -1740,6 +1751,9 @@ from ._get_tenant_check_available_response_body import GetTenantCheckAvailableRe
 from ._get_tenant_check_available_response import GetTenantCheckAvailableResponse
 from ._get_user_lang_response_body import GetUserLangResponseBody
 from ._get_user_lang_response import GetUserLangResponse
+from ._get_valid_deduct_instances_request import GetValidDeductInstancesRequest
+from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBody
+from ._get_valid_deduct_instances_response import GetValidDeductInstancesResponse
 from ._get_virus_scan_config_request import GetVirusScanConfigRequest
 from ._get_virus_scan_config_response_body import GetVirusScanConfigResponseBody
 from ._get_virus_scan_config_response import GetVirusScanConfigResponse
@@ -1837,6 +1851,9 @@ from ._list_asset_selection_selected_target_response import ListAssetSelectionSe
 from ._list_asset_selection_target_request import ListAssetSelectionTargetRequest
 from ._list_asset_selection_target_response_body import ListAssetSelectionTargetResponseBody
 from ._list_asset_selection_target_response import ListAssetSelectionTargetResponse
+from ._list_attack_event_info_request import ListAttackEventInfoRequest
+from ._list_attack_event_info_response_body import ListAttackEventInfoResponseBody
+from ._list_attack_event_info_response import ListAttackEventInfoResponse
 from ._list_attack_path_event_request import ListAttackPathEventRequest
 from ._list_attack_path_event_response_body import ListAttackPathEventResponseBody
 from ._list_attack_path_event_response import ListAttackPathEventResponse
@@ -1912,6 +1929,9 @@ from ._list_cloud_asset_schemas_response import ListCloudAssetSchemasResponse
 from ._list_cloud_vendor_regions_request import ListCloudVendorRegionsRequest
 from ._list_cloud_vendor_regions_response_body import ListCloudVendorRegionsResponseBody
 from ._list_cloud_vendor_regions_response import ListCloudVendorRegionsResponse
+from ._list_cluster_check_result_request import ListClusterCheckResultRequest
+from ._list_cluster_check_result_response_body import ListClusterCheckResultResponseBody
+from ._list_cluster_check_result_response import ListClusterCheckResultResponse
 from ._list_cluster_cnnf_status_detail_request import ListClusterCnnfStatusDetailRequest
 from ._list_cluster_cnnf_status_detail_response_body import ListClusterCnnfStatusDetailResponseBody
 from ._list_cluster_cnnf_status_detail_response import ListClusterCnnfStatusDetailResponse
@@ -2010,6 +2030,9 @@ from ._list_interception_target_page_response import ListInterceptionTargetPageR
 from ._list_k8s_access_info_request import ListK8sAccessInfoRequest
 from ._list_k8s_access_info_response_body import ListK8sAccessInfoResponseBody
 from ._list_k8s_access_info_response import ListK8sAccessInfoResponse
+from ._list_kspm_instances_request import ListKspmInstancesRequest
+from ._list_kspm_instances_response_body import ListKspmInstancesResponseBody
+from ._list_kspm_instances_response import ListKspmInstancesResponse
 from ._list_log_shipper_regions_response_body import ListLogShipperRegionsResponseBody
 from ._list_log_shipper_regions_response import ListLogShipperRegionsResponse
 from ._list_machine_apps_request import ListMachineAppsRequest
@@ -3162,6 +3185,9 @@ from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodyS
 from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodySuspEventsTacticItems
 from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodySuspEvents
 from ._describe_suspicious_overall_config_response_body import DescribeSuspiciousOverallConfigResponseBodyOverallConfig
+from ._describe_suspicious_security_eventy_statistics_response_body import DescribeSuspiciousSecurityEventyStatisticsResponseBodyStatisticAntiRansomwareStatisticSecurityEventMachine
+from ._describe_suspicious_security_eventy_statistics_response_body import DescribeSuspiciousSecurityEventyStatisticsResponseBodyStatisticAntiRansomwareStatistic
+from ._describe_suspicious_security_eventy_statistics_response_body import DescribeSuspiciousSecurityEventyStatisticsResponseBodyStatistic
 from ._describe_sync_asset_task_list_response_body import DescribeSyncAssetTaskListResponseBodyPageInfo
 from ._describe_sync_asset_task_list_response_body import DescribeSyncAssetTaskListResponseBodyTaskRecords
 from ._describe_sync_asset_task_log_detail_response_body import DescribeSyncAssetTaskLogDetailResponseBodyPageInfo
@@ -3248,6 +3274,13 @@ from ._get_assets_property_detail_response_body import GetAssetsPropertyDetailRe
 from ._get_assets_property_detail_response_body import GetAssetsPropertyDetailResponseBodyPropertys
 from ._get_assets_property_item_response_body import GetAssetsPropertyItemResponseBodyPageInfo
 from ._get_assets_property_item_response_body import GetAssetsPropertyItemResponseBodyPropertyItems
+from ._get_attack_event_dashboard_response_body import GetAttackEventDashboardResponseBodyDataAttackInstanceTopCount
+from ._get_attack_event_dashboard_response_body import GetAttackEventDashboardResponseBodyDataAttackTypeTopCount
+from ._get_attack_event_dashboard_response_body import GetAttackEventDashboardResponseBodyDataLatestTimeHourCount
+from ._get_attack_event_dashboard_response_body import GetAttackEventDashboardResponseBodyDataSrcIpTopCount
+from ._get_attack_event_dashboard_response_body import GetAttackEventDashboardResponseBodyData
+from ._get_attack_event_detail_response_body import GetAttackEventDetailResponseBodyDataCveBeans
+from ._get_attack_event_detail_response_body import GetAttackEventDetailResponseBodyData
 from ._get_attack_path_event_detail_response_body import GetAttackPathEventDetailResponseBodyAttackPathEventDstAsset
 from ._get_attack_path_event_detail_response_body import GetAttackPathEventDetailResponseBodyAttackPathEventPathEventEdgeList
 from ._get_attack_path_event_detail_response_body import GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList
@@ -3315,6 +3348,7 @@ from ._get_cloud_asset_summary_request import GetCloudAssetSummaryRequestCloudAs
 from ._get_cloud_asset_summary_response_body import GetCloudAssetSummaryResponseBodyGroupedFieldsCloudAssetSummaryMetas
 from ._get_cloud_asset_summary_response_body import GetCloudAssetSummaryResponseBodyGroupedFields
 from ._get_cluster_check_item_warning_statistics_response_body import GetClusterCheckItemWarningStatisticsResponseBodyData
+from ._get_cluster_check_summary_response_body import GetClusterCheckSummaryResponseBodyData
 from ._get_cluster_rule_summary_response_body import GetClusterRuleSummaryResponseBodyClusterRuleSummary
 from ._get_cluster_strategy_count_response_body import GetClusterStrategyCountResponseBodyData
 from ._get_cluster_susp_event_statistics_response_body import GetClusterSuspEventStatisticsResponseBodySuspStatistics
@@ -3429,6 +3463,8 @@ from ._get_switch_region_detail_response_body import GetSwitchRegionDetailRespon
 from ._get_switch_region_detail_response_body import GetSwitchRegionDetailResponseBodyData
 from ._get_tenant_check_available_response_body import GetTenantCheckAvailableResponseBodyData
 from ._get_user_lang_response_body import GetUserLangResponseBodySasUserLang
+from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBodyDataDeductPackageList
+from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBodyData
 from ._get_virus_scan_config_response_body import GetVirusScanConfigResponseBodyData
 from ._get_virus_scan_latest_task_statistic_response_body import GetVirusScanLatestTaskStatisticResponseBodyData
 from ._get_vul_whitelist_response_body import GetVulWhitelistResponseBodyVulWhitelist
@@ -3461,6 +3497,8 @@ from ._list_asset_refresh_task_config_response_body import ListAssetRefreshTaskC
 from ._list_asset_selection_selected_target_response_body import ListAssetSelectionSelectedTargetResponseBodyData
 from ._list_asset_selection_target_response_body import ListAssetSelectionTargetResponseBodyData
 from ._list_asset_selection_target_response_body import ListAssetSelectionTargetResponseBodyPageInfo
+from ._list_attack_event_info_response_body import ListAttackEventInfoResponseBodyList
+from ._list_attack_event_info_response_body import ListAttackEventInfoResponseBodyPageInfo
 from ._list_attack_path_event_request import ListAttackPathEventRequestAttackPathAssetList
 from ._list_attack_path_event_response_body import ListAttackPathEventResponseBodyAttackPathEventListDstAsset
 from ._list_attack_path_event_response_body import ListAttackPathEventResponseBodyAttackPathEventListSrcAsset
@@ -3526,6 +3564,9 @@ from ._list_cloud_asset_schemas_request import ListCloudAssetSchemasRequestCloud
 from ._list_cloud_asset_schemas_response_body import ListCloudAssetSchemasResponseBodyCloudAssetSchemas
 from ._list_cloud_asset_schemas_response_body import ListCloudAssetSchemasResponseBodyPageInfo
 from ._list_cloud_vendor_regions_response_body import ListCloudVendorRegionsResponseBodyData
+from ._list_cluster_check_result_response_body import ListClusterCheckResultResponseBodyChecksCheckPolicies
+from ._list_cluster_check_result_response_body import ListClusterCheckResultResponseBodyChecks
+from ._list_cluster_check_result_response_body import ListClusterCheckResultResponseBodyPageInfo
 from ._list_cluster_cnnf_status_detail_response_body import ListClusterCnnfStatusDetailResponseBodyData
 from ._list_cluster_interception_config_response_body import ListClusterInterceptionConfigResponseBodyClusterConfigList
 from ._list_cluster_interception_config_response_body import ListClusterInterceptionConfigResponseBodyPageInfo
@@ -3593,6 +3634,9 @@ from ._list_interception_rule_page_response_body import ListInterceptionRulePage
 from ._list_interception_target_page_response_body import ListInterceptionTargetPageResponseBodyPageInfo
 from ._list_interception_target_page_response_body import ListInterceptionTargetPageResponseBodyRuleTargetList
 from ._list_k8s_access_info_response_body import ListK8sAccessInfoResponseBodyK8sAccessInfos
+from ._list_kspm_instances_request import ListKspmInstancesRequestCloudAssetTypes
+from ._list_kspm_instances_response_body import ListKspmInstancesResponseBodyInstances
+from ._list_kspm_instances_response_body import ListKspmInstancesResponseBodyPageInfo
 from ._list_log_shipper_regions_response_body import ListLogShipperRegionsResponseBodyLogShipperRegionList
 from ._list_machine_apps_response_body import ListMachineAppsResponseBodyAppList
 from ._list_machine_apps_response_body import ListMachineAppsResponseBodyPageInfo
@@ -4979,6 +5023,8 @@ __all__ = [
     DescribeSuspiciousOverallConfigRequest,
     DescribeSuspiciousOverallConfigResponseBody,
     DescribeSuspiciousOverallConfigResponse,
+    DescribeSuspiciousSecurityEventyStatisticsResponseBody,
+    DescribeSuspiciousSecurityEventyStatisticsResponse,
     DescribeSuspiciousUUIDConfigRequest,
     DescribeSuspiciousUUIDConfigResponseBody,
     DescribeSuspiciousUUIDConfigResponse,
@@ -5235,6 +5281,12 @@ __all__ = [
     GetAssetsPropertyItemRequest,
     GetAssetsPropertyItemResponseBody,
     GetAssetsPropertyItemResponse,
+    GetAttackEventDashboardRequest,
+    GetAttackEventDashboardResponseBody,
+    GetAttackEventDashboardResponse,
+    GetAttackEventDetailRequest,
+    GetAttackEventDetailResponseBody,
+    GetAttackEventDetailResponse,
     GetAttackPathEventDetailRequest,
     GetAttackPathEventDetailResponseBody,
     GetAttackPathEventDetailResponse,
@@ -5306,6 +5358,9 @@ __all__ = [
     GetClusterCheckItemWarningStatisticsRequest,
     GetClusterCheckItemWarningStatisticsResponseBody,
     GetClusterCheckItemWarningStatisticsResponse,
+    GetClusterCheckSummaryRequest,
+    GetClusterCheckSummaryResponseBody,
+    GetClusterCheckSummaryResponse,
     GetClusterRuleSummaryRequest,
     GetClusterRuleSummaryResponseBody,
     GetClusterRuleSummaryResponse,
@@ -5514,6 +5569,9 @@ __all__ = [
     GetTenantCheckAvailableResponse,
     GetUserLangResponseBody,
     GetUserLangResponse,
+    GetValidDeductInstancesRequest,
+    GetValidDeductInstancesResponseBody,
+    GetValidDeductInstancesResponse,
     GetVirusScanConfigRequest,
     GetVirusScanConfigResponseBody,
     GetVirusScanConfigResponse,
@@ -5611,6 +5669,9 @@ __all__ = [
     ListAssetSelectionTargetRequest,
     ListAssetSelectionTargetResponseBody,
     ListAssetSelectionTargetResponse,
+    ListAttackEventInfoRequest,
+    ListAttackEventInfoResponseBody,
+    ListAttackEventInfoResponse,
     ListAttackPathEventRequest,
     ListAttackPathEventResponseBody,
     ListAttackPathEventResponse,
@@ -5686,6 +5747,9 @@ __all__ = [
     ListCloudVendorRegionsRequest,
     ListCloudVendorRegionsResponseBody,
     ListCloudVendorRegionsResponse,
+    ListClusterCheckResultRequest,
+    ListClusterCheckResultResponseBody,
+    ListClusterCheckResultResponse,
     ListClusterCnnfStatusDetailRequest,
     ListClusterCnnfStatusDetailResponseBody,
     ListClusterCnnfStatusDetailResponse,
@@ -5784,6 +5848,9 @@ __all__ = [
     ListK8sAccessInfoRequest,
     ListK8sAccessInfoResponseBody,
     ListK8sAccessInfoResponse,
+    ListKspmInstancesRequest,
+    ListKspmInstancesResponseBody,
+    ListKspmInstancesResponse,
     ListLogShipperRegionsResponseBody,
     ListLogShipperRegionsResponse,
     ListMachineAppsRequest,
@@ -6936,6 +7003,9 @@ __all__ = [
     DescribeSuspEventsResponseBodySuspEventsTacticItems,
     DescribeSuspEventsResponseBodySuspEvents,
     DescribeSuspiciousOverallConfigResponseBodyOverallConfig,
+    DescribeSuspiciousSecurityEventyStatisticsResponseBodyStatisticAntiRansomwareStatisticSecurityEventMachine,
+    DescribeSuspiciousSecurityEventyStatisticsResponseBodyStatisticAntiRansomwareStatistic,
+    DescribeSuspiciousSecurityEventyStatisticsResponseBodyStatistic,
     DescribeSyncAssetTaskListResponseBodyPageInfo,
     DescribeSyncAssetTaskListResponseBodyTaskRecords,
     DescribeSyncAssetTaskLogDetailResponseBodyPageInfo,
@@ -7022,6 +7092,13 @@ __all__ = [
     GetAssetsPropertyDetailResponseBodyPropertys,
     GetAssetsPropertyItemResponseBodyPageInfo,
     GetAssetsPropertyItemResponseBodyPropertyItems,
+    GetAttackEventDashboardResponseBodyDataAttackInstanceTopCount,
+    GetAttackEventDashboardResponseBodyDataAttackTypeTopCount,
+    GetAttackEventDashboardResponseBodyDataLatestTimeHourCount,
+    GetAttackEventDashboardResponseBodyDataSrcIpTopCount,
+    GetAttackEventDashboardResponseBodyData,
+    GetAttackEventDetailResponseBodyDataCveBeans,
+    GetAttackEventDetailResponseBodyData,
     GetAttackPathEventDetailResponseBodyAttackPathEventDstAsset,
     GetAttackPathEventDetailResponseBodyAttackPathEventPathEventEdgeList,
     GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList,
@@ -7089,6 +7166,7 @@ __all__ = [
     GetCloudAssetSummaryResponseBodyGroupedFieldsCloudAssetSummaryMetas,
     GetCloudAssetSummaryResponseBodyGroupedFields,
     GetClusterCheckItemWarningStatisticsResponseBodyData,
+    GetClusterCheckSummaryResponseBodyData,
     GetClusterRuleSummaryResponseBodyClusterRuleSummary,
     GetClusterStrategyCountResponseBodyData,
     GetClusterSuspEventStatisticsResponseBodySuspStatistics,
@@ -7203,6 +7281,8 @@ __all__ = [
     GetSwitchRegionDetailResponseBodyData,
     GetTenantCheckAvailableResponseBodyData,
     GetUserLangResponseBodySasUserLang,
+    GetValidDeductInstancesResponseBodyDataDeductPackageList,
+    GetValidDeductInstancesResponseBodyData,
     GetVirusScanConfigResponseBodyData,
     GetVirusScanLatestTaskStatisticResponseBodyData,
     GetVulWhitelistResponseBodyVulWhitelist,
@@ -7235,6 +7315,8 @@ __all__ = [
     ListAssetSelectionSelectedTargetResponseBodyData,
     ListAssetSelectionTargetResponseBodyData,
     ListAssetSelectionTargetResponseBodyPageInfo,
+    ListAttackEventInfoResponseBodyList,
+    ListAttackEventInfoResponseBodyPageInfo,
     ListAttackPathEventRequestAttackPathAssetList,
     ListAttackPathEventResponseBodyAttackPathEventListDstAsset,
     ListAttackPathEventResponseBodyAttackPathEventListSrcAsset,
@@ -7300,6 +7382,9 @@ __all__ = [
     ListCloudAssetSchemasResponseBodyCloudAssetSchemas,
     ListCloudAssetSchemasResponseBodyPageInfo,
     ListCloudVendorRegionsResponseBodyData,
+    ListClusterCheckResultResponseBodyChecksCheckPolicies,
+    ListClusterCheckResultResponseBodyChecks,
+    ListClusterCheckResultResponseBodyPageInfo,
     ListClusterCnnfStatusDetailResponseBodyData,
     ListClusterInterceptionConfigResponseBodyClusterConfigList,
     ListClusterInterceptionConfigResponseBodyPageInfo,
@@ -7367,6 +7452,9 @@ __all__ = [
     ListInterceptionTargetPageResponseBodyPageInfo,
     ListInterceptionTargetPageResponseBodyRuleTargetList,
     ListK8sAccessInfoResponseBodyK8sAccessInfos,
+    ListKspmInstancesRequestCloudAssetTypes,
+    ListKspmInstancesResponseBodyInstances,
+    ListKspmInstancesResponseBodyPageInfo,
     ListLogShipperRegionsResponseBodyLogShipperRegionList,
     ListMachineAppsResponseBodyAppList,
     ListMachineAppsResponseBodyPageInfo,
