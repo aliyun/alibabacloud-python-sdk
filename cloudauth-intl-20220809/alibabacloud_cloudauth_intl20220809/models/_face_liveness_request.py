@@ -22,6 +22,7 @@ class FaceLivenessRequest(DaraModel):
         # 
         # - **F**: Forbidden
         self.crop = crop
+        # The Base64-encoded image. If you use this parameter to pass the facial image, check the image size. Do not pass an oversized image.
         self.face_picture_base_64 = face_picture_base_64
         # The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.face_picture_url = face_picture_url

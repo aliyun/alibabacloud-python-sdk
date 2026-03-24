@@ -83,10 +83,15 @@ class CheckResultResponseBodyResult(DaraModel):
         self.ext_face_info = ext_face_info
         # ID information.
         self.ext_id_info = ext_id_info
-        # Extended information
+        # Extended information, in JSON string format.
         self.ext_info = ext_info
         # Risk information.
         self.ext_risk_info = ext_risk_info
+        # Detailed verification results from the data source (example using Indonesian data sources):
+        # - **govId, fullName, dob**: A comparison score of 1.0 indicates complete consistency with the official data source; less than 1.0 indicates inconsistency. 
+        # - **selfiePhoto**: A comparison score greater than 0.8 indicates consistency with the official data source; less than or equal to 0.8 indicates inconsistency. 
+        # - **liveness**: A score higher than 0.95 indicates a risk of liveness detection. 
+        # - **imgManipulationScore**: A score higher than 0.95 indicates a risk of image manipulation.
         self.ext_source_info = ext_source_info
         # Whether the authentication is passed.
         # 

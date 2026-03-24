@@ -70,6 +70,7 @@ class DeepfakeDetectIntlResponseBodyResultObject(DaraModel):
         result: str = None,
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
+        transaction_id: str = None,
     ):
         # Risk result:
         # 
@@ -88,6 +89,7 @@ class DeepfakeDetectIntlResponseBodyResultObject(DaraModel):
         # - **SuspectAIGCFace**  Suspected generated face  
         # - **SuspectRemake**  Suspected rephotographed face
         self.risk_tag = risk_tag
+        self.transaction_id = transaction_id
 
     def validate(self):
         pass
@@ -106,6 +108,9 @@ class DeepfakeDetectIntlResponseBodyResultObject(DaraModel):
         if self.risk_tag is not None:
             result['RiskTag'] = self.risk_tag
 
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -118,6 +123,9 @@ class DeepfakeDetectIntlResponseBodyResultObject(DaraModel):
 
         if m.get('RiskTag') is not None:
             self.risk_tag = m.get('RiskTag')
+
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
 
         return self
 

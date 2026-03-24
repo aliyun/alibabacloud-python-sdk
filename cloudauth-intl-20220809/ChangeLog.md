@@ -1,3 +1,8 @@
+2026-03-24 Version: 3.17.2
+- Update API DeepfakeDetectIntl: add response parameters Body.ResultObject.TransactionId.
+- Update API DeepfakeDetectIntlStream: add response parameters Body.ResultObject.TransactionId.
+
+
 2026-01-30 Version: 3.17.1
 - Update API CheckResult: add response parameters Body.Result.ExtSourceInfo.
 - Update API Initialize: add request parameters Email.

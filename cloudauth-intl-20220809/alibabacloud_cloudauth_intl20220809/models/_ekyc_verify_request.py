@@ -50,9 +50,15 @@ class EkycVerifyRequest(DaraModel):
         self.doc_no = doc_no
         # The certificate type, which is uniquely identified by an 8-digit number. For more information, see [Certificate types](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#Hu5TG).
         self.doc_type = doc_type
+        # The Base64 encoding of the portrait image.
+        # 
+        # > If you use this method to pass the certificate image, check the image size. Do not pass an oversized image.
         self.face_picture_base_64 = face_picture_base_64
         # The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.face_picture_url = face_picture_url
+        # The Base64 encoding of the certificate image.
+        # 
+        # > If you use this method to pass the certificate image, check the image size. Do not pass an oversized image.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         # The URL of the certificate image. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.id_ocr_picture_url = id_ocr_picture_url

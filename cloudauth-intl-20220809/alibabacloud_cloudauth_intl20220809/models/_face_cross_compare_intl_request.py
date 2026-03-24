@@ -36,12 +36,15 @@ class FaceCrossCompareIntlRequest(DaraModel):
         self.product_code = product_code
         # Custom business scenario ID
         self.scene_code = scene_code
+        # Base64 encoded portrait photo.
         self.source_aface_picture = source_aface_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_aface_picture_url = source_aface_picture_url
+        # Base64 encoded portrait photo.
         self.source_bface_picture = source_bface_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_bface_picture_url = source_bface_picture_url
+        # Base64 encoded portrait photo.
         self.source_cface_picture = source_cface_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_cface_picture_url = source_cface_picture_url
