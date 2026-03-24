@@ -1,0 +1,74 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class DescribeDomainTopUrlVisitRequest(DaraModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        sort_by: str = None,
+        start_time: str = None,
+    ):
+        # The accelerated domain name that you want to query.
+        # 
+        # This parameter is required.
+        self.domain_name = domain_name
+        # The end of the time range to query.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+        self.end_time = end_time
+        # The method that is used to sort the returned URLs. Default value: **pv**. Valid values:
+        # 
+        # *   **traf**: by network traffic
+        # *   **pv**: by the number of page views
+        self.sort_by = sort_by
+        # The start of the time range to query.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # If you want to query data of a specific day, we recommend that you set the value in the yyyy-MM-ddT16:00:00Z format.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+
+        return self
+

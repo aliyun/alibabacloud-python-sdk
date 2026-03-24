@@ -1,3 +1,7 @@
+2026-03-24 Version: 9.0.0
+- Update API DescribeDomainVerifyData: update response parameters Body.Content' type has changed.
+
+
 2025-11-05 Version: 8.0.0
 - Delete API CdnMigrateRegister.
 - Delete API ChangeCdnDomainToDcdn.
