@@ -241,6 +241,9 @@ from ._release_service_response_body import ReleaseServiceResponseBody
 from ._release_service_response import ReleaseServiceResponse
 from ._restart_service_response_body import RestartServiceResponseBody
 from ._restart_service_response import RestartServiceResponse
+from ._scale_service_request import ScaleServiceRequest
+from ._scale_service_response_body import ScaleServiceResponseBody
+from ._scale_service_response import ScaleServiceResponse
 from ._start_benchmark_task_response_body import StartBenchmarkTaskResponseBody
 from ._start_benchmark_task_response import StartBenchmarkTaskResponse
 from ._start_service_response_body import StartServiceResponseBody
@@ -602,6 +605,9 @@ __all__ = [
     ReleaseServiceResponse,
     RestartServiceResponseBody,
     RestartServiceResponse,
+    ScaleServiceRequest,
+    ScaleServiceResponseBody,
+    ScaleServiceResponse,
     StartBenchmarkTaskResponseBody,
     StartBenchmarkTaskResponse,
     StartServiceResponseBody,

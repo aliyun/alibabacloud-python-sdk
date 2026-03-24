@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class ListServicesRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
         autoscaler_enabled: bool = None,
         caller_uid: str = None,
         cronscaler_enabled: bool = None,
@@ -36,6 +37,7 @@ class ListServicesRequest(DaraModel):
         traffic_state: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         self.autoscaler_enabled = autoscaler_enabled
         self.caller_uid = caller_uid
         self.cronscaler_enabled = cronscaler_enabled
@@ -288,6 +290,9 @@ class ListServicesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
         if self.autoscaler_enabled is not None:
             result['AutoscalerEnabled'] = self.autoscaler_enabled
 
@@ -370,6 +375,9 @@ class ListServicesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
         if m.get('AutoscalerEnabled') is not None:
             self.autoscaler_enabled = m.get('AutoscalerEnabled')
 

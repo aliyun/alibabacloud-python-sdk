@@ -6798,6 +6798,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.label):
             request.label_shrink = Utils.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.autoscaler_enabled):
             query['AutoscalerEnabled'] = request.autoscaler_enabled
         if not DaraCore.is_null(request.caller_uid):
@@ -6882,6 +6884,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.label):
             request.label_shrink = Utils.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.autoscaler_enabled):
             query['AutoscalerEnabled'] = request.autoscaler_enabled
         if not DaraCore.is_null(request.caller_uid):
@@ -7443,6 +7447,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.restart_service_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def scale_service_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.ScaleServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance):
+            body['Instance'] = request.instance
+        if not DaraCore.is_null(request.instances_to_delete):
+            body['InstancesToDelete'] = request.instances_to_delete
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleService',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/scale',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scale_service_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.ScaleServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance):
+            body['Instance'] = request.instance
+        if not DaraCore.is_null(request.instances_to_delete):
+            body['InstancesToDelete'] = request.instances_to_delete
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleService',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/scale',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scale_service(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.ScaleServiceRequest,
+    ) -> main_models.ScaleServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.scale_service_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def scale_service_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.ScaleServiceRequest,
+    ) -> main_models.ScaleServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.scale_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def start_benchmark_task_with_options(
         self,
