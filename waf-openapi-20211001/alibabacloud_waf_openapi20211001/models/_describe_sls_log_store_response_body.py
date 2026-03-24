@@ -20,9 +20,9 @@ class DescribeSlsLogStoreResponseBody(DaraModel):
         self.project_name = project_name
         # The capacity of the Logstore. Unit: bytes.
         self.quota = quota
-        # The request ID.
+        # The request
         self.request_id = request_id
-        # The storage duration of the Logstore. Unit: days.
+        # The log retention period. Unit: days.
         self.ttl = ttl
         # The used capacity of the Logstore. Unit: bytes.
         self.used = used

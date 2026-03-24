@@ -16,12 +16,33 @@ class DescribeCommonLogFieldsRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the WAF instance.
+        # 
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to query for default log fields.
+        # 
+        # - **true**: Queries for default log fields.
+        # 
+        # - **false**: Queries for non-default log fields.
         self.is_default = is_default
+        # Specifies whether to query for required log fields.
+        # 
+        # - **true**: Queries for required log fields.
+        # 
+        # - **false**: Queries for non-required log fields.
         self.is_required = is_required
+        # The list of log fields to query.
         self.log_key_list = log_key_list
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

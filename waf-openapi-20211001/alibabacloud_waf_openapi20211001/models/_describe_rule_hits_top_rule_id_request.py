@@ -16,37 +16,43 @@ class DescribeRuleHitsTopRuleIdRequest(DaraModel):
         rule_type: str = None,
         start_timestamp: str = None,
     ):
-        # The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used.
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether protected objects that trigger protection rules are returned in the response. Valid values
+        # Specifies whether to aggregate the number of rule hits by protected object.
         # 
-        # - **true**: returns only the number of times each protection rule is triggered. If you set IsGroupResource to true, Resource is left empty.
-        # - **false**: returns the number of times each protection rule is triggered by each protected object.
+        # - true (default): The number of rule hits is aggregated for each protection rule. In this case, the **Resource** parameter in the response is empty.
+        # 
+        # - **false**: The number of rule hits is not aggregated. Statistics are collected for each protected object and protection rule.
         self.is_group_resource = is_group_resource
         # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # - **cn-hangzhou**: Chinese mainland.
+        # 
+        # - **ap-southeast-1**: Outside Chinese mainland.
         self.region_id = region_id
         # The protected object.
         self.resource = resource
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+        # The type of rule that was hit. If you do not specify this parameter, statistics for all rule types are returned.
         # 
-        # *   **blacklist:** IP address blacklist rules.
-        # *   **custom:** custom rules.
-        # *   **antiscan:** scan protection rules.
-        # *   **cc_system:** HTTP flood protection rules.
-        # *   **region_block:** region blacklist rules.
+        # - **blacklist**: The request hit a rule in the IP address blacklist.
+        # 
+        # - **custom**: The request hit a custom rule.
+        # 
+        # - **antiscan**: The request hit a scan protection rule.
+        # 
+        # - **cc_system**: The request hit an HTTP flood protection rule.
+        # 
+        # - **region_block**: The request hit a rule in the Location Blacklist.
         self.rule_type = rule_type
-        # The beginning of the time range to query. Unit: seconds.
+        # The start of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.start_timestamp = start_timestamp

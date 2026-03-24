@@ -14,11 +14,11 @@ class DescribeDefenseTemplatesResponseBody(DaraModel):
         templates: List[main_models.DescribeDefenseTemplatesResponseBodyTemplates] = None,
         total_count: int = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The protection templates.
+        # An array of protection templates.
         self.templates = templates
-        # The total number of entries returned.
+        # The total number of protection templates returned.
         self.total_count = total_count
 
     def validate(self):
@@ -74,44 +74,61 @@ class DescribeDefenseTemplatesResponseBodyTemplates(DaraModel):
         template_status: int = None,
         template_type: str = None,
     ):
-        # The scenario in which the protection template is used.
+        # The protection scenario. Valid values:
         # 
-        # *   **waf_group**: basic protection.
-        # *   **antiscan**: scan protection.
-        # *   **ip_blacklist**: IP address blacklist.
-        # *   **custom_acl**: custom rule.
-        # *   **whitelist**: whitelist.
-        # *   **region_block**: region blacklist.
-        # *   **custom_response**: custom response.
-        # *   **cc**: HTTP flood protection.
-        # *   **tamperproof**: website tamper-proofing.
-        # *   **dlp**: data leakage prevention.
+        # - **waf_group**: Basic Protection.
+        # 
+        # - **antiscan**: Scan Protection.
+        # 
+        # - **ip_blacklist**: IP Blocklist.
+        # 
+        # - **custom_acl**: Custom Rule.
+        # 
+        # - **whitelist**: Allowlist.
+        # 
+        # - **region_block**: Geographic Blocking.
+        # 
+        # - **custom_response**: Custom Response.
+        # 
+        # - **cc**: HTTP Flood Protection.
+        # 
+        # - **tamperproof**: Webpage Tamper Protection.
+        # 
+        # - **dlp**: Data Loss Prevention.
+        # 
+        # - **bot_manager**: Bot Management.
         self.defense_scene = defense_scene
-        # The sub-scenario in which the protection template is used. Valid values:
+        # The sub-scenario for the Bot Management template. This parameter is returned only when `DefenseScene` is set to `bot_manager`. Valid values:
         # 
-        # *   **web**: bot management for website protection.
-        # *   **app**: bot management for app protection.
-        # *   **basic**: bot management for basic protection.
+        # - **web**: web protection
+        # 
+        # - **app**: app protection
+        # 
+        # - **basic**: basic protection
+        # 
+        # - **bot_custom_acl**: The protection template for advanced Custom Rules in Bot Management.
         self.defense_sub_scene = defense_sub_scene
-        # The description of the protection template.
+        # The description of the template.
         self.description = description
-        # The time when the protection template was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The last modification time of the protection template. This value is a UNIX timestamp in milliseconds.
         self.gmt_modified = gmt_modified
         # The ID of the protection template.
         self.template_id = template_id
         # The name of the protection template.
         self.template_name = template_name
-        # The origin of the protection template. The value custom indicates that the protection template is a custom template created by the user.
+        # The origin of the protection template to be created. The value is custom, which indicates a user-defined template.
         self.template_origin = template_origin
         # The status of the protection template. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.template_status = template_status
         # The type of the protection template. Valid values:
         # 
-        # *   **user_default**: default template.
-        # *   **user_custom**: custom template.
+        # - **user_default**: The user\\"s default protection template.
+        # 
+        # - **user_custom**: A custom protection template defined by the user.
         self.template_type = template_type
 
     def validate(self):

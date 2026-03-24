@@ -18,15 +18,41 @@ class ModifyCloudResourceCertRequest(DaraModel):
         resource_instance_id: str = None,
         resource_product: str = None,
     ):
+        # The list of certificates.
+        # 
+        # > Enter all certificate IDs. This includes the default certificate and all additional certificates. After you submit the request, WAF compares the submitted IDs with the existing ones. WAF adds new certificates and deletes certificates that are not in your list. Deleting a certificate may affect related services.
+        # 
         # This parameter is required.
         self.certificates = certificates
+        # The ID of the resource that is added to WAF. WAF automatically generates this ID when you add the resource in cloud native mode.
+        # 
+        # > Call the [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) operation to add a resource. Then, view the resource ID in the response.
         self.cloud_resource_id = cloud_resource_id
+        # The ID of the WAF instance.
+        # 
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The port of the cloud product that is added to WAF.
         self.port = port
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the cloud product instance.
         self.resource_instance_id = resource_instance_id
+        # The type of the cloud product. Valid values:
+        # 
+        # - **ecs**: Elastic Compute Service (ECS).
+        # 
+        # - **clb4**: Layer 4 Classic Load Balancer (CLB).
+        # 
+        # - **nlb**: Network Load Balancer (NLB).
         self.resource_product = resource_product
 
     def validate(self):
@@ -99,8 +125,16 @@ class ModifyCloudResourceCertRequestCertificates(DaraModel):
         applied_type: str = None,
         certificate_id: str = None,
     ):
+        # The type of the certificate for the HTTPS protocol. Valid values:
+        # 
+        # - **default**: the default certificate.
+        # 
+        # - **extension**: the additional certificate.
+        # 
         # This parameter is required.
         self.applied_type = applied_type
+        # The ID of the certificate.
+        # 
         # This parameter is required.
         self.certificate_id = certificate_id
 

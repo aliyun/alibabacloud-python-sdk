@@ -10,6 +10,7 @@ class CreateDefenseTemplateRequest(DaraModel):
     def __init__(
         self,
         defense_scene: str = None,
+        defense_sub_scene: str = None,
         description: str = None,
         instance_id: str = None,
         region_id: str = None,
@@ -21,48 +22,60 @@ class CreateDefenseTemplateRequest(DaraModel):
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
-        # The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+        # The protection scenario. For more information, see the **DefenseScene** parameter of the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation.
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
-        # The description of the protection rule template.
-        self.description = description
-        # The ID of the Web Application Firewall (WAF) instance.
+        self.defense_sub_scene = defense_sub_scene
+        # The description of the protection template.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # - **bot_custom_acl**: Represents the protection template for advanced custom rules in bot management.
+        self.description = description
+        # The ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to get the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
-        # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # The region where the WAF instance is deployed. Valid values:
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
+        # 
+        # - **cn-hangzhou**: Represents the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: Represents regions outside the Chinese mainland.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The name of the protection rule template.
+        # The name of the protection template. The name must be 1 to 255 characters long and can contain letters, digits, Chinese characters, underscores (_), periods (.), and hyphens (-).
+        # 
+        # > The names of templates for the same protection scenario (**DefenseScene**) must be unique.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
+        # The origin of the protection template. The value must be **custom**.
         # 
         # This parameter is required.
         self.template_origin = template_origin
-        # The status of the protection rule template. Valid values:
+        # Indicates whether the protection template is enabled. Valid values:
         # 
-        # *   **0:** disabled.
-        # *   **1:** enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         # 
         # This parameter is required.
         self.template_status = template_status
-        # The type of the protection rule template. Valid values:
+        # The type of the protection template. Valid values:
         # 
-        # *   **user_default:** default template.
-        # *   **user_custom:** custom template.
+        # - **user_default**: The user\\"s default template.
+        # 
+        # - **user_custom**: A user-defined template.
         # 
         # This parameter is required.
         self.template_type = template_type
+        # The protected objects to unbind when you create a default template. Use the [**"XX1","XX2",...**] format.
+        # 
+        # > This parameter takes effect only when you create a **default template** (**TemplateType** is set to **user_default**).
         self.unbind_resource_groups = unbind_resource_groups
+        # The ID of the Alibaba Cloud resource group.
         self.unbind_resources = unbind_resources
 
     def validate(self):
@@ -75,6 +88,9 @@ class CreateDefenseTemplateRequest(DaraModel):
             result = _map
         if self.defense_scene is not None:
             result['DefenseScene'] = self.defense_scene
+
+        if self.defense_sub_scene is not None:
+            result['DefenseSubScene'] = self.defense_sub_scene
 
         if self.description is not None:
             result['Description'] = self.description
@@ -112,6 +128,9 @@ class CreateDefenseTemplateRequest(DaraModel):
         m = m or dict()
         if m.get('DefenseScene') is not None:
             self.defense_scene = m.get('DefenseScene')
+
+        if m.get('DefenseSubScene') is not None:
+            self.defense_sub_scene = m.get('DefenseSubScene')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

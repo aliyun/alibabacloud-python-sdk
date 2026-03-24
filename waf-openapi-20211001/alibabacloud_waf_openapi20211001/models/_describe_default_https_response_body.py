@@ -11,7 +11,7 @@ class DescribeDefaultHttpsResponseBody(DaraModel):
         default_https: main_models.DescribeDefaultHttpsResponseBodyDefaultHttps = None,
         request_id: str = None,
     ):
-        # The default SSL and TLS settings.
+        # The default SSL/TLS settings.
         self.default_https = default_https
         # The request ID.
         self.request_id = request_id
@@ -53,26 +53,31 @@ class DescribeDefaultHttpsResponseBodyDefaultHttps(DaraModel):
         enable_tlsv_3: bool = None,
         tlsversion: str = None,
     ):
-        # The certificate ID.
+        # The ID of the certificate.
         self.cert_id = cert_id
-        # The type of the cipher suites. Valid values:
+        # The type of the cipher suite. Valid values:
         # 
-        # *   **1**: all cipher suites.
-        # *   **2**: strong cipher suites.
-        # *   **99**: custom cipher suites.
+        # - **1**: all cipher suites.
+        # 
+        # - **2**: strong cipher suites.
+        # 
+        # - **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
-        # The custom cipher suite.
+        # The custom cipher suites. This parameter is returned only when CipherSuite is set to 99.
         self.custom_ciphers = custom_ciphers
         # Indicates whether TLS 1.3 is supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
-        self.enable_tlsv_3 = enable_tlsv_3
-        # The version of the TLS protocol. Valid values:
+        # - **true**: TLS 1.3 is supported.
         # 
-        # *   **tlsv1**
-        # *   **tlsv1.1**
-        # *   **tlsv1.2**
+        # - **false**: TLS 1.3 is not supported.
+        self.enable_tlsv_3 = enable_tlsv_3
+        # The minimum TLS version. Valid values:
+        # 
+        # - **tlsv1**
+        # 
+        # - **tlsv1.1**
+        # 
+        # - **tlsv1.2**
         self.tlsversion = tlsversion
 
     def validate(self):

@@ -16,10 +16,15 @@ class DescribeIpAbroadCountryInfosResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of country information outside China.
         self.abroad_infos = abroad_infos
+        # The number of entries per page in a paged query. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
+        # The token for the next page.
         self.next_token = next_token
+        # The request ID
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -82,9 +87,13 @@ class DescribeIpAbroadCountryInfosResponseBodyAbroadInfos(DaraModel):
         country_name: str = None,
         regions: List[main_models.DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions] = None,
     ):
+        # The continent to which the country belongs.
         self.continent = continent
+        # The ID of the country.
         self.country = country
+        # The name of the country.
         self.country_name = country_name
+        # The list of region information outside China.
         self.regions = regions
 
     def validate(self):
@@ -139,7 +148,9 @@ class DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions(DaraModel):
         abroad_region_id: str = None,
         abroad_region_name: str = None,
     ):
+        # The ID of the region.
         self.abroad_region_id = abroad_region_id
+        # The name of the region.
         self.abroad_region_name = abroad_region_name
 
     def validate(self):

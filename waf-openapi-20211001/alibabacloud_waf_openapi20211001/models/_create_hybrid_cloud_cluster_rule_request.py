@@ -15,15 +15,56 @@ class CreateHybridCloudClusterRuleRequest(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
+        # The ID of the Hybrid Cloud WAF cluster.
+        # 
+        # > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about Hybrid Cloud WAF clusters.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the WAF instance.
+        # 
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The configuration of the traffic redirection rule, in JSON format.
+        # 
+        # > The modes are mutually exclusive. You can select only one mode. If you change the mode, all traffic redirection rules in the previous mode are cleared.
+        # 
+        # - **check_mode**: the traffic redirection mode. Valid values:
+        # 
+        #   - **all**: redirects all traffic.
+        # 
+        #   - **part**: redirects a specific portion of traffic.
+        # 
+        # - **type**: the match type for the rule. Valid values:
+        # 
+        #   - **exact**: exact match.
+        # 
+        #   - **regex**: regular expression match.
+        # 
+        # - **substance**: the match value of the rule.
         self.rule_config = rule_config
+        # The status of the traffic redirection rule. Valid values:
+        # 
+        # - **on**: enabled.
+        # 
+        # - **off**: disabled.
+        # 
         # This parameter is required.
         self.rule_status = rule_status
+        # The type of the traffic redirection rule. Valid values:
+        # 
+        # - **pullin**: traffic redirection
+        # 
         # This parameter is required.
         self.rule_type = rule_type
 

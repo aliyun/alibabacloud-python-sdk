@@ -13,7 +13,9 @@ class DescribeThreatEventTopMetricResponseBody(DaraModel):
         request_id: str = None,
         top_metrics: List[main_models.DescribeThreatEventTopMetricResponseBodyTopMetrics] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of statistics.
         self.top_metrics = top_metrics
 
     def validate(self):
@@ -58,9 +60,27 @@ class DescribeThreatEventTopMetricResponseBodyTopMetrics(DaraModel):
         region: str = None,
         value: str = None,
     ):
+        # The number of attacks.
         self.cnt = cnt
+        # The country where the source IP address of the attack is located.
+        # 
+        # > This parameter is returned only when **Metric** is set to **src**.
         self.country = country
+        # The region where the source IP address of the attack is located.
+        # 
+        # > This parameter is returned only when **Metric** is set to **src**.
         self.region = region
+        # The attack value. The meaning of this parameter varies based on the value of **Metric**.
+        # 
+        # - If **Metric** is set to **time**, this parameter indicates the attack time.
+        # 
+        # - If **Metric** is set to **src**, this parameter indicates the source IP address of the attack.
+        # 
+        # - If **Metric** is set to **target**, this parameter indicates the URL of the attack request.
+        # 
+        # - If **Metric** is set to **type**, this parameter indicates the attack type. For example, **dirscan** indicates directory scan and **webscan** indicates web scan. For more information about other attack types, see the description of the **detectType** parameter for custom regular expression rules (**regular_custom**) in the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation.
+        # 
+        # - If **Metric** is set to **tools**, this parameter indicates the attack tool.
         self.value = value
 
     def validate(self):

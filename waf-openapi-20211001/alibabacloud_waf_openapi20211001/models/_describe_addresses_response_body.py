@@ -16,10 +16,17 @@ class DescribeAddressesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The addresses in the address book.
         self.address_list = address_list
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The pagination token for the next page. If this parameter is returned, more results are available.
+        # 
+        # > Include this value in the **NextToken** parameter of the next request to retrieve additional results. If this parameter is not returned, all results have been retrieved.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of addresses that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -81,8 +88,11 @@ class DescribeAddressesResponseBodyAddressList(DaraModel):
         gmt_modified: int = None,
         rule_id: int = None,
     ):
+        # The IP address or CIDR block in the address book.
         self.address = address
+        # The most recent modification time of the address. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # The ID of the address book.
         self.rule_id = rule_id
 
     def validate(self):

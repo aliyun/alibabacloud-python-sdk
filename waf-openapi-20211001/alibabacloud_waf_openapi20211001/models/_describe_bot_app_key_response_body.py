@@ -10,8 +10,9 @@ class DescribeBotAppKeyResponseBody(DaraModel):
         app_key: str = None,
         request_id: str = None,
     ):
-        # AppKey。
+        # The AppKey for bot management.
         self.app_key = app_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,9 +10,9 @@ class ModifyCloudResourceResponseBody(DaraModel):
         cloud_resource: str = None,
         request_id: str = None,
     ):
-        # The ID of the resource that is added to WAF.
+        # The ID of the cloud resource that is added to WAF.
         self.cloud_resource = cloud_resource
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

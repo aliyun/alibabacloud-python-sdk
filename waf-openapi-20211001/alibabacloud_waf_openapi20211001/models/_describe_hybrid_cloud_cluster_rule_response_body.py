@@ -11,7 +11,7 @@ class DescribeHybridCloudClusterRuleResponseBody(DaraModel):
         cluster_rule: main_models.DescribeHybridCloudClusterRuleResponseBodyClusterRule = None,
         request_id: str = None,
     ):
-        # The details of the rule.
+        # The information about the rule.
         self.cluster_rule = cluster_rule
         # The request ID.
         self.request_id = request_id
@@ -52,17 +52,33 @@ class DescribeHybridCloudClusterRuleResponseBodyClusterRule(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
+        # The resource ID of the cluster rule.
         self.cluster_rule_resource_id = cluster_rule_resource_id
-        # The configuration of the rule.
+        # The configuration of the traffic routing rule.
+        # 
+        # - **check_mode**: Defines the traffic scope for the routing rule. Valid values:
+        # 
+        #   - **all**: Routes all traffic.
+        # 
+        #   - **part**: Routes a portion of the traffic.
+        # 
+        # - **type**: The rule\\"s match type. Valid values:
+        # 
+        #   - **exact**: Exact match.
+        # 
+        #   - **regex**: Regular expression match.
+        # 
+        # - **substance**: The value of the rule.
         self.rule_config = rule_config
         # The status of the rule. Valid values:
         # 
-        # *   **on**: enabled.
-        # *   **off**: disabled.
-        self.rule_status = rule_status
-        # The type of the rule. Valid values:
+        # - **on**: Enabled.
         # 
-        # *   **pullin**: The traffic redirection rule of the hybrid cloud cluster.
+        # - **off**: Disabled.
+        self.rule_status = rule_status
+        # The type of the rule.
+        # 
+        # - pullin: The traffic routing rule.
         self.rule_type = rule_type
 
     def validate(self):

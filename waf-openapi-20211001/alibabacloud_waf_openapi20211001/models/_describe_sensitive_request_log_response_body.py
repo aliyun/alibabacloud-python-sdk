@@ -14,7 +14,7 @@ class DescribeSensitiveRequestLogResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The access logs.
+        # The list of access logs.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -75,26 +75,27 @@ class DescribeSensitiveRequestLogResponseBodyData(DaraModel):
         sensitive_list: str = None,
         trace_id: str = None,
     ):
+        # The account that initiated the request.
         self.account = account
-        # The API.
+        # The API path.
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
-        # The IP address.
+        # The client IP address.
         self.client_ip = client_ip
-        # The number of sensitive data records involved in cross-border data transfer.
+        # The number of outbound sensitive data entries.
         self.count = count
         # The domain name of the API.
         self.matched_host = matched_host
-        # IP region, formatted as a region code.
+        # The code of the region to which the client IP address belongs.
         self.remote_country_id = remote_country_id
-        # The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time of the request. This value is a UNIX timestamp. Unit: seconds.
         self.request_time = request_time
-        # The details of sensitive data. The value is a string that consists of a JSON struct. The JSON struct contains key-value pairs. In a key-value pair, a key indicates the identifier of a sensitive data type, including built-in and custom types, and a value indicates specific sensitive data.
+        # The sensitive data. The key indicates the sensitive data type identifier, which can be a built-in or custom type, and the value indicates the list of sensitive data.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_list = sensitive_list
-        # The trace ID.
+        # The ID of the access log.
         self.trace_id = trace_id
 
     def validate(self):

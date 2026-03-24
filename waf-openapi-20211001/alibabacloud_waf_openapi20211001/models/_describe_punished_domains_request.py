@@ -15,23 +15,25 @@ class DescribePunishedDomainsRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The domain names that are added to WAF.
+        # The list of domain names added to WAF.
         self.domains = domains
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of punishment. Valid values:
+        # The penalty type. Valid values:
         # 
-        # *   **beian** (default): the filing center.
-        # *   **punishCenter**: the punishment center.
+        # - **beian** (default): ICP filing center.
+        # 
+        # - **punishCenter**: penalty center.
         self.punish_type = punish_type
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

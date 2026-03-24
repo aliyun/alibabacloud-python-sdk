@@ -18,16 +18,57 @@ class DescribeCloudResourceListRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
     ):
+        # The ID of the protected resource. WAF automatically generates this ID when you add the resource to WAF.
+        # 
+        # > Call [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) to add a resource. Then, view the resource ID in the response.
         self.cloud_resource_id = cloud_resource_id
+        # The ID of the WAF instance.
+        # 
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request.
+        # 
+        # > If a value is returned for this parameter, it indicates that a next page is available. To retrieve the next page of data, include the returned **NextToken** in your next request. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
+        # The port of the cloud service that is added to WAF.
         self.port = port
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource instance.
         self.resource_instance_id = resource_instance_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The cloud service to which the resource belongs. Valid values:
+        # 
+        # - **alb**: Application Load Balancer (ALB).
+        # 
+        # - **mse**: Microservices Engine (MSE).
+        # 
+        # - **fc**: Function Compute (FC).
+        # 
+        # - **sae**: Serverless App Engine (SAE).
+        # 
+        # - **ecs**: Elastic Compute Service (ECS).
+        # 
+        # - **clb4**: Classic Load Balancer (CLB) that uses the TCP protocol.
+        # 
+        # - **clb7**: CLB that uses the HTTP or HTTPS protocol.
+        # 
+        # - **apig**: API Gateway (APIG).
+        # 
+        # - **nlb**: Network Load Balancer (NLB).
+        # 
+        # > Not all cloud services are available in all regions. If you specify this parameter, make sure that the specified cloud service is available in the selected region. Otherwise, the request may fail.
         self.resource_product = resource_product
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribePrepayDailyBillsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The bills of the burstable QPS (pay-as-you-go) feature.
+        # List of WAF burstable billing records.
         self.bills = bills
-        # The request ID.
+        # ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # Total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -77,36 +77,39 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
         total: int = None,
         type: List[str] = None,
     ):
-        # The burstable QPS of the WAF instance.
+        # Elastic QPS specification for the WAF instance.
         self.elastic_qps_set_value = elastic_qps_set_value
-        # The billing end time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # End time of the billing period, in Unix timestamp format (UTC), measured in seconds.
         self.end_time = end_time
-        # The status of QPS usage within the current period of time. Valid values:
+        # Overuse status for the current period. Valid values:
         # 
-        # *   **0**: normal.
-        # *   **1**: excess.
-        # *   **2**: sandbox.
+        # - **0**: Normal.
+        # 
+        # - **1**: Overused.
+        # 
+        # - **2**: Sandbox.
         self.exceed_status = exceed_status
-        # The peak QPS within the current period of time.
+        # Maximum QPS for the current period.
         self.max_qps = max_qps
-        # The unit price in the bill. The price is measured in CNY for bills at the China site (aliyun.com) and in USD for bills at the international site (alibabacloud.com).
+        # Unit price for burstable charges. Unit: CNY for the Alibaba Cloud China Website (www\\.aliyun.com) and USD for the Alibaba Cloud International Website (www\\.alibabacloud.com).
         self.price = price
-        # The extended QPS of the WAF instance.
+        # QPS extension specification for the WAF instance.
         self.qps = qps
-        # The default QPS of the WAF instance.
+        # QPS specification within the version of the WAF instance.
         self.qps_version = qps_version
-        # Indicates whether risk identification is enabled. Valid values:
+        # Whether Fraud Detection is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Fraud Detection is enabled.
+        # 
+        # - **false**: Fraud Detection is disabled.
         self.risk_control = risk_control
-        # The number of times that risk identification is performed.
+        # Number of Fraud Detection requests processed.
         self.risk_traffic = risk_traffic
-        # The billing start time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # Start time of the billing period, in Unix timestamp format (UTC), measured in seconds.
         self.start_time = start_time
-        # The actual QPS in total.
+        # Total QPS subject to burstable billing.
         self.total = total
-        # The billing types.
+        # The billing type.
         self.type = type
 
     def validate(self):

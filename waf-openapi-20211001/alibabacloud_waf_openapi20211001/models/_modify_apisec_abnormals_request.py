@@ -17,36 +17,41 @@ class ModifyApisecAbnormalsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         user_status: str = None,
     ):
-        # The risk IDs.
+        # A list of API security risk IDs.
         # 
         # This parameter is required.
         self.abnormal_ids = abnormal_ids
         # The ID of the hybrid cloud cluster.
         # 
-        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
+        # > This parameter is available only for hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The description.
+        # The remarks for the status change.
         self.note = note
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: the Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: a region outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The risk status. Valid values:
+        # The status of the security risk. Valid values:
         # 
-        # *   **toBeConfirmed**
-        # *   **confirmed**
-        # *   **toBeFixed**
-        # *   **fixed**
-        # *   **ignored**
+        # - **toBeConfirmed**: The security risk is to be confirmed.
+        # 
+        # - **confirmed**: The security risk is confirmed.
+        # 
+        # - **toBeFixed**: The security risk is to be fixed.
+        # 
+        # - **fixed**: The security risk is fixed.
+        # 
+        # - **ignored**: The security risk is ignored.
         # 
         # This parameter is required.
         self.user_status = user_status

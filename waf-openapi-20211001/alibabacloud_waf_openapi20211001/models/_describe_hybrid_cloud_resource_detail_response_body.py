@@ -56,10 +56,8 @@ class DescribeHybridCloudResourceDetailResponseBodyDomain(DaraModel):
         status: int = None,
         uid: str = None,
     ):
-        # CNAME
         self.cname = cname
         self.domain = domain
-        # id
         self.id = id
         self.listen = listen
         self.redirect = redirect

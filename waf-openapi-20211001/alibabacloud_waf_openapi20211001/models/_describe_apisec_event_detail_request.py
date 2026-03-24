@@ -15,14 +15,49 @@ class DescribeApisecEventDetailRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the Hybrid Cloud WAF cluster.
+        # 
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about hybrid cloud WAF clusters.
         self.cluster_id = cluster_id
+        # The type of the detailed information about the security event. Valid values:
+        # 
+        # - **event_info** (default): attack details.
+        # 
+        # - **api_info**: API information.
+        # 
+        # - **cnt_info**: attack trend.
+        # 
+        # - **ip_info**: attacker IP information.
+        # 
+        # - **sensitive_info**: information about access to sensitive data.
+        # 
+        # - **request_data**: request information.
+        # 
+        # - **response_data**: response information.
         self.detail_type = detail_type
+        # The ID of the API security event.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The dimension of the security event. Valid values:
+        # 
+        # - **ip** (default): IP security event.
+        # 
+        # - **account**: account security event.
         self.event_scope = event_scope
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

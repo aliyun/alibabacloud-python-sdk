@@ -13,14 +13,31 @@ class ModifyCloudResourceDefaultCertRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the certificate.
+        # 
         # This parameter is required.
         self.cert_id = cert_id
+        # The ID of the connected cloud resource. WAF generates this ID automatically when you connect a cloud resource.
+        # 
+        # > After you connect a resource using [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html), check the response to get the resource ID.
+        # 
         # This parameter is required.
         self.cloud_resource_id = cloud_resource_id
+        # The ID of the WAF instance.
+        # 
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

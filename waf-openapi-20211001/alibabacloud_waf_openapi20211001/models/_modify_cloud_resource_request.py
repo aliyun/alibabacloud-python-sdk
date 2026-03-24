@@ -17,27 +17,31 @@ class ModifyCloudResourceRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the cloud resource that is added to WAF.
+        # 
+        # > Call [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) to add a cloud resource. The resource ID is included in the response.
         self.cloud_resource_id = cloud_resource_id
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listener configurations.
+        # The listener configuration.
         # 
         # This parameter is required.
         self.listen = listen
-        # The forwarding configurations.
+        # The forwarding configuration.
         self.redirect = redirect
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: the Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -109,40 +113,41 @@ class ModifyCloudResourceRequestRedirect(DaraModel):
         xff_headers: List[str] = None,
         xff_proto: bool = None,
     ):
-        # Specifies whether to enable the persistent connection feature. Valid values:
+        # Indicates whether persistent connections are enabled. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): enables persistent connections.
+        # 
+        # - **false**: disables persistent connections.
         self.keepalive = keepalive
-        # The number of reused persistent connections. Valid values: 60 to 1000.
-        # 
-        # >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
+        # The maximum number of requests that can be served through one persistent connection. Valid values: 60 to 1000.
         self.keepalive_requests = keepalive_requests
-        # The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
-        # 
-        # >  This parameter specifies the period of time after which an idle persistent connection is closed.
+        # The timeout period for an idle persistent connection. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
         self.keepalive_timeout = keepalive_timeout
+        # The maximum size of a request body. Valid values: 2 to 10. Default value: 2. Unit: GB.
         self.max_body_size = max_body_size
-        # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
+        # The read timeout period. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
+        # The custom header fields used to mark traffic that is processed by WAF.
         self.request_headers = request_headers
-        # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
+        # The write timeout period. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # The method that is used to obtain the originating IP address of a client. Valid values:
+        # The method that WAF uses to obtain the real IP address of a client. Valid values:
         # 
-        # *   **0**: No Layer 7 proxies are deployed in front of WAF.
-        # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
-        # *   **2**: WAF reads the value of a custom header field as the originating IP address of the client.
+        # - **0**: WAF obtains the real IP address of the client from the request. Use this value when no Layer 7 proxy resides before WAF.
+        # 
+        # - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header as the client IP address.
+        # 
+        # - **2**: WAF reads the value of a custom header field as the client IP address.
         self.xff_header_mode = xff_header_mode
-        # The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
+        # The custom header fields that are used to obtain the client IP address.
         # 
-        # >  This parameter is required only if you set **XffHeaderMode** to 2.
+        # > This parameter is required only when **XffHeaderMode** is set to **2**.
         self.xff_headers = xff_headers
-        # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Indicates whether the X-Forwarded-Proto header is used to pass the protocol used by WAF. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): passes the protocol.
+        # 
+        # - **false**: does not pass the protocol.
         self.xff_proto = xff_proto
 
     def validate(self):
@@ -233,9 +238,9 @@ class ModifyCloudResourceRequestRedirectRequestHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the custom header field.
+        # The custom request header field.
         self.key = key
-        # The value of the custom header field.
+        # The value of the custom request header field.
         self.value = value
 
     def validate(self):
@@ -278,49 +283,59 @@ class ModifyCloudResourceRequestListen(DaraModel):
         resource_product: str = None,
         tlsversion: str = None,
     ):
-        # The certificates.
+        # The certificate information.
         self.certificates = certificates
-        # The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # The type of the cipher suite to add. This parameter applies only when you use the HTTPS protocol. Valid values:
         # 
-        # *   **1**: all cipher suites.
-        # *   **2**: strong cipher suites. This value is available only if you set **TLSVersion** to **tlsv1.2**.
-        # *   **99**: custom cipher suites.
+        # - **1**: adds all cipher suites.
+        # 
+        # - **2**: adds strong cipher suites. This value is available only when **TLSVersion** is set to **tlsv1.2**.
+        # 
+        # - **99**: adds custom cipher suites.
         self.cipher_suite = cipher_suite
-        # The custom cipher suites that you want to add.
+        # The custom cipher suites.
         self.custom_ciphers = custom_ciphers
-        # Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # Indicates whether TLS 1.3 is supported. This parameter applies only when you use the HTTPS protocol. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: TLS 1.3 is supported.
+        # 
+        # - **false**: TLS 1.3 is not supported.
         self.enable_tlsv_3 = enable_tlsv_3
-        # Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # Indicates whether HTTP/2 is enabled. This parameter applies only when you use the HTTPS protocol. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: enables HTTP/2.
+        # 
+        # - **false** (default): disables HTTP/2.
         self.http_2enabled = http_2enabled
-        # The port of the cloud service instance that is added to WAF.
+        # The listening port of the cloud service instance that is added to WAF.
         self.port = port
         # The protocol type. Valid values:
         # 
-        # *   **http**
-        # *   **https**
+        # - **http**: HTTP.
+        # 
+        # - **https**: HTTPS.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The ID of the cloud service instance that is added to WAF.
+        # The ID of the cloud service instance.
         self.resource_instance_id = resource_instance_id
         # The type of the cloud service. Valid values:
         # 
-        # *   **clb4**: Layer 4 Classic Load Balancer (CLB).
-        # *   **clb7**: Layer 7 CLB.
-        # *   **ecs**: Elastic Compute Service (ECS).
-        # *   **nlb**: Network Load Balancer (NLB).
-        self.resource_product = resource_product
-        # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # - **clb4**: Layer 4 Classic Load Balancer (CLB).
         # 
-        # *   **tlsv1**
-        # *   **tlsv1.1**
-        # *   **tlsv1.2**
+        # - **clb7**: Layer 7 CLB.
+        # 
+        # - **ecs**: Elastic Compute Service (ECS).
+        # 
+        # - **nlb**: Network Load Balancer (NLB).
+        self.resource_product = resource_product
+        # The Transport Layer Security (TLS) version. This parameter applies only when you use the HTTPS protocol. Valid values:
+        # 
+        # - **tlsv1**
+        # 
+        # - **tlsv1.1**
+        # 
+        # - **tlsv1.2**
         self.tlsversion = tlsversion
 
     def validate(self):
@@ -411,10 +426,11 @@ class ModifyCloudResourceRequestListenCertificates(DaraModel):
         applied_type: str = None,
         certificate_id: str = None,
     ):
-        # The type of the certificate. Valid values:
+        # The type of the certificate for the HTTPS protocol. Valid values:
         # 
-        # *   **default**: default certificate.
-        # *   **extension**: additional certificate.
+        # - **default**: a default certificate.
+        # 
+        # - **extension**: an extension certificate.
         self.applied_type = applied_type
         # The ID of the certificate.
         self.certificate_id = certificate_id

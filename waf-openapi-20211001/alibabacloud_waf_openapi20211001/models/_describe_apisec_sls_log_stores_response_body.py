@@ -14,7 +14,7 @@ class DescribeApisecSlsLogStoresResponseBody(DaraModel):
     ):
         # The names of the Logstores in Simple Log Service.
         self.log_stores = log_stores
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -14,15 +14,11 @@ class DescribeApiExportsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The returned data export tasks.
+        # The list of API security export tasks.
         self.api_exports = api_exports
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The status of the data export task. Valid values:
-        # 
-        # *   **expired**: The file is expired.
-        # *   **exporting**: Data is being exported.
-        # *   **completed**: Data is exported.
+        # The total number of export tasks.
         self.total = total
 
     def validate(self):
@@ -75,29 +71,29 @@ class DescribeApiExportsResponseBodyApiExports(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time when the data export task was created. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time when the export task was created. This is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # The name of the file.
+        # The name of the exported file.
         self.file_name = file_name
         # The download URL of the exported file.
         self.file_url = file_url
-        # The format of the exported file.
+        # The format of the exported file, such as CSV.
         self.format = format
-        # The status of the data export task. Valid values:
+        # The status of the export task. Valid values:
         # 
-        # * **expired**: The file is expired.
+        # - **expired**: The file has expired.
         # 
-        # * **exporting**: Data is being exported.
+        # - **exporting**: The file is being exported.
         # 
-        # * **completed**: Data is exported.
+        # - **completed**: The export is successful.
         self.status = status
-        # The type of the data export task. Valid values:
+        # The type of the export task. Valid values:
         # 
-        # * **apisec_api**: API tasks
+        # - **apisec_api**: API asset task.
         # 
-        # * **apisec_abnormal**: API risk tasks
+        # - **apisec_abnormal**: API threat task.
         # 
-        # * **apisec_event**: API security event tasks
+        # - **apisec_event**: API security event task.
         self.type = type
 
     def validate(self):

@@ -14,25 +14,27 @@ class ModifyApisecStatusRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         resources: str = None,
     ):
-        # The status of the API security module. Valid values:
+        # The API security status. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: enabled.
+        # 
+        # - **0**: disabled.
         # 
         # This parameter is required.
         self.apisec_status = apisec_status
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The name of the protected object group to which the protected object belongs.
+        # The name of the protected object group to which the protected object is added.
         self.resource_groups = resource_groups
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

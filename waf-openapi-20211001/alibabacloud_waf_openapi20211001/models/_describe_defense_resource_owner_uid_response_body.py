@@ -13,7 +13,9 @@ class DescribeDefenseResourceOwnerUidResponseBody(DaraModel):
         owner_infos: List[main_models.DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos] = None,
         request_id: str = None,
     ):
+        # The owner account information of the protected objects.
         self.owner_infos = owner_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos(DaraModel):
         owner_user_id: str = None,
         resource_name: str = None,
     ):
+        # The owner account ID of the protected object.
         self.owner_user_id = owner_user_id
+        # The name of the protected object.
         self.resource_name = resource_name
 
     def validate(self):

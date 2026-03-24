@@ -11,9 +11,9 @@ class CreateDomainResponseBody(DaraModel):
         domain_info: main_models.CreateDomainResponseBodyDomainInfo = None,
         request_id: str = None,
     ):
-        # The information about the domain name that is added.
+        # The details of the added domain name.
         self.domain_info = domain_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class CreateDomainResponseBodyDomainInfo(DaraModel):
         domain: str = None,
         domain_id: str = None,
     ):
-        # The CNAME that is assigned by WAF to the domain name.
+        # The CNAME assigned by WAF to the domain name.
         self.cname = cname
-        # The domain name that you added to WAF.
+        # The domain name that is onboarded to WAF.
         self.domain = domain
-        # The name of the protected object that is generated.
+        # The ID of the domain name.
         self.domain_id = domain_id
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeDefenseTemplateValidGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The names of the protected object groups.
+        # A list of protected object group names.
         self.groups = groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count

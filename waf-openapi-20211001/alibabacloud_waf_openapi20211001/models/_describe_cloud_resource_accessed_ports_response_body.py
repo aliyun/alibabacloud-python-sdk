@@ -13,11 +13,11 @@ class DescribeCloudResourceAccessedPortsResponseBody(DaraModel):
         https: List[int] = None,
         request_id: str = None,
     ):
-        # The HTTP ports.
+        # The HTTP port.
         self.http = http
-        # The HTTPS ports.
+        # The HTTPS port.
         self.https = https
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

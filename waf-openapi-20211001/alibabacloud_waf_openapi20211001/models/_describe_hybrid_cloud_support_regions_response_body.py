@@ -12,7 +12,9 @@ class DescribeHybridCloudSupportRegionsResponseBody(DaraModel):
         request_id: str = None,
         support_regions: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of regions that are supported for hybrid cloud access.
         self.support_regions = support_regions
 
     def validate(self):

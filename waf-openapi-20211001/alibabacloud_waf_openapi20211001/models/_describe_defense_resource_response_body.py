@@ -13,9 +13,9 @@ class DescribeDefenseResourceResponseBody(DaraModel):
         request_id: str = None,
         resource: main_models.DescribeDefenseResourceResponseBodyResource = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The protected object.
+        # The details of the protected object.
         self.resource = resource
 
     def validate(self):
@@ -68,39 +68,43 @@ class DescribeDefenseResourceResponseBodyResource(DaraModel):
         response_headers: List[main_models.DescribeDefenseResourceResponseBodyResourceResponseHeaders] = None,
         xff_status: int = None,
     ):
-        # The status of the tracking cookie.
+        # Indicates whether the tracking cookie feature is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
         self.acw_cookie_status = acw_cookie_status
-        # The status of the secure attribute of the tracking cookie.
+        # Indicates whether the secure attribute of the tracking cookie is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
         self.acw_secure_status = acw_secure_status
-        # The status of the secure attribute of the slider CAPTCHA cookie.
+        # Indicates whether the secure attribute of the slider CAPTCHA cookie is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
         self.acw_v3secure_status = acw_v3secure_status
-        # The custom header fields.
+        # The list of custom header fields used to identify the actual client IP address.
         # 
-        # >  If the value of XffStatus is 1, the first IP address in the specified header field is used as the originating IP address of the client to prevent X-Forwarded-For (XFF) forgery. If you specify multiple header fields, WAF reads the values of the header fields in sequence until the originating IP address is obtained. If the originating IP address cannot be obtained, the first IP address in the XFF header field is used as the originating IP address of the client.
+        # > This parameter takes effect only when XffStatus is set to 1. WAF uses the first IP address in the specified header fields as the client source IP address to prevent X-Forwarded-For (XFF) spoofing. If multiple headers are specified, WAF checks them in order. If the first header does not contain a source IP address, WAF checks the next header. If none of the specified headers contain a source IP address, WAF uses the first IP address in the X-Forwarded-For header.
         self.custom_headers = custom_headers
         # The description of the protected object.
         self.description = description
-        # The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
+        # The details of the protected object. The fields vary based on the cloud service type.
         self.detail = detail
-        # The time when the protected object was created. Unit: milliseconds.
+        # The time when the protected object was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The time when the protected object was modified. Unit: milliseconds.
+        # The time when the protected object was modified. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # The ID of the WAF instance.
         self.instance_id = instance_id
-        # The user ID (UID) of the Alibaba Cloud account to which the protected object belongs.
+        # The ID of the Alibaba Cloud account to which the protected object belongs.
         self.owner_user_id = owner_user_id
-        # The pattern used for the protected object.
+        # The protection pattern of the protected object.
         self.pattern = pattern
-        # The name of the cloud service.
+        # The type of cloud service to which the protected object belongs.
         self.product = product
         # The name of the protected object.
         self.resource = resource
@@ -110,15 +114,17 @@ class DescribeDefenseResourceResponseBodyResource(DaraModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The origin of the protected object. Valid values:
         # 
-        # *   **custom**
-        # *   **access**
-        self.resource_origin = resource_origin
-        # The response header.
-        self.response_headers = response_headers
-        # Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
+        # - **custom**: The protected object is created through provisioning.
         # 
-        # *   **0**: No Layer 7 proxy is deployed.
-        # *   **1**: A Layer 7 proxy is deployed.
+        # - **access**: The protected object is user-defined.
+        self.resource_origin = resource_origin
+        # The custom response headers configured for the protected object.
+        self.response_headers = response_headers
+        # Indicates whether a Layer 7 proxy such as Anti-DDoS or CDN is enabled in front of WAF. Valid values:
+        # 
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
         self.xff_status = xff_status
 
     def validate(self):
@@ -257,9 +263,9 @@ class DescribeDefenseResourceResponseBodyResourceResponseHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Specifies the key for a custom response header.
+        # The key of the custom response header.
         self.key = key
-        # Specifies the value for a custom response header.
+        # The value of the custom response header.
         self.value = value
 
     def validate(self):

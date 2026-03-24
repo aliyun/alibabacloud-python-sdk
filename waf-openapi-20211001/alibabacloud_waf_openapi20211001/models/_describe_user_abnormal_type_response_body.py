@@ -13,9 +13,9 @@ class DescribeUserAbnormalTypeResponseBody(DaraModel):
         abnormal: List[main_models.DescribeUserAbnormalTypeResponseBodyAbnormal] = None,
         request_id: str = None,
     ):
-        # The types and statistics of risks.
+        # The risk types detected by API security and the number of risks for each type.
         self.abnormal = abnormal
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,15 +60,15 @@ class DescribeUserAbnormalTypeResponseBodyAbnormal(DaraModel):
         abnormal_parent_type: str = None,
         abnormal_type: str = None,
     ):
-        # The code of the risk.
+        # The code that identifies the specific risk, such as `Risk_InternalWeakPasswd`.
         self.abnormal_code = abnormal_code
-        # The number of risks.
+        # The total number of risks detected for this risk type.
         self.abnormal_count = abnormal_count
-        # The parent type of the risk.
+        # The parent category of the risk, such as `RiskType_Account`.
         self.abnormal_parent_type = abnormal_parent_type
-        # The type of the risk.
+        # The type of the risk detected by API security.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
+        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported risk types.
         self.abnormal_type = abnormal_type
 
     def validate(self):

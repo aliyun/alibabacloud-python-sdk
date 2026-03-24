@@ -15,7 +15,7 @@ class DescribeFlowChartResponseBody(DaraModel):
     ):
         # The traffic statistics.
         self.flow_chart = flow_chart
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -100,29 +100,29 @@ class DescribeFlowChartResponseBodyFlowChart(DaraModel):
         self.cc_custom_block_sum = cc_custom_block_sum
         # The number of requests that are monitored by custom HTTP flood protection rules.
         self.cc_custom_reports_sum = cc_custom_reports_sum
-        # The number of requests that are blocked by HTTP flood protection rules created by the system.
+        # The number of requests that are blocked by system HTTP flood protection rules.
         self.cc_system_blocks_sum = cc_system_blocks_sum
-        # The number of requests that are monitored by HTTP flood protection rules created by the system.
+        # The number of requests that are monitored by system HTTP flood protection rules.
         self.cc_system_reports_sum = cc_system_reports_sum
         # The total number of requests.
         self.count = count
-        # The total number of requests that are redirected to the WAF instance.
+        # The total volume of inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # The serial number of the time interval. The serial numbers are arranged in chronological order.
+        # The time sequence number, sorted in chronological order.
         self.index = index
-        # The peak traffic.
+        # The peak number of requests.
         self.max_pv = max_pv
-        # The total number of requests that are forwarded by the WAF instance.
+        # The total volume of outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
-        # The number of requests that are blocked by rate limiting rules.
+        # The number of requests that are blocked by peak traffic throttling rules.
         self.ratelimit_block_sum = ratelimit_block_sum
-        # The number of requests that are monitored by rate limiting rules.
+        # The number of requests that are monitored by peak traffic throttling rules.
         self.ratelimit_report_sum = ratelimit_report_sum
-        # The number of requests that are blocked by region blacklist rules.
+        # The number of requests that are blocked by Location Blacklist rules.
         self.region_block_blocks_sum = region_block_blocks_sum
-        # The number of requests that are monitored by region blacklist rules.
+        # The number of requests that are monitored by Location Blacklist rules.
         self.region_block_reports_sum = region_block_reports_sum
-        # The total number of bot requests.
+        # The total number of requests from bots.
         self.robot_count = robot_count
         # The number of requests that are blocked by basic protection rules.
         self.waf_block_sum = waf_block_sum

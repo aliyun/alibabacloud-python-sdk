@@ -15,26 +15,39 @@ class DescribeDefenseRuleRequest(DaraModel):
         rule_id: int = None,
         template_id: int = None,
     ):
+        # The type of the protection rule. Valid values:
+        # 
+        # - **template** (default): a protection rule template.
+        # 
+        # - **resource**: a rule for a protected object.
+        # 
+        # - **global**: a global rule.
         self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The protected object to which the protection rule applies.
+        # 
+        # > This parameter is required only when **DefenseType** is set to **resource**.
         self.resource = resource
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the protection rule that you want to query.
+        # The ID of the protection rule.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The ID of the protection rule template to which the protection rule that you want to query belongs.
+        # The ID of the protection rule template.
+        # 
+        # > This parameter is required only when **DefenseType** is set to **template**.
         self.template_id = template_id
 
     def validate(self):

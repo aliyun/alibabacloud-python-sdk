@@ -19,33 +19,37 @@ class DescribeMajorProtectionBlackIpsRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address that you want to query. You can specify this parameter to query an IP address in the IP address blacklist for major event protection by using fuzzy matching.
+        # The IP address to query. You can set this parameter to perform a fuzzy query on the added IP address blacklist.
         self.ip_like = ip_like
-        # The method that you want to use to sort the IP addresses **in descending order**. Valid values:
+        # The property by which to sort the results in **descending order**. Valid values:
         # 
-        # *   **gmtModified:** sorts the IP addresses by most recent modification time.
-        # *   **ip:** sorts the IP addresses by IP address.
-        # *   **templateId:** sorts the IP addresses by template ID.
-        # *   **id:** sorts the IP addresses by primary key.
+        # - **gmtModified**: sorts by modification time.
+        # 
+        # - **ip**: sorts by IP address.
+        # 
+        # - **templateId**: sorts by template ID.
+        # 
+        # - **id**: sorts by primary key.
         self.order_by = order_by
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: regions outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the IP address blacklist rule for major event protection.
+        # The ID of the IP address blacklist rule for critical event protection.
         self.rule_id = rule_id
-        # The ID of the rule template for major event protection.
+        # The ID of the critical event protection template.
         self.template_id = template_id
 
     def validate(self):

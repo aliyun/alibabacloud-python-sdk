@@ -14,11 +14,11 @@ class DescribeApisecApiResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The API assets.
+        # The list of API assets.
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,91 +89,101 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         note: str = None,
         resources: List[str] = None,
     ):
-        # The number of API-related risks.
+        # The number of threats associated with the API.
         self.abnormal_num = abnormal_num
+        # The number of account security events associated with the API.
         self.account_event_num = account_event_num
-        # The total number of calls to this API in the previous 30 days.
+        # The total number of requests in the last 30 days.
         self.all_cnt = all_cnt
-        # The API.
+        # The API endpoint path.
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
-        # The API-related information. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
+        # The detailed information about the API. The value is a JSON string that contains the following fields:
         # 
-        # * **param_num**: the number of API parameters
-        # * **request_method**: the request method
-        # * **protocol**: the request protocol
-        # * **api_url**: the request URL
-        # * **poc_payload**: the request
-        # * **request**: the sample request
-        # * **response**: the sample response
-        # * **param**: the request parameters
+        # - **param_num**: the number of API parameters.
+        # 
+        # - **request_method**: the request method.
+        # 
+        # - **protocol**: the request protocol.
+        # 
+        # - **api_url**: the request URL.
+        # 
+        # - **poc_payload**: the request.
+        # 
+        # - **request**: the request sample.
+        # 
+        # - **response**: the response sample.
+        # 
+        # - **param**: the request parameters.
+        # 
+        # > This parameter is returned only when you specify the **ApiId** request parameter.
         self.api_info = api_info
-        # The request method of the API. Valid values:
-        # 
-        # * **GET**
-        # * **POST**
-        # * **HEAD**
-        # * **PUT**
-        # * **DELETE**
-        # * **CONNECT**
-        # * **PATCH**
-        # * **OPTIONS**
+        # The HTTP request method of the API. Valid values: **GET**, **POST**, **HEAD**, **PUT**, **DELETE**, **CONNECT**, **PATCH**, and **OPTIONS**.
         self.api_method = api_method
-        # The API-related sensitive information. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
+        # The sensitive data classification of the API. The value is a JSON string that contains the following fields:
         # 
-        # * **request_sensitive_list**: the sensitive data type in the request
-        # * **response_sensitive_list**: the sensitive data type in the response
-        # * **sensitive_list**: sensitive data types
-        # * **sensitive_level**: sensitivity level
+        # - **request_sensitive_list**: the list of sensitive data types in the request.
+        # 
+        # - **response_sensitive_list**: the list of sensitive data types in the response.
+        # 
+        # - **sensitive_list**: the list of sensitive data types.
+        # 
+        # - **sensitive_level**: the sensitivity level.
         self.api_sensitive = api_sensitive
-        # The sensitive data type in the request.
+        # The types of sensitive data detected in the API request. The value is a JSON array of sensitive data type IDs.
         self.api_sensitive_request = api_sensitive_request
-        # The sensitive data type in the response.
+        # The types of sensitive data detected in the API response. The value is a JSON array of sensitive data type IDs.
         self.api_sensitive_response = api_sensitive_response
-        # The API status. Valid values:
+        # The lifecycle status of the API. Valid values:
         # 
-        # *   **NewbornInterface**: The API is newly added.
-        # *   **OfflineInterface**: The API is inactive.
-        # *   **normal**: The API is normal.
+        # - **NewbornInterface**: newly discovered.
+        # 
+        # - **OfflineInterface**: inactive.
+        # 
+        # - **normal**: active.
         self.api_status = api_status
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
+        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported business purposes.
         self.api_tag = api_tag
-        # The service object. Valid values:
+        # The type of service that the API serves. Valid values:
         # 
-        # *   **PublicAPI**: public services
-        # *   **ThirdpartAPI**: cooperation with third-party partners
-        # *   **InternalAPI**: internal office
+        # - **PublicAPI**: public-facing service.
+        # 
+        # - **ThirdpartAPI**: third-party service.
+        # 
+        # - **InternalAPI**: internal service.
         self.api_type = api_type
-        # Indicates whether authentication is required. Valid values:
+        # Indicates whether the API requires authentication. Valid values:
         # 
-        # * **0**: Authentication is required.
-        # * **1**: Authentication is not required.
+        # - **0**: The API requires authentication.
+        # 
+        # - **1**: The API does not require authentication.
         self.auth_flag = auth_flag
-        # The number of bot-initiated requests in the previous 30 days.
+        # The number of bot requests in the last 30 days.
         self.bot_cnt = bot_cnt
-        # The number of the cross-border requests in the previous 30 days.
+        # The number of cross-border requests in the last 30 days.
         self.cross_border_cnt = cross_border_cnt
-        # The number of API-related security events.
+        # The number of security events associated with the API.
         self.event_num = event_num
-        # The sample APIs.
+        # The list of API samples.
         self.examples = examples
-        # The time when the API asset was first detected. This value is a UNIX timestamp in UTC. Unit: seconds.
+        # The time when the API was first discovered. The value is a UNIX timestamp. Unit: seconds.
         self.farthest_ts = farthest_ts
-        # Specifies whether to follow the API. Valid values:
+        # Indicates whether the API is followed. Valid values:
         # 
-        # *   **1**: follows the API.
-        # *   **0**: does not follow the API.
+        # - **1**: The API is followed.
+        # 
+        # - **0**: The API is not followed.
         self.follow = follow
-        # The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time of the most recent access to the API. The value is a UNIX timestamp. Unit: seconds.
         self.lastest_ts = lastest_ts
-        # The domain name or IP address of the API.
+        # The domain name or IP address that the API resides on.
         self.matched_host = matched_host
-        # The remarks.
+        # The remarks of the API asset.
         self.note = note
-        # The list of protection objects corresponding to this asset.
+        # The list of protected objects associated with the API.
         self.resources = resources
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribeApisecEventDomainStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The response parameters.
+        # The API security event statistics grouped by domain name.
         self.data = data
-        # Id of the request.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of domain names that have API security events.
         self.total_count = total_count
 
     def validate(self):
@@ -70,15 +70,15 @@ class DescribeApisecEventDomainStatisticResponseBodyData(DaraModel):
         low: int = None,
         medium: int = None,
     ):
-        # The number of APIs.
+        # The total number of APIs that have security events for the domain name.
         self.api_count = api_count
-        # The domain name.
+        # The domain name that is protected by WAF.
         self.domain = domain
-        # The number of high-risk security events.
+        # The number of high-risk security events for the domain name.
         self.high = high
-        # The number of low-risk security events.
+        # The number of low-risk security events for the domain name.
         self.low = low
-        # The number of medium-risk security events.
+        # The number of medium-risk security events for the domain name.
         self.medium = medium
 
     def validate(self):

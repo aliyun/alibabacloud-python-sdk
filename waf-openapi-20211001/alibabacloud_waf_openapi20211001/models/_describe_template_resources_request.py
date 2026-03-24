@@ -17,31 +17,39 @@ class DescribeTemplateResourcesRequest(DaraModel):
         resource_type: str = None,
         template_id: int = None,
     ):
+        # The API of the protected asset for the fuzzy query.
         self.asset_api = asset_api
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 500. Default value: 500.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. This is the value of the **NextToken** parameter returned from the last API call. You do not need to specify this parameter for the first query.
         self.next_token = next_token
         # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The name of the protected object or protected object group for the fuzzy query.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the protected resource. Valid values:
         # 
-        # *   **single:** protected object.
-        # *   **group:** protected object group.
+        # - **single**: a protected object.
+        # 
+        # - **group**: a protected object group.
+        # 
+        # - **asset**: a protected asset.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The ID of the protection rule template.
+        # The ID of the protection template.
         # 
         # This parameter is required.
         self.template_id = template_id

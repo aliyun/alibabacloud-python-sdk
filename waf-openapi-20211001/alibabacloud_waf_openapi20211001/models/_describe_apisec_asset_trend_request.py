@@ -14,24 +14,27 @@ class DescribeApisecAssetTrendRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The ID of the hybrid cloud cluster.
+        # The ID of the hybrid cloud WAF cluster.
+        # 
+        # > This parameter is applicable only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the ID of the hybrid cloud WAF cluster.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region in which the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

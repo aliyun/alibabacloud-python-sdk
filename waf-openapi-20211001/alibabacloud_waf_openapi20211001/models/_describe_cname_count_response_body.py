@@ -11,7 +11,7 @@ class DescribeCnameCountResponseBody(DaraModel):
         cname_count: main_models.DescribeCnameCountResponseBodyCnameCount = None,
         request_id: str = None,
     ):
-        # The information about the number of domain names that are added to WAF in CNAME record mode and hybrid cloud reverse proxy mode.
+        # The number of CNAME records that are added.
         self.cname_count = cname_count
         # The ID of the request.
         self.request_id = request_id
@@ -51,11 +51,11 @@ class DescribeCnameCountResponseBodyCnameCount(DaraModel):
         hybrid_cloud_cname: int = None,
         total: int = None,
     ):
-        # The number of domain names that are added to WAF in CNAME record mode.
+        # The number of domain names that are added in CNAME mode.
         self.cname = cname
-        # The number of domain names that are added to WAF in hybrid cloud reverse proxy mode.
+        # The number of domain names that are added in hybrid cloud mode.
         self.hybrid_cloud_cname = hybrid_cloud_cname
-        # The total number of domain names that are added to WAF in CNAME record mode and hybrid cloud reverse proxy mode.
+        # The total number of domain names.
         self.total = total
 
     def validate(self):

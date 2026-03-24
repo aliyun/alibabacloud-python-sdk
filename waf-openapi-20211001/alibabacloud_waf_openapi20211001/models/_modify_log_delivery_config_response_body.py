@@ -10,7 +10,7 @@ class ModifyLogDeliveryConfigResponseBody(DaraModel):
         delivery_name: str = None,
         request_id: str = None,
     ):
-        # The name of the log delivery configuration.
+        # The name of the log delivery configuration that was modified.
         self.delivery_name = delivery_name
         # The request ID.
         self.request_id = request_id

@@ -12,10 +12,11 @@ class DescribeSlsLogStoreStatusResponseBody(DaraModel):
     ):
         # Indicates whether a Logstore is created for WAF. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: A Logstore is created.
+        # 
+        # - **false**: No Logstore is created.
         self.exist_status = exist_status
-        # The request ID.
+        # The request ID
         self.request_id = request_id
 
     def validate(self):

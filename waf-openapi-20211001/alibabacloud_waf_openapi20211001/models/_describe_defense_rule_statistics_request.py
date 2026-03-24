@@ -16,16 +16,33 @@ class DescribeDefenseRuleStatisticsRequest(DaraModel):
         template_id: int = None,
         third_key: str = None,
     ):
+        # The quaternary condition by which to group the rule statistics. This value cannot be the same as the primary, secondary, or tertiary condition.
         self.fourth_key = fourth_key
+        # The ID of the WAF instance.
+        # 
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The primary condition by which to group the rule statistics.
+        # 
         # This parameter is required.
         self.primary_key = primary_key
+        # The region of the WAF instance. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The secondary condition by which to group the rule statistics. This value cannot be the same as the primary condition.
         self.secondary_key = secondary_key
+        # The ID of the protection template.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The tertiary condition by which to group the rule statistics. This value cannot be the same as the primary or secondary condition.
         self.third_key = third_key
 
     def validate(self):

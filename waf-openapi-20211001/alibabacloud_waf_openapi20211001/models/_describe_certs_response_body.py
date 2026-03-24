@@ -14,9 +14,9 @@ class DescribeCertsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The certificates.
+        # The list of certificates.
         self.certs = certs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -72,22 +72,23 @@ class DescribeCertsResponseBodyCerts(DaraModel):
         domain: str = None,
         is_chain_completed: bool = None,
     ):
-        # The expiration time.
+        # The time when the certificate expires.
         self.after_date = after_date
-        # The effective time.
+        # The time when the certificate takes effect.
         self.before_date = before_date
-        # The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-ap-southeast-1" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-ap-southeast-1.
+        # The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
         self.cert_identifier = cert_identifier
         # The name of the certificate.
         self.cert_name = cert_name
         # The common name.
         self.common_name = common_name
-        # The domain that is supported by the certificate.
+        # The domain name for which the certificate is issued.
         self.domain = domain
         # Indicates whether the certificate chain is complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The certificate chain is complete.
+        # 
+        # - **false**: The certificate chain is incomplete.
         self.is_chain_completed = is_chain_completed
 
     def validate(self):

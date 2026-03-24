@@ -13,7 +13,7 @@ class DescribeDDoSStatusResponseBody(DaraModel):
         ddo_sstatus: List[main_models.DescribeDDoSStatusResponseBodyDDoSStatus] = None,
         request_id: str = None,
     ):
-        # Indicates whether DDoS attacks occur on specific domain names.
+        # The current DDoS status.
         self.ddo_sstatus = ddo_sstatus
         # The ID of the request.
         self.request_id = request_id
@@ -58,14 +58,15 @@ class DescribeDDoSStatusResponseBodyDDoSStatus(DaraModel):
         event_type: str = None,
         status: str = None,
     ):
-        # The type of events that are triggered by DDoS attacks. Valid values:
+        # The name of the event type. Valid values:
         # 
-        # *   defense: traffic scrubbing events.
-        # *   blackhole: blackhole filtering events.
+        # - defense: DDoS traffic scrubbing event.
+        # 
+        # - blackhole: DDoS blackhole filtering event.
         self.event_type = event_type
-        # Indicates whether DDoS attacks occur on specific domain names. Valid value:
+        # The DDoS status:
         # 
-        # *   **doing**: DDoS attacks occur on specific domain names.
+        # **doing**: Under DDoS attack.
         self.status = status
 
     def validate(self):

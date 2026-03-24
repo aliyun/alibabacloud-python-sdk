@@ -14,20 +14,21 @@ class DescribeDefenseResourceNamesRequest(DaraModel):
         resource: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The page number of the paginated results. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page. Default value: **20**.
+        # The number of entries per page. Default value: **20**, which indicates 20 entries per page.
         self.page_size = page_size
         # The region in which the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: The Chinese mainland.
+        # 
+        # - **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object that you want to query.
         self.resource = resource

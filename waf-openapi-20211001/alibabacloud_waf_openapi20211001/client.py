@@ -1191,6 +1191,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.defense_scene):
             query['DefenseScene'] = request.defense_scene
+        if not DaraCore.is_null(request.defense_sub_scene):
+            query['DefenseSubScene'] = request.defense_sub_scene
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
@@ -1239,6 +1241,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.defense_scene):
             query['DefenseScene'] = request.defense_scene
+        if not DaraCore.is_null(request.defense_sub_scene):
+            query['DefenseSubScene'] = request.defense_sub_scene
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):

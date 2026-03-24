@@ -13,9 +13,9 @@ class DescribeApisecAssetTrendResponseBody(DaraModel):
         data: List[main_models.DescribeApisecAssetTrendResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The API asset trend data.
         self.data = data
-        # Id of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeApisecAssetTrendResponseBodyData(DaraModel):
         asset_offline: int = None,
         timestamp: int = None,
     ):
-        # The number of active assets.
+        # The number of active APIs.
         self.asset_active = asset_active
-        # The total number of assets.
+        # The total number of API assets.
         self.asset_count = asset_count
-        # The number of deactivated assets.
+        # The number of inactive APIs.
         self.asset_offline = asset_offline
-        # The time for statistics. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The timestamp of the data point. This value is a UNIX timestamp. Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):

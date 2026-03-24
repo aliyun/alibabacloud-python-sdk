@@ -11,9 +11,9 @@ class ModifyDomainResponseBody(DaraModel):
         domain_info: main_models.ModifyDomainResponseBodyDomainInfo = None,
         request_id: str = None,
     ):
-        # The information about the domain name.
+        # The information about the modified domain name.
         self.domain_info = domain_info
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,7 +53,7 @@ class ModifyDomainResponseBodyDomainInfo(DaraModel):
     ):
         # The CNAME that is assigned by WAF to the domain name.
         self.cname = cname
-        # The domain name whose access configurations you modified.
+        # The domain name whose configurations are modified.
         self.domain = domain
         # The ID of the domain name.
         self.domain_id = domain_id

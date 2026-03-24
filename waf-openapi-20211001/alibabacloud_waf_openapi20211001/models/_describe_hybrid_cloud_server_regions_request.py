@@ -15,28 +15,29 @@ class DescribeHybridCloudServerRegionsRequest(DaraModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The code of the region.
-        # 
-        # >  This parameter is required if you set RegionType to region. The value is the code of the city.
+        # The region code. Use this parameter to filter results by a specific continent or area.>Notice: This parameter is required when `RegionType` is set to `region`. Set the value to the code of the continent that you want to query.
         self.region_code = region_code
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region in which the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The type of the region. Valid values:
         # 
-        # *   **operator**: the ISP.
-        # *   **continents**: the continent.
-        # *   **region**: the city.
+        # - **operator**: queries carriers.
+        # 
+        # - **continents**: queries continents.
+        # 
+        # - **region**: queries cities.
         # 
         # This parameter is required.
         self.region_type = region_type
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

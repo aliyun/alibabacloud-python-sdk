@@ -10,9 +10,9 @@ class CreateDefenseTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the protection rule template.
+        # The ID of the protection template.
         self.template_id = template_id
 
     def validate(self):

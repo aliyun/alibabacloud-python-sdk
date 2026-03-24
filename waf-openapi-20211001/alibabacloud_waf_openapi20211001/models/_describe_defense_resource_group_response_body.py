@@ -13,7 +13,7 @@ class DescribeDefenseResourceGroupResponseBody(DaraModel):
     ):
         # The information about the protected object group.
         self.group = group
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,13 +55,13 @@ class DescribeDefenseResourceGroupResponseBodyGroup(DaraModel):
     ):
         # The description of the protected object group.
         self.description = description
-        # The time when the protected object group was created.
+        # The timestamp when the protected object group was created.
         self.gmt_create = gmt_create
-        # The most recent time when the protected object group was modified.
+        # The timestamp when the protected object group was modified.
         self.gmt_modified = gmt_modified
-        # The name of the protected object group.
+        # The name of the protected object group that you want to query.
         self.group_name = group_name
-        # The protected objects in the protected object group. The protected objects are separated with commas (,).
+        # All the protected objects that are added to the protected object group. Separate the protected objects with commas (,).
         self.resource_list = resource_list
 
     def validate(self):

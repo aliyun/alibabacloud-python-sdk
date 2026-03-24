@@ -23,28 +23,33 @@ class DescribeDomainDetailResponseBody(DaraModel):
     ):
         # The details of the SSL certificate.
         self.cert_detail = cert_detail
-        # The CNAME that is assigned by WAF to the domain name.
+        # The CNAME assigned by WAF to the domain name.
         self.cname = cname
-        # The domain name.
+        # The domain name that is onboarded to WAF.
         self.domain = domain
+        # The ID of the domain name that is onboarded to WAF.
         self.domain_id = domain_id
-        # The configurations of the listeners.
+        # The listener configurations.
         self.listen = listen
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         self.redirect = redirect
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The information about the SM certificate.
+        # The details of the SM certificate.
         self.sm2cert_detail = sm2cert_detail
         # The status of the domain name. Valid values:
         # 
-        # *   **1:** The domain name is in a normal state.
-        # *   **2:** The domain name is being created.
-        # *   **3:** The domain name is being modified.
-        # *   **4:** The domain name is being released.
-        # *   **5:** WAF no longer forwards traffic of the domain name.
+        # - **1**: The domain name is in normal status.
+        # 
+        # - **2**: The domain name is being created.
+        # 
+        # - **3**: The domain name is being modified.
+        # 
+        # - **4**: The domain name is being released.
+        # 
+        # - **5**: The domain name stops forwarding traffic.
         self.status = status
 
     def validate(self):
@@ -142,17 +147,17 @@ class DescribeDomainDetailResponseBodySM2CertDetail(DaraModel):
         sans: List[str] = None,
         start_time: int = None,
     ):
-        # The domain name of your website.
+        # The common name of the SM certificate.
         self.common_name = common_name
-        # The end of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the validity period of the SM certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The ID of the SSL certificate.
+        # The ID of the SM certificate.
         self.id = id
-        # The name of the SSL certificate.
+        # The name of the SM certificate.
         self.name = name
-        # All domain names that are bound to the certificate.
+        # The domain names that are bound to the SM certificate.
         self.sans = sans
-        # The beginning of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the validity period of the SM certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -235,69 +240,113 @@ class DescribeDomainDetailResponseBodyRedirect(DaraModel):
         xtrue_ip: bool = None,
         xff_proto: bool = None,
     ):
+        # The list of IP addresses or domain names of the backup origin servers for the domain name.
         self.back_up_backend_list = back_up_backend_list
+        # The list of IP addresses or domain names of the origin servers for the domain name.
         self.backend_list = backend_list
+        # The custom back-to-origin port mappings. By default, the back-to-origin port is the same as the listener port.
         self.backend_ports = backend_ports
-        # An array of addresses of origin servers.
+        # The addresses of origin servers.
+        # 
+        # > This parameter will be deprecated. We recommend that you use **BackendList** instead.
         self.backends = backends
-        # An array of HTTPS listener ports.
+        # The addresses of backup origin servers.
+        # 
+        # > This parameter will be deprecated. We recommend that you use **BackUpBackendList** instead.
         self.backup_backends = backup_backends
-        # The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
+        # The timeout period for connections. Unit: seconds. Valid values: 5 to 120.
         self.connect_timeout = connect_timeout
-        # Indicates whether HTTPS to HTTP redirection is enabled for back-to-origin requests of the domain name. Valid values:
+        # Indicates whether back-to-origin requests are forced to use HTTP. Valid values:
         # 
-        # *   **true:** HTTPS to HTTP redirection for back-to-origin requests of the domain name is enabled.
-        # *   **false:** HTTPS to HTTP redirection for back-to-origin requests of the domain name is disabled.
+        # - **true**: Requests are forced to use HTTP.
+        # 
+        # - **false**: Requests are not forced to use HTTP.
         self.focus_http_backend = focus_http_backend
+        # Indicates whether HTTP/2 is enabled for back-to-origin requests.
         self.http_2origin = http_2origin
+        # The maximum number of concurrent connections for HTTP/2 back-to-origin requests.
         self.http_2origin_max_concurrency = http_2origin_max_concurrency
-        # Indicates whether the persistent connection feature is enabled. Valid values:
+        # Indicates whether persistent connections are enabled. Valid values:
         # 
-        # *   **true:** The persistent connection feature is enabled. This is the default value.
-        # *   **false:** The persistent connection feature is disabled.
+        # - **true** (default): Persistent connections are enabled.
+        # 
+        # - **false**: Persistent connections are disabled.
         self.keepalive = keepalive
-        # The number of reused persistent connections. Valid values: 60 to 1000.
+        # The maximum number of requests that reuse a persistent connection. Valid values: 60 to 1,000.
         # 
-        # >  This parameter specifies the number of reused persistent connections when you enable the persistent connection feature.
+        # > The number of reused persistent connections after the persistent connection feature is enabled.
         self.keepalive_requests = keepalive_requests
-        # The timeout period of persistent connections that are in the Idle state. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         # 
-        # >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+        # > The period of time during which a reused persistent connection is allowed to remain idle before the connection is closed.
         self.keepalive_timeout = keepalive_timeout
-        # The load balancing algorithm that is used when WAF forwards requests to the origin server. Valid values:
+        # The load balancing algorithm used when WAF forwards requests to the origin server. Valid values:
         # 
-        # *   **ip_hash:** the IP hash algorithm.
-        # *   **roundRobin:** the round-robin algorithm.
-        # *   **leastTime:** the least response time algorithm.
+        # - **iphash**: the IP hash algorithm.
+        # 
+        # - **roundRobin**: the round-robin algorithm.
+        # 
+        # - **leastTime**: the least time algorithm.
         self.loadbalance = loadbalance
-        self.max_body_size = max_body_size
-        self.proxy_protocol = proxy_protocol
-        # The read timeout period. Unit: seconds. Valid values: 5 to 1800.
-        self.read_timeout = read_timeout
-        # An array of key-value pairs that are used to mark the requests that pass through the WAF instance.
-        self.request_headers = request_headers
-        # Indicates whether WAF retries when requests fail to be forwarded to the origin server. Valid values:
+        # The maximum size of a request body. Valid values: 2 to 10. Default value: 2. Unit: GB.
         # 
-        # *   **true:** WAF retries. This is the default value.
-        # *   **false:** WAF does not retry.
+        # > This feature is available only for the Ultimate edition.
+        self.max_body_size = max_body_size
+        # Indicates whether the Proxy Protocol feature is enabled for back-to-origin requests. Valid values:
+        # 
+        # - **true**: The Proxy Protocol feature is enabled.
+        # 
+        # - **false**: The Proxy Protocol feature is disabled.
+        self.proxy_protocol = proxy_protocol
+        # The timeout period for read operations. Unit: seconds. Valid values: 5 to 1,800.
+        self.read_timeout = read_timeout
+        # The custom header fields used to mark requests that pass through WAF.
+        self.request_headers = request_headers
+        # Indicates whether WAF retries forwarding requests to the origin server upon failure. Valid values:
+        # 
+        # - **true** (default): WAF retries.
+        # 
+        # - **false**: WAF does not retry.
         self.retry = retry
         # Indicates whether origin Server Name Indication (SNI) is enabled. Valid values:
         # 
-        # *   **true:** Origin SNI is enabled.
-        # *   **false:** Origin SNI is disabled. This is the default value.
-        self.sni_enabled = sni_enabled
-        # The value of the custom SNI field.
-        self.sni_host = sni_host
-        self.wlproxy_client_ip = wlproxy_client_ip
-        self.web_server_type = web_server_type
-        # The write timeout period. Unit: seconds. Valid values: 5 to 1800.
-        self.write_timeout = write_timeout
-        self.xclient_ip = xclient_ip
-        self.xtrue_ip = xtrue_ip
-        # Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+        # - **true**: Origin SNI is enabled.
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **false** (default): Origin SNI is not enabled.
+        self.sni_enabled = sni_enabled
+        # The value of the SNI field.
+        self.sni_host = sni_host
+        # Indicates whether the WL-Proxy-Client-IP header is included in back-to-origin requests. Valid values:
+        # 
+        # - **true** (default): The WL-Proxy-Client-IP header is included.
+        # 
+        # - **false**: The WL-Proxy-Client-IP header is not included.
+        self.wlproxy_client_ip = wlproxy_client_ip
+        # Indicates whether the Web-Server-Type header is included in back-to-origin requests. Valid values:
+        # 
+        # - **true** (default): The Web-Server-Type header is included.
+        # 
+        # - **false**: The Web-Server-Type header is not included.
+        self.web_server_type = web_server_type
+        # The timeout period for write operations. Unit: seconds. Valid values: 5 to 1,800.
+        self.write_timeout = write_timeout
+        # Indicates whether the X-Client-IP header is included in back-to-origin requests. Valid values:
+        # 
+        # - **true** (default): The X-Client-IP header is included.
+        # 
+        # - **false**: The X-Client-IP header is not included.
+        self.xclient_ip = xclient_ip
+        # Indicates whether the X-True-IP header is included in back-to-origin requests. Valid values:
+        # 
+        # - **true** (default): The X-True-IP header is included.
+        # 
+        # - **false**: The X-True-IP header is not included.
+        self.xtrue_ip = xtrue_ip
+        # Indicates whether the X-Forward-For-Proto header is included in back-to-origin requests to pass the protocol used by WAF. Valid values:
+        # 
+        # - **true** (default): The X-Forward-For-Proto header is included.
+        # 
+        # - **false**: The X-Forward-For-Proto header is not included.
         self.xff_proto = xff_proto
 
     def validate(self):
@@ -511,7 +560,7 @@ class DescribeDomainDetailResponseBodyRedirectRequestHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The custom header field.
+        # The key of the custom header field.
         self.key = key
         # The value of the custom header field.
         self.value = value
@@ -547,7 +596,7 @@ class DescribeDomainDetailResponseBodyRedirectBackupBackends(DaraModel):
         self,
         backend: str = None,
     ):
-        # The back-to-origin IP address or domain name.
+        # The backup IP address or domain name of the origin server.
         self.backend = backend
 
     def validate(self):
@@ -605,8 +654,15 @@ class DescribeDomainDetailResponseBodyRedirectBackendPorts(DaraModel):
         listen_port: int = None,
         protocol: str = None,
     ):
+        # The back-to-origin port.
         self.backend_port = backend_port
+        # The listener port.
         self.listen_port = listen_port
+        # The protocol of the back-to-origin port. Valid values:
+        # 
+        # - **http**: HTTP.
+        # 
+        # - **https**: HTTPS.
         self.protocol = protocol
 
     def validate(self):
@@ -667,76 +723,101 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
     ):
         # The ID of the certificate.
         self.cert_id = cert_id
-        # The type of the cipher suites. Valid values:
+        # The type of cipher suite. Valid values:
         # 
-        # *   **1:** all cipher suites.
-        # *   **2:** strong cipher suites.
-        # *   **99:** custom cipher suites.
+        # - **1**: all cipher suites.
+        # 
+        # - **2**: strong cipher suites.
+        # 
+        # - **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
-        # An array of custom cipher suites.
+        # The custom cipher suites.
         self.custom_ciphers = custom_ciphers
         # Indicates whether TLS 1.3 is supported. Valid values:
         # 
-        # *   **true:** TLS 1.3 is supported.
-        # *   **false:** TLS 1.3 is not supported.
-        self.enable_tlsv_3 = enable_tlsv_3
-        # Indicates whether an exclusive IP address is enabled. Valid values:
+        # - **true**: TLS 1.3 is supported.
         # 
-        # *   **true:** An exclusive IP address is enabled for the domain name.
-        # *   **false:** No exclusive IP addresses are enabled for the domain name.
+        # - **false**: TLS 1.3 is not supported.
+        self.enable_tlsv_3 = enable_tlsv_3
+        # Indicates whether an exclusive IP address is enabled for the domain name. Valid values:
+        # 
+        # - **true**: An exclusive IP address is enabled for the domain name.
+        # 
+        # - **false**: An exclusive IP address is not enabled for the domain name.
         self.exclusive_ip = exclusive_ip
         # Indicates whether HTTP to HTTPS redirection is enabled for the domain name. Valid values:
         # 
-        # *   **true:** HTTP to HTTPS redirection is enabled.
-        # *   **false:** HTTP to HTTPS redirection is disabled.
+        # - **true**: HTTP to HTTPS redirection is enabled for the domain name.
+        # 
+        # - **false**: HTTP to HTTPS redirection is not enabled for the domain name.
         self.focus_https = focus_https
+        # Indicates whether HSTS includes subdomains. Valid values:
+        # 
+        # - **true**: HSTS includes subdomains.
+        # 
+        # - **false**: HSTS does not include subdomains.
         self.hsts_include_sub_domain = hsts_include_sub_domain
+        # The maximum age value of the HSTS policy. Unit: seconds.
         self.hsts_max_age = hsts_max_age
+        # Indicates whether HSTS preload is enabled. Default value: false. Valid values:
+        # 
+        # - **true**: HSTS preload is enabled.
+        # 
+        # - **false**: HSTS preload is disabled.
         self.hsts_preload = hsts_preload
         # Indicates whether HTTP/2 is enabled. Valid values:
         # 
-        # *   **true:** HTTP/2 is enabled.
-        # *   **false:** HTTP/2 is disabled.
+        # - **true**: HTTP/2 is enabled.
+        # 
+        # - **false**: HTTP/2 is not enabled.
         self.http_2enabled = http_2enabled
-        # An array of HTTP listener ports.
+        # The HTTP listener ports.
         self.http_ports = http_ports
-        # An array of HTTPS listener ports.
+        # The HTTPS listener ports.
         self.https_ports = https_ports
         # Indicates whether IPv6 is enabled. Valid values:
         # 
-        # *   **true:** IPv6 is enabled.
-        # *   **false:** IPv6 is disabled.
+        # - **true**: IPv6 is enabled.
+        # 
+        # - **false**: IPv6 is not enabled.
         self.ipv_6enabled = ipv_6enabled
-        # The type of protection resource that is used. Valid values:
+        # The type of the protection resource. Valid values:
         # 
-        # *   **share:** shared cluster.
-        # *   **gslb:** shared cluster-based intelligent load balancing.
+        # - **share**: shared cluster.
+        # 
+        # - **gslb**: intelligent load balancing for shared clusters.
         self.protection_resource = protection_resource
-        # Indicates whether only SM certificate-based clients can access the domain name. This parameter is returned only if the value of SM2Enabled is true. Valid values:
+        # Indicates whether only SM certificate-based clients can access the domain name. This parameter is available only if you set SM2Enabled to true. Valid values:
         # 
-        # *   true
-        # *   false
+        # - **true**: Only SM certificate-based clients can access the domain name.
+        # 
+        # - **false**: Both SM certificate-based and non-SM certificate-based clients can access the domain name.
         self.sm2access_only = sm2access_only
-        # The ID of the SM certificate that is added. This parameter is returned only if the value of SM2Enabled is true.
+        # The ID of the SM certificate. This parameter is available only if you set SM2Enabled to true.
         self.sm2cert_id = sm2cert_id
         # Indicates whether SM certificate-based verification is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: SM certificate-based verification is enabled.
+        # 
+        # - **false**: SM certificate-based verification is not enabled.
         self.sm2enabled = sm2enabled
         # The version of the Transport Layer Security (TLS) protocol. Valid values:
         # 
-        # *   **tlsv1**
-        # *   **tlsv1.1**
-        # *   **tlsv1.2**
-        self.tlsversion = tlsversion
-        # The method that WAF uses to obtain the actual IP address of a client. Valid values:
+        # - **tlsv1**
         # 
-        # *   **0:** No Layer 7 proxies are deployed in front of WAF.
-        # *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
-        # *   **2:** WAF reads the value of a custom header field as the actual IP address of the client.
+        # - **tlsv1.1**
+        # 
+        # - **tlsv1.2**
+        self.tlsversion = tlsversion
+        # The method that WAF uses to obtain the originating IP address of a client. Valid values:
+        # 
+        # - **0**: The client traffic is not forwarded by a Layer 7 proxy before the traffic reaches WAF.
+        # 
+        # - **1**: WAF reads the first value of the X-Forwarded-For (XFF) field in the request header as the client IP address.
+        # 
+        # - **2**: WAF reads the value of a custom field that you specify in the request header as the client IP address.
         self.xff_header_mode = xff_header_mode
-        # An array of custom header fields that are used to obtain the actual IP address of a client.
+        # The custom header fields used to obtain the actual IP address of a client.
         self.xff_headers = xff_headers
 
     def validate(self):
@@ -883,17 +964,17 @@ class DescribeDomainDetailResponseBodyCertDetail(DaraModel):
         sans: List[str] = None,
         start_time: int = None,
     ):
-        # The domain name of your website.
+        # The common name of the SSL certificate.
         self.common_name = common_name
-        # The end of the validity period of the SSL certificate. The value is in the UNIX timestamp format. Unit: milliseconds.
+        # The end of the validity period of the SSL certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the SSL certificate.
         self.id = id
         # The name of the SSL certificate.
         self.name = name
-        # All domain names that are bound to the certificate.
+        # The domain names that are bound to the certificate.
         self.sans = sans
-        # The beginning of the validity period of the SSL certificate. The value is in the UNIX timestamp format. Unit: milliseconds.
+        # The beginning of the validity period of the SSL certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

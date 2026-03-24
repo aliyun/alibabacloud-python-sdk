@@ -14,7 +14,7 @@ class DescribeSensitiveRequestsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The tracing results of the data.
+        # A list of sensitive data tracing results.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -74,7 +74,7 @@ class DescribeSensitiveRequestsResponseBodyData(DaraModel):
         matched_host: str = None,
         sensitive_list: List[str] = None,
     ):
-        # The number of risks in the previous 30 days.
+        # The number of threats in the last 30 days.
         self.abnormal_count = abnormal_count
         # The API.
         self.api_format = api_format
@@ -84,16 +84,17 @@ class DescribeSensitiveRequestsResponseBodyData(DaraModel):
         self.client_ip = client_ip
         # The evaluation result. Valid values:
         # 
-        # *   **leak**: Data leaks may occur.
-        # *   **none**: No data leak can occur.
+        # - **leak**: A data leak risk is detected.
+        # 
+        # - **none**: No data leak risk is detected.
         self.detection_result = detection_result
-        # The number of events in the previous 30 days.
+        # The number of events in the last 30 days.
         self.event_count = event_count
-        # The statistics of the sensitive data.
+        # A list of statistics about sensitive data.
         self.info_count = info_count
-        # The domain name of the API.
+        # The domain name to which the API belongs.
         self.matched_host = matched_host
-        # The sensitive data.
+        # A list of sensitive data.
         self.sensitive_list = sensitive_list
 
     def validate(self):
@@ -178,7 +179,7 @@ class DescribeSensitiveRequestsResponseBodyDataInfoCount(DaraModel):
         code: str = None,
         count: int = None,
     ):
-        # The type of the sensitive data.
+        # The type of sensitive data.
         self.code = code
         # The number of sensitive data entries.
         self.count = count

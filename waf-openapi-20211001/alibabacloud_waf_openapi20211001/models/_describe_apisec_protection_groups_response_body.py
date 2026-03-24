@@ -14,7 +14,7 @@ class DescribeApisecProtectionGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The protected object groups.
+        # The list of protected object groups.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -69,13 +69,13 @@ class DescribeApisecProtectionGroupsResponseBodyData(DaraModel):
         resource_group: str = None,
         trace_status: int = None,
     ):
-        # The switch of the API security module.
+        # The master switch for API security.
         self.apisec_status = apisec_status
-        # The switch of the compliance check feature.
+        # The compliance check switch.
         self.report_status = report_status
         # The name of the protected object group.
         self.resource_group = resource_group
-        # The switch of the tracing and auditing feature.
+        # The traceability audit switch.
         self.trace_status = trace_status
 
     def validate(self):

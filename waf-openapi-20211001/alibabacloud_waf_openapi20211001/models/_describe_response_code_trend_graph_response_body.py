@@ -13,9 +13,9 @@ class DescribeResponseCodeTrendGraphResponseBody(DaraModel):
         request_id: str = None,
         response_codes: List[main_models.DescribeResponseCodeTrendGraphResponseBodyResponseCodes] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The array of the statistics of the error codes.
+        # The statistics of response codes.
         self.response_codes = response_codes
 
     def validate(self):
@@ -62,17 +62,17 @@ class DescribeResponseCodeTrendGraphResponseBodyResponseCodes(DaraModel):
         code_5xx_pv: int = None,
         index: int = None,
     ):
-        # The number of 302 error codes that are returned.
+        # The number of 302 response codes.
         self.code_302pv = code_302pv
-        # The number of 405 error codes that are returned.
+        # The number of 405 response codes.
         self.code_405pv = code_405pv
-        # The number of 444 error codes that are returned.
+        # The number of 444 response codes.
         self.code_444pv = code_444pv
-        # The number of 499 error codes that are returned.
+        # The number of 499 response codes.
         self.code_499pv = code_499pv
-        # The number of 5xx error codes that are returned.
+        # The number of 5xx response codes.
         self.code_5xx_pv = code_5xx_pv
-        # The serial number of the time interval. The serial numbers are arranged in chronological order.
+        # The serial number of the time interval, sorted in chronological order.
         self.index = index
 
     def validate(self):

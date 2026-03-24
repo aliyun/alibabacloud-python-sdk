@@ -13,7 +13,7 @@ class ModifyHybridCloudSdkPullinStatusRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to view the current WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -21,10 +21,11 @@ class ModifyHybridCloudSdkPullinStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.mid = mid
-        # The status of traffic redirection. Valid values:
+        # The status of traffic redirection. Valid values of the parameter:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**: Enable
+        # 
+        # - **off**: Disable
         # 
         # This parameter is required.
         self.pullin_status = pullin_status

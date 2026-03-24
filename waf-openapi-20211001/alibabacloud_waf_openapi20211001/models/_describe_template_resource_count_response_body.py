@@ -15,7 +15,7 @@ class DescribeTemplateResourceCountResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The number of protected objects or protected object groups for which the protection template takes effect.
+        # An array of resource count objects. Each object contains the number of protected objects, protected object groups, and protected assets that are associated with a protection template.
         self.resource_count = resource_count
 
     def validate(self):
@@ -60,10 +60,11 @@ class DescribeTemplateResourceCountResponseBodyResourceCount(DaraModel):
         single_count: int = None,
         template_id: int = None,
     ):
+        # The number of protected assets that are associated with the protection template.
         self.asset_count = asset_count
-        # The number of protected object groups.
+        # The number of protected object groups that are associated with the protection template.
         self.group_count = group_count
-        # The number of protected objects.
+        # The number of protected objects that are associated with the protection template.
         self.single_count = single_count
         # The ID of the protection template.
         self.template_id = template_id

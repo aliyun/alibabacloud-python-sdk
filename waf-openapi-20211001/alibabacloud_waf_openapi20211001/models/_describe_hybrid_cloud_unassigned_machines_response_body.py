@@ -14,11 +14,11 @@ class DescribeHybridCloudUnassignedMachinesResponseBody(DaraModel):
         total_count: int = None,
         unassigned_machines: List[main_models.DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of unassigned servers returned.
         self.total_count = total_count
-        # The servers that are not assigned to the hybrid cloud cluster.
+        # The unassigned servers in the hybrid cloud cluster.
         self.unassigned_machines = unassigned_machines
 
     def validate(self):
@@ -72,19 +72,19 @@ class DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines(DaraMo
         memory: int = None,
         mid: str = None,
     ):
-        # The number of CPU cores.
+        # The number of CPU cores of the server.
         self.cpu = cpu
-        # The name of the node.
+        # The custom name of the server.
         self.custom_name = custom_name
-        # The host name.
+        # The hostname of the server.
         self.host_name = host_name
         # The IP address of the server.
         self.ip = ip
-        # The media access control (MAC) address of the device.
+        # The MAC address of the server.
         self.mac = mac
-        # The memory size. Unit: KB. A conversion factor of 1,000 is used.
+        # The memory size of the server. Unit: KB.
         self.memory = memory
-        # The ID of the node.
+        # The ID of the server.
         self.mid = mid
 
     def validate(self):

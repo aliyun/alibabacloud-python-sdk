@@ -18,7 +18,7 @@ class ListTagResourcesResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of resources.
+        # The resource list.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource. ALIYUN::WAF::DEFENSERESOURCE is returned.
+        # The resource type. ALIYUN::WAF::DEFENSERESOURCE is returned.
         self.resource_type = resource_type
-        # The key of tag N that is added to the resource.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of tag N that is added to the resource.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

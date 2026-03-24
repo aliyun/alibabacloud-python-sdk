@@ -24,70 +24,79 @@ class CreateHybridCloudClusterRequest(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # The network access mode. Valid values:
+        # The network access mode of the cluster. Valid values:
         # 
-        # *   **internet**: Internet access.
-        # *   **vpc**: internal network access by using Express Connect circuits.
+        # - **internet**: access over the Internet.
+        # 
+        # - **vpc**: access over an Express Connect circuit.
         # 
         # This parameter is required.
         self.access_mode = access_mode
-        # The region where the virtual private cloud (VPC) resides. Valid values:
+        # The region for Express Connect circuit access. Valid values:
         # 
-        # *   **cn-hangzhou**: China (Hangzhou).
-        # *   **cn-beiijng**: China (Beijing).
-        # *   **cn-shanghai**: China (Shanghai).
+        # - **cn-hangzhou**: Hangzhou.
+        # 
+        # - **cn-beijing**: Beijing.
+        # 
+        # - **cn-shanghai**: Shanghai.
         self.access_region = access_region
-        # The name of the cluster.
+        # The name of the hybrid cloud cluster.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The HTTP ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3** format.
+        # The listening ports for the HTTP protocol. Separate multiple ports with commas (,), such as **port1,port2,port3**.
         # 
         # This parameter is required.
         self.http_ports = http_ports
-        # The HTTPS ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3** format.
+        # The listening ports for the HTTPS protocol. Separate multiple ports with commas (,), such as **port1,port2,port3**.
         # 
         # This parameter is required.
         self.https_ports = https_ports
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # > This parameter is deprecated. It no longer returns meaningful data.
         self.log_fields_not_returned = log_fields_not_returned
-        # The number of protection nodes that can be added to the cluster.
+        # The maximum number of protection nodes that can be added to the hybrid cloud cluster.
         # 
         # This parameter is required.
         self.protection_server_count = protection_server_count
-        # The status of the proxy gateway. Valid value:
+        # Indicates whether the proxy gateway is enabled for the cluster. Valid values:
         # 
-        # *   **on**: enabled.
-        # *   **off**: disabled.
+        # - **on**: The proxy gateway is enabled.
+        # 
+        # - **off**: The proxy gateway is disabled.
         self.proxy_status = proxy_status
-        # The type of the cluster. Valid value:
+        # The type of the hybrid cloud cluster. Valid values:
         # 
-        # *   **cname**: reverse proxy cluster.
-        # *   **service**: SDK-based traffic mirroring cluster.
+        # - **cname**: reverse proxy cluster. Traffic is forwarded through CNAME resolution.
+        # 
+        # - **service**: transparent proxy cluster. Traffic is forwarded at the service level.
         self.proxy_type = proxy_type
-        # The region in which the WAF instance is deployed. Valid value:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The remarks about the cluster.
+        # The description of the hybrid cloud cluster.
         self.remark = remark
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The configurations of the rule.
+        # The configuration of the bypass rule, in JSON format. This includes settings such as circuit breaker thresholds, request body size limits, and timeout values.
         self.rule_config = rule_config
-        # The status of manual bypass. Valid values:
+        # Indicates whether manual bypass is enabled for the cluster. Valid values:
         # 
-        # *   **on**: enabled.
-        # *   **off**: disabled.
+        # - **on**: Manual bypass is enabled.
+        # 
+        # - **off**: Manual bypass is disabled.
         self.rule_status = rule_status
-        # The type of the rule. Valid value:
+        # The type of the bypass rule. Valid values:
         # 
-        # *   **bypass**: allows requests without security checks.
+        # - **bypass**: skips WAF security checks and allows traffic to pass through directly.
         self.rule_type = rule_type
 
     def validate(self):

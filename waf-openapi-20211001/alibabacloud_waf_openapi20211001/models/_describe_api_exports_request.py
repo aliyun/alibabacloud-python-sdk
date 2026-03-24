@@ -16,23 +16,25 @@ class DescribeApiExportsRequest(DaraModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Language type. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
-        # - **cn**: Chinese.
+        # - **zh**: Chinese.
+        # 
         # - **en**: English.
         self.lang = lang
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the Web Application Firewall (WAF) instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

@@ -16,9 +16,9 @@ class DescribeSecurityEventTopNMetricResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The top N data entries returned.
+        # An array of the top N statistics.
         self.security_event_top_nvalues = security_event_top_nvalues
-        # The metadata of the data entries returned.
+        # The metadata of the returned data.
         self.top_nmeta_data = top_nmeta_data
 
     def validate(self):
@@ -70,9 +70,9 @@ class DescribeSecurityEventTopNMetricResponseBodyTopNMetaData(DaraModel):
         date_range: main_models.DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange = None,
         units: str = None,
     ):
-        # The time range that is used for the query.
+        # The time range used for the query.
         self.date_range = date_range
-        # The unit of the statistics returned. It is fixed as requests.
+        # The unit of the returned statistics.
         self.units = units
 
     def validate(self):
@@ -109,9 +109,9 @@ class DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange(DaraModel
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        # The end of the time range that was queried. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        # The start of the time range that was queried. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
         self.start_date = start_date
 
     def validate(self):
@@ -147,11 +147,11 @@ class DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues(DaraMod
         name: str = None,
         value: int = None,
     ):
-        # The additional information, such as the protection module for a protection rule whose ID is returned.
+        # Additional information, such as the protection module to which a rule ID belongs.
         self.attribute = attribute
-        # The field value, which varies based on the metric.
+        # The value of a field. The meaning of this parameter varies based on the specified \\`Metric\\`.
         self.name = name
-        # The count for the data entry.
+        # The statistical count used for top N sorting.
         self.value = value
 
     def validate(self):

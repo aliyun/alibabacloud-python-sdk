@@ -16,9 +16,9 @@ class ListTagKeysResponseBody(DaraModel):
     ):
         # The keys and types of the tags.
         self.keys = keys
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token. If NextToken is empty, there are no more results to return.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -69,10 +69,11 @@ class ListTagKeysResponseBodyKeys(DaraModel):
     ):
         # The type of the tag. Valid values:
         # 
-        # *   custom
-        # *   system
+        # - custom: The custom tag.
+        # 
+        # - system: The system tag.
         self.category = category
-        # The key of the tag.
+        # The tag key.
         self.key = key
 
     def validate(self):

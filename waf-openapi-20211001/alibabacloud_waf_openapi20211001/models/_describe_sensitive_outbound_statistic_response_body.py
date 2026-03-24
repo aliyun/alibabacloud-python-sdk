@@ -14,11 +14,11 @@ class DescribeSensitiveOutboundStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The data types of personal information involved in cross-border data transfer.
+        # The list of statistics on outbound transfers of personal information.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries returned for outbound transfer statistics.
         self.total_count = total_count
 
     def validate(self):
@@ -71,29 +71,33 @@ class DescribeSensitiveOutboundStatisticResponseBodyData(DaraModel):
         sensitive_level: str = None,
         sensitive_type: str = None,
     ):
-        # The evaluation result. Valid values:
+        # The assessment result. Valid values:
         # 
-        # *   **report**: Risks exist in cross-border data transfer.
-        # *   **none**: No risks exist in cross-border data transfer.
+        # - **report**: a data outbound transfer threat exists.
+        # 
+        # - **none**: no data outbound transfer threat exists.
         self.detection_result = detection_result
-        # The total number of entries returned.
+        # The total number of personal information data entries detected.
         self.info_count = info_count
-        # The number of data entries that are transferred across borders.
+        # The number of outbound transfer data entries for the sensitive data type.
         self.outbound_count = outbound_count
-        # The type of the sensitive data.
+        # The code that represents the type of sensitive data.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported sensitive data types.
         self.sensitive_code = sensitive_code
         # The sensitivity level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
-        self.sensitive_level = sensitive_level
-        # The type of the information. Valid values:
+        # - **high**: high.
         # 
-        # *   **info**: full personal information
-        # *   **sensitive**: sensitive personal information
+        # - **medium**: medium.
+        # 
+        # - **low**: low.
+        self.sensitive_level = sensitive_level
+        # The type of information. Valid values:
+        # 
+        # - **info**: all personal information.
+        # 
+        # - **sensitive**: only sensitive personal information.
         self.sensitive_type = sensitive_type
 
     def validate(self):

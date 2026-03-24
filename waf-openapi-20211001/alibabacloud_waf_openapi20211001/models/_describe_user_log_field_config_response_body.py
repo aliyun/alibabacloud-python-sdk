@@ -16,13 +16,35 @@ class DescribeUserLogFieldConfigResponseBody(DaraModel):
         log_delivery_strategy: str = None,
         request_id: str = None,
     ):
+        # The additional log fields that are added to the default configuration. Multiple fields are separated by commas (,) in the `a,b,c,...` format.
         self.add_list = add_list
+        # The status of the log field configuration. Valid values:
+        # 
+        # - **initial**: The log field configuration is being initialized.
+        # 
+        # - **updating**: The log field configuration is being updated.
+        # 
+        # - **failed_finished**: The log field configuration update failed.
+        # 
+        # - **success_finished**: The log field configuration update succeeded.
         self.config_status = config_status
+        # The default log fields that are excluded from the log delivery configuration. Multiple fields are separated by commas (,) in the `a,b,c,...` format.
         self.del_list = del_list
+        # The log delivery type. Valid values:
+        # 
+        # - **sls**: Simple Log Service.
         self.delivery_type = delivery_type
+        # The extended configuration for log delivery. The value is a JSON-formatted string that contains configuration key-value pairs, such as custom request headers.
+        # 
+        # > For more information, see the **ExtendConfig** parameter description in [ModifyUserLogFieldConfig](~~ModifyUserLogFieldConfig~~).
         self.extend_config = extend_config
+        # The complete list of log fields that are delivered. Multiple fields are separated by commas (,) in the `a,b,c,...` format.
         self.field_list = field_list
+        # The log delivery policies. Multiple policies are supported. The value is a JSON-formatted string that contains an array of policy objects.
+        # 
+        # > For more information, see the **LogDeliveryStrategy** parameter description in [ModifyUserLogFieldConfig](~~ModifyUserLogFieldConfig~~).
         self.log_delivery_strategy = log_delivery_strategy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

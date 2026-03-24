@@ -16,43 +16,89 @@ class CreateDefenseRuleRequest(DaraModel):
         rules: str = None,
         template_id: int = None,
     ):
-        # The module to which the protection rule that you want to create belongs.
+        # The protection scenario for the rule.
         # 
-        # *   **waf_group:** the basic protection rule module.
-        # *   **antiscan:** the scan protection module.
-        # *   **ip_blacklist:** the IP address blacklist module.
-        # *   **custom_acl:** the custom rule module.
-        # *   **whitelist:** the whitelist module.
-        # *   **region_block:** the region blacklist module.
-        # *   **custom_response:** the custom response module.
-        # *   **cc:** the HTTP flood protection module.
-        # *   **tamperproof:** the website tamper-proofing module.
-        # *   **dlp:** the data leakage prevention module.
+        # When **DefenseType** is **template**, valid values are:
+        # 
+        # - **waf_group**: basic protection.
+        # 
+        # - **waf_base**: new version of Web core protection.
+        # 
+        # - **antiscan**: scan protection.
+        # 
+        # - **ip_blacklist**: IP blacklist.
+        # 
+        # - **custom_acl**: custom rules.
+        # 
+        # - **whitelist**: whitelist.
+        # 
+        # - **region_block**: location blacklist.
+        # 
+        # - **custom_response**: legacy custom response.
+        # 
+        # - **cc**: HTTP flood protection.
+        # 
+        # - **tamperproof**: webpage tamper protection.
+        # 
+        # - **dlp**: data leak prevention.
+        # 
+        # - **spike_throttle**: peak traffic throttling.
+        # 
+        # When **DefenseType** is **resource**, valid values are:
+        # 
+        # - **account_identifier**: account extraction.
+        # 
+        # - **custom_response**: new version of custom response.
+        # 
+        # - **waf_codec**: decoding.
+        # 
+        # When **DefenseType** is **global**, valid values are:
+        # 
+        # - **regular_custom**: custom regex.
+        # 
+        # - **address_book**: address book.
+        # 
+        # - **custom_response**: new version of custom response.
+        # 
+        # > For globally configured custom responses, users can reference them under protected objects or rules. When referenced at different levels, the effective logic follows this order: rule level > protected object level > default page.
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
+        # The type of the protection rule. Valid values:
+        # 
+        # - **template** (default): template-based protection rules.
+        # 
+        # - **resource**: rules applied at the protected object level.
+        # 
+        # - **global**: global-level rules.
         self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
-        self.region_id = region_id
-        self.resource = resource
-        # The ID of the resource group.
-        self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The configurations of the protection rule. The value is a JSON string that contains multiple parameters.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # >  The parameters vary based on the **protection module**, which is specified by **DefenseScene**. For more information, see the "**Parameters of protection rules**" section in this topic.
+        # - **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The protected object associated with the rule.
+        # 
+        # > Provide this parameter only when **DefenseType** is **resource**.
+        self.resource = resource
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The rule configuration content, specified as a JSON string.
+        # 
+        # > The specific parameters vary based on the specified **DefenseType** (**DefenseScene**). For details, see **Protection Rule Parameter Descriptions**.
         # 
         # This parameter is required.
         self.rules = rules
-        # The ID of the rule template for which you want to create a protection rule.
+        # The ID of the protection template to which the rule belongs.
+        # 
+        # > Provide this parameter only when **DefenseType** is **template**.
         self.template_id = template_id
 
     def validate(self):
