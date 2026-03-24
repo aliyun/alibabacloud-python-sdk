@@ -14,11 +14,11 @@ class ListPrometheusDashboardsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of Prometheus instance dashboards.
+        # A list of dashboards for the Prometheus instance.
         self.prometheus_dashboards = prometheus_dashboards
-        # ID of the request
+        # The ID of the request.
         self.request_id = request_id
-        # Total number of instances
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -71,17 +71,17 @@ class ListPrometheusDashboardsResponseBodyPrometheusDashboards(DaraModel):
         uid: str = None,
         url: str = None,
     ):
-        # Dashboard ID.
+        # The dashboard ID.
         self.id = id
-        # Dashboard name.
+        # The dashboard name.
         self.name = name
-        # Tags.
+        # The tags.
         self.tags = tags
-        # Dashboard title.
+        # The dashboard title.
         self.title = title
-        # Dashboard UID.
+        # The dashboard UID.
         self.uid = uid
-        # Dashboard URL address.
+        # The URL of the dashboard.
         self.url = url
 
     def validate(self):

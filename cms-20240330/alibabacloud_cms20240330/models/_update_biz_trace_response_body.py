@@ -10,7 +10,9 @@ class UpdateBizTraceResponseBody(DaraModel):
         biz_trace_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the business trace.
         self.biz_trace_id = biz_trace_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

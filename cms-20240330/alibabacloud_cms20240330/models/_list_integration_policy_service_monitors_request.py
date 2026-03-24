@@ -11,8 +11,11 @@ class ListIntegrationPolicyServiceMonitorsRequest(DaraModel):
         encrypt_yaml: bool = None,
         namespace: str = None,
     ):
+        # The name of the add-on release.
         self.addon_release_name = addon_release_name
+        # Specifies whether to encrypt the YAML file.
         self.encrypt_yaml = encrypt_yaml
+        # The namespace.
         self.namespace = namespace
 
     def validate(self):

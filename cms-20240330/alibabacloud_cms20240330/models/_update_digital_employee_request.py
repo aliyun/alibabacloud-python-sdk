@@ -16,10 +16,15 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         knowledges: main_models.UpdateDigitalEmployeeRequestKnowledges = None,
         role_arn: str = None,
     ):
+        # Default rule
         self.default_rule = default_rule
+        # Description
         self.description = description
+        # Digital employee display name
         self.display_name = display_name
+        # List of knowledge bases
         self.knowledges = knowledges
+        # Role ARN
         self.role_arn = role_arn
 
     def validate(self):
@@ -74,7 +79,9 @@ class UpdateDigitalEmployeeRequestKnowledges(DaraModel):
         bailian: List[main_models.UpdateDigitalEmployeeRequestKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
+        # Bailian knowledge base list
         self.bailian = bailian
+        # SOP knowledge base list
         self.sop = sop
 
     def validate(self):
@@ -119,9 +126,13 @@ class UpdateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
+        # Knowledge base attributes
         self.attributes = attributes
+        # Bailian index ID
         self.index_id = index_id
+        # Region of the Bailian knowledge base
         self.region = region
+        # Bailian workspace ID
         self.workspace_id = workspace_id
 
     def validate(self):

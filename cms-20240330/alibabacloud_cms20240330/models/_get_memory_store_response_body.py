@@ -22,18 +22,31 @@ class GetMemoryStoreResponseBody(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # Creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # Custom extraction strategies.
         self.custom_extraction_strategies = custom_extraction_strategies
+        # Description.
         self.description = description
+        # Supported values: Episodic, Summary, and Fact.
         self.extraction_strategies = extraction_strategies
+        # Memory store name.
         self.memory_store_name = memory_store_name
+        # Region ID.
         self.region_id = region_id
+        # Request ID.
         self.request_id = request_id
+        # Short-term memory storage.
         self.short_term_storage = short_term_storage
+        # Short-term memory retention time, in seconds.
         self.short_term_ttl = short_term_ttl
+        # Update time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # Workspace name.
         self.workspace = workspace
 
     def validate(self):
@@ -133,7 +146,9 @@ class GetMemoryStoreResponseBodyShortTermStorage(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
+        # Simple Log Service Logstore name.
         self.logstore = logstore
+        # Simple Log Service Project name.
         self.project = project
 
     def validate(self):

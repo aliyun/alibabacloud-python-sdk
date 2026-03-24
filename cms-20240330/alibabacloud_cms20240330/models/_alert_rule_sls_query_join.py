@@ -13,20 +13,22 @@ class AlertRuleSlsQueryJoin(DaraModel):
         conditions: List[main_models.AlertRuleSlsQueryJoinConditions] = None,
         type: str = None,
     ):
-        # List of connection conditions.
+        # 连接条件列表
         self.conditions = conditions
-        # Set operation type.
-        # CrossJoin: Cartesian product
-        # FullJoin: Full outer join
-        # InnerJoin: Inner join
-        # LeftExclude: Left anti join
-        # RightExclude: Right anti join
-        # LeftJoin: Left outer join
-        # RightJoin: Right outer join
-        # NoJoin: No merge
-        # Concat: Concatenation
+        # 集合操作类型。
         # 
-        # See also: https://help.aliyun.com/zh/sls/user-guide/set-query-statistics-statement
+        # - CrossJoin： 笛卡尔积
+        # - FullJoin：全联
+        # - InnerJoin：内联
+        # - LeftExclude： 左斥
+        # - RightExclude：右斥
+        # - LeftJoin：左联
+        # - RightJoin：右联
+        # - NoJoin：不合并
+        # - Concat： 拼接
+        # 
+        # 参见：
+        #   https://help.aliyun.com/zh/sls/user-guide/set-query-statistics-statement
         # 
         # This parameter is required.
         self.type = type
@@ -72,11 +74,11 @@ class AlertRuleSlsQueryJoinConditions(DaraModel):
         oper: str = None,
         second_field: str = None,
     ):
-        # Left-hand operand of the condition, formatted as $<query_idx>.<result_set_field_name>.
+        # 条件的左操作参数，格式为$<query_idx>.<结果集字段名>
         self.first_field = first_field
-        # Comparison operator; valid values: <, >, ==, !=, <=, >=.
+        # 比较操作符，取值范围：<, >, ==, !=, <=, >=
         self.oper = oper
-        # Right-hand operand of the condition, formatted as $<query_idx>.<result_set_field_name>.
+        # 条件的右操作参数，格式为$<query_idx>.<结果集字段名>
         self.second_field = second_field
 
     def validate(self):

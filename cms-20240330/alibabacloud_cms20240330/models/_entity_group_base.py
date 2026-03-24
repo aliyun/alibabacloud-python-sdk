@@ -19,13 +19,21 @@ class EntityGroupBase(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # 实体描述。
         self.description = description
+        # 实体ID。
         self.entity_group_id = entity_group_id
+        # 实体名称。
         self.entity_group_name = entity_group_name
+        # 实体查询规则集合。
         self.entity_queries = entity_queries
+        # 用于实体发现的规则。
         self.entity_rules = entity_rules
+        # 地域ID。
         self.region_id = region_id
+        # 用户ID。
         self.user_id = user_id
+        # 工作空间。
         self.workspace = workspace
 
     def validate(self):
@@ -107,7 +115,9 @@ class EntityGroupBaseEntityQueries(DaraModel):
         entity_type: str = None,
         spl: str = None,
     ):
+        # 实体类型。
         self.entity_type = entity_type
+        # SPL查询语句。
         self.spl = spl
 
     def validate(self):

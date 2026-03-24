@@ -22,6 +22,7 @@ class AlertRuleQuery(DaraModel):
         group_id: str = None,
         group_type: str = None,
         label_filters: List[main_models.AlertRuleQueryLabelFilters] = None,
+        mark_tags: List[main_models.AlertRuleQueryMarkTags] = None,
         metric: str = None,
         metric_set: str = None,
         namespace: str = None,
@@ -31,80 +32,27 @@ class AlertRuleQuery(DaraModel):
         service_ids: List[str] = None,
         type: str = None,
     ):
-        # Applicable query type: PROMQL_QUERY.
-        # Whether to perform alert evaluation only after data completeness is ensured.
         self.check_after_data_complete = check_after_data_complete
-        # Applicable query type: CMS_BASIC_QUERY.
-        # List of filtering dimensions for the resource.
         self.dimensions = dimensions
-        # 资源所属的领域。
         self.domain = domain
-        # Applicable query type: PROMQL_QUERY.
-        # Duration of alert data, in seconds.
         self.duration = duration
         self.entity_fields = entity_fields
-        # 资源过滤器，用于筛选目标资源。
         self.entity_filter = entity_filter
-        # Applicable query type: PROMQL_QUERY.
-        # Query expression (PromQL).
         self.expr = expr
-        # Applicable query type: SLS_MULTI_QUERY.
-        # Configuration for the set join operation between the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
         self.first_join = first_join
-        # Applicable query type: SLS_MULTI_QUERY.
-        # List of grouping field names.
         self.group_field_list = group_field_list
-        # Applicable query type: CMS_BASIC_QUERY.
-        # Associated application group ID, valid only when relationType = GROUP.
         self.group_id = group_id
-        # Applicable query type: SLS_MULTI_QUERY.
-        # Grouping type, with the following possible values:
-        # 
-        # - none: No grouping.
-        # - label: Automatic label grouping.
-        # - custom: Custom label grouping.
         self.group_type = group_type
         self.label_filters = label_filters
-        # 指标名。
+        self.mark_tags = mark_tags
         self.metric = metric
-        # 监控指标集合。
         self.metric_set = metric_set
-        # Applicable query type: CMS_BASIC_QUERY.
-        # Namespace of the metric.
         self.namespace = namespace
-        # Applicable query types: SLS_MULTI_QUERY, APM_MULTI_QUERY.
-        # List of subqueries.
-        # 
-        # For the SLS_MULTI_QUERY type, the list can contain up to three subqueries, and the number and order of subqueries must match the sub-datasource configurations in datasource.dsList.
         self.queries = queries
-        # Applicable query type: CMS_BASIC_QUERY.
-        # Resource scope for the rule query, with the following allowed values:
-        # - USER: All resources under the user\\"s UID.
-        # - GROUP: Application group.
-        # - INSTANCE: Specified list of instances.
         self.relation_type = relation_type
-        # Applicable query type: SLS_MULTI_QUERY.
-        # Configuration for the set join operation between the results of subquery 2 (queries[2]) and subquery 3 (queries[3]).
         self.second_join = second_join
-        # Service ID list.
         self.service_ids = service_ids
-        # Query type.
-        # 
-        # Valid values:
-        # 
-        # - PROMQL_QUERY: PromQL query
-        # - SLS_MULTI_QUERY: SLS query
-        # - APM_MULTI_QUERY: APM query
-        # - CMS_BASIC_QUERY: Basic CloudMonitor query
-        # 
-        # The valid fields within the query object vary depending on the query type. Refer to the "Applicable query type" description in each field\\"s documentation for details.
-        # 
-        # The query type must match the data source type, with the following correspondences:
-        # 
-        # - Prometheus data source (PROMETHEUS_DS): PROMQL_QUERY
-        # - APM data source (APM_DS): APM_MULTI_QUERY
-        # - SLS data source (SLS_MULTI_DS): SLS_MULTI_QUERY
-        # - Basic CloudMonitor data source (CMS_BASIC_DS): CMS_BASIC_QUERY.
+        # 查询类型
         # 
         # This parameter is required.
         self.type = type
@@ -120,6 +68,10 @@ class AlertRuleQuery(DaraModel):
             self.first_join.validate()
         if self.label_filters:
             for v1 in self.label_filters:
+                 if v1:
+                    v1.validate()
+        if self.mark_tags:
+            for v1 in self.mark_tags:
                  if v1:
                     v1.validate()
         if self.queries:
@@ -173,6 +125,11 @@ class AlertRuleQuery(DaraModel):
         if self.label_filters is not None:
             for k1 in self.label_filters:
                 result['labelFilters'].append(k1.to_map() if k1 else None)
+
+        result['markTags'] = []
+        if self.mark_tags is not None:
+            for k1 in self.mark_tags:
+                result['markTags'].append(k1.to_map() if k1 else None)
 
         if self.metric is not None:
             result['metric'] = self.metric
@@ -248,6 +205,12 @@ class AlertRuleQuery(DaraModel):
                 temp_model = main_models.AlertRuleQueryLabelFilters()
                 self.label_filters.append(temp_model.from_map(k1))
 
+        self.mark_tags = []
+        if m.get('markTags') is not None:
+            for k1 in m.get('markTags'):
+                temp_model = main_models.AlertRuleQueryMarkTags()
+                self.mark_tags.append(temp_model.from_map(k1))
+
         if m.get('metric') is not None:
             self.metric = m.get('metric')
 
@@ -291,37 +254,19 @@ class AlertRuleQueryQueries(DaraModel):
         time_unit: str = None,
         window: int = None,
     ):
-        # Applicable query type: APM_MULTI_QUERY.
-        # ID of the APM predefined metric.
         self.apm_alert_metric_id = apm_alert_metric_id
-        # Applicable query type: ARMS_MULTI_QUERY.
-        # Dimension filter configuration for APM metrics. Must be used in conjunction with apmAlertMetricId.
         self.apm_filters = apm_filters
-        # Applicable query type: ARMS_MULTI_QUERY.
-        # List of aggregation dimensions for the query, i.e., the dimensions by which the metric is aggregated.
         self.apm_group_by = apm_group_by
-        # Applicable query type: ARMS_MULTI_QUERY.
-        # Alert (data) duration.
         self.duration = duration
-        # Applicable query type: SLS_MULTI_QUERY.
-        # Time offset end time (relative).
-        # If start and end are specified, do not specify window.
+        # 时间偏移结束时间(相对)，如果指定了start、end，则不指定window。
         self.end = end
-        # Applicable query types: APM_MULTI_QUERY, SLS_MULTI_QUERY.
-        # Query expression.
-        # 
-        # - For APM_MULTI_QUERY, this field is optional and contains the PromQL generated for predefined metrics (used for data preview).
-        # - For SLS_MULTI_QUERY, this field contains the SQL query statement.
+        # 查询表达式
         self.expr = expr
-        # Applicable query type: SLS_MULTI_QUERY.
-        # SLS query time offset start time (relative).
-        # If start and end are specified, do not specify window. For example: start=15, timeUnit=minute, which means 15 minutes ago.
+        # sls查询的时间偏移开始时间(相对)，如果指定了start、end，则不指定window。  例如：start=15， timeUnit=minute，表示15分钟前
         self.start = start
-        # Applicable query type: SLS_MULTI_QUERY.
-        # Time units for the start, end, and window parameters: day/hour/minute/second.
+        # start和end、window的时间单位： day/hour/minute/second
         self.time_unit = time_unit
-        # Applicable query type: SLS_MULTI_QUERY.
-        # Exact-hour time query interval. If window is specified, start and end should not be specified.
+        # 整点时间查询区间。  如果指定了window则不指定start、end
         self.window = window
 
     def validate(self):
@@ -407,16 +352,8 @@ class AlertRuleQueryQueriesApmFilters(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Dimension in APM metrics.
         self.dim = dim
-        # Filter operation types:
-        # 
-        # - eq: equals.
-        # - neq: not equals.
-        # - match: regular expression match.
-        # - nmatch: regular expression not match.
         self.type = type
-        # The corresponding value for the filter operation.
         self.value = value
 
     def validate(self):
@@ -445,6 +382,41 @@ class AlertRuleQueryQueriesApmFilters(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
+
+        return self
+
+class AlertRuleQueryMarkTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
 
         if m.get('value') is not None:
             self.value = m.get('value')
@@ -501,11 +473,8 @@ class AlertRuleQueryEntityFilter(DaraModel):
         filters: List[main_models.AlertRuleQueryEntityFilterFilters] = None,
         type: str = None,
     ):
-        # 资源类型域。
         self.domain = domain
-        # 过滤条件列表，用于进一步筛选资源。
         self.filters = filters
-        # 资源类型。
         self.type = type
 
     def validate(self):
@@ -555,11 +524,8 @@ class AlertRuleQueryEntityFilterFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # 字段
         self.field = field
-        # 比较运算符。
         self.operator = operator
-        # 匹配的值。
         self.value = value
 
     def validate(self):

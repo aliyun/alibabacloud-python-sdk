@@ -17,12 +17,19 @@ class MergeContactGroup(DaraModel):
         name: str = None,
         source: str = None,
     ):
+        # 组内成员的唯一标识符列表。
         self.contacts = contacts
+        # 扩展字段，用于存储额外信息。
         self.extend = extend
+        # 创建时间。
         self.gmt_create = gmt_create
+        # 最后修改时间。
         self.gmt_modified = gmt_modified
+        # 联系人组唯一标识符。
         self.identifier = identifier
+        # 联系人组名称。
         self.name = name
+        # 联系人组来源系统。
         self.source = source
 
     def validate(self):

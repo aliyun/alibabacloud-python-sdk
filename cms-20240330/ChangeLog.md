@@ -1,3 +1,9 @@
+2026-03-24 Version: 6.2.4
+- Update API CreateAlertWebhook: add request parameters body.workspace.
+- Update API ListAlertWebhooks: add request parameters workspace.
+- Update API ListAlertWebhooks: add response parameters Body.webhooks.$.workspace.
+
+
 2026-03-20 Version: 6.2.3
 - Update API AddMemories: add request parameters body.timestamp.
 - Update API GetMemories: add response parameters Body.results.$.appId.

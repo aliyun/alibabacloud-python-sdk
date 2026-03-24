@@ -11,8 +11,11 @@ class ListDigitalEmployeeSkillsRequest(DaraModel):
         next_token: str = None,
         skill_name: str = None,
     ):
+        # The maximum number of entries to return for this request.
         self.max_results = max_results
+        # The token for the next page. A null value indicates that there are no more pages.
         self.next_token = next_token
+        # The name of the skill.
         self.skill_name = skill_name
 
     def validate(self):

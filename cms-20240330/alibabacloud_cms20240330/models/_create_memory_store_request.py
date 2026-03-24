@@ -16,11 +16,18 @@ class CreateMemoryStoreRequest(DaraModel):
         memory_store_name: str = None,
         short_term_ttl: int = None,
     ):
+        # A list of custom extraction strategies.
         self.custom_extraction_strategies = custom_extraction_strategies
+        # The description of the Memory Store.
         self.description = description
+        # The extraction strategies to use. Valid values: `Episodic`, `Summary`, and `Fact`.
         self.extraction_strategies = extraction_strategies
+        # The name of the Memory Store.
+        # 
         # This parameter is required.
         self.memory_store_name = memory_store_name
+        # The time-to-live (TTL) for short-term memory.
+        # 
         # This parameter is required.
         self.short_term_ttl = short_term_ttl
 

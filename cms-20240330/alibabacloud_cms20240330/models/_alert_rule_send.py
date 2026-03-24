@@ -16,13 +16,10 @@ class AlertRuleSend(DaraModel):
         rca_config: main_models.AlertRuleRcaConfig = None,
         send_to_arms: bool = None,
     ):
-        # Alert Action Integration Configuration.
         self.action = action
-        # Alert Notification Configuration.
         self.notification = notification
         self.notify_strategies = notify_strategies
         self.rca_config = rca_config
-        # Whether to deliver alert events to ARMS Alert Management.
         self.send_to_arms = send_to_arms
 
     def validate(self):

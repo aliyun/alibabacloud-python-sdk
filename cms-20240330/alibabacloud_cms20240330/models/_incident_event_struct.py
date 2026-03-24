@@ -24,33 +24,33 @@ class IncidentEventStruct(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
-        # Automatic recovery time.
+        # 自动恢复时间。
         self.auto_recover_time = auto_recover_time
-        # Content.
+        # 内容。
         self.content = content
-        # Count.
+        # 统计数量。
         self.count = count
-        # Dimension.
+        # 维度。
         self.dimension = dimension
-        # Used for grouping dimensions.
+        # 用于分组维度。
         self.group_by = group_by
-        # Incident Event Id.
+        # 事件事件ID。
         self.incident_event_id = incident_event_id
-        # Incident Id.
+        # 事件ID。
         self.incident_id = incident_id
-        # Last time.
+        # 最后时间。
         self.last_time = last_time
-        # Manual recovery time.
+        # 手动恢复时间。
         self.recover_time = recover_time
-        # Describes the resource information associated with the event.
+        # 描述事件关联的资源信息。
         self.resource = resource
-        # Status.
+        # 状态。
         self.status = status
-        # Time.
+        # 时间。
         self.time = time
-        # Title.
+        # 标题。
         self.title = title
-        # User ID.
+        # 用户ID。
         self.user_id = user_id
 
     def validate(self):

@@ -448,6 +448,7 @@ from ._alert_rule_query import AlertRuleQueryEntityFields
 from ._alert_rule_query import AlertRuleQueryEntityFilterFilters
 from ._alert_rule_query import AlertRuleQueryEntityFilter
 from ._alert_rule_query import AlertRuleQueryLabelFilters
+from ._alert_rule_query import AlertRuleQueryMarkTags
 from ._alert_rule_query import AlertRuleQueryQueriesApmFilters
 from ._alert_rule_query import AlertRuleQueryQueries
 from ._alert_rule_sls_query_join import AlertRuleSlsQueryJoinConditions
@@ -1089,6 +1090,7 @@ __all__ = [
     AlertRuleQueryEntityFilterFilters,
     AlertRuleQueryEntityFilter,
     AlertRuleQueryLabelFilters,
+    AlertRuleQueryMarkTags,
     AlertRuleQueryQueriesApmFilters,
     AlertRuleQueryQueries,
     AlertRuleSlsQueryJoinConditions,

@@ -17,30 +17,13 @@ class AlertRuleDataSource(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # Applicable data source type: APM_DS.
-        # Application type: 
-        # 
-        # - apm.
         self.app_type = app_type
-        # Applicable data source type: SLS_MULTI_DS.
-        # List of sub-data sources.
         self.ds_list = ds_list
-        # Applicable data source type: PROMETHEUS_DS.
-        # Prometheus instance ID.
+        # 实例id，当type=PROMETHEUS_DS/ENTERPRISE_DS时必填，为prometheus实例的clusterId或指标仓库名称
         self.instance_id = instance_id
-        # Applicable data source type: ENTERPRISE_DS.
-        # Name of the enterprise cloud monitoring metric repository.
         self.namespace = namespace
-        # Applicable data source types: APM_DS, PROMETHEUS_DS.
-        # The regionId to which the data source belongs.
         self.region_id = region_id
-        # Data source type.
-        # Valid values:
-        # - PROMETHEUS_DS: Prometheus data source.
-        # - SLS_MULTI_DS: SLS data source.
-        # - APM_DS: Application monitoring data source.
-        # - CMS_BASIC_DS: Basic cloud monitoring data source.
-        # - ENTERPRISE_DS: Enterprise cloud monitoring data source.
+        # 数据源类型
         # 
         # This parameter is required.
         self.type = type
@@ -111,16 +94,9 @@ class AlertRuleDataSourceDsList(DaraModel):
         store: str = None,
         type: str = None,
     ):
-        # SLS project
         self.project = project
-        # The region where the SLS project is located.
         self.region_id = region_id
-        # LogStore/MetricStore name.
         self.store = store
-        # Type of SLS data sub-source:
-        # 
-        # - SLS_LOG_DS: LogStore data source.
-        # - SLS_METRIC_DS: MetricStore data source.
         self.type = type
 
     def validate(self):

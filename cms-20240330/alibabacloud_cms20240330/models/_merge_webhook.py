@@ -22,17 +22,29 @@ class MergeWebhook(DaraModel):
         type: str = None,
         webhook: str = None,
     ):
+        # 内容类型。
         self.content_type = content_type
+        # 扩展字段，用于存储额外配置。
         self.extend = extend
+        # 创建时间。
         self.gmt_create = gmt_create
+        # 最后修改时间。
         self.gmt_modified = gmt_modified
+        # 请求头信息。
         self.headers = headers
+        # Webhook 唯一标识符。
         self.identifier = identifier
+        # 语言偏好。
         self.lang = lang
+        # HTTP 请求方法。
         self.method = method
+        # Webhook 名称。
         self.name = name
+        # Webhook 来源系统。
         self.source = source
+        # Webhook 类型，表示其目标平台。
         self.type = type
+        # Webhook 地址，用于发送请求。
         self.webhook = webhook
 
     def validate(self):

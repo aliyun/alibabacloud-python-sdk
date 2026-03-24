@@ -15,15 +15,15 @@ class ListAlertActionsRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
-        # Unique identifier for the action integration.
+        # The unique IDs of the alert action integrations.
         self.alert_action_ids = alert_action_ids
-        # Name of the action integration.
+        # The name of the alert action integration.
         self.alert_action_name = alert_action_name
-        # Page number. Default is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # Page size. Default is 100.
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # Type of the action integration.
+        # The type of the alert action integration.
         self.type = type
 
     def validate(self):

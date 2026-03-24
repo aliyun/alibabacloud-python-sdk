@@ -24,30 +24,18 @@ class SubscriptionForView(DaraModel):
         workspace: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
-        # Create Time.
         self.create_time = create_time
-        # Description.
         self.description = description
-        # Whether enabled.
         self.enable = enable
-        # Filtering settings.
         self.filter_setting = filter_setting
-        # Notification policy UUID.
         self.notify_strategy_id = notify_strategy_id
-        # Push settings.
         self.pushing_setting = pushing_setting
-        # UUID
         self.subscription_id = subscription_id
-        # Name.
-        # 
         # This parameter is required.
         self.subscription_name = subscription_name
         self.sync_from_type = sync_from_type
-        # Update Time.
         self.update_time = update_time
-        # User ID.
         self.user_id = user_id
-        # workspace
         self.workspace = workspace
         self.workspace_filter_setting = workspace_filter_setting
 
@@ -159,13 +147,9 @@ class SubscriptionForViewPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # Alert push action integration ID list.
         self.alert_action_ids = alert_action_ids
-        # Action plan ID.
         self.response_plan_id = response_plan_id
-        # Recovery push action integration ID list.
         self.restore_action_ids = restore_action_ids
-        # Template UUID.
         self.template_uuid = template_uuid
 
     def validate(self):

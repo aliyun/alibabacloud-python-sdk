@@ -17,23 +17,23 @@ class IncidentTimeline(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
-        # Subtype.
+        # 子类型。
         self.child_type = child_type
-        # Content.
+        # 内容。
         self.content = content
-        # Incident ID.
+        # 所属事件 ID。
         self.incident_id = incident_id
-        # Timeline node unique ID.
+        # 时间线节点唯一 ID。
         self.incident_timeline_id = incident_timeline_id
-        # Time.
+        # 时间戳。
         self.time = time
-        # Parent timeline ID.
+        # 所属时间线 ID。
         self.timeline_id = timeline_id
-        # Title.
+        # 时间线标题。
         self.title = title
-        # Type.
+        # 类型。
         self.type = type
-        # User ID.
+        # 用户 ID。
         self.user_id = user_id
 
     def validate(self):

@@ -533,6 +533,8 @@ class Client(OpenApiClient):
             body['url'] = request.url
         if not DaraCore.is_null(request.webhook_id):
             body['webhookId'] = request.webhook_id
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -575,6 +577,8 @@ class Client(OpenApiClient):
             body['url'] = request.url
         if not DaraCore.is_null(request.webhook_id):
             body['webhookId'] = request.webhook_id
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -6389,6 +6393,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.webhook_ids_shrink):
             query['webhookIds'] = request.webhook_ids_shrink
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6429,6 +6435,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.webhook_ids_shrink):
             query['webhookIds'] = request.webhook_ids_shrink
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

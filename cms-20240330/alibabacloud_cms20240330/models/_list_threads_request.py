@@ -16,10 +16,15 @@ class ListThreadsRequest(DaraModel):
         status: str = None,
         thread_id: str = None,
     ):
+        # The filter conditions for the query. If you do not specify this parameter, all threads in the instance are queried.
         self.filter = filter
+        # The maximum number of results to return. The maximum value is 200.
         self.max_results = max_results
+        # The paging token.
         self.next_token = next_token
+        # The session status.
         self.status = status
+        # The session ID.
         self.thread_id = thread_id
 
     def validate(self):
@@ -80,8 +85,12 @@ class ListThreadsRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter key. Supported values are title, workspace, and project.
+        # 
         # This parameter is required.
         self.key = key
+        # The set value.
+        # 
         # This parameter is required.
         self.value = value
 

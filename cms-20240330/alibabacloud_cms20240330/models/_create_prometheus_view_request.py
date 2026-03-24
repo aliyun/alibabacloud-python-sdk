@@ -21,32 +21,33 @@ class CreatePrometheusViewRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Not enabled yet
+        # This parameter is not in use.
         self.auth_free_read_policy = auth_free_read_policy
-        # Whether to support password-free read
+        # Specifies whether to enable password-free read access.
         self.enable_auth_free_read = enable_auth_free_read
-        # Whether to support authToken
+        # Specifies whether to enable an authentication token.
         self.enable_auth_token = enable_auth_token
-        # List of Prometheus instances.
+        # The list of Prometheus instances.
         # 
         # This parameter is required.
         self.prometheus_instances = prometheus_instances
-        # Prometheus view name.
+        # The name of the Prometheus view.
         # 
         # This parameter is required.
         self.prometheus_view_name = prometheus_view_name
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Not enabled yet.
+        # This parameter is not in use.
         self.status = status
-        # The operation to be performed.
+        # Specifies the operation to execute.
         self.tags = tags
-        # - V1: Old version
-        # - V2: New version
+        # - V1: The old version.
+        # 
+        # - V2: The new version.
         # 
         # This parameter is required.
         self.version = version
-        # Default value: default-cms-{userId}-{regionId}
+        # The default value is default-cms-{userId}-{regionId}.
         self.workspace = workspace
 
     def validate(self):
@@ -146,9 +147,9 @@ class CreatePrometheusViewRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The key of the tag.
         self.key = key
-        # Tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -184,11 +185,11 @@ class CreatePrometheusViewRequestPrometheusInstances(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -13,11 +13,17 @@ class ListAlertWebhooksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         webhook_ids: List[str] = None,
+        workspace: str = None,
     ):
+        # The name of the webhook.
         self.name = name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The unique ID of the webhook.
         self.webhook_ids = webhook_ids
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -39,6 +45,9 @@ class ListAlertWebhooksRequest(DaraModel):
         if self.webhook_ids is not None:
             result['webhookIds'] = self.webhook_ids
 
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +63,9 @@ class ListAlertWebhooksRequest(DaraModel):
 
         if m.get('webhookIds') is not None:
             self.webhook_ids = m.get('webhookIds')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
 
         return self
 

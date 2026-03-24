@@ -13,9 +13,9 @@ class GetPrometheusInstanceResponseBody(DaraModel):
         prometheus_instance: main_models.GetPrometheusInstanceResponseBodyPrometheusInstance = None,
         request_id: str = None,
     ):
-        # Details of the Prometheus instance.
+        # The details of the Prometheus instance.
         self.prometheus_instance = prometheus_instance
-        # Unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,80 +87,79 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Access type:
-        # readWrite, readOnly, httpReadOnly
+        # The permission type. Valid values: \\`readWrite\\`, \\`readOnly\\`, and \\`httpReadOnly\\`.
         self.access_type = access_type
-        # Number of days to automatically archive and save after storage expiration. 0 means no archiving, 3650 means permanent saving.
+        # The number of days to archive data after the storage duration ends. A value of 0 means data is not archived. A value of 3650 means data is permanently archived.
         self.archive_duration = archive_duration
-        # Password-free read policy (supports IP segments and VpcId).
+        # The password-free read policy. IP address ranges and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # Password-free write policy (supports IP segments and VpcId).
+        # The password-free write policy. IP address ranges and VPC IDs are supported.
         self.auth_free_write_policy = auth_free_write_policy
-        # authToken string.
+        # The authentication token.
         self.auth_token = auth_token
-        # Instance creation time, using UTC+0, formatted as yyyy-MM-ddTHH:mmZ.
+        # The time when the instance was created. The time is in UTC and follows the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
-        # Whether to enable password-free reading.
+        # Indicates whether password-free read is enabled.
         self.enable_auth_free_read = enable_auth_free_read
-        # Whether to enable password-free writing.
+        # Indicates whether password-free write is enabled.
         self.enable_auth_free_write = enable_auth_free_write
-        # Whether to enable authentication token.
+        # Indicates whether the authentication token is enabled.
         self.enable_auth_token = enable_auth_token
-        # Additional information.
+        # The extra information.
         self.extra_info = extra_info
-        # URL of the visualization dashboard directory.
+        # The URL of the visualization dashboard folder.
         self.folder_url = folder_url
-        # ID of the managed Grafana instance that is bound.
+        # The ID of the attached Grafana instance.
         self.grafana_instance_id = grafana_instance_id
-        # Name of the managed Grafana instance that is bound.
+        # The name of the attached Grafana instance.
         self.grafana_instance_name = grafana_instance_name
-        # HTTP public network address.
+        # The HTTP endpoint for the Internet.
         self.http_api_inter_url = http_api_inter_url
-        # HTTP intranet address.
+        # The HTTP endpoint for the internal network.
         self.http_api_intra_url = http_api_intra_url
-        # Prometheus instance type.
+        # The type of the Prometheus instance.
         self.instance_type = instance_type
-        # Billing method:
-        # POSTPAY: Pay-as-you-go based on metric reporting volume.
-        # POSTPAY_GB: Pay-as-you-go based on metric write volume.
+        # The billing method. Valid values:
+        # \\`POSTPAY\\`: pay-as-you-go based on the number of reported metrics.
+        # \\`POSTPAY_GB\\`: pay-as-you-go based on the volume of data written.
         self.payment_type = payment_type
-        # Time when the billing method of the instance was updated.
+        # The time when the billing method of the instance was last modified.
         self.payment_type_update_time = payment_type_update_time
-        # The product to which the Prometheus instance belongs (arms or cms).
+        # The Alibaba Cloud service to which the instance belongs. Valid values: \\`arms\\` and \\`cms\\`.
         self.product = product
-        # Instance ID.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Instance name.
+        # The instance name.
         self.prometheus_instance_name = prometheus_instance_name
-        # Public network address of PushGateway.
+        # The Pushgateway endpoint for the Internet.
         self.push_gateway_inter_url = push_gateway_inter_url
-        # Intranet address of PushGateway.
+        # The Pushgateway endpoint for the internal network.
         self.push_gateway_intra_url = push_gateway_intra_url
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Public network read address.
+        # The read endpoint for the Internet.
         self.remote_read_inter_url = remote_read_inter_url
-        # Intranet read address.
+        # The read endpoint for the internal network.
         self.remote_read_intra_url = remote_read_intra_url
-        # Public network write address.
+        # The write endpoint for the Internet.
         self.remote_write_inter_url = remote_write_inter_url
-        # Intranet write address.
+        # The write endpoint for the internal network.
         self.remote_write_intra_url = remote_write_intra_url
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Fixed value: PrometheusInstance.
+        # A static field. The value is \\`PrometheusInstance\\`.
         self.resource_type = resource_type
-        # Instance status.
+        # The instance status.
         self.status = status
-        # Storage duration (in days).
+        # The storage duration in days.
         self.storage_duration = storage_duration
-        # Supported authentication types.
+        # The supported authentication and authorization types.
         self.support_auth_types = support_auth_types
-        # List of tags.
+        # The list of tags.
         self.tags = tags
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Version.
+        # The version.
         self.version = version
         # The workspace to which the Prometheus instance belongs.
         self.workspace = workspace
@@ -415,9 +414,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstanceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Matched value.
+        # The tag value.
         self.value = value
 
     def validate(self):

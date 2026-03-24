@@ -21,24 +21,15 @@ class AlertRuleNotification(DaraModel):
         slack_webhooks: List[str] = None,
         wx_webhooks: List[str] = None,
     ):
-        # List of contact IDs.
         self.contacts = contacts
-        # List of custom webhook notification object IDs.
         self.custom_webhooks = custom_webhooks
         self.ding_cool_app_webhooks = ding_cool_app_webhooks
-        # List of DingTalk webhook notification object IDs.
         self.ding_webhooks = ding_webhooks
-        # List of Feishu webhook notification object IDs.
         self.fs_webhooks = fs_webhooks
-        # List of contact group IDs.
         self.groups = groups
-        # Notification time window; notifications are sent only during this period.
         self.notify_time = notify_time
-        # Notification silence duration, in seconds.
         self.silence_time = silence_time
-        # List of Slack webhook notification object IDs.
         self.slack_webhooks = slack_webhooks
-        # List of WeChat webhook notification object IDs.
         self.wx_webhooks = wx_webhooks
 
     def validate(self):

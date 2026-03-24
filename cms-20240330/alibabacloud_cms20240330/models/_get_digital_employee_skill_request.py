@@ -9,6 +9,7 @@ class GetDigitalEmployeeSkillRequest(DaraModel):
         self,
         version: str = None,
     ):
+        # Historical version number
         self.version = version
 
     def validate(self):

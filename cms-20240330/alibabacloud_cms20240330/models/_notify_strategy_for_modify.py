@@ -25,27 +25,18 @@ class NotifyStrategyForModify(DaraModel):
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
         self.auto_recover_seconds = auto_recover_seconds
-        # Notification channel template.
         self.custom_template_entries = custom_template_entries
-        # Description.
         self.description = description
         self.enable_incident_management = enable_incident_management
         self.escalation_id = escalation_id
         self.filter_setting = filter_setting
-        # Grouping settings.
-        # 
         # This parameter is required.
         self.grouping_setting = grouping_setting
-        # Whether to notify on recovery.
         self.ignore_restored_notification = ignore_restored_notification
-        # Name.
-        # 
         # This parameter is required.
         self.notify_strategy_name = notify_strategy_name
         self.pushing_setting = pushing_setting
         self.repeat_notify_setting = repeat_notify_setting
-        # Notification channel routing configuration.
-        # 
         # This parameter is required.
         self.routes = routes
         self.workspace_filter_setting = workspace_filter_setting
@@ -184,15 +175,11 @@ class NotifyStrategyForModifyRoutes(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         severities: List[str] = None,
     ):
-        # Notification channel.
         self.channels = channels
         self.digital_employee_name = digital_employee_name
-        # Valid time range.
         self.effect_time_range = effect_time_range
         self.enable_rca = enable_rca
-        # Routing conditions.
         self.filter_setting = filter_setting
-        # Severity level list.
         self.severities = severities
 
     def validate(self):
@@ -267,13 +254,9 @@ class NotifyStrategyForModifyRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # Effective days (Monday to Sunday).
         self.day_in_week = day_in_week
-        # End time (in minutes).
         self.end_time_in_minute = end_time_in_minute
-        # Start time (in minutes).
         self.start_time_in_minute = start_time_in_minute
-        # Time Zone.
         self.time_zone = time_zone
 
     def validate(self):
@@ -321,14 +304,9 @@ class NotifyStrategyForModifyRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # Channel type.
-        # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Enabled notification types.
         self.enabled_sub_channels = enabled_sub_channels
-        # Channel recipient.
-        # 
         # This parameter is required.
         self.receivers = receivers
 
@@ -450,13 +428,9 @@ class NotifyStrategyForModifyGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # Grouping keys.
         self.grouping_keys = grouping_keys
-        # Check interval in minutes.
         self.period_min = period_min
-        # Silence duration in seconds.
         self.silence_sec = silence_sec
-        # Trigger count.
         self.times = times
 
     def validate(self):
@@ -503,12 +477,8 @@ class NotifyStrategyForModifyCustomTemplateEntries(DaraModel):
         target_type: str = None,
         template_uuid: str = None,
     ):
-        # Notification type.
-        # 
         # This parameter is required.
         self.target_type = target_type
-        # Template UUID.
-        # 
         # This parameter is required.
         self.template_uuid = template_uuid
 

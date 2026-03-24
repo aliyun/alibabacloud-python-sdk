@@ -10,8 +10,9 @@ class CreateDigitalEmployeeSkillResponseBody(DaraModel):
         request_id: str = None,
         skill_name: str = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The name of the skill.
         self.skill_name = skill_name
 
     def validate(self):

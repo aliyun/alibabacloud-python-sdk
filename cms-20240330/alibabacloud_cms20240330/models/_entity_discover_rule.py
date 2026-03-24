@@ -20,14 +20,23 @@ class EntityDiscoverRule(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.EntityDiscoverRuleTags] = None,
     ):
+        # 注解匹配集合。
         self.annotations = annotations
+        # 实体类型集合。
         self.entity_types = entity_types
+        # 属性匹配规则。
         self.field_rules = field_rules
+        # 实例ID集合。
         self.instance_ids = instance_ids
+        # IP匹配规则集合。
         self.ip_match_rule = ip_match_rule
+        # 标签匹配集合。
         self.labels = labels
+        # 地域ID集合。
         self.region_ids = region_ids
+        # 资源组ID。
         self.resource_group_id = resource_group_id
+        # 通过Tag进行服务发现。
         self.tags = tags
 
     def validate(self):
@@ -149,8 +158,11 @@ class EntityDiscoverRuleTags(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # 操作。
         self.op = op
+        # Tag的Key。
         self.tag_key = tag_key
+        # Tag的值集合。
         self.tag_values = tag_values
 
     def validate(self):
@@ -192,8 +204,11 @@ class EntityDiscoverRuleLabels(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # 操作。
         self.op = op
+        # 标签的Key。
         self.tag_key = tag_key
+        # 标签的值集合。
         self.tag_values = tag_values
 
     def validate(self):
@@ -234,7 +249,9 @@ class EntityDiscoverRuleIpMatchRule(DaraModel):
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
+        # IP的CIDR。
         self.ip_cidr = ip_cidr
+        # IP字段的Key。
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -270,8 +287,11 @@ class EntityDiscoverRuleFieldRules(DaraModel):
         field_values: List[str] = None,
         op: str = None,
     ):
+        # 属性的Key。
         self.field_key = field_key
+        # 属性的值集合。
         self.field_values = field_values
+        # 操作。
         self.op = op
 
     def validate(self):
@@ -313,8 +333,11 @@ class EntityDiscoverRuleAnnotations(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # 操作。
         self.op = op
+        # 注解的Key。
         self.tag_key = tag_key
+        # 注解的值集合。
         self.tag_values = tag_values
 
     def validate(self):

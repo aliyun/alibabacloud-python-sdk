@@ -9,7 +9,7 @@ class CreateTicketResponseBody(DaraModel):
         self,
         ticket: str = None,
     ):
-        # 免登录票据。
+        # The password-free ticket.
         self.ticket = ticket
 
     def validate(self):

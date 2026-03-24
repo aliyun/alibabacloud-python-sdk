@@ -19,21 +19,21 @@ class IncidentEscalationStruct(DaraModel):
         stage: List[main_models.IncidentEscalationStageStruct] = None,
         workspace: str = None,
     ):
-        # Creation time.
+        # 创建时间
         self.create_time = create_time
-        # Description.
+        # 描述。
         self.description = description
-        # Event Escalation ID.
+        # 事件升级ID
         self.incident_escalation_id = incident_escalation_id
-        # Modification time.
+        # 修改时间
         self.modify_time = modify_time
-        # Name.
+        # 名称。
         self.name = name
-        # Region ID.
+        # 地域 ID
         self.region_id = region_id
-        # Phase.
+        # 阶段。
         self.stage = stage
-        # Workspace.
+        # 工作空间
         self.workspace = workspace
 
     def validate(self):

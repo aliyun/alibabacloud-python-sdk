@@ -15,12 +15,19 @@ class PrometheusManagedInstance(DaraModel):
         status: str = None,
         workspace: str = None,
     ):
+        # 创建时间
         self.create_time = create_time
+        # 实例类型
         self.instance_type = instance_type
+        # RUM关联的Prometheus实例ID
         self.prometheus_instance_id = prometheus_instance_id
+        # RUM关联的Prometheus实例名称
         self.prometheus_instance_name = prometheus_instance_name
+        # 阿里云RegionId
         self.region_id = region_id
+        # 实例状态
         self.status = status
+        # 云监控2.0 workspace
         self.workspace = workspace
 
     def validate(self):

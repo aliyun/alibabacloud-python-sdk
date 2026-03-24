@@ -16,19 +16,19 @@ class ListIntegrationPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Page size
+        # The number of entries returned per page.
         # Default value:
-        # 	50
+        # 50
         # Maximum value:
-        # 	50
+        # 50
         self.max_results = max_results
-        # Pagination token
+        # The pagination token.
         self.next_token = next_token
-        # Access policy list
+        # A list of integration policies.
         self.policies = policies
-        # ID of the request
+        # The ID of the request.
         self.request_id = request_id
-        # Total number of entries
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,31 +100,31 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # Bound resource information
+        # The information about the attached resource.
         self.bind_resource = bind_resource
-        # Container environment umodel installation status.
+        # The installation status of umodel in the container environment.
         self.cs_umodel_status = cs_umodel_status
-        # Entity group
+        # The entity group.
         self.entity_group = entity_group
-        # Billing type.
+        # The billing type.
         self.fee_package = fee_package
-        # Policy network management information.
+        # The network management information of the policy.
         self.managed_info = managed_info
-        # Policy ID.
+        # The policy ID.
         self.policy_id = policy_id
-        # Rule name.
+        # The policy name.
         self.policy_name = policy_name
-        # Access center policy type
+        # The type of the Integration Center policy.
         self.policy_type = policy_type
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Number of sub-releases
+        # The number of sub-releases.
         self.sub_addon_release = sub_addon_release
-        # User ID
+        # The user ID.
         self.user_id = user_id
-        # Workspace.
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -236,9 +236,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease(DaraModel):
         ready: int = None,
         total: int = None,
     ):
-        # Number of ready sub-releases
+        # The number of ready sub-releases.
         self.ready = ready
-        # Number of rules.
+        # The number of rules.
         self.total = total
 
     def validate(self):
@@ -274,11 +274,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(DaraModel):
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
-        # ENI card ID of the managed probe. For example: eni-xxxx.
+        # The ID of the elastic network interface (ENI) for the managed probe. For example, eni-xxxx.
         self.eni_id = eni_id
-        # Security group ID
+        # The security group ID.
         self.security_group_id = security_group_id
-        # VSwitch ID.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -325,21 +325,21 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroup(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # Description.
+        # The description.
         self.description = description
-        # Entity group ID
+        # The entity group ID.
         self.entity_group_id = entity_group_id
-        # Entity group name
+        # The entity group name.
         self.entity_group_name = entity_group_name
-        # Entity group
+        # The entity group.
         self.entity_rules = entity_rules
-        # Search keywords, supporting document library name and description
+        # The search keyword. You can search by entity group name and description.
         self.query = query
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # User ID
+        # The user ID.
         self.user_id = user_id
-        # Workspace.
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -419,23 +419,23 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules(DaraMode
         resource_group_id: str = None,
         tags: List[main_models.ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags] = None,
     ):
-        # Annotations
+        # The annotations.
         self.annotations = annotations
-        # List of entity types
+        # A list of entity types.
         self.entity_types = entity_types
-        # Field rules
+        # The field rules.
         self.field_rules = field_rules
-        # Instance IDs.
+        # The instance IDs.
         self.instance_ids = instance_ids
-        # IP match rule
+        # The IP address matching rule.
         self.ip_match_rule = ip_match_rule
-        # Labels
+        # The labels.
         self.labels = labels
-        # List of region IDs.
+        # A list of region IDs.
         self.region_ids = region_ids
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Instance tag information.
+        # The tags of the instance.
         self.tags = tags
 
     def validate(self):
@@ -551,11 +551,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags(Dara
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # Operation to be performed.
+        # The operation to perform.
         self.op = op
-        # Tag key.
+        # The tag key.
         self.tag_key = tag_key
-        # Tag value.
+        # The tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -597,11 +597,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels(Da
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # Operation to be performed.
+        # The operation to perform.
         self.op = op
-        # Tag key.
+        # The tag key.
         self.tag_key = tag_key
-        # Tag values
+        # The tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -642,9 +642,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRu
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
-        # IP segment
+        # The IP address CIDR block.
         self.ip_cidr = ip_cidr
-        # Key of the IP field
+        # The key of the IP address field.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -680,11 +680,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
         field_values: List[str] = None,
         op: str = None,
     ):
-        # Unique identifier for the field.
+        # The unique identifier of the field.
         self.field_key = field_key
-        # Field content, multiple values separated by English commas.
+        # The content of the field. Separate multiple values with commas.
         self.field_values = field_values
-        # Operation to be performed.
+        # The operation to perform.
         self.op = op
 
     def validate(self):
@@ -726,11 +726,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotatio
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # Operation to be performed.
+        # The operation to perform.
         self.op = op
-        # Tag key.
+        # The tag key.
         self.tag_key = tag_key
-        # Tag values
+        # The tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -773,13 +773,13 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(DaraModel):
         vpc_cidr: str = None,
         vpc_id: str = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster type.
+        # The cluster type.
         self.cluster_type = cluster_type
-        # VPC CIDR
+        # The CIDR block of the VPC.
         self.vpc_cidr = vpc_cidr
-        # Virtual Private Cloud (VPC).
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -17,12 +17,17 @@ class GetThreadDataResponseBody(DaraModel):
         request_id: str = None,
         thread_id: str = None,
     ):
+        # The message data.
         self.data = data
+        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
+        # The maximum number of results.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The session ID.
         self.thread_id = thread_id
 
     def validate(self):
@@ -90,8 +95,11 @@ class GetThreadDataResponseBodyData(DaraModel):
         request_id: str = None,
         trace_id: str = None,
     ):
+        # A list of messages in the session.
         self.messages = messages
+        # The ID of the current message request. This is the first request ID in the root data.
         self.request_id = request_id
+        # The ID of the current message request. This is the first trace ID in the root data.
         self.trace_id = trace_id
 
     def validate(self):
@@ -151,18 +159,31 @@ class GetThreadDataResponseBodyDataMessages(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # A list of invoked agents.
         self.agents = agents
+        # Information about the generated artifacts.
         self.artifacts = artifacts
+        # The execution ID.
         self.call_id = call_id
+        # The message content.
         self.contents = contents
+        # The details of the message.
         self.detail = detail
+        # A list of events.
         self.events = events
+        # The execution ID of the parent level.
         self.parent_call_id = parent_call_id
+        # The role that sent the message.
         self.role = role
+        # The sequence number of the message.
         self.seq = seq
+        # The timestamp in nanoseconds.
         self.timestamp = timestamp
+        # A list of tools that were used.
         self.tools = tools
+        # The type of the message.
         self.type = type
+        # The version of the message data.
         self.version = version
 
     def validate(self):

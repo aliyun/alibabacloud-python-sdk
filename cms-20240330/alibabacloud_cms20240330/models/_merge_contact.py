@@ -22,17 +22,29 @@ class MergeContact(DaraModel):
         phone_verify: bool = None,
         source: str = None,
     ):
+        # 邮箱地址。
         self.email = email
+        # 邮箱是否已验证。
         self.email_verify = email_verify
+        # 扩展字段，用于存储额外信息。
         self.extend = extend
+        # 创建时间。
         self.gmt_create = gmt_create
+        # 最后修改时间。
         self.gmt_modified = gmt_modified
+        # 联系人唯一标识符。
         self.identifier = identifier
+        # 语言偏好。
         self.lang = lang
+        # 联系人姓名。
         self.name = name
+        # 手机号码。
         self.phone = phone
+        # 手机号码国家区号。
         self.phone_code = phone_code
+        # 手机号码是否已验证。
         self.phone_verify = phone_verify
+        # 联系人来源系统。
         self.source = source
 
     def validate(self):

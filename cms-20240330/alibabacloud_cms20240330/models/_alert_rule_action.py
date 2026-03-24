@@ -11,6 +11,7 @@ class AlertRuleAction(DaraModel):
         self,
         actions: List[str] = None,
     ):
+        # 行动集成ID列表
         self.actions = actions
 
     def validate(self):

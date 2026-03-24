@@ -10,7 +10,9 @@ class CreateDigitalEmployeeResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
+        # The name of the digital employee.
         self.name = name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

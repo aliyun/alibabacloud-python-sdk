@@ -18,14 +18,23 @@ class MergeRobot(DaraModel):
         type: str = None,
         webhook: str = None,
     ):
+        # 创建时间。
         self.create_time = create_time
+        # 扩展字段。
         self.extend = extend
+        # 最后修改时间。
         self.gmt_modified = gmt_modified
+        # 机器人唯一标识符。
         self.identifier = identifier
+        # 语言偏好。
         self.lang = lang
+        # 机器人名称。
         self.name = name
+        # 机器人来源系统。
         self.source = source
+        # 机器人类型。
         self.type = type
+        # Webhook 地址。
         self.webhook = webhook
 
     def validate(self):
@@ -108,11 +117,17 @@ class MergeRobotExtend(DaraModel):
         enable_outgoing: bool = None,
         token: str = None,
     ):
+        # 卡片模板。
         self.card_template = card_template
+        # 是否启用每日值班报告。
         self.daily_noc = daily_noc
+        # 每日值班报告时间。
         self.daily_noc_time = daily_noc_time
+        # 钉钉签名密钥。
         self.ding_sign_key = ding_sign_key
+        # 是否启用出站请求。
         self.enable_outgoing = enable_outgoing
+        # 认证令牌。
         self.token = token
 
     def validate(self):

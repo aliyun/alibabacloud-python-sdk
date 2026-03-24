@@ -11,11 +11,11 @@ class DeleteUmodelDataRequest(DaraModel):
         kind: str = None,
         name: str = None,
     ):
-        # Can specify the name of a specific Umodel data, leaving it blank means all
+        # The name of the Umodel data to delete. Omit this parameter to delete all Umodel data.
         self.domain = domain
-        # Can specify the kind of a specific Umodel data, leaving it blank means all
+        # The kind of the Umodel data. If unspecified, data of all kinds is deleted.
         self.kind = kind
-        # Can specify the name of a specific Umodel data, leaving it blank means all
+        # The name of the Umodel data. If unspecified, data with any name is deleted.
         self.name = name
 
     def validate(self):

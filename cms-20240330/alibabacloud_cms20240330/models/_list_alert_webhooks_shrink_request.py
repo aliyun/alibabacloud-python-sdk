@@ -11,11 +11,17 @@ class ListAlertWebhooksShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         webhook_ids_shrink: str = None,
+        workspace: str = None,
     ):
+        # The name of the webhook.
         self.name = name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The unique ID of the webhook.
         self.webhook_ids_shrink = webhook_ids_shrink
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -37,6 +43,9 @@ class ListAlertWebhooksShrinkRequest(DaraModel):
         if self.webhook_ids_shrink is not None:
             result['webhookIds'] = self.webhook_ids_shrink
 
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +61,9 @@ class ListAlertWebhooksShrinkRequest(DaraModel):
 
         if m.get('webhookIds') is not None:
             self.webhook_ids_shrink = m.get('webhookIds')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
 
         return self
 

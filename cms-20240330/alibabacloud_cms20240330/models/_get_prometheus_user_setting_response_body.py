@@ -12,8 +12,9 @@ class GetPrometheusUserSettingResponseBody(DaraModel):
         prometheus_user_setting: Dict[str, str] = None,
         request_id: str = None,
     ):
+        # The details of the user settings for Prometheus.
         self.prometheus_user_setting = prometheus_user_setting
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

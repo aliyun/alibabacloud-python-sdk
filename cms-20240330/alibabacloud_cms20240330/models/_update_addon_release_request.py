@@ -13,13 +13,13 @@ class UpdateAddonReleaseRequest(DaraModel):
         entity_rules: main_models.EntityDiscoverRule = None,
         values: str = None,
     ):
-        # Addon version information.
+        # The version of the add-on.
         self.addon_version = addon_version
-        # Whether to pre-check this request.
+        # Specifies whether to perform a dry run for the request.
         self.dry_run = dry_run
-        # Entity discovery rules.
+        # The entity discovery rules.
         self.entity_rules = entity_rules
-        # Metadata information.
+        # The metadata.
         self.values = values
 
     def validate(self):

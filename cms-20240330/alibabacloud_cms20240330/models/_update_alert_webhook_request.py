@@ -16,12 +16,29 @@ class UpdateAlertWebhookRequest(DaraModel):
         name: str = None,
         url: str = None,
     ):
+        # The content type of the data. Supported values:
+        # 
+        # - JSON
+        # 
+        # - FORM
         self.content_type = content_type
-        # headers
+        # The headers.
         self.headers = headers
+        # The language. Supported values:
+        # 
+        # - zh_CN
+        # 
+        # - en_US
         self.lang = lang
+        # The request method. Supported values:
+        # 
+        # - GET
+        # 
+        # - POST
         self.method = method
+        # The name of the webhook.
         self.name = name
+        # The URL of the alert callback.
         self.url = url
 
     def validate(self):

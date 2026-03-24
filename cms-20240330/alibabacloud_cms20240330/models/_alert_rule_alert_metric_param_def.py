@@ -19,13 +19,23 @@ class AlertRuleAlertMetricParamDef(DaraModel):
         value: str = None,
         values: List[main_models.AlertRuleAlertMetricParamDefValues] = None,
     ):
+        # 输入框的最大宽度，仅对SELECT_PARAM、INPUT_PARAM生效
         self.max_width = max_width
+        # 输入框的最小宽度，仅对SELECT_PARAM、INPUT_PARAM生效
         self.min_width = min_width
+        # 名称
         self.name = name
+        # 仅对INPUT_PARAM有效。用于前端展示的中文展位符
         self.placeholder_cn = placeholder_cn
+        # 仅对INPUT_PARAM有效。用于前端展示的英文展位符
         self.placeholder_en = placeholder_en
+        # ● TEXT_PARAM: 只读文本参数，由后台定义，前端不显示用户输入控件
+        # ● INPUT_PARAM：输入框参数
+        # ● SELECT_PARAM：选择框参数
         self.type = type
+        # 值
         self.value = value
+        # 仅对SELECT_PARAM有效。  下拉列表的可选值列表。
         self.values = values
 
     def validate(self):
@@ -105,8 +115,11 @@ class AlertRuleAlertMetricParamDefValues(DaraModel):
         label_en: str = None,
         value: str = None,
     ):
+        # 选项的中文显示名称
         self.label_cn = label_cn
+        # 选项的英文显示名称
         self.label_en = label_en
+        # 值
         self.value = value
 
     def validate(self):

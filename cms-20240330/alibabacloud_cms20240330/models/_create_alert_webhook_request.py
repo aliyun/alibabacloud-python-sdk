@@ -16,17 +16,39 @@ class CreateAlertWebhookRequest(DaraModel):
         name: str = None,
         url: str = None,
         webhook_id: str = None,
+        workspace: str = None,
     ):
+        # The content type. Valid values:
+        # 
+        # - JSON (default)
+        # 
+        # - FORM
         self.content_type = content_type
-        # headers
+        # The headers.
         self.headers = headers
+        # The language. Valid values:
+        # 
+        # - zh_CN
+        # 
+        # - en_US
         self.lang = lang
+        # The request method. Valid values:
+        # 
+        # - GET
+        # 
+        # - POST
         self.method = method
+        # The name of the webhook.
+        # 
         # This parameter is required.
         self.name = name
+        # The URL for the alert callback.
+        # 
         # This parameter is required.
         self.url = url
+        # The unique ID of the webhook.
         self.webhook_id = webhook_id
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -57,6 +79,9 @@ class CreateAlertWebhookRequest(DaraModel):
         if self.webhook_id is not None:
             result['webhookId'] = self.webhook_id
 
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
         return result
 
     def from_map(self, m: dict = None):
@@ -81,6 +106,9 @@ class CreateAlertWebhookRequest(DaraModel):
 
         if m.get('webhookId') is not None:
             self.webhook_id = m.get('webhookId')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
 
         return self
 

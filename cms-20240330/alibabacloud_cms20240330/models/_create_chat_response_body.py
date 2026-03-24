@@ -14,8 +14,11 @@ class CreateChatResponseBody(DaraModel):
         request_id: str = None,
         trace_id: str = None,
     ):
+        # Messages list
         self.messages = messages
+        # Unique identifier for the request
         self.request_id = request_id
+        # Global identifier for the request trace
         self.trace_id = trace_id
 
     def validate(self):
@@ -75,18 +78,31 @@ class CreateChatResponseBodyMessages(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # Agents list
         self.agents = agents
+        # Artifacts information
         self.artifacts = artifacts
+        # Call ID of the current node
         self.call_id = call_id
+        # Messages contents array
         self.contents = contents
+        # Detailed information, such as tool progress description
         self.detail = detail
+        # Events list
         self.events = events
+        # Call ID of the parent node
         self.parent_call_id = parent_call_id
+        # Message role
         self.role = role
+        # Event sequence number. This number increments to preserve event order.
         self.seq = seq
+        # UNIX timestamp (seconds)
         self.timestamp = timestamp
+        # Tools calls array
         self.tools = tools
+        # Special event type, such as done, error, or heartbeat
         self.type = type
+        # Message version number
         self.version = version
 
     def validate(self):
