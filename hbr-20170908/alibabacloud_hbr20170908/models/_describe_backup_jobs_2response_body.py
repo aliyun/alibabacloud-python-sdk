@@ -185,6 +185,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(DaraModel):
         start_time: int = None,
         status: str = None,
         table_name: str = None,
+        trigger_mode: str = None,
         updated_time: int = None,
         vault_id: str = None,
     ):
@@ -233,6 +234,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(DaraModel):
         self.start_time = start_time
         self.status = status
         self.table_name = table_name
+        self.trigger_mode = trigger_mode
         self.updated_time = updated_time
         self.vault_id = vault_id
 
@@ -386,6 +388,9 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(DaraModel):
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
+        if self.trigger_mode is not None:
+            result['TriggerMode'] = self.trigger_mode
+
         if self.updated_time is not None:
             result['UpdatedTime'] = self.updated_time
 
@@ -534,6 +539,9 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(DaraModel):
 
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
+
+        if m.get('TriggerMode') is not None:
+            self.trigger_mode = m.get('TriggerMode')
 
         if m.get('UpdatedTime') is not None:
             self.updated_time = m.get('UpdatedTime')
