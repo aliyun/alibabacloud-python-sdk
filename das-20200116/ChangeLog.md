@@ -1,3 +1,12 @@
+2026-03-24 Version: 2.12.2
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Fail.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Params.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Reason.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.ReqId.
+- Update API GetYaoChiAgent: add response parameters Body.ParentId.
+- Update API GetYaoChiAgent: add response parameters Body.SubAgentCall.
+
+
 2026-03-12 Version: 2.12.1
 - Generated python 2020-01-16 for DAS.
 

@@ -549,6 +549,7 @@ from ._get_storage_analysis_result_response_body import GetStorageAnalysisResult
 from ._get_storage_analysis_result_response_body import GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult
 from ._get_storage_analysis_result_response_body import GetStorageAnalysisResultResponseBodyData
 from ._get_yao_chi_agent_response_body import GetYaoChiAgentResponseBodyFunctionCall
+from ._get_yao_chi_agent_response_body import GetYaoChiAgentResponseBodySubAgentCall
 from ._get_yao_chi_agent_response_body import GetYaoChiAgentResponseBodyUiFunctionCall
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestBandwidth
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestResource
@@ -1122,6 +1123,7 @@ __all__ = [
     GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult,
     GetStorageAnalysisResultResponseBodyData,
     GetYaoChiAgentResponseBodyFunctionCall,
+    GetYaoChiAgentResponseBodySubAgentCall,
     GetYaoChiAgentResponseBodyUiFunctionCall,
     ModifyAutoScalingConfigRequestBandwidth,
     ModifyAutoScalingConfigRequestResource,

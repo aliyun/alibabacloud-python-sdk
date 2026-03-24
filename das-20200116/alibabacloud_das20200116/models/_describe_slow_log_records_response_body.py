@@ -190,6 +190,7 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         db_id: str = None,
         db_instance_name: str = None,
         docs_examined: str = None,
+        fail: str = None,
         frows: int = None,
         host_address: str = None,
         iowrites: int = None,
@@ -203,12 +204,15 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         node_id: str = None,
         op_type: str = None,
         origin_time: str = None,
+        params: str = None,
         physical_ioreads: int = None,
         psql: str = None,
         query_id: str = None,
         query_start_time: str = None,
         query_time: int = None,
         query_time_seconds: float = None,
+        reason: str = None,
+        req_id: str = None,
         request_size: int = None,
         response_size: int = None,
         return_item_numbers: str = None,
@@ -242,6 +246,7 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         self.db_id = db_id
         self.db_instance_name = db_instance_name
         self.docs_examined = docs_examined
+        self.fail = fail
         self.frows = frows
         self.host_address = host_address
         self.iowrites = iowrites
@@ -255,12 +260,15 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         self.node_id = node_id
         self.op_type = op_type
         self.origin_time = origin_time
+        self.params = params
         self.physical_ioreads = physical_ioreads
         self.psql = psql
         self.query_id = query_id
         self.query_start_time = query_start_time
         self.query_time = query_time
         self.query_time_seconds = query_time_seconds
+        self.reason = reason
+        self.req_id = req_id
         self.request_size = request_size
         self.response_size = response_size
         self.return_item_numbers = return_item_numbers
@@ -325,6 +333,9 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         if self.docs_examined is not None:
             result['DocsExamined'] = self.docs_examined
 
+        if self.fail is not None:
+            result['Fail'] = self.fail
+
         if self.frows is not None:
             result['Frows'] = self.frows
 
@@ -364,6 +375,9 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         if self.origin_time is not None:
             result['OriginTime'] = self.origin_time
 
+        if self.params is not None:
+            result['Params'] = self.params
+
         if self.physical_ioreads is not None:
             result['PhysicalIOReads'] = self.physical_ioreads
 
@@ -381,6 +395,12 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
 
         if self.query_time_seconds is not None:
             result['QueryTimeSeconds'] = self.query_time_seconds
+
+        if self.reason is not None:
+            result['Reason'] = self.reason
+
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
 
         if self.request_size is not None:
             result['RequestSize'] = self.request_size
@@ -482,6 +502,9 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         if m.get('DocsExamined') is not None:
             self.docs_examined = m.get('DocsExamined')
 
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+
         if m.get('Frows') is not None:
             self.frows = m.get('Frows')
 
@@ -521,6 +544,9 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         if m.get('OriginTime') is not None:
             self.origin_time = m.get('OriginTime')
 
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+
         if m.get('PhysicalIOReads') is not None:
             self.physical_ioreads = m.get('PhysicalIOReads')
 
@@ -538,6 +564,12 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
 
         if m.get('QueryTimeSeconds') is not None:
             self.query_time_seconds = m.get('QueryTimeSeconds')
+
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
 
         if m.get('RequestSize') is not None:
             self.request_size = m.get('RequestSize')

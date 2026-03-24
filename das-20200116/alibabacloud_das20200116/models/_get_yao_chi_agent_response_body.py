@@ -12,25 +12,33 @@ class GetYaoChiAgentResponseBody(DaraModel):
         self,
         content: str = None,
         function_call: List[main_models.GetYaoChiAgentResponseBodyFunctionCall] = None,
+        parent_id: str = None,
         product: str = None,
         query_id: str = None,
         reasoning_content: str = None,
         request_id: str = None,
         session_id: str = None,
+        sub_agent_call: List[main_models.GetYaoChiAgentResponseBodySubAgentCall] = None,
         ui_function_call: List[main_models.GetYaoChiAgentResponseBodyUiFunctionCall] = None,
     ):
         self.content = content
         self.function_call = function_call
+        self.parent_id = parent_id
         self.product = product
         self.query_id = query_id
         self.reasoning_content = reasoning_content
         self.request_id = request_id
         self.session_id = session_id
+        self.sub_agent_call = sub_agent_call
         self.ui_function_call = ui_function_call
 
     def validate(self):
         if self.function_call:
             for v1 in self.function_call:
+                 if v1:
+                    v1.validate()
+        if self.sub_agent_call:
+            for v1 in self.sub_agent_call:
                  if v1:
                     v1.validate()
         if self.ui_function_call:
@@ -51,6 +59,9 @@ class GetYaoChiAgentResponseBody(DaraModel):
             for k1 in self.function_call:
                 result['FunctionCall'].append(k1.to_map() if k1 else None)
 
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+
         if self.product is not None:
             result['Product'] = self.product
 
@@ -65,6 +76,11 @@ class GetYaoChiAgentResponseBody(DaraModel):
 
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+
+        result['SubAgentCall'] = []
+        if self.sub_agent_call is not None:
+            for k1 in self.sub_agent_call:
+                result['SubAgentCall'].append(k1.to_map() if k1 else None)
 
         result['UiFunctionCall'] = []
         if self.ui_function_call is not None:
@@ -84,6 +100,9 @@ class GetYaoChiAgentResponseBody(DaraModel):
                 temp_model = main_models.GetYaoChiAgentResponseBodyFunctionCall()
                 self.function_call.append(temp_model.from_map(k1))
 
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+
         if m.get('Product') is not None:
             self.product = m.get('Product')
 
@@ -98,6 +117,12 @@ class GetYaoChiAgentResponseBody(DaraModel):
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+
+        self.sub_agent_call = []
+        if m.get('SubAgentCall') is not None:
+            for k1 in m.get('SubAgentCall'):
+                temp_model = main_models.GetYaoChiAgentResponseBodySubAgentCall()
+                self.sub_agent_call.append(temp_model.from_map(k1))
 
         self.ui_function_call = []
         if m.get('UiFunctionCall') is not None:
@@ -139,6 +164,49 @@ class GetYaoChiAgentResponseBodyUiFunctionCall(DaraModel):
 
         if m.get('ToolName') is not None:
             self.tool_name = m.get('ToolName')
+
+        return self
+
+class GetYaoChiAgentResponseBodySubAgentCall(DaraModel):
+    def __init__(
+        self,
+        status: str = None,
+        sub_agent_id: str = None,
+        sub_agent_name: str = None,
+    ):
+        self.status = status
+        self.sub_agent_id = sub_agent_id
+        self.sub_agent_name = sub_agent_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.sub_agent_id is not None:
+            result['SubAgentId'] = self.sub_agent_id
+
+        if self.sub_agent_name is not None:
+            result['SubAgentName'] = self.sub_agent_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('SubAgentId') is not None:
+            self.sub_agent_id = m.get('SubAgentId')
+
+        if m.get('SubAgentName') is not None:
+            self.sub_agent_name = m.get('SubAgentName')
 
         return self
 
