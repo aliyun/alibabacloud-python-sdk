@@ -1,3 +1,8 @@
+2026-03-24 Version: 2.5.2
+- Update API BeginSession: add request parameters SessionId.
+- Update API ListInstance: add request parameters Sandbox.
+
+
 2025-12-11 Version: 2.5.1
 - Generated python 2022-04-08 for Chatbot.
 
