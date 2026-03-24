@@ -650,6 +650,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.lock_embodied_aiplatform_with_options_async(request, runtime)
 
+    def modify_agent_platform_with_options(
+        self,
+        tmp_req: main_models.ModifyAgentPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgentPlatformResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAgentPlatformShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ai_platform_config):
+            request.ai_platform_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ai_platform_config, 'AiPlatformConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ai_platform_config_shrink):
+            query['AiPlatformConfig'] = request.ai_platform_config_shrink
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgentPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgentPlatformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_agent_platform_with_options_async(
+        self,
+        tmp_req: main_models.ModifyAgentPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgentPlatformResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAgentPlatformShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ai_platform_config):
+            request.ai_platform_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ai_platform_config, 'AiPlatformConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ai_platform_config_shrink):
+            query['AiPlatformConfig'] = request.ai_platform_config_shrink
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgentPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgentPlatformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_agent_platform(
+        self,
+        request: main_models.ModifyAgentPlatformRequest,
+    ) -> main_models.ModifyAgentPlatformResponse:
+        runtime = RuntimeOptions()
+        return self.modify_agent_platform_with_options(request, runtime)
+
+    async def modify_agent_platform_async(
+        self,
+        request: main_models.ModifyAgentPlatformRequest,
+    ) -> main_models.ModifyAgentPlatformResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_agent_platform_with_options_async(request, runtime)
+
+    def modify_embodied_aiplatform_with_options(
+        self,
+        tmp_req: main_models.ModifyEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyEmbodiedAIPlatformResponse:
+        tmp_req.validate()
+        request = main_models.ModifyEmbodiedAIPlatformShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ray_config):
+            request.ray_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.ray_config_shrink):
+            query['RayConfig'] = request.ray_config_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.webserver_spec_name):
+            query['WebserverSpecName'] = request.webserver_spec_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyEmbodiedAIPlatformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_embodied_aiplatform_with_options_async(
+        self,
+        tmp_req: main_models.ModifyEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyEmbodiedAIPlatformResponse:
+        tmp_req.validate()
+        request = main_models.ModifyEmbodiedAIPlatformShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ray_config):
+            request.ray_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.ray_config_shrink):
+            query['RayConfig'] = request.ray_config_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.webserver_spec_name):
+            query['WebserverSpecName'] = request.webserver_spec_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyEmbodiedAIPlatformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_embodied_aiplatform(
+        self,
+        request: main_models.ModifyEmbodiedAIPlatformRequest,
+    ) -> main_models.ModifyEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return self.modify_embodied_aiplatform_with_options(request, runtime)
+
+    async def modify_embodied_aiplatform_async(
+        self,
+        request: main_models.ModifyEmbodiedAIPlatformRequest,
+    ) -> main_models.ModifyEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_embodied_aiplatform_with_options_async(request, runtime)
+
     def reset_embodied_aiplatform_password_with_options(
         self,
         request: main_models.ResetEmbodiedAIPlatformPasswordRequest,

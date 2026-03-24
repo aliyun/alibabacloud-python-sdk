@@ -25,6 +25,14 @@ from ._get_embodied_aiplatform_resource_usage_info_response import GetEmbodiedAI
 from ._lock_embodied_aiplatform_request import LockEmbodiedAIPlatformRequest
 from ._lock_embodied_aiplatform_response_body import LockEmbodiedAIPlatformResponseBody
 from ._lock_embodied_aiplatform_response import LockEmbodiedAIPlatformResponse
+from ._modify_agent_platform_request import ModifyAgentPlatformRequest
+from ._modify_agent_platform_shrink_request import ModifyAgentPlatformShrinkRequest
+from ._modify_agent_platform_response_body import ModifyAgentPlatformResponseBody
+from ._modify_agent_platform_response import ModifyAgentPlatformResponse
+from ._modify_embodied_aiplatform_request import ModifyEmbodiedAIPlatformRequest
+from ._modify_embodied_aiplatform_shrink_request import ModifyEmbodiedAIPlatformShrinkRequest
+from ._modify_embodied_aiplatform_response_body import ModifyEmbodiedAIPlatformResponseBody
+from ._modify_embodied_aiplatform_response import ModifyEmbodiedAIPlatformResponse
 from ._reset_embodied_aiplatform_password_request import ResetEmbodiedAIPlatformPasswordRequest
 from ._reset_embodied_aiplatform_password_response_body import ResetEmbodiedAIPlatformPasswordResponseBody
 from ._reset_embodied_aiplatform_password_response import ResetEmbodiedAIPlatformPasswordResponse
@@ -43,6 +51,9 @@ from ._get_embodied_aiplatform_resource_usage_info_response_body import GetEmbod
 from ._get_embodied_aiplatform_resource_usage_info_response_body import GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas
 from ._get_embodied_aiplatform_resource_usage_info_response_body import GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageOss
 from ._get_embodied_aiplatform_resource_usage_info_response_body import GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage
+from ._modify_agent_platform_request import ModifyAgentPlatformRequestAiPlatformConfig
+from ._modify_embodied_aiplatform_request import ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups
+from ._modify_embodied_aiplatform_request import ModifyEmbodiedAIPlatformRequestRayConfig
 
 __all__ = [
     CreateAgentPlatformRequest,
@@ -68,6 +79,14 @@ __all__ = [
     LockEmbodiedAIPlatformRequest,
     LockEmbodiedAIPlatformResponseBody,
     LockEmbodiedAIPlatformResponse,
+    ModifyAgentPlatformRequest,
+    ModifyAgentPlatformShrinkRequest,
+    ModifyAgentPlatformResponseBody,
+    ModifyAgentPlatformResponse,
+    ModifyEmbodiedAIPlatformRequest,
+    ModifyEmbodiedAIPlatformShrinkRequest,
+    ModifyEmbodiedAIPlatformResponseBody,
+    ModifyEmbodiedAIPlatformResponse,
     ResetEmbodiedAIPlatformPasswordRequest,
     ResetEmbodiedAIPlatformPasswordResponseBody,
     ResetEmbodiedAIPlatformPasswordResponse,
@@ -85,5 +104,8 @@ __all__ = [
     GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic,
     GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas,
     GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageOss,
-    GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage
+    GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage,
+    ModifyAgentPlatformRequestAiPlatformConfig,
+    ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups,
+    ModifyEmbodiedAIPlatformRequestRayConfig
 ]
