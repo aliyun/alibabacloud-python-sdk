@@ -13,6 +13,7 @@ class CreateMediaConvertTaskShrinkRequest(DaraModel):
         project_name: str = None,
         sources_shrink: str = None,
         tags_shrink: str = None,
+        target_groups_shrink: str = None,
         targets_shrink: str = None,
         user_data: str = None,
     ):
@@ -34,9 +35,8 @@ class CreateMediaConvertTaskShrinkRequest(DaraModel):
         self.sources_shrink = sources_shrink
         # Custom tags used for searching and filtering asynchronous tasks.
         self.tags_shrink = tags_shrink
+        self.target_groups_shrink = target_groups_shrink
         # List of media processing tasks, supporting multiple task configurations.
-        # 
-        # This parameter is required.
         self.targets_shrink = targets_shrink
         # User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
         self.user_data = user_data
@@ -67,6 +67,9 @@ class CreateMediaConvertTaskShrinkRequest(DaraModel):
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
 
+        if self.target_groups_shrink is not None:
+            result['TargetGroups'] = self.target_groups_shrink
+
         if self.targets_shrink is not None:
             result['Targets'] = self.targets_shrink
 
@@ -94,6 +97,9 @@ class CreateMediaConvertTaskShrinkRequest(DaraModel):
 
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+
+        if m.get('TargetGroups') is not None:
+            self.target_groups_shrink = m.get('TargetGroups')
 
         if m.get('Targets') is not None:
             self.targets_shrink = m.get('Targets')

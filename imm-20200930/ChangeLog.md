@@ -1,3 +1,9 @@
+2026-03-24 Version: 4.8.1
+- Update API CreateMediaConvertTask: add request parameters TargetGroups.
+- Update API CreateMediaConvertTask: add request parameters Targets.$.AttachedPicture.
+- Update API CreateMediaConvertTask: add request parameters Targets.$.Data.
+
+
 2026-03-10 Version: 4.8.0
 - Support API CreateHighlightTask.
 

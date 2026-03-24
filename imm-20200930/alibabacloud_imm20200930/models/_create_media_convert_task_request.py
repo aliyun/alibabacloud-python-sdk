@@ -16,6 +16,7 @@ class CreateMediaConvertTaskRequest(DaraModel):
         project_name: str = None,
         sources: List[main_models.CreateMediaConvertTaskRequestSources] = None,
         tags: Dict[str, Any] = None,
+        target_groups: List[main_models.CreateMediaConvertTaskRequestTargetGroups] = None,
         targets: List[main_models.CreateMediaConvertTaskRequestTargets] = None,
         user_data: str = None,
     ):
@@ -37,9 +38,8 @@ class CreateMediaConvertTaskRequest(DaraModel):
         self.sources = sources
         # Custom tags used for searching and filtering asynchronous tasks.
         self.tags = tags
+        self.target_groups = target_groups
         # List of media processing tasks, supporting multiple task configurations.
-        # 
-        # This parameter is required.
         self.targets = targets
         # User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
         self.user_data = user_data
@@ -51,6 +51,10 @@ class CreateMediaConvertTaskRequest(DaraModel):
             self.notification.validate()
         if self.sources:
             for v1 in self.sources:
+                 if v1:
+                    v1.validate()
+        if self.target_groups:
+            for v1 in self.target_groups:
                  if v1:
                     v1.validate()
         if self.targets:
@@ -82,6 +86,11 @@ class CreateMediaConvertTaskRequest(DaraModel):
 
         if self.tags is not None:
             result['Tags'] = self.tags
+
+        result['TargetGroups'] = []
+        if self.target_groups is not None:
+            for k1 in self.target_groups:
+                result['TargetGroups'].append(k1.to_map() if k1 else None)
 
         result['Targets'] = []
         if self.targets is not None:
@@ -118,6 +127,12 @@ class CreateMediaConvertTaskRequest(DaraModel):
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
 
+        self.target_groups = []
+        if m.get('TargetGroups') is not None:
+            for k1 in m.get('TargetGroups'):
+                temp_model = main_models.CreateMediaConvertTaskRequestTargetGroups()
+                self.target_groups.append(temp_model.from_map(k1))
+
         self.targets = []
         if m.get('Targets') is not None:
             for k1 in m.get('Targets'):
@@ -132,8 +147,10 @@ class CreateMediaConvertTaskRequest(DaraModel):
 class CreateMediaConvertTaskRequestTargets(DaraModel):
     def __init__(
         self,
+        attached_picture: main_models.CreateMediaConvertTaskRequestTargetsAttachedPicture = None,
         audio: main_models.TargetAudio = None,
         container: str = None,
+        data: main_models.CreateMediaConvertTaskRequestTargetsData = None,
         image: main_models.TargetImage = None,
         segment: main_models.CreateMediaConvertTaskRequestTargetsSegment = None,
         speed: float = None,
@@ -142,6 +159,7 @@ class CreateMediaConvertTaskRequestTargets(DaraModel):
         uri: str = None,
         video: main_models.TargetVideo = None,
     ):
+        self.attached_picture = attached_picture
         # Audio processing parameter configuration.
         # >Notice: If Audio is null, the first audio stream (if present) will be directly copied to the output file.</notice>
         self.audio = audio
@@ -150,6 +168,7 @@ class CreateMediaConvertTaskRequestTargets(DaraModel):
         # - Audio containers: mp3, aac, flac, oga, ac3, opus
         # >Notice: Both Container and URI parameters need to be set. If only subtitle extraction, frame capture, sprite image capture, or media-to-gif conversion is performed, both Container and URI should be set to null, making the Segment, Video, Audio, and Speed parameters meaningless.</notice>
         self.container = container
+        self.data = data
         # Configuration for frame capture, sprite image capture, and media to animated image conversion.
         self.image = image
         # Media segment settings, no segmentation by default.
@@ -175,8 +194,12 @@ class CreateMediaConvertTaskRequestTargets(DaraModel):
         self.video = video
 
     def validate(self):
+        if self.attached_picture:
+            self.attached_picture.validate()
         if self.audio:
             self.audio.validate()
+        if self.data:
+            self.data.validate()
         if self.image:
             self.image.validate()
         if self.segment:
@@ -191,11 +214,17 @@ class CreateMediaConvertTaskRequestTargets(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attached_picture is not None:
+            result['AttachedPicture'] = self.attached_picture.to_map()
+
         if self.audio is not None:
             result['Audio'] = self.audio.to_map()
 
         if self.container is not None:
             result['Container'] = self.container
+
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
 
         if self.image is not None:
             result['Image'] = self.image.to_map()
@@ -222,12 +251,20 @@ class CreateMediaConvertTaskRequestTargets(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AttachedPicture') is not None:
+            temp_model = main_models.CreateMediaConvertTaskRequestTargetsAttachedPicture()
+            self.attached_picture = temp_model.from_map(m.get('AttachedPicture'))
+
         if m.get('Audio') is not None:
             temp_model = main_models.TargetAudio()
             self.audio = temp_model.from_map(m.get('Audio'))
 
         if m.get('Container') is not None:
             self.container = m.get('Container')
+
+        if m.get('Data') is not None:
+            temp_model = main_models.CreateMediaConvertTaskRequestTargetsData()
+            self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Image') is not None:
             temp_model = main_models.TargetImage()
@@ -270,6 +307,240 @@ class CreateMediaConvertTaskRequestTargetsSegment(DaraModel):
         # - dash
         self.format = format
         # Starting sequence number, supported only for hls, default is 0.
+        self.start_number = start_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.duration is not None:
+            result['Duration'] = self.duration
+
+        if self.format is not None:
+            result['Format'] = self.format
+
+        if self.start_number is not None:
+            result['StartNumber'] = self.start_number
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+
+        if m.get('StartNumber') is not None:
+            self.start_number = m.get('StartNumber')
+
+        return self
+
+class CreateMediaConvertTaskRequestTargetsData(DaraModel):
+    def __init__(
+        self,
+        stream: List[int] = None,
+    ):
+        self.stream = stream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.stream is not None:
+            result['Stream'] = self.stream
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
+
+        return self
+
+class CreateMediaConvertTaskRequestTargetsAttachedPicture(DaraModel):
+    def __init__(
+        self,
+        stream: List[int] = None,
+    ):
+        self.stream = stream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.stream is not None:
+            result['Stream'] = self.stream
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
+
+        return self
+
+class CreateMediaConvertTaskRequestTargetGroups(DaraModel):
+    def __init__(
+        self,
+        targets: List[main_models.CreateMediaConvertTaskRequestTargetGroupsTargets] = None,
+        uri: str = None,
+    ):
+        self.targets = targets
+        self.uri = uri
+
+    def validate(self):
+        if self.targets:
+            for v1 in self.targets:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Targets'] = []
+        if self.targets is not None:
+            for k1 in self.targets:
+                result['Targets'].append(k1.to_map() if k1 else None)
+
+        if self.uri is not None:
+            result['URI'] = self.uri
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.targets = []
+        if m.get('Targets') is not None:
+            for k1 in m.get('Targets'):
+                temp_model = main_models.CreateMediaConvertTaskRequestTargetGroupsTargets()
+                self.targets.append(temp_model.from_map(k1))
+
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+
+        return self
+
+class CreateMediaConvertTaskRequestTargetGroupsTargets(DaraModel):
+    def __init__(
+        self,
+        audio: main_models.TargetAudio = None,
+        container: str = None,
+        segment: main_models.CreateMediaConvertTaskRequestTargetGroupsTargetsSegment = None,
+        speed: float = None,
+        strip_metadata: bool = None,
+        subtitle: main_models.TargetSubtitle = None,
+        uri: str = None,
+        video: main_models.TargetVideo = None,
+    ):
+        self.audio = audio
+        self.container = container
+        self.segment = segment
+        self.speed = speed
+        self.strip_metadata = strip_metadata
+        self.subtitle = subtitle
+        self.uri = uri
+        self.video = video
+
+    def validate(self):
+        if self.audio:
+            self.audio.validate()
+        if self.segment:
+            self.segment.validate()
+        if self.subtitle:
+            self.subtitle.validate()
+        if self.video:
+            self.video.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio is not None:
+            result['Audio'] = self.audio.to_map()
+
+        if self.container is not None:
+            result['Container'] = self.container
+
+        if self.segment is not None:
+            result['Segment'] = self.segment.to_map()
+
+        if self.speed is not None:
+            result['Speed'] = self.speed
+
+        if self.strip_metadata is not None:
+            result['StripMetadata'] = self.strip_metadata
+
+        if self.subtitle is not None:
+            result['Subtitle'] = self.subtitle.to_map()
+
+        if self.uri is not None:
+            result['URI'] = self.uri
+
+        if self.video is not None:
+            result['Video'] = self.video.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audio') is not None:
+            temp_model = main_models.TargetAudio()
+            self.audio = temp_model.from_map(m.get('Audio'))
+
+        if m.get('Container') is not None:
+            self.container = m.get('Container')
+
+        if m.get('Segment') is not None:
+            temp_model = main_models.CreateMediaConvertTaskRequestTargetGroupsTargetsSegment()
+            self.segment = temp_model.from_map(m.get('Segment'))
+
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+
+        if m.get('StripMetadata') is not None:
+            self.strip_metadata = m.get('StripMetadata')
+
+        if m.get('Subtitle') is not None:
+            temp_model = main_models.TargetSubtitle()
+            self.subtitle = temp_model.from_map(m.get('Subtitle'))
+
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+
+        if m.get('Video') is not None:
+            temp_model = main_models.TargetVideo()
+            self.video = temp_model.from_map(m.get('Video'))
+
+        return self
+
+class CreateMediaConvertTaskRequestTargetGroupsTargetsSegment(DaraModel):
+    def __init__(
+        self,
+        duration: float = None,
+        format: str = None,
+        start_number: int = None,
+    ):
+        self.duration = duration
+        self.format = format
         self.start_number = start_number
 
     def validate(self):

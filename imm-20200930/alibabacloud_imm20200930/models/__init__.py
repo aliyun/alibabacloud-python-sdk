@@ -532,6 +532,11 @@ from ._create_location_date_clustering_task_request import CreateLocationDateClu
 from ._create_location_date_clustering_task_request import CreateLocationDateClusteringTaskRequestLocationOptions
 from ._create_media_convert_task_request import CreateMediaConvertTaskRequestSourcesSubtitles
 from ._create_media_convert_task_request import CreateMediaConvertTaskRequestSources
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetGroupsTargetsSegment
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetGroupsTargets
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetGroups
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetsAttachedPicture
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetsData
 from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetsSegment
 from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargets
 from ._create_office_conversion_task_request import CreateOfficeConversionTaskRequestSources
@@ -1093,6 +1098,11 @@ __all__ = [
     CreateLocationDateClusteringTaskRequestLocationOptions,
     CreateMediaConvertTaskRequestSourcesSubtitles,
     CreateMediaConvertTaskRequestSources,
+    CreateMediaConvertTaskRequestTargetGroupsTargetsSegment,
+    CreateMediaConvertTaskRequestTargetGroupsTargets,
+    CreateMediaConvertTaskRequestTargetGroups,
+    CreateMediaConvertTaskRequestTargetsAttachedPicture,
+    CreateMediaConvertTaskRequestTargetsData,
     CreateMediaConvertTaskRequestTargetsSegment,
     CreateMediaConvertTaskRequestTargets,
     CreateOfficeConversionTaskRequestSources,

@@ -3131,6 +3131,8 @@ class Client(OpenApiClient):
             request.sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not DaraCore.is_null(tmp_req.target_groups):
+            request.target_groups_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_groups, 'TargetGroups', 'json')
         if not DaraCore.is_null(tmp_req.targets):
             request.targets_shrink = Utils.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
@@ -3146,6 +3148,8 @@ class Client(OpenApiClient):
             query['Sources'] = request.sources_shrink
         if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.target_groups_shrink):
+            query['TargetGroups'] = request.target_groups_shrink
         if not DaraCore.is_null(request.targets_shrink):
             query['Targets'] = request.targets_shrink
         if not DaraCore.is_null(request.user_data):
@@ -3185,6 +3189,8 @@ class Client(OpenApiClient):
             request.sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not DaraCore.is_null(tmp_req.target_groups):
+            request.target_groups_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_groups, 'TargetGroups', 'json')
         if not DaraCore.is_null(tmp_req.targets):
             request.targets_shrink = Utils.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
@@ -3200,6 +3206,8 @@ class Client(OpenApiClient):
             query['Sources'] = request.sources_shrink
         if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.target_groups_shrink):
+            query['TargetGroups'] = request.target_groups_shrink
         if not DaraCore.is_null(request.targets_shrink):
             query['Targets'] = request.targets_shrink
         if not DaraCore.is_null(request.user_data):
