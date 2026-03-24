@@ -1,3 +1,9 @@
+2026-03-24 Version: 6.9.0
+- Support API DeletePolarFsObjects.
+- Update API CreateApplication: add request parameters Tag.
+- Update API CreateApplication: add request parameters TargetVersion.
+
+
 2026-03-23 Version: 6.8.0
 - Support API ApplyApplicationPrompts.
 - Support API CreateApplicationPrompt.

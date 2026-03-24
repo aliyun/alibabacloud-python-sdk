@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_polardb20170801 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateApplicationShrinkRequest(DaraModel):
@@ -32,6 +35,8 @@ class CreateApplicationShrinkRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[main_models.CreateApplicationShrinkRequestTag] = None,
+        target_version: str = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -64,13 +69,18 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
+        self.tag = tag
+        self.target_version = target_version
         self.used_time = used_time
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for v1 in self.tag:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -151,6 +161,14 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+
+        result['Tag'] = []
+        if self.tag is not None:
+            for k1 in self.tag:
+                result['Tag'].append(k1.to_map() if k1 else None)
+
+        if self.target_version is not None:
+            result['TargetVersion'] = self.target_version
 
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
@@ -243,6 +261,15 @@ class CreateApplicationShrinkRequest(DaraModel):
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
 
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k1 in m.get('Tag'):
+                temp_model = main_models.CreateApplicationShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k1))
+
+        if m.get('TargetVersion') is not None:
+            self.target_version = m.get('TargetVersion')
+
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
 
@@ -254,6 +281,41 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class CreateApplicationShrinkRequestTag(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

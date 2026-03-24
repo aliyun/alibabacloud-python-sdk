@@ -2548,6 +2548,10 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.target_version):
+            query['TargetVersion'] = request.target_version
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
@@ -2640,6 +2644,10 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.target_version):
+            query['TargetVersion'] = request.target_version
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
@@ -7514,6 +7522,92 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteParameterGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
+
+    def delete_polar_fs_objects_with_options(
+        self,
+        tmp_req: main_models.DeletePolarFsObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarFsObjectsResponse:
+        tmp_req.validate()
+        request = main_models.DeletePolarFsObjectsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.objects_to_delete):
+            request.objects_to_delete_shrink = Utils.array_to_string_with_specified_style(tmp_req.objects_to_delete, 'ObjectsToDelete', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.objects_to_delete_shrink):
+            query['ObjectsToDelete'] = request.objects_to_delete_shrink
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarFsObjects',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarFsObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_fs_objects_with_options_async(
+        self,
+        tmp_req: main_models.DeletePolarFsObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarFsObjectsResponse:
+        tmp_req.validate()
+        request = main_models.DeletePolarFsObjectsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.objects_to_delete):
+            request.objects_to_delete_shrink = Utils.array_to_string_with_specified_style(tmp_req.objects_to_delete, 'ObjectsToDelete', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.objects_to_delete_shrink):
+            query['ObjectsToDelete'] = request.objects_to_delete_shrink
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarFsObjects',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarFsObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_fs_objects(
+        self,
+        request: main_models.DeletePolarFsObjectsRequest,
+    ) -> main_models.DeletePolarFsObjectsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_fs_objects_with_options(request, runtime)
+
+    async def delete_polar_fs_objects_async(
+        self,
+        request: main_models.DeletePolarFsObjectsRequest,
+    ) -> main_models.DeletePolarFsObjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_fs_objects_with_options_async(request, runtime)
 
     def delete_polar_fs_quota_with_options(
         self,

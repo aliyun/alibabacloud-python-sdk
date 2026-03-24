@@ -226,6 +226,10 @@ from ._delete_network_channel_response import DeleteNetworkChannelResponse
 from ._delete_parameter_group_request import DeleteParameterGroupRequest
 from ._delete_parameter_group_response_body import DeleteParameterGroupResponseBody
 from ._delete_parameter_group_response import DeleteParameterGroupResponse
+from ._delete_polar_fs_objects_request import DeletePolarFsObjectsRequest
+from ._delete_polar_fs_objects_shrink_request import DeletePolarFsObjectsShrinkRequest
+from ._delete_polar_fs_objects_response_body import DeletePolarFsObjectsResponseBody
+from ._delete_polar_fs_objects_response import DeletePolarFsObjectsResponse
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequest
 from ._delete_polar_fs_quota_response_body import DeletePolarFsQuotaResponseBody
 from ._delete_polar_fs_quota_response import DeletePolarFsQuotaResponse
@@ -894,6 +898,8 @@ from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
 from ._create_application_request import CreateApplicationRequestEndpoints
 from ._create_application_request import CreateApplicationRequestMemApplicationSpec
+from ._create_application_request import CreateApplicationRequestTag
+from ._create_application_shrink_request import CreateApplicationShrinkRequestTag
 from ._create_application_response_body import CreateApplicationResponseBodyComponents
 from ._create_dbcluster_request import CreateDBClusterRequestTag
 from ._create_dbendpoint_address_request import CreateDBEndpointAddressRequestZoneInfo
@@ -1369,6 +1375,10 @@ __all__ = [
     DeleteParameterGroupRequest,
     DeleteParameterGroupResponseBody,
     DeleteParameterGroupResponse,
+    DeletePolarFsObjectsRequest,
+    DeletePolarFsObjectsShrinkRequest,
+    DeletePolarFsObjectsResponseBody,
+    DeletePolarFsObjectsResponse,
     DeletePolarFsQuotaRequest,
     DeletePolarFsQuotaResponseBody,
     DeletePolarFsQuotaResponse,
@@ -2037,6 +2047,8 @@ __all__ = [
     CreateApplicationRequestComponents,
     CreateApplicationRequestEndpoints,
     CreateApplicationRequestMemApplicationSpec,
+    CreateApplicationRequestTag,
+    CreateApplicationShrinkRequestTag,
     CreateApplicationResponseBodyComponents,
     CreateDBClusterRequestTag,
     CreateDBEndpointAddressRequestZoneInfo,
