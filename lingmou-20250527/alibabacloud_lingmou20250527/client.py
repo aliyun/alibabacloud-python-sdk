@@ -209,6 +209,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.confirm_train_pic_avatar_with_options_async(request, headers, runtime)
 
+    def copy_broadcast_scene_from_template_with_options(
+        self,
+        request: main_models.CopyBroadcastSceneFromTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CopyBroadcastSceneFromTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.ratio):
+            body['ratio'] = request.ratio
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CopyBroadcastSceneFromTemplate',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/template/scene/copyByTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CopyBroadcastSceneFromTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_broadcast_scene_from_template_with_options_async(
+        self,
+        request: main_models.CopyBroadcastSceneFromTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CopyBroadcastSceneFromTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.ratio):
+            body['ratio'] = request.ratio
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CopyBroadcastSceneFromTemplate',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/template/scene/copyByTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CopyBroadcastSceneFromTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_broadcast_scene_from_template(
+        self,
+        request: main_models.CopyBroadcastSceneFromTemplateRequest,
+    ) -> main_models.CopyBroadcastSceneFromTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.copy_broadcast_scene_from_template_with_options(request, headers, runtime)
+
+    async def copy_broadcast_scene_from_template_async(
+        self,
+        request: main_models.CopyBroadcastSceneFromTemplateRequest,
+    ) -> main_models.CopyBroadcastSceneFromTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.copy_broadcast_scene_from_template_with_options_async(request, headers, runtime)
+
     def create_background_pic_with_options(
         self,
         request: main_models.CreateBackgroundPicRequest,
@@ -1648,6 +1732,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_private_ttsvoices_custom_with_options_async(request, headers, runtime)
+
+    def list_public_broadcast_scene_templates_with_options(
+        self,
+        request: main_models.ListPublicBroadcastSceneTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPublicBroadcastSceneTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.tags):
+            query['tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPublicBroadcastSceneTemplates',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/template/scene/listPublic',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPublicBroadcastSceneTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_public_broadcast_scene_templates_with_options_async(
+        self,
+        request: main_models.ListPublicBroadcastSceneTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPublicBroadcastSceneTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.tags):
+            query['tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPublicBroadcastSceneTemplates',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/template/scene/listPublic',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPublicBroadcastSceneTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_public_broadcast_scene_templates(
+        self,
+        request: main_models.ListPublicBroadcastSceneTemplatesRequest,
+    ) -> main_models.ListPublicBroadcastSceneTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_public_broadcast_scene_templates_with_options(request, headers, runtime)
+
+    async def list_public_broadcast_scene_templates_async(
+        self,
+        request: main_models.ListPublicBroadcastSceneTemplatesRequest,
+    ) -> main_models.ListPublicBroadcastSceneTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_public_broadcast_scene_templates_with_options_async(request, headers, runtime)
 
     def list_template_material_with_options(
         self,

@@ -1,3 +1,8 @@
+2026-03-24 Version: 1.7.0
+- Support API CopyBroadcastSceneFromTemplate.
+- Support API ListPublicBroadcastSceneTemplates.
+
+
 2026-03-20 Version: 1.6.1
 - Update API CreateBroadcastVideoFromTemplate: add request parameters body.videoOptions.languageHints.
 

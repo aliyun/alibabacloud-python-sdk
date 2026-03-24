@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from ._broadcast_audio import BroadcastAudio
+from ._broadcast_scene import BroadcastScene
+from ._broadcast_scene_template import BroadcastSceneTemplate
 from ._broadcast_template import BroadcastTemplate
 from ._broadcast_video import BroadcastVideo
 from ._chat_session_info import ChatSessionInfo
@@ -14,6 +16,9 @@ from ._close_chat_instance_sessions_response import CloseChatInstanceSessionsRes
 from ._confirm_train_pic_avatar_request import ConfirmTrainPicAvatarRequest
 from ._confirm_train_pic_avatar_response_body import ConfirmTrainPicAvatarResponseBody
 from ._confirm_train_pic_avatar_response import ConfirmTrainPicAvatarResponse
+from ._copy_broadcast_scene_from_template_request import CopyBroadcastSceneFromTemplateRequest
+from ._copy_broadcast_scene_from_template_response_body import CopyBroadcastSceneFromTemplateResponseBody
+from ._copy_broadcast_scene_from_template_response import CopyBroadcastSceneFromTemplateResponse
 from ._create_background_pic_request import CreateBackgroundPicRequest
 from ._create_background_pic_response_body import CreateBackgroundPicResponseBody
 from ._create_background_pic_response import CreateBackgroundPicResponse
@@ -67,6 +72,9 @@ from ._list_broadcast_videos_by_id_response import ListBroadcastVideosByIdRespon
 from ._list_private_ttsvoices_custom_request import ListPrivateTTSVoicesCustomRequest
 from ._list_private_ttsvoices_custom_response_body import ListPrivateTTSVoicesCustomResponseBody
 from ._list_private_ttsvoices_custom_response import ListPrivateTTSVoicesCustomResponse
+from ._list_public_broadcast_scene_templates_request import ListPublicBroadcastSceneTemplatesRequest
+from ._list_public_broadcast_scene_templates_response_body import ListPublicBroadcastSceneTemplatesResponseBody
+from ._list_public_broadcast_scene_templates_response import ListPublicBroadcastSceneTemplatesResponse
 from ._list_template_material_request import ListTemplateMaterialRequest
 from ._list_template_material_response_body import ListTemplateMaterialResponseBody
 from ._list_template_material_response import ListTemplateMaterialResponse
@@ -94,6 +102,8 @@ from ._list_template_material_response_body import ListTemplateMaterialResponseB
 
 __all__ = [
     BroadcastAudio,
+    BroadcastScene,
+    BroadcastSceneTemplate,
     BroadcastTemplate,
     BroadcastVideo,
     ChatSessionInfo,
@@ -105,6 +115,9 @@ __all__ = [
     ConfirmTrainPicAvatarRequest,
     ConfirmTrainPicAvatarResponseBody,
     ConfirmTrainPicAvatarResponse,
+    CopyBroadcastSceneFromTemplateRequest,
+    CopyBroadcastSceneFromTemplateResponseBody,
+    CopyBroadcastSceneFromTemplateResponse,
     CreateBackgroundPicRequest,
     CreateBackgroundPicResponseBody,
     CreateBackgroundPicResponse,
@@ -158,6 +171,9 @@ __all__ = [
     ListPrivateTTSVoicesCustomRequest,
     ListPrivateTTSVoicesCustomResponseBody,
     ListPrivateTTSVoicesCustomResponse,
+    ListPublicBroadcastSceneTemplatesRequest,
+    ListPublicBroadcastSceneTemplatesResponseBody,
+    ListPublicBroadcastSceneTemplatesResponse,
     ListTemplateMaterialRequest,
     ListTemplateMaterialResponseBody,
     ListTemplateMaterialResponse,
