@@ -16,7 +16,6 @@ class DescribeCenRegionDomainRouteEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of route entries.
         self.cen_route_entries = cen_route_entries
         # The page number of the returned page.
         self.page_number = page_number
@@ -124,48 +123,17 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
         to_other_region_status: str = None,
         type: str = None,
     ):
-        # The AS paths of the route.
         self.as_paths = as_paths
-        # The routing policy that the routes match in the outbound direction.
         self.cen_out_route_map_records = cen_out_route_map_records
-        # The routing policy that the routes match in the inbound direction.
         self.cen_route_map_records = cen_route_map_records
-        # The communities of the route.
         self.communities = communities
-        # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the instance specified as the next hop in the route.
         self.next_hop_instance_id = next_hop_instance_id
-        # The ID of the region to which the network instance specified as the next hop in the route belongs.
         self.next_hop_region_id = next_hop_region_id
-        # The type of the instance specified as the next hop in the route. Valid values:
-        # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **VBR**: virtual border router (VBR)
-        # *   **CCN**: Cloud Connect Network (CCN) instance
-        # *   **local_service**: system route. No next hop is specified.
         self.next_hop_type = next_hop_type
-        # The route priority.
-        # 
-        # A smaller value indicates a higher priority.
         self.preference = preference
-        # The route status. Valid values:
-        # 
-        # *   **Active**: available
-        # *   **Candidate**: standby
-        # *   **Rejected**: rejected
-        # *   **Prohibited**: prohibited
         self.status = status
-        # Indicates whether the route can be advertised to other regions. Valid values:
-        # 
-        # *   **Active**: The route can be advertised to other regions.
-        # *   **Prohibited**: The route cannot be advertised to other regions.
         self.to_other_region_status = to_other_region_status
-        # The route type. Valid values:
-        # 
-        # *   **CEN**: route that is advertised through CEN
-        # *   **Custom**: custom route
-        # *   **System**: system route
         self.type = type
 
     def validate(self):
@@ -333,9 +301,7 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
         region_id: str = None,
         route_map_id: str = None,
     ):
-        # The ID of the region where the routing policy is applied.
         self.region_id = region_id
-        # The ID of the routing policy.
         self.route_map_id = route_map_id
 
     def validate(self):
@@ -405,9 +371,7 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
         region_id: str = None,
         route_map_id: str = None,
     ):
-        # The ID of the region where the routing policy is applied.
         self.region_id = region_id
-        # The ID of the routing policy.
         self.route_map_id = route_map_id
 
     def validate(self):

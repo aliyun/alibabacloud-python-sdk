@@ -89,6 +89,7 @@ class DescribeGrantRulesToResourceResponseBodyGrantRules(DaraModel):
         cen_id: str = None,
         cen_owner_id: int = None,
         create_time: str = None,
+        effective_order_type: str = None,
         order_type: str = None,
     ):
         # The ID of the CEN instance.
@@ -97,6 +98,7 @@ class DescribeGrantRulesToResourceResponseBodyGrantRules(DaraModel):
         self.cen_owner_id = cen_owner_id
         # The timestamp when the permissions were granted. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        self.effective_order_type = effective_order_type
         # The entity that pays the fees of the network instance. Valid values: Valid values:
         # 
         # *   **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
@@ -120,6 +122,9 @@ class DescribeGrantRulesToResourceResponseBodyGrantRules(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.effective_order_type is not None:
+            result['EffectiveOrderType'] = self.effective_order_type
+
         if self.order_type is not None:
             result['OrderType'] = self.order_type
 
@@ -135,6 +140,9 @@ class DescribeGrantRulesToResourceResponseBodyGrantRules(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('EffectiveOrderType') is not None:
+            self.effective_order_type = m.get('EffectiveOrderType')
 
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')

@@ -24,7 +24,6 @@ class DescribeCenVbrHealthCheckResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The health check configuration of the VBR.
         self.vbr_health_checks = vbr_health_checks
 
     def validate(self):
@@ -121,31 +120,14 @@ class DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck(DaraMod
         vbr_instance_id: str = None,
         vbr_instance_region_id: str = None,
     ):
-        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The description.
         self.description = description
-        # The time interval at which probe packets are sent during the health check. Unit: seconds.
         self.health_check_interval = health_check_interval
-        # Indicates whether probing is enabled. Valid values:
-        # 
-        # *   **true**: Probing is enabled.
-        # 
-        #         If you enable probing, the system does not switch to another route if the detected route is not reachable.
-        # 
-        # *   **false**: Probing is disabled.
-        # 
-        #           If probing is disabled and a redundant route is specified, the system switches to the redundant route when the detected route is not reachable.
         self.health_check_only = health_check_only
-        # The source IP address of the health check.
         self.health_check_source_ip = health_check_source_ip
-        # The destination IP address of the health check.
         self.health_check_target_ip = health_check_target_ip
-        # The number of probe packets that are sent during the health check.
         self.healthy_threshold = healthy_threshold
-        # The VBR ID.
         self.vbr_instance_id = vbr_instance_id
-        # The ID of the region where the VBR is deployed.
         self.vbr_instance_region_id = vbr_instance_region_id
 
     def validate(self):

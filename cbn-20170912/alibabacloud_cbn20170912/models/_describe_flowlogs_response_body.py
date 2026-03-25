@@ -17,7 +17,6 @@ class DescribeFlowlogsResponseBody(DaraModel):
         success: str = None,
         total_count: str = None,
     ):
-        # The information about the flow log.
         self.flow_logs = flow_logs
         # The page number of the returned page.
         self.page_number = page_number
@@ -139,44 +138,20 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
-        # The time when the flow log was created.
-        # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the flow log.
         self.description = description
-        # The ID of the flow log.
         self.flow_log_id = flow_log_id
-        # The name of the flow log.
         self.flow_log_name = flow_log_name
-        # The flow log version.
-        # 
-        # Flow logs are automatically created in the latest version, which is **3**.
         self.flow_log_version = flow_log_version
-        # The time window for collecting log data. Unit: seconds. Valid values: **60** or **600** Default value: **600**.
         self.interval = interval
-        # The string that defines the format of the flow log. Format:
-        # 
-        # `${Field 1}${Field 2}${Field 3}`
         self.log_format_string = log_format_string
-        # The Logstore that stores the captured traffic data.
         self.log_store_name = log_store_name
-        # The name of the project that stores the captured traffic data.
         self.project_name = project_name
-        # The region ID of the flow log.
         self.region_id = region_id
-        # The status of the flow log. Valid values:
-        # 
-        # *   **Active**: The flow log is enabled.
-        # *   **Inactive**: The flow log is disabled.
         self.status = status
-        # The tags.
         self.tags = tags
-        # The ID of the network instance connection
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -326,9 +301,7 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLogTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

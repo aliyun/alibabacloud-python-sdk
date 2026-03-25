@@ -16,7 +16,6 @@ class DescribeCenInterRegionBandwidthLimitsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of inter-region connections.
         self.cen_inter_region_bandwidth_limits = cen_inter_region_bandwidth_limits
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,29 +119,13 @@ class DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLi
         opposite_region_id: str = None,
         status: str = None,
     ):
-        # The maximum bandwidth of the inter-region connection. Unit: Mbit/s.
         self.bandwidth_limit = bandwidth_limit
-        # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The bandwidth allocation method. Valid values:
-        # 
-        # *   **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
-        # *   **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
         self.bandwidth_type = bandwidth_type
-        # The CEN instance ID.
         self.cen_id = cen_id
-        # The IDs of the local and peer regions.
         self.geographic_span_id = geographic_span_id
-        # The ID of the local region.
-        # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
         self.local_region_id = local_region_id
-        # The ID of the peer region.
         self.opposite_region_id = opposite_region_id
-        # The bandwidth status of the inter-region connection. Valid values:
-        # 
-        # *   **Active**
-        # *   **Modifying**
         self.status = status
 
     def validate(self):

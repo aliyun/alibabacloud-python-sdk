@@ -21,7 +21,6 @@ class ListTagResourcesResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # A list of resources and tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -101,33 +100,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the CEN instance.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # **Cen**: CEN instance
-        # 
-        # **BandwidthPackage**: bandwidth plan
-        # 
-        # **TransitRouter**: transit router
-        # 
-        # **TransitRouterVpcAttachment**: virtual private cloud (VPC) connection
-        # 
-        # **TransitRouterVbrAttachment**: virtual border router (VBR) connection
-        # 
-        # **TransitRouterPeerAttachment**: inter-region connection
-        # 
-        # **TransitRouterVpnAttachment**: VPN connection
-        # 
-        # **TransitRouterRouteTable**: route table
-        # 
-        # **Flowlog**: flow log
-        # 
-        # **TransitRouterMulticastDomain**: multicast domain
         self.resource_type = resource_type
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

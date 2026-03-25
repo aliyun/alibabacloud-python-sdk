@@ -16,7 +16,6 @@ class DescribeCenBandwidthPackagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the bandwidth plan.
         self.cen_bandwidth_packages = cen_bandwidth_packages
         # The number of the returned page.
         self.page_number = page_number
@@ -134,77 +133,27 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         status: str = None,
         tags: main_models.DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageTags = None,
     ):
-        # The maximum bandwidth of the bandwidth plan.
         self.bandwidth = bandwidth
-        # The billing method of the bandwidth plan.
         self.bandwidth_package_charge_type = bandwidth_package_charge_type
-        # The status of the bandwidth plan. Valid values:
-        # 
-        # *   **Normal**: running as expected.
-        # *   **FinancialLocked**: locked due to overdue payments.
-        # *   **SecurityLocked**: locked due to security reasons
         self.business_status = business_status
-        # The ID of the bandwidth plan.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # A list of CEN instances that are associated with the bandwidth plan.
         self.cen_ids = cen_ids
-        # The time when the bandwidth plan was created. The time is displayed in the ISO8601 standard in the YYYY-MM-DDThh:mmZ format.
         self.creation_time = creation_time
-        # The description of the bandwidth plan.
         self.description = description
-        # The time when the bandwidth plan expires.
         self.expired_time = expired_time
-        # The ID of the area that you want to query. Valid values:
-        # 
-        # *   **china**: Chinese mainland.
-        # *   **asia-pacific**: Asia Pacific
-        # *   **europe**: Europe
-        # *   **north-america**: North America
         self.geographic_region_aid = geographic_region_aid
-        # The ID of the other area connected by the bandwidth plan. Valid values:
-        # 
-        # *   **china**: Chinese mainland.
-        # *   **asia-pacific**: Asia Pacific
-        # *   **europe**: Europe
-        # *   **north-america**: North America
         self.geographic_region_bid = geographic_region_bid
-        # The ID of the connected area.
         self.geographic_span_id = geographic_span_id
-        # Indicates whether renewal data is included.
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  This parameter returns **true** only when the **IncludeReservationData** parameter is set to **true** and a pending order exists.
         self.has_reservation_data = has_reservation_data
-        # Indicates whether the bandwidth plan supports cross-border communication.
-        # 
-        # *   **false**
-        # *   **true**
         self.is_cross_border = is_cross_border
-        # The name of the bandwidth plan.
         self.name = name
-        # The details about the connected regions.
         self.orgin_inter_region_bandwidth_limits = orgin_inter_region_bandwidth_limits
-        # The expiration time of the temporary upgrade.
         self.reservation_active_time = reservation_active_time
-        # The bandwidth value to which the bandwidth plan is restored when the temporary upgrade ends.
         self.reservation_bandwidth = reservation_bandwidth
-        # The new billing method.
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The renewal method.
-        # 
-        # *   **TEMP_UPGRADE**: temporary upgrade
-        # *   **UPGRADE**: upgrade
         self.reservation_order_type = reservation_order_type
-        # The ID of the resource group to which the ACL belongs.
         self.resource_group_id = resource_group_id
-        # Indicates whether the bandwidth plan is associated with a CEN instance.
-        # 
-        # *   **Idle**
-        # *   **InUse**
         self.status = status
-        # The tags of the bandwidth plan.
         self.tags = tags
 
     def validate(self):
@@ -402,9 +351,7 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -476,13 +423,9 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         local_region_id: str = None,
         opposite_region_id: str = None,
     ):
-        # The maximum bandwidth value for the inter-region connection.
         self.bandwidth_limit = bandwidth_limit
-        # The connected regions.
         self.geographic_span_id = geographic_span_id
-        # The ID of the local region.
         self.local_region_id = local_region_id
-        # The ID of the peer region.
         self.opposite_region_id = opposite_region_id
 
     def validate(self):

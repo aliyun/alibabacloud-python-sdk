@@ -26,7 +26,6 @@ class DescribeCenPrivateZoneRoutesResponseBody(DaraModel):
         self.page_size = page_size
         # The IP address of the DNS server used by PrivateZone.
         self.private_zone_dns_servers = private_zone_dns_servers
-        # The detailed configuration of PrivateZone.
         self.private_zone_infos = private_zone_infos
         # The ID of the request.
         self.request_id = request_id
@@ -134,17 +133,9 @@ class DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo(Da
         host_vpc_id: str = None,
         status: str = None,
     ):
-        # The ID of the region where PrivateZone is accessed.
         self.access_region_id = access_region_id
-        # The ID of the region where PrivateZone is deployed.
         self.host_region_id = host_region_id
-        # The ID of the VPC that is associated with PrivateZone.
         self.host_vpc_id = host_vpc_id
-        # The status of PrivateZone. Valid values:
-        # 
-        # *   **Creating**: being created
-        # *   **Active**: available
-        # *   **Deleting**: being deleted
         self.status = status
 
     def validate(self):

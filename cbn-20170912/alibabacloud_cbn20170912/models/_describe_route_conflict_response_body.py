@@ -22,7 +22,6 @@ class DescribeRouteConflictResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # A list of overlapping routes.
         self.route_conflicts = route_conflicts
         # The total number of entries returned.
         self.total_count = total_count
@@ -117,22 +116,10 @@ class DescribeRouteConflictResponseBodyRouteConflictsRouteConflict(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The destination CIDR block of the overlapping route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the peer network instance on which the overlapping routes are found.
         self.instance_id = instance_id
-        # The type of the peer network instance on which the overlapping routes are found.
-        # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
         self.instance_type = instance_type
-        # The region ID of the peer network instance on which the overlapping routes are found is deployed.
         self.region_id = region_id
-        # The cause of the route error. Valid values:
-        # 
-        # *   **conflict**: The routes have the same destination CIDR block.
-        # *   **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
         self.status = status
 
     def validate(self):

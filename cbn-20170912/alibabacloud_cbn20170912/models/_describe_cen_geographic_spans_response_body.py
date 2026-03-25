@@ -16,7 +16,6 @@ class DescribeCenGeographicSpansResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of areas.
         self.geographic_span_models = geographic_span_models
         # The page number of the returned page.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanMo
         local_geo_region_id: str = None,
         opposite_geo_region_id: str = None,
     ):
-        # The ID of the pair of connected areas.
         self.geographic_span_id = geographic_span_id
-        # The ID of the local area.
         self.local_geo_region_id = local_geo_region_id
-        # The ID of the peer area.
         self.opposite_geo_region_id = opposite_geo_region_id
 
     def validate(self):

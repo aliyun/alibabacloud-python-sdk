@@ -148,9 +148,7 @@ class DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttribut
         self.cidr_block = cidr_block
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The IPv6 CIDR blocks of the VPC.
         self.ipv_6cidr_blocks = ipv_6cidr_blocks
-        # The information about the VPC secondary CIDR block.
         self.secondary_cidr_blocks = secondary_cidr_blocks
 
     def validate(self):
@@ -264,16 +262,7 @@ class DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttribut
         ipv_6cidr_block: str = None,
         ipv_6isp: str = None,
     ):
-        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The type of the IPv6 CIDR block of the VPC. Valid values:
-        # 
-        # *   BGP (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
-        # *   ChinaMobile: China Mobile (single line)
-        # *   ChinaUnicom: China Unicom (single line)
-        # *   ChinaTelecom: China Telecom (single line)
-        # 
-        # >  If you are on the whitelist of single-line bandwidth, you can set this parameter to ChinaTelecom, ChinaUnicom, or ChinaMobile.
         self.ipv_6isp = ipv_6isp
 
     def validate(self):

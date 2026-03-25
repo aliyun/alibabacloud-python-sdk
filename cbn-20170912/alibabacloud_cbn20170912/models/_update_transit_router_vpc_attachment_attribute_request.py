@@ -12,6 +12,7 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(DaraModel):
         auto_publish_route_enabled: bool = None,
         client_token: str = None,
         dry_run: bool = None,
+        order_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -37,6 +38,7 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(DaraModel):
         # *   **false** (default): performs a dry run and sends the request.
         # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
         self.dry_run = dry_run
+        self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -72,6 +74,9 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(DaraModel):
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -109,6 +114,9 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(DaraModel):
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

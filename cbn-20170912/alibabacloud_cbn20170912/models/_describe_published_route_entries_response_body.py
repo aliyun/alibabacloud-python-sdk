@@ -20,7 +20,6 @@ class DescribePublishedRouteEntriesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # A list of routes.
         self.published_route_entries = published_route_entries
         # The ID of the request.
         self.request_id = request_id
@@ -120,53 +119,13 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRou
         publish_status: str = None,
         route_type: str = None,
     ):
-        # The ID of the route table configured on the network instance.
         self.child_instance_route_table_id = child_instance_route_table_id
-        # A list of conflicting routes.
         self.conflicts = conflicts
-        # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the instance specified as the next hop in the route.
         self.next_hop_id = next_hop_id
-        # The type of the instance specified as the next hop in the route.
-        # 
-        # *   **Instance**: ECS instance
-        # *   **HaVip**: high-availability virtual IP address (HAVIP).
-        # *   **RouterInterface**: router interface.
-        # *   **NetworkInterface**: elastic network interface (ENI).
-        # *   **VpnGateway**: VPN gateway.
-        # *   **IPv6Gateway**: IPv6 gateway.
-        # *   **NatGateway**: NAT gateway.
-        # *   **Attachment**: network instance connection
-        # *   **service**: cloud service
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
-        # *   **VPC**: VPC
-        # *   **local**: system route. No next hop is specified.
-        # *   **TR**: transit router
-        # *   **BlackHole**: blackhole route. No next hop is specified.
-        # *   **EcRouterInterface**: router interface for Express Connect
-        # *   **HealthCheck**: health check
-        # *   **AS**: access gateway for CCN
-        # *   **classicLink**: classic network-type instance
-        # *   **GatewayEndpoint**: gateway endpoint
-        # *   **CPE**: data center connected to the VBR
         self.next_hop_type = next_hop_type
-        # Indicates whether the route is allowed to be advertised to or withdrawn from the CEN instance. Valid values:
-        # 
-        # *   **true**: The route is allowed to be advertised to or withdrawn from the CEN instance.
-        # *   **false**: The route is not allowed to be advertised to or withdrawn from the CEN instance.
         self.operational_mode = operational_mode
-        # Indicates whether the route is advertised to the CEN instance. Valid values:
-        # 
-        # *   **Published**: The route is advertised to the CEN instance.
-        # *   **NonPublished**: The route is not advertised to the CEN instance.
         self.publish_status = publish_status
-        # The type of the route. Valid values:
-        # 
-        # *   **CEN**: route that is advertised through CEN
-        # *   **System**: system route
-        # *   **Custom**: custom route
         self.route_type = route_type
 
     def validate(self):
@@ -277,22 +236,10 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRou
         region_id: str = None,
         status: str = None,
     ):
-        # The destination CIDR block of the conflicting route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the peer network instance on which conflicting routes are found.
         self.instance_id = instance_id
-        # The type of the peer network instance on which the conflicting routes are found. Valid values:
-        # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
         self.instance_type = instance_type
-        # The ID of the region where the peer network instance on which the conflicting routes are found is deployed.
         self.region_id = region_id
-        # The cause of the route confliction. Valid values:
-        # 
-        # *   **conflict**: The routes have the same destination CIDR block.
-        # *   **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
         self.status = status
 
     def validate(self):

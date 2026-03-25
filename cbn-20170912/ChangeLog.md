@@ -1,3 +1,12 @@
+2026-03-25 Version: 1.3.5
+- Update API DescribeGrantRulesToCen: add response parameters Body.GrantRules.$.EffectiveOrderType.
+- Update API DescribeGrantRulesToResource: add response parameters Body.GrantRules.$.EffectiveOrderType.
+- Update API UpdateTransitRouterEcrAttachmentAttribute: add request parameters OrderType.
+- Update API UpdateTransitRouterVbrAttachmentAttribute: add request parameters OrderType.
+- Update API UpdateTransitRouterVpcAttachmentAttribute: add request parameters OrderType.
+- Update API UpdateTransitRouterVpnAttachmentAttribute: add request parameters OrderType.
+
+
 2026-02-04 Version: 1.3.4
 - Generated python 2017-09-12 for Cbn.
 

@@ -16,7 +16,6 @@ class DescribeCenChildInstanceRouteEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the route.
         self.cen_route_entries = cen_route_entries
         # The page number of the returned page.
         self.page_number = page_number
@@ -125,69 +124,18 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         status: str = None,
         type: str = None,
     ):
-        # The AS paths of the routes.
         self.as_paths = as_paths
-        # The routing policy that the routes match.
         self.cen_route_map_records = cen_route_map_records
-        # The community attributes of the route entries.
         self.communities = communities
-        # A list of overlapping routes.
         self.conflicts = conflicts
-        # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the instance specified as the next hop in the route.
         self.next_hop_instance_id = next_hop_instance_id
-        # The region ID of the instance specified as the next hop in the route.
         self.next_hop_region_id = next_hop_region_id
-        # The type of the instance specified as the next hop in the route. Valid values:
-        # 
-        # *   **Instance**: an ECS instance
-        # *   **HaVip**: an HAVIP
-        # *   **RouterInterface**: a router interface
-        # *   **NetworkInterface**: an ENI
-        # *   **VpnGateway**: a VPN gateway
-        # *   **IPv6Gateway**: an IPv6 gateway
-        # *   **Ipv4Gateway**: an IPv4 gateway
-        # *   **NatGateway**: a NAT gateway
-        # *   **Attachment**: a network instance connection
-        # *   **service**: a cloud service
-        # *   **VBR**: a VBR
-        # *   **CCN**: a CCN instance
-        # *   **VPC**: a VPC
-        # *   **local**: a system route (no next hop is specified)
-        # *   **TR**: a transit router
-        # *   **BlackHole**: a blackhole route (no next hop is specified)
-        # *   **EcRouterInterface**: a router interface for Express Connect
-        # *   **HealthCheck**: a health check
-        # *   **AS**: an access gateway for CCN
-        # *   **classic**: a classic network-type instance
-        # *   **GatewayEndpoint**: a gateway endpoint
-        # *   **CPE**: a data center connected to a VBR
         self.next_hop_type = next_hop_type
-        # Indicates whether the route is allowed to be advertised to or withdrawn from the CEN instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.operational_mode = operational_mode
-        # Indicates whether the route is advertised to the CEN instance. Valid values:
-        # 
-        # *   **Published**
-        # *   **NonPublished**
         self.publish_status = publish_status
-        # The route table ID.
         self.route_table_id = route_table_id
-        # The route status. Valid values:
-        # 
-        # *   **Active**: available routes
-        # *   **Candidate**: standby routes
-        # *   **Rejected**: rejected routes
-        # *   **Prohibited**: prohibited routes
         self.status = status
-        # The route type. Valid values:
-        # 
-        # *   **CEN**: route that is advertised through CEN
-        # *   **System**: system route
-        # *   **Custom**: custom route
         self.type = type
 
     def validate(self):
@@ -337,23 +285,10 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         region_id: str = None,
         status: str = None,
     ):
-        # The destination CIDR block of the overlapping route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the peer network instance on which the overlapping routes are found.
         self.instance_id = instance_id
-        # The type of the peer network instance on which the overlapping routes are found. Valid values:
-        # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
-        # *   **ECR**: ECR
         self.instance_type = instance_type
-        # The region ID of the peer network instance on which the overlapping routes are found.
         self.region_id = region_id
-        # The cause of the route error. Valid values:
-        # 
-        # *   **conflict**: The routes have the same destination CIDR block.
-        # *   **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
         self.status = status
 
     def validate(self):
@@ -468,9 +403,7 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         region_id: str = None,
         route_map_id: str = None,
     ):
-        # The region ID of the routing policy.
         self.region_id = region_id
-        # The routing policy ID.
         self.route_map_id = route_map_id
 
     def validate(self):

@@ -22,7 +22,6 @@ class DescribeCenRouteMapsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the routing policy.
         self.route_maps = route_maps
         # The total number of entries returned.
         self.total_count = total_count
@@ -144,133 +143,37 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(DaraModel):
         transit_router_route_table_id: str = None,
         transmit_direction: str = None,
     ):
-        # The match method that is used to match routes based on the AS path.
-        # 
-        # *   **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path specified in the match condition.
-        # *   **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
         self.as_path_match_mode = as_path_match_mode
-        # The CEN instance ID.
         self.cen_id = cen_id
-        # The region ID of the routing policy.
         self.cen_region_id = cen_region_id
-        # The match method that is used to evaluate routes based on the prefix. Valid values:
-        # 
-        # *   **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
-        # 
-        # For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
-        # 
-        # *   **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
-        # 
-        # For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
         self.cidr_match_mode = cidr_match_mode
-        # The match method that is used to match routes against the community.
-        # 
-        # *   **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community specified in the match condition.
-        # *   **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
         self.community_match_mode = community_match_mode
-        # The action that is performed on the community of the route.
-        # 
-        # *   **Additive**: adds the community to the route.
-        # *   **Replace**: replaces the original community of the route.
-        # 
-        # This parameter specifies the action to be performed when a route meets the match condition.
         self.community_operate_mode = community_operate_mode
-        # The description of the routing policy.
         self.description = description
-        # The types of destination network instances to which the routes belong.
-        # 
-        # *   **VPC**
-        # *   **VBR**
-        # *   **CCN**
-        # *   **VPN**
-        # 
-        # >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the type of the destination route tables is the same as that of the network instance in the current region.
         self.destination_child_instance_types = destination_child_instance_types
-        # The prefix list against which routes are matched.
-        # 
-        # IPv4 and IPv6 addresses are supported.
         self.destination_cidr_blocks = destination_cidr_blocks
-        # The IDs of the destination network instances to which the routes point.
-        # 
-        # >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the ID the destination instance is the same as that of the network instance in the current region.
         self.destination_instance_ids = destination_instance_ids
-        # Indicates whether the destination network instance IDs are excluded.
-        # 
-        # *   **false** (default): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
-        # *   **true**: A route is a match if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
-        # The IDs of the destination regions for the routing policy.
         self.destination_region_ids = destination_region_ids
-        # The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
-        # 
-        # >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the destination route table IDs are in the current region.
         self.destination_route_table_ids = destination_route_table_ids
-        # The action performed on a route that meets the match conditions.
-        # 
-        # *   **Permit**: the route is permitted.
-        # *   **Deny**: the route is denied.
         self.map_result = map_result
-        # The type of IP address to be matched against the match condition. Valid values:
-        # 
-        # *   **IPv4**: IPv4 addresses
-        # *   **IPv6**: IPv6 addresses
-        # *   If no value is returned, both IPv4 and IPv6 addresses are matched against the match condition.
         self.match_address_type = match_address_type
-        # The AS paths against which routes are matched.
         self.match_asns = match_asns
-        # The community set against which routes are matched.
         self.match_community_set = match_community_set
-        # The priority of the routing policy that you want to associate with the current one.
         self.next_priority = next_priority
-        # The community set on which actions are performed.
         self.operate_community_set = operate_community_set
-        # The new priority of the route.
-        # 
-        # A smaller value indicates a higher priority.
-        # 
-        # This parameter indicates the action to be performed when a route meets the match condition.
         self.preference = preference
-        # The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes.
-        # 
-        # This parameter indicates the action to be performed when a route meets the match condition.
         self.prepend_as_path = prepend_as_path
-        # The priority of the routing policy. A smaller value indicates a higher priority.
         self.priority = priority
-        # The routing policy ID.
         self.route_map_id = route_map_id
-        # The type of route that is compared. Valid values:
-        # 
-        # *   **System**: system routes that are automatically generated by the system.
-        # *   **Custom**: custom routes that are manually added.
-        # *   **BGP**: routes that are advertised over BGP.
         self.route_types = route_types
-        # The types of source network instances to which the routes belong.
-        # 
-        # *   **VPC**
-        # *   **VBR**
-        # *   **CCN**
-        # *   **VPN**
         self.source_child_instance_types = source_child_instance_types
-        # The IDs of the source network instances to which the routes belong.
         self.source_instance_ids = source_instance_ids
-        # Indicates whether the source network instance IDs are excluded.
-        # 
-        # *   **false** (default): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
-        # *   **true**: A route is match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
-        # The IDs of the source regions to which the routes belong.
         self.source_region_ids = source_region_ids
-        # The IDs of the source route tables to which the routes belong.
         self.source_route_table_ids = source_route_table_ids
-        # The status of the routing policy. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Active**
-        # *   **Deleting**
         self.status = status
-        # The route table ID of the transit router with which the routing policy is associated.
         self.transit_router_route_table_id = transit_router_route_table_id
-        # The direction in which the routing policy is applied.
         self.transmit_direction = transmit_direction
 
     def validate(self):

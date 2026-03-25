@@ -16,7 +16,6 @@ class DescribeCenAttachedChildInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the network instances.
         self.child_instances = child_instances
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,30 +119,13 @@ class DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance(D
         managed_service: str = None,
         status: str = None,
     ):
-        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The time when the network instance was attached to the CEN instance.
-        # 
-        # The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
         self.child_instance_attach_time = child_instance_attach_time
-        # The ID of the network instance.
         self.child_instance_id = child_instance_id
-        # The ID of the Alibaba Cloud account to which the network instance belongs.
         self.child_instance_owner_id = child_instance_owner_id
-        # The ID of the region where the network instance is deployed.
         self.child_instance_region_id = child_instance_region_id
-        # The type of the network instance. Valid values:
-        # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
         self.child_instance_type = child_instance_type
         self.managed_service = managed_service
-        # The status of the network instance. Valid values:
-        # 
-        # *   **Attaching**: The network instance is being created on the transit router.
-        # *   **Attached**: The network instance has been created on the transit router.
-        # *   **Detaching**: The network instance is being deleted from the transit router.
         self.status = status
 
     def validate(self):

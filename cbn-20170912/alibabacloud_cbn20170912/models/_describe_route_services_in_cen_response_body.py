@@ -22,7 +22,6 @@ class DescribeRouteServicesInCenResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the cloud services.
         self.route_service_entries = route_service_entries
         # The total number of entries returned.
         self.total_count = total_count
@@ -120,25 +119,13 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry
         host_vpc_id: str = None,
         status: str = None,
     ):
-        # The ID of the region where the cloud service is accessed.
         self.access_region_id = access_region_id
-        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The service addresses of the cloud service.
         self.cidrs = cidrs
-        # The description of the cloud service.
         self.description = description
-        # The service address of the cloud service.
         self.host = host
-        # The region ID of the cloud service.
         self.host_region_id = host_region_id
-        # The ID of the VPC associated with the cloud service.
         self.host_vpc_id = host_vpc_id
-        # The status of the cloud service. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Active**
-        # *   **Deleting**
         self.status = status
 
     def validate(self):

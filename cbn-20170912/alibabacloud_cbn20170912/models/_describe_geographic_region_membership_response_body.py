@@ -20,7 +20,6 @@ class DescribeGeographicRegionMembershipResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The list of regions.
         self.region_ids = region_ids
         # The ID of the request.
         self.request_id = request_id
@@ -113,9 +112,6 @@ class DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId(DaraModel)
         self,
         region_id: str = None,
     ):
-        # The ID of the region.
-        # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

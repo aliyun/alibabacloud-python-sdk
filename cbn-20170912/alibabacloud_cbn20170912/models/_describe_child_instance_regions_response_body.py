@@ -13,7 +13,6 @@ class DescribeChildInstanceRegionsResponseBody(DaraModel):
         regions: main_models.DescribeChildInstanceRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # A list of regions.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeChildInstanceRegionsResponseBodyRegionsRegion(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # The name of the region.
         self.local_name = local_name
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

@@ -15143,6 +15143,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15187,6 +15189,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15577,6 +15581,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15623,6 +15629,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15687,6 +15695,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15739,6 +15749,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15903,6 +15915,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15949,6 +15963,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):

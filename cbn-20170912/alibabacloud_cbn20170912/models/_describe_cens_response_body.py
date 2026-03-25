@@ -16,7 +16,6 @@ class DescribeCensResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the CEN instance.
         self.cens = cens
         # The number of the page returned.
         self.page_number = page_number
@@ -122,36 +121,15 @@ class DescribeCensResponseBodyCensCen(DaraModel):
         status: str = None,
         tags: main_models.DescribeCensResponseBodyCensCenTags = None,
     ):
-        # The IDs of the bandwidth plans that are associated with the CEN instance.
         self.cen_bandwidth_package_ids = cen_bandwidth_package_ids
-        # The CEN instance ID.
         self.cen_id = cen_id
-        # The time when the CEN instance was created.
-        # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the CEN instance.
         self.description = description
-        # Indicates whether IPv6 is enabled for the CEN instance.
-        # 
-        # *   **ENABLE**
-        # *   **DISABLED**
         self.ipv_6level = ipv_6level
-        # The CEN instance name.
         self.name = name
-        # The level of CIDR block overlapping.
-        # 
-        # **REDUCED**: Overlapped CIDR blocks are allowed. This value specifies that CIDR blocks can overlap but CIDR blocks cannot be duplicates.
         self.protection_level = protection_level
-        # The ID of the resource group to which the CEN instance belongs.
         self.resource_group_id = resource_group_id
-        # The status of the CEN instance.
-        # 
-        # *   **Creating**
-        # *   **Active**
-        # *   **Deleting**
         self.status = status
-        # The IDs of the tags that are added to the CEN instance.
         self.tags = tags
 
     def validate(self):
@@ -274,9 +252,7 @@ class DescribeCensResponseBodyCensCenTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
