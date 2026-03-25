@@ -11,9 +11,11 @@ class UpdateSecretResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -11,8 +11,11 @@ class ListConsumerAuthorizationRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # API name for fuzzy search.
         self.api_name_like = api_name_like
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on each page. If you do not specify this parameter, the default value is 10.
         self.page_size = page_size
 
     def validate(self):

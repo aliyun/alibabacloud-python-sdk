@@ -119,6 +119,7 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         exist_http_api_info: main_models.HttpApiApiInfo = None,
         failure_components: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureComponents] = None,
         failure_operations: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureOperations] = None,
+        mcp_tools_definition: str = None,
         success_components: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents] = None,
         success_operations: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations] = None,
         warning_messages: List[str] = None,
@@ -131,6 +132,7 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         self.failure_components = failure_components
         # The operations that fail the dry run.
         self.failure_operations = failure_operations
+        self.mcp_tools_definition = mcp_tools_definition
         # The data structs that pass the dry run.
         self.success_components = success_components
         # The operations that pass the dry run.
@@ -179,6 +181,9 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
             for k1 in self.failure_operations:
                 result['failureOperations'].append(k1.to_map() if k1 else None)
 
+        if self.mcp_tools_definition is not None:
+            result['mcpToolsDefinition'] = self.mcp_tools_definition
+
         result['successComponents'] = []
         if self.success_components is not None:
             for k1 in self.success_components:
@@ -214,6 +219,9 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
             for k1 in m.get('failureOperations'):
                 temp_model = main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureOperations()
                 self.failure_operations.append(temp_model.from_map(k1))
+
+        if m.get('mcpToolsDefinition') is not None:
+            self.mcp_tools_definition = m.get('mcpToolsDefinition')
 
         self.success_components = []
         if m.get('successComponents') is not None:

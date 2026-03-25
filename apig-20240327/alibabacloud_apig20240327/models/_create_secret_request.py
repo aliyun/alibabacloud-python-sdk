@@ -15,11 +15,17 @@ class CreateSecretRequest(DaraModel):
         secret_data: str = None,
         secret_source: str = None,
     ):
+        # The description of the key.
         self.description = description
+        # The type of the gateway.
         self.gateway_type = gateway_type
+        # The key configuration information of KMS.
         self.kms_config = kms_config
+        # The key name. It can be up to 64 characters in length and can contain letters, digits, and underscores (_).
         self.name = name
+        # The value of the KMS credential.
         self.secret_data = secret_data
+        # The source of the key.
         self.secret_source = secret_source
 
     def validate(self):

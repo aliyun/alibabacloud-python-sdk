@@ -15,8 +15,11 @@ class ListConsumerAuthorizationRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,13 @@ class ListConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
+        # The list of consumer authorization information.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number.
         self.total_size = total_size
 
     def validate(self):
@@ -137,18 +144,31 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
+        # The API information.
         self.api_info = api_info
+        # The ID of the consumer authorization rule.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # The consumer ID.
         self.consumer_id = consumer_id
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
+        # The environment information.
         self.environment_info = environment_info
+        # The expiry mode. Valid values: LongTerm and ShortTerm.
         self.expire_mode = expire_mode
+        # The rule status.
         self.expire_status = expire_status
+        # The time when the rule expires.
         self.expire_timestamp = expire_timestamp
+        # The gateway information.
         self.gateway_info = gateway_info
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):

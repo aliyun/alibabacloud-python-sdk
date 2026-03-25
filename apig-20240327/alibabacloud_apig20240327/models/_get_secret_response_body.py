@@ -13,10 +13,13 @@ class GetSecretResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The key information.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,14 +75,30 @@ class GetSecretResponseBodyData(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
+        # The type of the gateway. Valid values:
+        # 
+        # *   API
+        # *   AI
         self.gateway_type = gateway_type
+        # The KMS configuration information.
         self.kms_config = kms_config
+        # The name.
         self.name = name
+        # The number of resources that reference the current key.
         self.reference_count = reference_count
+        # The ID of the key.
         self.secret_id = secret_id
+        # The source of the key.
         self.secret_source = secret_source
+        # The state of the key. Valid values:
+        # 
+        # *   ENALBE
+        # *   DISABLE
+        # *   DELETED
         self.status = status
+        # The update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):

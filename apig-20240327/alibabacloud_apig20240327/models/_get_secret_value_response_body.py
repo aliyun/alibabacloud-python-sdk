@@ -13,10 +13,13 @@ class GetSecretValueResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,6 +67,7 @@ class GetSecretValueResponseBodyData(DaraModel):
         self,
         secret_data: str = None,
     ):
+        # The key value.
         self.secret_data = secret_data
 
     def validate(self):

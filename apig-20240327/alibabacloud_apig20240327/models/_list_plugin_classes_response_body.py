@@ -15,9 +15,13 @@ class ListPluginClassesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response parameters.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +72,13 @@ class ListPluginClassesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The plugin details.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -134,16 +142,27 @@ class ListPluginClassesResponseBodyDataItems(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The alias of the plugin.
         self.alias = alias
+        # The description of the plugin.
         self.description = description
+        # Indicates whether the plugin is installed.
         self.installed = installed
+        # The plugin name.
         self.name = name
+        # The plugin type ID.
         self.plugin_class_id = plugin_class_id
+        # The plugin ID.
         self.plugin_id = plugin_id
+        # The publishing status.
         self.publish_status = publish_status
+        # The source of the plugin.
         self.source = source
+        # The minimum version of the gateway supported by the plugin.
         self.supported_min_gateway_version = supported_min_gateway_version
+        # The type of the plugin.
         self.type = type
+        # The version.
         self.version = version
 
     def validate(self):

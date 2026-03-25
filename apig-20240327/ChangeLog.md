@@ -1,3 +1,7 @@
+2026-03-25 Version: 6.0.6
+- Update API ImportHttpApi: add response parameters Body.data.dryRunInfo.mcpToolsDefinition.
+
+
 2026-02-28 Version: 6.0.5
 - Generated python 2024-03-27 for APIG.
 
