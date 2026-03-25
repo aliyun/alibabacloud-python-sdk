@@ -269,15 +269,19 @@ class DescribeNodeResponseBodyNetworks(DaraModel):
         self,
         bond_name: str = None,
         ip: str = None,
+        security_group_id: str = None,
         subnet_id: str = None,
+        v_switch_id: str = None,
         vpd_id: str = None,
     ):
         # The port information of the elastic network interface (ENI).
         self.bond_name = bond_name
         # The IP address of the node.
         self.ip = ip
+        self.security_group_id = security_group_id
         # The subnet ID.
         self.subnet_id = subnet_id
+        self.v_switch_id = v_switch_id
         # The ID of the cluster network.
         self.vpd_id = vpd_id
 
@@ -295,8 +299,14 @@ class DescribeNodeResponseBodyNetworks(DaraModel):
         if self.ip is not None:
             result['Ip'] = self.ip
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
         if self.subnet_id is not None:
             result['SubnetId'] = self.subnet_id
+
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
 
         if self.vpd_id is not None:
             result['VpdId'] = self.vpd_id
@@ -311,8 +321,14 @@ class DescribeNodeResponseBodyNetworks(DaraModel):
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
 
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+
         if m.get('SubnetId') is not None:
             self.subnet_id = m.get('SubnetId')
+
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
 
         if m.get('VpdId') is not None:
             self.vpd_id = m.get('VpdId')

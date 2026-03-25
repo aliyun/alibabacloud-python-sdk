@@ -1,3 +1,10 @@
+2026-03-25 Version: 3.0.5
+- Update API DescribeNode: add response parameters Body.Networks.$.SecurityGroupId.
+- Update API DescribeNode: add response parameters Body.Networks.$.VSwitchId.
+- Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.$.SecurityGroupId.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.SecurityGroupId.
+
+
 2026-01-12 Version: 3.0.4
 - Generated python 2022-12-15 for eflo-controller.
 

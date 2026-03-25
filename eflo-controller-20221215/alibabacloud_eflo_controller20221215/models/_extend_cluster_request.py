@@ -274,6 +274,7 @@ class ExtendClusterRequestNodeGroupsNodes(DaraModel):
         hostname: str = None,
         login_password: str = None,
         node_id: str = None,
+        security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -285,6 +286,7 @@ class ExtendClusterRequestNodeGroupsNodes(DaraModel):
         self.login_password = login_password
         # Node ID
         self.node_id = node_id
+        self.security_group_id = security_group_id
         # VSwitch ID
         self.v_switch_id = v_switch_id
         # VPC ID
@@ -315,6 +317,9 @@ class ExtendClusterRequestNodeGroupsNodes(DaraModel):
         if self.node_id is not None:
             result['NodeId'] = self.node_id
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
@@ -339,6 +344,9 @@ class ExtendClusterRequestNodeGroupsNodes(DaraModel):
 
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
@@ -463,6 +471,7 @@ class ExtendClusterRequestNodeGroupsHyperNodes(DaraModel):
         hostname: str = None,
         hyper_node_id: str = None,
         login_password: str = None,
+        security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -470,6 +479,7 @@ class ExtendClusterRequestNodeGroupsHyperNodes(DaraModel):
         self.hostname = hostname
         self.hyper_node_id = hyper_node_id
         self.login_password = login_password
+        self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
@@ -498,6 +508,9 @@ class ExtendClusterRequestNodeGroupsHyperNodes(DaraModel):
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
@@ -522,6 +535,9 @@ class ExtendClusterRequestNodeGroupsHyperNodes(DaraModel):
 
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
+
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
