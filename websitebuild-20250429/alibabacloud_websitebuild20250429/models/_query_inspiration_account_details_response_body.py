@@ -304,6 +304,7 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         init_quota: int = None,
         source_type: str = None,
         source_type_name: str = None,
+        status: str = None,
     ):
         self.acquisition_time = acquisition_time
         self.balance = balance
@@ -312,6 +313,7 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         self.init_quota = init_quota
         self.source_type = source_type
         self.source_type_name = source_type_name
+        self.status = status
 
     def validate(self):
         pass
@@ -342,6 +344,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         if self.source_type_name is not None:
             result['SourceTypeName'] = self.source_type_name
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -366,6 +371,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
 
         if m.get('SourceTypeName') is not None:
             self.source_type_name = m.get('SourceTypeName')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

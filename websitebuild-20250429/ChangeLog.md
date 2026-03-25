@@ -1,3 +1,8 @@
+2026-03-25 Version: 2.19.0
+- Support API EditPluginConfig.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.Status.
+
+
 2026-03-12 Version: 2.18.1
 - Generated python 2025-04-29 for WebsiteBuild.
 

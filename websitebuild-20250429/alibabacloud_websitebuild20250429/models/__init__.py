@@ -72,6 +72,9 @@ from ._describe_app_domain_dns_record_response import DescribeAppDomainDnsRecord
 from ._dispatch_console_apifor_partner_request import DispatchConsoleAPIForPartnerRequest
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBody
 from ._dispatch_console_apifor_partner_response import DispatchConsoleAPIForPartnerResponse
+from ._edit_plugin_config_request import EditPluginConfigRequest
+from ._edit_plugin_config_response_body import EditPluginConfigResponseBody
+from ._edit_plugin_config_response import EditPluginConfigResponse
 from ._export_material_file_request import ExportMaterialFileRequest
 from ._export_material_file_shrink_request import ExportMaterialFileShrinkRequest
 from ._export_material_file_response_body import ExportMaterialFileResponseBody
@@ -406,6 +409,9 @@ __all__ = [
     DispatchConsoleAPIForPartnerRequest,
     DispatchConsoleAPIForPartnerResponseBody,
     DispatchConsoleAPIForPartnerResponse,
+    EditPluginConfigRequest,
+    EditPluginConfigResponseBody,
+    EditPluginConfigResponse,
     ExportMaterialFileRequest,
     ExportMaterialFileShrinkRequest,
     ExportMaterialFileResponseBody,

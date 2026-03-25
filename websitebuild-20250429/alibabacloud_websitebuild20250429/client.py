@@ -1290,6 +1290,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.dispatch_console_apifor_partner_with_options_async(request, runtime)
 
+    def edit_plugin_config_with_options(
+        self,
+        request: main_models.EditPluginConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EditPluginConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.plugin_config):
+            query['PluginConfig'] = request.plugin_config
+        if not DaraCore.is_null(request.plugin_desc):
+            query['PluginDesc'] = request.plugin_desc
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_name):
+            query['PluginName'] = request.plugin_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EditPluginConfig',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EditPluginConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_plugin_config_with_options_async(
+        self,
+        request: main_models.EditPluginConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EditPluginConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.plugin_config):
+            query['PluginConfig'] = request.plugin_config
+        if not DaraCore.is_null(request.plugin_desc):
+            query['PluginDesc'] = request.plugin_desc
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_name):
+            query['PluginName'] = request.plugin_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EditPluginConfig',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EditPluginConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_plugin_config(
+        self,
+        request: main_models.EditPluginConfigRequest,
+    ) -> main_models.EditPluginConfigResponse:
+        runtime = RuntimeOptions()
+        return self.edit_plugin_config_with_options(request, runtime)
+
+    async def edit_plugin_config_async(
+        self,
+        request: main_models.EditPluginConfigRequest,
+    ) -> main_models.EditPluginConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.edit_plugin_config_with_options_async(request, runtime)
+
     def export_material_file_with_options(
         self,
         tmp_req: main_models.ExportMaterialFileRequest,
