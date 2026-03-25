@@ -1,3 +1,7 @@
+2026-03-25 Version: 2.0.2
+- Update API ListDataIngestions: add request parameters NormalizationSchemaIds.
+
+
 2026-02-10 Version: 2.0.1
 - Update API ListTrafficStatistics: add request parameters TrafficType.
 

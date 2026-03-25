@@ -11,6 +11,7 @@ class ListDataIngestionsShrinkRequest(DaraModel):
         data_ingestion_status: str = None,
         data_ingestion_template_ids_shrink: str = None,
         lang: str = None,
+        normalization_schema_ids_shrink: str = None,
         product_id: str = None,
         region_id: str = None,
         role_for: int = None,
@@ -19,6 +20,7 @@ class ListDataIngestionsShrinkRequest(DaraModel):
         self.data_ingestion_status = data_ingestion_status
         self.data_ingestion_template_ids_shrink = data_ingestion_template_ids_shrink
         self.lang = lang
+        self.normalization_schema_ids_shrink = normalization_schema_ids_shrink
         self.product_id = product_id
         self.region_id = region_id
         self.role_for = role_for
@@ -42,6 +44,9 @@ class ListDataIngestionsShrinkRequest(DaraModel):
 
         if self.lang is not None:
             result['Lang'] = self.lang
+
+        if self.normalization_schema_ids_shrink is not None:
+            result['NormalizationSchemaIds'] = self.normalization_schema_ids_shrink
 
         if self.product_id is not None:
             result['ProductId'] = self.product_id
@@ -67,6 +72,9 @@ class ListDataIngestionsShrinkRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('NormalizationSchemaIds') is not None:
+            self.normalization_schema_ids_shrink = m.get('NormalizationSchemaIds')
 
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')

@@ -3437,6 +3437,8 @@ class Client(OpenApiClient):
             request.data_ingestion_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_ingestion_ids, 'DataIngestionIds', 'simple')
         if not DaraCore.is_null(tmp_req.data_ingestion_template_ids):
             request.data_ingestion_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_ingestion_template_ids, 'DataIngestionTemplateIds', 'simple')
+        if not DaraCore.is_null(tmp_req.normalization_schema_ids):
+            request.normalization_schema_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.normalization_schema_ids, 'NormalizationSchemaIds', 'simple')
         body = {}
         if not DaraCore.is_null(request.data_ingestion_ids_shrink):
             body['DataIngestionIds'] = request.data_ingestion_ids_shrink
@@ -3446,6 +3448,8 @@ class Client(OpenApiClient):
             body['DataIngestionTemplateIds'] = request.data_ingestion_template_ids_shrink
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
+        if not DaraCore.is_null(request.normalization_schema_ids_shrink):
+            body['NormalizationSchemaIds'] = request.normalization_schema_ids_shrink
         if not DaraCore.is_null(request.product_id):
             body['ProductId'] = request.product_id
         if not DaraCore.is_null(request.region_id):
@@ -3483,6 +3487,8 @@ class Client(OpenApiClient):
             request.data_ingestion_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_ingestion_ids, 'DataIngestionIds', 'simple')
         if not DaraCore.is_null(tmp_req.data_ingestion_template_ids):
             request.data_ingestion_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_ingestion_template_ids, 'DataIngestionTemplateIds', 'simple')
+        if not DaraCore.is_null(tmp_req.normalization_schema_ids):
+            request.normalization_schema_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.normalization_schema_ids, 'NormalizationSchemaIds', 'simple')
         body = {}
         if not DaraCore.is_null(request.data_ingestion_ids_shrink):
             body['DataIngestionIds'] = request.data_ingestion_ids_shrink
@@ -3492,6 +3498,8 @@ class Client(OpenApiClient):
             body['DataIngestionTemplateIds'] = request.data_ingestion_template_ids_shrink
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
+        if not DaraCore.is_null(request.normalization_schema_ids_shrink):
+            body['NormalizationSchemaIds'] = request.normalization_schema_ids_shrink
         if not DaraCore.is_null(request.product_id):
             body['ProductId'] = request.product_id
         if not DaraCore.is_null(request.region_id):

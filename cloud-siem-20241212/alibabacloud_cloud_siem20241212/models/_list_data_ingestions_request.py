@@ -13,6 +13,7 @@ class ListDataIngestionsRequest(DaraModel):
         data_ingestion_status: str = None,
         data_ingestion_template_ids: List[str] = None,
         lang: str = None,
+        normalization_schema_ids: List[str] = None,
         product_id: str = None,
         region_id: str = None,
         role_for: int = None,
@@ -21,6 +22,7 @@ class ListDataIngestionsRequest(DaraModel):
         self.data_ingestion_status = data_ingestion_status
         self.data_ingestion_template_ids = data_ingestion_template_ids
         self.lang = lang
+        self.normalization_schema_ids = normalization_schema_ids
         self.product_id = product_id
         self.region_id = region_id
         self.role_for = role_for
@@ -44,6 +46,9 @@ class ListDataIngestionsRequest(DaraModel):
 
         if self.lang is not None:
             result['Lang'] = self.lang
+
+        if self.normalization_schema_ids is not None:
+            result['NormalizationSchemaIds'] = self.normalization_schema_ids
 
         if self.product_id is not None:
             result['ProductId'] = self.product_id
@@ -69,6 +74,9 @@ class ListDataIngestionsRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('NormalizationSchemaIds') is not None:
+            self.normalization_schema_ids = m.get('NormalizationSchemaIds')
 
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
