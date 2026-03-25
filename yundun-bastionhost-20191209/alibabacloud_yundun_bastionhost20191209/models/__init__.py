@@ -224,6 +224,10 @@ from ._get_user_response import GetUserResponse
 from ._get_user_group_request import GetUserGroupRequest
 from ._get_user_group_response_body import GetUserGroupResponseBody
 from ._get_user_group_response import GetUserGroupResponse
+from ._import_kmssecrets_for_host_request import ImportKMSSecretsForHostRequest
+from ._import_kmssecrets_for_host_shrink_request import ImportKMSSecretsForHostShrinkRequest
+from ._import_kmssecrets_for_host_response_body import ImportKMSSecretsForHostResponseBody
+from ._import_kmssecrets_for_host_response import ImportKMSSecretsForHostResponse
 from ._list_approve_commands_request import ListApproveCommandsRequest
 from ._list_approve_commands_response_body import ListApproveCommandsResponseBody
 from ._list_approve_commands_response import ListApproveCommandsResponse
@@ -284,6 +288,9 @@ from ._list_hosts_for_user_response import ListHostsForUserResponse
 from ._list_hosts_for_user_group_request import ListHostsForUserGroupRequest
 from ._list_hosts_for_user_group_response_body import ListHostsForUserGroupResponseBody
 from ._list_hosts_for_user_group_response import ListHostsForUserGroupResponse
+from ._list_importable_kmssecrets_for_host_request import ListImportableKMSSecretsForHostRequest
+from ._list_importable_kmssecrets_for_host_response_body import ListImportableKMSSecretsForHostResponseBody
+from ._list_importable_kmssecrets_for_host_response import ListImportableKMSSecretsForHostResponse
 from ._list_instance_rd_members_request import ListInstanceRdMembersRequest
 from ._list_instance_rd_members_response_body import ListInstanceRdMembersResponseBody
 from ._list_instance_rd_members_response import ListInstanceRdMembersResponse
@@ -543,6 +550,8 @@ from ._get_rule_response_body import GetRuleResponseBodyRuleUsers
 from ._get_rule_response_body import GetRuleResponseBodyRule
 from ._get_user_response_body import GetUserResponseBodyUser
 from ._get_user_group_response_body import GetUserGroupResponseBodyUserGroup
+from ._import_kmssecrets_for_host_request import ImportKMSSecretsForHostRequestSecrets
+from ._import_kmssecrets_for_host_response_body import ImportKMSSecretsForHostResponseBodyResults
 from ._list_approve_commands_response_body import ListApproveCommandsResponseBodyApproveCommands
 from ._list_database_accounts_response_body import ListDatabaseAccountsResponseBodyDatabaseAccounts
 from ._list_database_accounts_for_user_response_body import ListDatabaseAccountsForUserResponseBodyDatabaseAccounts
@@ -561,6 +570,7 @@ from ._list_host_share_keys_response_body import ListHostShareKeysResponseBodyHo
 from ._list_hosts_response_body import ListHostsResponseBodyHosts
 from ._list_hosts_for_user_response_body import ListHostsForUserResponseBodyHosts
 from ._list_hosts_for_user_group_response_body import ListHostsForUserGroupResponseBodyHosts
+from ._list_importable_kmssecrets_for_host_response_body import ListImportableKMSSecretsForHostResponseBodySecrets
 from ._list_instance_rd_members_response_body import ListInstanceRdMembersResponseBodyMembers
 from ._list_network_domains_response_body import ListNetworkDomainsResponseBodyNetworkDomainsProxiesState
 from ._list_network_domains_response_body import ListNetworkDomainsResponseBodyNetworkDomains
@@ -829,6 +839,10 @@ __all__ = [
     GetUserGroupRequest,
     GetUserGroupResponseBody,
     GetUserGroupResponse,
+    ImportKMSSecretsForHostRequest,
+    ImportKMSSecretsForHostShrinkRequest,
+    ImportKMSSecretsForHostResponseBody,
+    ImportKMSSecretsForHostResponse,
     ListApproveCommandsRequest,
     ListApproveCommandsResponseBody,
     ListApproveCommandsResponse,
@@ -889,6 +903,9 @@ __all__ = [
     ListHostsForUserGroupRequest,
     ListHostsForUserGroupResponseBody,
     ListHostsForUserGroupResponse,
+    ListImportableKMSSecretsForHostRequest,
+    ListImportableKMSSecretsForHostResponseBody,
+    ListImportableKMSSecretsForHostResponse,
     ListInstanceRdMembersRequest,
     ListInstanceRdMembersResponseBody,
     ListInstanceRdMembersResponse,
@@ -1148,6 +1165,8 @@ __all__ = [
     GetRuleResponseBodyRule,
     GetUserResponseBodyUser,
     GetUserGroupResponseBodyUserGroup,
+    ImportKMSSecretsForHostRequestSecrets,
+    ImportKMSSecretsForHostResponseBodyResults,
     ListApproveCommandsResponseBodyApproveCommands,
     ListDatabaseAccountsResponseBodyDatabaseAccounts,
     ListDatabaseAccountsForUserResponseBodyDatabaseAccounts,
@@ -1166,6 +1185,7 @@ __all__ = [
     ListHostsResponseBodyHosts,
     ListHostsForUserResponseBodyHosts,
     ListHostsForUserGroupResponseBodyHosts,
+    ListImportableKMSSecretsForHostResponseBodySecrets,
     ListInstanceRdMembersResponseBodyMembers,
     ListNetworkDomainsResponseBodyNetworkDomainsProxiesState,
     ListNetworkDomainsResponseBodyNetworkDomains,

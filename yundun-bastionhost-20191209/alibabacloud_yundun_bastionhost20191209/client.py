@@ -6293,6 +6293,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_group_with_options_async(request, runtime)
 
+    def import_kmssecrets_for_host_with_options(
+        self,
+        tmp_req: main_models.ImportKMSSecretsForHostRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportKMSSecretsForHostResponse:
+        tmp_req.validate()
+        request = main_models.ImportKMSSecretsForHostShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.secrets):
+            request.secrets_shrink = Utils.array_to_string_with_specified_style(tmp_req.secrets, 'Secrets', 'json')
+        query = {}
+        if not DaraCore.is_null(request.host_id):
+            query['HostId'] = request.host_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.secrets_shrink):
+            query['Secrets'] = request.secrets_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportKMSSecretsForHost',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportKMSSecretsForHostResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_kmssecrets_for_host_with_options_async(
+        self,
+        tmp_req: main_models.ImportKMSSecretsForHostRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportKMSSecretsForHostResponse:
+        tmp_req.validate()
+        request = main_models.ImportKMSSecretsForHostShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.secrets):
+            request.secrets_shrink = Utils.array_to_string_with_specified_style(tmp_req.secrets, 'Secrets', 'json')
+        query = {}
+        if not DaraCore.is_null(request.host_id):
+            query['HostId'] = request.host_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.secrets_shrink):
+            query['Secrets'] = request.secrets_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportKMSSecretsForHost',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportKMSSecretsForHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_kmssecrets_for_host(
+        self,
+        request: main_models.ImportKMSSecretsForHostRequest,
+    ) -> main_models.ImportKMSSecretsForHostResponse:
+        runtime = RuntimeOptions()
+        return self.import_kmssecrets_for_host_with_options(request, runtime)
+
+    async def import_kmssecrets_for_host_async(
+        self,
+        request: main_models.ImportKMSSecretsForHostRequest,
+    ) -> main_models.ImportKMSSecretsForHostResponse:
+        runtime = RuntimeOptions()
+        return await self.import_kmssecrets_for_host_with_options_async(request, runtime)
+
     def list_approve_commands_with_options(
         self,
         request: main_models.ListApproveCommandsRequest,
@@ -8160,6 +8250,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListHostsForUserGroupResponse:
         runtime = RuntimeOptions()
         return await self.list_hosts_for_user_group_with_options_async(request, runtime)
+
+    def list_importable_kmssecrets_for_host_with_options(
+        self,
+        request: main_models.ListImportableKMSSecretsForHostRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImportableKMSSecretsForHostResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.host_id):
+            query['HostId'] = request.host_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImportableKMSSecretsForHost',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImportableKMSSecretsForHostResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_importable_kmssecrets_for_host_with_options_async(
+        self,
+        request: main_models.ListImportableKMSSecretsForHostRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImportableKMSSecretsForHostResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.host_id):
+            query['HostId'] = request.host_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImportableKMSSecretsForHost',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImportableKMSSecretsForHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_importable_kmssecrets_for_host(
+        self,
+        request: main_models.ListImportableKMSSecretsForHostRequest,
+    ) -> main_models.ListImportableKMSSecretsForHostResponse:
+        runtime = RuntimeOptions()
+        return self.list_importable_kmssecrets_for_host_with_options(request, runtime)
+
+    async def list_importable_kmssecrets_for_host_async(
+        self,
+        request: main_models.ListImportableKMSSecretsForHostRequest,
+    ) -> main_models.ListImportableKMSSecretsForHostResponse:
+        runtime = RuntimeOptions()
+        return await self.list_importable_kmssecrets_for_host_with_options_async(request, runtime)
 
     def list_instance_rd_members_with_options(
         self,
