@@ -19,7 +19,9 @@ class DescribeCouponRequest(DaraModel):
         effective_start_time: int = None,
         expire_end_date: int = None,
         expire_start_date: int = None,
+        max_results: int = None,
         nbid: str = None,
+        next_token: str = None,
         page_size: int = None,
         status: str = None,
     ):
@@ -33,7 +35,9 @@ class DescribeCouponRequest(DaraModel):
         self.effective_start_time = effective_start_time
         self.expire_end_date = expire_end_date
         self.expire_start_date = expire_start_date
+        self.max_results = max_results
         self.nbid = nbid
+        self.next_token = next_token
         # This parameter is required.
         self.page_size = page_size
         self.status = status
@@ -78,8 +82,14 @@ class DescribeCouponRequest(DaraModel):
         if self.expire_start_date is not None:
             result['ExpireStartDate'] = self.expire_start_date
 
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
         if self.nbid is not None:
             result['Nbid'] = self.nbid
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -121,8 +131,14 @@ class DescribeCouponRequest(DaraModel):
         if m.get('ExpireStartDate') is not None:
             self.expire_start_date = m.get('ExpireStartDate')
 
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
         if m.get('Nbid') is not None:
             self.nbid = m.get('Nbid')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')

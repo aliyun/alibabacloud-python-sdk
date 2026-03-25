@@ -1390,7 +1390,35 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ec_id_account_ids):
             request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not DaraCore.is_null(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.coupon_type):
+            query['CouponType'] = request.coupon_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.effective_end_time):
+            query['EffectiveEndTime'] = request.effective_end_time
+        if not DaraCore.is_null(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
+        if not DaraCore.is_null(request.expire_end_date):
+            query['ExpireEndDate'] = request.expire_end_date
+        if not DaraCore.is_null(request.expire_start_date):
+            query['ExpireStartDate'] = request.expire_start_date
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1399,7 +1427,7 @@ class Client(OpenApiClient):
             version = '2023-09-30',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -1420,7 +1448,35 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ec_id_account_ids):
             request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not DaraCore.is_null(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.coupon_type):
+            query['CouponType'] = request.coupon_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.effective_end_time):
+            query['EffectiveEndTime'] = request.effective_end_time
+        if not DaraCore.is_null(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
+        if not DaraCore.is_null(request.expire_end_date):
+            query['ExpireEndDate'] = request.expire_end_date
+        if not DaraCore.is_null(request.expire_start_date):
+            query['ExpireStartDate'] = request.expire_start_date
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1429,7 +1485,7 @@ class Client(OpenApiClient):
             version = '2023-09-30',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -1464,7 +1520,19 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ec_id_account_ids):
             request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1473,7 +1541,7 @@ class Client(OpenApiClient):
             version = '2023-09-30',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -1494,7 +1562,19 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ec_id_account_ids):
             request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1503,7 +1583,7 @@ class Client(OpenApiClient):
             version = '2023-09-30',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
