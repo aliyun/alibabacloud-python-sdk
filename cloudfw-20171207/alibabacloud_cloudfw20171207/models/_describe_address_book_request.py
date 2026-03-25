@@ -10,6 +10,7 @@ class DescribeAddressBookRequest(DaraModel):
         contain_port: str = None,
         current_page: str = None,
         group_type: str = None,
+        group_uuid: str = None,
         lang: str = None,
         page_size: str = None,
         query: str = None,
@@ -31,6 +32,7 @@ class DescribeAddressBookRequest(DaraModel):
         # *   **ipv6**: IPv6 address book
         # >  If you do not specify a type, the domain address books and ECS tag-based address books are queried.
         self.group_type = group_type
+        self.group_uuid = group_uuid
         # The language of the content within the request. Valid values:
         # 
         # *   **zh** (default): Chinese
@@ -60,6 +62,9 @@ class DescribeAddressBookRequest(DaraModel):
         if self.group_type is not None:
             result['GroupType'] = self.group_type
 
+        if self.group_uuid is not None:
+            result['GroupUuid'] = self.group_uuid
+
         if self.lang is not None:
             result['Lang'] = self.lang
 
@@ -81,6 +86,9 @@ class DescribeAddressBookRequest(DaraModel):
 
         if m.get('GroupType') is not None:
             self.group_type = m.get('GroupType')
+
+        if m.get('GroupUuid') is not None:
+            self.group_uuid = m.get('GroupUuid')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')

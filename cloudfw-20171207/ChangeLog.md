@@ -1,3 +1,7 @@
+2026-03-25 Version: 8.0.4
+- Update API DescribeAddressBook: add request parameters GroupUuid.
+
+
 2026-03-13 Version: 8.0.3
 - Update API DescribeAssetStatistic: add response parameters Body.AutoResourceEnable.
 

@@ -5805,6 +5805,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.group_type):
             query['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.group_uuid):
+            query['GroupUuid'] = request.group_uuid
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
@@ -5843,6 +5845,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.group_type):
             query['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.group_uuid):
+            query['GroupUuid'] = request.group_uuid
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
