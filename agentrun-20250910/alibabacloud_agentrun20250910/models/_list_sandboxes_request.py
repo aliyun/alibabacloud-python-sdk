@@ -9,6 +9,7 @@ class ListSandboxesRequest(DaraModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        sandbox_id: str = None,
         status: str = None,
         template_name: str = None,
         template_type: str = None,
@@ -16,6 +17,7 @@ class ListSandboxesRequest(DaraModel):
         # 当前页码，从1开始计数
         self.max_results = max_results
         self.next_token = next_token
+        self.sandbox_id = sandbox_id
         self.status = status
         # 按模板名称过滤
         self.template_name = template_name
@@ -35,6 +37,9 @@ class ListSandboxesRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.sandbox_id is not None:
+            result['sandboxId'] = self.sandbox_id
+
         if self.status is not None:
             result['status'] = self.status
 
@@ -53,6 +58,9 @@ class ListSandboxesRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('sandboxId') is not None:
+            self.sandbox_id = m.get('sandboxId')
 
         if m.get('status') is not None:
             self.status = m.get('status')

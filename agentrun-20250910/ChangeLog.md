@@ -1,3 +1,7 @@
+2026-03-25 Version: 5.5.3
+- Update API ListSandboxes: add request parameters sandboxId.
+
+
 2026-03-23 Version: 5.5.2
 - Update API ListCredentials: add request parameters workspaceId.
 - Update API ListCredentials: add request parameters workspaceIds.

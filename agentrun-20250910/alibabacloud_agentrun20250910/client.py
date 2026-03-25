@@ -4079,6 +4079,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.sandbox_id):
+            query['sandboxId'] = request.sandbox_id
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
         if not DaraCore.is_null(request.template_name):
@@ -4117,6 +4119,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.sandbox_id):
+            query['sandboxId'] = request.sandbox_id
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
         if not DaraCore.is_null(request.template_name):
