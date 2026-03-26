@@ -11,7 +11,6 @@ class CreateApiKeyRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.description = description
-        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):

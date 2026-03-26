@@ -10,6 +10,7 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
+from darabonba.url import Url as DaraURL
 
 """
 """
@@ -60,7 +61,7 @@ class Client(OpenApiClient):
             action = 'CreateApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/createApiKey',
+            pathname = f'/maas/apikeys',
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
@@ -92,7 +93,7 @@ class Client(OpenApiClient):
             action = 'CreateApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/createApiKey',
+            pathname = f'/maas/apikeys',
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
@@ -122,23 +123,18 @@ class Client(OpenApiClient):
 
     def delete_api_key_with_options(
         self,
-        request: main_models.DeleteApiKeyRequest,
+        api_key_id: str,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteApiKeyResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.api_key_id):
-            query['apiKeyId'] = request.api_key_id
         req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
+            headers = headers
         )
         params = open_api_util_models.Params(
             action = 'DeleteApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/deleteApiKey',
+            pathname = f'/maas/apikeys/{DaraURL.percent_encode(api_key_id)}',
             method = 'DELETE',
             auth_type = 'AK',
             style = 'ROA',
@@ -152,23 +148,18 @@ class Client(OpenApiClient):
 
     async def delete_api_key_with_options_async(
         self,
-        request: main_models.DeleteApiKeyRequest,
+        api_key_id: str,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteApiKeyResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.api_key_id):
-            query['apiKeyId'] = request.api_key_id
         req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
+            headers = headers
         )
         params = open_api_util_models.Params(
             action = 'DeleteApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/deleteApiKey',
+            pathname = f'/maas/apikeys/{DaraURL.percent_encode(api_key_id)}',
             method = 'DELETE',
             auth_type = 'AK',
             style = 'ROA',
@@ -182,39 +173,34 @@ class Client(OpenApiClient):
 
     def delete_api_key(
         self,
-        request: main_models.DeleteApiKeyRequest,
+        api_key_id: str,
     ) -> main_models.DeleteApiKeyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_api_key_with_options(request, headers, runtime)
+        return self.delete_api_key_with_options(api_key_id, headers, runtime)
 
     async def delete_api_key_async(
         self,
-        request: main_models.DeleteApiKeyRequest,
+        api_key_id: str,
     ) -> main_models.DeleteApiKeyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_api_key_with_options_async(request, headers, runtime)
+        return await self.delete_api_key_with_options_async(api_key_id, headers, runtime)
 
     def get_api_key_with_options(
         self,
-        request: main_models.GetApiKeyRequest,
+        api_key_id: str,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetApiKeyResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.api_key_id):
-            query['apiKeyId'] = request.api_key_id
         req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
+            headers = headers
         )
         params = open_api_util_models.Params(
             action = 'GetApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/getApiKey',
+            pathname = f'/maas/apikeys/{DaraURL.percent_encode(api_key_id)}',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
@@ -228,23 +214,18 @@ class Client(OpenApiClient):
 
     async def get_api_key_with_options_async(
         self,
-        request: main_models.GetApiKeyRequest,
+        api_key_id: str,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetApiKeyResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.api_key_id):
-            query['apiKeyId'] = request.api_key_id
         req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
+            headers = headers
         )
         params = open_api_util_models.Params(
             action = 'GetApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/getApiKey',
+            pathname = f'/maas/apikeys/{DaraURL.percent_encode(api_key_id)}',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
@@ -258,19 +239,19 @@ class Client(OpenApiClient):
 
     def get_api_key(
         self,
-        request: main_models.GetApiKeyRequest,
+        api_key_id: str,
     ) -> main_models.GetApiKeyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_api_key_with_options(request, headers, runtime)
+        return self.get_api_key_with_options(api_key_id, headers, runtime)
 
     async def get_api_key_async(
         self,
-        request: main_models.GetApiKeyRequest,
+        api_key_id: str,
     ) -> main_models.GetApiKeyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_api_key_with_options_async(request, headers, runtime)
+        return await self.get_api_key_with_options_async(api_key_id, headers, runtime)
 
     def list_api_keys_with_options(
         self,
@@ -298,7 +279,7 @@ class Client(OpenApiClient):
             action = 'ListApiKeys',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKeys',
+            pathname = f'/maas/apikeys',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
@@ -336,7 +317,7 @@ class Client(OpenApiClient):
             action = 'ListApiKeys',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKeys',
+            pathname = f'/maas/apikeys',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
@@ -386,7 +367,7 @@ class Client(OpenApiClient):
             action = 'ListWorkspaces',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/workspaces',
+            pathname = f'/maas/workspaces',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
@@ -420,7 +401,7 @@ class Client(OpenApiClient):
             action = 'ListWorkspaces',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/workspaces',
+            pathname = f'/maas/workspaces',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
@@ -450,14 +431,13 @@ class Client(OpenApiClient):
 
     def update_api_key_with_options(
         self,
+        api_key_id: str,
         request: main_models.UpdateApiKeyRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.UpdateApiKeyResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.api_key_id):
-            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.description):
             query['description'] = request.description
         req = open_api_util_models.OpenApiRequest(
@@ -468,7 +448,7 @@ class Client(OpenApiClient):
             action = 'UpdateApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/updateApiKey',
+            pathname = f'/maas/apikeys/{DaraURL.percent_encode(api_key_id)}',
             method = 'PUT',
             auth_type = 'AK',
             style = 'ROA',
@@ -482,14 +462,13 @@ class Client(OpenApiClient):
 
     async def update_api_key_with_options_async(
         self,
+        api_key_id: str,
         request: main_models.UpdateApiKeyRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.UpdateApiKeyResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.api_key_id):
-            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.description):
             query['description'] = request.description
         req = open_api_util_models.OpenApiRequest(
@@ -500,7 +479,7 @@ class Client(OpenApiClient):
             action = 'UpdateApiKey',
             version = '2026-03-18',
             protocol = 'HTTPS',
-            pathname = f'/bailianControl/apiKey/updateApiKey',
+            pathname = f'/maas/apikeys/{DaraURL.percent_encode(api_key_id)}',
             method = 'PUT',
             auth_type = 'AK',
             style = 'ROA',
@@ -514,16 +493,18 @@ class Client(OpenApiClient):
 
     def update_api_key(
         self,
+        api_key_id: str,
         request: main_models.UpdateApiKeyRequest,
     ) -> main_models.UpdateApiKeyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.update_api_key_with_options(request, headers, runtime)
+        return self.update_api_key_with_options(api_key_id, request, headers, runtime)
 
     async def update_api_key_async(
         self,
+        api_key_id: str,
         request: main_models.UpdateApiKeyRequest,
     ) -> main_models.UpdateApiKeyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.update_api_key_with_options_async(request, headers, runtime)
+        return await self.update_api_key_with_options_async(api_key_id, request, headers, runtime)
