@@ -364,6 +364,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_api_keys_with_options_async(request, headers, runtime)
 
+    def list_workspaces_with_options(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_name):
+            query['workspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2026-03-18',
+            protocol = 'HTTPS',
+            pathname = f'/bailianControl/workspaces',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_name):
+            query['workspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2026-03-18',
+            protocol = 'HTTPS',
+            pathname = f'/bailianControl/workspaces',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspaces(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_workspaces_with_options(request, headers, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_workspaces_with_options_async(request, headers, runtime)
+
     def update_api_key_with_options(
         self,
         request: main_models.UpdateApiKeyRequest,
