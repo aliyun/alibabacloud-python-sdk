@@ -12834,7 +12834,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetMediaProducingJobResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12843,7 +12845,7 @@ class Client(OpenApiClient):
             version = '2020-11-09',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -12860,7 +12862,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetMediaProducingJobResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12869,7 +12873,7 @@ class Client(OpenApiClient):
             version = '2020-11-09',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -22256,6 +22260,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.resume_media_connect_flow_output_with_options_async(request, runtime)
 
+    def resume_yike_storyboard_job_with_options(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeYikeStoryboardJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeYikeStoryboardJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_yike_storyboard_job_with_options_async(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeYikeStoryboardJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeYikeStoryboardJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_yike_storyboard_job(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        runtime = RuntimeOptions()
+        return self.resume_yike_storyboard_job_with_options(request, runtime)
+
+    async def resume_yike_storyboard_job_async(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_yike_storyboard_job_with_options_async(request, runtime)
+
     def search_editing_project_with_options(
         self,
         request: main_models.SearchEditingProjectRequest,
@@ -29249,6 +29323,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.aspect_ratio):
             query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.exec_mode):
+            query['ExecMode'] = request.exec_mode
         if not DaraCore.is_null(request.model_params):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
@@ -29257,6 +29333,8 @@ class Client(OpenApiClient):
             query['Resolution'] = request.resolution
         if not DaraCore.is_null(request.shot_prompt_mode):
             query['ShotPromptMode'] = request.shot_prompt_mode
+        if not DaraCore.is_null(request.skip_failure_shot):
+            query['SkipFailureShot'] = request.skip_failure_shot
         if not DaraCore.is_null(request.title):
             query['Title'] = request.title
         if not DaraCore.is_null(request.user_data):
@@ -29301,6 +29379,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.aspect_ratio):
             query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.exec_mode):
+            query['ExecMode'] = request.exec_mode
         if not DaraCore.is_null(request.model_params):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
@@ -29309,6 +29389,8 @@ class Client(OpenApiClient):
             query['Resolution'] = request.resolution
         if not DaraCore.is_null(request.shot_prompt_mode):
             query['ShotPromptMode'] = request.shot_prompt_mode
+        if not DaraCore.is_null(request.skip_failure_shot):
+            query['SkipFailureShot'] = request.skip_failure_shot
         if not DaraCore.is_null(request.title):
             query['Title'] = request.title
         if not DaraCore.is_null(request.user_data):

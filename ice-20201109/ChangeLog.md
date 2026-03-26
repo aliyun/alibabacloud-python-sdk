@@ -1,3 +1,11 @@
+2026-03-26 Version: 6.15.0
+- Support API ResumeYikeStoryboardJob.
+- Update API GetYikeStoryboardJob: add response parameters Body.JobResult.StoryboardInfoList.
+- Update API GetYikeStoryboardJob: add response parameters Body.JobResult.SuccessStoryboardIds.
+- Update API SubmitYikeStoryboardJob: add request parameters ExecMode.
+- Update API SubmitYikeStoryboardJob: add request parameters SkipFailureShot.
+
+
 2026-03-20 Version: 6.14.1
 - Generated python 2020-11-09 for ICE.
 

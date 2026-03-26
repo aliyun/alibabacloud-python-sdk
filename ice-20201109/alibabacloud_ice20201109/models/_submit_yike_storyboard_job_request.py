@@ -8,12 +8,14 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
     def __init__(
         self,
         aspect_ratio: str = None,
+        exec_mode: str = None,
         file_url: str = None,
         model_params: str = None,
         narration_voice_id: str = None,
         resolution: str = None,
         shot_prompt_mode: str = None,
         shot_split_mode: str = None,
+        skip_failure_shot: bool = None,
         source_type: str = None,
         style_id: str = None,
         title: str = None,
@@ -21,12 +23,14 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         video_model: str = None,
     ):
         self.aspect_ratio = aspect_ratio
+        self.exec_mode = exec_mode
         self.file_url = file_url
         self.model_params = model_params
         self.narration_voice_id = narration_voice_id
         self.resolution = resolution
         self.shot_prompt_mode = shot_prompt_mode
         self.shot_split_mode = shot_split_mode
+        self.skip_failure_shot = skip_failure_shot
         self.source_type = source_type
         self.style_id = style_id
         self.title = title
@@ -43,6 +47,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
             result = _map
         if self.aspect_ratio is not None:
             result['AspectRatio'] = self.aspect_ratio
+
+        if self.exec_mode is not None:
+            result['ExecMode'] = self.exec_mode
 
         if self.file_url is not None:
             result['FileURL'] = self.file_url
@@ -61,6 +68,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
 
         if self.shot_split_mode is not None:
             result['ShotSplitMode'] = self.shot_split_mode
+
+        if self.skip_failure_shot is not None:
+            result['SkipFailureShot'] = self.skip_failure_shot
 
         if self.source_type is not None:
             result['SourceType'] = self.source_type
@@ -84,6 +94,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         if m.get('AspectRatio') is not None:
             self.aspect_ratio = m.get('AspectRatio')
 
+        if m.get('ExecMode') is not None:
+            self.exec_mode = m.get('ExecMode')
+
         if m.get('FileURL') is not None:
             self.file_url = m.get('FileURL')
 
@@ -101,6 +114,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
 
         if m.get('ShotSplitMode') is not None:
             self.shot_split_mode = m.get('ShotSplitMode')
+
+        if m.get('SkipFailureShot') is not None:
+            self.skip_failure_shot = m.get('SkipFailureShot')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')

@@ -892,6 +892,9 @@ from ._register_yike_asset_media_info_response import RegisterYikeAssetMediaInfo
 from ._resume_media_connect_flow_output_request import ResumeMediaConnectFlowOutputRequest
 from ._resume_media_connect_flow_output_response_body import ResumeMediaConnectFlowOutputResponseBody
 from ._resume_media_connect_flow_output_response import ResumeMediaConnectFlowOutputResponse
+from ._resume_yike_storyboard_job_request import ResumeYikeStoryboardJobRequest
+from ._resume_yike_storyboard_job_response_body import ResumeYikeStoryboardJobResponseBody
+from ._resume_yike_storyboard_job_response import ResumeYikeStoryboardJobResponse
 from ._search_editing_project_request import SearchEditingProjectRequest
 from ._search_editing_project_response_body import SearchEditingProjectResponseBody
 from ._search_editing_project_response import SearchEditingProjectResponse
@@ -2981,6 +2984,9 @@ __all__ = [
     ResumeMediaConnectFlowOutputRequest,
     ResumeMediaConnectFlowOutputResponseBody,
     ResumeMediaConnectFlowOutputResponse,
+    ResumeYikeStoryboardJobRequest,
+    ResumeYikeStoryboardJobResponseBody,
+    ResumeYikeStoryboardJobResponse,
     SearchEditingProjectRequest,
     SearchEditingProjectResponseBody,
     SearchEditingProjectResponse,

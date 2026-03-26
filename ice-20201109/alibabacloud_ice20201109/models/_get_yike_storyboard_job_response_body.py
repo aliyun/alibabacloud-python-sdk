@@ -75,11 +75,15 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
         exception_storyboard_ids: str = None,
         failure_shot_list: str = None,
         output_url: str = None,
+        storyboard_info_list: str = None,
+        success_storyboard_ids: str = None,
         success_storyboard_list: str = None,
     ):
         self.exception_storyboard_ids = exception_storyboard_ids
         self.failure_shot_list = failure_shot_list
         self.output_url = output_url
+        self.storyboard_info_list = storyboard_info_list
+        self.success_storyboard_ids = success_storyboard_ids
         self.success_storyboard_list = success_storyboard_list
 
     def validate(self):
@@ -99,6 +103,12 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
         if self.output_url is not None:
             result['OutputUrl'] = self.output_url
 
+        if self.storyboard_info_list is not None:
+            result['StoryboardInfoList'] = self.storyboard_info_list
+
+        if self.success_storyboard_ids is not None:
+            result['SuccessStoryboardIds'] = self.success_storyboard_ids
+
         if self.success_storyboard_list is not None:
             result['SuccessStoryboardList'] = self.success_storyboard_list
 
@@ -114,6 +124,12 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
 
         if m.get('OutputUrl') is not None:
             self.output_url = m.get('OutputUrl')
+
+        if m.get('StoryboardInfoList') is not None:
+            self.storyboard_info_list = m.get('StoryboardInfoList')
+
+        if m.get('SuccessStoryboardIds') is not None:
+            self.success_storyboard_ids = m.get('SuccessStoryboardIds')
 
         if m.get('SuccessStoryboardList') is not None:
             self.success_storyboard_list = m.get('SuccessStoryboardList')
