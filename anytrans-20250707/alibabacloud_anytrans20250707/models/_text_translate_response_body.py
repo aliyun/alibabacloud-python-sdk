@@ -78,9 +78,11 @@ class TextTranslateResponseBody(DaraModel):
 class TextTranslateResponseBodyData(DaraModel):
     def __init__(
         self,
+        detected_lang: str = None,
         translation: str = None,
         usage: main_models.TextTranslateResponseBodyDataUsage = None,
     ):
+        self.detected_lang = detected_lang
         self.translation = translation
         self.usage = usage
 
@@ -93,6 +95,9 @@ class TextTranslateResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.detected_lang is not None:
+            result['detectedLang'] = self.detected_lang
+
         if self.translation is not None:
             result['translation'] = self.translation
 
@@ -103,6 +108,9 @@ class TextTranslateResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('detectedLang') is not None:
+            self.detected_lang = m.get('detectedLang')
+
         if m.get('translation') is not None:
             self.translation = m.get('translation')
 

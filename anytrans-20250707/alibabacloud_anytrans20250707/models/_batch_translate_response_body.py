@@ -115,12 +115,14 @@ class BatchTranslateResponseBodyDataTranslationList(DaraModel):
     def __init__(
         self,
         code: int = None,
+        detected_lang: str = None,
         index: str = None,
         message: str = None,
         translation: str = None,
         usage: main_models.BatchTranslateResponseBodyDataTranslationListUsage = None,
     ):
         self.code = code
+        self.detected_lang = detected_lang
         self.index = index
         self.message = message
         self.translation = translation
@@ -137,6 +139,9 @@ class BatchTranslateResponseBodyDataTranslationList(DaraModel):
             result = _map
         if self.code is not None:
             result['code'] = self.code
+
+        if self.detected_lang is not None:
+            result['detectedLang'] = self.detected_lang
 
         if self.index is not None:
             result['index'] = self.index
@@ -156,6 +161,9 @@ class BatchTranslateResponseBodyDataTranslationList(DaraModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+
+        if m.get('detectedLang') is not None:
+            self.detected_lang = m.get('detectedLang')
 
         if m.get('index') is not None:
             self.index = m.get('index')

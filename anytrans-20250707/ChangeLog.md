@@ -1,3 +1,9 @@
+2026-03-26 Version: 2.1.5
+- Update API BatchTranslate: add response parameters Body.data.translationList.$.detectedLang.
+- Update API BatchTranslateForHtml: add response parameters Body.data.translationList.$.detectedLang.
+- Update API TextTranslate: add response parameters Body.data.detectedLang.
+
+
 2026-03-17 Version: 2.1.4
 - Generated python 2025-07-07 for AnyTrans.
 
