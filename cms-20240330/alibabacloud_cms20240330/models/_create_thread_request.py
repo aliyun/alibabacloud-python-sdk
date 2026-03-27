@@ -15,9 +15,7 @@ class CreateThreadRequest(DaraModel):
         variables: main_models.CreateThreadRequestVariables = None,
     ):
         self.attributes = attributes
-        # The title of the session.
         self.title = title
-        # The properties of the session.
         self.variables = variables
 
     def validate(self):
@@ -60,9 +58,7 @@ class CreateThreadRequestVariables(DaraModel):
         project: str = None,
         workspace: str = None,
     ):
-        # The name of the Simple Log Service project.
         self.project = project
-        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

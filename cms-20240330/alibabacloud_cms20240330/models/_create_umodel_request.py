@@ -9,7 +9,7 @@ class CreateUmodelRequest(DaraModel):
         self,
         description: str = None,
     ):
-        # The description of the Umodel.
+        # Umodel description
         self.description = description
 
     def validate(self):

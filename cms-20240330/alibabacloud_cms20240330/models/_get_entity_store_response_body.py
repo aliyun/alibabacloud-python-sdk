@@ -11,11 +11,11 @@ class GetEntityStoreResponseBody(DaraModel):
         request_id: str = None,
         workspace_name: str = None,
     ):
-        # The region ID.
+        # Region ID
         self.region_id = region_id
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The name of the workspace.
+        # Workspace name
         self.workspace_name = workspace_name
 
     def validate(self):

@@ -12,13 +12,9 @@ class UpdateBizTraceRequest(DaraModel):
         rule_config: str = None,
         workspace: str = None,
     ):
-        # The advanced configuration.
         self.advanced_config = advanced_config
-        # The name of the business trace.
         self.biz_trace_name = biz_trace_name
-        # The list of configuration rules.
         self.rule_config = rule_config
-        # The workspace.
         self.workspace = workspace
 
     def validate(self):

@@ -17,17 +17,17 @@ class GetUmodelDataResponseBody(DaraModel):
         total_links_count: int = None,
         total_nodes_count: int = None,
     ):
-        # The error messages.
+        # Error information
         self.errors = errors
-        # The list of links between nodes.
+        # List of node link relationships
         self.links = links
-        # The list of nodes.
+        # List of nodes
         self.nodes = nodes
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The total number of links between nodes.
+        # Total number of node links
         self.total_links_count = total_links_count
-        # The total number of nodes.
+        # Total number of nodes
         self.total_nodes_count = total_nodes_count
 
     def validate(self):
@@ -94,9 +94,9 @@ class GetUmodelDataResponseBodyErrors(DaraModel):
         message: str = None,
         type: str = None,
     ):
-        # The detailed information.
+        # Details.
         self.message = message
-        # The type of the error.
+        # Error type
         self.type = type
 
     def validate(self):

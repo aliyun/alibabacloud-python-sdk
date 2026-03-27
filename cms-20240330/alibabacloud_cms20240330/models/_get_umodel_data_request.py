@@ -12,9 +12,9 @@ class GetUmodelDataRequest(DaraModel):
         content: Any = None,
         method: str = None,
     ):
-        # The query conditions.
+        # Query conditions
         self.content = content
-        # The method.
+        # Method
         # 
         # This parameter is required.
         self.method = method

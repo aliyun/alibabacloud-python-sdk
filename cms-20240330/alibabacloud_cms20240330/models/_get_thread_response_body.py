@@ -21,25 +21,16 @@ class GetThreadResponseBody(DaraModel):
         variables: main_models.GetThreadResponseBodyVariables = None,
         version: int = None,
     ):
-        # The attributes.
         self.attributes = attributes
-        # The time when the session was created.
         self.create_time = create_time
-        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The session status.
         self.status = status
-        # The session ID.
         self.thread_id = thread_id
-        # The session title.
         self.title = title
-        # The time when the thread was last updated.
         self.update_time = update_time
-        # The session properties.
         self.variables = variables
-        # The version.
         self.version = version
 
     def validate(self):
@@ -124,9 +115,7 @@ class GetThreadResponseBodyVariables(DaraModel):
         project: str = None,
         workspace: str = None,
     ):
-        # The name of the SLS project.
         self.project = project
-        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

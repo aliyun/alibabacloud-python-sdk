@@ -10,9 +10,8 @@ class CreateThreadResponseBody(DaraModel):
         request_id: str = None,
         thread_id: str = None,
     ):
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The session ID.
         self.thread_id = thread_id
 
     def validate(self):

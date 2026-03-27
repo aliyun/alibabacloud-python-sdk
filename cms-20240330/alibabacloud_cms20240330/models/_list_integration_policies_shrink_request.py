@@ -22,33 +22,33 @@ class ListIntegrationPoliciesShrinkRequest(DaraModel):
         tag_shrink: str = None,
         workspace: str = None,
     ):
-        # The add-on name.
+        # Addon name.
         self.addon_name = addon_name
-        # The ID of the attached resource.
+        # Bound resource ID
         self.bind_resource_id = bind_resource_id
-        # The IDs of the entity groups to filter by. Separate multiple IDs with commas.
+        # Filter for entity IDs, separated by commas
         self.entity_group_ids = entity_group_ids
-        # The IDs of the regions to query. Separate multiple region IDs with commas.
+        # Used for Region query, separated by commas
         self.filter_region_ids = filter_region_ids
-        # The maximum number of entries to return on each page. The default value is 30. The maximum value is 100.
+        # Maximum number of results to return. Default is 30, with a maximum of 100.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. You can obtain the token from the response to the previous request.
+        # Used to return more results. This parameter is not required for the first query. For subsequent queries, use the Token obtained from the response.
         self.next_token = next_token
-        # The policy ID.
+        # Policy ID.
         self.policy_id = policy_id
-        # The policy name.
+        # Rule name.
         self.policy_name = policy_name
-        # The policy type.
+        # Policy type
         self.policy_type = policy_type
-        # The instance ID.
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # A general-purpose query string.
+        # Used for general queries
         self.query = query
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # Tag list.
         self.tag_shrink = tag_shrink
-        # The workspace.
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):

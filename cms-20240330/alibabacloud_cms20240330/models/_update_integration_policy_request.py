@@ -15,13 +15,13 @@ class UpdateIntegrationPolicyRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.UpdateIntegrationPolicyRequestTags] = None,
     ):
-        # The type of the paid plan. Valid values: CS_Pro, CS_Basic, and empty.
+        # Fee package type, CS_Pro/CS_Basic/empty.
         self.fee_package = fee_package
-        # The name of the rule. The name must be 3 to 63 characters in length and start with a letter.
+        # Rule name, minimum 3 characters, maximum 63 characters, must start with a letter.
         self.policy_name = policy_name
-        # The ID of the resource group to which the instance belongs.
+        # Resource group ID of the instance.
         self.resource_group_id = resource_group_id
-        # The tags of the resource.
+        # Resource tags.
         self.tags = tags
 
     def validate(self):
@@ -76,9 +76,9 @@ class UpdateIntegrationPolicyRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # Tag `key` value.
         self.key = key
-        # The value of the tag.
+        # Tag `value` value.
         self.value = value
 
     def validate(self):

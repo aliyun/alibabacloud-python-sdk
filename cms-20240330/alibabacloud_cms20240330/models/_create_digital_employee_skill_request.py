@@ -17,20 +17,12 @@ class CreateDigitalEmployeeSkillRequest(DaraModel):
         remark: str = None,
         skill_name: str = None,
     ):
-        # The description of the skill.
         self.description = description
-        # The display name of the skill.
         self.display_name = display_name
-        # Specifies whether to enable the skill.
         self.enable = enable
-        # The list of skill files.
-        # 
         # This parameter is required.
         self.files = files
-        # The remarks.
         self.remark = remark
-        # The name of the skill.
-        # 
         # This parameter is required.
         self.skill_name = skill_name
 
@@ -98,9 +90,7 @@ class CreateDigitalEmployeeSkillRequestFiles(DaraModel):
         content: str = None,
         name: str = None,
     ):
-        # The content of the file.
         self.content = content
-        # The name of the file.
         self.name = name
 
     def validate(self):

@@ -18,21 +18,13 @@ class SearchMemoriesRequest(DaraModel):
         top_k: int = None,
         user_id: str = None,
     ):
-        # Agent ID
         self.agent_id = agent_id
-        # App key assigned by the merchant
         self.app_id = app_id
-        # Resource metadata
         self.metadata = metadata
-        # Query text
         self.query = query
-        # Rerank the search results.
         self.rerank = rerank
-        # Run ID
         self.run_id = run_id
-        # Number of top results to return
         self.top_k = top_k
-        # User ID
         self.user_id = user_id
 
     def validate(self):

@@ -10,9 +10,7 @@ class GetCloudResourceResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

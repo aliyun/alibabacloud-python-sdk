@@ -12,13 +12,13 @@ class UpdateServiceRequest(DaraModel):
         display_name: str = None,
         service_status: str = None,
     ):
-        # The extended properties.
+        # Extended attributes.
         self.attributes = attributes
-        # The description of the service. This parameter is valid only when serviceType is set to RUM.
+        # Service description, only valid when serviceType=RUM.
         self.description = description
-        # The display name. This parameter is valid only when serviceType is set to RUM.
+        # Display name, only valid when serviceType=RUM.
         self.display_name = display_name
-        # The status of the service. This parameter is valid only when serviceType is set to RUM.
+        # Service status, only valid when serviceType=RUM.
         self.service_status = service_status
 
     def validate(self):

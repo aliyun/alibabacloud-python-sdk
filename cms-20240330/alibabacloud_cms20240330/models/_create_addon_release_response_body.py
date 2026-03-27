@@ -13,9 +13,9 @@ class CreateAddonReleaseResponseBody(DaraModel):
         release: main_models.CreateAddonReleaseResponseBodyRelease = None,
         request_id: str = None,
     ):
-        # The information about the integrated add-on.
+        # Accessed component information.
         self.release = release
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75,55 +75,55 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The name of the integrated add-on.
+        # The Addon name of the component being monitored.
         self.addon_name = addon_name
-        # The number of alert rules.
+        # Number of alert groups.
         self.alert_rule_count = alert_rule_count
-        # The information about the add-on installation phases.
+        # Component installation phase information.
         self.conditions = conditions
-        # The configuration of the add-on.
+        # Component configuration.
         self.config = config
-        # The time when the add-on was integrated.
+        # Connection time.
         self.create_time = create_time
-        # The number of dashboards.
+        # Number of dashboards.
         self.dashboard_count = dashboard_count
-        # The details of the entity.
+        # Entity details.
         self.entity_rules = entity_rules
-        # The environment type.
+        # Environment type.
         self.env_type = env_type
-        # The environment ID.
+        # Environment ID.
         self.environment_id = environment_id
-        # The number of exporters.
+        # Number of plugins.
         self.exporter_count = exporter_count
-        # Indicates whether a configuration is available.
+        # Whether it has configuration.
         self.have_config = have_config
-        # The ID of the user who installed the add-on.
+        # ID of the user who installed it.
         self.install_user_id = install_user_id
-        # The language.
+        # Language.
         self.language = language
-        # Indicates whether the add-on is a managed add-on.
+        # Whether it is a managed component.
         self.managed = managed
-        # The ID of the parent AddonRelease.
+        # Parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
-        # The ID of the environment policy.
+        # Policy environment ID.
         self.policy_id = policy_id
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The ID of the release.
+        # ReleaseID after installation.
         self.release_id = release_id
-        # The name of the release.
+        # Name of the Release.
         self.release_name = release_name
-        # The scenario of the add-on.
+        # Component scenario.
         self.scene = scene
-        # The status of the add-on.
+        # Component status.
         self.status = status
-        # The time when the add-on was last updated.
+        # Update time.
         self.update_time = update_time
-        # The user ID.
+        # ID of the owner user.
         self.user_id = user_id
-        # The version of the add-on.
+        # Component version.
         self.version = version
-        # The workspace.
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -310,15 +310,15 @@ class CreateAddonReleaseResponseBodyReleaseConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time when the phase first transitioned.
+        # First transition time.
         self.first_transition_time = first_transition_time
-        # The time when the phase last transitioned.
+        # Last transition time.
         self.last_transition_time = last_transition_time
-        # The details of the phase.
+        # Detailed information.
         self.message = message
-        # The status of the phase.
+        # Phase status.
         self.status = status
-        # The type of the phase.
+        # Phase type.
         self.type = type
 
     def validate(self):

@@ -11,11 +11,11 @@ class ListIntegrationPolicyCustomScrapeJobRulesRequest(DaraModel):
         encrypt_yaml: bool = None,
         namespace: str = None,
     ):
-        # The name of the add-on release.
+        # Addon Release name.
         self.addon_release_name = addon_release_name
-        # Specifies whether to encrypt the YAML file.
+        # Whether to encrypt Yaml.
         self.encrypt_yaml = encrypt_yaml
-        # The namespace.
+        # Namespace.
         self.namespace = namespace
 
     def validate(self):

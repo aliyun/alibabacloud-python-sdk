@@ -20,23 +20,23 @@ class IncidentEscalationStageStruct(DaraModel):
         time_zone: str = None,
         wait_to_next_stage_time: int = None,
     ):
-        # 联系人列表
+        # Contact list.
         self.contact = contact
-        # 周期通知统计次数
+        # Number of recurring notification attempts.
         self.cycle_notify_count = cycle_notify_count
-        # 周期通知时间
+        # Recurring notification interval.
         self.cycle_notify_time = cycle_notify_time
-        # 描述
+        # Description.
         self.description = description
-        # 有效时间
+        # Effective time period.
         self.effect_time = effect_time
-        # 名称
+        # Name.
         self.name = name
-        # 阶段指数
+        # Phase index.
         self.stage_index = stage_index
-        # 时区
+        # Time zone.
         self.time_zone = time_zone
-        # 等待进入下一阶段的时间
+        # Time to wait before proceeding to the next phase.
         self.wait_to_next_stage_time = wait_to_next_stage_time
 
     def validate(self):

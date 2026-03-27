@@ -11,11 +11,11 @@ class CreateServiceResponseBody(DaraModel):
         request_id: str = None,
         service_id: str = None,
     ):
-        # The ID of the ARMS application for backward compatibility.
+        # Historical compatible ARMS application ID
         self.pid = pid
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The service ID.
+        # Service ID
         self.service_id = service_id
 
     def validate(self):

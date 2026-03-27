@@ -17,17 +17,14 @@ class ListServicesRequest(DaraModel):
         service_type: str = None,
         tags: List[main_models.ListServicesRequestTags] = None,
     ):
-        # The maximum number of records to return for this request.
+        # The maximum number of records to return in this request.
         self.max_results = max_results
-        # The token for the next page of results. If this parameter is empty, it means you have reached the last page.
+        # Token for the next query, an empty value indicates the last page.
         self.next_token = next_token
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The application service name.
         self.service_name = service_name
-        # The service type.
+        # Service type
         self.service_type = service_type
-        # An array of tags.
         self.tags = tags
 
     def validate(self):
@@ -94,9 +91,7 @@ class ListServicesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

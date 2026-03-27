@@ -14,9 +14,7 @@ class UpdateThreadRequest(DaraModel):
         title: str = None,
     ):
         self.attributes = attributes
-        # The status of the session.
         self.status = status
-        # The title of the session.
         self.title = title
 
     def validate(self):

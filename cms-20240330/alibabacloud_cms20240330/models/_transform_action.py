@@ -20,23 +20,14 @@ class TransformAction(DaraModel):
         value: str = None,
         variable: str = None,
     ):
-        # 筛选配置
         self.filter_setting = filter_setting
-        # 标签名
         self.label_key = label_key
-        # Mapping配置。
         self.mapping = mapping
-        # 正则表达式
         self.reg_exp = reg_exp
-        # 引用路径
         self.source = source
-        # 目标位置
         self.target = target
-        # 转换类型
         self.type = type
-        # 设置的值
         self.value = value
-        # 变量名
         self.variable = variable
 
     def validate(self):

@@ -17,17 +17,12 @@ class ListThreadsResponseBody(DaraModel):
         threads: List[main_models.ListThreadsResponseBodyThreads] = None,
         total: int = None,
     ):
-        # The maximum number of results returned. The maximum value is 200.
         self.max_results = max_results
-        # The paging token.
         self.next_token = next_token
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The session ID.
         self.thread_id = thread_id
-        # The sessions.
         self.threads = threads
-        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -102,21 +97,13 @@ class ListThreadsResponseBodyThreads(DaraModel):
         version: int = None,
     ):
         self.attributes = attributes
-        # The time when the session was created.
         self.create_time = create_time
-        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
-        # The session status.
         self.status = status
-        # The session ID.
         self.thread_id = thread_id
-        # The session title.
         self.title = title
-        # The time when the session was last updated.
         self.update_time = update_time
-        # The session properties.
         self.variables = variables
-        # The version number.
         self.version = version
 
     def validate(self):
@@ -195,9 +182,8 @@ class ListThreadsResponseBodyThreadsVariables(DaraModel):
         project: str = None,
         workspace: str = None,
     ):
-        # The Simple Log Service (SLS) project.
+        # SLS project。
         self.project = project
-        # The workspace.
         self.workspace = workspace
 
     def validate(self):

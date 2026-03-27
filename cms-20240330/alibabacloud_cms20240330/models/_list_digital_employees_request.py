@@ -18,19 +18,12 @@ class ListDigitalEmployeesRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.Tag] = None,
     ):
-        # Digital employee display name.
         self.display_name = display_name
-        # Digital employee type.
         self.employee_type = employee_type
-        # The number of entries to return on each page. The default value is 20. The maximum value is 100.
         self.max_results = max_results
-        # Digital employee name.
         self.name = name
-        # Token for the next page of results.
         self.next_token = next_token
-        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # Tags.
         self.tags = tags
 
     def validate(self):

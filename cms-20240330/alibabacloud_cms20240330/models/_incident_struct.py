@@ -21,25 +21,25 @@ class IncidentStruct(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 事件内容。
+        # Content.
         self.content = content
-        # 升级策略列表。
+        # List of escalation policies.
         self.escalations = escalations
-        # 事件唯一 ID。
+        # Incident ID.
         self.incident_id = incident_id
-        # 关联的事件预案。
+        # Associated incident contingency plan.
         self.incident_plan = incident_plan
-        # 关联的资源详情。
+        # Associated resource details.
         self.resource = resource
-        # 事件严重等级。
+        # Incident severity level.
         self.severity = severity
-        # 当前状态。
+        # Status.
         self.status = status
-        # 时间戳
+        # Time.
         self.time = time
-        # 事件标题。
+        # Title.
         self.title = title
-        # 用户 ID。
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

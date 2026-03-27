@@ -26,29 +26,17 @@ class AlertEventIntegrationPolicyForView(DaraModel):
     ):
         # UUID
         self.alert_event_integration_policy_id = alert_event_integration_policy_id
-        # 名称
-        # 
         # This parameter is required.
         self.alert_event_integration_policy_name = alert_event_integration_policy_name
-        # 创建时间
         self.create_time = create_time
-        # 描述
         self.description = description
-        # 是否启用
         self.enable = enable
-        # 过滤配置
         self.filter_setting = filter_setting
-        # 订阅设置
         self.integration_setting = integration_setting
-        # 集成的上报入口key
         self.token = token
-        # 转换设置
         self.transformer_setting = transformer_setting
-        # 类型
         self.type = type
-        # 更新时间
         self.update_time = update_time
-        # 用户id
         self.user_id = user_id
         # workspace
         self.workspace = workspace

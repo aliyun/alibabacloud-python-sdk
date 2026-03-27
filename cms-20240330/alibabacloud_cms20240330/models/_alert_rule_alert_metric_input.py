@@ -15,13 +15,13 @@ class AlertRuleAlertMetricInput(DaraModel):
         metric_id: str = None,
         param_values: List[main_models.AlertRuleAlertMetricInputParamValue] = None,
     ):
-        # 用户输入的过滤条件列表。指标所支持的参数列表、过滤条件列表可通过ListAlertMetrics进行查询。
+        # List of user-provided filter conditions. The supported parameters and filter conditions for the metric can be queried via ListAlertMetrics.
         self.filter_values = filter_values
-        # 用户所选指标组的key
+        # Key of the metric group selected by the user.
         self.group_id = group_id
-        # 用户所选预定义指标的key
+        # Key of the predefined metric selected by the user.
         self.metric_id = metric_id
-        # 输入的参数列表。  指标所支持的参数列表、过滤条件列表可通过ListAlertMetrics进行查询。
+        # List of input parameters. The metric\\"s supported parameters and filter conditions can be queried via ListAlertMetrics.
         self.param_values = param_values
 
     def validate(self):

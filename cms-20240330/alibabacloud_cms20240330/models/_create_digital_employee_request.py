@@ -19,25 +19,15 @@ class CreateDigitalEmployeeRequest(DaraModel):
         role_arn: str = None,
         tags: List[main_models.Tag] = None,
     ):
-        # The default rule.
         self.default_rule = default_rule
-        # The description of the digital employee.
         self.description = description
-        # The display name of the digital employee.
         self.display_name = display_name
-        # The list of knowledge bases.
         self.knowledges = knowledges
-        # The name of the digital employee.
-        # 
         # This parameter is required.
         self.name = name
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
-        # 
         # This parameter is required.
         self.role_arn = role_arn
-        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -119,9 +109,7 @@ class CreateDigitalEmployeeRequestKnowledges(DaraModel):
         bailian: List[main_models.CreateDigitalEmployeeRequestKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The list of Bailian knowledge bases.
         self.bailian = bailian
-        # The list of Standard Operating Procedure (SOP) knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -166,13 +154,9 @@ class CreateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The properties of the knowledge base.
         self.attributes = attributes
-        # The ID of the Bailian index.
         self.index_id = index_id
-        # The region of the Bailian knowledge base.
         self.region = region
-        # The ID of the Bailian workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

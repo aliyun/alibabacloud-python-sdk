@@ -24,34 +24,19 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
-        # The time when the digital employee was created.
-        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The default rule.
         self.default_rule = default_rule
-        # The description of the digital employee.
         self.description = description
-        # The display name of the digital employee.
         self.display_name = display_name
-        # The type of the digital employee.
         self.employee_type = employee_type
-        # A list of knowledge bases.
         self.knowledges = knowledges
-        # The name of the digital employee.
         self.name = name
-        # The region ID.
         self.region_id = region_id
-        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.role_arn = role_arn
-        # The tags.
         self.tags = tags
-        # The time when the digital employee was last updated.
-        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
@@ -164,9 +149,7 @@ class GetDigitalEmployeeResponseBodyKnowledges(DaraModel):
         bailian: List[main_models.GetDigitalEmployeeResponseBodyKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # A list of Bailian knowledge bases.
         self.bailian = bailian
-        # A list of Standard Operating Procedure (SOP) knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -211,13 +194,9 @@ class GetDigitalEmployeeResponseBodyKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The properties of the knowledge base.
         self.attributes = attributes
-        # The ID of the Bailian index.
         self.index_id = index_id
-        # The region of the Bailian knowledge base.
         self.region = region
-        # The ID of the Bailian workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

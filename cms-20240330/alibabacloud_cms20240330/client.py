@@ -951,6 +951,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_cloud_resource_with_options_async(headers, runtime)
 
+    def create_delivery_task_with_options(
+        self,
+        request: main_models.CreateDeliveryTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeliveryTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.external_labels):
+            body['externalLabels'] = request.external_labels
+        if not DaraCore.is_null(request.label_filters):
+            body['labelFilters'] = request.label_filters
+        if not DaraCore.is_null(request.label_filters_type):
+            body['labelFiltersType'] = request.label_filters_type
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.sink_list):
+            body['sinkList'] = request.sink_list
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        if not DaraCore.is_null(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeliveryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_delivery_task_with_options_async(
+        self,
+        request: main_models.CreateDeliveryTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeliveryTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.external_labels):
+            body['externalLabels'] = request.external_labels
+        if not DaraCore.is_null(request.label_filters):
+            body['labelFilters'] = request.label_filters
+        if not DaraCore.is_null(request.label_filters_type):
+            body['labelFiltersType'] = request.label_filters_type
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.sink_list):
+            body['sinkList'] = request.sink_list
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        if not DaraCore.is_null(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeliveryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_delivery_task(
+        self,
+        request: main_models.CreateDeliveryTaskRequest,
+    ) -> main_models.CreateDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_delivery_task_with_options(request, headers, runtime)
+
+    async def create_delivery_task_async(
+        self,
+        request: main_models.CreateDeliveryTaskRequest,
+    ) -> main_models.CreateDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_delivery_task_with_options_async(request, headers, runtime)
+
     def create_digital_employee_with_options(
         self,
         request: main_models.CreateDigitalEmployeeRequest,
@@ -1336,6 +1444,10 @@ class Client(OpenApiClient):
             body['memoryStoreName'] = request.memory_store_name
         if not DaraCore.is_null(request.short_term_ttl):
             body['shortTermTtl'] = request.short_term_ttl
+        if not DaraCore.is_null(request.source_type):
+            body['sourceType'] = request.source_type
+        if not DaraCore.is_null(request.trace_source_config):
+            body['traceSourceConfig'] = request.trace_source_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1375,6 +1487,10 @@ class Client(OpenApiClient):
             body['memoryStoreName'] = request.memory_store_name
         if not DaraCore.is_null(request.short_term_ttl):
             body['shortTermTtl'] = request.short_term_ttl
+        if not DaraCore.is_null(request.source_type):
+            body['sourceType'] = request.source_type
+        if not DaraCore.is_null(request.trace_source_config):
+            body['traceSourceConfig'] = request.trace_source_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -2516,6 +2632,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_cloud_resource_with_options_async(headers, runtime)
+
+    def delete_delivery_task_with_options(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeliveryTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-task/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeliveryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_delivery_task_with_options_async(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeliveryTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-task/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeliveryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_delivery_task(
+        self,
+        task_id: str,
+    ) -> main_models.DeleteDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_delivery_task_with_options(task_id, headers, runtime)
+
+    async def delete_delivery_task_async(
+        self,
+        task_id: str,
+    ) -> main_models.DeleteDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_delivery_task_with_options_async(task_id, headers, runtime)
 
     def delete_digital_employee_with_options(
         self,
@@ -4374,6 +4556,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_cms_service_with_options_async(request, headers, runtime)
+
+    def get_delivery_task_with_options(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeliveryTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-task/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeliveryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_delivery_task_with_options_async(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeliveryTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-task/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeliveryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_delivery_task(
+        self,
+        task_id: str,
+    ) -> main_models.GetDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_delivery_task_with_options(task_id, headers, runtime)
+
+    async def get_delivery_task_async(
+        self,
+        task_id: str,
+    ) -> main_models.GetDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_delivery_task_with_options_async(task_id, headers, runtime)
 
     def get_digital_employee_with_options(
         self,
@@ -6556,6 +6804,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_biz_traces_with_options_async(request, headers, runtime)
+
+    def list_delivery_tasks_with_options(
+        self,
+        tmp_req: main_models.ListDeliveryTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeliveryTasksResponse:
+        tmp_req.validate()
+        request = main_models.ListDeliveryTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not DaraCore.is_null(request.key_words):
+            query['keyWords'] = request.key_words
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeliveryTasks',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeliveryTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_delivery_tasks_with_options_async(
+        self,
+        tmp_req: main_models.ListDeliveryTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeliveryTasksResponse:
+        tmp_req.validate()
+        request = main_models.ListDeliveryTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not DaraCore.is_null(request.key_words):
+            query['keyWords'] = request.key_words
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeliveryTasks',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeliveryTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_delivery_tasks(
+        self,
+        request: main_models.ListDeliveryTasksRequest,
+    ) -> main_models.ListDeliveryTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_delivery_tasks_with_options(request, headers, runtime)
+
+    async def list_delivery_tasks_async(
+        self,
+        request: main_models.ListDeliveryTasksRequest,
+    ) -> main_models.ListDeliveryTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_delivery_tasks_with_options_async(request, headers, runtime)
 
     def list_digital_employee_skill_versions_with_options(
         self,
@@ -9356,6 +9704,118 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
+
+    def update_delivery_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.UpdateDeliveryTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeliveryTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.external_labels):
+            body['externalLabels'] = request.external_labels
+        if not DaraCore.is_null(request.label_filters):
+            body['labelFilters'] = request.label_filters
+        if not DaraCore.is_null(request.label_filters_type):
+            body['labelFiltersType'] = request.label_filters_type
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.sink_list):
+            body['sinkList'] = request.sink_list
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-task/{DaraURL.percent_encode(task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeliveryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_delivery_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.UpdateDeliveryTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeliveryTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.external_labels):
+            body['externalLabels'] = request.external_labels
+        if not DaraCore.is_null(request.label_filters):
+            body['labelFilters'] = request.label_filters
+        if not DaraCore.is_null(request.label_filters_type):
+            body['labelFiltersType'] = request.label_filters_type
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.sink_list):
+            body['sinkList'] = request.sink_list
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeliveryTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/delivery-task/{DaraURL.percent_encode(task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeliveryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_delivery_task(
+        self,
+        task_id: str,
+        request: main_models.UpdateDeliveryTaskRequest,
+    ) -> main_models.UpdateDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_delivery_task_with_options(task_id, request, headers, runtime)
+
+    async def update_delivery_task_async(
+        self,
+        task_id: str,
+        request: main_models.UpdateDeliveryTaskRequest,
+    ) -> main_models.UpdateDeliveryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_delivery_task_with_options_async(task_id, request, headers, runtime)
 
     def update_digital_employee_with_options(
         self,

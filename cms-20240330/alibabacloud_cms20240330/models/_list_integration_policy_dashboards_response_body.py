@@ -14,11 +14,11 @@ class ListIntegrationPolicyDashboardsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of dashboards.
+        # List of dashboards.
         self.dashboards = dashboards
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
-        # The number of components.
+        # Number of components.
         self.total = total
 
     def validate(self):
@@ -73,23 +73,23 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(DaraModel):
         uid: str = None,
         url: str = None,
     ):
-        # The dashboard engine. Valid values:
-        # grafana: shared Grafana.
-        # cms: the self-developed dashboard engine of CloudMonitor.
+        # Dashboard engine:
+        # grafana: shared grafana.
+        # cms: cms self-developed dashboard engine.
         self.engine = engine
-        # The UID of the dashboard folder.
+        # UID of the dashboard folder.
         self.folder_uid = folder_uid
-        # The dashboard name.
+        # Dashboard name
         self.name = name
-        # The region.
+        # Region
         self.region = region
-        # The list of tags.
+        # List of tags.
         self.tags = tags
-        # The title of the UI module. This is different from the name parameter.
+        # Title of the UI module (not name)
         self.title = title
-        # The ID of the current Alibaba Cloud account. This parameter is read-only.
+        # ID of the current Alibaba Cloud primary account, read-only
         self.uid = uid
-        # The webhook URL for PagerDuty integration. V1 and V2 are supported.
+        # pagerDuty integration webhook. Supports V1 and V2 versions
         self.url = url
 
     def validate(self):

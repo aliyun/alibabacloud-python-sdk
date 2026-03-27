@@ -24,26 +24,16 @@ class GetMemoryResponseBody(DaraModel):
     ):
         self.agent_id = agent_id
         self.app_id = app_id
-        # The time when the memory was created.
         self.created_at = created_at
-        # The expiration time.
         self.expiration_date = expiration_date
-        # The memory ID.
         self.id = id
-        # This property is mutable.
         self.immutable = immutable
-        # The memory content.
         self.memory = memory
-        # The metadata.
         self.metadata = metadata
-        # The organization.
         self.organization = organization
-        # The owner of the memory.
         self.owner = owner
-        # The request ID.
         self.request_id = request_id
         self.run_id = run_id
-        # The time when the memory was last updated.
         self.updated_at = updated_at
         self.user_id = user_id
 

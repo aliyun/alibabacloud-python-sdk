@@ -17,19 +17,12 @@ class AlertEventIntegrationPolicyForModify(DaraModel):
         transformer_setting: List[main_models.TransformAction] = None,
         type: str = None,
     ):
-        # 名称
-        # 
         # This parameter is required.
         self.alert_event_integration_policy_name = alert_event_integration_policy_name
-        # 描述
         self.description = description
-        # 过滤设置
         self.filter_setting = filter_setting
-        # 订阅设置
         self.integration_setting = integration_setting
-        # 转换设置
         self.transformer_setting = transformer_setting
-        # 类型
         self.type = type
 
     def validate(self):

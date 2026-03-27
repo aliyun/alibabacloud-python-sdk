@@ -19,34 +19,25 @@ class GetMemoryStoreResponseBody(DaraModel):
         request_id: str = None,
         short_term_storage: main_models.GetMemoryStoreResponseBodyShortTermStorage = None,
         short_term_ttl: int = None,
+        source_type: str = None,
+        trace_source_config: main_models.GetMemoryStoreResponseBodyTraceSourceConfig = None,
         update_time: str = None,
         workspace: str = None,
     ):
-        # Creation time.
-        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # Custom extraction strategies.
         self.custom_extraction_strategies = custom_extraction_strategies
-        # Description.
         self.description = description
-        # Supported values: Episodic, Summary, and Fact.
         self.extraction_strategies = extraction_strategies
-        # Memory store name.
         self.memory_store_name = memory_store_name
-        # Region ID.
         self.region_id = region_id
-        # Request ID.
         self.request_id = request_id
-        # Short-term memory storage.
         self.short_term_storage = short_term_storage
-        # Short-term memory retention time, in seconds.
         self.short_term_ttl = short_term_ttl
-        # Update time.
-        # 
+        self.source_type = source_type
+        self.trace_source_config = trace_source_config
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
-        # Workspace name.
         self.workspace = workspace
 
     def validate(self):
@@ -56,6 +47,8 @@ class GetMemoryStoreResponseBody(DaraModel):
                     v1.validate()
         if self.short_term_storage:
             self.short_term_storage.validate()
+        if self.trace_source_config:
+            self.trace_source_config.validate()
 
     def to_map(self):
         result = dict()
@@ -90,6 +83,12 @@ class GetMemoryStoreResponseBody(DaraModel):
 
         if self.short_term_ttl is not None:
             result['shortTermTtl'] = self.short_term_ttl
+
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
+        if self.trace_source_config is not None:
+            result['traceSourceConfig'] = self.trace_source_config.to_map()
 
         if self.update_time is not None:
             result['updateTime'] = self.update_time
@@ -132,8 +131,58 @@ class GetMemoryStoreResponseBody(DaraModel):
         if m.get('shortTermTtl') is not None:
             self.short_term_ttl = m.get('shortTermTtl')
 
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
+        if m.get('traceSourceConfig') is not None:
+            temp_model = main_models.GetMemoryStoreResponseBodyTraceSourceConfig()
+            self.trace_source_config = temp_model.from_map(m.get('traceSourceConfig'))
+
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+
+        return self
+
+class GetMemoryStoreResponseBodyTraceSourceConfig(DaraModel):
+    def __init__(
+        self,
+        include_output: bool = None,
+        query: str = None,
+        workspace: str = None,
+    ):
+        self.include_output = include_output
+        self.query = query
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.include_output is not None:
+            result['includeOutput'] = self.include_output
+
+        if self.query is not None:
+            result['query'] = self.query
+
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('includeOutput') is not None:
+            self.include_output = m.get('includeOutput')
+
+        if m.get('query') is not None:
+            self.query = m.get('query')
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
@@ -146,9 +195,7 @@ class GetMemoryStoreResponseBodyShortTermStorage(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # Simple Log Service Logstore name.
         self.logstore = logstore
-        # Simple Log Service Project name.
         self.project = project
 
     def validate(self):

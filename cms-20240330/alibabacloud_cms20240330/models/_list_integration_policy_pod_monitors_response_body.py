@@ -15,13 +15,13 @@ class ListIntegrationPolicyPodMonitorsResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The list of PodMonitors.
+        # PodMonitor list
         self.pod_monitors = pod_monitors
-        # The policy ID.
+        # Policy ID.
         self.policy_id = policy_id
-        # The ID of the request.
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -84,25 +84,25 @@ class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors(DaraModel):
         name: str = None,
         namespace: str = None,
     ):
-        # The name of the add-on.
+        # Addon name.
         self.addon_name = addon_name
-        # The name of the add-on release.
+        # Addon Release name.
         self.addon_release_name = addon_release_name
-        # The version of the add-on.
+        # Addon version.
         self.addon_version = addon_version
-        # The YAML configuration.
+        # Configuration yaml.
         self.config_yaml = config_yaml
-        # The status.
+        # Enable status.
         self.enable_status = enable_status
-        # Indicates whether the YAML file is encrypted.
+        # Encrypt yaml.
         self.encrypt_yaml = encrypt_yaml
-        # The endpoints of the instance.
+        # Instance endpoints.
         self.endpoints = endpoints
-        # The number of matched pods.
+        # Number of matched pods
         self.matched_pod_count = matched_pod_count
-        # The collection name.
+        # Collection name.
         self.name = name
-        # The namespace.
+        # Namespace
         self.namespace = namespace
 
     def validate(self):
@@ -196,15 +196,15 @@ class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints(DaraModel
         port: str = None,
         target_port: str = None,
     ):
-        # The collection interval.
+        # Collection interval
         self.interval = interval
-        # The number of matched targets.
+        # Number of matched targets
         self.matched_target_count = matched_target_count
-        # The metric collection path.
+        # Metric collection path
         self.path = path
-        # The port number.
+        # Port number
         self.port = port
-        # The target port.
+        # Target port
         self.target_port = target_port
 
     def validate(self):

@@ -25,33 +25,33 @@ class IncidentPlanStruct(DaraModel):
         user_id: int = None,
         workspace: str = None,
     ):
-        # 自动恢复等待时间。
+        # Automatic recovery wait time.
         self.auto_recover_seconds = auto_recover_seconds
-        # 事件关闭超时时间。
+        # Event closure timeout.
         self.close_expire = close_expire
-        # 参与协作的团队或角色列表。
+        # List of teams or roles involved in collaboration.
         self.corporation = corporation
-        # 预案描述。
+        # Contingency plan description.
         self.description = description
-        # 升级策略 ID的列表。
+        # List of escalation policy IDs.
         self.escalation_id = escalation_id
-        # 创建时间。
+        # Creation time.
         self.gmt_create = gmt_create
-        # 最后修改时间
+        # Last modification time.
         self.gmt_modified = gmt_modified
-        # 分组字段路径
+        # Grouping field path.
         self.group_by = group_by
-        # 事件预案 ID。
+        # Event contingency plan ID.
         self.incident_plan_id = incident_plan_id
-        # 预案名称。
+        # Contingency plan name.
         self.name = name
-        # 资源字段映射路径的列表。
+        # List of resource field mapping paths.
         self.resource_filed = resource_filed
-        # 状态。
+        # Status.
         self.status = status
-        # 用户 ID。
+        # User ID.
         self.user_id = user_id
-        # 工作空间名称
+        # Workspace name.
         self.workspace = workspace
 
     def validate(self):

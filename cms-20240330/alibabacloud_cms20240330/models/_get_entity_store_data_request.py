@@ -11,19 +11,19 @@ class GetEntityStoreDataRequest(DaraModel):
         query: str = None,
         to: int = None,
     ):
-        # The start point in time for the query.
+        # Start time of the query.
         # 
-        # This is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+        # Unix timestamp format, representing the number of seconds since 1970-1-1 00:00:00 UTC.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The search statement.
+        # Query statement
         # 
         # This parameter is required.
         self.query = query
-        # The end point in time for the query.
+        # End time of the query.
         # 
-        # This is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+        # Unix timestamp format, representing the number of seconds since 1970-1-1 00:00:00 UTC.
         # 
         # This parameter is required.
         self.to = to

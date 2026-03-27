@@ -13,15 +13,10 @@ class CreateBizTraceRequest(DaraModel):
         rule_config: str = None,
         workspace: str = None,
     ):
-        # The advanced configuration.
         self.advanced_config = advanced_config
-        # The identifier for the business trace. It can contain only letters, digits, and underscores (_). The first character must be a lowercase letter.
         self.biz_trace_code = biz_trace_code
-        # The name of the business trace.
         self.biz_trace_name = biz_trace_name
-        # The configuration rules.
         self.rule_config = rule_config
-        # The workspace.
         self.workspace = workspace
 
     def validate(self):

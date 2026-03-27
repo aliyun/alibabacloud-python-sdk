@@ -10,9 +10,8 @@ class GetIntegrationVersionForCSResponseBody(DaraModel):
         integration_version: str = None,
         request_id: str = None,
     ):
-        # The version of the Integration Center.
         self.integration_version = integration_version
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

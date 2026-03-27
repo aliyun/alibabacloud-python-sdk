@@ -103,6 +103,9 @@ from ._create_chat_response_body import CreateChatResponseBody
 from ._create_chat_response import CreateChatResponse
 from ._create_cloud_resource_response_body import CreateCloudResourceResponseBody
 from ._create_cloud_resource_response import CreateCloudResourceResponse
+from ._create_delivery_task_request import CreateDeliveryTaskRequest
+from ._create_delivery_task_response_body import CreateDeliveryTaskResponseBody
+from ._create_delivery_task_response import CreateDeliveryTaskResponse
 from ._create_digital_employee_request import CreateDigitalEmployeeRequest
 from ._create_digital_employee_response_body import CreateDigitalEmployeeResponseBody
 from ._create_digital_employee_response import CreateDigitalEmployeeResponse
@@ -153,6 +156,8 @@ from ._delete_biz_trace_response_body import DeleteBizTraceResponseBody
 from ._delete_biz_trace_response import DeleteBizTraceResponse
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
+from ._delete_delivery_task_response_body import DeleteDeliveryTaskResponseBody
+from ._delete_delivery_task_response import DeleteDeliveryTaskResponse
 from ._delete_digital_employee_response_body import DeleteDigitalEmployeeResponseBody
 from ._delete_digital_employee_response import DeleteDigitalEmployeeResponse
 from ._delete_digital_employee_skill_response_body import DeleteDigitalEmployeeSkillResponseBody
@@ -213,6 +218,8 @@ from ._get_cloud_resource_data_response import GetCloudResourceDataResponse
 from ._get_cms_service_request import GetCmsServiceRequest
 from ._get_cms_service_response_body import GetCmsServiceResponseBody
 from ._get_cms_service_response import GetCmsServiceResponse
+from ._get_delivery_task_response_body import GetDeliveryTaskResponseBody
+from ._get_delivery_task_response import GetDeliveryTaskResponse
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBody
 from ._get_digital_employee_response import GetDigitalEmployeeResponse
 from ._get_digital_employee_skill_request import GetDigitalEmployeeSkillRequest
@@ -286,6 +293,10 @@ from ._list_alert_webhooks_response import ListAlertWebhooksResponse
 from ._list_biz_traces_request import ListBizTracesRequest
 from ._list_biz_traces_response_body import ListBizTracesResponseBody
 from ._list_biz_traces_response import ListBizTracesResponse
+from ._list_delivery_tasks_request import ListDeliveryTasksRequest
+from ._list_delivery_tasks_shrink_request import ListDeliveryTasksShrinkRequest
+from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBody
+from ._list_delivery_tasks_response import ListDeliveryTasksResponse
 from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBody
 from ._list_digital_employee_skill_versions_response import ListDigitalEmployeeSkillVersionsResponse
 from ._list_digital_employee_skills_request import ListDigitalEmployeeSkillsRequest
@@ -380,6 +391,9 @@ from ._update_alert_webhook_response import UpdateAlertWebhookResponse
 from ._update_biz_trace_request import UpdateBizTraceRequest
 from ._update_biz_trace_response_body import UpdateBizTraceResponseBody
 from ._update_biz_trace_response import UpdateBizTraceResponse
+from ._update_delivery_task_request import UpdateDeliveryTaskRequest
+from ._update_delivery_task_response_body import UpdateDeliveryTaskResponseBody
+from ._update_delivery_task_response import UpdateDeliveryTaskResponse
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequest
 from ._update_digital_employee_response_body import UpdateDigitalEmployeeResponseBody
 from ._update_digital_employee_response import UpdateDigitalEmployeeResponse
@@ -492,12 +506,15 @@ from ._create_agg_task_group_request import CreateAggTaskGroupRequestTags
 from ._create_chat_request import CreateChatRequestMessagesContents
 from ._create_chat_request import CreateChatRequestMessages
 from ._create_chat_response_body import CreateChatResponseBodyMessages
+from ._create_delivery_task_request import CreateDeliveryTaskRequestSinkList
+from ._create_delivery_task_request import CreateDeliveryTaskRequestTags
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledgesBailian
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledges
 from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequestFiles
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestEntityGroup
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestTags
 from ._create_integration_policy_response_body import CreateIntegrationPolicyResponseBodyPolicy
+from ._create_memory_store_request import CreateMemoryStoreRequestTraceSourceConfig
 from ._create_prometheus_instance_request import CreatePrometheusInstanceRequestTags
 from ._create_prometheus_view_request import CreatePrometheusViewRequestPrometheusInstances
 from ._create_prometheus_view_request import CreatePrometheusViewRequestTags
@@ -523,6 +540,10 @@ from ._get_addon_schema_response_body import GetAddonSchemaResponseBodyFieldsVal
 from ._get_addon_schema_response_body import GetAddonSchemaResponseBodyFields
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroupTags
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroup
+from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo
+from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskSinkList
+from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskTags
+from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTask
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledgesBailian
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledges
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBodyFiles
@@ -544,6 +565,7 @@ from ._get_memories_response_body import GetMemoriesResponseBodyResults
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResultsInput
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResults
 from ._get_memory_store_response_body import GetMemoryStoreResponseBodyShortTermStorage
+from ._get_memory_store_response_body import GetMemoryStoreResponseBodyTraceSourceConfig
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstanceTags
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstance
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances
@@ -581,6 +603,11 @@ from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlert
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsWebhookParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActions
 from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
+from ._list_delivery_tasks_request import ListDeliveryTasksRequestTag
+from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo
+from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksSinkList
+from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksTags
+from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasks
 from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBodyData
 from ._list_digital_employee_skills_response_body import ListDigitalEmployeeSkillsResponseBodySkills
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian
@@ -637,6 +664,7 @@ from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
 from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
+from ._update_delivery_task_request import UpdateDeliveryTaskRequestSinkList
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledgesBailian
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledges
 from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequestFiles
@@ -745,6 +773,9 @@ __all__ = [
     CreateChatResponse,
     CreateCloudResourceResponseBody,
     CreateCloudResourceResponse,
+    CreateDeliveryTaskRequest,
+    CreateDeliveryTaskResponseBody,
+    CreateDeliveryTaskResponse,
     CreateDigitalEmployeeRequest,
     CreateDigitalEmployeeResponseBody,
     CreateDigitalEmployeeResponse,
@@ -795,6 +826,8 @@ __all__ = [
     DeleteBizTraceResponse,
     DeleteCloudResourceResponseBody,
     DeleteCloudResourceResponse,
+    DeleteDeliveryTaskResponseBody,
+    DeleteDeliveryTaskResponse,
     DeleteDigitalEmployeeResponseBody,
     DeleteDigitalEmployeeResponse,
     DeleteDigitalEmployeeSkillResponseBody,
@@ -855,6 +888,8 @@ __all__ = [
     GetCmsServiceRequest,
     GetCmsServiceResponseBody,
     GetCmsServiceResponse,
+    GetDeliveryTaskResponseBody,
+    GetDeliveryTaskResponse,
     GetDigitalEmployeeResponseBody,
     GetDigitalEmployeeResponse,
     GetDigitalEmployeeSkillRequest,
@@ -928,6 +963,10 @@ __all__ = [
     ListBizTracesRequest,
     ListBizTracesResponseBody,
     ListBizTracesResponse,
+    ListDeliveryTasksRequest,
+    ListDeliveryTasksShrinkRequest,
+    ListDeliveryTasksResponseBody,
+    ListDeliveryTasksResponse,
     ListDigitalEmployeeSkillVersionsResponseBody,
     ListDigitalEmployeeSkillVersionsResponse,
     ListDigitalEmployeeSkillsRequest,
@@ -1022,6 +1061,9 @@ __all__ = [
     UpdateBizTraceRequest,
     UpdateBizTraceResponseBody,
     UpdateBizTraceResponse,
+    UpdateDeliveryTaskRequest,
+    UpdateDeliveryTaskResponseBody,
+    UpdateDeliveryTaskResponse,
     UpdateDigitalEmployeeRequest,
     UpdateDigitalEmployeeResponseBody,
     UpdateDigitalEmployeeResponse,
@@ -1134,12 +1176,15 @@ __all__ = [
     CreateChatRequestMessagesContents,
     CreateChatRequestMessages,
     CreateChatResponseBodyMessages,
+    CreateDeliveryTaskRequestSinkList,
+    CreateDeliveryTaskRequestTags,
     CreateDigitalEmployeeRequestKnowledgesBailian,
     CreateDigitalEmployeeRequestKnowledges,
     CreateDigitalEmployeeSkillRequestFiles,
     CreateIntegrationPolicyRequestEntityGroup,
     CreateIntegrationPolicyRequestTags,
     CreateIntegrationPolicyResponseBodyPolicy,
+    CreateMemoryStoreRequestTraceSourceConfig,
     CreatePrometheusInstanceRequestTags,
     CreatePrometheusViewRequestPrometheusInstances,
     CreatePrometheusViewRequestTags,
@@ -1165,6 +1210,10 @@ __all__ = [
     GetAddonSchemaResponseBodyFields,
     GetAggTaskGroupResponseBodyAggTaskGroupTags,
     GetAggTaskGroupResponseBodyAggTaskGroup,
+    GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo,
+    GetDeliveryTaskResponseBodyDeliveryTaskSinkList,
+    GetDeliveryTaskResponseBodyDeliveryTaskTags,
+    GetDeliveryTaskResponseBodyDeliveryTask,
     GetDigitalEmployeeResponseBodyKnowledgesBailian,
     GetDigitalEmployeeResponseBodyKnowledges,
     GetDigitalEmployeeSkillResponseBodyFiles,
@@ -1186,6 +1235,7 @@ __all__ = [
     GetMemoryHistoryResponseBodyResultsInput,
     GetMemoryHistoryResponseBodyResults,
     GetMemoryStoreResponseBodyShortTermStorage,
+    GetMemoryStoreResponseBodyTraceSourceConfig,
     GetPrometheusInstanceResponseBodyPrometheusInstanceTags,
     GetPrometheusInstanceResponseBodyPrometheusInstance,
     GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances,
@@ -1223,6 +1273,11 @@ __all__ = [
     ListAlertActionsResponseBodyAlertActionsWebhookParam,
     ListAlertActionsResponseBodyAlertActions,
     ListAlertWebhooksResponseBodyWebhooks,
+    ListDeliveryTasksRequestTag,
+    ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo,
+    ListDeliveryTasksResponseBodyDeliveryTasksSinkList,
+    ListDeliveryTasksResponseBodyDeliveryTasksTags,
+    ListDeliveryTasksResponseBodyDeliveryTasks,
     ListDigitalEmployeeSkillVersionsResponseBodyData,
     ListDigitalEmployeeSkillsResponseBodySkills,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian,
@@ -1279,6 +1334,7 @@ __all__ = [
     SearchMemoriesResponseBodyRelations,
     SearchMemoriesResponseBodyResults,
     UpdateAggTaskGroupRequestTags,
+    UpdateDeliveryTaskRequestSinkList,
     UpdateDigitalEmployeeRequestKnowledgesBailian,
     UpdateDigitalEmployeeRequestKnowledges,
     UpdateDigitalEmployeeSkillRequestFiles,

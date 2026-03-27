@@ -16,21 +16,21 @@ class ListAggTaskGroupsShrinkRequest(DaraModel):
         tags_shrink: str = None,
         target_prometheus_id: str = None,
     ):
-        # A list of aggregation task group IDs. The value must be a string that can be parsed as a JSON array.
+        # List of IDs for the aggregation task groups, which must be JSON parseable.
         self.filter_agg_task_group_ids = filter_agg_task_group_ids
-        # A list of aggregation task group names. The value must be a string that can be parsed as a JSON array.
+        # List of names for the aggregation task groups, which must be JSON parseable.
         self.filter_agg_task_group_names = filter_agg_task_group_names
-        # The maximum number of entries to return on each page.
+        # Maximum number of records to return.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # Query token.
         self.next_token = next_token
-        # The name to search for. Fuzzy search is supported.
+        # Name search, supports fuzzy matching.
         self.query = query
-        # The status of the aggregation task group. Valid values are \\`Running\\` and \\`Stopped\\`. The default value is \\`Running\\`.
+        # Status of the aggregation task group, either \\"Running\\" or \\"Stopped\\". Default is Running.
         self.status = status
-        # The tags of the resource group.
+        # Resource group tags.
         self.tags_shrink = tags_shrink
-        # The ID of the target Prometheus instance for the aggregation task group.
+        # The target Prometheus instance ID for the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
 
     def validate(self):

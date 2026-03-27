@@ -16,19 +16,11 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.Tag] = None,
     ):
-        # The maximum number of results to return. The maximum value is 200.
         self.max_results = max_results
-        # The token that is used to start the next query.
         self.next_token = next_token
-        # A list of resource IDs.
         self.resource_id = resource_id
-        # The resource type.
-        # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags. These are used as filter conditions for the query.
-        # 
-        # You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

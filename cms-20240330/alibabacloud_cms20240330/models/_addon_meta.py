@@ -25,36 +25,19 @@ class AddonMeta(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # 组件别名，显示名称
         self.alias = alias
-        # 组件分类信息
         self.categories = categories
-        # 组件示意图列表
         self.dashboards = dashboards
-        # 描述信息。
         self.description = description
-        # 支持的环境类型列表
         self.environments = environments
-        # 组件图标。
         self.icon = icon
-        # 关键词列表
         self.keywords = keywords
-        # 语言，取值：
-        # 
-        # - zh：中文（默认值）
-        # - en：英文
         self.language = language
-        # 该组件上一次接入时间
         self.latest_release_create_time = latest_release_create_time
-        # 组件名称
         self.name = name
-        # Policy 下是否只能安装一次
         self.once = once
-        # 场景
         self.scene = scene
-        # 版本号
         self.version = version
-        # 组件排序权重
         self.weight = weight
 
     def validate(self):
@@ -184,21 +167,13 @@ class AddonMetaEnvironments(DaraModel):
         policies: main_models.AddonMetaEnvironmentsPolicies = None,
         policy_type: str = None,
     ):
-        # 绑定的CommonSchema 列表
         self.common_schema_refs = common_schema_refs
-        # 依赖描述信息
         self.dependencies = dependencies
-        # 环境类型的描述
         self.description = description
-        # 是否启用
         self.enable = enable
-        # 环境类型显示名称
         self.label = label
-        # 环境类型名称
         self.name = name
-        # 组件的控制策略组合信息
         self.policies = policies
-        # 策略类型
         self.policy_type = policy_type
 
     def validate(self):
@@ -290,23 +265,14 @@ class AddonMetaEnvironmentsPolicies(DaraModel):
         protocols: List[main_models.AddonMetaEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # 告警规则默认安装后是否启用
         self.alert_default_status = alert_default_status
-        # 默认模式，即无需绑定实体的接入模式。
         self.bind_default_policy = bind_default_policy
-        # 绑定的目标实体信息
         self.bind_entity = bind_entity
-        # 是否默认安装
         self.default_install = default_install
-        # 是否启用内部授权Token分配
         self.enable_service_account = enable_service_account
-        # 组件接入后的数据检查规则
         self.metric_check_rule = metric_check_rule
-        # 是否需要在接入后提示重启工作负载
         self.need_restart_after_integration = need_restart_after_integration
-        # 支持的客户端协议信息列表
         self.protocols = protocols
-        # 跳转的目标组件名称
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -399,13 +365,9 @@ class AddonMetaEnvironmentsPoliciesProtocols(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # 协议描述
         self.description = description
-        # 协议显示icon
         self.icon = icon
-        # 协议显示名称
         self.label = label
-        # 协议名称
         self.name = name
 
     def validate(self):
@@ -451,7 +413,6 @@ class AddonMetaEnvironmentsPoliciesMetricCheckRule(DaraModel):
         self,
         prom_ql: List[str] = None,
     ):
-        # 检测规则 PromQL
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -482,13 +443,9 @@ class AddonMetaEnvironmentsPoliciesBindEntity(DaraModel):
         single_entity_mode: bool = None,
         vpc_id_field_key: str = None,
     ):
-        # 是否是组模式
         self.entity_group_mode = entity_group_mode
-        # 实体类型
         self.entity_type = entity_type
-        # 是否是单实体模式
         self.single_entity_mode = single_entity_mode
-        # 实体中提取VPC ID 信息的字段
         self.vpc_id_field_key = vpc_id_field_key
 
     def validate(self):
@@ -536,11 +493,8 @@ class AddonMetaEnvironmentsDependencies(DaraModel):
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
-        # 支持的集群类型
         self.cluster_types = cluster_types
-        # 探针依赖描述，组件名称。新版已由 collectors 字段替换
         self.features = features
-        # 依赖的服务列表
         self.services = services
 
     def validate(self):
@@ -581,9 +535,7 @@ class AddonMetaEnvironmentsCommonSchemaRefs(DaraModel):
         group: str = None,
         version: str = None,
     ):
-        # CommonSchema 的分组名称
         self.group = group
-        # CommonSchema 的分组版本
         self.version = version
 
     def validate(self):
@@ -621,11 +573,8 @@ class AddonMetaDashboards(DaraModel):
         name: str = None,
         url: str = None,
     ):
-        # 描述信息
         self.description = description
-        # 示意图名称
         self.name = name
-        # 示意图 URL
         self.url = url
 
     def validate(self):

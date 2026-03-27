@@ -16,25 +16,25 @@ class GetWorkspaceResponseBody(DaraModel):
         sls_project: str = None,
         workspace_name: str = None,
     ):
-        # The time when the workspace was created.
+        # Creation Time
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.create_time = create_time
-        # The description of the workspace.
+        # Workspace Description
         self.description = description
-        # The display name of the workspace.
+        # Workspace Display Name
         self.display_name = display_name
-        # The time when the workspace was last modified.
+        # Last Modified Time
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_modify_time = last_modify_time
-        # The region ID.
+        # Region ID
         self.region_id = region_id
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The name of the Simple Log Service project.
+        # Log Service Project Name
         self.sls_project = sls_project
-        # The name of the workspace.
+        # Workspace Name
         # 
         # This parameter is required.
         self.workspace_name = workspace_name

@@ -10,9 +10,9 @@ class ListAddonReleasesRequest(DaraModel):
         addon_name: str = None,
         parent_addon_release_id: str = None,
     ):
-        # The name of the add-on component.
+        # Addon component name.
         self.addon_name = addon_name
-        # The ID of the parent AddonRelease.
+        # Parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
 
     def validate(self):

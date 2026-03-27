@@ -16,15 +16,15 @@ class ListPrometheusInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned.
+        # Maximum number of records to return.
         self.max_results = max_results
-        # The token for the next query.
+        # Token for the next query.
         self.next_token = next_token
-        # The list of Prometheus instances.
+        # List of Prometheus instances.
         self.prometheus_instances = prometheus_instances
-        # The ID of the request.
+        # ID of the request
         self.request_id = request_id
-        # The total number of instances.
+        # Total number of instances
         self.total_count = total_count
 
     def validate(self):
@@ -97,36 +97,37 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The permission type. Valid values: readWrite, readOnly, and httpReadOnly.
+        # Access type:
+        # readWrite, readOnly, httpReadOnly
         self.access_type = access_type
-        # The time when the instance was created. The time is in UTC and the format is yyyy-MM-ddTHH:mmZ.
+        # Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
-        # The instance type.
+        # Instance type.
         self.instance_type = instance_type
-        # POSTPAY: Pay-as-you-go, billed by metrics.
-        # POSTPAY_GB: Pay-as-you-go, billed by data written.
-        # PREPAY: Subscription.
+        # POSTPAY: Postpaid by metric.
+        # POSTPAY_GB: Postpaid by write volume.
+        # PREPAY: Prepaid.
         # FREE: Free.
         self.payment_type = payment_type
-        # The product to which the Prometheus instance belongs.
+        # Product to which the prom instance belongs
         self.product = product
-        # The instance ID.
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # The instance name.
+        # Instance name.
         self.prometheus_instance_name = prometheus_instance_name
-        # The region ID.
+        # Region ID
         self.region_id = region_id
-        # The resource type.
+        # Resource type.
         self.resource_type = resource_type
-        # The status of the backend data storage.
+        # Backend data storage status
         self.status = status
-        # The supported authentication types.
+        # Supported authentication types.
         self.support_auth_types = support_auth_types
-        # The user ID.
+        # User ID.
         self.user_id = user_id
-        # The version.
+        # Version
         self.version = version
-        # The workspace to which the Prometheus instance belongs.
+        # Workspace to which the Prometheus instance belongs
         self.workspace = workspace
 
     def validate(self):

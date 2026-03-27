@@ -10,9 +10,9 @@ class IncidentPlanCorporationStruct(DaraModel):
         channel: str = None,
         robot_id: str = None,
     ):
-        # 通道名
+        # Channel name.
         self.channel = channel
-        # 机器人唯一ID。
+        # Robot ID.
         self.robot_id = robot_id
 
     def validate(self):

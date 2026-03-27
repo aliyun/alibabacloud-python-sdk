@@ -14,11 +14,8 @@ class FilterSetting(DaraModel):
         expression: str = None,
         relation: str = None,
     ):
-        # 订阅条件
         self.conditions = conditions
-        # 表达式
         self.expression = expression
-        # 条件间关系
         self.relation = relation
 
     def validate(self):
@@ -68,11 +65,8 @@ class FilterSettingConditions(DaraModel):
         op: str = None,
         value: str = None,
     ):
-        # 字段
         self.field = field
-        # 比较符
         self.op = op
-        # 值
         self.value = value
 
     def validate(self):

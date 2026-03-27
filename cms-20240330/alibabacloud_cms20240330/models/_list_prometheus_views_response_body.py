@@ -16,15 +16,15 @@ class ListPrometheusViewsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned.
+        # Maximum number of records to return.
         self.max_results = max_results
-        # The token for the next query.
+        # Token for the next query.
         self.next_token = next_token
-        # The list of Prometheus view instances.
+        # List of Prometheus view instances.
         self.prometheus_views = prometheus_views
-        # The ID of the request.
+        # ID of the request
         self.request_id = request_id
-        # The total number of instances.
+        # Total number of instances
         self.total_count = total_count
 
     def validate(self):
@@ -96,31 +96,33 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The time when the instance was created. The time is in UTC and in the \\`yyyy-MM-ddTHH:mmZ\\` format.
+        # Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
-        # The instance type. Valid values are \\`prom-view\\` for a new-version aggregation view and \\`global-view\\` for an old-version aggregation view.
+        # Instance type:
+        # prom-view: new version aggregated view
+        # global-view: old version aggregated view
         self.instance_type = instance_type
-        # The billing method. The value is fixed to \\`FREE\\`.
+        # Payment type. Currently, the fixed value is FREE (free).
         self.payment_type = payment_type
-        # The product to which the Prometheus instance belongs. Valid values: \\`arms\\` and \\`cms\\`.
+        # Product that the prom instance belongs to (arms or cms).
         self.product = product
-        # The number of Prometheus instances in the view.
+        # Number of Prometheus instances in the view.
         self.prometheus_instance_count = prometheus_instance_count
-        # The Prometheus view ID.
+        # Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
-        # The name of the Prometheus view.
+        # Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The resource type. The value is fixed to \\`PrometheusView\\`.
+        # Fixed value: PrometheusView.
         self.resource_type = resource_type
-        # The status of the backend data storage.
+        # Backend data storage status.
         self.status = status
-        # The user ID.
+        # User ID.
         self.user_id = user_id
-        # The version.
+        # Version.
         self.version = version
-        # The workspace to which the Prometheus instance belongs.
+        # Workspace that the prom instance belongs to.
         self.workspace = workspace
 
     def validate(self):

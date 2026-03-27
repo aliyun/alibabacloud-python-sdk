@@ -10,9 +10,7 @@ class CreateAlertWebhookResponseBody(DaraModel):
         alert_webhook_id: str = None,
         request_id: str = None,
     ):
-        # The unique ID of the webhook.
         self.alert_webhook_id = alert_webhook_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

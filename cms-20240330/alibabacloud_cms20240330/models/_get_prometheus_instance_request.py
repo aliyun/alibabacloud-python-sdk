@@ -10,9 +10,9 @@ class GetPrometheusInstanceRequest(DaraModel):
         aliyun_lang: str = None,
         resource_group_id: str = None,
     ):
-        # The language of the response. Valid values: \\`zh\\` (Chinese) and \\`en\\` (English). Default value: \\`zh\\`.
+        # Language setting, default is Chinese zh | en
         self.aliyun_lang = aliyun_lang
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

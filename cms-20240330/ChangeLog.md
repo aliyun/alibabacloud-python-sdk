@@ -1,3 +1,15 @@
+2026-03-27 Version: 6.3.0
+- Support API CreateDeliveryTask.
+- Support API DeleteDeliveryTask.
+- Support API GetDeliveryTask.
+- Support API ListDeliveryTasks.
+- Support API UpdateDeliveryTask.
+- Update API CreateMemoryStore: add request parameters body.sourceType.
+- Update API CreateMemoryStore: add request parameters body.traceSourceConfig.
+- Update API GetMemoryStore: add response parameters Body.sourceType.
+- Update API GetMemoryStore: add response parameters Body.traceSourceConfig.
+
+
 2026-03-24 Version: 6.2.4
 - Update API CreateAlertWebhook: add request parameters body.workspace.
 - Update API ListAlertWebhooks: add request parameters workspace.

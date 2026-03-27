@@ -16,15 +16,15 @@ class ListAlertActionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of alert action integration configurations.
+        # List of alert action configurations.
         self.alert_actions = alert_actions
-        # The page number.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total number of items.
         self.total = total
 
     def validate(self):
@@ -94,27 +94,27 @@ class ListAlertActionsResponseBodyAlertActions(DaraModel):
         type: str = None,
         webhook_param: main_models.ListAlertActionsResponseBodyAlertActionsWebhookParam = None,
     ):
-        # The unique ID of the alert action integration.
+        # Unique identifier for the action integration.
         self.alert_action_id = alert_action_id
-        # The name of the alert action integration.
+        # Alert action name.
         self.alert_action_name = alert_action_name
-        # Specifies the event bus.
+        # Event Bridge parameters.
         self.eb_param = eb_param
-        # The parameters of Auto Scaling.
+        # Elastic scaling parameters.
         self.ess_param = ess_param
-        # The parameters of Function Compute 3.0.
+        # Function Compute 3.0 parameters.
         self.fc_3param = fc_3param
-        # The parameters of Function Compute.
+        # Function Compute parameters.
         self.fc_param = fc_param
-        # The parameters of Simple Message Queue (formerly MNS).
+        # Lightweight Message Queue (formerly MNS) parameters.
         self.mns_param = mns_param
-        # The PagerDuty parameters.
+        # PagerDuty parameters
         self.pager_duty_param = pager_duty_param
-        # The parameters of Simple Log Service.
+        # Log Service parameters.
         self.sls_param = sls_param
-        # The type of the alert action integration.
+        # Action integration type.
         self.type = type
-        # The webhook parameters.
+        # Webhook parameters
         self.webhook_param = webhook_param
 
     def validate(self):
@@ -228,13 +228,13 @@ class ListAlertActionsResponseBodyAlertActionsWebhookParam(DaraModel):
         method: str = None,
         url: str = None,
     ):
-        # The data format. This parameter is valid only when the request method is POST.
+        # Data format, effective when the request method is POST.
         self.content_type = content_type
-        # The request headers.
+        # Request headers.
         self.headers = headers
-        # The request method of the webhook.
+        # Webhook request method.
         self.method = method
-        # The callback URL for alerts.
+        # The URL address for the alarm callback.
         self.url = url
 
     def validate(self):
@@ -282,11 +282,11 @@ class ListAlertActionsResponseBodyAlertActionsSlsParam(DaraModel):
         project: str = None,
         region_id: str = None,
     ):
-        # The name of the Simple Log Service Logstore.
+        # Logstore name of the Log Service.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # Log Service project name.
         self.project = project
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -327,9 +327,9 @@ class ListAlertActionsResponseBodyAlertActionsPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The integration key of PagerDuty.
+        # Integration key for PagerDuty.
         self.key = key
-        # The integration webhook of PagerDuty. Versions 1 and 2 are supported.
+        # Integration webhook for PagerDuty. Supports V1 and V2 versions.
         self.url = url
 
     def validate(self):
@@ -365,15 +365,14 @@ class ListAlertActionsResponseBodyAlertActionsMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The resource type of Simple Message Queue (formerly MNS).
+        # Resource type of the Lightweight Message Queue (formerly MNS).
         self.mns_type = mns_type
-        # The name of the resource.
+        # Resource name.
         # 
-        # - If the resource type is \\`queue\\`, this parameter specifies the queue name.
-        # 
-        # - If the resource type is \\`topic\\`, this parameter specifies the topic name.
+        # - If the resource type is queue, the resource name is the queue name.
+        # - If the resource type is topic, the resource name is the topic name.
         self.name = name
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -415,11 +414,11 @@ class ListAlertActionsResponseBodyAlertActionsFcParam(DaraModel):
         region_id: str = None,
         service: str = None,
     ):
-        # The function name of the Function Compute service.
+        # Function name in the Function Compute service.
         self.function = function
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The service name of Function Compute.
+        # Function Compute service name.
         self.service = service
 
     def validate(self):
@@ -461,11 +460,11 @@ class ListAlertActionsResponseBodyAlertActionsFc3Param(DaraModel):
         qualifier: str = None,
         region_id: str = None,
     ):
-        # The function name of the Function Compute service.
+        # Function name of the Function Compute service.
         self.function = function
-        # The version or alias of the function.
+        # Version or alias of the function.
         self.qualifier = qualifier
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -507,11 +506,11 @@ class ListAlertActionsResponseBodyAlertActionsEssParam(DaraModel):
         ess_rule_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Auto Scaling group.
+        # Elastic scaling group ID.
         self.ess_group_id = ess_group_id
-        # The ID of the scaling rule.
+        # Elastic scaling rule ID.
         self.ess_rule_id = ess_rule_id
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -554,13 +553,13 @@ class ListAlertActionsResponseBodyAlertActionsEbParam(DaraModel):
         region_id: str = None,
         subject: str = None,
     ):
-        # The event provider.
+        # Event source.
         self.eb_source = eb_source
-        # The name of the event bus.
+        # Event bus name.
         self.event_bus_name = event_bus_name
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The subject.
+        # Subject.
         self.subject = subject
 
     def validate(self):

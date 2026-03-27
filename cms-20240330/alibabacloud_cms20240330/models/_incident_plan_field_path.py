@@ -12,9 +12,9 @@ class IncidentPlanFieldPath(DaraModel):
         field_alias: str = None,
         field_path: List[str] = None,
     ):
-        # 字段别名。
+        # Field alias.
         self.field_alias = field_alias
-        # 字段路径的列表。
+        # List of field paths.
         self.field_path = field_path
 
     def validate(self):

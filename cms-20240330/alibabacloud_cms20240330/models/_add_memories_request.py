@@ -21,24 +21,15 @@ class AddMemoriesRequest(DaraModel):
         timestamp: int = None,
         user_id: str = None,
     ):
-        # Application agent ID.
         self.agent_id = agent_id
-        # Application ID.
         self.app_id = app_id
-        # Asynchronous mode.
         self.async_mode = async_mode
-        # Custom instructions.
         self.custom_instructions = custom_instructions
-        # Infer.
         self.infer = infer
-        # Messages.
         self.messages = messages
-        # Metadata.
         self.metadata = metadata
-        # Run ID.
         self.run_id = run_id
         self.timestamp = timestamp
-        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -129,9 +120,7 @@ class AddMemoriesRequestMessages(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # Content.
         self.content = content
-        # Role.
         self.role = role
 
     def validate(self):

@@ -9,8 +9,8 @@ class DeleteIntegrationPolicyRequest(DaraModel):
         self,
         force: bool = None,
     ):
-        # Specifies whether to force delete the cloud native appliance.
-        # Default: `false`.
+        # Whether to forcibly delete the cloud-native all-in-one machine,
+        # default value: `false`.
         self.force = force
 
     def validate(self):

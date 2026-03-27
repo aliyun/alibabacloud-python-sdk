@@ -11,11 +11,9 @@ class GetCmsServiceResponseBody(DaraModel):
         error_code: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the service or product is activated.
         self.enabled = enabled
-        # PROM_NOT_OPEN: Prometheus is not activated.SLS_NOT_OPEN: Simple Log Service (SLS), a dependency of Prometheus, is not activated.CMS_SLR_NOT_EXIST: The service-linked role (SLR) for CloudMonitor does not exist.SLS_SLR_NOT_EXIST: The SLR for SLS does not exist.
         self.error_code = error_code
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

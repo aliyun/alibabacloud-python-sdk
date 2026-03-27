@@ -15,27 +15,26 @@ class CreateMemoryStoreRequest(DaraModel):
         extraction_strategies: List[str] = None,
         memory_store_name: str = None,
         short_term_ttl: int = None,
+        source_type: str = None,
+        trace_source_config: main_models.CreateMemoryStoreRequestTraceSourceConfig = None,
     ):
-        # A list of custom extraction strategies.
         self.custom_extraction_strategies = custom_extraction_strategies
-        # The description of the Memory Store.
         self.description = description
-        # The extraction strategies to use. Valid values: `Episodic`, `Summary`, and `Fact`.
         self.extraction_strategies = extraction_strategies
-        # The name of the Memory Store.
-        # 
         # This parameter is required.
         self.memory_store_name = memory_store_name
-        # The time-to-live (TTL) for short-term memory.
-        # 
         # This parameter is required.
         self.short_term_ttl = short_term_ttl
+        self.source_type = source_type
+        self.trace_source_config = trace_source_config
 
     def validate(self):
         if self.custom_extraction_strategies:
             for v1 in self.custom_extraction_strategies:
                  if v1:
                     v1.validate()
+        if self.trace_source_config:
+            self.trace_source_config.validate()
 
     def to_map(self):
         result = dict()
@@ -59,6 +58,12 @@ class CreateMemoryStoreRequest(DaraModel):
         if self.short_term_ttl is not None:
             result['shortTermTtl'] = self.short_term_ttl
 
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
+        if self.trace_source_config is not None:
+            result['traceSourceConfig'] = self.trace_source_config.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -80,6 +85,56 @@ class CreateMemoryStoreRequest(DaraModel):
 
         if m.get('shortTermTtl') is not None:
             self.short_term_ttl = m.get('shortTermTtl')
+
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
+        if m.get('traceSourceConfig') is not None:
+            temp_model = main_models.CreateMemoryStoreRequestTraceSourceConfig()
+            self.trace_source_config = temp_model.from_map(m.get('traceSourceConfig'))
+
+        return self
+
+class CreateMemoryStoreRequestTraceSourceConfig(DaraModel):
+    def __init__(
+        self,
+        include_output: bool = None,
+        query: str = None,
+        workspace: str = None,
+    ):
+        self.include_output = include_output
+        self.query = query
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.include_output is not None:
+            result['includeOutput'] = self.include_output
+
+        if self.query is not None:
+            result['query'] = self.query
+
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('includeOutput') is not None:
+            self.include_output = m.get('includeOutput')
+
+        if m.get('query') is not None:
+            self.query = m.get('query')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
 
         return self
 

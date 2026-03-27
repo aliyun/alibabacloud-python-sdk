@@ -15,13 +15,9 @@ class ListAlertWebhooksRequest(DaraModel):
         webhook_ids: List[str] = None,
         workspace: str = None,
     ):
-        # The name of the webhook.
         self.name = name
-        # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size.
         self.page_size = page_size
-        # The unique ID of the webhook.
         self.webhook_ids = webhook_ids
         self.workspace = workspace
 

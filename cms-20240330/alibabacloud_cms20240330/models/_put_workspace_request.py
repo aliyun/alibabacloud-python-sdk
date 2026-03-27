@@ -11,11 +11,11 @@ class PutWorkspaceRequest(DaraModel):
         display_name: str = None,
         sls_project: str = None,
     ):
-        # The description of the workspace.
+        # Description of the workspace
         self.description = description
-        # The display name of the workspace.
+        # Display name of the workspace
         self.display_name = display_name
-        # The name of the Simple Log Service project.
+        # Name of the Log Service project
         # 
         # This parameter is required.
         self.sls_project = sls_project

@@ -9,8 +9,6 @@ class DeleteUmodelCommonSchemaRefRequest(DaraModel):
         self,
         group: str = None,
     ):
-        # The public Umodel schema group.
-        # 
         # This parameter is required.
         self.group = group
 

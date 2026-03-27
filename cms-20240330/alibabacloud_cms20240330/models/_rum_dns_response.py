@@ -11,11 +11,8 @@ class RumDnsResponse(DaraModel):
         message: str = None,
         result: bool = None,
     ):
-        # RUM上报域名
         self.domain = domain
-        # 初始化message（失败场景）
         self.message = message
-        # 域名DNS初始化状态
         self.result = result
 
     def validate(self):

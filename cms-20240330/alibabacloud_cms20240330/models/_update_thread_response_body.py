@@ -13,9 +13,7 @@ class UpdateThreadResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The session ID.
         self.thread_id = thread_id
-        # The version number.
         self.version = version
 
     def validate(self):

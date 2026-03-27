@@ -17,19 +17,19 @@ class CreateIntegrationPolicyRequest(DaraModel):
         tags: List[main_models.CreateIntegrationPolicyRequestTags] = None,
         workspace: str = None,
     ):
-        # The entity group used to create the policy. You can quickly create a policy using an entity group. The clusterId and vpcId parameters are independent of each other.
+        # Entity group for creating the policy. Policies can be quickly created using the entity group, and `clusterId` and `vpcId` are independent of each other.
         self.entity_group = entity_group
-        # The policy name.
+        # Policy name
         self.policy_name = policy_name
-        # The policy type. Valid values: CS, ECS, and Cloud.
+        # Policy type: CS/ECS/Cloud
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # The resource tags.
+        # Resource tags.
         self.tags = tags
-        # The workspace.
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -99,9 +99,9 @@ class CreateIntegrationPolicyRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # Tag `key` value.
         self.key = key
-        # The value of the tag.
+        # Tag `value` value.
         self.value = value
 
     def validate(self):
@@ -141,18 +141,18 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         entity_user_id: str = None,
         vpc_id: str = None,
     ):
-        # The cluster entity type. Examples: acs.ack.cluster, acs.one.cluster, and acs.asi.cluster.
+        # Cluster entity type, such as acs.ack.cluster/acs.one.cluster/acs.asi.cluster or others.
         self.cluster_entity_type = cluster_entity_type
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
         self.cluster_namespace = cluster_namespace
-        # Specifies whether to disable unique policy binding. If this parameter is set to true, you can create multiple policies for a container cluster.
+        # Whether to disable the unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
         self.disable_policy_share = disable_policy_share
-        # The entity group ID.
+        # Entity group ID.
         self.entity_group_id = entity_group_id
-        # The ID of the user who owns the cluster.
+        # User ID to which the cluster belongs.
         self.entity_user_id = entity_user_id
-        # The virtual private cloud (VPC) ID.
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

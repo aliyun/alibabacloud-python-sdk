@@ -10,9 +10,9 @@ class UpdateServiceResponseBody(DaraModel):
         request_id: str = None,
         service_id: str = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The ID of the service.
+        # Service ID.
         self.service_id = service_id
 
     def validate(self):

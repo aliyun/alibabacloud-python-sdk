@@ -19,21 +19,21 @@ class AlertRuleAlertMetricFilterDef(DaraModel):
         opt: str = None,
         supported_opts: List[main_models.AlertRuleAlertMetricFilterDefSupportedOpts] = None,
     ):
-        # APM指标中为维度
+        # Dimension in APM metrics.
         self.dim = dim
-        # 为true是，过滤项不出现在promQL的group by中
+        # When true, the filter item will not appear in the GROUP BY clause of the PromQL.
         self.dim_disabled = dim_disabled
-        # 显示名称中文
+        # Display Name (Chinese).
         self.display_name_cn = display_name_cn
-        # 显示名称英文
+        # Display Name (English).
         self.display_name_en = display_name_en
-        # 是否隐藏。 如果隐藏则在前端交互中不显示，但在渲染promQL时可将该过滤条件的值上传上来。  典型的例子是APM场景中的pid这个过滤条件，一般不会通过配置化的方式进行显示，而是前端显为独立的应用搜索列表。
+        # Whether to hide. If hidden, it will not be displayed in the frontend UI, but its value can still be included when rendering the PromQL. A typical example is the "pid" filter condition in APM scenarios, which is generally not exposed through configurable UI elements but instead presented as a separate application search list in the frontend.
         self.hidden = hidden
-        # 为true时，过滤项不出现在promQL的label filter中
+        # When true, the filter item will not appear in the label filter of the PromQL.
         self.label_disabled = label_disabled
-        # 过滤条件操作符
+        # Filter Condition Operator.
         self.opt = opt
-        # 支持的选项的列表
+        # List of supported options.
         self.supported_opts = supported_opts
 
     def validate(self):
@@ -113,11 +113,11 @@ class AlertRuleAlertMetricFilterDefSupportedOpts(DaraModel):
         display_name_en: str = None,
         value: str = None,
     ):
-        # 显示名称中文
+        # Display Name (Chinese).
         self.display_name_cn = display_name_cn
-        # 显示名称英文
+        # Display Name (English).
         self.display_name_en = display_name_en
-        # 匹配值。
+        # Matching value.
         self.value = value
 
     def validate(self):

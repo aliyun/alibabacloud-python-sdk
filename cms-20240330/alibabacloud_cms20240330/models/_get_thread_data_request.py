@@ -10,9 +10,7 @@ class GetThreadDataRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The maximum number of session data entries to return. The maximum value is 100.
         self.max_results = max_results
-        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

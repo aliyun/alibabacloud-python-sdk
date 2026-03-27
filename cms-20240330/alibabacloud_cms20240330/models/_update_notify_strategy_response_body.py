@@ -10,9 +10,8 @@ class UpdateNotifyStrategyResponseBody(DaraModel):
         notify_strategy_id: str = None,
         request_id: str = None,
     ):
-        # The UUID of the notification policy.
         self.notify_strategy_id = notify_strategy_id
-        # The ID of the request. This is a unique identifier for troubleshooting.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

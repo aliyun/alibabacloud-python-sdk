@@ -17,19 +17,12 @@ class AlertRuleNotificationFilter(DaraModel):
         slack_webhooks: List[str] = None,
         wx_webhooks: List[str] = None,
     ):
-        # 联系人ID过滤
         self.contacts = contacts
-        # 自定义webhook ID过滤
         self.custom_webhooks = custom_webhooks
-        # 钉钉webhook ID过滤
         self.ding_webhooks = ding_webhooks
-        # 飞书webhook ID过滤
         self.fs_webhooks = fs_webhooks
-        # 联系人组过滤配置
         self.groups = groups
-        # slack webhook ID过滤列表
         self.slack_webhooks = slack_webhooks
-        # 微信webhook ID过滤
         self.wx_webhooks = wx_webhooks
 
     def validate(self):

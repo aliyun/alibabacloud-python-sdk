@@ -16,15 +16,19 @@ class ListWorkspacesResponseBody(DaraModel):
         total: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # The number of entries returned per page. Default value: 50. Maximum value: 50.
+        # Page size
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
-        # The token for the next page of results.
+        # Pagination Token
         self.next_token = next_token
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
-        # The total number of entries.
+        # Total count
         self.total = total
-        # The list of workspaces.
+        # List of workspaces
         self.workspaces = workspaces
 
     def validate(self):
@@ -90,23 +94,23 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         sls_project: str = None,
         workspace_name: str = None,
     ):
-        # The time when the workspace was created.
+        # Creation time
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The description of the workspace.
+        # Workspace description
         self.description = description
-        # The display name of the workspace.
+        # Workspace display name
         self.display_name = display_name
-        # The time when the workspace was last modified.
+        # Last modified time
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_modify_time = last_modify_time
-        # The ID of the region.
+        # Region ID
         self.region_id = region_id
-        # The name of the Simple Log Service project.
+        # Log Service project name
         self.sls_project = sls_project
-        # The name of the workspace.
+        # Workspace name
         # 
         # This parameter is required.
         self.workspace_name = workspace_name

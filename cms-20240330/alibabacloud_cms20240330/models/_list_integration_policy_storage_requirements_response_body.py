@@ -13,9 +13,9 @@ class ListIntegrationPolicyStorageRequirementsResponseBody(DaraModel):
         request_id: str = None,
         storage_requirements: List[main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements] = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
-        # The list of storage requirements.
+        # List of storage requirements
         self.storage_requirements = storage_requirements
 
     def validate(self):
@@ -62,17 +62,17 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements(Da
         spec: main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec = None,
         status: main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus = None,
     ):
-        # A collection of AddonRelease names.
+        # Collection of AddonReleases.
         self.addon_release_names = addon_release_names
-        # The version number.
+        # API Version
         self.api_version = api_version
-        # The kind of the resource.
+        # Resource kind
         self.kind = kind
-        # The metadata.
+        # Metadata
         self.metadata = metadata
-        # The spec of the resource.
+        # Resource spec
         self.spec = spec
-        # The status of the storage requirement.
+        # Storage requirement status
         self.status = status
 
     def validate(self):
@@ -146,23 +146,23 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSta
         storage_type: str = None,
         workspace: str = None,
     ):
-        # The instance ID.
+        # Instance ID
         self.instance_id = instance_id
-        # The internal URL.
+        # Internal URL
         self.inter_url = inter_url
-        # The internal URL.
+        # External URL
         self.intra_url = intra_url
-        # The name of the storage requirement.
+        # 存储需求名称
         self.name = name
-        # The project for the storage requirement.
+        # 存储需求项目
         self.project = project
-        # The metric store of Prometheus.
+        # Prom\\"s metric center
         self.prom_metric_store = prom_metric_store
-        # The region.
+        # Region
         self.region = region
-        # The storage type of the instance.
+        # Instance storage type
         self.storage_type = storage_type
-        # The workspace.
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -248,27 +248,27 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpe
         user_id: str = None,
         workspace: str = None,
     ):
-        # The instance ID. Specify this parameter to query data at the instance level. This parameter depends on data in EntityStore.
+        # Instance ID, which can be specified if you need to pinpoint to the instance level. It depends on the data in EntityStore.
         self.entity_id = entity_id
-        # The ID of the Prometheus instance.
+        # Prom Instance ID.
         self.instance = instance
-        # The name of the Prometheus instance.
+        # Prom instance name
         self.instance_name = instance_name
-        # Optional. The project is determined based on the current environment type.
+        # Optional parameter, determined based on the current environment type
         self.project = project
-        # The region.
+        # Region
         self.region = region
-        # The scope of storage sharing. Valid values: Environment, Region, Workspace, and Custom.
+        # Storage sharing scope: Environment | Region | Workspace | Custom
         self.share_scope = share_scope
-        # The storage type of the instance.
+        # Instance storage type
         self.storage_type = storage_type
-        # The tags that need to be added to the destination storage. The tags are injected as system tags.
+        # Tags to be applied to the target storage (injected as system tags)
         self.system_tags = system_tags
-        # The tags that need to be added to the destination storage. The tags are injected as common tags.
+        # Tags to be applied to the target storage (injected as regular tags)
         self.tags = tags
-        # The user ID.
+        # User ID
         self.user_id = user_id
-        # The workspace.
+        # Workspace
         self.workspace = workspace
 
     def validate(self):
@@ -359,13 +359,13 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMet
         name: str = None,
         namespace: str = None,
     ):
-        # The annotations.
+        # Annotations
         self.annotations = annotations
-        # The resource labels.
+        # Resource labels
         self.labels = labels
-        # The resource name.
+        # Resource name
         self.name = name
-        # The namespace.
+        # Namespace
         self.namespace = namespace
 
     def validate(self):

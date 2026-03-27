@@ -23,29 +23,29 @@ class TransformerForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # 转换操作
+        # Transformation operation.
         self.actions = actions
-        # 创建时间
+        # Create Time.
         self.create_time = create_time
-        # 描述
+        # Description.
         self.description = description
-        # 是否启用
+        # Whether enabled.
         self.enable = enable
-        # 筛选设置
+        # Filter Setting.
         self.filter_setting = filter_setting
-        # 匹配处理后退出
+        # Exit after matching processing.
         self.quit_after_match = quit_after_match
-        # 排序数
+        # Sort order.
         self.sort_id = sort_id
         # transformer Id
         self.transformer_id = transformer_id
-        # 名称
+        # Name.
         # 
         # This parameter is required.
         self.transformer_name = transformer_name
-        # 更新时间
+        # Update Time.
         self.update_time = update_time
-        # 用户id
+        # User ID.
         self.user_id = user_id
         # workspace
         self.workspace = workspace

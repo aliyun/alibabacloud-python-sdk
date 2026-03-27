@@ -24,31 +24,31 @@ class MaintainWindowForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # 创建时间
+        # Creation time.
         self.create_time = create_time
-        # 描述
+        # Description.
         self.description = description
-        # 生效时间范围
+        # Effective time range.
         self.effect_time_range = effect_time_range
-        # Crontab 表达式
+        # Crontab expression.
         self.effective = effective
-        # 是否启用
+        # Whether enabled.
         self.enable = enable
-        # 生效结束时间
+        # Effective end time.
         self.end_time = end_time
-        # 筛选条件
+        # Filtering conditions.
         self.filter_setting = filter_setting
         # UUID
         self.maintain_window_id = maintain_window_id
-        # 名称
+        # Name.
         # 
         # This parameter is required.
         self.maintain_window_name = maintain_window_name
-        # 生效开始时间
+        # Effective start time.
         self.start_time = start_time
-        # 更新时间
+        # Update time.
         self.update_time = update_time
-        # 用户id
+        # User ID.
         self.user_id = user_id
         # workspace
         self.workspace = workspace
@@ -158,13 +158,13 @@ class MaintainWindowForViewEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # 生效天(周一到周日)
+        # Effective days (Monday to Sunday).
         self.day_in_week = day_in_week
-        # 结束时间(分钟数)
+        # End time (in minutes).
         self.end_time_in_minute = end_time_in_minute
-        # 开始时间(分钟数)
+        # Start time (in minutes).
         self.start_time_in_minute = start_time_in_minute
-        # 时区
+        # Time Zone.
         self.time_zone = time_zone
 
     def validate(self):

@@ -13,7 +13,7 @@ class GetEntityStoreDataHeaders(DaraModel):
         accept_encoding: str = None,
     ):
         self.common_headers = common_headers
-        # The content encoding type of the compression algorithm.
+        # Content encoding type for the compression algorithm
         self.accept_encoding = accept_encoding
 
     def validate(self):

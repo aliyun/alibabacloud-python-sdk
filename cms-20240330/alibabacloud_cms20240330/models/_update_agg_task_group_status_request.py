@@ -9,7 +9,7 @@ class UpdateAggTaskGroupStatusRequest(DaraModel):
         self,
         status: str = None,
     ):
-        # The status of the aggregation task group. Valid values are "Running" and "Stopped". The default value is Running.
+        # Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
         # 
         # This parameter is required.
         self.status = status

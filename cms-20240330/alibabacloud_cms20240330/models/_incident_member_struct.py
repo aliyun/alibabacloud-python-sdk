@@ -20,23 +20,23 @@ class IncidentMemberStruct(DaraModel):
         time: int = None,
         user_id: int = None,
     ):
-        # 确认信息结构体。
+        # Acknowledgement Information Structure.
         self.acknowledge = acknowledge
-        # 联系人ID。
+        # Contact ID.
         self.contact_id = contact_id
-        # 联系人列表。
+        # Contact list.
         self.contacts = contacts
-        # 升级阶段信息。
+        # Escalation phase information.
         self.escalation = escalation
-        # 事件ID。
+        # Incident ID.
         self.incident_id = incident_id
-        # 事件成员ID。
+        # Event Member ID.
         self.incident_member_id = incident_member_id
-        # 调度组。
+        # Schedule group.
         self.schedule_group = schedule_group
-        # 时间。
+        # Time.
         self.time = time
-        # 用户ID。
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -130,9 +130,9 @@ class IncidentMemberStructScheduleGroup(DaraModel):
         contact_id: str = None,
         name: str = None,
     ):
-        # 联系人ID。
+        # Contact ID.
         self.contact_id = contact_id
-        # 名称。
+        # Name.
         self.name = name
 
     def validate(self):
@@ -170,15 +170,15 @@ class IncidentMemberStructEscalation(DaraModel):
         stage_index: str = None,
         title: str = None,
     ):
-        # 描述。
+        # Description.
         self.description = description
-        # 事件升级ID。
+        # Event Escalation ID.
         self.incident_escalation_id = incident_escalation_id
-        # 名称。
+        # Name.
         self.name = name
-        # 升级阶段索引。
+        # Escalation phase index.
         self.stage_index = stage_index
-        # 标题。
+        # Title.
         self.title = title
 
     def validate(self):
@@ -231,9 +231,9 @@ class IncidentMemberStructContacts(DaraModel):
         channel: str = None,
         contact_mask: str = None,
     ):
-        # 通道。
+        # Channel.
         self.channel = channel
-        # 联系人 ID（脱敏）
+        # Contact ID (masked).
         self.contact_mask = contact_mask
 
     def validate(self):
@@ -268,9 +268,9 @@ class IncidentMemberStructAcknowledge(DaraModel):
         break_level: str = None,
         verify_time: int = None,
     ):
-        # 确认级别。
+        # Acknowledgement level.
         self.break_level = break_level
-        # 验证时间。
+        # Verification time.
         self.verify_time = verify_time
 
     def validate(self):

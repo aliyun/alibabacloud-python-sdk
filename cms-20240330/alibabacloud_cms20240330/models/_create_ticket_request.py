@@ -10,13 +10,11 @@ class CreateTicketRequest(DaraModel):
         access_token_expiration_time: int = None,
         expiration_time: int = None,
     ):
-        # - The expiration time of the access token, in seconds. This is the period during which a user can access the page APIs. The value can range from 0 to 86,400 seconds (one day). The default value is 86,400 seconds (one day).
-        # 
-        # - The effective expiration time of the access token is the minimum value of accessTokenExpirationTime and expirationTime.
-        # 
-        # - If you call the operation using a Security Token Service (STS) token, the effective expiration time of the access token is the minimum value of accessTokenExpirationTime, expirationTime, and the expiration time of the STS token.
+        # - Access token expiration time (in seconds), which is the expiration time for the user to access the page interface. The default value is 86400 seconds (one day), and the range of values is from 0 to 86400 seconds (one day).
+        # - The access token expiration time is the minimum value between `accessTokenExpirationTime` and `expirationTime`.
+        # - If called through STS, the access token expiration time (i.e., the time during which the user can access the page interface) is the minimum value among `accessTokenExpirationTime`, `expirationTime`, and the STS expiration time.
         self.access_token_expiration_time = access_token_expiration_time
-        # - The expiration time of the URL for the embedded page, in seconds. The value can range from 0 to 2,592,000 seconds (30 days). The default value is 86,400 seconds (one day).
+        # - Expiration time (in seconds), which is the expiration time for the embedded page URL. The default value is 86400 seconds (one day), and the range of values is from 0 to 2592000 seconds (30 days).
         self.expiration_time = expiration_time
 
     def validate(self):

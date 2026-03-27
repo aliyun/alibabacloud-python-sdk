@@ -14,11 +14,9 @@ class ListIntegrationPolicyAddonsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # A list of add-ons.
         self.addons = addons
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -79,33 +77,19 @@ class ListIntegrationPolicyAddonsResponseBodyAddons(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The display name.
         self.alias = alias
-        # The categories.
         self.categories = categories
-        # A list of dashboards.
         self.dashboards = dashboards
-        # The description.
         self.description = description
-        # A list of supported environments.
         self.environments = environments
-        # The icon of the add-on.
         self.icon = icon
-        # The keywords.
         self.keywords = keywords
-        # The language.
         self.language = language
-        # The time when the latest version was created.
         self.latest_release_create_time = latest_release_create_time
-        # The name of the add-on.
         self.name = name
-        # Indicates whether the add-on can be installed only once.
         self.once = once
-        # The scenario of the add-on.
         self.scene = scene
-        # The version of the add-on.
         self.version = version
-        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -233,17 +217,11 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments(DaraModel):
         name: str = None,
         policies: main_models.ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies = None,
     ):
-        # The dependencies.
         self.dependencies = dependencies
-        # The description.
         self.description = description
-        # Indicates whether the feature is enabled.
         self.enable = enable
-        # The display name of the environment.
         self.label = label
-        # The name of the environment.
         self.name = name
-        # The policy.
         self.policies = policies
 
     def validate(self):
@@ -312,19 +290,12 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies(DaraMode
         protocols: List[main_models.ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # The default status of the alert rule policy.
         self.alert_default_status = alert_default_status
-        # Indicates whether the add-on is installed by default.
         self.default_install = default_install
-        # Indicates whether to assign a Service Account for communication with the console API.
         self.enable_service_account = enable_service_account
-        # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Indicates whether a pod restart is required after the add-on is installed.
         self.need_restart_after_integration = need_restart_after_integration
-        # The protocols.
         self.protocols = protocols
-        # The name of the target add-on.
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -402,13 +373,9 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols
         label: str = None,
         name: str = None,
     ):
-        # The description.
         self.description = description
-        # The icon.
         self.icon = icon
-        # The display name.
         self.label = label
-        # The protocol name.
         self.name = name
 
     def validate(self):
@@ -454,7 +421,6 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricChe
         self,
         prom_ql: List[str] = None,
     ):
-        # The PromQL search statements.
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -484,11 +450,8 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies(Dara
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
-        # The dependencies on cluster types.
         self.cluster_types = cluster_types
-        # The dependencies on probes.
         self.features = features
-        # The dependencies on product codes.
         self.services = services
 
     def validate(self):
@@ -530,11 +493,8 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsDashboards(DaraModel):
         name: str = None,
         url: str = None,
     ):
-        # The description.
         self.description = description
-        # The name.
         self.name = name
-        # The URL of the dashboard.
         self.url = url
 
     def validate(self):

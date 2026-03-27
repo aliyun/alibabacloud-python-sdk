@@ -11,13 +11,9 @@ class ListIntegrationPolicyCollectorsRequest(DaraModel):
         collector_type: str = None,
         language: str = None,
     ):
-        # The name of the add-on release.
         self.addon_release_name = addon_release_name
-        # The collector type.
-        # 
         # This parameter is required.
         self.collector_type = collector_type
-        # The language.
         self.language = language
 
     def validate(self):
