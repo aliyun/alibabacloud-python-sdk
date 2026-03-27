@@ -1755,6 +1755,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
         if not DaraCore.is_null(request.resource_conditions):
             query['ResourceConditions'] = request.resource_conditions
         if not DaraCore.is_null(request.scene):
@@ -1787,6 +1789,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
         if not DaraCore.is_null(request.resource_conditions):
             query['ResourceConditions'] = request.resource_conditions
         if not DaraCore.is_null(request.scene):

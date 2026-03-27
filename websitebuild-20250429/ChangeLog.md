@@ -1,3 +1,7 @@
+2026-03-27 Version: 2.19.1
+- Update API GetAppRecommendedCommodities: add request parameters Extend.
+
+
 2026-03-25 Version: 2.19.0
 - Support API EditPluginConfig.
 - Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.Status.
