@@ -2635,6 +2635,8 @@ class Client(OpenApiClient):
             request.llmparam_shrink = Utils.array_to_string_with_specified_style(tmp_req.llmparam, 'LLMParam', 'json')
         if not DaraCore.is_null(tmp_req.multimedia_parameters):
             request.multimedia_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.multimedia_parameters, 'MultimediaParameters', 'json')
+        if not DaraCore.is_null(tmp_req.output_format):
+            request.output_format_shrink = Utils.array_to_string_with_specified_style(tmp_req.output_format, 'OutputFormat', 'simple')
         query = {}
         if not DaraCore.is_null(request.custom_oss_config_shrink):
             query['CustomOssConfig'] = request.custom_oss_config_shrink
@@ -2664,6 +2666,8 @@ class Client(OpenApiClient):
             query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
+        if not DaraCore.is_null(request.output_format_shrink):
+            query['OutputFormat'] = request.output_format_shrink
         if not DaraCore.is_null(request.output_html_table):
             query['OutputHtmlTable'] = request.output_html_table
         if not DaraCore.is_null(request.page_index):
@@ -2701,6 +2705,8 @@ class Client(OpenApiClient):
             request.llmparam_shrink = Utils.array_to_string_with_specified_style(tmp_req.llmparam, 'LLMParam', 'json')
         if not DaraCore.is_null(tmp_req.multimedia_parameters):
             request.multimedia_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.multimedia_parameters, 'MultimediaParameters', 'json')
+        if not DaraCore.is_null(tmp_req.output_format):
+            request.output_format_shrink = Utils.array_to_string_with_specified_style(tmp_req.output_format, 'OutputFormat', 'simple')
         query = {}
         if not DaraCore.is_null(request.custom_oss_config_shrink):
             query['CustomOssConfig'] = request.custom_oss_config_shrink
@@ -2730,6 +2736,8 @@ class Client(OpenApiClient):
             query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
+        if not DaraCore.is_null(request.output_format_shrink):
+            query['OutputFormat'] = request.output_format_shrink
         if not DaraCore.is_null(request.output_html_table):
             query['OutputHtmlTable'] = request.output_html_table
         if not DaraCore.is_null(request.page_index):
@@ -2931,10 +2939,14 @@ class Client(OpenApiClient):
 
     def submit_doc_structure_job_with_options(
         self,
-        request: main_models.SubmitDocStructureJobRequest,
+        tmp_req: main_models.SubmitDocStructureJobRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SubmitDocStructureJobResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SubmitDocStructureJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.output_format):
+            request.output_format_shrink = Utils.array_to_string_with_specified_style(tmp_req.output_format, 'OutputFormat', 'simple')
         query = {}
         if not DaraCore.is_null(request.allow_ppt_format):
             query['AllowPptFormat'] = request.allow_ppt_format
@@ -2952,6 +2964,8 @@ class Client(OpenApiClient):
             query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
+        if not DaraCore.is_null(request.output_format_shrink):
+            query['OutputFormat'] = request.output_format_shrink
         if not DaraCore.is_null(request.page_index):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.structure_type):
@@ -2977,10 +2991,14 @@ class Client(OpenApiClient):
 
     async def submit_doc_structure_job_with_options_async(
         self,
-        request: main_models.SubmitDocStructureJobRequest,
+        tmp_req: main_models.SubmitDocStructureJobRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SubmitDocStructureJobResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SubmitDocStructureJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.output_format):
+            request.output_format_shrink = Utils.array_to_string_with_specified_style(tmp_req.output_format, 'OutputFormat', 'simple')
         query = {}
         if not DaraCore.is_null(request.allow_ppt_format):
             query['AllowPptFormat'] = request.allow_ppt_format
@@ -2998,6 +3016,8 @@ class Client(OpenApiClient):
             query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
+        if not DaraCore.is_null(request.output_format_shrink):
+            query['OutputFormat'] = request.output_format_shrink
         if not DaraCore.is_null(request.page_index):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.structure_type):

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import BinaryIO
+from typing import BinaryIO, List
 
 from darabonba.model import DaraModel
 
@@ -17,6 +17,7 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
         formula_enhancement: bool = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        output_format: List[str] = None,
         page_index: str = None,
         structure_type: str = None,
     ):
@@ -28,6 +29,7 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
         self.formula_enhancement = formula_enhancement
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.output_format = output_format
         self.page_index = page_index
         self.structure_type = structure_type
 
@@ -63,6 +65,9 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
 
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
 
@@ -96,6 +101,9 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
 
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
 
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')

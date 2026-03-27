@@ -1,3 +1,9 @@
+2026-03-27 Version: 1.4.14
+- Update API QueryDocParserStatus: add response parameters Body.Data.OutputFormatResult.
+- Update API SubmitDocParserJob: add request parameters OutputFormat.
+- Update API SubmitDocStructureJob: add request parameters OutputFormat.
+
+
 2025-11-27 Version: 1.4.13
 - Update API SubmitConvertImageToExcelJob: add request parameters EnableEventCallback.
 - Update API SubmitConvertImageToPdfJob: add request parameters EnableEventCallback.

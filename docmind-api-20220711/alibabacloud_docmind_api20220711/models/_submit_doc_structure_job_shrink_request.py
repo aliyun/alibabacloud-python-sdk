@@ -4,44 +4,32 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SubmitDocParserJobShrinkRequest(DaraModel):
+class SubmitDocStructureJobShrinkRequest(DaraModel):
     def __init__(
         self,
-        custom_oss_config_shrink: str = None,
+        allow_ppt_format: bool = None,
         enable_event_callback: bool = None,
-        enhancement_mode: str = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url: str = None,
         formula_enhancement: bool = None,
-        llmparam_shrink: str = None,
-        llm_enhancement: bool = None,
-        multimedia_parameters_shrink: str = None,
-        need_header_footer: bool = None,
-        option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
         output_format_shrink: str = None,
-        output_html_table: bool = None,
         page_index: str = None,
+        structure_type: str = None,
     ):
-        self.custom_oss_config_shrink = custom_oss_config_shrink
+        self.allow_ppt_format = allow_ppt_format
         self.enable_event_callback = enable_event_callback
-        self.enhancement_mode = enhancement_mode
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
-        self.llmparam_shrink = llmparam_shrink
-        self.llm_enhancement = llm_enhancement
-        self.multimedia_parameters_shrink = multimedia_parameters_shrink
-        self.need_header_footer = need_header_footer
-        self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
         self.output_format_shrink = output_format_shrink
-        self.output_html_table = output_html_table
         self.page_index = page_index
+        self.structure_type = structure_type
 
     def validate(self):
         pass
@@ -51,14 +39,11 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.custom_oss_config_shrink is not None:
-            result['CustomOssConfig'] = self.custom_oss_config_shrink
+        if self.allow_ppt_format is not None:
+            result['AllowPptFormat'] = self.allow_ppt_format
 
         if self.enable_event_callback is not None:
             result['EnableEventCallback'] = self.enable_event_callback
-
-        if self.enhancement_mode is not None:
-            result['EnhancementMode'] = self.enhancement_mode
 
         if self.file_name is not None:
             result['FileName'] = self.file_name
@@ -72,21 +57,6 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
 
-        if self.llmparam_shrink is not None:
-            result['LLMParam'] = self.llmparam_shrink
-
-        if self.llm_enhancement is not None:
-            result['LlmEnhancement'] = self.llm_enhancement
-
-        if self.multimedia_parameters_shrink is not None:
-            result['MultimediaParameters'] = self.multimedia_parameters_shrink
-
-        if self.need_header_footer is not None:
-            result['NeedHeaderFooter'] = self.need_header_footer
-
-        if self.option is not None:
-            result['Option'] = self.option
-
         if self.oss_bucket is not None:
             result['OssBucket'] = self.oss_bucket
 
@@ -96,24 +66,21 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         if self.output_format_shrink is not None:
             result['OutputFormat'] = self.output_format_shrink
 
-        if self.output_html_table is not None:
-            result['OutputHtmlTable'] = self.output_html_table
-
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
+
+        if self.structure_type is not None:
+            result['StructureType'] = self.structure_type
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CustomOssConfig') is not None:
-            self.custom_oss_config_shrink = m.get('CustomOssConfig')
+        if m.get('AllowPptFormat') is not None:
+            self.allow_ppt_format = m.get('AllowPptFormat')
 
         if m.get('EnableEventCallback') is not None:
             self.enable_event_callback = m.get('EnableEventCallback')
-
-        if m.get('EnhancementMode') is not None:
-            self.enhancement_mode = m.get('EnhancementMode')
 
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
@@ -127,21 +94,6 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
 
-        if m.get('LLMParam') is not None:
-            self.llmparam_shrink = m.get('LLMParam')
-
-        if m.get('LlmEnhancement') is not None:
-            self.llm_enhancement = m.get('LlmEnhancement')
-
-        if m.get('MultimediaParameters') is not None:
-            self.multimedia_parameters_shrink = m.get('MultimediaParameters')
-
-        if m.get('NeedHeaderFooter') is not None:
-            self.need_header_footer = m.get('NeedHeaderFooter')
-
-        if m.get('Option') is not None:
-            self.option = m.get('Option')
-
         if m.get('OssBucket') is not None:
             self.oss_bucket = m.get('OssBucket')
 
@@ -151,11 +103,11 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         if m.get('OutputFormat') is not None:
             self.output_format_shrink = m.get('OutputFormat')
 
-        if m.get('OutputHtmlTable') is not None:
-            self.output_html_table = m.get('OutputHtmlTable')
-
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
+
+        if m.get('StructureType') is not None:
+            self.structure_type = m.get('StructureType')
 
         return self
 

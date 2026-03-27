@@ -74,6 +74,7 @@ from ._submit_doc_parser_job_response_body import SubmitDocParserJobResponseBody
 from ._submit_doc_parser_job_response import SubmitDocParserJobResponse
 from ._submit_doc_structure_job_request import SubmitDocStructureJobRequest
 from ._submit_doc_structure_job_advance_request import SubmitDocStructureJobAdvanceRequest
+from ._submit_doc_structure_job_shrink_request import SubmitDocStructureJobShrinkRequest
 from ._submit_doc_structure_job_response_body import SubmitDocStructureJobResponseBody
 from ._submit_doc_structure_job_response import SubmitDocStructureJobResponse
 from ._submit_document_extract_job_request import SubmitDocumentExtractJobRequest
@@ -86,6 +87,8 @@ from ._submit_table_understanding_job_response_body import SubmitTableUnderstand
 from ._submit_table_understanding_job_response import SubmitTableUnderstandingJobResponse
 from ._get_document_convert_result_response_body import GetDocumentConvertResultResponseBodyData
 from ._get_page_num_response_body import GetPageNumResponseBodyData
+from ._query_doc_parser_status_response_body import QueryDocParserStatusResponseBodyDataOutputFormatResultPages
+from ._query_doc_parser_status_response_body import QueryDocParserStatusResponseBodyDataOutputFormatResult
 from ._query_doc_parser_status_response_body import QueryDocParserStatusResponseBodyData
 from ._submit_convert_image_to_excel_job_response_body import SubmitConvertImageToExcelJobResponseBodyData
 from ._submit_convert_image_to_markdown_job_response_body import SubmitConvertImageToMarkdownJobResponseBodyData
@@ -179,6 +182,7 @@ __all__ = [
     SubmitDocParserJobResponse,
     SubmitDocStructureJobRequest,
     SubmitDocStructureJobAdvanceRequest,
+    SubmitDocStructureJobShrinkRequest,
     SubmitDocStructureJobResponseBody,
     SubmitDocStructureJobResponse,
     SubmitDocumentExtractJobRequest,
@@ -191,6 +195,8 @@ __all__ = [
     SubmitTableUnderstandingJobResponse,
     GetDocumentConvertResultResponseBodyData,
     GetPageNumResponseBodyData,
+    QueryDocParserStatusResponseBodyDataOutputFormatResultPages,
+    QueryDocParserStatusResponseBodyDataOutputFormatResult,
     QueryDocParserStatusResponseBodyData,
     SubmitConvertImageToExcelJobResponseBodyData,
     SubmitConvertImageToMarkdownJobResponseBodyData,

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_docmind_api20220711 import models as main_models
 from darabonba.model import DaraModel
 
@@ -22,6 +24,7 @@ class SubmitDocParserJobRequest(DaraModel):
         option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        output_format: List[str] = None,
         output_html_table: bool = None,
         page_index: str = None,
     ):
@@ -39,6 +42,7 @@ class SubmitDocParserJobRequest(DaraModel):
         self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.output_format = output_format
         self.output_html_table = output_html_table
         self.page_index = page_index
 
@@ -97,6 +101,9 @@ class SubmitDocParserJobRequest(DaraModel):
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
 
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+
         if self.output_html_table is not None:
             result['OutputHtmlTable'] = self.output_html_table
 
@@ -151,6 +158,9 @@ class SubmitDocParserJobRequest(DaraModel):
 
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
 
         if m.get('OutputHtmlTable') is not None:
             self.output_html_table = m.get('OutputHtmlTable')
