@@ -2548,6 +2548,12 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.security_iparray_name):
+            query['SecurityIPArrayName'] = request.security_iparray_name
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.security_iptype):
+            query['SecurityIPType'] = request.security_iptype
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.target_version):
@@ -2644,6 +2650,12 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.security_iparray_name):
+            query['SecurityIPArrayName'] = request.security_iparray_name
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.security_iptype):
+            query['SecurityIPType'] = request.security_iptype
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.target_version):
@@ -29286,3 +29298,85 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeDBClusterVersionZonalResponse:
         runtime = RuntimeOptions()
         return await self.upgrade_dbcluster_version_zonal_with_options_async(request, runtime)
+
+    def upgrade_polar_claw_skills_with_options(
+        self,
+        request: main_models.UpgradePolarClawSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePolarClawSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.upgrade_method):
+            query['UpgradeMethod'] = request.upgrade_method
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePolarClawSkills',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePolarClawSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_polar_claw_skills_with_options_async(
+        self,
+        request: main_models.UpgradePolarClawSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePolarClawSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.upgrade_method):
+            query['UpgradeMethod'] = request.upgrade_method
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePolarClawSkills',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePolarClawSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_polar_claw_skills(
+        self,
+        request: main_models.UpgradePolarClawSkillsRequest,
+    ) -> main_models.UpgradePolarClawSkillsResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_polar_claw_skills_with_options(request, runtime)
+
+    async def upgrade_polar_claw_skills_async(
+        self,
+        request: main_models.UpgradePolarClawSkillsRequest,
+    ) -> main_models.UpgradePolarClawSkillsResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_polar_claw_skills_with_options_async(request, runtime)

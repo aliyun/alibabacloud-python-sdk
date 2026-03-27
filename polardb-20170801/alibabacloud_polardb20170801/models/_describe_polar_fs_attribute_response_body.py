@@ -2,12 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_polardb20170801 import models as main_models
 from darabonba.model import DaraModel
 
 class DescribePolarFsAttributeResponseBody(DaraModel):
     def __init__(
         self,
+        accelerate_type: str = None,
         accelerated_storage_space: float = None,
         accelerating_enable: str = None,
         bandwidth: float = None,
@@ -17,6 +20,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         client_download_path: str = None,
         create_time: str = None,
         custom_bucket_path: str = None,
+        custom_bucket_path_list: List[main_models.DescribePolarFsAttributeResponseBodyCustomBucketPathList] = None,
         dbtype: str = None,
         expire_time: str = None,
         expired: str = None,
@@ -43,6 +47,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.accelerate_type = accelerate_type
         self.accelerated_storage_space = accelerated_storage_space
         self.accelerating_enable = accelerating_enable
         self.bandwidth = bandwidth
@@ -52,6 +57,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.client_download_path = client_download_path
         self.create_time = create_time
         self.custom_bucket_path = custom_bucket_path
+        self.custom_bucket_path_list = custom_bucket_path_list
         self.dbtype = dbtype
         self.expire_time = expire_time
         self.expired = expired
@@ -80,6 +86,10 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.custom_bucket_path_list:
+            for v1 in self.custom_bucket_path_list:
+                 if v1:
+                    v1.validate()
         if self.mount_info:
             self.mount_info.validate()
 
@@ -88,6 +98,9 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accelerate_type is not None:
+            result['AccelerateType'] = self.accelerate_type
+
         if self.accelerated_storage_space is not None:
             result['AcceleratedStorageSpace'] = self.accelerated_storage_space
 
@@ -114,6 +127,11 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
         if self.custom_bucket_path is not None:
             result['CustomBucketPath'] = self.custom_bucket_path
+
+        result['CustomBucketPathList'] = []
+        if self.custom_bucket_path_list is not None:
+            for k1 in self.custom_bucket_path_list:
+                result['CustomBucketPathList'].append(k1.to_map() if k1 else None)
 
         if self.dbtype is not None:
             result['DBType'] = self.dbtype
@@ -194,6 +212,9 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccelerateType') is not None:
+            self.accelerate_type = m.get('AccelerateType')
+
         if m.get('AcceleratedStorageSpace') is not None:
             self.accelerated_storage_space = m.get('AcceleratedStorageSpace')
 
@@ -220,6 +241,12 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
         if m.get('CustomBucketPath') is not None:
             self.custom_bucket_path = m.get('CustomBucketPath')
+
+        self.custom_bucket_path_list = []
+        if m.get('CustomBucketPathList') is not None:
+            for k1 in m.get('CustomBucketPathList'):
+                temp_model = main_models.DescribePolarFsAttributeResponseBodyCustomBucketPathList()
+                self.custom_bucket_path_list.append(temp_model.from_map(k1))
 
         if m.get('DBType') is not None:
             self.dbtype = m.get('DBType')
@@ -339,6 +366,41 @@ class DescribePolarFsAttributeResponseBodyMountInfo(DaraModel):
 
         if m.get('Token') is not None:
             self.token = m.get('Token')
+
+        return self
+
+class DescribePolarFsAttributeResponseBodyCustomBucketPathList(DaraModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        path: str = None,
+    ):
+        self.bucket = bucket
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+
+        if self.path is not None:
+            result['Path'] = self.path
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
 
         return self
 

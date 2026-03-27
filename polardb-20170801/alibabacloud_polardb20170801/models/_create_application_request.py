@@ -35,6 +35,9 @@ class CreateApplicationRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        security_iparray_name: str = None,
+        security_iplist: str = None,
+        security_iptype: str = None,
         tag: List[main_models.CreateApplicationRequestTag] = None,
         target_version: str = None,
         used_time: str = None,
@@ -69,6 +72,9 @@ class CreateApplicationRequest(DaraModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
+        self.security_iparray_name = security_iparray_name
+        self.security_iplist = security_iplist
+        self.security_iptype = security_iptype
         self.tag = tag
         self.target_version = target_version
         self.used_time = used_time
@@ -176,6 +182,15 @@ class CreateApplicationRequest(DaraModel):
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
 
+        if self.security_iparray_name is not None:
+            result['SecurityIPArrayName'] = self.security_iparray_name
+
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+
+        if self.security_iptype is not None:
+            result['SecurityIPType'] = self.security_iptype
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -281,6 +296,15 @@ class CreateApplicationRequest(DaraModel):
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('SecurityIPArrayName') is not None:
+            self.security_iparray_name = m.get('SecurityIPArrayName')
+
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+
+        if m.get('SecurityIPType') is not None:
+            self.security_iptype = m.get('SecurityIPType')
 
         self.tag = []
         if m.get('Tag') is not None:

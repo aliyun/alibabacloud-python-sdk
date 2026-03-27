@@ -35,6 +35,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         security_iparrays: List[main_models.DescribeApplicationAttributeResponseBodySecurityIPArrays] = None,
         serverless_type: str = None,
         status: str = None,
+        storages: List[main_models.DescribeApplicationAttributeResponseBodyStorages] = None,
         upgrade_available: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -66,6 +67,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.security_iparrays = security_iparrays
         self.serverless_type = serverless_type
         self.status = status
+        self.storages = storages
         self.upgrade_available = upgrade_available
         # VPC ID
         self.vpcid = vpcid
@@ -91,6 +93,10 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
                     v1.validate()
         if self.security_iparrays:
             for v1 in self.security_iparrays:
+                 if v1:
+                    v1.validate()
+        if self.storages:
+            for v1 in self.storages:
                  if v1:
                     v1.validate()
 
@@ -181,6 +187,11 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.status is not None:
             result['Status'] = self.status
+
+        result['Storages'] = []
+        if self.storages is not None:
+            for k1 in self.storages:
+                result['Storages'].append(k1.to_map() if k1 else None)
 
         if self.upgrade_available is not None:
             result['UpgradeAvailable'] = self.upgrade_available
@@ -289,6 +300,12 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        self.storages = []
+        if m.get('Storages') is not None:
+            for k1 in m.get('Storages'):
+                temp_model = main_models.DescribeApplicationAttributeResponseBodyStorages()
+                self.storages.append(temp_model.from_map(k1))
+
         if m.get('UpgradeAvailable') is not None:
             self.upgrade_available = m.get('UpgradeAvailable')
 
@@ -303,6 +320,57 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class DescribeApplicationAttributeResponseBodyStorages(DaraModel):
+    def __init__(
+        self,
+        storage_capacity: str = None,
+        storage_instance_id: str = None,
+        storage_performance_level: str = None,
+        storage_type: str = None,
+    ):
+        self.storage_capacity = storage_capacity
+        self.storage_instance_id = storage_instance_id
+        self.storage_performance_level = storage_performance_level
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.storage_capacity is not None:
+            result['StorageCapacity'] = self.storage_capacity
+
+        if self.storage_instance_id is not None:
+            result['StorageInstanceId'] = self.storage_instance_id
+
+        if self.storage_performance_level is not None:
+            result['StoragePerformanceLevel'] = self.storage_performance_level
+
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StorageCapacity') is not None:
+            self.storage_capacity = m.get('StorageCapacity')
+
+        if m.get('StorageInstanceId') is not None:
+            self.storage_instance_id = m.get('StorageInstanceId')
+
+        if m.get('StoragePerformanceLevel') is not None:
+            self.storage_performance_level = m.get('StoragePerformanceLevel')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
 
         return self
 
