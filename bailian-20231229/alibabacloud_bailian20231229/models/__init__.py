@@ -183,7 +183,6 @@ from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplica
 from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfig
 from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestSampleLibrary
 from ._create_index_request import CreateIndexRequestColumns
-from ._create_index_request import CreateIndexRequestDataSource
 from ._create_index_request import CreateIndexRequestMetaExtractColumns
 from ._create_index_response_body import CreateIndexResponseBodyData
 from ._delete_category_response_body import DeleteCategoryResponseBodyData
@@ -442,7 +441,6 @@ __all__ = [
     CreateAndPulishAgentRequestApplicationConfig,
     CreateAndPulishAgentRequestSampleLibrary,
     CreateIndexRequestColumns,
-    CreateIndexRequestDataSource,
     CreateIndexRequestMetaExtractColumns,
     CreateIndexResponseBodyData,
     DeleteCategoryResponseBodyData,

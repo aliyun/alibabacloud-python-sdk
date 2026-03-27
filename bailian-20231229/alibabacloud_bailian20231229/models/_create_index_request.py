@@ -14,7 +14,6 @@ class CreateIndexRequest(DaraModel):
         chunk_size: int = None,
         columns: List[main_models.CreateIndexRequestColumns] = None,
         create_index_type: str = None,
-        data_source: main_models.CreateIndexRequestDataSource = None,
         description: str = None,
         document_ids: List[str] = None,
         embedding_model_name: str = None,
@@ -37,6 +36,7 @@ class CreateIndexRequest(DaraModel):
         datasource_code: str = None,
         enable_headers: bool = None,
         knowledge_scene: str = None,
+        knowledge_type: str = None,
         meta_extract_columns: List[main_models.CreateIndexRequestMetaExtractColumns] = None,
         pipeline_commercial_cu: int = None,
         pipeline_commercial_type: str = None,
@@ -55,8 +55,6 @@ class CreateIndexRequest(DaraModel):
         self.columns = columns
         # > This parameter is not available. Do not specify this parameter.
         self.create_index_type = create_index_type
-        # >  This parameter is not available. Do not specify this parameter.
-        self.data_source = data_source
         # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
         self.description = description
         # The files to imported to the knowledge base. Specify the file IDs to import (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
@@ -151,6 +149,7 @@ class CreateIndexRequest(DaraModel):
         # Default value: false.
         self.enable_headers = enable_headers
         self.knowledge_scene = knowledge_scene
+        self.knowledge_type = knowledge_type
         # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns = meta_extract_columns
         self.pipeline_commercial_cu = pipeline_commercial_cu
@@ -163,8 +162,6 @@ class CreateIndexRequest(DaraModel):
             for v1 in self.columns:
                  if v1:
                     v1.validate()
-        if self.data_source:
-            self.data_source.validate()
         if self.meta_extract_columns:
             for v1 in self.meta_extract_columns:
                  if v1:
@@ -188,9 +185,6 @@ class CreateIndexRequest(DaraModel):
 
         if self.create_index_type is not None:
             result['CreateIndexType'] = self.create_index_type
-
-        if self.data_source is not None:
-            result['DataSource'] = self.data_source.to_map()
 
         if self.description is not None:
             result['Description'] = self.description
@@ -258,6 +252,9 @@ class CreateIndexRequest(DaraModel):
         if self.knowledge_scene is not None:
             result['knowledgeScene'] = self.knowledge_scene
 
+        if self.knowledge_type is not None:
+            result['knowledgeType'] = self.knowledge_type
+
         result['metaExtractColumns'] = []
         if self.meta_extract_columns is not None:
             for k1 in self.meta_extract_columns:
@@ -293,10 +290,6 @@ class CreateIndexRequest(DaraModel):
 
         if m.get('CreateIndexType') is not None:
             self.create_index_type = m.get('CreateIndexType')
-
-        if m.get('DataSource') is not None:
-            temp_model = main_models.CreateIndexRequestDataSource()
-            self.data_source = temp_model.from_map(m.get('DataSource'))
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -363,6 +356,9 @@ class CreateIndexRequest(DaraModel):
 
         if m.get('knowledgeScene') is not None:
             self.knowledge_scene = m.get('knowledgeScene')
+
+        if m.get('knowledgeType') is not None:
+            self.knowledge_type = m.get('knowledgeType')
 
         self.meta_extract_columns = []
         if m.get('metaExtractColumns') is not None:
@@ -478,115 +474,6 @@ class CreateIndexRequestMetaExtractColumns(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
-
-        return self
-
-class CreateIndexRequestDataSource(DaraModel):
-    def __init__(
-        self,
-        credential_id: str = None,
-        credential_key: str = None,
-        database: str = None,
-        endpoint: str = None,
-        is_private_link: bool = None,
-        region: str = None,
-        sub_path: str = None,
-        sub_type: str = None,
-        table: str = None,
-        type: str = None,
-    ):
-        # >  This parameter is not available. Do not specify this parameter.
-        self.credential_id = credential_id
-        # >  This parameter is not available. Do not specify this parameter.
-        self.credential_key = credential_key
-        # >  This parameter is not available. Do not specify this parameter.
-        self.database = database
-        # >  This parameter is not available. Do not specify this parameter.
-        self.endpoint = endpoint
-        # >  This parameter is not available. Do not specify this parameter.
-        self.is_private_link = is_private_link
-        # >  This parameter is not available. Do not specify this parameter.
-        self.region = region
-        # >  This parameter is not available. Do not specify this parameter.
-        self.sub_path = sub_path
-        # >  This parameter is not available. Do not specify this parameter.
-        self.sub_type = sub_type
-        # >  This parameter is not available. Do not specify this parameter.
-        self.table = table
-        # >  This parameter is not available. Do not specify this parameter.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.credential_id is not None:
-            result['CredentialId'] = self.credential_id
-
-        if self.credential_key is not None:
-            result['CredentialKey'] = self.credential_key
-
-        if self.database is not None:
-            result['Database'] = self.database
-
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
-
-        if self.is_private_link is not None:
-            result['IsPrivateLink'] = self.is_private_link
-
-        if self.region is not None:
-            result['Region'] = self.region
-
-        if self.sub_path is not None:
-            result['SubPath'] = self.sub_path
-
-        if self.sub_type is not None:
-            result['SubType'] = self.sub_type
-
-        if self.table is not None:
-            result['Table'] = self.table
-
-        if self.type is not None:
-            result['Type'] = self.type
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialId') is not None:
-            self.credential_id = m.get('CredentialId')
-
-        if m.get('CredentialKey') is not None:
-            self.credential_key = m.get('CredentialKey')
-
-        if m.get('Database') is not None:
-            self.database = m.get('Database')
-
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
-
-        if m.get('IsPrivateLink') is not None:
-            self.is_private_link = m.get('IsPrivateLink')
-
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-
-        if m.get('SubPath') is not None:
-            self.sub_path = m.get('SubPath')
-
-        if m.get('SubType') is not None:
-            self.sub_type = m.get('SubType')
-
-        if m.get('Table') is not None:
-            self.table = m.get('Table')
-
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
 
         return self
 

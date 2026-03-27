@@ -11,7 +11,6 @@ class CreateIndexShrinkRequest(DaraModel):
         chunk_size: int = None,
         columns_shrink: str = None,
         create_index_type: str = None,
-        data_source_shrink: str = None,
         description: str = None,
         document_ids_shrink: str = None,
         embedding_model_name: str = None,
@@ -34,6 +33,7 @@ class CreateIndexShrinkRequest(DaraModel):
         datasource_code: str = None,
         enable_headers: bool = None,
         knowledge_scene: str = None,
+        knowledge_type: str = None,
         meta_extract_columns_shrink: str = None,
         pipeline_commercial_cu: int = None,
         pipeline_commercial_type: str = None,
@@ -52,8 +52,6 @@ class CreateIndexShrinkRequest(DaraModel):
         self.columns_shrink = columns_shrink
         # > This parameter is not available. Do not specify this parameter.
         self.create_index_type = create_index_type
-        # >  This parameter is not available. Do not specify this parameter.
-        self.data_source_shrink = data_source_shrink
         # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
         self.description = description
         # The files to imported to the knowledge base. Specify the file IDs to import (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
@@ -148,6 +146,7 @@ class CreateIndexShrinkRequest(DaraModel):
         # Default value: false.
         self.enable_headers = enable_headers
         self.knowledge_scene = knowledge_scene
+        self.knowledge_type = knowledge_type
         # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
         self.pipeline_commercial_cu = pipeline_commercial_cu
@@ -174,9 +173,6 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if self.create_index_type is not None:
             result['CreateIndexType'] = self.create_index_type
-
-        if self.data_source_shrink is not None:
-            result['DataSource'] = self.data_source_shrink
 
         if self.description is not None:
             result['Description'] = self.description
@@ -244,6 +240,9 @@ class CreateIndexShrinkRequest(DaraModel):
         if self.knowledge_scene is not None:
             result['knowledgeScene'] = self.knowledge_scene
 
+        if self.knowledge_type is not None:
+            result['knowledgeType'] = self.knowledge_type
+
         if self.meta_extract_columns_shrink is not None:
             result['metaExtractColumns'] = self.meta_extract_columns_shrink
 
@@ -274,9 +273,6 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if m.get('CreateIndexType') is not None:
             self.create_index_type = m.get('CreateIndexType')
-
-        if m.get('DataSource') is not None:
-            self.data_source_shrink = m.get('DataSource')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -343,6 +339,9 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if m.get('knowledgeScene') is not None:
             self.knowledge_scene = m.get('knowledgeScene')
+
+        if m.get('knowledgeType') is not None:
+            self.knowledge_type = m.get('knowledgeType')
 
         if m.get('metaExtractColumns') is not None:
             self.meta_extract_columns_shrink = m.get('metaExtractColumns')

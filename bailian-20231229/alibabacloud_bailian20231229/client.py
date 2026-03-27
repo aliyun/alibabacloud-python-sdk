@@ -759,8 +759,6 @@ class Client(OpenApiClient):
             request.category_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
         if not DaraCore.is_null(tmp_req.columns):
             request.columns_shrink = Utils.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
-        if not DaraCore.is_null(tmp_req.data_source):
-            request.data_source_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
         if not DaraCore.is_null(tmp_req.document_ids):
             request.document_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
         if not DaraCore.is_null(tmp_req.table_ids):
@@ -776,8 +774,6 @@ class Client(OpenApiClient):
             query['Columns'] = request.columns_shrink
         if not DaraCore.is_null(request.create_index_type):
             query['CreateIndexType'] = request.create_index_type
-        if not DaraCore.is_null(request.data_source_shrink):
-            query['DataSource'] = request.data_source_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.document_ids_shrink):
@@ -822,6 +818,8 @@ class Client(OpenApiClient):
             query['enableHeaders'] = request.enable_headers
         if not DaraCore.is_null(request.knowledge_scene):
             query['knowledgeScene'] = request.knowledge_scene
+        if not DaraCore.is_null(request.knowledge_type):
+            query['knowledgeType'] = request.knowledge_type
         if not DaraCore.is_null(request.meta_extract_columns_shrink):
             query['metaExtractColumns'] = request.meta_extract_columns_shrink
         if not DaraCore.is_null(request.pipeline_commercial_cu):
@@ -866,8 +864,6 @@ class Client(OpenApiClient):
             request.category_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
         if not DaraCore.is_null(tmp_req.columns):
             request.columns_shrink = Utils.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
-        if not DaraCore.is_null(tmp_req.data_source):
-            request.data_source_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
         if not DaraCore.is_null(tmp_req.document_ids):
             request.document_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
         if not DaraCore.is_null(tmp_req.table_ids):
@@ -883,8 +879,6 @@ class Client(OpenApiClient):
             query['Columns'] = request.columns_shrink
         if not DaraCore.is_null(request.create_index_type):
             query['CreateIndexType'] = request.create_index_type
-        if not DaraCore.is_null(request.data_source_shrink):
-            query['DataSource'] = request.data_source_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.document_ids_shrink):
@@ -929,6 +923,8 @@ class Client(OpenApiClient):
             query['enableHeaders'] = request.enable_headers
         if not DaraCore.is_null(request.knowledge_scene):
             query['knowledgeScene'] = request.knowledge_scene
+        if not DaraCore.is_null(request.knowledge_type):
+            query['knowledgeType'] = request.knowledge_type
         if not DaraCore.is_null(request.meta_extract_columns_shrink):
             query['metaExtractColumns'] = request.meta_extract_columns_shrink
         if not DaraCore.is_null(request.pipeline_commercial_cu):

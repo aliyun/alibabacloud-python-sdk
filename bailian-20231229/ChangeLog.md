@@ -1,3 +1,7 @@
+2026-03-27 Version: 2.8.3
+- Update API CreateIndex: add request parameters knowledgeType.
+
+
 2026-03-13 Version: 2.8.2
 - Update API CreateIndex: add request parameters channelType.
 
