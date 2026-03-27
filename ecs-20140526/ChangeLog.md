@@ -3,6 +3,11 @@
 - Update API LockSnapshot: add response parameters Body.LockedSnapshotInfo.LockMode.
 
 
+2026-03-27 Version: 7.6.2
+- Update API DescribeLockedSnapshots: add response parameters Body.LockedSnapshotsInfo.$.LockMode.
+- Update API LockSnapshot: add response parameters Body.LockedSnapshotInfo.LockMode.
+
+
 2026-02-02 Version: 7.6.0
 - Support API CreatePlanMaintenanceWindow.
 - Support API DeletePlanMaintenanceWindow.
