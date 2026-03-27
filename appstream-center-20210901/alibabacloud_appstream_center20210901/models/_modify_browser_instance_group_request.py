@@ -344,6 +344,8 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         clipboard_write_limit: int = None,
         file_clipboard: str = None,
         rich_text_clipboard: str = None,
+        rich_text_clipboard_limit: int = None,
+        rich_text_clipboard_size_unit: str = None,
         text_clipboard: str = None,
     ):
         # The clipboard policy.
@@ -385,6 +387,8 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         # *   write: Allows copying from the cloud browser to the local device.
         # *   off: Blocks copying in both directions.
         self.rich_text_clipboard = rich_text_clipboard
+        self.rich_text_clipboard_limit = rich_text_clipboard_limit
+        self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
         # The text clipboard policy.
         # 
         # Valid values:
@@ -424,6 +428,12 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         if self.rich_text_clipboard is not None:
             result['RichTextClipboard'] = self.rich_text_clipboard
 
+        if self.rich_text_clipboard_limit is not None:
+            result['RichTextClipboardLimit'] = self.rich_text_clipboard_limit
+
+        if self.rich_text_clipboard_size_unit is not None:
+            result['RichTextClipboardSizeUnit'] = self.rich_text_clipboard_size_unit
+
         if self.text_clipboard is not None:
             result['TextClipboard'] = self.text_clipboard
 
@@ -451,6 +461,12 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
 
         if m.get('RichTextClipboard') is not None:
             self.rich_text_clipboard = m.get('RichTextClipboard')
+
+        if m.get('RichTextClipboardLimit') is not None:
+            self.rich_text_clipboard_limit = m.get('RichTextClipboardLimit')
+
+        if m.get('RichTextClipboardSizeUnit') is not None:
+            self.rich_text_clipboard_size_unit = m.get('RichTextClipboardSizeUnit')
 
         if m.get('TextClipboard') is not None:
             self.text_clipboard = m.get('TextClipboard')

@@ -1,3 +1,8 @@
+2026-03-27 Version: 4.7.12
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardLimit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardSizeUnit.
+
+
 2026-03-10 Version: 4.7.11
 - Update API ListNodeInstanceType: add request parameters InstanceTypeForModify.
 - Update API ListNodeInstanceType: add request parameters OrderType.
