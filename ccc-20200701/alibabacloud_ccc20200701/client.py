@@ -2038,6 +2038,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_work_mode_with_options_async(request, runtime)
 
+    def claim_call_with_options(
+        self,
+        request: main_models.ClaimCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClaimCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.candidate_user_list_json):
+            query['CandidateUserListJson'] = request.candidate_user_list_json
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.skill_group_id):
+            query['SkillGroupId'] = request.skill_group_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClaimCall',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClaimCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def claim_call_with_options_async(
+        self,
+        request: main_models.ClaimCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClaimCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.candidate_user_list_json):
+            query['CandidateUserListJson'] = request.candidate_user_list_json
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.skill_group_id):
+            query['SkillGroupId'] = request.skill_group_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClaimCall',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClaimCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def claim_call(
+        self,
+        request: main_models.ClaimCallRequest,
+    ) -> main_models.ClaimCallResponse:
+        runtime = RuntimeOptions()
+        return self.claim_call_with_options(request, runtime)
+
+    async def claim_call_async(
+        self,
+        request: main_models.ClaimCallRequest,
+    ) -> main_models.ClaimCallResponse:
+        runtime = RuntimeOptions()
+        return await self.claim_call_with_options_async(request, runtime)
+
     def claim_chat_with_options(
         self,
         request: main_models.ClaimChatRequest,

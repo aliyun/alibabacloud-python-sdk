@@ -76,6 +76,9 @@ from ._change_visibility_response import ChangeVisibilityResponse
 from ._change_work_mode_request import ChangeWorkModeRequest
 from ._change_work_mode_response_body import ChangeWorkModeResponseBody
 from ._change_work_mode_response import ChangeWorkModeResponse
+from ._claim_call_request import ClaimCallRequest
+from ._claim_call_response_body import ClaimCallResponseBody
+from ._claim_call_response import ClaimCallResponse
 from ._claim_chat_request import ClaimChatRequest
 from ._claim_chat_response_body import ClaimChatResponseBody
 from ._claim_chat_response import ClaimChatResponse
@@ -795,6 +798,10 @@ from ._cancel_attended_transfer_response_body import CancelAttendedTransferRespo
 from ._cancel_attended_transfer_response_body import CancelAttendedTransferResponseBodyData
 from ._change_visibility_response_body import ChangeVisibilityResponseBodyData
 from ._change_work_mode_response_body import ChangeWorkModeResponseBodyData
+from ._claim_call_response_body import ClaimCallResponseBodyDataCallContextChannelContexts
+from ._claim_call_response_body import ClaimCallResponseBodyDataCallContext
+from ._claim_call_response_body import ClaimCallResponseBodyDataUserContext
+from ._claim_call_response_body import ClaimCallResponseBodyData
 from ._claim_chat_response_body import ClaimChatResponseBodyDataChatContexts
 from ._claim_chat_response_body import ClaimChatResponseBodyDataUserContext
 from ._claim_chat_response_body import ClaimChatResponseBodyData
@@ -1230,6 +1237,9 @@ __all__ = [
     ChangeWorkModeRequest,
     ChangeWorkModeResponseBody,
     ChangeWorkModeResponse,
+    ClaimCallRequest,
+    ClaimCallResponseBody,
+    ClaimCallResponse,
     ClaimChatRequest,
     ClaimChatResponseBody,
     ClaimChatResponse,
@@ -1949,6 +1959,10 @@ __all__ = [
     CancelAttendedTransferResponseBodyData,
     ChangeVisibilityResponseBodyData,
     ChangeWorkModeResponseBodyData,
+    ClaimCallResponseBodyDataCallContextChannelContexts,
+    ClaimCallResponseBodyDataCallContext,
+    ClaimCallResponseBodyDataUserContext,
+    ClaimCallResponseBodyData,
     ClaimChatResponseBodyDataChatContexts,
     ClaimChatResponseBodyDataUserContext,
     ClaimChatResponseBodyData,
