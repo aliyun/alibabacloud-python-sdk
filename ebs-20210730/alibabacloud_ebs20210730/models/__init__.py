@@ -27,6 +27,9 @@ from ._create_app_response import CreateAppResponse
 from ._create_dedicated_block_storage_cluster_request import CreateDedicatedBlockStorageClusterRequest
 from ._create_dedicated_block_storage_cluster_response_body import CreateDedicatedBlockStorageClusterResponseBody
 from ._create_dedicated_block_storage_cluster_response import CreateDedicatedBlockStorageClusterResponse
+from ._create_diagnose_report_request import CreateDiagnoseReportRequest
+from ._create_diagnose_report_response_body import CreateDiagnoseReportResponseBody
+from ._create_diagnose_report_response import CreateDiagnoseReportResponse
 from ._create_disk_replica_group_request import CreateDiskReplicaGroupRequest
 from ._create_disk_replica_group_response_body import CreateDiskReplicaGroupResponseBody
 from ._create_disk_replica_group_response import CreateDiskReplicaGroupResponse
@@ -58,6 +61,9 @@ from ._describe_dedicated_block_storage_cluster_disks_response import DescribeDe
 from ._describe_dedicated_block_storage_clusters_request import DescribeDedicatedBlockStorageClustersRequest
 from ._describe_dedicated_block_storage_clusters_response_body import DescribeDedicatedBlockStorageClustersResponseBody
 from ._describe_dedicated_block_storage_clusters_response import DescribeDedicatedBlockStorageClustersResponse
+from ._describe_diagnose_report_request import DescribeDiagnoseReportRequest
+from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBody
+from ._describe_diagnose_report_response import DescribeDiagnoseReportResponse
 from ._describe_disk_events_request import DescribeDiskEventsRequest
 from ._describe_disk_events_response_body import DescribeDiskEventsResponseBody
 from ._describe_disk_events_response import DescribeDiskEventsResponse
@@ -213,6 +219,8 @@ from ._describe_dedicated_block_storage_clusters_request import DescribeDedicate
 from ._describe_dedicated_block_storage_clusters_response_body import DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity
 from ._describe_dedicated_block_storage_clusters_response_body import DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags
 from ._describe_dedicated_block_storage_clusters_response_body import DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters
+from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyReportsEvents
+from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyReports
 from ._describe_disk_events_response_body import DescribeDiskEventsResponseBodyDiskEvents
 from ._describe_disk_monitor_data_response_body import DescribeDiskMonitorDataResponseBodyMonitorData
 from ._describe_disk_monitor_data_list_response_body import DescribeDiskMonitorDataListResponseBodyMonitorData
@@ -287,6 +295,9 @@ __all__ = [
     CreateDedicatedBlockStorageClusterRequest,
     CreateDedicatedBlockStorageClusterResponseBody,
     CreateDedicatedBlockStorageClusterResponse,
+    CreateDiagnoseReportRequest,
+    CreateDiagnoseReportResponseBody,
+    CreateDiagnoseReportResponse,
     CreateDiskReplicaGroupRequest,
     CreateDiskReplicaGroupResponseBody,
     CreateDiskReplicaGroupResponse,
@@ -318,6 +329,9 @@ __all__ = [
     DescribeDedicatedBlockStorageClustersRequest,
     DescribeDedicatedBlockStorageClustersResponseBody,
     DescribeDedicatedBlockStorageClustersResponse,
+    DescribeDiagnoseReportRequest,
+    DescribeDiagnoseReportResponseBody,
+    DescribeDiagnoseReportResponse,
     DescribeDiskEventsRequest,
     DescribeDiskEventsResponseBody,
     DescribeDiskEventsResponse,
@@ -473,6 +487,8 @@ __all__ = [
     DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity,
     DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags,
     DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters,
+    DescribeDiagnoseReportResponseBodyReportsEvents,
+    DescribeDiagnoseReportResponseBodyReports,
     DescribeDiskEventsResponseBodyDiskEvents,
     DescribeDiskMonitorDataResponseBodyMonitorData,
     DescribeDiskMonitorDataListResponseBodyMonitorData,

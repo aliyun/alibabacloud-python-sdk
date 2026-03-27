@@ -1,3 +1,8 @@
+2026-03-27 Version: 4.5.0
+- Support API CreateDiagnoseReport.
+- Support API DescribeDiagnoseReport.
+
+
 2026-02-25 Version: 4.4.1
 - Update API ListReplicaEdgeSupported: add response parameters Body.SupportedRegions.$.Zones.$.SupportRtc.
 

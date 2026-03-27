@@ -754,6 +754,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dedicated_block_storage_cluster_with_options_async(request, runtime)
 
+    def create_diagnose_report_with_options(
+        self,
+        request: main_models.CreateDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.diagnose_type):
+            query['DiagnoseType'] = request.diagnose_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDiagnoseReport',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDiagnoseReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnose_report_with_options_async(
+        self,
+        request: main_models.CreateDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.diagnose_type):
+            query['DiagnoseType'] = request.diagnose_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDiagnoseReport',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDiagnoseReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnose_report(
+        self,
+        request: main_models.CreateDiagnoseReportRequest,
+    ) -> main_models.CreateDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return self.create_diagnose_report_with_options(request, runtime)
+
+    async def create_diagnose_report_async(
+        self,
+        request: main_models.CreateDiagnoseReportRequest,
+    ) -> main_models.CreateDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return await self.create_diagnose_report_with_options_async(request, runtime)
+
     def create_disk_replica_group_with_options(
         self,
         request: main_models.CreateDiskReplicaGroupRequest,
@@ -1745,6 +1839,112 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDedicatedBlockStorageClustersResponse:
         runtime = RuntimeOptions()
         return await self.describe_dedicated_block_storage_clusters_with_options_async(request, runtime)
+
+    def describe_diagnose_report_with_options(
+        self,
+        request: main_models.DescribeDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.diagnose_type):
+            query['DiagnoseType'] = request.diagnose_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_ids):
+            query['ReportIds'] = request.report_ids
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDiagnoseReport',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDiagnoseReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnose_report_with_options_async(
+        self,
+        request: main_models.DescribeDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.diagnose_type):
+            query['DiagnoseType'] = request.diagnose_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_ids):
+            query['ReportIds'] = request.report_ids
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDiagnoseReport',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDiagnoseReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnose_report(
+        self,
+        request: main_models.DescribeDiagnoseReportRequest,
+    ) -> main_models.DescribeDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_diagnose_report_with_options(request, runtime)
+
+    async def describe_diagnose_report_async(
+        self,
+        request: main_models.DescribeDiagnoseReportRequest,
+    ) -> main_models.DescribeDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_diagnose_report_with_options_async(request, runtime)
 
     def describe_disk_events_with_options(
         self,
