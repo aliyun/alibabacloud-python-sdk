@@ -14,11 +14,17 @@ class Partition(DaraModel):
         record_count: int = None,
         table_id: str = None,
     ):
+        # The creation time. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The storage size of the partition. Unit: bytes.
         self.data_size = data_size
+        # The modification time. This value is a UNIX timestamp. Unit: milliseconds.
         self.modify_time = modify_time
+        # The partition name.
         self.name = name
+        # The number of records in the partition.
         self.record_count = record_count
+        # The ID of the table to which the partition belongs. You can configure this parameter by referring to the `Table` topic.
         self.table_id = table_id
 
     def validate(self):

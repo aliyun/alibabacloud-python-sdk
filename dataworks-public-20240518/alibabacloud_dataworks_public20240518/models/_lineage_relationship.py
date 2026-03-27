@@ -14,10 +14,15 @@ class LineageRelationship(DaraModel):
         src_entity: main_models.LineageEntity = None,
         task: main_models.LineageTask = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The destination entity.
         self.dst_entity = dst_entity
+        # The ID.
         self.id = id
+        # The source entity.
         self.src_entity = src_entity
+        # The task.
         self.task = task
 
     def validate(self):

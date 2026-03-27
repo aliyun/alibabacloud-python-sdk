@@ -59,6 +59,7 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
         job_status: str = None,
         job_type: str = None,
         migration_type: str = None,
+        owner: str = None,
         project_id: int = None,
         resource_settings: main_models.GetDIJobResponseBodyPagingInfoResourceSettings = None,
         source_data_source_settings: List[main_models.GetDIJobResponseBodyPagingInfoSourceDataSourceSettings] = None,
@@ -98,6 +99,7 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
         # *   OfflineIncremental: batch incremental synchronization of data in an entire database
         # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
         self.migration_type = migration_type
+        self.owner = owner
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # This parameter indicates the DataWorks workspace to which the API operation is applied.
@@ -176,6 +178,9 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
         if self.migration_type is not None:
             result['MigrationType'] = self.migration_type
 
+        if self.owner is not None:
+            result['Owner'] = self.owner
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -237,6 +242,9 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
 
         if m.get('MigrationType') is not None:
             self.migration_type = m.get('MigrationType')
+
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

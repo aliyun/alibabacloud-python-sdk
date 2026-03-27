@@ -13,9 +13,15 @@ class IdentifyCredential(DaraModel):
         user_id: str = None,
         user_type: str = None,
     ):
+        # The data source.
         self.data_source = data_source
+        # The workspace ID (optional).
         self.project_id = project_id
+        # The user ID. If it is a role, the ROLE_ prefix must be added.
         self.user_id = user_id
+        # *   Alibaba Cloud account
+        # *   RAM user
+        # *   Role
         self.user_type = user_type
 
     def validate(self):
@@ -68,11 +74,29 @@ class IdentifyCredentialDataSource(DaraModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The instance ID of the data source.
         self.instance_id = instance_id
+        # The instance name of the data source.
         self.instance_name = instance_name
+        # The password for the data source.
         self.password = password
+        # The user type of the data source.
+        # 
+        # *   Admin
+        # *   RegularUser
+        # 
+        # Valid values:
+        # 
+        # *   RegularUser: Normal user.
+        # *   Admin: Administrator.
         self.role = role
+        # The type of the data source. Supported types:
+        # 
+        # *   hive
+        # *   lindorm_for_engine
+        # *   starrocks
         self.type = type
+        # The username for the data source.
         self.user_name = user_name
 
     def validate(self):

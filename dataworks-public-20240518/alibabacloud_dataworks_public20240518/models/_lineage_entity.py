@@ -13,8 +13,11 @@ class LineageEntity(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The additional properties.
         self.attributes = attributes
+        # The entity ID.
         self.id = id
+        # The name.
         self.name = name
 
     def validate(self):

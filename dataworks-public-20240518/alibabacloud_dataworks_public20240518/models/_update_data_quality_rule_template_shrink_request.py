@@ -24,6 +24,10 @@ class UpdateDataQualityRuleTemplateShrinkRequest(DaraModel):
         self.directory_path = directory_path
         # The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
         # The sampling settings.

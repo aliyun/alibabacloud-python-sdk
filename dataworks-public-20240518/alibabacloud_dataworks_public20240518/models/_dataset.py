@@ -24,18 +24,50 @@ class Dataset(DaraModel):
         readme: str = None,
         storage_type: str = None,
     ):
+        # The description of the dataset. The length cannot exceed 1024 characters.
         self.comment = comment
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The ID of the creator.
         self.creator_id = creator_id
+        # The data type. Valid values:
+        # 
+        # *   COMMON
+        # *   PIC
+        # *   TEXT
+        # *   TABLE
+        # *   VIDEO
+        # *   AUDIO
+        # *   INDEX
         self.data_type = data_type
+        # The dataset ID.
         self.id = id
+        # Dataset tags. Supported only for PAI datasets.
         self.labels = labels
+        # The latest dataset version object.
         self.latest_version = latest_version
+        # The modification time. This value is a UNIX timestamp in milliseconds.
         self.modify_time = modify_time
+        # The dataset name. It must be a non-empty string and cannot exceed 128 characters.
         self.name = name
+        # The source of the dataset. Currently supported sources:
+        # 
+        # *   DataWorks
+        # *   PAI
         self.origin = origin
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # Instructions for using the dataset. Markdown rich text is supported.
         self.readme = readme
+        # The storage type. Valid values:
+        # 
+        # *   OSS: Object Storage Service
+        # *   NAS: General-purpose NAS file systems
+        # *   EXTREM_NAS: Extreme NAS file systems
+        # *   DLF_LANCE: Data Lake Formation
+        # *   CPFS: Cloud Paralleled File System
+        # *   BMCPFS: CPFS for Lingjun
+        # *   MAXCOMPUTE: MaxCompute table
         self.storage_type = storage_type
 
     def validate(self):

@@ -23,17 +23,32 @@ class DataQualityRule(DaraModel):
         template_code: str = None,
         tenant_id: int = None,
     ):
+        # The check settings for sample data.
         self.checking_config = checking_config
+        # The description of the rule. The description can be up to 500 characters in length.
         self.description = description
+        # Indicates whether the rule is enabled.
         self.enabled = enabled
+        # The operations that you can perform after the rule-based check fails.
         self.error_handlers = error_handlers
+        # The rule ID.
         self.id = id
+        # The rule name. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
         self.name = name
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The settings for sampling.
         self.sampling_config = sampling_config
+        # The strength of the rule. Valid values:
+        # 
+        # *   Normal
+        # *   High
         self.severity = severity
+        # The monitored object of the rule.
         self.target = target
+        # The template used by the rule.
         self.template_code = template_code
+        # The DataWorks tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -147,9 +162,23 @@ class DataQualityRuleTarget(DaraModel):
         table_guid: str = None,
         type: str = None,
     ):
+        # The type of the database to which the table belongs. Valid values:
+        # 
+        # *   maxcompute
+        # *   emr
+        # *   cdh
+        # *   hologres
+        # *   analyticdb_for_postgresql
+        # *   analyticdb_for_mysql
+        # *   starrocks
         self.database_type = database_type
+        # The configuration of the partitioned table.
         self.partition_spec = partition_spec
+        # The ID of the table in Data Map.
         self.table_guid = table_guid
+        # The type of the monitored object. Valid values:
+        # 
+        # *   Table
         self.type = type
 
     def validate(self):
@@ -198,9 +227,29 @@ class DataQualityRuleSamplingConfig(DaraModel):
         sampling_filter: str = None,
         setting_config: str = None,
     ):
+        # The metrics used for sampling. Valid values:
+        # 
+        # *   Count: the number of rows in the table.
+        # *   Min: the minimum value of the field.
+        # *   Max: the maximum value of the field.
+        # *   Avg: the average value of the field.
+        # *   DistinctCount: the number of unique values of the field after deduplication.
+        # *   DistinctPercent: the percentage of the number of unique values of the field after deduplication to the number of rows in the table.
+        # *   DuplicatedCount: the number of duplicated values in the field.
+        # *   DuplicatedPercent: the percentage of the number of duplicated values of the field to the number of rows in the table.
+        # *   TableSize: the table size.
+        # *   NullValueCount: the number of rows in which the field is set to null.
+        # *   NullValuePercent: the percentage of the number of rows in which the field is set to null to the number of rows in the table.
+        # *   GroupCount: the field value and the number of rows for each field value.
+        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+        # *   UserDefinedSql: indicates that the data is sampled by executing custom SQL statements.
         self.metric = metric
+        # The parameters required for sampling.
         self.metric_parameters = metric_parameters
+        # The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
         self.sampling_filter = sampling_filter
+        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -247,7 +296,11 @@ class DataQualityRuleErrorHandlers(DaraModel):
         error_data_filter: str = None,
         type: str = None,
     ):
+        # The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
         self.error_data_filter = error_data_filter
+        # The type of the operation. Valid values:
+        # 
+        # *   SaveErrorData
         self.type = type
 
     def validate(self):
@@ -283,8 +336,18 @@ class DataQualityRuleCheckingConfig(DaraModel):
         thresholds: main_models.DataQualityRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
+        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
         self.referenced_samples_filter = referenced_samples_filter
+        # The threshold settings.
         self.thresholds = thresholds
+        # The threshold calculation method. Valid values:
+        # 
+        # *   Fixed
+        # *   Fluctation
+        # *   FluctationDiscreate
+        # *   Auto
+        # *   Average
+        # *   Variance
         self.type = type
 
     def validate(self):
@@ -328,8 +391,11 @@ class DataQualityRuleCheckingConfigThresholds(DaraModel):
         expected: main_models.DataQualityRuleCheckingConfigThresholdsExpected = None,
         warned: main_models.DataQualityRuleCheckingConfigThresholdsWarned = None,
     ):
+        # The threshold settings for critical alerts.
         self.critical = critical
+        # The expected threshold setting.
         self.expected = expected
+        # The threshold settings for normal alerts.
         self.warned = warned
 
     def validate(self):
@@ -380,7 +446,16 @@ class DataQualityRuleCheckingConfigThresholdsWarned(DaraModel):
         value: str = None,
     ):
         self.expression = expression
+        # The comparison operator. Valid values:
+        # 
+        # *   />
+        # *   />=
+        # *   <
+        # *   <=
+        # *   !=
+        # *   \\=
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -423,7 +498,16 @@ class DataQualityRuleCheckingConfigThresholdsExpected(DaraModel):
         value: str = None,
     ):
         self.expression = expression
+        # The comparison operator. Valid values:
+        # 
+        # *   />
+        # *   />=
+        # *   <
+        # *   <=
+        # *   !=
+        # *   \\=
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -466,7 +550,16 @@ class DataQualityRuleCheckingConfigThresholdsCritical(DaraModel):
         value: str = None,
     ):
         self.expression = expression
+        # The comparison operator. Valid values:
+        # 
+        # *   />
+        # *   />=
+        # *   <
+        # *   <=
+        # *   !=
+        # *   \\=
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):

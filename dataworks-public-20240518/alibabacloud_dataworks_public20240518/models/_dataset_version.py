@@ -23,17 +23,41 @@ class DatasetVersion(DaraModel):
         url: str = None,
         version_number: int = None,
     ):
+        # The dataset version description.
         self.comment = comment
+        # Creation time (milliseconds)
         self.create_time = create_time
+        # The creator ID.
         self.creator_id = creator_id
+        # The corresponding dataset ID.
         self.dataset_id = dataset_id
+        # The dataset version ID.
         self.id = id
+        # The storage import configuration for the dataset; required configuration varies by storage type.
+        # 
+        # **NAS**
+        # 
+        # Refer to the return values from the file storage API DescribeFileSystems.
+        # 
+        # ```JSON
+        # {
+        # "fileSystemId": "3b6XXX89c9", // The file system ID.
+        # "fileSystemStorageType":  "Performance" // The file system storage type.
+        # "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+        # }
+        # ```
         self.import_info = import_info
+        # The PAI dataset label.
         self.labels = labels
+        # Modification time (milliseconds)
         self.modify_time = modify_time
+        # The mount path. Defaults to /mnt/data.
         self.mount_path = mount_path
+        # Storage type (read-only); consistent with the corresponding property of the parent dataset.
         self.storage_type = storage_type
+        # URL
         self.url = url
+        # The dataset version number.
         self.version_number = version_number
 
     def validate(self):

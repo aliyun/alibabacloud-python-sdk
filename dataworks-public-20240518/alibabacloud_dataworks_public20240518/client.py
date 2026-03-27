@@ -1193,6 +1193,8 @@ class Client(OpenApiClient):
             query['MigrationType'] = request.migration_type
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.source_data_source_type):
@@ -1202,6 +1204,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.destination_data_source_settings_shrink):
             body['DestinationDataSourceSettings'] = request.destination_data_source_settings_shrink
+        if not DaraCore.is_null(request.file_spec):
+            body['FileSpec'] = request.file_spec
         if not DaraCore.is_null(request.job_settings_shrink):
             body['JobSettings'] = request.job_settings_shrink
         if not DaraCore.is_null(request.resource_settings_shrink):
@@ -1263,6 +1267,8 @@ class Client(OpenApiClient):
             query['MigrationType'] = request.migration_type
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.source_data_source_type):
@@ -1272,6 +1278,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.destination_data_source_settings_shrink):
             body['DestinationDataSourceSettings'] = request.destination_data_source_settings_shrink
+        if not DaraCore.is_null(request.file_spec):
+            body['FileSpec'] = request.file_spec
         if not DaraCore.is_null(request.job_settings_shrink):
             body['JobSettings'] = request.job_settings_shrink
         if not DaraCore.is_null(request.resource_settings_shrink):
@@ -19653,11 +19661,15 @@ class Client(OpenApiClient):
             query['DIJobId'] = request.dijob_id
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.file_spec):
+            body['FileSpec'] = request.file_spec
         if not DaraCore.is_null(request.job_settings_shrink):
             body['JobSettings'] = request.job_settings_shrink
         if not DaraCore.is_null(request.resource_settings_shrink):
@@ -19707,11 +19719,15 @@ class Client(OpenApiClient):
             query['DIJobId'] = request.dijob_id
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.file_spec):
+            body['FileSpec'] = request.file_spec
         if not DaraCore.is_null(request.job_settings_shrink):
             body['JobSettings'] = request.job_settings_shrink
         if not DaraCore.is_null(request.resource_settings_shrink):

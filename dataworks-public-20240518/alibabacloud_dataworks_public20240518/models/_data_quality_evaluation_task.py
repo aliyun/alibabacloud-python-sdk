@@ -22,16 +22,27 @@ class DataQualityEvaluationTask(DaraModel):
         tenant_id: int = None,
         trigger: main_models.DataQualityEvaluationTaskTrigger = None,
     ):
+        # The ID of the data source that is used for task running.
         self.data_source_id = data_source_id
+        # The description of the task. The description can be up to 65,535 characters in length.
         self.description = description
+        # The callback configurations of the task during the instance lifecycle. Blocking an auto triggered node is a type of callback event. Only this type is supported.
         self.hooks = hooks
+        # The ID of the data quality monitoring task.
         self.id = id
+        # The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
         self.name = name
+        # The configurations for alert notifications.
         self.notifications = notifications
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field can be set to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks.
         self.runtime_conf = runtime_conf
+        # The monitored object of the task.
         self.target = target
+        # The DataWorks tenant ID.
         self.tenant_id = tenant_id
+        # The trigger configuration of the task.
         self.trigger = trigger
 
     def validate(self):
@@ -143,7 +154,11 @@ class DataQualityEvaluationTaskTrigger(DaraModel):
         task_ids: List[int] = None,
         type: str = None,
     ):
+        # The IDs of the auto triggered nodes of which the instances are successfully run. This parameter takes effect only if the Type parameter is set to ByScheduledTaskInstance.
         self.task_ids = task_ids
+        # The trigger condition of the task. Valid values:
+        # 
+        # *   ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
         self.type = type
 
     def validate(self):
@@ -180,9 +195,23 @@ class DataQualityEvaluationTaskTarget(DaraModel):
         table_guid: str = None,
         type: str = None,
     ):
+        # The type of the database to which the table belongs. Valid values:
+        # 
+        # *   maxcompute
+        # *   emr
+        # *   cdh
+        # *   hologres
+        # *   analyticdb_for_postgresql
+        # *   analyticdb_for_mysql
+        # *   starrocks
         self.database_type = database_type
+        # The configuration of the partitioned table.
         self.partition_spec = partition_spec
+        # The ID of the table in Data Map.
         self.table_guid = table_guid
+        # The type of the monitored object. Valid values:
+        # 
+        # *   Table
         self.type = type
 
     def validate(self):
@@ -229,7 +258,9 @@ class DataQualityEvaluationTaskNotifications(DaraModel):
         condition: str = None,
         notifications: List[main_models.DataQualityEvaluationTaskNotificationsNotifications] = None,
     ):
+        # The trigger condition of the alert notification.
         self.condition = condition
+        # The configurations for alert notifications.
         self.notifications = notifications
 
     def validate(self):
@@ -272,7 +303,9 @@ class DataQualityEvaluationTaskNotificationsNotifications(DaraModel):
         notification_channels: List[main_models.DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[main_models.DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers] = None,
     ):
+        # The alert notification methods.
         self.notification_channels = notification_channels
+        # The alert recipients.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -325,8 +358,11 @@ class DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers(D
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
+        # The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
         self.extension = extension
+        # The type of the alert recipient.
         self.receiver_type = receiver_type
+        # The alert recipients.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -366,6 +402,7 @@ class DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels(Da
         self,
         channels: List[str] = None,
     ):
+        # The alert notification method.
         self.channels = channels
 
     def validate(self):
@@ -394,7 +431,11 @@ class DataQualityEvaluationTaskHooks(DaraModel):
         condition: str = None,
         type: str = None,
     ):
+        # The trigger configuration of the callback event.
         self.condition = condition
+        # The type of the callback event. Valid values:
+        # 
+        # *   BlockTaskInstance. The value indicates that an auto triggered node is blocked.
         self.type = type
 
     def validate(self):

@@ -118,6 +118,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
         job_name: str = None,
         job_status: str = None,
         migration_type: str = None,
+        owner: str = None,
         project_id: int = None,
         source_data_source_type: str = None,
     ):
@@ -146,6 +147,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
         # *   OfflineIncremental: batch incremental synchronization
         # *   FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
         self.migration_type = migration_type
+        self.owner = owner
         # The ID of the DataWorks workspace to which the synchronization task belongs.
         self.project_id = project_id
         # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse. If you do not configure this parameter, the API operation returns synchronization tasks that use all types of sources.
@@ -177,6 +179,9 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
         if self.migration_type is not None:
             result['MigrationType'] = self.migration_type
 
+        if self.owner is not None:
+            result['Owner'] = self.owner
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -204,6 +209,9 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
 
         if m.get('MigrationType') is not None:
             self.migration_type = m.get('MigrationType')
+
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

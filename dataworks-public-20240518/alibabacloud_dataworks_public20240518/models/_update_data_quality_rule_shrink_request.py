@@ -32,6 +32,8 @@ class UpdateDataQualityRuleShrinkRequest(DaraModel):
         self.id = id
         # The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
         self.name = name
+        # The DataWorks workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
         # The sampling settings.

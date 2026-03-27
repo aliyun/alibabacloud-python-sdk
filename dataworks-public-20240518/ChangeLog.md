@@ -1,3 +1,8 @@
+2026-03-27 Version: 8.0.5
+- Update API CreateDIJob: add request parameters FileSpec.
+- Update API UpdateDIJob: add request parameters FileSpec.
+
+
 2026-01-15 Version: 8.0.3
 - Generated python 2024-05-18 for dataworks-public.
 
