@@ -19799,6 +19799,10 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.organizational_unit_id):
             query['OrganizationalUnitId'] = request.organizational_unit_id
         if not DaraCore.is_null(request.page_number):
@@ -19853,6 +19857,10 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.organizational_unit_id):
             query['OrganizationalUnitId'] = request.organizational_unit_id
         if not DaraCore.is_null(request.page_number):

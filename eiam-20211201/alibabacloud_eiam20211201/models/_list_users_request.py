@@ -12,6 +12,8 @@ class ListUsersRequest(DaraModel):
         display_name_starts_with: str = None,
         email: str = None,
         instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         organizational_unit_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -32,6 +34,8 @@ class ListUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
         # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
         # The number of the page to return. Default value: 1.
@@ -84,6 +88,12 @@ class ListUsersRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
         if self.organizational_unit_id is not None:
             result['OrganizationalUnitId'] = self.organizational_unit_id
 
@@ -129,6 +139,12 @@ class ListUsersRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('OrganizationalUnitId') is not None:
             self.organizational_unit_id = m.get('OrganizationalUnitId')
