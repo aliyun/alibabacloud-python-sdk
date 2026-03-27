@@ -357,6 +357,9 @@ from ._describe_secret_response import DescribeSecretResponse
 from ._describe_swimming_lane_request import DescribeSwimmingLaneRequest
 from ._describe_swimming_lane_response_body import DescribeSwimmingLaneResponseBody
 from ._describe_swimming_lane_response import DescribeSwimmingLaneResponse
+from ._describe_vswitches_request import DescribeVSwitchesRequest
+from ._describe_vswitches_response_body import DescribeVSwitchesResponseBody
+from ._describe_vswitches_response import DescribeVSwitchesResponse
 from ._describe_web_application_request import DescribeWebApplicationRequest
 from ._describe_web_application_response import DescribeWebApplicationResponse
 from ._describe_web_application_resource_statics_request import DescribeWebApplicationResourceStaticsRequest
@@ -784,6 +787,7 @@ from ._describe_swimming_lane_response_body import DescribeSwimmingLaneResponseB
 from ._describe_swimming_lane_response_body import DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes
 from ._describe_swimming_lane_response_body import DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule
 from ._describe_swimming_lane_response_body import DescribeSwimmingLaneResponseBodyData
+from ._describe_vswitches_response_body import DescribeVSwitchesResponseBodyData
 from ._disable_arms_response_body import DisableArmsResponseBodyData
 from ._downgrade_application_apm_service_response_body import DowngradeApplicationApmServiceResponseBodyData
 from ._exec_job_response_body import ExecJobResponseBodyData
@@ -1243,6 +1247,9 @@ __all__ = [
     DescribeSwimmingLaneRequest,
     DescribeSwimmingLaneResponseBody,
     DescribeSwimmingLaneResponse,
+    DescribeVSwitchesRequest,
+    DescribeVSwitchesResponseBody,
+    DescribeVSwitchesResponse,
     DescribeWebApplicationRequest,
     DescribeWebApplicationResponse,
     DescribeWebApplicationResourceStaticsRequest,
@@ -1670,6 +1677,7 @@ __all__ = [
     DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes,
     DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule,
     DescribeSwimmingLaneResponseBodyData,
+    DescribeVSwitchesResponseBodyData,
     DisableArmsResponseBodyData,
     DowngradeApplicationApmServiceResponseBodyData,
     ExecJobResponseBodyData,

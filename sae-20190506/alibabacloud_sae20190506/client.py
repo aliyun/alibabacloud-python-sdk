@@ -6491,6 +6491,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_swimming_lane_with_options_async(request, headers, runtime)
 
+    def describe_vswitches_with_options(
+        self,
+        request: main_models.DescribeVSwitchesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVSwitchesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.v_switch_name):
+            query['VSwitchName'] = request.v_switch_name
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVSwitches',
+            version = '2019-05-06',
+            protocol = 'HTTPS',
+            pathname = f'/pop/v1/sam/vpc/vSwitchs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVSwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vswitches_with_options_async(
+        self,
+        request: main_models.DescribeVSwitchesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVSwitchesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.v_switch_name):
+            query['VSwitchName'] = request.v_switch_name
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVSwitches',
+            version = '2019-05-06',
+            protocol = 'HTTPS',
+            pathname = f'/pop/v1/sam/vpc/vSwitchs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVSwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vswitches(
+        self,
+        request: main_models.DescribeVSwitchesRequest,
+    ) -> main_models.DescribeVSwitchesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_vswitches_with_options(request, headers, runtime)
+
+    async def describe_vswitches_async(
+        self,
+        request: main_models.DescribeVSwitchesRequest,
+    ) -> main_models.DescribeVSwitchesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_vswitches_with_options_async(request, headers, runtime)
+
     def describe_web_application_with_options(
         self,
         application_id: str,
