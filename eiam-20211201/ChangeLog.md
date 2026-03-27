@@ -5,6 +5,13 @@
 - Update API ListUsers: add response parameters Body.NextToken.
 
 
+2026-03-27 Version: 2.15.2
+- Update API ListUsers: add request parameters MaxResults.
+- Update API ListUsers: add request parameters NextToken.
+- Update API ListUsers: add response parameters Body.MaxResults.
+- Update API ListUsers: add response parameters Body.NextToken.
+
+
 2026-03-18 Version: 2.15.0
 - Support API CreateCredentialProvider.
 - Support API DeleteCredentialProvider.
