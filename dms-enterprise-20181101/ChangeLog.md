@@ -1,3 +1,7 @@
+2026-03-27 Version: 2.4.0
+- Support API SearchTableKnowledge.
+
+
 2026-03-23 Version: 2.3.0
 - Support API ListTagMetaAsset.
 

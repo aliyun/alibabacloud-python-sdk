@@ -23805,6 +23805,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.search_table_with_options_async(request, runtime)
 
+    def search_table_knowledge_with_options(
+        self,
+        request: main_models.SearchTableKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchTableKnowledgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_id):
+            query['DbId'] = request.db_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchTableKnowledge',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchTableKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_table_knowledge_with_options_async(
+        self,
+        request: main_models.SearchTableKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchTableKnowledgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_id):
+            query['DbId'] = request.db_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchTableKnowledge',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchTableKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_table_knowledge(
+        self,
+        request: main_models.SearchTableKnowledgeRequest,
+    ) -> main_models.SearchTableKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.search_table_knowledge_with_options(request, runtime)
+
+    async def search_table_knowledge_async(
+        self,
+        request: main_models.SearchTableKnowledgeRequest,
+    ) -> main_models.SearchTableKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.search_table_knowledge_with_options_async(request, runtime)
+
     def set_owners_with_options(
         self,
         request: main_models.SetOwnersRequest,

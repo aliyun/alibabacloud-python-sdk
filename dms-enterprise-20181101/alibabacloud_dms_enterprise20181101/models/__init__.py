@@ -879,6 +879,9 @@ from ._search_database_response import SearchDatabaseResponse
 from ._search_table_request import SearchTableRequest
 from ._search_table_response_body import SearchTableResponseBody
 from ._search_table_response import SearchTableResponse
+from ._search_table_knowledge_request import SearchTableKnowledgeRequest
+from ._search_table_knowledge_response_body import SearchTableKnowledgeResponseBody
+from ._search_table_knowledge_response import SearchTableKnowledgeResponse
 from ._set_owners_request import SetOwnersRequest
 from ._set_owners_response_body import SetOwnersResponseBody
 from ._set_owners_response import SetOwnersResponse
@@ -1375,6 +1378,7 @@ from ._search_table_response_body import SearchTableResponseBodySearchTableListS
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTableOwnerNameList
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTable
 from ._search_table_response_body import SearchTableResponseBodySearchTableList
+from ._search_table_knowledge_response_body import SearchTableKnowledgeResponseBodyData
 from ._simply_add_instance_response_body import SimplyAddInstanceResponseBodyInstance
 from ._update_authority_template_response_body import UpdateAuthorityTemplateResponseBodyAuthorityTemplateView
 from ._update_slarules_request import UpdateSLARulesRequestSlaRuleList
@@ -2261,6 +2265,9 @@ __all__ = [
     SearchTableRequest,
     SearchTableResponseBody,
     SearchTableResponse,
+    SearchTableKnowledgeRequest,
+    SearchTableKnowledgeResponseBody,
+    SearchTableKnowledgeResponse,
     SetOwnersRequest,
     SetOwnersResponseBody,
     SetOwnersResponse,
@@ -2757,6 +2764,7 @@ __all__ = [
     SearchTableResponseBodySearchTableListSearchTableOwnerNameList,
     SearchTableResponseBodySearchTableListSearchTable,
     SearchTableResponseBodySearchTableList,
+    SearchTableKnowledgeResponseBodyData,
     SimplyAddInstanceResponseBodyInstance,
     UpdateAuthorityTemplateResponseBodyAuthorityTemplateView,
     UpdateSLARulesRequestSlaRuleList,
