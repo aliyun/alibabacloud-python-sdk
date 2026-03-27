@@ -20,6 +20,7 @@ class DescribeDeploymentSetsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         strategy: str = None,
+        type: str = None,
     ):
         # The IDs of deployment sets. The value can be a JSON array that consists of deployment set IDs in the format of `["ds-xxxxxxxxx", "ds-yyyyyyyyy", ... "ds-zzzzzzzzz"]`. You can specify up to 100 deployment set IDs in each request. Separate the deployment set IDs with commas (,).
         self.deployment_set_ids = deployment_set_ids
@@ -56,6 +57,7 @@ class DescribeDeploymentSetsRequest(DaraModel):
         # *   Availability: high availability strategy
         # *   AvailabilityGroup: high availability group strategy
         self.strategy = strategy
+        self.type = type
 
     def validate(self):
         pass
@@ -104,6 +106,9 @@ class DescribeDeploymentSetsRequest(DaraModel):
         if self.strategy is not None:
             result['Strategy'] = self.strategy
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -146,6 +151,9 @@ class DescribeDeploymentSetsRequest(DaraModel):
 
         if m.get('Strategy') is not None:
             self.strategy = m.get('Strategy')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

@@ -13,7 +13,6 @@ class CreateSimulatedSystemEventsResponseBody(DaraModel):
         event_id_set: main_models.CreateSimulatedSystemEventsResponseBodyEventIdSet = None,
         request_id: str = None,
     ):
-        # The IDs of the simulated events.
         self.event_id_set = event_id_set
         # The request ID.
         self.request_id = request_id

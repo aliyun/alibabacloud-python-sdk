@@ -13,7 +13,6 @@ class StartInstancesResponseBody(DaraModel):
         instance_responses: main_models.StartInstancesResponseBodyInstanceResponses = None,
         request_id: str = None,
     ):
-        # The information about the ECS instance, such as the status of each instance before and after the operation is called and the operation results.
         self.instance_responses = instance_responses
         # The ID of the request.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class StartInstancesResponseBodyInstanceResponsesInstanceResponse(DaraModel):
         message: str = None,
         previous_status: str = None,
     ):
-        # The error code that is returned for the operation on the ECS instance. The value 200 indicates that the operation is successful. For more information, see the "Error codes" section in this topic.
         self.code = code
-        # The status of the ECS instance after the operation is called.
         self.current_status = current_status
-        # The ID of the ECS instance.
         self.instance_id = instance_id
-        # The error message that is returned for the operation on the ECS instance. The value success indicates that the operation is successful. For more information, see the "Error codes" section in this topic.
         self.message = message
-        # The status of the ECS instance before the operation is called.
         self.previous_status = previous_status
 
     def validate(self):

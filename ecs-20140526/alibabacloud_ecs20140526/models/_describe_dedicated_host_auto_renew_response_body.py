@@ -13,7 +13,6 @@ class DescribeDedicatedHostAutoRenewResponseBody(DaraModel):
         dedicated_host_renew_attributes: main_models.DescribeDedicatedHostAutoRenewResponseBodyDedicatedHostRenewAttributes = None,
         request_id: str = None,
     ):
-        # The array that consists of dedicated host auto-renewal attributes.
         self.dedicated_host_renew_attributes = dedicated_host_renew_attributes
         # The request ID.
         self.request_id = request_id
@@ -91,30 +90,11 @@ class DescribeDedicatedHostAutoRenewResponseBodyDedicatedHostRenewAttributesDedi
         period_unit: str = None,
         renewal_status: str = None,
     ):
-        # Indicates whether auto-renewal is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
         self.auto_renew_enabled = auto_renew_enabled
-        # Indicates whether the dedicated host is automatically renewed if a subscription ECS instance it hosts, after being automatically renewed, has a new expiration time that is later than that of the dedicated host. Valid values:
-        # 
-        # *   AutoRenewWithEcs: The dedicated host is automatically renewed along with the ECS instance.
-        # *   StopRenewWithEcs: The dedicated host is not automatically renewed along with the ECS instance.
         self.auto_renew_with_ecs = auto_renew_with_ecs
-        # The ID of the dedicated host.
         self.dedicated_host_id = dedicated_host_id
-        # The auto-renewal period.
         self.duration = duration
-        # The unit of the auto-renewal duration. Valid values:
-        # 
-        # *   Week
-        # *   Month
         self.period_unit = period_unit
-        # Indicates whether the subscription dedicated host is automatically renewed. Valid values:
-        # 
-        # *   AutoRenewal: The dedicated host is automatically renewed.
-        # *   Normal: The dedicated host is not automatically renewed, but renewal notifications are sent.
-        # *   NotRenewal: The dedicated host is not automatically renewed, and no expiration notification is sent. Alibaba Cloud sends only a non-renewal notice three days before the host expires. If the renewal status of a dedicated host is NotRenewal, you can change the value to Normal and then call [RenewDedicatedHosts](https://help.aliyun.com/document_detail/93287.html) to manually renew the dedicated host, or directly change the value to AutoRenewal.
         self.renewal_status = renewal_status
 
     def validate(self):

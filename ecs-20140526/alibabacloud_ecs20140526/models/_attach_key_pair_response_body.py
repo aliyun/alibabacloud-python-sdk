@@ -22,7 +22,6 @@ class AttachKeyPairResponseBody(DaraModel):
         self.key_pair_name = key_pair_name
         # The request ID.
         self.request_id = request_id
-        # An array that contains the results of the operation.
         self.results = results
         # The total number of instances to which the SSH key pair is bound.
         self.total_count = total_count
@@ -116,13 +115,9 @@ class AttachKeyPairResponseBodyResultsResult(DaraModel):
         message: str = None,
         success: str = None,
     ):
-        # The operation status code returned. 200 indicates that the operation was successful.
         self.code = code
-        # The instance ID.
         self.instance_id = instance_id
-        # The operation information returned. When the value of Code is 200, the value of Message is successful.
         self.message = message
-        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

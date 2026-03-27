@@ -16,7 +16,6 @@ class DescribeAutoProvisioningGroupInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the instances in the auto provisioning group.
         self.instances = instances
         # The page number.
         self.page_number = page_number
@@ -124,35 +123,17 @@ class DescribeAutoProvisioningGroupInstancesResponseBodyInstancesInstance(DaraMo
         status: str = None,
         zone_id: str = None,
     ):
-        # The number of vCPU cores of the instance.
         self.cpu = cpu
-        # The time when the instance was created.
         self.creation_time = creation_time
-        # The instance ID.
         self.instance_id = instance_id
-        # The ECS instance type.
         self.instance_type = instance_type
-        # Indicates whether the instance is an I/O optimized instance.
         self.io_optimized = io_optimized
-        # Indicates whether the instance is a spot instance.
         self.is_spot = is_spot
-        # The memory capacity of the instance. Unit: MiB.
         self.memory = memory
-        # The network type of the instance. Valid values:
-        # 
-        # *   vpc: Virtual Private Cloud (VPC)
-        # *   classic: classic network
         self.network_type = network_type
-        # The operating system type of the instance. Valid values:
-        # 
-        # *   windows
-        # *   linux
         self.os_type = os_type
-        # The region ID of the container group.
         self.region_id = region_id
-        # The status of the instance.
         self.status = status
-        # The ID of the zone to which the instance belongs.
         self.zone_id = zone_id
 
     def validate(self):

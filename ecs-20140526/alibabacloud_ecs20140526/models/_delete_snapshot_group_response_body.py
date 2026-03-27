@@ -13,7 +13,6 @@ class DeleteSnapshotGroupResponseBody(DaraModel):
         operation_progress_set: main_models.DeleteSnapshotGroupResponseBodyOperationProgressSet = None,
         request_id: str = None,
     ):
-        # Details about the delete operation.
         self.operation_progress_set = operation_progress_set
         # The ID of the request.
         self.request_id = request_id
@@ -89,17 +88,9 @@ class DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgress(DaraM
         operation_status: str = None,
         related_item_set: main_models.DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgressRelatedItemSet = None,
     ):
-        # The error code. This parameter is empty when the operation is successful.
-        # 
-        # For information about error codes and error messages, visit the [API error center](https://error-center.aliyun.com/status/product/Ecs).
         self.error_code = error_code
-        # The error message. This parameter is empty when the operation is successful.
-        # 
-        # For information about error codes and error messages, visit the [API error center](https://error-center.aliyun.com/status/product/Ecs).
         self.error_msg = error_msg
-        # Indicates whether the operation was successful. If the operation was successful, a value of Success is returned. If the operation failed, an error code and an error message are returned.
         self.operation_status = operation_status
-        # Details about the resources.
         self.related_item_set = related_item_set
 
     def validate(self):
@@ -183,9 +174,7 @@ class DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgressRelate
         name: str = None,
         value: str = None,
     ):
-        # The name of the resource.
         self.name = name
-        # The ID of the resource.
         self.value = value
 
     def validate(self):

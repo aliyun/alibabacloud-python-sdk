@@ -15,7 +15,6 @@ class ModifyReservedInstancesResponseBody(DaraModel):
     ):
         # Details about the reserved instance.
         self.request_id = request_id
-        # The IDs of the reserved instances.
         self.reserved_instance_id_sets = reserved_instance_id_sets
 
     def validate(self):

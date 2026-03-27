@@ -82,7 +82,6 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         self.creation_time = creation_time
         # The description of the volume.
         self.description = description
-        # The mappings between the disk and the snapshot in the image.
         self.disk_device_mappings = disk_device_mappings
         # The name of the image family.
         self.image_family = image_family
@@ -131,7 +130,6 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         # *   Creating
         # *   CreateFailed
         self.status = status
-        # The tags of the image.
         self.tags = tags
         # Indicates whether the image has been used to create ECS instances. Valid values:
         # 
@@ -337,9 +335,7 @@ class DescribeImageFromFamilyResponseBodyImageTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the custom image.
         self.tag_key = tag_key
-        # The tag value of the custom image.
         self.tag_value = tag_value
 
     def validate(self):
@@ -414,21 +410,12 @@ class DescribeImageFromFamilyResponseBodyImageDiskDeviceMappingsDiskDeviceMappin
         snapshot_id: str = None,
         type: str = None,
     ):
-        # The device name of the disk. Example: /dev/xvdb.
-        # 
-        # >  This parameter will be removed in the future. To ensure compatibility, we recommend that you use other parameters.
         self.device = device
-        # The image format.
         self.format = format
-        # The OSS bucket that contains the imported image file.
         self.import_ossbucket = import_ossbucket
-        # The OSS object to which the imported image belongs.
         self.import_ossobject = import_ossobject
-        # The size of the disk. Unit: GiB.
         self.size = size
-        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The image type.
         self.type = type
 
     def validate(self):

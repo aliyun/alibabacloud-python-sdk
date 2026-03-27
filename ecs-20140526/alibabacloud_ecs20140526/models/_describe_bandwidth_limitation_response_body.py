@@ -13,7 +13,6 @@ class DescribeBandwidthLimitationResponseBody(DaraModel):
         bandwidths: main_models.DescribeBandwidthLimitationResponseBodyBandwidths = None,
         request_id: str = None,
     ):
-        # Details about the maximum public bandwidth.
         self.bandwidths = bandwidths
         # The request ID.
         self.request_id = request_id
@@ -89,16 +88,9 @@ class DescribeBandwidthLimitationResponseBodyBandwidthsBandwidth(DaraModel):
         min: int = None,
         unit: str = None,
     ):
-        # The billing method for network usage. Valid values:
-        # 
-        # *   PayByBandwidth
-        # *   PayByTraffic
         self.internet_charge_type = internet_charge_type
-        # The maximum public bandwidth.
         self.max = max
-        # The minimum public bandwidth.
         self.min = min
-        # The unit of the public bandwidth.
         self.unit = unit
 
     def validate(self):

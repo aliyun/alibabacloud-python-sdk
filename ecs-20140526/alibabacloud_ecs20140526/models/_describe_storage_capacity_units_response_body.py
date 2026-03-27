@@ -22,7 +22,6 @@ class DescribeStorageCapacityUnitsResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # Details about the SCUs.
         self.storage_capacity_units = storage_capacity_units
         # The total number of SCUs.
         self.total_count = total_count
@@ -123,35 +122,16 @@ class DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacit
         storage_capacity_unit_id: str = None,
         tags: main_models.DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacityUnitTags = None,
     ):
-        # Indicates the allocation state of the SCU when the AllocationType parameter is set to Shared. Valid values:
-        # 
-        # *   allocated: The SCU is allocated to other accounts.
-        # *   BeAllocated: The SCU is allocated from another account.
         self.allocation_status = allocation_status
-        # The capacity of the SCU.
         self.capacity = capacity
-        # The time when the SCU was created.
         self.creation_time = creation_time
-        # The description of the SCU.
         self.description = description
-        # The time when the SCU expires.
         self.expired_time = expired_time
-        # The name of the SCU.
         self.name = name
-        # The region ID of the SCU.
         self.region_id = region_id
-        # The time when the SCU took effect.
         self.start_time = start_time
-        # The status of the SCU. Valid values:
-        # 
-        # *   Creating: The SCUs are being created.
-        # *   Active: The SCUs are in effect.
-        # *   Expired: The SCUs have expired.
-        # *   Pending: The SCUs have not taken effect.
         self.status = status
-        # The ID of the SCU.
         self.storage_capacity_unit_id = storage_capacity_unit_id
-        # The tag key-value pairs of the SCU.
         self.tags = tags
 
     def validate(self):
@@ -277,9 +257,7 @@ class DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacit
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N.
         self.tag_key = tag_key
-        # The value of tag N.
         self.tag_value = tag_value
 
     def validate(self):

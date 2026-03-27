@@ -16,7 +16,6 @@ class DescribeLaunchTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried launch templates.
         self.launch_template_sets = launch_template_sets
         # The page number.
         self.page_number = page_number
@@ -121,29 +120,14 @@ class DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet(Dar
         resource_group_id: str = None,
         tags: main_models.DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTags = None,
     ):
-        # The time when the launch template was created.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that created the launch template.
         self.created_by = created_by
-        # The default version number of the launch template.
         self.default_version_number = default_version_number
-        # The latest version number of the launch template.
         self.latest_version_number = latest_version_number
-        # The ID of the launch template.
         self.launch_template_id = launch_template_id
-        # The name of the launch template.
         self.launch_template_name = launch_template_name
-        # The time when a version was added to or deleted from the launch template.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The ID of the resource group to which the launch template belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the launch template.
-        # 
-        # >  You can only call API operations to add tags to and query the tags of a launch template. You cannot add tags to or view the tags of a launch template in the ECS console.
         self.tags = tags
 
     def validate(self):
@@ -257,9 +241,7 @@ class DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTags
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag value of the launch template.
         self.tag_key = tag_key
-        # The tag key of the launch template.
         self.tag_value = tag_value
 
     def validate(self):

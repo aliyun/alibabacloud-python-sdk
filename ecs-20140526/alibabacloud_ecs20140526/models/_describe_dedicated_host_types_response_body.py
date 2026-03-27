@@ -13,7 +13,6 @@ class DescribeDedicatedHostTypesResponseBody(DaraModel):
         dedicated_host_types: main_models.DescribeDedicatedHostTypesResponseBodyDedicatedHostTypes = None,
         request_id: str = None,
     ):
-        # Details about the dedicated host types.
         self.dedicated_host_types = dedicated_host_types
         # The request ID.
         self.request_id = request_id
@@ -100,35 +99,20 @@ class DescribeDedicatedHostTypesResponseBodyDedicatedHostTypesDedicatedHostType(
         total_vcpus: int = None,
         total_vgpus: int = None,
     ):
-        # The number of cores per physical CPU.
         self.cores = cores
-        # The supported CPU overcommit ratio range.
         self.cpu_over_commit_ratio_range = cpu_over_commit_ratio_range
-        # The dedicated host type.
         self.dedicated_host_type = dedicated_host_type
-        # The GPU model.
         self.gpuspec = gpuspec
-        # The number of local disks on a dedicated host.
         self.local_storage_amount = local_storage_amount
-        # The capacity of a local disk. Unit: GiB.
         self.local_storage_capacity = local_storage_capacity
-        # The category of local disks.
         self.local_storage_category = local_storage_category
-        # The memory size. Unit: GiB.
         self.memory_size = memory_size
-        # The number of physical GPUs.
         self.physical_gpus = physical_gpus
-        # The number of physical CPUs.
         self.sockets = sockets
-        # Indicates whether the CPU overcommit ratio settings are supported.
         self.support_cpu_over_commit_ratio = support_cpu_over_commit_ratio
-        # The ECS instance families supported by the dedicated host type.
         self.supported_instance_type_families = supported_instance_type_families
-        # The ECS instance types supported by the dedicated host type.
         self.supported_instance_types_list = supported_instance_types_list
-        # The total number of vCPUs.
         self.total_vcpus = total_vcpus
-        # The total number of vGPUs.
         self.total_vgpus = total_vgpus
 
     def validate(self):

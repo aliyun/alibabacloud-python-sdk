@@ -17,7 +17,6 @@ class DescribeDeploymentSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the deployment sets.
         self.deployment_sets = deployment_sets
         # The page number.
         self.page_number = page_number
@@ -133,34 +132,22 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
         instance_amount: int = None,
         instance_ids: main_models.DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds = None,
         strategy: str = None,
+        type: str = None,
     ):
         self.account_id = account_id
-        # Details of the capacities of the deployment set. This parameter is valid only when the deployment set contains ECS instances. The value contains information about the capacities of the deployment set in different zones.
         self.capacities = capacities
-        # The time when the deployment set was created.
         self.creation_time = creation_time
-        # The description of the deployment set.
         self.deployment_set_description = deployment_set_description
-        # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
-        # The name of the deployment set.
         self.deployment_set_name = deployment_set_name
-        # The deployment strategy. The return value of this parameter is the value of the `Strategy` request parameter.
         self.deployment_strategy = deployment_strategy
-        # The deployment domain.
         self.domain = domain
-        # The deployment granularity.
         self.granularity = granularity
-        # The number of deployment set groups in the deployment set.
-        # 
-        # >  This parameter is valid only when the Strategy request parameter is set to AvailabilityGroup.
         self.group_count = group_count
-        # The number of instances in the deployment set.
         self.instance_amount = instance_amount
-        # The IDs of the Elastic Compute Service (ECS) instances in the deployment set.
         self.instance_ids = instance_ids
-        # The deployment strategy.
         self.strategy = strategy
+        self.type = type
 
     def validate(self):
         if self.capacities:
@@ -212,6 +199,9 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
         if self.strategy is not None:
             result['Strategy'] = self.strategy
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -256,6 +246,9 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
 
         if m.get('Strategy') is not None:
             self.strategy = m.get('Strategy')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 
@@ -328,11 +321,8 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCap
         used_amount: int = None,
         zone_id: str = None,
     ):
-        # The number of ECS instances that can be added to the deployment set within the zone.
         self.available_amount = available_amount
-        # The number of ECS instances that reside in the zone in the deployment set.
         self.used_amount = used_amount
-        # The ID of the zone. Only the zone IDs of existing ECS instances in the deployment set are returned.
         self.zone_id = zone_id
 
     def validate(self):

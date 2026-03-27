@@ -13,7 +13,6 @@ class DescribeElasticityAssuranceAutoRenewAttributeResponseBody(DaraModel):
         elasticity_assurance_renew_attributes: main_models.DescribeElasticityAssuranceAutoRenewAttributeResponseBodyElasticityAssuranceRenewAttributes = None,
         request_id: str = None,
     ):
-        # The auto-renewal attribute of the elasticity assurances.
         self.elasticity_assurance_renew_attributes = elasticity_assurance_renew_attributes
         # The request ID.
         self.request_id = request_id
@@ -89,20 +88,9 @@ class DescribeElasticityAssuranceAutoRenewAttributeResponseBodyElasticityAssuran
         private_pool_options_id: str = None,
         renewal_status: str = None,
     ):
-        # The auto-renewal period. Valid values: Valid values: 1, 2, 3, 6, 12, 24, and 36.
         self.period = period
-        # The unit of the auto-renewal period. Valid values:
-        # 
-        # *   Month (default)
-        # *   Year
         self.period_unit = period_unit
-        # The ID of the elasticity assurance.
         self.private_pool_options_id = private_pool_options_id
-        # Indicates whether auto-renewal is enabled for the elasticity assurance. Valid values:
-        # 
-        # *   AutoRenewal: Auto-renewal is enabled for the elasticity assurance.
-        # *   Normal: Auto-renewal is disabled for the elasticity assurance.
-        # *   NotRenewal: The elasticity assurance is not renewed.
         self.renewal_status = renewal_status
 
     def validate(self):

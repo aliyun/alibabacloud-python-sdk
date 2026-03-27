@@ -16,7 +16,6 @@ class DescribeStorageSetDetailsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the disks or Shared Block Storage devices in the storage set.
         self.disks = disks
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,21 +119,13 @@ class DescribeStorageSetDetailsResponseBodyDisksDisk(DaraModel):
         storage_set_partition_number: int = None,
         zone_id: str = None,
     ):
-        # The category of the disk or Shared Block Storage device.
         self.category = category
-        # The time when the disk or Shared Block Storage device was created.
         self.creation_time = creation_time
-        # The ID of the disk or Shared Block Storage device.
         self.disk_id = disk_id
-        # The name of the disk or Shared Block Storage device.
         self.disk_name = disk_name
-        # The region to which the disk or Shared Block Storage device belongs.
         self.region_id = region_id
-        # The ID of the storage set.
         self.storage_set_id = storage_set_id
-        # The number of partitions in the storage set.
         self.storage_set_partition_number = storage_set_partition_number
-        # The zone to which the disk or Shared Block Storage device belongs.
         self.zone_id = zone_id
 
     def validate(self):

@@ -15,7 +15,6 @@ class DescribeSecurityGroupReferencesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Details about the references to the specified security groups.
         self.security_group_references = security_group_references
 
     def validate(self):
@@ -87,9 +86,7 @@ class DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurity
         referencing_security_groups: main_models.DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroups = None,
         security_group_id: str = None,
     ):
-        # Details about the security groups whose rules reference the specified security group.
         self.referencing_security_groups = referencing_security_groups
-        # The ID of the specified security group.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -161,9 +158,7 @@ class DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurity
         ali_uid: str = None,
         security_group_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the security group whose rules reference the specified security group belongs.
         self.ali_uid = ali_uid
-        # The ID of the security group whose rules reference the specified security group.
         self.security_group_id = security_group_id
 
     def validate(self):

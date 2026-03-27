@@ -16,7 +16,6 @@ class DescribeElasticityAssurancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the elasticity assurances.
         self.elasticity_assurance_set = elasticity_assurance_set
         # The maximum number of entries returned per page.
         self.max_results = max_results
@@ -131,57 +130,24 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         total_assurance_times: str = None,
         used_assurance_times: int = None,
     ):
-        # Details of the allocated resources.
         self.allocated_resources = allocated_resources
-        # The description of the elasticity assurance.
         self.description = description
-        # >  This parameter is not publicly available.
         self.elasticity_assurance_owner_id = elasticity_assurance_owner_id
-        # The time when the elasticity assurance expires.
         self.end_time = end_time
-        # The billing method of the instance. The value can be only PostPaid. Only pay-as-you-go instances can be created by using elasticity assurances.
         self.instance_charge_type = instance_charge_type
-        # > This parameter is not publicly available.
         self.latest_start_time = latest_start_time
-        # The type of the elasticity assurance. Valid values:
-        # 
-        # *   ElasticityAssurance: the general-purpose elasticity assurance.
-        # *   TimeDivisionElasticityAssurance: the time-segmented assurance of the elasticity assurance.
         self.package_type = package_type
-        # The ID of the elasticity assurance.
         self.private_pool_options_id = private_pool_options_id
-        # The type of the private pool associated with the elasticity assurance. Valid values:
-        # 
-        # *   Open: open private pool
-        # *   Target: specific private pool
         self.private_pool_options_match_criteria = private_pool_options_match_criteria
-        # The name of the elasticity assurance.
         self.private_pool_options_name = private_pool_options_name
-        # The recurrence rules of the time-segmented assurances.
         self.recurrence_rules = recurrence_rules
-        # The region ID of the elasticity assurance.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The time when the elasticity assurance takes effect.
         self.start_time = start_time
-        # Indicates when the elasticity assurance takes effect. Valid values:
-        # 
-        # *   Now: The elasticity assurance takes effect immediately after it is created.
-        # *   Later: The elasticity assurance takes effect at a specified time.
         self.start_time_type = start_time_type
-        # The status of the elasticity assurance. Valid values:
-        # 
-        # *   Preparing
-        # *   Prepared
-        # *   Active
-        # *   Released
         self.status = status
-        # The tags of the elasticity assurance.
         self.tags = tags
-        # The total number of times that the elasticity assurance is applied.
         self.total_assurance_times = total_assurance_times
-        # > This parameter is not publicly available.
         self.used_assurance_times = used_assurance_times
 
     def validate(self):
@@ -361,9 +327,7 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -435,21 +399,9 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         recurrence_value: str = None,
         start_hour: int = None,
     ):
-        # The time when the time-segmented assurance ends.
         self.end_hour = end_hour
-        # The type of the recurrence rule. Valid values:
-        # 
-        # *   Daily
-        # *   Weekly
-        # *   Monthly
         self.recurrence_type = recurrence_type
-        # The recurrence value of the time-segmented assurance. Valid values:
-        # 
-        # *   If you set `RecurrenceType` to `Daily`, you can set RecurrenceValue to only one value. Valid values: 1 to 31. The time-segmented assurance is performed every few days.
-        # *   If you set `RecurrenceType` to `Weekly`, you can set RecurrenceValue to one or more values. Separate the values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6. For example, `1,2` indicates that the time-segmented assurance is performed on Monday and Tuesday of every week.
-        # *   If you set `RecurrenceType` to `Monthly`, you can set RecurrenceValue to two values in the `A-B` format. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates that the time-segmented assurance is performed from the 1st to the 5th of each month.
         self.recurrence_value = recurrence_value
-        # The time when the time-segmented assurance takes effect.
         self.start_hour = start_hour
 
     def validate(self):
@@ -535,17 +487,11 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         used_amount: int = None,
         zone_id: str = None,
     ):
-        # >  This parameter is not publicly available.
         self.available_amount = available_amount
-        # >  This parameter is not publicly available.
         self.elasticity_assurance_usages = elasticity_assurance_usages
-        # The instance type.
         self.instance_type = instance_type
-        # The total number of instances for which capacity of an instance type is reserved.
         self.total_amount = total_amount
-        # The number of instances that have used the elasticity assurance.
         self.used_amount = used_amount
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -642,11 +588,8 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         service_name: str = None,
         used_amount: int = None,
     ):
-        # >  This parameter is not publicly available.
         self.account_id = account_id
-        # >  This parameter is not publicly available.
         self.service_name = service_name
-        # >  This parameter is not publicly available.
         self.used_amount = used_amount
 
     def validate(self):

@@ -14,7 +14,6 @@ class DescribeInstanceTypesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about the instance types.
         self.instance_types = instance_types
         # The query token returned in this call.
         self.next_token = next_token
@@ -139,138 +138,50 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         supported_boot_modes: main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootModes = None,
         total_eni_queue_quantity: int = None,
     ):
-        # The list of specification attributes.
         self.attributes = attributes
-        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
         self.baseline_credit = baseline_credit
-        # The clock supported by the specification.
         self.clock = clock
-        # The CPU architecture. Valid values:
-        # 
-        # *   X86
-        # *   ARM
         self.cpu_architecture = cpu_architecture
-        # The number of vCPUs.
         self.cpu_core_count = cpu_core_count
-        # The CPU options.
         self.cpu_options = cpu_options
-        # The CPU base frequency. Unit: GHz.
         self.cpu_speed_frequency = cpu_speed_frequency
-        # The CPU turbo frequency. Unit: GHz.
         self.cpu_turbo_frequency = cpu_turbo_frequency
-        # The maximum number of cloud disks per instance.
         self.disk_quantity = disk_quantity
-        # >  This parameter is not publicly available.
         self.enhanced_network = enhanced_network
-        # The maximum number of IPv6 addresses per ENI.
         self.eni_ipv_6address_quantity = eni_ipv_6address_quantity
-        # The maximum number of IPv4 addresses per ENI.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
-        # The maximum number of ENIs per instance.
         self.eni_quantity = eni_quantity
-        # The maximum number of ENIs, including primary, secondary, and trunk ENIs.
-        # 
-        # >  This parameter is in invitational preview and is not publicly available.
         self.eni_total_quantity = eni_total_quantity
-        # Indicates whether trunk ENIs are supported.
-        # 
-        # >  This parameter is in invitational preview and is not publicly available.
         self.eni_trunk_supported = eni_trunk_supported
-        # The number of ERIs.
-        # 
-        # >  This parameter is in invitational preview and is not publicly available.
         self.eri_quantity = eri_quantity
-        # The number of GPUs.
         self.gpuamount = gpuamount
-        # The amount of GPU memory per GPU. Unit: GiB
         self.gpumemory_size = gpumemory_size
-        # The GPU model.
         self.gpuspec = gpuspec
-        # The initial vCPU credits per t5 or t6 burstable instance.
         self.initial_credit = initial_credit
-        # The maximum inbound internal bandwidth. Unit: Kbit/s.
         self.instance_bandwidth_rx = instance_bandwidth_rx
-        # The maximum outbound internal bandwidth. Unit: Kbit/s.
         self.instance_bandwidth_tx = instance_bandwidth_tx
-        # The category of the instance type. Valid values:
-        # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
         self.instance_category = instance_category
-        # The level of the instance family. Valid values:
-        # 
-        # *   EntryLevel: entry level (shared).
-        # *   EnterpriseLevel: enterprise level.
-        # *   CreditEntryLevel: credit-based entry level. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
-        # The inbound packet forwarding rate over the internal network. Unit: pps.
         self.instance_pps_rx = instance_pps_rx
-        # The outbound packet forwarding rate over the internal network. Unit: pps.
         self.instance_pps_tx = instance_pps_tx
-        # The instance family.
         self.instance_type_family = instance_type_family
-        # The ID of the instance type.
         self.instance_type_id = instance_type_id
-        # Indicates whether jumbo frames are supported.
         self.jumbo_frame_support = jumbo_frame_support
-        # The number of local disks per instance.
         self.local_storage_amount = local_storage_amount
-        # The capacity of each local disk. Unit: GiB
         self.local_storage_capacity = local_storage_capacity
-        # The category of local disks. For more information, see [Local disks](https://help.aliyun.com/document_detail/63138.html). Valid values:
-        # 
-        # *   local_hdd_pro: local SATA HDDs, which are attached to d1ne or d1 instances
-        # *   local_ssd_pro: local NVMe SSDs, which are attached to i2, i2g, i1, ga1, or gn5 instances
         self.local_storage_category = local_storage_category
-        # The maximum number of queues per ENI, including primary and secondary ENIs.
         self.maximum_queue_number_per_eni = maximum_queue_number_per_eni
-        # The memory size. Unit: GiB
         self.memory_size = memory_size
-        # The maximum number of network cards that the instance type supports.
         self.network_card_quantity = network_card_quantity
-        # The information about the network cards.
         self.network_cards = network_cards
-        # Indicates whether to allow network traffic transmitted over virtual private clouds (VPCs) to be encrypted. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # >  This parameter is in invitational preview and is not publicly available.
         self.network_encryption_support = network_encryption_support
         self.network_info = network_info
-        # Indicates whether cloud disks can be attached by using the NVMe protocol. Valid values:
-        # 
-        # *   required: Cloud disks can be attached by using the NVMe protocol.
-        # *   unsupported: Cloud disks cannot be attached by using the NVMe protocol.
         self.nvme_support = nvme_support
-        # The CPU model.
         self.physical_processor_model = physical_processor_model
-        # The default number of queues per primary ENI.
         self.primary_eni_queue_number = primary_eni_queue_number
-        # The maximum number of QPs per instance, which varies based on the instance type.
-        # 
-        # *   For enterprise-level CPU-based instance types, the value of `QueuePairNumber` is the maximum number of QPs per instance.
-        # *   For GPU-accelerated instance types, the maximum number of QPs per instance is calculated by using the following formula: Value of `QueuePairNumber` × Value of NetworkCardQuantity.
         self.queue_pair_number = queue_pair_number
-        # The default number of queues per secondary ENI.
         self.secondary_eni_queue_number = secondary_eni_queue_number
-        # The boot modes supported by the instance type.
         self.supported_boot_modes = supported_boot_modes
-        # The maximum number of queues on ENIs that the instance type supports.
         self.total_eni_queue_quantity = total_eni_queue_quantity
 
     def validate(self):
@@ -796,7 +707,6 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCardsNetw
         self,
         network_card_index: int = None,
     ):
-        # The index of the network card.
         self.network_card_index = network_card_index
 
     def validate(self):
@@ -826,11 +736,8 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork(
         sriov_support: bool = None,
         vf_queue_number_per_eni: int = None,
     ):
-        # >  This parameter is not publicly available.
         self.rss_support = rss_support
-        # >  This parameter is not publicly available.
         self.sriov_support = sriov_support
-        # >  This parameter is not publicly available.
         self.vf_queue_number_per_eni = vf_queue_number_per_eni
 
     def validate(self):
@@ -874,17 +781,10 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions(DaraM
         supported_topology_types: main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes = None,
         threads_per_core: int = None,
     ):
-        # The number of CPU cores.
         self.core = core
-        # The CPU option step size.
         self.core_factor = core_factor
-        # Indicates whether HT can be enabled or disabled.
         self.hyper_threading_adjustable = hyper_threading_adjustable
-        # The CPU topology types of the instance type.
         self.supported_topology_types = supported_topology_types
-        # The number of threads per CPU core.
-        # 
-        # >  `If the value of CpuOptions.ThreadPerCore is 1, Hyper-Threading (HT) is disabled.`
         self.threads_per_core = threads_per_core
 
     def validate(self):
@@ -965,10 +865,6 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeClock(DaraModel)
         self,
         ptp_support: str = None,
     ):
-        # Whether PTP is supported. Possible values:
-        # 
-        # *   supported
-        # *   unsupported
         self.ptp_support = ptp_support
 
     def validate(self):
@@ -1032,9 +928,7 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributesAttrib
         name: str = None,
         value: str = None,
     ):
-        # The name of the attribute.
         self.name = name
-        # The attribute value.
         self.value = value
 
     def validate(self):

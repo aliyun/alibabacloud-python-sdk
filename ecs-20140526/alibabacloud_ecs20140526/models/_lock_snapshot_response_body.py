@@ -53,6 +53,7 @@ class LockSnapshotResponseBodyLockedSnapshotInfo(DaraModel):
         lock_duration: int = None,
         lock_duration_start_time: str = None,
         lock_expired_time: str = None,
+        lock_mode: str = None,
         lock_status: str = None,
         snapshot_id: str = None,
     ):
@@ -68,6 +69,7 @@ class LockSnapshotResponseBodyLockedSnapshotInfo(DaraModel):
         self.lock_duration_start_time = lock_duration_start_time
         # The time when the lock expires. The time follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in the yyyy-MM-ddTHH:mm:ssZ format (in UTC).
         self.lock_expired_time = lock_expired_time
+        self.lock_mode = lock_mode
         # The lock status. Valid values:
         # 
         # *   compliance-cooloff: The snapshot is locked in compliance mode but is still within the cooling-off period. Snapshots cannot be deleted, but users with the corresponding RAM permissions can unlock snapshots, extend or shorten the cooling-off period, and extend or shorten the lock duration.
@@ -103,6 +105,9 @@ class LockSnapshotResponseBodyLockedSnapshotInfo(DaraModel):
         if self.lock_expired_time is not None:
             result['LockExpiredTime'] = self.lock_expired_time
 
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+
         if self.lock_status is not None:
             result['LockStatus'] = self.lock_status
 
@@ -130,6 +135,9 @@ class LockSnapshotResponseBodyLockedSnapshotInfo(DaraModel):
 
         if m.get('LockExpiredTime') is not None:
             self.lock_expired_time = m.get('LockExpiredTime')
+
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
 
         if m.get('LockStatus') is not None:
             self.lock_status = m.get('LockStatus')

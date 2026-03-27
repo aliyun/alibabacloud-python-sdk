@@ -13,7 +13,6 @@ class DescribeAccountAttributesResponseBody(DaraModel):
         account_attribute_items: main_models.DescribeAccountAttributesResponseBodyAccountAttributeItems = None,
         request_id: str = None,
     ):
-        # Details about account privileges in the specified region.
         self.account_attribute_items = account_attribute_items
         # The ID of the request.
         self.request_id = request_id
@@ -87,25 +86,7 @@ class DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttribute
         attribute_name: str = None,
         attribute_values: main_models.DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttributeItemAttributeValues = None,
     ):
-        # The type of the resource quota in the specified region. Valid values:
-        # 
-        # *   instance-network-type: the available network types.
-        # *   max-security-groups: the maximum number of security groups.
-        # *   max-elastic-network-interfaces: the maximum number of ENIs.
-        # *   max-postpaid-instance-vcpu-count: the maximum number of vCPUs for pay-as-you-go instances.
-        # *   max-spot-instance-vcpu-count: the maximum number of vCPUs for spot instances.
-        # *   used-postpaid-instance-vcpu-count: the number of vCPUs that were allocated to pay-as-you-go instances.
-        # *   used-spot-instance-vcpu-count: the number of vCPUs that were allocated to spot instances.
-        # *   max-postpaid-yundisk-capacity: the maximum capacity of pay-as-you-go data disks. (The value is deprecated.)
-        # *   used-postpaid-yundisk-capacity: the capacity of pay-as-you-go data disks that were created. (The value is deprecated.)
-        # *   max-dedicated-hosts: the maximum number of dedicated hosts.
-        # *   supported-postpaid-instance-types: the instance types of pay-as-you-go I/O optimized instances.
-        # *   max-axt-command-count: the maximum number of Cloud Assistant commands.
-        # *   max-axt-invocation-daily: the maximum number of Cloud Assistant command executions per day.
-        # *   real-name-authentication: whether the account completed the real-name verification.
-        # *   max-cloud-assistant-activation-count: the maximum number of activation codes that can be created to use to register managed instances.
         self.attribute_name = attribute_name
-        # The values of resource quotas.
         self.attribute_values = attribute_values
 
     def validate(self):
@@ -182,51 +163,12 @@ class DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttribute
         value: str = None,
         zone_id: str = None,
     ):
-        # The number of privilege attributes in the account.
         self.count = count
-        # The data disk category. Valid values:
-        # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: enhanced SSD (ESSD)
         self.disk_category = disk_category
-        # The expiration time of a privilege. This parameter is returned only when the account privilege has an expiration time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
-        # The billing method of the instance.
         self.instance_charge_type = instance_charge_type
-        # The type of the instance.
         self.instance_type = instance_type
-        # The value of the resource quota in the specified region. Valid values:
-        # 
-        # The values returned for the resource quotas to which the following AttributeName values correspond are 0 or positive integers:
-        # 
-        # *   max-security-groups
-        # *   max-elastic-network-interfaces
-        # *   max-postpaid-instance-vcpu-count
-        # *   max-spot-instance-vcpu-count
-        # *   used-postpaid-instance-vcpu-count
-        # *   used-spot-instance-vcpu-count
-        # *   max-postpaid-yundisk-capacity (the value is deprecated)
-        # *   used-postpaid-yundisk-capacity (the value is deprecated)
-        # *   max-dedicated-hosts
-        # *   max-axt-command-count
-        # *   max-axt-invocation-daily
-        # *   max-cloud-assistant-activation-count
-        # 
-        # When AttributeName is set to supported-postpay-instance-types, instance types are returned. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # 
-        # When AttributeName is set to real-name-authentications, one of the following values is returned:
-        # 
-        # *   yes
-        # *   none
-        # *   unnecessary
-        # 
-        # When AttributeName is set to instance-network-type, one of the following values is returned:
-        # 
-        # *   vpc
-        # *   classic
         self.value = value
-        # The ID of the zone in which the resource resides.
         self.zone_id = zone_id
 
     def validate(self):

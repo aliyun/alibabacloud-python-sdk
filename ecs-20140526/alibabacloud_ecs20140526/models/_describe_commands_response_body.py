@@ -17,7 +17,6 @@ class DescribeCommandsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried commands.
         self.commands = commands
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -140,46 +139,24 @@ class DescribeCommandsResponseBodyCommandsCommand(DaraModel):
         version: int = None,
         working_dir: str = None,
     ):
-        # The category of the common command.
         self.category = category
-        # The content of the command, which is Base64-encoded.
-        # 
-        # *   If ContentEncoding is set to PlainText in the request, the original command content is returned.
-        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command content is returned.
         self.command_content = command_content
-        # The command ID.
         self.command_id = command_id
-        # The time when the command was created.
         self.creation_time = creation_time
-        # The description of the command.
         self.description = description
-        # Indicates whether the custom parameter feature is enabled for the command.
         self.enable_parameter = enable_parameter
-        # The number of tasks created by using the command.
         self.invoke_times = invoke_times
-        # Indicates whether the common command is of the latest version. If multiple common commands from the same provider (`Provider`) belong to the same category and have the same name, these commands are different versions of the same command. This parameter is not returned for the Cloud Assistant commands that you created.
         self.latest = latest
-        # The launcher for script execution. The value cannot exceed 1 KB in length.
         self.launcher = launcher
-        # The name of the command.
         self.name = name
-        # The custom parameters of the command.
         self.parameter_definitions = parameter_definitions
-        # The custom parameter names that are parsed from the command content specified when the command was created. If the custom parameter feature is disabled, an empty list is returned.
         self.parameter_names = parameter_names
-        # The provider of the common command.
         self.provider = provider
-        # The ID of the resource group to which the command belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the command.
         self.tags = tags
-        # The timeout period. Unit: seconds.
         self.timeout = timeout
-        # The type of the command.
         self.type = type
-        # The version of the common command. If multiple common commands from the same provider (`Provider`) belong to the same category and have the same name, these commands are different versions of the same command. This parameter is not returned for the Cloud Assistant commands that you created.
         self.version = version
-        # The execution path of the command.
         self.working_dir = working_dir
 
     def validate(self):
@@ -359,9 +336,7 @@ class DescribeCommandsResponseBodyCommandsCommandTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the command.
         self.tag_key = tag_key
-        # The tag value of the command.
         self.tag_value = tag_value
 
     def validate(self):
@@ -462,22 +437,11 @@ class DescribeCommandsResponseBodyCommandsCommandParameterDefinitionsParameterDe
         possible_values: main_models.DescribeCommandsResponseBodyCommandsCommandParameterDefinitionsParameterDefinitionPossibleValues = None,
         required: bool = None,
     ):
-        # The default value of the custom parameter.
         self.default_value = default_value
-        # The description of the custom parameter.
         self.description = description
-        # The name of the custom parameter.
         self.parameter_name = parameter_name
-        # The regular expression of the custom parameter.
         self.pattern_regex = pattern_regex
-        # The valid values of the custom parameter of the enumeration type.
         self.possible_values = possible_values
-        # Indicates whether the custom parameter is required. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.required = required
 
     def validate(self):

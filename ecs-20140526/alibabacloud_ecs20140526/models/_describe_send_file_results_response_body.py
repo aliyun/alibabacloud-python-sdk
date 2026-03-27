@@ -17,7 +17,6 @@ class DescribeSendFileResultsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The file sending records.
         self.invocations = invocations
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -136,54 +135,20 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocation(DaraModel):
         target_dir: str = None,
         vm_count: int = None,
     ):
-        # The content of the file.
         self.content = content
-        # The type of the file content. Valid values:
-        # 
-        # *   PlainText: The file content is not encoded.
-        # *   Base64: The file content is encoded in Base64.
         self.content_type = content_type
-        # The time when the file sending task was created.
         self.creation_time = creation_time
-        # The description of the file.
         self.description = description
-        # The group of the file.
         self.file_group = file_group
-        # The permissions on the file.
         self.file_mode = file_mode
-        # The owner of the file.
         self.file_owner = file_owner
-        # The overall sending status of the file. The overall sending status of the file varies based on the sending status of the file on all destination instances. Valid values:
-        # 
-        # *   Pending: The file is being verified or sent. If the sending state of the file on at least one instance is Pending, the overall sending state of the file is Pending.
-        # 
-        # *   Running: The file is being sent to the instances. If the sending state of the file on at least one instance is Running, the overall sending state of the file is Running.
-        # 
-        # *   Success: If the sending state of the file on all instances is Success, the overall sending state of the file is Success.
-        # 
-        # *   If the sending state of the file on all instances is Failed, the overall sending state of the file is Failed. If the sending state of the file on one or more instances is one of the following values, the overall sending state of the file is Failed:
-        # 
-        #     *   Invalid: The file is invalid.
-        #     *   Aborted: The file failed to be sent to the instances.
-        #     *   Failed: The file failed to be created on the instances.
-        #     *   Timeout: The file sending task timed out.
-        #     *   Error: An error occurred and interrupted the file sending task.
-        # 
-        # *   PartialFailed: The file sending task was completed on some instances but failed on other instances. If the sending state of the file is Success on some instances and is Failed on other instances, the overall sending state of the file is PartialFailed.
         self.invocation_status = invocation_status
-        # The ID of the file sending task.
         self.invoke_id = invoke_id
-        # The destination instances.
         self.invoke_instances = invoke_instances
-        # The name of the file.
         self.name = name
-        # Indicates whether a file in the destination directory is overwritten if the file has the same name as the sent file.
         self.overwrite = overwrite
-        # The tags of the file sending task.
         self.tags = tags
-        # The destination directory.
         self.target_dir = target_dir
-        # The number of the destination instances.
         self.vm_count = vm_count
 
     def validate(self):
@@ -336,9 +301,7 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocationTagsTag(DaraModel)
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the file sending task.
         self.tag_key = tag_key
-        # The tag value of the file sending task.
         self.tag_value = tag_value
 
     def validate(self):
@@ -414,69 +377,13 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeInstancesInv
         start_time: str = None,
         update_time: str = None,
     ):
-        # The creation time of the file sending task.
         self.creation_time = creation_time
-        # The error code returned when the file failed to be sent to the instance. Valid values:
-        # 
-        # *   Null: The file is sent to the instance.
-        # *   InstanceNotExists: The instance does not exist or has been released.
-        # *   InstanceReleased: The instance is released while the file is being sent.
-        # *   InstanceNotRunning: The instance is not running when the file sending task is being created.
-        # *   AccountNotExists: The specified account does not exist.
-        # *   ClientNotRunning: Cloud Assistant Agent is not running.
-        # *   ClientNotResponse: Cloud Assistant Agent does not respond.
-        # *   ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
-        # *   ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded.
-        # *   DeliveryTimeout: The file sending task timed out.
-        # *   FileCreateFail: The file failed to be created.
-        # *   FileAlreadyExists: A file with the same name exists in the specified directory.
-        # *   FileContentInvalid: The file content is invalid.
-        # *   FileNameInvalid: The file name is invalid.
-        # *   FilePathInvalid: The specified directory is invalid.
-        # *   FileAuthorityInvalid: The specified permissions on the file are invalid.
-        # *   UserGroupNotExists: The specified user group does not exist.
         self.error_code = error_code
-        # The error message returned when the file failed to be sent or the file sending task failed to be executed. Valid values:
-        # 
-        # *   Null: The file is sent to the instance.
-        # *   the specified instance does not exists
-        # *   the specified instance has been released
-        # *   the instance is not running when create task
-        # *   the specified account does not exists
-        # *   the aliyun service is not running on the instance
-        # *   the aliyun service in the instance does not response
-        # *   the aliyun service in the instance is upgrading now
-        # *   the aliyun service in the instance need upgrade
-        # *   the command delivery has been timeout
-        # *   the file creation is failed due to unknown error
-        # *   the authority of file is invalid
-        # *   File content is empty
-        # *   the content of file is invalid
-        # *   File already exists
-        # *   File name is invalid
-        # *   File path is invalid
-        # *   Owner not exists
-        # *   Group not exists
-        # *   Mode is invalid
         self.error_info = error_info
-        # The time when the file sending task was completed.
         self.finish_time = finish_time
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The status of the file sending task. Valid values:
-        # 
-        # *   Pending: The file is being verified or sent.
-        # *   Invalid: The file is invalid.
-        # *   Running: The file is being sent to the instance.
-        # *   Aborted: The file failed to be sent to the instance.
-        # *   Success: The file is sent.
-        # *   Failed: The file failed to be created on the instance.
-        # *   Error: An error occurred and interrupted the file sending task.
-        # *   Timeout: The file sending task timed out.
         self.invocation_status = invocation_status
-        # The time when the file sending task started to be executed on the instance.
         self.start_time = start_time
-        # The time when the task status was last updated.
         self.update_time = update_time
 
     def validate(self):

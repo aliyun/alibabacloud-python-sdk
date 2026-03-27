@@ -30,7 +30,6 @@ class DescribeSecurityGroupAttributeResponseBody(DaraModel):
         self.inner_access_policy = inner_access_policy
         # A pagination token. It can be used in the next request to retrieve a new page of results. If the return value of this parameter is empty when you specify `MaxResults` and `NextToken` for a paged query, no more results are to be returned.
         self.next_token = next_token
-        # Details about the security group rules.
         self.permissions = permissions
         # The ID of the region.
         self.region_id = region_id
@@ -215,57 +214,31 @@ class DescribeSecurityGroupAttributeResponseBodyPermissionsPermission(DaraModel)
         source_prefix_list_id: str = None,
         source_prefix_list_name: str = None,
     ):
-        # The time when the security group rule was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the security group.
         self.description = description
-        # The destination CIDR block for outbound access control.
         self.dest_cidr_ip = dest_cidr_ip
-        # The ID of the destination security group for outbound access control.
         self.dest_group_id = dest_group_id
-        # The name of the destination security group.
         self.dest_group_name = dest_group_name
-        # The ID of the Alibaba Cloud account to which the destination security group belongs.
         self.dest_group_owner_account = dest_group_owner_account
-        # The ID of the destination prefix list for outbound access control.
         self.dest_prefix_list_id = dest_prefix_list_id
-        # The name of the destination prefix list.
         self.dest_prefix_list_name = dest_prefix_list_name
-        # The direction in which the security group rule is applied.
         self.direction = direction
-        # The transport layer protocol.
         self.ip_protocol = ip_protocol
-        # The destination IPv6 CIDR block.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        # The source IPv6 CIDR block.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The network type.
         self.nic_type = nic_type
-        # The access control policy.
         self.policy = policy
-        # The port range.
         self.port_range = port_range
-        # The ID of the port list.
         self.port_range_list_id = port_range_list_id
-        # The name of the port list.
         self.port_range_list_name = port_range_list_name
-        # The priority of the rule.
         self.priority = priority
-        # The ID of the security group rule.
         self.security_group_rule_id = security_group_rule_id
-        # The source CIDR block for inbound access control.
         self.source_cidr_ip = source_cidr_ip
-        # The source security group for inbound access control.
         self.source_group_id = source_group_id
-        # The name of the source security group.
         self.source_group_name = source_group_name
-        # The ID of the Alibaba Cloud account to which the source security group belongs.
         self.source_group_owner_account = source_group_owner_account
-        # The source port range.
         self.source_port_range = source_port_range
-        # The ID of the source prefix list for inbound access control.
         self.source_prefix_list_id = source_prefix_list_id
-        # The name of the source prefix list.
         self.source_prefix_list_name = source_prefix_list_name
 
     def validate(self):

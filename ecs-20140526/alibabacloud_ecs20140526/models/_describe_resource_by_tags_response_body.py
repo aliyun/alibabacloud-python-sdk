@@ -22,7 +22,6 @@ class DescribeResourceByTagsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Details about the resources to which the tags are bound.
         self.resources = resources
         # The total number of resources returned.
         self.total_count = total_count
@@ -115,11 +114,8 @@ class DescribeResourceByTagsResponseBodyResourcesResource(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
-        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):

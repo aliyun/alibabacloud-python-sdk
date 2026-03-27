@@ -84,11 +84,6 @@ class DescribeInvocationResultsResponseBodyInvocation(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The maximum number of entries per page.
-        # 
-        # Valid values: 1 to 50.
-        # 
-        # Default value: 10.
         self.invocation_results = invocation_results
         # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.next_token = next_token
@@ -219,141 +214,30 @@ class DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocation
         termination_mode: str = None,
         username: str = None,
     ):
-        # The error message returned when the command failed to be sent or run. Valid values:
-        # 
-        # *   If this parameter is empty, the command was run as expected.
-        # *   The security group rules denied access to the aliyun service.
-        # *   The specified instance does not exist.
-        # *   The specified instance was released during task execution.
-        # *   The specified instance was not running during task execution.
-        # *   The OS type of the instance does not support the specified command type.
-        # *   The specified account does not exist.
-        # *   The specified directory does not exist.
-        # *   The cron expression is invalid.
-        # *   The aliyun service is not running on the instance.
-        # *   The aliyun service in the instance does not response.
-        # *   The aliyun service in the instance is upgrading during task execution.
-        # *   The aliyun service in the instance need to be upgraded to at least version to support the feature. indicates the earliest version that supports the feature. indicates the name of the feature.
-        # *   The command delivery has been timeout.
-        # *   The command execution has been timeout.
-        # *   The command execution got an exception.
-        # *   The command execution exit code is not zero.
-        # *   The specified instance was released during task execution.
         self.command_id = command_id
-        # Command to execute the Output OSS delivery configuration.
         self.container_id = container_id
-        # The execution status on a single instance. Valid values:
-        # 
-        # *   Pending: The command is being verified or sent.
-        # 
-        # *   Invalid: The specified command type or parameter is invalid.
-        # 
-        # *   Aborted: The command failed to be sent to the instance. To send a command to an instance, make sure that the instance is in the Running state and the command can be sent to the instance within 1 minute.
-        # 
-        # *   Running: The command is being run on the instance.
-        # 
-        # *   Success:
-        # 
-        #     *   One-time task: The execution was complete, and the exit code was 0.
-        #     *   Scheduled task: The last execution was complete, the exit code was 0, and the specified period ended.
-        # 
-        # *   Failed:
-        # 
-        #     *   One-time task: The execution was complete, but the exit code was not 0.
-        #     *   Scheduled task: The last execution was complete, but the exit code was not 0. The specified period was about to end.
-        # 
-        # *   Error: The execution cannot proceed due to an exception.
-        # 
-        # *   Timeout: The execution timed out.
-        # 
-        # *   Cancelled: The execution was canceled before it started.
-        # 
-        # *   Stopping: The command task is being stopped.
-        # 
-        # *   Terminated: The execution was terminated before completion.
-        # 
-        # *   Scheduled:
-        # 
-        #     *   One-time task: The execution state can never be Scheduled.
-        #     *   Scheduled task: The command is waiting to be run.
         self.container_name = container_name
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.dropped = dropped
-        # The time when the command started to be run on the instance.
         self.error_code = error_code
-        # The ID of the request.
         self.error_info = error_info
-        # The key of tag N of the command task. Valid values of N: 1 to 20. The tag key cannot be an empty string.
-        # 
-        # If a single tag is specified to query resources, up to 1,000 resources that have this tag added can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added can be displayed in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
-        # 
-        # The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.exit_code = exit_code
-        # The total number of the commands.
         self.finished_time = finished_time
-        # The value of tag N of the command task. Valid values of N: 1 to 20. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.instance_id = instance_id
-        # The tag of the command task.
         self.invocation_status = invocation_status
-        # The number of times that the command was run on the instance.
-        # 
-        # *   If the command is set to run only once, the value is 0 or 1.
-        # *   If the command is set to run on a schedule, the value is the number of times that the command has been run on the instance.
         self.invoke_id = invoke_id
-        # The page number.
         self.invoke_record_status = invoke_record_status
-        # The exit code of the command task.
-        # 
-        # *   For Linux instances, the value is the exit code of the shell command.
-        # *   For Windows instances, the value is the exit code of the batch or PowerShell command.
         self.launcher = launcher
-        # The tags of the command task.
         self.oss_output_delivery = oss_output_delivery
         self.oss_output_error_code = oss_output_error_code
         self.oss_output_error_info = oss_output_error_info
-        # The execution results.
         self.oss_output_status = oss_output_status
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.oss_output_uri = oss_output_uri
-        # The instance ID.
         self.output = output
-        # The number of entries per page.
         self.repeats = repeats
-        # Details about the execution results.
         self.start_time = start_time
-        # root
         self.stop_time = stop_time
-        # The time when the command task was completed. If the command task times out, the end time is equal to the start time of the command task specified by `StartTime` plus the timeout period specified by `Timeout`.
         self.tags = tags
-        # The execution status of the command. Valid values:
-        # 
-        # *   Running:
-        # 
-        #     *   Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
-        #     *   One-time task: If the command is being run on instances, the execution state is Running.
-        # 
-        # *   Finished:
-        # 
-        #     *   Scheduled task: The execution state can never be Finished.
-        #     *   One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
-        # 
-        # *   Failed:
-        # 
-        #     *   Scheduled task: The execution state can never be Failed.
-        #     *   One-time task: The execution failed on all instances.
-        # 
-        # *   PartialFailed:
-        # 
-        #     *   Scheduled task: The execution state can never be PartialFailed.
-        #     *   One-time task: The execution failed on some instances.
-        # 
-        # *   Stopped: The task was stopped.
-        # 
-        # *   Stopping: The task is being stopped.
         self.termination_mode = termination_mode
-        # The size of the Output text that was truncated and discarded because the `Output` value exceeded 24 KB in size.
         self.username = username
 
     def validate(self):
@@ -563,13 +447,7 @@ class DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocation
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The output delivery status of the command execution. Valid values:
-        # 
-        # *   InProgress: The delivery is in progress.
-        # *   Finished: The delivery is complete.
-        # *   Failed: The delivery failed.
         self.tag_key = tag_key
-        # The username used to run the command on the instance.
         self.tag_value = tag_value
 
     def validate(self):

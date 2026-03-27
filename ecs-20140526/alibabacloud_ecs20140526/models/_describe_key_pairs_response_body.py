@@ -16,7 +16,6 @@ class DescribeKeyPairsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information of the key pairs.
         self.key_pairs = key_pairs
         # The page number of the returned page.
         self.page_number = page_number
@@ -118,17 +117,11 @@ class DescribeKeyPairsResponseBodyKeyPairsKeyPair(DaraModel):
         resource_group_id: str = None,
         tags: main_models.DescribeKeyPairsResponseBodyKeyPairsKeyPairTags = None,
     ):
-        # The time when the key pair was created.
         self.creation_time = creation_time
-        # The fingerprint of the key pair.
         self.key_pair_finger_print = key_pair_finger_print
-        # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The content of the public key.
         self.public_key = public_key
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags of the key pair.
         self.tags = tags
 
     def validate(self):
@@ -224,9 +217,7 @@ class DescribeKeyPairsResponseBodyKeyPairsKeyPairTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the key pair.
         self.tag_key = tag_key
-        # The tag value of the key pair.
         self.tag_value = tag_value
 
     def validate(self):

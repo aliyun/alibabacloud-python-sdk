@@ -13,15 +13,12 @@ class DescribeTaskAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         task_id: str = None,
     ):
-        # RAM用户的虚拟账号ID。
         self.owner_id = owner_id
         # The region ID of the task. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
-        # 资源主账号的ID，亦即UID。
         self.resource_owner_id = resource_owner_id
         # The ID of the task. You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the list of task IDs.
         # 

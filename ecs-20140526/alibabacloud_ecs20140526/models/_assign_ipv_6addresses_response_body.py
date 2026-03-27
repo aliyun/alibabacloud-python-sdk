@@ -15,9 +15,7 @@ class AssignIpv6AddressesResponseBody(DaraModel):
         network_interface_id: str = None,
         request_id: str = None,
     ):
-        # The IPv6 prefixes of the ENI.
         self.ipv_6prefix_sets = ipv_6prefix_sets
-        # The IPv6 addresses assigned to the ENI.
         self.ipv_6sets = ipv_6sets
         # The ENI ID.
         self.network_interface_id = network_interface_id

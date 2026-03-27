@@ -17,7 +17,6 @@ class DescribeDedicatedHostsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the DDH.
         self.dedicated_hosts = dedicated_hosts
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. If the return value of this parameter is empty when you specify MaxResults and NextToken for a paged query, no more results are to be returned.
         self.next_token = next_token
@@ -155,86 +154,37 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHost(DaraModel):
         zone_id: str = None,
     ):
         self.scheduler_options = scheduler_options
-        # The policy used to migrate the ECS instances deployed on the dedicated host when the dedicated host fails. Valid values:
-        # 
-        # *   Migrate: The instances are migrated to another physical machine. Instances that are not in the Stopped state when the dedicated host fails are restarted.
-        # *   Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
-        # 
-        # If the dedicated host has cloud disks attached, the default value is Migrate. If the dedicated host has local disks attached, the default value is Stop.
         self.action_on_maintenance = action_on_maintenance
-        # Indicates whether the dedicated host is added to the resource pool for automatic deployment. Valid values:
-        # 
-        # *   on: The dedicated host is added to the resource pool for automatic deployment.
-        # *   off: The dedicated host is not added to the resource pool for automatic deployment.
-        # 
-        # For information about automatic deployment, see the "Automatic deployment" section in [Functions and features](https://help.aliyun.com/document_detail/118938.html).
         self.auto_placement = auto_placement
-        # The automatic release time of the dedicated host. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
         self.auto_release_time = auto_release_time
-        # The performance specifications of the dedicated host.
         self.capacity = capacity
-        # The billing method of the dedicated host.
         self.charge_type = charge_type
-        # The number of physical cores per CPU.
         self.cores = cores
-        # The CPU overcommit ratio. Valid values: 1 to 5.
         self.cpu_over_commit_ratio = cpu_over_commit_ratio
-        # The time when the dedicated host was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The ID of the dedicated host cluster to which the dedicated host belongs.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        # The ID of the dedicated host.
         self.dedicated_host_id = dedicated_host_id
-        # The name of the dedicated host.
         self.dedicated_host_name = dedicated_host_name
-        # The ID of the dedicated host owner.
         self.dedicated_host_owner_id = dedicated_host_owner_id
-        # The type of the dedicated host.
         self.dedicated_host_type = dedicated_host_type
-        # The description of the dedicated host.
         self.description = description
-        # The expiration time of the subscription dedicated host. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
         self.expired_time = expired_time
-        # The GPU model.
         self.gpuspec = gpuspec
-        # This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.host_detail_info = host_detail_info
-        # The ECS instances that were created on the dedicated host.
         self.instances = instances
-        # The machine code of the dedicated host.
         self.machine_id = machine_id
-        # The network attributes of the dedicated host.
         self.network_attributes = network_attributes
-        # The reasons why the resources of the dedicated host were locked.
         self.operation_locks = operation_locks
-        # The number of physical GPUs.
         self.physical_gpus = physical_gpus
-        # The region ID of the dedicated host.
         self.region_id = region_id
-        # The ID of the resource group to which the dedicated host belongs.
         self.resource_group_id = resource_group_id
-        # The unit of the subscription duration. Valid values:
-        # 
-        # *   Month
-        # *   Year
         self.sale_cycle = sale_cycle
-        # The number of physical CPUs.
         self.sockets = sockets
-        # The status of the dedicated host. Valid values:
-        # 
-        # *   Available: The dedicated host is running as expected.
-        # *   UnderAssessment: The dedicated host is available but has potential risks that may cause the ECS instances on the dedicated host to fail.
-        # *   PermanentFailure: The dedicated host has permanent failures and is unavailable.
         self.status = status
-        # The custom ECS instance families that are supported by the dedicated host.
         self.supported_custom_instance_type_families = supported_custom_instance_type_families
-        # The ECS instance families that are supported by the dedicated host.
         self.supported_instance_type_families = supported_instance_type_families
-        # The ECS instance types that are supported by the dedicated host.
         self.supported_instance_types_list = supported_instance_types_list
-        # The tags of the dedicated host.
         self.tags = tags
-        # The zone ID of the dedicated host.
         self.zone_id = zone_id
 
     def validate(self):
@@ -519,9 +469,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostTagsTag(DaraM
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the dedicated host.
         self.tag_key = tag_key
-        # The tag value of the dedicated host.
         self.tag_value = tag_value
 
     def validate(self):
@@ -671,10 +619,6 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostOperationLock
         self,
         lock_reason: str = None,
     ):
-        # The reason why the dedicated host was locked. Valid values:
-        # 
-        # *   financial: The dedicated host was locked due to overdue payments.
-        # *   security: The dedicated host was locked due to security reasons.
         self.lock_reason = lock_reason
 
     def validate(self):
@@ -703,9 +647,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostNetworkAttrib
         slb_udp_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period of the UDP session that is established between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Only 60 is returned.
         self.slb_udp_timeout = slb_udp_timeout
-        # The timeout period of the UDP session that is established between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Only 60 is returned.
         self.udp_timeout = udp_timeout
 
     def validate(self):
@@ -777,13 +719,9 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostInstancesInst
         instance_type: str = None,
         socket_id: str = None,
     ):
-        # The ID of the ECS instance.
         self.instance_id = instance_id
-        # The ID of the ECS instance owner.
         self.instance_owner_id = instance_owner_id
-        # The instance type of the ECS instance that was created on the dedicated host.
         self.instance_type = instance_type
-        # The ID of the socket to which the ECS instance belongs.
         self.socket_id = socket_id
 
     def validate(self):
@@ -829,7 +767,6 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInf
         self,
         serial_number: str = None,
     ):
-        # This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.serial_number = serial_number
 
     def validate(self):
@@ -868,25 +805,15 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacity(Dara
         total_vgpus: int = None,
     ):
         self.available_instance_types = available_instance_types
-        # The amount of available space on the local disks. Unit: GiB
         self.available_local_storage = available_local_storage
-        # The amount of available memory. Unit: GiB.
         self.available_memory = available_memory
-        # The number of available vCPUs.
         self.available_vcpus = available_vcpus
-        # The number of available vGPUs.
         self.available_vgpus = available_vgpus
-        # The category of local disks.
         self.local_storage_category = local_storage_category
-        # The socket capacities.
         self.socket_capacities = socket_capacities
-        # The total capacity of local disks. Unit: GiB.
         self.total_local_storage = total_local_storage
-        # The total amount of memory. Unit: GiB.
         self.total_memory = total_memory
-        # The total number of vCPUs.
         self.total_vcpus = total_vcpus
-        # The total number of vGPUs.
         self.total_vgpus = total_vgpus
 
     def validate(self):
@@ -1018,15 +945,10 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacitySocke
         total_memory: float = None,
         total_vcpu: int = None,
     ):
-        # The amount of available memory. Unit: GiB.
         self.available_memory = available_memory
-        # The number of available vCPUs.
         self.available_vcpu = available_vcpu
-        # The socket ID.
         self.socket_id = socket_id
-        # The total amount of memory. Unit: GiB.
         self.total_memory = total_memory
-        # The total number of vCPUs.
         self.total_vcpu = total_vcpu
 
     def validate(self):

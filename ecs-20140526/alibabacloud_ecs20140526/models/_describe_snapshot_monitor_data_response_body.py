@@ -13,7 +13,6 @@ class DescribeSnapshotMonitorDataResponseBody(DaraModel):
         monitor_data: main_models.DescribeSnapshotMonitorDataResponseBodyMonitorData = None,
         request_id: str = None,
     ):
-        # The monitoring data of snapshot sizes.
         self.monitor_data = monitor_data
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeSnapshotMonitorDataResponseBodyMonitorDataDataPoint(DaraModel):
         size: int = None,
         time_stamp: str = None,
     ):
-        # The total size of snapshots. Unit: bytes.
         self.size = size
-        # The timestamp that corresponds to a snapshot size.
         self.time_stamp = time_stamp
 
     def validate(self):

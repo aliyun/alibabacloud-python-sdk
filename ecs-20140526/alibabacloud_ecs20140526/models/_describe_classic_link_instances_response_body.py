@@ -16,7 +16,6 @@ class DescribeClassicLinkInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the ClassicLink connections between the instances reside in the classic network and VPCs.
         self.links = links
         # The page number.
         self.page_number = page_number
@@ -114,9 +113,7 @@ class DescribeClassicLinkInstancesResponseBodyLinksLink(DaraModel):
         instance_id: str = None,
         vpc_id: str = None,
     ):
-        # The instance ID.
         self.instance_id = instance_id
-        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

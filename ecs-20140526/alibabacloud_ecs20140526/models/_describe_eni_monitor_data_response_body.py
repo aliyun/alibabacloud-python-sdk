@@ -14,7 +14,6 @@ class DescribeEniMonitorDataResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The monitoring data of the secondary ENI.
         self.monitor_data = monitor_data
         # The request ID.
         self.request_id = request_id
@@ -102,21 +101,13 @@ class DescribeEniMonitorDataResponseBodyMonitorDataEniMonitorData(DaraModel):
         packet_tx: str = None,
         time_stamp: str = None,
     ):
-        # The number of received packets that were dropped by the secondary ENI over the internal network.
         self.drop_packet_rx = drop_packet_rx
-        # The number of sent packets that were dropped by the secondary ENI over the internal network.
         self.drop_packet_tx = drop_packet_tx
-        # The ID of the secondary ENI.
         self.eni_id = eni_id
-        # The average rate at which the secondary ENI received data over the internal network. Unit: Kbit/s.
         self.intranet_rx = intranet_rx
-        # The average rate at which the secondary ENI sent data over the internal network. Unit: Kbit/s.
         self.intranet_tx = intranet_tx
-        # The number of packets received by the secondary ENI over the internal network.
         self.packet_rx = packet_rx
-        # The number of packets sent by the secondary ENI over the internal network.
         self.packet_tx = packet_tx
-        # The timestamp of the monitoring data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

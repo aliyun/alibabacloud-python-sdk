@@ -53,11 +53,9 @@ class AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet(DaraMode
         network_interface_id: str = None,
         private_ip_set: main_models.AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSetPrivateIpSet = None,
     ):
-        # Details about the assigned IPv4 prefixes.
         self.ipv_4prefix_set = ipv_4prefix_set
         # The ENI ID.
         self.network_interface_id = network_interface_id
-        # The secondary private IP addresses that are assigned to the ENI.
         self.private_ip_set = private_ip_set
 
     def validate(self):

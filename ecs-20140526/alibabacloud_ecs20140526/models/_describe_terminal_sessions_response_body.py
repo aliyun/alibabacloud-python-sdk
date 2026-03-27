@@ -18,7 +18,6 @@ class DescribeTerminalSessionsResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information of the sessions.
         self.sessions = sessions
 
     def validate(self):
@@ -103,31 +102,14 @@ class DescribeTerminalSessionsResponseBodySessionsSession(DaraModel):
         target_server: str = None,
         username: str = None,
     ):
-        # The IP address of the client used to establish connections.
         self.client_ip = client_ip
-        # The information of the connections.
         self.connections = connections
-        # The time when the session was created.
         self.creation_time = creation_time
-        # The principal type. Valid values:
-        # 
-        # *   Account: an Alibaba Cloud account
-        # *   RAMUser: a RAM user
-        # *   AssumedRoleUser: a RAM role
         self.identity_type = identity_type
-        # The port number of the instance, which is used for data forwarding. If no port number was specified for data forwarding when the session was created, this parameter is empty.
         self.port_number = port_number
-        # The ID of the principal. Valid values based on the `IdentityType` value:
-        # 
-        # *   If the requester uses an Alibaba Cloud account to call the operation, the ID of the Alibaba Cloud account is returned.
-        # *   If the requester uses a Resource Access Management (RAM) user to call the operation, the ID of the RAM user is returned.
-        # *   If the requester uses a RAM role to call the operation, the ID of the principal that actually calls the operation is returned.
         self.principal_id = principal_id
-        # The session ID.
         self.session_id = session_id
-        # The address of the service that was accessed in a virtual private cloud (VPC) from the instance.
         self.target_server = target_server
-        # The username used to establish connections.
         self.username = username
 
     def validate(self):
@@ -245,31 +227,11 @@ class DescribeTerminalSessionsResponseBodySessionsSessionConnectionsConnection(D
         start_time: str = None,
         status: str = None,
     ):
-        # The reason why the connection was closed. This parameter is returned only when the `Status` value is `Disconnected`, `Terminated`, or `Failed`. Valid values:
-        # 
-        # *   InstanceNotExists: The specified instance did not exist or was released.
-        # *   InstanceNotRunning: The specified instance was not running.
-        # *   DeliveryTimeout: The connection timed out.
-        # *   AgentNeedUpgrade: Cloud Assistant Agent required an upgrade.
-        # *   AgentNotOnline: Cloud Assistant Agent was not connected to the Cloud Assistant server.
-        # *   MessageFormatInvalid: The message format was invalid.
-        # *   AgentSocketClosed: The connection was closed as expected.
-        # *   ClientClosed: Session Manager Client closed the connection.
         self.closed_reason = closed_reason
-        # The time when the connection was closed.
         self.end_time = end_time
-        # Cause of the connection failure. This parameter is returned only when the Status parameter is Failed.
         self.failed_detail = failed_detail
-        # The instance ID.
         self.instance_id = instance_id
-        # The time when the connection started to be established.
         self.start_time = start_time
-        # The state of the session. Valid values:
-        # 
-        # *   Connecting: The connection is being established.
-        # *   Connected: The connection is established.
-        # *   Terminated: The session is terminated.
-        # *   Failed: The connection failed.
         self.status = status
 
     def validate(self):

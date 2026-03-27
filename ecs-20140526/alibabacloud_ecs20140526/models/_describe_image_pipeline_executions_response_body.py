@@ -16,7 +16,6 @@ class DescribeImagePipelineExecutionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The total number of returned image components.
         self.image_pipeline_execution = image_pipeline_execution
         # The request ID.
         self.max_results = max_results
@@ -123,36 +122,14 @@ class DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipe
         status: str = None,
         tags: main_models.DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTags = None,
     ):
-        # Details of the image creation tasks.
         self.creation_time = creation_time
-        # The data returned.
         self.execution_id = execution_id
-        # The ID of the resource group.
         self.image_id = image_id
-        # Details of the image creation task.
         self.image_pipeline_id = image_pipeline_id
-        # The last modification time of the image creation task.
         self.message = message
-        # The ID of the image template.
         self.modified_time = modified_time
-        # The status of the image creation task. Valid values:
-        # 
-        # *   PREPARING: Resources, such as intermediate instances, are being created.
-        # *   REPAIRING: The source image is being repaired.
-        # *   BUILDING: The user-defined commands are being run and an image is being created.
-        # *   TESTING: The user-defined test commands are being run.
-        # *   DISTRIBUTING: The created image is being copied and shared.
-        # *   RELEASING: The temporary resources generated during the image creation process are being released.
-        # *   SUCCESS The image creation task is completed.
-        # *   PARTITION_SUCCESS: The image creation task is partially completed. The image is created, but exceptions may occur when the image was copied or shared or when temporary resources were released.
-        # *   FAILED: The image creation task fails.
-        # *   TEST_FAILED: The image is created, but the test fails.
-        # *   CANCELLING: The image creation task is being canceled.
-        # *   CANCELLED: The image creation task is canceled.
         self.resource_group_id = resource_group_id
-        # The time when the image creation task was created.
         self.status = status
-        # The ID of the image.
         self.tags = tags
 
     def validate(self):
@@ -266,9 +243,7 @@ class DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipe
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag of the image creation task.
         self.tag_key = tag_key
-        # The tags of the image creation task.
         self.tag_value = tag_value
 
     def validate(self):

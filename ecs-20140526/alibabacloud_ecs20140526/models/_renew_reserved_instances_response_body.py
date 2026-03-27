@@ -18,7 +18,6 @@ class RenewReservedInstancesResponseBody(DaraModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The IDs of the reserved instances.
         self.reserved_instance_id_sets = reserved_instance_id_sets
 
     def validate(self):

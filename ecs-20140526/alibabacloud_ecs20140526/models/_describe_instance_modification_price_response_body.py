@@ -54,7 +54,6 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The price.
         self.price = price
-        # The information about the promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -129,9 +128,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoRulesRule(DaraModel)
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the promotion rule.
         self.description = description
-        # The ID of the promotion rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -174,9 +171,6 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoPrice(DaraModel):
         # *   Alibaba Cloud China site (aliyun.com): CNY
         # *   Alibaba Cloud International site (alibabacloud.com): USD
         self.currency = currency
-        # The information about the price.
-        # 
-        # >  This parameter is returned only when ResourceType is set to instance.
         self.detail_infos = detail_infos
         # The discount.
         self.discount_price = discount_price
@@ -275,21 +269,10 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfosDeta
         sub_rules: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRules = None,
         trade_price: float = None,
     ):
-        # The discount.
         self.discount_price = discount_price
-        # The original price.
         self.original_price = original_price
-        # The resource name. Valid values:
-        # 
-        # *   InstanceType
-        # *   bandwidth
-        # *   image
-        # *   SystemDisk
-        # *   DataDisk
         self.resource = resource
-        # The pricing rules.
         self.sub_rules = sub_rules
-        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -379,9 +362,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfosDeta
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the pricing rule.
         self.description = description
-        # The ID of the pricing rule.
         self.rule_id = rule_id
 
     def validate(self):

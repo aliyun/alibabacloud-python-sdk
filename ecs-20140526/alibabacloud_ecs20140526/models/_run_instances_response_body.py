@@ -15,7 +15,6 @@ class RunInstancesResponseBody(DaraModel):
         request_id: str = None,
         trade_price: float = None,
     ):
-        # The instance IDs.
         self.instance_id_sets = instance_id_sets
         # The ID of the order. This parameter is returned only when `InstanceChargeType` is set to PrePaid.
         self.order_id = order_id

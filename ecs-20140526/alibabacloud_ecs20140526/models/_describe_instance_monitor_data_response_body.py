@@ -13,7 +13,6 @@ class DescribeInstanceMonitorDataResponseBody(DaraModel):
         monitor_data: main_models.DescribeInstanceMonitorDataResponseBodyMonitorData = None,
         request_id: str = None,
     ):
-        # The monitoring data of the instance.
         self.monitor_data = monitor_data
         # The request ID.
         self.request_id = request_id
@@ -102,39 +101,22 @@ class DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData(Dara
         intranet_tx: int = None,
         time_stamp: str = None,
     ):
-        # The read bandwidth of the cloud disks (system disk and data disks). Unit: Byte/s.
         self.bpsread = bpsread
-        # The write bandwidth of the cloud disks (system disk and data disks). Unit: Byte/s.
         self.bpswrite = bpswrite
-        # The vCPU utilization of the instance. Unit: percent (%).
         self.cpu = cpu
-        # The overdrawn CPU credits of the burstable instance.
         self.cpuadvance_credit_balance = cpuadvance_credit_balance
-        # The total number of CPU credits of the burstable instance.
         self.cpucredit_balance = cpucredit_balance
-        # The number of CPU credits consumed by the burstable instance.
         self.cpucredit_usage = cpucredit_usage
-        # The unpaid overdrawn CPU credits.
         self.cpunotpaid_surplus_credit_usage = cpunotpaid_surplus_credit_usage
-        # The number of read I/O operations per second on the cloud disks (system disk and data disks).
         self.iopsread = iopsread
-        # The number of write I/O operations per second on the cloud disks (system disk and data disks).
         self.iopswrite = iopswrite
-        # The instance ID.
         self.instance_id = instance_id
-        # The public bandwidth of the instance. Unit: Kbit/s.
         self.internet_bandwidth = internet_bandwidth
-        # The Internet traffic received by the instance during the period that is specified by the `Period` parameter. The period starts from the point in time that is specified by the `TimeStamp` parameter. Unit: Kbit.
         self.internet_rx = internet_rx
-        # The Internet traffic sent by the instance during the period that is specified by the `Period` parameter. The period starts from the point in time that is specified by the `TimeStamp` parameter. Unit: Kbit.
         self.internet_tx = internet_tx
-        # The internal bandwidth of the instance. Unit: Kbit/s.
         self.intranet_bandwidth = intranet_bandwidth
-        # The internal data traffic received by the instance during the period that is specified by the `Period` parameter. The period starts from the point in time that is specified by the `TimeStamp` parameter. Unit: Kbit.
         self.intranet_rx = intranet_rx
-        # The internal data traffic sent by the instance during the period that is specified by the `Period` parameter. The period starts from the point in time that is specified by the `TimeStamp` parameter. Unit: Kbit.
         self.intranet_tx = intranet_tx
-        # The timestamp of the monitoring data.
         self.time_stamp = time_stamp
 
     def validate(self):

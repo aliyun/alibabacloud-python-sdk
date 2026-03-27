@@ -25,7 +25,6 @@ class DescribeTasksResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # Details about the tasks.
         self.task_set = task_set
         # The total number of entries returned.
         self.total_count = total_count
@@ -128,19 +127,12 @@ class DescribeTasksResponseBodyTaskSetTask(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
-        # The time when the task was created.
         self.creation_time = creation_time
-        # The time when the task ended.
         self.finished_time = finished_time
-        # The resource ID.
         self.resource_id = resource_id
-        # Indicates whether the task can be canceled.
         self.support_cancel = support_cancel
-        # The name of the operation that generates the task.
         self.task_action = task_action
-        # The task ID.
         self.task_id = task_id
-        # The task status.
         self.task_status = task_status
 
     def validate(self):

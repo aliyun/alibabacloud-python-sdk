@@ -30,7 +30,6 @@ class DescribeTaskAttributeResponseBody(DaraModel):
         self.failed_count = failed_count
         # The time when the task was completed.
         self.finished_time = finished_time
-        # The return data of the task.
         self.operation_progress_set = operation_progress_set
         # The region ID of the task.
         self.region_id = region_id
@@ -191,13 +190,9 @@ class DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgress(Dar
         operation_status: str = None,
         related_item_set: main_models.DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgressRelatedItemSet = None,
     ):
-        # The error code.
         self.error_code = error_code
-        # The error message.
         self.error_msg = error_msg
-        # The status of the operation.
         self.operation_status = operation_status
-        # The type of resource information.
         self.related_item_set = related_item_set
 
     def validate(self):
@@ -281,9 +276,7 @@ class DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgressRela
         name: str = None,
         value: str = None,
     ):
-        # The name of the related item.
         self.name = name
-        # The value of the related item.
         self.value = value
 
     def validate(self):

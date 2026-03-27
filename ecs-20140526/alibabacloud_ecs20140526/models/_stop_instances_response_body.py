@@ -13,7 +13,6 @@ class StopInstancesResponseBody(DaraModel):
         instance_responses: main_models.StopInstancesResponseBodyInstanceResponses = None,
         request_id: str = None,
     ):
-        # The instance-specific responses, which contain the status of each instance before and after the operation was called and the results of the operation.
         self.instance_responses = instance_responses
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class StopInstancesResponseBodyInstanceResponsesInstanceResponse(DaraModel):
         message: str = None,
         previous_status: str = None,
     ):
-        # The error code returned for the instance. A return value of 200 indicates that the operation was successful. For more information, see the "Error codes" section of this topic.
         self.code = code
-        # The current status of the instance.
         self.current_status = current_status
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The error message returned for the instance. The return value `success` indicates that the operation is successful. For more information, see the "Error codes" section of this topic.
         self.message = message
-        # The status of the instance before the operation was called.
         self.previous_status = previous_status
 
     def validate(self):

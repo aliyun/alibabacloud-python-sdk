@@ -16,7 +16,6 @@ class DescribeInstanceAutoRenewAttributeResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The renewal attributes of instances.
         self.instance_renew_attributes = instance_renew_attributes
         # The page number.
         self.page_number = page_number
@@ -118,20 +117,11 @@ class DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInsta
         period_unit: str = None,
         renewal_status: str = None,
     ):
-        # Indicates whether auto-renewal is enabled.
         self.auto_renew_enabled = auto_renew_enabled
-        # The auto-renewal duration.
         self.duration = duration
         self.enable_expected_renew_day = enable_expected_renew_day
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The unit of the auto-renewal duration.
         self.period_unit = period_unit
-        # The auto-renewal state of the instance. Valid values:
-        # 
-        # *   AutoRenewal: Auto-renewal is enabled for the instance.
-        # *   Normal: Auto-renewal is disabled for the instance.
-        # *   NotRenewal: The instance is not to be renewed. The system sends no more expiration reminders, but sends only a non-renewal reminder three days before the expiration date. For an instance that is not to be renewed, you can call the [ModifyInstanceAutoRenewAttribute](https://help.aliyun.com/document_detail/52843.html) operation to change its auto-renewal status to `Normal`. Then, you can manually renew the instance or enable auto-renewal for the instance.
         self.renewal_status = renewal_status
 
     def validate(self):

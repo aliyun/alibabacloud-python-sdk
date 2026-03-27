@@ -16,9 +16,6 @@ class DescribeInstancesFullStatusResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried instances.
-        # 
-        # >  If no instances exist, this parameter is empty.
         self.instance_full_status_set = instance_full_status_set
         # The page number.
         self.page_number = page_number
@@ -118,13 +115,9 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         scheduled_system_event_set: main_models.DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSet = None,
         status: main_models.DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeStatus = None,
     ):
-        # The health state of the instance.
         self.health_status = health_status
-        # The instance ID.
         self.instance_id = instance_id
-        # The system events that are in the Scheduled or Inquiring state.
         self.scheduled_system_event_set = scheduled_system_event_set
-        # The lifecycle state of the instance.
         self.status = status
 
     def validate(self):
@@ -179,9 +172,7 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         code: int = None,
         name: str = None,
     ):
-        # The code of the instance lifecycle state.
         self.code = code
-        # The name of the instance lifecycle state.
         self.name = name
 
     def validate(self):
@@ -257,39 +248,13 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         not_before: str = None,
         reason: str = None,
     ):
-        # The state of the system event.
         self.event_cycle_status = event_cycle_status
-        # The system event ID.
         self.event_id = event_id
-        # The time when the system event was published. The time is displayed in UTC.
         self.event_publish_time = event_publish_time
-        # The type of the system event.
         self.event_type = event_type
-        # The extended attributes of system events generated for instances that have local disks attached.
-        # 
-        # The return values vary based on the system event type.
-        # 
-        # If the system event type is not one of the following types, this parameter is empty:
-        # 
-        # *   SystemMaintenance.StopAndRepair
-        # *   SystemMaintenance.CleanInactiveDisks
-        # *   SecurityPunish.Locked
-        # *   SecurityPunish.WebsiteBanned
-        # *   SystemUpgrade.Migrate
-        # *   SystemMaintenance.RebootAndIsolateErrorDisk
-        # *   SystemMaintenance.RebootAndReInitErrorDisk
-        # *   SystemMaintenance.ReInitErrorDisk
-        # *   SystemMaintenance.IsolateErrorDisk
         self.extended_attribute = extended_attribute
-        # The impact level of the system event.
-        # 
-        # >  If the user is not in a whitelist, this parameter is empty.
         self.impact_level = impact_level
-        # The scheduled time at which to execute the O\\&M task related to the system event. The time is displayed in UTC.
         self.not_before = not_before
-        # The reason why the system event was scheduled.
-        # 
-        # >  If the exception cause is not detected, this parameter is empty.
         self.reason = reason
 
     def validate(self):
@@ -369,11 +334,8 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         disk_id: str = None,
         inactive_disks: main_models.DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisks = None,
     ):
-        # The device name of the local disk.
         self.device = device
-        # The ID of the local disk.
         self.disk_id = disk_id
-        # The inactive disks that have been released and must be cleared.
         self.inactive_disks = inactive_disks
 
     def validate(self):
@@ -454,27 +416,10 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         device_type: str = None,
         release_time: str = None,
     ):
-        # The time when the disk was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The category of the disk. Valid values:
-        # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
-        # *   local_ssd_pro: I/O-intensive local disk
-        # *   local_hdd_pro: throughput-intensive local disk
-        # *   ephemeral: retired local disk
-        # *   ephemeral_ssd: retired local SSD
         self.device_category = device_category
-        # The size of the disk. Unit: GiB.
         self.device_size = device_size
-        # The type of the disk. Valid values:
-        # 
-        # *   system
-        # *   data
         self.device_type = device_type
-        # The time when the disk was released. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.release_time = release_time
 
     def validate(self):
@@ -527,9 +472,7 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         code: int = None,
         name: str = None,
     ):
-        # The code of the system event type.
         self.code = code
-        # The name of the system event type.
         self.name = name
 
     def validate(self):
@@ -564,9 +507,7 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         code: int = None,
         name: str = None,
     ):
-        # The code of the system event state.
         self.code = code
-        # The name of the system event state.
         self.name = name
 
     def validate(self):
@@ -601,9 +542,7 @@ class DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullSt
         code: int = None,
         name: str = None,
     ):
-        # The code of the health state.
         self.code = code
-        # The name of the health state.
         self.name = name
 
     def validate(self):

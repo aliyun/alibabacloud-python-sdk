@@ -14,7 +14,6 @@ class AllocateDedicatedHostsResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # A list of dedicated host IDs.
         self.dedicated_host_id_sets = dedicated_host_id_sets
         # The ID of the order.
         # 

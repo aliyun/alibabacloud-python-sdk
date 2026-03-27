@@ -13,7 +13,6 @@ class DescribeInstanceTypeFamiliesResponseBody(DaraModel):
         instance_type_families: main_models.DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamilies = None,
         request_id: str = None,
     ):
-        # The instance families.
         self.instance_type_families = instance_type_families
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFa
         generation: str = None,
         instance_type_family_id: str = None,
     ):
-        # The series of the instance family.
         self.generation = generation
-        # The ID of the instance family.
         self.instance_type_family_id = instance_type_family_id
 
     def validate(self):

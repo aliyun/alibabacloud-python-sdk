@@ -13,7 +13,6 @@ class DescribeAvailableResourceResponseBody(DaraModel):
         available_zones: main_models.DescribeAvailableResourceResponseBodyAvailableZones = None,
         request_id: str = None,
     ):
-        # The information about the availability of resources in the zones.
         self.available_zones = available_zones
         self.request_id = request_id
 
@@ -92,12 +91,6 @@ class DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone(DaraModel
         self.available_resources = available_resources
         self.region_id = region_id
         self.status = status
-        # The resource status based on the stock level in the zone. Valid value:
-        # 
-        # *   WithStock: The resources are available and can be continuously replenished.
-        # *   ClosedWithStock: Inventory is available, but resources will not be replenished. The ability to guarantee the supply of inventory is low. We recommend selecting a product specification in the WithStock state.
-        # *   WithoutStock: The resource is out of stock and will be replenished. We recommend using other resources that are in stock.
-        # *   ClosedWithoutStock: The resource is out of stock and will no longer be replenished. We recommend using other resources that are in stock.
         self.status_category = status_category
         self.zone_id = zone_id
 

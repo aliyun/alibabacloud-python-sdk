@@ -13,7 +13,6 @@ class DeleteLaunchTemplateVersionResponseBody(DaraModel):
         launch_template_versions: main_models.DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersions = None,
         request_id: str = None,
     ):
-        # The deleted launch template versions.
         self.launch_template_versions = launch_template_versions
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersionsLaunchTemplat
         launch_template_id: str = None,
         launch_template_version_number: int = None,
     ):
-        # The ID of the launch template.
         self.launch_template_id = launch_template_id
-        # The version number of the launch template.
         self.launch_template_version_number = launch_template_version_number
 
     def validate(self):

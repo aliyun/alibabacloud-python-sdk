@@ -15,7 +15,6 @@ class DescribeInstanceRamRoleResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The IDs of the ECS instances and the names of the corresponding instance RAM roles.
         self.instance_ram_role_sets = instance_ram_role_sets
         # The region ID of the ECS instances.
         self.region_id = region_id
@@ -105,9 +104,7 @@ class DescribeInstanceRamRoleResponseBodyInstanceRamRoleSetsInstanceRamRoleSet(D
         instance_id: str = None,
         ram_role_name: str = None,
     ):
-        # The ID of the instance
         self.instance_id = instance_id
-        # The name of the instance RAM role.
         self.ram_role_name = ram_role_name
 
     def validate(self):

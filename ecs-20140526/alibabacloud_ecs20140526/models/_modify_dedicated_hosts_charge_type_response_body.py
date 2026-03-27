@@ -14,7 +14,6 @@ class ModifyDedicatedHostsChargeTypeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # Details about the charges for the order.
         self.fee_of_instances = fee_of_instances
         # The ID of the order. This is returned only when the payment method is changed to subscription.
         self.order_id = order_id
@@ -97,15 +96,8 @@ class ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstancesFeeOfInstance(Dara
         fee: str = None,
         instance_id: str = None,
     ):
-        # The unit of currency for the bill.
-        # 
-        # Alibaba Cloud China site (aliyun.com): CNY
-        # 
-        # Alibaba Cloud International site (alibabacloud.com): USD
         self.currency = currency
-        # The charged amount.
         self.fee = fee
-        # The IDs of the dedicated hosts.
         self.instance_id = instance_id
 
     def validate(self):

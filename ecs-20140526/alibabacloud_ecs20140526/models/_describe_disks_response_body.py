@@ -17,7 +17,6 @@ class DescribeDisksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the disks.
         self.disks = disks
         # The returned pagination token which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -173,166 +172,55 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The time when the disk was last attached. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.attached_time = attached_time
-        # The attachment information of the disk. The value is an array that consists of the `Attachment` values. This value is not returned when you query Shared Block Storage devices.
         self.attachments = attachments
-        # The ID of the automatic snapshot policy that is applied to the cloud disk.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # This parameter is in invitational preview and is not publicly available.
         self.bdf_id = bdf_id
-        # Indicates whether the performance burst feature is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # This parameter is available only if you set `Category` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The category of the disk. Valid values:
-        # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: ESSD
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   local_ssd_pro: I/O-intensive local disk
-        # *   local_hdd_pro: throughput-intensive local disk
-        # *   cloud_essd_entry: ESSD Entry disk
-        # *   elastic_ephemeral_disk_standard: standard elastic ephemeral disk
-        # *   elastic_ephemeral_disk_premium: premium static ephemeral disk
-        # *   ephemeral: retired local disk
-        # *   ephemeral_ssd: retired local SSD
         self.category = category
-        # The time when the disk was created.
         self.creation_time = creation_time
-        # Indicates whether the automatic snapshots of the cloud disk are deleted when the cloud disk is released. Valid values:
-        # 
-        # *   true: The automatic snapshots of the cloud disk are deleted when the disk is released.
-        # *   false: The automatic snapshots of the cloud disk are retained when the disk is released.
-        # 
-        # Snapshots that were created in the ECS console or by calling the [CreateSnapshot](https://help.aliyun.com/document_detail/25524.html) operation are retained and not affected by this parameter.
         self.delete_auto_snapshot = delete_auto_snapshot
-        # Indicates whether the disk is released when the instance to which the disk is attached is released. Valid values:
-        # 
-        # *   true: The disk is released when the associated instance is released.
-        # *   false: The disk is retained when the associated instance is released.
         self.delete_with_instance = delete_with_instance
-        # The description of the disk.
         self.description = description
-        # The time when the disk was last detached.
         self.detached_time = detached_time
-        # The device name of the disk on the instance to which the disk is attached. Example: /dev/xvdb. Take note of the following items:
-        # 
-        # *   This parameter has a value only when the `Status` value is `In_use` or `Detaching`.
-        # *   This parameter is empty for cloud disks for which the multi-attach feature is enabled. You can query the attachment information of the cloud disk based on the returned list of `Attachment` objects.
-        # 
-        # >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.device = device
-        # The billing method of the disk. Valid values:
-        # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
         self.disk_charge_type = disk_charge_type
-        # The ID of the disk.
         self.disk_id = disk_id
-        # The name of the disk.
         self.disk_name = disk_name
-        # Indicates whether the automatic snapshot policy feature is enabled for the cloud disk.
-        # 
-        # >  This parameter is deprecated. By default, the automatic snapshot policy feature is enabled for cloud disks. You need to only apply an automatic snapshot policy to a cloud disk before you can use the automatic snapshot policy.
         self.enable_auto_snapshot = enable_auto_snapshot
-        # Indicates whether an automatic snapshot policy is applied to the cloud disk.
         self.enable_automated_snapshot_policy = enable_automated_snapshot_policy
-        # Indicates whether the cloud disk is encrypted.
         self.encrypted = encrypted
-        # The time when the subscription disk expires.
         self.expired_time = expired_time
-        # The maximum number of read and write operations per second.
         self.iops = iops
-        # The maximum number of read operations per second.
         self.iopsread = iopsread
-        # The maximum number of write operations per second.
         self.iopswrite = iopswrite
-        # The ID of the image that was used to create the instance. This parameter is empty unless the cloud disk was created from an image. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
         self.image_id = image_id
-        # The ID of the instance to which the disk is attached. Take note of the following items:
-        # 
-        # *   This parameter has a value only when the `Status` value is `In_use` or `Detaching`.
-        # *   This parameter is empty for cloud disks for which the multi-attach feature is enabled. You can query the attachment information of the cloud disk based on the returned `Attachment` objects.
         self.instance_id = instance_id
-        # The ID of the KMS key that is used for the cloud disk.
         self.kmskey_id = kmskey_id
-        # The number of instances to which the Shared Block Storage device is attached.
         self.mount_instance_num = mount_instance_num
-        # The attachment information of the Shared Block Storage device.
         self.mount_instances = mount_instances
-        # Indicates whether the multi-attach feature is enabled for the cloud disk.
         self.multi_attach = multi_attach
-        # The reasons why the disk was locked.
         self.operation_locks = operation_locks
-        # The performance level of the ESSD. Valid values:
-        # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The locations in which data is stored.
-        # 
-        # This parameter is returned only if you specify `Placement` in the AdditionalAttributes.N request parameter.
-        # 
-        # >  This parameter is valid only for Regional ESSDs (cloud_regional_disk_auto).
         self.placement = placement
-        # Indicates whether the disk is removable.
         self.portable = portable
-        # The product code of the disk in Alibaba Cloud Marketplace.
         self.product_code = product_code
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × *Capacity, 50,000}
-        # 
-        # This parameter is available only if you set `Category` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
-        # The ID of the region to which the disk belongs.
         self.region_id = region_id
-        # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
-        # The serial number of the disk.
         self.serial_number = serial_number
-        # The size of the disk. Unit: GiB.
         self.size = size
         self.source_disk_id = source_disk_id
-        # The ID of the snapshot that was used to create the cloud disk.
-        # 
-        # This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
         self.source_snapshot_id = source_snapshot_id
-        # The status of the disk. Valid values:
-        # 
-        # *   In_use
-        # *   Available
-        # *   Attaching
-        # *   Detaching
-        # *   Creating
-        # *   ReIniting
         self.status = status
-        # The ID of the dedicated block storage cluster to which the cloud disk belongs. If your cloud disk belongs to the public block storage cluster, an empty value is returned.
         self.storage_cluster_id = storage_cluster_id
-        # The ID of the storage set.
         self.storage_set_id = storage_set_id
-        # The maximum number of partitions in the storage set.
         self.storage_set_partition_number = storage_set_partition_number
-        # The tags of the disk.
         self.tags = tags
-        # The amount of data that can be transferred per second. Unit: MB/s.
         self.throughput = throughput
-        # The amount of data that can be read per second. Unit: MB/s.
         self.throughput_read = throughput_read
-        # The amount of data that can be written per second. Unit: MB/s.
         self.throughput_write = throughput_write
-        # The type of the disk. Valid values:
-        # 
-        # *   system: system disk
-        # *   data: data disk
         self.type = type
-        # The ID of the zone to which the disk belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -704,9 +592,7 @@ class DescribeDisksResponseBodyDisksDiskTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the disk.
         self.tag_key = tag_key
-        # The tag value of the disk.
         self.tag_value = tag_value
 
     def validate(self):
@@ -740,7 +626,6 @@ class DescribeDisksResponseBodyDisksDiskPlacement(DaraModel):
         self,
         zone_ids: str = None,
     ):
-        # The IDs of the zones in which data is stored.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -803,7 +688,6 @@ class DescribeDisksResponseBodyDisksDiskOperationLocksOperationLock(DaraModel):
         self,
         lock_reason: str = None,
     ):
-        # The reason why the disk was locked.
         self.lock_reason = lock_reason
 
     def validate(self):
@@ -868,11 +752,8 @@ class DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance(DaraModel):
         device: str = None,
         instance_id: str = None,
     ):
-        # The time when the disk was attached. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.attached_time = attached_time
-        # The mount point of the disk.
         self.device = device
-        # The ID of the instance to which the disk is attached.
         self.instance_id = instance_id
 
     def validate(self):
@@ -949,11 +830,8 @@ class DescribeDisksResponseBodyDisksDiskAttachmentsAttachment(DaraModel):
         device: str = None,
         instance_id: str = None,
     ):
-        # The time when the disk was attached. The time is displayed in UTC.
         self.attached_time = attached_time
-        # The device name of the disk.
         self.device = device
-        # The ID of the instance to which the disk is attached.
         self.instance_id = instance_id
 
     def validate(self):

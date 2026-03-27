@@ -16,7 +16,6 @@ class AttachInstanceRamRoleResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the results of attaching the instance RAM role.
         self.attach_instance_ram_role_results = attach_instance_ram_role_results
         # The number of instances to which the instance RAM role failed to be attached.
         self.fail_count = fail_count
@@ -116,13 +115,9 @@ class AttachInstanceRamRoleResponseBodyAttachInstanceRamRoleResultsAttachInstanc
         message: str = None,
         success: bool = None,
     ):
-        # Indicates whether the instance RAM role was attached. If the instance RAM role was attached, 200 is returned. If the instance RAM role failed to be attached, any other value is returned. For more information, see the "Error codes" section.
         self.code = code
-        # The ID of the instance.
         self.instance_id = instance_id
-        # Indicates whether the instance RAM role was attached. If the instance RAM role was attached, success is returned. If the instance RAM role failed to be attached, any other value is returned. For more information, see the "Error codes" section.
         self.message = message
-        # Indicates whether the instance RAM role was attached.
         self.success = success
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeImagePipelinesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the image templates.
         self.image_pipeline = image_pipeline
         # The number of entries per page.
         self.max_results = max_results
@@ -136,69 +135,29 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
         to_region_ids: main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetToRegionIds = None,
         v_switch_id: str = None,
     ):
-        # The IDs of Alibaba Cloud accounts to which to share the image that will be created based on the image template.
         self.add_accounts = add_accounts
-        # The advanced settings.
         self.advanced_options = advanced_options
-        # The source image.
-        # 
-        # *   When `BaseImageType` is set to IMAGE, the value of this parameter is the ID of a custom image.
-        # *   When `BaseImageType` is set to IMAGE_FAMILY, the value of this parameter is the name of an image family.
         self.base_image = base_image
-        # The type of the source image. Valid values:
-        # 
-        # *   IMAGE: custom image
-        # *   IMAGE_FAMILY: image family
         self.base_image_type = base_image_type
-        # The content of the image template.
         self.build_content = build_content
-        # The time when the image template was created.
         self.creation_time = creation_time
-        # Indicates whether to release the intermediate instance when the image fails to be created.
         self.delete_instance_on_failure = delete_instance_on_failure
-        # The description of the image template.
         self.description = description
-        # The family of the image created based on the image template.
-        # 
-        # >  This parameter is no longer used. We recommend that you use ImageOptions.ImageFamily.
         self.image_family = image_family
-        # The name prefix of the image created based on the image template.
-        # 
-        # >  This parameter is no longer used. We recommend that you use ImageOptions.ImageName.
         self.image_name = image_name
-        # The attributes of the image created based on the image template.
         self.image_options = image_options
-        # The ID of the image template.
         self.image_pipeline_id = image_pipeline_id
-        # The attributes and settings of the imported image.
         self.import_image_options = import_image_options
-        # The instance type.
         self.instance_type = instance_type
-        # The size of the outbound public bandwidth for the intermediate instance. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The name of the image template.
         self.name = name
-        # Indicates whether the image created based on the image template supports the Non-Volatile Memory Express (NVMe) protocol.
-        # 
-        # >  This parameter is no longer used. We recommend that you use ImageOptions.ImageFeatures.NvmeSupport.
         self.nvme_support = nvme_support
-        # The repair mode of the image template.
-        # 
-        # Valid values:
-        # 
-        # *   Standard: the standard mode
         self.repair_mode = repair_mode
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The system disk size of the intermediate instance. Unit: GiB
         self.system_disk_size = system_disk_size
-        # The tags of the image template.
         self.tags = tags
-        # The content of the image test template.
         self.test_content = test_content
-        # The IDs of regions to which to distribute the image that will be created based on the image template.
         self.to_region_ids = to_region_ids
-        # The ID of the vSwitch in the virtual private cloud (VPC).
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -444,9 +403,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetTagsTag(Dar
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -492,68 +449,16 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImage
         retention_strategy: str = None,
         role_name: str = None,
     ):
-        # The operating system architecture. Valid values:
-        # 
-        # *   x86_64
-        # *   arm64
         self.architecture = architecture
-        # The boot mode of the image. Valid values:
-        # 
-        # *   BIOS: BIOS mode
-        # *   UEFI: Unified Extensible Firmware Interface (UEFI) mode
         self.boot_mode = boot_mode
         self.description = description
-        # The information of disks from which the custom images are created.
-        # 
-        # *   When the value of N is 1, a custom image is created from the system disk.
-        # *   When the value of N is an integer in the range of 2 to 17, a custom image is created from a data disk.
         self.disk_device_mappings = disk_device_mappings
-        # The attributes of the custom image.
         self.features = features
         self.image_name = image_name
         self.import_image_tags = import_image_tags
-        # The type of the license to use to activate the operating system after the image is imported. Valid values:
-        # 
-        # *   Auto: ECS detects the operating system of the image and allocates a license to the operating system In this mode, the system first checks whether a license allocated by an official Alibaba Cloud channel is specified in the `Platform`. If a license allocated by an official Alibaba Cloud channel is specified, the system allocates the license to the imported image. If no such license is specified, the Bring Your Own License (BYOL) mode is used.
-        # *   Aliyun: The license allocated through an official Alibaba Cloud channel is used for the operating system distribution specified by `Platform`.
-        # *   BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
         self.license_type = license_type
-        # The operating system type. Valid values:
-        # 
-        # *   windows: Windows operating systems
-        # *   linux: Linux operating systems
         self.ostype = ostype
-        # The version of the operating system. Valid values:
-        # 
-        # *   Aliyun
-        # *   Anolis
-        # *   CentOS
-        # *   Ubuntu
-        # *   CoreOS
-        # *   SUSE
-        # *   Debian
-        # *   OpenSUSE
-        # *   FreeBSD
-        # *   RedHat
-        # *   Kylin
-        # *   UOS
-        # *   Fedora
-        # *   Fedora CoreOS
-        # *   CentOS Stream
-        # *   AlmaLinux
-        # *   Rocky Linux
-        # *   Gentoo
-        # *   Customized Linux
-        # *   Others Linux
-        # *   Windows Server 2022
-        # *   Windows Server 2019
-        # *   Windows Server 2016
-        # *   Windows Server 2012
-        # *   Windows Server 2008
-        # *   Windows Server 2003
-        # *   Other Windows
         self.platform = platform
-        # >  This parameter is in invitational preview.
         self.retain_imported_image = retain_imported_image
         self.retention_strategy = retention_strategy
         self.role_name = role_name
@@ -735,10 +640,6 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImage
         nvme_support: str = None,
     ):
         self.imds_support = imds_support
-        # Indicates whether the image supports the NVMe protocol. Valid values:
-        # 
-        # *   supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
-        # *   unsupported: The image does not support the NVMe protocol. Instances created from the image do not support the NVMe protocol.
         self.nvme_support = nvme_support
 
     def validate(self):
@@ -810,24 +711,9 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImage
         ossbucket: str = None,
         ossobject: str = None,
     ):
-        # The size of disk N in the custom image after the image is imported.
-        # 
-        # You can use this parameter to specify the sizes of the system disk and data disks in the custom image. When you specify the size of the system disk, make sure that the specified size is greater than or equal to the size of the source image file. Unit: GiB. Valid values:
-        # 
-        # *   When N is set to 1, this parameter indicates the size of the system disk in the custom image. Valid values: 1 to 2048.
-        # *   When N is set to an integer in the range of 2 to 17, this parameter indicates the size of a data disk in the custom image. Valid values: 1 to 2048.
-        # 
-        # After the image file is uploaded to an OSS bucket, you can view the size of the image file in the OSS bucket.
         self.disk_image_size = disk_image_size
-        # The format of the image. Valid values:
-        # 
-        # *   RAW
-        # *   VHD
-        # *   QCOW2
         self.format = format
-        # The Object Storage Service (OSS) bucket where the image file is stored.
         self.ossbucket = ossbucket
-        # The name (key) of the object that the image file is stored as in the OSS bucket.
         self.ossobject = ossobject
 
     def validate(self):
@@ -877,15 +763,10 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOption
         image_name: str = None,
         image_tags: main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptionsImageTags = None,
     ):
-        # The description of the image.
         self.description = description
-        # The image family.
         self.image_family = image_family
-        # The feature attributes of the image.
         self.image_features = image_features
-        # The prefix of the image name.
         self.image_name = image_name
-        # The tags of the image.
         self.image_tags = image_tags
 
     def validate(self):
@@ -978,9 +859,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOption
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the image.
         self.tag_key = tag_key
-        # The tag value of the image.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1014,11 +893,6 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOption
         self,
         nvme_support: str = None,
     ):
-        # Indicates whether the image supports the NVMe protocol. Valid values:
-        # 
-        # *   supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
-        # *   unsupported: The image does not support the NVMe protocol. Instances created from the image do not support the NVMe protocol.
-        # *   auto: The system automatically checks whether the image supports the NVMe protocol. The system automatically checks whether the NVMe driver is installed on your image before the image is built. If you install or uninstall the NVMe driver during the image building task, the check result may be incorrect. We recommend that you set the value to supported or unsupported based on the image building content.
         self.nvme_support = nvme_support
 
     def validate(self):
@@ -1047,16 +921,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetAdvancedOpt
         image_name_suffix: str = None,
         retain_cloud_assistant: bool = None,
     ):
-        # Indicates whether to disable the feature that automatically adds a suffix to the name of the image created based on the image template. Valid value:
-        # 
-        # *   disable
         self.image_name_suffix = image_name_suffix
-        # Indicates whether to retain Cloud Assistant. During the image building process, the system automatically installs Cloud Assistant in the intermediate instance to run commands. You can choose whether to retain Cloud Assistant in the new image created based on the image template. Valid values:
-        # 
-        # *   true: retains Cloud Assistant.
-        # *   false: does not retain Cloud Assistant.
-        # 
-        # >  This parameter does not affect Cloud Assistant that comes with your image.
         self.retain_cloud_assistant = retain_cloud_assistant
 
     def validate(self):

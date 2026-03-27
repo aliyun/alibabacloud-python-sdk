@@ -16,7 +16,6 @@ class DescribeDedicatedHostClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array consisting of host group information.
         self.dedicated_host_clusters = dedicated_host_clusters
         # The page number.
         self.page_number = page_number
@@ -121,23 +120,14 @@ class DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHos
         tags: main_models.DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterTags = None,
         zone_id: str = None,
     ):
-        # The capacity of the host group.
         self.dedicated_host_cluster_capacity = dedicated_host_cluster_capacity
-        # The ID of the host group.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        # The name of the host group.
         self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        # The IDs of dedicated hosts in the host group.
         self.dedicated_host_ids = dedicated_host_ids
-        # The description of the host group.
         self.description = description
-        # The region ID of the host group.
         self.region_id = region_id
-        # The resource group ID of the host group.
         self.resource_group_id = resource_group_id
-        # The tags of the host group.
         self.tags = tags
-        # The zone ID of the host group.
         self.zone_id = zone_id
 
     def validate(self):
@@ -257,9 +247,7 @@ class DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHos
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -325,17 +313,11 @@ class DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHos
         total_memory: int = None,
         total_vcpus: int = None,
     ):
-        # The available capacity of ECS instances in the host group.
         self.available_instance_types = available_instance_types
-        # The size of available memory. Unit: GiB
         self.available_memory = available_memory
-        # The number of available vCPUs.
         self.available_vcpus = available_vcpus
-        # The local storage capacity.
         self.local_storage_capacities = local_storage_capacities
-        # The total memory size. Unit: GiB
         self.total_memory = total_memory
-        # The total number of vCPUs.
         self.total_vcpus = total_vcpus
 
     def validate(self):
@@ -435,17 +417,8 @@ class DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHos
         data_disk_category: str = None,
         total_disk: int = None,
     ):
-        # The available capacity of the local disk. Unit: GiB
         self.available_disk = available_disk
-        # The category of data disks. Valid values:
-        # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   ephemeral_ssd: local SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
         self.data_disk_category = data_disk_category
-        # The total capacity of the local disk. Unit: GiB
         self.total_disk = total_disk
 
     def validate(self):
@@ -521,9 +494,7 @@ class DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHos
         available_instance_capacity: int = None,
         instance_type: str = None,
     ):
-        # The available capacity of the ECS instance type.
         self.available_instance_capacity = available_instance_capacity
-        # The ECS instance type.
         self.instance_type = instance_type
 
     def validate(self):

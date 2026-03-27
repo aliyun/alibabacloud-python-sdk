@@ -16,7 +16,6 @@ class DescribeElasticityAssuranceInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the instances that match and use the elasticity assurance.
         self.elasticity_assurance_item = elasticity_assurance_item
         # The number of entries returned per page.
         self.max_results = max_results
@@ -113,7 +112,6 @@ class DescribeElasticityAssuranceInstancesResponseBodyElasticityAssuranceItemIns
         self,
         instance_id: str = None,
     ):
-        # The instance ID
         self.instance_id = instance_id
 
     def validate(self):

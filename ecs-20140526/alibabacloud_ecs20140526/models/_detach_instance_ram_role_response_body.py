@@ -16,7 +16,6 @@ class DetachInstanceRamRoleResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The results of the instance RAM role detachment, which include the names of the instance RAM roles and the IDs of the ECS instances from which you attempted to detach the instance RAM roles.
         self.detach_instance_ram_role_results = detach_instance_ram_role_results
         # The number of ECS instances from which instance RAM roles failed to be detached.
         self.fail_count = fail_count
@@ -117,15 +116,10 @@ class DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanc
         message: str = None,
         success: bool = None,
     ):
-        # Indicates whether the instance RAM role was detached. If 200 is returned, the instance RAM role was detached. If any other value is returned, the instance RAM role failed to be detached. For more information, see the "Error codes" section.
         self.code = code
-        # The ID of the ECS instance from which you attempted to detach the instance RAM role.
         self.instance_id = instance_id
-        # The name of the instance RAM role and the ID of the ECS instance.
         self.instance_ram_role_sets = instance_ram_role_sets
-        # Indicates whether the instance RAM role was detached. If success is returned, the instance RAM role was detached. If any other value is returned, the instance RAM role failed to be detached. For more information, see the "Error codes" section.
         self.message = message
-        # Indicates whether the instance RAM role was detached.
         self.success = success
 
     def validate(self):
@@ -215,9 +209,7 @@ class DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanc
         instance_id: str = None,
         ram_role_name: str = None,
     ):
-        # The ID of the ECS instance.
         self.instance_id = instance_id
-        # The name of the instance RAM role.
         self.ram_role_name = ram_role_name
 
     def validate(self):

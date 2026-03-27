@@ -16,7 +16,6 @@ class DescribeCapacityReservationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the capacity reservations.
         self.capacity_reservation_set = capacity_reservation_set
         # The maximum number of entries returned per page.
         self.max_results = max_results
@@ -131,64 +130,24 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         tags: main_models.DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemTags = None,
         time_slot: str = None,
     ):
-        # Details of the allocated resources.
         self.allocated_resources = allocated_resources
-        # The ID of the capacity reservation owner.
         self.capacity_reservation_owner_id = capacity_reservation_owner_id
-        # The description of the capacity reservation.
         self.description = description
-        # The time when the capacity reservation expires.
         self.end_time = end_time
-        # The release mode of the capacity reservation. Valid values:
-        # 
-        # *   Limited: The capacity reservation is automatically released at a specified time.
-        # *   Unlimited: The capacity reservation is manually released. You can release the capacity reservation anytime.
         self.end_time_type = end_time_type
-        # The billing method of the instances created by using the capacity reservation. Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go.
-        # *   PrePaid: subscription.
         self.instance_charge_type = instance_charge_type
-        # The operating system type of the instances created by using the capacity reservation. Valid values:
-        # 
-        # *   windows
-        # *   linux
         self.platform = platform
-        # The ID of the capacity reservation.
         self.private_pool_options_id = private_pool_options_id
-        # The type of the private pool generated after the capacity reservation takes effect. Valid values:
-        # 
-        # *   Open: open private pool. If you use the capacity reservation to create Elastic Compute Service (ECS) instances, the open private pool that is associated with the capacity reservation is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the instances.
-        # *   Target: targeted private pool. If you use the capacity reservation to create ECS instances, the targeted private pool that is associated with the capacity reservation is automatically matched. If no capacity is available in the private pool, the instances fail to be created.
         self.private_pool_options_match_criteria = private_pool_options_match_criteria
-        # The name of the capacity reservation.
         self.private_pool_options_name = private_pool_options_name
-        # The region ID of the capacity reservation.
         self.region_id = region_id
-        # The ID of the reserved instance used with the capacity reservation.
         self.reserved_instance_id = reserved_instance_id
-        # The ID of the resource group to which the capacity reservation belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the savings plan used with the capacity reservation.
         self.saving_plan_id = saving_plan_id
-        # The time when the capacity reservation takes effect.
         self.start_time = start_time
-        # The mode in which the capacity reservation takes effect. Valid values:
-        # 
-        # *   Now: The capacity reservation takes effect immediately after it is created.
-        # *   Later: The capacity reservation takes effect at a specified time.
         self.start_time_type = start_time_type
-        # The status of the capacity reservation. Valid values:
-        # 
-        # *   Pending: The capacity reservation is being initialized.
-        # *   Preparing: The capacity reservation is being prepared.
-        # *   Prepared: The capacity reservation is to take effect.
-        # *   Active: The capacity reservation is in effect.
-        # *   Released: The capacity reservation has been released manually or automatically when it expired.
         self.status = status
-        # The tags that are added to the capacity reservation.
         self.tags = tags
-        # >  This parameter is in invitational preview and is not publicly available.
         self.time_slot = time_slot
 
     def validate(self):
@@ -365,9 +324,7 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -441,17 +398,11 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         used_amount: int = None,
         zone_id: str = None,
     ):
-        # The number of available instances.
         self.available_amount = available_amount
-        # Details of instance usage.
         self.capacity_reservation_usages = capacity_reservation_usages
-        # The instance type of the instances.
         self.instance_type = instance_type
-        # The total number of instances for which the capacity of an instance type is reserved.
         self.total_amount = total_amount
-        # The number of instances that have used the capacity reservation.
         self.used_amount = used_amount
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -548,11 +499,8 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         service_name: str = None,
         used_amount: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The name of the Alibaba Cloud service.
         self.service_name = service_name
-        # The number of instances that are used by the Alibaba Cloud account or service.
         self.used_amount = used_amount
 
     def validate(self):

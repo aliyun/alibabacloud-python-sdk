@@ -18,7 +18,6 @@ class ListTagResourcesResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the resource and its tags, including the resource ID, the resource type, and the keys and values of the tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -98,33 +97,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID.
         self.resource_id = resource_id
-        # The resource type. Valid values:
-        # 
-        # *   instance: ECS instance
-        # *   disk: disk
-        # *   snapshot: snapshot
-        # *   image: image
-        # *   securitygroup: security group
-        # *   volume: storage volume
-        # *   eni: ENI
-        # *   ddh: dedicated host
-        # *   ddhcluster: dedicated host cluster
-        # *   keypair: SSH key pair
-        # *   launchtemplate: launch template
-        # *   reservedinstance: reserved instance
-        # *   snapshotpolicy: automatic snapshot policy
-        # *   elasticityassurance: elasticity assurance
-        # *   capacityreservation: capacity reservation
-        # *   command: Cloud Assistant command
-        # *   invocation: Cloud Assistant command execution result
-        # *   activation: activation code for a Cloud Assistant managed instance
-        # *   managedinstance: Cloud Assistant managed instance
         self.resource_type = resource_type
-        # The tag key of the resource.
         self.tag_key = tag_key
-        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):

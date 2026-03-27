@@ -14,7 +14,6 @@ class DescribeAutoSnapshotPolicyAssociationsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The association of automatic snapshot policies.
         self.auto_snapshot_policy_associations = auto_snapshot_policy_associations
         # The returned pagination token which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -96,9 +95,7 @@ class DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssoci
         auto_snapshot_policy_id: str = None,
         disk_id: str = None,
     ):
-        # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The ID of the cloud disk.
         self.disk_id = disk_id
 
     def validate(self):

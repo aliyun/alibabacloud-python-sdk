@@ -25,7 +25,6 @@ class DescribeSnapshotLinksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the snapshot chains.
         self.snapshot_links = snapshot_links
         # The total number of snapshot chains.
         # 
@@ -135,41 +134,17 @@ class DescribeSnapshotLinksResponseBodySnapshotLinksSnapshotLink(DaraModel):
         total_count: int = None,
         total_size: int = None,
     ):
-        # The type of the snapshot chain. Valid values:
-        # 
-        # *   standard: standard snapshot chain.
-        # *   archive: archive snapshot chain.
-        # *   flash: instant access snapshot chain.
         self.category = category
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # Indicates whether the instant access feature is enabled. Valid values:
-        # 
-        # *   true: The instant access feature is enabled. The feature can be enabled only for Enterprise SSDs (ESSDs).
-        # *   false: The instant access feature is disabled. The snapshot is a standard snapshot for which the instant access feature is disabled.
-        # 
-        # >  This parameter is no longer used. By default, standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
         self.instant_access = instant_access
-        # The region ID of the source disk.
         self.region_id = region_id
-        # The ID of the snapshot chain.
         self.snapshot_link_id = snapshot_link_id
-        # The ID of the source disk. This parameter is retained even if the source disk is deleted.
         self.source_disk_id = source_disk_id
-        # The name of the source disk.
         self.source_disk_name = source_disk_name
-        # The capacity of the source disk. Unit: GiB.
         self.source_disk_size = source_disk_size
-        # The type of the source disk. Valid values:
-        # 
-        # *   system: system disk
-        # *   data: data disk
         self.source_disk_type = source_disk_type
-        # The total number of snapshots.
         self.total_count = total_count
-        # The total size of all snapshots in the snapshot chain. Unit: byte.
         self.total_size = total_size
 
     def validate(self):

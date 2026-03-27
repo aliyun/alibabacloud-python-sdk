@@ -19,7 +19,9 @@ class DescribeSecurityGroupAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         security_group_id: str = None,
     ):
-        # The attributes of the security group. Valid value: snapshotPolicyIds: queries information about snapshot policies associated with a security group.
+        # The attributes of the security group. Valid value:
+        # 
+        # *   snapshotPolicyIds: queries information about snapshot policies associated with a security group.
         self.attribute = attribute
         # The direction in which the security group rule is applied. Valid values:
         # 

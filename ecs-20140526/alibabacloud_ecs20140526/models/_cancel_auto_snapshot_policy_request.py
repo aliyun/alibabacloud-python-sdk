@@ -14,11 +14,8 @@ class CancelAutoSnapshotPolicyRequest(DaraModel):
         disk_ids: str = None,
         region_id: str = None,
     ):
-        # RAM用户的虚拟账号ID。
         self.owner_id = owner_id
-        # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
-        # 资源主账号的ID，亦即UID。
         self.resource_owner_id = resource_owner_id
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The IDs of the disks for which you want to disable the automatic snapshot policy. To disable the automatic snapshot policy for multiple disks, you can set this parameter to a JSON array that consists of multiple disk IDs, such as ["dxxxxxxxxx", "dyyyyyyyyy", … "dzzzzzzzzz"]. Separate the disk IDs with commas (,).

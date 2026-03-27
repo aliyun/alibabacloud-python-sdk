@@ -14,6 +14,7 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        resource_usage_config_shrink: str = None,
         session_manager_config_shrink: str = None,
         setting_type: str = None,
         sls_delivery_config_shrink: str = None,
@@ -30,6 +31,7 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.resource_usage_config_shrink = resource_usage_config_shrink
         # Cloud Assistant Session Manager configuration.
         self.session_manager_config_shrink = session_manager_config_shrink
         # The Cloud Assistant feature. Set SettingType to one of the following valid values:
@@ -73,6 +75,9 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.resource_usage_config_shrink is not None:
+            result['ResourceUsageConfig'] = self.resource_usage_config_shrink
+
         if self.session_manager_config_shrink is not None:
             result['SessionManagerConfig'] = self.session_manager_config_shrink
 
@@ -106,6 +111,9 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('ResourceUsageConfig') is not None:
+            self.resource_usage_config_shrink = m.get('ResourceUsageConfig')
 
         if m.get('SessionManagerConfig') is not None:
             self.session_manager_config_shrink = m.get('SessionManagerConfig')

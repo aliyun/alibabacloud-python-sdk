@@ -15,7 +15,6 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Details about the zones and their supported resources.
         self.zones = zones
 
     def validate(self):
@@ -95,39 +94,15 @@ class DescribeZonesResponseBodyZonesZone(DaraModel):
         zone_id: str = None,
         zone_type: str = None,
     ):
-        # The supported dedicated host types.
         self.available_dedicated_host_types = available_dedicated_host_types
-        # The categories of cloud disks that can be created. Valid values:
-        # 
-        # *   cloud: basic disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_essd: ESSD
         self.available_disk_categories = available_disk_categories
-        # The supported instance types.
         self.available_instance_types = available_instance_types
-        # The types of resources that can be created. Valid values:
-        # 
-        # *   VSwitch: vSwitch
-        # *   IoOptimized: I/O optimized instance
-        # *   Instance: instance
-        # *   DedicatedHost: dedicated host
-        # *   disk: cloud disk
         self.available_resource_creation = available_resource_creation
-        # Details about the resources that can be created in the zone.
         self.available_resources = available_resources
-        # The supported Shared Block Storage device categories.
         self.available_volume_categories = available_volume_categories
-        # The supported generations of dedicated hosts.
         self.dedicated_host_generations = dedicated_host_generations
-        # The name of the zone in the local language.
         self.local_name = local_name
-        # The ID of the zone.
         self.zone_id = zone_id
-        # The type of the zone. Valid values:
-        # 
-        # *   AvailabilityZone: zone for the Alibaba Cloud public cloud
-        # *   CloudBoxZone: zone for CloudBox
         self.zone_type = zone_type
 
     def validate(self):
@@ -324,19 +299,12 @@ class DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfo(DaraMode
         network_types: main_models.DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfoNetworkTypes = None,
         system_disk_categories: main_models.DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfoSystemDiskCategories = None,
     ):
-        # The categories of data disks that can be created.
         self.data_disk_categories = data_disk_categories
-        # The supported generations of instance families.
         self.instance_generations = instance_generations
-        # The supported instance families.
         self.instance_type_families = instance_type_families
-        # The supported instance types.
         self.instance_types = instance_types
-        # Indicates whether the instance is I/O optimized.
         self.io_optimized = io_optimized
-        # The supported network types.
         self.network_types = network_types
-        # The categories of system disks that can be created.
         self.system_disk_categories = system_disk_categories
 
     def validate(self):

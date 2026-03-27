@@ -35,11 +35,8 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
     ):
         # The description of the ENI.
         self.description = description
-        # The IPv4 prefixes assigned to the ENI.
         self.ipv_4prefix_sets = ipv_4prefix_sets
-        # The IPv6 prefixes assigned to the ENI.
         self.ipv_6prefix_sets = ipv_6prefix_sets
-        # The IPv6 addresses assigned to the ENI.
         self.ipv_6sets = ipv_6sets
         # The media access control (MAC) address of the ENI.
         self.mac_address = mac_address
@@ -51,13 +48,11 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         self.owner_id = owner_id
         # The private IP address of the ENI.
         self.private_ip_address = private_ip_address
-        # The private IP addresses.
         self.private_ip_sets = private_ip_sets
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group to which the ENI belongs.
         self.resource_group_id = resource_group_id
-        # The IDs of the security groups to which the ENI belongs.
         self.security_group_ids = security_group_ids
         # The ID of the distributor to which the ENI belongs.
         self.service_id = service_id
@@ -67,7 +62,6 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         self.source_dest_check = source_dest_check
         # The state of the ENI.
         self.status = status
-        # The tags of the ENI.
         self.tags = tags
         # The type of the ENI.
         self.type = type
@@ -282,9 +276,7 @@ class CreateNetworkInterfaceResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -381,9 +373,7 @@ class CreateNetworkInterfaceResponseBodyPrivateIpSetsPrivateIpSet(DaraModel):
         primary: bool = None,
         private_ip_address: str = None,
     ):
-        # Indicates whether the private IP address is the primary private IP address.
         self.primary = primary
-        # The private IP address of the instance.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -452,7 +442,6 @@ class CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set(DaraModel):
         self,
         ipv_6address: str = None,
     ):
-        # The IPv6 address assigned to the ENI.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -515,7 +504,6 @@ class CreateNetworkInterfaceResponseBodyIpv6PrefixSetsIpv6PrefixSet(DaraModel):
         self,
         ipv_6prefix: str = None,
     ):
-        # The IPv6 prefix assigned to the ENI.
         self.ipv_6prefix = ipv_6prefix
 
     def validate(self):
@@ -578,7 +566,6 @@ class CreateNetworkInterfaceResponseBodyIpv4PrefixSetsIpv4PrefixSet(DaraModel):
         self,
         ipv_4prefix: str = None,
     ):
-        # The IPv4 prefix assigned to the ENI.
         self.ipv_4prefix = ipv_4prefix
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeNetworkInterfacePermissionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the ENI permissions.
         self.network_interface_permissions = network_interface_permissions
         # The page number.
         self.page_number = page_number
@@ -118,22 +117,11 @@ class DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissions
         permission_state: str = None,
         service_name: str = None,
     ):
-        # The ID of the Alibaba Cloud partner (a certified ISV) or individual user.
         self.account_id = account_id
-        # The ID of ENI N.
         self.network_interface_id = network_interface_id
-        # The ID of the ENI permission.
         self.network_interface_permission_id = network_interface_permission_id
-        # The ENI permission.
         self.permission = permission
-        # The status of the ENI permission. Valid values:
-        # 
-        # *   Pending: The permission is being granted.
-        # *   Granted: The permission is granted.
-        # *   Revoking: The permission is being revoked.
-        # *   Revoked: The permission is revoked.
         self.permission_state = permission_state
-        # The name of the Alibaba Cloud service.
         self.service_name = service_name
 
     def validate(self):

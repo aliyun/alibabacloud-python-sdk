@@ -13,7 +13,6 @@ class DescribeRecommendInstanceTypeResponseBody(DaraModel):
         data: main_models.DescribeRecommendInstanceTypeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the recommended instance types.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -95,25 +94,15 @@ class DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceType(DaraMod
         zone_id: str = None,
         zones: main_models.DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZones = None,
     ):
-        # The commodity code of the instance type.
         self.commodity_code = commodity_code
-        # The billing method of the instances.
         self.instance_charge_type = instance_charge_type
-        # The details of the instance type.
         self.instance_type = instance_type
-        # The network type of the ECS instances.
         self.network_type = network_type
-        # The priority based on which the system sorts the instance types.
         self.priority = priority
-        # The ID of the region in which the instance type is available.
         self.region_id = region_id
-        # The scenario in which the instance type is recommended.
         self.scene = scene
-        # The bidding policy for the spot instances.
         self.spot_strategy = spot_strategy
-        # The ID of the zone in which the instance type is available.
         self.zone_id = zone_id
-        # The details of the zones in which the instance type is available.
         self.zones = zones
 
     def validate(self):
@@ -236,9 +225,7 @@ class DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZonesZon
         network_types: main_models.DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZonesZoneNetworkTypes = None,
         zone_no: str = None,
     ):
-        # The details of the network types of the instance type.
         self.network_types = network_types
-        # The ID of the zone in which the instance type is available.
         self.zone_no = zone_no
 
     def validate(self):
@@ -306,17 +293,11 @@ class DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeInstance
         memory: int = None,
         support_io_optimized: str = None,
     ):
-        # The number of vCPUs of the instance type.
         self.cores = cores
-        # The generation of the instance family.
         self.generation = generation
-        # The name of the instance type.
         self.instance_type = instance_type
-        # The instance family.
         self.instance_type_family = instance_type_family
-        # The memory size of the instance type. Unit: MB.
         self.memory = memory
-        # Indicates whether the instance type supports I/O optimization.
         self.support_io_optimized = support_io_optimized
 
     def validate(self):

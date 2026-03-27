@@ -20,25 +20,6 @@ class DescribeImageSupportInstanceTypesResponseBody(DaraModel):
         # *   imagId: image ID
         # *   filter: image ID
         self.image_id = image_id
-        # {
-        #     "RequestId": "CF661E2D-4AFE-4BCD-959A-A65E14416B44",
-        #     "RegionId": "cn-hangzhou",
-        #     "ImageId": "ubuntu_16_0402_64_20G_alibase_20180409.vhd",
-        #     "InstanceTypes": {
-        #         "InstanceType": [{
-        #             "InstanceTypeId": "ecs.t1.xsmall",
-        #             "CpuCoreCount": 1,
-        #             "MemorySize": 0.5,
-        #             "InstanceTypeFamily": "ecs.t1"
-        #         },
-        #         {
-        #             "InstanceTypeId": "ecs.t1.small",
-        #             "CpuCoreCount": 1,
-        #             "MemorySize": 1,
-        #             "InstanceTypeFamily": "ecs.t1"
-        #         }]
-        #     }
-        # }
         self.instance_types = instance_types
         # {
         #     "RequestId": "CF661E2D-4AFE-4BCD-959A-A65E14416B44",
@@ -146,13 +127,9 @@ class DescribeImageSupportInstanceTypesResponseBodyInstanceTypesInstanceType(Dar
         instance_type_id: str = None,
         memory_size: float = None,
     ):
-        # The number of vCPUs of the instance type.
         self.cpu_core_count = cpu_core_count
-        # DescribeImageSupportInstanceTypes
         self.instance_type_family = instance_type_family
-        # Queries the instance types supported by an image.
         self.instance_type_id = instance_type_id
-        # The memory size of the instance type. Unit: GiB.
         self.memory_size = memory_size
 
     def validate(self):

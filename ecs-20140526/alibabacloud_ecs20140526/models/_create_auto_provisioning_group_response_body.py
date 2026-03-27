@@ -16,7 +16,6 @@ class CreateAutoProvisioningGroupResponseBody(DaraModel):
     ):
         # The ID of the auto provisioning group.
         self.auto_provisioning_group_id = auto_provisioning_group_id
-        # The instances created by the auto provisioning group. The values of the parameters in this array are returned only when AutoProvisioningGroupType is set to `instant`.
         self.launch_results = launch_results
         # The ID of the request.
         self.request_id = request_id
@@ -101,23 +100,12 @@ class CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult(DaraModel
         spot_strategy: str = None,
         zone_id: str = None,
     ):
-        # The number of created instances.
         self.amount = amount
-        # The error code returned when the instance cannot be created.
         self.error_code = error_code
-        # The error message returned when the instance cannot be created.
         self.error_msg = error_msg
-        # The IDs of created instances.
         self.instance_ids = instance_ids
-        # The instance type of the instance.
         self.instance_type = instance_type
-        # The bidding policy for the pay-as-you-go instance. Valid values:
-        # 
-        # *   NoSpot: The instance is a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a spot instance for which you specify the maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is used as the bid price.
         self.spot_strategy = spot_strategy
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):

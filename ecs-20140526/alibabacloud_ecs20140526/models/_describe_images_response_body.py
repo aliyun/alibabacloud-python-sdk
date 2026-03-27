@@ -17,7 +17,6 @@ class DescribeImagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information of the images.
         self.images = images
         # The page number returned.
         self.page_number = page_number
@@ -154,104 +153,38 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         tags: main_models.DescribeImagesResponseBodyImagesImageTags = None,
         usage: str = None,
     ):
-        # The architecture of the image. Valid values:
-        # 
-        # *   i386
-        # *   x86_64
-        # *   arm64
         self.architecture = architecture
-        # The boot mode of the image. Valid values:
-        # 
-        # *   BIOS: Basic Input/Output System (BIOS)
-        # *   UEFI: Unified Extensible Firmware Interface (UEFI)
-        # *   UEFI-Preferred: BIOS and UEFI
-        # 
-        # For information about the image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
         self.boot_mode = boot_mode
-        # The time when the image was created.
         self.creation_time = creation_time
-        # The description of the image.
         self.description = description
-        # Details about the check performed on the image.
         self.detection_options = detection_options
-        # The mappings between disks and snapshots in the image.
         self.disk_device_mappings = disk_device_mappings
-        # The feature attributes of the image.
         self.features = features
-        # The name of the image family.
         self.image_family = image_family
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
-        # The source of the image. Valid values:
-        # 
-        # *   system: a public image provided by Alibaba Cloud
-        # *   self: a custom image that you created
-        # *   others: a shared image from another Alibaba Cloud account or a community image published by another Alibaba Cloud account
-        # *   marketplace: an Alibaba Cloud Marketplace image
         self.image_owner_alias = image_owner_alias
-        # The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only if you query shared images or community images.
         self.image_owner_id = image_owner_id
-        # The version of the image.
         self.image_version = image_version
-        # Indicates whether the image is a copy of another image.
         self.is_copied = is_copied
-        # Indicates whether the image is publicly available. Publicly available images include public images provided by Alibaba Cloud and custom images published as community images. Valid values:
-        # 
-        # *   true: The image is publicly available.
-        # *   false: The image is publicly unavailable.
         self.is_public = is_public
-        # Indicates whether the custom image was shared to other Alibaba Cloud accounts.
         self.is_self_shared = is_self_shared
-        # Indicates whether you accepted the Terms of Service of the image service that corresponds to the product code.
         self.is_subscribed = is_subscribed
-        # Indicates whether the image supports cloud-init.
         self.is_support_cloudinit = is_support_cloudinit
-        # Indicates whether the image can be used on I/O optimized instances.
         self.is_support_io_optimized = is_support_io_optimized
         self.license_type = license_type
-        # Indicates whether the image supports logons of non-root users. Valid values:
-        # 
-        # *   true: The image supports logons of non-root users.
-        # *   false: The image does not support logons of non-root users.
         self.login_as_non_root_supported = login_as_non_root_supported
-        # The display name of the operating system in Chinese.
         self.osname = osname
-        # The display name of the operating system in English.
         self.osname_en = osname_en
-        # The type of the operating system. Valid values:
-        # 
-        # *   windows
-        # *   linux
         self.ostype = ostype
-        # The operating system platform.
         self.platform = platform
-        # The Alibaba Cloud Marketplace product code of the image.
         self.product_code = product_code
-        # The creation progress of the image. Unit: percent (%).
         self.progress = progress
-        # The ID of the resource group to which the image belongs.
         self.resource_group_id = resource_group_id
-        # The size of the image. Unit: GiB.
-        # 
-        # >  If the image contains data disk snapshots, this parameter indicates only the size of the system disk snapshot contained in the image.
         self.size = size
-        # The state of the image. Valid values:
-        # 
-        # *   UnAvailable: The image is unavailable.
-        # *   Available: The image is available.
-        # *   Creating: The image is being created.
-        # *   CreateFailed: The image failed to be created.
         self.status = status
-        # The name of the supplier that published the community image.
         self.supplier_name = supplier_name
-        # The tags of the image.
         self.tags = tags
-        # Indicates whether the image was used to create ECS instances. Valid values:
-        # 
-        # *   instance: The image was used to create one or more ECS instances.
-        # *   none: The image was not used to create ECS instances.
         self.usage = usage
 
     def validate(self):
@@ -518,9 +451,7 @@ class DescribeImagesResponseBodyImagesImageTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the image.
         self.tag_key = tag_key
-        # The tag value of the image.
         self.tag_value = tag_value
 
     def validate(self):
@@ -561,19 +492,9 @@ class DescribeImagesResponseBodyImagesImageFeatures(DaraModel):
     ):
         self.cpu_online_downgrade = cpu_online_downgrade
         self.cpu_online_upgrade = cpu_online_upgrade
-        # The image metadata access mode. Valid values:
-        # 
-        # *   v1: You cannot set the image metadata access mode to security hardening when you create instances from the image.
-        # *   v2: You can set the image metadata access mode to security hardening when you create instances from the image.
-        # 
-        # [Overview of instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.imds_support = imds_support
         self.memory_online_downgrade = memory_online_downgrade
         self.memory_online_upgrade = memory_online_upgrade
-        # Indicates whether the image supports the Non-Volatile Memory Express (NVMe) protocol. Valid values:
-        # 
-        # *   supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
-        # *   unsupported: The image does not support the NVMe protocol. Instances created from the image do not support the NVMe protocol.
         self.nvme_support = nvme_support
 
     def validate(self):
@@ -675,25 +596,15 @@ class DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping(D
         snapshot_id: str = None,
         type: str = None,
     ):
-        # The device name of the disk. Example: /dev/xvdb.
         self.device = device
-        # >  This parameter is in invitational preview.
         self.encrypted = encrypted
-        # The format of the image.
         self.format = format
-        # The Object Storage Service (OSS) bucket that contains the imported image file.
         self.import_ossbucket = import_ossbucket
-        # The OSS object that corresponds to the imported image file.
         self.import_ossobject = import_ossobject
-        # The progress of the image copy task.
         self.progress = progress
-        # The remaining time of the image copy task. Unit: seconds.
         self.remain_time = remain_time
-        # The size of the disk. Unit: GiB.
         self.size = size
-        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The type of the image.
         self.type = type
 
     def validate(self):
@@ -776,12 +687,7 @@ class DescribeImagesResponseBodyImagesImageDetectionOptions(DaraModel):
         items: main_models.DescribeImagesResponseBodyImagesImageDetectionOptionsItems = None,
         status: str = None,
     ):
-        # The check items.
         self.items = items
-        # The state of the image check task. Valid values:
-        # 
-        # *   Processing
-        # *   Finished
         self.status = status
 
     def validate(self):
@@ -855,18 +761,9 @@ class DescribeImagesResponseBodyImagesImageDetectionOptionsItemsItem(DaraModel):
         risk_level: str = None,
         value: str = None,
     ):
-        # The name of the check item.
         self.name = name
-        # The risk that the check item may have.
         self.risk_code = risk_code
-        # The severity of the risk that the check item of the imported custom image has. If the check item is at risk, this parameter is returned. If the check item is not at risk, this parameter is not returned.
-        # 
-        # Valid values:
-        # 
-        # *   High: The check item is a high-risk item that may affect the startup of the instance. We recommend that you handle the risk.
-        # *   Medium: The check item is a medium-risk item that may affect the startup performance or configurations of the instance. We recommend that you handle the risk.
         self.risk_level = risk_level
-        # The result of the check item.
         self.value = value
 
     def validate(self):

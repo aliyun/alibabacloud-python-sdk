@@ -22,7 +22,6 @@ class DescribeReservedInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Details about the reserved instances.
         self.reserved_instances = reserved_instances
         # The total number of reserved instances.
         self.total_count = total_count
@@ -130,47 +129,23 @@ class DescribeReservedInstancesResponseBodyReservedInstancesReservedInstance(Dar
         tags: main_models.DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceTags = None,
         zone_id: str = None,
     ):
-        # Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values:
-        # 
-        # *   allocated: The reserved instance is allocated to another account.
-        # *   beAllocated: The reserved instance is allocated by another account.
         self.allocation_status = allocation_status
-        # The creation time.
         self.creation_time = creation_time
-        # The description.
         self.description = description
-        # The expiration time.
         self.expired_time = expired_time
-        # The number of pay-as-you-go instances that are of the same instance type as the reserved instance and can be matched to the reserved instance.
         self.instance_amount = instance_amount
-        # The instance type of the pay-as-you-go instances that can be matched to the reserved instance.
         self.instance_type = instance_type
-        # The payment option.
         self.offering_type = offering_type
-        # Details about the lock status of the reserved instance.
         self.operation_locks = operation_locks
-        # The operating system of the image used by the instance. Valid values:
-        # 
-        # *   Windows
-        # *   Linux
         self.platform = platform
-        # The region ID.
         self.region_id = region_id
-        # The reserved instance ID.
         self.reserved_instance_id = reserved_instance_id
-        # The name.
         self.reserved_instance_name = reserved_instance_name
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The scope.
         self.scope = scope
-        # The effective time.
         self.start_time = start_time
-        # The status.
         self.status = status
-        # The tags of the reserved instance.
         self.tags = tags
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -341,9 +316,7 @@ class DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceTags
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -412,7 +385,6 @@ class DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceOper
         self,
         lock_reason: str = None,
     ):
-        # The reason why the instance is locked.
         self.lock_reason = lock_reason
 
     def validate(self):

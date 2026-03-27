@@ -22,15 +22,12 @@ class DeleteHpcClusterRequest(DaraModel):
         # This parameter is required.
         self.hpc_cluster_id = hpc_cluster_id
         self.owner_account = owner_account
-        # RAM用户的虚拟账号ID。
         self.owner_id = owner_id
         # The region ID of the HPC cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
-        # 资源主账号的ID，亦即UID。
         self.resource_owner_id = resource_owner_id
 
     def validate(self):

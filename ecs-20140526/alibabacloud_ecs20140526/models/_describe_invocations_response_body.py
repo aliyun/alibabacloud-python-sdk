@@ -17,7 +17,6 @@ class DescribeInvocationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ID of instance N. When you specify this parameter, the system queries all the execution records of all the commands that run on the instance.
         self.invocations = invocations
         # The overall execution status of the command task. The value of this parameter depends on the execution states of the command task on all involved instances. Valid values:
         # 
@@ -187,154 +186,28 @@ class DescribeInvocationsResponseBodyInvocationsInvocation(DaraModel):
         username: str = None,
         working_dir: str = None,
     ):
-        # The size of the Output text that was truncated and discarded because the Output value exceeded 24 KB in size.
         self.command_content = command_content
-        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.command_description = command_description
-        # The time when the command process ended.
         self.command_id = command_id
-        # The command output.
-        # 
-        # *   If ContentEncoding is set to PlainText in the request, the original command output is returned.
-        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command output is returned.
         self.command_name = command_name
-        # The execution status of the command on a single instance.
-        # 
-        # >  We recommend that you ignore this parameter and check the value of `InvocationStatus` in the response to obtain the execution status.
         self.command_type = command_type
-        # The error message returned when the command failed to be sent or run. Valid values:
-        # 
-        # *   If this parameter is empty, the command was run as expected.
-        # *   The security group rules denied access to the aliyun service.
-        # *   The specified instance does not exist.
-        # *   The specified instance was released during task execution.
-        # *   The specified instance was not running during task execution.
-        # *   The OS type of the instance does not support the specified command type.
-        # *   The specified account does not exist.
-        # *   The specified directory does not exist.
-        # *   The cron expression is invalid.
-        # *   The aliyun service is not running on the instance.
-        # *   The aliyun service in the instance does not response.
-        # *   The aliyun service in the instance is upgrading during task execution.
-        # *   The aliyun service in the instance need to be upgraded to at least version to support the feature. indicates the earliest version that supports the feature. indicates the name of the feature.
-        # *   The command delivery has been timeout.
-        # *   The command execution has been timeout.
-        # *   The command execution got an exception.
-        # *   The command execution exit code is not zero.
-        # *   The specified instance was released during task execution.
         self.container_id = container_id
-        # The time when the command started to be run on the instance.
         self.container_name = container_name
-        # The number of times that the command was run on the instance.
-        # 
-        # *   If the command is set to run only once, the value is 0 or 1.
-        # *   If the command is set to run on a schedule, the value is the number of times that the command has been run on the instance.
         self.creation_time = creation_time
-        # The command execution Output delivers the object URI to OSS. This field is an empty string when the delivery fails or is in progress.
         self.frequency = frequency
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.invocation_status = invocation_status
-        # The time when the command task was created.
         self.invoke_id = invoke_id
-        # The tags that are added to the command.
         self.invoke_instances = invoke_instances
-        # Indicates whether the command is to be automatically run.
         self.invoke_status = invoke_status
-        # The output delivery status of the command execution. Valid values:
-        # 
-        # *   InProgress: The delivery is in progress.
-        # *   Finished: The delivery is complete.
-        # *   Failed: The delivery failed.
         self.launcher = launcher
-        # Specifies whether to return the command outputs in the response.
-        # 
-        # *   true: The command outputs are returned. When this parameter is set to true, you must specify `InvokeId`, `InstanceId`, or both.
-        # *   false: The command outputs are not returned.
-        # 
-        # Default value: false
         self.oss_output_delivery = oss_output_delivery
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.parameters = parameters
-        # The instance ID.
         self.repeat_mode = repeat_mode
-        # The error code for the failure to send or run the command. Valid values:
-        # 
-        # *   If this parameter is empty, the command is run normally.
-        # *   InstanceNotExists: The specified instance did not exist or was released.
-        # *   InstanceReleased: The instance is released during command execution.
-        # *   InstanceNotRunning: The instance was not running when the command started to be run.
-        # *   CommandNotApplicable: The command was inapplicable to the specified instance.
-        # *   AccountNotExists: The username specified to run the command did not exist.
-        # *   DirectoryNotExists: The specified directory did not exist.
-        # *   BadCronExpression: The specified cron expression for the execution schedule was invalid.
-        # *   ClientNotRunning: Cloud Assistant Agent was not running.
-        # *   ClientNotResponse: Cloud Assistant Agent does not respond.
-        # *   ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
-        # *   ClientNeedUpgrade: Cloud Assistant Agent needed to be upgraded.
-        # *   DeliveryTimeout: The request to send the command timed out.
-        # *   ExecutionTimeout: The execution timed out.
-        # *   ExecutionException: An exception occurred while the command was being executed.
-        # *   ExecutionInterrupted: The command task was interrupted.
-        # *   ExitCodeNonzero: The execution was complete, but the exit code was not 0.
-        # *   SecurityGroupRuleDenied: Access to Cloud Assistant was denied by security group rules.
-        # *   TaskConcurrencyLimit: The number of concurrent tasks exceeds the maximum limit.
         self.tags = tags
-        # The time when the execution status was updated.
         self.termination_mode = termination_mode
-        # The maximum number of entries per page.
-        # 
-        # Valid values: 1 to 50.
-        # 
-        # Default value: 10.
         self.timed = timed
-        # The execution mode of the command. If you specify both this parameter and `InstanceId`, this parameter does not take effect. Valid values:
-        # 
-        # *   Once: The command is immediately run.
-        # *   Period: The command is run on a schedule.
-        # *   NextRebootOnly: The command is run the next time the instances start.
-        # *   EveryReboot: The command is run every time the instances start.
-        # 
-        # This parameter is empty by default, which indicates that commands run in all modes are queried.
         self.timeout = timeout
-        # The exit code of the execution. Valid values:
-        # 
-        # *   For Linux instances, the value is the exit code of the shell process.
-        # *   For Windows instances, the value is the exit code of the batch or PowerShell process.
         self.username = username
-        # The execution status on a single instance. Valid values:
-        # 
-        # *   Pending: The command is being verified or sent.
-        # 
-        # *   Invalid: The specified command type or parameter is invalid.
-        # 
-        # *   Aborted: The command failed to be sent to the instance. To send a command to an instance, make sure that the instance is in the Running state and the command can be sent to the instance within 1 minute.
-        # 
-        # *   Running: The command is being run on the instance.
-        # 
-        # *   Success:
-        # 
-        #     *   One-time task: The execution was complete, and the exit code was 0.
-        #     *   Scheduled task: The last execution was complete, the exit code was 0, and the specified period ended.
-        # 
-        # *   Failed:
-        # 
-        #     *   One-time task: The execution was complete, but the exit code was not 0.
-        #     *   Scheduled task: The last execution was complete, but the exit code was not 0. The specified period is about to end.
-        # 
-        # *   Error: The execution cannot proceed due to an exception.
-        # 
-        # *   Timeout: The execution timed out.
-        # 
-        # *   Cancelled: The execution was canceled before it started.
-        # 
-        # *   Stopping: The command task is being stopped.
-        # 
-        # *   Terminated: The execution was terminated before completion.
-        # 
-        # *   Scheduled:
-        # 
-        #     *   One-time task: The execution state can never be Scheduled.
-        #     *   Scheduled task: The command is waiting to be run.
         self.working_dir = working_dir
 
     def validate(self):
@@ -535,12 +408,7 @@ class DescribeInvocationsResponseBodyInvocationsInvocationTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The command content.
-        # 
-        # *   If ContentEncoding is set to PlainText in the request, the original command content is returned.
-        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command content is returned.
         self.tag_key = tag_key
-        # The execution path of the command.
         self.tag_value = tag_value
 
     def validate(self):
@@ -627,77 +495,24 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeI
         timed: bool = None,
         update_time: str = None,
     ):
-        # The command description.
         self.creation_time = creation_time
-        # The value of tag N of the command. You can specify up to 20 tag values for the command. The tag value can be an empty string. It can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.dropped = dropped
-        # The instances on which the command was run.
         self.error_code = error_code
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.error_info = error_info
-        # The total number of the commands.
         self.exit_code = exit_code
-        # The custom parameters in the command.
         self.finish_time = finish_time
-        # The number of entries returned on each page.
         self.instance_id = instance_id
-        # The page number of the returned page.
         self.instance_invoke_status = instance_invoke_status
-        # The key of tag N of the command. You can specify up to 20 tag keys for the command. The tag key cannot be an empty string.
-        # 
-        # If a single tag is specified to query resources, up to 1,000 resources that have this tag added can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added can be displayed in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
-        # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.invocation_status = invocation_status
         self.oss_output_error_code = oss_output_error_code
         self.oss_output_error_info = oss_output_error_info
-        # The overall execution status of the command task. The value of this parameter depends on the execution status of the command task on all the involved instances. Valid values:
-        # 
-        # *   Pending: The command is being verified or sent. When the execution state on at least one instance is Pending, the overall execution state is Pending.
-        # 
-        # *   Scheduled: The command that is set to run on a schedule was sent and waiting to be run. When the execution state on at least one instance is Scheduled, the overall execution state is Scheduled.
-        # 
-        # *   Running: The command is being run on the instances. When the execution state on at least one instance is Running, the overall execution state is Running.
-        # 
-        # *   Success: When the execution state on at least one instance is Success and the execution state on the other instances is Stopped or Success, the overall execution state is Success.
-        # 
-        #     *   One-time task: The execution was complete, and the exit code was 0.
-        #     *   Scheduled task: The last execution was complete, the exit code was 0, and the specified period ended.
-        # 
-        # *   Failed: When the execution state on all instances is Stopped or Failed, the overall execution state is Failed. When the execution state on an instance is one of the following values, Failed is returned as the overall execution state:
-        # 
-        #     *   Invalid: The command is invalid.
-        #     *   Aborted: The command failed to be sent.
-        #     *   Failed: The execution was complete, but the exit code was not 0.
-        #     *   Timeout: The execution timed out.
-        #     *   Error: An error occurred while the command was being run.
-        # 
-        # *   Stopping: The command task is being stopped. When the execution state on at least one instance is Stopping, the overall execution state is Stopping.
-        # 
-        # *   Stopped: The task was stopped. When the execution state on all instances is Stopped, the overall execution state is Stopped. When the execution state on an instance is one of the following values, Stopped is returned as the overall execution state:
-        # 
-        #     *   Cancelled: The task was canceled.
-        #     *   Terminated: The task was terminated.
-        # 
-        # *   PartialFailed: The execution was complete on some instances and failed on other instances. When the execution state is Success on some instances and is Failed or Stopped on the other instances, the overall execution state is PartialFailed.
-        # 
-        # >  `InvokeStatus` in the response functions similarly to this parameter. We recommend that you check the value of this parameter.
         self.oss_output_status = oss_output_status
-        # Command to execute the Output OSS delivery configuration.
         self.oss_output_uri = oss_output_uri
-        # Indicates whether the command is to be automatically run.
         self.output = output
-        # The time when the command task was created.
         self.repeats = repeats
-        # Details about the command executions.
         self.start_time = start_time
-        # The execution states of the command.
         self.stop_time = stop_time
-        # The request ID.
         self.timed = timed
-        # The maximum timeout period for the command execution. Unit: seconds.
-        # 
-        # When a command cannot be run, the command execution times out. When a command execution times out, Cloud Assistant Agent forcefully terminates the command process by canceling the process ID (PID) of the command.
         self.update_time = update_time
 
     def validate(self):

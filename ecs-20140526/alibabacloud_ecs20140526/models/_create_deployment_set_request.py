@@ -20,6 +20,7 @@ class CreateDeploymentSetRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         strategy: str = None,
+        type: str = None,
     ):
         # The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.client_token = client_token
@@ -61,6 +62,7 @@ class CreateDeploymentSetRequest(DaraModel):
         # 
         # Default value: Availability.
         self.strategy = strategy
+        self.type = type
 
     def validate(self):
         pass
@@ -109,6 +111,9 @@ class CreateDeploymentSetRequest(DaraModel):
         if self.strategy is not None:
             result['Strategy'] = self.strategy
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -151,6 +156,9 @@ class CreateDeploymentSetRequest(DaraModel):
 
         if m.get('Strategy') is not None:
             self.strategy = m.get('Strategy')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

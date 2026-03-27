@@ -20,7 +20,6 @@ class DescribeSnapshotGroupsResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The information about the snapshot-consistent groups.
         self.snapshot_groups = snapshot_groups
 
     def validate(self):
@@ -106,29 +105,15 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroup(DaraModel):
         status: str = None,
         tags: main_models.DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupTags = None,
     ):
-        # The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the snapshot-consistent group.
         self.description = description
-        # The ID of the instance to which the snapshot-consistent group belongs. This parameter has a value only when all disk snapshots in the snapshot-consistent group belong to the same instance. If disk snapshots in the snapshot-consistent group belong to different instances, you can check the response parameters that start with `Snapshots.Snapshot.Tags.` to determine the ID of the instance to which each snapshot in the snapshot-consistent group belongs.
         self.instance_id = instance_id
-        # The name of the snapshot-consistent group.
         self.name = name
-        # >  This parameter is not publicly available.
         self.progress_status = progress_status
-        # The ID of the resource group to which the snapshot-consistent group belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the snapshot-consistent group.
         self.snapshot_group_id = snapshot_group_id
-        # The information about the snapshots in the snapshot-consistent group.
         self.snapshots = snapshots
-        # The state of the snapshot-consistent group. Valid values:
-        # 
-        # *   progressing: The snapshot-consistent group was being created.
-        # *   accomplished: The snapshot-consistent group was created.
-        # *   failed: The snapshot-consistent group failed to be created.
         self.status = status
-        # The tags of the snapshot-consistent group.
         self.tags = tags
 
     def validate(self):
@@ -251,9 +236,7 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupTagsTag(DaraM
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the snapshot-consistent group.
         self.key = key
-        # The tag value of the snapshot-consistent group.
         self.value = value
 
     def validate(self):
@@ -329,34 +312,13 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnap
         source_disk_type: str = None,
         tags: main_models.DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshotTags = None,
     ):
-        # Indicates whether the snapshot can be shared and be used to create or roll back a disk. Valid values:
-        # 
-        # *   true
-        # *   false
         self.available = available
-        # Indicates whether the instant access feature is enabled. Valid values:
-        # 
-        # *   true: The instant access feature is enabled. By default, the instant access feature is enabled for ESSDs.
-        # *   false: The instant access feature is disabled. The snapshot is a standard snapshot for which the instant access feature is disabled.
-        # 
-        # >  This parameter is no longer used. By default, standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
         self.instant_access = instant_access
-        # The validity period of the instant access feature. When the validity period ends, the instant access snapshot is automatically released.
-        # 
-        # >  This parameter is no longer used. By default, standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
         self.instant_access_retention_days = instant_access_retention_days
-        # The progress of the snapshot creation task. Unit: percent (%).
         self.progress = progress
-        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The ID of the source disk. This parameter is retained even after the source disk of the snapshot is released.
         self.source_disk_id = source_disk_id
-        # The type of the source disk. Valid values:
-        # 
-        # *   system: system disk
-        # *   data: data disk
         self.source_disk_type = source_disk_type
-        # The tags of the snapshot. The default values contain snapshot source information.
         self.tags = tags
 
     def validate(self):
@@ -464,9 +426,7 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnap
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the snapshot. The default values of Key and Value contain snapshot source information.
         self.key = key
-        # The tag value of the snapshot. The default values of Key and Value contain snapshot source information.
         self.value = value
 
     def validate(self):

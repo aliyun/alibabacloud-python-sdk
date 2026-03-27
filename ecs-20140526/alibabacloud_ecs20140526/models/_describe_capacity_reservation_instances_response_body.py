@@ -16,7 +16,6 @@ class DescribeCapacityReservationInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the instances that match the capacity reservation.
         self.capacity_reservation_item = capacity_reservation_item
         # The maximum number of entries per page.
         self.max_results = max_results
@@ -113,7 +112,6 @@ class DescribeCapacityReservationInstancesResponseBodyCapacityReservationItemIns
         self,
         instance_id: str = None,
     ):
-        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

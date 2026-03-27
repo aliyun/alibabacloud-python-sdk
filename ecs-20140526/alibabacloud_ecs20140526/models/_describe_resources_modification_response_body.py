@@ -13,7 +13,6 @@ class DescribeResourcesModificationResponseBody(DaraModel):
         available_zones: main_models.DescribeResourcesModificationResponseBodyAvailableZones = None,
         request_id: str = None,
     ):
-        # The information about the queried zones.
         self.available_zones = available_zones
         # The request ID.
         self.request_id = request_id
@@ -90,22 +89,10 @@ class DescribeResourcesModificationResponseBodyAvailableZonesAvailableZone(DaraM
         status_category: str = None,
         zone_id: str = None,
     ):
-        # The resources that are available in the zone.
         self.available_resources = available_resources
-        # The region ID.
         self.region_id = region_id
-        # The state of the resource. Valid values:
-        # 
-        # *   Available
-        # *   SoldOut
         self.status = status
-        # The category of the resource based on stock status. Valid values:
-        # 
-        # *   WithStock: resources that are in sufficient stock
-        # *   ClosedWithStock: resources that are in insufficient stock
-        # *   WithoutStock: resources that are out of stock
         self.status_category = status_category
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -196,14 +183,8 @@ class DescribeResourcesModificationResponseBodyAvailableZonesAvailableZoneAvaila
         supported_resources: main_models.DescribeResourcesModificationResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources = None,
         type: str = None,
     ):
-        # The resource types that resources can be changed to after the resources meet specified conditions. If the conditions are met, you can change the current resource to a resource in the list.
         self.condition_supported_resources = condition_supported_resources
-        # The information about the supported resources.
         self.supported_resources = supported_resources
-        # The resource type. Valid values:
-        # 
-        # *   InstanceType
-        # *   SystemDisk
         self.type = type
 
     def validate(self):
@@ -288,28 +269,11 @@ class DescribeResourcesModificationResponseBodyAvailableZonesAvailableZoneAvaila
         unit: str = None,
         value: str = None,
     ):
-        # The maximum disk capacity.
-        # 
-        # This parameter takes effect only when the DestinationResource request parameter is set to SystemDisk.
         self.max = max
-        # The minimum disk capacity.
-        # 
-        # This parameter takes effect only when the DestinationResource request parameter is set to SystemDisk.
         self.min = min
-        # The state of the resource. Valid values:
-        # 
-        # *   Available
-        # *   SoldOut
         self.status = status
-        # The category of the resource based on stock status. Valid values:
-        # 
-        # *   WithStock: resources that are in sufficient stock
-        # *   ClosedWithStock: resources that are in insufficient stock
-        # *   WithoutStock: resources that are out of stock
         self.status_category = status_category
-        # The unit of the disk capacity. This parameter takes effect only when the DestinationResource request parameter is set to SystemDisk.
         self.unit = unit
-        # The resource type.
         self.value = value
 
     def validate(self):
@@ -408,32 +372,12 @@ class DescribeResourcesModificationResponseBodyAvailableZonesAvailableZoneAvaila
         unit: str = None,
         value: str = None,
     ):
-        # The conditions.
         self.conditions = conditions
-        # The maximum disk capacity.
-        # 
-        # This parameter takes effect only when the DestinationResource request parameter is set to SystemDisk.
         self.max = max
-        # The minimum disk capacity.
-        # 
-        # This parameter takes effect only when the DestinationResource request parameter is set to SystemDisk.
         self.min = min
-        # The stock state of the resource. Valid values:
-        # 
-        # *   Available
-        # *   SoldOut
         self.status = status
-        # The category of the resource based on stock status. Valid values:
-        # 
-        # *   WithStock: resources that are in sufficient stock
-        # *   ClosedWithStock: resources that are in insufficient stock
-        # *   WithoutStock: resources that are out of stock
         self.status_category = status_category
-        # The unit of the disk capacity.
-        # 
-        # This parameter takes effect only when the DestinationResource request parameter is set to SystemDisk.
         self.unit = unit
-        # The resource type.
         self.value = value
 
     def validate(self):
@@ -534,9 +478,6 @@ class DescribeResourcesModificationResponseBodyAvailableZonesAvailableZoneAvaila
         self,
         key: str = None,
     ):
-        # The condition name. Valid value:
-        # 
-        # DiskCategory, which indicates a disk category change.
         self.key = key
 
     def validate(self):

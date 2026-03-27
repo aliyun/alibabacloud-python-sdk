@@ -14,9 +14,6 @@ class DescribeSpotAdviceResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # Details about spot instances in the zones of the specified region.
-        # 
-        # >  The return values are sorted based on the historical percentages of average spot instance prices relative to pay-as-you-go instance prices for instance types.
         self.available_spot_zones = available_spot_zones
         # The region ID.
         self.region_id = region_id
@@ -98,9 +95,7 @@ class DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZone(DaraMode
         available_spot_resources: main_models.DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZoneAvailableSpotResources = None,
         zone_id: str = None,
     ):
-        # Details about spot instances in the previous 30 days, including the release rate of spot instances and percentages of average spot instance prices relative to pay-as-you-go instance prices.
         self.available_spot_resources = available_spot_resources
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -174,20 +169,9 @@ class DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZoneAvailable
         interrupt_rate_desc: str = None,
         interruption_rate: float = None,
     ):
-        # The percentage of the average spot instance price relative to the pay-as-you-go instance price in the previous 30 days. Unit: %. Valid values: 1 to 100.
-        # 
-        # You can calculate the average spot instance price based on the return value. For example, if the pay-as-you-go instance price is 1 and the return value of this parameter is 20, the average spot instance price in the previous 30 days is 0.2.
         self.average_spot_discount = average_spot_discount
-        # The instance type.
         self.instance_type = instance_type
-        # The release rate range of spot instances in the previous 30 days, which corresponds to the `InterruptionRate` value. Valid values:
-        # 
-        # *   0-3%
-        # *   3-5%
-        # *   5-10%
-        # *   10-100%
         self.interrupt_rate_desc = interrupt_rate_desc
-        # The average release rate of spot instances in the previous 30 days. Unit: %.
         self.interruption_rate = interruption_rate
 
     def validate(self):

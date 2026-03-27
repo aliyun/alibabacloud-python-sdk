@@ -17,7 +17,6 @@ class DescribeInstanceHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the instance system events.
         self.instance_system_event_set = instance_system_event_set
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         # 
@@ -149,33 +148,17 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         reason_code: str = None,
         resource_type: str = None,
     ):
-        # The lifecycle status of the system event.
         self.event_cycle_status = event_cycle_status
-        # The time when the system event ended. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.event_finish_time = event_finish_time
-        # The ID of the system event.
         self.event_id = event_id
-        # The time when the system event was published. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.event_publish_time = event_publish_time
-        # The type of the system event.
         self.event_type = event_type
-        # The extended attribute of the system event.
         self.extended_attribute = extended_attribute
-        # The impact level of the system event.
         self.impact_level = impact_level
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The scheduled start time of the system event. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.not_before = not_before
-        # The reason why the system event occurred.
         self.reason = reason
-        # The reason code category for the system event.
         self.reason_code = reason_code
-        # The type of the resource. Valid values:
-        # 
-        # *   instance: ECS instance
-        # *   ddh: dedicated host
-        # *   managehost: physical machine in a smart hosting pool
         self.resource_type = resource_type
 
     def validate(self):
@@ -292,41 +275,21 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         rack: str = None,
         response_result: str = None,
     ):
-        # Indicates whether the event can be handled.
         self.can_accept = can_accept
-        # The code of the security violation.
         self.code = code
-        # The device name of the local disk.
         self.device = device
-        # The ID of the local disk.
         self.disk_id = disk_id
-        # The ID of the host.
         self.host_id = host_id
-        # The type of the host. Valid values:
-        # 
-        # *   ddh: dedicated host
-        # *   managehost: physical machine in a smart hosting pool
         self.host_type = host_type
-        # The inactive disks that were released and whose data must be cleared.
         self.inactive_disks = inactive_disks
         self.metric_name = metric_name
         self.metric_value = metric_value
-        # The migration solution of the instance. Valid value: MigrationPlan. Instances can be migrated only by using migration plans.
         self.migration_options = migration_options
-        # The online repair policy for the damaged disk. Valid value: IsolateOnly, which indicates that damaged disks are isolated but not repaired.
         self.online_repair_policy = online_repair_policy
-        # The illegal domain name.
         self.punish_domain = punish_domain
-        # The type of the penalty.
         self.punish_type = punish_type
-        # The illegal URL.
         self.punish_url = punish_url
-        # The rack number of the cloud box.
         self.rack = rack
-        # The response result of the event. Valid values:
-        # 
-        # *   true: The event was handled.
-        # *   false: The event failed to be handled.
         self.response_result = response_result
 
     def validate(self):
@@ -515,27 +478,10 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         device_type: str = None,
         release_time: str = None,
     ):
-        # The time when the disk was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The category of the disk. Valid values:
-        # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
-        # *   local_ssd_pro: I/O-intensive local disk
-        # *   local_hdd_pro: throughput-intensive local disk
-        # *   ephemeral: retired local disk
-        # *   ephemeral_ssd: retired local SSD
         self.device_category = device_category
-        # The size of the disk. Unit: GiB.
         self.device_size = device_size
-        # The type of the disk. Valid values:
-        # 
-        # *   system: system disk
-        # *   data: data disk
         self.device_type = device_type
-        # The time when the disk was released. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.release_time = release_time
 
     def validate(self):
@@ -588,9 +534,7 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         code: int = None,
         name: str = None,
     ):
-        # The code of the system event type.
         self.code = code
-        # The name of the system event type.
         self.name = name
 
     def validate(self):
@@ -625,9 +569,7 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         code: int = None,
         name: str = None,
     ):
-        # The state code of the system event.
         self.code = code
-        # The state name of the system event.
         self.name = name
 
     def validate(self):

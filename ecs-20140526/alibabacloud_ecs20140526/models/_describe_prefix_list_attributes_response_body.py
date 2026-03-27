@@ -28,7 +28,6 @@ class DescribePrefixListAttributesResponseBody(DaraModel):
         self.creation_time = creation_time
         # The description of the prefix list.
         self.description = description
-        # Details about the entries in the prefix list.
         self.entries = entries
         # The maximum number of entries in the prefix list.
         self.max_entries = max_entries
@@ -144,9 +143,7 @@ class DescribePrefixListAttributesResponseBodyEntriesEntry(DaraModel):
         cidr: str = None,
         description: str = None,
     ):
-        # The CIDR block in entry N.
         self.cidr = cidr
-        # The description in entry N.
         self.description = description
 
     def validate(self):

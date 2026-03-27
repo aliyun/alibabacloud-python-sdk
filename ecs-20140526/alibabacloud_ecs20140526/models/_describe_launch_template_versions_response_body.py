@@ -16,7 +16,6 @@ class DescribeLaunchTemplateVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the launch template versions.
         self.launch_template_version_sets = launch_template_version_sets
         # The page number of the returned page.
         self.page_number = page_number
@@ -121,23 +120,14 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         version_description: str = None,
         version_number: int = None,
     ):
-        # The time when the launch template version was created.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that created the launch template.
         self.created_by = created_by
-        # Indicates whether the launch template version is the default version.
         self.default_version = default_version
-        # The configurations of the launch template.
         self.launch_template_data = launch_template_data
-        # The ID of the launch template.
         self.launch_template_id = launch_template_id
-        # The name of the launch template.
         self.launch_template_name = launch_template_name
-        # The time when the launch template version was modified.
         self.modified_time = modified_time
-        # The description of the launch template version.
         self.version_description = version_description
-        # The number of the launch template version.
         self.version_number = version_number
 
     def validate(self):
@@ -261,155 +251,50 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         zone_id: str = None,
     ):
         self.system_disk = system_disk
-        # The automatic release time of the instance.
         self.auto_release_time = auto_release_time
-        # Indicates whether auto-renewal is enabled for the instance. This parameter is valid only if `InstanceChargeType` is set to `PrePaid`. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal period of the instance. Valid values:
-        # 
-        # Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
-        # 
-        # Default value: 1.
         self.auto_renew_period = auto_renew_period
-        # The performance mode of the burstable instance. Valid values:
-        # 
-        # *   Standard: the standard mode. For more information, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
-        # *   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.credit_specification = credit_specification
-        # Details about the data disks.
         self.data_disks = data_disks
-        # Indicates whether release protection is enabled for the instance. This parameter indicates whether you can use the ECS console or call the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation to release the instance. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
-        # 
-        # >  This parameter is applicable only to pay-as-you-go instances. The release protection feature can protect instances against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
-        # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
-        # The description of the system disk.
         self.description = description
-        # Indicates whether the operating system configuration of the instance is enabled.
         self.enable_vm_os_config = enable_vm_os_config
-        # The hostname of the instance.
         self.host_name = host_name
-        # Indicates whether the access channel is enabled for instance metadata. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
-        # 
-        # Default value: enabled.
-        # 
-        # >  For information about instance metadata, see [Obtain information about an ECS instance, such as instance attributes, by using instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_endpoint = http_endpoint
-        # >  This parameter is not publicly available.
         self.http_put_response_hop_limit = http_put_response_hop_limit
-        # Indicates whether the security hardening mode (IMDSv2) is forcefully used to access instance metadata. Valid values:
-        # 
-        # *   optional: The security hardening mode (IMDSv2) is not forcefully used.
-        # *   required: The security hardening mode (IMDSv2) is forcefully used. After you set this parameter to required, you cannot access instance metadata in normal mode.
-        # 
-        # Default value: optional.
-        # 
-        # >  For more information about the modes of accessing instance metadata, see [Obtain information about an ECS instance, such as instance attributes, by using instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
-        # The ID of the image.
         self.image_id = image_id
-        # Details about the image options.
         self.image_options = image_options
-        # The source of the image. Valid values:
-        # 
-        # *   system: public image provided by Alibaba Cloud
-        # *   self: custom image that you created
-        # *   others: shared image from another Alibaba Cloud account
-        # *   marketplace: Alibaba Cloud Marketplace image
         self.image_owner_alias = image_owner_alias
-        # The billing method of the instance. Valid values:
-        # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
         self.instance_charge_type = instance_charge_type
-        # The name of the instance.
         self.instance_name = instance_name
-        # The instance type of the instance.
         self.instance_type = instance_type
-        # The billing method for network usage.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Indicates whether the instance is I/O optimized.
         self.io_optimized = io_optimized
-        # The number of IPv6 addresses to assign to the instance.
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # Details about the secondary elastic network interfaces (ENIs).
         self.network_interfaces = network_interfaces
-        # The network type. Valid values:
-        # 
-        # *   classic: classic network
-        # *   vpc: VPC
         self.network_type = network_type
-        # Indicates whether the username and password preset in the image are used.
         self.password_inherit = password_inherit
-        # The subscription duration of the instance.
         self.period = period
-        # The unit of the subscription period. Valid values:
-        # 
-        # Month (default)
         self.period_unit = period_unit
-        # The private IP address to assign to the instance.
         self.private_ip_address = private_ip_address
-        # The name of the instance Resource Access Management (RAM) role.
         self.ram_role_name = ram_role_name
-        # The ID of the resource group to which the launch template belongs.
         self.resource_group_id = resource_group_id
-        # Indicates whether Security Hardening is enabled.
         self.security_enhancement_strategy = security_enhancement_strategy
-        # The ID of the security group to which to assign the instance.
-        # 
-        # >  `SecurityGroupId` and `SecurityGroupIds` are mutually exclusive in the response.
         self.security_group_id = security_group_id
-        # The IDs of the security groups to which to assign the instance.
-        # 
-        # >  `SecurityGroupId` and `SecurityGroupIds` are mutually exclusive in the response.
         self.security_group_ids = security_group_ids
         self.security_options = security_options
-        # The protection period of the spot instance. Unit: hours. Valid values:
-        # 
-        # *   1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # *   0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # 
-        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you specify a protection period based on your business requirements.
-        # 
-        # >  This parameter is returned when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
         self.spot_duration = spot_duration
-        # The maximum hourly price of the spot instance.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the pay-as-you-go instance. Valid values:
-        # 
-        # *   NoSpot: The instance is a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a spot instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
         self.spot_strategy = spot_strategy
-        # The tags to add to the instance.
         self.tags = tags
-        # The user data of the instance, which is Base64-encoded.
         self.user_data = user_data
-        # The ID of the vSwitch to which to connect the instance.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -763,9 +648,7 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to add to the instance.
         self.key = key
-        # The value of the tag to add to the instance.
         self.value = value
 
     def validate(self):
@@ -896,33 +779,14 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         security_group_ids: main_models.DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfacesNetworkInterfaceSecurityGroupIds = None,
         v_switch_id: str = None,
     ):
-        # Indicates whether to retain the ENI when the associated instance is released. Valid values:
-        # 
-        # *   true
-        # *   false
         self.delete_on_release = delete_on_release
-        # The description of the secondary ENI.
         self.description = description
-        # The instance type of the instance.
         self.instance_type = instance_type
-        # The name of the secondary ENI.
         self.network_interface_name = network_interface_name
-        # The communication mode of the primary ENI. Valid values:
-        # 
-        # *   Standard: uses the TCP communication mode.
-        # *   HighPerformance: uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The primary private IP address of the secondary ENI.
         self.primary_ip_address = primary_ip_address
-        # The ID of the security group to which to assign the secondary ENI. The security group and the ENI must belong to the same VPC.
-        # 
-        # >  SecurityGroupId and SecurityGroupIds are mutually exclusive in the response.
         self.security_group_id = security_group_id
-        # The IDs of the security groups to which to assign the secondary ENI.
-        # 
-        # >  SecurityGroupId and SecurityGroupIds are mutually exclusive in the response.
         self.security_group_ids = security_group_ids
-        # The ID of the vSwitch to which to connect the ENI.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1027,10 +891,6 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         self,
         login_as_non_root: bool = None,
     ):
-        # Specifies whether the instance that uses the image supports logons of the ecs-user user. Valid values:
-        # 
-        # - true
-        # - false
         self.login_as_non_root = login_as_non_root
 
     def validate(self):
@@ -1105,48 +965,18 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # Indicates whether the performance burst feature is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
         self.bursting_enabled = bursting_enabled
-        # The category of the data disk.
         self.category = category
-        # Indicates whether to release the data disk when the instance is released.
         self.delete_with_instance = delete_with_instance
-        # The description of the data disk.
         self.description = description
-        # The mount point of the data disk. The mount points are named based on the number of data disks:
-        # 
-        # *   1st to 25th data disks: /dev/xvd`[b-z]`.
-        # *   From the 26th data disk on: /dev/xvd`[aa-zz]`. For example, the 26th data disk is named /dev/xvdaa, the 27th data disk is named /dev/xvdab, and so on.
-        # 
-        # >  This parameter is applicable to scenarios in which a full image is used to create instances. A full image is an image that contains an operating system, application software, and business data. For these scenarios, you can set the parameter to the mount point of data disk N contained in the full image and modify `DataDisk.N.Size` and `DataDisk.N.Category` to change the category and size of data disk N created based on the image.
         self.device = device
-        # The name of the data disk.
         self.disk_name = disk_name
-        # Indicates whether the data disk is encrypted.
         self.encrypted = encrypted
-        # The ID of the KMS key used for the data disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the ESSD to use as a data disk. This parameter is returned only when the value of `Category` is cloud_essd. Valid values:
-        # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
-        # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
-        # 
-        # >  This parameter is available only if you set DataDisk.N.Category to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
         self.provisioned_iops = provisioned_iops
-        # The size of the data disk.
         self.size = size
-        # The ID of the snapshot to use to create the data disk.
         self.snapshot_id = snapshot_id
 
     def validate(self):

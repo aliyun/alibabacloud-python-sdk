@@ -13,7 +13,6 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: main_models.DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # The information of the regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -89,16 +88,9 @@ class DescribeRegionsResponseBodyRegionsRegion(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The name of the region.
         self.local_name = local_name
-        # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
         self.region_id = region_id
-        # Indicates whether clusters are sold out. 
-        # Valid values:
-        # - available
-        # - soldOut
         self.status = status
 
     def validate(self):

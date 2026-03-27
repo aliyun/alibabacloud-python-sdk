@@ -13,18 +13,18 @@ class DescribeCloudAssistantSettingsResponseBody(DaraModel):
         agent_upgrade_config: main_models.DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig = None,
         oss_delivery_configs: main_models.DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigs = None,
         request_id: str = None,
+        resource_usage_config: main_models.DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig = None,
         session_manager_config: main_models.DescribeCloudAssistantSettingsResponseBodySessionManagerConfig = None,
         sls_delivery_configs: main_models.DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs = None,
     ):
         # The configurations for upgrading Cloud Assistant Agent.
         self.agent_upgrade_config = agent_upgrade_config
-        # The configurations for delivering items to Object Storage Service (OSS).
         self.oss_delivery_configs = oss_delivery_configs
         # The request ID.
         self.request_id = request_id
+        self.resource_usage_config = resource_usage_config
         # Cloud Assistant Session Manager configuration.
         self.session_manager_config = session_manager_config
-        # The configurations for delivering items to Simple Log Service.
         self.sls_delivery_configs = sls_delivery_configs
 
     def validate(self):
@@ -32,6 +32,8 @@ class DescribeCloudAssistantSettingsResponseBody(DaraModel):
             self.agent_upgrade_config.validate()
         if self.oss_delivery_configs:
             self.oss_delivery_configs.validate()
+        if self.resource_usage_config:
+            self.resource_usage_config.validate()
         if self.session_manager_config:
             self.session_manager_config.validate()
         if self.sls_delivery_configs:
@@ -50,6 +52,9 @@ class DescribeCloudAssistantSettingsResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.resource_usage_config is not None:
+            result['ResourceUsageConfig'] = self.resource_usage_config.to_map()
 
         if self.session_manager_config is not None:
             result['SessionManagerConfig'] = self.session_manager_config.to_map()
@@ -71,6 +76,10 @@ class DescribeCloudAssistantSettingsResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('ResourceUsageConfig') is not None:
+            temp_model = main_models.DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig()
+            self.resource_usage_config = temp_model.from_map(m.get('ResourceUsageConfig'))
 
         if m.get('SessionManagerConfig') is not None:
             temp_model = main_models.DescribeCloudAssistantSettingsResponseBodySessionManagerConfig()
@@ -125,16 +134,9 @@ class DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigsSlsDeliveryCon
         logstore_name: str = None,
         project_name: str = None,
     ):
-        # The type of items to be delivered. Valid values:
-        # 
-        # *   SessionManager: session records.
-        # *   Invocation: task execution records.
         self.delivery_type = delivery_type
-        # Indicates whether to deliver the specified items to Simple Log Service.
         self.enabled = enabled
-        # The name of the Logstore.
         self.logstore_name = logstore_name
-        # The name of the Simple Log Service project.
         self.project_name = project_name
 
     def validate(self):
@@ -210,6 +212,73 @@ class DescribeCloudAssistantSettingsResponseBodySessionManagerConfig(DaraModel):
 
         return self
 
+class DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig(DaraModel):
+    def __init__(
+        self,
+        cpu_limit: int = None,
+        keep_script_file: bool = None,
+        log_file_count_limit: int = None,
+        log_size_limit: str = None,
+        memory_limit: str = None,
+        overload_limit: int = None,
+    ):
+        self.cpu_limit = cpu_limit
+        self.keep_script_file = keep_script_file
+        self.log_file_count_limit = log_file_count_limit
+        self.log_size_limit = log_size_limit
+        self.memory_limit = memory_limit
+        self.overload_limit = overload_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cpu_limit is not None:
+            result['CpuLimit'] = self.cpu_limit
+
+        if self.keep_script_file is not None:
+            result['KeepScriptFile'] = self.keep_script_file
+
+        if self.log_file_count_limit is not None:
+            result['LogFileCountLimit'] = self.log_file_count_limit
+
+        if self.log_size_limit is not None:
+            result['LogSizeLimit'] = self.log_size_limit
+
+        if self.memory_limit is not None:
+            result['MemoryLimit'] = self.memory_limit
+
+        if self.overload_limit is not None:
+            result['OverloadLimit'] = self.overload_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuLimit') is not None:
+            self.cpu_limit = m.get('CpuLimit')
+
+        if m.get('KeepScriptFile') is not None:
+            self.keep_script_file = m.get('KeepScriptFile')
+
+        if m.get('LogFileCountLimit') is not None:
+            self.log_file_count_limit = m.get('LogFileCountLimit')
+
+        if m.get('LogSizeLimit') is not None:
+            self.log_size_limit = m.get('LogSizeLimit')
+
+        if m.get('MemoryLimit') is not None:
+            self.memory_limit = m.get('MemoryLimit')
+
+        if m.get('OverloadLimit') is not None:
+            self.overload_limit = m.get('OverloadLimit')
+
+        return self
+
 class DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigs(DaraModel):
     def __init__(
         self,
@@ -256,29 +325,12 @@ class DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDeliveryCon
         encryption_type: str = None,
         prefix: str = None,
     ):
-        # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The type of items to be delivered. Valid values:
-        # 
-        # *   SessionManager: session records.
-        # *   Invocation: task execution records.
         self.delivery_type = delivery_type
-        # Indicates whether to deliver the specified items to OSS.
         self.enabled = enabled
-        # The OSS encryption algorithm. Valid values:
-        # 
-        # *   AES256
-        # *   SM4
         self.encryption_algorithm = encryption_algorithm
-        # The ID of the customer master key (CMK) when EncryptionType is set to KMS.
         self.encryption_key_id = encryption_key_id
-        # The OSS encryption method. Valid values:
-        # 
-        # *   Inherit: the encryption method used by the specified bucket.
-        # *   OssManaged: server-side encryption by using OSS-managed keys (SSE-OSS).
-        # *   KMS: server-side encryption with Key Management Service (SSE-KMS).
         self.encryption_type = encryption_type
-        # The prefix of the OSS bucket directory.
         self.prefix = prefix
 
     def validate(self):
@@ -341,11 +393,14 @@ class DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig(DaraModel):
     def __init__(
         self,
         allowed_upgrade_windows: main_models.DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfigAllowedUpgradeWindows = None,
+        bootstrap_upgrade: bool = None,
+        disable_upgrade: bool = None,
         enabled: bool = None,
         time_zone: str = None,
     ):
-        # The time windows during which Cloud Assistant Agent can be upgraded.
         self.allowed_upgrade_windows = allowed_upgrade_windows
+        self.bootstrap_upgrade = bootstrap_upgrade
+        self.disable_upgrade = disable_upgrade
         # Indicates whether custom upgrade is enabled for Cloud Assistant Agent. If the value is false or empty, an upgrade attempt is performed for Cloud Assistant Agent every 30 minutes.
         self.enabled = enabled
         # The time zone of the time windows.
@@ -363,6 +418,12 @@ class DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig(DaraModel):
         if self.allowed_upgrade_windows is not None:
             result['AllowedUpgradeWindows'] = self.allowed_upgrade_windows.to_map()
 
+        if self.bootstrap_upgrade is not None:
+            result['BootstrapUpgrade'] = self.bootstrap_upgrade
+
+        if self.disable_upgrade is not None:
+            result['DisableUpgrade'] = self.disable_upgrade
+
         if self.enabled is not None:
             result['Enabled'] = self.enabled
 
@@ -376,6 +437,12 @@ class DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig(DaraModel):
         if m.get('AllowedUpgradeWindows') is not None:
             temp_model = main_models.DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfigAllowedUpgradeWindows()
             self.allowed_upgrade_windows = temp_model.from_map(m.get('AllowedUpgradeWindows'))
+
+        if m.get('BootstrapUpgrade') is not None:
+            self.bootstrap_upgrade = m.get('BootstrapUpgrade')
+
+        if m.get('DisableUpgrade') is not None:
+            self.disable_upgrade = m.get('DisableUpgrade')
 
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')

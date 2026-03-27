@@ -22,7 +22,6 @@ class DescribeStorageSetsResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # Details about the storage sets. The value of this parameter is an array that consists of StorageSet data.
         self.storage_sets = storage_sets
         # The total number of storage sets.
         self.total_count = total_count
@@ -121,21 +120,14 @@ class DescribeStorageSetsResponseBodyStorageSetsStorageSet(DaraModel):
         tags: main_models.DescribeStorageSetsResponseBodyStorageSetsStorageSetTags = None,
         zone_id: str = None,
     ):
-        # The time when the storage set was created.
         self.creation_time = creation_time
-        # The description of the storage set.
         self.description = description
-        # The ID of the region to which the storage set belongs.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the storage set.
         self.storage_set_id = storage_set_id
-        # The name of the storage set.
         self.storage_set_name = storage_set_name
-        # The maximum number of partitions supported by the storage set.
         self.storage_set_partition_number = storage_set_partition_number
         self.tags = tags
-        # The ID of the zone to which the storage set belongs.
         self.zone_id = zone_id
 
     def validate(self):

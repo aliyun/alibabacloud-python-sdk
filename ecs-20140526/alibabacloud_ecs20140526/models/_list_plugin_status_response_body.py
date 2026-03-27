@@ -17,7 +17,6 @@ class ListPluginStatusResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The states of Cloud Assistant plug-ins on the instances.
         self.instance_plugin_status_set = instance_plugin_status_set
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -123,9 +122,7 @@ class ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus(Da
         instance_id: str = None,
         plugin_status_set: main_models.ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet = None,
     ):
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The queried Cloud Assistant plug-ins.
         self.plugin_status_set = plugin_status_set
 
     def validate(self):
@@ -200,23 +197,10 @@ class ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPlu
         plugin_status: str = None,
         plugin_version: str = None,
     ):
-        # The first time when Cloud Assistant reported the state of the plug-in.
         self.first_heartbeat_time = first_heartbeat_time
-        # The last time when Cloud Assistant reported the state of the plug-in.
         self.last_heartbeat_time = last_heartbeat_time
-        # The name of the plug-in.
         self.plugin_name = plugin_name
-        # The state of the Cloud Assistant plug-in. Valid values:
-        # 
-        # *   NotInstalled: The plug-in is not installed.
-        # *   Installed: The one-time plug-in is installed.
-        # *   Running: The long-running plug-in is running.
-        # *   Stopped: The long-running plug-in is not running.
-        # *   Crashed: The plug-in is abnormal.
-        # *   Removed: The plug-in is uninstalled.
-        # *   Unknown: The state of the plug-in is unknown.
         self.plugin_status = plugin_status
-        # The version of the plug-in.
         self.plugin_version = plugin_version
 
     def validate(self):

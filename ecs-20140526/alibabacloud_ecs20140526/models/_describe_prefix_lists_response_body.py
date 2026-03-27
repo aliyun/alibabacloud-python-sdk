@@ -16,7 +16,6 @@ class DescribePrefixListsResponseBody(DaraModel):
     ):
         # The query token that is returned in this call. If the return value is empty, no more data is returned.
         self.next_token = next_token
-        # Details about the prefix lists.
         self.prefix_lists = prefix_lists
         # The request ID.
         self.request_id = request_id
@@ -103,26 +102,14 @@ class DescribePrefixListsResponseBodyPrefixListsPrefixList(DaraModel):
         resource_group_id: str = None,
         tags: main_models.DescribePrefixListsResponseBodyPrefixListsPrefixListTags = None,
     ):
-        # The IP address family of the prefix list. Valid values:
-        # 
-        # *   IPv4
-        # *   IPv6
         self.address_family = address_family
-        # The number of associated resources.
         self.association_count = association_count
-        # The time when the prefix list was created.
         self.creation_time = creation_time
-        # The description of the prefix list.
         self.description = description
-        # The maximum number of entries that the prefix list can contain.
         self.max_entries = max_entries
-        # The ID of the prefix list.
         self.prefix_list_id = prefix_list_id
-        # The name of the prefix list.
         self.prefix_list_name = prefix_list_name
-        # The ID of the resource group to which the prefix list belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the prefix list.
         self.tags = tags
 
     def validate(self):
@@ -236,11 +223,7 @@ class DescribePrefixListsResponseBodyPrefixListsPrefixListTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag value. A prefix list can have 1 to 20 tags. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot contain `http:// or https://`.
         self.tag_key = tag_key
-        # The tag key. A prefix list can have 1 to 20 tags. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):

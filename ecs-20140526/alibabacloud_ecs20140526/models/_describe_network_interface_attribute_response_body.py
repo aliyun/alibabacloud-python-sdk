@@ -75,11 +75,8 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         # 
         # >  If the ENI is managed and controlled by other Alibaba Cloud services, no instance ID is returned.
         self.instance_id = instance_id
-        # The IPv4 prefixes of the ENI.
         self.ipv_4prefix_sets = ipv_4prefix_sets
-        # The IPv6 prefixes of the ENI.
         self.ipv_6prefix_sets = ipv_6prefix_sets
-        # The IPv6 addresses of the ENI.
         self.ipv_6sets = ipv_6sets
         # The media access control (MAC) address of the ENI.
         self.mac_address = mac_address
@@ -100,7 +97,6 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         self.owner_id = owner_id
         # The private IP address of the ENI.
         self.private_ip_address = private_ip_address
-        # The private IP addresses of the ENI.
         self.private_ip_sets = private_ip_sets
         # QoS Speed Limit Settings
         self.qo_sconfig = qo_sconfig
@@ -128,7 +124,6 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         # 
         # >  ENIs in the default resource group are displayed in the response regardless of how this parameter is set.
         self.resource_group_id = resource_group_id
-        # The IDs of the security groups to which the ENI belongs.
         self.security_group_ids = security_group_ids
         # The ID of the distributor to which the ENI belongs.
         self.service_id = service_id
@@ -148,7 +143,6 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         # 
         # This parameter is empty by default, which indicates that all states are queried.
         self.status = status
-        # The tags of the ENI.
         self.tags = tags
         # >  This parameter is in invitational preview and is not publicly available.
         self.tcp_option_address_enabled = tcp_option_address_enabled
@@ -482,9 +476,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the ENI.
         self.tag_key = tag_key
-        # The tag value of the ENI.
         self.tag_value = tag_value
 
     def validate(self):
@@ -731,14 +723,8 @@ class DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSet(Dar
         primary: bool = None,
         private_ip_address: str = None,
     ):
-        # The EIP that is associated with the secondary private IP address of the ENI.
         self.associated_public_ip = associated_public_ip
-        # Indicates whether the IP address is the primary private IP address. Valid values:
-        # 
-        # *   true: The IP address is the primary private IP address.
-        # *   false: The IP address is a secondary private IP address.
         self.primary = primary
-        # The private IP address of the ENI.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -781,9 +767,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSetAsso
         allocation_id: str = None,
         public_ip_address: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
         self.allocation_id = allocation_id
-        # The EIP.
         self.public_ip_address = public_ip_address
 
     def validate(self):
@@ -898,7 +882,6 @@ class DescribeNetworkInterfaceAttributeResponseBodyIpv6SetsIpv6Set(DaraModel):
         self,
         ipv_6address: str = None,
     ):
-        # The IPv6 address of the ENI.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -961,7 +944,6 @@ class DescribeNetworkInterfaceAttributeResponseBodyIpv6PrefixSetsIpv6PrefixSet(D
         self,
         ipv_6prefix: str = None,
     ):
-        # The IPv6 prefix of the ENI.
         self.ipv_6prefix = ipv_6prefix
 
     def validate(self):
@@ -1024,7 +1006,6 @@ class DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSetsIpv4PrefixSet(D
         self,
         ipv_4prefix: str = None,
     ):
-        # The IPv4 prefix of the ENI.
         self.ipv_4prefix = ipv_4prefix
 
     def validate(self):
@@ -1158,7 +1139,6 @@ class DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification(Da
     ):
         # >  This parameter is in invitational preview and unavailable for general users.
         self.bond_mode = bond_mode
-        # >  This parameter is in invitational preview and unavailable for general users.
         self.slave_interface_specification = slave_interface_specification
 
     def validate(self):
@@ -1231,11 +1211,8 @@ class DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecificationSla
         slave_network_interface_id: str = None,
         work_state: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
         self.bond_network_interface_id = bond_network_interface_id
-        # >  This parameter is in invitational preview and is not publicly available.
         self.slave_network_interface_id = slave_network_interface_id
-        # >  This parameter is in invitational preview and is not publicly available.
         self.work_state = work_state
 
     def validate(self):
@@ -1283,7 +1260,6 @@ class DescribeNetworkInterfaceAttributeResponseBodyAttachment(DaraModel):
         self.device_index = device_index
         # >  This parameter is in invitational preview and unavailable for general users.
         self.instance_id = instance_id
-        # >  This parameter is in invitational preview and unavailable for general users.
         self.member_network_interface_ids = member_network_interface_ids
         # The index of the network interface controller (NIC).
         # 

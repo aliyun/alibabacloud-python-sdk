@@ -16,7 +16,6 @@ class DescribeInstanceStatusResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The IDs and status of the ECS instances.
         self.instance_statuses = instance_statuses
         # The page number.
         self.page_number = page_number
@@ -114,15 +113,7 @@ class DescribeInstanceStatusResponseBodyInstanceStatusesInstanceStatus(DaraModel
         instance_id: str = None,
         status: str = None,
     ):
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The status of the instance. Valid values:
-        # 
-        # *   Pending: The instance is being created.
-        # *   Running: The instance is running.
-        # *   Starting: The instance is being started.
-        # *   Stopping: The instance is being stopped.
-        # *   Stopped: The instance is stopped.
         self.status = status
 
     def validate(self):

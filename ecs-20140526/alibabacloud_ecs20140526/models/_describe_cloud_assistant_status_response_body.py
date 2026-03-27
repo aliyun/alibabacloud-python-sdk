@@ -17,7 +17,6 @@ class DescribeCloudAssistantStatusResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the installation status of Cloud Assistant on the instances.
         self.instance_cloud_assistant_status_set = instance_cloud_assistant_status_set
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -130,35 +129,14 @@ class DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSetIns
         ostype: str = None,
         support_session_manager: bool = None,
     ):
-        # The number of tasks that Cloud Assistant was running on the instance.
         self.active_task_count = active_task_count
-        # Indicates whether Cloud Assistant is running on the instance. Valid values:
-        # 
-        # *   true: Heartbeats are detected in the last 2 minutes.
-        # *   false: No heartbeats are detected in the last 2 minutes.
         self.cloud_assistant_status = cloud_assistant_status
-        # The version number of Cloud Assistant Agent. This parameter is empty if Cloud Assistant Agent is not installed or is not running on the instance.
         self.cloud_assistant_version = cloud_assistant_version
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The number of tasks that Cloud Assistant completed on the instance.
         self.invocation_count = invocation_count
-        # The last heartbeat time of Cloud Assistant. The value is updated every minute on average. The interval can be 55, 60, or 65 seconds.
         self.last_heartbeat_time = last_heartbeat_time
-        # The time when commands were last run.
         self.last_invoked_time = last_invoked_time
-        # The operating system type of the instance. Valid values:
-        # 
-        # *   Windows
-        # *   Linux
-        # *   FreeBSD
         self.ostype = ostype
-        # Indicates whether Cloud Assistant supports Session Manager on the instance. If Session Manager is not supported, the version of Cloud Assistant Agent is outdated. Update Cloud Assistant Agent to the latest version.
-        # 
-        # To support Session Manager, the version of Cloud Assistant Agent cannot be earlier than the following versions:
-        # 
-        # *   Linux: 2.2.3.189
-        # *   Windows: 2.1.3.189
         self.support_session_manager = support_session_manager
 
     def validate(self):

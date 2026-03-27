@@ -4048,6 +4048,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.strategy):
             query['Strategy'] = request.strategy
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4100,6 +4102,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.strategy):
             query['Strategy'] = request.strategy
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14738,6 +14742,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.strategy):
             query['Strategy'] = request.strategy
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14790,6 +14796,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.strategy):
             query['Strategy'] = request.strategy
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -29215,6 +29223,8 @@ class Client(OpenApiClient):
             request.agent_upgrade_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.agent_upgrade_config, 'AgentUpgradeConfig', 'json')
         if not DaraCore.is_null(tmp_req.oss_delivery_config):
             request.oss_delivery_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.oss_delivery_config, 'OssDeliveryConfig', 'json')
+        if not DaraCore.is_null(tmp_req.resource_usage_config):
+            request.resource_usage_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_usage_config, 'ResourceUsageConfig', 'json')
         if not DaraCore.is_null(tmp_req.session_manager_config):
             request.session_manager_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_manager_config, 'SessionManagerConfig', 'json')
         if not DaraCore.is_null(tmp_req.sls_delivery_config):
@@ -29234,6 +29244,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.resource_usage_config_shrink):
+            query['ResourceUsageConfig'] = request.resource_usage_config_shrink
         if not DaraCore.is_null(request.session_manager_config_shrink):
             query['SessionManagerConfig'] = request.session_manager_config_shrink
         if not DaraCore.is_null(request.setting_type):
@@ -29271,6 +29283,8 @@ class Client(OpenApiClient):
             request.agent_upgrade_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.agent_upgrade_config, 'AgentUpgradeConfig', 'json')
         if not DaraCore.is_null(tmp_req.oss_delivery_config):
             request.oss_delivery_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.oss_delivery_config, 'OssDeliveryConfig', 'json')
+        if not DaraCore.is_null(tmp_req.resource_usage_config):
+            request.resource_usage_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_usage_config, 'ResourceUsageConfig', 'json')
         if not DaraCore.is_null(tmp_req.session_manager_config):
             request.session_manager_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_manager_config, 'SessionManagerConfig', 'json')
         if not DaraCore.is_null(tmp_req.sls_delivery_config):
@@ -29290,6 +29304,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.resource_usage_config_shrink):
+            query['ResourceUsageConfig'] = request.resource_usage_config_shrink
         if not DaraCore.is_null(request.session_manager_config_shrink):
             query['SessionManagerConfig'] = request.session_manager_config_shrink
         if not DaraCore.is_null(request.setting_type):

@@ -15,7 +15,6 @@ class DescribeInstanceTopologyResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Details about the topology.
         self.topologys = topologys
 
     def validate(self):
@@ -87,9 +86,7 @@ class DescribeInstanceTopologyResponseBodyTopologysTopology(DaraModel):
         host_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the host where the ECS instance resides. This parameter is encrypted and cannot match the ID of the ECS instance. However, if the values of this parameter for different ECS instances are the same, the ECS instances reside on the same host.
         self.host_id = host_id
-        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

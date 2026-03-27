@@ -32,7 +32,6 @@ class DescribeSecurityGroupsResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The information about the security groups.
         self.security_groups = security_groups
         # The total number of security groups returned. If `MaxResults` and `NextToken` are specified in the request, the value of this parameter is not returned.
         self.total_count = total_count
@@ -148,44 +147,19 @@ class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup(DaraModel):
         tags: main_models.DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupTags = None,
         vpc_id: str = None,
     ):
-        # The number of private IP addresses that can be added to the security group. For more information, see the "Security group capacity" section in [Basic security groups and advanced security groups](~~605897#section-kj9-e46-6v5~~).
-        # 
-        # If you set IsQueryEcsCount to True, the return value of AvailableInstanceAmount is valid.
-        # 
-        # >  This parameter is deprecated. The returned quantity is provided only for reference. The actual quantity may differ from the returned quantity.
         self.available_instance_amount = available_instance_amount
-        # The time when the security group was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the security group.
         self.description = description
-        # The number of private IP addresses that are contained in the security group. For more information, see the "Security group capacity" section in [Basic security groups and advanced security groups](~~605897#section-kj9-e46-6v5~~).
-        # 
-        # If you set IsQueryEcsCount to True, the return value of EcsCount is valid.
-        # 
-        # >  This parameter is deprecated. The returned quantity is provided only for reference. The actual quantity may differ from the returned quantity.
         self.ecs_count = ecs_count
-        # The number of rules that reference security groups in the security group.
         self.group_to_group_rule_count = group_to_group_rule_count
-        # The ID of the resource group to which the security group belongs.
         self.resource_group_id = resource_group_id
-        # The number of rules in the security group.
         self.rule_count = rule_count
-        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The name of the security group.
         self.security_group_name = security_group_name
-        # The type of the security group. Valid values:
-        # 
-        # *   normal: basic security group
-        # *   enterprise: advanced security group
         self.security_group_type = security_group_type
-        # The ID of the distributor to which the security group belongs.
         self.service_id = service_id
-        # Indicates whether the user of the security group is an Alibaba Cloud service or a distributor.
         self.service_managed = service_managed
-        # The tags of the security group.
         self.tags = tags
-        # The ID of the VPC to which the security group belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -329,9 +303,7 @@ class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupTagsTag(DaraM
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

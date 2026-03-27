@@ -13,7 +13,6 @@ class RebootInstancesResponseBody(DaraModel):
         instance_responses: main_models.RebootInstancesResponseBodyInstanceResponses = None,
         request_id: str = None,
     ):
-        # Details about instance-specific responses, which contain the status of each instance before and after the operation is called and the results of the operation.
         self.instance_responses = instance_responses
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class RebootInstancesResponseBodyInstanceResponsesInstanceResponse(DaraModel):
         message: str = None,
         previous_status: str = None,
     ):
-        # The error code returned for the instance. A return value of 200 indicates that the operation is successful. For more information, see the "Error codes" section of this topic.
         self.code = code
-        # The current state of the instance.
         self.current_status = current_status
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The error message that is returned for the operation on the instance. The return value Success indicates that the operation is successful. For more information, see the "Error codes" section of this topic.
         self.message = message
-        # The state of the instance before the operation is called.
         self.previous_status = previous_status
 
     def validate(self):

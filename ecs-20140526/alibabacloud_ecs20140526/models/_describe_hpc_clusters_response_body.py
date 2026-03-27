@@ -16,7 +16,6 @@ class DescribeHpcClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The name of the HPC cluster.
         self.hpc_clusters = hpc_clusters
         # Details about the HPC clusters. The value is an array that consists of the information of each HPC cluster.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class DescribeHpcClustersResponseBodyHpcClustersHpcCluster(DaraModel):
         hpc_cluster_id: str = None,
         name: str = None,
     ):
-        # The description of the HPC cluster.
         self.description = description
-        # The description of the HPC cluster.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the HPC cluster.
         self.name = name
 
     def validate(self):

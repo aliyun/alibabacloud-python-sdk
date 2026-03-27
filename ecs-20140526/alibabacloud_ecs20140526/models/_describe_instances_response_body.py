@@ -17,7 +17,6 @@ class DescribeInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the queried instances.
         self.instances = instances
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
@@ -191,191 +190,73 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
         vpc_attributes: main_models.DescribeInstancesResponseBodyInstancesInstanceVpcAttributes = None,
         zone_id: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
         self.additional_info = additional_info
-        # The automatic release time of the pay-as-you-go instance.
         self.auto_release_time = auto_release_time
         self.clock_options = clock_options
-        # The ID of the cluster to which the instance belongs.
-        # 
-        # >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.cluster_id = cluster_id
-        # The number of vCPUs.
         self.cpu = cpu
-        # Details about the CPU options.
         self.cpu_options = cpu_options
-        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.creation_time = creation_time
-        # The performance mode of the burstable instance. Valid values:
-        # 
-        # *   Standard: the standard mode. For more information, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
-        # *   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.credit_specification = credit_specification
-        # The information about the dedicated host. The value is an array that consists of DedicatedHostClusterId, DedicatedHostId, and DedicatedHostName.
         self.dedicated_host_attribute = dedicated_host_attribute
-        # The attributes of the instance on the dedicated host.
         self.dedicated_instance_attribute = dedicated_instance_attribute
-        # Indicates whether release protection is enabled for the instance. This parameter determines whether you can use the ECS console or call the DeleteInstance operation to release the instance. Valid values:
-        # 
-        # *   true: Release protection is enabled for the instance.
-        # *   false: Release protection is disabled for the instance.
-        # 
-        # >  This parameter is applicable only to pay-as-you-go instances. The release protection feature can protect instances against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
-        # The number of the deployment set group to which the instance belongs in a deployment set.
         self.deployment_set_group_no = deployment_set_group_no
-        # The ID of the deployment set to which the instance belongs.
         self.deployment_set_id = deployment_set_id
-        # The description of the instance.
         self.description = description
-        # Indicates whether data disks can be attached to the instance. Valid values:
-        # 
-        # *   true
-        # *   false
         self.device_available = device_available
-        # Details about the capacity reservation associated with the instance.
         self.ecs_capacity_reservation_attr = ecs_capacity_reservation_attr
-        # Details about the EIP associated with the instance.
         self.eip_address = eip_address
         self.enable_nvs = enable_nvs
-        # The expiration time of the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.expired_time = expired_time
-        # The number of GPUs for the instance type.
         self.gpuamount = gpuamount
-        # The category of GPUs for the instance type.
         self.gpuspec = gpuspec
-        # >  This parameter is in invitational preview and is not publicly available.
         self.hibernation_options = hibernation_options
-        # The hostname of the instance.
         self.host_name = host_name
-        # The ID of the HPC cluster to which the instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # >  This parameter is in invitational preview and is not publicly available.
         self.isp = isp
-        # The image ID of the instance.
         self.image_id = image_id
-        # The image options.
         self.image_options = image_options
-        # The internal IP addresses of the instance located in the classic network.
         self.inner_ip_address = inner_ip_address
-        # The billing method of the instance. Valid values:
-        # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
         self.instance_charge_type = instance_charge_type
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The network type of the instance. Valid values:
-        # 
-        # *   classic
-        # *   vpc
         self.instance_network_type = instance_network_type
-        # The instance type of the instance.
         self.instance_type = instance_type
-        # The instance family of the instance.
         self.instance_type_family = instance_type_family
-        # The billing method for network usage. Valid values:
-        # 
-        # *   PayByBandwidth: pay-by-bandwidth
-        # *   PayByTraffic: pay-by-traffic
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Indicates whether the instance is an I/O optimized instance. Valid values:
-        # 
-        # *   true
-        # *   false
         self.io_optimized = io_optimized
-        # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The number of local disks attached to the instance.
         self.local_storage_amount = local_storage_amount
-        # The capacity of local disks attached to the instance. Unit: GiB.
         self.local_storage_capacity = local_storage_capacity
-        # The memory size. Unit: MiB.
         self.memory = memory
-        # Details about the metadata options.
         self.metadata_options = metadata_options
-        # The ENIs attached to the instance.
         self.network_interfaces = network_interfaces
-        # The name of the operating system of the instance.
         self.osname = osname
-        # The English name of the operating system of the instance.
         self.osname_en = osname_en
-        # The type of the operating system of the instance. Valid values:
-        # 
-        # *   windows: Windows operating systems
-        # *   linux: Linux operating systems
         self.ostype = ostype
-        # The reasons why the instance was locked.
         self.operation_locks = operation_locks
-        # The private domain name options of the instance.
-        # 
-        # For information about the resolution of ECS private domain names, see [ECS private DNS resolution](https://help.aliyun.com/document_detail/2844797.html).
-        # 
-        # >  This parameter is returned only when the `AdditionalAttributes` parameter contains `PRIVATE_DNS_OPTIONS` in the request.
         self.private_dns_name_options = private_dns_name_options
-        # The public IP addresses of the instance.
         self.public_ip_address = public_ip_address
-        # The RDMA IP addresses of the instance in the HPC cluster.
         self.rdma_ip_address = rdma_ip_address
-        # Indicates whether the instance can be recycled.
         self.recyclable = recyclable
-        # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # >  The parameter is removed.
         self.sale_cycle = sale_cycle
-        # The IDs of the security groups to which the instance belongs.
         self.security_group_ids = security_group_ids
-        # The serial number of the instance.
         self.serial_number = serial_number
-        # The protection period of the spot instance. Unit: hours. Valid values:
-        # 
-        # *   1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # *   0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # 
-        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you specify a protection period based on your business requirements.
-        # 
-        # >  This parameter is returned when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
         self.spot_duration = spot_duration
-        # The interruption mode of the spot instance when the system initiates a spot instance interruption operation. Valid values:
-        # 
-        # *   Terminate: releases the spot instance.
-        # *   Stop: stops the instance in economical mode.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The maximum hourly price of the instance. The value can be accurate to three decimal places. This parameter is valid when SpotStrategy is set to SpotWithPriceLimit.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the pay-as-you-go instance. Valid values:
-        # 
-        # *   NoSpot: The instance is a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a spot instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a spot instance for which the market price is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
         self.spot_strategy = spot_strategy
-        # The time when the instance was last started. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.start_time = start_time
-        # The status of the instance.
         self.status = status
-        # Indicates whether the instance continues to be billed after it is stopped. Valid values:
-        # 
-        # *   KeepCharging: The instance is stopped in standard mode. Billing for the instance continues after the instance is stopped, and resources are retained for the instance.
-        # *   StopCharging: The instance is stopped in economical mode. Billing for some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP addresses are released. The instance may be unable to restart if some required resources are out of stock in the current region.
-        # *   Not-applicable: The instance does not support economical mode.
         self.stopped_mode = stopped_mode
-        # The tags of the instance.
         self.tags = tags
-        # The virtual LAN (VLAN) ID of the instance.
-        # 
-        # >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.vlan_id = vlan_id
-        # The VPC attributes of the instance.
         self.vpc_attributes = vpc_attributes
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -864,13 +745,9 @@ class DescribeInstancesResponseBodyInstancesInstanceVpcAttributes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The NAT IP address of the instance. The NAT IP address is used by ECS instances in different VPCs for communication.
         self.nat_ip_address = nat_ip_address
-        # The private IP addresses of the instance.
         self.private_ip_address = private_ip_address
-        # The ID of the vSwitch to which the instance is connected.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -981,9 +858,7 @@ class DescribeInstancesResponseBodyInstancesInstanceTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance.
         self.tag_key = tag_key
-        # The tag value of the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1102,41 +977,10 @@ class DescribeInstancesResponseBodyInstancesInstancePrivateDnsNameOptions(DaraMo
         enable_ip_dns_ptr_record: bool = None,
         hostname_type: str = None,
     ):
-        # Indicates whether DNS Resolution from the Instance ID-based Hostname to the Instance Primary Private IPv6 Address (AAAA Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.enable_instance_id_dns_aaaarecord = enable_instance_id_dns_aaaarecord
-        # Indicates whether DNS Resolution from the Instance ID-based Hostname to the Instance Primary Private IPv4 Address (A Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.enable_instance_id_dns_arecord = enable_instance_id_dns_arecord
-        # Indicates whether DNS Resolution from the IP Address-based Hostname to the Instance Primary Private IPv4 Address (A Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.enable_ip_dns_arecord = enable_ip_dns_arecord
-        # Indicates whether Reverse DNS Resolution from the Instance Primary Private IPv4 Address to the IP Address-based Hostname (PTR Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.enable_ip_dns_ptr_record = enable_ip_dns_ptr_record
-        # The type of hostname. Valid values:
-        # 
-        # *   Custom: custom hostname
-        # *   IpBased: IP address-based hostname
-        # *   InstanceIdBased: instance ID-based hostname
-        # 
-        # Default value: Custom.
         self.hostname_type = hostname_type
 
     def validate(self):
@@ -1224,15 +1068,7 @@ class DescribeInstancesResponseBodyInstancesInstanceOperationLocksLockReason(Dar
         lock_msg: str = None,
         lock_reason: str = None,
     ):
-        # The message returned when the instance was locked.
         self.lock_msg = lock_msg
-        # The reason why the instance was locked. Valid values:
-        # 
-        # *   financial: The instance was locked due to overdue payments.
-        # *   security: The instance was locked due to security reasons.
-        # *   recycling: The spot instance was locked and pending release.
-        # *   dedicatedhostfinancial: The instance was locked due to overdue payments for the dedicated host.
-        # *   refunded: The instance was locked because a refund was made for the instance.
         self.lock_reason = lock_reason
 
     def validate(self):
@@ -1308,24 +1144,13 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         private_ip_sets: main_models.DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets = None,
         type: str = None,
     ):
-        # The IPv4 prefixes of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
         self.ipv_4prefix_sets = ipv_4prefix_sets
-        # The IPv6 prefixes of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
         self.ipv_6prefix_sets = ipv_6prefix_sets
-        # The IPv6 addresses of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
         self.ipv_6sets = ipv_6sets
-        # The MAC address of the ENI.
         self.mac_address = mac_address
-        # The ID of the ENI.
         self.network_interface_id = network_interface_id
-        # The primary private IP address of the ENI.
         self.primary_ip_address = primary_ip_address
-        # The private IP addresses of the ENI.
         self.private_ip_sets = private_ip_sets
-        # The type of the ENI. Valid values:
-        # 
-        # *   Primary
-        # *   Secondary
         self.type = type
 
     def validate(self):
@@ -1443,16 +1268,8 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         private_dns_name: str = None,
         private_ip_address: str = None,
     ):
-        # Indicates whether the IP address is the primary private IP address. Valid values:
-        # 
-        # *   true
-        # *   false
         self.primary = primary
-        # The private domain name of the instance.
-        # 
-        # >  This parameter has a value in a specific format only if `HostnameType` is set to `IpBased` or `InstanceIdBased`.
         self.private_dns_name = private_dns_name
-        # The private IP address of the ENI.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -1527,7 +1344,6 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         self,
         ipv_6address: str = None,
     ):
-        # The IPv6 address of the ENI.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -1590,7 +1406,6 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         self,
         ipv_6prefix: str = None,
     ):
-        # The IPv6 prefix of the ENI.
         self.ipv_6prefix = ipv_6prefix
 
     def validate(self):
@@ -1653,7 +1468,6 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         self,
         ipv_4prefix: str = None,
     ):
-        # The IPv4 prefix of the ENI.
         self.ipv_4prefix = ipv_4prefix
 
     def validate(self):
@@ -1683,17 +1497,8 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
         http_put_response_hop_limit: int = None,
         http_tokens: str = None,
     ):
-        # Indicates whether the access channel is enabled for instance metadata. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
         self.http_endpoint = http_endpoint
-        # >  This parameter is not publicly available.
         self.http_put_response_hop_limit = http_put_response_hop_limit
-        # Indicates whether the security hardening mode (IMDSv2) is forcefully used to access instance metadata. Valid values:
-        # 
-        # *   optional: The security hardening mode (IMDSv2) is not forcefully used.
-        # *   required: The security hardening mode (IMDSv2) is forcefully used.
         self.http_tokens = http_tokens
 
     def validate(self):
@@ -1761,17 +1566,7 @@ class DescribeInstancesResponseBodyInstancesInstanceImageOptions(DaraModel):
         current_osnvme_supported: bool = None,
         login_as_non_root: bool = None,
     ):
-        # Indicates whether the operating system supports access to disks over the NVMe protocol. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # >  This parameter is returned only if you specify CURRENT_OS_NVME_SUPPORTED in AdditionalAttributes in the request.
         self.current_osnvme_supported = current_osnvme_supported
-        # Indicates whether the instance that uses the image supports logons of the ecs-user user. Valid values:
-        # 
-        # *   true
-        # *   false
         self.login_as_non_root = login_as_non_root
 
     def validate(self):
@@ -1805,7 +1600,6 @@ class DescribeInstancesResponseBodyInstancesInstanceHibernationOptions(DaraModel
         self,
         configured: bool = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
         self.configured = configured
 
     def validate(self):
@@ -1837,18 +1631,10 @@ class DescribeInstancesResponseBodyInstancesInstanceEipAddress(DaraModel):
         ip_address: str = None,
         is_support_unassociate: bool = None,
     ):
-        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The maximum public bandwidth of the EIP. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The metering method of the EIP. Valid values:
-        # 
-        # *   PayByBandwidth
-        # *   PayByTraffic
         self.internet_charge_type = internet_charge_type
-        # The EIP.
         self.ip_address = ip_address
-        # Indicates whether the EIP can be disassociated.
         self.is_support_unassociate = is_support_unassociate
 
     def validate(self):
@@ -1901,9 +1687,7 @@ class DescribeInstancesResponseBodyInstancesInstanceEcsCapacityReservationAttr(D
         capacity_reservation_id: str = None,
         capacity_reservation_preference: str = None,
     ):
-        # The ID of the capacity reservation.
         self.capacity_reservation_id = capacity_reservation_id
-        # The preference of the capacity reservation.
         self.capacity_reservation_preference = capacity_reservation_preference
 
     def validate(self):
@@ -1938,15 +1722,7 @@ class DescribeInstancesResponseBodyInstancesInstanceDedicatedInstanceAttribute(D
         affinity: str = None,
         tenancy: str = None,
     ):
-        # Indicates whether the instance on the dedicated host is associated with the dedicated host. Valid values:
-        # 
-        # *   default: The instance is not associated with the dedicated host. When the instance is restarted from economical mode, the instance may be automatically deployed on another dedicated host in the automatic deployment resource pool.
-        # *   host: The instance is associated with the dedicated host. When the instance is restarted from economical mode, the instance is still deployed on the original dedicated host.
         self.affinity = affinity
-        # Indicates whether the instance is hosted on a dedicated host. Valid values:
-        # 
-        # *   default: The instance is not hosted on a dedicated host.
-        # *   host: The instance is hosted on a dedicated host.
         self.tenancy = tenancy
 
     def validate(self):
@@ -1982,11 +1758,8 @@ class DescribeInstancesResponseBodyInstancesInstanceDedicatedHostAttribute(DaraM
         dedicated_host_id: str = None,
         dedicated_host_name: str = None,
     ):
-        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        # The ID of the dedicated host.
         self.dedicated_host_id = dedicated_host_id
-        # The name of the dedicated host.
         self.dedicated_host_name = dedicated_host_name
 
     def validate(self):
@@ -2032,18 +1805,11 @@ class DescribeInstancesResponseBodyInstancesInstanceCpuOptions(DaraModel):
         topology_type: str = None,
         turbo_mode: str = None,
     ):
-        # The number of physical CPU cores.
         self.core_count = core_count
         self.enable_visst = enable_visst
         self.enable_vrdt = enable_vrdt
-        # >  This parameter is deprecated.
         self.numa = numa
-        # The number of threads per CPU core.
         self.threads_per_core = threads_per_core
-        # The CPU topology type of the instance. Valid values:
-        # 
-        # *   ContinuousCoreToHTMapping: Hyper-Threading (HT) continuous CPU topology
-        # *   DiscreteCoreToHTMapping: HT discrete CPU topology
         self.topology_type = topology_type
         self.turbo_mode = turbo_mode
 
@@ -2135,7 +1901,6 @@ class DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo(DaraModel):
         self,
         enable_high_density_mode: bool = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
         self.enable_high_density_mode = enable_high_density_mode
 
     def validate(self):

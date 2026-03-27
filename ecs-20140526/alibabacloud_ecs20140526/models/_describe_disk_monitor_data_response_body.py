@@ -14,7 +14,6 @@ class DescribeDiskMonitorDataResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The monitoring data of the disk.
         self.monitor_data = monitor_data
         # The request ID.
         self.request_id = request_id
@@ -104,25 +103,15 @@ class DescribeDiskMonitorDataResponseBodyMonitorDataDiskMonitorData(DaraModel):
         latency_write: int = None,
         time_stamp: str = None,
     ):
-        # The read bandwidth of the disk. Unit: byte/s.
         self.bpsread = bpsread
-        # The total read and write bandwidth of the disk. Unit: byte/s.
         self.bpstotal = bpstotal
-        # The write bandwidth of the disk. Unit: byte/s.
         self.bpswrite = bpswrite
-        # The ID of the disk.
         self.disk_id = disk_id
-        # The number of read I/O operations per second on the disk.
         self.iopsread = iopsread
-        # The total number of read and write I/O operations per second on the disk.
         self.iopstotal = iopstotal
-        # The number of write I/O operations per second on the disk.
         self.iopswrite = iopswrite
-        # The read latency of the disk. Unit: microseconds.
         self.latency_read = latency_read
-        # The write latency of the disk. Unit: microseconds.
         self.latency_write = latency_write
-        # The timestamp of the monitoring data. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

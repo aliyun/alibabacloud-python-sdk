@@ -25,7 +25,6 @@ class DescribeSnapshotsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Details about the snapshots.
         self.snapshots = snapshots
         # The total number of snapshots.
         # 
@@ -152,100 +151,34 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(DaraModel):
         tags: main_models.DescribeSnapshotsResponseBodySnapshotsSnapshotTags = None,
         usage: str = None,
     ):
-        # Indicates whether the snapshot can be shared and be used to create or roll back a cloud disk. Valid values:
-        # 
-        # *   true
-        # *   false
         self.available = available
-        # The category of the snapshot. Valid values:
-        # 
-        # *   Standard: standard snapshot.
-        # *   Flash: local snapshot. This value will be deprecated. The local snapshot feature is replaced by the instant access feature.
-        # *   archive: archive snapshot.
         self.category = category
-        # The time when the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the snapshot.
         self.description = description
-        # Indicates whether the snapshot was encrypted. Valid values:
-        # 
-        # *   true
-        # *   false
         self.encrypted = encrypted
-        # Indicates whether the instant access feature is enabled. Valid values:
-        # 
-        # *   true: The instant access feature is enabled. By default, the instant access feature is enabled for Enterprise SSDs (ESSDs) and ESSD Entry disks.
-        # *   false: The instant access feature is disabled. The snapshot is a standard snapshot for which the instant access feature is disabled.
-        # 
-        # >  This parameter is deprecated. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
         self.instant_access = instant_access
-        # Indicates the validity period of the instant access feature. When the validity period ends, the instant access feature is automatically disabled.
-        # 
-        # By default, the value of this parameter is the same as the value of `RetentionDays`.
-        # 
-        # >  This parameter is deprecated. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
         self.instant_access_retention_days = instant_access_retention_days
-        # The ID of the KMS key used for the data disk.
         self.kmskey_id = kmskey_id
-        # The time when the snapshot was last modified. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_modified_time = last_modified_time
-        # The product code of the Alibaba Cloud Marketplace image.
         self.product_code = product_code
-        # The progress of the snapshot creation task. Unit: percent (%).
         self.progress = progress
-        # The region ID of the snapshot.
         self.region_id = region_id
-        # The amount of remaining time required to create the snapshot. Unit: seconds.
         self.remain_time = remain_time
-        # The ID of the resource group to which the snapshot belongs.
         self.resource_group_id = resource_group_id
-        # The retention period of the automatic snapshot. Unit: days.
         self.retention_days = retention_days
-        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The ID of the snapshot chain that is associated with the snapshot.
         self.snapshot_link_id = snapshot_link_id
-        # The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was created.
         self.snapshot_name = snapshot_name
-        # The serial number of the snapshot.
         self.snapshot_sn = snapshot_sn
-        # The type of the snapshot. Valid values:
-        # 
-        # *   auto or timer: automatic snapshot
-        # *   user: manual snapshot
-        # *   all: all snapshot types
         self.snapshot_type = snapshot_type
-        # The ID of the source disk. This parameter is retained even after the source disk is released.
         self.source_disk_id = source_disk_id
-        # The capacity of the source disk. Unit: GiB.
         self.source_disk_size = source_disk_size
-        # The type of the source disk. Valid values:
-        # 
-        # *   system
-        # *   data
         self.source_disk_type = source_disk_type
-        # The region ID of the source snapshot.
         self.source_region_id = source_region_id
-        # The ID of the source snapshot.
         self.source_snapshot_id = source_snapshot_id
-        # The category of the source disk.
-        # 
-        # >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.source_storage_type = source_storage_type
-        # The status of the snapshot. Valid values:
-        # 
-        # *   progressing: The snapshot is being created.
-        # *   accomplished: The snapshot is created.
-        # *   failed: The snapshot failed to be created.
         self.status = status
-        # The tags of the snapshot.
         self.tags = tags
-        # Indicates whether the snapshot was used to create images or cloud disks. Valid values:
-        # 
-        # *   image: The snapshot was used to create custom images.
-        # *   disk: The snapshot was used to create cloud disks.
-        # *   image_disk: The snapshot was used to create custom images and data disks.
-        # *   none: The snapshot was not used to create custom images or cloud disks.
         self.usage = usage
 
     def validate(self):
@@ -479,9 +412,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshotTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the snapshot.
         self.tag_key = tag_key
-        # The tag value of the snapshot.
         self.tag_value = tag_value
 
     def validate(self):

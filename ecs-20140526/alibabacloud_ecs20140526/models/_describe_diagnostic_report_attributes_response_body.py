@@ -32,7 +32,6 @@ class DescribeDiagnosticReportAttributesResponseBody(DaraModel):
         self.end_time = end_time
         # The time when the diagnostic report was complete.
         self.finished_time = finished_time
-        # The results of all diagnostic metrics in the diagnostic metric set.
         self.metric_results = metric_results
         # The ID of the diagnostic metric set.
         self.metric_set_id = metric_set_id
@@ -199,26 +198,10 @@ class DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult(Da
         severity: str = None,
         status: str = None,
     ):
-        # The diagnosed issues.
         self.issues = issues
-        # The category of the diagnostic metric.
         self.metric_category = metric_category
-        # The ID of the diagnostic metric.
         self.metric_id = metric_id
-        # The severity level of the diagnostic metric. Valid values:
-        # 
-        # *   Unknown: The diagnostic has not started, failed to run, or exited unexpectedly without a diagnosis.
-        # *   Normal: No exceptions were detected.
-        # *   Info: Diagnostic information was recorded and may be related to exceptions.
-        # *   NotSupport: The version of the guest operating system does support diagnosing the metric.
-        # *   Warn: Diagnostic information was recorded and may indicate potential exceptions.
-        # *   Critical: Critical exceptions were detected.
         self.severity = severity
-        # The state of the diagnostic metric. Valid values:
-        # 
-        # *   InProgress.
-        # *   Finished.
-        # *   Failed.
         self.status = status
 
     def validate(self):
@@ -312,19 +295,11 @@ class DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIss
         repairable: bool = None,
         severity: str = None,
     ):
-        # The additional data about the diagnosed issue. The value is a JSON string.
         self.additional = additional
-        # The ID of the diagnosed issue, which is the unique identifier of the issue.
         self.issue_id = issue_id
-        # The time when the diagnosed issue occurred.
         self.occurrence_time = occurrence_time
         self.repair_status = repair_status
         self.repairable = repairable
-        # The severity level of the diagnosed issue. Valid values:
-        # 
-        # *   Info: Diagnostic information was recorded and may be related to exceptions.
-        # *   Warn: Diagnostic information was recorded and may indicate potential exceptions.
-        # *   Critical: Critical exceptions were detected.
         self.severity = severity
 
     def validate(self):

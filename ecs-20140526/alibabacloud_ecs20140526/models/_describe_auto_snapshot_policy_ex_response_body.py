@@ -16,7 +16,6 @@ class DescribeAutoSnapshotPolicyExResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the automatic snapshot policies.
         self.auto_snapshot_policies = auto_snapshot_policies
         # The page number.
         self.page_number = page_number
@@ -129,52 +128,22 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         type: str = None,
         volume_nums: int = None,
     ):
-        # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The name of the automatic snapshot policy.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
-        # >  This parameter is in invitational preview and is not publicly available.
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
-        # Encryption configurations for cross-region snapshot replication.
         self.copy_encryption_configuration = copy_encryption_configuration
-        # The time when the automatic snapshot policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The number of disks to which the automatic snapshot policy is applied.
         self.disk_nums = disk_nums
-        # >  This parameter is in invitational preview and is not publicly available.
         self.enable_cross_region_copy = enable_cross_region_copy
-        # The region ID of the automatic snapshot policy.
         self.region_id = region_id
-        # The days of the week on which to create automatic snapshots. Valid values: 1 to 7, which correspond to the days of the week. For example, 1 indicates Monday. One or more days can be specified.
         self.repeat_weekdays = repeat_weekdays
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The retention period of the automatic snapshots. Unit: days. Valid values:
-        # 
-        # *   \\-1: Automatic snapshots are retained until they are deleted.
-        # *   1 to 65536: Auto snapshots are retained for the specified number of days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
-        # The status of the automatic snapshot policy. Valid values:
-        # 
-        # *   Normal: The automatic snapshot policy is normal.
-        # *   Expire: The automatic snapshot policy cannot be used because your account has overdue payments.
         self.status = status
-        # The tags of the automatic snapshot policy.
         self.tags = tags
-        # >  This parameter is in invitational preview and is not publicly available.
         self.target_copy_regions = target_copy_regions
-        # The points in time of the day at which to create automatic snapshots.
-        # 
-        # The time is displayed in UTC+8. Unit: hours. Valid values: 0 to 23, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
-        # 
-        # The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: `["0", "1", ... "23"]`.
         self.time_points = time_points
-        # The type of the automatic snapshot policy. Valid values:
-        # 
-        # *   Custom: user-defined snapshot policy.
-        # *   System: system-defined snapshot policy.
         self.type = type
-        # The number of extended volumes to which the automatic snapshot policy is applied.
         self.volume_nums = volume_nums
 
     def validate(self):
@@ -339,9 +308,7 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the automatic snapshot policy.
         self.tag_key = tag_key
-        # The tag value of the automatic snapshot policy.
         self.tag_value = tag_value
 
     def validate(self):
@@ -376,14 +343,7 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         encrypted: bool = None,
         kmskey_id: str = None,
     ):
-        # Whether to enable encryption for cross-region snapshot replication. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
         self.kmskey_id = kmskey_id
 
     def validate(self):

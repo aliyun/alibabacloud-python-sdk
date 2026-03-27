@@ -22,7 +22,6 @@ class DescribeSnapshotPackageResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Details about the OSS storage plans.
         self.snapshot_packages = snapshot_packages
         # The total number of OSS storage plans.
         self.total_count = total_count
@@ -116,13 +115,9 @@ class DescribeSnapshotPackageResponseBodySnapshotPackagesSnapshotPackage(DaraMod
         init_capacity: int = None,
         start_time: str = None,
     ):
-        # The name of the OSS storage plan.
         self.display_name = display_name
-        # The time when the OSS storage plan expires. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The maximum storage capacity offered by the OSS storage plan.
         self.init_capacity = init_capacity
-        # The time when the OSS storage plan was purchased. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

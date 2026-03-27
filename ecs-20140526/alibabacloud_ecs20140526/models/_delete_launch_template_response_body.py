@@ -18,7 +18,6 @@ class DeleteLaunchTemplateResponseBody(DaraModel):
         # 
         # You must specify `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template.
         self.launch_template_id = launch_template_id
-        # The versions of the deleted launch template.
         self.launch_template_version_numbers = launch_template_version_numbers
         # The request ID.
         self.request_id = request_id

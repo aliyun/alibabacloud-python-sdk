@@ -19,7 +19,6 @@ class DescribeImageSharePermissionResponseBody(DaraModel):
         share_groups: main_models.DescribeImageSharePermissionResponseBodyShareGroups = None,
         total_count: int = None,
     ):
-        # The Alibaba Cloud accounts.
         self.accounts = accounts
         # The ID of the custom image.
         self.image_id = image_id
@@ -31,7 +30,6 @@ class DescribeImageSharePermissionResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The shared groups.
         self.share_groups = share_groups
         # The total number of entries returned.
         self.total_count = total_count
@@ -143,7 +141,6 @@ class DescribeImageSharePermissionResponseBodyShareGroupsShareGroup(DaraModel):
         self,
         group: str = None,
     ):
-        # The shared group.
         self.group = group
 
     def validate(self):
@@ -207,9 +204,7 @@ class DescribeImageSharePermissionResponseBodyAccountsAccount(DaraModel):
         aliyun_id: str = None,
         shared_time: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.aliyun_id = aliyun_id
-        # The time when the image was shared. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.shared_time = shared_time
 
     def validate(self):

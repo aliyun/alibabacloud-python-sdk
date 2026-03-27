@@ -18,7 +18,6 @@ class PurchaseStorageCapacityUnitResponseBody(DaraModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The IDs of the SCUs.
         self.storage_capacity_unit_ids = storage_capacity_unit_ids
 
     def validate(self):

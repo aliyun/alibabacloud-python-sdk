@@ -16,7 +16,6 @@ class DescribeInstanceMaintenanceAttributesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maintenance attributes.
         self.maintenance_attributes = maintenance_attributes
         # The page number.
         self.page_number = page_number
@@ -116,13 +115,9 @@ class DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMain
         maintenance_windows: main_models.DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeMaintenanceWindows = None,
         notify_on_maintenance: bool = None,
     ):
-        # The attributes of the maintenance action of the instance.
         self.action_on_maintenance = action_on_maintenance
-        # The instance ID.
         self.instance_id = instance_id
-        # The maintenance windows.
         self.maintenance_windows = maintenance_windows
-        # Indicates whether an event notification was sent before maintenance.
         self.notify_on_maintenance = notify_on_maintenance
 
     def validate(self):
@@ -209,9 +204,7 @@ class DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMain
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end time of the maintenance window.
         self.end_time = end_time
-        # The start time of the maintenance window.
         self.start_time = start_time
 
     def validate(self):
@@ -247,15 +240,8 @@ class DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMain
         supported_values: main_models.DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeActionOnMaintenanceSupportedValues = None,
         value: str = None,
     ):
-        # The default maintenance action.
         self.default_value = default_value
-        # The supported maintenance actions.
         self.supported_values = supported_values
-        # The current maintenance action. Valid values:
-        # 
-        # *   Stop: stops the instance.
-        # *   AutoRecover: automatically recovers the instance.
-        # *   AutoRedeploy: redeploys the instance, which may damage the data disks attached to the instance.
         self.value = value
 
     def validate(self):

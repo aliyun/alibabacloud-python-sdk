@@ -21,7 +21,6 @@ class DescribeSpotPriceHistoryResponseBody(DaraModel):
         self.next_offset = next_offset
         # The instance type of the spot instance.
         self.request_id = request_id
-        # The zone ID of the spot instance.
         self.spot_prices = spot_prices
 
     def validate(self):
@@ -110,23 +109,12 @@ class DescribeSpotPriceHistoryResponseBodySpotPricesSpotPriceType(DaraModel):
         timestamp: str = None,
         zone_id: str = None,
     ):
-        # The instance type of the spot instance.
         self.instance_type = instance_type
-        # Details about the price history of the spot instance.
         self.io_optimized = io_optimized
-        # Queries the price history of a spot instance within the last 30 days.
         self.network_type = network_type
-        # The price for a pay-as-you-go instance that has the same configuration as the specified spot instance.
         self.origin_price = origin_price
-        # The price for a pay-as-you-go instance that has the same configurations as the spot instance.
         self.spot_price = spot_price
-        # The currency unit of the price.
-        # 
-        # Alibaba Cloud China site (aliyun.com): CNY.
-        # 
-        # Alibaba Cloud International site (alibabacloud.com): USD.
         self.timestamp = timestamp
-        # The ID of the request.
         self.zone_id = zone_id
 
     def validate(self):

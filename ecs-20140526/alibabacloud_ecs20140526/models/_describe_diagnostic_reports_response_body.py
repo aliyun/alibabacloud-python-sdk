@@ -16,7 +16,6 @@ class DescribeDiagnosticReportsResponseBody(DaraModel):
     ):
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The diagnostic reports.
         self.reports = reports
         # The request ID.
         self.request_id = request_id
@@ -105,33 +104,16 @@ class DescribeDiagnosticReportsResponseBodyReportsReport(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The time when the diagnostic report was created.
         self.creation_time = creation_time
-        # The end of the time range during which data was queried. The value is the EndTime value that was passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
         self.end_time = end_time
-        # The time when the diagnostic was complete.
         self.finished_time = finished_time
-        # The diagnosed issues.
         self.issues = issues
-        # The ID of the diagnostic metric set.
         self.metric_set_id = metric_set_id
-        # The ID of the diagnostic report.
         self.report_id = report_id
-        # The ID of the resource.
         self.resource_id = resource_id
-        # The type of the resource.
         self.resource_type = resource_type
-        # The severity level of the diagnostic report. Valid values:
-        # 
-        # *   Unknown: The diagnostic did not start, failed to run, or unexpectedly exited without a diagnosis.
-        # *   Normal: No exceptions were detected.
-        # *   Info: Diagnostic information was recorded and may be related to exceptions.
-        # *   Warn: Diagnostic information was recorded and may indicate exceptions.
-        # *   Critical: Critical exceptions were detected.
         self.severity = severity
-        # The beginning of the time range during which data was queried. The value is the StartTime value that was passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
         self.start_time = start_time
-        # The status of the diagnostic report.
         self.status = status
 
     def validate(self):
@@ -259,17 +241,9 @@ class DescribeDiagnosticReportsResponseBodyReportsReportIssuesIssue(DaraModel):
         metric_id: str = None,
         severity: str = None,
     ):
-        # The ID of the diagnosed issue, which is the unique identifier of the issue.
         self.issue_id = issue_id
-        # The category of the diagnostic metric.
         self.metric_category = metric_category
-        # The ID of the diagnostic metric.
         self.metric_id = metric_id
-        # The severity level of the diagnostic metric. Valid values:
-        # 
-        # *   Info: Diagnostic information was recorded and may be related to exceptions.
-        # *   Warn: Diagnostic information was recorded and may indicate exceptions.
-        # *   Critical: Critical exceptions were detected.
         self.severity = severity
 
     def validate(self):

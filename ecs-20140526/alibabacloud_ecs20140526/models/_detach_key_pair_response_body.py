@@ -22,7 +22,6 @@ class DetachKeyPairResponseBody(DaraModel):
         self.key_pair_name = key_pair_name
         # The ID of the request.
         self.request_id = request_id
-        # The result set of the unbind operation.
         self.results = results
         # The total number of instances from which you want to unbind the SSH key pair.
         self.total_count = total_count
@@ -116,13 +115,9 @@ class DetachKeyPairResponseBodyResultsResult(DaraModel):
         message: str = None,
         success: str = None,
     ):
-        # The operation status code that is returned. 200 indicates that the operation is successful.
         self.code = code
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The result of the operation. For example, if the value of `Code` is 200, the value of `Message` is `successful`.
         self.message = message
-        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

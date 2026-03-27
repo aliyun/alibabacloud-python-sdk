@@ -16,7 +16,6 @@ class DescribeInstanceAttachmentAttributesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the association between private pools and instances.
         self.instances = instances
         # The page number.
         self.page_number = page_number
@@ -115,15 +114,8 @@ class DescribeInstanceAttachmentAttributesResponseBodyInstancesInstance(DaraMode
         private_pool_options_id: str = None,
         private_pool_options_match_criteria: str = None,
     ):
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the private pool. If the value of `PrivatePoolOptionsMatchCriteria` is `Open`, the value of PrivatePoolOptionsId is the ID of the private pool that is automatically matched to the instance.
         self.private_pool_options_id = private_pool_options_id
-        # The match mode of the private pool. Valid values:
-        # 
-        # *   Open: open private pool. Instances automatically match an open private pool.
-        # *   Target: specified private pool. Instances match a specified private pool.
-        # *   None: no private pool. Instances do not use private pools.
         self.private_pool_options_match_criteria = private_pool_options_match_criteria
 
     def validate(self):

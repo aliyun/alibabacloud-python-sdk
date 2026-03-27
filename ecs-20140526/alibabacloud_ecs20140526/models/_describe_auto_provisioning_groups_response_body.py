@@ -16,7 +16,6 @@ class DescribeAutoProvisioningGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the auto provisioning groups.
         self.auto_provisioning_groups = auto_provisioning_groups
         # The number of the page returned.
         self.page_number = page_number
@@ -133,74 +132,26 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         valid_from: str = None,
         valid_until: str = None,
     ):
-        # The ID of the auto provisioning group.
         self.auto_provisioning_group_id = auto_provisioning_group_id
-        # The name of the auto provisioning group.
         self.auto_provisioning_group_name = auto_provisioning_group_name
-        # The delivery type of the auto provisioning group. Valid values:
-        # 
-        # *   request: one-time delivery. When the auto provisioning group is started, it delivers instances only once. If the instances fail to be delivered, the auto provisioning group does not retry the delivery.
-        # *   maintain: continuous delivery. When the auto provisioning group is started, it attempts to deliver instances that meet the target capacity and monitors the real-time capacity. If the target capacity of the auto provisioning group is not reached, the auto provisioning group continues to create instances until the target capacity is reached.
         self.auto_provisioning_group_type = auto_provisioning_group_type
-        # The time when the auto provisioning group was created.
         self.creation_time = creation_time
-        # Indicates whether to release the scaled-in instances when the real-time capacity of the auto provisioning group exceeds the target capacity and the group is triggered to scale in. Valid values:
-        # 
-        # *   termination: releases the scaled-in instances.
-        # *   no-termination: only removes the scaled-in instances from the auto provisioning group but does not release the instances.
         self.excess_capacity_termination_policy = excess_capacity_termination_policy
-        # Details about the extended configurations.
         self.launch_template_configs = launch_template_configs
-        # The ID of the launch template associated with the auto provisioning group.
         self.launch_template_id = launch_template_id
-        # The version of the launch template associated with the auto provisioning group.
         self.launch_template_version = launch_template_version
-        # The maximum price of spot  instances in the auto provisioning group.
-        # 
-        # >  When both the MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice parameters are specified, the smaller one of the two parameter values is used.
-        # 
-        # The LaunchTemplateConfig.N.Priority parameter is set when the auto provisioning group is created, and cannot be modified.
         self.max_spot_price = max_spot_price
-        # The policies related to pay-as-you-go instances.
         self.pay_as_you_go_options = pay_as_you_go_options
-        # The region ID of the auto provisioning group.
         self.region_id = region_id
-        # The ID of the resource group to which the auto provisioning group belongs.
         self.resource_group_id = resource_group_id
-        # The policy related to spot instances.
         self.spot_options = spot_options
-        # The overall status of instance scheduling in the auto provisioning group. Valid values:
-        # 
-        # *   fulfilled: Scheduling was complete and the instances were delivered.
-        # *   pending-fulfillment: The instances were being created.
-        # *   pending-termination: The instances were being removed.
-        # *   error: An exception occurred during scheduling and the instances were not delivered.
         self.state = state
-        # The status of the auto provisioning group. Valid values:
-        # 
-        # *   submitted: The auto provisioning group was created but did not execute scheduling tasks.
-        # *   active: The auto provisioning group was executing scheduling tasks.
-        # *   deleted: The auto provisioning group was deleted.
-        # *   delete-running: The auto provisioning group was being deleted.
-        # *   modifying: The auto provisioning group was being modified.
         self.status = status
-        # The tags that are added to the auto provisioning group.
         self.tags = tags
-        # The settings of the target capacity of the auto provisioning group.
         self.target_capacity_specification = target_capacity_specification
-        # Indicates whether to release instances in the auto provisioning group when the auto provisioning group is deleted. Valid values:
-        # 
-        # *   true: releases the instances.
-        # *   false: only removes the instances from the auto provisioning group but does not release the instances.
         self.terminate_instances = terminate_instances
-        # Indicates whether to release instances in the auto provisioning group when the group expires. Valid values:
-        # 
-        # *   true: releases the instances.
-        # *   false: only removes the instances from the auto provisioning group but does not release the instances.
         self.terminate_instances_with_expiration = terminate_instances_with_expiration
-        # The time at which the auto provisioning group is started. The provisioning group is effective until the point in time specified by `ValidUntil`.
         self.valid_from = valid_from
-        # The time at which the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `ValidFrom` parameter is the validity period of the auto provisioning group.
         self.valid_until = valid_until
 
     def validate(self):
@@ -365,20 +316,9 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         spot_target_capacity: float = None,
         total_target_capacity: float = None,
     ):
-        # The type of supplemental instances. When the sum of the `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` values is less than the `TotalTargetCapacity` value, the auto provisioning group creates instances of the specified billing method to meet the target capacity. Valid values:
-        # 
-        # *   PayAsYouGo: pay-as-you-go instances.
-        # *   Spot: spot instances.
         self.default_target_capacity_type = default_target_capacity_type
-        # The target capacity of pay-as-you-go instances that the auto provisioning group provisions.
         self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity
-        # The target capacity of spot instances that the auto provisioning group provisions.
         self.spot_target_capacity = spot_target_capacity
-        # The target capacity of the auto provisioning group. The capacity consists of the following parts:
-        # 
-        # *   PayAsYouGoTargetCapacity
-        # *   SpotTargetCapacity
-        # *   The supplemental capacity besides instance capacities specified by PayAsYouGoTargetCapacity and SpotTargetCapacity.
         self.total_target_capacity = total_target_capacity
 
     def validate(self):
@@ -460,13 +400,7 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N that is added to the auto provisioning group.
-        # 
-        # Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.tag_key = tag_key
-        # The value of tag N that is added to the auto provisioning group.
-        # 
-        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.tag_value = tag_value
 
     def validate(self):
@@ -502,19 +436,8 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         instance_interruption_behavior: str = None,
         instance_pools_to_use_count: int = None,
     ):
-        # The policy for creating spot instances. Valid values:
-        # 
-        # *   lowest-price: cost optimization policy. This policy indicates that the lowest-priced instance type is used to create instances.
-        # *   diversified: balanced distribution policy. This policy indicates that instances are created evenly across multiple zones specified in the extended configuration.
         self.allocation_strategy = allocation_strategy
-        # The action to be performed after the excess spot instances are stopped. Valid values:
-        # 
-        # *   stop: retains the excess spot instances in the stopped state.
-        # *   terminate: releases the excess spot instances.
         self.instance_interruption_behavior = instance_interruption_behavior
-        # The number of instances that the auto provisioning group creates by selecting the instance type of the lowest price.
-        # 
-        # >  This parameter is set when the auto provisioning group is created, and cannot be modified.
         self.instance_pools_to_use_count = instance_pools_to_use_count
 
     def validate(self):
@@ -554,12 +477,6 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         self,
         allocation_strategy: str = None,
     ):
-        # The policy for creating pay-as-you-go instances. Valid values:
-        # 
-        # *   lowest-price: cost optimization policy. This policy indicates that lowest-cost instance types are used to create instances.
-        # *   prioritized: priority-based policy. This policy indicates that instances are created based on the priority specified by the LaunchTemplateConfig.N.Priority parameter.
-        # 
-        # >  The LaunchTemplateConfig.N.Priority parameter is set when the auto provisioning group is created, and cannot be modified.
         self.allocation_strategy = allocation_strategy
 
     def validate(self):
@@ -626,15 +543,10 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         v_switch_id: str = None,
         weighted_capacity: float = None,
     ):
-        # The instance type that is specified in the extended configuration.
         self.instance_type = instance_type
-        # The maximum price of the instance type specified in the extended configuration.
         self.max_price = max_price
-        # The priority of the instance type specified in the extended configuration. A value of 0 indicates the highest priority.
         self.priority = priority
-        # The ID of the vSwitch specified in the extended configuration.
         self.v_switch_id = v_switch_id
-        # The weight of the instance type specified in the extended configuration.
         self.weighted_capacity = weighted_capacity
 
     def validate(self):

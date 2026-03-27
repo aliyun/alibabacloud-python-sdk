@@ -79,7 +79,6 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         self.host_name = host_name
         # The ID of the image that the instance is running.
         self.image_id = image_id
-        # The internal IP address of the instance located in the classic network.
         self.inner_ip_address = inner_ip_address
         # The billing method of the instance. Valid values:
         # 
@@ -119,21 +118,12 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         # 
         # > This parameter is in invitational preview and is not publicly available.
         self.network_options = network_options
-        # The reason why the instance was locked. Valid values:
-        # 
-        # *   financial: The dedicated host was locked due to overdue payments.
-        # *   security: The instance was locked due to security reasons.
-        # *   recycling: The spot instance was locked and pending release.
-        # *   dedicatedhostfinancial: The instance was locked due to overdue payments for the dedicated host.
-        # *   refunded: The instance was locked because a refund was made for the instance.
         self.operation_locks = operation_locks
-        # The public IP address of the instance.
         self.public_ip_address = public_ip_address
         # The ID of the region in which the instance resides.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The IDs of the security groups to which the instance belongs.
         self.security_group_ids = security_group_ids
         # The serial number of the instance.
         self.serial_number = serial_number
@@ -417,7 +407,6 @@ class DescribeInstanceAttributeResponseBodyVpcAttributes(DaraModel):
     ):
         # The NAT IP address of the instance. It is used by ECS instances in different VPCs for communication.
         self.nat_ip_address = nat_ip_address
-        # The private IP address of the instance.
         self.private_ip_address = private_ip_address
         # The ID of the vSwitch to which the instance is connected.
         self.v_switch_id = v_switch_id
@@ -585,13 +574,6 @@ class DescribeInstanceAttributeResponseBodyOperationLocksLockReason(DaraModel):
         self,
         lock_reason: str = None,
     ):
-        # The reason why the instance was locked. Valid values:
-        # 
-        # *   financial: The instance was locked due to overdue payments.
-        # *   security: The instance was locked due to security reasons.
-        # *   recycling: The spot instance was locked and pending release.
-        # *   dedicatedhostfinancial: The instance was locked due to overdue payments for the dedicated host.
-        # *   refunded: The instance was locked because a refund is made for the instance.
         self.lock_reason = lock_reason
 
     def validate(self):

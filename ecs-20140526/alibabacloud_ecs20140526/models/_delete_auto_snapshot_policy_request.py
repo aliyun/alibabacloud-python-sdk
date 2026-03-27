@@ -13,11 +13,8 @@ class DeleteAutoSnapshotPolicyRequest(DaraModel):
         auto_snapshot_policy_id: str = None,
         region_id: str = None,
     ):
-        # RAM用户的虚拟账号ID。
         self.owner_id = owner_id
-        # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
-        # 资源主账号的ID，亦即UID。
         self.resource_owner_id = resource_owner_id
         # The ID of the automatic snapshot policy. You can call the [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) operation to query the IDs of available automatic snapshot policies.
         # 

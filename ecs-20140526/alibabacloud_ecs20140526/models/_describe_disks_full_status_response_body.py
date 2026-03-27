@@ -16,7 +16,6 @@ class DescribeDisksFullStatusResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of full status information of the EBS devices.
         self.disk_full_status_set = disk_full_status_set
         # The page number.
         self.page_number = page_number
@@ -118,21 +117,11 @@ class DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusType(Dar
         instance_id: str = None,
         status: main_models.DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeStatus = None,
     ):
-        # The name of the EBS device that is attached to an instance. Example: /dev/xvdb.
-        # 
-        # This parameter has a value only when the value of `Status` is `In_use`.
-        # 
-        # > This parameter will be deprecated in the future. To ensure future compatibility, we recommend that you do not use this parameter.
         self.device = device
-        # The events about the EBS device.
         self.disk_event_set = disk_event_set
-        # The EBS device ID.
         self.disk_id = disk_id
-        # The health status of the EBS device.
         self.health_status = health_status
-        # The instance ID.
         self.instance_id = instance_id
-        # The lifecycle status of the EBS device.
         self.status = status
 
     def validate(self):
@@ -199,9 +188,7 @@ class DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeStat
         code: int = None,
         name: str = None,
     ):
-        # The code of the lifecycle status of the EBS device.
         self.code = code
-        # The name of the lifecycle status of the EBS device.
         self.name = name
 
     def validate(self):
@@ -236,9 +223,7 @@ class DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeHeal
         code: int = None,
         name: str = None,
     ):
-        # The code of the health status of the EBS device.
         self.code = code
-        # The name of the health status of the EBS device.
         self.name = name
 
     def validate(self):
@@ -311,15 +296,10 @@ class DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDisk
         event_type: main_models.DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventTypeEventType = None,
         impact_level: str = None,
     ):
-        # The time when the event ended.
         self.event_end_time = event_end_time
-        # The ID of the event.
         self.event_id = event_id
-        # The time when the event occurred.
         self.event_time = event_time
-        # The type of the event.
         self.event_type = event_type
-        # The impact level of the event.
         self.impact_level = impact_level
 
     def validate(self):
@@ -374,14 +354,7 @@ class DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDisk
         code: int = None,
         name: str = None,
     ):
-        # The code of the event type.
         self.code = code
-        # The name of the event type. Valid values:
-        # 
-        # *   Degraded: The performance of the EBS device is degraded.
-        # *   SeverelyDegraded: The performance of the EBS device is severely degraded.
-        # *   Stalled: The performance of the EBS device is severely affected.
-        # *   ErrorDetected: The local disk is damaged.
         self.name = name
 
     def validate(self):

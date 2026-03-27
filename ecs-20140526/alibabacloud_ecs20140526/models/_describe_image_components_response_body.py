@@ -16,7 +16,6 @@ class DescribeImageComponentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the image components.
         self.image_component = image_component
         # The number of entries per page.
         self.max_results = max_results
@@ -124,32 +123,17 @@ class DescribeImageComponentsResponseBodyImageComponentImageComponentSet(DaraMod
         system_type: str = None,
         tags: main_models.DescribeImageComponentsResponseBodyImageComponentImageComponentSetTags = None,
     ):
-        # The type of the image component.
         self.component_type = component_type
-        # The version number of the image component.
         self.component_version = component_version
-        # The content of the image component.
         self.content = content
-        # The time when the image component was created.
         self.creation_time = creation_time
-        # The description of the image component.
         self.description = description
-        # The ID of the image component.
         self.image_component_id = image_component_id
-        # The name of the image component.
         self.name = name
-        # The type of the image component. Valid values:
-        # 
-        # *   SELF: the custom component that you created.
-        # *   ALIYUN: the system component provided by Alibaba Cloud.
         self.owner = owner
-        # The parameters contained in the image component.
         self.parameters = parameters
-        # The ID of the resource group to which the image component belongs.
         self.resource_group_id = resource_group_id
-        # The type of the operating system supported by the image component.
         self.system_type = system_type
-        # The tags of the image component.
         self.tags = tags
 
     def validate(self):
@@ -284,9 +268,7 @@ class DescribeImageComponentsResponseBodyImageComponentImageComponentSetTagsTag(
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -357,17 +339,8 @@ class DescribeImageComponentsResponseBodyImageComponentImageComponentSetParamete
         name: str = None,
         type: str = None,
     ):
-        # The default value of the parameter.
         self.default_value = default_value
-        # The name of the parameter.
         self.name = name
-        # The type of the parameter.
-        # 
-        # Valid values:
-        # 
-        # *   String
-        # *   Number
-        # *   Boolean
         self.type = type
 
     def validate(self):

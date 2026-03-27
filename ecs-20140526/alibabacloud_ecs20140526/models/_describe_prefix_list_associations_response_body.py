@@ -16,7 +16,6 @@ class DescribePrefixListAssociationsResponseBody(DaraModel):
     ):
         # The query token that is returned in this call. If the return value is empty, no more data is returned.
         self.next_token = next_token
-        # Details about the resources that are associated with the prefix list.
         self.prefix_list_associations = prefix_list_associations
         # The ID of the request.
         self.request_id = request_id
@@ -96,9 +95,7 @@ class DescribePrefixListAssociationsResponseBodyPrefixListAssociationsPrefixList
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource.
         self.resource_id = resource_id
-        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):

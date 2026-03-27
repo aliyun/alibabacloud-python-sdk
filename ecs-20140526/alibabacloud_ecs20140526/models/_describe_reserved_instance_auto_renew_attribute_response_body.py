@@ -15,7 +15,6 @@ class DescribeReservedInstanceAutoRenewAttributeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Details about the auto-renewal settings of the reserved instances.
         self.reserved_instance_renew_attributes = reserved_instance_renew_attributes
 
     def validate(self):
@@ -89,18 +88,9 @@ class DescribeReservedInstanceAutoRenewAttributeResponseBodyReservedInstanceRene
         renewal_status: str = None,
         reserved_instance_id: str = None,
     ):
-        # The auto-renewal duration.
         self.duration = duration
-        # The unit of the auto-renewal duration.
-        # 
-        # Valid values: Year and Month.
         self.period_unit = period_unit
-        # The auto-renewal status of the reserved instance. Valid values:
-        # 
-        # *   AutoRenewal: automatically renews the reserved instance.
-        # *   Normal: manually renews the reserved instances.
         self.renewal_status = renewal_status
-        # The ID of the reserved instance.
         self.reserved_instance_id = reserved_instance_id
 
     def validate(self):

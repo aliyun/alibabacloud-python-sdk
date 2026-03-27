@@ -16,7 +16,6 @@ class DescribeAutoProvisioningGroupHistoryResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array consisting of AutoProvisioningGroupHistory data.
         self.auto_provisioning_group_histories = auto_provisioning_group_histories
         # The page number of the returned page.
         self.page_number = page_number
@@ -117,19 +116,10 @@ class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHisto
         status: str = None,
         task_id: str = None,
     ):
-        # An array consisting of ActivityDetail data.
         self.activity_details = activity_details
-        # The execution time of the last instance creation performed by the single scheduling task.
         self.last_event_time = last_event_time
-        # The start time of executing the single scheduling task.
         self.start_time = start_time
-        # The execution status of the single scheduling task. Valid values:
-        # 
-        # *   prepare: The scheduling task is being executed.
-        # *   success: The scheduling task is executed.
-        # *   failed: The scheduling task failed to be executed.
         self.status = status
-        # The ID of the scheduling task.
         self.task_id = task_id
 
     def validate(self):
@@ -219,14 +209,7 @@ class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHisto
         detail: str = None,
         status: str = None,
     ):
-        # The execution details of instance creation performed by the single scheduling task.
         self.detail = detail
-        # The execution status of instance creation performed by the single scheduling task. Valid values:
-        # 
-        # *   Successful: Instances are created.
-        # *   Failed: Instances failed to be created.
-        # *   InProgress: Instances are being created.
-        # *   Warning: Some instances are created.
         self.status = status
 
     def validate(self):
