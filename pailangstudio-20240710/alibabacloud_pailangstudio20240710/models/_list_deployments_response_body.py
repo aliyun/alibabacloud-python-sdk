@@ -16,10 +16,15 @@ class ListDeploymentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of deployment jobs.
         self.deployments = deployments
+        # Maximum number of records allowed to be returned in this request.
         self.max_results = max_results
+        # Pagination cursor for the next request.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Total quantity.
         self.total_count = total_count
 
     def validate(self):

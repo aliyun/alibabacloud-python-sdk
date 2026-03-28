@@ -32,26 +32,55 @@ class GetKnowledgeBaseResponseBody(DaraModel):
         version_name: str = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility, possible values are:
+        # 
+        # *   PRIVATE: In this workspace, visible only to you and administrators.
+        # *   PUBLIC: In this workspace, visible to everyone.
         self.accessibility = accessibility
+        # Knowledge base auto-update configuration.
         self.auto_update_config = auto_update_config
+        # File slicing configuration.
         self.chunk_config = chunk_config
+        # Creator user ID.
         self.creator = creator
+        # Data source.
         self.data_sources = data_sources
+        # The ID of the dataset corresponding to the knowledge base.
         self.dataset_id = dataset_id
+        # Knowledge base description.
         self.description = description
+        # Vector index configuration.
         self.embedding_config = embedding_config
+        # Knowledge base creation time (UTC).
         self.gmt_create_time = gmt_create_time
+        # Knowledge base modification time (UTC).
         self.gmt_modified_time = gmt_modified_time
+        # Column field configuration. The structured data type knowledge base is effective.
         self.index_column_config = index_column_config
+        # Knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
+        # Knowledge base type.
+        # 
+        # *   TEXT: Document.
+        # *   STRUCTURED: Structured data.
+        # *   IMAGE: Picture.
+        # *   VIDEO: Video.
         self.knowledge_base_type = knowledge_base_type
+        # Metadata configuration.
         self.meta_data_config = meta_data_config
+        # Knowledge base name.
         self.name = name
+        # Storage path for the output data.
         self.output_dir = output_dir
+        # The request ID.
         self.request_id = request_id
+        # Runtime ID.
         self.runtime_id = runtime_id
+        # Vector database configuration.
         self.vector_dbconfig = vector_dbconfig
+        # Knowledge base version. Default is v1.
         self.version_name = version_name
+        # The ID of the workspace where the knowledge base resides.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -228,13 +257,17 @@ class GetKnowledgeBaseResponseBodyVectorDBConfig(DaraModel):
         connection_name: str = None,
         vector_dbtype: str = None,
     ):
-        # Collectioin名称
+        # Vector database table or collection name.
         self.collection_name = collection_name
-        # Embedding连接ID
+        # Vector database connection ID.
         self.connection_id = connection_id
-        # VectorDB连接名称
+        # Vector database connection name.
         self.connection_name = connection_name
-        # VectorDB类型
+        # Vector database type. Supported values are as follows:
+        # 
+        # *   Elasticsearch
+        # *   Milvus
+        # *   Faiss
         self.vector_dbtype = vector_dbtype
 
     def validate(self):
@@ -280,7 +313,7 @@ class GetKnowledgeBaseResponseBodyMetaDataConfig(DaraModel):
         self,
         custom_meta_data: List[main_models.GetKnowledgeBaseResponseBodyMetaDataConfigCustomMetaData] = None,
     ):
-        # 自定义元数据
+        # Custom metadata.
         self.custom_meta_data = custom_meta_data
 
     def validate(self):
@@ -319,13 +352,13 @@ class GetKnowledgeBaseResponseBodyMetaDataConfigCustomMetaData(DaraModel):
         value_count: int = None,
         value_type: str = None,
     ):
-        # 元数据Key
+        # Metadata field name.
         self.key = key
-        # 引用次数
+        # The number of references to the permission policy.
         self.reference_count = reference_count
-        # 值的个数
+        # Number of values.
         self.value_count = value_count
-        # 元数据Value类型
+        # Metadata field type.
         self.value_type = value_type
 
     def validate(self):
@@ -373,11 +406,11 @@ class GetKnowledgeBaseResponseBodyIndexColumnConfig(DaraModel):
         content_columns: List[main_models.GetKnowledgeBaseResponseBodyIndexColumnConfigContentColumns] = None,
         embedding_columns: List[main_models.GetKnowledgeBaseResponseBodyIndexColumnConfigEmbeddingColumns] = None,
     ):
-        # 所有列名
+        # All column names.
         self.column_definitions = column_definitions
-        # 内容检索列
+        # Content filtering column. The fields in this list support keyword-based retrieval.
         self.content_columns = content_columns
-        # Embedding列
+        # Vector index column. The fields in this list will be vectorized and participate in retrieval.
         self.embedding_columns = embedding_columns
 
     def validate(self):
@@ -443,7 +476,7 @@ class GetKnowledgeBaseResponseBodyIndexColumnConfigEmbeddingColumns(DaraModel):
         self,
         key: str = None,
     ):
-        # 列Key
+        # Column name.
         self.key = key
 
     def validate(self):
@@ -471,7 +504,7 @@ class GetKnowledgeBaseResponseBodyIndexColumnConfigContentColumns(DaraModel):
         self,
         key: str = None,
     ):
-        # 列Key
+        # Column name.
         self.key = key
 
     def validate(self):
@@ -499,7 +532,7 @@ class GetKnowledgeBaseResponseBodyIndexColumnConfigColumnDefinitions(DaraModel):
         self,
         key: str = None,
     ):
-        # 列Key
+        # The column name.
         self.key = key
 
     def validate(self):
@@ -529,11 +562,11 @@ class GetKnowledgeBaseResponseBodyEmbeddingConfig(DaraModel):
         connection_name: str = None,
         model: str = None,
     ):
-        # Embedding连接ID
+        # Index service connection ID.
         self.connection_id = connection_id
-        # Embedding连接名称
+        # Index service connection name.
         self.connection_name = connection_name
-        # 模型
+        # Model name.
         self.model = model
 
     def validate(self):
@@ -573,7 +606,7 @@ class GetKnowledgeBaseResponseBodyDataSources(DaraModel):
         self,
         uri: str = None,
     ):
-        # 统一资源识别码
+        # Storage path for the source file.
         self.uri = uri
 
     def validate(self):
@@ -604,13 +637,16 @@ class GetKnowledgeBaseResponseBodyChunkConfig(DaraModel):
         chunk_size: int = None,
         chunk_strategy: str = None,
     ):
-        # 分块时长
+        # Chunk duration in seconds.
         self.chunk_duration = chunk_duration
-        # 分块重叠大小
+        # Chunk overlap size.
         self.chunk_overlap = chunk_overlap
-        # 分块大小
+        # Chunk size.
         self.chunk_size = chunk_size
-        # 分块策略
+        # Chunking strategy. Strategy types are as follows:
+        # 
+        # *   Default. System default slicing strategy.
+        # *   ASR. Split by audio content; valid for video knowledge bases.
         self.chunk_strategy = chunk_strategy
 
     def validate(self):
@@ -661,17 +697,20 @@ class GetKnowledgeBaseResponseBodyAutoUpdateConfig(DaraModel):
         status: str = None,
         user_vpc: main_models.UserVpc = None,
     ):
-        # 运行资源配置
+        # Runtime resource configuration list.
         self.ecs_specs = ecs_specs
-        # Embedding配置
+        # Vector index configuration.
         self.embedding_config = embedding_config
-        # 任务最大运行时间
+        # Maximum task running time, in seconds.
         self.max_running_time_in_seconds = max_running_time_in_seconds
-        # 资源组ID
+        # Resource group ID. Empty or \\"public-cluster\\" indicates public resources.
         self.resource_id = resource_id
-        # 知识库自动更新状态
+        # Knowledge base auto-update switch status.
+        # 
+        # *   Enable: Turn on auto-update.
+        # *   Disable: Turn off auto-update.
         self.status = status
-        # 用户VPC配置
+        # User VPC configuration.
         self.user_vpc = user_vpc
 
     def validate(self):
@@ -744,9 +783,9 @@ class GetKnowledgeBaseResponseBodyAutoUpdateConfigEmbeddingConfig(DaraModel):
         batch_size: int = None,
         concurrency: int = None,
     ):
-        # Embedding分批大小
+        # Index batch size. Document and structured data type knowledge base is valid.
         self.batch_size = batch_size
-        # Embedding并发数
+        # Index concurrency count. Image and video type knowledge base is valid.
         self.concurrency = concurrency
 
     def validate(self):
@@ -788,23 +827,23 @@ class GetKnowledgeBaseResponseBodyAutoUpdateConfigEcsSpecs(DaraModel):
         shared_memory: int = None,
         type: str = None,
     ):
-        # CPU核数
+        # The number of vCPU cores.
         self.cpu = cpu
-        # 驱动版本
+        # The version of the GPU driver.
         self.driver = driver
-        # GPU卡数
+        # The number of GPUs.
         self.gpu = gpu
-        # GPU类型
+        # The GPU type.
         self.gputype = gputype
-        # 机型名称
+        # Model name.
         self.instance_type = instance_type
-        # 内存大小
+        # The memory size. Unit: GB.
         self.memory = memory
-        # 副本数量
+        # Number of replicas.
         self.pod_count = pod_count
-        # 共享内存容量
+        # The shared memory size. Unit: GB.
         self.shared_memory = shared_memory
-        # 节点类型
+        # Node type. Possible values are Head and Worker.
         self.type = type
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateRuntimeResponseBody(DaraModel):
         request_id: str = None,
         runtime_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Runtime ID.
         self.runtime_id = runtime_id
 
     def validate(self):

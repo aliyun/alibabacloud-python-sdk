@@ -11,6 +11,7 @@ class Runtime(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        auto_update_image: bool = None,
         creator: str = None,
         credential_config: main_models.RuntimeCredentialConfig = None,
         data_sources: List[main_models.RuntimeDataSources] = None,
@@ -32,6 +33,7 @@ class Runtime(DaraModel):
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
+        self.auto_update_image = auto_update_image
         self.creator = creator
         self.credential_config = credential_config
         self.data_sources = data_sources
@@ -79,6 +81,9 @@ class Runtime(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.auto_update_image is not None:
+            result['AutoUpdateImage'] = self.auto_update_image
 
         if self.creator is not None:
             result['Creator'] = self.creator
@@ -149,6 +154,9 @@ class Runtime(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('AutoUpdateImage') is not None:
+            self.auto_update_image = m.get('AutoUpdateImage')
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')

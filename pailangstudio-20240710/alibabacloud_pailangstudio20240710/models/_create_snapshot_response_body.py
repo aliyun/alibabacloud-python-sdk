@@ -10,7 +10,9 @@ class CreateSnapshotResponseBody(DaraModel):
         request_id: str = None,
         snapshot_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):

@@ -9,6 +9,7 @@ class DeleteDeploymentRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # Workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

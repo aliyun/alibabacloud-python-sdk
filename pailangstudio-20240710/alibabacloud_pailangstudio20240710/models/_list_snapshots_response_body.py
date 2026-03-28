@@ -16,10 +16,15 @@ class ListSnapshotsResponseBody(DaraModel):
         snapshots: List[main_models.Snapshot] = None,
         total_count: int = None,
     ):
+        # Maximum number of records allowed to be returned in this request.
         self.max_results = max_results
+        # Pagination cursor for the next request.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Snapshot list.
         self.snapshots = snapshots
+        # Total quantity.
         self.total_count = total_count
 
     def validate(self):

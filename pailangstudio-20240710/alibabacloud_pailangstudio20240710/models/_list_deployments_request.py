@@ -23,20 +23,48 @@ class ListDeploymentsRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        # The creator ID.
         self.creator = creator
+        # Deployment job ID.
         self.deployment_id = deployment_id
+        # The deployment job status. To query multiple statuses simultaneously, separate them with commas.
         self.deployment_status = deployment_status
+        # Maximum number of records allowed to be returned in this request.
         self.max_results = max_results
+        # Pagination cursor used to retrieve the next page of results.  
+        # 
+        # * Leave empty for the first request.  
+        # * For subsequent requests, pass the NextToken value returned in the previous response.
         self.next_token = next_token
+        # The operation type. Valid values:  
+        # * Create: Create a service.  
+        # * Update: Update an existing service.
         self.operation_type = operation_type
+        # Sorting order.  
+        # 
+        # - ASC: ascending.  
+        # - DESC: descending.
         self.order = order
+        # The page number of the current page in a paged query.
         self.page_number = page_number
+        # Number of items displayed per page. Default value is 10.
         self.page_size = page_size
+        # The resource ID to be deployed.
         self.resource_id = resource_id
+        # The snapshot ID of the resource to be deployed. If this parameter is provided, the system deploys directly based on this snapshot. If it is not provided, the system first creates a new snapshot for the resource and then executes the deployment.
         self.resource_snapshot_id = resource_snapshot_id
+        # The resource type to be deployed. Valid values:  
+        # * Flow: A project of the pipeline pattern  
+        # * Code: A project of the Code pattern
         self.resource_type = resource_type
+        # The service name. Fuzzy search by service name is supported.
         self.service_name = service_name
+        # Field used for sorting in paged queries. The default field is GmtCreateTime. Valid values are as follows:  
+        # 
+        # * GmtCreateTime (default): sort by creation time.  
+        # * GmtModifiedTime: sort by updated time.
         self.sort_by = sort_by
+        # Workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

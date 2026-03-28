@@ -18,15 +18,32 @@ class ListKnowledgeBaseJobsRequest(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # 任务操作类型。
+        # - SyncIndex：更新知识库索引
         self.job_action = job_action
+        # 知识库任务ID。
         self.knowledge_base_job_id = knowledge_base_job_id
+        # 使用 NextToken 方式查询时，每次最多返回的结果数。
         self.max_results = max_results
+        # 用来标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
+        # 排序方式。
+        # 
+        # - ASC：升序。
+        # - DESC：降序。
         self.order = order
+        # 当前页数。 取值范围：大于0。 默认值：1。如果同时传入MaxResults，则使用NextToken查询方式，忽略此字段值。
         self.page_number = page_number
+        # 每页查询的数量。如果同时传入 MaxResults，则以 MaxResults 数量为准。
         self.page_size = page_size
+        # 排序字段。目前只支持GmtCreateTime。
         self.sort_by = sort_by
+        # 知识库任务状态。
+        # - Running: 运行中。
+        # - Success: 运行成功。
+        # - Failed: 运行失败。
         self.status = status
+        # 知识库所在工作空间ID。
         self.workspace_id = workspace_id
 
     def validate(self):

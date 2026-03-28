@@ -9,6 +9,7 @@ class DeleteRuntimeResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The Request ID.
         self.request_id = request_id
 
     def validate(self):

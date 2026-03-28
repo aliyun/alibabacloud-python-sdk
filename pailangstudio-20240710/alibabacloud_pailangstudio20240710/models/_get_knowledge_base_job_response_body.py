@@ -31,25 +31,54 @@ class GetKnowledgeBaseJobResponseBody(DaraModel):
         user_vpc: main_models.GetKnowledgeBaseJobResponseBodyUserVpc = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility, possible values are:
+        # 
+        # *   PRIVATE: In this workspace, it is only visible to you and the administrators.
+        # *   PUBLIC: In this workspace, visible to everyone.
         self.accessibility = accessibility
+        # Creator User ID.
         self.creator = creator
+        # Knowledge Base Task Description.
         self.description = description
+        # Run Resource Configuration List
         self.ecs_specs = ecs_specs
+        # Index Configuration.
         self.embedding_config = embedding_config
+        # Task error info.
         self.error_message = error_message
+        # Task creation time (UTC).
         self.gmt_create_time = gmt_create_time
+        # Task end time (UTC).
         self.gmt_finish_time = gmt_finish_time
+        # Task Update Time (UTC).
         self.gmt_modified_time = gmt_modified_time
+        # Task Operation Type.
+        # 
+        # *   SyncIndex: Update Knowledge Base Index
         self.job_action = job_action
+        # Knowledge Base ID.
         self.knowledge_base_id = knowledge_base_id
+        # Knowledge Base Task ID.
         self.knowledge_base_job_id = knowledge_base_job_id
+        # Task Result.
         self.knowledge_base_job_result = knowledge_base_job_result
+        # Maximum task running time, in seconds.
         self.max_running_time_in_seconds = max_running_time_in_seconds
+        # Workflow Run Info.
         self.pipeline_run_info = pipeline_run_info
+        # Request ID.
         self.request_id = request_id
+        # The resource group ID. Empty or public-cluster indicates public resource.
         self.resource_id = resource_id
+        # Knowledge Base Task Status
+        # 
+        # *   Running: The instance is in operation.
+        # *   Success: Run successfully.
+        # *   Failed: Run failed.
         self.status = status
+        # Task Run VPC Info.
         self.user_vpc = user_vpc
+        # Knowledge Base workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -213,11 +242,11 @@ class GetKnowledgeBaseJobResponseBodyUserVpc(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 安全组ID
+        # Security Group ID.
         self.security_group_id = security_group_id
-        # 交换机ID
+        # Switch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -257,7 +286,7 @@ class GetKnowledgeBaseJobResponseBodyPipelineRunInfo(DaraModel):
         self,
         pipeline_run_id: str = None,
     ):
-        # PaiFlow工作流运行ID
+        # PaiFlow Workflow Run ID
         self.pipeline_run_id = pipeline_run_id
 
     def validate(self):
@@ -287,11 +316,11 @@ class GetKnowledgeBaseJobResponseBodyKnowledgeBaseJobResult(DaraModel):
         delete_chunk_count: int = None,
         total_file_count: int = None,
     ):
-        # 增加Chunk数量
+        # Increase the number of Chunks
         self.add_chunk_count = add_chunk_count
-        # 删除Chunk数量
+        # Delete Chunk Quantity
         self.delete_chunk_count = delete_chunk_count
-        # 总处理文件数
+        # Total Number of Processed Files
         self.total_file_count = total_file_count
 
     def validate(self):
@@ -332,9 +361,9 @@ class GetKnowledgeBaseJobResponseBodyEmbeddingConfig(DaraModel):
         batch_size: int = None,
         concurrency: int = None,
     ):
-        # Embedding分批大小
+        # Index batch size. Documentation and structured data types knowledge base is effective.
         self.batch_size = batch_size
-        # Embedding并发数
+        # Index concurrency. Image and Video Type Knowledge Base is valid.
         self.concurrency = concurrency
 
     def validate(self):
@@ -376,23 +405,23 @@ class GetKnowledgeBaseJobResponseBodyEcsSpecs(DaraModel):
         shared_memory: int = None,
         type: str = None,
     ):
-        # CPU核数
+        # The number of CPU cores.
         self.cpu = cpu
-        # 驱动版本
+        # Driver Version.
         self.driver = driver
-        # GPU卡数
+        # The number of GPU cards.
         self.gpu = gpu
-        # GPU类型
+        # GPU Class.
         self.gputype = gputype
-        # 机型名称
+        # Model name.
         self.instance_type = instance_type
-        # 内存大小
+        # Memory size, in GB.
         self.memory = memory
-        # 副本数量
+        # Number of copies.
         self.pod_count = pod_count
-        # 共享内存容量
+        # Shared memory capacity, in units of GB.
         self.shared_memory = shared_memory
-        # 节点类型
+        # Node type. Possible values are Head and Worker.
         self.type = type
 
     def validate(self):

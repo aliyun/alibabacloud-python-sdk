@@ -11,12 +11,14 @@ class Snapshot(DaraModel):
         creation_type: str = None,
         creator: str = None,
         description: str = None,
+        error_message: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
         snapshot_resource_id: str = None,
         snapshot_resource_type: str = None,
+        snapshot_status: str = None,
         snapshot_storage_path: str = None,
         snapshot_url: str = None,
         work_dir: str = None,
@@ -26,12 +28,14 @@ class Snapshot(DaraModel):
         self.creation_type = creation_type
         self.creator = creator
         self.description = description
+        self.error_message = error_message
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.snapshot_id = snapshot_id
         self.snapshot_name = snapshot_name
         self.snapshot_resource_id = snapshot_resource_id
         self.snapshot_resource_type = snapshot_resource_type
+        self.snapshot_status = snapshot_status
         self.snapshot_storage_path = snapshot_storage_path
         self.snapshot_url = snapshot_url
         self.work_dir = work_dir
@@ -57,6 +61,9 @@ class Snapshot(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
 
@@ -74,6 +81,9 @@ class Snapshot(DaraModel):
 
         if self.snapshot_resource_type is not None:
             result['SnapshotResourceType'] = self.snapshot_resource_type
+
+        if self.snapshot_status is not None:
+            result['SnapshotStatus'] = self.snapshot_status
 
         if self.snapshot_storage_path is not None:
             result['SnapshotStoragePath'] = self.snapshot_storage_path
@@ -103,6 +113,9 @@ class Snapshot(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
 
@@ -120,6 +133,9 @@ class Snapshot(DaraModel):
 
         if m.get('SnapshotResourceType') is not None:
             self.snapshot_resource_type = m.get('SnapshotResourceType')
+
+        if m.get('SnapshotStatus') is not None:
+            self.snapshot_status = m.get('SnapshotStatus')
 
         if m.get('SnapshotStoragePath') is not None:
             self.snapshot_storage_path = m.get('SnapshotStoragePath')

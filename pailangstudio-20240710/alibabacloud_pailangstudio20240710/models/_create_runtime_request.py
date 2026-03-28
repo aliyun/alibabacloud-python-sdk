@@ -11,6 +11,7 @@ class CreateRuntimeRequest(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        auto_update_image: bool = None,
         credential_config: main_models.CreateRuntimeRequestCredentialConfig = None,
         data_sources: List[main_models.CreateRuntimeRequestDataSources] = None,
         ecs_spec: main_models.CreateRuntimeRequestEcsSpec = None,
@@ -24,18 +25,41 @@ class CreateRuntimeRequest(DaraModel):
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility. Possible values are:
+        # 
+        # *   PRIVATE: In this workspace, visible only to you and administrators.
+        # *   PUBLIC: In this workspace, visible to everyone.
         self.accessibility = accessibility
+        self.auto_update_image = auto_update_image
+        # The credential configuration.
         self.credential_config = credential_config
+        # Mount data source.
         self.data_sources = data_sources
+        # The configurations of ECS resources.
         self.ecs_spec = ecs_spec
+        # The environment variables. Separate the environment variables with commas (,).
         self.envs = envs
+        # The list of tags.
         self.labels = labels
+        # The resource quota ID.
         self.resource_id = resource_id
+        # Timeout in seconds for a single test executed on the runtime.
         self.run_timeout = run_timeout
+        # The name of the container runtime. Format requirements:
+        # 
+        # *   Can only contain English letters, digits, and underscores (_).
+        # *   Starts with a letter.
+        # *   The length must be 1 to 256 characters.
         self.runtime_name = runtime_name
+        # The runtime type used by the nodes. Valid values:
+        # 
+        # *   DSW: PAI-DSW instance
         self.runtime_type = runtime_type
+        # User VPC Configuration.
         self.user_vpc = user_vpc
+        # The OSS path of the working directory.
         self.work_dir = work_dir
+        # The ID of the workspace. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -65,6 +89,9 @@ class CreateRuntimeRequest(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.auto_update_image is not None:
+            result['AutoUpdateImage'] = self.auto_update_image
 
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
@@ -114,6 +141,9 @@ class CreateRuntimeRequest(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('AutoUpdateImage') is not None:
+            self.auto_update_image = m.get('AutoUpdateImage')
 
         if m.get('CredentialConfig') is not None:
             temp_model = main_models.CreateRuntimeRequestCredentialConfig()
@@ -174,15 +204,15 @@ class CreateRuntimeRequestUserVpc(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 默认路由
+        # The default Ingress.
         self.default_route = default_route
-        # 扩展网段
+        # The extended CIDR blocks.
         self.extended_cidrs = extended_cidrs
-        # 安全组ID
+        # The ID of a security group.
         self.security_group_id = security_group_id
-        # 交换机ID
+        # The vSwitch IDs.
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -235,9 +265,9 @@ class CreateRuntimeRequestLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
+        # Tag key.
         self.key = key
-        # 标签值
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -272,9 +302,9 @@ class CreateRuntimeRequestEnvs(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 环境键
+        # The environment key.
         self.key = key
-        # 环境值
+        # The value of the environment.
         self.value = value
 
     def validate(self):
@@ -314,19 +344,25 @@ class CreateRuntimeRequestEcsSpec(DaraModel):
         memory: int = None,
         shared_memory: int = None,
     ):
-        # CPU数量
+        # The number of CPU cores.
         self.cpu = cpu
-        # 驱动版本
+        # The version of the GPU driver.
         self.driver = driver
-        # GPU数量
+        # The number of the GPUs.
         self.gpu = gpu
-        # GPU类型
+        # The GPU Class. Valid values are as follows:
+        # 
+        # *   V100
+        # *   A100
+        # *   T4
+        # *   A10
+        # *   P100
         self.gputype = gputype
-        # 实例类型
+        # Instance Type
         self.instance_type = instance_type
-        # 内存信息
+        # The memory size, in GB.
         self.memory = memory
-        # 共享内存
+        # The shared memory size. Unit: GB.
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -392,11 +428,11 @@ class CreateRuntimeRequestDataSources(DaraModel):
         mount_path: str = None,
         uri: str = None,
     ):
-        # 数据集ID
+        # The ID of the dataset. Choose either Uri or another option.
         self.dataset_id = dataset_id
-        # 挂载路径
+        # The path to which the data disk is mounted.
         self.mount_path = mount_path
-        # 统一资源识别码
+        # The OSS path of the data source. You must choose either DatasetId or another option.
         self.uri = uri
 
     def validate(self):
@@ -438,11 +474,11 @@ class CreateRuntimeRequestCredentialConfig(DaraModel):
         credential_config_items: List[main_models.CreateRuntimeRequestCredentialConfigCredentialConfigItems] = None,
         enable_credential_inject: bool = None,
     ):
-        # AliyunEnvRoleKey
+        # The key of the environment variable role.
         self.aliyun_env_role_key = aliyun_env_role_key
-        # Credential配置项列表
+        # The list of credential configurations.
         self.credential_config_items = credential_config_items
-        # 是否启用Credential注入
+        # Whether to enable credential injection.
         self.enable_credential_inject = enable_credential_inject
 
     def validate(self):
@@ -492,11 +528,14 @@ class CreateRuntimeRequestCredentialConfigCredentialConfigItems(DaraModel):
         roles: List[main_models.CreateRuntimeRequestCredentialConfigCredentialConfigItemsRoles] = None,
         type: str = None,
     ):
-        # Key
+        # The key that identifies the configuration.
         self.key = key
-        # 角色列表
+        # The list of configured roles.
         self.roles = roles
-        # Type
+        # The configuration type. Valid values:
+        # 
+        # *   Role: role assumption
+        # *   RoleChain: role chain assumption
         self.type = type
 
     def validate(self):
@@ -546,11 +585,14 @@ class CreateRuntimeRequestCredentialConfigCredentialConfigItemsRoles(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
-        # AssumeRoleFor
+        # The entity to which the role is assigned.
         self.assume_role_for = assume_role_for
-        # 角色名称
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.role_arn = role_arn
-        # 角色类型
+        # The class of the role. Valid values:
+        # 
+        # *   service: assumed by the service;
+        # *   user: assumed by the regular user account
         self.role_type = role_type
 
     def validate(self):

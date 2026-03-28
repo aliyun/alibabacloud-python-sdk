@@ -12,6 +12,7 @@ class RetrieveKnowledgeBaseResponseBody(DaraModel):
         self,
         knowledge_base_file_chunks: List[main_models.KnowledgeBaseFileChunk] = None,
     ):
+        # 知识库切片列表。
         self.knowledge_base_file_chunks = knowledge_base_file_chunks
 
     def validate(self):

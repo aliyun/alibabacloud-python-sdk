@@ -411,6 +411,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.auto_update_image):
+            body['AutoUpdateImage'] = request.auto_update_image
         if not DaraCore.is_null(request.credential_config):
             body['CredentialConfig'] = request.credential_config
         if not DaraCore.is_null(request.data_sources):
@@ -465,6 +467,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.auto_update_image):
+            body['AutoUpdateImage'] = request.auto_update_image
         if not DaraCore.is_null(request.credential_config):
             body['CredentialConfig'] = request.credential_config
         if not DaraCore.is_null(request.data_sources):
@@ -2057,6 +2061,8 @@ class Client(OpenApiClient):
             query['SnapshotResourceId'] = request.snapshot_resource_id
         if not DaraCore.is_null(request.snapshot_resource_type):
             query['SnapshotResourceType'] = request.snapshot_resource_type
+        if not DaraCore.is_null(request.snapshot_status):
+            query['SnapshotStatus'] = request.snapshot_status
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         if not DaraCore.is_null(request.workspace_id):
@@ -2109,6 +2115,8 @@ class Client(OpenApiClient):
             query['SnapshotResourceId'] = request.snapshot_resource_id
         if not DaraCore.is_null(request.snapshot_resource_type):
             query['SnapshotResourceType'] = request.snapshot_resource_type
+        if not DaraCore.is_null(request.snapshot_status):
+            query['SnapshotStatus'] = request.snapshot_status
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         if not DaraCore.is_null(request.workspace_id):
@@ -2648,6 +2656,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.action):
             body['Action'] = request.action
+        if not DaraCore.is_null(request.auto_update_image):
+            body['AutoUpdateImage'] = request.auto_update_image
         if not DaraCore.is_null(request.run_timeout):
             body['RunTimeout'] = request.run_timeout
         if not DaraCore.is_null(request.version):
@@ -2685,6 +2695,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.action):
             body['Action'] = request.action
+        if not DaraCore.is_null(request.auto_update_image):
+            body['AutoUpdateImage'] = request.auto_update_image
         if not DaraCore.is_null(request.run_timeout):
             body['RunTimeout'] = request.run_timeout
         if not DaraCore.is_null(request.version):

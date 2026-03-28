@@ -1,3 +1,12 @@
+2026-03-28 Version: 1.2.1
+- Update API CreateRuntime: add request parameters body.AutoUpdateImage.
+- Update API GetRuntime: add response parameters Body.AutoUpdateImage.
+- Update API GetSnapshot: add response parameters Body.ErrorMessage.
+- Update API GetSnapshot: add response parameters Body.SnapshotStatus.
+- Update API ListSnapshots: add request parameters SnapshotStatus.
+- Update API UpdateRuntime: add request parameters body.AutoUpdateImage.
+
+
 2026-03-12 Version: 1.2.0
 - Support API CreateDeployment.
 - Support API CreateRuntime.

@@ -9,6 +9,8 @@ class DeleteKnowledgeBaseRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

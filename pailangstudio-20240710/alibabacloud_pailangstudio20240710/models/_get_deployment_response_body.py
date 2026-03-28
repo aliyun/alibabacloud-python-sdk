@@ -33,27 +33,68 @@ class GetDeploymentResponseBody(DaraModel):
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        # The workspace visibility. Valid values:  
+        # - PRIVATE: The resource is visible only to you and administrators in this workspace.  
+        # - PUBLIC: The resource is visible to all users in this workspace.
         self.accessibility = accessibility
+        # Indicates whether deployment confirmation is automatically skipped.
         self.auto_approval = auto_approval
+        # Chat history configuration.
         self.chat_history_config = chat_history_config
+        # Content moderation configuration.
         self.content_moderation_config = content_moderation_config
+        # Creator ID.
         self.creator = creator
+        # Deployment configuration. For details, see [Deployment Configuration](https://help.aliyun.com/zh/pai/user-guide/parameters-of-model-services) in PAI-EAS documentation.
         self.deployment_config = deployment_config
+        # The ID of the deployment job.
         self.deployment_id = deployment_id
+        # Stage information of the deployment.
         self.deployment_stages = deployment_stages
+        # Task Status. Valid values:  
+        # * Creating: Creating.  
+        # * Failed: Deployment failed.  
+        # * Stopping: Stopping.  
+        # * Waiting: Waiting.  
+        # * Starting: Starting.  
+        # * Running: Running.  
+        # * Pending: Pending.  
+        # * WaitForConfirm: Waiting for confirmation.  
+        # * Canceled: Canceled.  
+        # * Succeed: Succeeded.
         self.deployment_status = deployment_status
+        # The service description.
         self.description = description
+        # Indicates whether Tracing Analysis is enabled.
         self.enable_trace = enable_trace
+        # Error message.
         self.error_message = error_message
+        # Creation Time.
         self.gmt_create_time = gmt_create_time
+        # Updated At.
         self.gmt_modified_time = gmt_modified_time
+        # Operation Type. Valid values:  
+        # * Create: Create a new service.  
+        # * Update: Update an existing service.
         self.operation_type = operation_type
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource to be deployed.
         self.resource_id = resource_id
+        # The snapshot ID of the resource to be deployed. If this parameter is provided, the system deploys directly based on this snapshot. If not provided, the system creates a new snapshot of the resource before deployment.
         self.resource_snapshot_id = resource_snapshot_id
+        # The resource type to be deployed. Valid values:  
+        # * Flow: A pipeline project  
+        # * Code: A Code project
         self.resource_type = resource_type
+        # Service Name. Format requirements:  
+        # * Supports lowercase letters, digits, and underscores.  
+        # * Must start with a letter.  
+        # * Length must be 1–45 characters.
         self.service_name = service_name
+        # The OSS working directory for the service. It stores runtime logs, conversation history, and other data.
         self.work_dir = work_dir
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -228,21 +269,29 @@ class GetDeploymentResponseBodyDeploymentStages(DaraModel):
         stage_name: str = None,
         stage_status: str = None,
     ):
-        # 描述
+        # Deployment stage description.
         self.description = description
-        # 错误信息
+        # Error message.
         self.error_message = error_message
-        # 结束时间
+        # End time.
         self.gmt_end_time = gmt_end_time
-        # 开始时间
+        # Start Time.
         self.gmt_start_time = gmt_start_time
-        # 阶段
+        # Deployment stage.
         self.stage = stage
-        # 阶段信息
+        # Deployment stage information.
         self.stage_info = stage_info
-        # 阶段名称
+        # Deployment stage name.
         self.stage_name = stage_name
-        # 阶段状态
+        # Deployment stage status. Valid values:  
+        # * NotStarted: Not started.  
+        # * WaitForConfirm: Waiting for confirmation.  
+        # * Waiting: Waiting.  
+        # * Creating: Creating.  
+        # * Running: Running.  
+        # * Succeed: Succeeded.  
+        # * Failed: Failed.  
+        # * Canceled: Canceled.
         self.stage_status = stage_status
 
     def validate(self):
@@ -314,11 +363,11 @@ class GetDeploymentResponseBodyContentModerationConfig(DaraModel):
         enable_output_moderation: bool = None,
         streaming_moderation_threshold: int = None,
     ):
-        # 启用输入内容审查
+        # Indicates whether to enable security review for input.
         self.enable_input_moderation = enable_input_moderation
-        # 启用输出内容审查
+        # Indicates whether to enable content moderation for output.
         self.enable_output_moderation = enable_output_moderation
-        # 流式输出内容送审缓存大小
+        # Cache size for streaming output content submitted for moderation. The default value is 5.
         self.streaming_moderation_threshold = streaming_moderation_threshold
 
     def validate(self):
@@ -359,9 +408,12 @@ class GetDeploymentResponseBodyChatHistoryConfig(DaraModel):
         connection_name: str = None,
         storage_type: str = None,
     ):
-        # 连接名称
+        # The connection name. This parameter is required when the chat history storage type is RDS.
         self.connection_name = connection_name
-        # 存储类型
+        # The storage class. Valid values:  
+        # * LOCAL: Chat history is stored in a local SQLite file. This option does not support multi-instance deployment.  
+        # * OSS: Chat history is stored in a specific path under the service OSS workspace path.  
+        # * RDS: Chat history is stored in an RDS Table, and an RDS connection must be specified.
         self.storage_type = storage_type
 
     def validate(self):

@@ -9,6 +9,7 @@ class DeleteRuntimeRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # The ID of the DataWorks workspace. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

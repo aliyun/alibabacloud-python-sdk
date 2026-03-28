@@ -9,6 +9,8 @@ class GetKnowledgeBaseJobRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # Knowledge Base Workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

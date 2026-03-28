@@ -24,25 +24,58 @@ class CreateKnowledgeBaseRequest(DaraModel):
         vector_dbconfig: main_models.CreateKnowledgeBaseRequestVectorDBConfig = None,
         workspace_id: str = None,
     ):
+        # The visibility of the workspace.
+        # 
+        # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace.
+        # *   PUBLIC: The model is visible to all users in the workspace.
         self.accessibility = accessibility
+        # File slicing configuration.
+        # 
         # This parameter is required.
         self.chunk_config = chunk_config
+        # Data source.
+        # 
         # This parameter is required.
         self.data_sources = data_sources
+        # Custom description of the knowledge base.
         self.description = description
+        # Vector index configuration.
+        # 
         # This parameter is required.
         self.embedding_config = embedding_config
+        # Structured knowledge base field column configuration.
         self.index_column_config = index_column_config
+        # The type of the knowledge base. Specifies whether to disable the instance protection period. Default value: false. Valid values:
+        # 
+        # *   TEXT: Document.
+        # *   STRUCTURED: Structured data.
+        # *   IMAGE: Picture.
+        # *   VIDEO: Video.
+        # 
         # This parameter is required.
         self.knowledge_base_type = knowledge_base_type
+        # The metadata configurations.
         self.meta_data_config = meta_data_config
+        # The name of the knowledge base. The name must meet the following requirements:
+        # 
+        # *   Can contain letters, numbers, or underscores (_).
+        # *   Starts with a letter.
+        # *   Length is 1 to 127 characters.
+        # 
         # This parameter is required.
         self.name = name
+        # Storage path for output data.
+        # 
         # This parameter is required.
         self.output_dir = output_dir
+        # Runtime ID.
         self.runtime_id = runtime_id
+        # Vector store configuration.
+        # 
         # This parameter is required.
         self.vector_dbconfig = vector_dbconfig
+        # The ID of the workspace. For more information about how to obtain the ID of a workspace, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -168,11 +201,15 @@ class CreateKnowledgeBaseRequestVectorDBConfig(DaraModel):
         connection_id: str = None,
         vector_dbtype: str = None,
     ):
-        # Collectioin名称
+        # Vector database table or collection name.
         self.collection_name = collection_name
-        # Embedding连接ID
+        # Vector database connection ID. For more information about how to obtain the connection ID, see [ListConnections](https://help.aliyun.com/document_detail/2922801.html).
         self.connection_id = connection_id
-        # VectorDB类型
+        # Vector database type. Supports the following values:
+        # 
+        # *   Elasticsearch
+        # *   Milvus
+        # *   Faiss (only supported for document and structured data knowledge bases)
         # 
         # This parameter is required.
         self.vector_dbtype = vector_dbtype
@@ -214,7 +251,7 @@ class CreateKnowledgeBaseRequestMetaDataConfig(DaraModel):
         self,
         custom_meta_data: List[main_models.CreateKnowledgeBaseRequestMetaDataConfigCustomMetaData] = None,
     ):
-        # 自定义元数据
+        # Custom metadata.
         self.custom_meta_data = custom_meta_data
 
     def validate(self):
@@ -251,9 +288,9 @@ class CreateKnowledgeBaseRequestMetaDataConfigCustomMetaData(DaraModel):
         key: str = None,
         value_type: str = None,
     ):
-        # 元数据Key
+        # Metadata field name.
         self.key = key
-        # 元数据Value类型
+        # Metadata field type. Currently, only the String class type is supported.
         self.value_type = value_type
 
     def validate(self):
@@ -289,11 +326,11 @@ class CreateKnowledgeBaseRequestIndexColumnConfig(DaraModel):
         content_columns: List[main_models.CreateKnowledgeBaseRequestIndexColumnConfigContentColumns] = None,
         embedding_columns: List[main_models.CreateKnowledgeBaseRequestIndexColumnConfigEmbeddingColumns] = None,
     ):
-        # 所有列名
+        # All column names.
         self.column_definitions = column_definitions
-        # 内容检索列
+        # Content filtering column. The fields in this list support keyword-based retrieval.
         self.content_columns = content_columns
-        # Embedding列
+        # Vector retrieval column. The fields in this list will be vectorized and participate in retrieval.
         self.embedding_columns = embedding_columns
 
     def validate(self):
@@ -359,7 +396,7 @@ class CreateKnowledgeBaseRequestIndexColumnConfigEmbeddingColumns(DaraModel):
         self,
         key: str = None,
     ):
-        # 列Key
+        # Column name.
         self.key = key
 
     def validate(self):
@@ -387,7 +424,7 @@ class CreateKnowledgeBaseRequestIndexColumnConfigContentColumns(DaraModel):
         self,
         key: str = None,
     ):
-        # 列Key
+        # Column name.
         self.key = key
 
     def validate(self):
@@ -415,7 +452,7 @@ class CreateKnowledgeBaseRequestIndexColumnConfigColumnDefinitions(DaraModel):
         self,
         key: str = None,
     ):
-        # 列Key
+        # The column name.
         self.key = key
 
     def validate(self):
@@ -444,11 +481,21 @@ class CreateKnowledgeBaseRequestEmbeddingConfig(DaraModel):
         connection_id: str = None,
         model: str = None,
     ):
-        # Embedding连接ID
+        # Index service connection ID. For more information about how to obtain the connection ID, see [ListConnections](https://help.aliyun.com/document_detail/2922801.html). The connection types supported by each type of knowledge base are as follows:
+        # 
+        # *   Documents: BaiLian LLM Service, General Embedding Model Service, AI Search Open Platform Model Service.
+        # *   Structured Data: BaiLian LLM Service, General Embedding Model Service, AI Search Open Platform Model Service.
+        # *   Images: BaiLian LLM Service, General Multimodal Embedding Model Service.
+        # *   Videos: BaiLian LLM Service.
         # 
         # This parameter is required.
         self.connection_id = connection_id
-        # 模型
+        # Model name. Specifically, when selecting the BaiLian LLM Service, the models supported by each type of knowledge base are as follows:
+        # 
+        # *   Documents: text-embedding-v1, text-embedding-v2, text-embedding-v3, text-embedding-v4
+        # *   Structured Data: text-embedding-v1, text-embedding-v2, text-embedding-v3, text-embedding-v4
+        # *   Images: multimodal-embedding-v1
+        # *   Videos: qwen2.5-vl-embedding
         # 
         # This parameter is required.
         self.model = model
@@ -484,7 +531,7 @@ class CreateKnowledgeBaseRequestDataSources(DaraModel):
         self,
         uri: str = None,
     ):
-        # 统一资源识别码
+        # Source file storage path.
         self.uri = uri
 
     def validate(self):
@@ -515,13 +562,16 @@ class CreateKnowledgeBaseRequestChunkConfig(DaraModel):
         chunk_size: int = None,
         chunk_strategy: str = None,
     ):
-        # 分块时长
+        # Chunk duration, in seconds.
         self.chunk_duration = chunk_duration
-        # 分块重叠大小
+        # Chunk overlap size
         self.chunk_overlap = chunk_overlap
-        # 分块大小
+        # Chunk size
         self.chunk_size = chunk_size
-        # 分块策略
+        # Chunking strategy. Supported strategies are as follows:
+        # 
+        # *   Default. System default slicing strategy.
+        # *   Asr. Split by audio content; valid for video knowledge bases.
         self.chunk_strategy = chunk_strategy
 
     def validate(self):

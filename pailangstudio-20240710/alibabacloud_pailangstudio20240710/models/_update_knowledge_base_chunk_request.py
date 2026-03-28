@@ -10,7 +10,12 @@ class UpdateKnowledgeBaseChunkRequest(DaraModel):
         chunk_content: str = None,
         chunk_status: str = None,
     ):
+        # Chunk content.
         self.chunk_content = chunk_content
+        # Chunk status.
+        # 
+        # - Enable: Enabled.
+        # - Disable: Disabled.
         self.chunk_status = chunk_status
 
     def validate(self):

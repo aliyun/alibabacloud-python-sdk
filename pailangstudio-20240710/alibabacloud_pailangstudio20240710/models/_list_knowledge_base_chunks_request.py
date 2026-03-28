@@ -14,10 +14,17 @@ class ListKnowledgeBaseChunksRequest(DaraModel):
         page_size: int = None,
         version_name: str = None,
     ):
+        # Segment status.  
+        # - Enable: Valid.  
+        # - Disable: Invalid.
         self.chunk_status = chunk_status
+        # Original file information. If empty, the entire knowledge base version is traversed.
         self.meta_data = meta_data
+        # Current page number.
         self.page_number = page_number
+        # Number of items per page.
         self.page_size = page_size
+        # Knowledge base version. The default is v1.
         self.version_name = version_name
 
     def validate(self):
@@ -72,9 +79,9 @@ class ListKnowledgeBaseChunksRequestMetaData(DaraModel):
         file_meta_id: str = None,
         file_uri: str = None,
     ):
-        # 文件元数据ID
+        # File metadata ID.
         self.file_meta_id = file_meta_id
-        # 文件地址
+        # File URI. If FileMetaId is also provided, this parameter value is ignored.
         self.file_uri = file_uri
 
     def validate(self):

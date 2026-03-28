@@ -20,14 +20,29 @@ class CreateKnowledgeBaseJobRequest(DaraModel):
         user_vpc: main_models.CreateKnowledgeBaseJobRequestUserVpc = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility. Possible values are:
+        # 
+        # *   PRIVATE: In this workspace, it is visible only to you and the administrator.
+        # *   PUBLIC: This workspace is visible to all users.
         self.accessibility = accessibility
+        # Knowledge base task description.
         self.description = description
+        # Task Run Resource Configuration List Documentation and structured Knowledge Base contain only one Element and the Type is Worker. Images and Videos Knowledge Base contain two Elements and the Types are Head and Worker.
         self.ecs_specs = ecs_specs
+        # Index Configuration.
         self.embedding_config = embedding_config
+        # The type of the task operation.
+        # 
+        # *   SyncIndex: updates the knowledge base index
         self.job_action = job_action
+        # The maximum running time for the task, in seconds.
         self.max_running_time_in_seconds = max_running_time_in_seconds
+        # The resource group ID. This field being empty or public-cluster indicates a public resource.
         self.resource_id = resource_id
+        # Task Run VPC Info.
         self.user_vpc = user_vpc
+        # The ID of the workspace. For information on how to obtain the workspace ID, see ListWorkspaces.[](~~449124~~)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -120,11 +135,11 @@ class CreateKnowledgeBaseJobRequestUserVpc(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 安全组ID
+        # The ID of a security group.
         self.security_group_id = security_group_id
-        # 交换机ID
+        # The vSwitch IDs.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -165,9 +180,9 @@ class CreateKnowledgeBaseJobRequestEmbeddingConfig(DaraModel):
         batch_size: int = None,
         concurrency: int = None,
     ):
-        # Embedding分批大小
+        # Index batch size. The knowledge base for documentation and structured data types is effective.
         self.batch_size = batch_size
-        # Embedding并发数
+        # Index concurrency. Image and video type knowledge base is valid.
         self.concurrency = concurrency
 
     def validate(self):
@@ -209,23 +224,23 @@ class CreateKnowledgeBaseJobRequestEcsSpecs(DaraModel):
         shared_memory: int = None,
         type: str = None,
     ):
-        # CPU核数
+        # The number of CPU cores. You must specify the resource quota to use.
         self.cpu = cpu
-        # 驱动版本
+        # The version of the GPU driver.
         self.driver = driver
-        # GPU卡数
+        # The number of GPU cards. You must specify the resource quota to use.
         self.gpu = gpu
-        # GPU类型
+        # GPU Class
         self.gputype = gputype
-        # 机型名称
+        # The name of the instance type. Use of public resources must be filled in.
         self.instance_type = instance_type
-        # 内存大小
+        # The memory size, in GB. You must specify the resource quota to use.
         self.memory = memory
-        # 副本数量
+        # The number of replicas.
         self.pod_count = pod_count
-        # 共享内存容量
+        # The Shared Memory Capacity. Unit: GB. You must specify the resource quota to use.
         self.shared_memory = shared_memory
-        # 节点类型
+        # The type of the node. Possible values are Head and Worker.
         self.type = type
 
     def validate(self):

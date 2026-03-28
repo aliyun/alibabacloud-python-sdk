@@ -11,6 +11,7 @@ class GetRuntimeResponseBody(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        auto_update_image: bool = None,
         creator: str = None,
         credential_config: main_models.GetRuntimeResponseBodyCredentialConfig = None,
         data_sources: List[main_models.GetRuntimeResponseBodyDataSources] = None,
@@ -32,26 +33,64 @@ class GetRuntimeResponseBody(DaraModel):
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility.
         self.accessibility = accessibility
+        self.auto_update_image = auto_update_image
+        # Creator ID.
         self.creator = creator
+        # The credential configuration.
         self.credential_config = credential_config
+        # MountData Source
         self.data_sources = data_sources
+        # ECS resource configurations.
         self.ecs_spec = ecs_spec
+        # The environment variables. Separate the environment variables with commas (,).
         self.envs = envs
+        # The time when the export directory was created.
         self.gmt_create_time = gmt_create_time
+        # Modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The tag of the resource group.
         self.labels = labels
+        # The Request ID.
         self.request_id = request_id
+        # The resource quota ID.
         self.resource_id = resource_id
+        # Timeout in seconds for a single test executed on the runtime.
         self.run_timeout = run_timeout
+        # Runtime ID.
         self.runtime_id = runtime_id
+        # The runtime log.
         self.runtime_log = runtime_log
+        # The name of the runtime.
         self.runtime_name = runtime_name
+        # The status of the runtime. Valid values:
+        # 
+        # *   Creating: The data cache is being created.
+        # *   SaveFailed: Failed to save the runtime image
+        # *   Stopped: The file system is stopped.
+        # *   Failed: Failed
+        # *   ResourceAllocating: Resources are being allocated
+        # *   Stopping: The file system is being stopped
+        # *   Updating: Update in progress
+        # *   Saving: The runtime image is being saved
+        # *   Queuing: Queueing in progress
+        # *   Recovering: The instance is being recovered
+        # *   Starting: The instance is being created.
+        # *   Running: The gateway is running.
+        # *   Saved: The runtime image is saved.
+        # *   Deleting: The mount target is being deleted.
+        # *   EnvPreparing: Preparing environment.
         self.runtime_status = runtime_status
+        # The type of the runtime.
         self.runtime_type = runtime_type
+        # User VPC configuration.
         self.user_vpc = user_vpc
+        # The runtime image version.
         self.version = version
+        # The OSS path of the working directory.
         self.work_dir = work_dir
+        # The ID of the DataWorks Workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -81,6 +120,9 @@ class GetRuntimeResponseBody(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.auto_update_image is not None:
+            result['AutoUpdateImage'] = self.auto_update_image
 
         if self.creator is not None:
             result['Creator'] = self.creator
@@ -154,6 +196,9 @@ class GetRuntimeResponseBody(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('AutoUpdateImage') is not None:
+            self.auto_update_image = m.get('AutoUpdateImage')
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
@@ -238,15 +283,15 @@ class GetRuntimeResponseBodyUserVpc(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 默认路由
+        # Default route.
         self.default_route = default_route
-        # 扩展网段
+        # The extended CIDR blocks.
         self.extended_cidrs = extended_cidrs
-        # 安全组ID
+        # Security Group ID.
         self.security_group_id = security_group_id
-        # 交换机ID
+        # vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -299,9 +344,9 @@ class GetRuntimeResponseBodyLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
+        # The key of the tag.
         self.key = key
-        # 标签值
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -336,9 +381,9 @@ class GetRuntimeResponseBodyEnvs(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 环境键
+        # The environment key.
         self.key = key
-        # 环境值
+        # The value of the environment.
         self.value = value
 
     def validate(self):
@@ -378,19 +423,19 @@ class GetRuntimeResponseBodyEcsSpec(DaraModel):
         memory: int = None,
         shared_memory: int = None,
     ):
-        # CPU数量
+        # The number of CPU cores.
         self.cpu = cpu
-        # 驱动版本
+        # The version of the GPU driver.
         self.driver = driver
-        # GPU数量
+        # The number of GPUs.
         self.gpu = gpu
-        # GPU类型
+        # GPU type.
         self.gputype = gputype
-        # 实例类型
+        # Instance type.
         self.instance_type = instance_type
-        # 内存信息
+        # The memory size. Unit: GB.
         self.memory = memory
-        # 共享内存
+        # The shared memory size. Unit: GB.
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -456,11 +501,11 @@ class GetRuntimeResponseBodyDataSources(DaraModel):
         mount_path: str = None,
         uri: str = None,
     ):
-        # 数据集ID
+        # Dataset ID. Choose either Uri or another option.
         self.dataset_id = dataset_id
-        # 挂载路径
+        # The path to which the data disk is mounted.
         self.mount_path = mount_path
-        # 统一资源识别码
+        # The OSS path of the data source. You must choose either DatasetId or another option.
         self.uri = uri
 
     def validate(self):
@@ -502,11 +547,11 @@ class GetRuntimeResponseBodyCredentialConfig(DaraModel):
         credential_config_items: List[main_models.GetRuntimeResponseBodyCredentialConfigCredentialConfigItems] = None,
         enable_credential_inject: bool = None,
     ):
-        # AliyunEnvRoleKey
+        # The key of the environment variable role.
         self.aliyun_env_role_key = aliyun_env_role_key
-        # Credential配置项列表
+        # The list of credential configurations.
         self.credential_config_items = credential_config_items
-        # 是否启用Credential注入
+        # Whether to enable credential injection.
         self.enable_credential_inject = enable_credential_inject
 
     def validate(self):
@@ -556,11 +601,14 @@ class GetRuntimeResponseBodyCredentialConfigCredentialConfigItems(DaraModel):
         roles: List[main_models.GetRuntimeResponseBodyCredentialConfigCredentialConfigItemsRoles] = None,
         type: str = None,
     ):
-        # Key
+        # The key that identifies the configuration.
         self.key = key
-        # 角色列表
+        # The list of configured roles.
         self.roles = roles
-        # Type
+        # The configuration type. Valid values:
+        # 
+        # *   Role: role assumption
+        # *   RoleChain: role chain assumption
         self.type = type
 
     def validate(self):
@@ -610,11 +658,14 @@ class GetRuntimeResponseBodyCredentialConfigCredentialConfigItemsRoles(DaraModel
         role_arn: str = None,
         role_type: str = None,
     ):
-        # AssumeRoleFor
+        # The entity to which the role is assigned.
         self.assume_role_for = assume_role_for
-        # 角色名称
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.role_arn = role_arn
-        # 角色类型
+        # The class of the role. Valid values:
+        # 
+        # *   service: assumed by the service;
+        # *   user: assumed by the regular user account
         self.role_type = role_type
 
     def validate(self):

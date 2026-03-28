@@ -19,16 +19,35 @@ class ListKnowledgeBasesRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        # Creator user ID.
         self.creator = creator
+        # Knowledge Base ID.
         self.knowledge_base_id = knowledge_base_id
+        # The type of the knowledge base.
+        # 
+        # *   TEXT: Document.
+        # *   STRUCTURED: Structured data.
+        # *   IMAGE: Image.
+        # *   VIDEO: Video.
         self.knowledge_base_type = knowledge_base_type
+        # When querying using NextToken, the maximum number of results returned each time.
         self.max_results = max_results
+        # The name of the knowledge base.
         self.name = name
+        # Used to mark the current starting position for reading; leaving it empty means starting from the beginning.
         self.next_token = next_token
+        # The order in which you want to sort the queried instances.
+        # 
+        # *   ASC: ascending order.
+        # *   DESC: descending order.
         self.order = order
+        # Current page number. Value range: greater than 0. Default value: 1. If MaxResults is passed in at the same time, the NextToken query method will be used, and this field value will be ignored.
         self.page_number = page_number
+        # The number of queries per page. If MaxResults is passed in at the same time, the quantity will be based on MaxResults.
         self.page_size = page_size
+        # Sorting field. Currently, only GmtCreateTime is supported.
         self.sort_by = sort_by
+        # The ID of the DataWorks workspace. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

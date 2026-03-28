@@ -11,6 +11,7 @@ class GetSnapshotResponseBody(DaraModel):
         creation_type: str = None,
         creator: str = None,
         description: str = None,
+        error_message: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         request_id: str = None,
@@ -18,25 +19,49 @@ class GetSnapshotResponseBody(DaraModel):
         snapshot_name: str = None,
         snapshot_resource_id: str = None,
         snapshot_resource_type: str = None,
+        snapshot_status: str = None,
         snapshot_storage_path: str = None,
         snapshot_url: str = None,
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility. Possible values are:
+        # - PRIVATE: In this workspace, visible only to you and administrators.
+        # - PUBLIC: In this workspace, visible to everyone.
         self.accessibility = accessibility
+        # Snapshot creation type. Valid values:
+        # * ManualCreated: Manually created
+        # * DeploymentAutoCreated: Automatically created by service deployment
+        # * EvaluationAutoCreated: Automatically created by evaluation job
         self.creation_type = creation_type
+        # Creator ID.
         self.creator = creator
+        # Snapshot description.
         self.description = description
+        self.error_message = error_message
+        # Creation Time.
         self.gmt_create_time = gmt_create_time
+        # Updated At.
         self.gmt_modified_time = gmt_modified_time
+        # Request ID
         self.request_id = request_id
+        # Snapshot ID.
         self.snapshot_id = snapshot_id
+        # Snapshot name.
         self.snapshot_name = snapshot_name
+        # Snapshot resource ID.
         self.snapshot_resource_id = snapshot_resource_id
+        # Snapshot resource type. Valid values:
+        # * Flow: pipeline
         self.snapshot_resource_type = snapshot_resource_type
+        self.snapshot_status = snapshot_status
+        # OSS path where the snapshot source file is stored.
         self.snapshot_storage_path = snapshot_storage_path
+        # Snapshot download URL.
         self.snapshot_url = snapshot_url
+        # The OSS working directory where the snapshot is stored.
         self.work_dir = work_dir
+        # Workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -59,6 +84,9 @@ class GetSnapshotResponseBody(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
 
@@ -79,6 +107,9 @@ class GetSnapshotResponseBody(DaraModel):
 
         if self.snapshot_resource_type is not None:
             result['SnapshotResourceType'] = self.snapshot_resource_type
+
+        if self.snapshot_status is not None:
+            result['SnapshotStatus'] = self.snapshot_status
 
         if self.snapshot_storage_path is not None:
             result['SnapshotStoragePath'] = self.snapshot_storage_path
@@ -108,6 +139,9 @@ class GetSnapshotResponseBody(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
 
@@ -128,6 +162,9 @@ class GetSnapshotResponseBody(DaraModel):
 
         if m.get('SnapshotResourceType') is not None:
             self.snapshot_resource_type = m.get('SnapshotResourceType')
+
+        if m.get('SnapshotStatus') is not None:
+            self.snapshot_status = m.get('SnapshotStatus')
 
         if m.get('SnapshotStoragePath') is not None:
             self.snapshot_storage_path = m.get('SnapshotStoragePath')

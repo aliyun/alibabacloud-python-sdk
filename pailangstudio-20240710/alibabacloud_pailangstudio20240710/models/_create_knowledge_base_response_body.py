@@ -11,8 +11,11 @@ class CreateKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # Knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
+        # Request ID
         self.request_id = request_id
+        # The workspace ID of the knowledge base.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -13,10 +13,18 @@ class UpdateDeploymentRequest(DaraModel):
         stage_action: str = None,
         workspace_id: str = None,
     ):
+        # Indicates whether to automatically skip the deployment confirmation step.
         self.auto_approval = auto_approval
+        # Service Configuration for deployment. For more information, see the [deployment configuration](https://help.aliyun.com/zh/pai/user-guide/parameters-of-model-services) of PAI-EAS.
         self.deployment_config = deployment_config
+        # Deployment description.
         self.description = description
+        # Deployment stage operation information. The JSON format is as follows:  
+        # {"Stage":3,"Action":"Confirm"}. Valid values for Action are:  
+        # * Confirm: confirm.  
+        # * Cancel: cancel.
         self.stage_action = stage_action
+        # Workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

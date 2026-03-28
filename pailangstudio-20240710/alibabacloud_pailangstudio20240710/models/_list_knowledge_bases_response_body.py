@@ -16,10 +16,15 @@ class ListKnowledgeBasesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Knowledge base list.
         self.knowledge_bases = knowledge_bases
+        # The maximum number of records allowed to be returned by this request.
         self.max_results = max_results
+        # Returns the position from which the next query starts. Empty indicates that all data has been retrieved.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateKnowledgeBaseJobResponseBody(DaraModel):
         knowledge_base_job_id: str = None,
         request_id: str = None,
     ):
+        # Knowledge Base Task ID.
         self.knowledge_base_job_id = knowledge_base_job_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

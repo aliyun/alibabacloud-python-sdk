@@ -8,13 +8,22 @@ class UpdateRuntimeRequest(DaraModel):
     def __init__(
         self,
         action: str = None,
+        auto_update_image: bool = None,
         run_timeout: int = None,
         version: str = None,
         workspace_id: str = None,
     ):
+        # Runtime operation. Valid values:
+        # 
+        # *   Start: Startup runtime
+        # *   Stop: Stop runtime
         self.action = action
+        self.auto_update_image = auto_update_image
+        # Timeout in seconds for a single test executed on the runtime.
         self.run_timeout = run_timeout
+        # Runtime image version.
         self.version = version
+        # The ID of the DataWorks workspace. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27,6 +36,9 @@ class UpdateRuntimeRequest(DaraModel):
             result = _map
         if self.action is not None:
             result['Action'] = self.action
+
+        if self.auto_update_image is not None:
+            result['AutoUpdateImage'] = self.auto_update_image
 
         if self.run_timeout is not None:
             result['RunTimeout'] = self.run_timeout
@@ -43,6 +55,9 @@ class UpdateRuntimeRequest(DaraModel):
         m = m or dict()
         if m.get('Action') is not None:
             self.action = m.get('Action')
+
+        if m.get('AutoUpdateImage') is not None:
+            self.auto_update_image = m.get('AutoUpdateImage')
 
         if m.get('RunTimeout') is not None:
             self.run_timeout = m.get('RunTimeout')

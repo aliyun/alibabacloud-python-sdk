@@ -16,10 +16,15 @@ class ListKnowledgeBaseJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # 知识库任务列表。
         self.knowledge_base_jobs = knowledge_base_jobs
+        # 本次请求允许返回的最大记录条数。
         self.max_results = max_results
+        # 返回下一次查询开始的位置。为空表示已经获取了全部数据。
         self.next_token = next_token
+        # 请求ID。
         self.request_id = request_id
+        # 总记录条数。
         self.total_count = total_count
 
     def validate(self):

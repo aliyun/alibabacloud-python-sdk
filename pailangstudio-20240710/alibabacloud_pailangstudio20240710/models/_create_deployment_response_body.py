@@ -10,7 +10,9 @@ class CreateDeploymentResponseBody(DaraModel):
         deployment_id: str = None,
         request_id: str = None,
     ):
+        # Deployment record ID.
         self.deployment_id = deployment_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

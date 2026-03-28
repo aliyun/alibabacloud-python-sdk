@@ -10,7 +10,10 @@ class GetKnowledgeBaseRequest(DaraModel):
         version_name: str = None,
         workspace_id: str = None,
     ):
+        # Knowledge Base Version. Default is v1.
         self.version_name = version_name
+        # The ID of the DataWorks workspace. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

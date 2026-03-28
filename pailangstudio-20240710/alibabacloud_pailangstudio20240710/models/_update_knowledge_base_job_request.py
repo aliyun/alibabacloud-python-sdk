@@ -10,7 +10,10 @@ class UpdateKnowledgeBaseJobRequest(DaraModel):
         description: str = None,
         workspace_id: str = None,
     ):
+        # Knowledge base task description.
         self.description = description
+        # Workspace ID where the knowledge course is located.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

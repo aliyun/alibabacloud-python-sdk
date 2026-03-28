@@ -16,10 +16,15 @@ class ListRuntimesResponseBody(DaraModel):
         runtimes: List[main_models.Runtime] = None,
         total_count: int = None,
     ):
+        # The maximum number of returned results for a request.
         self.max_results = max_results
+        # The next request token.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # The list of runtimes.
         self.runtimes = runtimes
+        # The total number of runtime.
         self.total_count = total_count
 
     def validate(self):

@@ -11,8 +11,14 @@ class UpdateSnapshotRequest(DaraModel):
         snapshot_name: str = None,
         workspace_id: str = None,
     ):
+        # The snapshot description.
         self.description = description
+        # The snapshot name. The format requirements are as follows:
+        # * It can contain only letters, digits, and underscores (_).
+        # * It must start with a letter.
+        # * It must be 1 to 256 characters in length.
         self.snapshot_name = snapshot_name
+        # The workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

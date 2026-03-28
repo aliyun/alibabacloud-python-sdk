@@ -15,10 +15,13 @@ class ListKnowledgeBaseChunksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 切片列表
+        # Segment list.
         self.knowledge_base_chunks = knowledge_base_chunks
+        # Maximum number of records allowed to be returned in this request.
         self.max_results = max_results
+        # Request ID.
         self.request_id = request_id
+        # Total number of segments.
         self.total_count = total_count
 
     def validate(self):
@@ -84,31 +87,33 @@ class ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunks(DaraModel):
         thumbnail_url: str = None,
         version_name: str = None,
     ):
-        # 切片附属信息
+        # List of segment attachments.
         self.chunk_attachment = chunk_attachment
-        # 切片内容
+        # Segment content.
         self.chunk_content = chunk_content
-        # 切片结束位置
+        # Segment end position. Returns the number of milliseconds from the start of file playback.
         self.chunk_end = chunk_end
-        # 切片顺序
+        # Ordinal number of the segment within the file.
         self.chunk_sequence = chunk_sequence
-        # 切片大小
+        # Segment size.
         self.chunk_size = chunk_size
-        # 切片起始位置
+        # Segment start position. Returns the number of milliseconds from the start of file playback.
         self.chunk_start = chunk_start
-        # 切片状态
+        # Segment status.  
+        # - Enable: enabled.  
+        # - Disable: disabled.
         self.chunk_status = chunk_status
-        # 切片下载地址
+        # Download URL of the segment. Returned for image and video files.
         self.download_url = download_url
-        # 切片ID
+        # Segment ID.
         self.knowledge_base_chunk_id = knowledge_base_chunk_id
-        # 知识库ID
+        # Knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
-        # 原始文件信息
+        # Original file information.
         self.meta_data = meta_data
-        # 切片缩略图
+        # Thumbnail of the segment. Returned for image and video files.
         self.thumbnail_url = thumbnail_url
-        # 知识库版本
+        # Knowledge base version.
         self.version_name = version_name
 
     def validate(self):
@@ -221,11 +226,11 @@ class ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunksMetaData(DaraModel):
         file_name: str = None,
         file_uri: str = None,
     ):
-        # 文件元数据ID
+        # File metadata ID.
         self.file_meta_id = file_meta_id
-        # 文件名
+        # File name.
         self.file_name = file_name
-        # 文件地址
+        # File path.
         self.file_uri = file_uri
 
     def validate(self):
@@ -268,13 +273,13 @@ class ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunksChunkAttachment(Dara
         type: str = None,
         uri: str = None,
     ):
-        # 下载地址
+        # Download URL.
         self.download_url = download_url
-        # 占位符ID
+        # Placeholder ID.
         self.placeholder_id = placeholder_id
-        # 类型
+        # Attachment type.
         self.type = type
-        # 路径
+        # Attachment path.
         self.uri = uri
 
     def validate(self):

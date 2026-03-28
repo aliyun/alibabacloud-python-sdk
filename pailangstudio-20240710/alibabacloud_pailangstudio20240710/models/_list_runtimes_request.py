@@ -21,18 +21,60 @@ class ListRuntimesRequest(DaraModel):
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        # The creator ID.
         self.creator = creator
+        # The maximum number of records allowed to be returned by this request.
         self.max_results = max_results
+        # The pagination token. The pagination token used in the next request to retrieve a new page of results.
+        # 
+        # *   This value is left empty during the first request.
+        # *   The `NextToken` value returned by the previous response passed in subsequent requests.
         self.next_token = next_token
+        # The sorting method.
+        # 
+        # *   ASC: ascending order.
+        # *   DESC: Descending order.
         self.order = order
+        # The page number in a paged query.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # Runtime ID. Supports exact search by runtime ID.
         self.runtime_id = runtime_id
+        # The name of the runtime. Supports fuzzy search by name.
         self.runtime_name = runtime_name
+        # Runtime status. Valid values:
+        # 
+        # *   Creating: The data cache is being created.
+        # *   SaveFailed: Failed to save the runtime image.
+        # *   Stopped: The file system is stopped.
+        # *   Failed: Failed
+        # *   ResourceAllocating: Resource allocation in progress
+        # *   Stopping: Stopping in progress
+        # *   Updating: Updating in progress
+        # *   Saving: Saving the runtime image in progress
+        # *   Queuing: Queuing in progress
+        # *   Recovering: The instance is recovering.
+        # *   Starting: The instance is being created.
+        # *   Running: The gateway is running.
+        # *   Saved: The runtime image is saved.
+        # *   Deleting: The mount target is being deleted.
+        # *   EnvPreparing: Preparing environment.
         self.runtime_status = runtime_status
+        # The field used to sort the results in paged queries. Default value: GmtCreateTime. Valid values are as follows:
+        # 
+        # *   GmtCreateTime (default value): Sort by the time when created.
+        # *   GmtModifiedTime: Sorted by modification time.
+        # *   Creator: The ID of the creator.
+        # *   WorkDir: the working path.
+        # *   RuntimeName: the runtime parameter.
+        # *   Status: the status of the runtime.
         self.sort_by = sort_by
+        # Version
         self.version = version
+        # The OSS path of the working directory.
         self.work_dir = work_dir
+        # The ID of the DataWorks workspace. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

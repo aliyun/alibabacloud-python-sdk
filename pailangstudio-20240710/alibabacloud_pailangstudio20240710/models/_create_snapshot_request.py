@@ -17,14 +17,32 @@ class CreateSnapshotRequest(DaraModel):
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        # Workspace visibility. Valid values:
+        # - PRIVATE: Visible only to you and administrators in this workspace.
+        # - PUBLIC: Visible to everyone in this workspace.
         self.accessibility = accessibility
+        # Snapshot creation type. Valid values:
+        # * ManualCreated: manual creation
+        # * DeploymentAutoCreated: automatic creation by service deployment
+        # * EvaluationAutoCreated: automatic creation by evaluation job
         self.creation_type = creation_type
+        # Description of the snapshot.
         self.description = description
+        # Snapshot name. Requirements:
+        # * Can contain only letters, digits, and underscores (_)
+        # * Must start with a letter
+        # * Length must be 1 to 256 characters
         self.snapshot_name = snapshot_name
+        # Snapshot resource ID.
         self.snapshot_resource_id = snapshot_resource_id
+        # Snapshot resource type. Valid values:
+        # * Flow: pipeline
         self.snapshot_resource_type = snapshot_resource_type
+        # Create a snapshot from source files under the specified OSS folder.
         self.source_storage_path = source_storage_path
+        # OSS working directory for storing the snapshot.
         self.work_dir = work_dir
+        # Workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

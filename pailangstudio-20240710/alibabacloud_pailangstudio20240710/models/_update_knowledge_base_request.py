@@ -17,11 +17,18 @@ class UpdateKnowledgeBaseRequest(DaraModel):
         runtime_id: str = None,
         workspace_id: str = None,
     ):
+        # Knowledge Base Automatic Update Configuration.
         self.auto_update_config = auto_update_config
+        # Whether to bind at runtime.
         self.bind_runtime = bind_runtime
+        # Knowledge base description.
         self.description = description
+        # Metadata Configuration.
         self.meta_data_config = meta_data_config
+        # Runtime ID.
         self.runtime_id = runtime_id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -85,7 +92,7 @@ class UpdateKnowledgeBaseRequestMetaDataConfig(DaraModel):
         self,
         custom_meta_data: List[main_models.UpdateKnowledgeBaseRequestMetaDataConfigCustomMetaData] = None,
     ):
-        # 自定义元数据
+        # Custom metadata.
         self.custom_meta_data = custom_meta_data
 
     def validate(self):
@@ -122,9 +129,9 @@ class UpdateKnowledgeBaseRequestMetaDataConfigCustomMetaData(DaraModel):
         key: str = None,
         value_type: str = None,
     ):
-        # 元数据Key
+        # Metadata Field Name.
         self.key = key
-        # 元数据Value类型
+        # Metadata Field Type Currently, only the String class type is supported.
         self.value_type = value_type
 
     def validate(self):
@@ -163,17 +170,20 @@ class UpdateKnowledgeBaseRequestAutoUpdateConfig(DaraModel):
         status: str = None,
         user_vpc: main_models.UserVpc = None,
     ):
-        # 运行资源配置
+        # Run Resource Configuration List Documentation and structured knowledge base contain only one element and the **Type** is Worker. images and videos knowledge base contain two elements and the **Types** are Head and Worker.
         self.ecs_specs = ecs_specs
-        # Embedding配置
+        # Vector Index Configuration.
         self.embedding_config = embedding_config
-        # 任务最大运行时间
+        # Maximum task running time, in seconds.
         self.max_running_time_in_seconds = max_running_time_in_seconds
-        # 资源组ID
+        # Resource Group ID. Empty or public-cluster indicates public resource.
         self.resource_id = resource_id
-        # 知识库自动更新状态
+        # Knowledge Base Automatic Update Switch Status
+        # 
+        # *   Enable: Turn on automatic updates.
+        # *   Disable: Turn off automatic updates.
         self.status = status
-        # 用户VPC配置
+        # User VPC Configuration.
         self.user_vpc = user_vpc
 
     def validate(self):
@@ -246,9 +256,9 @@ class UpdateKnowledgeBaseRequestAutoUpdateConfigEmbeddingConfig(DaraModel):
         batch_size: int = None,
         concurrency: int = None,
     ):
-        # Embedding分批大小
+        # Index batch size. Documentation and structured data type Knowledge Base are effective.
         self.batch_size = batch_size
-        # Embedding并发数
+        # Index concurrency. Image and Video Type Knowledge Base is valid.
         self.concurrency = concurrency
 
     def validate(self):
@@ -290,23 +300,23 @@ class UpdateKnowledgeBaseRequestAutoUpdateConfigEcsSpecs(DaraModel):
         shared_memory: int = None,
         type: str = None,
     ):
-        # CPU核数
+        # The number of CPU cores.
         self.cpu = cpu
-        # 驱动版本
+        # Driver Version.
         self.driver = driver
-        # GPU卡数
+        # The number of GPU cards.
         self.gpu = gpu
-        # GPU类型
+        # The GPU Class.
         self.gputype = gputype
-        # 机型名称
+        # Model name.
         self.instance_type = instance_type
-        # 内存大小
+        # Memory size, in GB.
         self.memory = memory
-        # 副本数量
+        # The number of replicas.
         self.pod_count = pod_count
-        # 共享内存容量
+        # Shared memory capacity, in units of GB.
         self.shared_memory = shared_memory
-        # 节点类型
+        # Node type. Possible values are Head and Worker.
         self.type = type
 
     def validate(self):

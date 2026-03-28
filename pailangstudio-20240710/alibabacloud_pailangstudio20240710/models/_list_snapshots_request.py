@@ -17,20 +17,44 @@ class ListSnapshotsRequest(DaraModel):
         snapshot_id: str = None,
         snapshot_resource_id: str = None,
         snapshot_resource_type: str = None,
+        snapshot_status: str = None,
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        # The creation type of the snapshot. To query multiple types at the same time, separate them with commas.
         self.creation_type = creation_type
+        # The creator ID.
         self.creator = creator
+        # The maximum number of records allowed to be returned in this request.
         self.max_results = max_results
+        # Pagination cursor used to retrieve results for the next page.
+        # 
+        # * Leave empty for the first request.
+        # * For subsequent requests, pass the NextToken value returned in the previous response.
         self.next_token = next_token
+        # Sorting order.
+        # 
+        # - ASC: ascending order.
+        # - DESC: descending order.
         self.order = order
+        # Page number of the current page in paged query.
         self.page_number = page_number
+        # Number of items displayed per page. Default value is 10.
         self.page_size = page_size
+        # Snapshot ID.
         self.snapshot_id = snapshot_id
+        # Snapshot resource ID.
         self.snapshot_resource_id = snapshot_resource_id
+        # The snapshot resource type. Valid values:
+        # * Flow: pipeline
         self.snapshot_resource_type = snapshot_resource_type
+        self.snapshot_status = snapshot_status
+        # Sorting field used in paged query. The default value is GmtCreateTime. Valid values:
+        # 
+        # - GmtCreateTime (default): sort by Creation Time.
+        # - GmtModifiedTime: sort by Updated At.
         self.sort_by = sort_by
+        # The workspace ID. For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -71,6 +95,9 @@ class ListSnapshotsRequest(DaraModel):
         if self.snapshot_resource_type is not None:
             result['SnapshotResourceType'] = self.snapshot_resource_type
 
+        if self.snapshot_status is not None:
+            result['SnapshotStatus'] = self.snapshot_status
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
@@ -110,6 +137,9 @@ class ListSnapshotsRequest(DaraModel):
 
         if m.get('SnapshotResourceType') is not None:
             self.snapshot_resource_type = m.get('SnapshotResourceType')
+
+        if m.get('SnapshotStatus') is not None:
+            self.snapshot_status = m.get('SnapshotStatus')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
