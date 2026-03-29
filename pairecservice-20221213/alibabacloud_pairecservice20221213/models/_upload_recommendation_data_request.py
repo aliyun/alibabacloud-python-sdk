@@ -10,11 +10,9 @@ from darabonba.model import DaraModel
 class UploadRecommendationDataRequest(DaraModel):
     def __init__(
         self,
-        region_id: str = None,
         content: List[main_models.UploadRecommendationDataRequestContent] = None,
         data_type: str = None,
     ):
-        self.region_id = region_id
         self.content = content
         self.data_type = data_type
 
@@ -29,9 +27,6 @@ class UploadRecommendationDataRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-
         result['Content'] = []
         if self.content is not None:
             for k1 in self.content:
@@ -44,9 +39,6 @@ class UploadRecommendationDataRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-
         self.content = []
         if m.get('Content') is not None:
             for k1 in m.get('Content'):

@@ -8,10 +8,10 @@ class TrafficControlTaskTrafficInfoTargetTrafficsDataValue(DaraModel):
     def __init__(
         self,
         traffic: float = None,
-        recorf_time: int = None,
+        record_time: int = None,
     ):
         self.traffic = traffic
-        self.recorf_time = recorf_time
+        self.record_time = record_time
 
     def validate(self):
         pass
@@ -24,8 +24,8 @@ class TrafficControlTaskTrafficInfoTargetTrafficsDataValue(DaraModel):
         if self.traffic is not None:
             result['Traffic'] = self.traffic
 
-        if self.recorf_time is not None:
-            result['RecorfTime'] = self.recorf_time
+        if self.record_time is not None:
+            result['RecordTime'] = self.record_time
 
         return result
 
@@ -34,8 +34,8 @@ class TrafficControlTaskTrafficInfoTargetTrafficsDataValue(DaraModel):
         if m.get('Traffic') is not None:
             self.traffic = m.get('Traffic')
 
-        if m.get('RecorfTime') is not None:
-            self.recorf_time = m.get('RecorfTime')
+        if m.get('RecordTime') is not None:
+            self.record_time = m.get('RecordTime')
 
         return self
 

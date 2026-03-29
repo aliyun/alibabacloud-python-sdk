@@ -1485,6 +1485,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_crowd_with_options_async(request, headers, runtime)
 
+    def create_data_diagnosis_with_options(
+        self,
+        request: main_models.CreateDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataDiagnosisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.cycle_time):
+            body['CycleTime'] = request.cycle_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.left_table_meta_id):
+            body['LeftTableMetaId'] = request.left_table_meta_id
+        if not DaraCore.is_null(request.left_table_partition_field):
+            body['LeftTablePartitionField'] = request.left_table_partition_field
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.partition_field):
+            body['PartitionField'] = request.partition_field
+        if not DaraCore.is_null(request.right_table_meta_id):
+            body['RightTableMetaId'] = request.right_table_meta_id
+        if not DaraCore.is_null(request.right_table_partition_field):
+            body['RightTablePartitionField'] = request.right_table_partition_field
+        if not DaraCore.is_null(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not DaraCore.is_null(request.top_nquantity):
+            body['TopNQuantity'] = request.top_nquantity
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_diagnosis_with_options_async(
+        self,
+        request: main_models.CreateDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataDiagnosisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.cycle_time):
+            body['CycleTime'] = request.cycle_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.left_table_meta_id):
+            body['LeftTableMetaId'] = request.left_table_meta_id
+        if not DaraCore.is_null(request.left_table_partition_field):
+            body['LeftTablePartitionField'] = request.left_table_partition_field
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.partition_field):
+            body['PartitionField'] = request.partition_field
+        if not DaraCore.is_null(request.right_table_meta_id):
+            body['RightTableMetaId'] = request.right_table_meta_id
+        if not DaraCore.is_null(request.right_table_partition_field):
+            body['RightTablePartitionField'] = request.right_table_partition_field
+        if not DaraCore.is_null(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not DaraCore.is_null(request.top_nquantity):
+            body['TopNQuantity'] = request.top_nquantity
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_diagnosis(
+        self,
+        request: main_models.CreateDataDiagnosisRequest,
+    ) -> main_models.CreateDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_data_diagnosis_with_options(request, headers, runtime)
+
+    async def create_data_diagnosis_async(
+        self,
+        request: main_models.CreateDataDiagnosisRequest,
+    ) -> main_models.CreateDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_data_diagnosis_with_options_async(request, headers, runtime)
+
+    def create_data_diagnosis_jobs_with_options(
+        self,
+        request: main_models.CreateDataDiagnosisJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataDiagnosisJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_diagnosis_id):
+            body['DataDiagnosisId'] = request.data_diagnosis_id
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataDiagnosisJobs',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/batch/datadiagnosisjobs/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataDiagnosisJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_diagnosis_jobs_with_options_async(
+        self,
+        request: main_models.CreateDataDiagnosisJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataDiagnosisJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_diagnosis_id):
+            body['DataDiagnosisId'] = request.data_diagnosis_id
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataDiagnosisJobs',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/batch/datadiagnosisjobs/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataDiagnosisJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_diagnosis_jobs(
+        self,
+        request: main_models.CreateDataDiagnosisJobsRequest,
+    ) -> main_models.CreateDataDiagnosisJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_data_diagnosis_jobs_with_options(request, headers, runtime)
+
+    async def create_data_diagnosis_jobs_async(
+        self,
+        request: main_models.CreateDataDiagnosisJobsRequest,
+    ) -> main_models.CreateDataDiagnosisJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_data_diagnosis_jobs_with_options_async(request, headers, runtime)
+
     def create_engine_config_with_options(
         self,
         request: main_models.CreateEngineConfigRequest,
@@ -4305,6 +4513,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_crowd_with_options_async(crowd_id, request, headers, runtime)
 
+    def delete_data_diagnosis_with_options(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.DeleteDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataDiagnosisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_diagnosis_with_options_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.DeleteDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataDiagnosisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_diagnosis(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.DeleteDataDiagnosisRequest,
+    ) -> main_models.DeleteDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_data_diagnosis_with_options(data_diagnosis_id, request, headers, runtime)
+
+    async def delete_data_diagnosis_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.DeleteDataDiagnosisRequest,
+    ) -> main_models.DeleteDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_data_diagnosis_with_options_async(data_diagnosis_id, request, headers, runtime)
+
     def delete_engine_config_with_options(
         self,
         engine_config_id: str,
@@ -6326,6 +6614,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_calculation_job_with_options_async(calculation_job_id, request, headers, runtime)
+
+    def get_data_diagnosis_with_options(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.GetDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataDiagnosisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_diagnosis_with_options_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.GetDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataDiagnosisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_diagnosis(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.GetDataDiagnosisRequest,
+    ) -> main_models.GetDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_data_diagnosis_with_options(data_diagnosis_id, request, headers, runtime)
+
+    async def get_data_diagnosis_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.GetDataDiagnosisRequest,
+    ) -> main_models.GetDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_data_diagnosis_with_options_async(data_diagnosis_id, request, headers, runtime)
 
     def get_engine_config_with_options(
         self,
@@ -8781,6 +9149,302 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_crowds_with_options_async(request, headers, runtime)
 
+    def list_data_diagnoses_with_options(
+        self,
+        tmp_req: main_models.ListDataDiagnosesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataDiagnosesResponse:
+        tmp_req.validate()
+        request = main_models.ListDataDiagnosesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.types):
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataDiagnoses',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataDiagnosesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_diagnoses_with_options_async(
+        self,
+        tmp_req: main_models.ListDataDiagnosesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataDiagnosesResponse:
+        tmp_req.validate()
+        request = main_models.ListDataDiagnosesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.types):
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataDiagnoses',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataDiagnosesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_diagnoses(
+        self,
+        request: main_models.ListDataDiagnosesRequest,
+    ) -> main_models.ListDataDiagnosesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_data_diagnoses_with_options(request, headers, runtime)
+
+    async def list_data_diagnoses_async(
+        self,
+        request: main_models.ListDataDiagnosesRequest,
+    ) -> main_models.ListDataDiagnosesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_data_diagnoses_with_options_async(request, headers, runtime)
+
+    def list_data_diagnosis_jobs_with_options(
+        self,
+        tmp_req: main_models.ListDataDiagnosisJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataDiagnosisJobsResponse:
+        tmp_req.validate()
+        request = main_models.ListDataDiagnosisJobsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.types):
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataDiagnosisJobs',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnosisjobs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataDiagnosisJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_diagnosis_jobs_with_options_async(
+        self,
+        tmp_req: main_models.ListDataDiagnosisJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataDiagnosisJobsResponse:
+        tmp_req.validate()
+        request = main_models.ListDataDiagnosisJobsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.types):
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataDiagnosisJobs',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnosisjobs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataDiagnosisJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_diagnosis_jobs(
+        self,
+        request: main_models.ListDataDiagnosisJobsRequest,
+    ) -> main_models.ListDataDiagnosisJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_data_diagnosis_jobs_with_options(request, headers, runtime)
+
+    async def list_data_diagnosis_jobs_async(
+        self,
+        request: main_models.ListDataDiagnosisJobsRequest,
+    ) -> main_models.ListDataDiagnosisJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_data_diagnosis_jobs_with_options_async(request, headers, runtime)
+
+    def list_data_diagnosis_reports_with_options(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.ListDataDiagnosisReportsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataDiagnosisReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.remain_rate_type):
+            query['RemainRateType'] = request.remain_rate_type
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.top_n):
+            query['TopN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataDiagnosisReports',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}/reports',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataDiagnosisReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_diagnosis_reports_with_options_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.ListDataDiagnosisReportsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataDiagnosisReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.remain_rate_type):
+            query['RemainRateType'] = request.remain_rate_type
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.top_n):
+            query['TopN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataDiagnosisReports',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}/reports',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataDiagnosisReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_diagnosis_reports(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.ListDataDiagnosisReportsRequest,
+    ) -> main_models.ListDataDiagnosisReportsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_data_diagnosis_reports_with_options(data_diagnosis_id, request, headers, runtime)
+
+    async def list_data_diagnosis_reports_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.ListDataDiagnosisReportsRequest,
+    ) -> main_models.ListDataDiagnosisReportsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_data_diagnosis_reports_with_options_async(data_diagnosis_id, request, headers, runtime)
+
     def list_engine_configs_with_options(
         self,
         request: main_models.ListEngineConfigsRequest,
@@ -8893,8 +9557,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.layer_id):
             query['LayerId'] = request.layer_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.time_range_end):
@@ -8933,8 +9595,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.layer_id):
             query['LayerId'] = request.layer_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.time_range_end):
@@ -12157,6 +12817,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.push_resource_rule_with_options_async(resource_rule_id, request, headers, runtime)
 
+    def query_data_diagnosis_statistics_with_options(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.QueryDataDiagnosisStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDataDiagnosisStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.remain_rate_type):
+            query['RemainRateType'] = request.remain_rate_type
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryDataDiagnosisStatistics',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}/statistics/action/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryDataDiagnosisStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_diagnosis_statistics_with_options_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.QueryDataDiagnosisStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDataDiagnosisStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.remain_rate_type):
+            query['RemainRateType'] = request.remain_rate_type
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryDataDiagnosisStatistics',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}/statistics/action/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryDataDiagnosisStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data_diagnosis_statistics(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.QueryDataDiagnosisStatisticsRequest,
+    ) -> main_models.QueryDataDiagnosisStatisticsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_data_diagnosis_statistics_with_options(data_diagnosis_id, request, headers, runtime)
+
+    async def query_data_diagnosis_statistics_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.QueryDataDiagnosisStatisticsRequest,
+    ) -> main_models.QueryDataDiagnosisStatisticsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_data_diagnosis_statistics_with_options_async(data_diagnosis_id, request, headers, runtime)
+
     def query_sample_consistency_job_difference_with_options(
         self,
         sample_consistency_job_id: str,
@@ -13632,6 +14384,130 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_crowd_with_options_async(crowd_id, request, headers, runtime)
+
+    def update_data_diagnosis_with_options(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.UpdateDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataDiagnosisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.cycle_time):
+            body['CycleTime'] = request.cycle_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.left_table_meta_id):
+            body['LeftTableMetaId'] = request.left_table_meta_id
+        if not DaraCore.is_null(request.left_table_partition_field):
+            body['LeftTablePartitionField'] = request.left_table_partition_field
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.partition_field):
+            body['PartitionField'] = request.partition_field
+        if not DaraCore.is_null(request.right_table_meta_id):
+            body['RightTableMetaId'] = request.right_table_meta_id
+        if not DaraCore.is_null(request.right_table_partition_field):
+            body['RightTablePartitionField'] = request.right_table_partition_field
+        if not DaraCore.is_null(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not DaraCore.is_null(request.top_nquantity):
+            body['TopNQuantity'] = request.top_nquantity
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_diagnosis_with_options_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.UpdateDataDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataDiagnosisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.cycle_time):
+            body['CycleTime'] = request.cycle_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.left_table_meta_id):
+            body['LeftTableMetaId'] = request.left_table_meta_id
+        if not DaraCore.is_null(request.left_table_partition_field):
+            body['LeftTablePartitionField'] = request.left_table_partition_field
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.partition_field):
+            body['PartitionField'] = request.partition_field
+        if not DaraCore.is_null(request.right_table_meta_id):
+            body['RightTableMetaId'] = request.right_table_meta_id
+        if not DaraCore.is_null(request.right_table_partition_field):
+            body['RightTablePartitionField'] = request.right_table_partition_field
+        if not DaraCore.is_null(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not DaraCore.is_null(request.top_nquantity):
+            body['TopNQuantity'] = request.top_nquantity
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataDiagnosis',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/datadiagnoses/{DaraURL.percent_encode(data_diagnosis_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_diagnosis(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.UpdateDataDiagnosisRequest,
+    ) -> main_models.UpdateDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_data_diagnosis_with_options(data_diagnosis_id, request, headers, runtime)
+
+    async def update_data_diagnosis_async(
+        self,
+        data_diagnosis_id: str,
+        request: main_models.UpdateDataDiagnosisRequest,
+    ) -> main_models.UpdateDataDiagnosisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_data_diagnosis_with_options_async(data_diagnosis_id, request, headers, runtime)
 
     def update_engine_config_with_options(
         self,
@@ -15836,9 +16712,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UploadRecommendationDataResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not DaraCore.is_null(request.content):
             body['Content'] = request.content
@@ -15846,7 +16719,6 @@ class Client(OpenApiClient):
             body['DataType'] = request.data_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -15872,9 +16744,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UploadRecommendationDataResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not DaraCore.is_null(request.content):
             body['Content'] = request.content
@@ -15882,7 +16751,6 @@ class Client(OpenApiClient):
             body['DataType'] = request.data_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

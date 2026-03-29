@@ -1,3 +1,21 @@
+2026-03-29 Version: 6.0.0
+- Support API CreateDataDiagnosis.
+- Support API CreateDataDiagnosisJobs.
+- Support API DeleteDataDiagnosis.
+- Support API GetDataDiagnosis.
+- Support API ListDataDiagnoses.
+- Support API ListDataDiagnosisJobs.
+- Support API ListDataDiagnosisReports.
+- Support API QueryDataDiagnosisStatistics.
+- Support API UpdateDataDiagnosis.
+- Update API GetTrafficControlTaskTraffic: add response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.TrafficContorlTargetId.
+- Update API GetTrafficControlTaskTraffic: add response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.Data.RecordTime.
+- Update API GetTrafficControlTaskTraffic: delete response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.Data.RecorfTime.
+- Update API GetTrafficControlTaskTraffic: delete response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.TrafficControlTargetId.
+- Update API ListExperimentGroups: change request The number of host parameters has changed.
+- Update API UploadRecommendationData: change request The number of host parameters has changed.
+
+
 2026-02-05 Version: 5.0.0
 - Update API GetRecallManagementTable: update response parameters Body.Fields' type has changed.
 - Update API GetRecallManagementTable: delete response parameters Body.Fields.

@@ -100,10 +100,10 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTarge
     def __init__(
         self,
         data: Dict[str, main_models.TrafficControlTaskTrafficInfoTargetTrafficsDataValue] = None,
-        traffic_control_target_id: str = None,
+        traffic_contorl_target_id: str = None,
     ):
         self.data = data
-        self.traffic_control_target_id = traffic_control_target_id
+        self.traffic_contorl_target_id = traffic_contorl_target_id
 
     def validate(self):
         if self.data:
@@ -121,8 +121,8 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTarge
             for k1, v1 in self.data.items():
                 result['Data'][k1] = v1.to_map() if v1 else None
 
-        if self.traffic_control_target_id is not None:
-            result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.traffic_contorl_target_id is not None:
+            result['TrafficContorlTargetId'] = self.traffic_contorl_target_id
 
         return result
 
@@ -134,8 +134,8 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTarge
                 temp_model = main_models.TrafficControlTaskTrafficInfoTargetTrafficsDataValue()
                 self.data[k1] = temp_model.from_map(v1)
 
-        if m.get('TrafficControlTargetId') is not None:
-            self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('TrafficContorlTargetId') is not None:
+            self.traffic_contorl_target_id = m.get('TrafficContorlTargetId')
 
         return self
 
