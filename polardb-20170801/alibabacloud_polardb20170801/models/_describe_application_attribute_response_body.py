@@ -28,6 +28,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         mem_application_attribute: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute = None,
         minor_version: str = None,
         pay_type: str = None,
+        polar_claw_saa_sapplication_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute = None,
         polar_fsinstance_id: str = None,
         region_id: str = None,
         request_id: str = None,
@@ -60,6 +61,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.mem_application_attribute = mem_application_attribute
         self.minor_version = minor_version
         self.pay_type = pay_type
+        self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
         self.polar_fsinstance_id = polar_fsinstance_id
         self.region_id = region_id
         self.request_id = request_id
@@ -87,6 +89,8 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
                     v1.validate()
         if self.mem_application_attribute:
             self.mem_application_attribute.validate()
+        if self.polar_claw_saa_sapplication_attribute:
+            self.polar_claw_saa_sapplication_attribute.validate()
         if self.security_groups:
             for v1 in self.security_groups:
                  if v1:
@@ -162,6 +166,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+
+        if self.polar_claw_saa_sapplication_attribute is not None:
+            result['PolarClawSaaSApplicationAttribute'] = self.polar_claw_saa_sapplication_attribute.to_map()
 
         if self.polar_fsinstance_id is not None:
             result['PolarFSInstanceId'] = self.polar_fsinstance_id
@@ -272,6 +279,10 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+
+        if m.get('PolarClawSaaSApplicationAttribute') is not None:
+            temp_model = main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute()
+            self.polar_claw_saa_sapplication_attribute = temp_model.from_map(m.get('PolarClawSaaSApplicationAttribute'))
 
         if m.get('PolarFSInstanceId') is not None:
             self.polar_fsinstance_id = m.get('PolarFSInstanceId')
@@ -481,6 +492,33 @@ class DescribeApplicationAttributeResponseBodySecurityGroups(DaraModel):
 
         if m.get('SecurityGroupName') is not None:
             self.security_group_name = m.get('SecurityGroupName')
+
+        return self
+
+class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(DaraModel):
+    def __init__(
+        self,
+        auth_callback_url: str = None,
+    ):
+        self.auth_callback_url = auth_callback_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auth_callback_url is not None:
+            result['AuthCallbackURL'] = self.auth_callback_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCallbackURL') is not None:
+            self.auth_callback_url = m.get('AuthCallbackURL')
 
         return self
 

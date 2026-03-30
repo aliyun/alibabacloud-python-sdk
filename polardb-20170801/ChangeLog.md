@@ -1,3 +1,9 @@
+2026-03-30 Version: 6.9.3
+- Update API CreateApplication: add request parameters AuthProvider.
+- Update API CreateApplication: add request parameters AuthProviderConfig.
+- Update API DescribeApplicationAttribute: add response parameters Body.PolarClawSaaSApplicationAttribute.
+
+
 2026-03-27 Version: 6.9.2
 - Update API CreateApplication: add request parameters SecurityIPArrayName.
 - Update API CreateApplication: add request parameters SecurityIPList.

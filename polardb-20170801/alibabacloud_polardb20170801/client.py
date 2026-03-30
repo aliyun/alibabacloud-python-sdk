@@ -2504,6 +2504,10 @@ class Client(OpenApiClient):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
             query['Architecture'] = request.architecture
+        if not DaraCore.is_null(request.auth_provider):
+            query['AuthProvider'] = request.auth_provider
+        if not DaraCore.is_null(request.auth_provider_config):
+            query['AuthProviderConfig'] = request.auth_provider_config
         if not DaraCore.is_null(request.auto_allocate_public_eip):
             query['AutoAllocatePublicEip'] = request.auto_allocate_public_eip
         if not DaraCore.is_null(request.auto_create_polar_fs):
@@ -2606,6 +2610,10 @@ class Client(OpenApiClient):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
             query['Architecture'] = request.architecture
+        if not DaraCore.is_null(request.auth_provider):
+            query['AuthProvider'] = request.auth_provider
+        if not DaraCore.is_null(request.auth_provider_config):
+            query['AuthProviderConfig'] = request.auth_provider_config
         if not DaraCore.is_null(request.auto_allocate_public_eip):
             query['AutoAllocatePublicEip'] = request.auto_allocate_public_eip
         if not DaraCore.is_null(request.auto_create_polar_fs):

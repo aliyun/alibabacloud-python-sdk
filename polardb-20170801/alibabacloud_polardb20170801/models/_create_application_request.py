@@ -13,6 +13,8 @@ class CreateApplicationRequest(DaraModel):
         aidbcluster_id: str = None,
         application_type: str = None,
         architecture: str = None,
+        auth_provider: str = None,
+        auth_provider_config: str = None,
         auto_allocate_public_eip: bool = None,
         auto_create_polar_fs: bool = None,
         auto_renew: bool = None,
@@ -50,6 +52,8 @@ class CreateApplicationRequest(DaraModel):
         self.application_type = application_type
         # This parameter is required.
         self.architecture = architecture
+        self.auth_provider = auth_provider
+        self.auth_provider_config = auth_provider_config
         self.auto_allocate_public_eip = auto_allocate_public_eip
         self.auto_create_polar_fs = auto_create_polar_fs
         self.auto_renew = auto_renew
@@ -111,6 +115,12 @@ class CreateApplicationRequest(DaraModel):
 
         if self.architecture is not None:
             result['Architecture'] = self.architecture
+
+        if self.auth_provider is not None:
+            result['AuthProvider'] = self.auth_provider
+
+        if self.auth_provider_config is not None:
+            result['AuthProviderConfig'] = self.auth_provider_config
 
         if self.auto_allocate_public_eip is not None:
             result['AutoAllocatePublicEip'] = self.auto_allocate_public_eip
@@ -223,6 +233,12 @@ class CreateApplicationRequest(DaraModel):
 
         if m.get('Architecture') is not None:
             self.architecture = m.get('Architecture')
+
+        if m.get('AuthProvider') is not None:
+            self.auth_provider = m.get('AuthProvider')
+
+        if m.get('AuthProviderConfig') is not None:
+            self.auth_provider_config = m.get('AuthProviderConfig')
 
         if m.get('AutoAllocatePublicEip') is not None:
             self.auto_allocate_public_eip = m.get('AutoAllocatePublicEip')
