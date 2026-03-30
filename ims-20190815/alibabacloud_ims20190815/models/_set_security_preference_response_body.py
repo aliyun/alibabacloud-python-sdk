@@ -15,7 +15,7 @@ class SetSecurityPreferenceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The security preferences.
+        # The details of security preferences.
         self.security_preference = security_preference
 
     def validate(self):
@@ -56,17 +56,17 @@ class SetSecurityPreferenceResponseBodySecurityPreference(DaraModel):
         personal_info_preference: main_models.SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference = None,
         verification_preference: main_models.SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference = None,
     ):
-        # The AccessKey pair preferences.
+        # The AccessKey pair preference.
         self.access_key_preference = access_key_preference
-        # The logon preferences.
+        # The logon preference.
         self.login_profile_preference = login_profile_preference
-        # The MFA preferences.
+        # The MFA preference.
         self.mfapreference = mfapreference
-        # The configuration of the maximum idle period in days.
+        # The maximum idle periods. Unit: days.
         self.max_idle_days = max_idle_days
-        # The personal information preferences.
+        # The personal information preference.
         self.personal_info_preference = personal_info_preference
-        # The preferences for MFA methods.
+        # The MFA method preference.
         self.verification_preference = verification_preference
 
     def validate(self):
@@ -169,13 +169,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference(
         self,
         allow_user_to_manage_personal_ding_talk: bool = None,
     ):
-        # Indicates whether RAM users can attach or detach their personal DingTalk accounts.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts.
         self.allow_user_to_manage_personal_ding_talk = allow_user_to_manage_personal_ding_talk
 
     def validate(self):
@@ -204,17 +198,9 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays(DaraModel):
         max_idle_days_for_access_keys: int = None,
         max_idle_days_for_users: int = None,
     ):
-        # The maximum idle period for the AccessKey pair of a RAM user. If an AccessKey pair remains unused for this period, it is automatically disabled the next day.
-        # 
-        # Default value: 730.
-        # 
-        # Unit: days.
+        # The maximum number of days that the AccessKey pair of a RAM user can stay unused. If an AccessKey pair is not used in the previous specified number of days, the AccessKey pair is automatically disabled on the next day. The default value is 730. You cannot change the value.
         self.max_idle_days_for_access_keys = max_idle_days_for_access_keys
-        # The maximum idle period for RAM users. If a RAM user with console logon enabled remains inactive for this period, their console logon is automatically disabled the next day. This does not apply to single sign-on (SSO) logons.
-        # 
-        # Default value: 730.
-        # 
-        # Unit: days.
+        # The maximum number of days that a RAM user can stay idle. If a RAM user for whom console logon is enabled does not log on to the console in the previous specified number of days, console logon is automatically disabled for the RAM user on the next day. SSO is not involved. The default value is 730. You cannot change the value.
         self.max_idle_days_for_users = max_idle_days_for_users
 
     def validate(self):
@@ -248,13 +234,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(DaraModel
         self,
         allow_user_to_manage_mfadevices: bool = None,
     ):
-        # Indicates whether RAM users can manage their own MFA devices.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether RAM users can manage their MFA devices.
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
 
     def validate(self):
@@ -288,37 +268,19 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         mfaoperation_for_login: str = None,
         operation_for_risk_login: str = None,
     ):
-        # Indicates whether RAM users can manage their own passwords.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether RAM users can change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
-        # Indicates whether RAM users can log on directly using passkeys.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether a RAM user can use a passkey for logon.
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
-        # Indicates whether the MFA status is saved for seven days after a RAM user logs on using MFA.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether RAM users can remember the MFA devices for seven days.
         self.enable_save_mfaticket = enable_save_mfaticket
-        # The IP addresses or CIDR blocks from which RAM users are allowed to sign in to the Alibaba Cloud console.
+        # The subnet mask.
         self.login_network_masks = login_network_masks
-        # The duration of a logon session for a RAM user.
+        # The validity period of the logon session of RAM users.
         self.login_session_duration = login_session_duration
-        # Indicates whether MFA is required for logon. This parameter replaces `EnforceMFAForLogin`. The `EnforceMFAForLogin` parameter is still valid, but using this new parameter is recommended.
+        # Indicates whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console.
         self.mfaoperation_for_login = mfaoperation_for_login
-        # This parameter is deprecated.
+        # Indicates whether to enable MFA for RAM users who initiated unusual logons.
         self.operation_for_risk_login = operation_for_risk_login
 
     def validate(self):
@@ -382,11 +344,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Dar
         self,
         allow_user_to_manage_access_keys: bool = None,
     ):
-        # Indicates whether RAM users can manage their own AccessKey pairs. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether RAM users can manage their AccessKey pairs.
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
 
     def validate(self):

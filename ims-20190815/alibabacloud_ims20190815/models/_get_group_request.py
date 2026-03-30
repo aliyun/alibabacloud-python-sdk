@@ -9,6 +9,7 @@ class GetGroupRequest(DaraModel):
         self,
         group_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
 
     def validate(self):

@@ -12,21 +12,16 @@ class UpdateSAMLProviderRequest(DaraModel):
         new_encoded_samlmetadata_document: str = None,
         samlprovider_name: str = None,
     ):
-        # The signature algorithm supported by the Alibaba Cloud service provider (SP). Valid values:
-        # 
-        # - rsa-sha256
-        # 
-        # - rsa-sha1
         self.authn_sign_algo = authn_sign_algo
         # The new description.
         # 
-        # > Specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
+        # >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
         self.new_description = new_description
         # The new metadata file.
         # 
-        # > Specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
+        # >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
         self.new_encoded_samlmetadata_document = new_encoded_samlmetadata_document
-        # The name of the identity provider to modify.
+        # The name of the IdP whose information you want to modify.
         # 
         # This parameter is required.
         self.samlprovider_name = samlprovider_name

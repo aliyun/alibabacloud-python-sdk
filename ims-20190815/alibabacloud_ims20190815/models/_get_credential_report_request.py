@@ -10,7 +10,11 @@ class GetCredentialReportRequest(DaraModel):
         max_items: str = None,
         next_token: str = None,
     ):
+        # The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+        # 
+        # Valid values: 1 to 3501. Default value: 3501.
         self.max_items = max_items
+        # The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.``
         self.next_token = next_token
 
     def validate(self):

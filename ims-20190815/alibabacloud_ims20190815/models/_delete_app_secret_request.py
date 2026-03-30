@@ -10,8 +10,12 @@ class DeleteAppSecretRequest(DaraModel):
         app_id: str = None,
         app_secret_id: str = None,
     ):
+        # The ID of the application.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the application secret.
+        # 
         # This parameter is required.
         self.app_secret_id = app_secret_id
 

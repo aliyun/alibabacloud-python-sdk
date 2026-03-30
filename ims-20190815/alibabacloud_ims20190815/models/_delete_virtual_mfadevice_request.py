@@ -9,6 +9,8 @@ class DeleteVirtualMFADeviceRequest(DaraModel):
         self,
         serial_number: str = None,
     ):
+        # The serial number of the MFA device.
+        # 
         # This parameter is required.
         self.serial_number = serial_number
 

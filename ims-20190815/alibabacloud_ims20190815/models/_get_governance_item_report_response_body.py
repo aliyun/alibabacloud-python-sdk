@@ -21,27 +21,11 @@ class GetGovernanceItemReportResponseBody(DaraModel):
     ):
         self.columns_schema = columns_schema
         self.columns_value = columns_value
-        # The time when the report for the check item was generated.
         self.generate_time = generate_time
-        # Indicates whether the response is truncated. Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.is_truncated = is_truncated
-        # This parameter is returned only when `IsTruncated` is set to true. Use this parameter to retrieve the truncated content.
         self.marker = marker
-        # The data type of the metric value. Valid values:
-        # 
-        # - Number: the numeric type.
-        # 
-        # - String: the string type.
-        # 
-        # - Boolean: the Boolean type.
         self.metric_type = metric_type
-        # The metric value.
         self.metric_value = metric_value
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

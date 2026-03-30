@@ -11,7 +11,9 @@ class GetAccessKeyLastUsedResponseBody(DaraModel):
         access_key_last_used: main_models.GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed = None,
         request_id: str = None,
     ):
+        # The details of the time when the AccessKey pair was used for the last time.
         self.access_key_last_used = access_key_last_used
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,9 @@ class GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed(DaraModel):
         last_used_date: str = None,
         service_name: str = None,
     ):
+        # The time when the AccessKey pair was used for the last time.
         self.last_used_date = last_used_date
+        # The Alibaba Cloud service that was last accessed by using the AccessKey pair.
         self.service_name = service_name
 
     def validate(self):

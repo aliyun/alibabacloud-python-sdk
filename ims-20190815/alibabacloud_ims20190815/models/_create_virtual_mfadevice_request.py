@@ -9,6 +9,10 @@ class CreateVirtualMFADeviceRequest(DaraModel):
         self,
         virtual_mfadevice_name: str = None,
     ):
+        # The name of the MFA device.
+        # 
+        # The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        # 
         # This parameter is required.
         self.virtual_mfadevice_name = virtual_mfadevice_name
 

@@ -15,8 +15,14 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The marker. This parameter is returned only if the value of IsTruncated is true. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
         self.tag_resources = tag_resources
 

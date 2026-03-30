@@ -9,6 +9,7 @@ class DeleteUserInRecycleBinRequest(DaraModel):
         self,
         user_id: str = None,
     ):
+        # The ID of the RAM user.
         self.user_id = user_id
 
     def validate(self):

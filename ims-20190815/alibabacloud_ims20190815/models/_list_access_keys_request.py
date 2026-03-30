@@ -9,6 +9,9 @@ class ListAccessKeysRequest(DaraModel):
         self,
         user_principal_name: str = None,
     ):
+        # The logon name of the RAM user.
+        # 
+        # If this parameter is empty, the AccessKey pairs of the current user are queried.
         self.user_principal_name = user_principal_name
 
     def validate(self):

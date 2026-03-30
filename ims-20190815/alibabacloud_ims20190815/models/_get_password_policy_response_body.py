@@ -11,7 +11,7 @@ class GetPasswordPolicyResponseBody(DaraModel):
         password_policy: main_models.GetPasswordPolicyResponseBodyPasswordPolicy = None,
         request_id: str = None,
     ):
-        # The password strength policy information.
+        # The details of the password policy.
         self.password_policy = password_policy
         # The request ID.
         self.request_id = request_id
@@ -61,37 +61,27 @@ class GetPasswordPolicyResponseBodyPasswordPolicy(DaraModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
-        # Indicates whether logon is restricted after the password expires.
+        # Indicates whether to disable logon after the password expires.
         self.hard_expire = hard_expire
-        # The validity period of the initial password.
         self.initial_password_age = initial_password_age
-        # Indicates whether to block threat passwords when a password is set using OpenAPI.
-        # 
-        # Valid values:
-        # 
-        # - true: Threat passwords are blocked when you set a password using OpenAPI.
-        # 
-        # - false: Threat passwords are not blocked when you set a password using OpenAPI.
-        # 
-        # Default value: false
         self.intercept_risk_password_on_api = intercept_risk_password_on_api
-        # The maximum number of logon attempts.
+        # The maximum number of password retries.
         self.max_login_attemps = max_login_attemps
-        # The password validity period.
+        # The validity period of the password.
         self.max_password_age = max_password_age
-        # The minimum number of different characters in the password.
+        # The minimum number of unique characters in the password.
         self.minimum_password_different_character = minimum_password_different_character
-        # The minimum password length.
+        # The minimum required number of characters in a password.
         self.minimum_password_length = minimum_password_length
-        # Indicates whether the password must not contain the username.
+        # Indicates whether to exclude the username from the password.
         self.password_not_contain_user_name = password_not_contain_user_name
-        # The password reuse prevention policy.
+        # The policy for password history check.
         self.password_reuse_prevention = password_reuse_prevention
         # Indicates whether the password must contain lowercase letters.
         self.require_lowercase_characters = require_lowercase_characters
-        # Indicates whether the password must contain numbers.
+        # Indicates whether the password must contain digits.
         self.require_numbers = require_numbers
-        # Indicates whether the password must contain symbols.
+        # Indicates whether the password must contain special characters.
         self.require_symbols = require_symbols
         # Indicates whether the password must contain uppercase letters.
         self.require_uppercase_characters = require_uppercase_characters

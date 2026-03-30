@@ -9,6 +9,7 @@ class ListPasskeysRequest(DaraModel):
         self,
         user_principal_name: str = None,
     ):
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

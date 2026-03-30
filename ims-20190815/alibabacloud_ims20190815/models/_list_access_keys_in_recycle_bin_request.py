@@ -9,6 +9,7 @@ class ListAccessKeysInRecycleBinRequest(DaraModel):
         self,
         user_id: str = None,
     ):
+        # The ID of the Resource Access Management (RAM) user.
         self.user_id = user_id
 
     def validate(self):

@@ -11,7 +11,7 @@ class UpdateLoginProfileResponseBody(DaraModel):
         login_profile: main_models.UpdateLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The console logon information.
+        # The console logon configurations.
         self.login_profile = login_profile
         # The request ID.
         self.request_id = request_id
@@ -55,25 +55,16 @@ class UpdateLoginProfileResponseBodyLoginProfile(DaraModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
-        # Indicates whether to automatically disable console logon for an inactive account. This feature is enabled by default and cannot be disabled.
+        # Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
         self.auto_disable_login_status = auto_disable_login_status
-        # Indicates whether MFA is enforced for the user.
+        # Indicates whether MFA must be enabled.
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user must reset the password at the next logon.
+        # Indicates whether the RAM user is required to reset the password upon the next logon.
         self.password_reset_required = password_reset_required
-        # The status of the initial password. An initial password is the one set when a logon profile is created or console logon is re-enabled.
-        # 
-        # Valid values:
-        # 
-        # - "NotInitial": Not an initial password.
-        # 
-        # - "InitialValid": The initial password is valid.
-        # 
-        # - "InitialExpired": The initial password has expired.
         self.password_status = password_status
-        # Specifies whether password logon to the console is enabled or disabled.
+        # Indicates whether to enable password-based logons to the console.
         self.status = status
-        # The time when the logon profile was updated.
+        # The modification time.
         self.update_date = update_date
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name

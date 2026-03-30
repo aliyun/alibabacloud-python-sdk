@@ -15,15 +15,7 @@ class GetGovernanceReportStatusResponseBody(DaraModel):
         whole_report_status: str = None,
     ):
         self.governance_items_status = governance_items_status
-        # The request ID.
         self.request_id = request_id
-        # The generation status of the report. Valid values:
-        # 
-        # - Started: The report generation has started.
-        # 
-        # - Progressing: The report is being generated.
-        # 
-        # - Completed: The report has been generated.
         self.whole_report_status = whole_report_status
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListPasskeysResponseBody(DaraModel):
         passkeys: List[main_models.ListPasskeysResponseBodyPasskeys] = None,
         request_id: str = None,
     ):
+        # The information about the passkeys.
         self.passkeys = passkeys
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +60,13 @@ class ListPasskeysResponseBodyPasskeys(DaraModel):
         passkey_id: str = None,
         passkey_name: str = None,
     ):
+        # The time when the passkey was created. The value is a timestamp.
         self.create_date = create_date
+        # The time when the passkey was last used. The value is a timestamp.
         self.last_use_date = last_use_date
+        # The ID of the passkey.
         self.passkey_id = passkey_id
+        # The name of the passkey.
         self.passkey_name = passkey_name
 
     def validate(self):

@@ -10,7 +10,12 @@ class GetAccountMFAInfoResponseBody(DaraModel):
         is_mfaenable: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether MFA devices are enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_mfaenable = is_mfaenable
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

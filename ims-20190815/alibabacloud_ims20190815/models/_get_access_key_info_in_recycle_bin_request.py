@@ -9,6 +9,8 @@ class GetAccessKeyInfoInRecycleBinRequest(DaraModel):
         self,
         user_access_key_id: str = None,
     ):
+        # The AccessKey ID of the Resource Access Management (RAM) user.
+        # 
         # This parameter is required.
         self.user_access_key_id = user_access_key_id
 

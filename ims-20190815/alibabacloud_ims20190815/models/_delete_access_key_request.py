@@ -10,8 +10,13 @@ class DeleteAccessKeyRequest(DaraModel):
         user_access_key_id: str = None,
         user_principal_name: str = None,
     ):
+        # The ID of the AccessKey pair that you want to delete.
+        # 
         # This parameter is required.
         self.user_access_key_id = user_access_key_id
+        # The logon name of the RAM user.
+        # 
+        # If this parameter is empty, the AccessKey pair of the current user is deleted.
         self.user_principal_name = user_principal_name
 
     def validate(self):

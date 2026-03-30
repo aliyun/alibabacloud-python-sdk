@@ -12,8 +12,11 @@ class GetVerificationInfoResponseBody(DaraModel):
         security_email_device: main_models.GetVerificationInfoResponseBodySecurityEmailDevice = None,
         security_phone_device: main_models.GetVerificationInfoResponseBodySecurityPhoneDevice = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the email.
         self.security_email_device = security_email_device
+        # The information about the mobile phone.
         self.security_phone_device = security_phone_device
 
     def validate(self):
@@ -60,8 +63,14 @@ class GetVerificationInfoResponseBodySecurityPhoneDevice(DaraModel):
         phone_number: str = None,
         status: str = None,
     ):
+        # The international dialing code.
         self.area_code = area_code
+        # The mobile phone number.
         self.phone_number = phone_number
+        # The status of the mobile phone. Valid values:
+        # 
+        # *   active: The mobile phone is activated.
+        # *   pending: The mobile phone is pending for activation.
         self.status = status
 
     def validate(self):
@@ -102,7 +111,12 @@ class GetVerificationInfoResponseBodySecurityEmailDevice(DaraModel):
         email: str = None,
         status: str = None,
     ):
+        # The email address.
         self.email = email
+        # The status of the email. Valid values:
+        # 
+        # *   active: The email is activated.
+        # *   pending: The email is pending for activation.
         self.status = status
 
     def validate(self):

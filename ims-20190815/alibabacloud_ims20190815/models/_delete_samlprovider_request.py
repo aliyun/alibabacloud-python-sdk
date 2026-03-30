@@ -9,6 +9,8 @@ class DeleteSAMLProviderRequest(DaraModel):
         self,
         samlprovider_name: str = None,
     ):
+        # The name of the IdP that you want to delete.
+        # 
         # This parameter is required.
         self.samlprovider_name = samlprovider_name
 

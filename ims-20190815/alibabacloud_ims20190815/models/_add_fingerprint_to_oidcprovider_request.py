@@ -10,7 +10,13 @@ class AddFingerprintToOIDCProviderRequest(DaraModel):
         fingerprint: str = None,
         oidcprovider_name: str = None,
     ):
+        # The fingerprint of the HTTPS CA certificate.
+        # 
+        # The fingerprint can contain letters and digits.
+        # 
+        # The fingerprint can be up to 128 characters in length.
         self.fingerprint = fingerprint
+        # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
 
     def validate(self):

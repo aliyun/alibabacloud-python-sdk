@@ -11,7 +11,9 @@ class UpdateUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.UpdateUserResponseBodyUser = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the RAM user.
         self.user = user
 
     def validate(self):
@@ -56,15 +58,33 @@ class UpdateUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_principal_name: str = None,
     ):
+        # The description.
         self.comments = comments
+        # The time when the RAM user was created.
         self.create_date = create_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The email address of the RAM user.
+        # 
+        # > This parameter is valid only on the China site (aliyun.com).
         self.email = email
+        # The last time when the RAM user logged on to the Alibaba Cloud Management Console.
         self.last_login_date = last_login_date
+        # The mobile phone number of the RAM user.
+        # 
+        # > This parameter is valid only on the China site (aliyun.com).
         self.mobile_phone = mobile_phone
+        # The source of the RAM user. Valid values:
+        # 
+        # *   Manual: The RAM user is manually created in the RAM console.
+        # *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+        # *   CloudSSO: The RAM user is mapped from a CloudSSO user.
         self.provision_type = provision_type
+        # The time when the information about the RAM user was updated.
         self.update_date = update_date
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

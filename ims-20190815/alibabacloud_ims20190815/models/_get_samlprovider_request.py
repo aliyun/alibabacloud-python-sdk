@@ -9,7 +9,7 @@ class GetSAMLProviderRequest(DaraModel):
         self,
         samlprovider_name: str = None,
     ):
-        # The name of the SAML provider.
+        # The name of the IdP.
         # 
         # This parameter is required.
         self.samlprovider_name = samlprovider_name

@@ -9,6 +9,7 @@ class DeleteOIDCProviderRequest(DaraModel):
         self,
         oidcprovider_name: str = None,
     ):
+        # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
 
     def validate(self):

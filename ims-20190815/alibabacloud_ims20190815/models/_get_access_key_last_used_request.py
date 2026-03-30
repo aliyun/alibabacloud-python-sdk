@@ -10,8 +10,13 @@ class GetAccessKeyLastUsedRequest(DaraModel):
         user_access_key_id: str = None,
         user_principal_name: str = None,
     ):
+        # The ID of the AccessKey pair that you want to query.
+        # 
         # This parameter is required.
         self.user_access_key_id = user_access_key_id
+        # The logon name of the RAM user.
+        # 
+        # If you do not specify this parameter, the AccessKey pair of the current user is queried.
         self.user_principal_name = user_principal_name
 
     def validate(self):

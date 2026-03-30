@@ -11,7 +11,9 @@ class CreateVirtualMFADeviceResponseBody(DaraModel):
         request_id: str = None,
         virtual_mfadevice: main_models.CreateVirtualMFADeviceResponseBodyVirtualMFADevice = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the MFA device.
         self.virtual_mfadevice = virtual_mfadevice
 
     def validate(self):
@@ -49,8 +51,11 @@ class CreateVirtualMFADeviceResponseBodyVirtualMFADevice(DaraModel):
         qrcode_png: str = None,
         serial_number: str = None,
     ):
+        # The key of the MFA device.
         self.base_32string_seed = base_32string_seed
+        # The Base64-encoded QR code of the key.
         self.qrcode_png = qrcode_png
+        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):

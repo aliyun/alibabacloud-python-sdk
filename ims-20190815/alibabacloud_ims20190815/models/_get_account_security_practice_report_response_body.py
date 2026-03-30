@@ -11,7 +11,9 @@ class GetAccountSecurityPracticeReportResponseBody(DaraModel):
         account_security_practice_info: main_models.GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo = None,
         request_id: str = None,
     ):
+        # The information about the security report for the Alibaba Cloud account.
         self.account_security_practice_info = account_security_practice_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,9 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo(Da
         account_security_practice_user_info: main_models.GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo = None,
         score: int = None,
     ):
+        # The information about the security report for the Alibaba Cloud account.
         self.account_security_practice_user_info = account_security_practice_user_info
+        # The security score of the Alibaba Cloud account.
         self.score = score
 
     def validate(self):
@@ -92,14 +96,30 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcc
         sub_user_with_unused_access_key: int = None,
         unused_ak_num: int = None,
     ):
+        # Indicates whether multi-factor authentication (MFA) is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.bind_mfa = bind_mfa
+        # The number of old AccessKey pairs for the Alibaba Cloud account.
         self.old_ak_num = old_ak_num
+        # The number of AccessKey pairs for the Alibaba Cloud account.
         self.root_with_access_key = root_with_access_key
+        # The number of RAM users within the Alibaba Cloud account.
         self.sub_user = sub_user
+        # The number of RAM users that have MFA devices bound.
         self.sub_user_bind_mfa = sub_user_bind_mfa
+        # The complexity level of the password for the RAM user. Valid values:
+        # 
+        # *   low
+        # *   mid
+        # *   high
         self.sub_user_pwd_level = sub_user_pwd_level
+        # The number of RAM users that use the old AccessKey pairs.
         self.sub_user_with_old_access_key = sub_user_with_old_access_key
+        # The number of Resource Access Management (RAM) users that have unused AccessKey pairs.
         self.sub_user_with_unused_access_key = sub_user_with_unused_access_key
+        # The number of AccessKey pairs that are not used for the Alibaba Cloud account.
         self.unused_ak_num = unused_ak_num
 
     def validate(self):

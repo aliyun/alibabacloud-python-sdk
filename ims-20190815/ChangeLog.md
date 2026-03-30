@@ -1,3 +1,7 @@
+2026-03-30 Version: 3.3.6
+- Update API GetAccountSummary: add response parameters Body.SummaryMap.AuthorizedClientPerUserQuota.
+
+
 2026-03-02 Version: 3.3.5
 - Update API GetPasswordPolicy: add response parameters Body.PasswordPolicy.InterceptRiskPasswordOnApi.
 - Update API SetPasswordPolicy: add request parameters InterceptRiskPasswordOnApi.

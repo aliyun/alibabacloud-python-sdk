@@ -10,7 +10,9 @@ class RemoveFingerprintFromOIDCProviderRequest(DaraModel):
         fingerprint: str = None,
         oidcprovider_name: str = None,
     ):
+        # The fingerprint that you want to remove.
         self.fingerprint = fingerprint
+        # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
 
     def validate(self):

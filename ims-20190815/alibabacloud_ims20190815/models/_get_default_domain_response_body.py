@@ -10,7 +10,9 @@ class GetDefaultDomainResponseBody(DaraModel):
         default_domain_name: str = None,
         request_id: str = None,
     ):
+        # The default domain name.
         self.default_domain_name = default_domain_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

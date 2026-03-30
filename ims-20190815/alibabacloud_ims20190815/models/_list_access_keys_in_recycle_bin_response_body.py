@@ -14,6 +14,7 @@ class ListAccessKeysInRecycleBinResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_keys = access_keys
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

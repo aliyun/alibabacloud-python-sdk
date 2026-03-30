@@ -11,7 +11,9 @@ class GetAppSecretResponseBody(DaraModel):
         app_secret: main_models.GetAppSecretResponseBodyAppSecret = None,
         request_id: str = None,
     ):
+        # The details of the application secret.
         self.app_secret = app_secret
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class GetAppSecretResponseBodyAppSecret(DaraModel):
         app_secret_value: str = None,
         create_date: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The ID of the application secret.
         self.app_secret_id = app_secret_id
+        # The content of the application secret.
         self.app_secret_value = app_secret_value
+        # The creation time.
         self.create_date = create_date
 
     def validate(self):

@@ -11,8 +11,21 @@ class GetUserRequest(DaraModel):
         user_id: str = None,
         user_principal_name: str = None,
     ):
+        # The AccessKey ID of the RAM user.
+        # 
+        # > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
         self.user_access_key_id = user_access_key_id
+        # The ID of the RAM user.
+        # 
+        # > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
         self.user_id = user_id
+        # The logon name of the RAM user.
+        # 
+        # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
+        # 
+        # The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
+        # 
+        # > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
         self.user_principal_name = user_principal_name
 
     def validate(self):

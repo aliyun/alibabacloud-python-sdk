@@ -9,7 +9,7 @@ class GetApplicationRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id

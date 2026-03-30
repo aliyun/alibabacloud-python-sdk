@@ -17,7 +17,7 @@ class UpdateApplicationRequest(DaraModel):
         new_required_scopes: str = None,
         new_secret_required: bool = None,
     ):
-        # The application ID.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id
@@ -25,51 +25,50 @@ class UpdateApplicationRequest(DaraModel):
         # 
         # Valid values: 900 to 10800. Unit: seconds.
         self.new_access_token_validity = new_access_token_validity
-        # The new display name.
+        # The display name.
         self.new_display_name = new_display_name
-        # Indicates whether the application can be installed by other Alibaba Cloud accounts. Valid values:
+        # Specifies whether the application can be installed by using other Alibaba Cloud accounts. Valid values:
         # 
-        # - true: The application can be installed.
-        # 
-        # - false: The application cannot be installed.
+        # *   true
+        # *   false
         self.new_is_multi_tenant = new_is_multi_tenant
-        # The permission scopes of the application.
+        # The permission that is granted on the application.
         # 
-        # For more information about the valid values and descriptions of permission scopes, see [OAuth scopes](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to obtain the permission scopes that are supported by different types of applications.
+        # For more information about the application permission scope, see [OAuth scopes](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to query the permissions that are supported by different types of applications.
         # 
-        # If you enter multiple permission scopes, separate them with semicolons (;).
+        # If you enter multiple permissions, separate them with semicolons (;).
         # 
-        # The new permission scopes overwrite the original ones. For example, if the original permission scope is `/acs/ccc` and you set the new permission scope to `/acs/alidns`, the permission scope that takes effect is `/acs/alidns`. If you want to add `/acs/alidns` to the original scope, set the new permission scope to `/acs/ccc;/acs/alidns`.
+        # The new value of this parameter overwrites the original value, and the permission specified by the new value takes effect. For example, if the original value is `/acs/ccc`, and the new value is `/acs/alidns`, `/acs/alidns` takes effect. If you want to retain the original permission and the `/acs/alidns` permission, set the value to `/acs/ccc;/acs/alidns`.
         self.new_predefined_scopes = new_predefined_scopes
-        # The webhook address.
+        # The callback URL.
         # 
-        # If you enter multiple webhook addresses, separate them with semicolons (;).
+        # If you enter multiple callback URLs, separate them with semicolons (;).
         self.new_redirect_uris = new_redirect_uris
         # The validity period of the refresh token.
         # 
         # Valid values: 7200 to 31536000. Unit: seconds.
         self.new_refresh_token_validity = new_refresh_token_validity
-        # The required permission scopes of the application.
+        # The required permission.
         # 
-        # You can set one or more scopes specified in `RequiredScopes` as required. After a scope is set as required, it is selected by default and cannot be deselected when a user grants permissions to the application.
+        # You can specify one or more permissions for the `RequiredScopes` parameter. After you specify this parameter, the required permissions are automatically selected and cannot be revoked when a user grants permissions on the application.
         # 
-        # If you also specify `NewPredefinedScopes`, the list of application scopes is reset by `NewPredefinedScopes` first. Then, this parameter is used to configure whether the scopes are required.
+        # If you also specify the `NewPredefinedScopes` parameter, the `NewPredefinedScopes` parameter specifies the permissions that can be granted on the application, and this parameter specifies the required permissions.
         # 
-        # If you enter multiple permission scopes, separate them with semicolons (;).
+        # If you enter multiple permissions, separate them with semicolons (;).
         # 
-        # The new required scopes overwrite the original ones.
+        # The new value of this parameter overwrites the original value, and the required permission specified by the new value takes effect.
         # 
-        # > If a scope that you specify for `RequiredScopes` is not within the range of `PredefinedScopes`, the required setting for that scope does not take effect.
+        # >  If the permission that you specify for the `RequiredScopes` parameter is not included in value of the `PredefinedScopes` parameter, the permission does not take effect.
         self.new_required_scopes = new_required_scopes
-        # Indicates whether an application key is required. Valid values:
+        # Specifies whether a secret is required. Valid values:
         # 
-        # - true
+        # *   true
+        # *   false
         # 
-        # - false
+        # > 
         # 
-        # > * For applications of the WebApp and ServerApp types, this parameter is forcibly set to true and cannot be modified.
-        # 
-        # - For applications of the NativeApp type, you can set this parameter to true or false. The default value is false. These applications often run in untrusted environments and cannot effectively protect application keys. Do not set this parameter to true unless necessary. For more information, see [Log on to Alibaba Cloud using a native application](https://help.aliyun.com/document_detail/93697.html).
+        # *   For applications of the WebApp and ServerApp types, this parameter is automatically set to true and cannot be changed.
+        # *   For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected. Therefore, we recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Use an application of the NativeApp type to log on to Alibaba Cloud](https://help.aliyun.com/document_detail/93697.html).
         self.new_secret_required = new_secret_required
 
     def validate(self):

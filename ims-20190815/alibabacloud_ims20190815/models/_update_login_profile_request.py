@@ -13,27 +13,24 @@ class UpdateLoginProfileRequest(DaraModel):
         status: str = None,
         user_principal_name: str = None,
     ):
-        # Specifies whether to enforce multi-factor authentication (MFA) for the RAM user. Valid values:
+        # Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
         # 
-        # - true: Enforce MFA. The RAM user must attach an MFA device at the next logon.
-        # 
-        # - false: Do not enforce MFA.
+        # *   true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+        # *   false: does not forcefully enable MFA for the RAM user.
         self.mfabind_required = mfabind_required
-        # The new console logon password for the RAM user.
+        # The new password that is used to log on to the console.
         # 
-        # The password must meet the password strength requirements.
+        # The new password must meet the complexity requirements.
         self.password = password
-        # Specifies whether the RAM user must reset the password at the next logon. Valid values:
+        # Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # *   true
+        # *   false
         self.password_reset_required = password_reset_required
-        # Specifies whether to enable or disable password-based logon to the console. Valid values:
+        # Specifies whether to enable password-based logons to the console. Valid values:
         # 
-        # - Active: Enabled.
-        # 
-        # - Inactive: Disabled.
+        # *   Active: enables password-based logons to the console.
+        # *   Inactive: disables password-based logons to the console.
         self.status = status
         # The logon name of the RAM user.
         # 

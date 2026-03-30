@@ -11,7 +11,9 @@ class GetUserInRecycleBinResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.GetUserInRecycleBinResponseBodyUser = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the RAM user.
         self.user = user
 
     def validate(self):
@@ -52,11 +54,17 @@ class GetUserInRecycleBinResponseBodyUser(DaraModel):
         user_id: str = None,
         user_principal_name: str = None,
     ):
+        # The time when the RAM user was created.
         self.create_date = create_date
+        # The time when the RAM user will be permanently deleted from the recycle bin.
         self.delete_date = delete_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The time when the RAM user was deleted and moved to the recycle bin.
         self.recycle_date = recycle_date
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

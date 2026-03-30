@@ -13,7 +13,9 @@ class ProvisionApplicationResponseBody(DaraModel):
         application_provision_info: main_models.ProvisionApplicationResponseBodyApplicationProvisionInfo = None,
         request_id: str = None,
     ):
+        # The installation information of the application.
         self.application_provision_info = application_provision_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,14 +59,23 @@ class ProvisionApplicationResponseBodyApplicationProvisionInfo(DaraModel):
         tenant_id: str = None,
         update_date: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
         self.app_principal_name = app_principal_name
+        # The time when the application was installed. The value is a timestamp.
         self.create_date = create_date
+        # The information about the permissions that are granted to the application.
         self.delegated_scope = delegated_scope
+        # The display name of the application.
         self.display_name = display_name
+        # The ID of the Alibaba Cloud account for which the application was installed.
         self.tenant_id = tenant_id
+        # The update time. The value is a timestamp.
         self.update_date = update_date
 
     def validate(self):

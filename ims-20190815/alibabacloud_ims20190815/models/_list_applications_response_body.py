@@ -14,7 +14,7 @@ class ListApplicationsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.applications = applications
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

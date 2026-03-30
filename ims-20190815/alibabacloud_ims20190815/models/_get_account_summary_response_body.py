@@ -13,7 +13,7 @@ class GetAccountSummaryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The summary information of the Alibaba Cloud account.
+        # The overview information about the Alibaba Cloud account.
         self.summary_map = summary_map
 
     def validate(self):
@@ -55,6 +55,7 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         attached_system_policies_per_group_quota: int = None,
         attached_system_policies_per_role_quota: int = None,
         attached_system_policies_per_user_quota: int = None,
+        authorized_client_per_user_quota: int = None,
         conditions_per_akpolicy_quota: int = None,
         groups: int = None,
         groups_per_user_quota: int = None,
@@ -72,41 +73,41 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         versions_per_policy_quota: int = None,
         virtual_mfadevices_quota: int = None,
     ):
-        # The maximum number of AccessKey pairs that a RAM user can have.
+        # The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
         self.access_keys_per_user_quota = access_keys_per_user_quota
-        # The maximum number of AccessKeys for an Alibaba Cloud account.
         self.account_access_keys_per_account_quota = account_access_keys_per_account_quota
-        # The maximum number of custom policies that can be attached to a user group.
+        # The maximum number of custom policies that can be added to a RAM user group.
         self.attached_policies_per_group_quota = attached_policies_per_group_quota
-        # The maximum number of custom policies that can be attached to a RAM role.
+        # The maximum number of custom policies that can be added to a RAM role.
         self.attached_policies_per_role_quota = attached_policies_per_role_quota
-        # The maximum number of custom policies that can be attached to a RAM user.
+        # The maximum number of custom policies that can be added to a RAM user.
         self.attached_policies_per_user_quota = attached_policies_per_user_quota
-        # The maximum number of system policies that can be attached to a user group.
+        # The maximum number of system policies that can be added to a RAM user group.
         self.attached_system_policies_per_group_quota = attached_system_policies_per_group_quota
-        # The maximum number of system policies that can be attached to a RAM role.
+        # The maximum number of system policies that can be added to a RAM role.
         self.attached_system_policies_per_role_quota = attached_system_policies_per_role_quota
-        # The maximum number of system policies that can be attached to a RAM user.
+        # The maximum number of system policies that can be added to a RAM user.
         self.attached_system_policies_per_user_quota = attached_system_policies_per_user_quota
-        # The maximum number of conditions that can be set in an account-level or AccessKey-level network access control policy.
+        self.authorized_client_per_user_quota = authorized_client_per_user_quota
+        # The maximum number of network access control policies that can be configured for an Alibaba Cloud account or AccessKey pair.
         self.conditions_per_akpolicy_quota = conditions_per_akpolicy_quota
-        # The number of user groups.
+        # The number of RAM user groups.
         self.groups = groups
-        # The maximum number of user groups that a RAM user can join.
+        # The maximum number of RAM user groups to which a RAM user can be added.
         self.groups_per_user_quota = groups_per_user_quota
-        # The maximum number of user groups that can be created.
+        # The maximum number of RAM user groups that can be created.
         self.groups_quota = groups_quota
-        # The maximum number of IP addresses that can be set in an account-level or AccessKey-level network access control policy.
+        # The maximum number of IP addresses that can be specified in an account-level AccessKey pair-based or AccessKey pair-level policy for network access control.
         self.ipitems_per_akpolicy_quota = ipitems_per_akpolicy_quota
         # The number of virtual multi-factor authentication (MFA) devices.
         self.mfadevices = mfadevices
-        # The number of virtual MFA devices that are in use.
+        # The number of virtual MFA devices in use.
         self.mfadevices_in_use = mfadevices_in_use
         # The number of custom policies.
         self.policies = policies
         # The maximum number of custom policies that can be created.
         self.policies_quota = policies_quota
-        # The maximum length of a policy document.
+        # The maximum length of the policy content.
         self.policy_size_quota = policy_size_quota
         # The number of RAM roles.
         self.roles = roles
@@ -152,6 +153,9 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
 
         if self.attached_system_policies_per_user_quota is not None:
             result['AttachedSystemPoliciesPerUserQuota'] = self.attached_system_policies_per_user_quota
+
+        if self.authorized_client_per_user_quota is not None:
+            result['AuthorizedClientPerUserQuota'] = self.authorized_client_per_user_quota
 
         if self.conditions_per_akpolicy_quota is not None:
             result['ConditionsPerAKPolicyQuota'] = self.conditions_per_akpolicy_quota
@@ -228,6 +232,9 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
 
         if m.get('AttachedSystemPoliciesPerUserQuota') is not None:
             self.attached_system_policies_per_user_quota = m.get('AttachedSystemPoliciesPerUserQuota')
+
+        if m.get('AuthorizedClientPerUserQuota') is not None:
+            self.authorized_client_per_user_quota = m.get('AuthorizedClientPerUserQuota')
 
         if m.get('ConditionsPerAKPolicyQuota') is not None:
             self.conditions_per_akpolicy_quota = m.get('ConditionsPerAKPolicyQuota')

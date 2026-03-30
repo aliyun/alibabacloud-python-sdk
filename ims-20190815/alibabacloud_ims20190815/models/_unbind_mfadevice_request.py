@@ -9,6 +9,8 @@ class UnbindMFADeviceRequest(DaraModel):
         self,
         user_principal_name: str = None,
     ):
+        # The logon name of the RAM user.
+        # 
         # This parameter is required.
         self.user_principal_name = user_principal_name
 

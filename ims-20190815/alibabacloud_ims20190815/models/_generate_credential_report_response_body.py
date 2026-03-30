@@ -10,7 +10,13 @@ class GenerateCredentialReportResponseBody(DaraModel):
         request_id: str = None,
         state: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The generation status of the user credential report. Valid values:
+        # 
+        # *   STARTED: The system starts to generate the user credential report.
+        # *   INPROGRESS: The user credential report is being generated.
+        # *   COMPLETED: The user credential report is generated.
         self.state = state
 
     def validate(self):

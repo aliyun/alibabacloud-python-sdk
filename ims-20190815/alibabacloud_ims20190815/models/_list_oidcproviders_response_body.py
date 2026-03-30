@@ -15,9 +15,15 @@ class ListOIDCProvidersResponseBody(DaraModel):
         oidcproviders: main_models.ListOIDCProvidersResponseBodyOIDCProviders = None,
         request_id: str = None,
     ):
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
         self.marker = marker
         self.oidcproviders = oidcproviders
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

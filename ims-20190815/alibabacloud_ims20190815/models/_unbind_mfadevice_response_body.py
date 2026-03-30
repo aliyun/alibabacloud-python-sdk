@@ -11,7 +11,9 @@ class UnbindMFADeviceResponseBody(DaraModel):
         mfadevice: main_models.UnbindMFADeviceResponseBodyMFADevice = None,
         request_id: str = None,
     ):
+        # The information about the MFA device.
         self.mfadevice = mfadevice
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class UnbindMFADeviceResponseBodyMFADevice(DaraModel):
         self,
         serial_number: str = None,
     ):
+        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):

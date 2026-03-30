@@ -13,7 +13,7 @@ class UpdateApplicationResponseBody(DaraModel):
         application: main_models.UpdateApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
-        # The application information.
+        # The information about the application.
         self.application = application
         # The request ID.
         self.request_id = request_id
@@ -68,32 +68,27 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
         self.access_token_validity = access_token_validity
         # The ID of the Alibaba Cloud account to which the application belongs.
         self.account_id = account_id
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
         # The application type.
         self.app_type = app_type
-        # The time when the application was created.
+        # The creation time.
         self.create_date = create_date
-        # The information about the permission scopes of the application.
+        # The information about the permissions that are granted on the application.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
-        # Indicates whether the application can be installed by other Alibaba Cloud accounts.
+        # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
-        # The OAuth protocol version of the application. Valid values:
-        # 
-        # - `2.0`: OAuth 2.0.
-        # 
-        # - `2.1`: OAuth 2.1.
         self.protocol_version = protocol_version
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
-        # Indicates whether an application key is required.
+        # Indicates whether a secret is required.
         self.secret_required = secret_required
-        # The time when the application was updated.
+        # The update time.
         self.update_date = update_date
 
     def validate(self):

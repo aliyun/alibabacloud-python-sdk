@@ -11,8 +11,11 @@ class UpdatePasskeyRequest(DaraModel):
         passkey_name: str = None,
         user_principal_name: str = None,
     ):
+        # The ID of the passkey.
         self.passkey_id = passkey_id
+        # The name of the passkey.
         self.passkey_name = passkey_name
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

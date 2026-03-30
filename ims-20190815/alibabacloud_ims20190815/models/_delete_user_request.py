@@ -10,7 +10,13 @@ class DeleteUserRequest(DaraModel):
         user_id: str = None,
         user_principal_name: str = None,
     ):
+        # The ID of the RAM user.
+        # 
+        # >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
         self.user_id = user_id
+        # The logon name of the RAM user.
+        # 
+        # >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
         self.user_principal_name = user_principal_name
 
     def validate(self):

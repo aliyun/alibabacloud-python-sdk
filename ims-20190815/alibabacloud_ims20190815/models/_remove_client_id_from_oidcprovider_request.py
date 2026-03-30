@@ -10,7 +10,13 @@ class RemoveClientIdFromOIDCProviderRequest(DaraModel):
         client_id: str = None,
         oidcprovider_name: str = None,
     ):
+        # The client ID that you want to remove.
+        # 
+        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
+        # 
+        # The client ID can be up to 128 characters in length.
         self.client_id = client_id
+        # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
 
     def validate(self):

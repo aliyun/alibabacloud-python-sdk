@@ -10,7 +10,9 @@ class RestoreAccessKeyFromRecycleBinRequest(DaraModel):
         user_access_key_id: str = None,
         user_id: str = None,
     ):
+        # The AccessKey ID of the RAM user.
         self.user_access_key_id = user_access_key_id
+        # The ID of the Resource Access Management (RAM) user.
         self.user_id = user_id
 
     def validate(self):

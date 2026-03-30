@@ -17,11 +17,29 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
+        # The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
+        # The number of entries per page. If a response is truncated because it reaches the value of PageSize, the value of IsTruncated will be true. Valid values: 1 to 100. Default value: 100.
         self.page_size = page_size
+        # The ID of resource N.
+        # 
+        # Valid values of N: 1 to 50. If ResourceType is set to user, the resource ID is the ID of the RAM user.
+        # 
+        # > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
         self.resource_id = resource_id
+        # The name of resource N.
+        # 
+        # Valid values of N: 1 to 50. If ResourceType is set to user, the resource name is the name of the RAM user.
+        # 
+        # > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
         self.resource_principal_name = resource_principal_name
+        # The type of the resource. Valid value:
+        # 
+        # *   user: a RAM user
         self.resource_type = resource_type
+        # The tag value.
+        # 
+        # Valid values of N: 1 to 20. N must be consecutive.
         self.tag = tag
 
     def validate(self):
@@ -88,7 +106,13 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N.
+        # 
+        # Valid values of N: 1 to 20. N must be consecutive.
         self.key = key
+        # The value of tag N.
+        # 
+        # Valid values of N: 1 to 20. N must be consecutive.
         self.value = value
 
     def validate(self):

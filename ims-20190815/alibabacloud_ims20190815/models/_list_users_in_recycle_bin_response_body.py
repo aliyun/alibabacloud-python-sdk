@@ -15,8 +15,14 @@ class ListUsersInRecycleBinResponseBody(DaraModel):
         request_id: str = None,
         users: main_models.ListUsersInRecycleBinResponseBodyUsers = None,
     ):
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
         self.marker = marker
+        # The request ID.
         self.request_id = request_id
         self.users = users
 

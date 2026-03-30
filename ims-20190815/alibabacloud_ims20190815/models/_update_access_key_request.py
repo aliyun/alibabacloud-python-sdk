@@ -11,10 +11,20 @@ class UpdateAccessKeyRequest(DaraModel):
         user_access_key_id: str = None,
         user_principal_name: str = None,
     ):
+        # The status of the AccessKey pair. Valid values:
+        # 
+        # *   Active
+        # *   Inactive
+        # 
         # This parameter is required.
         self.status = status
+        # The AccessKey ID of the AccessKey pair for which you want to modify the status.
+        # 
         # This parameter is required.
         self.user_access_key_id = user_access_key_id
+        # The logon name of the RAM user.
+        # 
+        # If this parameter is empty, the status of the AccessKey pair for the current user is modified.
         self.user_principal_name = user_principal_name
 
     def validate(self):

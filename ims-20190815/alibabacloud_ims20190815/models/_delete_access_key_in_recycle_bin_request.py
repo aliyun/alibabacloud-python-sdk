@@ -10,7 +10,12 @@ class DeleteAccessKeyInRecycleBinRequest(DaraModel):
         user_access_key_id: str = None,
         user_id: str = None,
     ):
+        # The AccessKey ID of the RAM user.
         self.user_access_key_id = user_access_key_id
+        # The ID of the RAM user.
+        # 
+        # > - If you use an Alibaba Cloud account to call the operation, you must specify the parameter.
+        # > - If you use a RAM user to call the operation, you can leave the parameter empty. In this case, the ID of the RAM user is used by default.
         self.user_id = user_id
 
     def validate(self):

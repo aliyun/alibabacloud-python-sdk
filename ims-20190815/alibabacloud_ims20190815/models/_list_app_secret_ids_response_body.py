@@ -14,6 +14,7 @@ class ListAppSecretIdsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.app_secrets = app_secrets
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -11,9 +11,8 @@ class ListApplicationProvisionInfosRequest(DaraModel):
     ):
         # The source of the applications. Valid values:
         # 
-        # - inner: The applications are from the current account.
-        # 
-        # - external: The applications are from other accounts.
+        # *   inner: The applications are from the current account.
+        # *   external: The applications are from other accounts.
         self.source_type = source_type
 
     def validate(self):

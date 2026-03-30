@@ -15,10 +15,32 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resource. Valid values:
+        # 
+        # *   true: remove all tags from the resources.
+        # *   false (default): does not remove all tags from the resources.
+        # 
+        # > This parameter takes effect only when TagKey.N is not set in the request.
         self.all = all
+        # The IDs of resources.
+        # 
+        # Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
+        # 
+        # > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
         self.resource_id = resource_id
+        # The names of resources.
+        # 
+        # Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
+        # 
+        # > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
         self.resource_principal_name = resource_principal_name
+        # The type of the resource. Valid value:
+        # 
+        # *   user: a RAM user
         self.resource_type = resource_type
+        # The tag keys of resources.
+        # 
+        # Valid values of N: 1 to 20. N must be consecutive.
         self.tag_key = tag_key
 
     def validate(self):

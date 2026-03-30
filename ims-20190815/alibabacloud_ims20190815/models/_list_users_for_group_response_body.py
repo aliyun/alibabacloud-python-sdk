@@ -15,8 +15,16 @@ class ListUsersForGroupResponseBody(DaraModel):
         request_id: str = None,
         users: main_models.ListUsersForGroupResponseBodyUsers = None,
     ):
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # >  This parameter is returned only when `IsTruncated` is `true`.
         self.marker = marker
+        # The request ID.
         self.request_id = request_id
         self.users = users
 

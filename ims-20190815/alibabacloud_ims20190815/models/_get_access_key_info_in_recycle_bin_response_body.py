@@ -11,7 +11,9 @@ class GetAccessKeyInfoInRecycleBinResponseBody(DaraModel):
         access_key: main_models.GetAccessKeyInfoInRecycleBinResponseBodyAccessKey = None,
         request_id: str = None,
     ):
+        # The information about the AccessKey pair.
         self.access_key = access_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,12 +55,22 @@ class GetAccessKeyInfoInRecycleBinResponseBodyAccessKey(DaraModel):
         user_principal_name: str = None,
         user_recycled: bool = None,
     ):
+        # The AccessKey ID.
         self.access_key_id = access_key_id
+        # The time when the AccessKey pair was created.
         self.create_date = create_date
+        # The time when the AccessKey pair will be permanently deleted from the recycle bin.
         self.delete_date = delete_date
+        # The time when the AccessKey pair was deleted and moved to the recycle bin.
         self.recycle_date = recycle_date
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
+        # Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
+        # 
+        # *   true
+        # *   false
         self.user_recycled = user_recycled
 
     def validate(self):

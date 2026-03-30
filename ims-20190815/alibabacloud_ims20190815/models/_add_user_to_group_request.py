@@ -10,7 +10,10 @@ class AddUserToGroupRequest(DaraModel):
         group_name: str = None,
         user_principal_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The logon name of the RAM user.
+        # 
         # This parameter is required.
         self.user_principal_name = user_principal_name
 

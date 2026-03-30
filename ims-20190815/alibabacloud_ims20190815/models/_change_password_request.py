@@ -10,8 +10,14 @@ class ChangePasswordRequest(DaraModel):
         new_password: str = None,
         old_password: str = None,
     ):
+        # The new password that is used to log on to the console.
+        # 
+        # The password must meet the complexity requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/186691.html).
+        # 
         # This parameter is required.
         self.new_password = new_password
+        # The old password that is used to log on to the console.
+        # 
         # This parameter is required.
         self.old_password = old_password
 

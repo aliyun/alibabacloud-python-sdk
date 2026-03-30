@@ -15,9 +15,25 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
+        # The ID of resource N.
+        # 
+        # Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
+        # 
+        # >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
         self.resource_id = resource_id
+        # The name of resource N.
+        # 
+        # Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
+        # 
+        # >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
         self.resource_principal_name = resource_principal_name
+        # The type of the resource. Valid value:
+        # 
+        # *   user: a Resource Access Management (RAM) user.
         self.resource_type = resource_type
+        # The key of tag N.
+        # 
+        # Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
         self.tag = tag
 
     def validate(self):
@@ -72,7 +88,13 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N.
+        # 
+        # Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N.
+        # 
+        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

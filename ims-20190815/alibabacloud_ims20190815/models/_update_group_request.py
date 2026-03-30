@@ -12,9 +12,19 @@ class UpdateGroupRequest(DaraModel):
         new_display_name: str = None,
         new_group_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The new description.
+        # 
+        # The description can be up to 128 characters in length.
         self.new_comments = new_comments
+        # The new display name of the RAM user group.
+        # 
+        # The name can be up to 24 characters in length.
         self.new_display_name = new_display_name
+        # The new name of the RAM user group.
+        # 
+        # The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.new_group_name = new_group_name
 
     def validate(self):

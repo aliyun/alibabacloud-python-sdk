@@ -9,6 +9,10 @@ class GetUserMFAInfoRequest(DaraModel):
         self,
         user_principal_name: str = None,
     ):
+        # The logon name of the RAM user. This parameter is differently set in the following scenarios:
+        # 
+        # *   If you use a RAM user to call this operation, this parameter can be left empty. If you do not specify this parameter, information about the MFA device that is bound to the RAM user is queried.
+        # *   If you use an Alibaba Cloud account to call this operation, you must set this parameter to the logon name of the RAM user that you want to query.
         self.user_principal_name = user_principal_name
 
     def validate(self):
