@@ -2,6 +2,10 @@
 - Update API DescribeCoupon: add request parameters CouponTemplateIdList.
 
 
+2026-03-30 Version: 1.6.4
+- Update API DescribeCoupon: add request parameters CouponTemplateIdList.
+
+
 2026-03-25 Version: 1.6.3
 - Update API DescribeCoupon: add request parameters MaxResults.
 - Update API DescribeCoupon: add request parameters NextToken.
