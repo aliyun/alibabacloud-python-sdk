@@ -1388,6 +1388,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.DescribeCouponShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.coupon_template_id_list):
+            request.coupon_template_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.coupon_template_id_list, 'CouponTemplateIdList', 'json')
         if not DaraCore.is_null(tmp_req.ec_id_account_ids):
             request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
         query = {}
@@ -1395,6 +1397,8 @@ class Client(OpenApiClient):
             query['CouponId'] = request.coupon_id
         if not DaraCore.is_null(request.coupon_no):
             query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.coupon_template_id_list_shrink):
+            query['CouponTemplateIdList'] = request.coupon_template_id_list_shrink
         if not DaraCore.is_null(request.coupon_type):
             query['CouponType'] = request.coupon_type
         if not DaraCore.is_null(request.current_page):
@@ -1446,6 +1450,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.DescribeCouponShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.coupon_template_id_list):
+            request.coupon_template_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.coupon_template_id_list, 'CouponTemplateIdList', 'json')
         if not DaraCore.is_null(tmp_req.ec_id_account_ids):
             request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
         query = {}
@@ -1453,6 +1459,8 @@ class Client(OpenApiClient):
             query['CouponId'] = request.coupon_id
         if not DaraCore.is_null(request.coupon_no):
             query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.coupon_template_id_list_shrink):
+            query['CouponTemplateIdList'] = request.coupon_template_id_list_shrink
         if not DaraCore.is_null(request.coupon_type):
             query['CouponType'] = request.coupon_type
         if not DaraCore.is_null(request.current_page):

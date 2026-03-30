@@ -9,6 +9,7 @@ class DescribeCouponShrinkRequest(DaraModel):
         self,
         coupon_id: int = None,
         coupon_no: str = None,
+        coupon_template_id_list_shrink: str = None,
         coupon_type: str = None,
         current_page: int = None,
         ec_id_account_ids_shrink: str = None,
@@ -24,6 +25,7 @@ class DescribeCouponShrinkRequest(DaraModel):
     ):
         self.coupon_id = coupon_id
         self.coupon_no = coupon_no
+        self.coupon_template_id_list_shrink = coupon_template_id_list_shrink
         self.coupon_type = coupon_type
         # This parameter is required.
         self.current_page = current_page
@@ -52,6 +54,9 @@ class DescribeCouponShrinkRequest(DaraModel):
 
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
+
+        if self.coupon_template_id_list_shrink is not None:
+            result['CouponTemplateIdList'] = self.coupon_template_id_list_shrink
 
         if self.coupon_type is not None:
             result['CouponType'] = self.coupon_type
@@ -98,6 +103,9 @@ class DescribeCouponShrinkRequest(DaraModel):
 
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
+
+        if m.get('CouponTemplateIdList') is not None:
+            self.coupon_template_id_list_shrink = m.get('CouponTemplateIdList')
 
         if m.get('CouponType') is not None:
             self.coupon_type = m.get('CouponType')
