@@ -1,3 +1,11 @@
+2026-03-30 Version: 4.23.1
+- Update API CreateEcdReportTask: add request parameters BusinessChannel.
+- Update API DescribeDesktopInfo: add request parameters BusinessChannel.
+- Update API DescribeDesktopTypes: add request parameters BusinessChannel.
+- Update API DescribeDesktops: add request parameters BusinessChannel.
+- Update API DescribeEcdReportTasks: add request parameters BusinessChannel.
+
+
 2026-03-02 Version: 4.23.0
 - Support API CreateOfficeSiteAccelerator.
 - Support API DeleteOfficeSiteAccelerator.

@@ -9,10 +9,12 @@ from darabonba.model import DaraModel
 class DescribeDesktopInfoRequest(DaraModel):
     def __init__(
         self,
+        business_channel: str = None,
         desktop_id: List[str] = None,
         need_extra_info: bool = None,
         region_id: str = None,
     ):
+        self.business_channel = business_channel
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
         self.need_extra_info = need_extra_info
@@ -29,6 +31,9 @@ class DescribeDesktopInfoRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
+
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
 
@@ -42,6 +47,9 @@ class DescribeDesktopInfoRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
+
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
 

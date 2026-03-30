@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeDesktopsRequest(DaraModel):
     def __init__(
         self,
+        business_channel: str = None,
         charge_type: str = None,
         desktop_group_id: str = None,
         desktop_id: List[str] = None,
@@ -48,6 +49,7 @@ class DescribeDesktopsRequest(DaraModel):
         tag: List[main_models.DescribeDesktopsRequestTag] = None,
         user_name: str = None,
     ):
+        self.business_channel = business_channel
         # The billing method of the cloud computer.
         # 
         # Valid values:
@@ -183,6 +185,9 @@ class DescribeDesktopsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
+
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
@@ -300,6 +305,9 @@ class DescribeDesktopsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
+
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 

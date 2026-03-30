@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class CreateEcdReportTaskRequest(DaraModel):
     def __init__(
         self,
+        business_channel: str = None,
         filter_list: List[main_models.CreateEcdReportTaskRequestFilterList] = None,
         lang_type: str = None,
         report_file_name: str = None,
         sub_type: str = None,
         task_type: str = None,
     ):
+        self.business_channel = business_channel
         # The filter conditions for filtering query results. The logical relationship between each filter condition is "and" (&). Each filter condition contains FilterKey and FilterValues, which indicate the key and value for the filter condition.
         self.filter_list = filter_list
         # The language of the report. An enumerated type.
@@ -55,6 +57,9 @@ class CreateEcdReportTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
+
         result['FilterList'] = []
         if self.filter_list is not None:
             for k1 in self.filter_list:
@@ -76,6 +81,9 @@ class CreateEcdReportTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
+
         self.filter_list = []
         if m.get('FilterList') is not None:
             for k1 in m.get('FilterList'):

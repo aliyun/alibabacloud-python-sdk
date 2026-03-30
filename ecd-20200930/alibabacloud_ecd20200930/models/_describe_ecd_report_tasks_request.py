@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class DescribeEcdReportTasksRequest(DaraModel):
     def __init__(
         self,
+        business_channel: str = None,
         page_num: int = None,
         page_size: int = None,
         status: List[str] = None,
@@ -16,6 +17,7 @@ class DescribeEcdReportTasksRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        self.business_channel = business_channel
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_num = page_num
         # The number of entries returned per page. Maximum value: 200.
@@ -53,6 +55,9 @@ class DescribeEcdReportTasksRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
+
         if self.page_num is not None:
             result['PageNum'] = self.page_num
 
@@ -75,6 +80,9 @@ class DescribeEcdReportTasksRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
+
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
 

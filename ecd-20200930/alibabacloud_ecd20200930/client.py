@@ -5210,6 +5210,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateEcdReportTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.filter_list):
             query['FilterList'] = request.filter_list
         if not DaraCore.is_null(request.lang_type):
@@ -5246,6 +5248,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateEcdReportTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.filter_list):
             query['FilterList'] = request.filter_list
         if not DaraCore.is_null(request.lang_type):
@@ -10922,6 +10926,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDesktopInfoResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.need_extra_info):
@@ -10954,6 +10960,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDesktopInfoResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.need_extra_info):
@@ -11504,6 +11512,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.applied_scope):
             query['AppliedScope'] = request.applied_scope
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.cpu_count):
             query['CpuCount'] = request.cpu_count
         if not DaraCore.is_null(request.desktop_group_id_for_modify):
@@ -11570,6 +11580,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.applied_scope):
             query['AppliedScope'] = request.applied_scope
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.cpu_count):
             query['CpuCount'] = request.cpu_count
         if not DaraCore.is_null(request.desktop_group_id_for_modify):
@@ -11648,6 +11660,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.desktop_group_id):
@@ -11748,6 +11762,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.desktop_group_id):
@@ -12246,6 +12262,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeEcdReportTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -12284,6 +12302,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeEcdReportTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):

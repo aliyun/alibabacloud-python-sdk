@@ -10,6 +10,7 @@ class DescribeDesktopTypesRequest(DaraModel):
     def __init__(
         self,
         applied_scope: str = None,
+        business_channel: str = None,
         cpu_count: int = None,
         desktop_group_id_for_modify: str = None,
         desktop_id_for_modify: str = None,
@@ -32,6 +33,7 @@ class DescribeDesktopTypesRequest(DaraModel):
     ):
         # Applicable Scope of specifications. Default value: `Public`
         self.applied_scope = applied_scope
+        self.business_channel = business_channel
         # The number of vCPUs.
         self.cpu_count = cpu_count
         # The ID of the cloud computer share you want to modify. If this parameter is provided, the response will include compatibility information for the specified specification.
@@ -145,6 +147,9 @@ class DescribeDesktopTypesRequest(DaraModel):
         if self.applied_scope is not None:
             result['AppliedScope'] = self.applied_scope
 
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
+
         if self.cpu_count is not None:
             result['CpuCount'] = self.cpu_count
 
@@ -208,6 +213,9 @@ class DescribeDesktopTypesRequest(DaraModel):
         m = m or dict()
         if m.get('AppliedScope') is not None:
             self.applied_scope = m.get('AppliedScope')
+
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
 
         if m.get('CpuCount') is not None:
             self.cpu_count = m.get('CpuCount')
