@@ -1,3 +1,9 @@
+2026-03-30 Version: 1.6.0
+- Support API ObtainJwtAuthenticationToken.
+- Update API ObtainCloudAccountRoleAccessCredential: add request parameters durationSeconds.
+- Update API ObtainCloudAccountRoleAccessCredential: add response parameters Body.cloudAccountRoleAccessCredential.awsStsToken.
+
+
 2026-03-18 Version: 1.5.0
 - Support API FetchOAuthAuthenticationToken.
 - Support API GenerateJwtAuthenticationToken.

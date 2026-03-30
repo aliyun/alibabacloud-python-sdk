@@ -79,13 +79,17 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         self,
         access_credential_expires_at: int = None,
         alibaba_cloud_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken = None,
+        aws_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken = None,
     ):
         self.access_credential_expires_at = access_credential_expires_at
         self.alibaba_cloud_sts_token = alibaba_cloud_sts_token
+        self.aws_sts_token = aws_sts_token
 
     def validate(self):
         if self.alibaba_cloud_sts_token:
             self.alibaba_cloud_sts_token.validate()
+        if self.aws_sts_token:
+            self.aws_sts_token.validate()
 
     def to_map(self):
         result = dict()
@@ -98,6 +102,9 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         if self.alibaba_cloud_sts_token is not None:
             result['alibabaCloudStsToken'] = self.alibaba_cloud_sts_token.to_map()
 
+        if self.aws_sts_token is not None:
+            result['awsStsToken'] = self.aws_sts_token.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -108,6 +115,61 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         if m.get('alibabaCloudStsToken') is not None:
             temp_model = main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken()
             self.alibaba_cloud_sts_token = temp_model.from_map(m.get('alibabaCloudStsToken'))
+
+        if m.get('awsStsToken') is not None:
+            temp_model = main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken()
+            self.aws_sts_token = temp_model.from_map(m.get('awsStsToken'))
+
+        return self
+
+class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken(DaraModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        expiration: str = None,
+        secret_access_key: str = None,
+        session_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.expiration = expiration
+        self.secret_access_key = secret_access_key
+        self.session_token = session_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_key_id is not None:
+            result['accessKeyId'] = self.access_key_id
+
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+
+        if self.secret_access_key is not None:
+            result['secretAccessKey'] = self.secret_access_key
+
+        if self.session_token is not None:
+            result['sessionToken'] = self.session_token
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessKeyId') is not None:
+            self.access_key_id = m.get('accessKeyId')
+
+        if m.get('expiration') is not None:
+            self.expiration = m.get('expiration')
+
+        if m.get('secretAccessKey') is not None:
+            self.secret_access_key = m.get('secretAccessKey')
+
+        if m.get('sessionToken') is not None:
+            self.session_token = m.get('sessionToken')
 
         return self
 
