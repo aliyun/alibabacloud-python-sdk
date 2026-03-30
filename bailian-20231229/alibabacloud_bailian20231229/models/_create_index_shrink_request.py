@@ -17,7 +17,9 @@ class CreateIndexShrinkRequest(DaraModel):
         enable_rewrite: bool = None,
         name: str = None,
         overlap_size: int = None,
+        rerank_instruct: str = None,
         rerank_min_score: float = None,
+        rerank_mode: str = None,
         rerank_model_name: str = None,
         separator: str = None,
         sink_instance_id: str = None,
@@ -79,10 +81,12 @@ class CreateIndexShrinkRequest(DaraModel):
         # 
         # > `OverlapSize` must be less than `ChunkSize`. Otherwise, chunking errors may occur.
         self.overlap_size = overlap_size
+        self.rerank_instruct = rerank_instruct
         # The similarity threshold. Only chunks with a similarity score higher than this value can be recalled. This parameter is used to filter chunks returned by the re-rank model. Valid values: 0.01 to 1.00.
         # 
         # Default value: 0.01.
         self.rerank_min_score = rerank_min_score
+        self.rerank_mode = rerank_mode
         # The re-ranking model used in the knowledge base. The re-rank model is a scoring system outside the knowledge base. It calculates the similarity score of the query and text chunks in the knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. Valid values:
         # 
         # *   gte-rerank-hybrid
@@ -192,8 +196,14 @@ class CreateIndexShrinkRequest(DaraModel):
         if self.overlap_size is not None:
             result['OverlapSize'] = self.overlap_size
 
+        if self.rerank_instruct is not None:
+            result['RerankInstruct'] = self.rerank_instruct
+
         if self.rerank_min_score is not None:
             result['RerankMinScore'] = self.rerank_min_score
+
+        if self.rerank_mode is not None:
+            result['RerankMode'] = self.rerank_mode
 
         if self.rerank_model_name is not None:
             result['RerankModelName'] = self.rerank_model_name
@@ -292,8 +302,14 @@ class CreateIndexShrinkRequest(DaraModel):
         if m.get('OverlapSize') is not None:
             self.overlap_size = m.get('OverlapSize')
 
+        if m.get('RerankInstruct') is not None:
+            self.rerank_instruct = m.get('RerankInstruct')
+
         if m.get('RerankMinScore') is not None:
             self.rerank_min_score = m.get('RerankMinScore')
+
+        if m.get('RerankMode') is not None:
+            self.rerank_mode = m.get('RerankMode')
 
         if m.get('RerankModelName') is not None:
             self.rerank_model_name = m.get('RerankModelName')

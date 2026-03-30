@@ -786,8 +786,12 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.overlap_size):
             query['OverlapSize'] = request.overlap_size
+        if not DaraCore.is_null(request.rerank_instruct):
+            query['RerankInstruct'] = request.rerank_instruct
         if not DaraCore.is_null(request.rerank_min_score):
             query['RerankMinScore'] = request.rerank_min_score
+        if not DaraCore.is_null(request.rerank_mode):
+            query['RerankMode'] = request.rerank_mode
         if not DaraCore.is_null(request.rerank_model_name):
             query['RerankModelName'] = request.rerank_model_name
         if not DaraCore.is_null(request.separator):
@@ -891,8 +895,12 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.overlap_size):
             query['OverlapSize'] = request.overlap_size
+        if not DaraCore.is_null(request.rerank_instruct):
+            query['RerankInstruct'] = request.rerank_instruct
         if not DaraCore.is_null(request.rerank_min_score):
             query['RerankMinScore'] = request.rerank_min_score
+        if not DaraCore.is_null(request.rerank_mode):
+            query['RerankMode'] = request.rerank_mode
         if not DaraCore.is_null(request.rerank_model_name):
             query['RerankModelName'] = request.rerank_model_name
         if not DaraCore.is_null(request.separator):

@@ -1,3 +1,10 @@
+2026-03-30 Version: 2.8.4
+- Update API CreateIndex: add request parameters RerankInstruct.
+- Update API CreateIndex: add request parameters RerankMode.
+- Update API Retrieve: add request parameters Rerank.$.RerankInstruct.
+- Update API Retrieve: add request parameters Rerank.$.RerankMode.
+
+
 2026-03-27 Version: 2.8.3
 - Update API CreateIndex: add request parameters knowledgeType.
 

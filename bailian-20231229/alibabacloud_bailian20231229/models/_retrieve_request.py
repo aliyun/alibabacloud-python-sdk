@@ -235,12 +235,16 @@ class RetrieveRequestRerank(DaraModel):
     def __init__(
         self,
         model_name: str = None,
+        rerank_instruct: str = None,
+        rerank_mode: str = None,
     ):
         # The name of the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   gte-rerank-hybrid: Recommended official model.
         # *   gte-rerank
         self.model_name = model_name
+        self.rerank_instruct = rerank_instruct
+        self.rerank_mode = rerank_mode
 
     def validate(self):
         pass
@@ -253,12 +257,24 @@ class RetrieveRequestRerank(DaraModel):
         if self.model_name is not None:
             result['ModelName'] = self.model_name
 
+        if self.rerank_instruct is not None:
+            result['RerankInstruct'] = self.rerank_instruct
+
+        if self.rerank_mode is not None:
+            result['RerankMode'] = self.rerank_mode
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
+
+        if m.get('RerankInstruct') is not None:
+            self.rerank_instruct = m.get('RerankInstruct')
+
+        if m.get('RerankMode') is not None:
+            self.rerank_mode = m.get('RerankMode')
 
         return self
 
