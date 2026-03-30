@@ -1,0 +1,307 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_clone_voice_request import CreateCloneVoiceRequest
+from ._create_clone_voice_response_body import CreateCloneVoiceResponseBody
+from ._create_clone_voice_response import CreateCloneVoiceResponse
+from ._create_script_request import CreateScriptRequest
+from ._create_script_response_body import CreateScriptResponseBody
+from ._create_script_response import CreateScriptResponse
+from ._create_variable_request import CreateVariableRequest
+from ._create_variable_response_body import CreateVariableResponseBody
+from ._create_variable_response import CreateVariableResponse
+from ._create_vocabulary_request import CreateVocabularyRequest
+from ._create_vocabulary_shrink_request import CreateVocabularyShrinkRequest
+from ._create_vocabulary_response_body import CreateVocabularyResponseBody
+from ._create_vocabulary_response import CreateVocabularyResponse
+from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequest
+from ._create_voice_access_profile_shrink_request import CreateVoiceAccessProfileShrinkRequest
+from ._create_voice_access_profile_response_body import CreateVoiceAccessProfileResponseBody
+from ._create_voice_access_profile_response import CreateVoiceAccessProfileResponse
+from ._delete_clone_voice_request import DeleteCloneVoiceRequest
+from ._delete_clone_voice_response_body import DeleteCloneVoiceResponseBody
+from ._delete_clone_voice_response import DeleteCloneVoiceResponse
+from ._delete_script_request import DeleteScriptRequest
+from ._delete_script_response_body import DeleteScriptResponseBody
+from ._delete_script_response import DeleteScriptResponse
+from ._delete_variable_request import DeleteVariableRequest
+from ._delete_variable_response_body import DeleteVariableResponseBody
+from ._delete_variable_response import DeleteVariableResponse
+from ._delete_vocabulary_request import DeleteVocabularyRequest
+from ._delete_vocabulary_response_body import DeleteVocabularyResponseBody
+from ._delete_vocabulary_response import DeleteVocabularyResponse
+from ._delete_voice_access_profile_request import DeleteVoiceAccessProfileRequest
+from ._delete_voice_access_profile_response_body import DeleteVoiceAccessProfileResponseBody
+from ._delete_voice_access_profile_response import DeleteVoiceAccessProfileResponse
+from ._disable_subscription_request import DisableSubscriptionRequest
+from ._disable_subscription_response_body import DisableSubscriptionResponseBody
+from ._disable_subscription_response import DisableSubscriptionResponse
+from ._export_script_request import ExportScriptRequest
+from ._export_script_response_body import ExportScriptResponseBody
+from ._export_script_response import ExportScriptResponse
+from ._export_vocabulary_request import ExportVocabularyRequest
+from ._export_vocabulary_shrink_request import ExportVocabularyShrinkRequest
+from ._export_vocabulary_response_body import ExportVocabularyResponseBody
+from ._export_vocabulary_response import ExportVocabularyResponse
+from ._get_call_detail_record_request import GetCallDetailRecordRequest
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBody
+from ._get_call_detail_record_response import GetCallDetailRecordResponse
+from ._get_recording_request import GetRecordingRequest
+from ._get_recording_response_body import GetRecordingResponseBody
+from ._get_recording_response import GetRecordingResponse
+from ._get_subscription_request import GetSubscriptionRequest
+from ._get_subscription_response_body import GetSubscriptionResponseBody
+from ._get_subscription_response import GetSubscriptionResponse
+from ._get_vocabulary_request import GetVocabularyRequest
+from ._get_vocabulary_response_body import GetVocabularyResponseBody
+from ._get_vocabulary_response import GetVocabularyResponse
+from ._import_vocabulary_request import ImportVocabularyRequest
+from ._import_vocabulary_response_body import ImportVocabularyResponseBody
+from ._import_vocabulary_response import ImportVocabularyResponse
+from ._list_background_musics_request import ListBackgroundMusicsRequest
+from ._list_background_musics_response_body import ListBackgroundMusicsResponseBody
+from ._list_background_musics_response import ListBackgroundMusicsResponse
+from ._list_clone_voice_request import ListCloneVoiceRequest
+from ._list_clone_voice_response_body import ListCloneVoiceResponseBody
+from ._list_clone_voice_response import ListCloneVoiceResponse
+from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
+from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
+from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
+from ._list_nlu_models_request import ListNluModelsRequest
+from ._list_nlu_models_response_body import ListNluModelsResponseBody
+from ._list_nlu_models_response import ListNluModelsResponse
+from ._list_script_profile_templates_request import ListScriptProfileTemplatesRequest
+from ._list_script_profile_templates_response_body import ListScriptProfileTemplatesResponseBody
+from ._list_script_profile_templates_response import ListScriptProfileTemplatesResponse
+from ._list_scripts_request import ListScriptsRequest
+from ._list_scripts_shrink_request import ListScriptsShrinkRequest
+from ._list_scripts_response_body import ListScriptsResponseBody
+from ._list_scripts_response import ListScriptsResponse
+from ._list_variable_request import ListVariableRequest
+from ._list_variable_response_body import ListVariableResponseBody
+from ._list_variable_response import ListVariableResponse
+from ._list_vocabulary_request import ListVocabularyRequest
+from ._list_vocabulary_response_body import ListVocabularyResponseBody
+from ._list_vocabulary_response import ListVocabularyResponse
+from ._list_voice_access_profile_request import ListVoiceAccessProfileRequest
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBody
+from ._list_voice_access_profile_response import ListVoiceAccessProfileResponse
+from ._list_voice_engines_request import ListVoiceEnginesRequest
+from ._list_voice_engines_response_body import ListVoiceEnginesResponseBody
+from ._list_voice_engines_response import ListVoiceEnginesResponse
+from ._list_voices_request import ListVoicesRequest
+from ._list_voices_response_body import ListVoicesResponseBody
+from ._list_voices_response import ListVoicesResponse
+from ._preview_voice_request import PreviewVoiceRequest
+from ._preview_voice_shrink_request import PreviewVoiceShrinkRequest
+from ._preview_voice_response_body import PreviewVoiceResponseBody
+from ._preview_voice_response import PreviewVoiceResponse
+from ._publish_script_request import PublishScriptRequest
+from ._publish_script_response_body import PublishScriptResponseBody
+from ._publish_script_response import PublishScriptResponse
+from ._update_clone_voice_request import UpdateCloneVoiceRequest
+from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
+from ._update_clone_voice_response import UpdateCloneVoiceResponse
+from ._update_script_request import UpdateScriptRequest
+from ._update_script_response_body import UpdateScriptResponseBody
+from ._update_script_response import UpdateScriptResponse
+from ._update_subscription_request import UpdateSubscriptionRequest
+from ._update_subscription_shrink_request import UpdateSubscriptionShrinkRequest
+from ._update_subscription_response_body import UpdateSubscriptionResponseBody
+from ._update_subscription_response import UpdateSubscriptionResponse
+from ._update_variable_request import UpdateVariableRequest
+from ._update_variable_response_body import UpdateVariableResponseBody
+from ._update_variable_response import UpdateVariableResponse
+from ._update_vocabulary_request import UpdateVocabularyRequest
+from ._update_vocabulary_shrink_request import UpdateVocabularyShrinkRequest
+from ._update_vocabulary_response_body import UpdateVocabularyResponseBody
+from ._update_vocabulary_response import UpdateVocabularyResponse
+from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequest
+from ._update_voice_access_profile_shrink_request import UpdateVoiceAccessProfileShrinkRequest
+from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfileResponseBody
+from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
+from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
+from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequestProfile
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataTranscripts
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyData
+from ._get_recording_response_body import GetRecordingResponseBodyData
+from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
+from ._get_subscription_response_body import GetSubscriptionResponseBodyData
+from ._get_vocabulary_response_body import GetVocabularyResponseBodyData
+from ._list_background_musics_response_body import ListBackgroundMusicsResponseBodyDataBackgroundMusics
+from ._list_background_musics_response_body import ListBackgroundMusicsResponseBodyData
+from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataCloneVoices
+from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
+from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
+from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
+from ._list_nlu_models_response_body import ListNluModelsResponseBodyData
+from ._list_script_profile_templates_response_body import ListScriptProfileTemplatesResponseBodyData
+from ._list_scripts_response_body import ListScriptsResponseBodyDataScripts
+from ._list_scripts_response_body import ListScriptsResponseBodyData
+from ._list_variable_response_body import ListVariableResponseBodyDataVariables
+from ._list_variable_response_body import ListVariableResponseBodyData
+from ._list_vocabulary_response_body import ListVocabularyResponseBodyDataVocabularies
+from ._list_vocabulary_response_body import ListVocabularyResponseBodyData
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBodyData
+from ._list_voice_engines_response_body import ListVoiceEnginesResponseBodyDataVoiceEngines
+from ._list_voice_engines_response_body import ListVoiceEnginesResponseBodyData
+from ._list_voices_response_body import ListVoicesResponseBodyDataVoices
+from ._list_voices_response_body import ListVoicesResponseBodyData
+from ._preview_voice_request import PreviewVoiceRequestParams
+from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequestProfile
+
+__all__ = [
+    CreateCloneVoiceRequest,
+    CreateCloneVoiceResponseBody,
+    CreateCloneVoiceResponse,
+    CreateScriptRequest,
+    CreateScriptResponseBody,
+    CreateScriptResponse,
+    CreateVariableRequest,
+    CreateVariableResponseBody,
+    CreateVariableResponse,
+    CreateVocabularyRequest,
+    CreateVocabularyShrinkRequest,
+    CreateVocabularyResponseBody,
+    CreateVocabularyResponse,
+    CreateVoiceAccessProfileRequest,
+    CreateVoiceAccessProfileShrinkRequest,
+    CreateVoiceAccessProfileResponseBody,
+    CreateVoiceAccessProfileResponse,
+    DeleteCloneVoiceRequest,
+    DeleteCloneVoiceResponseBody,
+    DeleteCloneVoiceResponse,
+    DeleteScriptRequest,
+    DeleteScriptResponseBody,
+    DeleteScriptResponse,
+    DeleteVariableRequest,
+    DeleteVariableResponseBody,
+    DeleteVariableResponse,
+    DeleteVocabularyRequest,
+    DeleteVocabularyResponseBody,
+    DeleteVocabularyResponse,
+    DeleteVoiceAccessProfileRequest,
+    DeleteVoiceAccessProfileResponseBody,
+    DeleteVoiceAccessProfileResponse,
+    DisableSubscriptionRequest,
+    DisableSubscriptionResponseBody,
+    DisableSubscriptionResponse,
+    ExportScriptRequest,
+    ExportScriptResponseBody,
+    ExportScriptResponse,
+    ExportVocabularyRequest,
+    ExportVocabularyShrinkRequest,
+    ExportVocabularyResponseBody,
+    ExportVocabularyResponse,
+    GetCallDetailRecordRequest,
+    GetCallDetailRecordResponseBody,
+    GetCallDetailRecordResponse,
+    GetRecordingRequest,
+    GetRecordingResponseBody,
+    GetRecordingResponse,
+    GetSubscriptionRequest,
+    GetSubscriptionResponseBody,
+    GetSubscriptionResponse,
+    GetVocabularyRequest,
+    GetVocabularyResponseBody,
+    GetVocabularyResponse,
+    ImportVocabularyRequest,
+    ImportVocabularyResponseBody,
+    ImportVocabularyResponse,
+    ListBackgroundMusicsRequest,
+    ListBackgroundMusicsResponseBody,
+    ListBackgroundMusicsResponse,
+    ListCloneVoiceRequest,
+    ListCloneVoiceResponseBody,
+    ListCloneVoiceResponse,
+    ListCloneVoiceModelsRequest,
+    ListCloneVoiceModelsResponseBody,
+    ListCloneVoiceModelsResponse,
+    ListNluModelsRequest,
+    ListNluModelsResponseBody,
+    ListNluModelsResponse,
+    ListScriptProfileTemplatesRequest,
+    ListScriptProfileTemplatesResponseBody,
+    ListScriptProfileTemplatesResponse,
+    ListScriptsRequest,
+    ListScriptsShrinkRequest,
+    ListScriptsResponseBody,
+    ListScriptsResponse,
+    ListVariableRequest,
+    ListVariableResponseBody,
+    ListVariableResponse,
+    ListVocabularyRequest,
+    ListVocabularyResponseBody,
+    ListVocabularyResponse,
+    ListVoiceAccessProfileRequest,
+    ListVoiceAccessProfileResponseBody,
+    ListVoiceAccessProfileResponse,
+    ListVoiceEnginesRequest,
+    ListVoiceEnginesResponseBody,
+    ListVoiceEnginesResponse,
+    ListVoicesRequest,
+    ListVoicesResponseBody,
+    ListVoicesResponse,
+    PreviewVoiceRequest,
+    PreviewVoiceShrinkRequest,
+    PreviewVoiceResponseBody,
+    PreviewVoiceResponse,
+    PublishScriptRequest,
+    PublishScriptResponseBody,
+    PublishScriptResponse,
+    UpdateCloneVoiceRequest,
+    UpdateCloneVoiceResponseBody,
+    UpdateCloneVoiceResponse,
+    UpdateScriptRequest,
+    UpdateScriptResponseBody,
+    UpdateScriptResponse,
+    UpdateSubscriptionRequest,
+    UpdateSubscriptionShrinkRequest,
+    UpdateSubscriptionResponseBody,
+    UpdateSubscriptionResponse,
+    UpdateVariableRequest,
+    UpdateVariableResponseBody,
+    UpdateVariableResponse,
+    UpdateVocabularyRequest,
+    UpdateVocabularyShrinkRequest,
+    UpdateVocabularyResponseBody,
+    UpdateVocabularyResponse,
+    UpdateVoiceAccessProfileRequest,
+    UpdateVoiceAccessProfileShrinkRequest,
+    UpdateVoiceAccessProfileResponseBody,
+    UpdateVoiceAccessProfileResponse,
+    CreateCloneVoiceResponseBodyData,
+    CreateVoiceAccessProfileRequestProfile,
+    GetCallDetailRecordResponseBodyDataTranscripts,
+    GetCallDetailRecordResponseBodyData,
+    GetRecordingResponseBodyData,
+    GetSubscriptionResponseBodyDataEventList,
+    GetSubscriptionResponseBodyData,
+    GetVocabularyResponseBodyData,
+    ListBackgroundMusicsResponseBodyDataBackgroundMusics,
+    ListBackgroundMusicsResponseBodyData,
+    ListCloneVoiceResponseBodyDataCloneVoices,
+    ListCloneVoiceResponseBodyData,
+    ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
+    ListCloneVoiceModelsResponseBodyData,
+    ListNluModelsResponseBodyData,
+    ListScriptProfileTemplatesResponseBodyData,
+    ListScriptsResponseBodyDataScripts,
+    ListScriptsResponseBodyData,
+    ListVariableResponseBodyDataVariables,
+    ListVariableResponseBodyData,
+    ListVocabularyResponseBodyDataVocabularies,
+    ListVocabularyResponseBodyData,
+    ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile,
+    ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles,
+    ListVoiceAccessProfileResponseBodyData,
+    ListVoiceEnginesResponseBodyDataVoiceEngines,
+    ListVoiceEnginesResponseBodyData,
+    ListVoicesResponseBodyDataVoices,
+    ListVoicesResponseBodyData,
+    PreviewVoiceRequestParams,
+    UpdateVoiceAccessProfileRequestProfile
+]
