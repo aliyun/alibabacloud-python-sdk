@@ -16,6 +16,7 @@ class Database(DaraModel):
         name: str = None,
         options: Dict[str, str] = None,
         owner: str = None,
+        table_count: int = None,
         updated_at: int = None,
         updated_by: str = None,
     ):
@@ -26,6 +27,7 @@ class Database(DaraModel):
         self.name = name
         self.options = options
         self.owner = owner
+        self.table_count = table_count
         self.updated_at = updated_at
         self.updated_by = updated_by
 
@@ -58,6 +60,9 @@ class Database(DaraModel):
         if self.owner is not None:
             result['owner'] = self.owner
 
+        if self.table_count is not None:
+            result['tableCount'] = self.table_count
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
@@ -88,6 +93,9 @@ class Database(DaraModel):
 
         if m.get('owner') is not None:
             self.owner = m.get('owner')
+
+        if m.get('tableCount') is not None:
+            self.table_count = m.get('tableCount')
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')

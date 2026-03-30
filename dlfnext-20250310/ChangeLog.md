@@ -1,3 +1,6 @@
+2026-03-30 Version: 3.6.1
+- Generated python 2025-03-10 for DlfNext.
+
 2026-03-11 Version: 3.6.0
 - Support API GetVpcConfig.
 

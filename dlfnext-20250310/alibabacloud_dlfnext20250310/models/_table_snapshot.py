@@ -11,6 +11,7 @@ class TableSnapshot(DaraModel):
         file_count: int = None,
         file_size_in_bytes: int = None,
         last_file_creation_time: int = None,
+        partition_count: int = None,
         record_count: int = None,
         snapshot: main_models.Snapshot = None,
         total_buckets: int = None,
@@ -18,6 +19,7 @@ class TableSnapshot(DaraModel):
         self.file_count = file_count
         self.file_size_in_bytes = file_size_in_bytes
         self.last_file_creation_time = last_file_creation_time
+        self.partition_count = partition_count
         self.record_count = record_count
         self.snapshot = snapshot
         self.total_buckets = total_buckets
@@ -40,6 +42,9 @@ class TableSnapshot(DaraModel):
         if self.last_file_creation_time is not None:
             result['lastFileCreationTime'] = self.last_file_creation_time
 
+        if self.partition_count is not None:
+            result['partitionCount'] = self.partition_count
+
         if self.record_count is not None:
             result['recordCount'] = self.record_count
 
@@ -61,6 +66,9 @@ class TableSnapshot(DaraModel):
 
         if m.get('lastFileCreationTime') is not None:
             self.last_file_creation_time = m.get('lastFileCreationTime')
+
+        if m.get('partitionCount') is not None:
+            self.partition_count = m.get('partitionCount')
 
         if m.get('recordCount') is not None:
             self.record_count = m.get('recordCount')
