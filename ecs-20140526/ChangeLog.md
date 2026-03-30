@@ -1,3 +1,8 @@
+2026-03-30 Version: 7.7.0
+- Support API CloneDisks.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.FullSnapshotSizeInBytes.
+
+
 2026-03-27 Version: 7.6.2
 - Update API DescribeLockedSnapshots: add response parameters Body.LockedSnapshotsInfo.$.LockMode.
 - Update API LockSnapshot: add response parameters Body.LockedSnapshotInfo.LockMode.

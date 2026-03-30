@@ -126,6 +126,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(DaraModel):
         creation_time: str = None,
         description: str = None,
         encrypted: bool = None,
+        full_snapshot_size_in_bytes: int = None,
         instant_access: bool = None,
         instant_access_retention_days: int = None,
         kmskey_id: str = None,
@@ -156,6 +157,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(DaraModel):
         self.creation_time = creation_time
         self.description = description
         self.encrypted = encrypted
+        self.full_snapshot_size_in_bytes = full_snapshot_size_in_bytes
         self.instant_access = instant_access
         self.instant_access_retention_days = instant_access_retention_days
         self.kmskey_id = kmskey_id
@@ -204,6 +206,9 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(DaraModel):
 
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
+
+        if self.full_snapshot_size_in_bytes is not None:
+            result['FullSnapshotSizeInBytes'] = self.full_snapshot_size_in_bytes
 
         if self.instant_access is not None:
             result['InstantAccess'] = self.instant_access
@@ -295,6 +300,9 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(DaraModel):
 
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
+
+        if m.get('FullSnapshotSizeInBytes') is not None:
+            self.full_snapshot_size_in_bytes = m.get('FullSnapshotSizeInBytes')
 
         if m.get('InstantAccess') is not None:
             self.instant_access = m.get('InstantAccess')

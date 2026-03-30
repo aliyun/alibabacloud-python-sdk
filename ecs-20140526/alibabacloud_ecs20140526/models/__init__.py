@@ -77,6 +77,9 @@ from ._cancel_simulated_system_events_response import CancelSimulatedSystemEvent
 from ._cancel_task_request import CancelTaskRequest
 from ._cancel_task_response_body import CancelTaskResponseBody
 from ._cancel_task_response import CancelTaskResponse
+from ._clone_disks_request import CloneDisksRequest
+from ._clone_disks_response_body import CloneDisksResponseBody
+from ._clone_disks_response import CloneDisksResponse
 from ._connect_router_interface_request import ConnectRouterInterfaceRequest
 from ._connect_router_interface_response_body import ConnectRouterInterfaceResponseBody
 from ._connect_router_interface_response import ConnectRouterInterfaceResponse
@@ -1149,6 +1152,8 @@ from ._attach_key_pair_response_body import AttachKeyPairResponseBodyResults
 from ._authorize_security_group_request import AuthorizeSecurityGroupRequestPermissions
 from ._authorize_security_group_egress_request import AuthorizeSecurityGroupEgressRequestPermissions
 from ._cancel_image_pipeline_execution_request import CancelImagePipelineExecutionRequestTemplateTag
+from ._clone_disks_request import CloneDisksRequestArn
+from ._clone_disks_request import CloneDisksRequestTag
 from ._copy_image_request import CopyImageRequestTag
 from ._copy_snapshot_request import CopySnapshotRequestArn
 from ._copy_snapshot_request import CopySnapshotRequestTag
@@ -2112,6 +2117,9 @@ __all__ = [
     CancelTaskRequest,
     CancelTaskResponseBody,
     CancelTaskResponse,
+    CloneDisksRequest,
+    CloneDisksResponseBody,
+    CloneDisksResponse,
     ConnectRouterInterfaceRequest,
     ConnectRouterInterfaceResponseBody,
     ConnectRouterInterfaceResponse,
@@ -3184,6 +3192,8 @@ __all__ = [
     AuthorizeSecurityGroupRequestPermissions,
     AuthorizeSecurityGroupEgressRequestPermissions,
     CancelImagePipelineExecutionRequestTemplateTag,
+    CloneDisksRequestArn,
+    CloneDisksRequestTag,
     CopyImageRequestTag,
     CopySnapshotRequestArn,
     CopySnapshotRequestTag,

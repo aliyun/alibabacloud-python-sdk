@@ -2735,6 +2735,144 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.cancel_task_with_options_async(request, runtime)
 
+    def clone_disks_with_options(
+        self,
+        request: main_models.CloneDisksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloneDisksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.arn):
+            query['Arn'] = request.arn
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not DaraCore.is_null(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not DaraCore.is_null(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
+        if not DaraCore.is_null(request.multi_attach):
+            query['MultiAttach'] = request.multi_attach
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
+        if not DaraCore.is_null(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.source_disk_id):
+            query['SourceDiskId'] = request.source_disk_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloneDisks',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloneDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_disks_with_options_async(
+        self,
+        request: main_models.CloneDisksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloneDisksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.arn):
+            query['Arn'] = request.arn
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not DaraCore.is_null(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not DaraCore.is_null(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
+        if not DaraCore.is_null(request.multi_attach):
+            query['MultiAttach'] = request.multi_attach
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
+        if not DaraCore.is_null(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.source_disk_id):
+            query['SourceDiskId'] = request.source_disk_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloneDisks',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloneDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_disks(
+        self,
+        request: main_models.CloneDisksRequest,
+    ) -> main_models.CloneDisksResponse:
+        runtime = RuntimeOptions()
+        return self.clone_disks_with_options(request, runtime)
+
+    async def clone_disks_async(
+        self,
+        request: main_models.CloneDisksRequest,
+    ) -> main_models.CloneDisksResponse:
+        runtime = RuntimeOptions()
+        return await self.clone_disks_with_options_async(request, runtime)
+
     def connect_router_interface_with_options(
         self,
         request: main_models.ConnectRouterInterfaceRequest,
