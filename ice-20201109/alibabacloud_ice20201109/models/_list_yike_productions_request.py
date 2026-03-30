@@ -11,11 +11,13 @@ class ListYikeProductionsRequest(DaraModel):
         next_token: str = None,
         page_no: int = None,
         page_size: int = None,
+        workspace_id: str = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
         self.page_no = page_no
         self.page_size = page_size
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -37,6 +39,9 @@ class ListYikeProductionsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +57,9 @@ class ListYikeProductionsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 
