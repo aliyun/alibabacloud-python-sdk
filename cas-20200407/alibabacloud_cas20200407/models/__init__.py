@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_cloud_access_request import AddCloudAccessRequest
+from ._add_cloud_access_response_body import AddCloudAccessResponseBody
+from ._add_cloud_access_response import AddCloudAccessResponse
 from ._apply_certificate_request import ApplyCertificateRequest
 from ._apply_certificate_response_body import ApplyCertificateResponseBody
 from ._apply_certificate_response import ApplyCertificateResponse
@@ -29,12 +32,21 @@ from ._create_csr_response import CreateCsrResponse
 from ._create_deployment_job_request import CreateDeploymentJobRequest
 from ._create_deployment_job_response_body import CreateDeploymentJobResponseBody
 from ._create_deployment_job_response import CreateDeploymentJobResponse
+from ._create_whclient_certificate_request import CreateWHClientCertificateRequest
+from ._create_whclient_certificate_response_body import CreateWHClientCertificateResponseBody
+from ._create_whclient_certificate_response import CreateWHClientCertificateResponse
+from ._create_warehouse_request import CreateWarehouseRequest
+from ._create_warehouse_response_body import CreateWarehouseResponseBody
+from ._create_warehouse_response import CreateWarehouseResponse
 from ._decrypt_request import DecryptRequest
 from ._decrypt_response_body import DecryptResponseBody
 from ._decrypt_response import DecryptResponse
 from ._delete_certificate_request_request import DeleteCertificateRequestRequest
 from ._delete_certificate_request_response_body import DeleteCertificateRequestResponseBody
 from ._delete_certificate_request_response import DeleteCertificateRequestResponse
+from ._delete_cloud_access_request import DeleteCloudAccessRequest
+from ._delete_cloud_access_response_body import DeleteCloudAccessResponseBody
+from ._delete_cloud_access_response import DeleteCloudAccessResponse
 from ._delete_csr_request import DeleteCsrRequest
 from ._delete_csr_response_body import DeleteCsrResponseBody
 from ._delete_csr_response import DeleteCsrResponse
@@ -50,6 +62,9 @@ from ._delete_pcacert_response import DeletePCACertResponse
 from ._delete_user_certificate_request import DeleteUserCertificateRequest
 from ._delete_user_certificate_response_body import DeleteUserCertificateResponseBody
 from ._delete_user_certificate_response import DeleteUserCertificateResponse
+from ._delete_warehouse_request import DeleteWarehouseRequest
+from ._delete_warehouse_response_body import DeleteWarehouseResponseBody
+from ._delete_warehouse_response import DeleteWarehouseResponse
 from ._delete_worker_resource_request import DeleteWorkerResourceRequest
 from ._delete_worker_resource_response_body import DeleteWorkerResourceResponseBody
 from ._delete_worker_resource_response import DeleteWorkerResourceResponse
@@ -68,6 +83,9 @@ from ._describe_deployment_job_status_response import DescribeDeploymentJobStatu
 from ._describe_package_state_request import DescribePackageStateRequest
 from ._describe_package_state_response_body import DescribePackageStateResponseBody
 from ._describe_package_state_response import DescribePackageStateResponse
+from ._describe_warehouse_cert_request import DescribeWarehouseCertRequest
+from ._describe_warehouse_cert_response_body import DescribeWarehouseCertResponseBody
+from ._describe_warehouse_cert_response import DescribeWarehouseCertResponse
 from ._encrypt_request import EncryptRequest
 from ._encrypt_response_body import EncryptResponseBody
 from ._encrypt_response import EncryptResponse
@@ -135,6 +153,10 @@ from ._list_instances_response import ListInstancesResponse
 from ._list_user_certificate_order_request import ListUserCertificateOrderRequest
 from ._list_user_certificate_order_response_body import ListUserCertificateOrderResponseBody
 from ._list_user_certificate_order_response import ListUserCertificateOrderResponse
+from ._list_warehouse_request import ListWarehouseRequest
+from ._list_warehouse_shrink_request import ListWarehouseShrinkRequest
+from ._list_warehouse_response_body import ListWarehouseResponseBody
+from ._list_warehouse_response import ListWarehouseResponse
 from ._list_worker_resource_request import ListWorkerResourceRequest
 from ._list_worker_resource_response_body import ListWorkerResourceResponseBody
 from ._list_worker_resource_response import ListWorkerResourceResponse
@@ -150,6 +172,9 @@ from ._renew_certificate_order_for_package_request_response import RenewCertific
 from ._revoke_certificate_request import RevokeCertificateRequest
 from ._revoke_certificate_response_body import RevokeCertificateResponseBody
 from ._revoke_certificate_response import RevokeCertificateResponse
+from ._revoke_whclient_certificate_request import RevokeWHClientCertificateRequest
+from ._revoke_whclient_certificate_response_body import RevokeWHClientCertificateResponseBody
+from ._revoke_whclient_certificate_response import RevokeWHClientCertificateResponse
 from ._sign_request import SignRequest
 from ._sign_response_body import SignResponseBody
 from ._sign_response import SignResponse
@@ -171,6 +196,9 @@ from ._update_worker_resource_status_response import UpdateWorkerResourceStatusR
 from ._upload_csr_request import UploadCsrRequest
 from ._upload_csr_response_body import UploadCsrResponseBody
 from ._upload_csr_response import UploadCsrResponse
+from ._upload_pcacert_request import UploadPCACertRequest
+from ._upload_pcacert_response_body import UploadPCACertResponseBody
+from ._upload_pcacert_response import UploadPCACertResponse
 from ._upload_user_certificate_request import UploadUserCertificateRequest
 from ._upload_user_certificate_response_body import UploadUserCertificateResponseBody
 from ._upload_user_certificate_response import UploadUserCertificateResponse
@@ -203,12 +231,16 @@ from ._list_deployment_job_cert_response_body import ListDeploymentJobCertRespon
 from ._list_deployment_job_resource_response_body import ListDeploymentJobResourceResponseBodyData
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceList
 from ._list_user_certificate_order_response_body import ListUserCertificateOrderResponseBodyCertificateOrderList
+from ._list_warehouse_response_body import ListWarehouseResponseBodyData
 from ._list_worker_resource_response_body import ListWorkerResourceResponseBodyData
 from ._renew_certificate_order_for_package_request_request import RenewCertificateOrderForPackageRequestRequestTags
 from ._update_instance_request import UpdateInstanceRequestTags
 from ._upload_user_certificate_request import UploadUserCertificateRequestTags
 
 __all__ = [
+    AddCloudAccessRequest,
+    AddCloudAccessResponseBody,
+    AddCloudAccessResponse,
     ApplyCertificateRequest,
     ApplyCertificateResponseBody,
     ApplyCertificateResponse,
@@ -236,12 +268,21 @@ __all__ = [
     CreateDeploymentJobRequest,
     CreateDeploymentJobResponseBody,
     CreateDeploymentJobResponse,
+    CreateWHClientCertificateRequest,
+    CreateWHClientCertificateResponseBody,
+    CreateWHClientCertificateResponse,
+    CreateWarehouseRequest,
+    CreateWarehouseResponseBody,
+    CreateWarehouseResponse,
     DecryptRequest,
     DecryptResponseBody,
     DecryptResponse,
     DeleteCertificateRequestRequest,
     DeleteCertificateRequestResponseBody,
     DeleteCertificateRequestResponse,
+    DeleteCloudAccessRequest,
+    DeleteCloudAccessResponseBody,
+    DeleteCloudAccessResponse,
     DeleteCsrRequest,
     DeleteCsrResponseBody,
     DeleteCsrResponse,
@@ -257,6 +298,9 @@ __all__ = [
     DeleteUserCertificateRequest,
     DeleteUserCertificateResponseBody,
     DeleteUserCertificateResponse,
+    DeleteWarehouseRequest,
+    DeleteWarehouseResponseBody,
+    DeleteWarehouseResponse,
     DeleteWorkerResourceRequest,
     DeleteWorkerResourceResponseBody,
     DeleteWorkerResourceResponse,
@@ -275,6 +319,9 @@ __all__ = [
     DescribePackageStateRequest,
     DescribePackageStateResponseBody,
     DescribePackageStateResponse,
+    DescribeWarehouseCertRequest,
+    DescribeWarehouseCertResponseBody,
+    DescribeWarehouseCertResponse,
     EncryptRequest,
     EncryptResponseBody,
     EncryptResponse,
@@ -342,6 +389,10 @@ __all__ = [
     ListUserCertificateOrderRequest,
     ListUserCertificateOrderResponseBody,
     ListUserCertificateOrderResponse,
+    ListWarehouseRequest,
+    ListWarehouseShrinkRequest,
+    ListWarehouseResponseBody,
+    ListWarehouseResponse,
     ListWorkerResourceRequest,
     ListWorkerResourceResponseBody,
     ListWorkerResourceResponse,
@@ -357,6 +408,9 @@ __all__ = [
     RevokeCertificateRequest,
     RevokeCertificateResponseBody,
     RevokeCertificateResponse,
+    RevokeWHClientCertificateRequest,
+    RevokeWHClientCertificateResponseBody,
+    RevokeWHClientCertificateResponse,
     SignRequest,
     SignResponseBody,
     SignResponse,
@@ -378,6 +432,9 @@ __all__ = [
     UploadCsrRequest,
     UploadCsrResponseBody,
     UploadCsrResponse,
+    UploadPCACertRequest,
+    UploadPCACertResponseBody,
+    UploadPCACertResponse,
     UploadUserCertificateRequest,
     UploadUserCertificateResponseBody,
     UploadUserCertificateResponse,
@@ -410,6 +467,7 @@ __all__ = [
     ListDeploymentJobResourceResponseBodyData,
     ListInstancesResponseBodyInstanceList,
     ListUserCertificateOrderResponseBodyCertificateOrderList,
+    ListWarehouseResponseBodyData,
     ListWorkerResourceResponseBodyData,
     RenewCertificateOrderForPackageRequestRequestTags,
     UpdateInstanceRequestTags,

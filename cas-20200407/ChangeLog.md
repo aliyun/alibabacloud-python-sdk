@@ -1,3 +1,15 @@
+2026-03-30 Version: 3.3.0
+- Support API AddCloudAccess.
+- Support API CreateWHClientCertificate.
+- Support API CreateWarehouse.
+- Support API DeleteCloudAccess.
+- Support API DeleteWarehouse.
+- Support API DescribeWarehouseCert.
+- Support API ListWarehouse.
+- Support API RevokeWHClientCertificate.
+- Support API UploadPCACert.
+
+
 2026-03-02 Version: 3.2.0
 - Support API GetAssetCount.
 - Support API GetRiskCount.

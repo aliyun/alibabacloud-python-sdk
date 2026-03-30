@@ -93,6 +93,84 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_cloud_access_with_options(
+        self,
+        request: main_models.AddCloudAccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCloudAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_name):
+            query['CloudName'] = request.cloud_name
+        if not DaraCore.is_null(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not DaraCore.is_null(request.secret_key):
+            query['SecretKey'] = request.secret_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddCloudAccess',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddCloudAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_cloud_access_with_options_async(
+        self,
+        request: main_models.AddCloudAccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCloudAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_name):
+            query['CloudName'] = request.cloud_name
+        if not DaraCore.is_null(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not DaraCore.is_null(request.secret_key):
+            query['SecretKey'] = request.secret_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddCloudAccess',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddCloudAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_cloud_access(
+        self,
+        request: main_models.AddCloudAccessRequest,
+    ) -> main_models.AddCloudAccessResponse:
+        runtime = RuntimeOptions()
+        return self.add_cloud_access_with_options(request, runtime)
+
+    async def add_cloud_access_async(
+        self,
+        request: main_models.AddCloudAccessRequest,
+    ) -> main_models.AddCloudAccessResponse:
+        runtime = RuntimeOptions()
+        return await self.add_cloud_access_with_options_async(request, runtime)
+
     def apply_certificate_with_options(
         self,
         request: main_models.ApplyCertificateRequest,
@@ -859,6 +937,218 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_deployment_job_with_options_async(request, runtime)
 
+    def create_whclient_certificate_with_options(
+        self,
+        request: main_models.CreateWHClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWHClientCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not DaraCore.is_null(request.common_name):
+            query['CommonName'] = request.common_name
+        if not DaraCore.is_null(request.country):
+            query['Country'] = request.country
+        if not DaraCore.is_null(request.csr):
+            query['Csr'] = request.csr
+        if not DaraCore.is_null(request.days):
+            query['Days'] = request.days
+        if not DaraCore.is_null(request.immediately):
+            query['Immediately'] = request.immediately
+        if not DaraCore.is_null(request.locality):
+            query['Locality'] = request.locality
+        if not DaraCore.is_null(request.months):
+            query['Months'] = request.months
+        if not DaraCore.is_null(request.organization):
+            query['Organization'] = request.organization
+        if not DaraCore.is_null(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not DaraCore.is_null(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not DaraCore.is_null(request.san_type):
+            query['SanType'] = request.san_type
+        if not DaraCore.is_null(request.san_value):
+            query['SanValue'] = request.san_value
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        if not DaraCore.is_null(request.years):
+            query['Years'] = request.years
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWHClientCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWHClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_whclient_certificate_with_options_async(
+        self,
+        request: main_models.CreateWHClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWHClientCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not DaraCore.is_null(request.common_name):
+            query['CommonName'] = request.common_name
+        if not DaraCore.is_null(request.country):
+            query['Country'] = request.country
+        if not DaraCore.is_null(request.csr):
+            query['Csr'] = request.csr
+        if not DaraCore.is_null(request.days):
+            query['Days'] = request.days
+        if not DaraCore.is_null(request.immediately):
+            query['Immediately'] = request.immediately
+        if not DaraCore.is_null(request.locality):
+            query['Locality'] = request.locality
+        if not DaraCore.is_null(request.months):
+            query['Months'] = request.months
+        if not DaraCore.is_null(request.organization):
+            query['Organization'] = request.organization
+        if not DaraCore.is_null(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not DaraCore.is_null(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not DaraCore.is_null(request.san_type):
+            query['SanType'] = request.san_type
+        if not DaraCore.is_null(request.san_value):
+            query['SanValue'] = request.san_value
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        if not DaraCore.is_null(request.years):
+            query['Years'] = request.years
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWHClientCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWHClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_whclient_certificate(
+        self,
+        request: main_models.CreateWHClientCertificateRequest,
+    ) -> main_models.CreateWHClientCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.create_whclient_certificate_with_options(request, runtime)
+
+    async def create_whclient_certificate_async(
+        self,
+        request: main_models.CreateWHClientCertificateRequest,
+    ) -> main_models.CreateWHClientCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_whclient_certificate_with_options_async(request, runtime)
+
+    def create_warehouse_with_options(
+        self,
+        request: main_models.CreateWarehouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWarehouseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz):
+            query['Biz'] = request.biz
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWarehouse',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_warehouse_with_options_async(
+        self,
+        request: main_models.CreateWarehouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWarehouseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz):
+            query['Biz'] = request.biz
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWarehouse',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_warehouse(
+        self,
+        request: main_models.CreateWarehouseRequest,
+    ) -> main_models.CreateWarehouseResponse:
+        runtime = RuntimeOptions()
+        return self.create_warehouse_with_options(request, runtime)
+
+    async def create_warehouse_async(
+        self,
+        request: main_models.CreateWarehouseRequest,
+    ) -> main_models.CreateWarehouseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_warehouse_with_options_async(request, runtime)
+
     def decrypt_with_options(
         self,
         request: main_models.DecryptRequest,
@@ -1018,6 +1308,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCertificateRequestResponse:
         runtime = RuntimeOptions()
         return await self.delete_certificate_request_with_options_async(request, runtime)
+
+    def delete_cloud_access_with_options(
+        self,
+        request: main_models.DeleteCloudAccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_id):
+            query['AccessId'] = request.access_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudAccess',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_access_with_options_async(
+        self,
+        request: main_models.DeleteCloudAccessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_id):
+            query['AccessId'] = request.access_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudAccess',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_access(
+        self,
+        request: main_models.DeleteCloudAccessRequest,
+    ) -> main_models.DeleteCloudAccessResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cloud_access_with_options(request, runtime)
+
+    async def delete_cloud_access_async(
+        self,
+        request: main_models.DeleteCloudAccessRequest,
+    ) -> main_models.DeleteCloudAccessResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cloud_access_with_options_async(request, runtime)
 
     def delete_csr_with_options(
         self,
@@ -1368,6 +1728,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteUserCertificateResponse:
         runtime = RuntimeOptions()
         return await self.delete_user_certificate_with_options_async(request, runtime)
+
+    def delete_warehouse_with_options(
+        self,
+        request: main_models.DeleteWarehouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWarehouseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.warehouse_instance_id):
+            query['WarehouseInstanceId'] = request.warehouse_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWarehouse',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_warehouse_with_options_async(
+        self,
+        request: main_models.DeleteWarehouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWarehouseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.warehouse_instance_id):
+            query['WarehouseInstanceId'] = request.warehouse_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWarehouse',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_warehouse(
+        self,
+        request: main_models.DeleteWarehouseRequest,
+    ) -> main_models.DeleteWarehouseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_warehouse_with_options(request, runtime)
+
+    async def delete_warehouse_async(
+        self,
+        request: main_models.DeleteWarehouseRequest,
+    ) -> main_models.DeleteWarehouseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_warehouse_with_options_async(request, runtime)
 
     def delete_worker_resource_with_options(
         self,
@@ -1792,6 +2222,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePackageStateResponse:
         runtime = RuntimeOptions()
         return await self.describe_package_state_with_options_async(request, runtime)
+
+    def describe_warehouse_cert_with_options(
+        self,
+        request: main_models.DescribeWarehouseCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWarehouseCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWarehouseCert',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWarehouseCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_warehouse_cert_with_options_async(
+        self,
+        request: main_models.DescribeWarehouseCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWarehouseCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWarehouseCert',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWarehouseCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_warehouse_cert(
+        self,
+        request: main_models.DescribeWarehouseCertRequest,
+    ) -> main_models.DescribeWarehouseCertResponse:
+        runtime = RuntimeOptions()
+        return self.describe_warehouse_cert_with_options(request, runtime)
+
+    async def describe_warehouse_cert_async(
+        self,
+        request: main_models.DescribeWarehouseCertRequest,
+    ) -> main_models.DescribeWarehouseCertResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_warehouse_cert_with_options_async(request, runtime)
 
     def encrypt_with_options(
         self,
@@ -3575,6 +4075,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_user_certificate_order_with_options_async(request, runtime)
 
+    def list_warehouse_with_options(
+        self,
+        tmp_req: main_models.ListWarehouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWarehouseResponse:
+        tmp_req.validate()
+        request = main_models.ListWarehouseShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.warehouse_instance_ids):
+            request.warehouse_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.warehouse_instance_ids, 'WarehouseInstanceIds', 'json')
+        if not DaraCore.is_null(tmp_req.warehouse_types):
+            request.warehouse_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.warehouse_types, 'WarehouseTypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.warehouse_instance_ids_shrink):
+            query['WarehouseInstanceIds'] = request.warehouse_instance_ids_shrink
+        if not DaraCore.is_null(request.warehouse_types_shrink):
+            query['WarehouseTypes'] = request.warehouse_types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWarehouse',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_warehouse_with_options_async(
+        self,
+        tmp_req: main_models.ListWarehouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWarehouseResponse:
+        tmp_req.validate()
+        request = main_models.ListWarehouseShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.warehouse_instance_ids):
+            request.warehouse_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.warehouse_instance_ids, 'WarehouseInstanceIds', 'json')
+        if not DaraCore.is_null(tmp_req.warehouse_types):
+            request.warehouse_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.warehouse_types, 'WarehouseTypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.warehouse_instance_ids_shrink):
+            query['WarehouseInstanceIds'] = request.warehouse_instance_ids_shrink
+        if not DaraCore.is_null(request.warehouse_types_shrink):
+            query['WarehouseTypes'] = request.warehouse_types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWarehouse',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_warehouse(
+        self,
+        request: main_models.ListWarehouseRequest,
+    ) -> main_models.ListWarehouseResponse:
+        runtime = RuntimeOptions()
+        return self.list_warehouse_with_options(request, runtime)
+
+    async def list_warehouse_async(
+        self,
+        request: main_models.ListWarehouseRequest,
+    ) -> main_models.ListWarehouseResponse:
+        runtime = RuntimeOptions()
+        return await self.list_warehouse_with_options_async(request, runtime)
+
     def list_worker_resource_with_options(
         self,
         request: main_models.ListWorkerResourceRequest,
@@ -3960,6 +4554,76 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeCertificateResponse:
         runtime = RuntimeOptions()
         return await self.revoke_certificate_with_options_async(request, runtime)
+
+    def revoke_whclient_certificate_with_options(
+        self,
+        request: main_models.RevokeWHClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeWHClientCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeWHClientCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeWHClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_whclient_certificate_with_options_async(
+        self,
+        request: main_models.RevokeWHClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeWHClientCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeWHClientCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeWHClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_whclient_certificate(
+        self,
+        request: main_models.RevokeWHClientCertificateRequest,
+    ) -> main_models.RevokeWHClientCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_whclient_certificate_with_options(request, runtime)
+
+    async def revoke_whclient_certificate_async(
+        self,
+        request: main_models.RevokeWHClientCertificateRequest,
+    ) -> main_models.RevokeWHClientCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_whclient_certificate_with_options_async(request, runtime)
 
     def sign_with_options(
         self,
@@ -4570,6 +5234,88 @@ class Client(OpenApiClient):
     ) -> main_models.UploadCsrResponse:
         runtime = RuntimeOptions()
         return await self.upload_csr_with_options_async(request, runtime)
+
+    def upload_pcacert_with_options(
+        self,
+        request: main_models.UploadPCACertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadPCACertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert):
+            query['Cert'] = request.cert
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.warehouse_id):
+            query['WarehouseId'] = request.warehouse_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadPCACert',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadPCACertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_pcacert_with_options_async(
+        self,
+        request: main_models.UploadPCACertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadPCACertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert):
+            query['Cert'] = request.cert
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.warehouse_id):
+            query['WarehouseId'] = request.warehouse_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadPCACert',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadPCACertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_pcacert(
+        self,
+        request: main_models.UploadPCACertRequest,
+    ) -> main_models.UploadPCACertResponse:
+        runtime = RuntimeOptions()
+        return self.upload_pcacert_with_options(request, runtime)
+
+    async def upload_pcacert_async(
+        self,
+        request: main_models.UploadPCACertRequest,
+    ) -> main_models.UploadPCACertResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_pcacert_with_options_async(request, runtime)
 
     def upload_user_certificate_with_options(
         self,
