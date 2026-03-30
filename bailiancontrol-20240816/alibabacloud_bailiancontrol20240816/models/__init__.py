@@ -12,6 +12,7 @@ from ._get_api_key_response_body import GetApiKeyResponseBodyApiKeyAuthSetModelA
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKeyAuthSetModelAuthModelStructure
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKeyAuthSetModel
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKey
+from ._list_api_keys_response_body import ListApiKeysResponseBodyApiKeysAuthSetModel
 from ._list_api_keys_response_body import ListApiKeysResponseBodyApiKeys
 
 __all__ = [
@@ -25,5 +26,6 @@ __all__ = [
     GetApiKeyResponseBodyApiKeyAuthSetModelAuthModelStructure,
     GetApiKeyResponseBodyApiKeyAuthSetModel,
     GetApiKeyResponseBodyApiKey,
+    ListApiKeysResponseBodyApiKeysAuthSetModel,
     ListApiKeysResponseBodyApiKeys
 ]

@@ -113,6 +113,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self,
         api_key_value: str = None,
         apikey_id: str = None,
+        auth_set_model: main_models.ListApiKeysResponseBodyApiKeysAuthSetModel = None,
         blocked: int = None,
         create_time: int = None,
         creator: str = None,
@@ -126,6 +127,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
     ):
         self.api_key_value = api_key_value
         self.apikey_id = apikey_id
+        self.auth_set_model = auth_set_model
         self.blocked = blocked
         self.create_time = create_time
         self.creator = creator
@@ -138,7 +140,8 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.auth_set_model:
+            self.auth_set_model.validate()
 
     def to_map(self):
         result = dict()
@@ -150,6 +153,9 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
 
         if self.apikey_id is not None:
             result['apikeyId'] = self.apikey_id
+
+        if self.auth_set_model is not None:
+            result['authSetModel'] = self.auth_set_model.to_map()
 
         if self.blocked is not None:
             result['blocked'] = self.blocked
@@ -191,6 +197,10 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         if m.get('apikeyId') is not None:
             self.apikey_id = m.get('apikeyId')
 
+        if m.get('authSetModel') is not None:
+            temp_model = main_models.ListApiKeysResponseBodyApiKeysAuthSetModel()
+            self.auth_set_model = temp_model.from_map(m.get('authSetModel'))
+
         if m.get('blocked') is not None:
             self.blocked = m.get('blocked')
 
@@ -220,6 +230,33 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class ListApiKeysResponseBodyApiKeysAuthSetModel(DaraModel):
+    def __init__(
+        self,
+        auth_set_mode: str = None,
+    ):
+        self.auth_set_mode = auth_set_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auth_set_mode is not None:
+            result['authSetMode'] = self.auth_set_mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authSetMode') is not None:
+            self.auth_set_mode = m.get('authSetMode')
 
         return self
 
