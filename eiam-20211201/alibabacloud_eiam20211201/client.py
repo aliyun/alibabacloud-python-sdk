@@ -2415,6 +2415,8 @@ class Client(OpenApiClient):
             query['CloudAccountName'] = request.cloud_account_name
         if not DaraCore.is_null(request.cloud_account_provider_name):
             query['CloudAccountProviderName'] = request.cloud_account_provider_name
+        if not DaraCore.is_null(request.cloud_account_site):
+            query['CloudAccountSite'] = request.cloud_account_site
         if not DaraCore.is_null(request.cloud_account_vendor_type):
             query['CloudAccountVendorType'] = request.cloud_account_vendor_type
         if not DaraCore.is_null(request.description):
@@ -2455,6 +2457,8 @@ class Client(OpenApiClient):
             query['CloudAccountName'] = request.cloud_account_name
         if not DaraCore.is_null(request.cloud_account_provider_name):
             query['CloudAccountProviderName'] = request.cloud_account_provider_name
+        if not DaraCore.is_null(request.cloud_account_site):
+            query['CloudAccountSite'] = request.cloud_account_site
         if not DaraCore.is_null(request.cloud_account_vendor_type):
             query['CloudAccountVendorType'] = request.cloud_account_vendor_type
         if not DaraCore.is_null(request.description):

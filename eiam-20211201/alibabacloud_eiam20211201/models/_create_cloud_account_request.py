@@ -11,6 +11,7 @@ class CreateCloudAccountRequest(DaraModel):
         cloud_account_external_id: str = None,
         cloud_account_name: str = None,
         cloud_account_provider_name: str = None,
+        cloud_account_site: str = None,
         cloud_account_vendor_type: str = None,
         description: str = None,
         instance_id: str = None,
@@ -25,6 +26,7 @@ class CreateCloudAccountRequest(DaraModel):
         self.cloud_account_name = cloud_account_name
         # 云账号提供商名称
         self.cloud_account_provider_name = cloud_account_provider_name
+        self.cloud_account_site = cloud_account_site
         # 云账号类型
         # 
         # This parameter is required.
@@ -56,6 +58,9 @@ class CreateCloudAccountRequest(DaraModel):
         if self.cloud_account_provider_name is not None:
             result['CloudAccountProviderName'] = self.cloud_account_provider_name
 
+        if self.cloud_account_site is not None:
+            result['CloudAccountSite'] = self.cloud_account_site
+
         if self.cloud_account_vendor_type is not None:
             result['CloudAccountVendorType'] = self.cloud_account_vendor_type
 
@@ -80,6 +85,9 @@ class CreateCloudAccountRequest(DaraModel):
 
         if m.get('CloudAccountProviderName') is not None:
             self.cloud_account_provider_name = m.get('CloudAccountProviderName')
+
+        if m.get('CloudAccountSite') is not None:
+            self.cloud_account_site = m.get('CloudAccountSite')
 
         if m.get('CloudAccountVendorType') is not None:
             self.cloud_account_vendor_type = m.get('CloudAccountVendorType')
