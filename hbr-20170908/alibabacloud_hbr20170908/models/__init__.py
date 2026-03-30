@@ -12,6 +12,9 @@ from ._add_container_cluster_response import AddContainerClusterResponse
 from ._add_cross_account_request import AddCrossAccountRequest
 from ._add_cross_account_response_body import AddCrossAccountResponseBody
 from ._add_cross_account_response import AddCrossAccountResponse
+from ._add_data_source_request import AddDataSourceRequest
+from ._add_data_source_response_body import AddDataSourceResponseBody
+from ._add_data_source_response import AddDataSourceResponse
 from ._browse_files_request import BrowseFilesRequest
 from ._browse_files_response_body import BrowseFilesResponseBody
 from ._browse_files_response import BrowseFilesResponse
@@ -425,6 +428,9 @@ __all__ = [
     AddCrossAccountRequest,
     AddCrossAccountResponseBody,
     AddCrossAccountResponse,
+    AddDataSourceRequest,
+    AddDataSourceResponseBody,
+    AddDataSourceResponse,
     BrowseFilesRequest,
     BrowseFilesResponseBody,
     BrowseFilesResponse,

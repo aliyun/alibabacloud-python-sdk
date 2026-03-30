@@ -242,6 +242,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_cross_account_with_options_async(request, runtime)
 
+    def add_data_source_with_options(
+        self,
+        request: main_models.AddDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_info):
+            query['ConnectionInfo'] = request.connection_info
+        if not DaraCore.is_null(request.credential):
+            query['Credential'] = request.credential
+        if not DaraCore.is_null(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not DaraCore.is_null(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not DaraCore.is_null(request.exclude):
+            query['Exclude'] = request.exclude
+        if not DaraCore.is_null(request.include):
+            query['Include'] = request.include
+        if not DaraCore.is_null(request.index_level):
+            query['IndexLevel'] = request.index_level
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.schedule):
+            query['Schedule'] = request.schedule
+        if not DaraCore.is_null(request.speed_limit):
+            query['SpeedLimit'] = request.speed_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDataSource',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_data_source_with_options_async(
+        self,
+        request: main_models.AddDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_info):
+            query['ConnectionInfo'] = request.connection_info
+        if not DaraCore.is_null(request.credential):
+            query['Credential'] = request.credential
+        if not DaraCore.is_null(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not DaraCore.is_null(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not DaraCore.is_null(request.exclude):
+            query['Exclude'] = request.exclude
+        if not DaraCore.is_null(request.include):
+            query['Include'] = request.include
+        if not DaraCore.is_null(request.index_level):
+            query['IndexLevel'] = request.index_level
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.schedule):
+            query['Schedule'] = request.schedule
+        if not DaraCore.is_null(request.speed_limit):
+            query['SpeedLimit'] = request.speed_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDataSource',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_data_source(
+        self,
+        request: main_models.AddDataSourceRequest,
+    ) -> main_models.AddDataSourceResponse:
+        runtime = RuntimeOptions()
+        return self.add_data_source_with_options(request, runtime)
+
+    async def add_data_source_async(
+        self,
+        request: main_models.AddDataSourceRequest,
+    ) -> main_models.AddDataSourceResponse:
+        runtime = RuntimeOptions()
+        return await self.add_data_source_with_options_async(request, runtime)
+
     def browse_files_with_options(
         self,
         request: main_models.BrowseFilesRequest,
