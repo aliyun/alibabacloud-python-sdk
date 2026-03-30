@@ -10,6 +10,10 @@
 - Support API AddDataSource.
 
 
+2026-03-30 Version: 2.5.0
+- Support API AddDataSource.
+
+
 2026-03-24 Version: 2.4.1
 - Update API DescribeBackupJobs2: add response parameters Body.BackupJobs.$.TriggerMode.
 
