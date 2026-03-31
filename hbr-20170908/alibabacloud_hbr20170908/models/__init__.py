@@ -147,6 +147,9 @@ from ._describe_container_resource_response import DescribeContainerResourceResp
 from ._describe_cross_accounts_request import DescribeCrossAccountsRequest
 from ._describe_cross_accounts_response_body import DescribeCrossAccountsResponseBody
 from ._describe_cross_accounts_response import DescribeCrossAccountsResponse
+from ._describe_data_sources_request import DescribeDataSourcesRequest
+from ._describe_data_sources_response_body import DescribeDataSourcesResponseBody
+from ._describe_data_sources_response import DescribeDataSourcesResponse
 from ._describe_hana_backup_plans_request import DescribeHanaBackupPlansRequest
 from ._describe_hana_backup_plans_response_body import DescribeHanaBackupPlansResponseBody
 from ._describe_hana_backup_plans_response import DescribeHanaBackupPlansResponse
@@ -238,6 +241,9 @@ from ._list_protected_resources_response_body import ListProtectedResourcesRespo
 from ._list_protected_resources_response import ListProtectedResourcesResponse
 from ._open_hbr_service_response_body import OpenHbrServiceResponseBody
 from ._open_hbr_service_response import OpenHbrServiceResponse
+from ._remove_data_source_request import RemoveDataSourceRequest
+from ._remove_data_source_response_body import RemoveDataSourceResponseBody
+from ._remove_data_source_response import RemoveDataSourceResponse
 from ._search_historical_snapshots_request import SearchHistoricalSnapshotsRequest
 from ._search_historical_snapshots_shrink_request import SearchHistoricalSnapshotsShrinkRequest
 from ._search_historical_snapshots_response_body import SearchHistoricalSnapshotsResponseBody
@@ -265,6 +271,9 @@ from ._update_client_settings_response import UpdateClientSettingsResponse
 from ._update_container_cluster_request import UpdateContainerClusterRequest
 from ._update_container_cluster_response_body import UpdateContainerClusterResponseBody
 from ._update_container_cluster_response import UpdateContainerClusterResponse
+from ._update_data_source_request import UpdateDataSourceRequest
+from ._update_data_source_response_body import UpdateDataSourceResponseBody
+from ._update_data_source_response import UpdateDataSourceResponse
 from ._update_hana_backup_plan_request import UpdateHanaBackupPlanRequest
 from ._update_hana_backup_plan_response_body import UpdateHanaBackupPlanResponseBody
 from ._update_hana_backup_plan_response import UpdateHanaBackupPlanResponse
@@ -347,6 +356,7 @@ from ._describe_container_cluster_response_body import DescribeContainerClusterR
 from ._describe_container_resource_response_body import DescribeContainerResourceResponseBodyResources
 from ._describe_cross_accounts_response_body import DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount
 from ._describe_cross_accounts_response_body import DescribeCrossAccountsResponseBodyCrossAccounts
+from ._describe_data_sources_response_body import DescribeDataSourcesResponseBodyDataSources
 from ._describe_hana_backup_plans_response_body import DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan
 from ._describe_hana_backup_plans_response_body import DescribeHanaBackupPlansResponseBodyHanaBackupPlans
 from ._describe_hana_backup_setting_response_body import DescribeHanaBackupSettingResponseBodyHanaBackupSetting
@@ -563,6 +573,9 @@ __all__ = [
     DescribeCrossAccountsRequest,
     DescribeCrossAccountsResponseBody,
     DescribeCrossAccountsResponse,
+    DescribeDataSourcesRequest,
+    DescribeDataSourcesResponseBody,
+    DescribeDataSourcesResponse,
     DescribeHanaBackupPlansRequest,
     DescribeHanaBackupPlansResponseBody,
     DescribeHanaBackupPlansResponse,
@@ -654,6 +667,9 @@ __all__ = [
     ListProtectedResourcesResponse,
     OpenHbrServiceResponseBody,
     OpenHbrServiceResponse,
+    RemoveDataSourceRequest,
+    RemoveDataSourceResponseBody,
+    RemoveDataSourceResponse,
     SearchHistoricalSnapshotsRequest,
     SearchHistoricalSnapshotsShrinkRequest,
     SearchHistoricalSnapshotsResponseBody,
@@ -681,6 +697,9 @@ __all__ = [
     UpdateContainerClusterRequest,
     UpdateContainerClusterResponseBody,
     UpdateContainerClusterResponse,
+    UpdateDataSourceRequest,
+    UpdateDataSourceResponseBody,
+    UpdateDataSourceResponse,
     UpdateHanaBackupPlanRequest,
     UpdateHanaBackupPlanResponseBody,
     UpdateHanaBackupPlanResponse,
@@ -763,6 +782,7 @@ __all__ = [
     DescribeContainerResourceResponseBodyResources,
     DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount,
     DescribeCrossAccountsResponseBodyCrossAccounts,
+    DescribeDataSourcesResponseBodyDataSources,
     DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan,
     DescribeHanaBackupPlansResponseBodyHanaBackupPlans,
     DescribeHanaBackupSettingResponseBodyHanaBackupSetting,
