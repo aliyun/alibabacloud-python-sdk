@@ -212,6 +212,7 @@ class CreateClusterRequestNodeGroups(DaraModel):
         node_group_description: str = None,
         node_group_name: str = None,
         nodes: List[main_models.CreateClusterRequestNodeGroupsNodes] = None,
+        ram_role_name: str = None,
         system_disk: main_models.CreateClusterRequestNodeGroupsSystemDisk = None,
         user_data: str = None,
         virtual_gpu_enabled: bool = None,
@@ -234,6 +235,7 @@ class CreateClusterRequestNodeGroups(DaraModel):
         self.node_group_name = node_group_name
         # Node list
         self.nodes = nodes
+        self.ram_role_name = ram_role_name
         # System disk information
         self.system_disk = system_disk
         # Instance custom data. It needs to be encoded in Base64, and the original data should not exceed 16 KB.
@@ -291,6 +293,9 @@ class CreateClusterRequestNodeGroups(DaraModel):
             for k1 in self.nodes:
                 result['Nodes'].append(k1.to_map() if k1 else None)
 
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
+
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
 
@@ -339,6 +344,9 @@ class CreateClusterRequestNodeGroups(DaraModel):
             for k1 in m.get('Nodes'):
                 temp_model = main_models.CreateClusterRequestNodeGroupsNodes()
                 self.nodes.append(temp_model.from_map(k1))
+
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
 
         if m.get('SystemDisk') is not None:
             temp_model = main_models.CreateClusterRequestNodeGroupsSystemDisk()

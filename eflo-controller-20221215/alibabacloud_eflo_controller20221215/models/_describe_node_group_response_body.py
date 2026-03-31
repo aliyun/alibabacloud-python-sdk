@@ -22,6 +22,7 @@ class DescribeNodeGroupResponseBody(DaraModel):
         node_group_description: str = None,
         node_group_id: str = None,
         node_group_name: str = None,
+        ram_role_name: str = None,
         request_id: str = None,
         system_disk: main_models.DescribeNodeGroupResponseBodySystemDisk = None,
         update_time: str = None,
@@ -42,6 +43,7 @@ class DescribeNodeGroupResponseBody(DaraModel):
         self.node_group_description = node_group_description
         self.node_group_id = node_group_id
         self.node_group_name = node_group_name
+        self.ram_role_name = ram_role_name
         # Id of the request
         self.request_id = request_id
         self.system_disk = system_disk
@@ -99,6 +101,9 @@ class DescribeNodeGroupResponseBody(DaraModel):
 
         if self.node_group_name is not None:
             result['NodeGroupName'] = self.node_group_name
+
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -160,6 +165,9 @@ class DescribeNodeGroupResponseBody(DaraModel):
 
         if m.get('NodeGroupName') is not None:
             self.node_group_name = m.get('NodeGroupName')
+
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

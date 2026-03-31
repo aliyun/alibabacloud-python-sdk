@@ -70,6 +70,7 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
+        ram_role_name: str = None,
         system_disk: main_models.CreateNodeGroupRequestNodeGroupSystemDisk = None,
         user_data: str = None,
         virtual_gpu_enabled: bool = None,
@@ -98,6 +99,7 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
         # 
         # This parameter is required.
         self.node_group_name = node_group_name
+        self.ram_role_name = ram_role_name
         # Details of the node system disk configuration.
         self.system_disk = system_disk
         # User-defined data
@@ -138,6 +140,9 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
         if self.node_group_name is not None:
             result['NodeGroupName'] = self.node_group_name
 
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
+
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
 
@@ -174,6 +179,9 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
 
         if m.get('NodeGroupName') is not None:
             self.node_group_name = m.get('NodeGroupName')
+
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
 
         if m.get('SystemDisk') is not None:
             temp_model = main_models.CreateNodeGroupRequestNodeGroupSystemDisk()

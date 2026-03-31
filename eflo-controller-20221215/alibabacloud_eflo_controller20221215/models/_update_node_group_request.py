@@ -13,6 +13,7 @@ class UpdateNodeGroupRequest(DaraModel):
         login_password: str = None,
         new_node_group_name: str = None,
         node_group_id: str = None,
+        ram_role_name: str = None,
         user_data: str = None,
     ):
         # Whether file storage mounting is supported
@@ -27,6 +28,7 @@ class UpdateNodeGroupRequest(DaraModel):
         self.new_node_group_name = new_node_group_name
         # Node group ID
         self.node_group_id = node_group_id
+        self.ram_role_name = ram_role_name
         # User-defined script
         self.user_data = user_data
 
@@ -56,6 +58,9 @@ class UpdateNodeGroupRequest(DaraModel):
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
 
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
+
         if self.user_data is not None:
             result['UserData'] = self.user_data
 
@@ -80,6 +85,9 @@ class UpdateNodeGroupRequest(DaraModel):
 
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
+
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
 
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')

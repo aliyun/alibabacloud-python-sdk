@@ -1,3 +1,10 @@
+2026-03-31 Version: 3.0.6
+- Update API CreateCluster: add request parameters NodeGroups.$.RamRoleName.
+- Update API CreateNodeGroup: add request parameters NodeGroup.RamRoleName.
+- Update API DescribeNodeGroup: add response parameters Body.RamRoleName.
+- Update API UpdateNodeGroup: add request parameters RamRoleName.
+
+
 2026-03-25 Version: 3.0.5
 - Update API DescribeNode: add response parameters Body.Networks.$.SecurityGroupId.
 - Update API DescribeNode: add response parameters Body.Networks.$.VSwitchId.

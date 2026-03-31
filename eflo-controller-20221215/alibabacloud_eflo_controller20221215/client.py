@@ -4819,6 +4819,8 @@ class Client(OpenApiClient):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not DaraCore.is_null(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.ram_role_name):
+            body['RamRoleName'] = request.ram_role_name
         if not DaraCore.is_null(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(
@@ -4859,6 +4861,8 @@ class Client(OpenApiClient):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not DaraCore.is_null(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.ram_role_name):
+            body['RamRoleName'] = request.ram_role_name
         if not DaraCore.is_null(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(
