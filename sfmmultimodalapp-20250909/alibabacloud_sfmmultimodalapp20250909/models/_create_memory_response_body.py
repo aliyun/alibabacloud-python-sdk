@@ -117,10 +117,12 @@ class CreateMemoryResponseBodyDataMemoryNodes(DaraModel):
         content: str = None,
         event: str = None,
         memory_node_id: str = None,
+        old_content: str = None,
     ):
         self.content = content
         self.event = event
         self.memory_node_id = memory_node_id
+        self.old_content = old_content
 
     def validate(self):
         pass
@@ -139,6 +141,9 @@ class CreateMemoryResponseBodyDataMemoryNodes(DaraModel):
         if self.memory_node_id is not None:
             result['MemoryNodeId'] = self.memory_node_id
 
+        if self.old_content is not None:
+            result['OldContent'] = self.old_content
+
         return result
 
     def from_map(self, m: dict = None):
@@ -151,6 +156,9 @@ class CreateMemoryResponseBodyDataMemoryNodes(DaraModel):
 
         if m.get('MemoryNodeId') is not None:
             self.memory_node_id = m.get('MemoryNodeId')
+
+        if m.get('OldContent') is not None:
+            self.old_content = m.get('OldContent')
 
         return self
 

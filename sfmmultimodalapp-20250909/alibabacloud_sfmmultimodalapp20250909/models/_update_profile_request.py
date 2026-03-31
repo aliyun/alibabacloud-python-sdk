@@ -22,7 +22,6 @@ class UpdateProfileRequest(DaraModel):
         self.attributes_operations = attributes_operations
         self.description = description
         self.name = name
-        # This parameter is required.
         self.user_defined_id = user_defined_id
         # This parameter is required.
         self.workspace_id = workspace_id

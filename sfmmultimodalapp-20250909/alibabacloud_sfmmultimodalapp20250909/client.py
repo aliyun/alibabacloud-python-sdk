@@ -163,14 +163,20 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auto_update):
+            query['AutoUpdate'] = request.auto_update
         if not DaraCore.is_null(request.content):
             query['Content'] = request.content
+        if not DaraCore.is_null(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
         if not DaraCore.is_null(request.messages_json):
             query['MessagesJson'] = request.messages_json
         if not DaraCore.is_null(request.meta_data_shrink):
             query['MetaData'] = request.meta_data_shrink
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
         if not DaraCore.is_null(request.user_defined_id):
             query['UserDefinedId'] = request.user_defined_id
         if not DaraCore.is_null(request.workspace_id):
@@ -207,14 +213,20 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auto_update):
+            query['AutoUpdate'] = request.auto_update
         if not DaraCore.is_null(request.content):
             query['Content'] = request.content
+        if not DaraCore.is_null(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
         if not DaraCore.is_null(request.messages_json):
             query['MessagesJson'] = request.messages_json
         if not DaraCore.is_null(request.meta_data_shrink):
             query['MetaData'] = request.meta_data_shrink
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
         if not DaraCore.is_null(request.user_defined_id):
             query['UserDefinedId'] = request.user_defined_id
         if not DaraCore.is_null(request.workspace_id):

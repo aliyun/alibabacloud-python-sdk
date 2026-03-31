@@ -19,7 +19,6 @@ class UpdateProfileShrinkRequest(DaraModel):
         self.attributes_operations_shrink = attributes_operations_shrink
         self.description = description
         self.name = name
-        # This parameter is required.
         self.user_defined_id = user_defined_id
         # This parameter is required.
         self.workspace_id = workspace_id

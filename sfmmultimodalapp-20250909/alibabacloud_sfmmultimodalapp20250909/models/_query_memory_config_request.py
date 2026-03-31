@@ -13,7 +13,6 @@ class QueryMemoryConfigRequest(DaraModel):
     ):
         # This parameter is required.
         self.app_id = app_id
-        # This parameter is required.
         self.user_defined_id = user_defined_id
         # This parameter is required.
         self.workspace_id = workspace_id

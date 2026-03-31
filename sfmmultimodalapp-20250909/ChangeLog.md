@@ -1,3 +1,6 @@
+2026-03-31 Version: 1.1.2
+- Generated python 2025-09-09 for SfmMultiModalApp.
+
 2026-03-02 Version: 1.1.0
 - Support API CreateMemory.
 - Support API CreateProfile.

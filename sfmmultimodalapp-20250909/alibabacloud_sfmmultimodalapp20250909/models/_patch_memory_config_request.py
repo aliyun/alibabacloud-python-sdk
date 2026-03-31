@@ -23,7 +23,6 @@ class PatchMemoryConfigRequest(DaraModel):
         self.prompt = prompt
         self.threshold = threshold
         self.top_k = top_k
-        # This parameter is required.
         self.user_defined_id = user_defined_id
         # This parameter is required.
         self.workspace_id = workspace_id
