@@ -10,8 +10,16 @@ class AttachConfigRuleToCompliancePackRequest(DaraModel):
         compliance_pack_id: str = None,
         config_rule_ids: str = None,
     ):
+        # The ID of the compliance package.
+        # 
+        # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+        # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        # The rule ID. Separate multiple rule IDs with commas (,).
+        # 
+        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+        # 
         # This parameter is required.
         self.config_rule_ids = config_rule_ids
 

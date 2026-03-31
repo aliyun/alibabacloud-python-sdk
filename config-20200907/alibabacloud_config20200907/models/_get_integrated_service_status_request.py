@@ -9,6 +9,12 @@ class GetIntegratedServiceStatusRequest(DaraModel):
         self,
         service_code: str = None,
     ):
+        # The identity of the cloud service that is integrated with Cloud Config. Valid values:
+        # 
+        # *   eventbridge: EventBridge
+        # *   cms: CloudMonitor
+        # *   bpstudio: Cloud Architect Design Tools (CADT)
+        # 
         # This parameter is required.
         self.service_code = service_code
 

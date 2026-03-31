@@ -13,12 +13,26 @@ class IgnoreAggregateEvaluationResultsShrinkRequest(DaraModel):
         reason: str = None,
         resources_shrink: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The ID of the rule.
+        # 
+        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The date from which the system automatically re-evaluates the ignored incompliant resources.
+        # 
+        # >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
         self.ignore_date = ignore_date
+        # The reason why you ignore the resource.
         self.reason = reason
+        # The resources to be ignored.
+        # 
         # This parameter is required.
         self.resources_shrink = resources_shrink
 

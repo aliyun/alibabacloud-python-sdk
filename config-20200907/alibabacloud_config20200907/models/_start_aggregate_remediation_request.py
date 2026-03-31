@@ -16,13 +16,13 @@ class StartAggregateRemediationRequest(DaraModel):
     ):
         # The ID of the account group.
         # 
-        # To get the account group ID, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # For information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The ID of the rule.
+        # The rule ID.
         # 
-        # To get the rule ID, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id

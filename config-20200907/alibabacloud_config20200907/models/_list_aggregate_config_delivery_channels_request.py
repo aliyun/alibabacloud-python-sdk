@@ -10,8 +10,13 @@ class ListAggregateConfigDeliveryChannelsRequest(DaraModel):
         aggregator_id: str = None,
         delivery_channel_ids: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The IDs of the delivery channels. Separate multiple IDs with commas (,).
         self.delivery_channel_ids = delivery_channel_ids
 
     def validate(self):

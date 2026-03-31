@@ -9,6 +9,7 @@ class GetResourceComplianceGroupByRegionRequest(DaraModel):
         self,
         config_rule_ids: str = None,
     ):
+        # The rule IDs. Separate multiple rule IDs with commas (,).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):

@@ -10,7 +10,11 @@ class GenerateConfigRulesReportRequest(DaraModel):
         client_token: str = None,
         config_rule_ids: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the rule. Separate multiple rule IDs with commas (,).
+        # 
+        # For more information about how to query the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):

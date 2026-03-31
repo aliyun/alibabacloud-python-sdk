@@ -18,29 +18,21 @@ class ListCompliancePacksRequest(DaraModel):
     ):
         # The page number.
         # 
-        # Minimum value: 1. Default value: 1.
+        # Pages start from page 1. Default value: 1
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Default value: 10.
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
-        # The risk level of the compliance pack. Valid values:
-        # 
-        # - 1: high risk.
-        # 
-        # - 2: medium risk.
-        # 
-        # - 3: low risk.
         self.risk_level = risk_level
-        # The status of the compliance pack. Valid values:
+        # The status of the compliance package to be queried. Valid values:
         # 
-        # - ACTIVE: The compliance pack is active.
-        # 
-        # - CREATING: The compliance pack is being created.
+        # *   ACTIVE: The compliance package is active.
+        # *   CREATING: The compliance package is being created.
         self.status = status
         # The tags of the resource.
         # 
-        # You can attach up to 20 tags to a resource.
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -101,13 +93,15 @@ class ListCompliancePacksRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
+        # The tag key of the resource. You can specify up to 20 tag keys.
         # 
-        # You can attach up to 20 tag keys to a resource.
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource.
+        # The tag values.
         # 
-        # You can attach up to 20 tag values to a resource.
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):

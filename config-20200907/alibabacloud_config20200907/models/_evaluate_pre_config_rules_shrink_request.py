@@ -11,17 +11,18 @@ class EvaluatePreConfigRulesShrinkRequest(DaraModel):
         resource_evaluate_items_shrink: str = None,
         resource_type_format: str = None,
     ):
-        # Specifies whether to enable rule templates. Valid values:
+        # Specifies whether to enable the managed rule. Valid values:
         # 
-        # - true: enables rule templates.
+        # *   true: enables the managed rule.
+        # *   false: does not enable the managed rule. This is the default value.
         # 
-        # - false (default): does not enable rule templates.
+        # >  After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
         self.enable_managed_rules = enable_managed_rules
-        # An array that contains the resources that you want to evaluate.
+        # The resources that you want to evaluate.
         # 
         # This parameter is required.
         self.resource_evaluate_items_shrink = resource_evaluate_items_shrink
-        # The query start token
+        # 下一个查询开始Token
         self.resource_type_format = resource_type_format
 
     def validate(self):

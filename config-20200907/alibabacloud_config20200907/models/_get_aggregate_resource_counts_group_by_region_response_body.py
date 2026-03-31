@@ -13,7 +13,9 @@ class GetAggregateResourceCountsGroupByRegionResponseBody(DaraModel):
         discovered_resource_counts_summary: List[main_models.GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary] = None,
         request_id: str = None,
     ):
+        # The ID of the region by which statistics are collected.
         self.discovered_resource_counts_summary = discovered_resource_counts_summary
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,13 @@ class GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCount
         region: str = None,
         resource_count: int = None,
     ):
+        # The dimension by which statistics are collected.
+        # 
+        # >  In most cases, the `Region` parameter is returned instead of the GroupName parameter.
         self.group_name = group_name
+        # The ID of the region by which statistics are collected.
         self.region = region
+        # The total number of resources in the region.
         self.resource_count = resource_count
 
     def validate(self):

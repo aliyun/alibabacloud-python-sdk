@@ -11,7 +11,9 @@ class GetAggregateConfigRulesReportResponseBody(DaraModel):
         config_rules_report: main_models.GetAggregateConfigRulesReportResponseBodyConfigRulesReport = None,
         request_id: str = None,
     ):
+        # The compliance evaluation report.
         self.config_rules_report = config_rules_report
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +54,21 @@ class GetAggregateConfigRulesReportResponseBodyConfigRulesReport(DaraModel):
         report_status: str = None,
         report_url: str = None,
     ):
+        # The ID of the management account to which the rules belong.
         self.account_id = account_id
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
+        # The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
         self.report_create_timestamp = report_create_timestamp
+        # The ID of the compliance evaluation report.
         self.report_id = report_id
+        # The status of the compliance evaluation report. Valid values:
+        # 
+        # *   NONE: The compliance evaluation report is not generated.
+        # *   CREATING: The compliance evaluation report is being generated.
+        # *   COMPLETE: The compliance evaluation report was generated.
         self.report_status = report_status
+        # The URL used to download the compliance evaluation report.
         self.report_url = report_url
 
     def validate(self):

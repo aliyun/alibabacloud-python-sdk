@@ -19,57 +19,52 @@ class ListConfigRulesShrinkRequest(DaraModel):
         sort_by: str = None,
         tag_shrink: str = None,
     ):
-        # The ID of the compliance package.
+        # The compliance package ID.
+        # 
+        # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/606968.html).
+        # 
+        # >  You must configure either the `CompliancePackId` or `ConfigRuleId` parameter.
         self.compliance_pack_id = compliance_pack_id
         # The compliance evaluation result of the rule. Valid values:
         # 
-        # - COMPLIANT: Compliant.
-        # 
-        # - NON_COMPLIANT: Non-compliant.
-        # 
-        # - NOT_APPLICABLE: Not applicable.
-        # 
-        # - INSUFFICIENT_DATA: Insufficient data.
+        # *   COMPLIANT: The resources are evaluated as compliant.
+        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resources.
+        # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
         # The name of the rule.
         self.config_rule_name = config_rule_name
-        # The state of the rule. Valid values:
+        # The status of the rule. Valid values:
         # 
-        # - ACTIVE: The rule is enabled.
-        # 
-        # - DELETING: The rule is being deleted.
-        # 
-        # - EVALUATING: The rule is being evaluated.
-        # 
-        # - INACTIVE: The rule is disabled.
+        # *   ACTIVE: The rule is enabled.
+        # *   DELETING: The rule is being deleted.
+        # *   EVALUATING: The rule is being used to evaluate resource configurations.
+        # *   INACTIVE: The rule is disabled.
         self.config_rule_state = config_rule_state
-        # The keyword for the fuzzy query.
+        # The query keyword.
         # 
-        # Supports fuzzy queries by rule ID, rule name, rule description, or rule template identifier.
+        # You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
         self.keyword = keyword
         # The page number.
         # 
-        # The default value is 1.
+        # Page numbers start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Default value: 10.
+        # Valid values: 1 to 100. A minimum of 1 entry can be returned per page. Default value: 10.
         self.page_size = page_size
-        # The type of resource evaluated by the rule.
+        # The type of the resources to be evaluated based on the rule.
         self.resource_types = resource_types
-        # The risk level of the rule. Valid values:
+        # The risk level of the resources that are not compliant with the rule. Valid values:
         # 
-        # - 1: High risk.
-        # 
-        # - 2: Medium risk.
-        # 
-        # - 3: Low risk.
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
-        # The sorting method. This parameter is not required. Set the value to `CreateDate-Desc` to sort the rules by creation time in descending order.
         self.sort_by = sort_by
         # The tags of the resource.
         # 
-        # A maximum of 20 tags can be attached.
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):

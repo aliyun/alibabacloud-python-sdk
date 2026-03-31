@@ -9,9 +9,9 @@ class DeleteRemediationsRequest(DaraModel):
         self,
         remediation_ids: str = None,
     ):
-        # The remediation setting ID. To specify multiple IDs, separate them with commas (,).
+        # The ID of the remediation template. Separate multiple remediation template IDs with commas (,).
         # 
-        # For information about how to obtain a remediation setting ID, see [ListRemediations](https://help.aliyun.com/document_detail/270772.html).
+        # For more information about how to obtain the ID of a remediation template, see [ListRemediations](https://help.aliyun.com/document_detail/270772.html).
         # 
         # This parameter is required.
         self.remediation_ids = remediation_ids

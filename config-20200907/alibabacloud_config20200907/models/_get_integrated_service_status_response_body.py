@@ -12,9 +12,21 @@ class GetIntegratedServiceStatusResponseBody(DaraModel):
         integrated_types: str = None,
         request_id: str = None,
     ):
+        # The type of the event that is integrated across accounts. Valid values:
+        # 
+        # *   NonCompliantNotification: non-compliance event
         self.aggregator_delivery_data_type = aggregator_delivery_data_type
+        # Indicates whether the product has been integrated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.data = data
+        # The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+        # 
+        # *   ConfigurationItemChangeNotification: resource change event
+        # *   NonCompliantNotification: non-compliance event
         self.integrated_types = integrated_types
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

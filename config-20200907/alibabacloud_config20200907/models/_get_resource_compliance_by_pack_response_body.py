@@ -13,7 +13,7 @@ class GetResourceComplianceByPackResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The compliance results of the resources in the compliance package.
+        # The compliance evaluation results returned.
         self.resource_compliance_result = resource_compliance_result
 
     def validate(self):
@@ -57,19 +57,11 @@ class GetResourceComplianceByPackResponseBodyResourceComplianceResult(DaraModel)
     ):
         # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
-        # The number of compliant resources.
-        # 
-        # > Note: A resource is counted each time a rule evaluates it as compliant. For example, if a resource is evaluated as compliant by two rules, it is counted twice.
         self.compliant_count = compliant_count
-        # The number of resources whose evaluation results are ignored.
         self.ignored_count = ignored_count
-        # The total number of resources that the rules in the compliance package evaluate as Insufficient Data.
         self.insufficient_data_count = insufficient_data_count
         # The number of non-compliant resources.
         self.non_compliant_count = non_compliant_count
-        # The number of resources that are not applicable.
-        # 
-        # > Note: A resource is counted each time a rule evaluates it as not applicable. For example, if a resource is evaluated as not applicable by two rules, it is counted twice.
         self.not_applicable_count = not_applicable_count
         # The total number of resources.
         self.total_count = total_count

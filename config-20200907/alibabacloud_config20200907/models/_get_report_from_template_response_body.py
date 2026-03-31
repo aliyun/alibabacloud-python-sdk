@@ -11,9 +11,7 @@ class GetReportFromTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_report: main_models.GetReportFromTemplateResponseBodyTemplateReport = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The report generated from the template.
         self.template_report = template_report
 
     def validate(self):
@@ -55,27 +53,12 @@ class GetReportFromTemplateResponseBodyTemplateReport(DaraModel):
         status: str = None,
         template_report_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The timestamp when the report was generated. Unit: milliseconds.
         self.report_create_end_timestamp = report_create_end_timestamp
-        # The timestamp when the report started to be generated. Unit: milliseconds.
         self.report_create_start_timestamp = report_create_start_timestamp
-        # The ID of the report template.
         self.report_template_id = report_template_id
-        # The download URL of the report.
         self.report_url = report_url
-        # The status of the report. Valid values:
-        # 
-        # - COMPLETE: The report is generated.
-        # 
-        # - CREATING: The report is being generated.
-        # 
-        # - FAILED: The report failed to be generated.
-        # 
-        # - TIMEOUT: The request timed out.
         self.status = status
-        # The ID of the report generated from the template.
         self.template_report_id = template_report_id
 
     def validate(self):

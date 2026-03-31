@@ -10,7 +10,12 @@ class StopConfigurationRecorderResponseBody(DaraModel):
         request_id: str = None,
         stop_configuration_recorder_result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.stop_configuration_recorder_result = stop_configuration_recorder_result
 
     def validate(self):

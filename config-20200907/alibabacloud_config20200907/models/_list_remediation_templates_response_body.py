@@ -16,10 +16,15 @@ class ListRemediationTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The page number. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The queried remediation templates.
         self.remediation_templates = remediation_templates
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of remediation templates.
         self.total_count = total_count
 
     def validate(self):
@@ -83,10 +88,15 @@ class ListRemediationTemplatesResponseBodyRemediationTemplates(DaraModel):
         template_identifier: str = None,
         template_name: str = None,
     ):
+        # The type of the remediation template. Valid value: OOS, which indicates Operation Orchestration Service.
         self.remediation_type = remediation_type
+        # The definition of the remediation template.
         self.template_definition = template_definition
+        # The description of the remediation template.
         self.template_description = template_description
+        # The ID of the remediation template.
         self.template_identifier = template_identifier
+        # The name of the remediation template.
         self.template_name = template_name
 
     def validate(self):

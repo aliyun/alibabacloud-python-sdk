@@ -11,7 +11,9 @@ class GetCompliancePackReportResponseBody(DaraModel):
         compliance_pack_report: main_models.GetCompliancePackReportResponseBodyCompliancePackReport = None,
         request_id: str = None,
     ):
+        # The information about the compliance evaluation report.
         self.compliance_pack_report = compliance_pack_report
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,10 +53,19 @@ class GetCompliancePackReportResponseBodyCompliancePackReport(DaraModel):
         report_status: str = None,
         report_url: str = None,
     ):
+        # The ID of the Alibaba Cloud account to which the compliance package belongs.
         self.account_id = account_id
+        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
+        # The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
         self.report_create_timestamp = report_create_timestamp
+        # The status of the compliance evaluation report. Valid values:
+        # 
+        # *   NONE: The compliance evaluation report is not generated.
+        # *   CREATING: The compliance evaluation report is being generated.
+        # *   COMPLETE: The compliance evaluation report is generated.
         self.report_status = report_status
+        # The URL that is used to download the compliance evaluation report.
         self.report_url = report_url
 
     def validate(self):

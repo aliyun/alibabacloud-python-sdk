@@ -65,11 +65,9 @@ class GetConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries(DaraModel):
         self.non_compliant_count = non_compliant_count
         # The risk level of the resources that are not compliant with the rules. Valid values:
         # 
-        # - 1: high risk level.
-        # 
-        # - 2: medium risk level.
-        # 
-        # - 3: low risk level.
+        # *   1: high risk level.
+        # *   2: medium risk level.
+        # *   3: low risk level.
         self.risk_level = risk_level
 
     def validate(self):

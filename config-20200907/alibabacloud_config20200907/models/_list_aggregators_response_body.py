@@ -13,7 +13,9 @@ class ListAggregatorsResponseBody(DaraModel):
         aggregators_result: main_models.ListAggregatorsResponseBodyAggregatorsResult = None,
         request_id: str = None,
     ):
+        # The account groups.
         self.aggregators_result = aggregators_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListAggregatorsResponseBodyAggregatorsResult(DaraModel):
         aggregators: List[main_models.ListAggregatorsResponseBodyAggregatorsResultAggregators] = None,
         next_token: str = None,
     ):
+        # The list of the account groups.
         self.aggregators = aggregators
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
 
     def validate(self):
@@ -101,15 +105,32 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregators(DaraModel):
         folder_id: str = None,
         tags: List[main_models.ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags] = None,
     ):
+        # The ID of the management account that is used to create the account group.
         self.account_id = account_id
+        # The number of member accounts in the account group.
         self.aggregator_account_count = aggregator_account_count
+        # The timestamp generated when the account group was created.
         self.aggregator_create_timestamp = aggregator_create_timestamp
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
+        # The name of the account group.
         self.aggregator_name = aggregator_name
+        # The status of the account group. Valid values:
+        # 
+        # *   0: The account group is being created.
+        # *   1: The account group was created.
         self.aggregator_status = aggregator_status
+        # The type of the account group. Valid values:
+        # 
+        # *   RD: global account group.
+        # *   FOLDER: account group of the folder.
+        # *   CUSTOM: custom account group.
         self.aggregator_type = aggregator_type
+        # The description of the account group.
         self.description = description
+        # The ID of the folder.
         self.folder_id = folder_id
+        # tags
         self.tags = tags
 
     def validate(self):
@@ -200,7 +221,9 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag keys of the resource.
         self.tag_key = tag_key
+        # The tag values of the resource.
         self.tag_value = tag_value
 
     def validate(self):

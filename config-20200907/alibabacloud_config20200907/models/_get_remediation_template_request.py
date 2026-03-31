@@ -9,9 +9,9 @@ class GetRemediationTemplateRequest(DaraModel):
         self,
         template_identifier: str = None,
     ):
-        # The identifier of the automatic remediation template.
+        # The ID of the automatic remediation template.
         # 
-        # For information about how to obtain the remediation template identifier, see [Compliance library](https://help.aliyun.com/document_detail/2337741.html).
+        # For more information about how to obtain the ID of a remediation template, see [Compliance library](https://help.aliyun.com/document_detail/2337741.html).
         self.template_identifier = template_identifier
 
     def validate(self):

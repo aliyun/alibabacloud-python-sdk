@@ -10,17 +10,7 @@ class GetResourceConfigurationSampleRequest(DaraModel):
         mock_only: str = None,
         resource_type: str = None,
     ):
-        # Specifies whether to obtain only mock data, which is not real resource data.
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.mock_only = mock_only
-        # The resource type.
-        # 
-        # For more information about how to obtain the resource type, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
-        # 
         # This parameter is required.
         self.resource_type = resource_type
 

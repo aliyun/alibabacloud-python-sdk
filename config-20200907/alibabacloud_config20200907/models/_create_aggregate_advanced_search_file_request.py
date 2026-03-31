@@ -16,7 +16,7 @@ class CreateAggregateAdvancedSearchFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The SQL statement for the advanced search.
+        # The SQL statement used to query resources.
         # 
         # This parameter is required.
         self.sql = sql

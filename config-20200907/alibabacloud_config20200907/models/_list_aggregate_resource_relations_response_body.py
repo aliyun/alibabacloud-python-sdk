@@ -13,7 +13,9 @@ class ListAggregateResourceRelationsResponseBody(DaraModel):
         request_id: str = None,
         resource_relations: main_models.ListAggregateResourceRelationsResponseBodyResourceRelations = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the relationship.
         self.resource_relations = resource_relations
 
     def validate(self):
@@ -51,8 +53,11 @@ class ListAggregateResourceRelationsResponseBodyResourceRelations(DaraModel):
         next_token: str = None,
         resource_relation_list: List[main_models.ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList] = None,
     ):
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
+        # The token that was used to initiate the next request.
         self.next_token = next_token
+        # An array that contains the relationships.
         self.resource_relation_list = resource_relation_list
 
     def validate(self):
@@ -106,12 +111,26 @@ class ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelatio
         target_resource_id: str = None,
         target_resource_type: str = None,
     ):
+        # The Alibaba Cloud account ID of the resource owner.
         self.account_id = account_id
+        # The type of the relationship between the resource and the object.
+        # 
+        # Valid values:
+        # 
+        # *   IsContained: The object is included as part of the resource.
+        # *   IsAttachedTo: The object is added to the resource.
+        # *   IsAssociatedIn: The object is associated with the resource.
+        # *   Contains: The object contains the resource.
         self.relation_type = relation_type
+        # The resource ID of the current resource.
         self.source_resource_id = source_resource_id
+        # The region ID of the current resource.
         self.source_resource_region_id = source_resource_region_id
+        # The type of the resource.
         self.source_resource_type = source_resource_type
+        # The resource ID of the resource that is associated with the object.
         self.target_resource_id = target_resource_id
+        # The type of the resource that is associated with the object.
         self.target_resource_type = target_resource_type
 
     def validate(self):

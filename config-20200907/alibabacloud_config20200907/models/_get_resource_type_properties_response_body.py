@@ -10,11 +10,9 @@ class GetResourceTypePropertiesResponseBody(DaraModel):
         configuration: str = None,
         request_id: str = None,
     ):
-        # The property descriptions of the resource.
-        # 
         # This parameter is required.
         self.configuration = configuration
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

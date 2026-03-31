@@ -11,7 +11,7 @@ class GetAggregateComplianceSummaryResponseBody(DaraModel):
         compliance_summary: main_models.GetAggregateComplianceSummaryResponseBodyComplianceSummary = None,
         request_id: str = None,
     ):
-        # The compliance summary.
+        # The compliance statistics.
         self.compliance_summary = compliance_summary
         # The request ID.
         self.request_id = request_id
@@ -50,9 +50,9 @@ class GetAggregateComplianceSummaryResponseBodyComplianceSummary(DaraModel):
         compliance_summary_by_config_rule: main_models.GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule = None,
         compliance_summary_by_resource: main_models.GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource = None,
     ):
-        # The compliance summary by rule.
+        # The summary of compliance statistics from the rule dimension.
         self.compliance_summary_by_config_rule = compliance_summary_by_config_rule
-        # The compliance summary by resource.
+        # The summary of compliance statistics from the resource dimension.
         self.compliance_summary_by_resource = compliance_summary_by_resource
 
     def validate(self):
@@ -97,15 +97,12 @@ class GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummar
         non_compliant_count: int = None,
         total_count: int = None,
     ):
-        # The timestamp of the compliance summary. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the compliance statistics were collected. Unit: milliseconds.
         self.compliance_summary_timestamp = compliance_summary_timestamp
         # The number of compliant resources.
         self.compliant_count = compliant_count
-        # The number of non-compliant resources detected by high-risk rules. Note: This value is not deduplicated by resource. If a resource is evaluated as non-compliant by two different rules, it is counted twice.
         self.high_risk_rule_non_compliant_resource_count = high_risk_rule_non_compliant_resource_count
-        # The number of non-compliant resources detected by low-risk rules. Note: This value is not deduplicated by resource. If a resource is evaluated as non-compliant by two different rules, it is counted twice.
         self.low_risk_rule_non_compliant_resource_count = low_risk_rule_non_compliant_resource_count
-        # The number of non-compliant resources detected by medium-risk rules. Note: This value is not deduplicated by resource. If a resource is evaluated as non-compliant by two different rules, it is counted twice.
         self.medium_risk_rule_non_compliant_resource_count = medium_risk_rule_non_compliant_resource_count
         # The number of non-compliant resources.
         self.non_compliant_count = non_compliant_count
@@ -176,7 +173,7 @@ class GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummar
         non_compliant_count: int = None,
         total_count: int = None,
     ):
-        # The timestamp of the compliance summary. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the compliance statistics were collected. Unit: milliseconds.
         self.compliance_summary_timestamp = compliance_summary_timestamp
         # The number of compliant rules.
         self.compliant_count = compliant_count

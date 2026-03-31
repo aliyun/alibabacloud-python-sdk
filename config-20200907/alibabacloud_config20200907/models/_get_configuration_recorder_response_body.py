@@ -13,7 +13,7 @@ class GetConfigurationRecorderResponseBody(DaraModel):
         configuration_recorder: main_models.GetConfigurationRecorderResponseBodyConfigurationRecorder = None,
         request_id: str = None,
     ):
-        # The resource monitoring information.
+        # The details of the configuration recorder that monitors resources.
         self.configuration_recorder = configuration_recorder
         # The request ID.
         self.request_id = request_id
@@ -52,17 +52,14 @@ class GetConfigurationRecorderResponseBodyConfigurationRecorder(DaraModel):
         configuration_recorder_status: str = None,
         resource_types: List[str] = None,
     ):
-        # The status of resource monitoring. Valid values:
+        # The status of the configuration recorder. Valid values:
         # 
-        # - REGISTRABLE: Not registered.
-        # 
-        # - BUILDING: Building.
-        # 
-        # - REGISTERED: Registered.
-        # 
-        # - REBUILDING: Rebuilding.
+        # *   REGISTRABLE: The configuration recorder has not been registered.
+        # *   BUILDING: The configuration recorder is being deployed.
+        # *   REGISTERED: The configuration recorder has been registered.
+        # *   REBUILDING: The configuration recorder is being redeployed.
         self.configuration_recorder_status = configuration_recorder_status
-        # A list of monitored resource types.
+        # The types of resources that are monitored.
         self.resource_types = resource_types
 
     def validate(self):

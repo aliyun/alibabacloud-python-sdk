@@ -13,9 +13,9 @@ class DetachConfigRuleToCompliancePackResponseBody(DaraModel):
         operate_rule_result: main_models.DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult = None,
         request_id: str = None,
     ):
-        # The results of the operation to detach rules.
+        # The results of the operations to remove one or more rules.
         self.operate_rule_result = operate_rule_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult(DaraModel):
         self,
         operate_rule_item_list: List[main_models.DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList] = None,
     ):
-        # A list of the results of the operation to detach rules.
+        # The result of the operation to remove the rule.
         self.operate_rule_item_list = operate_rule_item_list
 
     def validate(self):
@@ -91,26 +91,15 @@ class DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleIt
     ):
         # The rule ID.
         self.config_rule_id = config_rule_id
-        # The error code.
+        # The error code returned.
         # 
-        # - This parameter is empty if the operation is successful.
-        # 
-        # <props="china">
-        # 
-        # - An error code is returned if the operation fails. For more information about error codes, see the [Error Center](https://error-center.aliyun.com/status/product/Config).
-        # 
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # - An error code is returned if the operation fails. For more information about error codes, see the [Error Center](https://error-center.alibabacloud.com/status/product/Config).
+        # *   This parameter is empty if the rule is removed from the compliance package.
+        # *   An error code is returned if the rule fails to be removed from the compliance package. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
         self.error_code = error_code
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The operation was successful.
-        # 
-        # - false: The operation failed.
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):

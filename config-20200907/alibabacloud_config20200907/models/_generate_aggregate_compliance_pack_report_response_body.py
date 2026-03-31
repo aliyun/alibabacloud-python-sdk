@@ -12,7 +12,7 @@ class GenerateAggregateCompliancePackReportResponseBody(DaraModel):
     ):
         # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

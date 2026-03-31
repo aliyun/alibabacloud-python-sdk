@@ -10,7 +10,9 @@ class UpdateAggregateConfigDeliveryChannelResponseBody(DaraModel):
         delivery_channel_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

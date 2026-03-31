@@ -15,29 +15,29 @@ class GetResourceComplianceTimelineRequest(DaraModel):
         resource_type: str = None,
         start_time: int = None,
     ):
-        # The end timestamp. If you do not set this parameter, the system queries data generated up to the time of the API call. Unit: milliseconds.
+        # The timestamp that specifies the end of the time range to query. The default value is the time when the GetResourceComplianceTimeline operation is called. Unit: milliseconds.
         self.end_time = end_time
-        # The maximum number of entries to return on a single page. Valid values: 1 to 100.
+        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If the return value is truncated, use this token to initiate another request to retrieve the remaining entries.
+        # The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
         self.next_token = next_token
-        # The region ID.
+        # The ID of the region where the resource resides.
         # 
         # This parameter is required.
         self.region = region
-        # The resource ID.
+        # The ID of the resource.
         # 
-        # For more information about how to obtain the resource ID, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource.
         # 
-        # For more information about how to obtain the resource type, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # For more information about how to obtain the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The start timestamp. If you do not set this parameter, the system queries data from the last 30 days. Unit: milliseconds.
+        # The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the compliance evaluations in the last 30 days for the specified resource. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

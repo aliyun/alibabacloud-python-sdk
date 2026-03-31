@@ -18,20 +18,42 @@ class ListAggregateResourceRelationsRequest(DaraModel):
         target_resource_id: str = None,
         target_resource_type: str = None,
     ):
+        # The ID of the account group.
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The maximum number of entries to return for a single request. Valid values: 1 to 1000.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the region in which the resource resides.
+        # 
         # This parameter is required.
         self.region = region
+        # The type of the relationship between the resource and the object.
+        # 
+        # Valid values:
+        # 
+        # *   IsContained: The object is included as part of the resource.
+        # *   IsAttachedTo: The object is added to the resource.
+        # *   IsAssociatedIn: The object is associated with the resource.
+        # *   Contains: The object contains the resource.
         self.relation_type = relation_type
+        # The ID of the Alibaba Cloud account to which the resources in the account group belong.
+        # 
         # This parameter is required.
         self.resource_account_id = resource_account_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The ID of the resource that is associated with the object.
         self.target_resource_id = target_resource_id
+        # The type of the resource that is associated with the object.
         self.target_resource_type = target_resource_type
 
     def validate(self):

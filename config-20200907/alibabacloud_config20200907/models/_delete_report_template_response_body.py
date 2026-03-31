@@ -10,9 +10,7 @@ class DeleteReportTemplateResponseBody(DaraModel):
         report_template_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the report template.
         self.report_template_id = report_template_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

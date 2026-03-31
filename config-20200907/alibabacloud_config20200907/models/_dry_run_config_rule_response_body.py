@@ -11,19 +11,9 @@ class DryRunConfigRuleResponseBody(DaraModel):
         request_id: str = None,
         rule_condition_context: str = None,
     ):
-        # The compliance type of the rule. Valid values:
-        # 
-        # - COMPLIANT: Compliant.
-        # 
-        # - NON_COMPLIANT: Non-compliant.
-        # 
-        # - NOT_APPLICABLE: Not applicable.
-        # 
-        # - INSUFFICIENT_DATA: Insufficient data.
         self.compliance_type = compliance_type
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The context of the rule conditions.
         self.rule_condition_context = rule_condition_context
 
     def validate(self):

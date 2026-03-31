@@ -9,7 +9,7 @@ class ListConfigDeliveryChannelsRequest(DaraModel):
         self,
         delivery_channel_ids: str = None,
     ):
-        # The ID of the delivery channel. Separate multiple delivery channel IDs with a comma (,).
+        # The ID of the delivery channel. Separate multiple IDs with commas (,).
         self.delivery_channel_ids = delivery_channel_ids
 
     def validate(self):

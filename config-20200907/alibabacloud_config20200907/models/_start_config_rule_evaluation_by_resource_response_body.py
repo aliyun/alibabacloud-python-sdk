@@ -10,11 +10,7 @@ class StartConfigRuleEvaluationByResourceResponseBody(DaraModel):
         config_rule_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the rule.
-        # 
-        # For more information about how to obtain the rule ID, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
         self.config_rule_id = config_rule_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

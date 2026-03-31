@@ -13,7 +13,9 @@ class GetAggregateResourceCountsGroupByResourceTypeResponseBody(DaraModel):
         discovered_resource_counts_summary: List[main_models.GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary] = None,
         request_id: str = None,
     ):
+        # The resource type by which the statistics are collected.
         self.discovered_resource_counts_summary = discovered_resource_counts_summary
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourc
         resource_count: int = None,
         resource_type: str = None,
     ):
+        # This parameter is expired. The resource type by which statistics are collected.
         self.group_name = group_name
+        # The total number of resources in the region.
         self.resource_count = resource_count
+        # The resource type by which statistics are collected.
         self.resource_type = resource_type
 
     def validate(self):

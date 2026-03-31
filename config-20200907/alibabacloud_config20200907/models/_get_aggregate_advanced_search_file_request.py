@@ -9,6 +9,10 @@ class GetAggregateAdvancedSearchFileRequest(DaraModel):
         self,
         aggregator_id: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
 

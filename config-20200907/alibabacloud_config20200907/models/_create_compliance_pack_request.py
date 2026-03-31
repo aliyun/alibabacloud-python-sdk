@@ -30,25 +30,58 @@ class CreateCompliancePackRequest(DaraModel):
         tags_scope: List[main_models.CreateCompliancePackRequestTagsScope] = None,
         template_content: str = None,
     ):
+        # The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
         self.client_token = client_token
+        # The name of the compliance package.
+        # 
         # This parameter is required.
         self.compliance_pack_name = compliance_pack_name
+        # The ID of the compliance package template.
+        # 
+        # You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the ID of the compliance package.
         self.compliance_pack_template_id = compliance_pack_template_id
+        # The rules in the compliance package. You must specify either this parameter or TemplateContent.
         self.config_rules = config_rules
+        # Specifies whether to enable the rule together with the compliance package. Valid values:
+        # 
+        # *   true: The system enables the rule together with the compliance package.
+        # *   false: The system does not enable the rule together with the compliance package.
         self.default_enable = default_enable
+        # The description of the compliance package.
         self.description = description
+        # ExcludeRegionIdsScope
         self.exclude_region_ids_scope = exclude_region_ids_scope
+        # ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # ExcludeTagsScope
         self.exclude_tags_scope = exclude_tags_scope
+        # The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
         self.region_ids_scope = region_ids_scope
+        # The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
+        # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        # The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
+        # 
+        # *   1: high.
+        # *   2: medium.
+        # *   3: low.
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
+        # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
+        # The tag value of the resource that you want to evaluate by using the compliance package.
+        # 
+        # >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
         self.tag_value_scope = tag_value_scope
+        # TagsScope
         self.tags_scope = tags_scope
+        # The information about the template that is used to generate the compliance package. You can call an API operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
         self.template_content = template_content
 
     def validate(self):
@@ -220,7 +253,9 @@ class CreateCompliancePackRequestTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # Tagkey
         self.tag_key = tag_key
+        # TagValue
         self.tag_value = tag_value
 
     def validate(self):
@@ -255,7 +290,17 @@ class CreateCompliancePackRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag keys.
+        # 
+        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys in each call.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -290,7 +335,9 @@ class CreateCompliancePackRequestExcludeTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # TagKey
         self.tag_key = tag_key
+        # TagValue
         self.tag_value = tag_value
 
     def validate(self):
@@ -329,11 +376,25 @@ class CreateCompliancePackRequestConfigRules(DaraModel):
         managed_rule_identifier: str = None,
         risk_level: int = None,
     ):
+        # The rule ID. If you specify this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
+        # 
+        # You need to only specify `ManagedRuleIdentifier` or `ConfigRuleId`. If you specify both parameters, Cloud Config adds a rule based on the value of `ConfigRuleId`. You can call the [ListConfigRules](https://help.aliyun.com/document_detail/169607.html) operation to obtain the rule ID.
         self.config_rule_id = config_rule_id
+        # The name of the rule.
         self.config_rule_name = config_rule_name
+        # The input parameters of the rule.
         self.config_rule_parameters = config_rule_parameters
+        # The description of the rule.
         self.description = description
+        # The identifier of the managed rule. Cloud Config automatically creates a managed rule based on the specified identifier and adds the rule to the compliance package.
+        # 
+        # You need to only specify `ManagedRuleIdentifier` or `ConfigRuleId`. If you specify both parameters, Cloud Config adds a rule based on the value of `ConfigRuleId`. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the identifier of the managed rule.
         self.managed_rule_identifier = managed_rule_identifier
+        # The risk level of the resources that do not comply with the rule. Valid values:
+        # 
+        # *   1: high.
+        # *   2: medium.
+        # *   3: low.
         self.risk_level = risk_level
 
     def validate(self):
@@ -400,7 +461,13 @@ class CreateCompliancePackRequestConfigRulesConfigRuleParameters(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The name of the input parameter.
+        # 
+        # You must specify both `ParameterName` and `ParameterValue` or neither of them. If the managed rule has an input parameter but no default value is specified, you must specify this parameter. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the names of input parameters of the managed rule.
         self.parameter_name = parameter_name
+        # The value of the input parameter.
+        # 
+        # You must specify both `ParameterName` and `ParameterValue` or neither of them. If the managed rule has an input parameter but no default value is specified, you must specify this parameter. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the values of input parameters of the managed rule.
         self.parameter_value = parameter_value
 
     def validate(self):

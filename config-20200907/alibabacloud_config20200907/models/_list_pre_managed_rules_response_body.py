@@ -15,13 +15,13 @@ class ListPreManagedRulesResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The list of proactive rules.
+        # The evaluation rules.
         self.managed_rules = managed_rules
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -81,19 +81,19 @@ class ListPreManagedRulesResponseBodyManagedRules(DaraModel):
         optional_input_parameter_details: Dict[str, Any] = None,
         resource_type: str = None,
     ):
-        # The details of the required input parameters for the rule.
+        # The details of the required input parameters of the rule.
         self.compulsory_input_parameter_details = compulsory_input_parameter_details
         # The name of the rule.
         self.config_rule_name = config_rule_name
         # The description of the rule.
         self.description = description
-        # The URL of the documentation that provides guidance on how to fix a non-compliant resource.
+        # The URL of the topic that describes how the evaluation rule remediates the incompliant configurations.
         self.help_urls = help_urls
         # The identifier of the rule.
         self.identifier = identifier
-        # The details of the optional input parameters for the rule.
+        # The details of the optional input parameters of the rule.
         self.optional_input_parameter_details = optional_input_parameter_details
-        # The resource type.
+        # The type of resource.
         self.resource_type = resource_type
 
     def validate(self):

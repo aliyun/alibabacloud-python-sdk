@@ -20,38 +20,38 @@ class GetAggregateResourceConfigurationTimelineRequest(DaraModel):
     ):
         # The ID of the account group.
         # 
-        # For more information, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The end time of the query. This is a UNIX timestamp in milliseconds. By default, data up to the current time is queried.
+        # The end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
         self.end_time = end_time
-        # The maximum number of entries to return on each page. Valid values: 1 to 100.
+        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         self.max_results = max_results
-        # If the output is truncated, you can use the `NextToken` to start the next query from the truncation point.
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
-        # The ID of the region where the resource resides.
+        # The ID of the region in which the resource resides.
         # 
-        # For more information, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+        # For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         # 
         # This parameter is required.
         self.region = region
-        # The ID of the Alibaba Cloud account that owns the resource in the account group.
+        # Required. The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
         self.resource_account_id = resource_account_id
-        # The ID of the resource.
+        # The resource ID.
         # 
-        # For more information, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+        # For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
         # The type of the resource.
         # 
-        # For more information, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+        # For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The start time of the query. This is a UNIX timestamp in milliseconds. By default, data from the last 30 days is queried.
+        # The beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

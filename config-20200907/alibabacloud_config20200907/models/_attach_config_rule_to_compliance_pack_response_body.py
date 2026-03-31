@@ -13,7 +13,9 @@ class AttachConfigRuleToCompliancePackResponseBody(DaraModel):
         operate_rule_result: main_models.AttachConfigRuleToCompliancePackResponseBodyOperateRuleResult = None,
         request_id: str = None,
     ):
+        # The results of the operations to add one or more rules.
         self.operate_rule_result = operate_rule_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class AttachConfigRuleToCompliancePackResponseBodyOperateRuleResult(DaraModel):
         self,
         operate_rule_item_list: List[main_models.AttachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList] = None,
     ):
+        # The result of the operation to add the rule.
         self.operate_rule_item_list = operate_rule_item_list
 
     def validate(self):
@@ -86,8 +89,17 @@ class AttachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleIt
         error_code: str = None,
         success: bool = None,
     ):
+        # The rule ID.
         self.config_rule_id = config_rule_id
+        # The error code returned.
+        # 
+        # *   This parameter is empty if the rule is added to the compliance package.
+        # *   An error code is returned if the rule fails to be added to the compliance package. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
         self.error_code = error_code
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):

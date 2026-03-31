@@ -17,24 +17,14 @@ class ListRecommendManagedRulesRequest(DaraModel):
         resource_ids_scope: str = None,
         selected_managed_rule_identifiers: str = None,
     ):
-        # The rule does not take effect on resources in the specified regions. The resources in the specified regions are not evaluated. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The rule does not take effect on resources in the specified resource groups. The resources in the specified resource groups are not evaluated. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The rule does not take effect on the specified resources. The specified resources are not evaluated. Separate multiple resource IDs with commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The maximum number of entries to return on each page. Default value: 200.
         self.max_results = max_results
-        # The token that specifies the position from which to start the query. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
-        # The scope of region IDs. Separate multiple region IDs with commas (,).
         self.region_ids_scope = region_ids_scope
-        # The rule takes effect only on resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The rule takes effect on the specified resources. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The managed rules that have been selected. Separate multiple rule identifiers with commas (,).
-        # The system does not recommend managed rules that are of the same resource type as the selected managed rules.
         self.selected_managed_rule_identifiers = selected_managed_rule_identifiers
 
     def validate(self):

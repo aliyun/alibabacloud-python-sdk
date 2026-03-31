@@ -13,7 +13,9 @@ class DeactiveAggregateConfigRulesResponseBody(DaraModel):
         operate_rule_result: main_models.DeactiveAggregateConfigRulesResponseBodyOperateRuleResult = None,
         request_id: str = None,
     ):
+        # The results of the operations that are performed to disable the specified rules.
         self.operate_rule_result = operate_rule_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class DeactiveAggregateConfigRulesResponseBodyOperateRuleResult(DaraModel):
         self,
         operate_rule_item_list: List[main_models.DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList] = None,
     ):
+        # The operations that are performed to disable the rule.
         self.operate_rule_item_list = operate_rule_item_list
 
     def validate(self):
@@ -86,8 +89,17 @@ class DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemLi
         error_code: str = None,
         success: bool = None,
     ):
+        # The rule ID.
         self.config_rule_id = config_rule_id
+        # The error code.
+        # 
+        # *   If the rule is disabled, no error code is returned.
+        # *   If the rule fails to be disabled, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
         self.error_code = error_code
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):

@@ -11,7 +11,7 @@ class GetComplianceSummaryResponseBody(DaraModel):
         compliance_summary: main_models.GetComplianceSummaryResponseBodyComplianceSummary = None,
         request_id: str = None,
     ):
-        # The compliance summary.
+        # The summary of compliance statistics.
         self.compliance_summary = compliance_summary
         # The request ID.
         self.request_id = request_id
@@ -50,9 +50,9 @@ class GetComplianceSummaryResponseBodyComplianceSummary(DaraModel):
         compliance_summary_by_config_rule: main_models.GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule = None,
         compliance_summary_by_resource: main_models.GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource = None,
     ):
-        # The compliance summary by rule.
+        # The summary of compliance statistics from the rule dimension.
         self.compliance_summary_by_config_rule = compliance_summary_by_config_rule
-        # The compliance summary by resource.
+        # The summary of compliance statistics from the resource dimension.
         self.compliance_summary_by_resource = compliance_summary_by_resource
 
     def validate(self):
@@ -97,23 +97,14 @@ class GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResour
         non_compliant_count: int = None,
         total_count: int = None,
     ):
-        # The timestamp when the compliance summary was generated. Unit: milliseconds.
+        # The time when the compliance summary was generated. Unit: milliseconds.
         self.compliance_summary_timestamp = compliance_summary_timestamp
-        # The number of compliant resources.
+        # The number of resources evaluated as compliant.
         self.compliant_count = compliant_count
-        # The number of non-compliant resources detected by high-risk rules.
-        # 
-        # > Note: This value can be greater than the total number of resources in your account. Resources are counted based on each rule. For example, if a resource is evaluated as non-compliant by two rules, the value of this parameter increases by 2.
         self.high_risk_rule_non_compliant_resource_count = high_risk_rule_non_compliant_resource_count
-        # The number of non-compliant resources detected by low-risk rules.
-        # 
-        # > Note: This value can be greater than the total number of resources in your account. Resources are counted based on each rule. For example, if a resource is evaluated as non-compliant by two low-risk rules, the value of this parameter increases by 2.
         self.low_risk_rule_non_compliant_resource_count = low_risk_rule_non_compliant_resource_count
-        # The number of non-compliant resources detected by medium-risk rules.
-        # 
-        # > Note: This value can be greater than the total number of resources in your account. Resources are counted based on each rule. For example, if a resource is evaluated as non-compliant by two rules, the value of this parameter increases by 2.
         self.medium_risk_rule_non_compliant_resource_count = medium_risk_rule_non_compliant_resource_count
-        # The number of non-compliant resources.
+        # The number of resources evaluated as non-compliant.
         self.non_compliant_count = non_compliant_count
         # The total number of resources.
         self.total_count = total_count
@@ -182,11 +173,11 @@ class GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfig
         non_compliant_count: int = None,
         total_count: int = None,
     ):
-        # The timestamp when the compliance summary was generated. Unit: milliseconds.
+        # The time when the compliance summary was generated. Unit: milliseconds.
         self.compliance_summary_timestamp = compliance_summary_timestamp
-        # The number of compliant rules.
+        # The number of rules evaluated as compliant.
         self.compliant_count = compliant_count
-        # The number of non-compliant rules.
+        # The number of rules evaluated as non-compliant.
         self.non_compliant_count = non_compliant_count
         # The total number of rules.
         self.total_count = total_count

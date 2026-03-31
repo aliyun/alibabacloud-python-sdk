@@ -10,8 +10,13 @@ class GetAggregateConfigRulesReportRequest(DaraModel):
         aggregator_id: str = None,
         report_id: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The ID of the compliance evaluation report.
         self.report_id = report_id
 
     def validate(self):

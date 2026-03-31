@@ -10,7 +10,12 @@ class CopyConfigRulesResponseBody(DaraModel):
         copy_rules_result: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the rules are replicated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.copy_rules_result = copy_rules_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -30,25 +30,58 @@ class CreateCompliancePackShrinkRequest(DaraModel):
         tags_scope: List[main_models.CreateCompliancePackShrinkRequestTagsScope] = None,
         template_content: str = None,
     ):
+        # The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
         self.client_token = client_token
+        # The name of the compliance package.
+        # 
         # This parameter is required.
         self.compliance_pack_name = compliance_pack_name
+        # The ID of the compliance package template.
+        # 
+        # You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the ID of the compliance package.
         self.compliance_pack_template_id = compliance_pack_template_id
+        # The rules in the compliance package. You must specify either this parameter or TemplateContent.
         self.config_rules_shrink = config_rules_shrink
+        # Specifies whether to enable the rule together with the compliance package. Valid values:
+        # 
+        # *   true: The system enables the rule together with the compliance package.
+        # *   false: The system does not enable the rule together with the compliance package.
         self.default_enable = default_enable
+        # The description of the compliance package.
         self.description = description
+        # ExcludeRegionIdsScope
         self.exclude_region_ids_scope = exclude_region_ids_scope
+        # ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # ExcludeTagsScope
         self.exclude_tags_scope = exclude_tags_scope
+        # The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
         self.region_ids_scope = region_ids_scope
+        # The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
+        # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        # The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
+        # 
+        # *   1: high.
+        # *   2: medium.
+        # *   3: low.
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
+        # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
+        # The tag value of the resource that you want to evaluate by using the compliance package.
+        # 
+        # >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
         self.tag_value_scope = tag_value_scope
+        # TagsScope
         self.tags_scope = tags_scope
+        # The information about the template that is used to generate the compliance package. You can call an API operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
         self.template_content = template_content
 
     def validate(self):
@@ -202,7 +235,9 @@ class CreateCompliancePackShrinkRequestTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # Tagkey
         self.tag_key = tag_key
+        # TagValue
         self.tag_value = tag_value
 
     def validate(self):
@@ -237,7 +272,9 @@ class CreateCompliancePackShrinkRequestExcludeTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # TagKey
         self.tag_key = tag_key
+        # TagValue
         self.tag_value = tag_value
 
     def validate(self):

@@ -10,13 +10,12 @@ class StartAggregateRemediationResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the operation succeeded. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The operation succeeded.
-        # 
-        # - false: The operation failed.
+        # *   true
+        # *   false
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

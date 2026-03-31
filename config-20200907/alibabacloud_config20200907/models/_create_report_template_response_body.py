@@ -10,9 +10,7 @@ class CreateReportTemplateResponseBody(DaraModel):
         report_template_id: str = None,
         request_id: str = None,
     ):
-        # Report template ID
         self.report_template_id = report_template_id
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -9,6 +9,9 @@ class GetDiscoveredResourceCountsGroupByRegionRequest(DaraModel):
         self,
         resource_type: str = None,
     ):
+        # The resource type.
+        # 
+        # For more information about how to obtain the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
         self.resource_type = resource_type
 
     def validate(self):

@@ -14,13 +14,28 @@ class ListAggregateRemediationExecutionsRequest(DaraModel):
         next_token: str = None,
         resource_account_id: int = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The rule ID.
+        # 
+        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The status of the remediation. Valid values:
+        # 
+        # *   Success
+        # *   Failed
         self.execution_status = execution_status
+        # The maximum number of entries to return for a single request. Valid values: 10 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the member account in the account group. When left unfilled, this rule queries the remediation result for the account that created the rule. If the account is not in the account group, the result will be empty.
         self.resource_account_id = resource_account_id
 
     def validate(self):

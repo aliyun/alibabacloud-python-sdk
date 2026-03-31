@@ -14,27 +14,29 @@ class ListManagedRulesRequest(DaraModel):
         resource_types: str = None,
         risk_level: int = None,
     ):
-        # The scope of the filter.
+        # The scope for filtering managed rules allows you to filter out managed rules without resource coverage. The possible values are:
+        # 
+        #  - ALL: All rules.
+        # 
+        #  - UNCOVERED_RESOURCE: Filters managed rules where some resources are not covered.
         self.filter_type = filter_type
-        # The keyword of the rule template.
+        # The keyword of the managed rule.
         self.keyword = keyword
-        # The page number.
+        # The page number of the page to return.
         # 
-        # The value must be greater than or equal to 1. Default value: 1.
+        # Pages start from page 1. Default value: 1
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Default value: 10.
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
-        # The resource type that is evaluated by the rule.
+        # The type of the resources to be evaluated based on the rule.
         self.resource_types = resource_types
-        # The risk level of the rule template. Valid values:
+        # The risk level of the managed rule. Valid values:
         # 
-        # - 1: high
-        # 
-        # - 2: medium
-        # 
-        # - 3: low
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
 
     def validate(self):

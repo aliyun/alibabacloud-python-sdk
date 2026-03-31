@@ -10,7 +10,12 @@ class StartAggregateConfigRuleEvaluationResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the involved resources were evaluated. Valid values:
+        # 
+        # *   true: The involved resources were evaluated.
+        # *   false: The involved resources were not evaluated
         self.result = result
 
     def validate(self):

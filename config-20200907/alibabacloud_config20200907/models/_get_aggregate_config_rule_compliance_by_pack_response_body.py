@@ -13,9 +13,9 @@ class GetAggregateConfigRuleComplianceByPackResponseBody(DaraModel):
         config_rule_compliance_result: main_models.GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult = None,
         request_id: str = None,
     ):
-        # The compliance results of the rules in the compliance pack.
+        # The compliance evaluation results that are returned by rules in the compliance package.
         self.config_rule_compliance_result = config_rule_compliance_result
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,21 +58,17 @@ class GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResu
         not_applicable_count: int = None,
         total_count: int = None,
     ):
-        # The ID of the compliance pack.
+        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
-        # The total number of rules for which all evaluation results are **Compliant**.
         self.compliant_count = compliant_count
-        # A list of rule compliance results.
+        # The information about rules in the compliance package.
         self.config_rule_compliances = config_rule_compliances
-        # The total number of rules whose evaluation results include **Ignored**.
         self.ignored_count = ignored_count
-        # The total number of rules whose evaluation results include **Insufficient Data**.
         self.insufficient_data_count = insufficient_data_count
-        # The number of non-compliant rules.
+        # The number of rules against which specific resources are evaluated as non-compliant.
         self.non_compliant_count = non_compliant_count
-        # The total number of rules whose evaluation results include **Not Applicable**.
         self.not_applicable_count = not_applicable_count
-        # The total number of rules.
+        # The total number of rules in the compliance package.
         self.total_count = total_count
 
     def validate(self):
@@ -152,19 +148,16 @@ class GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResu
         config_rule_id: str = None,
         config_rule_name: str = None,
     ):
-        # The compliance result. Valid values:
+        # The compliance evaluation result returned by the rule. Valid values:
         # 
-        # - COMPLIANT: The rule is compliant.
-        # 
-        # - NON_COMPLIANT: The rule is non-compliant.
-        # 
-        # - NOT_APPLICABLE: The rule is not applicable.
-        # 
-        # - INSUFFICIENT_DATA: No data is available.
+        # *   COMPLIANT: The relevant resources are evaluated as compliant.
+        # *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to your resources.
+        # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
-        # The ID of the rule in the compliance pack.
+        # The ID of the rule.
         self.config_rule_id = config_rule_id
-        # The name of the rule in the compliance pack.
+        # The name of the rule.
         self.config_rule_name = config_rule_name
 
     def validate(self):

@@ -12,9 +12,15 @@ class ListRemediationTemplatesRequest(DaraModel):
         page_size: int = None,
         remediation_type: str = None,
     ):
+        # The identifier of the managed rule.
+        # 
+        # You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the managed rule identifier.
         self.managed_rule_identifier = managed_rule_identifier
+        # The page number. Pages start from 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
         self.remediation_type = remediation_type
 
     def validate(self):

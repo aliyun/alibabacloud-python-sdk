@@ -15,37 +15,32 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to detach all tags from the resources. Valid values:
+        # Specifies whether to remove all tags from the resource. Valid values:
         # 
-        # - true: Detach all tags from the resources.
-        # 
-        # - false (default): Detach the specified tags.
+        # *   true: All tags are removed from the resource.
+        # *   false (default): The specified tags are removed from the resource.
         self.all = all
-        # The ID of the region.
+        # The region ID of the tag.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources. You can specify a maximum of 50 resource IDs.
+        # The resource ID.
         # 
-        # You can detach tags from up to 50 resources at a time.
+        # You can remove tags from up to 50 resources at a time.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the CloudConfig resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # - `ACS::Config::Rule`: a rule for a single account.
-        # 
-        # - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
-        # 
-        # - `ACS::Config::Aggregator`: an account group.
-        # 
-        # - `ACS::Config::CompliancePack`: a compliance package for a single account.
-        # 
-        # - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
+        # *   `ACS::Config::Rule`
+        # *   `ACS::Config::AggregateConfigRule`
+        # *   `ACS::Config::Aggregator`
+        # *   `ACS::Config::CompliancePack`
+        # *   `ACS::Config::AggregateCompliancePack`
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag keys of the tags to detach.
+        # The tags of the resource.
         self.tag_key = tag_key
 
     def validate(self):

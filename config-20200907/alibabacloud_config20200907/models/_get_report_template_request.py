@@ -9,8 +9,6 @@ class GetReportTemplateRequest(DaraModel):
         self,
         report_template_id: str = None,
     ):
-        # ID of the report template.
-        # 
         # This parameter is required.
         self.report_template_id = report_template_id
 

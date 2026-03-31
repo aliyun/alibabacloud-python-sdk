@@ -10,11 +10,10 @@ class StartRemediationResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The operation was successful.
-        # 
-        # - false: The operation failed.
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.data = data
         # The request ID.
         self.request_id = request_id

@@ -10,8 +10,16 @@ class DeleteAggregateConfigRulesRequest(DaraModel):
         aggregator_id: str = None,
         config_rule_ids: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The rule ID. Separate multiple rule IDs with commas (,).
+        # 
+        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+        # 
         # This parameter is required.
         self.config_rule_ids = config_rule_ids
 

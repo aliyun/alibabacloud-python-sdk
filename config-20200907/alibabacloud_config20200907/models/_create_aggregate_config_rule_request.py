@@ -41,149 +41,139 @@ class CreateAggregateConfigRuleRequest(DaraModel):
         tag_value_scope: str = None,
         tags_scope: List[main_models.CreateAggregateConfigRuleRequestTagsScope] = None,
     ):
-        # The rule applies only to resources of the specified member accounts. Separate multiple member account IDs with commas (,).
-        # 
-        # > This parameter applies only to rule templates.
+        # The IDs of the member accounts to which the rule applies, which means that the resources within the member accounts are evaluated based on the rule. Separate multiple member account IDs with commas (,).
         self.account_ids_scope = account_ids_scope
         # The ID of the account group.
         # 
-        # For more information about how to obtain the ID of an account group, see [the referenced document](https://help.aliyun.com/document_detail/255797.html).
+        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # A client token that ensures the request is idempotent. Generate a unique value from your client for each request. The `ClientToken` parameter must contain only ASCII characters and be no more than 64 characters long.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The conditions for a custom condition rule, in JSON format.
         self.conditions = conditions
-        # The name of the rule.
+        # The rule name.
         # 
         # This parameter is required.
         self.config_rule_name = config_rule_name
-        # The trigger type for the rule. Valid values:
+        # The trigger type of the rule. Valid values:
         # 
-        # - ConfigurationItemChangeNotification: The rule triggers when a resource configuration changes.
-        # 
-        # - ScheduledNotification: The rule triggers on a schedule.
+        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # *   ScheduledNotification: The rule is periodically triggered.
         # 
         # This parameter is required.
         self.config_rule_trigger_types = config_rule_trigger_types
-        # A description of the rule.
+        # The description of the rule.
         self.description = description
-        # The rule does not apply to resources of the specified member accounts. Resources in these accounts are not evaluated. Separate multiple member account IDs with commas (,).
+        # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
         # 
-        # > This parameter applies only to rule templates.
+        # > This parameter applies only to a managed rule.
         self.exclude_account_ids_scope = exclude_account_ids_scope
-        # The rule does not apply to resources of member accounts in the specified folders. Resources in these folders are not evaluated. Separate multiple folder IDs with commas (,).
+        # The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
         # 
-        # > - This parameter applies only to global account group rules.
-        # >
-        # > - This parameter applies only to rule templates.
+        # > 
+        # 
+        # *   This parameter applies only to a rule of a global account group.
+        # 
+        # *   This parameter applies only to a managed rule.
         self.exclude_folder_ids_scope = exclude_folder_ids_scope
-        # The rule does not apply to resources in the specified regions. Resources in these regions are not evaluated. Separate multiple region IDs with commas (,).
+        # The IDs of the regions to which the rule not applies. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The rule does not apply to resources in the specified resource groups. Resources in these groups are not evaluated. Separate multiple resource group IDs with commas (,).
+        # ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The rule does not apply to the specified resources. These resources are not evaluated. Separate multiple resource IDs with commas (,).
+        # The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+        # 
+        # > This parameter applies only to a managed rule.
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The scope of tags to exclude.
+        # The scope of the tag that is excluded.
         self.exclude_tags_scope = exclude_tags_scope
-        # Extended content. This parameter currently supports only setting the trigger time for rules that run on a 24-hour cycle.
+        # The extended content, which is temporarily only used to configure the trigger time with a 24-hour cycle trigger.
         self.extend_content = extend_content
-        # The rule applies only to resources of member accounts in the specified folders. Separate multiple folder IDs with commas (,).
+        # The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
         # 
-        # > - This parameter applies only to global account group rules.
-        # >
-        # > - This parameter applies only to rule templates.
+        # > 
+        # 
+        # *   This parameter applies only to a rule of a global account group.
+        # 
+        # *   This parameter applies only to a managed rule.
         self.folder_ids_scope = folder_ids_scope
-        # The input parameters for the rule.
+        # The input parameter of the rule.
         self.input_parameters = input_parameters
-        # The frequency at which the rule runs. Valid values:
+        # The interval at which the rule is triggered. Valid values:
         # 
-        # - One_Hour: 1 hour.
+        # *   One_Hour
+        # *   Three_Hours
+        # *   Six_Hours
+        # *   Twelve_Hours
+        # *   TwentyFour_Hours (default)
         # 
-        # - Three_Hours: 3 hours.
-        # 
-        # - Six_Hours: 6 hours.
-        # 
-        # - Twelve_Hours: 12 hours.
-        # 
-        # - TwentyFour_Hours (default): 24 hours.
-        # 
-        # > Set this parameter if you set `ConfigRuleTriggerTypes` to `ScheduledNotification`.
+        # >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
         self.maximum_execution_frequency = maximum_execution_frequency
-        # The rule applies only to resources in the specified regions. Separate multiple region IDs with commas (,).
+        # The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+        # 
+        # > This parameter applies only to a managed rule.
         self.region_ids_scope = region_ids_scope
-        # The rule applies only to resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
+        # The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+        # 
+        # > This parameter applies only to a managed rule.
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The rule applies only to the specified resources. Separate multiple resource IDs with commas (,).
+        # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The rule applies only to resources with the specified names.
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
-        # The resource types to evaluate. Separate multiple types with commas (,).
+        # The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
         # 
         # This parameter is required.
         self.resource_types_scope = resource_types_scope
-        # The risk level of the rule. Valid values:
+        # The risk level of the resources that do not comply with the rule. Valid values:
         # 
-        # - 1: high
-        # 
-        # - 2: medium
-        # 
-        # - 3: low
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         # 
         # This parameter is required.
         self.risk_level = risk_level
         # The identifier of the rule.
         # 
-        # - If `SourceOwner` is `ALIYUN`, enter the identifier of the rule template, such as `required-tags`.
+        # *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
+        # *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
         # 
-        #   > For more information about how to query rule template identifiers, see [the referenced document](https://help.aliyun.com/document_detail/127404.html).
-        # 
-        # - If `SourceOwner` is `CUSTOM_CONFIGURATION`, enter `acs-config-configuration`.
-        # 
-        # - If `SourceOwner` is `CUSTOM_FC`, enter the Alibaba Cloud Resource Name (ARN) of the Function Compute function.
-        # 
-        #   The ARN format is `acs:fc:{region}:{accountId}:services/{serviceName}.LATEST/functions/{functionName}`. For example, `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
-        # 
-        #   > For more information about how to obtain a function ARN, see [the referenced document](https://help.aliyun.com/document_detail/415752.html).
+        # For more information about how to query the name of a managed rule, see [Managed rules](https://help.aliyun.com/document_detail/127404.html).
         # 
         # This parameter is required.
         self.source_identifier = source_identifier
-        # The type of rule. Valid values:
+        # The type of the rule. Valid values:
         # 
-        # - ALIYUN: rule template
-        # 
-        # - CUSTOM_FC: custom Function Compute rule
-        # 
-        # - CUSTOM_CONFIGURATION: custom condition rule
+        # *   ALIYUN: a managed rule.
+        # *   CUSTOM_FC: a custom rule.
         # 
         # This parameter is required.
         self.source_owner = source_owner
-        # The tag of the rule.
+        # The tags.
         self.tag = tag
-        # The logical relationship between multiple tags in the `TagsScope` parameter. For example, if you set `TagsScope` to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. The default value is `OR`.
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # You can also use this parameter with the deprecated `TagKeyScope` parameter, but this is not recommended. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
         # 
-        # Valid values:
+        # Values:
         # 
-        # - AND
+        #  - AND: And.
         # 
-        # - OR
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
-        # This parameter is deprecated. Use the `TagsScope` parameter instead.
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
-        # The rule applies only to resources that have the specified tag keys. Separate multiple tag keys with commas (,).
+        # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
         # 
-        # > This parameter applies only to rule templates. Set both `TagKeyScope` and `TagValueScope` together.
+        # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
-        # This parameter is deprecated. Use the `TagsScope` parameter instead.
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
-        # The rule applies only to resources that have the specified tag values.
+        # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
         # 
-        # > This parameter applies only to rule templates. Set both `TagKeyScope` and `TagValueScope` together.
+        # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_value_scope = tag_value_scope
-        # The scope of tags to include.
+        # The tag scope.
         self.tags_scope = tags_scope
 
     def validate(self):
@@ -412,9 +402,9 @@ class CreateAggregateConfigRuleRequestTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the resource.
+        # The tag key.
         self.tag_key = tag_key
-        # The tag value of the resource.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -449,13 +439,17 @@ class CreateAggregateConfigRuleRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         # 
-        # You can add up to 20 tag keys.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
-        # The value of the tag.
+        # The tag values.
         # 
-        # You can add up to 20 tag values.
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -490,9 +484,9 @@ class CreateAggregateConfigRuleRequestExcludeTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the resource to exclude.
+        # The tag key of the resource that you want to exclude.
         self.tag_key = tag_key
-        # The tag value of the resource to exclude.
+        # The tag value of the resource that you want to exclude.
         self.tag_value = tag_value
 
     def validate(self):

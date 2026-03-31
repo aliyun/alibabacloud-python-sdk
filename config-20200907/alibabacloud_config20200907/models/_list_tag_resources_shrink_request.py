@@ -15,33 +15,29 @@ class ListTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # The token to retrieve the next page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the region to which the tags belong.
+        # The region ID of the tag.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The resource ID.
         # 
-        # You can query tags for a maximum of 50 resources.
+        # You can add tags to up to 50 resources.
         self.resource_id = resource_id
-        # The resource type in CloudConfig. Valid values:
+        # The resource type. Valid values:
         # 
-        # - `ACS::Config::Rule`: a rule for a single account.
-        # 
-        # - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
-        # 
-        # - `ACS::Config::Aggregator`: an account group.
-        # 
-        # - `ACS::Config::CompliancePack`: a compliance package for a single account.
-        # 
-        # - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
+        # *   `ACS::Config::Rule`
+        # *   `ACS::Config::AggregateConfigRule`
+        # *   `ACS::Config::Aggregator`
+        # *   `ACS::Config::CompliancePack`
+        # *   `ACS::Config::AggregateCompliancePack`
         # 
         # This parameter is required.
         self.resource_type = resource_type
         # The tags of the resource.
         # 
-        # You can filter resources by a maximum of 20 tags.
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):

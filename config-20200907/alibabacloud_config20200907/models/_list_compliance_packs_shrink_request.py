@@ -15,29 +15,21 @@ class ListCompliancePacksShrinkRequest(DaraModel):
     ):
         # The page number.
         # 
-        # Minimum value: 1. Default value: 1.
+        # Pages start from page 1. Default value: 1
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Default value: 10.
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
-        # The risk level of the compliance pack. Valid values:
-        # 
-        # - 1: high risk.
-        # 
-        # - 2: medium risk.
-        # 
-        # - 3: low risk.
         self.risk_level = risk_level
-        # The status of the compliance pack. Valid values:
+        # The status of the compliance package to be queried. Valid values:
         # 
-        # - ACTIVE: The compliance pack is active.
-        # 
-        # - CREATING: The compliance pack is being created.
+        # *   ACTIVE: The compliance package is active.
+        # *   CREATING: The compliance package is being created.
         self.status = status
         # The tags of the resource.
         # 
-        # You can attach up to 20 tags to a resource.
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):

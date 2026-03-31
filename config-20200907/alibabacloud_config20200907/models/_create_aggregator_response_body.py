@@ -10,7 +10,7 @@ class CreateAggregatorResponseBody(DaraModel):
         aggregator_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the account group.
+        # The account group ID.
         self.aggregator_id = aggregator_id
         # The request ID.
         self.request_id = request_id

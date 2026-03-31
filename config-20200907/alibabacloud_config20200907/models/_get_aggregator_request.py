@@ -17,9 +17,9 @@ class GetAggregatorRequest(DaraModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The tags of the resource. This parameter is deprecated and is not in use.
+        # The tags of the resource.
         # 
-        # A maximum of 20 tags can be attached.
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -62,13 +62,17 @@ class GetAggregatorRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
+        # The tag key.
         # 
-        # A maximum of 20 tag keys can be attached.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
-        # The tag value of the resource.
+        # The tag values.
         # 
-        # A maximum of 20 tag values can be attached.
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):

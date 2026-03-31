@@ -10,15 +10,15 @@ class GetCompliancePackShrinkRequest(DaraModel):
         compliance_pack_id: str = None,
         tag_shrink: str = None,
     ):
-        # The compliance package ID.
+        # The ID of the compliance package.
         # 
-        # For more information about how to obtain the compliance package ID, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+        # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
-        # The tags of the resource. This parameter is deprecated and takes no effect if it is specified.
+        # The tags of the resource.
         # 
-        # You can add up to 20 tags.
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):

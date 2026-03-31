@@ -13,8 +13,14 @@ class RevertEvaluationResultsRequest(DaraModel):
         config_rule_id: str = None,
         resources: List[main_models.RevertEvaluationResultsRequestResources] = None,
     ):
+        # The rule ID.
+        # 
+        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The resources that are to be re-evaluated.
+        # 
         # This parameter is required.
         self.resources = resources
 
@@ -60,12 +66,26 @@ class RevertEvaluationResultsRequestResources(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the region in which the resource resides.
+        # 
+        # For more information about how to obtain the ID of the region in which a resource resides, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # 
         # This parameter is required.
         self.region = region
+        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # 
         # This parameter is required.
         self.resource_account_id = resource_account_id
+        # The resource ID.
+        # 
+        # For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # For more information about how to query the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

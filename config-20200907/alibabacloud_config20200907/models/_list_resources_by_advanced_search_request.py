@@ -9,6 +9,8 @@ class ListResourcesByAdvancedSearchRequest(DaraModel):
         self,
         sql: str = None,
     ):
+        # The SQL query statement.
+        # 
         # This parameter is required.
         self.sql = sql
 

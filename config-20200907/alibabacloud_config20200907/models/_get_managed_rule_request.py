@@ -9,9 +9,9 @@ class GetManagedRuleRequest(DaraModel):
         self,
         identifier: str = None,
     ):
-        # The identifier of the rule template.
+        # The identifier of the managed rule.
         # 
-        # For more information about how to obtain the rule template identifier, see [ListManagedRules](https://help.aliyun.com/document_detail/421144.html).
+        # For more information about how to obtain the identifier of a managed rule, see [ListManagedRules](https://help.aliyun.com/document_detail/421144.html).
         # 
         # This parameter is required.
         self.identifier = identifier

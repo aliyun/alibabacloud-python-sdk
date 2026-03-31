@@ -20,112 +20,96 @@ class CreateConfigDeliveryChannelRequest(DaraModel):
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
     ):
-        # A client token. It is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests.
         # 
-        # `ClientToken` can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The `token` can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Specifies whether to deliver compliance snapshots. Cloud Config delivers the compliance and non-compliance information of resources to SLS. Valid values:
+        # Specifies whether to deliver scheduled compliant snapshots. Cloud Config delivers scheduled compliant snapshots at `04:00Z` and `16:00Z` to Log Service every day. The time is displayed in UTC. Valid values:
         # 
-        # - true: Deliver compliance snapshots.
-        # 
-        # - false: Do not deliver compliance snapshots.
+        # *   true: Cloud Config delivers scheduled compliant snapshots.
+        # *   false (default): Cloud Config does not deliver scheduled compliant snapshots.
         self.compliant_snapshot = compliant_snapshot
-        # Specifies whether to deliver resource configuration histories. When the configuration of a resource changes, Cloud Config delivers the resource configuration history to OSS, SLS, or MNS. Valid values:
+        # Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         # 
-        # - true: Deliver resource configuration histories.
+        # *   true: Cloud Config delivers resource change logs.
+        # *   false (default): Cloud Config does not deliver resource change logs.
         # 
-        # - false (default): Do not deliver resource configuration histories.
-        # 
-        # > * If the delivery channel is OSS, you must set at least one of `ConfigurationSnapshot` (scheduled resource snapshots) and `ConfigurationItemChangeNotification` (resource configuration histories) to true.
-        # 
-        # > - If the delivery channel is SLS, you must set at least one of `ConfigurationSnapshot` (scheduled resource snapshots), `CompliantSnapshot` (compliance snapshots), `ConfigurationItemChangeNotification` (resource configuration histories), and `NonCompliantNotification` (non-compliant events) to true.
-        # 
-        # > - If the delivery channel is MNS, you must set at least one of `ConfigurationItemChangeNotification` (resource configuration histories) and `NonCompliantNotification` (non-compliant events) to true.
+        # > This parameter is available for delivery channels of the OSS, SLS, and MNS types.
         self.configuration_item_change_notification = configuration_item_change_notification
-        # Specifies whether to deliver scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS or SLS at `04:00Z` and `16:00Z` (UTC) every day. Valid values:
+        # Specifies whether to deliver scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at `04:00Z` and `16:00Z` to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         # 
-        # - true: Deliver scheduled resource snapshots.
-        # 
-        # - false (default): Do not deliver scheduled resource snapshots.
-        # 
-        # > * If the delivery channel is OSS, you must set at least one of `ConfigurationSnapshot` (scheduled resource snapshots) and `ConfigurationItemChangeNotification` (resource configuration histories) to true.
-        # 
-        # > - If the delivery channel is SLS, you must set at least one of `ConfigurationSnapshot` (scheduled resource snapshots), `ConfigurationItemChangeNotification` (resource configuration histories), `CompliantSnapshot` (compliance snapshots), and `NonCompliantNotification` (non-compliant events) to true.
+        # *   true: Cloud Config delivers scheduled resource snapshots.
+        # *   false (default): Cloud Config does not deliver scheduled resource snapshots.
         self.configuration_snapshot = configuration_snapshot
-        # An additional rule for the delivery channel. Use this rule to specify filter conditions for subscriptions.
+        # The rule that you want to attach to the delivery channel, used to specify subscription content filtering conditions.
         # 
-        # - If you subscribe to compliance events, you can specify the minimum risk level and resource types as follows:
+        # *   If you specify the minimum risk level and resource types for compliance events, it should be as follows:
         # 
-        #   - To specify the minimum risk level of events, use `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`.
+        #     *   The setting of the lowest risk level for the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`.
         # 
-        #     `value` specifies the risk level to filter. Valid values: 1 for high, 2 for medium, and 3 for low.
+        #         The `value` field indicates the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
         # 
-        #     `multiple` specifies whether the filter supports multiple values. The risk level filter supports only a single value. Therefore, set `multiple` to `false` when you deliver compliance events.
+        #         The `multiple` field indicates whether multiple values are supported for this group of filters. Risk levels only support single-value filtering, so the multiple field for compliance event type content can only be set to `false`.
         # 
-        #   - To specify the resource types of events, use `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
+        #     *   The setting of the resource types of the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
         # 
-        #     `values` specifies the resource types to which you want to subscribe. The value is a JSON array of resource types.
-        #     Example:
-        #     `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+        #         The `values` field indicates the resource types of the events to which you want to subscribe. 
         # 
-        #     `multiple` specifies whether the filter supports multiple values. The resource type filter supports multiple values. If you select multiple resource types, set `multiple` to `true`.
+        #         The `multiple` field indicates whether multiple values are supported for this group of filters. Resource types support multi-value filtering; when selecting multiple resource types, the multiple field can be set to true.
+        # The value of the field is a JSON array. Examples:
         # 
-        #   - You can also specify a risk level and resource types at the same time. Example:
-        #     `[{"filterType":"RuleRiskLevel","value":"2","multiple":false},{"filterType":"ResourceType","values":["ACS::CDN::Domain","ACS::ActionTrail::Trail"],"multiple":true}]`
+        #         `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
         # 
-        # - If you subscribe to resource configuration deliveries, you can specify the resource types as `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
+        #     *   You can also simultaneously specify both risk levels and resource types, such as:
         # 
-        #   `values` specifies the resource types that you want to deliver. The value is a JSON array of resource types.
-        #   Example:
-        #   `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+        #         `[{"filterType":"RuleRiskLevel","value":"2","multiple":false},{"filterType":"ResourceType","values":["ACS::CDN::Domain","ACS::ActionTrail::Trail"],"multiple":true}]`
+        # 
+        # *   If you specify the resource types for delivering configurations, the resource types are specified by: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
+        # 
+        #     The `values` field specifies the resource types of the snapshots to which you want to deliver. The value of the field is a JSON array. Examples:
+        # 
+        #       `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
         self.delivery_channel_condition = delivery_channel_condition
         # The name of the delivery channel.
         # 
-        # > If you do not set this parameter, the value is left empty.
+        # > If you do not configure this parameter, this parameter is left empty.
         self.delivery_channel_name = delivery_channel_name
-        # The ARN of the delivery destination. Valid values:
+        # The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
         # 
-        # - If the delivery channel is OSS, the value is in the format of `acs:oss:{RegionId}:{accountId}:{bucketName}`. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
-        # 
-        # - If the delivery channel is MNS, the value is in the format of `acs:mns:{RegionId}:{accountId}:/topics/{topicName}`. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
-        # 
-        # - If the delivery channel is SLS, the value is in the format of `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}`. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+        # *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+        # *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+        # *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
         # 
         # This parameter is required.
         self.delivery_channel_target_arn = delivery_channel_target_arn
         # The type of the delivery channel. Valid values:
         # 
-        # - OSS: Object Storage Service.
-        # 
-        # - MNS: Simple Message Queue (formerly MNS).
-        # 
-        # - SLS: Simple Log Service.
+        # *   OSS: Object Storage Service (OSS)
+        # *   MNS: Message Service (MNS)
+        # *   SLS: Log Service
         # 
         # This parameter is required.
         self.delivery_channel_type = delivery_channel_type
-        # The time when Cloud Config starts to deliver scheduled resource snapshots every day.
+        # The time when you want Cloud Config to deliver scheduled resource snapshots every day.
         # 
-        # The value must be in the `HH:mmZ` format (UTC).
+        # Format: `HH:mmZ`. This time is displayed in UTC.
         # 
-        # > When you enable scheduled resource snapshot delivery, you can use this parameter to customize the delivery time. If you do not set this parameter, the snapshots are delivered at `04:00Z` and `16:00Z` (UTC) by default.
+        # > When you enable the scheduled resource delivery feature, you can configure this parameter to specify a custom delivery time. If you do not configure this parameter, Cloud Config automatically delivers scheduled resource snapshots at `04:00Z` and `16:00Z` every day.
         self.delivery_snapshot_time = delivery_snapshot_time
         # The description of the delivery channel.
         self.description = description
-        # Specifies whether to deliver non-compliant events. When a resource is evaluated as non-compliant, Cloud Config delivers the non-compliant event to SLS or MNS. Valid values:
+        # Specifies whether to deliver resource non-compliance events. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
         # 
-        # - true: Deliver non-compliant events.
+        # *   true: Cloud Config delivers resource non-compliance events.
+        # *   false (default): Cloud Config does not deliver resource non-compliance events.
         # 
-        # - false (default): Do not deliver non-compliant events.
-        # 
-        # > * If the delivery channel is SLS, you must set at least one of `ConfigurationSnapshot` (scheduled resource snapshots), `CompliantSnapshot` (compliance snapshots), `ConfigurationItemChangeNotification` (resource configuration histories), and `NonCompliantNotification` (non-compliant events) to true.
-        # 
-        # > - If the delivery channel is MNS, you must set at least one of `ConfigurationItemChangeNotification` (resource configuration histories) and `NonCompliantNotification` (non-compliant events) to true.
+        # > This parameter is available only for delivery channels of the SLS or MNS type.
         self.non_compliant_notification = non_compliant_notification
-        # The ARN of the OSS bucket to which the oversized data is delivered when the size of the data exceeds the limit of the delivery channel. The format is `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+        # The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
         # 
-        # If you do not set this parameter, Cloud Config delivers only the summary of the data.
+        # If you do not configure this parameter, Cloud Config delivers only summary data.
         # 
-        # > This parameter is supported only for SLS and MNS delivery channels. The delivery channel limit for SLS is 1 MB. The delivery channel limit for MNS is 64 KB.
+        # > This parameter is available only for delivery channels of the SLS or MNS type. The maximum storage size of delivery channels of the SLS type is 1 MB, and the maximum storage size of delivery channels of the MNS type is 64 KB.
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
 
     def validate(self):

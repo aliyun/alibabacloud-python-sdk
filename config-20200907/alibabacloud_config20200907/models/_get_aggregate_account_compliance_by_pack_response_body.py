@@ -13,7 +13,9 @@ class GetAggregateAccountComplianceByPackResponseBody(DaraModel):
         account_compliance_result: main_models.GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult = None,
         request_id: str = None,
     ):
+        # The compliance evaluation results of member accounts for which the compliance package takes effect in an account group.
         self.account_compliance_result = account_compliance_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult(Dar
         non_compliant_count: int = None,
         total_count: int = None,
     ):
+        # The compliance evaluation result of member accounts.
         self.account_compliances = account_compliances
+        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
+        # The number of non-compliant member accounts.
         self.non_compliant_count = non_compliant_count
+        # The total number of member accounts.
         self.total_count = total_count
 
     def validate(self):
@@ -110,8 +116,16 @@ class GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResultAcco
         account_name: str = None,
         compliance_type: str = None,
     ):
+        # The ID of the member account in the account group.
         self.account_id = account_id
+        # The name of the member account in the account group.
         self.account_name = account_name
+        # The compliance evaluation result. Valid values:
+        # 
+        # *   COMPLIANT: The resource was evaluated as compliant.
+        # *   NON_COMPLIANT: The resource was evaluated as incompliant.
+        # *   NOT_APPLICABLE: The rule did not apply to your resource.
+        # *   INSUFFICIENT_DATA: No resource data was available.
         self.compliance_type = compliance_type
 
     def validate(self):

@@ -9,6 +9,7 @@ class GetConfigRulesReportRequest(DaraModel):
         self,
         report_id: str = None,
     ):
+        # The ID of the compliance evaluation report.
         self.report_id = report_id
 
     def validate(self):

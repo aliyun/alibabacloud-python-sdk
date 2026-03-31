@@ -13,9 +13,8 @@ class ListConfigRuleOperatorsResponseBody(DaraModel):
         operators: List[main_models.ListConfigRuleOperatorsResponseBodyOperators] = None,
         request_id: str = None,
     ):
-        # A list of operators.
         self.operators = operators
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -60,67 +59,9 @@ class ListConfigRuleOperatorsResponseBodyOperators(DaraModel):
         name: str = None,
         operator: str = None,
     ):
-        # The data type that the operator applies to.
         self.data_type = data_type
-        # The description of the operator, which can be used to explain why a resource is non-compliant.
         self.description = description
-        # The name of the operator.
         self.name = name
-        # The operator for the rule\\"s input parameter. The available operators vary based on the data type retrieved using SelectPath.
-        # 
-        # - If the data type is String, valid values are:
-        # 
-        #   - StringEquals: equals.
-        # 
-        #   - NotStringEquals: does not equal.
-        # 
-        #   - StringIn: is in.
-        # 
-        #   - NotStringIn: is not in.
-        # 
-        #   - StringContains: contains.
-        # 
-        #   - NotStringContains: does not contain.
-        # 
-        # - If the data type is Number, valid values are:
-        # 
-        #   - Equals: equals.
-        # 
-        #   - NotEquals: does not equal.
-        # 
-        #   - Less: is less than.
-        # 
-        #   - LessOrEquals: is less than or equal to.
-        # 
-        #   - Greater: is greater than.
-        # 
-        #   - GreaterOrEquals: is greater than or equal to.
-        # 
-        # - If the data type is a Base64-encoded string, valid values are:
-        # 
-        #   - Base64Contains: contains.
-        # 
-        #   - NotBase64Contains: does not contain.
-        # 
-        #   - Base64ContainsAll: contains all.
-        # 
-        #   - Base64ExcludeAll: excludes all.
-        # 
-        # - If the data type is Array, valid values are:
-        # 
-        #   - Contains: contains.
-        # 
-        #   - NotContains: does not contain.
-        # 
-        #   - In: is in.
-        # 
-        #   - NotIn: is not in.
-        # 
-        #   - ContainsAll: contains all.
-        # 
-        #   - ExcludeAll: excludes all.
-        # 
-        #   - IsEmpty: is empty.
         self.operator = operator
 
     def validate(self):

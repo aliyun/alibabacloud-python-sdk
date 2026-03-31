@@ -15,7 +15,7 @@ class GetSupportedResourceRelationConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of resource relations.
+        # An array that contains the relationships.
         self.resource_relation_config_list = resource_relation_config_list
 
     def validate(self):
@@ -58,17 +58,14 @@ class GetSupportedResourceRelationConfigResponseBodyResourceRelationConfigList(D
         relation_type: str = None,
         target_resource_type: str = None,
     ):
-        # The type of the resource relation. Valid values:
+        # The type of the relationship between the resource and the object. Valid values:
         # 
-        # - IsContained: Is contained in.
-        # 
-        # - IsAttachedTo: Is attached to.
-        # 
-        # - IsAssociatedIn: Is associated with.
-        # 
-        # - Contains: Contains.
+        # *   IsContained: The object is included as part of the resource.
+        # *   IsAttachedTo: The object is added to the resource.
+        # *   IsAssociatedIn: The object is associated with the resource.
+        # *   Contains: The actual value contains the expected value.
         self.relation_type = relation_type
-        # The resource type of the relation target.
+        # The resource type.
         self.target_resource_type = target_resource_type
 
     def validate(self):

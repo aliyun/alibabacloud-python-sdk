@@ -13,7 +13,9 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponseBody(DaraModel):
         discovered_resource_counts_summary: List[main_models.GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary] = None,
         request_id: str = None,
     ):
+        # The statistics on the resources.
         self.discovered_resource_counts_summary = discovered_resource_counts_summary
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,13 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResour
         resource_count: int = None,
         resource_type: str = None,
     ):
+        # The resource type by which the statistics are collected.
+        # 
+        # > We recommend that you use the `ResourceType` parameter.
         self.group_name = group_name
+        # The total number of resources.
         self.resource_count = resource_count
+        # The resource type by which the statistics are collected.
         self.resource_type = resource_type
 
     def validate(self):

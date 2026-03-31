@@ -13,7 +13,7 @@ class ListConfigRulesResponseBody(DaraModel):
         config_rules: main_models.ListConfigRulesResponseBodyConfigRules = None,
         request_id: str = None,
     ):
-        # The list of rules.
+        # The information about the rules.
         self.config_rules = config_rules
         # The request ID.
         self.request_id = request_id
@@ -54,11 +54,11 @@ class ListConfigRulesResponseBodyConfigRules(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details of the rules.
+        # The details of the rule.
         self.config_rule_list = config_rule_list
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of rules.
         self.total_count = total_count
@@ -130,9 +130,9 @@ class ListConfigRulesResponseBodyConfigRulesConfigRuleList(DaraModel):
     ):
         # The ID of the account to which the rule belongs.
         self.account_id = account_id
-        # The remediation type. Only Operation Orchestration Service (OOS) is supported.
+        # The type of the remediation template. Only OOS is returned, which indicates CloudOps Orchestration Service.
         self.automation_type = automation_type
-        # The compliance aggregation results of the rule.
+        # The compliance aggregation result of the rule.
         self.compliance = compliance
         # The ARN of the rule.
         self.config_rule_arn = config_rule_arn
@@ -140,43 +140,35 @@ class ListConfigRulesResponseBodyConfigRulesConfigRuleList(DaraModel):
         self.config_rule_id = config_rule_id
         # The name of the rule.
         self.config_rule_name = config_rule_name
-        # The state of the rule. Valid values:
+        # The status of the rule. Valid values:
         # 
-        # - ACTIVE: The rule is enabled.
-        # 
-        # - DELETING: The rule is being deleted.
-        # 
-        # - EVALUATING: The rule is being evaluated.
-        # 
-        # - INACTIVE: The rule is disabled.
+        # *   ACTIVE: The rule is enabled.
+        # *   DELETING: The rule is being deleted.
+        # *   EVALUATING: The rule is being used to evaluate resource configurations.
+        # *   INACTIVE: The rule is disabled.
         self.config_rule_state = config_rule_state
-        # The information about the creator of the rule.
+        # The information about the creation of the rule.
         self.create_by = create_by
-        # The time when the rule was created. The time is displayed in UTC+8.
         self.create_date = create_date
         # The description of the rule.
         self.description = description
-        # The types of resources evaluated by the rule. Multiple resource types are separated by commas (,).
+        # The types of resources evaluated by the rule. Multiple resource types are separated with commas (,).
         self.resource_types_scope = resource_types_scope
-        # The risk level of the rule. Valid values:
+        # The risk level of the resources that do not comply with the rule. Valid values:
         # 
-        # - 1: High risk.
-        # 
-        # - 2: Medium risk.
-        # 
-        # - 3: Low risk.
+        # *   1: high.
+        # *   2: medium.
+        # *   3: low.
         self.risk_level = risk_level
         # The identifier of the rule.
         # 
-        # - If the rule is a managed rule, this parameter indicates the identifier of the managed rule.
-        # 
-        # - If the rule is a custom rule, this parameter indicates the Alibaba Cloud Resource Name (ARN) of the function.
+        # *   If the rule is a managed rule, the value of this parameter is the identifier of the managed rule.
+        # *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the rule.
         self.source_identifier = source_identifier
-        # The owner of the rule. Valid values:
+        # The type of the rule. Valid values:
         # 
-        # - CUSTOM_FC: a custom rule created using a Function Compute (FC) function.
-        # 
-        # - ALIYUN: a managed rule.
+        # *   CUSTOM_FC: a custom rule.
+        # *   ALIYUN: a managed rule.
         self.source_owner = source_owner
         # The tags of the rule.
         self.tags = tags
@@ -342,7 +334,7 @@ class ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy(DaraModel):
         compliance_pack_id: str = None,
         compliance_pack_name: str = None,
     ):
-        # The ID of the compliance package.
+        # The compliance package ID.
         self.compliance_pack_id = compliance_pack_id
         # The name of the compliance package.
         self.compliance_pack_name = compliance_pack_name
@@ -379,17 +371,14 @@ class ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance(DaraModel):
         compliance_type: str = None,
         count: int = None,
     ):
-        # The summary of the compliance evaluation result. Valid values:
+        # The compliance evaluation result of the rule. Valid values:
         # 
-        # - COMPLIANT: Compliant.
-        # 
-        # - NON_COMPLIANT: Non-compliant.
-        # 
-        # - NOT_APPLICABLE: Not applicable.
-        # 
-        # - INSUFFICIENT_DATA: Insufficient data.
+        # *   COMPLIANT: The resources are evaluated as compliant.
+        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resources.
+        # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
-        # The number of evaluated resources that correspond to the compliance summary.
+        # The number of resources that are evaluated based on the rule.
         self.count = count
 
     def validate(self):
