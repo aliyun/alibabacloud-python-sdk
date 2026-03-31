@@ -162,6 +162,7 @@ class VoiceModerationResultResponseBodyDataSliceDetails(DaraModel):
         extend: str = None,
         labels: str = None,
         origin_algo_result: Dict[str, Any] = None,
+        result: List[main_models.VoiceModerationResultResponseBodyDataSliceDetailsResult] = None,
         risk_level: str = None,
         risk_tips: str = None,
         risk_words: str = None,
@@ -183,6 +184,7 @@ class VoiceModerationResultResponseBodyDataSliceDetails(DaraModel):
         self.labels = labels
         # Reserved parameter.
         self.origin_algo_result = origin_algo_result
+        self.result = result
         # Risk Level.
         self.risk_level = risk_level
         # The details of the risky content.
@@ -201,7 +203,10 @@ class VoiceModerationResultResponseBodyDataSliceDetails(DaraModel):
         self.url = url
 
     def validate(self):
-        pass
+        if self.result:
+            for v1 in self.result:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -225,6 +230,11 @@ class VoiceModerationResultResponseBodyDataSliceDetails(DaraModel):
 
         if self.origin_algo_result is not None:
             result['OriginAlgoResult'] = self.origin_algo_result
+
+        result['Result'] = []
+        if self.result is not None:
+            for k1 in self.result:
+                result['Result'].append(k1.to_map() if k1 else None)
 
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
@@ -272,6 +282,12 @@ class VoiceModerationResultResponseBodyDataSliceDetails(DaraModel):
         if m.get('OriginAlgoResult') is not None:
             self.origin_algo_result = m.get('OriginAlgoResult')
 
+        self.result = []
+        if m.get('Result') is not None:
+            for k1 in m.get('Result'):
+                temp_model = main_models.VoiceModerationResultResponseBodyDataSliceDetailsResult()
+                self.result.append(temp_model.from_map(k1))
+
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
 
@@ -295,6 +311,176 @@ class VoiceModerationResultResponseBodyDataSliceDetails(DaraModel):
 
         if m.get('Url') is not None:
             self.url = m.get('Url')
+
+        return self
+
+class VoiceModerationResultResponseBodyDataSliceDetailsResult(DaraModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        customized_hit: List[main_models.VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit] = None,
+        description: str = None,
+        label: str = None,
+        risk_level: str = None,
+        risk_positions: List[main_models.VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions] = None,
+        risk_words: str = None,
+    ):
+        self.confidence = confidence
+        self.customized_hit = customized_hit
+        self.description = description
+        self.label = label
+        self.risk_level = risk_level
+        self.risk_positions = risk_positions
+        self.risk_words = risk_words
+
+    def validate(self):
+        if self.customized_hit:
+            for v1 in self.customized_hit:
+                 if v1:
+                    v1.validate()
+        if self.risk_positions:
+            for v1 in self.risk_positions:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+
+        result['CustomizedHit'] = []
+        if self.customized_hit is not None:
+            for k1 in self.customized_hit:
+                result['CustomizedHit'].append(k1.to_map() if k1 else None)
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+
+        result['RiskPositions'] = []
+        if self.risk_positions is not None:
+            for k1 in self.risk_positions:
+                result['RiskPositions'].append(k1.to_map() if k1 else None)
+
+        if self.risk_words is not None:
+            result['RiskWords'] = self.risk_words
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+
+        self.customized_hit = []
+        if m.get('CustomizedHit') is not None:
+            for k1 in m.get('CustomizedHit'):
+                temp_model = main_models.VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit()
+                self.customized_hit.append(temp_model.from_map(k1))
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+
+        self.risk_positions = []
+        if m.get('RiskPositions') is not None:
+            for k1 in m.get('RiskPositions'):
+                temp_model = main_models.VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions()
+                self.risk_positions.append(temp_model.from_map(k1))
+
+        if m.get('RiskWords') is not None:
+            self.risk_words = m.get('RiskWords')
+
+        return self
+
+class VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions(DaraModel):
+    def __init__(
+        self,
+        end_pos: int = None,
+        risk_word: str = None,
+        start_pos: int = None,
+    ):
+        self.end_pos = end_pos
+        self.risk_word = risk_word
+        self.start_pos = start_pos
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_pos is not None:
+            result['EndPos'] = self.end_pos
+
+        if self.risk_word is not None:
+            result['RiskWord'] = self.risk_word
+
+        if self.start_pos is not None:
+            result['StartPos'] = self.start_pos
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndPos') is not None:
+            self.end_pos = m.get('EndPos')
+
+        if m.get('RiskWord') is not None:
+            self.risk_word = m.get('RiskWord')
+
+        if m.get('StartPos') is not None:
+            self.start_pos = m.get('StartPos')
+
+        return self
+
+class VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit(DaraModel):
+    def __init__(
+        self,
+        key_words: str = None,
+        lib_name: str = None,
+    ):
+        self.key_words = key_words
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
 
         return self
 

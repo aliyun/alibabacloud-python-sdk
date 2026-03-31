@@ -204,6 +204,9 @@ from ._video_moderation_result_response_body import VideoModerationResultRespons
 from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataFrameResult
 from ._video_moderation_result_response_body import VideoModerationResultResponseBodyData
 from ._voice_moderation_response_body import VoiceModerationResponseBodyData
+from ._voice_moderation_result_response_body import VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit
+from ._voice_moderation_result_response_body import VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions
+from ._voice_moderation_result_response_body import VoiceModerationResultResponseBodyDataSliceDetailsResult
 from ._voice_moderation_result_response_body import VoiceModerationResultResponseBodyDataSliceDetails
 from ._voice_moderation_result_response_body import VoiceModerationResultResponseBodyData
 
@@ -410,6 +413,9 @@ __all__ = [
     VideoModerationResultResponseBodyDataFrameResult,
     VideoModerationResultResponseBodyData,
     VoiceModerationResponseBodyData,
+    VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit,
+    VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions,
+    VoiceModerationResultResponseBodyDataSliceDetailsResult,
     VoiceModerationResultResponseBodyDataSliceDetails,
     VoiceModerationResultResponseBodyData
 ]

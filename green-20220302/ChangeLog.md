@@ -1,3 +1,7 @@
+2026-03-31 Version: 3.2.3
+- Update API VoiceModerationResult: add response parameters Body.Data.SliceDetails.$.Result.
+
+
 2026-03-13 Version: 3.2.2
 - Update API VideoModerationResult: add response parameters Body.Data.Ext.
 
