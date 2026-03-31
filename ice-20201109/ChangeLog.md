@@ -1,3 +1,12 @@
+2026-03-31 Version: 6.16.0
+- Support API AddYikeUserCredit.
+- Support API CreateYikeProduction.
+- Support API CreateYikeUser.
+- Support API CreateYikeWorkspace.
+- Support API GetYikeUserCredit.
+- Support API SetYikeUserRole.
+
+
 2026-03-30 Version: 6.15.1
 - Update API ListYikeProductions: add request parameters WorkspaceId.
 

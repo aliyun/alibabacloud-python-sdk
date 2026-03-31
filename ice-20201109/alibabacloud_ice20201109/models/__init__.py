@@ -83,6 +83,9 @@ from ._add_stream_tag_to_search_lib_response import AddStreamTagToSearchLibRespo
 from ._add_template_request import AddTemplateRequest
 from ._add_template_response_body import AddTemplateResponseBody
 from ._add_template_response import AddTemplateResponse
+from ._add_yike_user_credit_request import AddYikeUserCreditRequest
+from ._add_yike_user_credit_response_body import AddYikeUserCreditResponseBody
+from ._add_yike_user_credit_response import AddYikeUserCreditResponse
 from ._alter_search_index_request import AlterSearchIndexRequest
 from ._alter_search_index_response_body import AlterSearchIndexResponseBody
 from ._alter_search_index_response import AlterSearchIndexResponse
@@ -234,6 +237,15 @@ from ._create_vod_packaging_group_response import CreateVodPackagingGroupRespons
 from ._create_yike_asset_upload_request import CreateYikeAssetUploadRequest
 from ._create_yike_asset_upload_response_body import CreateYikeAssetUploadResponseBody
 from ._create_yike_asset_upload_response import CreateYikeAssetUploadResponse
+from ._create_yike_production_request import CreateYikeProductionRequest
+from ._create_yike_production_response_body import CreateYikeProductionResponseBody
+from ._create_yike_production_response import CreateYikeProductionResponse
+from ._create_yike_user_request import CreateYikeUserRequest
+from ._create_yike_user_response_body import CreateYikeUserResponseBody
+from ._create_yike_user_response import CreateYikeUserResponse
+from ._create_yike_workspace_request import CreateYikeWorkspaceRequest
+from ._create_yike_workspace_response_body import CreateYikeWorkspaceResponseBody
+from ._create_yike_workspace_response import CreateYikeWorkspaceResponse
 from ._decrypt_kmsdata_key_request import DecryptKMSDataKeyRequest
 from ._decrypt_kmsdata_key_response_body import DecryptKMSDataKeyResponseBody
 from ._decrypt_kmsdata_key_response import DecryptKMSDataKeyResponse
@@ -633,6 +645,9 @@ from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
 from ._get_yike_storyboard_job_request import GetYikeStoryboardJobRequest
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBody
 from ._get_yike_storyboard_job_response import GetYikeStoryboardJobResponse
+from ._get_yike_user_credit_request import GetYikeUserCreditRequest
+from ._get_yike_user_credit_response_body import GetYikeUserCreditResponseBody
+from ._get_yike_user_credit_response import GetYikeUserCreditResponse
 from ._insert_media_to_search_lib_request import InsertMediaToSearchLibRequest
 from ._insert_media_to_search_lib_response_body import InsertMediaToSearchLibResponseBody
 from ._insert_media_to_search_lib_response import InsertMediaToSearchLibResponse
@@ -959,6 +974,9 @@ from ._set_event_callback_response import SetEventCallbackResponse
 from ._set_notify_config_request import SetNotifyConfigRequest
 from ._set_notify_config_response_body import SetNotifyConfigResponseBody
 from ._set_notify_config_response import SetNotifyConfigResponse
+from ._set_yike_user_role_request import SetYikeUserRoleRequest
+from ._set_yike_user_role_response_body import SetYikeUserRoleResponseBody
+from ._set_yike_user_role_response import SetYikeUserRoleResponse
 from ._start_aiagent_instance_request import StartAIAgentInstanceRequest
 from ._start_aiagent_instance_shrink_request import StartAIAgentInstanceShrinkRequest
 from ._start_aiagent_instance_response_body import StartAIAgentInstanceResponseBody
@@ -1431,6 +1449,7 @@ from ._create_vod_packaging_asset_request import CreateVodPackagingAssetRequestI
 from ._create_vod_packaging_configuration_request import CreateVodPackagingConfigurationRequestPackageConfigDrmProvider
 from ._create_vod_packaging_configuration_request import CreateVodPackagingConfigurationRequestPackageConfigStreamSelection
 from ._create_vod_packaging_configuration_request import CreateVodPackagingConfigurationRequestPackageConfig
+from ._create_yike_user_response_body import CreateYikeUserResponseBodyUserInfo
 from ._decrypt_kmsdata_key_response_body import DecryptKMSDataKeyResponseBodyDataKey
 from ._delete_avatar_training_job_response_body import DeleteAvatarTrainingJobResponseBodyData
 from ._delete_live_record_files_response_body import DeleteLiveRecordFilesResponseBodyDeleteFileInfoList
@@ -2175,6 +2194,9 @@ __all__ = [
     AddTemplateRequest,
     AddTemplateResponseBody,
     AddTemplateResponse,
+    AddYikeUserCreditRequest,
+    AddYikeUserCreditResponseBody,
+    AddYikeUserCreditResponse,
     AlterSearchIndexRequest,
     AlterSearchIndexResponseBody,
     AlterSearchIndexResponse,
@@ -2326,6 +2348,15 @@ __all__ = [
     CreateYikeAssetUploadRequest,
     CreateYikeAssetUploadResponseBody,
     CreateYikeAssetUploadResponse,
+    CreateYikeProductionRequest,
+    CreateYikeProductionResponseBody,
+    CreateYikeProductionResponse,
+    CreateYikeUserRequest,
+    CreateYikeUserResponseBody,
+    CreateYikeUserResponse,
+    CreateYikeWorkspaceRequest,
+    CreateYikeWorkspaceResponseBody,
+    CreateYikeWorkspaceResponse,
     DecryptKMSDataKeyRequest,
     DecryptKMSDataKeyResponseBody,
     DecryptKMSDataKeyResponse,
@@ -2725,6 +2756,9 @@ __all__ = [
     GetYikeStoryboardJobRequest,
     GetYikeStoryboardJobResponseBody,
     GetYikeStoryboardJobResponse,
+    GetYikeUserCreditRequest,
+    GetYikeUserCreditResponseBody,
+    GetYikeUserCreditResponse,
     InsertMediaToSearchLibRequest,
     InsertMediaToSearchLibResponseBody,
     InsertMediaToSearchLibResponse,
@@ -3051,6 +3085,9 @@ __all__ = [
     SetNotifyConfigRequest,
     SetNotifyConfigResponseBody,
     SetNotifyConfigResponse,
+    SetYikeUserRoleRequest,
+    SetYikeUserRoleResponseBody,
+    SetYikeUserRoleResponse,
     StartAIAgentInstanceRequest,
     StartAIAgentInstanceShrinkRequest,
     StartAIAgentInstanceResponseBody,
@@ -3523,6 +3560,7 @@ __all__ = [
     CreateVodPackagingConfigurationRequestPackageConfigDrmProvider,
     CreateVodPackagingConfigurationRequestPackageConfigStreamSelection,
     CreateVodPackagingConfigurationRequestPackageConfig,
+    CreateYikeUserResponseBodyUserInfo,
     DecryptKMSDataKeyResponseBodyDataKey,
     DeleteAvatarTrainingJobResponseBodyData,
     DeleteLiveRecordFilesResponseBodyDeleteFileInfoList,
