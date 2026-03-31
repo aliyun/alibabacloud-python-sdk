@@ -54,12 +54,14 @@ class GetApplicationResponseBodyApplication(DaraModel):
         application_id: str = None,
         application_identity_type: str = None,
         application_name: str = None,
+        application_owner: main_models.GetApplicationResponseBodyApplicationApplicationOwner = None,
         application_source_type: str = None,
         application_template_id: str = None,
         application_visibility: List[str] = None,
         authorization_type: str = None,
         client_id: str = None,
         create_time: int = None,
+        custom_fields: List[main_models.GetApplicationResponseBodyApplicationCustomFields] = None,
         custom_subject_status: str = None,
         description: str = None,
         features: str = None,
@@ -86,6 +88,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.application_identity_type = application_identity_type
         # The name of the application.
         self.application_name = application_name
+        self.application_owner = application_owner
         # The origin of the application. Valid values:
         # 
         # *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
@@ -104,6 +107,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.client_id = client_id
         # The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        self.custom_fields = custom_fields
         self.custom_subject_status = custom_subject_status
         # The description of the application.
         self.description = description
@@ -142,7 +146,12 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.application_owner:
+            self.application_owner.validate()
+        if self.custom_fields:
+            for v1 in self.custom_fields:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -164,6 +173,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
 
+        if self.application_owner is not None:
+            result['ApplicationOwner'] = self.application_owner.to_map()
+
         if self.application_source_type is not None:
             result['ApplicationSourceType'] = self.application_source_type
 
@@ -181,6 +193,11 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        result['CustomFields'] = []
+        if self.custom_fields is not None:
+            for k1 in self.custom_fields:
+                result['CustomFields'].append(k1.to_map() if k1 else None)
 
         if self.custom_subject_status is not None:
             result['CustomSubjectStatus'] = self.custom_subject_status
@@ -243,6 +260,10 @@ class GetApplicationResponseBodyApplication(DaraModel):
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
 
+        if m.get('ApplicationOwner') is not None:
+            temp_model = main_models.GetApplicationResponseBodyApplicationApplicationOwner()
+            self.application_owner = temp_model.from_map(m.get('ApplicationOwner'))
+
         if m.get('ApplicationSourceType') is not None:
             self.application_source_type = m.get('ApplicationSourceType')
 
@@ -260,6 +281,12 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        self.custom_fields = []
+        if m.get('CustomFields') is not None:
+            for k1 in m.get('CustomFields'):
+                temp_model = main_models.GetApplicationResponseBodyApplicationCustomFields()
+                self.custom_fields.append(temp_model.from_map(k1))
 
         if m.get('CustomSubjectStatus') is not None:
             self.custom_subject_status = m.get('CustomSubjectStatus')
@@ -302,6 +329,76 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class GetApplicationResponseBodyApplicationCustomFields(DaraModel):
+    def __init__(
+        self,
+        field_name: str = None,
+        field_value: str = None,
+    ):
+        self.field_name = field_name
+        self.field_value = field_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+
+        if self.field_value is not None:
+            result['FieldValue'] = self.field_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+
+        if m.get('FieldValue') is not None:
+            self.field_value = m.get('FieldValue')
+
+        return self
+
+class GetApplicationResponseBodyApplicationApplicationOwner(DaraModel):
+    def __init__(
+        self,
+        group_ids: List[str] = None,
+        user_ids: List[str] = None,
+    ):
+        self.group_ids = group_ids
+        self.user_ids = user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.group_ids is not None:
+            result['GroupIds'] = self.group_ids
+
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupIds') is not None:
+            self.group_ids = m.get('GroupIds')
+
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
 
         return self
 

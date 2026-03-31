@@ -1625,10 +1625,14 @@ class Client(OpenApiClient):
             query['ApplicationIdentityType'] = request.application_identity_type
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.application_owner):
+            query['ApplicationOwner'] = request.application_owner
         if not DaraCore.is_null(request.application_source_type):
             query['ApplicationSourceType'] = request.application_source_type
         if not DaraCore.is_null(request.application_template_id):
             query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.custom_fields):
+            query['CustomFields'] = request.custom_fields
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
@@ -1667,10 +1671,14 @@ class Client(OpenApiClient):
             query['ApplicationIdentityType'] = request.application_identity_type
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.application_owner):
+            query['ApplicationOwner'] = request.application_owner
         if not DaraCore.is_null(request.application_source_type):
             query['ApplicationSourceType'] = request.application_source_type
         if not DaraCore.is_null(request.application_template_id):
             query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.custom_fields):
+            query['CustomFields'] = request.custom_fields
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
@@ -15577,6 +15585,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.authorization_type):
             query['AuthorizationType'] = request.authorization_type
+        if not DaraCore.is_null(request.custom_fields):
+            query['CustomFields'] = request.custom_fields
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.m_2mclient_status):
@@ -15627,6 +15637,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.authorization_type):
             query['AuthorizationType'] = request.authorization_type
+        if not DaraCore.is_null(request.custom_fields):
+            query['CustomFields'] = request.custom_fields
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.m_2mclient_status):
@@ -24441,10 +24453,14 @@ class Client(OpenApiClient):
             query['ApplicationId'] = request.application_id
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.application_owner):
+            query['ApplicationOwner'] = request.application_owner
         if not DaraCore.is_null(request.application_visibility):
             query['ApplicationVisibility'] = request.application_visibility
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.custom_fields):
+            query['CustomFields'] = request.custom_fields
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.logo_url):
@@ -24479,10 +24495,14 @@ class Client(OpenApiClient):
             query['ApplicationId'] = request.application_id
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.application_owner):
+            query['ApplicationOwner'] = request.application_owner
         if not DaraCore.is_null(request.application_visibility):
             query['ApplicationVisibility'] = request.application_visibility
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.custom_fields):
+            query['CustomFields'] = request.custom_fields
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.logo_url):

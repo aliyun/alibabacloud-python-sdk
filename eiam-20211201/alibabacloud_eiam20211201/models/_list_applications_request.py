@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_eiam20211201 import models as main_models
 from darabonba.model import DaraModel
 
 class ListApplicationsRequest(DaraModel):
@@ -14,6 +15,7 @@ class ListApplicationsRequest(DaraModel):
         application_ids: List[str] = None,
         application_name: str = None,
         authorization_type: str = None,
+        custom_fields: List[main_models.ListApplicationsRequestCustomFields] = None,
         instance_id: str = None,
         m_2mclient_status: str = None,
         page_number: int = None,
@@ -33,6 +35,7 @@ class ListApplicationsRequest(DaraModel):
         # *   authorize_required: Only the user with explicit authorization can access the application.
         # *   default_all: By default, all users can access the application.
         self.authorization_type = authorization_type
+        self.custom_fields = custom_fields
         # The ID of the instance.
         # 
         # This parameter is required.
@@ -61,7 +64,10 @@ class ListApplicationsRequest(DaraModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.custom_fields:
+            for v1 in self.custom_fields:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -82,6 +88,11 @@ class ListApplicationsRequest(DaraModel):
 
         if self.authorization_type is not None:
             result['AuthorizationType'] = self.authorization_type
+
+        result['CustomFields'] = []
+        if self.custom_fields is not None:
+            for k1 in self.custom_fields:
+                result['CustomFields'].append(k1.to_map() if k1 else None)
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -123,6 +134,12 @@ class ListApplicationsRequest(DaraModel):
         if m.get('AuthorizationType') is not None:
             self.authorization_type = m.get('AuthorizationType')
 
+        self.custom_fields = []
+        if m.get('CustomFields') is not None:
+            for k1 in m.get('CustomFields'):
+                temp_model = main_models.ListApplicationsRequestCustomFields()
+                self.custom_fields.append(temp_model.from_map(k1))
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
@@ -143,6 +160,41 @@ class ListApplicationsRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        return self
+
+class ListApplicationsRequestCustomFields(DaraModel):
+    def __init__(
+        self,
+        field_name: str = None,
+        field_value: str = None,
+    ):
+        self.field_name = field_name
+        self.field_value = field_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+
+        if self.field_value is not None:
+            result['FieldValue'] = self.field_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+
+        if m.get('FieldValue') is not None:
+            self.field_value = m.get('FieldValue')
 
         return self
 

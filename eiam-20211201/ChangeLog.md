@@ -1,3 +1,13 @@
+2026-03-31 Version: 2.15.4
+- Update API CreateApplication: add request parameters ApplicationOwner.
+- Update API CreateApplication: add request parameters CustomFields.
+- Update API GetApplication: add response parameters Body.Application.ApplicationOwner.
+- Update API GetApplication: add response parameters Body.Application.CustomFields.
+- Update API ListApplications: add request parameters CustomFields.
+- Update API UpdateApplicationInfo: add request parameters ApplicationOwner.
+- Update API UpdateApplicationInfo: add request parameters CustomFields.
+
+
 2026-03-30 Version: 2.15.3
 - Update API CreateCloudAccount: add request parameters CloudAccountSite.
 
