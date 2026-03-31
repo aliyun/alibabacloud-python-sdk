@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListTaskExecutionsRequest(DaraModel):
     def __init__(
         self,
+        account_id: str = None,
         end_date_after: str = None,
         end_date_before: str = None,
         execution_id: str = None,
@@ -24,6 +25,7 @@ class ListTaskExecutionsRequest(DaraModel):
         task_execution_id: str = None,
         task_name: str = None,
     ):
+        self.account_id = account_id
         # The execution ID of the task.
         self.end_date_after = end_date_after
         # Specifies to query task executions that stop running at or later than the specified time.
@@ -72,6 +74,9 @@ class ListTaskExecutionsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+
         if self.end_date_after is not None:
             result['EndDateAfter'] = self.end_date_after
 
@@ -124,6 +129,9 @@ class ListTaskExecutionsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+
         if m.get('EndDateAfter') is not None:
             self.end_date_after = m.get('EndDateAfter')
 

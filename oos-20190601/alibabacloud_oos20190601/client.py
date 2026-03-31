@@ -788,6 +788,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_application_group_with_options_async(request, runtime)
 
+    def create_chat_configuration_with_options(
+        self,
+        request: main_models.CreateChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.configuration):
+            query['Configuration'] = request.configuration
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            query['RamRole'] = request.ram_role
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateChatConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chat_configuration_with_options_async(
+        self,
+        request: main_models.CreateChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.configuration):
+            query['Configuration'] = request.configuration
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            query['RamRole'] = request.ram_role
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateChatConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chat_configuration(
+        self,
+        request: main_models.CreateChatConfigurationRequest,
+    ) -> main_models.CreateChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.create_chat_configuration_with_options(request, runtime)
+
+    async def create_chat_configuration_async(
+        self,
+        request: main_models.CreateChatConfigurationRequest,
+    ) -> main_models.CreateChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_chat_configuration_with_options_async(request, runtime)
+
+    def create_deploy_revision_with_options(
+        self,
+        request: main_models.CreateDeployRevisionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeployRevisionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.deploy_resource_type):
+            query['DeployResourceType'] = request.deploy_resource_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.hooks):
+            query['Hooks'] = request.hooks
+        if not DaraCore.is_null(request.location):
+            query['Location'] = request.location
+        if not DaraCore.is_null(request.revision_type):
+            query['RevisionType'] = request.revision_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeployRevision',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeployRevisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_deploy_revision_with_options_async(
+        self,
+        request: main_models.CreateDeployRevisionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeployRevisionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.deploy_resource_type):
+            query['DeployResourceType'] = request.deploy_resource_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.hooks):
+            query['Hooks'] = request.hooks
+        if not DaraCore.is_null(request.location):
+            query['Location'] = request.location
+        if not DaraCore.is_null(request.revision_type):
+            query['RevisionType'] = request.revision_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeployRevision',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeployRevisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_deploy_revision(
+        self,
+        request: main_models.CreateDeployRevisionRequest,
+    ) -> main_models.CreateDeployRevisionResponse:
+        runtime = RuntimeOptions()
+        return self.create_deploy_revision_with_options(request, runtime)
+
+    async def create_deploy_revision_async(
+        self,
+        request: main_models.CreateDeployRevisionRequest,
+    ) -> main_models.CreateDeployRevisionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_deploy_revision_with_options_async(request, runtime)
+
     def create_git_repository_with_options(
         self,
         request: main_models.CreateGitRepositoryRequest,
@@ -1773,6 +1953,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteApplicationGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_application_group_with_options_async(request, runtime)
+
+    def delete_chat_configuration_with_options(
+        self,
+        request: main_models.DeleteChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteChatConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chat_configuration_with_options_async(
+        self,
+        request: main_models.DeleteChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteChatConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chat_configuration(
+        self,
+        request: main_models.DeleteChatConfigurationRequest,
+    ) -> main_models.DeleteChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.delete_chat_configuration_with_options(request, runtime)
+
+    async def delete_chat_configuration_async(
+        self,
+        request: main_models.DeleteChatConfigurationRequest,
+    ) -> main_models.DeleteChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_chat_configuration_with_options_async(request, runtime)
 
     def delete_executions_with_options(
         self,
@@ -2959,6 +3213,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetApplicationGroupResponse:
         runtime = RuntimeOptions()
         return await self.get_application_group_with_options_async(request, runtime)
+
+    def get_chat_configuration_with_options(
+        self,
+        request: main_models.GetChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChatConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_configuration_with_options_async(
+        self,
+        request: main_models.GetChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChatConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_configuration(
+        self,
+        request: main_models.GetChatConfigurationRequest,
+    ) -> main_models.GetChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.get_chat_configuration_with_options(request, runtime)
+
+    async def get_chat_configuration_async(
+        self,
+        request: main_models.GetChatConfigurationRequest,
+    ) -> main_models.GetChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_chat_configuration_with_options_async(request, runtime)
 
     def get_execution_template_with_options(
         self,
@@ -4460,6 +4788,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
 
+    def list_chat_configurations_with_options(
+        self,
+        request: main_models.ListChatConfigurationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChatConfigurationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChatConfigurations',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChatConfigurationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_configurations_with_options_async(
+        self,
+        request: main_models.ListChatConfigurationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChatConfigurationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChatConfigurations',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChatConfigurationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_configurations(
+        self,
+        request: main_models.ListChatConfigurationsRequest,
+    ) -> main_models.ListChatConfigurationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_chat_configurations_with_options(request, runtime)
+
+    async def list_chat_configurations_async(
+        self,
+        request: main_models.ListChatConfigurationsRequest,
+    ) -> main_models.ListChatConfigurationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_chat_configurations_with_options_async(request, runtime)
+
     def list_execution_logs_with_options(
         self,
         request: main_models.ListExecutionLogsRequest,
@@ -4467,6 +4877,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListExecutionLogsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.execution_id):
             query['ExecutionId'] = request.execution_id
         if not DaraCore.is_null(request.log_type):
@@ -4505,6 +4917,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListExecutionLogsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.execution_id):
             query['ExecutionId'] = request.execution_id
         if not DaraCore.is_null(request.log_type):
@@ -4632,9 +5046,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListExecutionsShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rd_folder_ids):
+            request.rd_folder_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rd_folder_ids, 'RdFolderIds', 'json')
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.categories):
             query['Categories'] = request.categories
         if not DaraCore.is_null(request.category):
@@ -4663,6 +5081,8 @@ class Client(OpenApiClient):
             query['ParentExecutionId'] = request.parent_execution_id
         if not DaraCore.is_null(request.ram_role):
             query['RamRole'] = request.ram_role
+        if not DaraCore.is_null(request.rd_folder_ids_shrink):
+            query['RdFolderIds'] = request.rd_folder_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -4712,9 +5132,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListExecutionsShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rd_folder_ids):
+            request.rd_folder_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rd_folder_ids, 'RdFolderIds', 'json')
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.categories):
             query['Categories'] = request.categories
         if not DaraCore.is_null(request.category):
@@ -4743,6 +5167,8 @@ class Client(OpenApiClient):
             query['ParentExecutionId'] = request.parent_execution_id
         if not DaraCore.is_null(request.ram_role):
             query['RamRole'] = request.ram_role
+        if not DaraCore.is_null(request.rd_folder_ids_shrink):
+            query['RdFolderIds'] = request.rd_folder_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -6706,6 +7132,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
+    def list_task_execution_invocations_with_options(
+        self,
+        request: main_models.ListTaskExecutionInvocationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTaskExecutionInvocationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.task_execution_id):
+            query['TaskExecutionId'] = request.task_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTaskExecutionInvocations',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTaskExecutionInvocationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_execution_invocations_with_options_async(
+        self,
+        request: main_models.ListTaskExecutionInvocationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTaskExecutionInvocationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.task_execution_id):
+            query['TaskExecutionId'] = request.task_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTaskExecutionInvocations',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTaskExecutionInvocationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_execution_invocations(
+        self,
+        request: main_models.ListTaskExecutionInvocationsRequest,
+    ) -> main_models.ListTaskExecutionInvocationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_task_execution_invocations_with_options(request, runtime)
+
+    async def list_task_execution_invocations_async(
+        self,
+        request: main_models.ListTaskExecutionInvocationsRequest,
+    ) -> main_models.ListTaskExecutionInvocationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_task_execution_invocations_with_options_async(request, runtime)
+
     def list_task_executions_with_options(
         self,
         request: main_models.ListTaskExecutionsRequest,
@@ -6713,6 +7217,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListTaskExecutionsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.end_date_after):
             query['EndDateAfter'] = request.end_date_after
         if not DaraCore.is_null(request.end_date_before):
@@ -6771,6 +7277,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListTaskExecutionsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.end_date_after):
             query['EndDateAfter'] = request.end_date_after
         if not DaraCore.is_null(request.end_date_before):
@@ -7336,10 +7844,14 @@ class Client(OpenApiClient):
 
     def set_service_settings_with_options(
         self,
-        request: main_models.SetServiceSettingsRequest,
+        tmp_req: main_models.SetServiceSettingsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SetServiceSettingsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SetServiceSettingsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rd_folder_ids):
+            request.rd_folder_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rd_folder_ids, 'RdFolderIds', 'json')
         query = {}
         if not DaraCore.is_null(request.delivery_oss_bucket_name):
             query['DeliveryOssBucketName'] = request.delivery_oss_bucket_name
@@ -7351,10 +7863,14 @@ class Client(OpenApiClient):
             query['DeliverySlsEnabled'] = request.delivery_sls_enabled
         if not DaraCore.is_null(request.delivery_sls_project_name):
             query['DeliverySlsProjectName'] = request.delivery_sls_project_name
+        if not DaraCore.is_null(request.rd_folder_ids_shrink):
+            query['RdFolderIds'] = request.rd_folder_ids_shrink
         if not DaraCore.is_null(request.rdc_enterprise_id):
             query['RdcEnterpriseId'] = request.rdc_enterprise_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_access_rd_enabled):
+            query['ServiceAccessRdEnabled'] = request.service_access_rd_enabled
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7376,10 +7892,14 @@ class Client(OpenApiClient):
 
     async def set_service_settings_with_options_async(
         self,
-        request: main_models.SetServiceSettingsRequest,
+        tmp_req: main_models.SetServiceSettingsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SetServiceSettingsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SetServiceSettingsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rd_folder_ids):
+            request.rd_folder_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rd_folder_ids, 'RdFolderIds', 'json')
         query = {}
         if not DaraCore.is_null(request.delivery_oss_bucket_name):
             query['DeliveryOssBucketName'] = request.delivery_oss_bucket_name
@@ -7391,10 +7911,14 @@ class Client(OpenApiClient):
             query['DeliverySlsEnabled'] = request.delivery_sls_enabled
         if not DaraCore.is_null(request.delivery_sls_project_name):
             query['DeliverySlsProjectName'] = request.delivery_sls_project_name
+        if not DaraCore.is_null(request.rd_folder_ids_shrink):
+            query['RdFolderIds'] = request.rd_folder_ids_shrink
         if not DaraCore.is_null(request.rdc_enterprise_id):
             query['RdcEnterpriseId'] = request.rdc_enterprise_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_access_rd_enabled):
+            query['ServiceAccessRdEnabled'] = request.service_access_rd_enabled
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8035,6 +8559,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.deployed_revision_id):
             query['DeployedRevisionId'] = request.deployed_revision_id
+        if not DaraCore.is_null(request.monitor_metadata):
+            query['MonitorMetadata'] = request.monitor_metadata
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.new_name):
@@ -8079,6 +8605,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.deployed_revision_id):
             query['DeployedRevisionId'] = request.deployed_revision_id
+        if not DaraCore.is_null(request.monitor_metadata):
+            query['MonitorMetadata'] = request.monitor_metadata
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.new_name):
@@ -8121,6 +8649,96 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateApplicationGroupResponse:
         runtime = RuntimeOptions()
         return await self.update_application_group_with_options_async(request, runtime)
+
+    def update_chat_configuration_with_options(
+        self,
+        request: main_models.UpdateChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.configuration):
+            query['Configuration'] = request.configuration
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            query['RamRole'] = request.ram_role
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateChatConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chat_configuration_with_options_async(
+        self,
+        request: main_models.UpdateChatConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateChatConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.configuration):
+            query['Configuration'] = request.configuration
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            query['RamRole'] = request.ram_role
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateChatConfiguration',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateChatConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chat_configuration(
+        self,
+        request: main_models.UpdateChatConfigurationRequest,
+    ) -> main_models.UpdateChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.update_chat_configuration_with_options(request, runtime)
+
+    async def update_chat_configuration_async(
+        self,
+        request: main_models.UpdateChatConfigurationRequest,
+    ) -> main_models.UpdateChatConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_chat_configuration_with_options_async(request, runtime)
 
     def update_execution_with_options(
         self,
@@ -8993,6 +9611,96 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateTemplateResponse:
         runtime = RuntimeOptions()
         return await self.update_template_with_options_async(request, runtime)
+
+    def update_template_attributes_with_options(
+        self,
+        request: main_models.UpdateTemplateAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTemplateAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not DaraCore.is_null(request.is_favorite):
+            query['IsFavorite'] = request.is_favorite
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.share_permission_action):
+            query['SharePermissionAction'] = request.share_permission_action
+        if not DaraCore.is_null(request.share_template_version):
+            query['ShareTemplateVersion'] = request.share_template_version
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTemplateAttributes',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTemplateAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_template_attributes_with_options_async(
+        self,
+        request: main_models.UpdateTemplateAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTemplateAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not DaraCore.is_null(request.is_favorite):
+            query['IsFavorite'] = request.is_favorite
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.share_permission_action):
+            query['SharePermissionAction'] = request.share_permission_action
+        if not DaraCore.is_null(request.share_template_version):
+            query['ShareTemplateVersion'] = request.share_template_version
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTemplateAttributes',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTemplateAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_template_attributes(
+        self,
+        request: main_models.UpdateTemplateAttributesRequest,
+    ) -> main_models.UpdateTemplateAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.update_template_attributes_with_options(request, runtime)
+
+    async def update_template_attributes_async(
+        self,
+        request: main_models.UpdateTemplateAttributesRequest,
+    ) -> main_models.UpdateTemplateAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_template_attributes_with_options_async(request, runtime)
 
     def validate_template_content_with_options(
         self,

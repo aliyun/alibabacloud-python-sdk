@@ -2,11 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class SetServiceSettingsRequest(DaraModel):
+class SetServiceSettingsShrinkRequest(DaraModel):
     def __init__(
         self,
         delivery_oss_bucket_name: str = None,
@@ -14,7 +12,7 @@ class SetServiceSettingsRequest(DaraModel):
         delivery_oss_key_prefix: str = None,
         delivery_sls_enabled: bool = None,
         delivery_sls_project_name: str = None,
-        rd_folder_ids: List[str] = None,
+        rd_folder_ids_shrink: str = None,
         rdc_enterprise_id: str = None,
         region_id: str = None,
         service_access_rd_enabled: bool = None,
@@ -29,7 +27,7 @@ class SetServiceSettingsRequest(DaraModel):
         self.delivery_sls_enabled = delivery_sls_enabled
         # The name of SLS project to deliver.
         self.delivery_sls_project_name = delivery_sls_project_name
-        self.rd_folder_ids = rd_folder_ids
+        self.rd_folder_ids_shrink = rd_folder_ids_shrink
         # The id of RDC Enterprise.
         self.rdc_enterprise_id = rdc_enterprise_id
         # The region ID.
@@ -59,8 +57,8 @@ class SetServiceSettingsRequest(DaraModel):
         if self.delivery_sls_project_name is not None:
             result['DeliverySlsProjectName'] = self.delivery_sls_project_name
 
-        if self.rd_folder_ids is not None:
-            result['RdFolderIds'] = self.rd_folder_ids
+        if self.rd_folder_ids_shrink is not None:
+            result['RdFolderIds'] = self.rd_folder_ids_shrink
 
         if self.rdc_enterprise_id is not None:
             result['RdcEnterpriseId'] = self.rdc_enterprise_id
@@ -91,7 +89,7 @@ class SetServiceSettingsRequest(DaraModel):
             self.delivery_sls_project_name = m.get('DeliverySlsProjectName')
 
         if m.get('RdFolderIds') is not None:
-            self.rd_folder_ids = m.get('RdFolderIds')
+            self.rd_folder_ids_shrink = m.get('RdFolderIds')
 
         if m.get('RdcEnterpriseId') is not None:
             self.rdc_enterprise_id = m.get('RdcEnterpriseId')

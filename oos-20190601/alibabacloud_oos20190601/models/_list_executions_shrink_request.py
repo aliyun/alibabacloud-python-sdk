@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListExecutionsShrinkRequest(DaraModel):
     def __init__(
         self,
+        account_id: str = None,
         categories: str = None,
         category: str = None,
         depth: str = None,
@@ -21,6 +22,7 @@ class ListExecutionsShrinkRequest(DaraModel):
         next_token: str = None,
         parent_execution_id: str = None,
         ram_role: str = None,
+        rd_folder_ids_shrink: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_id: str = None,
@@ -33,6 +35,7 @@ class ListExecutionsShrinkRequest(DaraModel):
         tags_shrink: str = None,
         template_name: str = None,
     ):
+        self.account_id = account_id
         # The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
         self.categories = categories
         # The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
@@ -64,6 +67,7 @@ class ListExecutionsShrinkRequest(DaraModel):
         self.parent_execution_id = parent_execution_id
         # The RAM role.
         self.ram_role = ram_role
+        self.rd_folder_ids_shrink = rd_folder_ids_shrink
         # The ID of the region.
         self.region_id = region_id
         # The ID of the resource group to which the instances you want to query belong.
@@ -102,6 +106,9 @@ class ListExecutionsShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+
         if self.categories is not None:
             result['Categories'] = self.categories
 
@@ -144,6 +151,9 @@ class ListExecutionsShrinkRequest(DaraModel):
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
 
+        if self.rd_folder_ids_shrink is not None:
+            result['RdFolderIds'] = self.rd_folder_ids_shrink
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -181,6 +191,9 @@ class ListExecutionsShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+
         if m.get('Categories') is not None:
             self.categories = m.get('Categories')
 
@@ -222,6 +235,9 @@ class ListExecutionsShrinkRequest(DaraModel):
 
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
+
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids_shrink = m.get('RdFolderIds')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

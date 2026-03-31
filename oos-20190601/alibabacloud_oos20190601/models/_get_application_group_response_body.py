@@ -61,6 +61,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(DaraModel):
         execution_id: str = None,
         import_tag_key: str = None,
         import_tag_value: str = None,
+        monitor_metadata: str = None,
         name: str = None,
         operation_metadata: str = None,
         progress: str = None,
@@ -92,6 +93,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(DaraModel):
         self.import_tag_key = import_tag_key
         # The tag value.
         self.import_tag_value = import_tag_value
+        self.monitor_metadata = monitor_metadata
         # The name of the application group.
         self.name = name
         # The hosted O\\&M configurations.
@@ -154,6 +156,9 @@ class GetApplicationGroupResponseBodyApplicationGroup(DaraModel):
 
         if self.import_tag_value is not None:
             result['ImportTagValue'] = self.import_tag_value
+
+        if self.monitor_metadata is not None:
+            result['MonitorMetadata'] = self.monitor_metadata
 
         if self.name is not None:
             result['Name'] = self.name
@@ -218,6 +223,9 @@ class GetApplicationGroupResponseBodyApplicationGroup(DaraModel):
 
         if m.get('ImportTagValue') is not None:
             self.import_tag_value = m.get('ImportTagValue')
+
+        if m.get('MonitorMetadata') is not None:
+            self.monitor_metadata = m.get('MonitorMetadata')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

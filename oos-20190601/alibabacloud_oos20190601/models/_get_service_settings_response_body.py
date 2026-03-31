@@ -60,7 +60,9 @@ class GetServiceSettingsResponseBodyServiceSettings(DaraModel):
         delivery_oss_key_prefix: str = None,
         delivery_sls_enabled: bool = None,
         delivery_sls_project_name: str = None,
+        rd_folders: str = None,
         rdc_enterprise_id: str = None,
+        service_access_rd_enabled: bool = None,
     ):
         # The name of OSS bucket to deliver.
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
@@ -72,8 +74,10 @@ class GetServiceSettingsResponseBodyServiceSettings(DaraModel):
         self.delivery_sls_enabled = delivery_sls_enabled
         # The name of SLS project to deliver.
         self.delivery_sls_project_name = delivery_sls_project_name
+        self.rd_folders = rd_folders
         # The id of RDC Enterprise.
         self.rdc_enterprise_id = rdc_enterprise_id
+        self.service_access_rd_enabled = service_access_rd_enabled
 
     def validate(self):
         pass
@@ -98,8 +102,14 @@ class GetServiceSettingsResponseBodyServiceSettings(DaraModel):
         if self.delivery_sls_project_name is not None:
             result['DeliverySlsProjectName'] = self.delivery_sls_project_name
 
+        if self.rd_folders is not None:
+            result['RdFolders'] = self.rd_folders
+
         if self.rdc_enterprise_id is not None:
             result['RdcEnterpriseId'] = self.rdc_enterprise_id
+
+        if self.service_access_rd_enabled is not None:
+            result['ServiceAccessRdEnabled'] = self.service_access_rd_enabled
 
         return result
 
@@ -120,8 +130,14 @@ class GetServiceSettingsResponseBodyServiceSettings(DaraModel):
         if m.get('DeliverySlsProjectName') is not None:
             self.delivery_sls_project_name = m.get('DeliverySlsProjectName')
 
+        if m.get('RdFolders') is not None:
+            self.rd_folders = m.get('RdFolders')
+
         if m.get('RdcEnterpriseId') is not None:
             self.rdc_enterprise_id = m.get('RdcEnterpriseId')
+
+        if m.get('ServiceAccessRdEnabled') is not None:
+            self.service_access_rd_enabled = m.get('ServiceAccessRdEnabled')
 
         return self
 

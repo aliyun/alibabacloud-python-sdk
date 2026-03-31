@@ -53,6 +53,7 @@ class UpdateApplicationGroupResponseBodyApplicationGroup(DaraModel):
         description: str = None,
         import_tag_key: str = None,
         import_tag_value: str = None,
+        monitor_metadata: str = None,
         name: str = None,
         updated_date: str = None,
     ):
@@ -68,6 +69,7 @@ class UpdateApplicationGroupResponseBodyApplicationGroup(DaraModel):
         self.import_tag_key = import_tag_key
         # The value of the tag.
         self.import_tag_value = import_tag_value
+        self.monitor_metadata = monitor_metadata
         # The name of the application group.
         self.name = name
         # The time when the application group was updated.
@@ -99,6 +101,9 @@ class UpdateApplicationGroupResponseBodyApplicationGroup(DaraModel):
         if self.import_tag_value is not None:
             result['ImportTagValue'] = self.import_tag_value
 
+        if self.monitor_metadata is not None:
+            result['MonitorMetadata'] = self.monitor_metadata
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -126,6 +131,9 @@ class UpdateApplicationGroupResponseBodyApplicationGroup(DaraModel):
 
         if m.get('ImportTagValue') is not None:
             self.import_tag_value = m.get('ImportTagValue')
+
+        if m.get('MonitorMetadata') is not None:
+            self.monitor_metadata = m.get('MonitorMetadata')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

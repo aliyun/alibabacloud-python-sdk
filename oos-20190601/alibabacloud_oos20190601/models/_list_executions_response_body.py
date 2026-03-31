@@ -82,6 +82,7 @@ class ListExecutionsResponseBody(DaraModel):
 class ListExecutionsResponseBodyExecutions(DaraModel):
     def __init__(
         self,
+        account_id: str = None,
         category: str = None,
         counters: Dict[str, Any] = None,
         create_date: str = None,
@@ -117,6 +118,7 @@ class ListExecutionsResponseBodyExecutions(DaraModel):
         update_date: str = None,
         waiting_status: str = None,
     ):
+        self.account_id = account_id
         # The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
         self.category = category
         # The number of tasks that are counted by execution status.
@@ -197,6 +199,9 @@ class ListExecutionsResponseBodyExecutions(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+
         if self.category is not None:
             result['Category'] = self.category
 
@@ -305,6 +310,9 @@ class ListExecutionsResponseBodyExecutions(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+
         if m.get('Category') is not None:
             self.category = m.get('Category')
 

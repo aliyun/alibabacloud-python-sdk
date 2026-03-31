@@ -61,6 +61,7 @@ class SetServiceSettingsResponseBodyServiceSettings(DaraModel):
         delivery_sls_enabled: bool = None,
         delivery_sls_project_name: str = None,
         rdc_enterprise_id: str = None,
+        service_access_rd_enabled: bool = None,
     ):
         # The name of OSS bucket to deliver.
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
@@ -74,6 +75,7 @@ class SetServiceSettingsResponseBodyServiceSettings(DaraModel):
         self.delivery_sls_project_name = delivery_sls_project_name
         # The id of RDC Enterprise.
         self.rdc_enterprise_id = rdc_enterprise_id
+        self.service_access_rd_enabled = service_access_rd_enabled
 
     def validate(self):
         pass
@@ -101,6 +103,9 @@ class SetServiceSettingsResponseBodyServiceSettings(DaraModel):
         if self.rdc_enterprise_id is not None:
             result['RdcEnterpriseId'] = self.rdc_enterprise_id
 
+        if self.service_access_rd_enabled is not None:
+            result['ServiceAccessRdEnabled'] = self.service_access_rd_enabled
+
         return result
 
     def from_map(self, m: dict = None):
@@ -122,6 +127,9 @@ class SetServiceSettingsResponseBodyServiceSettings(DaraModel):
 
         if m.get('RdcEnterpriseId') is not None:
             self.rdc_enterprise_id = m.get('RdcEnterpriseId')
+
+        if m.get('ServiceAccessRdEnabled') is not None:
+            self.service_access_rd_enabled = m.get('ServiceAccessRdEnabled')
 
         return self
 

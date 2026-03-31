@@ -11,6 +11,7 @@ class UpdateApplicationGroupRequest(DaraModel):
         self,
         application_name: str = None,
         deployed_revision_id: str = None,
+        monitor_metadata: str = None,
         name: str = None,
         new_name: str = None,
         operation_name: str = None,
@@ -22,6 +23,7 @@ class UpdateApplicationGroupRequest(DaraModel):
         # This parameter is required.
         self.application_name = application_name
         self.deployed_revision_id = deployed_revision_id
+        self.monitor_metadata = monitor_metadata
         # The name of the application group.
         # 
         # This parameter is required.
@@ -49,6 +51,9 @@ class UpdateApplicationGroupRequest(DaraModel):
         if self.deployed_revision_id is not None:
             result['DeployedRevisionId'] = self.deployed_revision_id
 
+        if self.monitor_metadata is not None:
+            result['MonitorMetadata'] = self.monitor_metadata
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -73,6 +78,9 @@ class UpdateApplicationGroupRequest(DaraModel):
 
         if m.get('DeployedRevisionId') is not None:
             self.deployed_revision_id = m.get('DeployedRevisionId')
+
+        if m.get('MonitorMetadata') is not None:
+            self.monitor_metadata = m.get('MonitorMetadata')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

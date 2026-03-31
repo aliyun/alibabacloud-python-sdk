@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListExecutionLogsRequest(DaraModel):
     def __init__(
         self,
+        account_id: str = None,
         execution_id: str = None,
         log_type: str = None,
         max_results: int = None,
@@ -14,6 +15,7 @@ class ListExecutionLogsRequest(DaraModel):
         region_id: str = None,
         task_execution_id: str = None,
     ):
+        self.account_id = account_id
         # The ID of the execution.
         # 
         # This parameter is required.
@@ -37,6 +39,9 @@ class ListExecutionLogsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+
         if self.execution_id is not None:
             result['ExecutionId'] = self.execution_id
 
@@ -59,6 +64,9 @@ class ListExecutionLogsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+
         if m.get('ExecutionId') is not None:
             self.execution_id = m.get('ExecutionId')
 

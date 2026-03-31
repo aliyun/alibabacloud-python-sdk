@@ -27,6 +27,12 @@ from ._create_application_response import CreateApplicationResponse
 from ._create_application_group_request import CreateApplicationGroupRequest
 from ._create_application_group_response_body import CreateApplicationGroupResponseBody
 from ._create_application_group_response import CreateApplicationGroupResponse
+from ._create_chat_configuration_request import CreateChatConfigurationRequest
+from ._create_chat_configuration_response_body import CreateChatConfigurationResponseBody
+from ._create_chat_configuration_response import CreateChatConfigurationResponse
+from ._create_deploy_revision_request import CreateDeployRevisionRequest
+from ._create_deploy_revision_response_body import CreateDeployRevisionResponseBody
+from ._create_deploy_revision_response import CreateDeployRevisionResponse
 from ._create_git_repository_request import CreateGitRepositoryRequest
 from ._create_git_repository_response_body import CreateGitRepositoryResponseBody
 from ._create_git_repository_response import CreateGitRepositoryResponse
@@ -60,6 +66,9 @@ from ._delete_application_response import DeleteApplicationResponse
 from ._delete_application_group_request import DeleteApplicationGroupRequest
 from ._delete_application_group_response_body import DeleteApplicationGroupResponseBody
 from ._delete_application_group_response import DeleteApplicationGroupResponse
+from ._delete_chat_configuration_request import DeleteChatConfigurationRequest
+from ._delete_chat_configuration_response_body import DeleteChatConfigurationResponseBody
+from ._delete_chat_configuration_response import DeleteChatConfigurationResponse
 from ._delete_executions_request import DeleteExecutionsRequest
 from ._delete_executions_response_body import DeleteExecutionsResponseBody
 from ._delete_executions_response import DeleteExecutionsResponse
@@ -105,6 +114,9 @@ from ._get_application_response import GetApplicationResponse
 from ._get_application_group_request import GetApplicationGroupRequest
 from ._get_application_group_response_body import GetApplicationGroupResponseBody
 from ._get_application_group_response import GetApplicationGroupResponse
+from ._get_chat_configuration_request import GetChatConfigurationRequest
+from ._get_chat_configuration_response_body import GetChatConfigurationResponseBody
+from ._get_chat_configuration_response import GetChatConfigurationResponse
 from ._get_execution_template_request import GetExecutionTemplateRequest
 from ._get_execution_template_response_body import GetExecutionTemplateResponseBody
 from ._get_execution_template_response import GetExecutionTemplateResponse
@@ -160,6 +172,9 @@ from ._list_applications_request import ListApplicationsRequest
 from ._list_applications_shrink_request import ListApplicationsShrinkRequest
 from ._list_applications_response_body import ListApplicationsResponseBody
 from ._list_applications_response import ListApplicationsResponse
+from ._list_chat_configurations_request import ListChatConfigurationsRequest
+from ._list_chat_configurations_response_body import ListChatConfigurationsResponseBody
+from ._list_chat_configurations_response import ListChatConfigurationsResponse
 from ._list_execution_logs_request import ListExecutionLogsRequest
 from ._list_execution_logs_response_body import ListExecutionLogsResponseBody
 from ._list_execution_logs_response import ListExecutionLogsResponse
@@ -236,6 +251,9 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tag_values_request import ListTagValuesRequest
 from ._list_tag_values_response_body import ListTagValuesResponseBody
 from ._list_tag_values_response import ListTagValuesResponse
+from ._list_task_execution_invocations_request import ListTaskExecutionInvocationsRequest
+from ._list_task_execution_invocations_response_body import ListTaskExecutionInvocationsResponseBody
+from ._list_task_execution_invocations_response import ListTaskExecutionInvocationsResponse
 from ._list_task_executions_request import ListTaskExecutionsRequest
 from ._list_task_executions_response_body import ListTaskExecutionsResponseBody
 from ._list_task_executions_response import ListTaskExecutionsResponse
@@ -256,6 +274,7 @@ from ._search_inventory_request import SearchInventoryRequest
 from ._search_inventory_response_body import SearchInventoryResponseBody
 from ._search_inventory_response import SearchInventoryResponse
 from ._set_service_settings_request import SetServiceSettingsRequest
+from ._set_service_settings_shrink_request import SetServiceSettingsShrinkRequest
 from ._set_service_settings_response_body import SetServiceSettingsResponseBody
 from ._set_service_settings_response import SetServiceSettingsResponse
 from ._start_debug_execution_request import StartDebugExecutionRequest
@@ -284,6 +303,9 @@ from ._update_application_group_request import UpdateApplicationGroupRequest
 from ._update_application_group_shrink_request import UpdateApplicationGroupShrinkRequest
 from ._update_application_group_response_body import UpdateApplicationGroupResponseBody
 from ._update_application_group_response import UpdateApplicationGroupResponse
+from ._update_chat_configuration_request import UpdateChatConfigurationRequest
+from ._update_chat_configuration_response_body import UpdateChatConfigurationResponseBody
+from ._update_chat_configuration_response import UpdateChatConfigurationResponse
 from ._update_execution_request import UpdateExecutionRequest
 from ._update_execution_response_body import UpdateExecutionResponseBody
 from ._update_execution_response import UpdateExecutionResponse
@@ -314,6 +336,9 @@ from ._update_template_request import UpdateTemplateRequest
 from ._update_template_shrink_request import UpdateTemplateShrinkRequest
 from ._update_template_response_body import UpdateTemplateResponseBody
 from ._update_template_response import UpdateTemplateResponse
+from ._update_template_attributes_request import UpdateTemplateAttributesRequest
+from ._update_template_attributes_response_body import UpdateTemplateAttributesResponseBody
+from ._update_template_attributes_response import UpdateTemplateAttributesResponse
 from ._validate_template_content_request import ValidateTemplateContentRequest
 from ._validate_template_content_response_body import ValidateTemplateContentResponseBody
 from ._validate_template_content_response import ValidateTemplateContentResponse
@@ -322,6 +347,8 @@ from ._analyze_git_repository_response_body import AnalyzeGitRepositoryResponseB
 from ._create_application_request import CreateApplicationRequestAlarmConfig
 from ._create_application_response_body import CreateApplicationResponseBodyApplication
 from ._create_application_group_response_body import CreateApplicationGroupResponseBodyApplicationGroup
+from ._create_chat_configuration_response_body import CreateChatConfigurationResponseBodyChatConfiguration
+from ._create_deploy_revision_response_body import CreateDeployRevisionResponseBodyRevision
 from ._create_git_repository_response_body import CreateGitRepositoryResponseBodyGitRepo
 from ._create_ops_item_response_body import CreateOpsItemResponseBodyOpsItem
 from ._create_parameter_response_body import CreateParameterResponseBodyParameter
@@ -336,6 +363,7 @@ from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._get_application_response_body import GetApplicationResponseBodyApplicationAlarmConfig
 from ._get_application_response_body import GetApplicationResponseBodyApplication
 from ._get_application_group_response_body import GetApplicationGroupResponseBodyApplicationGroup
+from ._get_chat_configuration_response_body import GetChatConfigurationResponseBodyChatConfiguration
 from ._get_execution_template_response_body import GetExecutionTemplateResponseBodyTemplate
 from ._get_git_branch_response_body import GetGitBranchResponseBodyCommit
 from ._get_inventory_schema_response_body import GetInventorySchemaResponseBodySchemasAttributes
@@ -354,6 +382,8 @@ from ._get_template_response_body import GetTemplateResponseBodyTemplate
 from ._list_actions_response_body import ListActionsResponseBodyActions
 from ._list_application_groups_response_body import ListApplicationGroupsResponseBodyApplicationGroups
 from ._list_applications_response_body import ListApplicationsResponseBodyApplications
+from ._list_chat_configurations_request import ListChatConfigurationsRequestFilters
+from ._list_chat_configurations_response_body import ListChatConfigurationsResponseBodyChatConfigurations
 from ._list_execution_logs_response_body import ListExecutionLogsResponseBodyExecutionLogs
 from ._list_execution_risky_tasks_response_body import ListExecutionRiskyTasksResponseBodyRiskyTasks
 from ._list_executions_response_body import ListExecutionsResponseBodyExecutionsCurrentTasks
@@ -381,6 +411,7 @@ from ._list_secret_parameters_response_body import ListSecretParametersResponseB
 from ._list_state_configurations_response_body import ListStateConfigurationsResponseBodyStateConfigurations
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_task_execution_invocations_response_body import ListTaskExecutionInvocationsResponseBodyTaskExecutionInvocations
 from ._list_task_executions_response_body import ListTaskExecutionsResponseBodyTaskExecutions
 from ._list_template_versions_response_body import ListTemplateVersionsResponseBodyTemplateVersions
 from ._list_templates_response_body import ListTemplatesResponseBodyTemplates
@@ -392,6 +423,7 @@ from ._start_execution_response_body import StartExecutionResponseBodyExecution
 from ._update_application_request import UpdateApplicationRequestAlarmConfig
 from ._update_application_response_body import UpdateApplicationResponseBodyApplication
 from ._update_application_group_response_body import UpdateApplicationGroupResponseBodyApplicationGroup
+from ._update_chat_configuration_response_body import UpdateChatConfigurationResponseBodyChatConfiguration
 from ._update_ops_item_response_body import UpdateOpsItemResponseBodyOpsItem
 from ._update_parameter_response_body import UpdateParameterResponseBodyParameter
 from ._update_patch_baseline_request import UpdatePatchBaselineRequestTags
@@ -428,6 +460,12 @@ __all__ = [
     CreateApplicationGroupRequest,
     CreateApplicationGroupResponseBody,
     CreateApplicationGroupResponse,
+    CreateChatConfigurationRequest,
+    CreateChatConfigurationResponseBody,
+    CreateChatConfigurationResponse,
+    CreateDeployRevisionRequest,
+    CreateDeployRevisionResponseBody,
+    CreateDeployRevisionResponse,
     CreateGitRepositoryRequest,
     CreateGitRepositoryResponseBody,
     CreateGitRepositoryResponse,
@@ -461,6 +499,9 @@ __all__ = [
     DeleteApplicationGroupRequest,
     DeleteApplicationGroupResponseBody,
     DeleteApplicationGroupResponse,
+    DeleteChatConfigurationRequest,
+    DeleteChatConfigurationResponseBody,
+    DeleteChatConfigurationResponse,
     DeleteExecutionsRequest,
     DeleteExecutionsResponseBody,
     DeleteExecutionsResponse,
@@ -506,6 +547,9 @@ __all__ = [
     GetApplicationGroupRequest,
     GetApplicationGroupResponseBody,
     GetApplicationGroupResponse,
+    GetChatConfigurationRequest,
+    GetChatConfigurationResponseBody,
+    GetChatConfigurationResponse,
     GetExecutionTemplateRequest,
     GetExecutionTemplateResponseBody,
     GetExecutionTemplateResponse,
@@ -561,6 +605,9 @@ __all__ = [
     ListApplicationsShrinkRequest,
     ListApplicationsResponseBody,
     ListApplicationsResponse,
+    ListChatConfigurationsRequest,
+    ListChatConfigurationsResponseBody,
+    ListChatConfigurationsResponse,
     ListExecutionLogsRequest,
     ListExecutionLogsResponseBody,
     ListExecutionLogsResponse,
@@ -637,6 +684,9 @@ __all__ = [
     ListTagValuesRequest,
     ListTagValuesResponseBody,
     ListTagValuesResponse,
+    ListTaskExecutionInvocationsRequest,
+    ListTaskExecutionInvocationsResponseBody,
+    ListTaskExecutionInvocationsResponse,
     ListTaskExecutionsRequest,
     ListTaskExecutionsResponseBody,
     ListTaskExecutionsResponse,
@@ -657,6 +707,7 @@ __all__ = [
     SearchInventoryResponseBody,
     SearchInventoryResponse,
     SetServiceSettingsRequest,
+    SetServiceSettingsShrinkRequest,
     SetServiceSettingsResponseBody,
     SetServiceSettingsResponse,
     StartDebugExecutionRequest,
@@ -685,6 +736,9 @@ __all__ = [
     UpdateApplicationGroupShrinkRequest,
     UpdateApplicationGroupResponseBody,
     UpdateApplicationGroupResponse,
+    UpdateChatConfigurationRequest,
+    UpdateChatConfigurationResponseBody,
+    UpdateChatConfigurationResponse,
     UpdateExecutionRequest,
     UpdateExecutionResponseBody,
     UpdateExecutionResponse,
@@ -715,6 +769,9 @@ __all__ = [
     UpdateTemplateShrinkRequest,
     UpdateTemplateResponseBody,
     UpdateTemplateResponse,
+    UpdateTemplateAttributesRequest,
+    UpdateTemplateAttributesResponseBody,
+    UpdateTemplateAttributesResponse,
     ValidateTemplateContentRequest,
     ValidateTemplateContentResponseBody,
     ValidateTemplateContentResponse,
@@ -723,6 +780,8 @@ __all__ = [
     CreateApplicationRequestAlarmConfig,
     CreateApplicationResponseBodyApplication,
     CreateApplicationGroupResponseBodyApplicationGroup,
+    CreateChatConfigurationResponseBodyChatConfiguration,
+    CreateDeployRevisionResponseBodyRevision,
     CreateGitRepositoryResponseBodyGitRepo,
     CreateOpsItemResponseBodyOpsItem,
     CreateParameterResponseBodyParameter,
@@ -737,6 +796,7 @@ __all__ = [
     GetApplicationResponseBodyApplicationAlarmConfig,
     GetApplicationResponseBodyApplication,
     GetApplicationGroupResponseBodyApplicationGroup,
+    GetChatConfigurationResponseBodyChatConfiguration,
     GetExecutionTemplateResponseBodyTemplate,
     GetGitBranchResponseBodyCommit,
     GetInventorySchemaResponseBodySchemasAttributes,
@@ -755,6 +815,8 @@ __all__ = [
     ListActionsResponseBodyActions,
     ListApplicationGroupsResponseBodyApplicationGroups,
     ListApplicationsResponseBodyApplications,
+    ListChatConfigurationsRequestFilters,
+    ListChatConfigurationsResponseBodyChatConfigurations,
     ListExecutionLogsResponseBodyExecutionLogs,
     ListExecutionRiskyTasksResponseBodyRiskyTasks,
     ListExecutionsResponseBodyExecutionsCurrentTasks,
@@ -782,6 +844,7 @@ __all__ = [
     ListStateConfigurationsResponseBodyStateConfigurations,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
+    ListTaskExecutionInvocationsResponseBodyTaskExecutionInvocations,
     ListTaskExecutionsResponseBodyTaskExecutions,
     ListTemplateVersionsResponseBodyTemplateVersions,
     ListTemplatesResponseBodyTemplates,
@@ -793,6 +856,7 @@ __all__ = [
     UpdateApplicationRequestAlarmConfig,
     UpdateApplicationResponseBodyApplication,
     UpdateApplicationGroupResponseBodyApplicationGroup,
+    UpdateChatConfigurationResponseBodyChatConfiguration,
     UpdateOpsItemResponseBodyOpsItem,
     UpdateParameterResponseBodyParameter,
     UpdatePatchBaselineRequestTags,

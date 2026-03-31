@@ -1,3 +1,27 @@
+2026-03-31 Version: 3.7.0
+- Support API CreateChatConfiguration.
+- Support API CreateDeployRevision.
+- Support API DeleteChatConfiguration.
+- Support API GetChatConfiguration.
+- Support API ListChatConfigurations.
+- Support API ListTaskExecutionInvocations.
+- Support API UpdateChatConfiguration.
+- Support API UpdateTemplateAttributes.
+- Update API GetApplicationGroup: add response parameters Body.ApplicationGroup.MonitorMetadata.
+- Update API GetServiceSettings: add response parameters Body.ServiceSettings.$.RdFolders.
+- Update API GetServiceSettings: add response parameters Body.ServiceSettings.$.ServiceAccessRdEnabled.
+- Update API ListExecutionLogs: add request parameters AccountId.
+- Update API ListExecutions: add request parameters AccountId.
+- Update API ListExecutions: add request parameters RdFolderIds.
+- Update API ListExecutions: add response parameters Body.Executions.$.AccountId.
+- Update API ListTaskExecutions: add request parameters AccountId.
+- Update API SetServiceSettings: add request parameters RdFolderIds.
+- Update API SetServiceSettings: add request parameters ServiceAccessRdEnabled.
+- Update API SetServiceSettings: add response parameters Body.ServiceSettings.$.ServiceAccessRdEnabled.
+- Update API UpdateApplicationGroup: add request parameters MonitorMetadata.
+- Update API UpdateApplicationGroup: add response parameters Body.ApplicationGroup.MonitorMetadata.
+
+
 2025-12-29 Version: 3.6.0
 - Support API StartDebugExecution.
 - Update API ListGitAccounts: add request parameters BindType.
