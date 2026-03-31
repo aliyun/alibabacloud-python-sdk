@@ -5,6 +5,13 @@
 - Update API GetDesktopGroupDetail: add response parameters Body.Desktops.EnvType.
 
 
+2026-03-31 Version: 4.23.2
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.EnvId.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.EnvType.
+- Update API GetDesktopGroupDetail: add response parameters Body.Desktops.EnvId.
+- Update API GetDesktopGroupDetail: add response parameters Body.Desktops.EnvType.
+
+
 2026-03-30 Version: 4.23.1
 - Update API CreateEcdReportTask: add request parameters BusinessChannel.
 - Update API DescribeDesktopInfo: add request parameters BusinessChannel.
