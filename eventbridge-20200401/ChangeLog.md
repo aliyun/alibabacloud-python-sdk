@@ -1,3 +1,6 @@
+2026-03-31 Version: 8.0.7
+- Generated python 2020-04-01 for eventbridge.
+
 2026-03-24 Version: 8.0.6
 - Update API TestEventSourceConfig: add request parameters SourceMySQLParameters.SnapshotMode.
 
