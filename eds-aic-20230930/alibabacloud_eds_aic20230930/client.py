@@ -819,6 +819,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.sale_mode):
+            query['SaleMode'] = request.sale_mode
         if not DaraCore.is_null(request.stream_mode):
             query['StreamMode'] = request.stream_mode
         if not DaraCore.is_null(request.tag):
@@ -903,6 +905,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.sale_mode):
+            query['SaleMode'] = request.sale_mode
         if not DaraCore.is_null(request.stream_mode):
             query['StreamMode'] = request.stream_mode
         if not DaraCore.is_null(request.tag):

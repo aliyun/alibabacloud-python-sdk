@@ -34,6 +34,7 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        sale_mode: str = None,
         stream_mode: int = None,
         tag: List[main_models.CreateAndroidInstanceGroupShrinkRequestTag] = None,
         v_switch_id: str = None,
@@ -134,6 +135,7 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
         self.policy_group_id = policy_group_id
         self.promotion_id = promotion_id
+        self.sale_mode = sale_mode
         self.stream_mode = stream_mode
         # The tags
         self.tag = tag
@@ -226,6 +228,9 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
 
+        if self.sale_mode is not None:
+            result['SaleMode'] = self.sale_mode
+
         if self.stream_mode is not None:
             result['StreamMode'] = self.stream_mode
 
@@ -312,6 +317,9 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
 
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+
+        if m.get('SaleMode') is not None:
+            self.sale_mode = m.get('SaleMode')
 
         if m.get('StreamMode') is not None:
             self.stream_mode = m.get('StreamMode')

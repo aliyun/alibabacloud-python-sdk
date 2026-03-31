@@ -1,3 +1,7 @@
+2026-03-31 Version: 4.22.1
+- Update API CreateAndroidInstanceGroup: add request parameters SaleMode.
+
+
 2026-03-23 Version: 4.22.0
 - Support API RunSyncCommand.
 
