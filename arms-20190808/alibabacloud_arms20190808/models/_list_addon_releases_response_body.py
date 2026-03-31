@@ -76,9 +76,11 @@ class ListAddonReleasesResponseBody(DaraModel):
 class ListAddonReleasesResponseBodyData(DaraModel):
     def __init__(
         self,
+        contains_v2addon: bool = None,
         releases: List[main_models.ListAddonReleasesResponseBodyDataReleases] = None,
         total: int = None,
     ):
+        self.contains_v2addon = contains_v2addon
         # The queried add-ons.
         self.releases = releases
         # The total number of entries.
@@ -95,6 +97,9 @@ class ListAddonReleasesResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.contains_v2addon is not None:
+            result['ContainsV2Addon'] = self.contains_v2addon
+
         result['Releases'] = []
         if self.releases is not None:
             for k1 in self.releases:
@@ -107,6 +112,9 @@ class ListAddonReleasesResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContainsV2Addon') is not None:
+            self.contains_v2addon = m.get('ContainsV2Addon')
+
         self.releases = []
         if m.get('Releases') is not None:
             for k1 in m.get('Releases'):

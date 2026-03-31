@@ -1,3 +1,7 @@
+2026-03-31 Version: 10.0.5
+- Update API ListAddonReleases: add response parameters Body.Data.ContainsV2Addon.
+
+
 2026-01-26 Version: 10.0.4
 - Update API CreateOrUpdateAlertRule: add request parameters aliyunLang.
 

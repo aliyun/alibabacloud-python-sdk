@@ -38,32 +38,108 @@ class GrafanaWorkspace(DaraModel):
         upgrade_version: List[str] = None,
         user_id: str = None,
     ):
+        # Indicates whether the workspace is commercialized.
         self.commercial = commercial
+        # The deployment mode of Grafana. You can ignore this parameter.
         self.deploy_type = deploy_type
+        # The description.
         self.description = description
+        # The time when the workspace expires.
         self.end_time = end_time
+        # The time when the workspace was created.
         self.gmt_create = gmt_create
+        # The version number of Grafana.
+        # 
+        # Valid values:
+        # 
+        # *   8.2.x
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   10.0.x
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   9.0.x
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.grafana_version = grafana_version
+        # The domain name of the workspace.
         self.grafana_workspace_domain = grafana_workspace_domain
+        # status of workspace domain
         self.grafana_workspace_domain_status = grafana_workspace_domain_status
+        # The version.
+        # 
+        # Valid values:
+        # - standard：Standard Edition
+        # 
+        # - personal_deition：Developer Edition
+        # 
+        # -  experts_edition：Expert Edition
+        # 
+        # - advanced_edition：Advanced Edition
         self.grafana_workspace_edition = grafana_workspace_edition
+        # The ID of the workspace.
         self.grafana_workspace_id = grafana_workspace_id
+        # The public IP address and port number.
         self.grafana_workspace_ip = grafana_workspace_ip
+        # The workspace name.
         self.grafana_workspace_name = grafana_workspace_name
+        # The maximum number of accounts.
         self.max_account = max_account
+        # The ID of the purchase order.
         self.ntm_id = ntm_id
+        # The personalized domain name.
         self.personal_domain = personal_domain
+        # The prefix of the personalized domain name.
         self.personal_domain_prefix = personal_domain_prefix
+        # The private domain name of the workspace.
         self.private_domain = private_domain
+        # The private IP address and port number.
         self.private_ip = private_ip
+        # The protocol type.
         self.protocol = protocol
+        # The region ID of the disk.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # Indicates whether the migration guide for the shared edition is provided.
         self.share_synced = share_synced
+        # The outbound IP address.
         self.snat_ip = snat_ip
+        # The status of the workspace.
+        # 
+        # Valid values:
+        # 
+        # - StartFailed：The workspace failed to be started
+        # 
+        # - Stop：The workspace is stopped
+        # 
+        # - Starting：The workspace is being started
+        # 
+        # - DeleteFailed：The workspace failed to be deleted
+        # 
+        # - Running：The workspace is running
+        # 
+        # - DeleteSucceed：The workspace is deleted
         self.status = status
+        # The tags.
         self.tags = tags
+        # The versions that are available for upgrades.
         self.upgrade_version = upgrade_version
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -258,7 +334,9 @@ class GrafanaWorkspaceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

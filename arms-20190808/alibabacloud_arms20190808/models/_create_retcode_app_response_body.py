@@ -99,7 +99,6 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(DaraModel):
         self.pid = pid
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags of the task.
         self.tags = tags
 
     def validate(self):
@@ -183,9 +182,7 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBeanTagsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
