@@ -1,3 +1,12 @@
+2026-03-31 Version: 1.2.1
+- Update API AttachPolicyToGroup: add request parameters ResourceGroupId.
+- Update API AttachPolicyToRole: add request parameters ResourceGroupId.
+- Update API AttachPolicyToUser: add request parameters ResourceGroupId.
+- Update API DetachPolicyFromGroup: add request parameters ResourceGroupId.
+- Update API DetachPolicyFromRole: add request parameters ResourceGroupId.
+- Update API DetachPolicyFromUser: add request parameters ResourceGroupId.
+
+
 2025-06-12 Version: 1.2.0
 - Support API ListTagResources.
 - Support API TagResources.
