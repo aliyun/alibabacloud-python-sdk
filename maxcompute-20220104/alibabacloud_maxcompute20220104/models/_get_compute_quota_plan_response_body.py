@@ -16,10 +16,21 @@ class GetComputeQuotaPlanResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +87,15 @@ class GetComputeQuotaPlanResponseBodyData(DaraModel):
         name: str = None,
         quota: main_models.GetComputeQuotaPlanResponseBodyDataQuota = None,
     ):
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # Whether it is currently effective.
+        # > 
+        # > - A Quota plan that has taken effect cannot be deleted, i.e., isEffective=true
         self.is_effective = is_effective
+        # The name of the quota plan.
         self.name = name
+        # The details of the quota.
         self.quota = quota
 
     def validate(self):
@@ -138,18 +155,31 @@ class GetComputeQuotaPlanResponseBodyDataQuota(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # Cluster ID.
         self.cluster = cluster
+        # Creation time.
         self.create_time = create_time
+        # Creator\\"s cloud account UID.
         self.creator_id = creator_id
+        # The ID of the level-1 quota.
         self.id = id
+        # The name of the level-1 quota.
         self.name = name
+        # The nickname of the level-1 quota.
         self.nick_name = nick_name
+        # CU value parameters for the level-1 quota.
         self.parameter = parameter
+        # Region ID.
         self.region_id = region_id
+        # Resource status.
         self.status = status
+        # The list of level-2 quotas.
         self.sub_quota_info_list = sub_quota_info_list
+        # Tenant ID.
         self.tenant_id = tenant_id
+        # Corresponds to the `resourceSystemType` field of the control cluster.
         self.type = type
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -271,17 +301,29 @@ class GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoList(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # Cluster ID.
         self.cluster = cluster
+        # Creation time.
         self.create_time = create_time
+        # Creator cloud account UID.
         self.creator_id = creator_id
+        # The ID of the level-2 quota.
         self.id = id
+        # The name of the level-2 quota.
         self.name = name
+        # The nickname of the level-2 quota.
         self.nick_name = nick_name
+        # The parameters of the level-2 quota.
         self.parameter = parameter
+        # Region ID.
         self.region_id = region_id
+        # Resource status.
         self.status = status
+        # Tenant ID.
         self.tenant_id = tenant_id
+        # The type of quota.
         self.type = type
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -383,12 +425,19 @@ class GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoListParameter(DaraMode
         scheduler_type: str = None,
         single_job_culimit: int = None,
     ):
+        # The value of elastic Reserved CUs.
         self.elastic_reserved_cu = elastic_reserved_cu
+        # whether to enable the priority feature.
         self.enable_priority = enable_priority
+        # Whether it is exclusive.
         self.force_reserved_min = force_reserved_min
+        # The value of maxCU in Reserved CUs.
         self.max_cu = max_cu
+        # The value of minCU in Reserved CUs.
         self.min_cu = min_cu
+        # Scheduling policy.
         self.scheduler_type = scheduler_type
+        # The upper limit for CUs that can be concurrently used by a job scheduled to the quota.
         self.single_job_culimit = single_job_culimit
 
     def validate(self):
@@ -454,8 +503,11 @@ class GetComputeQuotaPlanResponseBodyDataQuotaParameter(DaraModel):
         max_cu: int = None,
         min_cu: int = None,
     ):
+        # The value of elastic Reserved CUs.
         self.elastic_reserved_cu = elastic_reserved_cu
+        # The value of maxCU in Reserved CUs.
         self.max_cu = max_cu
+        # The value of minCU in Reserved CUs.
         self.min_cu = min_cu
 
     def validate(self):

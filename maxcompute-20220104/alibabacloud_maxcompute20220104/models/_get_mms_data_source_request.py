@@ -10,9 +10,7 @@ class GetMmsDataSourceRequest(DaraModel):
         lang: str = None,
         with_config: bool = None,
     ):
-        # The language of the description for the configuration items.
         self.lang = lang
-        # Specifies whether to obtain the specific configuration items of the data source.
         self.with_config = with_config
 
     def validate(self):

@@ -16,10 +16,21 @@ class GetComputeQuotaScheduleResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,10 +94,15 @@ class GetComputeQuotaScheduleResponseBodyData(DaraModel):
         timezone: str = None,
         type: str = None,
     ):
+        # The value of effective condition.
         self.condition = condition
+        # The ID of the quota plan.
         self.id = id
+        # The name of the quota plan.
         self.plan = plan
+        # The time zone property.
         self.timezone = timezone
+        # The type of the quota plan.
         self.type = type
 
     def validate(self):
@@ -140,6 +156,7 @@ class GetComputeQuotaScheduleResponseBodyDataCondition(DaraModel):
         self,
         at: str = None,
     ):
+        # The start time when the quota plan takes effect.
         self.at = at
 
     def validate(self):

@@ -16,10 +16,21 @@ class GetComputeEffectivePlanResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +87,14 @@ class GetComputeEffectivePlanResponseBodyData(DaraModel):
         name: str = None,
         quota: main_models.GetComputeEffectivePlanResponseBodyDataQuota = None,
     ):
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # Whether it is currently effective.
+        # > A Quota plan that has taken effect cannot be deleted, i.e., isEffective=true
         self.is_effective = is_effective
+        # The name of the quota plan.
         self.name = name
+        # The details of the quota.
         self.quota = quota
 
     def validate(self):
@@ -138,18 +154,31 @@ class GetComputeEffectivePlanResponseBodyDataQuota(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the level-1 quota was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
+        # The ID of the level-1 quota.
         self.id = id
+        # The name of the level-1 quota.
         self.name = name
+        # The nickname of the level-1 quota.
         self.nick_name = nick_name
+        # The description of the level-2 quota.
         self.parameter = parameter
+        # The region ID.
         self.region_id = region_id
+        # The status of the resource.
         self.status = status
+        # The list of subquotas.
         self.sub_quota_info_list = sub_quota_info_list
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of quota.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -268,17 +297,29 @@ class GetComputeEffectivePlanResponseBodyDataQuotaSubQuotaInfoList(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the resource was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
+        # The ID of the level-2 quota.
         self.id = id
+        # The name of the level-2 quota.
         self.name = name
+        # The nickname of the level-2 quota.
         self.nick_name = nick_name
+        # The description of the level-2 quota.
         self.parameter = parameter
+        # The region ID.
         self.region_id = region_id
+        # Resource status.
         self.status = status
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of quota.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListFunctionsResponseBody(DaraModel):
         data: main_models.ListFunctionsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51,8 +53,11 @@ class ListFunctionsResponseBodyData(DaraModel):
         marker: str = None,
         max_item: int = None,
     ):
+        # The information about each function.
         self.functions = functions
+        # Indicates the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries returned per page.
         self.max_item = max_item
 
     def validate(self):
@@ -106,12 +111,19 @@ class ListFunctionsResponseBodyDataFunctions(DaraModel):
         resources: str = None,
         schema: str = None,
     ):
+        # The class in which the function was defined.
         self.class_ = class_
+        # The time when the function was created. Unit: milliseconds.
         self.creation_time = creation_time
+        # The display name of the function.
         self.display_name = display_name
+        # The name of the function.
         self.name = name
+        # The owner of the function.
         self.owner = owner
+        # The name of the resource that was associated with the function.
         self.resources = resources
+        # The schema of the function.
         self.schema = schema
 
     def validate(self):

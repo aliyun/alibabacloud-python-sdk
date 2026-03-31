@@ -21,25 +21,15 @@ class ListMmsJobsRequest(DaraModel):
         timer_id: int = None,
     ):
         self.sorter = sorter
-        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
-        # The destination MaxCompute table.
         self.dst_table_name = dst_table_name
-        # The name of the data source.
         self.name = name
-        # The number of the page to return.
         self.page_num = page_num
-        # The number of items to return per page.
         self.page_size = page_size
-        # The name of the source database.
         self.src_db_name = src_db_name
-        # The name of the source table.
         self.src_table_name = src_table_name
-        # The status of the migration job.
         self.status = status
-        # Indicates whether the job is stopped.
         self.stopped = stopped
-        # The timer ID.
         self.timer_id = timer_id
 
     def validate(self):
@@ -129,7 +119,6 @@ class ListMmsJobsRequestSorter(DaraModel):
         self,
         status: str = None,
     ):
-        # Sorting by status
         self.status = status
 
     def validate(self):

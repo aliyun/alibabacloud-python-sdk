@@ -9,6 +9,7 @@ class CreateProjectRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The request body parameters.
         self.body = body
 
     def validate(self):

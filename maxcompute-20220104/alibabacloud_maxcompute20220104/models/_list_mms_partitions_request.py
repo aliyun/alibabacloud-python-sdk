@@ -24,27 +24,16 @@ class ListMmsPartitionsRequest(DaraModel):
         value: str = None,
     ):
         self.sorter = sorter
-        # The database ID.
         self.db_id = db_id
-        # The database name.
         self.db_name = db_name
-        # The maximum lastDdlTime value.
         self.last_ddl_time_end = last_ddl_time_end
-        # The minimum lastDdlTime value.
         self.last_ddl_time_start = last_ddl_time_start
-        # The page number to return.
         self.page_num = page_num
-        # The number of entries to return per page.
         self.page_size = page_size
-        # The migration status.
         self.status = status
-        # The ID of the table that contains the partition.
         self.table_id = table_id
-        # The table name.
         self.table_name = table_name
-        # Filters partitions whose metadata has been updated.
         self.updated = updated
-        # The partition value.
         self.value = value
 
     def validate(self):
@@ -142,11 +131,8 @@ class ListMmsPartitionsRequestSorter(DaraModel):
         num_rows: str = None,
         size: str = None,
     ):
-        # Sorts by lastDdlTime.
         self.last_ddl_time = last_ddl_time
-        # Sorts by number of rows.
         self.num_rows = num_rows
-        # Sorts by data size.
         self.size = size
 
     def validate(self):

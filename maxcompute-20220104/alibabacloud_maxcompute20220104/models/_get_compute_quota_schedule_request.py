@@ -9,6 +9,7 @@ class GetComputeQuotaScheduleRequest(DaraModel):
         self,
         display_timezone: str = None,
     ):
+        # Display time zone.
         self.display_timezone = display_timezone
 
     def validate(self):

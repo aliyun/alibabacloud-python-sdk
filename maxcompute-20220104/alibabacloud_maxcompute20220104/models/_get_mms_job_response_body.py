@@ -13,9 +13,7 @@ class GetMmsJobResponseBody(DaraModel):
         data: main_models.GetMmsJobResponseBodyData = None,
         request_id: str = None,
     ):
-        # The migration job object.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,39 +65,22 @@ class GetMmsJobResponseBodyData(DaraModel):
         task_num: int = None,
         type: str = None,
     ):
-        # The configuration of the migration job.
         self.config = config
-        # The time when the job was created.
         self.create_time = create_time
-        # The source database ID.
         self.db_id = db_id
-        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
-        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
-        # The expected completion time of the migration. Note: A smaller eta value indicates a higher priority for the migration task.
         self.eta = eta
-        # The migration job ID.
         self.id = id
-        # The name of the migration job.
         self.name = name
-        # The data source ID.
         self.source_id = source_id
-        # The name of the data source.
         self.source_name = source_name
-        # The name of the source database.
         self.src_db_name = src_db_name
-        # The name of the source schema. This parameter specifies the schema in a Layer 3 namespace.
         self.src_schema_name = src_schema_name
-        # The status of the migration task.
         self.status = status
-        # Stopped.
         self.stopped = stopped
-        # The number of completed migration tasks.
         self.task_done = task_done
-        # The number of migration tasks included in the job.
         self.task_num = task_num
-        # The migration scope. Valid values: Database, Tables, and Partitions.
         self.type = type
 
     def validate(self):
@@ -237,31 +218,18 @@ class GetMmsJobResponseBodyDataConfig(DaraModel):
         task_type: str = None,
         tunnel_quota: str = None,
     ):
-        # {Source column name: Destination column name}
         self.column_mapping = column_mapping
-        # Enables data verification. The current verification method is to execute a SELECT COUNT statement on the source and destination to compare the row counts.
         self.enable_verification = enable_verification
-        # Incremental migration. Only new or modified partitions are migrated. Note: Modified partitions are re-migrated.
         self.increment = increment
-        # Other configuration information.
         self.others = others
-        # The partition filter expression. This parameter specifies the partition filter expression for a specific table.
         self.partition_filters = partition_filters
-        # If type is set to Partitions, this parameter specifies the list of partition IDs of the table to migrate.
         self.partitions = partitions
-        # Deprecated
         self.schema_only = schema_only
-        # If type is set to Database, this parameter specifies the tables to exclude from the migration.
         self.table_black_list = table_black_list
-        # The mapping from source table names to destination table names.
         self.table_mapping = table_mapping
-        # If type is set to Database, this parameter specifies the list of tables to migrate. If you do not specify this parameter, all tables in the database are migrated.
         self.table_white_list = table_white_list
-        # If type is set to Tables, this parameter specifies the list of names of the tables to migrate.
         self.tables = tables
-        # Deprecated. Valid values: MOCK, HIVE (a Hive user-defined table-valued function (UDTF) task), HIVE_DATAX (a Hive DataX task), COPY_TASK (an ODPS Copy Task), ODPS_INSERT_OVERWRITE (an ODPS simple insert overwrite task), MC2MC_VERIFY, OSS, HIVE_OSS, HIVE_SPARK, and BIGQUERY.
         self.task_type = task_type
-        # Deprecated
         self.tunnel_quota = tunnel_quota
 
     def validate(self):

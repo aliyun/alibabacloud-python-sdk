@@ -20,34 +20,16 @@ class QueryTunnelMetricDetailRequest(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # Specifies whether to sort the results in ascending order.
         self.asc_order = asc_order
-        # The list of grouping bases.
         self.group_list = group_list
-        # The maximum number of entries to return. The default value is 10. The maximum value is 100.
         self.limit = limit
-        # The list of operation types.
         self.operation_list = operation_list
-        # The column to sort by.
         self.order_column = order_column
-        # The name of the project.
         self.project = project
-        # The nickname of the level-2 quota for the tunnel.
-        # 
-        # The nickname of the shared quota is default.
-        # 
-        # The nickname of the exclusive quota is in the quotaNickname#subQuotaNickname format.
         self.quota_nickname = quota_nickname
-        # The list of table names.
-        # 
-        # The tables belong to a project. Therefore, if tableList is not empty, project cannot be empty.
         self.table_list = table_list
-        # The end of the time range to query.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # The start of the time range to query.
-        # 
         # This parameter is required.
         self.start_time = start_time
 

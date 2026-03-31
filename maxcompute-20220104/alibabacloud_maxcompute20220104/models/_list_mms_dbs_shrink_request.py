@@ -13,15 +13,10 @@ class ListMmsDbsShrinkRequest(DaraModel):
         sorter_shrink: str = None,
         status: str = None,
     ):
-        # Data source name
         self.name = name
-        # Page number
         self.page_num = page_num
-        # Number of records per page
         self.page_size = page_size
-        # Sorting conditions
         self.sorter_shrink = sorter_shrink
-        # Data source status
         self.status = status
 
     def validate(self):

@@ -10,8 +10,12 @@ class GetRoleAclOnObjectRequest(DaraModel):
         object_name: str = None,
         object_type: str = None,
     ):
+        # The name of the object.
+        # 
         # This parameter is required.
         self.object_name = object_name
+        # The type of the object.
+        # 
         # This parameter is required.
         self.object_type = object_type
 

@@ -13,7 +13,9 @@ class ListUsersByRoleResponseBody(DaraModel):
         data: main_models.ListUsersByRoleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListUsersByRoleResponseBodyData(DaraModel):
         self,
         users: List[main_models.ListUsersByRoleResponseBodyDataUsers] = None,
     ):
+        # The users.
         self.users = users
 
     def validate(self):
@@ -84,6 +87,7 @@ class ListUsersByRoleResponseBodyDataUsers(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the user.
         self.name = name
 
     def validate(self):

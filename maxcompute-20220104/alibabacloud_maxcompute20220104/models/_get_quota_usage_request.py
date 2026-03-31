@@ -19,16 +19,36 @@ class GetQuotaUsageRequest(DaraModel):
         to: int = None,
         y_axis_types: List[str] = None,
     ):
+        # The aggregation algorithm. For a better page experience, up to 60 points can be displayed for each metric. If you select a time range longer than 1 hour, the chart uses the average value within the range (minutes of the selected time range/60) to aggregate data by default. You can change the aggregation algorithm based on your business requirements.
         self.agg_method = agg_method
+        # The time when the query starts. The value is the log time that is specified when log data is written.
+        # 
+        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The types of the charts.
         self.plot_types = plot_types
+        # The quota type. Default value: ODPS.
+        # 
+        # *   ODPS: computing quota
+        # *   TUNNEL: Tunnel quota
         self.product_id = product_id
+        # The region ID.
         self.region = region
+        # The alias of the level-2 quota.
         self.sub_quota_nickname = sub_quota_nickname
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose Tenants > Tenant Property from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The time when the query ends. The value is the log time that is specified when log data is written.
+        # 
+        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.to = to
+        # The data metric fields.
         self.y_axis_types = y_axis_types
 
     def validate(self):

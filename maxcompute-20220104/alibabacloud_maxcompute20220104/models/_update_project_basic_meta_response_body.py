@@ -13,7 +13,7 @@ class UpdateProjectBasicMetaResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The result of the request.
+        # The data returned.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -21,15 +21,9 @@ class UpdateProjectBasicMetaResponseBody(DaraModel):
         self.error_msg = error_msg
         # The HTTP status code.
         # 
-        # - 1xx: Informational response - The request has been received and is being processed.
-        # 
-        # - 2xx: Success - The request was successfully received, understood, and accepted.
-        # 
-        # - 3xx: Redirection - The request was redirected. Further action is needed to complete the request.
-        # 
-        # - 4xx: Client error - The request contains incorrect request parameters or syntax, or cannot be fulfilled.
-        # 
-        # - 5xx: Server error - The server failed to fulfill the request for other reasons.
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id

@@ -13,11 +13,17 @@ class GetJobResourceUsageShrinkRequest(DaraModel):
         page_size: int = None,
         quota_nickname_list_shrink: str = None,
     ):
+        # The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
+        # 
         # This parameter is required.
         self.date = date
+        # The list of job executors.
         self.job_owner_list_shrink = job_owner_list_shrink
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The list of nicknames of quotas that are used by jobs.
         self.quota_nickname_list_shrink = quota_nickname_list_shrink
 
     def validate(self):

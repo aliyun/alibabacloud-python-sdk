@@ -10,7 +10,7 @@ class UpdateUsersToRoleResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id

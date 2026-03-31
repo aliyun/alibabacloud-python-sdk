@@ -13,7 +13,9 @@ class ListUsersResponseBody(DaraModel):
         data: main_models.ListUsersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListUsersResponseBodyData(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersResponseBodyDataUsers] = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
+        # The users.
         self.users = users
 
     def validate(self):
@@ -112,10 +118,15 @@ class ListUsersResponseBodyDataUsers(DaraModel):
         display_name: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The username of the account.
         self.account_name = account_name
+        # The type of the account.
         self.account_type = account_type
+        # The display name.
         self.display_name = display_name
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

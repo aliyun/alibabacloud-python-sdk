@@ -12,9 +12,13 @@ class ListFunctionsRequest(DaraModel):
         prefix: str = None,
         schema_name: str = None,
     ):
+        # Specifies the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries to return on each page.
         self.max_item = max_item
+        # The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
         self.prefix = prefix
+        # the name of schema.
         self.schema_name = schema_name
 
     def validate(self):

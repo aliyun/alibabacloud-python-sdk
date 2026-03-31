@@ -15,7 +15,6 @@ class UpdateTunnelQuotaTimerRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -59,11 +58,11 @@ class UpdateTunnelQuotaTimerRequestBody(DaraModel):
         end_time: str = None,
         tunnel_quota_parameter: main_models.UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter = None,
     ):
-        # The start time of the time-based configuration.
+        # The start time of the time-specific configuration.
         self.begin_time = begin_time
-        # The end time of the time-based configuration.
+        # The end time of the time-specific configuration.
         self.end_time = end_time
-        # The parameters of the time-based configuration.
+        # The parameters for the time-specific configuration.
         self.tunnel_quota_parameter = tunnel_quota_parameter
 
     def validate(self):
@@ -106,9 +105,9 @@ class UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter(DaraModel):
         elastic_reserved_slot_num: int = None,
         slot_num: int = None,
     ):
-        # The number of elastic reserved concurrent slots.
+        # The number of elastically reserved slots.
         self.elastic_reserved_slot_num = elastic_reserved_slot_num
-        # The number of reserved concurrent slots.
+        # The number of reserved slots.
         self.slot_num = slot_num
 
     def validate(self):

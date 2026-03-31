@@ -9,6 +9,7 @@ class UpdateProjectDefaultQuotaRequest(DaraModel):
         self,
         quota: str = None,
     ):
+        # The default computing quota that is used to allocate computing resources, the jobs that are initiated by this project consume the computing resources in the default quota.
         self.quota = quota
 
     def validate(self):

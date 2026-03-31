@@ -14,13 +14,9 @@ class CreateMmsDataSourceRequest(DaraModel):
         networklink: str = None,
         type: str = None,
     ):
-        # The configurations of the data source.
         self.config = config
-        # The name of the data source.
         self.name = name
-        # The ID of the MaxCompute network connectivity.
         self.networklink = networklink
-        # The type of the data source.
         self.type = type
 
     def validate(self):

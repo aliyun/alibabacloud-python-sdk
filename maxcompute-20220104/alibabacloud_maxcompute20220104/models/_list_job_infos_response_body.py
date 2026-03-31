@@ -14,9 +14,9 @@ class ListJobInfosResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data returned.
         self.data = data
-        # Indicates whether the business logic was successful. A value other than 200 indicates a failure.
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -63,13 +63,13 @@ class ListJobInfosResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of job information.
+        # The information about the jobs.
         self.job_info_list = job_info_list
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -156,64 +156,64 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
     ):
         # The cluster ID.
         self.cluster = cluster
-        # The proportion of CUs in the job snapshot.
+        # The CU snapshot proportion of the job.
         self.cu_snapshot = cu_snapshot
-        # The total CUs used.
+        # The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
         self.cu_usage = cu_usage
-        # The time when the job finished.
+        # The time when the job stops running.
         self.end_at_time = end_at_time
-        # The ID of the DataWorks node.
+        # The node ID of DataWorks.
         self.ext_node_id = ext_node_id
         self.ext_node_name = ext_node_name
-        # The person in charge of the execution.
+        # The account of the node owner.
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
         self.ext_platform_id = ext_platform_id
-        # The amount of data scanned by the job. Unit: bytes.
+        # The amount of scanned data for the job. Unit: byte.
         self.input_bytes = input_bytes
         # The instance ID.
         self.instance_id = instance_id
-        # The account that submitted the job.
+        # The account that commits the job.
         self.job_owner = job_owner
-        # The job type.
+        # The type of the job.
         self.job_type = job_type
-        # The proportion of memory in the job snapshot.
+        # The memory snapshot proportion of the job.
         self.memory_snapshot = memory_snapshot
-        # The total memory used.
+        # The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
         self.memory_usage = memory_usage
-        # The priority.
+        # The priority of the job.
         self.priority = priority
         # The name of the MaxCompute project.
         self.project = project
-        # The nickname of the quota that the job uses.
+        # The nickname of the quota that is used by the job.
         self.quota_nickname = quota_nickname
-        # The quota type.
+        # The type of the quota.
         self.quota_type = quota_type
         # The region ID.
         self.region = region
-        # The time when the job started to run.
+        # The time when the job starts to run.
         self.running_at_time = running_at_time
-        # The runtime.
+        # The period for which the job runs.
         self.running_time = running_time
-        # The smart diagnosis results.
+        # The intelligent diagnostics results.
         self.scene_results = scene_results
-        # The SQL signature.
+        # The signature of the SQL job.
         self.signature = signature
-        # The status.
+        # The status of the job.
         self.status = status
-        # The status of the job snapshot.
+        # The status of the snapshot.
         self.status_snapshot = status_snapshot
-        # The time when the job was submitted.
+        # The time when the job was committed.
         self.submitted_at_time = submitted_at_time
         # The tags.
         self.tags = tags
         self.task_name = task_name
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The total runtime.
+        # The total period for which the job runs.
         self.total_time = total_time
-        # The waiting time.
+        # The duration for which the job waits to start.
         self.waiting_time = waiting_time
 
     def validate(self):
@@ -440,17 +440,17 @@ class ListJobInfosResponseBodyDataJobInfoListSceneResults(DaraModel):
         summary: str = None,
         type: str = None,
     ):
-        # The details of the smart diagnosis result.
+        # The intelligent diagnostics result description.
         self.description = description
-        # Information about the nodes that have data skew or data bloat. This parameter is returned only when the diagnosis scenario is data skew or data bloat.
+        # Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
         self.params = params
-        # The scenario of the smart diagnosis result.
+        # The intelligent diagnostics result scenario.
         self.scene = scene
-        # The tag of the smart diagnosis result.
+        # The intelligent diagnostics result tag.
         self.scene_tag = scene_tag
-        # A summary of the smart diagnosis result.
+        # The intelligent diagnostics result summary.
         self.summary = summary
-        # The type of the smart diagnosis result.
+        # The intelligent diagnostics result type.
         self.type = type
 
     def validate(self):

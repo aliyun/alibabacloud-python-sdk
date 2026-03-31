@@ -10,7 +10,9 @@ class UpdateQuotaScheduleResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

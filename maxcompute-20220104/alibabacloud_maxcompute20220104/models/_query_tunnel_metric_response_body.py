@@ -16,15 +16,10 @@ class QueryTunnelMetricResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
-        # The error code.
         self.error_code = error_code
-        # The error message.
         self.error_msg = error_msg
-        # Indicates whether the operation was successful. If this parameter is not empty and the value is not 200, the operation failed.
         self.http_code = http_code
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,13 +76,9 @@ class QueryTunnelMetricResponseBodyData(DaraModel):
         name: str = None,
         period: int = None,
     ):
-        # The category of the metric.
         self.category = category
-        # The metric values.
         self.metrics = metrics
-        # The name of the metric.
         self.name = name
-        # The step size of the monitoring data.
         self.period = period
 
     def validate(self):
@@ -142,9 +133,7 @@ class QueryTunnelMetricResponseBodyDataMetrics(DaraModel):
         metric: Dict[str, str] = None,
         values: List[List[float]] = None,
     ):
-        # The metadata of the metric.
         self.metric = metric
-        # A list of metric values.
         self.values = values
 
     def validate(self):

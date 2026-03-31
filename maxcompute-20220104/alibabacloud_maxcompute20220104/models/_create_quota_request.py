@@ -12,24 +12,11 @@ class CreateQuotaRequest(DaraModel):
         commodity_data: str = None,
         part_nick_name: str = None,
     ):
-        # Billing type. Use payasyougo for pay-as-you-go or subscription for subscription.
-        # 
         # This parameter is required.
         self.charge_type = charge_type
-        # Product code. For example:
-        # Alibaba Cloud China Website (www\\.aliyun.com): use odps for pay-as-you-go and odpsplus for subscription.
-        # Alibaba Cloud International Website (www\\.alibabacloud.com): use odps_intl for pay-as-you-go and odpsplus_intl for subscription.
-        # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # Quota specification.
-        # >Notice: Required only for subscription quotas.
-        # The minimum CU value is 50.
-        # ord_time supports month and year.
         self.commodity_data = commodity_data
-        # >Notice: 
-        # 
-        # Required only for subscription quotas.
         self.part_nick_name = part_nick_name
 
     def validate(self):

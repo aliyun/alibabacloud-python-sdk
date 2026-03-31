@@ -15,9 +15,6 @@ class UpdateComputeQuotaScheduleRequest(DaraModel):
     ):
         # The request body parameters.
         self.body = body
-        # The time zone.
-        # 
-        # > The default value is UTC+8.
         self.schedule_timezone = schedule_timezone
 
     def validate(self):
@@ -61,17 +58,15 @@ class UpdateComputeQuotaScheduleRequestBody(DaraModel):
         plan: str = None,
         type: str = None,
     ):
-        # The condition for the plan to take effect.
+        # The value of effective condition.
         self.condition = condition
         # The name of the quota plan.
         # 
         # This parameter is required.
         self.plan = plan
-        # The type.
+        # The type of the quota plan.
         # 
-        # >Notice: 
-        # 
-        # Only daily is supported.
+        # >Notice: Currently, only daily is supported.</notice>
         # 
         # This parameter is required.
         self.type = type
@@ -115,7 +110,7 @@ class UpdateComputeQuotaScheduleRequestBodyCondition(DaraModel):
         self,
         at: str = None,
     ):
-        # The time when the plan takes effect.
+        # The start time when the quota plan takes effect.
         # 
         # This parameter is required.
         self.at = at

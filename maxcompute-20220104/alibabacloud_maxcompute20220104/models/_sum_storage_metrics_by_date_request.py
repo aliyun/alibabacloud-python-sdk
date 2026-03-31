@@ -16,20 +16,11 @@ class SumStorageMetricsByDateRequest(DaraModel):
         stats_type: str = None,
         user_id: str = None,
     ):
-        # The end date. The value is a millisecond-level timestamp. This parameter is required.
         self.end_date = end_date
-        # The project names.
         self.project_names = project_names
-        # The region ID.
         self.region = region
-        # The start date. The value is a millisecond-level timestamp. This parameter is required.
         self.start_date = start_date
-        # The type of storage usage statistics. This parameter is required. Valid values:
-        # 
-        # - PROJECT
-        # - STORAGE_TYPE
         self.stats_type = stats_type
-        # The user UID.
         self.user_id = user_id
 
     def validate(self):

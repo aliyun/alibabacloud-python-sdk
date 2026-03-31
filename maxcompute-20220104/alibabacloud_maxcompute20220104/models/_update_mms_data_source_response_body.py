@@ -11,9 +11,7 @@ class UpdateMmsDataSourceResponseBody(DaraModel):
         data: main_models.UpdateMmsDataSourceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The result of the request.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +48,7 @@ class UpdateMmsDataSourceResponseBodyData(DaraModel):
         async_task_id: int = None,
         source_id: int = None,
     ):
-        # The ID of the asynchronous task. When you test the data source configuration, this ID is used to obtain the test result.
         self.async_task_id = async_task_id
-        # The ID of the data source.
         self.source_id = source_id
 
     def validate(self):

@@ -18,16 +18,27 @@ class ListStoragePartitionsInfoShrinkRequest(DaraModel):
         tenant_id: str = None,
         types_shrink: str = None,
     ):
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
+        # The date on which the statistics are collected, in days. Set this parameter to a value in the YYYYMMdd format.
+        # 
         # This parameter is required.
         self.date = date
+        # The sorting column.
         self.order_column = order_column
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The name of the partition that you want to use for fuzzy match.
         self.partition_prefix = partition_prefix
+        # The region ID.
         self.region = region
+        # The name of the schema.
         self.schema = schema
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The storage types.
         self.types_shrink = types_shrink
 
     def validate(self):

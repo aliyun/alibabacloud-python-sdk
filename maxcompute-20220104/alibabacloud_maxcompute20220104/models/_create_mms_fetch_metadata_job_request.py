@@ -12,9 +12,7 @@ class CreateMmsFetchMetadataJobRequest(DaraModel):
         db_name: str = None,
         table_names: List[str] = None,
     ):
-        # Updates metadata for the specified source database, schema, or dataset.
         self.db_name = db_name
-        # Updates metadata for the specified source tables.
         self.table_names = table_names
 
     def validate(self):

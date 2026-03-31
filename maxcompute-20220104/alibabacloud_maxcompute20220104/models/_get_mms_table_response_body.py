@@ -13,9 +13,7 @@ class GetMmsTableResponseBody(DaraModel):
         data: main_models.GetMmsTableResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,59 +75,37 @@ class GetMmsTableResponseBodyData(DaraModel):
         type: str = None,
         updated: bool = None,
     ):
-        # The database ID.
         self.db_id = db_id
-        # The database name.
         self.db_name = db_name
-        # The destination MaxCompute table name. By default, this name matches the original table name.
         self.dst_name = dst_name
-        # The destination MaxCompute project name.
         self.dst_project_name = dst_project_name
-        # The destination MaxCompute schema name. This value is null if the destination MaxCompute project does not enable the schema layer.
         self.dst_schema_name = dst_schema_name
-        # Other information stored in JSON format.
         self.extra = extra
-        # Indicates whether the table is a partitioned table.
         self.has_partitions = has_partitions
-        # The table ID.
+        # table ID
         self.id = id
-        # The input format.
+        # inputFormat
         self.input_format = input_format
-        # The last DDL time.
+        # lastDdlTime
         self.last_ddl_time = last_ddl_time
-        # The storage location of the table.
         self.location = location
-        # The table name.
         self.name = name
-        # The number of rows.
         self.num_rows = num_rows
-        # The output format.
+        # outputFormat
         self.output_format = output_format
-        # The owner of the table.
         self.owner = owner
-        # The number of partitions.
         self.partitions = partitions
-        # The number of partitions that are being migrated.
         self.partitions_doing = partitions_doing
-        # The number of partitions that are migrated.
         self.partitions_done = partitions_done
-        # The number of partitions that failed to be migrated.
         self.partitions_failed = partitions_failed
-        # The table schema.
         self.schema = schema
-        # The serializer/deserializer (SerDe).
+        # serde
         self.serde = serde
-        # The data size in bytes.
         self.size = size
-        # The data source ID.
         self.source_id = source_id
-        # The data source name.
         self.source_name = source_name
-        # The migration status.
         self.status = status
-        # The table type.
         self.type = type
-        # Indicates whether the metadata is updated.
         self.updated = updated
 
     def validate(self):
@@ -318,13 +294,9 @@ class GetMmsTableResponseBodyDataSchema(DaraModel):
         name: str = None,
         partitions: List[main_models.GetMmsTableResponseBodyDataSchemaPartitions] = None,
     ):
-        # All common columns.
         self.columns = columns
-        # The comment of the table.
         self.comment = comment
-        # The table name.
         self.name = name
-        # All partition key columns.
         self.partitions = partitions
 
     def validate(self):
@@ -391,15 +363,10 @@ class GetMmsTableResponseBodyDataSchemaPartitions(DaraModel):
         nullable: bool = None,
         type: str = None,
     ):
-        # The comment of the column.
         self.comment = comment
-        # The default value of the column.
         self.default_value = default_value
-        # The column name.
         self.name = name
-        # Indicates whether the column can be null.
         self.nullable = nullable
-        # The data type of the column.
         self.type = type
 
     def validate(self):
@@ -455,15 +422,10 @@ class GetMmsTableResponseBodyDataSchemaColumns(DaraModel):
         nullable: bool = None,
         type: str = None,
     ):
-        # The comment of the column.
         self.comment = comment
-        # The default value of the column.
         self.default_value = default_value
-        # The column name.
         self.name = name
-        # Indicates whether the column can be null.
         self.nullable = nullable
-        # The data type of the column.
         self.type = type
 
     def validate(self):

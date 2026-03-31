@@ -15,19 +15,12 @@ class GetStorageSummaryComparedRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # The start date.
-        # 
         # This parameter is required.
         self.begin_date = begin_date
-        # The end date.
-        # 
         # This parameter is required.
         self.end_date = end_date
-        # The list of projects.
         self.projects = projects
-        # The region ID.
         self.region = region
-        # The tenant ID. You can log on to the MaxCompute console and choose **Tenant Property** in the navigation pane on the left to view the tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

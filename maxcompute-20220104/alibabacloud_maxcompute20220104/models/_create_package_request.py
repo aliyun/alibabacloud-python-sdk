@@ -10,7 +10,9 @@ class CreatePackageRequest(DaraModel):
         body: str = None,
         is_install: bool = None,
     ):
+        # The request body parameters.
         self.body = body
+        # Specifies whether to install the package.
         self.is_install = is_install
 
     def validate(self):

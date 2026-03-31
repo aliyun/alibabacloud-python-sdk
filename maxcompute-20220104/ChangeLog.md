@@ -1,3 +1,8 @@
+2026-03-31 Version: 6.0.1
+- Update API ListMmsDataSources: add response parameters Body.data.objectList.$.scanErrMsg.
+- Update API ListMmsDataSources: add response parameters Body.data.objectList.$.scanStatus.
+
+
 2026-03-18 Version: 6.0.0
 - Support API CreateQuota.
 - Update API CreateMmsFetchMetadataJob: add request parameters body.

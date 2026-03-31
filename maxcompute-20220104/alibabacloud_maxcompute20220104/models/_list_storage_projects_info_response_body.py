@@ -16,25 +16,10 @@ class ListStorageProjectsInfoResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data.
         self.data = data
-        # The error code.
         self.error_code = error_code
-        # The error message.
         self.error_msg = error_msg
-        # The HTTP status code.
-        # 
-        # - 1xx: an informational response. The request has been received and is being processed.
-        # 
-        # - 2xx: a success response. The request has been successfully received, understood, and accepted by the server.
-        # 
-        # - 3xx: a redirection response. The request is redirected. You must take further action to complete the request.
-        # 
-        # - 4xx: a client error. The request contains invalid request parameters or syntax, or cannot be fulfilled.
-        # 
-        # - 5xx: a server error. The server fails to fulfill the request for other reasons.
         self.http_code = http_code
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -92,15 +77,10 @@ class ListStorageProjectsInfoResponseBodyData(DaraModel):
         storage_project_info_list: List[main_models.ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList] = None,
         total_count: int = None,
     ):
-        # The statistics collection date.
         self.date = date
-        # The page number.
         self.page_number = page_number
-        # The number of entries on each page.
         self.page_size = page_size
-        # The list of project-level storage information.
         self.storage_project_info_list = storage_project_info_list
-        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -173,33 +153,19 @@ class ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList(DaraModel):
         total_storage: float = None,
         total_storage_unit: str = None,
     ):
-        # The statistics collection date. The date is accurate to the day. The date must be in the `YYYYMMdd` format.
         self.date = date
-        # The Long Term storage usage.
         self.long_term_storage = long_term_storage
-        # The unit of the Long Term storage usage.
         self.long_term_storage_unit = long_term_storage_unit
-        # The IA storage class usage.
         self.low_freq_storage = low_freq_storage
-        # The unit of the IA storage class usage.
         self.low_freq_storage_unit = low_freq_storage_unit
-        # The name of the MaxCompute project.
         self.project_name = project_name
-        # The year-over-year change rate of the total storage usage in the last {$recentDays} days.
         self.rate = rate
-        # The recycle bin storage usage.
         self.recycle_bin_storage = recycle_bin_storage
-        # The unit of the recycle bin storage usage.
         self.recycle_bin_storage_unit = recycle_bin_storage_unit
-        # The Standard storage usage.
         self.standard_storage = standard_storage
-        # The unit of the Standard storage usage.
         self.standard_storage_unit = standard_storage_unit
-        # The timestamp of the last data update.
         self.timestamp = timestamp
-        # The total storage usage.
         self.total_storage = total_storage
-        # The unit of the total storage usage.
         self.total_storage_unit = total_storage_unit
 
     def validate(self):

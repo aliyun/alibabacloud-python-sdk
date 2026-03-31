@@ -16,10 +16,16 @@ class GetQuotaScheduleResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -84,11 +90,17 @@ class GetQuotaScheduleResponseBodyData(DaraModel):
         timezone: str = None,
         type: str = None,
     ):
+        # The condition value.
         self.condition = condition
+        # The ID of the quota plan.
         self.id = id
+        # The name of the operator.
         self.operator = operator
+        # The name of the quota plan.
         self.plan = plan
+        # The time zone.
         self.timezone = timezone
+        # The type of the quota plan.
         self.type = type
 
     def validate(self):
@@ -149,7 +161,9 @@ class GetQuotaScheduleResponseBodyDataCondition(DaraModel):
         after: str = None,
         at: str = None,
     ):
+        # The start time when the quota plan takes effect.
         self.after = after
+        # The time when the quota plan takes effect.
         self.at = at
 
     def validate(self):

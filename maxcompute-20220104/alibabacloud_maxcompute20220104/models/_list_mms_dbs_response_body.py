@@ -13,9 +13,7 @@ class ListMmsDbsResponseBody(DaraModel):
         data: main_models.ListMmsDbsResponseBodyData = None,
         request_id: str = None,
     ):
-        # Returned data.
         self.data = data
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +52,9 @@ class ListMmsDbsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # Database list
         self.object_list = object_list
-        # Page number
         self.page_num = page_num
-        # Page size
         self.page_size = page_size
-        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -140,59 +134,33 @@ class ListMmsDbsResponseBodyDataObjectList(DaraModel):
         update_time: str = None,
         updated: bool = None,
     ):
-        # Time created in MMS
         self.create_time = create_time
-        # Whether deleted
         self.deleted = deleted
-        # Database description
         self.description = description
-        # The MaxCompute schema corresponding to the source database. If the target MaxCompute project does not have a schema layer enabled, this value is null. By default, it is consistent with the source database name.
         self.dst_name = dst_name
-        # Target MaxCompute project name
         self.dst_project_name = dst_project_name
-        # Other information stored in JSON format
         self.extra = extra
-        # Database ID
         self.id = id
         # Last DDL Time
         self.last_ddl_time = last_ddl_time
-        # Database storage location
         self.location = location
-        # Database name
         self.name = name
-        # Number of database data rows
         self.num_rows = num_rows
-        # Database owner
         self.owner = owner
-        # Number of partitions
         self.partitions = partitions
-        # Partitions being migrated
         self.partitions_doing = partitions_doing
-        # Partitions migrated
         self.partitions_done = partitions_done
-        # Failed partitions
         self.partitions_failed = partitions_failed
-        # Database data size in bytes
         self.size = size
-        # Data source ID.
         self.source_id = source_id
-        # Data source name
         self.source_name = source_name
-        # Migration status: INIT, DOING, FAILED, DONE, PART_DONE
         self.status = status
-        # Number of tables
         self.tables = tables
-        # Tables being migrated
         self.tables_doing = tables_doing
-        # Tables migrated
         self.tables_done = tables_done
-        # Failed tables
         self.tables_failed = tables_failed
-        # Partially migrated tables
         self.tables_part_done = tables_part_done
-        # Latest data update time
         self.update_time = update_time
-        # Whether data is updated
         self.updated = updated
 
     def validate(self):

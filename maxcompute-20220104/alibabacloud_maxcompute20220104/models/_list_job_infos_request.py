@@ -32,47 +32,47 @@ class ListJobInfosRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to sort the results in ascending or descending order.
+        # Specifies whether to sort query results in ascending or descending order.
         self.asc_order = asc_order
-        # The upstream node ID.
+        # The ancestor node IDs.
         self.ext_node_id_list = ext_node_id_list
         self.ext_node_name_list = ext_node_name_list
-        # The start UNIX timestamp.
+        # The start timestamp.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The job instance ID.
+        # The job instance IDs.
         self.instance_id_list = instance_id_list
-        # The job owner.
+        # The job owners.
         self.job_owner_list = job_owner_list
-        # The job priority.
+        # The job priorities.
         self.priority_list = priority_list
-        # The project name.
+        # The project names.
         self.project_list = project_list
-        # The nickname of the quota.
+        # The quota nickname.
         self.quota_nickname = quota_nickname
-        # The smart diagnosis tag.
+        # The intelligent diagnostics tags.
         self.scene_tag_list = scene_tag_list
-        # The job signature.
+        # The job signatures.
         self.signature_list = signature_list
-        # The fields for multi-column sorting.
+        # The sorting columns.
         self.sort_by_list = sort_by_list
-        # The sort orders for multi-column sorting.
+        # The orders for the sorting columns.
         self.sort_order_list = sort_order_list
-        # The job status.
+        # The job states.
         self.status_list = status_list
         self.task_name_list = task_name_list
-        # The end UNIX timestamp.
+        # The end timestamp.
         # 
         # This parameter is required.
         self.to = to
-        # The job type.
+        # The job types.
         self.type_list = type_list
-        # The column to use for sorting.
+        # The column based on which you want to sort query results.
         self.order_column = order_column
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region = region

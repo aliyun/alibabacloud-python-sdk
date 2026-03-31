@@ -11,9 +11,7 @@ class CreateMmsFetchMetadataJobResponseBody(DaraModel):
         data: main_models.CreateMmsFetchMetadataJobResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +47,6 @@ class CreateMmsFetchMetadataJobResponseBodyData(DaraModel):
         self,
         scan_id: int = None,
     ):
-        # The ID of the asynchronous task that syncs metadata.
         self.scan_id = scan_id
 
     def validate(self):

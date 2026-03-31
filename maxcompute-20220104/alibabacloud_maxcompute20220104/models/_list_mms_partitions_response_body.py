@@ -13,9 +13,7 @@ class ListMmsPartitionsResponseBody(DaraModel):
         data: main_models.ListMmsPartitionsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +52,9 @@ class ListMmsPartitionsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of partitions.
         self.object_list = object_list
-        # The page number.
         self.page_num = page_num
-        # The number of entries per page.
         self.page_size = page_size
-        # The total number of partitions.
         self.total = total
 
     def validate(self):
@@ -130,39 +124,23 @@ class ListMmsPartitionsResponseBodyDataObjectList(DaraModel):
         updated: bool = None,
         value: str = None,
     ):
-        # The ID of the database that contains the partition. The term "database" refers to different metadata layers across data sources. For example, it maps to Dataset in BigQuery, Database in Hive, Schema in Databricks, and Schema in MaxCompute.
         self.db_id = db_id
-        # The database name. The term "database" refers to different metadata layers across data sources. For example, it maps to Dataset in BigQuery, Database in Hive, Schema in Databricks, and Schema in MaxCompute.
         self.db_name = db_name
-        # The destination MaxCompute project name.
         self.dst_project_name = dst_project_name
-        # The destination MaxCompute schema name. This field is empty for MaxCompute projects that do not use schemas.
         self.dst_schema_name = dst_schema_name
-        # The destination MaxCompute table name.
         self.dst_table_name = dst_table_name
-        # The destination MaxCompute partition value. By default, this matches the source partition value.
         self.dst_value = dst_value
-        # The partition ID.
         self.id = id
-        # The time when the DDL was last changed.
+        # lastDdlTime
         self.last_ddl_time = last_ddl_time
-        # The number of rows.
         self.num_rows = num_rows
-        # The data size in bytes.
         self.size = size
-        # The data source ID.
         self.source_id = source_id
-        # The data source name.
         self.source_name = source_name
-        # The migration status.
         self.status = status
-        # The table ID.
         self.table_id = table_id
-        # The table name.
         self.table_name = table_name
-        # Indicates whether the metadata has been updated.
         self.updated = updated
-        # The partition value.
         self.value = value
 
     def validate(self):

@@ -13,15 +13,10 @@ class ListMmsDataSourcesRequest(DaraModel):
         region: str = None,
         type: str = None,
     ):
-        # The name of the data source.
         self.name = name
-        # The page number. If you leave this parameter empty, all data sources are returned.
         self.page_num = page_num
-        # The number of entries to return on each page. If you leave this parameter empty, all data sources are returned.
         self.page_size = page_size
-        # The region ID.
         self.region = region
-        # The type of the data source.
         self.type = type
 
     def validate(self):

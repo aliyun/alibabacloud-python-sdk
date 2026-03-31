@@ -15,16 +15,19 @@ class ListQuotasRequest(DaraModel):
         sale_tags: str = None,
         tenant_id: str = None,
     ):
-        # The billing method.
+        # The billing method of the quota.
         self.billing_type = billing_type
-        # The token that specifies the position from which to start returning results. The results are sorted in alphabetical order.
+        # Specifies the marker after which the returned list begins.
         self.marker = marker
         # The maximum number of entries to return on each page.
         self.max_item = max_item
+        # The service ID.
         self.product_id = product_id
+        # The ID of the region.
         self.region = region
-        # The cost allocation tags that are used to filter quotas. You can create cost allocation tags in the Tag service.
+        # The cost tag. You can filter out quota objects based on the cost tag. The cost tag is created when you tag a service.
         self.sale_tags = sale_tags
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

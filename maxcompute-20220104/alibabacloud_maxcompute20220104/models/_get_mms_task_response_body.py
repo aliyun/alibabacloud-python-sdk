@@ -11,9 +11,7 @@ class GetMmsTaskResponseBody(DaraModel):
         data: main_models.GetMmsTaskResponseBodyData = None,
         request_id: str = None,
     ):
-        # The migration task object.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,47 +67,26 @@ class GetMmsTaskResponseBodyData(DaraModel):
         table_id: int = None,
         type: str = None,
     ):
-        # The creation time of the task.
         self.create_time = create_time
-        # The source database ID.
         self.db_id = db_id
-        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
-        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
-        # The destination MaxCompute table.
         self.dst_table_name = dst_table_name
-        # The end time of the task.
         self.end_time = end_time
-        # The migration task ID.
         self.id = id
-        # The migration job ID.
         self.job_id = job_id
-        # The migration job name.
         self.job_name = job_name
-        # The number of times the task has been retried.
         self.retried_times = retried_times
-        # Indicates if the task is running.
         self.running = running
-        # The data source ID.
         self.source_id = source_id
-        # The data source name.
         self.source_name = source_name
-        # The source database name.
         self.src_db_name = src_db_name
-        # The name of the source schema. This refers to the schema in a Layer 3 namespace.
         self.src_schema_name = src_schema_name
-        # The source table name.
         self.src_table_name = src_table_name
-        # The start time of the task.
         self.start_time = start_time
-        # The migration task status.
         self.status = status
-        # Indicates if the task is stopped.
         self.stopped = stopped
-        # The source table ID.
         self.table_id = table_id
-        # The task type.
         self.type = type
 
     def validate(self):

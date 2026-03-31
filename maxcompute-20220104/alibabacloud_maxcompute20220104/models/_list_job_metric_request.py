@@ -18,14 +18,30 @@ class ListJobMetricRequest(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # Grouping basis.
+        # 
+        # > Available values: project, quota, type, status. Meanings:
+        # >- project: Group and aggregate by project;
+        # >- quota: Group and aggregate by quota;
+        # >- type: Group and aggregate by job type;
+        # >- status: Group and aggregate by job status.
         self.group = group
+        # The name of observation metric.
         self.metric = metric
+        # The monitoring statistical period.Unit:Second(s).
         self.period = period
+        # The name of MaxCompute projects (for filtering).
         self.project = project
+        # The nickname of computing Quota nickname used by the job (for filtering).
         self.quota = quota
+        # The type of observation metric.
         self.type = type
+        # The end time for the observation interval.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The start time for the observation interval.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

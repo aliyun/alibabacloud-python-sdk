@@ -16,10 +16,16 @@ class GetRunningJobsResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +82,13 @@ class GetRunningJobsResponseBodyData(DaraModel):
         running_job_info_list: List[main_models.GetRunningJobsResponseBodyDataRunningJobInfoList] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of jobs in the running state.
         self.running_job_info_list = running_job_info_list
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -140,14 +150,23 @@ class GetRunningJobsResponseBodyDataRunningJobInfoList(DaraModel):
         running_at_time: int = None,
         submitted_at_time: int = None,
     ):
+        # The compute unit (CU) snapshot proportion of the job.
         self.cu_snapshot = cu_snapshot
+        # The instance ID.
         self.instance_id = instance_id
+        # The account that submits the job.
         self.job_owner = job_owner
+        # The memory snapshot proportion of the job.
         self.memory_snapshot = memory_snapshot
+        # The progress of the job.
         self.progress = progress
+        # The name of the MaxCompute project.
         self.project = project
+        # The nickname of the quota that is used by the job.
         self.quota_nickname = quota_nickname
+        # The time when the job starts to run.
         self.running_at_time = running_at_time
+        # The time when the job is submitted.
         self.submitted_at_time = submitted_at_time
 
     def validate(self):

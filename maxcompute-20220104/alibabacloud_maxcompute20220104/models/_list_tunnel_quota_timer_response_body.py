@@ -16,10 +16,21 @@ class ListTunnelQuotaTimerResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,9 +93,13 @@ class ListTunnelQuotaTimerResponseBodyData(DaraModel):
         timezone: str = None,
         tunnel_quota_parameter: main_models.ListTunnelQuotaTimerResponseBodyDataTunnelQuotaParameter = None,
     ):
+        # The start time of the time-specific configuration.
         self.begin_time = begin_time
+        # The end time of the time-specific configuration.
         self.end_time = end_time
+        # The time zone property for the time-specific configuration.
         self.timezone = timezone
+        # The parameters for the time-specific configuration.
         self.tunnel_quota_parameter = tunnel_quota_parameter
 
     def validate(self):
@@ -133,7 +148,9 @@ class ListTunnelQuotaTimerResponseBodyDataTunnelQuotaParameter(DaraModel):
         elastic_reserved_slot_num: int = None,
         slot_num: int = None,
     ):
+        # The number of elastically reserved slots.
         self.elastic_reserved_slot_num = elastic_reserved_slot_num
+        # The number of reserved slots.
         self.slot_num = slot_num
 
     def validate(self):

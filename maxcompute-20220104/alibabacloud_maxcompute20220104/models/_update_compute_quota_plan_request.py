@@ -13,8 +13,11 @@ class UpdateComputeQuotaPlanRequest(DaraModel):
         name: str = None,
         quota: main_models.UpdateComputeQuotaPlanRequestQuota = None,
     ):
+        # The name of quota plan.
+        # 
         # This parameter is required.
         self.name = name
+        # The parameters of quota plan.
         self.quota = quota
 
     def validate(self):
@@ -51,7 +54,9 @@ class UpdateComputeQuotaPlanRequestQuota(DaraModel):
         parameter: main_models.UpdateComputeQuotaPlanRequestQuotaParameter = None,
         sub_quota_info_list: List[main_models.UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList] = None,
     ):
+        # The parameters of level-1 quota.
         self.parameter = parameter
+        # The list of level-2 quotas.
         self.sub_quota_info_list = sub_quota_info_list
 
     def validate(self):
@@ -97,8 +102,11 @@ class UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList(DaraModel):
         nick_name: str = None,
         parameter: main_models.UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter = None,
     ):
+        # The nickname of the level-2 quota.
+        # 
         # This parameter is required.
         self.nick_name = nick_name
+        # The parameters of the level-2 quota.
         self.parameter = parameter
 
     def validate(self):
@@ -136,10 +144,21 @@ class UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter(DaraModel):
         max_cu: int = None,
         min_cu: int = None,
     ):
+        # The value of elastic Reserved CUs.
+        # > The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota.
+        # 
         # This parameter is required.
         self.elastic_reserved_cu = elastic_reserved_cu
+        # The value of maxCU in Reserved CUs.
+        # > The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+        # 
         # This parameter is required.
         self.max_cu = max_cu
+        # The value of minCU in Reserved CUs.
+        # > 
+        # >- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
+        # >- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+        # 
         # This parameter is required.
         self.min_cu = min_cu
 
@@ -180,6 +199,9 @@ class UpdateComputeQuotaPlanRequestQuotaParameter(DaraModel):
         self,
         elastic_reserved_cu: int = None,
     ):
+        # The value of elastic Reserved CUs in the level-1 quota.
+        # > The default value is 0. The maximum value of this parameter must be equal to the number of subscription-based reserved CUs and cannot exceed 10,000 CUs.
+        # 
         # This parameter is required.
         self.elastic_reserved_cu = elastic_reserved_cu
 

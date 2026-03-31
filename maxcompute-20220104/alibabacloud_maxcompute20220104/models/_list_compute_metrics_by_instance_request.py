@@ -21,16 +21,27 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
         start_date: int = None,
         types: List[str] = None,
     ):
+        # The end time for the period.
         self.end_date = end_date
+        # The job(instance) ID.
         self.instance_id = instance_id
+        # The Alibaba Cloud account that is used to run the MaxCompute job.
         self.job_owner = job_owner
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The name of MaxCompute project.
         self.project_names = project_names
+        # The region ID.
         self.region = region
+        # The signature of the SQL job.
         self.signature = signature
+        # Specification types.
         self.spec_codes = spec_codes
+        # The start time for the period.
         self.start_date = start_date
+        # Metering types.
         self.types = types
 
     def validate(self):

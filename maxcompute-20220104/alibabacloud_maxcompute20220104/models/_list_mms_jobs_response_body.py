@@ -13,9 +13,7 @@ class ListMmsJobsResponseBody(DaraModel):
         data: main_models.ListMmsJobsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the returned data.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +52,9 @@ class ListMmsJobsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of migration jobs.
         self.object_list = object_list
-        # The page number.
         self.page_num = page_num
-        # The number of entries returned on each page.
         self.page_size = page_size
-        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -130,39 +124,22 @@ class ListMmsJobsResponseBodyDataObjectList(DaraModel):
         task_num: int = None,
         type: str = None,
     ):
-        # The configuration of the migration job.
         self.config = config
-        # Indicates whether the migration job is stopped.
         self.create_time = create_time
-        # The source database ID.
         self.db_id = db_id
-        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
-        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
-        # The estimated completion time of the migration. A smaller eta value increases the priority of the migration job.
         self.eta = eta
-        # The migration job ID.
         self.id = id
-        # The name of the migration job.
         self.name = name
-        # The data source ID.
         self.source_id = source_id
-        # The name of the data source.
         self.source_name = source_name
-        # The name of the source database.
         self.src_db_name = src_db_name
-        # The source schema name. This is the schema in a Layer 3 namespace.
         self.src_schema_name = src_schema_name
-        # The status of the migration job.
         self.status = status
-        # Indicates whether the migration job is stopped.
         self.stopped = stopped
-        # The number of completed migration tasks.
         self.task_done = task_done
-        # The number of migration tasks in the job.
         self.task_num = task_num
-        # The migration scope. Valid values: Database, Tables, and Partitions.
         self.type = type
 
     def validate(self):
@@ -300,31 +277,18 @@ class ListMmsJobsResponseBodyDataObjectListConfig(DaraModel):
         task_type: str = None,
         tunnel_quota: str = None,
     ):
-        # The mapping from source column names to destination column names.
         self.column_mapping = column_mapping
-        # Enable verification. The current method runs SELECT COUNT on both the source and destination and compares the row counts.
         self.enable_verification = enable_verification
-        # Enable incremental migration. Only new or modified partitions are migrated. Modified partitions are re-migrated.
         self.increment = increment
-        # Other configuration settings.
         self.others = others
-        # The partition filter expression. Specify the partition filter expression for each table.
         self.partition_filters = partition_filters
-        # When type is set to Partitions, specify the partition IDs of the tables to migrate.
         self.partitions = partitions
-        # Deprecated.
         self.schema_only = schema_only
-        # When type is set to Database, specify the tables to exclude from migration.
         self.table_black_list = table_black_list
-        # The mapping from source table names to destination table names.
         self.table_mapping = table_mapping
-        # When type is set to Database, specify the tables to migrate. If you do not specify tableWhiteList, all tables in the specified database are migrated.
         self.table_white_list = table_white_list
-        # When type is set to Tables, specify the names of the tables to migrate.
         self.tables = tables
-        # Deprecated. Valid values: MOCK, HIVE (hive udtf task), HIVE_DATAX (hive datax task), COPY_TASK (ODPS Copy Task), ODPS_INSERT_OVERWRITE (ODPS simple insert overwrite task), MC2MC_VERIFY, OSS, HIVE_OSS, HIVE_SPARK, and BIGQUERY.
         self.task_type = task_type
-        # Deprecated.
         self.tunnel_quota = tunnel_quota
 
     def validate(self):

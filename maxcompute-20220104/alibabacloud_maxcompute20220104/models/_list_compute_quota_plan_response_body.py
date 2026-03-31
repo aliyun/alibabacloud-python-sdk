@@ -16,13 +16,19 @@ class ListComputeQuotaPlanResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data returned.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The HTTP status code returned.
+        # The HTTP status code.
+        # 
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -78,7 +84,7 @@ class ListComputeQuotaPlanResponseBodyData(DaraModel):
         self,
         plan_list: List[main_models.ListComputeQuotaPlanResponseBodyDataPlanList] = None,
     ):
-        # The list of quota plans.
+        # The list of quota plan.
         self.plan_list = plan_list
 
     def validate(self):
@@ -116,11 +122,11 @@ class ListComputeQuotaPlanResponseBodyDataPlanList(DaraModel):
         name: str = None,
         quota: main_models.ListComputeQuotaPlanResponseBodyDataPlanListQuota = None,
     ):
-        # The time when the plan was created.
+        # The time when the quota plan was created.
         self.create_time = create_time
         # The name of the quota plan.
         self.name = name
-        # The quota properties.
+        # The details of the quota.
         self.quota = quota
 
     def validate(self):
@@ -174,11 +180,11 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuota(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID.
         self.cluster = cluster
-        # The time when the quota was created.
+        # The time when the level-1 quota was created.
         self.create_time = create_time
-        # The creator of the resource. This is the UID of an Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
         # The ID of the level-1 quota.
         self.id = id
@@ -186,19 +192,19 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuota(DaraModel):
         self.name = name
         # The nickname of the level-1 quota.
         self.nick_name = nick_name
-        # The quota configuration parameters.
+        # The description of the level-1 quota.
         self.parameter = parameter
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The resource status.
+        # Resource status.
         self.status = status
-        # The list of level-2 quotas.
+        # The list of subquotas.
         self.sub_quota_info_list = sub_quota_info_list
-        # The tenant ID.
+        # Tenant ID.
         self.tenant_id = tenant_id
-        # This corresponds to the resourceSystemType field of the control cluster.
+        # The type of quota.
         self.type = type
-        # The version.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -320,11 +326,11 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(DaraMode
         type: str = None,
         version: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID.
         self.cluster = cluster
-        # The time when the quota was created.
+        # The creation time.
         self.create_time = create_time
-        # The creator of the resource. This is the UID of an Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
         # The ID of the level-2 quota.
         self.id = id
@@ -332,15 +338,15 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(DaraMode
         self.name = name
         # The nickname of the level-2 quota.
         self.nick_name = nick_name
-        # The quota configuration parameters.
+        # The description of the level-2 quota.
         self.parameter = parameter
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The resource status.
+        # Resource status.
         self.status = status
-        # The tenant ID.
+        # Tenant ID.
         self.tenant_id = tenant_id
-        # The quota type.
+        # The type of quota.
         self.type = type
         # The version number.
         self.version = version

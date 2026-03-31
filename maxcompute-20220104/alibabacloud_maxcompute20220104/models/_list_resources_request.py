@@ -12,9 +12,13 @@ class ListResourcesRequest(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # Specifies the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries to return on each page.
         self.max_item = max_item
+        # The name of the resource.
         self.name = name
+        # The name of the schema.
         self.schema_name = schema_name
 
     def validate(self):

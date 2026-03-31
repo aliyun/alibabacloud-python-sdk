@@ -9,6 +9,7 @@ class GetPackageRequest(DaraModel):
         self,
         source_project: str = None,
     ):
+        # The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
         self.source_project = source_project
 
     def validate(self):

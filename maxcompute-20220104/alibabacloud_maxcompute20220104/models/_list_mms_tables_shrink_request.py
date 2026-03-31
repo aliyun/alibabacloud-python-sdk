@@ -25,33 +25,19 @@ class ListMmsTablesShrinkRequest(DaraModel):
         type: str = None,
     ):
         self.sorter = sorter
-        # The ID of the database.
         self.db_id = db_id
-        # The name of the database.
         self.db_name = db_name
-        # The name of the destination MaxCompute table.
         self.dst_name = dst_name
-        # The name of the destination MaxCompute project.
         self.dst_project_name = dst_project_name
-        # The name of the destination MaxCompute schema. This parameter is null if the destination MaxCompute project does not have a schema layer.
         self.dst_schema_name = dst_schema_name
-        # The partitioned table.
         self.has_partitions = has_partitions
-        # The end of the time range for lastDdlTime.
         self.last_ddl_time_end = last_ddl_time_end
-        # The start of the time range for lastDdlTime.
         self.last_ddl_time_start = last_ddl_time_start
-        # The name of the table.
         self.name = name
-        # Specifies whether to return only the names of the tables.
         self.only_name = only_name
-        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
         self.page_size = page_size
-        # The migration status.
         self.status_shrink = status_shrink
-        # The table type.
         self.type = type
 
     def validate(self):
@@ -167,11 +153,8 @@ class ListMmsTablesShrinkRequestSorter(DaraModel):
         num_rows: str = None,
         size: str = None,
     ):
-        # The sort order for lastDdlTime.
         self.last_ddl_time = last_ddl_time
-        # The sort order for the number of rows.
         self.num_rows = num_rows
-        # The sort order for the data size.
         self.size = size
 
     def validate(self):

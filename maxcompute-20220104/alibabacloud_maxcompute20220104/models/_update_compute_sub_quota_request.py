@@ -12,6 +12,7 @@ class UpdateComputeSubQuotaRequest(DaraModel):
         self,
         sub_quota_info_list: List[main_models.UpdateComputeSubQuotaRequestSubQuotaInfoList] = None,
     ):
+        # The list of level-2 quotas.
         self.sub_quota_info_list = sub_quota_info_list
 
     def validate(self):
@@ -49,9 +50,16 @@ class UpdateComputeSubQuotaRequestSubQuotaInfoList(DaraModel):
         parameter: main_models.UpdateComputeSubQuotaRequestSubQuotaInfoListParameter = None,
         type: str = None,
     ):
+        # The nickname of the level-2 quota.
+        # 
         # This parameter is required.
         self.nick_name = nick_name
+        # The parameters of the level-2 quota.
         self.parameter = parameter
+        # The type of quota.
+        # 
+        # > 
+        # > - FUXI_OFFLINE(default) : Quotas of this type are used to run batch jobs.
         self.type = type
 
     def validate(self):
@@ -98,13 +106,25 @@ class UpdateComputeSubQuotaRequestSubQuotaInfoListParameter(DaraModel):
         scheduler_type: str = None,
         single_job_culimit: int = None,
     ):
+        # Specifies whether to enable the priority feature.
         self.enable_priority = enable_priority
+        # Specifies whether the quota is strongly exclusive.
         self.force_reserved_min = force_reserved_min
+        # The value of minCU in Reserved CUs.
+        # > The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+        # 
         # This parameter is required.
         self.max_cu = max_cu
+        # The value of maxCU in Reserved CUs.
+        # > 
+        # >- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
+        # >- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+        # 
         # This parameter is required.
         self.min_cu = min_cu
+        # Scheduling policy of the quota.
         self.scheduler_type = scheduler_type
+        # The upper limit for CUs that can be concurrently used by a job scheduled to the quota.
         self.single_job_culimit = single_job_culimit
 
     def validate(self):

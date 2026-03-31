@@ -11,9 +11,7 @@ class CreateQuotaResponseBody(DaraModel):
         data: main_models.CreateQuotaResponseBodyData = None,
         request_id: str = None,
     ):
-        # Response parameters.
         self.data = data
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +47,6 @@ class CreateQuotaResponseBodyData(DaraModel):
         self,
         nick_name: str = None,
     ):
-        # Quota alias.
         self.nick_name = nick_name
 
     def validate(self):

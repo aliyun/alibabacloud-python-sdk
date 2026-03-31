@@ -11,9 +11,7 @@ class GetMmsPartitionResponseBody(DaraModel):
         data: main_models.GetMmsPartitionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The partition object.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,39 +63,23 @@ class GetMmsPartitionResponseBodyData(DaraModel):
         updated: bool = None,
         value: str = None,
     ):
-        # The ID of the database that contains the partition. The name for this metadata layer depends on the data source. For example, it is a Dataset in BigQuery, a Database in Hive, or a Schema in Databricks and MaxCompute.
         self.db_id = db_id
-        # The name of the database. The name for this metadata layer depends on the data source. For example, it is a Dataset in BigQuery, a Database in Hive, or a Schema in Databricks and MaxCompute.
         self.db_name = db_name
-        # The name of the destination MaxCompute project.
         self.dst_project_name = dst_project_name
-        # The name of the destination MaxCompute schema. This parameter is null if the destination MaxCompute project does not use a schema layer.
         self.dst_schema_name = dst_schema_name
-        # The name of the destination MaxCompute table.
         self.dst_table_name = dst_table_name
-        # The value of the destination MaxCompute partition. By default, this value is the same as the source partition value.
         self.dst_value = dst_value
-        # The partition ID.
         self.id = id
-        # The time of the last DDL operation.
+        # lastDdlTime
         self.last_ddl_time = last_ddl_time
-        # The number of rows.
         self.num_rows = num_rows
-        # The data size in bytes.
         self.size = size
-        # The data source ID.
         self.source_id = source_id
-        # The data source name.
         self.source_name = source_name
-        # The migration status.
         self.status = status
-        # The table ID.
         self.table_id = table_id
-        # The table name.
         self.table_name = table_name
-        # Indicates whether the metadata is updated.
         self.updated = updated
-        # The partition value.
         self.value = value
 
     def validate(self):

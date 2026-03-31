@@ -11,9 +11,7 @@ class GetMmsDbResponseBody(DaraModel):
         data: main_models.GetMmsDbResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,53 +70,30 @@ class GetMmsDbResponseBodyData(DaraModel):
         tables_part_done: int = None,
         updated: bool = None,
     ):
-        # The database description.
         self.description = description
-        # The MaxCompute schema corresponding to the source database. If the destination MaxCompute project does not enable the schema layer, this value is null. By default, this value matches the source database name.
         self.dst_name = dst_name
-        # The name of the destination MaxCompute project.
         self.dst_project_name = dst_project_name
-        # Other information stored in JSON format.
         self.extra = extra
-        # The database ID.
         self.id = id
-        # The last DDL time.
+        # last ddl time
         self.last_ddl_time = last_ddl_time
-        # The storage location of the database.
         self.location = location
-        # The database name.
         self.name = name
-        # The number of rows in the database.
         self.num_rows = num_rows
-        # The database owner.
         self.owner = owner
-        # The number of partitions.
         self.partitions = partitions
-        # The partitions that are being migrated.
         self.partitions_doing = partitions_doing
-        # The number of partitions whose migration is complete.
         self.partitions_done = partitions_done
-        # The partitions that failed during migration.
         self.partitions_failed = partitions_failed
-        # The size of the database in bytes.
         self.size = size
-        # The ID of the data source.
         self.source_id = source_id
-        # The name of the data source.
         self.source_name = source_name
-        # The migration status. Valid values: INIT, DOING, FAILED, DONE, and PART_DONE.
         self.status = status
-        # The number of tables.
         self.tables = tables
-        # The tables that are being migrated.
         self.tables_doing = tables_doing
-        # Tables for which migration has completed
         self.tables_done = tables_done
-        # The tables that failed to migrate.
         self.tables_failed = tables_failed
-        # The tables whose migration is partially complete.
         self.tables_part_done = tables_part_done
-        # Indicates whether the metadata is updated.
         self.updated = updated
 
     def validate(self):

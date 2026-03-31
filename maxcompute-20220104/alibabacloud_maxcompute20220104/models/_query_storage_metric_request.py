@@ -14,26 +14,10 @@ class QueryStorageMetricRequest(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The names of the projects.
         self.project_list = project_list
-        # The storage class. Valid values include the following:
-        # 
-        # - totalStorage
-        # 
-        # - longTermStorage
-        # 
-        # - lowFreqStorage
-        # 
-        # - standardStorage
-        # 
-        # - recycleBinStorage
         self.type_list = type_list
-        # The end of the time range to query.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # The start of the time range to query.
-        # 
         # This parameter is required.
         self.start_time = start_time
 

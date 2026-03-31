@@ -11,8 +11,11 @@ class GetQuotaScheduleRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The time zone.
         self.display_timezone = display_timezone
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListRolesResponseBody(DaraModel):
         data: main_models.ListRolesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListRolesResponseBodyData(DaraModel):
         self,
         roles: List[main_models.ListRolesResponseBodyDataRoles] = None,
     ):
+        # The MaxCompute project-level roles.
         self.roles = roles
 
     def validate(self):
@@ -87,9 +90,13 @@ class ListRolesResponseBodyDataRoles(DaraModel):
         policy: str = None,
         type: str = None,
     ):
+        # The ACL-based permissions that are granted to the role.
         self.acl = acl
+        # The name of the role.
         self.name = name
+        # The policy that is attached to the role.
         self.policy = policy
+        # The type of the role.
         self.type = type
 
     def validate(self):
@@ -142,11 +149,17 @@ class ListRolesResponseBodyDataRolesAcl(DaraModel):
         resource: List[main_models.ListRolesResponseBodyDataRolesAclResource] = None,
         table: List[main_models.ListRolesResponseBodyDataRolesAclTable] = None,
     ):
+        # The function.
         self.function = function
+        # The instance.
         self.instance = instance
+        # The package.
         self.package = package
+        # The project.
         self.project = project
+        # The resource.
         self.resource = resource
+        # The table.
         self.table = table
 
     def validate(self):
@@ -258,7 +271,9 @@ class ListRolesResponseBodyDataRolesAclTable(DaraModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the table.
         self.actions = actions
+        # The name of the table.
         self.name = name
 
     def validate(self):
@@ -293,7 +308,9 @@ class ListRolesResponseBodyDataRolesAclResource(DaraModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the resource.
         self.actions = actions
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -328,7 +345,9 @@ class ListRolesResponseBodyDataRolesAclProject(DaraModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the project.
         self.actions = actions
+        # The name of the MaxCompute project.
         self.name = name
 
     def validate(self):
@@ -363,7 +382,9 @@ class ListRolesResponseBodyDataRolesAclPackage(DaraModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the package.
         self.actions = actions
+        # The name of the package.
         self.name = name
 
     def validate(self):
@@ -398,7 +419,9 @@ class ListRolesResponseBodyDataRolesAclInstance(DaraModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the instance.
         self.actions = actions
+        # The name of the instance.
         self.name = name
 
     def validate(self):
@@ -433,7 +456,9 @@ class ListRolesResponseBodyDataRolesAclFunction(DaraModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the function.
         self.actions = actions
+        # The name of the function.
         self.name = name
 
     def validate(self):

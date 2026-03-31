@@ -13,7 +13,9 @@ class ListTablesResponseBody(DaraModel):
         data: main_models.ListTablesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,8 +53,11 @@ class ListTablesResponseBodyData(DaraModel):
         max_item: int = None,
         tables: List[main_models.ListTablesResponseBodyDataTables] = None,
     ):
+        # Indicates the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries returned per page.
         self.max_item = max_item
+        # The information about tables.
         self.tables = tables
 
     def validate(self):
@@ -105,11 +110,17 @@ class ListTablesResponseBodyDataTables(DaraModel):
         schema: str = None,
         type: str = None,
     ):
+        # The time when the table was created.
         self.creation_time = creation_time
+        # The display name of the table.
         self.display_name = display_name
+        # The name of the table.
         self.name = name
+        # The owner of the table.
         self.owner = owner
+        # The schema to which the table belongs.
         self.schema = schema
+        # The type of the table.
         self.type = type
 
     def validate(self):

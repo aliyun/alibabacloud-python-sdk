@@ -10,9 +10,9 @@ class DeleteProjectResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

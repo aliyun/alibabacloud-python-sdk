@@ -16,10 +16,15 @@ class GetPackageResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -74,7 +79,9 @@ class GetPackageResponseBodyData(DaraModel):
         allowed_project_list: List[main_models.GetPackageResponseBodyDataAllowedProjectList] = None,
         resource_list: main_models.GetPackageResponseBodyDataResourceList = None,
     ):
+        # The projects in which the package is installed.
         self.allowed_project_list = allowed_project_list
+        # The details of the resources that are included in the package.
         self.resource_list = resource_list
 
     def validate(self):
@@ -121,8 +128,11 @@ class GetPackageResponseBodyDataResourceList(DaraModel):
         resource: List[main_models.GetPackageResponseBodyDataResourceListResource] = None,
         table: List[main_models.GetPackageResponseBodyDataResourceListTable] = None,
     ):
+        # The functions.
         self.function = function
+        # The resources.
         self.resource = resource
+        # The tables.
         self.table = table
 
     def validate(self):
@@ -190,8 +200,11 @@ class GetPackageResponseBodyDataResourceListTable(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the table.
         self.actions = actions
+        # The name of the table.
         self.name = name
+        # The name of schema.
         self.schema_name = schema_name
 
     def validate(self):
@@ -233,8 +246,11 @@ class GetPackageResponseBodyDataResourceListResource(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the resource.
         self.actions = actions
+        # The name of the resource.
         self.name = name
+        # The name of schema.
         self.schema_name = schema_name
 
     def validate(self):
@@ -276,8 +292,11 @@ class GetPackageResponseBodyDataResourceListFunction(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the function.
         self.actions = actions
+        # The name of the function.
         self.name = name
+        # The name of schema.
         self.schema_name = schema_name
 
     def validate(self):
@@ -318,7 +337,9 @@ class GetPackageResponseBodyDataAllowedProjectList(DaraModel):
         label: str = None,
         project: str = None,
     ):
+        # The security level for sensitive data.
         self.label = label
+        # The name of the MaxCompute project.
         self.project = project
 
     def validate(self):

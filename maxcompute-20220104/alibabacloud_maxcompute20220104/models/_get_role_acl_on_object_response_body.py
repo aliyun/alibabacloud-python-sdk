@@ -13,7 +13,9 @@ class GetRoleAclOnObjectResponseBody(DaraModel):
         data: main_models.GetRoleAclOnObjectResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class GetRoleAclOnObjectResponseBodyData(DaraModel):
         self,
         actions: List[str] = None,
     ):
+        # The operations that were performed on the object.
         self.actions = actions
 
     def validate(self):

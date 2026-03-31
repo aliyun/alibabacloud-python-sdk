@@ -20,41 +20,17 @@ class QueryTunnelMetricRequest(DaraModel):
         start_time: int = None,
         strategy: str = None,
     ):
-        # A list of HTTP status codes for requests.
         self.code_list = code_list
-        # A list of grouping criteria.
         self.group_list = group_list
-        # A list of operation types.
         self.operation_list = operation_list
-        # The name of the project.
         self.project = project
-        # The nickname of the level-2 Tunnel quota.
-        # 
-        # The nickname of a shared quota is `default`.
-        # 
-        # The format of a dedicated quota nickname is `quotaNickname#subQuotaNickname`.
         self.quota_nickname = quota_nickname
-        # A list of table names.
-        # 
-        # The tables belong to a project. Therefore, if `tableList` is not empty, `project` cannot be empty.
         self.table_list = table_list
-        # The maximum number of data entries to return.
-        # 
-        # This parameter takes effect when the grouping criterion includes `table` or `ip`.
-        # 
-        # The default value is 10. The maximum value is 100.
         self.top_n = top_n
-        # The end of the time range for the query.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # The start of the time range for the query.
-        # 
         # This parameter is required.
         self.start_time = start_time
-        # The data aggregation policy. The default value is `max`.
-        # 
-        # Data is collected at a frequency of 1 minute. If you query data over a long time range, the automatic step size for data display may exceed 1 minute. In this case, metrics are aggregated. This parameter specifies the aggregation logic.
         self.strategy = strategy
 
     def validate(self):

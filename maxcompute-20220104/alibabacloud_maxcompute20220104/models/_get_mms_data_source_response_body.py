@@ -13,9 +13,7 @@ class GetMmsDataSourceResponseBody(DaraModel):
         data: main_models.GetMmsDataSourceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,53 +72,29 @@ class GetMmsDataSourceResponseBodyData(DaraModel):
         tables_part_done_num: int = None,
         type: str = None,
     ):
-        # Indicates whether the data source instance or its associated agent is started.
         self.agent_is_online = agent_is_online
-        # The configurations of the data source.
         self.config = config
-        # The time when the data source was created.
         self.create_time = create_time
-        # The number of databases in the data source.
         self.db_num = db_num
-        # The default MaxCompute destination project name.
         self.dst_project = dst_project
-        # The list of destination MaxCompute projects.
         self.dst_projects = dst_projects
-        # The reason why the data source instance failed to be started or shut down. This parameter is returned only when the status is START_FAILED or STOP_FAILED.
         self.err_msg = err_msg
-        # The ID of the data source.
         self.id = id
-        # The last time when the metadata was synchronized.
         self.last_update_time = last_update_time
-        # The name of the data source.
         self.name = name
-        # The ID of the MaxCompute network connectivity, which is the region ID.
         self.networklink = networklink
-        # The number of partitions in the data source.
         self.partition_num = partition_num
-        # The number of partitions being migrated.
         self.partitions_doing_num = partitions_doing_num
-        # The number of partitions that are migrated.
         self.partitions_done_num = partitions_done_num
-        # The number of partitions that failed to be migrated.
         self.partitions_failed_num = partitions_failed_num
-        # The region ID.
         self.region = region
-        # The ID of the metadata synchronization task.
         self.scan_id = scan_id
-        # The status of the data source.
         self.status = status
-        # The number of tables in the data source.
         self.table_num = table_num
-        # The number of tables being migrated.
         self.tables_doing_num = tables_doing_num
-        # The number of tables that are migrated.
         self.tables_done_num = tables_done_num
-        # The number of tables that failed to be migrated.
         self.tables_failed_num = tables_failed_num
-        # The number of tables that are partially migrated.
         self.tables_part_done_num = tables_part_done_num
-        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -304,27 +278,16 @@ class GetMmsDataSourceResponseBodyDataConfig(DaraModel):
         type: str = None,
         value: Any = None,
     ):
-        # The description of the configuration.
         self.desc = desc
-        # The enumeration values of the configuration.
         self.enums = enums
-        # The configuration group.
         self.group = group
-        # The English identifier of the configuration.
         self.key = key
-        # The name of the configuration.
         self.name = name
-        # The example value of the configuration.
         self.place_holder = place_holder
-        # Specifies whether the configuration is required.
         self.required = required
-        # Child configuration items. Some configuration items depend on the values of other configuration items. These dependent configurations are considered child items of the configurations they depend on.
         self.sub_items = sub_items
-        # If the type is file, this parameter specifies the file type, such as .keytab.
         self.sub_type = sub_type
-        # The type of the configuration. Valid values: boolean, int, map, string, password, and file.
         self.type = type
-        # The value of the configuration.
         self.value = value
 
     def validate(self):

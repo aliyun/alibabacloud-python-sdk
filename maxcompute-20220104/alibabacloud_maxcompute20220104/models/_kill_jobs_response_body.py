@@ -11,8 +11,11 @@ class KillJobsResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

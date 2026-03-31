@@ -16,10 +16,15 @@ class GetRoleAclResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -78,11 +83,17 @@ class GetRoleAclResponseBodyData(DaraModel):
         resource: List[main_models.GetRoleAclResponseBodyDataResource] = None,
         table: List[main_models.GetRoleAclResponseBodyDataTable] = None,
     ):
+        # The function.
         self.function = function
+        # The instance.
         self.instance = instance
+        # The package.
         self.package = package
+        # The project.
         self.project = project
+        # The resource.
         self.resource = resource
+        # The table.
         self.table = table
 
     def validate(self):
@@ -195,8 +206,11 @@ class GetRoleAclResponseBodyDataTable(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the table.
         self.actions = actions
+        # The name of the table.
         self.name = name
+        # The Schema name.
         self.schema_name = schema_name
 
     def validate(self):
@@ -238,8 +252,11 @@ class GetRoleAclResponseBodyDataResource(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the resource.
         self.actions = actions
+        # The name of the resource.
         self.name = name
+        # The Schema name.
         self.schema_name = schema_name
 
     def validate(self):
@@ -281,8 +298,11 @@ class GetRoleAclResponseBodyDataProject(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the project.
         self.actions = actions
+        # The name of the MaxCompute project.
         self.name = name
+        # The Schema name.
         self.schema_name = schema_name
 
     def validate(self):
@@ -324,8 +344,11 @@ class GetRoleAclResponseBodyDataPackage(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the package.
         self.actions = actions
+        # The name of the package.
         self.name = name
+        # The Schema name.
         self.schema_name = schema_name
 
     def validate(self):
@@ -367,8 +390,11 @@ class GetRoleAclResponseBodyDataInstance(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the instance.
         self.actions = actions
+        # The name of the instance.
         self.name = name
+        # The Schema name.
         self.schema_name = schema_name
 
     def validate(self):
@@ -410,8 +436,11 @@ class GetRoleAclResponseBodyDataFunction(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
+        # The operations that were performed on the function.
         self.actions = actions
+        # The name of the function.
         self.name = name
+        # The Schema name.
         self.schema_name = schema_name
 
     def validate(self):

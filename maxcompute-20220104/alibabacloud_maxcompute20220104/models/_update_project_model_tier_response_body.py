@@ -13,17 +13,10 @@ class UpdateProjectModelTierResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data returned.
         self.data = data
-        # - If the request fails, an error code is returned.
-        # 
-        # - If the request is successful, this parameter is empty.
         self.error_code = error_code
-        # The error message.
         self.error_msg = error_msg
-        # Indicates whether the operation was successful. A value other than 200 indicates that the operation failed.
         self.http_code = http_code
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

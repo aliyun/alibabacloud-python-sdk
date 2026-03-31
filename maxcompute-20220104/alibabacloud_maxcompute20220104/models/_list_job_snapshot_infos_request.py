@@ -29,69 +29,38 @@ class ListJobSnapshotInfosRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to sort the results in ascending order.
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
-        # The upstream node ID.
+        # The ID of the upstream node.
         self.ext_node_id_list = ext_node_id_list
-        # The start UNIX timestamp.
-        # 
-        # > This parameter is invalid. The end timestamp is the point in time for the snapshot that you want to view.
+        # Start timestamp.
+        # > This parameter is invalid. The end timestamp should be the time point for the snapshot you want to view.
         self.from_ = from_
-        # The job instance ID.
+        # The instance ID.
         self.instance_id_list = instance_id_list
-        # The job owner.
+        # The account that commits the job.
         self.job_owner_list = job_owner_list
-        # The job priority.
+        # The priority of the job.
         self.priority_list = priority_list
-        # The project name.
+        # The name of project.
         self.project_list = project_list
-        # The nickname of the computing quota that the job uses.
+        # The nickname of the compute Quota used by the job.
         self.quota_nickname = quota_nickname
         # The signature of the SQL job.
         self.signature_list = signature_list
-        # The fields for multi-column sorting.
+        # The sorting columns.
         self.sort_by_list = sort_by_list
-        # The sort orders for multi-column sorting.
+        # The orders for the sorting columns.
         self.sort_order_list = sort_order_list
-        # The job status.
+        # The status of jobs.
         self.status_list = status_list
-        # The end UNIX timestamp.
+        # End timestamp.
         # 
         # This parameter is required.
         self.to = to
-        # The job type.
+        # The type of the job.
         self.type_list = type_list
-        # The column to sort by. Valid values:
-        # 
-        # - submittedAtTime
-        # 
-        # - waitingTime
-        # 
-        # - runningAtTime
-        # 
-        # - runningTime
-        # 
-        # - snapshotTime
-        # 
-        # - totalTime
-        # 
-        # - cpuUsage
-        # 
-        # - memoryUsage
-        # 
-        # - minCpuPct
-        # 
-        # - minMemoryPct
-        # 
-        # - priority
-        # 
-        # - cpuRequest
-        # 
-        # - memoryRequest
-        # 
-        # - cpuUsageToRequestRatio
-        # 
-        # - memoryUsageToRequestRatio
+        # The sorting column.
         self.order_column = order_column
         # The page number.
         self.page_number = page_number
@@ -99,7 +68,7 @@ class ListJobSnapshotInfosRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region = region
-        # The tenant ID. To view the tenant ID, log on to the MaxCompute console. In the navigation pane on the left, choose Tenant Management > Tenant Properties.
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose Tenants > Tenant Property from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

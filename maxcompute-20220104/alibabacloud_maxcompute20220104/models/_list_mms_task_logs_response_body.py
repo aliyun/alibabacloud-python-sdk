@@ -13,9 +13,7 @@ class ListMmsTaskLogsResponseBody(DaraModel):
         data: List[main_models.ListMmsTaskLogsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # A list of logs.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,19 +61,12 @@ class ListMmsTaskLogsResponseBodyData(DaraModel):
         status: str = None,
         task_id: int = None,
     ):
-        # The operation performed by the migration task.
         self.action = action
-        # The time when the log was created.
         self.create_time = create_time
-        # The log ID.
         self.id = id
-        # The result of the migration task operation.
         self.msg = msg
-        # The data source ID.
         self.source_id = source_id
-        # The migration task status.
         self.status = status
-        # The migration task ID.
         self.task_id = task_id
 
     def validate(self):

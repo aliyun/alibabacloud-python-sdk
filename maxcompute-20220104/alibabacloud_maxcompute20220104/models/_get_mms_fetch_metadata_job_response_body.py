@@ -11,9 +11,7 @@ class GetMmsFetchMetadataJobResponseBody(DaraModel):
         data: main_models.GetMmsFetchMetadataJobResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,21 +54,13 @@ class GetMmsFetchMetadataJobResponseBodyData(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The time when metadata synchronization ended.
         self.end_time = end_time
-        # The error message.
         self.error_msg = error_msg
-        # The ID of the asynchronous task.
         self.id = id
-        # The progress of metadata synchronization. Valid values: 1 to 10000.
         self.progress = progress
-        # The result of metadata synchronization.
         self.result = result
-        # The data source ID.
         self.source_id = source_id
-        # The time when metadata synchronization started.
         self.start_time = start_time
-        # The status of the asynchronous task for metadata synchronization.
         self.status = status
 
     def validate(self):

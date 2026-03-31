@@ -11,11 +11,8 @@ class GetStorageSizeSummaryRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # The date of statistics. The value is at the day level. The format is YYYYMMdd.
         self.date = date
-        # The region ID.
         self.region = region
-        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

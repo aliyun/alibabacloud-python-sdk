@@ -16,10 +16,15 @@ class GetJobResourceUsageResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_msg = error_msg
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class GetJobResourceUsageResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The data list returned.
         self.job_resource_usage_list = job_resource_usage_list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -136,10 +145,15 @@ class GetJobResourceUsageResponseBodyDataJobResourceUsageList(DaraModel):
         memory_usage: int = None,
         quota_nickname: str = None,
     ):
+        # The total number of used compute units (CUs).
         self.cu_usage = cu_usage
+        # The start date of the query in the format of yyyy-MM-dd.
         self.date = date
+        # The job executor.
         self.job_owner = job_owner
+        # The total memory usage.
         self.memory_usage = memory_usage
+        # The quota nickname.
         self.quota_nickname = quota_nickname
 
     def validate(self):

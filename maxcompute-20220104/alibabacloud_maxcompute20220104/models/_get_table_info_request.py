@@ -10,7 +10,14 @@ class GetTableInfoRequest(DaraModel):
         schema_name: str = None,
         type: str = None,
     ):
+        # The name of the schema to which the table or view belongs.
         self.schema_name = schema_name
+        # The type of the table or view that you want to view. Valid values:
+        # 
+        # *   **internal**: internal table
+        # *   **external**: external table
+        # *   **view**: view
+        # *   **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
         self.type = type
 
     def validate(self):

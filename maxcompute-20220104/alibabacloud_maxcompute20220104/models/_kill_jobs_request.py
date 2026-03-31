@@ -11,8 +11,11 @@ class KillJobsRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The request body parameters.
         self.body = body
+        # The ID of the region in which the instance resides.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

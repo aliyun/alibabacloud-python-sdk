@@ -9,6 +9,7 @@ class CreateRoleRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The request body parameters. For valid values, see [MaxCompute permissions](https://help.aliyun.com/document_detail/27935.html).
         self.body = body
 
     def validate(self):

@@ -16,25 +16,10 @@ class GetStorageSummaryComparedResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data returned.
         self.data = data
-        # The error code.
         self.error_code = error_code
-        # The error message.
         self.error_msg = error_msg
-        # The HTTP status code.
-        # 
-        # - 1xx: informational response. The request is received and is being processed.
-        # 
-        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
-        # 
-        # - 3xx: redirection. The request is redirected. You must take further action to complete the request.
-        # 
-        # - 4xx: client error. The request contains invalid parameters or syntax, or fails to meet specific conditions.
-        # 
-        # - 5xx: server error. The server cannot fulfill the request for other reasons.
         self.http_code = http_code
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -92,39 +77,10 @@ class GetStorageSummaryComparedResponseBodyData(DaraModel):
         unit: Dict[str, str] = None,
         value: Dict[str, float] = None,
     ):
-        # The start date.
         self.begin_date = begin_date
-        # The end date.
         self.end_date = end_date
-        # The year-on-year (YoY) change rate of the storage usage from the start date to the end date. Valid values:
-        # 
-        # - lowFreqStorageRate
-        # 
-        # - totalStorageRate
-        # 
-        # - standardStorageRate
-        # 
-        # - longTermStorageRate
         self.rate = rate
-        # The unit of the change in the storage usage from the start date to the end date. Valid values:
-        # 
-        # - lowFreqStorageUnit
-        # 
-        # - totalStorageUnit
-        # 
-        # - standardStorageUnit
-        # 
-        # - longTermStorageUnit
         self.unit = unit
-        # The change in the storage usage from the start date to the end date. Valid values:
-        # 
-        # - lowFreqStorage
-        # 
-        # - totalStorage
-        # 
-        # - standardStorage
-        # 
-        # - longTermStorage
         self.value = value
 
     def validate(self):

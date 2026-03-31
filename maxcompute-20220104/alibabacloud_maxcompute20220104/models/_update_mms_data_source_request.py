@@ -14,18 +14,9 @@ class UpdateMmsDataSourceRequest(DaraModel):
         name: str = None,
         test: bool = None,
     ):
-        # The type of the update operation:
-        # 
-        # 1. UPDATE_CONFIG: updates the data source configuration.
-        # 2. START: starts the data source instance.
-        # 3. STOP: shuts down the data source instance.
-        # 4. RENAME: renames the data source.
         self.action = action
-        # The data source configuration. The configuration items vary based on the data source.
         self.config = config
-        # The new name of the data source.
         self.name = name
-        # Tests the data source configuration.
         self.test = test
 
     def validate(self):

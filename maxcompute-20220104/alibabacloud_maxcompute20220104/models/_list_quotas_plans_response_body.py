@@ -13,7 +13,9 @@ class ListQuotasPlansResponseBody(DaraModel):
         data: main_models.ListQuotasPlansResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListQuotasPlansResponseBodyData(DaraModel):
         self,
         plan_list: List[main_models.ListQuotasPlansResponseBodyDataPlanList] = None,
     ):
+        # The list of quota plans.
         self.plan_list = plan_list
 
     def validate(self):
@@ -86,8 +89,11 @@ class ListQuotasPlansResponseBodyDataPlanList(DaraModel):
         name: str = None,
         quota: main_models.ListQuotasPlansResponseBodyDataPlanListQuota = None,
     ):
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The name of the quota plan.
         self.name = name
+        # The details of the quota.
         self.quota = quota
 
     def validate(self):
@@ -145,22 +151,39 @@ class ListQuotasPlansResponseBodyDataPlanListQuota(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The information of the order.
         self.billing_policy = billing_policy
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
+        # The ID of the quota.
         self.id = id
+        # The name of the quota.
         self.name = name
+        # The alias of the quota.
         self.nick_name = nick_name
+        # The description of the quota.
         self.parameter = parameter
+        # The ID of the parent resource.
         self.parent_id = parent_id
+        # The ID of the region.
         self.region_id = region_id
+        # The information of the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The information of the level-2 quota.
         self.sub_quota_info_list = sub_quota_info_list
+        # The tag of the resource for the quota.
         self.tag = tag
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -313,21 +336,37 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The information of the order.
         self.billing_policy = billing_policy
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
+        # The ID of the level-2 quota.
         self.id = id
+        # The name of the level-2 quota.
         self.name = name
+        # The nickname of the level-2 quota.
         self.nick_name = nick_name
+        # The description of the quota.
         self.parameter = parameter
+        # The ID of the parent resource.
         self.parent_id = parent_id
+        # The ID of the region.
         self.region_id = region_id
+        # The information of the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The tag of the resource for the quota.
         self.tag = tag
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -456,12 +495,19 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListScheduleInfo(D
         once_time: str = None,
         operator_name: str = None,
     ):
+        # The quota plan that takes effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the current quota plan is scheduled.
         self.curr_time = curr_time
+        # The next quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the next quota plan is scheduled.
         self.next_time = next_time
+        # If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan immediately takes effect.
         self.once_time = once_time
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):
@@ -527,8 +573,14 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListBillingPolicy(
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method of the quota. Valid values:
+        # 
+        # *   subscription: a subscription quota.
+        # *   payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
+        # The specifications of the order.
         self.odps_spec_code = odps_spec_code
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -574,12 +626,19 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaScheduleInfo(DaraModel):
         once_time: str = None,
         operator_name: str = None,
     ):
+        # The quota plan that takes effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the current quota plan is scheduled.
         self.curr_time = curr_time
+        # The next quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the next quota plan is scheduled.
         self.next_time = next_time
+        # If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan immediately takes effect.
         self.once_time = once_time
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):
@@ -645,8 +704,14 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaBillingPolicy(DaraModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method of the quota. Valid values:
+        # 
+        # *   subscription: a subscription quota.
+        # *   payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
+        # The specifications of the order.
         self.odps_spec_code = odps_spec_code
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):

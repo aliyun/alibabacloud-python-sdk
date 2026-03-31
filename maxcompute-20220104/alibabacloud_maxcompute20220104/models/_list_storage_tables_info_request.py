@@ -21,17 +21,29 @@ class ListStorageTablesInfoRequest(DaraModel):
         tenant_id: str = None,
         types: List[str] = None,
     ):
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
+        # The date on which the statistics are collected, in days. Set this parameter to a value in the `YYYYMMdd` format.
+        # 
         # This parameter is required.
         self.date = date
+        # The sorting column.
         self.order_column = order_column
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The number of recent days for comparison.
         self.recent_days = recent_days
+        # The region ID.
         self.region = region
+        # The name of the schema.
         self.schema = schema
+        # The name of the table that you want to use for fuzzy match.
         self.table_prefix = table_prefix
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The storage types.
         self.types = types
 
     def validate(self):

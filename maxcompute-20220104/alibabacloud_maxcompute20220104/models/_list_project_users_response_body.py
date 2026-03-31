@@ -13,7 +13,9 @@ class ListProjectUsersResponseBody(DaraModel):
         data: main_models.ListProjectUsersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListProjectUsersResponseBodyData(DaraModel):
         self,
         users: List[main_models.ListProjectUsersResponseBodyDataUsers] = None,
     ):
+        # An array that contains users.
         self.users = users
 
     def validate(self):
@@ -84,6 +87,7 @@ class ListProjectUsersResponseBodyDataUsers(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the user.
         self.name = name
 
     def validate(self):

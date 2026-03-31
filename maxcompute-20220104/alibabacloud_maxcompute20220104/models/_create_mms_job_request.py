@@ -32,49 +32,28 @@ class CreateMmsJobRequest(DaraModel):
         tables: List[str] = None,
         task_type: str = None,
     ):
-        # {Source column name: Destination column name}
         self.column_mapping = column_mapping
-        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
-        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
-        # Specifies whether to migrate table data.
         self.enable_data_migration = enable_data_migration
-        # Specifies whether to migrate table schemas.
         self.enable_schema_migration = enable_schema_migration
-        # Specifies whether to enable data verification. The current verification method is to execute SELECT COUNT(\\*) on the source and destination to compare the number of rows.
         self.enable_verification = enable_verification
-        # The expected completion time of the migration. Note: A smaller eta value gives the migration task higher priority.
         self.eta = eta
-        # Specifies whether to perform an incremental migration. In an incremental migration, only new or changed partitions are migrated. Note that changed partitions are re-migrated.
         self.increment = increment
-        # The name of the migration job.
         self.name = name
-        # Other configuration information.
         self.others = others
-        # {Table name: Partition filter expression}
         self.partition_filters = partition_filters
-        # The list of partition IDs.
         self.partitions = partitions
-        # Specifies whether to migrate only metadata.
         self.schema_only = schema_only
-        # The ID of the data source.
         self.source_id = source_id
-        # The name of the data source.
         self.source_name = source_name
-        # The name of the source database.
         self.src_db_name = src_db_name
-        # The name of the source schema. This is the schema in a Layer 3 namespace.
         self.src_schema_name = src_schema_name
-        # The blacklist of tables.
         self.table_black_list = table_black_list
-        # {Source table: Destination table}
         self.table_mapping = table_mapping
-        # The whitelist of tables. Note: If you configure both a whitelist and a blacklist, only the blacklist takes effect.
         self.table_white_list = table_white_list
-        # The list of table names.
         self.tables = tables
-        # The type of the migration task.
+        # MOCK, HIVE: hive udtf task, HIVE_DATAX: hive datax task, COPY_TASK: odps Copy Task, ODPS_INSERT_OVERWRITE: odps simple insert overwrite task, MC2MC_VERIFY, OSS, HIVE_OSS
         self.task_type = task_type
 
     def validate(self):

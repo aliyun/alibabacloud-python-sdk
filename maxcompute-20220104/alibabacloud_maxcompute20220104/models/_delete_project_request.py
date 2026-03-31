@@ -9,7 +9,7 @@ class DeleteProjectRequest(DaraModel):
         self,
         is_logical: bool = None,
     ):
-        # Specifies whether to perform a logical deletion. The default value is true. A value of false indicates a physical deletion.
+        # Specifies whether to logically delete the project. Valid values: true and false. Default value: true. The value false indicates that the project is physically deleted.
         self.is_logical = is_logical
 
     def validate(self):

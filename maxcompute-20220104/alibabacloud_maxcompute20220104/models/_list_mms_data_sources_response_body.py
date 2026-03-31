@@ -13,9 +13,7 @@ class ListMmsDataSourcesResponseBody(DaraModel):
         data: main_models.ListMmsDataSourcesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +52,9 @@ class ListMmsDataSourcesResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of data sources.
         self.object_list = object_list
-        # The page number.
         self.page_num = page_num
-        # The number of entries per page.
         self.page_size = page_size
-        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -128,7 +122,9 @@ class ListMmsDataSourcesResponseBodyDataObjectList(DaraModel):
         partitions_done_num: int = None,
         partitions_failed_num: int = None,
         region: str = None,
+        scan_err_msg: str = None,
         scan_id: int = None,
+        scan_status: str = None,
         status: str = None,
         table_num: int = None,
         tables_doing_num: int = None,
@@ -137,53 +133,31 @@ class ListMmsDataSourcesResponseBodyDataObjectList(DaraModel):
         tables_part_done_num: int = None,
         type: str = None,
     ):
-        # Indicates whether the data source instance or its associated agent is started.
         self.agent_is_online = agent_is_online
-        # The configurations of the data source.
         self.config = config
-        # The time when the data source was created.
         self.create_time = create_time
-        # The number of databases in the data source.
         self.db_num = db_num
-        # The default destination MaxCompute project.
         self.dst_project = dst_project
-        # The list of destination MaxCompute projects.
         self.dst_projects = dst_projects
-        # The reason why the data source instance failed to start or shut down. This parameter is returned only when the value of \\`status\\` is \\`START_FAILED\\` or \\`STOP_FAILED\\`.
         self.err_msg = err_msg
-        # The data source ID.
         self.id = id
-        # The last time when the metadata was synchronized.
         self.last_update_time = last_update_time
-        # The name of the data source.
         self.name = name
-        # The MaxCompute network connectivity ID is the region ID.
         self.networklink = networklink
-        # The number of partitions in the data source.
         self.partition_num = partition_num
-        # The number of partitions that are being migrated.
         self.partitions_doing_num = partitions_doing_num
-        # The number of partitions that have been migrated.
         self.partitions_done_num = partitions_done_num
-        # The number of partitions that failed to be migrated.
         self.partitions_failed_num = partitions_failed_num
-        # The region ID.
         self.region = region
-        # The ID of the metadata synchronization task.
+        self.scan_err_msg = scan_err_msg
         self.scan_id = scan_id
-        # The status of the data source.
+        self.scan_status = scan_status
         self.status = status
-        # The number of tables in the data source.
         self.table_num = table_num
-        # The number of tables that are being migrated.
         self.tables_doing_num = tables_doing_num
-        # The number of tables that have been migrated.
         self.tables_done_num = tables_done_num
-        # The number of tables that failed to be migrated.
         self.tables_failed_num = tables_failed_num
-        # The number of tables that are partially migrated.
         self.tables_part_done_num = tables_part_done_num
-        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -247,8 +221,14 @@ class ListMmsDataSourcesResponseBodyDataObjectList(DaraModel):
         if self.region is not None:
             result['region'] = self.region
 
+        if self.scan_err_msg is not None:
+            result['scanErrMsg'] = self.scan_err_msg
+
         if self.scan_id is not None:
             result['scanId'] = self.scan_id
+
+        if self.scan_status is not None:
+            result['scanStatus'] = self.scan_status
 
         if self.status is not None:
             result['status'] = self.status
@@ -326,8 +306,14 @@ class ListMmsDataSourcesResponseBodyDataObjectList(DaraModel):
         if m.get('region') is not None:
             self.region = m.get('region')
 
+        if m.get('scanErrMsg') is not None:
+            self.scan_err_msg = m.get('scanErrMsg')
+
         if m.get('scanId') is not None:
             self.scan_id = m.get('scanId')
+
+        if m.get('scanStatus') is not None:
+            self.scan_status = m.get('scanStatus')
 
         if m.get('status') is not None:
             self.status = m.get('status')
@@ -366,25 +352,15 @@ class ListMmsDataSourcesResponseBodyDataObjectListConfig(DaraModel):
         type: str = None,
         value: Any = None,
     ):
-        # The description of the configuration.
         self.desc = desc
-        # The enumerated values for the configuration.
         self.enums = enums
-        # The configuration group.
         self.group = group
-        # The English identifier for the configuration.
         self.key = key
-        # The name of the configuration.
         self.name = name
-        # An example value for the configuration.
         self.place_holder = place_holder
-        # Indicates whether the configuration is required.
         self.required = required
-        # If \\`type\\` is set to \\`file\\`, \\`subType\\` specifies the file type, such as \\`.keytab\\`.
         self.sub_type = sub_type
-        # The type of the configuration. Valid values: \\`boolean\\`, \\`int\\`, \\`map\\`, \\`string\\`, \\`password\\`, and \\`file\\`.
         self.type = type
-        # The value of the configuration.
         self.value = value
 
     def validate(self):

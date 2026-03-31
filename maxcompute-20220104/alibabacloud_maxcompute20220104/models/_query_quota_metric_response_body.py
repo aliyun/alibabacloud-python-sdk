@@ -16,25 +16,10 @@ class QueryQuotaMetricResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
-        # The error code.
         self.error_code = error_code
-        # The error message.
         self.error_msg = error_msg
-        # The HTTP status code.
-        # 
-        # - 1xx: informational response. The request was received and is being processed.
-        # 
-        # - 2xx: success. The request was successfully received, understood, and accepted by the server.
-        # 
-        # - 3xx: redirection. The request was redirected. Further action needs to be taken to complete the request.
-        # 
-        # - 4xx: client error. The request contains incorrect request parameters or syntax, or specific request conditions cannot be met.
-        # 
-        # - 5xx: server error. The server failed to fulfill the request for other reasons.
         self.http_code = http_code
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -91,13 +76,9 @@ class QueryQuotaMetricResponseBodyData(DaraModel):
         name: str = None,
         period: int = None,
     ):
-        # This parameter is not supported.
         self.category = category
-        # The metric values.
         self.metrics = metrics
-        # The name of the metric.
         self.name = name
-        # The step size of the monitoring data.
         self.period = period
 
     def validate(self):
@@ -152,9 +133,7 @@ class QueryQuotaMetricResponseBodyDataMetrics(DaraModel):
         metric: Dict[str, str] = None,
         values: List[List[float]] = None,
     ):
-        # The metadata of the metric.
         self.metric = metric
-        # The time series data.
         self.values = values
 
     def validate(self):
