@@ -121,6 +121,7 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         agent_disposal_method: str = None,
         agent_disposal_playbook_uuid: str = None,
         agent_disposal_suggestion: str = None,
+        agent_disposes: List[main_models.ListEntitiesResponseBodyDataResponseDataAgentDisposes] = None,
         alert_num: int = None,
         alert_uuid: str = None,
         aliuid: int = None,
@@ -145,6 +146,7 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         self.agent_disposal_method = agent_disposal_method
         self.agent_disposal_playbook_uuid = agent_disposal_playbook_uuid
         self.agent_disposal_suggestion = agent_disposal_suggestion
+        self.agent_disposes = agent_disposes
         self.alert_num = alert_num
         self.alert_uuid = alert_uuid
         self.aliuid = aliuid
@@ -166,7 +168,10 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         self.tags = tags
 
     def validate(self):
-        pass
+        if self.agent_disposes:
+            for v1 in self.agent_disposes:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -184,6 +189,11 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
 
         if self.agent_disposal_suggestion is not None:
             result['AgentDisposalSuggestion'] = self.agent_disposal_suggestion
+
+        result['AgentDisposes'] = []
+        if self.agent_disposes is not None:
+            for k1 in self.agent_disposes:
+                result['AgentDisposes'].append(k1.to_map() if k1 else None)
 
         if self.alert_num is not None:
             result['AlertNum'] = self.alert_num
@@ -258,6 +268,12 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         if m.get('AgentDisposalSuggestion') is not None:
             self.agent_disposal_suggestion = m.get('AgentDisposalSuggestion')
 
+        self.agent_disposes = []
+        if m.get('AgentDisposes') is not None:
+            for k1 in m.get('AgentDisposes'):
+                temp_model = main_models.ListEntitiesResponseBodyDataResponseDataAgentDisposes()
+                self.agent_disposes.append(temp_model.from_map(k1))
+
         if m.get('AlertNum') is not None:
             self.alert_num = m.get('AlertNum')
 
@@ -314,6 +330,41 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
 
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+
+        return self
+
+class ListEntitiesResponseBodyDataResponseDataAgentDisposes(DaraModel):
+    def __init__(
+        self,
+        agent_disposal_method: str = None,
+        agent_disposal_playbook_uuid: str = None,
+    ):
+        self.agent_disposal_method = agent_disposal_method
+        self.agent_disposal_playbook_uuid = agent_disposal_playbook_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_disposal_method is not None:
+            result['AgentDisposalMethod'] = self.agent_disposal_method
+
+        if self.agent_disposal_playbook_uuid is not None:
+            result['AgentDisposalPlaybookUuid'] = self.agent_disposal_playbook_uuid
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentDisposalMethod') is not None:
+            self.agent_disposal_method = m.get('AgentDisposalMethod')
+
+        if m.get('AgentDisposalPlaybookUuid') is not None:
+            self.agent_disposal_playbook_uuid = m.get('AgentDisposalPlaybookUuid')
 
         return self
 

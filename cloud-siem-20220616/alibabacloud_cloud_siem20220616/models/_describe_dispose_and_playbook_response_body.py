@@ -242,6 +242,7 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
         op_level: str = None,
         param_config: List[Any] = None,
         task_config: str = None,
+        un_available_code: str = None,
         uuid: str = None,
         waf_playbook: bool = None,
     ):
@@ -263,6 +264,7 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
         self.param_config = param_config
         # The opcode configuration.
         self.task_config = task_config
+        self.un_available_code = un_available_code
         self.uuid = uuid
         # Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
         # 
@@ -302,6 +304,9 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
         if self.task_config is not None:
             result['TaskConfig'] = self.task_config
 
+        if self.un_available_code is not None:
+            result['UnAvailableCode'] = self.un_available_code
+
         if self.uuid is not None:
             result['Uuid'] = self.uuid
 
@@ -335,6 +340,9 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
 
         if m.get('TaskConfig') is not None:
             self.task_config = m.get('TaskConfig')
+
+        if m.get('UnAvailableCode') is not None:
+            self.un_available_code = m.get('UnAvailableCode')
 
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')

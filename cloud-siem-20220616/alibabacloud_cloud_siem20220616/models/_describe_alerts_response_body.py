@@ -156,6 +156,7 @@ class DescribeAlertsResponseBodyDataResponseData(DaraModel):
         gmt_modified: str = None,
         id: int = None,
         incident_uuid: str = None,
+        investigation_report: str = None,
         is_defend: str = None,
         log_time: str = None,
         log_uuid: str = None,
@@ -229,6 +230,7 @@ class DescribeAlertsResponseBodyDataResponseData(DaraModel):
         self.id = id
         # The UUID of the event.
         self.incident_uuid = incident_uuid
+        self.investigation_report = investigation_report
         # Indicates whether an attack is defended. Valid values:
         # 
         # *   0: detected.
@@ -349,6 +351,9 @@ class DescribeAlertsResponseBodyDataResponseData(DaraModel):
 
         if self.incident_uuid is not None:
             result['IncidentUuid'] = self.incident_uuid
+
+        if self.investigation_report is not None:
+            result['InvestigationReport'] = self.investigation_report
 
         if self.is_defend is not None:
             result['IsDefend'] = self.is_defend
@@ -473,6 +478,9 @@ class DescribeAlertsResponseBodyDataResponseData(DaraModel):
 
         if m.get('IncidentUuid') is not None:
             self.incident_uuid = m.get('IncidentUuid')
+
+        if m.get('InvestigationReport') is not None:
+            self.investigation_report = m.get('InvestigationReport')
 
         if m.get('IsDefend') is not None:
             self.is_defend = m.get('IsDefend')

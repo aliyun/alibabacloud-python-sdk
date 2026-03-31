@@ -1,3 +1,10 @@
+2026-03-31 Version: 6.0.1
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.InvestigationReport.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.InvestigationReport.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.UnAvailableCode.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentDisposes.
+
+
 2026-02-11 Version: 6.0.0
 - Delete API DescribeAutomateResponseConfigPlayBooks.
 - Update API DescribeAlerts: add request parameters AlertStatus.

@@ -373,6 +373,7 @@ from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBod
 from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyDataResponseData
 from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyData
 from ._list_entities_response_body import ListEntitiesResponseBodyDataPageInfo
+from ._list_entities_response_body import ListEntitiesResponseBodyDataResponseDataAgentDisposes
 from ._list_entities_response_body import ListEntitiesResponseBodyDataResponseData
 from ._list_entities_response_body import ListEntitiesResponseBodyData
 from ._list_imported_logs_by_prod_response_body import ListImportedLogsByProdResponseBodyData
@@ -756,6 +757,7 @@ __all__ = [
     ListDisposeStrategyResponseBodyDataResponseData,
     ListDisposeStrategyResponseBodyData,
     ListEntitiesResponseBodyDataPageInfo,
+    ListEntitiesResponseBodyDataResponseDataAgentDisposes,
     ListEntitiesResponseBodyDataResponseData,
     ListEntitiesResponseBodyData,
     ListImportedLogsByProdResponseBodyData,
