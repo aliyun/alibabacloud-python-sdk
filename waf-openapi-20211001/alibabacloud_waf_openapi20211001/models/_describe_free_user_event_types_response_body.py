@@ -13,7 +13,7 @@ class DescribeFreeUserEventTypesResponseBody(DaraModel):
         data: List[main_models.DescribeFreeUserEventTypesResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The list of security event types detected by the basic detection feature.
+        # The types of security events on which basic detection is performed.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class DescribeFreeUserEventTypesResponseBodyData(DaraModel):
     ):
         # The number of security events.
         self.event_num = event_num
-        # The security event type.
+        # The type of the security event.
         self.event_type = event_type
 
     def validate(self):

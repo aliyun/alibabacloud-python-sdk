@@ -14,11 +14,11 @@ class DescribeHybridCloudResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of domain names.
+        # The domain names.
         self.domains = domains
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,33 +73,29 @@ class DescribeHybridCloudResourcesResponseBodyDomains(DaraModel):
         status: int = None,
         uid: str = None,
     ):
-        # The CNAME that is assigned by WAF to the domain name.
+        # The CNAME assigned by WAF.
         # 
-        # > This parameter is returned only when **CnameEnabled** is set to true.
+        # >  This parameter is returned only if the value of **CnameEnabled** is true.
         self.cname = cname
         # The domain name.
         self.domain = domain
-        # The ID of the domain name configuration.
+        # The access ID.
         self.id = id
-        # The listener configuration.
+        # The listeners.
         self.listen = listen
-        # The forwarding configuration.
+        # The configurations of the forwarding rule.
         self.redirect = redirect
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The status of the domain name. Valid values:
         # 
-        # - **1**: The domain name is in a normal state.
-        # 
-        # - **2**: The domain name is being created.
-        # 
-        # - **3**: The domain name is being modified.
-        # 
-        # - **4**: The domain name is being released.
-        # 
-        # - **5**: Forwarding is disabled for the domain name.
+        # *   **1:** The domain name is in a normal state.
+        # *   **2:** The domain name is being created.
+        # *   **3:** The domain name is being modified.
+        # *   **4:** The domain name is being released.
+        # *   **5:** WAF no longer forwards the traffic of the domain name.
         self.status = status
-        # The ID of the Alibaba Cloud account.
+        # The user ID.
         self.uid = uid
 
     def validate(self):
@@ -188,73 +184,64 @@ class DescribeHybridCloudResourcesResponseBodyDomainsRedirect(DaraModel):
         sni_host: str = None,
         write_timeout: int = None,
     ):
-        # The IP addresses or domain names of the origin servers for back-to-origin.
+        # The IP addresses or domain names of the origin server.
         self.backends = backends
-        # Indicates whether public cloud disaster recovery is enabled. Valid values:
+        # Indicates whether the public cloud disaster recovery feature is enabled. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.cname_enabled = cname_enabled
-        # The connection timeout period. Unit: seconds. Valid values: 5 to 120.
+        # The timeout period for connections. Unit: seconds. Valid values: 5 to 120.
         self.connect_timeout = connect_timeout
-        # Indicates whether back-to-origin requests are forcefully sent over HTTP. Valid values:
+        # Indicates whether the HTTPS to HTTP redirection feature is enabled for back-to-origin requests. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.focus_http_backend = focus_http_backend
-        # Indicates whether persistent connections are enabled. Valid values:
+        # Indicates whether the persistent connection feature is enabled. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.keepalive = keepalive
-        # The maximum number of requests that can be sent over a persistent connection. Valid values: 60 to 1000.
+        # The number of reused persistent connections. Valid values: 60 to 1000.
         # 
-        # > After the specified number of requests are sent, the persistent connection is closed and a new connection is established.
+        # >  This parameter indicates the number of reused persistent connections after the persistent connection feature is enabled.
         self.keepalive_requests = keepalive_requests
-        # The timeout period for an idle persistent connection. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period for persistent connections that are in the Idle state. Unit: seconds. Valid values: 1 to 60. Default value: 15.
         # 
-        # > An idle persistent connection is released after the timeout period expires.
+        # >  This parameter indicates the period of time during which a reused persistent connection can remain in the Idle state before the persistent connection is released.
         self.keepalive_timeout = keepalive_timeout
-        # The load balancing algorithm for back-to-origin requests. Valid values:
+        # The load balancing algorithm that is used to forward requests to the origin server. Valid values:
         # 
-        # - **iphash**: the IP hash algorithm.
-        # 
-        # - **roundRobin**: the round-robin algorithm.
-        # 
-        # - **leastTime**: the least time algorithm.
+        # *   **iphash**
+        # *   **roundRobin**
+        # *   **leastTime**
         self.loadbalance = loadbalance
-        # The read timeout period. Unit: seconds. Valid values: 5 to 1800.
+        # The timeout period for read connections. Unit: seconds. Valid values: 5 to 1800.
         self.read_timeout = read_timeout
-        # The custom header field and value that are used to mark the traffic that is processed by WAF.
+        # The key-value pair that is used to label requests that pass through WAF.
         self.request_headers = request_headers
-        # Indicates whether WAF retries forwarding requests when a back-to-origin request fails. Valid values:
+        # Indicates whether WAF retries forwarding requests if requests fail to be forwarded to the origin server. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.retry = retry
-        # The forwarding rules for the hybrid cloud. The value is a string that consists of a JSON array. Each element in the array is a struct that contains the following fields:
+        # The forwarding rules that are configured for the domain name. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
-        # - **rs**: The back-to-origin IP addresses or CNAMEs. This field is of the Array type.
-        # 
-        # - **location**: The name of the protection node. This field is of the String type.
-        # 
-        # - **locationId**: The ID of the protection node. This field is of the Long type.
+        # *   **rs**: the back-to-origin IP addresses or CNAMEs. The value is of the ARRAY type.
+        # *   **location**: the name of the protection node. The value is of the STRING type.
+        # *   **locationId**: the ID of the protection node. The value is of the LONG type.
         self.routing_rules = routing_rules
-        # Indicates whether back-to-origin Server Name Indication (SNI) is enabled. Valid values:
+        # Indicates whether the origin Server Name Indication (SNI) feature is enabled. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.sni_enabled = sni_enabled
-        # The custom value of the SNI extension field. If this parameter is not specified, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.
+        # The value of the custom SNI field. If the parameter is left empty, the value of the **Host** field in the request header is automatically used as the value of the SNI field.
         # 
-        # > This parameter is returned only when **SniEnabled** is set to **true**.
+        # >  This parameter is returned only if the value of **SniEnabled** is **true**.
         self.sni_host = sni_host
-        # The write timeout period. Unit: seconds. Valid values: 5 to 1800.
+        # The timeout period for write connections. Unit: seconds. Valid values: 5 to 1800.
         self.write_timeout = write_timeout
 
     def validate(self):
@@ -375,9 +362,9 @@ class DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders(Dara
         key: str = None,
         value: str = None,
     ):
-        # The custom request header field.
+        # The key of the custom header field.
         self.key = key
-        # The value of the custom request header field.
+        # The value of the custom header field.
         self.value = value
 
     def validate(self):
@@ -426,77 +413,65 @@ class DescribeHybridCloudResourcesResponseBodyDomainsListen(DaraModel):
     ):
         # The ID of the certificate.
         self.cert_id = cert_id
-        # The type of the cipher suite. Valid values:
+        # The types of cipher suites that are added. Valid values:
         # 
-        # - **1**: all cipher suites.
-        # 
-        # - **2**: strong cipher suites.
-        # 
-        # - **99**: custom cipher suites.
+        # *   **1:** all cipher suites.
+        # *   **2:** strong cipher suites.
+        # *   **99:** custom cipher suites.
         self.cipher_suite = cipher_suite
-        # The custom cipher suites to be added.
+        # The custom cipher suites.
         # 
-        # > This parameter is returned only when **CipherSuite** is set to **99**.
+        # >  This parameter is returned only if the value of **CipherSuite** is **99**.
         self.custom_ciphers = custom_ciphers
         # Indicates whether TLS 1.3 is supported. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.enable_tlsv_3 = enable_tlsv_3
-        # Indicates whether an exclusive IP address is used. Valid values:
+        # Indicates whether exclusive IP addresses are supported. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.exclusive_ip = exclusive_ip
-        # Indicates whether HTTPS to HTTP redirection is enabled. Valid values:
+        # Indicates whether the HTTP to HTTPS redirection feature is enabled for the domain name. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.focus_https = focus_https
         # Indicates whether HTTP/2 is enabled. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.http_2enabled = http_2enabled
-        # The list of HTTP listener ports.
+        # The HTTP listener ports.
         self.http_ports = http_ports
-        # The list of HTTPS ports.
+        # The HTTPS listener ports.
         self.https_ports = https_ports
-        # Indicates whether IPv6 is enabled. Valid values:
+        # Specifies whether to enable IPv6. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # *   **true**
+        # *   **false**
         self.ipv_6enabled = ipv_6enabled
         # The type of the protection resource. Valid values:
         # 
-        # - **share**: shared cluster.
-        # 
-        # - **gslb**: intelligent load balancing for a shared cluster.
+        # *   **share:** shared cluster.
+        # *   **gslb:** shared cluster-based intelligent load balancing.
         self.protection_resource = protection_resource
-        # The TLS version. Valid values:
+        # The version of the Transport Layer Security (TLS) protocol. Valid values:
         # 
-        # - **tlsv1**
-        # 
-        # - **tlsv1.1**
-        # 
-        # - **tlsv1.2**
+        # *   **tlsv1**
+        # *   **tlsv1.1**
+        # *   **tlsv1.2**
         self.tlsversion = tlsversion
-        # The method that WAF uses to obtain the client IP address. Valid values:
+        # The method that is used to obtain the actual IP address of a client. Valid values:
         # 
-        # - **0**: No Layer 7 proxies are deployed in front of WAF.
-        # 
-        # - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the client IP address.
-        # 
-        # - **2**: WAF reads the value of a custom header field as the client IP address.
+        # *   **0**: No Layer 7 proxies are deployed in front of WAF.
+        # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
+        # *   **2**: WAF reads the value of a custom header field as the actual IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The list of custom header fields that are used to obtain the client IP address. The value is in the \\`["header1","header2",...]\\` format.
+        # The custom header fields that are used to obtain the actual IP addresses of clients. The value is in the ["header1","header2",...] format.
         # 
-        # > This parameter is returned only when XffHeaderMode is set to **2**.
+        # >  This parameter is returned only if the value of **XffHeaderMode** is 2.
         self.xff_headers = xff_headers
 
     def validate(self):

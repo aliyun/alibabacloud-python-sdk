@@ -14,7 +14,7 @@ class DescribeApisecSlsProjectsResponseBody(DaraModel):
     ):
         # The names of the projects in Simple Log Service.
         self.projects = projects
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

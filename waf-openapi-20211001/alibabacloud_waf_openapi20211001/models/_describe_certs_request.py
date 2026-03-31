@@ -17,27 +17,25 @@ class DescribeCertsRequest(DaraModel):
     ):
         # The type of the encryption algorithm. Valid values:
         # 
-        # - **NotSM2 (default)**: Specifies a non-ShangMi (SM) cryptographic algorithm.
-        # 
-        # - **SM2**: Specifies an SM cryptographic algorithm.
+        # *   **NotSM2**: The encryption algorithm is not the SM2 algorithm. This is the default value.
+        # *   **SM2**: The encryption algorithm is the SM2 algorithm.
         self.algorithm = algorithm
         # The domain name.
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your current WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**. Maximum value: 100.
+        # The number of entries per page. Valid values: 1 to 100. Default value: **10**.
         self.page_size = page_size
-        # The region of the WAF instance. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

@@ -20,29 +20,28 @@ class CreateCloudResourceShrinkRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listener configuration.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The Alibaba Cloud account ID of the resource owner.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
-        # The forwarding configuration.
+        # The forwarding configurations.
         self.redirect_shrink = redirect_shrink
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The list of tags. You can add up to 20 tags.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -115,9 +114,9 @@ class CreateCloudResourceShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

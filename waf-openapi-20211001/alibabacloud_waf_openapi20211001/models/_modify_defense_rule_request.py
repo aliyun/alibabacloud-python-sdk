@@ -16,45 +16,31 @@ class ModifyDefenseRuleRequest(DaraModel):
         rules: str = None,
         template_id: int = None,
     ):
-        # The protection scenario to modify. For more information, see the **DefenseScene** parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+        # The scenario in which you want to use the protection rule. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         self.defense_scene = defense_scene
-        # The type of the protection rule. Valid values:
-        # 
-        # - **template** (default): a template protection rule.
-        # 
-        # - **resource**: a rule for a specific protected object.
-        # 
-        # - **global**: a global rule.
         self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The protected object for which you want to modify the rule.
-        # 
-        # > This parameter is required only when **DefenseType** is set to **resource**.
         self.resource = resource
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The details of the protection rule, in a JSON string format. Specify the rule ID and the configuration of the protection rule to modify. The details include the following:
+        # The details of the protection rule. Specify a string that contains multiple parameters in the JSON format. You must specify the ID and the new configurations of the protection rule.
         # 
-        # - **id**: The ID of the rule. This parameter is required. Data type: Long.
-        # 
-        # - Configuration of the protection rule: The parameters are the same as the **Rules** parameter of the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation. For more information, see the description of the protection rule parameters in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+        # *   **id:** The ID of the protection rule. Data type: long. You must specify this parameter.
+        # *   The protection rule configurations: The role of this parameter is the same as that of the **Rules** parameter in the **CreateDefenseRule** topic. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         # 
         # This parameter is required.
         self.rules = rules
-        # The ID of the protection template.
-        # 
-        # > This parameter is required only when **DefenseType** is set to **template**.
+        # The ID of the protection rule template to which the protection rule whose configurations you want to modify belongs.
         self.template_id = template_id
 
     def validate(self):

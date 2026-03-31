@@ -79,31 +79,18 @@ class DescribeProductInstancesResponseBodyProductInstances(DaraModel):
         resource_product: str = None,
         resource_region_id: str = None,
     ):
-        # The ID of the instance added to WAF.
         self.access_instance_id = access_instance_id
-        # The port and protocol information of the cloud service added to WAF.
         self.access_port_and_protocols = access_port_and_protocols
-        # The list of ports added to WAF.
         self.access_ports = access_ports
-        # The user ID (UID) of the Alibaba Cloud account to which the instance belongs.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
-        # The protection status of WAF. Valid values:
-        # 
-        # - **all**: All protected.
-        # 
-        # - **any**: Protected.
-        # 
-        # - **part**: Partially protected.
-        # 
-        # - **non**: Not protected.
         self.resource_instance_access_status = resource_instance_access_status
-        # The edition of the instance.
         self.resource_instance_edition = resource_instance_edition
-        # The instance ID.
+        # The ID of the instance.
         self.resource_instance_id = resource_instance_id
-        # The IP address of the instance.
+        # The IP address of the instance that is added to WAF.
         self.resource_instance_ip = resource_instance_ip
-        # The name of the instance.
+        # The name of the instance that is added to WAF.
         self.resource_instance_name = resource_instance_name
         # The public IP address of the instance.
         self.resource_ip = resource_ip
@@ -111,37 +98,24 @@ class DescribeProductInstancesResponseBodyProductInstances(DaraModel):
         self.resource_name = resource_name
         # The information about the ports.
         self.resource_ports = resource_ports
-        # The type of the cloud service. Valid values:
+        # The cloud service to which the instance belongs. Valid values:
         # 
-        # - **clb4**: Layer 4 CLB.
-        # 
-        # - **clb7**: Layer 7 CLB.
-        # 
-        # - **ecs**: ECS.
-        # 
-        # - **nlb**: NLB.
+        # *   **clb4**: Layer 4 CLB.
+        # *   **clb7**: Layer 7 CLB.
+        # *   **ecs**: ECS.
         self.resource_product = resource_product
         # The region ID of the instance. Valid values:
         # 
-        # - **cn-chengdu**: China (Chengdu).
-        # 
-        # - **cn-beijing**: China (Beijing).
-        # 
-        # - **cn-zhangjiakou**: China (Zhangjiakou).
-        # 
-        # - **cn-hangzhou**: China (Hangzhou).
-        # 
-        # - **cn-shanghai**: China (Shanghai).
-        # 
-        # - **cn-shenzhen**: China (Shenzhen).
-        # 
-        # - **cn-qingdao**: China (Qingdao).
-        # 
-        # - **cn-hongkong**: China (Hong Kong).
-        # 
-        # - **ap-southeast-3**: Malaysia (Kuala Lumpur).
-        # 
-        # - **ap-southeast-5**: Indonesia (Jakarta).
+        # *   **cn-chengdu**: China (Chengdu).
+        # *   **cn-beijing**: China (Beijing).
+        # *   **cn-zhangjiakou**: China (Zhangjiakou).
+        # *   **cn-hangzhou**: China (Hangzhou).
+        # *   **cn-shanghai**: China (Shanghai).
+        # *   **cn-shenzhen**: China (Shenzhen).
+        # *   **cn-qingdao**: China (Qingdao).
+        # *   **cn-hongkong**: China (Hong Kong).
+        # *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
+        # *   **ap-southeast-5**: Indonesia (Jakarta).
         self.resource_region_id = resource_region_id
 
     def validate(self):
@@ -268,13 +242,12 @@ class DescribeProductInstancesResponseBodyProductInstancesResourcePorts(DaraMode
     ):
         # The information about the certificates.
         self.certificates = certificates
-        # The port.
+        # The port number.
         self.port = port
         # The protocol type. Valid values:
         # 
-        # - **http**: HTTP protocol.
-        # 
-        # - **https**: HTTPS protocol.
+        # *   **http**
+        # *   **https**
         self.protocol = protocol
 
     def validate(self):
@@ -325,17 +298,11 @@ class DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertifica
         certificate_name: str = None,
         domain: str = None,
     ):
-        # The type of the HTTPS certificate. Valid values:
-        # 
-        # - **default**: Default certificate.
-        # 
-        # - **extension**: Extension certificate.
         self.applied_type = applied_type
-        # The certificate ID.
+        # The ID of the certificate.
         self.certificate_id = certificate_id
         # The name of the certificate.
         self.certificate_name = certificate_name
-        # The domain name bound to the certificate.
         self.domain = domain
 
     def validate(self):
@@ -383,15 +350,8 @@ class DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols
         port: int = None,
         protocol: str = None,
     ):
-        # The certificates.
         self.certificate_ids = certificate_ids
-        # The port of the cloud service added to WAF.
         self.port = port
-        # The protocol type. Valid values:
-        # 
-        # - **http**: HTTP protocol.
-        # 
-        # - **https**: HTTPS protocol.
         self.protocol = protocol
 
     def validate(self):

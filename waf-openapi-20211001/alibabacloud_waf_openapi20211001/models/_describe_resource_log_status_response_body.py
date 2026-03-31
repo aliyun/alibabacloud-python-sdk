@@ -15,7 +15,7 @@ class DescribeResourceLogStatusResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The log status information of protected objects.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -58,13 +58,12 @@ class DescribeResourceLogStatusResponseBodyResult(DaraModel):
         resource: str = None,
         status: bool = None,
     ):
-        # The name of the protected object.
+        # The protected object.
         self.resource = resource
-        # Indicates whether log collection is enabled for the protected object. Valid values:
+        # Indicates whether the log collection feature is enabled for the protected object. Valid values:
         # 
-        # - **true**: Log collection is enabled.
-        # 
-        # - **false**: Log collection is disabled.
+        # *   **true:** The log collection feature is enabled.
+        # *   **false:** The log collection feature is disabled.
         self.status = status
 
     def validate(self):

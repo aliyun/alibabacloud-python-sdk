@@ -14,27 +14,25 @@ class DescribeHybridCloudClusterRuleRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         rule_type: str = None,
     ):
-        # [Deprecated] The ID of the hybrid cloud cluster.
+        # The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
-        # The resource ID of the cluster rule.
         self.cluster_rule_resource_id = cluster_rule_resource_id
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region in which the WAF instance is deployed. Valid value:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # [Deprecated] The type of the rule. Valid value:
+        # The type of the rule. Valid values:
         # 
-        # - **pullin**: Traffic routing.
+        # *   **pullin**: The traffic redirection rule of the hybrid cloud cluster.
         self.rule_type = rule_type
 
     def validate(self):

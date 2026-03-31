@@ -14,11 +14,11 @@ class DescribeCloudResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of cloud services.
+        # The cloud service resources that are added to WAF.
         self.cloud_resources = cloud_resources
         # The request ID.
         self.request_id = request_id
-        # The total number of cloud services found.
+        # The total number of cloud service resources returned.
         self.total_count = total_count
 
     def validate(self):
@@ -79,21 +79,21 @@ class DescribeCloudResourcesResponseBodyCloudResources(DaraModel):
         resource_route_name: str = None,
         resource_service: str = None,
     ):
-        # The number of HTTP ports that are added to WAF.
+        # The number of the HTTP ports that are added to WAF.
         # 
-        # > This parameter is returned only for ECS and CLB instances.
+        # >  This parameter is returned only if the cloud service is ECS or CLB.
         self.http_port_count = http_port_count
-        # The number of HTTPS ports that are added to WAF.
+        # The number of the HTTPS ports that are added to WAF.
         # 
-        # > This parameter is returned only for ECS and CLB instances.
+        # >  This parameter is returned only if the cloud service is ECS or CLB.
         self.https_port_count = https_port_count
-        # The UID of the account to which the resource belongs.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
-        # The domain name of the resource. This parameter is returned for FC or SAE instances.
+        # The domain name. This parameter has a value only if the value of ResourceProduct is fc or sae.
         self.resource_domain = resource_domain
-        # The name of the function. This parameter is returned for FC instances.
+        # The function name. This parameter has a value only if the value of ResourceProduct is fc.
         self.resource_function = resource_function
-        # The ID of the resource instance.
+        # The ID of the resource.
         self.resource_instance = resource_instance
         # The ID of the instance that is added to WAF.
         self.resource_instance_id = resource_instance_id
@@ -101,31 +101,23 @@ class DescribeCloudResourcesResponseBodyCloudResources(DaraModel):
         self.resource_instance_ip = resource_instance_ip
         # The name of the instance that is added to WAF.
         self.resource_instance_name = resource_instance_name
-        # The name of the instance.
+        # The name of the resource.
         self.resource_name = resource_name
         # The cloud service to which the resource belongs. Valid values:
         # 
-        # - **alb**: ALB
-        # 
-        # - **mse**: MSE
-        # 
-        # - **fc**: FC
-        # 
-        # - **sae**: SAE
-        # 
-        # - **ecs**: ECS
-        # 
-        # - **clb4**: CLB that uses TCP
-        # 
-        # - **clb7**: CLB that uses HTTP or HTTPS
-        # 
-        # - **nlb**: NLB
+        # *   **alb**: ALB.
+        # *   **mse**: MSE.
+        # *   **fc**: Function Compute.
+        # *   **sae**: SAE.
+        # *   **ecs**: ECS.
+        # *   **clb4**: Layer 4 CLB.
+        # *   **clb7**: Layer 7 CLB.
         self.resource_product = resource_product
-        # The region where the resource resides.
+        # The region ID of the resource.
         self.resource_region_id = resource_region_id
-        # The name of the route. This parameter is returned for MSE instances.
+        # The route name. This parameter has a value only if the value of ResourceProduct is mse.
         self.resource_route_name = resource_route_name
-        # The name of the service. This parameter is returned for FC instances.
+        # The service name. This parameter has a value only if the value of ResourceProduct is fc.
         self.resource_service = resource_service
 
     def validate(self):

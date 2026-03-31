@@ -15,39 +15,31 @@ class DeleteCloudResourceRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
     ):
-        # The ID of the protected resource. WAF automatically generates this ID when you add the cloud service to WAF.
-        # 
-        # > Call [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) to add a resource and then view the resource ID in the response.
         self.cloud_resource_id = cloud_resource_id
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of your WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The port of the cloud service that is added to WAF.
+        # The port of the resource that is added to WAF.
         self.port = port
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the cloud service instance.
+        # The ID of the instance.
         self.resource_instance_id = resource_instance_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of the cloud service. Valid values:
+        # The cloud service. Valid values:
         # 
-        # - **clb4**: Layer 4 CLB.
-        # 
-        # - **clb7**: Layer 7 CLB.
-        # 
-        # - **ecs**: ECS.
-        # 
-        # - **nlb**: Network Load Balancer (NLB).
+        # *   **clb4**: Layer 4 CLB.
+        # *   **clb7**: Layer 7 CLB.
+        # *   **ecs**: ECS.
         self.resource_product = resource_product
 
     def validate(self):

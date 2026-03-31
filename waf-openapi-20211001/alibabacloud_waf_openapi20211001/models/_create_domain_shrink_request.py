@@ -19,23 +19,22 @@ class CreateDomainShrinkRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         tag: List[main_models.CreateDomainShrinkRequestTag] = None,
     ):
-        # The access type of the WAF instance. Valid values:
+        # The mode in which you want to add the domain name to WAF. Valid values:
         # 
-        # - **share** (default): onboarding by using a CNAME record.
-        # 
-        # - **hybrid_cloud_cname**: onboarding by using a hybrid cloud CNAME record.
+        # *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
+        # *   **hybrid_cloud_cname:** adds the domain name to WAF in hybrid cloud reverse proxy mode.
         self.access_type = access_type
-        # The domain name that you want to add.
+        # The domain name that you want to add to WAF.
         # 
         # This parameter is required.
         self.domain = domain
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listening configurations.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
@@ -45,13 +44,12 @@ class CreateDomainShrinkRequest(DaraModel):
         self.redirect_shrink = redirect_shrink
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou**: the Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The tags. You can specify up to 20 tags.
         self.tag = tag
@@ -132,9 +130,9 @@ class CreateDomainShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

@@ -15,7 +15,7 @@ class DescribeRuleHitsTopUrlResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The top 10 URLs that trigger protection rules.
+        # The top 10 URLs that match protection rules.
         self.rule_hits_top_url = rule_hits_top_url
 
     def validate(self):
@@ -58,11 +58,11 @@ class DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl(DaraModel):
         count: int = None,
         url: str = None,
     ):
-        # The number of requests that triggered the rule.
+        # The number of requests that match protection rules.
         self.count = count
         # The request URL.
         # 
-        # > The value of this parameter is Base64-encoded.
+        # >  The value is Base64-encoded.
         self.url = url
 
     def validate(self):

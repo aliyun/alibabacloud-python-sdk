@@ -10,9 +10,7 @@ class CreateHybridCloudClusterRuleResponseBody(DaraModel):
         cluster_rule_resource_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cluster rule resource.
         self.cluster_rule_resource_id = cluster_rule_resource_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

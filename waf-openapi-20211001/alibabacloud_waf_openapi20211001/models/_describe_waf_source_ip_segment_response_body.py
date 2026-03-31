@@ -13,9 +13,9 @@ class DescribeWafSourceIpSegmentResponseBody(DaraModel):
         request_id: str = None,
         waf_source_ip: main_models.DescribeWafSourceIpSegmentResponseBodyWafSourceIp = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The list of WAF back-to-origin IP CIDR blocks used by the protection cluster.
+        # The back-to-origin CIDR blocks that are used by the protection cluster.
         self.waf_source_ip = waf_source_ip
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeWafSourceIpSegmentResponseBodyWafSourceIp(DaraModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
-        # The list of IPv4 back-to-origin CIDR blocks.
+        # An array of back-to-origin IPv4 CIDR blocks.
         self.ipv_4 = ipv_4
-        # The list of IPv6 back-to-origin CIDR blocks.
+        # An array of back-to-origin IPv6 CIDR blocks.
         self.ipv_6 = ipv_6
 
     def validate(self):

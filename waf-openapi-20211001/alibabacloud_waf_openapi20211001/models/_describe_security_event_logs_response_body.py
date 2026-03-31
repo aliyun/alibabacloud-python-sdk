@@ -17,11 +17,11 @@ class DescribeSecurityEventLogsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of detailed attack logs.
+        # The attack logs returned.
         self.security_event_logs = security_event_logs
-        # The total number of attack logs found.
+        # The total number of logs returned.
         self.security_event_logs_total_count = security_event_logs_total_count
-        # The metadata of the returned data.
+        # The metadata of the time series data returned.
         self.security_event_meta_data = security_event_meta_data
 
     def validate(self):
@@ -70,9 +70,9 @@ class DescribeSecurityEventLogsResponseBodySecurityEventMetaData(DaraModel):
         date_range: main_models.DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange = None,
         units: str = None,
     ):
-        # The time range used for the query.
+        # The time range that is used for the query.
         self.date_range = date_range
-        # The unit of the returned statistical data.
+        # The unit of the statistics returned. The value is fixed as requests.
         self.units = units
 
     def validate(self):
@@ -109,9 +109,9 @@ class DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange(DaraMo
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range used for the query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
         self.end_date = end_date
-        # The start of the time range used for the query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
         self.start_date = start_date
 
     def validate(self):

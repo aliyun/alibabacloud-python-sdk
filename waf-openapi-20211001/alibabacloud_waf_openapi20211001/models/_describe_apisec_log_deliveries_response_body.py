@@ -15,7 +15,7 @@ class DescribeApisecLogDeliveriesResponseBody(DaraModel):
     ):
         # The configurations of API security log subscription.
         self.delivery_configs = delivery_configs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -63,11 +63,9 @@ class DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs(DaraModel):
     ):
         # The type of the log subscription. Valid values:
         # 
-        # - **risk**: risk information.
-        # 
-        # - **event**: attack event information.
-        # 
-        # - **asset**: asset information.
+        # *   **risk**: risk information.
+        # *   **event**: attack event information.
+        # *   **asset**: asset information.
         self.assert_key = assert_key
         # The ID of the region where logs are stored.
         self.log_region_id = log_region_id
@@ -77,9 +75,8 @@ class DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs(DaraModel):
         self.project_name = project_name
         # The status of API security log subscription. Valid values:
         # 
-        # - **true**: enabled.
-        # 
-        # - **false**: disabled.
+        # *   **true**: enabled.
+        # *   **false**: disabled.
         self.status = status
 
     def validate(self):

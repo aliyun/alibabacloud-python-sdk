@@ -16,37 +16,35 @@ class DescribeResponseCodeTrendGraphRequest(DaraModel):
         start_timestamp: str = None,
         type: str = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used as the end time.
+        # The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
         self.end_timestamp = end_timestamp
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The time interval. Unit: seconds. The value must be a multiple of 60.
+        # The time interval. Unit: seconds. The value must be an integral multiple of 60.
         # 
         # This parameter is required.
         self.interval = interval
-        # The region of the WAF instance. Valid values:
+        # The ID of the region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
         # The protected object.
         self.resource = resource
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. Unit: seconds.
         # 
         # This parameter is required.
         self.start_timestamp = start_timestamp
-        # The type of response code. Valid values:
+        # The type of the error codes. Valid values:
         # 
-        # - **waf**: a response code that WAF returns to a client.
-        # 
-        # - **upstream**: a response code that an origin server returns to WAF.
+        # *   **waf:** error codes that are returned to clients from WAF.
+        # *   **upstream:** error codes that are returned to WAF from the origin server.
         # 
         # This parameter is required.
         self.type = type

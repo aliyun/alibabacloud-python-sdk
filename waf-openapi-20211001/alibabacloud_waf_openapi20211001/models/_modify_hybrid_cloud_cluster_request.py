@@ -25,83 +25,48 @@ class ModifyHybridCloudClusterRequest(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # The network access mode of the hybrid cloud cluster. Valid values:
-        # 
-        # - **internet**: access over the Internet.
-        # 
-        # - **vpc**: access over a leased line through a virtual private cloud (VPC).
-        # 
         # This parameter is required.
         self.access_mode = access_mode
-        # The region in which the leased line resides. This parameter is required when AccessMode is set to vpc. Valid values:
-        # 
-        # - **cn-hangzhou**: Hangzhou.
-        # 
-        # - **cn-beijing**: Beijing.
-        # 
-        # - **cn-shanghai**: Shanghai.
         self.access_region = access_region
-        # The name of the hybrid cloud cluster.
+        # The name of the cluster.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The list of HTTP ports supported by the hybrid cloud cluster. Separate multiple ports with commas (,). Format: **port1,port2,port3**.
+        # The HTTP ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3** format.
         # 
         # This parameter is required.
         self.http_ports = http_ports
-        # The list of HTTPS ports supported by the hybrid cloud cluster. Separate multiple ports with commas (,). Format: **port1,port2,port3**.
+        # The HTTPS ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3** format.
         # 
         # This parameter is required.
         self.https_ports = https_ports
-        # The ID of the hybrid cloud cluster.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.id = id
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The log fields that are excluded from the response.
         self.log_fields_not_returned = log_fields_not_returned
-        # The maximum number of protection nodes that can be added to the hybrid cloud cluster.
+        # The number of protection nodes that can be added to the cluster.
         # 
         # This parameter is required.
         self.protection_server_count = protection_server_count
-        # Indicates whether the proxy gateway is enabled. Valid values:
-        # 
-        # - **on**: The proxy gateway is enabled.
-        # 
-        # - **off**: The proxy gateway is disabled.
         self.proxy_status = proxy_status
-        # The type of the hybrid cloud cluster. Valid values:
-        # 
-        # - **cname**: a reverse proxy cluster.
-        # 
-        # - **service**: a service cluster.
         self.proxy_type = proxy_type
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The remarks of the hybrid cloud cluster.
+        # The remarks about the cluster.
         self.remark = remark
-        # The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The rule configuration in JSON format. This includes settings such as the circuit breaker, request body length limit, and timeout.
         self.rule_config = rule_config
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # - **on**: The rule is enabled.
-        # 
-        # - **off**: The rule is disabled.
         self.rule_status = rule_status
-        # The rule type. Valid values:
-        # 
-        # - **bypass**: WAF bypasses security checks.
         self.rule_type = rule_type
 
     def validate(self):

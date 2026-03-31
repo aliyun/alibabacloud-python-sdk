@@ -16938,6 +16938,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_user_sls_log_regions_with_options_async(request, runtime)
 
+    def describe_user_traffic_with_options(
+        self,
+        request: main_models.DescribeUserTrafficRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserTrafficResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserTraffic',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserTrafficResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_traffic_with_options_async(
+        self,
+        request: main_models.DescribeUserTrafficRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserTrafficResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserTraffic',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserTrafficResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_traffic(
+        self,
+        request: main_models.DescribeUserTrafficRequest,
+    ) -> main_models.DescribeUserTrafficResponse:
+        runtime = RuntimeOptions()
+        return self.describe_user_traffic_with_options(request, runtime)
+
+    async def describe_user_traffic_async(
+        self,
+        request: main_models.DescribeUserTrafficRequest,
+    ) -> main_models.DescribeUserTrafficResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_user_traffic_with_options_async(request, runtime)
+
     def describe_user_waf_log_status_with_options(
         self,
         request: main_models.DescribeUserWafLogStatusRequest,

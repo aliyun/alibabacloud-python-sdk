@@ -15,7 +15,7 @@ class DescribeCertDetailResponseBody(DaraModel):
     ):
         # The details of the certificate.
         self.cert_detail = cert_detail
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,13 +57,13 @@ class DescribeCertDetailResponseBodyCertDetail(DaraModel):
         domain: str = None,
         sans: List[str] = None,
     ):
-        # The time when the certificate expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.after_date = after_date
-        # The time when the certificate was issued. Unit: milliseconds.
+        # The time when the certificate was issued. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.before_date = before_date
-        # The certificate ID.
+        # The ID of the certificate.
         self.cert_identifier = cert_identifier
-        # The certificate name.
+        # The name of the certificate.
         self.cert_name = cert_name
         # The primary domain name, which is a common name.
         self.common_name = common_name

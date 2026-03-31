@@ -15,29 +15,28 @@ class DescribePeakTrendRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_timestamp: str = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used as the end time.
+        # The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
         self.end_timestamp = end_timestamp
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The time interval. Unit: seconds. The value must be an integer multiple of 60.
+        # The time interval. Unit: seconds. The value must be an integral multiple of 60.
         # 
         # This parameter is required.
         self.interval = interval
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The protected object for which you want to query the QPS trend, such as a domain name.
+        # The protected object.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. Unit: seconds.
         # 
         # This parameter is required.
         self.start_timestamp = start_timestamp

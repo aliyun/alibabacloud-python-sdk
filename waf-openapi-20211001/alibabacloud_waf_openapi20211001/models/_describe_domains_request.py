@@ -20,31 +20,27 @@ class DescribeDomainsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         tag: List[main_models.DescribeDomainsRequestTag] = None,
     ):
-        # The IP address of the origin server or the back-to-origin domain name. You can specify only one of these options.
+        # An array of HTTPS listener ports.
         self.backend = backend
-        # The domain name added to WAF.
+        # The ID of the request.
         self.domain = domain
-        # The ID of the domain name.
         self.domain_id = domain_id
-        # The ID of the WAF instance.
-        # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of the current WAF instance.
+        # The page number of the page to return. Default value: 1.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: 1.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tags of the resource. A maximum of 20 tags are supported.
+        # The tag of the resource. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

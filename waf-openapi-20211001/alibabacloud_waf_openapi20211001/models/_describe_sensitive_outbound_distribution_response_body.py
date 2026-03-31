@@ -13,7 +13,7 @@ class DescribeSensitiveOutboundDistributionResponseBody(DaraModel):
         data: List[main_models.DescribeSensitiveOutboundDistributionResponseBodyData] = None,
         request_id: str = None,
     ):
-        # A list of outbound traffic distributions that contain personal information.
+        # The traffic distribution of personal information records involved in cross-border data transfer.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -59,11 +59,11 @@ class DescribeSensitiveOutboundDistributionResponseBodyData(DaraModel):
         info_outbound_count: int = None,
         sensitive_outbound_count: int = None,
     ):
-        # The destination country.
+        # The country to which the data is transferred.
         self.country = country
-        # The number of outbound personal information entries.
+        # The number of personal information records involved in cross-border data transfer.
         self.info_outbound_count = info_outbound_count
-        # The number of outbound sensitive information entries.
+        # The number of sensitive information records involved in cross-border data transfer.
         self.sensitive_outbound_count = sensitive_outbound_count
 
     def validate(self):

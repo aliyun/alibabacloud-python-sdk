@@ -13,9 +13,9 @@ class DescribeUserAbnormalTrendResponseBody(DaraModel):
         request_id: str = None,
         trend: List[main_models.DescribeUserAbnormalTrendResponseBodyTrend] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of API security risk trend data points.
+        # The trends of risks.
         self.trend = trend
 
     def validate(self):
@@ -61,15 +61,17 @@ class DescribeUserAbnormalTrendResponseBodyTrend(DaraModel):
         time_stamp: int = None,
         timestamp: int = None,
     ):
-        # The number of high-severity security risks.
+        # The number of high risks.
         self.abnormal_high = abnormal_high
-        # The number of low-severity security risks.
+        # The number of low risks.
         self.abnormal_low = abnormal_low
-        # The number of medium-severity security risks.
+        # The number of medium risks.
         self.abnormal_medium = abnormal_medium
-        # The point in time when the statistics were collected. This value is a UNIX timestamp in UTC. Unit: seconds.
+        # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # 
+        # >Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
         self.time_stamp = time_stamp
-        # The point in time when the statistics were collected. This value is a UNIX timestamp in UTC. Unit: seconds.
+        # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):

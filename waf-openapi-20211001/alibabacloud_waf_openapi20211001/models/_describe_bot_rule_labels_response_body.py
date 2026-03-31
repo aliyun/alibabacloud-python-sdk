@@ -16,17 +16,10 @@ class DescribeBotRuleLabelsResponseBody(DaraModel):
         rule_labels: List[main_models.DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned per page. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The token to retrieve the next page of results. This parameter is returned if a next page exists.
-        # 
-        # > If a value is returned for this parameter, it indicates that more results are available. Use the returned **NextToken** value in the next request to retrieve the next page of results. Repeat this process until no value is returned for this parameter. This indicates that all results have been retrieved.
         self.next_token = next_token
-        # The request ID.
         self.request_id = request_id
-        # The list of bot management rule labels.
         self.rule_labels = rule_labels
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -89,23 +82,9 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         label_type: str = None,
         sub_scene: str = None,
     ):
-        # The bot behavior that corresponds to the rule label. Valid values:
-        # 
-        # - **malicious**: malicious bot.
-        # 
-        # - **suspicious**: suspected bot.
-        # 
-        # - **normal**: normal bot.
         self.bot_behavior = bot_behavior
-        # The key of the bot management rule label.
         self.label_key = label_key
-        # The type of the bot rule label.
         self.label_type = label_type
-        # The bot management scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
-        # 
-        # - **web**: web protection.
-        # 
-        # - **app**: app protection.
         self.sub_scene = sub_scene
 
     def validate(self):

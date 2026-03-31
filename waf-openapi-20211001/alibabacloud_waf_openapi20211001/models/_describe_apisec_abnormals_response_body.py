@@ -14,11 +14,11 @@ class DescribeApisecAbnormalsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of security risks.
+        # The risks.
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of security risks returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,87 +85,70 @@ class DescribeApisecAbnormalsResponseBodyData(DaraModel):
         origin: str = None,
         user_status: str = None,
     ):
-        # The number of risk events that are associated with the security risk.
+        # The number of risk-related security events.
         self.abnormal_event_number = abnormal_event_number
-        # The ID of the security risk.
+        # The ID of the risk.
         self.abnormal_id = abnormal_id
-        # The details of the security risk in JSON format. The JSON object contains the following fields:
+        # The details of the risk. The value is a string that consists of multiple parameters in the JSON format. Valid values:
         # 
-        # - **rule**: The detection rule that triggered the security risk.
-        # 
-        # - **data_type**: The type of sensitive data.
-        # 
-        # - **custom_rule_name**: The name of the custom rule.
-        # 
-        # - **rule_name**: The name of the built-in rule.
+        # * **rule**: risk-related rule
+        # * **data_type**: sensitive data type
+        # * **custom_rule_name**: custom rule name
+        # * **rule_name**: built-in rule name
         self.abnormal_info = abnormal_info
-        # The severity level of the security risk. Valid values:
+        # The level of the risk. Valid values:
         # 
-        # - **high**: High.
-        # 
-        # - **medium**: Medium.
-        # 
-        # - **low**: Low.
+        # * **high**
+        # * **medium**
+        # * **low**
         self.abnormal_level = abnormal_level
-        # The type of the security risk.
+        # The type of the risk.
         # 
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported risk types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
         self.abnormal_tag = abnormal_tag
-        # The processing status of the security risk.
+        # The status of the risk.
         self.abnromal_status = abnromal_status
-        # The path of the API that is associated with the security risk.
+        # The risk-related API.
         self.api_format = api_format
-        # The ID of the API that is associated with the security risk.
+        # The ID of the risk-related API.
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported business purposes.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
-        # The time when the security risk was first detected. The value is a UNIX timestamp. Unit: seconds.
+        # The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.discover_time = discover_time
-        # The list of security risk samples.
+        # The risk-related samples.
         self.examples = examples
-        # The time when the API was first discovered. The value is a UNIX timestamp. Unit: seconds.
+        # The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.first_time = first_time
-        # Indicates whether the security risk is being followed. Valid values:
+        # Indicates whether the API is followed. Valid values:
         # 
-        # - **1**: The security risk is being followed.
-        # 
-        # - **0** (default): The security risk is not being followed.
+        # *   **1**: yes
+        # *   **0**(default): no
         self.follow = follow
-        # The time when the security risk was marked as ignored. The value is a UNIX timestamp. Unit: seconds.
+        # The time at which the risk was marked as ignored. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.ignore_time = ignore_time
-        # The most recent time when the API was accessed. The value is a UNIX timestamp. Unit: seconds.
+        # The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.lastest_time = lastest_time
-        # The most recent time when the security risk was detected. The value is a UNIX timestamp. Unit: seconds.
+        # The time at which the risk was last detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.latest_discover_time = latest_discover_time
-        # The domain name or IP address that the API resides on.
+        # The domain name or IP address of the API.
         self.matched_host = matched_host
-        # The remarks for the security risk.
+        # The remarks.
         self.note = note
-        # The source of the risk detection rule. Valid values:
+        # The source of the risk type. Valid values:
         # 
-        # - **custom**: Custom rule.
-        # 
-        # - **default**: Built-in rule.
+        # *   **custom**
+        # *   **default**
         self.origin = origin
-        # The handling status of the security risk. Valid values:
+        # The status of the risk. Valid values:
         # 
-        # - **toBeConfirmed**: To be confirmed.
-        # 
-        # - **confirmed**: Confirmed.
-        # 
-        # - **toBeFixed**: To be fixed.
-        # 
-        # - **fixed**: Fixed (manually verified).
-        # 
-        # - **ignored**: Ignored.
-        # 
-        # - **toBeVerified**: To be verified by the system.
-        # 
-        # - **notFixed**: Verification failed.
-        # 
-        # - **systemFixed**: Fixed (verified by the system).
+        # * **toBeConfirmed**
+        # * **confirmed**
+        # * **toBeFixed**
+        # * **fixed**
+        # * **ignored**
         self.user_status = user_status
 
     def validate(self):

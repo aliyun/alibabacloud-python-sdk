@@ -14,35 +14,30 @@ class DescribeRuleHitsTopResourceRequest(DaraModel):
         rule_type: str = None,
         start_timestamp: str = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used as the end time.
+        # The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of rule that was triggered. If you do not specify this parameter, data for all rule types is returned.
+        # The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
         # 
-        # - **blacklist**: The IP address blacklist.
-        # 
-        # - **custom**: A custom rule.
-        # 
-        # - **antiscan**: A scan protection rule.
-        # 
-        # - **cc_system**: An HTTP flood protection rule.
-        # 
-        # - **region_block**: The Location Blacklist feature.
+        # *   **blacklist:** IP address blacklist rules.
+        # *   **custom:** custom rules.
+        # *   **antiscan:** scan protection rules.
+        # *   **cc_system:** HTTP flood protection rules.
+        # *   **region_block:** region blacklist rules.
         self.rule_type = rule_type
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. Unit: seconds.
         # 
         # This parameter is required.
         self.start_timestamp = start_timestamp

@@ -13,9 +13,9 @@ class DescribeRuleHitsTopResourceResponseBody(DaraModel):
         request_id: str = None,
         rule_hits_top_resource: List[main_models.DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The top 10 protected objects that triggered protection rules.
+        # The array of the top 10 protected objects that trigger protection rules.
         self.rule_hits_top_resource = rule_hits_top_resource
 
     def validate(self):
@@ -58,7 +58,7 @@ class DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource(DaraModel):
         count: int = None,
         resource: str = None,
     ):
-        # The number of requests that triggered the rule.
+        # The number of requests that match protection rules.
         self.count = count
         # The protected object.
         self.resource = resource

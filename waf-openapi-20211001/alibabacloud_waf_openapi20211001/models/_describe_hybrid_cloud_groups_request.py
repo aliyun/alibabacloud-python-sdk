@@ -19,41 +19,36 @@ class DescribeHybridCloudGroupsRequest(DaraModel):
     ):
         # The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
-        # The proxy type of the hybrid cloud cluster. Valid values:
+        # The type of proxy cluster that is used. Valid values:
         # 
-        # - **service**: SDK-based integration.
-        # 
-        # - **cname**: CNAME-based reverse proxy.
+        # *   **service**: service-based traffic mirroring.
+        # *   **cname**: reverse proxy.
         self.cluster_proxy_type = cluster_proxy_type
-        # The name of the hybrid cloud node group that you want to query.
+        # The name of the node group that you want to query.
         self.group_name = group_name
-        # The type of the hybrid cloud node group. Valid values:
+        # The type of the node group. Valid values:
         # 
-        # - **protect**: protection node group.
-        # 
-        # - **control**: control node group.
-        # 
-        # - **storage**: storage node group.
-        # 
-        # - **controlStorage**: control and storage node group.
+        # *   **protect**
+        # *   **control**
+        # *   **storage**
+        # *   **controlStorage**
         self.group_type = group_type
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group to which the WAF instance belongs.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

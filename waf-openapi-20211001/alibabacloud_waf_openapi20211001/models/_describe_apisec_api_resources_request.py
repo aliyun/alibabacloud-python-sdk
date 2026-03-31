@@ -31,113 +31,105 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         sensitive_type: str = None,
         start_time: str = None,
     ):
-        # The API endpoint path used to filter the query results.
+        # The API.
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
-        # The HTTP request method of the API. Valid values: **GET**, **POST**, **HEAD**, **PUT**, **DELETE**, **CONNECT**, **PATCH**, and **OPTIONS**.
+        # The request method of the API. Valid values:
+        # 
+        # * **GET**
+        # * **POST**
+        # * **HEAD**
+        # * **PUT**
+        # * **DELETE**
+        # * **CONNECT**
+        # * **PATCH**
+        # * **OPTIONS**
         self.api_method = api_method
-        # The lifecycle status of the API. Valid values:
+        # The API status. Valid values:
         # 
-        # - **NewbornInterface**: newly discovered.
-        # 
-        # - **OfflineInterface**: inactive.
-        # 
-        # - **normal**: active.
+        # * **NewbornInterface**: The API is newly added.
+        # * **OfflineInterface**: The API is inactive.
+        # * **normal**: The API is normal.
         self.api_status = api_status
         # The business purpose of the API.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported business purposes.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
-        # The type of service that the API serves. Valid values:
+        # The service object. Valid values:
         # 
-        # - **PublicAPI**: public-facing service.
-        # 
-        # - **ThirdpartAPI**: third-party service.
-        # 
-        # - **InternalAPI**: internal service.
+        # * **PublicAPI**: public services
+        # * **ThirdpartAPI**: cooperation with third-party partners
+        # * **InternalAPI**: internal office
         self.api_type = api_type
-        # Indicates whether the API requires authentication. Valid values:
+        # Specifies whether authentication is required. Valid values:
         # 
-        # - **0**: The API requires authentication.
-        # 
-        # - **1**: The API does not require authentication.
+        # * **0**: Authentication is required.
+        # * **1**: Authentication is not required.
         self.auth_flag = auth_flag
-        # The ID of the Hybrid Cloud WAF cluster.
+        # The ID of the hybrid cloud cluster.
         # 
-        # > This parameter is available only for hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about Hybrid Cloud WAF clusters.
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a UNIX timestamp in seconds.
+        # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_time = end_time
-        # Indicates whether the API is followed. Valid values:
+        # Specifies whether to follow the API. Valid values:
         # 
-        # - **1**: The API is followed.
-        # 
-        # - **0**: The API is not followed.
+        # * **1**: follows the API.
+        # * **0**: does not follow the API.
         self.follow = follow
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The domain name or IP address of the API used to filter the query results.
+        # The domain name or IP address of the API.
         self.matched_host = matched_host
-        # The remarks of the API asset used to filter the query results.
+        # The remarks.
         self.note = note
-        # The field by which to sort the results. Valid values:
+        # The name of the sorting field. Valid values:
         # 
-        # - **allCnt**: sorts by the total number of requests in the last 30 days.
-        # 
-        # - **botCnt**: sorts by the number of bot requests in the last 30 days.
-        # 
-        # - **crossBorderCnt**: sorts by the number of cross-border requests in the last 30 days.
-        # 
-        # - **abnormalNum**: sorts by the number of threats associated with the API.
-        # 
-        # - **eventNum**: sorts by the number of security events associated with the API.
-        # 
-        # - **farthestTs**: sorts by the time when the API was first discovered.
-        # 
-        # - **lastestTs**: sorts by the time of the most recent access.
+        # * **allCnt**: the total number of calls to the API in the previous 30 days
+        # * **botCnt**: the number of bot-initiated requests in the previous 30 days
+        # * **crossBorderCnt**: the number of cross-border requests in the previous 30 days
+        # * **abnormalNum**: the number of API-related risks
+        # * **eventNum**: the number of API-related security events
+        # * **farthestTs**: the time when the API was first detected
+        # * **lastestTs**: the time of the most recent access to the API
         self.order_key = order_key
-        # The sort order. Valid values:
+        # The sorting method. Valid values:
         # 
-        # - **desc**: descending order (default).
-        # 
-        # - **asc**: ascending order.
+        # * **desc** (default): descending order
+        # * **asc**: ascending order
         self.order_way = order_way
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the WAF instance. Valid values:
+        # The region ID of the WAF instance. Value:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The type of sensitive data in the request.
+        # The sensitive data type in the request.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported sensitive data types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.request_sensitive_type = request_sensitive_type
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The sensitivity level of the API. Valid values:
         # 
-        # - **L1**: High.
-        # 
-        # - **L2**: Medium.
-        # 
-        # - **L3**: Low.
-        # 
-        # - **N**: Non-sensitive.
+        # * **L1**: high sensitivity
+        # * **L2**: moderate sensitivity
+        # * **L3**: low sensitivity
+        # * **N**: non-sensitivity
         self.sensitive_level = sensitive_level
-        # The type of sensitive data in the response.
+        # The sensitive data type in the response.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported sensitive data types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_type = sensitive_type
-        # The beginning of the time range to query. Specify a UNIX timestamp in seconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

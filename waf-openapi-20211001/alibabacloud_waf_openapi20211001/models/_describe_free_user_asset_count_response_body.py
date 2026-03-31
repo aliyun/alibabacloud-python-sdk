@@ -11,7 +11,7 @@ class DescribeFreeUserAssetCountResponseBody(DaraModel):
         asset: main_models.DescribeFreeUserAssetCountResponseBodyAsset = None,
         request_id: str = None,
     ):
-        # The statistics information about assets detected by the basic API security feature.
+        # The asset statistics provided by basic detection.
         self.asset = asset
         # The request ID.
         self.request_id = request_id
@@ -53,9 +53,9 @@ class DescribeFreeUserAssetCountResponseBodyAsset(DaraModel):
     ):
         # The number of active APIs.
         self.asset_active = asset_active
-        # The total number of API assets.
+        # The total number of APIs.
         self.asset_count = asset_count
-        # The number of inactive APIs.
+        # The number of deactivated APIs.
         self.asset_offline = asset_offline
 
     def validate(self):

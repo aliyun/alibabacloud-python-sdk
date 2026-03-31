@@ -27,93 +27,76 @@ class DescribeApisecAbnormalsRequest(DaraModel):
         start_time: str = None,
         user_status: str = None,
     ):
-        # The ID of the security risk.
+        # The ID of the risk.
         self.abnormal_id = abnormal_id
-        # The severity level of the security risk. Valid values:
+        # The level of the risk. Valid values:
         # 
-        # - **high**: High.
-        # 
-        # - **medium**: Medium.
-        # 
-        # - **low**: Low.
+        # * **high**
+        # * **medium**
+        # * **low**
         self.abnormal_level = abnormal_level
-        # The type of the security risk.
+        # The type of the risk.
         # 
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported risk types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
         self.abnormal_tag = abnormal_tag
-        # The path of the API that is associated with the security risk.
+        # The risk-related API.
         self.api_format = api_format
-        # The ID of the API that is associated with the security risk.
+        # The ID of the risk-related API.
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported business purposes.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
-        # The ID of the hybrid cloud WAF cluster.
+        # The ID of the hybrid cloud cluster.
         # 
-        # > This parameter is required only for hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to query the IDs of hybrid cloud WAF clusters.
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The domain name or IP address that the API resides on.
+        # The domain name or IP address of the API.
         self.matched_host = matched_host
-        # The field by which the query results are sorted. Valid values:
+        # The name of the sorting field. Valid values:
         # 
-        # - **discoverTime** (default): The time when the risk was first detected.
-        # 
-        # - **abnormalLevel**: The risk level.
-        # 
-        # - **latestDiscoverTime**: The most recent time when the risk was detected.
+        # *   **discoverTime** (default): indicates the time when a risk was first detected.
+        # *   **abnormalLevel**: indicates the level of a risk.
+        # *   **latestDiscoverTime**: indicates the time when a risk was last detected.
         self.order_key = order_key
-        # The sorting order. Valid values:
+        # The sorting method. Valid values:
         # 
-        # - **desc** (default): Descending order.
-        # 
-        # - **asc**: Ascending order.
+        # * **desc (default)**: in descending order
+        # * **asc**: in ascending order
         self.order_way = order_way
-        # The source of the risk detection rule. Valid values:
+        # The source of the risk type. Valid values:
         # 
-        # - **custom**: Custom rule.
-        # 
-        # - **default**: Built-in rule.
+        # * **custom**
+        # * **default**
         self.origin = origin
-        # The page number of the returned page. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**. Maximum value: 100.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.start_time = start_time
-        # The handling status of the security risk. Valid values:
+        # The status of the risk. Valid values:
         # 
-        # - **toBeConfirmed**: To be confirmed.
-        # 
-        # - **confirmed**: Confirmed.
-        # 
-        # - **toBeFixed**: To be fixed.
-        # 
-        # - **fixed**: Fixed (manually verified).
-        # 
-        # - **ignored**: Ignored.
-        # 
-        # - **toBeVerified**: To be verified by the system.
-        # 
-        # - **notFixed**: Verification failed.
-        # 
-        # - **systemFixed**: Fixed (verified by the system).
+        # * **toBeConfirmed**
+        # * **confirmed**
+        # * **toBeFixed**
+        # * **fixed**
+        # * **ignored**
         self.user_status = user_status
 
     def validate(self):

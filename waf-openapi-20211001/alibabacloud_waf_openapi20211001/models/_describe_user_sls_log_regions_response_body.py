@@ -12,7 +12,7 @@ class DescribeUserSlsLogRegionsResponseBody(DaraModel):
         log_regions: List[str] = None,
         request_id: str = None,
     ):
-        # The list of log storage region IDs.
+        # The region IDs.
         self.log_regions = log_regions
         # The request ID.
         self.request_id = request_id

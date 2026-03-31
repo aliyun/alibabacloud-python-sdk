@@ -30,95 +30,78 @@ class DescribeApisecEventsRequest(DaraModel):
         start_ts: int = None,
         user_status: str = None,
     ):
-        # The account that you want to use to filter events.
         self.account = account
-        # The path of the API that is associated with the security event.
+        # The API.
         self.api_format = api_format
-        # The ID of the API.
+        # The ID of the event-related API.
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
-        # The IP address of the attacker that you want to use to filter events.
+        # The Attack source IP.
         self.attack_ip = attack_ip
-        # The ID of the hybrid cloud WAF cluster.
+        # The ID of the hybrid cloud cluster.
         # 
-        # > This parameter is required only in hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of hybrid cloud WAF clusters.
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
         # The ID of the API security event.
         self.event_id = event_id
         # The severity level of the event. Valid values:
         # 
-        # - **high**: high severity.
-        # 
-        # - **medium**: medium severity.
-        # 
-        # - **low**: low severity.
+        # *   **high**
+        # *   **medium**
+        # *   **low**
         self.event_level = event_level
-        # The dimension by which security events are categorized. Valid values:
-        # 
-        # - **ip**: IP security event. This is the default value.
-        # 
-        # - **account**: account security event.
         self.event_scope = event_scope
-        # The event type.
+        # The type of the event.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
         self.event_tag = event_tag
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The domain name or IP address that is protected by WAF.
+        # The domain name or IP address of the API.
         self.matched_host = matched_host
-        # The field that is used to sort the query results. Valid values:
+        # The name of the sorting field. Valid values:
         # 
-        # - **allCnt**: the number of attacks.
-        # 
-        # - **startTs**: the start time of the event.
-        # 
-        # - **endTs**: the end time of the event.
+        # *   **allCnt**: the number of attacks
+        # *   **startTs**: the start time of the event
+        # *   **endTs**: the end time of the event
         self.order_key = order_key
-        # The order in which the query results are sorted. Valid values:
+        # The sorting method. Valid values:
         # 
-        # - **desc**: descending order. This is the default value.
-        # 
-        # - **asc**: ascending order.
+        # *   **desc** (default): descending order
+        # *   **asc**: ascending order
         self.order_way = order_way
         # The source of the event type. Valid values:
         # 
-        # - **custom**: a user-defined event type.
-        # 
-        # - **default**: a built-in event type.
+        # *   **custom**
+        # *   **default**
         self.origin = origin
-        # The page number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Value:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_ts = start_ts
-        # The handling status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # - **toBeConfirmed**: pending confirmation.
-        # 
-        # - **confirmed**: confirmed but not yet handled.
-        # 
-        # - **actioned**: handled.
-        # 
-        # - **ignored**: ignored.
+        # *   **toBeConfirmed**
+        # *   **confirmed**
+        # *   **ignored**
         self.user_status = user_status
 
     def validate(self):

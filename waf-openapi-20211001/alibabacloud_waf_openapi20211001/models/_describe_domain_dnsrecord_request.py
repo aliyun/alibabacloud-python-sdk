@@ -12,23 +12,22 @@ class DescribeDomainDNSRecordRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The domain name that you want to query.
+        # The domain name whose DNS settings you want to check.
         # 
         # This parameter is required.
         self.domain = domain
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

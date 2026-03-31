@@ -18,9 +18,9 @@ class CreateHybridCloudGroupRequest(DaraModel):
         remark: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The back-to-origin mark of the node group. The value is in the format of Carrier-Continent-City, which is used to identify the origin of back-to-origin requests.
+        # The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
         self.back_source_mark = back_source_mark
-        # The ID of the Hybrid Cloud WAF cluster.
+        # The ID of the hybrid cloud cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -30,37 +30,33 @@ class CreateHybridCloudGroupRequest(DaraModel):
         self.group_name = group_name
         # The type of the node group. Valid values:
         # 
-        # - **protect**: a protection node group that processes traffic filtering.
-        # 
-        # - **control**: a control node group that manages cluster configurations.
-        # 
-        # - **storage**: a storage node group that stores logs and data.
-        # 
-        # - **controlStorage**: a node group that serves as both control and storage.
+        # *   **protect**
+        # *   **control**
+        # *   **storage**
+        # *   **controlStorage**
         # 
         # This parameter is required.
         self.group_type = group_type
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address of the load balancer that is associated with the node group.
+        # The IP address of the server used for load balancing.
         # 
         # This parameter is required.
         self.load_balance_ip = load_balance_ip
-        # The location code of the region where the node group resides. The value is in the format of Carrier-Continent-City.
+        # The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
         self.location_code = location_code
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The remarks on the node group. You can use this parameter to add a brief description for the node group.
+        # The remarks.
         self.remark = remark
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

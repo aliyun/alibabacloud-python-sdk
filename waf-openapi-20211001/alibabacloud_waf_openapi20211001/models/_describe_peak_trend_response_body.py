@@ -13,9 +13,9 @@ class DescribePeakTrendResponseBody(DaraModel):
         flow_chart: List[main_models.DescribePeakTrendResponseBodyFlowChart] = None,
         request_id: str = None,
     ):
-        # The QPS statistics of WAF.
+        # An array of the QPS statistics of the WAF instance.
         self.flow_chart = flow_chart
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -62,17 +62,17 @@ class DescribePeakTrendResponseBodyFlowChart(DaraModel):
         index: int = None,
         waf_sum: int = None,
     ):
-        # The number of requests protected by the ACL module. This includes requests that are monitored and blocked.
+        # The number of requests that are monitored or blocked by the custom rule (access control) module.
         self.acl_sum = acl_sum
-        # The number of requests protected by the scan protection module. This includes requests that are monitored and blocked.
+        # The number of requests that are monitored or blocked by the scan protection module.
         self.anti_scan_sum = anti_scan_sum
-        # The number of requests protected by the CC protection module. This includes requests that are monitored and blocked.
+        # The number of requests that are monitored or blocked by the HTTP flood protection module.
         self.cc_sum = cc_sum
         # The total number of requests.
         self.count = count
-        # The ordinal number for the time point, sorted in chronological order.
+        # The serial number of the time interval. The serial numbers are arranged in chronological order.
         self.index = index
-        # The number of requests protected by the web attack protection module. This includes requests that are monitored and blocked.
+        # The number of requests that are monitored or blocked by the regular expression protection engine.
         self.waf_sum = waf_sum
 
     def validate(self):

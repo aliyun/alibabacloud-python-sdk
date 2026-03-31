@@ -1,3 +1,7 @@
+2026-03-31 Version: 7.7.0
+- Support API DescribeUserTraffic.
+
+
 2026-03-24 Version: 7.6.1
 - Update API CreateDefenseTemplate: add request parameters DefenseSubScene.
 

@@ -10,9 +10,7 @@ class DescribeDefenseSceneConfigResponseBody(DaraModel):
         config_value: str = None,
         request_id: str = None,
     ):
-        # The value of the configuration item. For more information, see the **ConfigValue** parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
         self.config_value = config_value
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

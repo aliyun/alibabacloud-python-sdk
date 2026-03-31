@@ -13,7 +13,7 @@ class DescribeDefenseTemplateResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The details of the protection template.
+        # The information about the template.
         self.template = template
 
     def validate(self):
@@ -57,39 +57,33 @@ class DescribeDefenseTemplateResponseBodyTemplate(DaraModel):
         template_status: int = None,
         template_type: str = None,
     ):
-        # The scenario in which the protection template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) operation.
+        # The scenario in which the template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         self.defense_scene = defense_scene
-        # The sub-scenario of the protection template. Valid values:
+        # The sub-scenario in which the template is used. Valid values:
         # 
-        # - **web**: the bot management template for website protection.
-        # 
-        # - **app**: the bot management template for app protection.
-        # 
-        # - **basic**: the basic bot management template.
-        # 
-        # - **bot_custom_acl**: the bot management template for custom protection rules.
+        # *   **web**: The template is a bot management template that is used for website protection.
+        # *   **app**: The template is a bot management template that is used for app protection.
+        # *   **basic**: The template is a bot management template that is used for basic protection.
         self.defense_sub_scene = defense_sub_scene
-        # The description of the protection template.
+        # The description of the protection rule template.
         self.description = description
-        # The most recent time the protection template was modified. This value is a UNIX timestamp. Unit: milliseconds.
+        # The most recent time when the protection rule template was modified.
         self.gmt_modified = gmt_modified
-        # The ID of the protection template.
+        # The ID of the protection rule template.
         self.template_id = template_id
-        # The name of the protection template.
+        # The name of the protection rule template.
         self.template_name = template_name
-        # The origin of the protection template. A value of **custom** indicates that the template is user-defined.
+        # The origin of the protection rule template. If the value of this parameter is custom, the protection rule template is created by the user.
         self.template_origin = template_origin
-        # The status of the protection template. Valid values:
+        # The status of the protection rule template. Valid values:
         # 
-        # - **0**: disabled.
-        # 
-        # - **1**: enabled.
+        # *   **0:** disabled.
+        # *   **1:** enabled.
         self.template_status = template_status
-        # The type of the protection template. Valid values:
+        # The type of the protection rule template. Valid values:
         # 
-        # - **user_default**: the default template.
-        # 
-        # - **user_custom**: a custom template.
+        # *   **user_default:** default template.
+        # *   **user_custom:** custom template.
         self.template_type = template_type
 
     def validate(self):

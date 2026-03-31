@@ -14,7 +14,7 @@ class DescribeSensitiveStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of sensitive data statistics.
+        # The statistics of the sensitive data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -70,17 +70,17 @@ class DescribeSensitiveStatisticResponseBodyData(DaraModel):
         matched_host: str = None,
         sensitive_code: str = None,
     ):
-        # The API path.
+        # The API.
         self.api_format = api_format
-        # The client IP address.
+        # The IP address.
         self.client_ip = client_ip
-        # The number of data entries.
+        # The number of entries returned.
         self.count = count
-        # The matched domain name.
+        # The domain name.
         self.matched_host = matched_host
-        # The sensitive data type.
+        # The type of the sensitive data.
         # 
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
         self.sensitive_code = sensitive_code
 
     def validate(self):

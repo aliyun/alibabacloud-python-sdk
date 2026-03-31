@@ -15,39 +15,32 @@ class ModifyDefenseRuleStatusRequest(DaraModel):
         rule_status: int = None,
         template_id: int = None,
     ):
-        # The type of the protection rule. Valid values:
-        # 
-        # - **template** (default): a template protection rule.
-        # 
-        # - **resource**: a rule that is configured for a protected object.
         self.defense_type = defense_type
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the protection rule to modify.
+        # The ID of the protection rule whose status you want to change.
         # 
         # This parameter is required.
         self.rule_id = rule_id
         # The new status of the protection rule. Valid values:
         # 
-        # - **0**: disabled
-        # 
-        # - **1**: enabled
+        # *   **0:** disabled.
+        # *   **1:** enabled.
         # 
         # This parameter is required.
         self.rule_status = rule_status
-        # The ID of the protection template.
+        # The ID of the protection rule template to which the protection rule whose status you want to change belongs.
         self.template_id = template_id
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeRuleHitsTopClientIpResponseBody(DaraModel):
         request_id: str = None,
         rule_hits_top_client_ip: List[main_models.DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The top 10 source IP addresses that initiated the most attacks.
+        # The array of the top 10 IP addresses from which attacks are initiated.
         self.rule_hits_top_client_ip = rule_hits_top_client_ip
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp(DaraModel):
         client_ip: str = None,
         count: int = None,
     ):
-        # The IP address of the client.
+        # The IP address of the service client.
         self.client_ip = client_ip
-        # The number of attack requests.
+        # The number of attacks that are initiated from the IP address.
         self.count = count
 
     def validate(self):

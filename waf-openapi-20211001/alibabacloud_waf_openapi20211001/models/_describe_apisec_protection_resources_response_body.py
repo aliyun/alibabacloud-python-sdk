@@ -14,7 +14,7 @@ class DescribeApisecProtectionResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of protected objects.
+        # The protected objects.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -69,25 +69,13 @@ class DescribeApisecProtectionResourcesResponseBodyData(DaraModel):
         resource: str = None,
         trace_status: int = None,
     ):
-        # Indicates whether the API security feature is enabled for the protected object. Valid values:
-        # 
-        # - **0**: disabled.
-        # 
-        # - **1**: enabled.
+        # The switch of the API security module.
         self.apisec_status = apisec_status
-        # Indicates whether the compliance check feature is enabled. Valid values:
-        # 
-        # - **0**: disabled.
-        # 
-        # - **1**: enabled.
+        # The switch of the compliance check feature.
         self.report_status = report_status
-        # The name of the protected object.
+        # The protected object.
         self.resource = resource
-        # Indicates whether the source tracing feature is enabled. Valid values:
-        # 
-        # - **0**: disabled.
-        # 
-        # - **1**: enabled.
+        # The switch of the tracing and auditing feature.
         self.trace_status = trace_status
 
     def validate(self):

@@ -12,23 +12,10 @@ class DescribeUserLogFieldConfigRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The log delivery type. Valid values:
-        # 
-        # - **sls**: Simple Log Service.
         self.delivery_type = delivery_type
-        # The ID of the WAF instance.
-        # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeUserAssetResponseBody(DaraModel):
         assets: List[main_models.DescribeUserAssetResponseBodyAssets] = None,
         request_id: str = None,
     ):
-        # A list of asset statistics.
+        # The API statistics.
         self.assets = assets
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeUserAssetResponseBodyAssets(DaraModel):
         asset_num: int = None,
         time_stamp: int = None,
     ):
-        # The number of assets.
+        # The number of APIs returned.
         self.asset_num = asset_num
-        # The time when the statistics are collected. This value is a UNIX timestamp in seconds. The time is in UTC.
+        # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.time_stamp = time_stamp
 
     def validate(self):

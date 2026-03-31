@@ -14,11 +14,8 @@ class DescribeHybridCloudSdkServersResponseBody(DaraModel):
         sdk_servers: List[main_models.DescribeHybridCloudSdkServersResponseBodySdkServers] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The information about the hybrid cloud SDK servers.
         self.sdk_servers = sdk_servers
-        # The total number of hybrid cloud SDK servers returned.
         self.total_count = total_count
 
     def validate(self):
@@ -75,29 +72,16 @@ class DescribeHybridCloudSdkServersResponseBodySdkServers(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The name of the hybrid cloud cluster to which the SDK server belongs.
         self.cluster_name = cluster_name
-        # The time when the hybrid cloud SDK server was created. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The hostname of the hybrid cloud SDK server.
         self.host_name = host_name
-        # The IP address of the hybrid cloud SDK server.
         self.ip = ip
-        # The ID of the SDK server.
+        # SDKID。
         self.mid = mid
-        # The address of the protection group associated with the SDK server.
         self.protection_group_address = protection_group_address
-        # Indicates whether traffic redirection is enabled. Valid values:
-        # 
-        # - **on**: Traffic redirection is enabled.
-        # 
-        # - **off**: Traffic redirection is disabled.
         self.pullin_status = pullin_status
-        # The ID of the resource.
         self.resource_id = resource_id
-        # The status of the hybrid cloud SDK server.
         self.status = status
-        # The time when the hybrid cloud SDK server was last updated. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

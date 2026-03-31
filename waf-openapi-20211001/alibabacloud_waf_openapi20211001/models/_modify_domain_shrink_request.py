@@ -15,35 +15,31 @@ class ModifyDomainShrinkRequest(DaraModel):
         redirect_shrink: str = None,
         region_id: str = None,
     ):
-        # The access mode of the WAF instance. Valid values:
+        # The mode in which you want to add the domain name to WAF. Set the value to share.
         # 
-        # - **share** (default): onboarding by using a CNAME record.
-        # 
-        # - **hybrid_cloud_cname**: onboarding by using a hybrid cloud CNAME record.
+        # *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
         self.access_type = access_type
-        # The domain name whose configurations you want to modify.
+        # The domain name whose access configurations you want to modify.
         self.domain = domain
-        # The ID of the domain name.
         self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listening settings.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The forwarding settings.
+        # The forwarding configurations.
         # 
         # This parameter is required.
         self.redirect_shrink = redirect_shrink
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id

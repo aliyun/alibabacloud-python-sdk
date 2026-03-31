@@ -14,34 +14,13 @@ class ModifyResourceLogDeliveryStatusRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         status: bool = None,
     ):
-        # The name of the log delivery configuration.
-        # 
-        # > This parameter is required when you enable log delivery by setting **Status** to **true**.
         self.delivery_name = delivery_name
-        # The ID of the WAF instance.
-        # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The protected object for which you want to modify the log delivery status.
-        # 
         # This parameter is required.
         self.resource = resource
-        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # Indicates whether to enable log delivery for the protected object. Valid values:
-        # 
-        # - **true**: enables log delivery.
-        # 
-        # - **false**: disables log delivery.
-        # 
         # This parameter is required.
         self.status = status
 

@@ -19,7 +19,7 @@ class DescribeCloudResourceAccessPortDetailsRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -29,33 +29,27 @@ class DescribeCloudResourceAccessPortDetailsRequest(DaraModel):
         self.page_size = page_size
         # The port of the cloud service that is added to WAF.
         self.port = port
-        # The protocol. Valid values:
+        # The type of the protocol. Valid values:
         # 
-        # - **http**: HTTP.
-        # 
-        # - **https**: HTTPS.
+        # *   **http**
+        # *   **https**
         self.protocol = protocol
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource instance.
+        # The instance ID of the resource.
         # 
         # This parameter is required.
         self.resource_instance_id = resource_instance_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of the cloud service. Valid values:
+        # The cloud service. Valid values:
         # 
-        # - **clb4**: Layer 4 Classic Load Balancer (CLB).
-        # 
-        # - **clb7**: Layer 7 CLB.
-        # 
-        # - **ecs**: Elastic Compute Service (ECS).
-        # 
-        # - **nlb**: Network Load Balancer (NLB).
+        # *   **clb4**: Layer 4 CLB.
+        # *   **clb7**: Layer 7 CLB.
+        # *   **ecs**: ECS.
         self.resource_product = resource_product
 
     def validate(self):

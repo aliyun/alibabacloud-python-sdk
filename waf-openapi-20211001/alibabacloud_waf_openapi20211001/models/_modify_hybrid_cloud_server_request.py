@@ -16,37 +16,36 @@ class ModifyHybridCloudServerRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The continent where the hybrid cloud node resides.
+        # The continent.
         # 
         # This parameter is required.
         self.continents = continents
-        # The custom name of the hybrid cloud node.
+        # The name of the node.
         # 
         # This parameter is required.
         self.custom_name = custom_name
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the hybrid cloud node.
+        # The ID of the node.
         # 
         # This parameter is required.
         self.mid = mid
-        # The cloud service provider of the hybrid cloud node. Example: aliyun.
+        # The cloud service provider.
         # 
         # This parameter is required.
         self.operator = operator
-        # The region code of the city where the hybrid cloud node resides.
+        # The city.
         # 
         # This parameter is required.
         self.region_code = region_code
-        # The region where the WAF instance resides. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

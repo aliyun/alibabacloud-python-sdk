@@ -12,9 +12,7 @@ class DescribeDomainUsedPortsResponseBody(DaraModel):
         request_id: str = None,
         used_ports: List[int] = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The used ports.
         self.used_ports = used_ports
 
     def validate(self):

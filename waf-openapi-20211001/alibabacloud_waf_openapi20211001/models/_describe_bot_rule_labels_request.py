@@ -15,33 +15,13 @@ class DescribeBotRuleLabelsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         sub_scene: str = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
-        # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of bot rule label to query.
         self.label_type = label_type
-        # The number of entries to return on each page. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The token to retrieve the next page of results. This parameter is returned if a next page exists.
-        # 
-        # > If a value is returned for this parameter, it indicates that more results are available. Use the returned **NextToken** value in the next request to retrieve the next page of results. Repeat this process until no value is returned for this parameter. This indicates that all results have been retrieved.
         self.next_token = next_token
-        # The region where the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of bot management scenario. Valid values:
-        # 
-        # - **web**: web protection.
-        # 
-        # - **app**: app protection.
         self.sub_scene = sub_scene
 
     def validate(self):

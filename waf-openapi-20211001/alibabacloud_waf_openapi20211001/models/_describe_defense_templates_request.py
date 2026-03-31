@@ -21,61 +21,63 @@ class DescribeDefenseTemplatesRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The protection scenario. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) topic.
+        # The scenario in which the protection template is used.
+        # 
+        # *   **waf_group**: basic protection.
+        # *   **antiscan**: scan protection.
+        # *   **ip_blacklist**: IP address blacklist.
+        # *   **custom_acl**: custom rule.
+        # *   **whitelist**: whitelist.
+        # *   **region_block**: region blacklist.
+        # *   **custom_response**: custom response.
+        # *   **cc**: HTTP flood protection.
+        # *   **tamperproof**: website tamper-proofing.
+        # *   **dlp**: data leakage prevention.
         self.defense_scene = defense_scene
-        # The sub-scenario of the protection template. Valid values:
+        # The sub-scenario in which the protection template is used. Valid values:
         # 
-        # - **web**: the web protection template for bot management.
-        # 
-        # - **app**: the app protection template for bot management.
-        # 
-        # - **basic**: the basic protection template for bot management.
-        # 
-        # - **bot_custom_acl**: the advanced custom protection rule template for bot management.
+        # *   **web**: bot management for website protection.
+        # *   **app**: bot management for app protection.
+        # *   **basic**: bot management for basic protection.
         self.defense_sub_scene = defense_sub_scene
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
         # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of entries per page. Default value: **20**.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The name of the protected object or protected object group, or the ID of the protected asset.
+        # The name of the protected object or protected object group.
         # 
-        # > You must specify the Resource and ResourceType parameters to filter query results.
+        # >  If you specify ResourceType, you must specify this parameter.
         self.resource = resource
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the protected resource. Valid values:
         # 
-        # - **single** (default): a protected object.
+        # *   **single**: protected object. This is the default value.
+        # *   **group**: protected object group.
         # 
-        # - **group**: a protected object group.
-        # 
-        # - **asset**: a protected asset.
-        # 
-        # > You must specify the Resource and ResourceType parameters to filter query results.
+        # >  If you specify Resource, you must specify this parameter.
         self.resource_type = resource_type
         # The ID of the protection template.
         self.template_id = template_id
-        # The IDs of the protection templates that you want to query. You can specify this parameter to query the protected objects for which multiple protection templates take effect. Separate multiple template IDs with commas (,).
+        # The IDs of the protection templates that you want to query. Separate multiple template IDs with commas (,).
         self.template_ids = template_ids
-        # The name of the protection template to query.
+        # The name of the protection template.
         self.template_name = template_name
-        # The type of the protection template that you want to create. Valid values:
+        # The type of the protection template. Valid values:
         # 
-        # - **user_default**: default protection template.
-        # 
-        # - **user_custom**: custom protection template.
+        # *   **user_default**: default template.
+        # *   **user_custom**: custom template.
         self.template_type = template_type
 
     def validate(self):

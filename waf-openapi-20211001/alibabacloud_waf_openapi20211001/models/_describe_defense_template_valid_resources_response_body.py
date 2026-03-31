@@ -13,11 +13,8 @@ class DescribeDefenseTemplateValidResourcesResponseBody(DaraModel):
         resources: List[str] = None,
         total_count: int = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The names of the protected objects that are valid for the protection template.
         self.resources = resources
-        # The total number of protected objects that match the query criteria.
         self.total_count = total_count
 
     def validate(self):

@@ -22,60 +22,49 @@ class CreateDefenseTemplateRequest(DaraModel):
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
-        # The protection scenario. For more information, see the **DefenseScene** parameter of the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation.
+        # The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
         self.defense_sub_scene = defense_sub_scene
-        # The description of the protection template.
-        # 
-        # - **bot_custom_acl**: Represents the protection template for advanced custom rules in bot management.
+        # The description of the protection rule template.
         self.description = description
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to get the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
-        # 
-        # - **cn-hangzhou**: Represents the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Represents regions outside the Chinese mainland.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The name of the protection template. The name must be 1 to 255 characters long and can contain letters, digits, Chinese characters, underscores (_), periods (.), and hyphens (-).
-        # 
-        # > The names of templates for the same protection scenario (**DefenseScene**) must be unique.
+        # The name of the protection rule template.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The origin of the protection template. The value must be **custom**.
+        # The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
         # 
         # This parameter is required.
         self.template_origin = template_origin
-        # Indicates whether the protection template is enabled. Valid values:
+        # The status of the protection rule template. Valid values:
         # 
-        # - **0**: Disabled.
-        # 
-        # - **1**: Enabled.
+        # *   **0:** disabled.
+        # *   **1:** enabled.
         # 
         # This parameter is required.
         self.template_status = template_status
-        # The type of the protection template. Valid values:
+        # The type of the protection rule template. Valid values:
         # 
-        # - **user_default**: The user\\"s default template.
-        # 
-        # - **user_custom**: A user-defined template.
+        # *   **user_default:** default template.
+        # *   **user_custom:** custom template.
         # 
         # This parameter is required.
         self.template_type = template_type
-        # The protected objects to unbind when you create a default template. Use the [**"XX1","XX2",...**] format.
-        # 
-        # > This parameter takes effect only when you create a **default template** (**TemplateType** is set to **user_default**).
         self.unbind_resource_groups = unbind_resource_groups
-        # The ID of the Alibaba Cloud resource group.
         self.unbind_resources = unbind_resources
 
     def validate(self):

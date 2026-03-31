@@ -14,11 +14,11 @@ class DescribeApisecAbnormalDomainStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The statistics of domain names with API security risks.
+        # The response parameters.
         self.data = data
-        # The ID of the request.
+        # Id of the request.
         self.request_id = request_id
-        # The total number of domain names that have API security risks.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -70,15 +70,15 @@ class DescribeApisecAbnormalDomainStatisticResponseBodyData(DaraModel):
         low: int = None,
         medium: int = None,
     ):
-        # The total number of APIs that are associated with the domain name.
+        # The number of APIs.
         self.api_count = api_count
-        # The domain name that is protected by WAF.
+        # The domain name.
         self.domain = domain
-        # The number of high-severity threats.
+        # The number of high-level risks.
         self.high = high
-        # The number of low-severity threats.
+        # The number of low-level risks.
         self.low = low
-        # The number of medium-severity threats.
+        # The number of medium-level risks.
         self.medium = medium
 
     def validate(self):

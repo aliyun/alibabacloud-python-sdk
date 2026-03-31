@@ -13,9 +13,9 @@ class DescribeVisitTopIpResponseBody(DaraModel):
         request_id: str = None,
         top_ip: List[main_models.DescribeVisitTopIpResponseBodyTopIp] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The top 10 IP addresses that initiate the most requests.
+        # The array of the top 10 IP addresses from which requests are sent.
         self.top_ip = top_ip
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeVisitTopIpResponseBodyTopIp(DaraModel):
         ip: str = None,
         isp: str = None,
     ):
-        # The code of the geographical location.
+        # The ordinal number of the area to which the IP address belongs.
         self.area = area
-        # The total number of requests that are initiated from the IP address.
+        # The total number of requests that are sent from the IP address.
         self.count = count
         # The IP address.
         self.ip = ip
-        # The Internet service provider (ISP).
+        # The ISP.
         self.isp = isp
 
     def validate(self):

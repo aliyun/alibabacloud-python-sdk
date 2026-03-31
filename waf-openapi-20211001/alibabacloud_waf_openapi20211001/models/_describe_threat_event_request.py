@@ -16,32 +16,15 @@ class DescribeThreatEventRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The domain name that is protected by WAF. If you do not specify this parameter, security events for all domain names are queried.
         self.domain_name = domain_name
-        # The end of the time range to query. This value is a UNIX timestamp in milliseconds.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the Web Application Firewall (WAF) instance.
-        # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: **5**. Valid values: 1 to 200.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: a region outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp in milliseconds.
-        # 
         # This parameter is required.
         self.start_time = start_time
 

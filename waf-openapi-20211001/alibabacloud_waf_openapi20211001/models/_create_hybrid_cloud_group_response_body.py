@@ -10,9 +10,9 @@ class CreateHybridCloudGroupResponseBody(DaraModel):
         data: int = None,
         request_id: str = None,
     ):
-        # The ID of the created node group.
+        # The ID of the node group.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

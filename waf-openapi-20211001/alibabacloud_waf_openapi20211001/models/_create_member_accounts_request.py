@@ -17,7 +17,7 @@ class CreateMemberAccountsRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view your current WAF instance ID.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -25,11 +25,10 @@ class CreateMemberAccountsRequest(DaraModel):
         # 
         # This parameter is required.
         self.member_account_ids = member_account_ids
-        # The region of the WAF instance. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

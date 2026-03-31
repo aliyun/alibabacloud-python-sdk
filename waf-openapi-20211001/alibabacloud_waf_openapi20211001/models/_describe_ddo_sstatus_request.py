@@ -11,19 +11,18 @@ class DescribeDDoSStatusRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the WAF instance.
+        # The ID of the WAF instance that you want to query.
         # 
-        # > Call [](t2223479.xdita#)to query the ID of the current WAF instance.
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of WAF instance. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

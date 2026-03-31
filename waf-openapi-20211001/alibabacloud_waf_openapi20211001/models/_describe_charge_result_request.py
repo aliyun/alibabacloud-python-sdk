@@ -16,31 +16,12 @@ class DescribeChargeResultRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The billing cycle for the WAF instance. Valid values:
-        # 
-        # - **Year**: yearly billing cycle.
-        # 
-        # - **Month**: monthly billing cycle.
-        # 
-        # - **Day**: daily billing cycle.
         self.charge_cycle = charge_cycle
-        # The billing modules to calculate.
-        # 
         # This parameter is required.
         self.charge_modules = charge_modules
-        # The billing method of the WAF instance. Valid value:
-        # 
-        # - **POSTPAY**: pay-as-you-go.
-        # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The region where the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -101,9 +82,7 @@ class DescribeChargeResultRequestChargeModules(DaraModel):
         module_code: str = None,
         usage: int = None,
     ):
-        # The ID of the billing module.
         self.module_code = module_code
-        # The usage amount of the billing module.
         self.usage = usage
 
     def validate(self):

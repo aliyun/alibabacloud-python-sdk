@@ -563,6 +563,9 @@ from ._describe_user_log_field_config_response import DescribeUserLogFieldConfig
 from ._describe_user_sls_log_regions_request import DescribeUserSlsLogRegionsRequest
 from ._describe_user_sls_log_regions_response_body import DescribeUserSlsLogRegionsResponseBody
 from ._describe_user_sls_log_regions_response import DescribeUserSlsLogRegionsResponse
+from ._describe_user_traffic_request import DescribeUserTrafficRequest
+from ._describe_user_traffic_response_body import DescribeUserTrafficResponseBody
+from ._describe_user_traffic_response import DescribeUserTrafficResponse
 from ._describe_user_waf_log_status_request import DescribeUserWafLogStatusRequest
 from ._describe_user_waf_log_status_response_body import DescribeUserWafLogStatusResponseBody
 from ._describe_user_waf_log_status_response import DescribeUserWafLogStatusResponse
@@ -920,6 +923,7 @@ from ._describe_user_api_request_response_body import DescribeUserApiRequestResp
 from ._describe_user_asset_response_body import DescribeUserAssetResponseBodyAssets
 from ._describe_user_event_trend_response_body import DescribeUserEventTrendResponseBodyTrend
 from ._describe_user_event_type_response_body import DescribeUserEventTypeResponseBodyEvent
+from ._describe_user_traffic_response_body import DescribeUserTrafficResponseBodyUserTraffic
 from ._describe_verify_content_response_body import DescribeVerifyContentResponseBodyDnsContent
 from ._describe_verify_content_response_body import DescribeVerifyContentResponseBodyFileContent
 from ._describe_visit_top_ip_response_body import DescribeVisitTopIpResponseBodyTopIp
@@ -1504,6 +1508,9 @@ __all__ = [
     DescribeUserSlsLogRegionsRequest,
     DescribeUserSlsLogRegionsResponseBody,
     DescribeUserSlsLogRegionsResponse,
+    DescribeUserTrafficRequest,
+    DescribeUserTrafficResponseBody,
+    DescribeUserTrafficResponse,
     DescribeUserWafLogStatusRequest,
     DescribeUserWafLogStatusResponseBody,
     DescribeUserWafLogStatusResponse,
@@ -1861,6 +1868,7 @@ __all__ = [
     DescribeUserAssetResponseBodyAssets,
     DescribeUserEventTrendResponseBodyTrend,
     DescribeUserEventTypeResponseBodyEvent,
+    DescribeUserTrafficResponseBodyUserTraffic,
     DescribeVerifyContentResponseBodyDnsContent,
     DescribeVerifyContentResponseBodyFileContent,
     DescribeVisitTopIpResponseBodyTopIp,

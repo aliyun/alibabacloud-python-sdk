@@ -17,43 +17,40 @@ class ModifyApisecLogDeliveryRequest(DaraModel):
     ):
         # The type of the log subscription. Valid values:
         # 
-        # - **risk**: risk information.
-        # 
-        # - **event**: attack event information.
-        # 
-        # - **asset**: asset information.
+        # *   **risk**: risk information.
+        # *   **event**: attack event information.
+        # *   **asset**: asset information.
         # 
         # This parameter is required.
         self.assert_key = assert_key
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where logs are stored.
         # 
-        # > You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+        # >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
         # 
         # This parameter is required.
         self.log_region_id = log_region_id
         # The name of the Logstore in Simple Log Service.
         # 
-        # > API security logs can only be delivered to Logstores whose name starts with apisec-.
+        # >  API security logs can be delivered only to Logstores whose names start with apisec-.
         # 
         # This parameter is required.
         self.log_store_name = log_store_name
         # The name of the project in Simple Log Service.
         # 
-        # > API security logs can only be delivered to projects whose name starts with apisec-.
+        # >  API security logs can be delivered only to projects whose names start with apisec-.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

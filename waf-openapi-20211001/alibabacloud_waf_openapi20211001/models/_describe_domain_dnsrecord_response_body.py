@@ -10,21 +10,16 @@ class DescribeDomainDNSRecordResponseBody(DaraModel):
         dnsstatus: str = None,
         request_id: str = None,
     ):
-        # The DNS status. Valid values:
+        # The status of the DNS settings. Valid values:
         # 
-        # - **cnameMatched**: The DNS record is normal.
-        # 
-        # - **vipMatched**: The domain name is mapped to an A record.
-        # 
-        # - **wafVip**: The domain name is mapped to the virtual IP address (VIP) of another WAF instance.
-        # 
-        # - **unRecord**: No DNS record is configured.
-        # 
-        # - **unUsed**: Traffic is not forwarded to WAF.
-        # 
-        # - **checkTimeout**: The check timed out.
+        # *   **cnameMatched**: The DNS settings are properly configured.
+        # *   **vipMatched**: An A record maps the domain name to the WAF virtual IP address (VIP).
+        # *   **wafVip**: An A record maps the domain name to another WAF VIP.
+        # *   **unRecord**: The domain name does not have a DNS record.
+        # *   **unUsed**: The domain name is not pointed to WAF.
+        # *   **checkTimeout**: The check times out.
         self.dnsstatus = dnsstatus
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

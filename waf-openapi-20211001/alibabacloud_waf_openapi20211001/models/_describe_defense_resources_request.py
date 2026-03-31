@@ -20,25 +20,24 @@ class DescribeDefenseResourcesRequest(DaraModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the paginated results Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of results per page. Default value: **10**.
         self.page_size = page_size
-        # The query conditions. This parameter is a JSON string.
+        # The query conditions. Specify the value of this parameter as a string in the JSON format.
         # 
-        # > The query results vary based on the query conditions. For more information, see **Query parameter details**.
+        # >  The results vary based on the query condition. For more information, see the "**Query parameters**" section in this topic.
         self.query = query
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # A list of resource tags. You can specify up to 20 tags.
+        # The tag of the resource. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

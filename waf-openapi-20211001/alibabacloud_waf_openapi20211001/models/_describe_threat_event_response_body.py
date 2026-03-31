@@ -14,11 +14,8 @@ class DescribeThreatEventResponseBody(DaraModel):
         threat_events: List[main_models.DescribeThreatEventResponseBodyThreatEvents] = None,
         total_count: int = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The list of notable security events.
         self.threat_events = threat_events
-        # The total number of security events that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -72,53 +69,12 @@ class DescribeThreatEventResponseBodyThreatEvents(DaraModel):
         event_tag: str = None,
         event_target: str = None,
     ):
-        # The percentage of attack requests that were blocked by WAF.
         self.block_rate = block_rate
-        # The time when the last attack occurred. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The ID of the security event.
         self.event_id = event_id
-        # The severity level of the security event. Valid values:
-        # 
-        # - **critical**
-        # 
-        # - **high**
-        # 
-        # - **medium**
-        # 
-        # - **low**
         self.event_level = event_level
-        # The source IP address of the attack.
-        # 
-        # > A security event may have multiple source IP addresses. This operation returns only one of them.
         self.event_src = event_src
-        # The type of the security event. Valid values:
-        # 
-        # - **MultipleDomainDirscan**: a directory and file scan against multiple domain names.
-        # 
-        # - **SingleDomainDirscan**: a directory and file scan against a single domain name.
-        # 
-        # - **MultipleDomainWebscan**: a web vulnerability scan against multiple domain names.
-        # 
-        # - **SingleDomainWebscan**: a web vulnerability scan against a single domain name.
-        # 
-        # - **MultipleDomainWebattack**: a web vulnerability attack against multiple domain names.
-        # 
-        # - **SingleDomainWebattack**: a web vulnerability attack against a single domain name.
-        # 
-        # - **SingleURLWebattack**: a web vulnerability attack against a specific URL.
-        # 
-        # - **SingleURLSqlattack**: an SQL injection attack against a specific URL.
-        # 
-        # - **SingleURLXssattack**: an XSS attack against a specific URL.
-        # 
-        # - **WebshellUpload**: an attack that attempts to upload backdoor trojans.
-        # 
-        # - **RandomVulnTest**: a random web vulnerability probe.
         self.event_tag = event_tag
-        # The protected object that is the target of the attack.
-        # 
-        # > A security event may have multiple protected objects as targets. This operation returns only one of them.
         self.event_target = event_target
 
     def validate(self):

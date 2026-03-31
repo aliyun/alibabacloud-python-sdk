@@ -14,7 +14,7 @@ class DescribeApisecEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of security events.
+        # The security events.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -90,95 +90,82 @@ class DescribeApisecEventsResponseBodyData(DaraModel):
         start_ts: int = None,
         user_status: str = None,
     ):
-        # The total number of attacks in the security event.
+        # The number of attacks.
+        # >Notice: The parameter has been deprecated, please use the Attackips parameter.
         self.all_cnt = all_cnt
-        # The path of the API that is associated with the security event.
+        # The API.
         self.api_format = api_format
         # The ID of the API that is associated with the security event.
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
-        # The type of client that initiated the attack, such as a browser or automation tool.
+        # The client that is attacked.
         self.attack_client = attack_client
-        # The attack count over time. The value is a JSON string in which each key is a UNIX timestamp in seconds and each value is the number of attacks at that time.
+        # The information about the number of attacks. The value of this parameter is a JSON string that contains multiple parameters. Key indicates the timestamp in seconds, and Value indicates the number of attacks.
         self.attack_cnt_info = attack_cnt_info
-        # The IP address of the attacker. >Notice: This parameter is deprecated. Use the AttackIps parameter instead.
+        # The source IP address of the attack.
         self.attack_ip = attack_ip
-        # The information about the attacker IP address. The value is a JSON string that contains the following fields:
+        # The information about the attack source IP address. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
         # 
-        # - **ip**: the IP address.
-        # 
-        # - **country_id**: the country.
-        # 
-        # - **region_id**: the region.
-        # 
-        # - **cnt**: the number of attacks.
+        # *   **ip**: the IP address
+        # *   **country_id**: the country ID
+        # *   **region_id**: the region ID
+        # *   **cnt**: the number of attacks
         self.attack_ip_info = attack_ip_info
-        # The list of attacker IP addresses.
+        # The source IP addresses of the attacks.
         self.attack_ips = attack_ips
-        # The list of attackers that are associated with the security event.
         self.attacker_list = attacker_list
-        # The end time of the event. This value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
-        # The ID of the security event.
+        # The ID of the event.
         self.event_id = event_id
-        # The details of the security event. The value is a JSON string that contains the following fields:
+        # The details of the event. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
         # 
-        # - **ip_info**: the information about the attacker IP address. For more information, see the **AttackIpInfo** response parameter.
-        # 
-        # - **rule_id**: the ID of the rule that corresponds to the event.
-        # 
-        # - **rule_tag**: the information about the rule that corresponds to the event.
+        # *   **ip_info**: the information about the attack source IP address. This parameter corresponds to the **AttackIpInfo** response parameter.
+        # *   **rule_id**: the ID of the rule corresponding to the event.
+        # *   **rule_tag**: the information about the rule corresponding to the event.
         self.event_info = event_info
         # The severity level of the event. Valid values:
         # 
-        # - **high**: high severity.
-        # 
-        # - **medium**: medium severity.
-        # 
-        # - **low**: low severity.
+        # *   **high**
+        # *   **medium**
+        # *   **low**
         self.event_level = event_level
-        # The event type.
+        # The type of the event.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
         self.event_tag = event_tag
-        # Indicates whether the event is followed. Valid values:
+        # Indicates whether the API is followed. Valid values:
         # 
-        # - **1**: The event is followed.
-        # 
-        # - **0**: The event is not followed.
+        # *   **1**: The API is followed.
+        # *   **0**: The API is not followed.
         self.follow = follow
-        # The domain name or IP address that is protected by WAF.
+        # The domain name or IP address of the API.
         self.matched_host = matched_host
-        # The remarks that are added to the security event.
+        # The remarks.
         self.note = note
         # The source of the event type. Valid values:
         # 
-        # - **custom**: a user-defined event type.
-        # 
-        # - **default**: a built-in event type.
+        # *   **custom**
+        # *   **default**
         self.origin = origin
-        # The country where the attacker IP address is located.
+        # The country to which the attack source IP address belongs.
         self.remote_country = remote_country
-        # The region where the attacker IP address is located.
+        # The region to which the attack source IP address belongs.
         self.remote_region = remote_region
-        # A sample of the API request data. The value is a JSON string.
+        # The sample API request. The value of this parameter is a JSON string that contains multiple parameters.
         self.request_data = request_data
-        # A sample of the API response data. The value is a JSON string.
+        # The sample API response. The value of this parameter is a JSON string that contains multiple parameters.
         self.response_data = response_data
-        # The start time of the event. This value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_ts = start_ts
-        # The handling status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # - **toBeConfirmed**: pending confirmation.
-        # 
-        # - **confirmed**: confirmed but not yet handled.
-        # 
-        # - **actioned**: handled.
-        # 
-        # - **ignored**: ignored.
+        # *   **toBeConfirmed**
+        # *   **confirmed**
+        # *   **ignored**
         self.user_status = user_status
 
     def validate(self):

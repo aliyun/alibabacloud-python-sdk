@@ -13,7 +13,7 @@ class DescribeFreeUserEventsResponseBody(DaraModel):
         event: List[main_models.DescribeFreeUserEventsResponseBodyEvent] = None,
         request_id: str = None,
     ):
-        # The list of security events detected by the basic scan.
+        # The security events on which basic detection is performed.
         self.event = event
         # The request ID.
         self.request_id = request_id
@@ -62,25 +62,23 @@ class DescribeFreeUserEventsResponseBodyEvent(DaraModel):
         event_level: str = None,
         event_tag: str = None,
     ):
-        # The API path.
+        # The API.
         self.api_format = api_format
-        # The attack IP address.
+        # The attacker IP address.
         self.attack_ip = attack_ip
-        # The time of the attack. This value is a UNIX timestamp. Unit: seconds.
+        # The time at which the attack was launched. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.attack_time = attack_time
-        # The domain name to which the API belongs.
+        # The domain name of the API.
         self.domain = domain
-        # The event level. Valid values:
+        # The severity level of the security event. Valid values:
         # 
-        # - **high**: high risk.
-        # 
-        # - **medium**: medium risk.
-        # 
-        # - **low**: low risk.
+        # *   **high**
+        # *   **medium**
+        # *   **low**
         self.event_level = event_level
-        # The event type.
+        # The type of the security event.
         # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported event types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
         self.event_tag = event_tag
 
     def validate(self):

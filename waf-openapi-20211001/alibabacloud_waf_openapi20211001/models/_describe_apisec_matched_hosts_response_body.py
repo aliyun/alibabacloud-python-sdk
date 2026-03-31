@@ -14,9 +14,9 @@ class DescribeApisecMatchedHostsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of domain names.
+        # The domain names.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -67,7 +67,7 @@ class DescribeApisecMatchedHostsResponseBodyData(DaraModel):
         count: int = None,
         matched_host: str = None,
     ):
-        # The number of queries.
+        # The number of APIs related to the domain name.
         self.count = count
         # The domain name or IP address.
         self.matched_host = matched_host

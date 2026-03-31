@@ -11,11 +11,8 @@ class ModifyUserWafLogStatusResponseBody(DaraModel):
         project_name: bool = None,
         request_id: str = None,
     ):
-        # The name of the Logstore in Simple Log Service (SLS).
         self.log_store_name = log_store_name
-        # Indicates whether the Simple Log Service project is created.
         self.project_name = project_name
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

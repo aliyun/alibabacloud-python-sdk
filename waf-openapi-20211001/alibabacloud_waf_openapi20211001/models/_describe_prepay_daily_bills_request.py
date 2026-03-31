@@ -13,23 +13,22 @@ class DescribePrepayDailyBillsRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # ID of the WAF instance.
+        # The ID of the WAF instance.
         # 
-        # > To view your WAF instance ID, call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
+        # >  You can call the [DescribePayInfo](https://help.aliyun.com/document_detail/86651.html) operation to query the ID of your WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Page number of the returned list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # Number of entries per page. Default value: **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # Region where the WAF instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # ID of the Alibaba Cloud resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

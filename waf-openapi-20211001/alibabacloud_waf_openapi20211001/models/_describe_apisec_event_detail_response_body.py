@@ -23,55 +23,18 @@ class DescribeApisecEventDetailResponseBody(DaraModel):
         start_ts: str = None,
         user_status: str = None,
     ):
-        # The total number of attacks in the security event.
         self.attack_cnt = attack_cnt
-        # The list of attackers associated with the security event.
         self.attacker_list = attacker_list
-        # The details of the security event.
         self.detail_value = detail_value
-        # The end of the time range during which the security event occurred. This value is a UNIX timestamp. Unit: seconds.
         self.end_ts = end_ts
-        # The ID of the API security event.
         self.event_id = event_id
-        # The severity level of the security event. Valid values:
-        # 
-        # - **high**: high severity.
-        # 
-        # - **medium**: medium severity.
-        # 
-        # - **low**: low severity.
         self.event_level = event_level
-        # The dimension of the security event. Valid values:
-        # 
-        # - **ip** (default): IP security event.
-        # 
-        # - **account**: account security event.
         self.event_scope = event_scope
-        # The type of the security event.
-        # 
-        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
         self.event_tag = event_tag
-        # The remarks added to the security event.
         self.note = note
-        # The source of the event type rule. Valid values:
-        # 
-        # - **custom**: a user-defined rule.
-        # 
-        # - **default**: a built-in rule.
         self.origin = origin
-        # The ID of the request.
         self.request_id = request_id
-        # The beginning of the time range during which the security event occurred. This value is a UNIX timestamp. Unit: seconds.
         self.start_ts = start_ts
-        # The event status. Valid values:
-        # 
-        # - **toBeConfirmed**: to be confirmed.
-        # 
-        # - **confirmed**: confirmed.
-        # 
-        # - **actioned**: handled.
-        # 
-        # - **ignored**: ignored.
         self.user_status = user_status
 
     def validate(self):

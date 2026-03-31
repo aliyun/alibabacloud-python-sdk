@@ -15,23 +15,22 @@ class ClearMajorProtectionBlackIpRequest(DaraModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the IP blacklist rule for critical event protection.
+        # The ID of the IP address blacklist rule for major event protection.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The ID of the critical event protection template.
+        # The ID of the IP address blacklist rule template for major event protection.
         # 
         # This parameter is required.
         self.template_id = template_id

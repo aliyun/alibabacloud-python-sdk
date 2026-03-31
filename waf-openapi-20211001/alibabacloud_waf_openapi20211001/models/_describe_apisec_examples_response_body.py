@@ -16,15 +16,10 @@ class DescribeApisecExamplesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of API security examples.
         self.examples = examples
-        # The number of entries returned on each page. Valid values: 1 to 5. Default value: 5.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -90,47 +85,12 @@ class DescribeApisecExamplesResponseBodyExamples(DaraModel):
         response: str = None,
         response_sensitive_data: List[main_models.DescribeApisecExamplesResponseBodyExamplesResponseSensitiveData] = None,
     ):
-        # The complete URL of the API request.
         self.api_url = api_url
-        # The proof-of-concept (PoC) request.
         self.poc_payload = poc_payload
-        # The protocol type of the API request. Valid values:
-        # 
-        # - **http**: HTTP
-        # 
-        # - **https**: HTTPS
         self.protocol = protocol
-        # The content of the sample request. This is a string converted from a JSON object that consists of a series of parameters. The JSON object contains the following fields:
-        # 
-        # - **method**: the request method.
-        # 
-        # - **host**: the requested domain name.
-        # 
-        # - **header**: the request header.
-        # 
-        # - **server_port**: the service port.
-        # 
-        # - **body**: the request body.
-        # 
-        # - **url**: the URI of the request.
-        # 
-        # - **server_protocol**: the server-side protocol.
-        # 
-        # > If the **body** content exceeds 16 KB, only a portion of the content is returned.
         self.request = request
-        # The list of sensitive data in the request.
         self.request_sensitive_data = request_sensitive_data
-        # The content of the sample response. This is a string converted from a JSON object that consists of a series of parameters. The JSON object contains the following fields:
-        # 
-        # - **status**: the status code.
-        # 
-        # - **header**: the response header.
-        # 
-        # - **body**: the response body.
-        # 
-        # > If the **body** content exceeds 16 KB, only a portion of the content is returned.
         self.response = response
-        # The list of sensitive data in the response.
         self.response_sensitive_data = response_sensitive_data
 
     def validate(self):
@@ -212,9 +172,7 @@ class DescribeApisecExamplesResponseBodyExamplesResponseSensitiveData(DaraModel)
         sensitive_code: str = None,
         sensitive_data_list: List[str] = None,
     ):
-        # The code that indicates the type of sensitive data in the response.
         self.sensitive_code = sensitive_code
-        # The list of sensitive data.
         self.sensitive_data_list = sensitive_data_list
 
     def validate(self):
@@ -249,9 +207,7 @@ class DescribeApisecExamplesResponseBodyExamplesRequestSensitiveData(DaraModel):
         sensitive_code: str = None,
         sensitive_data_list: List[str] = None,
     ):
-        # The code that indicates the type of sensitive data in the request.
         self.sensitive_code = sensitive_code
-        # The list of sensitive data.
         self.sensitive_data_list = sensitive_data_list
 
     def validate(self):

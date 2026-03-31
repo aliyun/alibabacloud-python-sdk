@@ -13,13 +13,9 @@ class DescribeVerifyContentResponseBody(DaraModel):
         request_id: str = None,
         verify_result: bool = None,
     ):
-        # The DNS-based verification content, including the TXT record details.
         self.dns_content = dns_content
-        # The file-based verification content, including the file name, path, and download URL.
         self.file_content = file_content
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the domain ownership verification is successful.
         self.verify_result = verify_result
 
     def validate(self):
@@ -74,15 +70,10 @@ class DescribeVerifyContentResponseBodyFileContent(DaraModel):
         value: str = None,
         verify_path: str = None,
     ):
-        # The download URL of the verification file.
         self.download_url = download_url
-        # The name of the verification file.
         self.file_name = file_name
-        # The root domain of the domain name to be verified.
         self.top_domain = top_domain
-        # The content of the verification file.
         self.value = value
-        # The URL that is used to access the verification file.
         self.verify_path = verify_path
 
     def validate(self):
@@ -136,11 +127,8 @@ class DescribeVerifyContentResponseBodyDnsContent(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The host record of the DNS TXT record used for domain ownership verification.
         self.rr = rr
-        # The type of the DNS record used for verification.
         self.type = type
-        # The value of the DNS TXT record used for verification.
         self.value = value
 
     def validate(self):

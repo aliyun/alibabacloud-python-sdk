@@ -12,21 +12,20 @@ class DescribeResourceLogStatusRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         resources: str = None,
     ):
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The protected objects whose log collection status you want to query. Separate multiple protected objects with commas (,).
+        # The protected object that you want to query. You can specify multiple protected objects. Separate the protected objects with commas (,).
         # 
         # This parameter is required.
         self.resources = resources

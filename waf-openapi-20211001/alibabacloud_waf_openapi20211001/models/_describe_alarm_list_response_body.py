@@ -13,9 +13,7 @@ class DescribeAlarmListResponseBody(DaraModel):
         alarms: List[main_models.DescribeAlarmListResponseBodyAlarms] = None,
         request_id: str = None,
     ):
-        # The alerts.
         self.alarms = alarms
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,37 +61,12 @@ class DescribeAlarmListResponseBodyAlarms(DaraModel):
         status: int = None,
         type: str = None,
     ):
-        # The cause of the alert. Valid values:
-        # 
-        # - **fivefold**: The QPS exceeds the limit of the current WAF instance specifications.
-        # 
-        # - **4count**: The actual QPS has cumulatively exceeded the limit of the current WAF instance specifications.
-        # 
-        # - **exceed10w**: The peak QPS exceeds 100,000.
-        # 
-        # - **costProtection**: Billing protection is triggered.
         self.cause = cause
-        # The end time of the alert. This is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The peak QPS during the alert period.
         self.max_qps = max_qps
-        # The QPS limit of the current WAF instance specifications.
         self.spec = spec
-        # The start time of the alert. This is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # The current status of the alert. Valid values:
-        # 
-        # - **1**: The queries per second (QPS) limit is exceeded.
-        # 
-        # - **2**: The WAF instance enters the sandbox.
-        # 
-        # - **3**: The WAF instance is removed from the sandbox.
-        # 
-        # - **4**: The QPS no longer exceeds the limit.
         self.status = status
-        # The type of the alert. Valid value:
-        # 
-        # - **qps**: a QPS alert.
         self.type = type
 
     def validate(self):

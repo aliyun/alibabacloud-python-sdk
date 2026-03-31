@@ -15,7 +15,7 @@ class DescribeFlowTopResourceResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The top 10 protected objects that received the most requests.
+        # The array of the top 10 protected objects that receive requests.
         self.rule_hits_top_resource = rule_hits_top_resource
 
     def validate(self):
@@ -58,7 +58,7 @@ class DescribeFlowTopResourceResponseBodyRuleHitsTopResource(DaraModel):
         count: int = None,
         resource: str = None,
     ):
-        # The total number of requests for the protected object during the specified time period.
+        # The total number of requests received by the protected object in a specified time range.
         self.count = count
         # The protected object.
         self.resource = resource

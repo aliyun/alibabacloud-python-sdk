@@ -9,7 +9,7 @@ class DeleteCloudResourceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

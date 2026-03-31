@@ -14,29 +14,12 @@ class DescribeBaseRuleChangeLogRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the WAF instance.
-        # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Set the language property for rule names. Valid values:
-        # 
-        # - **zh**: Chinese rule names.
-        # 
-        # - **en**: English rule names.
         self.lang = lang
-        # When performing a paged query, specify the page number to return. The default value is **1**, which means the first page of data is returned.
         self.page_number = page_number
-        # When performing a paged query, specify the number of results per page.
         self.page_size = page_size
-        # The region to which the WAF instance belongs. Valid values:
-        # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

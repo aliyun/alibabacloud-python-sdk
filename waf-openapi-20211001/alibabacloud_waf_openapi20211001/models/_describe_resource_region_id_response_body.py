@@ -14,7 +14,7 @@ class DescribeResourceRegionIdResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The region IDs of cloud service resources that can be added to WAF by using the SDK.
+        # The region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode.
         self.resource_region_ids = resource_region_ids
 
     def validate(self):

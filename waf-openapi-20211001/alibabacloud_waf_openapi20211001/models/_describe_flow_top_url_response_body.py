@@ -15,7 +15,7 @@ class DescribeFlowTopUrlResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The top 10 URLs that are most frequently accessed.
+        # The array of the top 10 URLs that are used to initiate requests.
         self.rule_hits_top_url = rule_hits_top_url
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeFlowTopUrlResponseBodyRuleHitsTopUrl(DaraModel):
         count: int = None,
         url: str = None,
     ):
-        # The total number of requests for the URL.
+        # The total number of requests that are initiated by using the URL.
         self.count = count
-        # The requested URL.
+        # The URL that is used to initiate requests.
         self.url = url
 
     def validate(self):

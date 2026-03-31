@@ -13,27 +13,25 @@ class DeleteDomainRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The access type of the WAF instance. Valid values:
+        # The mode in which the domain name is added to WAF. Valid values:
         # 
-        # - **share** (default): CNAME access.
-        # 
-        # - **hybrid_cloud_cname**: Hybrid cloud reverse proxy access.
+        # *   **share:** CNAME record mode. This is the default value.
+        # *   **hybrid_cloud_cname:** hybrid cloud reverse proxy mode.
         self.access_type = access_type
-        # The domain name that is added to WAF.
+        # The domain name that you want to delete.
         self.domain = domain
-        # The domain ID.
+        # The ID of the domain name.
         self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of the current WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou:** the Chinese mainland.
+        # *   **ap-southeast-1:** outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id

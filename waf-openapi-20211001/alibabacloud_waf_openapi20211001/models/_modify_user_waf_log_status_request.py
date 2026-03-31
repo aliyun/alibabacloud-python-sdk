@@ -13,35 +13,12 @@ class ModifyUserWafLogStatusRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the WAF instance.
-        # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the log storage region. If this parameter is not specified, Simple Log Service is enabled in the region where the WAF instance resides.
-        # 
-        # - **cn-hangzhou**: the default region where Simple Log Service is enabled for a WAF instance in the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: the default region where Simple Log Service is enabled for a WAF instance outside the Chinese mainland.
-        # 
-        # > Call [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) to query the available log storage regions.
         self.log_region_id = log_region_id
-        # Indicates whether Simple Log Service is enabled. Valid values:
-        # 
-        # - **0**: Simple Log Service is disabled.
-        # 
-        # - **1**: Simple Log Service is enabled.
-        # 
         # This parameter is required.
         self.log_status = log_status
-        # The region where the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

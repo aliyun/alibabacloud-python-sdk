@@ -12,9 +12,9 @@ class DescribeResourceSupportRegionsResponseBody(DaraModel):
         request_id: str = None,
         support_regions: List[str] = None,
     ):
-        # Indicates the request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The list of region IDs supported by transparent proxy mode.
+        # An array of region IDs of the CLB and ECS instances that are added to WAF in cloud native mode.
         self.support_regions = support_regions
 
     def validate(self):

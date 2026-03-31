@@ -15,7 +15,7 @@ class DescribeUserApiRequestResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of statistics.
+        # The statistics.
         self.requests = requests
 
     def validate(self):
@@ -58,17 +58,14 @@ class DescribeUserApiRequestResponseBodyRequests(DaraModel):
         count: int = None,
         value: str = None,
     ):
-        # The number of statistics.
+        # The number of entries returned.
         self.count = count
-        # The statistics information. This includes:
+        # The type of the statistics. Valid values:
         # 
-        # - **client_list**: the client tool.
-        # 
-        # - **ip**: the IP address information.
-        # 
-        # - **region_id**: the region.
-        # 
-        # - **country_id**: the country.
+        # *   **client_list**: client
+        # *   **ip**: IP address
+        # *   **region_id** region
+        # *   **country_id**: country
         self.value = value
 
     def validate(self):

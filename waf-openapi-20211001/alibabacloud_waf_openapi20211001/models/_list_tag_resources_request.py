@@ -16,19 +16,18 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # A pagination token for the next query
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The region where the WAF instance is deployed. Valid values:
+        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: indicates the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: indicates regions outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
-        # The resource type. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -93,9 +92,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N that is added to the resource. Valid values of N: 1 to 20.
         self.key = key
-        # The tag value.
+        # The value of tag N that is added to the resource. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

@@ -12,7 +12,7 @@ class CopyDefenseTemplateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the newly created protection template.
+        # The ID of the new protection template.
         self.template_id = template_id
 
     def validate(self):

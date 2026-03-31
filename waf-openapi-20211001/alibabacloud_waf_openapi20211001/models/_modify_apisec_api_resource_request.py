@@ -15,35 +15,32 @@ class ModifyApisecApiResourceRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the API asset that you want to modify.
+        # The ID of the API.
         # 
         # This parameter is required.
         self.api_id = api_id
         # The ID of the hybrid cloud cluster.
-        # 
-        # > This parameter is required only for hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # Indicates whether to follow the API asset. Valid values:
+        # Specifies whether to follow the API. Valid values:
         # 
-        # - **1**: follows the API asset.
-        # 
-        # - **0** (default): does not follow the API asset.
+        # *   **1**: yes
+        # *   **0** (default): no
         self.follow = follow
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The remarks of the API asset. You can use this parameter to add a custom annotation to the API asset for easier identification.
+        # The remarks.
         self.note = note
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

@@ -11,11 +11,11 @@ class DescribeHybridCloudUnsupportPortsResponseBody(DaraModel):
         https_ports: str = None,
         request_id: str = None,
     ):
-        # The list of ports for the HTTP protocol. The value is a string. Multiple ports are returned in the **port1,port2,port3** format.
+        # The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
         self.http_ports = http_ports
-        # The list of ports for the HTTPS protocol. The value is a string. Multiple ports are returned in the **port1,port2,port3** format.
+        # The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
         self.https_ports = https_ports
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

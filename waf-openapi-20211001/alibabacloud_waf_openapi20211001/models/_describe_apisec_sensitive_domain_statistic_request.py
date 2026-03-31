@@ -19,42 +19,37 @@ class DescribeApisecSensitiveDomainStatisticRequest(DaraModel):
         type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # 
-        # > This parameter is applicable only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a Unix timestamp in UTC. Unit: milliseconds.
+        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sorting method of the list. Valid values:
+        # The sorting order. Valid values:
         # 
-        # - asc: Ascending order.
-        # 
-        # - desc: Descending order.
+        # -  **asc**: ascending order.
+        # - **desc**: descending order.
         self.order_way = order_way
-        # The page number. Default value: **1**, which indicates the first page.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **5**, which indicates 5 entries per page.
+        # The number of entries per page. Default value: **5**.
         self.page_size = page_size
-        # The region of the WAF instance. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
-        # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify a Unix timestamp in UTC. Unit: milliseconds.
+        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
         self.start_time = start_time
-        # The type of sensitive data. Valid values:
+        # The sensitive data type. Valid values:
         # 
-        # - request: Sensitive data in requests.
-        # 
-        # - response: Sensitive data in responses.
+        # - **request**: sensitive data in requests.
+        # - **response**: sensitive data in responses.
         self.type = type
 
     def validate(self):

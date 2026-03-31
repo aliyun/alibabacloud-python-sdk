@@ -13,9 +13,9 @@ class DescribeVisitUasResponseBody(DaraModel):
         request_id: str = None,
         uas: List[main_models.DescribeVisitUasResponseBodyUas] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The top 10 User-Agents.
+        # The array of the top 10 user agents that are used to initiate requests.
         self.uas = uas
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeVisitUasResponseBodyUas(DaraModel):
         count: int = None,
         ua: str = None,
     ):
-        # The total number of requests from the User-Agent.
+        # The number of requests that use the user agent.
         self.count = count
-        # The User-Agent.
+        # The user agent.
         self.ua = ua
 
     def validate(self):

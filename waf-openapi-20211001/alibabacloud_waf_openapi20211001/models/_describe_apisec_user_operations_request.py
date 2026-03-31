@@ -14,33 +14,30 @@ class DescribeApisecUserOperationsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         type: str = None,
     ):
-        # The ID of the Hybrid Cloud WAF cluster.
-        # 
-        # > This parameter is required only when WAF is deployed in hybrid cloud mode. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of Hybrid Cloud WAF clusters.
+        # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the threat detection or security event for which you want to query operation records.
+        # The object ID of the operation record.
         # 
         # This parameter is required.
         self.object_id = object_id
-        # The region in which the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the operation record. Valid values:
         # 
-        # - **abnormal**: threat detection.
-        # 
-        # - **event**: security event.
+        # *   **abnormal**: risk detection
+        # *   **event**: security event
         self.type = type
 
     def validate(self):

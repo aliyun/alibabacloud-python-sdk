@@ -11,7 +11,7 @@ class DescribeApisecStatisticsResponseBody(DaraModel):
         data: main_models.DescribeApisecStatisticsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The statistical results of API security risks or events.
+        # The returned results.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -68,47 +68,41 @@ class DescribeApisecStatisticsResponseBodyData(DaraModel):
         today_total: str = None,
         total: int = None,
     ):
-        # The number of accounts associated with the monitored APIs.
         self.account = account
-        # The number of handled items.
+        # The number of handled events.
         self.actioned = actioned
-        # The number of APIs that are monitored by the API security module.
+        # The number of APIs.
         self.api = api
-        # The number of confirmed items.
+        # The number of confirmed events.
         self.confirmed = confirmed
-        # The number of domain names that are monitored by the API security module.
+        # The number of domain names.
         self.domain = domain
-        # The number of items that are manually verified as fixed.
+        # The number of fixed risks.
         self.fixed = fixed
-        # The number of high-risk items.
+        # The number of high-risk events.
         self.high = high
-        # The number of ignored items.
+        # The number of ignored risks.
         self.ignore = ignore
-        # The number of low-risk items.
+        # The number of low-risk events.
         self.low = low
-        # The number of medium-risk items.
+        # The number of moderate-risk events.
         self.medium = medium
-        # The number of items that are verified as not fixed.
         self.not_fixed = not_fixed
-        # The number of items that are verified as fixed by the system.
         self.system_fixed = system_fixed
-        # The number of items to be confirmed.
+        # The number of events to be confirmed.
         self.to_be_confirmed = to_be_confirmed
-        # The number of items to be fixed.
+        # The number of risks to be fixed.
         self.to_be_fixed = to_be_fixed
-        # The number of items to be verified by the system.
         self.to_be_verified = to_be_verified
-        # The number of new high-risk items detected today.
+        # The number of new high-risk events today.
         self.today_high = today_high
-        # The number of new low-risk items detected today.
+        # The number of new low-risk events today.
         self.today_low = today_low
-        # The number of new medium-risk items detected today.
+        # The number of new moderate-risk events today.
         self.today_medium = today_medium
-        # The total number of new items detected today.
+        # The total number of new events today.
         self.today_total = today_total
-        # The total number of items.
-        # 
-        # > This is the sum of the values of the **High**, **Medium**, and **Low** response parameters.
+        # The total number of events.
         self.total = total
 
     def validate(self):

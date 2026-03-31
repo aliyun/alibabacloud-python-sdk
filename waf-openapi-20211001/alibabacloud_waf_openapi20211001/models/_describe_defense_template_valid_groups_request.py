@@ -16,27 +16,37 @@ class DescribeDefenseTemplateValidGroupsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         template_id: int = None,
     ):
-        # The protection scenario. For more information, see the valid values for the **DefenseScene** parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) when **DefenseType** is set to **template**.
+        # The scenario in which the protection template is used.
+        # 
+        # *   **waf_group**: basic protection.
+        # *   **antiscan**: scan protection.
+        # *   **ip_blacklist**: IP address blacklist.
+        # *   **custom_acl**: custom rule.
+        # *   **whitelist**: whitelist.
+        # *   **region_block**: region blacklist.
+        # *   **custom_response**: custom response.
+        # *   **cc**: HTTP flood protection.
+        # *   **tamperproof**: website tamper-proofing.
+        # *   **dlp**: data leakage prevention.
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
-        # The name of the protected object group. Use this parameter to filter results by group name.
+        # The name of the protected object group that you want to query.
         self.group_name = group_name
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **20**.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

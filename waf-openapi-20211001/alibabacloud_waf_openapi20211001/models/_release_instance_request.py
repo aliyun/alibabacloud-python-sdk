@@ -13,19 +13,18 @@ class ReleaseInstanceRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
+        # >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region to which the WAF instance belongs. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: indicates the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: indicates regions outside the Chinese mainland.
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

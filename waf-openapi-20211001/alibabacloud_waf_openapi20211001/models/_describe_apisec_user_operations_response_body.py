@@ -13,9 +13,9 @@ class DescribeApisecUserOperationsResponseBody(DaraModel):
         data: List[main_models.DescribeApisecUserOperationsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The user operation records for API security.
+        # The operation records.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,69 +64,51 @@ class DescribeApisecUserOperationsResponseBodyData(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
-        # The status of the threat detection or security event before the operation was performed.
+        # The state before the operation.
         # 
-        # Valid values for threat detection:
+        # Valid values of the risk state:
         # 
-        # - **toBeConfirmed**: to be confirmed.
+        # *   **toBeConfirmed**
+        # *   **confirmed**
+        # *   **toBeFixed**
+        # *   **fixed**
+        # *   **ignored**
         # 
-        # - **confirmed**: confirmed.
+        # Valid values of the event state:
         # 
-        # - **toBeFixed**: to be fixed.
-        # 
-        # - **fixed**: fixed.
-        # 
-        # - **ignored**: ignored.
-        # 
-        # Valid values for a security event:
-        # 
-        # - **toBeConfirmed**: to be confirmed.
-        # 
-        # - **confirmed**: confirmed.
-        # 
-        # - **ignored**: ignored.
+        # *   **toBeConfirmed**
+        # *   **confirmed**
+        # *   **ignored**
         self.from_status = from_status
-        # The remarks that the user added to the operation record.
+        # The remarks.
         self.note = note
-        # The ID of the threat detection or security event associated with the operation record.
+        # The object ID of the operation record.
         self.object_id = object_id
-        # The source of the operation. Valid values:
-        # 
-        # - **system**: the operation was automatically performed by the system.
-        # 
-        # - **custom**: the operation was manually performed by a user.
         self.operation_source = operation_source
-        # The time when the operation was performed. This value is a UNIX timestamp. Unit: seconds.
+        # The time at which the operation was performed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.time = time
-        # The status of the threat detection or security event after the operation was performed.
+        # The state after the operation.
         # 
-        # Valid values for threat detection:
+        # Valid values of the risk state:
         # 
-        # - **toBeConfirmed**: to be confirmed.
+        # *   **toBeConfirmed**
+        # *   **confirmed**
+        # *   **toBeFixed**
+        # *   **fixed**
+        # *   **ignored**
         # 
-        # - **confirmed**: confirmed.
+        # Valid values of the event state:
         # 
-        # - **toBeFixed**: to be fixed.
-        # 
-        # - **fixed**: fixed.
-        # 
-        # - **ignored**: ignored.
-        # 
-        # Valid values for a security event:
-        # 
-        # - **toBeConfirmed**: to be confirmed.
-        # 
-        # - **confirmed**: confirmed.
-        # 
-        # - **ignored**: ignored.
+        # *   **toBeConfirmed**
+        # *   **confirmed**
+        # *   **ignored**
         self.to_status = to_status
         # The type of the operation record. Valid values:
         # 
-        # - **abnormal**: threat detection.
-        # 
-        # - **event**: security event.
+        # *   **abnormal**: risk detection
+        # *   **event**: security event
         self.type = type
-        # The ID of the user who performed the operation.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

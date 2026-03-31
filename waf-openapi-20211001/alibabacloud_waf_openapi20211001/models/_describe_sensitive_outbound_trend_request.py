@@ -15,30 +15,28 @@ class DescribeSensitiveOutboundTrendRequest(DaraModel):
         start_time: int = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # 
-        # > This parameter is required only for hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about hybrid cloud clusters.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         # 
-        # > Compliance audit supports queries for the last 1, 3, 6, or 12 months, or from January 1 of the previous year to the present. Make sure that the time range is valid.
+        # >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance resides. Valid values:
+        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         # 
-        # > Compliance audit supports queries for the last 1, 3, 6, or 12 months, or from January 1 of the previous year to the present. Make sure that the time range is valid.
+        # >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
         self.start_time = start_time
 
     def validate(self):

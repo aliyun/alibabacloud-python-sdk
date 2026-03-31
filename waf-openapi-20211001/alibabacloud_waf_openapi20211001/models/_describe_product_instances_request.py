@@ -22,39 +22,29 @@ class DescribeProductInstancesRequest(DaraModel):
         resource_product: str = None,
         resource_region_id: str = None,
     ):
-        # The Web Application Firewall (WAF) instance ID.
+        # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the Alibaba Cloud account to which the instance belongs.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
-        # The page number of the returned page. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region where the WAF instance is deployed. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The protection status of WAF. Valid values:
-        # 
-        # - **all**: All protected.
-        # 
-        # - **any**: Protected.
-        # 
-        # - **part**: Partially protected.
-        # 
-        # - **non**: Not protected.
         self.resource_instance_access_status = resource_instance_access_status
-        # The instance ID of the cloud service.
+        # The ID of the instance.
         self.resource_instance_id = resource_instance_id
-        # The IP address of the instance added to WAF.
+        # The IP address of the instance that is added to WAF.
         self.resource_instance_ip = resource_instance_ip
-        # The name of the instance added to WAF.
+        # The name of the instance that is added to WAF.
         self.resource_instance_name = resource_instance_name
         # The public IP address of the instance.
         self.resource_ip = resource_ip
@@ -62,37 +52,24 @@ class DescribeProductInstancesRequest(DaraModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the instance.
         self.resource_name = resource_name
-        # The type of the cloud service. Valid values:
+        # The cloud service to which the instance belongs. Valid values:
         # 
-        # - **clb4**: Layer 4 CLB.
-        # 
-        # - **clb7**: Layer 7 CLB.
-        # 
-        # - **ecs**: Elastic Compute Service (ECS).
-        # 
-        # - **nlb**: Network Load Balancer (NLB).
+        # *   **clb4**: Layer 4 Classic Load Balancer (CLB).
+        # *   **clb7**: Layer 7 CLB.
+        # *   **ecs**: Elastic Compute Service (ECS).
         self.resource_product = resource_product
         # The region ID of the instance. Valid values:
         # 
-        # - **cn-chengdu**: China (Chengdu).
-        # 
-        # - **cn-beijing**: China (Beijing).
-        # 
-        # - **cn-zhangjiakou**: China (Zhangjiakou).
-        # 
-        # - **cn-hangzhou**: China (Hangzhou).
-        # 
-        # - **cn-shanghai**: China (Shanghai).
-        # 
-        # - **cn-shenzhen**: China (Shenzhen).
-        # 
-        # - **cn-qingdao**: China (Qingdao).
-        # 
-        # - **cn-hongkong**: China (Hong Kong).
-        # 
-        # - **ap-southeast-3**: Malaysia (Kuala Lumpur).
-        # 
-        # - **ap-southeast-5**: Indonesia (Jakarta).
+        # *   **cn-chengdu**: China (Chengdu).
+        # *   **cn-beijing**: China (Beijing).
+        # *   **cn-zhangjiakou**: China (Zhangjiakou).
+        # *   **cn-hangzhou**: China (Hangzhou).
+        # *   **cn-shanghai**: China (Shanghai).
+        # *   **cn-shenzhen**: China (Shenzhen).
+        # *   **cn-qingdao**: China (Qingdao).
+        # *   **cn-hongkong**: China (Hong Kong).
+        # *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
+        # *   **ap-southeast-5**: Indonesia (Jakarta).
         self.resource_region_id = resource_region_id
 
     def validate(self):

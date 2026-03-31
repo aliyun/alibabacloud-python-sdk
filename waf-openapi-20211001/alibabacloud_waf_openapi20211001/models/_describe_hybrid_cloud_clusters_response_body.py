@@ -13,9 +13,9 @@ class DescribeHybridCloudClustersResponseBody(DaraModel):
         cluster_infos: List[main_models.DescribeHybridCloudClustersResponseBodyClusterInfos] = None,
         request_id: str = None,
     ):
-        # The list of clusters.
+        # The information about the clusters.
         self.cluster_infos = cluster_infos
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,55 +72,49 @@ class DescribeHybridCloudClustersResponseBodyClusterInfos(DaraModel):
     ):
         # The network access mode. Valid values:
         # 
-        # - **internet**: Internet access.
-        # 
-        # - **vpc**: leased line-based private network access.
+        # *   **internet**: Internet access.
+        # *   **vpc**: internal network access by using Express Connect circuits.
         self.access_mode = access_mode
-        # The region where the leased line is connected. Valid values:
+        # The region where the virtual private cloud (VPC) resides. Valid values:
         # 
-        # - **cn-hangzhou**: Hangzhou
-        # 
-        # - **cn-beijing**: Beijing
-        # 
-        # - **cn-shanghai**: Shanghai
+        # *   **cn-hangzhou**: China (Hangzhou).
+        # *   **cn-beiijng**: China (Beijing).
+        # *   **cn-shanghai**: China (Shanghai).
         self.access_region = access_region
         # The name of the cluster.
         self.cluster_name = cluster_name
-        # The resource ID of the hybrid cloud cluster.
+        # The ID of the hybrid cloud cluster resource.
         self.cluster_resource_id = cluster_resource_id
-        # The ports that use the HTTP protocol. The value is a string. If multiple ports are returned, they are separated by commas in the **port1,port2,port3** format.
+        # The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
         self.http_ports = http_ports
-        # The ports that use the HTTPS protocol. The value is a string. If multiple ports are returned, they are separated by commas in the **port1,port2,port3** format.
+        # The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
         self.https_ports = https_ports
-        # The cluster ID.
+        # The ID of the cluster.
         self.id = id
-        # The number of protection nodes that you can add to the cluster.
+        # The number of protection nodes that can be added to the cluster.
         self.protection_server_count = protection_server_count
-        # The status of the proxy. Valid values:
+        # The status of the proxy gateway. Valid values:
         # 
-        # - **on**: enabled
-        # 
-        # - **off**: disabled
+        # *   **on**: enabled.
+        # *   **off**: disabled.
         self.proxy_status = proxy_status
         # The type of the cluster. Valid values:
         # 
-        # - **cname**: reverse proxy cluster
-        # 
-        # - **service**: service cluster
+        # *   **cname**: reverse proxy cluster.
+        # *   **service**: SDK-based traffic mirroring cluster.
         self.proxy_type = proxy_type
-        # The remarks.
+        # The remarks about the cluster.
         self.remark = remark
-        # The rule configuration.
+        # The configurations of the rule.
         self.rule_config = rule_config
-        # The status of the manual bypass setting. Valid values:
+        # The status of manual bypass. Valid values:
         # 
-        # - **on**: enabled.
-        # 
-        # - **off**: disabled.
+        # *   **on**: enabled.
+        # *   **off**: disabled.
         self.rule_status = rule_status
-        # The type of the rule. Valid values:
+        # The type of the rule. Valid value:
         # 
-        # - **bypass**: WAF does not perform security checks and allows traffic to pass through.
+        # *   **bypass**: Requests are allowed without security checks.
         self.rule_type = rule_type
 
     def validate(self):

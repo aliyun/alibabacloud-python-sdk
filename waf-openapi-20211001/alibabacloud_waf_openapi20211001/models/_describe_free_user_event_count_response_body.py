@@ -11,7 +11,7 @@ class DescribeFreeUserEventCountResponseBody(DaraModel):
         event: main_models.DescribeFreeUserEventCountResponseBodyEvent = None,
         request_id: str = None,
     ):
-        # The information about security events detected by basic API security checks.
+        # The information about the security events that are detected by using the basic detection feature.
         self.event = event
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class DescribeFreeUserEventCountResponseBodyEvent(DaraModel):
         self.event_low = event_low
         # The number of medium-risk events.
         self.event_medium = event_medium
-        # The total number of API security events.
+        # The total number of security events.
         self.event_total = event_total
 
     def validate(self):

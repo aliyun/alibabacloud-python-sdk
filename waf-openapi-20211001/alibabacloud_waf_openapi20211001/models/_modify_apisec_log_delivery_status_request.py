@@ -13,35 +13,31 @@ class ModifyApisecLogDeliveryStatusRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         status: bool = None,
     ):
-        # The type of the API security log delivery. Valid values:
+        # The type of the log subscription. Valid values:
         # 
-        # - **risk**: threat information.
-        # 
-        # - **event**: attack event information.
-        # 
-        # - **asset**: asset information.
+        # *   **risk**: risk information.
+        # *   **event**: attack event information.
+        # *   **asset**: asset information.
         # 
         # This parameter is required.
         self.assert_key = assert_key
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # Indicates whether the API security log subscription is enabled. Valid values:
+        # The status of API security log subscription. Valid values:
         # 
-        # - **true**: The API security log subscription is enabled.
-        # 
-        # - **false**: The API security log subscription is disabled.
+        # *   **true**: enabled.
+        # *   **false**: disabled.
         # 
         # This parameter is required.
         self.status = status

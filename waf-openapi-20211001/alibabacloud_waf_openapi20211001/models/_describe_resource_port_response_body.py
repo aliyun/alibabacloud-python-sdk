@@ -12,9 +12,9 @@ class DescribeResourcePortResponseBody(DaraModel):
         request_id: str = None,
         resource_ports: List[str] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # All HTTP and HTTPS listener ports that are added to WAF.
+        # An array of HTTP and HTTPS listener ports that are added to the WAF instance.
         self.resource_ports = resource_ports
 
     def validate(self):

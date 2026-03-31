@@ -14,11 +14,11 @@ class DescribeDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of domain names.
+        # The domain names that are added to WAF in CNAME record mode.
         self.domains = domains
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of domain name configurations returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -72,29 +72,24 @@ class DescribeDomainsResponseBodyDomains(DaraModel):
         resource_manager_resource_group_id: str = None,
         status: int = None,
     ):
-        # The back-to-origin configuration.
+        # The back-to-origin settings.
         self.backeds = backeds
-        # The canonical name (CNAME) that is assigned to the domain name by WAF.
+        # The CNAME assigned by WAF to the domain name.
         self.cname = cname
-        # The domain name that is added to WAF.
+        # The domain name that is added to WAF in CNAME record mode.
         self.domain = domain
-        # The ID of the domain name.
         self.domain_id = domain_id
-        # The listener configuration.
+        # The configurations of the listeners.
         self.listen_ports = listen_ports
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The status of the domain name. Valid values:
         # 
-        # - **1**: The domain name is in a normal state.
-        # 
-        # - **2**: The domain name is being created.
-        # 
-        # - **3**: The domain name is being modified.
-        # 
-        # - **4**: The domain name is being released.
-        # 
-        # - **5**: Forwarding is disabled for the domain name.
+        # *   **1:** The domain name is in a normal state.
+        # *   **2:** The domain name is being created.
+        # *   **3:** The domain name is being modified.
+        # *   **4:** The domain name is being released.
+        # *   **5:** WAF no longer forwards traffic that is sent to the domain name.
         self.status = status
 
     def validate(self):
@@ -164,9 +159,9 @@ class DescribeDomainsResponseBodyDomainsListenPorts(DaraModel):
         http: List[int] = None,
         https: List[int] = None,
     ):
-        # The list of listening ports for the HTTP protocol.
+        # The HTTP listener ports.
         self.http = http
-        # The list of listening ports for the HTTPS protocol.
+        # The HTTPS listener ports.
         self.https = https
 
     def validate(self):
@@ -201,9 +196,9 @@ class DescribeDomainsResponseBodyDomainsBackeds(DaraModel):
         http: List[main_models.DescribeDomainsResponseBodyDomainsBackedsHttp] = None,
         https: List[main_models.DescribeDomainsResponseBodyDomainsBackedsHttps] = None,
     ):
-        # The list of origin addresses for the HTTP protocol.
+        # The HTTP addresses of the origin server.
         self.http = http
-        # The list of origin addresses for the HTTPS protocol.
+        # The HTTPS addresses of the origin server.
         self.https = https
 
     def validate(self):
@@ -254,7 +249,7 @@ class DescribeDomainsResponseBodyDomainsBackedsHttps(DaraModel):
         self,
         backend: str = None,
     ):
-        # The origin address for the HTTPS protocol.
+        # The HTTPS address of the origin server.
         self.backend = backend
 
     def validate(self):
@@ -282,7 +277,7 @@ class DescribeDomainsResponseBodyDomainsBackedsHttp(DaraModel):
         self,
         backend: str = None,
     ):
-        # The origin address for the HTTP protocol.
+        # The HTTP address of the origin server.
         self.backend = backend
 
     def validate(self):

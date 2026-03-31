@@ -13,9 +13,9 @@ class DescribeUserEventTypeResponseBody(DaraModel):
         event: List[main_models.DescribeUserEventTypeResponseBodyEvent] = None,
         request_id: str = None,
     ):
-        # A list of security event types and their statistics.
+        # The types and statistics of security events.
         self.event = event
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,15 +60,15 @@ class DescribeUserEventTypeResponseBodyEvent(DaraModel):
         event_parent_type: str = None,
         event_type: str = None,
     ):
-        # The event code.
+        # The code of the security event.
         self.event_code = event_code
         # The number of events.
         self.event_count = event_count
-        # The parent type of the event.
+        # The parent type of the security event.
         self.event_parent_type = event_parent_type
-        # The type of the event.
+        # The type of the security event.
         # 
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported event types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
         self.event_type = event_type
 
     def validate(self):
