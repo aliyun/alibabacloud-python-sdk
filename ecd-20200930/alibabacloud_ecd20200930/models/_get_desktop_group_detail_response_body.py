@@ -64,6 +64,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(DaraModel):
         desktop_group_name: str = None,
         directory_id: str = None,
         directory_type: str = None,
+        env_id: str = None,
+        env_type: str = None,
         expired_time: str = None,
         expired_times: List[str] = None,
         gpu_count: float = None,
@@ -142,6 +144,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(DaraModel):
         self.directory_id = directory_id
         # The type of the directory.
         self.directory_type = directory_type
+        self.env_id = env_id
+        self.env_type = env_type
         # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
         self.expired_times = expired_times
@@ -322,6 +326,12 @@ class GetDesktopGroupDetailResponseBodyDesktops(DaraModel):
         if self.directory_type is not None:
             result['DirectoryType'] = self.directory_type
 
+        if self.env_id is not None:
+            result['EnvId'] = self.env_id
+
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
 
@@ -488,6 +498,12 @@ class GetDesktopGroupDetailResponseBodyDesktops(DaraModel):
 
         if m.get('DirectoryType') is not None:
             self.directory_type = m.get('DirectoryType')
+
+        if m.get('EnvId') is not None:
+            self.env_id = m.get('EnvId')
+
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
 
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
