@@ -1,3 +1,9 @@
+2026-04-01 Version: 11.1.0
+- Support API DeleteNetworkPeerConnection.
+- Support API DescribeNetworkPeerConnections.
+- Support API UpdateClusterCertificate.
+
+
 2026-04-01 Version: 11.0.0
 - Support API AttachInstancesToNodePool.
 - Support API AttachKeyPair.

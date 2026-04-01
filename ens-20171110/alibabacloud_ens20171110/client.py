@@ -7250,6 +7250,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_network_interfaces_with_options_async(request, runtime)
 
+    def delete_network_peer_connection_with_options(
+        self,
+        request: main_models.DeleteNetworkPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNetworkPeerConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNetworkPeerConnection',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNetworkPeerConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_peer_connection_with_options_async(
+        self,
+        request: main_models.DeleteNetworkPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNetworkPeerConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNetworkPeerConnection',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNetworkPeerConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_peer_connection(
+        self,
+        request: main_models.DeleteNetworkPeerConnectionRequest,
+    ) -> main_models.DeleteNetworkPeerConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_network_peer_connection_with_options(request, runtime)
+
+    async def delete_network_peer_connection_async(
+        self,
+        request: main_models.DeleteNetworkPeerConnectionRequest,
+    ) -> main_models.DeleteNetworkPeerConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_network_peer_connection_with_options_async(request, runtime)
+
     def delete_object_with_options(
         self,
         request: main_models.DeleteObjectRequest,
@@ -14603,6 +14673,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeNetworkInterfacesResponse:
         runtime = RuntimeOptions()
         return await self.describe_network_interfaces_with_options_async(request, runtime)
+
+    def describe_network_peer_connections_with_options(
+        self,
+        request: main_models.DescribeNetworkPeerConnectionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeNetworkPeerConnectionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.network_ids):
+            query['NetworkIds'] = request.network_ids
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeNetworkPeerConnections',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeNetworkPeerConnectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_peer_connections_with_options_async(
+        self,
+        request: main_models.DescribeNetworkPeerConnectionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeNetworkPeerConnectionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.network_ids):
+            query['NetworkIds'] = request.network_ids
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeNetworkPeerConnections',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeNetworkPeerConnectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_peer_connections(
+        self,
+        request: main_models.DescribeNetworkPeerConnectionsRequest,
+    ) -> main_models.DescribeNetworkPeerConnectionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_network_peer_connections_with_options(request, runtime)
+
+    async def describe_network_peer_connections_async(
+        self,
+        request: main_models.DescribeNetworkPeerConnectionsRequest,
+    ) -> main_models.DescribeNetworkPeerConnectionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_network_peer_connections_with_options_async(request, runtime)
 
     def describe_networks_with_options(
         self,
@@ -26969,6 +27129,76 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_cluster_certificate_with_options(
+        self,
+        request: main_models.UpdateClusterCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateClusterCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateClusterCertificate',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateClusterCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cluster_certificate_with_options_async(
+        self,
+        request: main_models.UpdateClusterCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateClusterCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateClusterCertificate',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateClusterCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cluster_certificate(
+        self,
+        request: main_models.UpdateClusterCertificateRequest,
+    ) -> main_models.UpdateClusterCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.update_cluster_certificate_with_options(request, runtime)
+
+    async def update_cluster_certificate_async(
+        self,
+        request: main_models.UpdateClusterCertificateRequest,
+    ) -> main_models.UpdateClusterCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_cluster_certificate_with_options_async(request, runtime)
 
     def update_ens_sale_control_with_options(
         self,

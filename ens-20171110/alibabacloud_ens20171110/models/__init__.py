@@ -286,6 +286,9 @@ from ._delete_network_interfaces_request import DeleteNetworkInterfacesRequest
 from ._delete_network_interfaces_shrink_request import DeleteNetworkInterfacesShrinkRequest
 from ._delete_network_interfaces_response_body import DeleteNetworkInterfacesResponseBody
 from ._delete_network_interfaces_response import DeleteNetworkInterfacesResponse
+from ._delete_network_peer_connection_request import DeleteNetworkPeerConnectionRequest
+from ._delete_network_peer_connection_response_body import DeleteNetworkPeerConnectionResponseBody
+from ._delete_network_peer_connection_response import DeleteNetworkPeerConnectionResponse
 from ._delete_object_request import DeleteObjectRequest
 from ._delete_object_response_body import DeleteObjectResponseBody
 from ._delete_object_response import DeleteObjectResponse
@@ -572,6 +575,9 @@ from ._describe_network_attribute_response import DescribeNetworkAttributeRespon
 from ._describe_network_interfaces_request import DescribeNetworkInterfacesRequest
 from ._describe_network_interfaces_response_body import DescribeNetworkInterfacesResponseBody
 from ._describe_network_interfaces_response import DescribeNetworkInterfacesResponse
+from ._describe_network_peer_connections_request import DescribeNetworkPeerConnectionsRequest
+from ._describe_network_peer_connections_response_body import DescribeNetworkPeerConnectionsResponseBody
+from ._describe_network_peer_connections_response import DescribeNetworkPeerConnectionsResponse
 from ._describe_networks_request import DescribeNetworksRequest
 from ._describe_networks_response_body import DescribeNetworksResponseBody
 from ._describe_networks_response import DescribeNetworksResponse
@@ -1050,6 +1056,9 @@ from ._unmount_instance_sdgresponse import UnmountInstanceSDGResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_cluster_certificate_request import UpdateClusterCertificateRequest
+from ._update_cluster_certificate_response_body import UpdateClusterCertificateResponseBody
+from ._update_cluster_certificate_response import UpdateClusterCertificateResponse
 from ._update_ens_sale_control_request import UpdateEnsSaleControlRequest
 from ._update_ens_sale_control_shrink_request import UpdateEnsSaleControlShrinkRequest
 from ._update_ens_sale_control_response_body import UpdateEnsSaleControlResponseBody
@@ -1366,6 +1375,9 @@ from ._describe_network_interfaces_response_body import DescribeNetworkInterface
 from ._describe_network_interfaces_response_body import DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds
 from ._describe_network_interfaces_response_body import DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet
 from ._describe_network_interfaces_response_body import DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets
+from ._describe_network_peer_connections_response_body import DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsAcceptingNetwork
+from ._describe_network_peer_connections_response_body import DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsNetwork
+from ._describe_network_peer_connections_response_body import DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnects
 from ._describe_networks_response_body import DescribeNetworksResponseBodyNetworksNetworkRouteTableIds
 from ._describe_networks_response_body import DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks
 from ._describe_networks_response_body import DescribeNetworksResponseBodyNetworksNetworkTagsTag
@@ -1811,6 +1823,9 @@ __all__ = [
     DeleteNetworkInterfacesShrinkRequest,
     DeleteNetworkInterfacesResponseBody,
     DeleteNetworkInterfacesResponse,
+    DeleteNetworkPeerConnectionRequest,
+    DeleteNetworkPeerConnectionResponseBody,
+    DeleteNetworkPeerConnectionResponse,
     DeleteObjectRequest,
     DeleteObjectResponseBody,
     DeleteObjectResponse,
@@ -2097,6 +2112,9 @@ __all__ = [
     DescribeNetworkInterfacesRequest,
     DescribeNetworkInterfacesResponseBody,
     DescribeNetworkInterfacesResponse,
+    DescribeNetworkPeerConnectionsRequest,
+    DescribeNetworkPeerConnectionsResponseBody,
+    DescribeNetworkPeerConnectionsResponse,
     DescribeNetworksRequest,
     DescribeNetworksResponseBody,
     DescribeNetworksResponse,
@@ -2575,6 +2593,9 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateClusterCertificateRequest,
+    UpdateClusterCertificateResponseBody,
+    UpdateClusterCertificateResponse,
     UpdateEnsSaleControlRequest,
     UpdateEnsSaleControlShrinkRequest,
     UpdateEnsSaleControlResponseBody,
@@ -2891,6 +2912,9 @@ __all__ = [
     DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds,
     DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet,
     DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets,
+    DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsAcceptingNetwork,
+    DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsNetwork,
+    DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnects,
     DescribeNetworksResponseBodyNetworksNetworkRouteTableIds,
     DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks,
     DescribeNetworksResponseBodyNetworksNetworkTagsTag,
