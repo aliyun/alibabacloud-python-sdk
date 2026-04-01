@@ -129,22 +129,66 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         status: str = None,
         tags: main_models.DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags = None,
     ):
+        # EIP的实例ID。
         self.allocation_id = allocation_id
+        # EIP的创建时间
         self.allocation_time = allocation_time
+        # EIP的带宽峰值，默认值为5。取值范围：**5**~**10000**，单位：Mbps。
         self.bandwidth = bandwidth
+        # EIP的计费模式。
+        # 
+        # - **PrePaid**：包年包月。
+        # 
+        # - **PostPaid**：按量计费。
         self.charge_type = charge_type
+        # EIP的描述信息。
         self.description = description
+        # ENS节点ID。
         self.ens_region_id = ens_region_id
         self.icmp_reply_enabled = icmp_reply_enabled
+        # 当前绑定的实例的ID。
         self.instance_id = instance_id
+        # 要绑定的云产品实例的类型，取值： 
+        # 
+        # - **EnsInstance**：VPC类型的ENS实例。
+        # 
+        # - **SlbInstance**：负载均衡实例。
         self.instance_type = instance_type
+        # EIP的计费方式。
+        # 
+        # - **95BandwidthByMonth**：月95峰值带宽。
+        # 
+        # - **PayByBandwidth**：固定带宽计费。
         self.internet_charge_type = internet_charge_type
+        # EIP的IP地址。
         self.ip_address = ip_address
+        # 如果该弹性IP是备用EIP时，表示当前EIP的运行状态。
+        # - **Stopped**：已停止。
+        # - **Running**：运行中。
+        # - **Starting**：启动中。
+        # - **Stopping**：停止中。
         self.ip_status = ip_status
+        # 运营商，取值：
+        # 
+        # - **cmcc**：中国移动。
+        # - **unicom**：中国联通。
+        # - **telecom**：中国电信。
         self.isp = isp
+        # EIP实例名称。
         self.name = name
+        # 该EIP是否是备用。
         self.standby = standby
+        # EIP的状态。
+        # 
+        # - **Associating**：绑定中。
+        # 
+        # - **Unassociating**：解绑中。   
+        # 
+        # - **InUse**：已分配。   
+        # 
+        # - **Available**：可用。
         self.status = status
+        # 标签集合。
         self.tags = tags
 
     def validate(self):
@@ -308,9 +352,13 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(DaraModel
         tag_value: str = None,
         value: str = None,
     ):
+        # 标签键
         self.key = key
+        # 标签键。
         self.tag_key = tag_key
+        # 标签值。
         self.tag_value = tag_value
+        # 标签值。
         self.value = value
 
     def validate(self):

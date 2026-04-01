@@ -15,7 +15,6 @@ class DescribeCloudDiskAvailableResourceInfoResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The specifications of resources that you can purchase.
         self.support_resources = support_resources
 
     def validate(self):
@@ -93,26 +92,13 @@ class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportR
         ens_region_id: str = None,
         ens_region_name: str = None,
     ):
-        # Node product capability.
         self.ability = ability
-        # The number of disks that you can purchase.
         self.can_buy_count = can_buy_count
-        # The type of the disk.
-        # 
-        # *   cloud_efficiency:ultra disk.
-        # *   cloud_ssd:all-flash disk.
-        # *   local_hdd:local HDD.
-        # *   local_ssd:local SSD.
         self.category = category
-        # The default size of the disk. Unit: GiB.
         self.default_disk_size = default_disk_size
-        # The maximum size of the disk. Unit: GiB.
         self.disk_max_size = disk_max_size
-        # The minimum size of the disk size. Unit: GiB.
         self.disk_min_size = disk_min_size
-        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The name of the task node.
         self.ens_region_name = ens_region_name
 
     def validate(self):

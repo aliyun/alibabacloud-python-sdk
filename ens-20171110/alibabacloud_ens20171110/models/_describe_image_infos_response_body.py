@@ -16,7 +16,6 @@ class DescribeImageInfosResponseBody(DaraModel):
     ):
         # The HTTP status code that is returned.
         self.code = code
-        # The information about images.
         self.images = images
         # The request ID.
         self.request_id = request_id
@@ -103,28 +102,14 @@ class DescribeImageInfosResponseBodyImagesImage(DaraModel):
         ostype: str = None,
         region_id: str = None,
     ):
-        # The computing type of the image. Valid values:
-        # 
-        # *   ens_vm: x86 computing.
-        # *   arm_vm: ARM computing.
-        # *   bare_metal: x86 bare machine.
-        # *   pcfarm: heterogeneous computing.
         self.compute_type = compute_type
-        # The description of the image.
         self.description = description
-        # The mappings between disks and snapshots in the image.
         self.disk_device_mappings = disk_device_mappings
-        # The ID of the image.
         self.image_id = image_id
-        # The size of the image. Unit: GiB.
         self.image_size = image_size
-        # The version of the image.
         self.image_version = image_version
-        # The type of the image. Valid values: **centos**, **debian**, **ubuntu**, and **windows**.
         self.osname = osname
-        # The type of the operating system.
         self.ostype = ostype
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -240,13 +225,9 @@ class DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMappi
         type: str = None,
         image_id: str = None,
     ):
-        # The format of the image.
         self.format = format
-        # The size of the image. Unit: GB.
         self.size = size
-        # The type of the disk. Valid values: System and Data.
         self.type = type
-        # The ID of the image.
         self.image_id = image_id
 
     def validate(self):

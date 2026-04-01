@@ -19,7 +19,6 @@ class DescribeDisksResponseBody(DaraModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about the disks.
         self.disks = disks
         # The page number of the returned page.
         self.page_number = page_number
@@ -140,75 +139,24 @@ class DescribeDisksResponseBodyDisksDisks(DaraModel):
         tags: main_models.DescribeDisksResponseBodyDisksDisksTags = None,
         type: str = None,
     ):
-        # The category of the disk.
-        # 
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: all-flash disk.
-        # *   local_hdd: local HDD.
-        # *   local_ssd: local SSD.
         self.category = category
-        # The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # Indicates whether the disk is released when the instance to which the disk is attached is released. Valid values:
-        # 
-        # *   true: The disk is released when the associated instance is released.
-        # *   false: The disk is retained when the associated instance is released.
         self.delete_with_instance = delete_with_instance
-        # The namespace description.
         self.description = description
-        # The billing method of the cloud disk or local disk. Valid values:
-        # 
-        # *   **prepaid**: subscription.
-        # *   **postpaid**: pay-as-you-go.
         self.disk_charge_type = disk_charge_type
-        # The ID of the disk.
         self.disk_id = disk_id
-        # The name of the disk.
         self.disk_name = disk_name
-        # Indicates whether the cloud disk is encrypted. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key that is used for the cloud disk.
         self.encrypted_key_id = encrypted_key_id
-        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # Indicates whether the cloud disk or local disk is removable. Valid values:
-        # 
-        # *   true: The disk is removable. A removable disk can independently exist and can be attached to or detached from an instance within the same zone.
-        # *   false: The disk is not removable. A disk that is not removable cannot independently exist or be attached to or detached from an instance within the same zone.
-        # 
-        # If disks are of the following categories or types, the **Portable** value is **false** and the disks have the same lifecycle as their attached instances:
-        # 
-        # *   Local HDDs
-        # *   Local SSDs
-        # *   Data disks that use the subscription billing method
         self.portable = portable
-        # The serial number.
         self.serial_id = serial_id
-        # The size of the disk. Unit: MiB.
         self.size = size
-        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The status of the disk. Valid values:
-        # 
-        # *   In-use: The disk is in use.
-        # *   Available: The disk can be attached.
-        # *   Attaching: The disk is being attached.
-        # *   Detaching: The disk is being detached.
-        # *   Creating: The disk is being created.
-        # *   ReIniting: The disk is being reset.
         self.status = status
         self.tags = tags
-        # The type of the cloud disk or local disk. Valid values:
-        # 
-        # *   1: system disk.
-        # *   2: data disk.
         self.type = type
 
     def validate(self):

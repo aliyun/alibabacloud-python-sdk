@@ -19,7 +19,6 @@ class DescribeInstancesResponseBody(DaraModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about the instance is returned in an array of InstanceAttributesType.
         self.instances = instances
         # The page number.
         self.page_number = page_number
@@ -153,91 +152,37 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
         system_disk: main_models.DescribeInstancesResponseBodyInstancesInstanceSystemDisk = None,
         tags: main_models.DescribeInstancesResponseBodyInstancesInstanceTags = None,
     ):
-        # The automatic release time of the instance.
         self.auto_release_time = auto_release_time
-        # The number of vCPUs.
         self.cpu = cpu
-        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # Details of the data disk.
         self.data_disk = data_disk
         self.deletion_protection = deletion_protection
-        # The total size of the disk. Unit: MiB.
         self.disk = disk
-        # The region ID of the instance.
         self.ens_region_id = ens_region_id
-        # The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
-        # The hostname of the instance.
-        # 
-        # *   The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
-        # *   For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
-        # *   For an instance that runs another operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
-        # The ID of the image.
         self.image_id = image_id
-        # The private IP addresses of the instances.
         self.inner_ip_address = inner_ip_address
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # The category of the instance. Valid values:
-        # 
-        # *   EnsInstance: ENS instances that you purchase.
-        # *   EnsService: ENS instances that belong to edge services.
-        # *   BuildMachine: ENS instances that are configured with image builders.
-        # *   EnsPostPaidInstance: pay-as-you-go ENS instances that you purchase.
         self.instance_resource_type = instance_resource_type
-        # The instance family. Valid values:
-        # 
-        # *   x86_vm: x86-based computing instance.
-        # *   x86_pm: x86-based physical machine.
-        # *   x86_bmi: x86-based bare metal instance.
-        # *   x86_bm: bare metal instance with the SmartNIC.
-        # *   pc_bmi: heterogeneous bare metal instance.
-        # *   pc_vm: heterogeneous virtual machine.
-        # *   arm_bmi: Arm-based computing instance.
         self.instance_type_family = instance_type_family
-        # The maximum outbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The minimum inbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The name of the SSH key pair.
         self.key_pair_name = key_pair_name
-        # The memory size. Unit: MB.
         self.memory = memory
-        # Details of the network.
         self.network_attributes = network_attributes
-        # The ENI attached to the instance.
         self.network_interfaces = network_interfaces
-        # The name of the image.
         self.osname = osname
-        # Details of the private IP addresses.
         self.private_ip_addresses = private_ip_addresses
-        # The public IP addresses of the instances.
         self.public_ip_address = public_ip_address
-        # Details of the public IP addresses.
         self.public_ip_addresses = public_ip_addresses
-        # The IDs of the security groups.
         self.security_group_ids = security_group_ids
-        # The ID of your Alibaba Cloud account.
         self.service_status = service_status
-        # The instance type.
         self.spec_name = spec_name
-        # The bidding policy of the preemptible instance.
         self.spot_strategy = spot_strategy
-        # The status of the instance. Valid values:
-        # 
-        # *   Running
-        # *   Expired
-        # *   Stopped
         self.status = status
-        # Details of the system disk.
         self.system_disk = system_disk
-        # The tags of the instance.
-        # 
-        # >  This operation does not return tag information. You can call this operation in combination with the tag-related operations.
         self.tags = tags
 
     def validate(self):
@@ -516,9 +461,7 @@ class DescribeInstancesResponseBodyInstancesInstanceTagsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -560,34 +503,14 @@ class DescribeInstancesResponseBodyInstancesInstanceSystemDisk(DaraModel):
         storage: int = None,
         uuid: str = None,
     ):
-        # The category of the cloud disk or local disk. Valid values:
-        # 
-        # *   **file**: local disk.
-        # *   **pangu**: ultra disk.
-        # *   **local_hdd**: local HDD.
         self.category = category
-        # The ID of the disk.
         self.disk_id = disk_id
-        # The name of the disk.
         self.disk_name = disk_name
-        # The size of the disk. Unit: MiB.
         self.size = size
-        # The extended field of the disk category. Valid values:
-        # 
-        # *   **file**: local disk.
-        # *   **pangu**: ultra disk.
-        # *   **local_hdd**: local HDD.
         self.device_type = device_type
-        # The type of the cloud disk or local disk. Valid values:
-        # 
-        # *   **system**: system disk.
-        # *   **data**: data disk.
         self.disk_type = disk_type
-        # The name of the disk.
         self.name = name
-        # The size of the disk. Unit: MiB.
         self.storage = storage
-        # The UUID of the disk.
         self.uuid = uuid
 
     def validate(self):
@@ -727,11 +650,8 @@ class DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAdd
         ip: str = None,
         isp: str = None,
     ):
-        # The gateway.
         self.gate_way = gate_way
-        # The IP address.
         self.ip = ip
-        # The Internet service provider (ISP).
         self.isp = isp
 
     def validate(self):
@@ -835,11 +755,8 @@ class DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpA
         ip: str = None,
         isp: str = None,
     ):
-        # The gateway.
         self.gate_way = gate_way
-        # The IP address.
         self.ip = ip
-        # The ISP.
         self.isp = isp
 
     def validate(self):
@@ -919,20 +836,11 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         private_ip_sets: main_models.DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets = None,
         type: str = None,
     ):
-        # The IPv6 addresses of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
         self.ipv_6sets = ipv_6sets
-        # The MAC address of the ENI.
         self.mac_address = mac_address
-        # The ID of the ENI.
         self.network_interface_id = network_interface_id
-        # The primary IP address of the ENI.
         self.primary_ip_address = primary_ip_address
-        # The private IP addresses of the ENI.
         self.private_ip_sets = private_ip_sets
-        # The type of the disk. Valid values:
-        # 
-        # *   system: system disk.
-        # *   data: data disk.
         self.type = type
 
     def validate(self):
@@ -1031,14 +939,7 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         primary: bool = None,
         private_ip_address: str = None,
     ):
-        # Indicates whether the IP address is the primary private IP address. Valid values:
-        # 
-        # *   true
-        # *   false
         self.primary = primary
-        # The private IP address.
-        # 
-        # >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -1107,7 +1008,6 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         self,
         ipv_6address: str = None,
     ):
-        # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -1137,11 +1037,8 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes(DaraModel)
         private_ip_address: main_models.DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress = None,
         v_switch_id: str = None,
     ):
-        # The ID of the network.
         self.network_id = network_id
-        # Details of the private IP addresses.
         self.private_ip_address = private_ip_address
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1283,39 +1180,17 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(DaraModel):
         storage: int = None,
         uuid: str = None,
     ):
-        # The category of the cloud disk or local disk. Valid values:
-        # 
-        # *   **file**: local disk.
-        # *   **pangu**: ultra disk.
-        # *   **local_hdd**: local HDD.
         self.category = category
-        # The ID of the disk.
         self.disk_id = disk_id
-        # The name of the disk.
         self.disk_name = disk_name
-        # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
-        # The KMS key ID used by the cloud drive.
         self.encrypt_key_id = encrypt_key_id
-        # Specifies whether to encrypt the disk.
         self.encrypted = encrypted
-        # The size of the disk. Unit: MiB.
         self.size = size
-        # The extended field of the disk category. Valid values:
-        # 
-        # *   **file**: local disk.
-        # *   **pangu**: ultra disk.
-        # *   **local_hdd**: local HDD.
         self.device_type = device_type
-        # The type of the cloud disk or local disk. Valid values:
-        # 
-        # **system**: system disk. **data**: data disk.
         self.disk_type = disk_type
-        # The name of the disk.
         self.name = name
-        # The size of the disk. Unit: MiB.
         self.storage = storage
-        # The UUID of the disk.
         self.uuid = uuid
 
     def validate(self):

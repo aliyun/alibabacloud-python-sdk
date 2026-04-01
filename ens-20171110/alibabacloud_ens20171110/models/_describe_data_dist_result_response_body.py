@@ -16,7 +16,6 @@ class DescribeDataDistResultResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The distribution status of data files on edge instances.
         self.dist_results = dist_results
         # The page number.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class DescribeDataDistResultResponseBodyDistResultsDistResult(DaraModel):
         status_stats: main_models.DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats = None,
         version: str = None,
     ):
-        # The name of the data file.
         self.name = name
-        # The distribution status statistics.
         self.status_stats = status_stats
-        # The version number of the data file.
         self.version = version
 
     def validate(self):
@@ -198,17 +194,8 @@ class DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusSt
         instances: main_models.DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances = None,
         status: str = None,
     ):
-        # The number of associated edge instances.
         self.instance_count = instance_count
-        # The distribution status of the edge instance.
         self.instances = instances
-        # The distribution status. The value is of the enumeration type. Valid values:
-        # 
-        # *   SUCCESS: The distribution is successful.
-        # *   FAILED: The distribution failed.
-        # *   DISTING: The data is being distributed.
-        # *   POD_RESTARTING: The idle pod is being restarted.
-        # *   DELETED: The data is cleared or removed.
         self.status = status
 
     def validate(self):
@@ -288,13 +275,9 @@ class DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusSt
         status_descrip: str = None,
         update_time: str = None,
     ):
-        # The ID of the instance
         self.instance_id = instance_id
-        # The start time of the distribution. The time is displayed in UTC.
         self.start_time = start_time
-        # The description of the distribution status.
         self.status_descrip = status_descrip
-        # The time when the distribution status was last updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeInstanceMonitorDataResponseBody(DaraModel):
     ):
         # The returned service code. A value of 0 indicates that the operation was successful.
         self.code = code
-        # The set of InstanceMonitorDataType data.
         self.monitor_data = monitor_data
         # The request ID.
         self.request_id = request_id
@@ -97,11 +96,8 @@ class DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData(Dara
         instance_id: str = None,
         memory: str = None,
     ):
-        # The vCPU usage of the instance, which is raw data. For example, a value of 0.02 indicates that the usage is 2%.
         self.cpu = cpu
-        # The ID of the instance.
         self.instance_id = instance_id
-        # This parameter is not yet supported.
         self.memory = memory
 
     def validate(self):

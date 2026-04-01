@@ -34,7 +34,6 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
     ):
         # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
-        # The list of resources in the network.
         self.cloud_resources = cloud_resources
         # The time when the network was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.created_time = created_time
@@ -44,19 +43,14 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         self.ens_region_id = ens_region_id
         # The ID of the gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
-        # List of HaVipIds.
         self.ha_vip_ids = ha_vip_ids
-        # The instance IDs.
         self.instance_ids = instance_ids
-        # List of ELB instances.
         self.load_balancer_ids = load_balancer_ids
-        # List of NAT Gateways.
         self.nat_gateway_ids = nat_gateway_ids
         # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
         # The ID of the network.
         self.network_id = network_id
-        # A list of multicast source IDs.
         self.network_interface_ids = network_interface_ids
         # The name of the network.
         self.network_name = network_name
@@ -64,7 +58,6 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the route table.
         self.route_table_id = route_table_id
-        # List of routing table IDs.
         self.route_table_ids = route_table_ids
         # The ID of the route table.
         self.router_table_id = router_table_id
@@ -74,7 +67,6 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         # *   Pending
         # *   Available
         self.status = status
-        # The list of vSwitches in the network.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -500,9 +492,7 @@ class DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType(Dar
         resource_count: int = None,
         resource_type: str = None,
     ):
-        # The number of resources in the network.
         self.resource_count = resource_count
-        # The resource type. VSwitch.
         self.resource_type = resource_type
 
     def validate(self):

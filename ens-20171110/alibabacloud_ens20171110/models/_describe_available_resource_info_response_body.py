@@ -14,11 +14,9 @@ class DescribeAvailableResourceInfoResponseBody(DaraModel):
         request_id: str = None,
         support_resources: main_models.DescribeAvailableResourceInfoResponseBodySupportResources = None,
     ):
-        # The information about the image.
         self.images = images
         # The request ID.
         self.request_id = request_id
-        # The specifications of resources that you can purchase.
         self.support_resources = support_resources
 
     def validate(self):
@@ -106,22 +104,14 @@ class DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource(D
         system_disk_max_size: int = None,
         system_disk_min_size: int = None,
     ):
-        # Bandwidth billing method.
         self.bandwidth_types = bandwidth_types
-        # The maximum capacity of a data disk. Unit: GB.
         self.data_disk_max_size = data_disk_max_size
-        # The minimum data disk size. Unit: GiB.
         self.data_disk_min_size = data_disk_min_size
-        # node ID
         self.ens_region_ids = ens_region_ids
-        # The supplementary information about the edge nodes.
         self.ens_region_ids_extends = ens_region_ids_extends
         self.instance_speces = instance_speces
-        # Operator
         self.isp = isp
-        # The maximum size of the system disk. Unit: GiB.
         self.system_disk_max_size = system_disk_max_size
-        # The minimum capacity of a system disk. Unit: GB.
         self.system_disk_min_size = system_disk_min_size
 
     def validate(self):
@@ -305,17 +295,11 @@ class DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEn
         name: str = None,
         province: str = None,
     ):
-        # The region.
         self.area = area
-        # The name. This parameter is empty by default.
         self.en_name = en_name
-        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The information about the Internet service provider (ISP).
         self.isp = isp
-        # The name of the edge node.
         self.name = name
-        # The province.
         self.province = province
 
     def validate(self):
@@ -464,11 +448,8 @@ class DescribeAvailableResourceInfoResponseBodyImagesImage(DaraModel):
         image_name: str = None,
         image_size: int = None,
     ):
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
-        # The size of the image. Unit: GB.
         self.image_size = image_size
 
     def validate(self):

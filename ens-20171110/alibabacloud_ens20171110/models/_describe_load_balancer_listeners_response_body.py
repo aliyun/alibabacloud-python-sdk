@@ -16,7 +16,6 @@ class DescribeLoadBalancerListenersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The listeners of the ELB instance.
         self.listeners = listeners
         # The page number.
         self.page_number = page_number
@@ -121,34 +120,14 @@ class DescribeLoadBalancerListenersResponseBodyListenersListener(DaraModel):
         protocol: str = None,
         status: str = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The timestamp when the listener was created.
         self.create_time = create_time
-        # The description of the listener.
         self.description = description
-        # The listener port that is used for HTTP-to-HTTPS redirection.
         self.forward_port = forward_port
-        # Indicates whether HTTP-to-HTTPS redirection is enabled for the listener. Valid values:
-        # 
-        # *   **on**
-        # *   **off**
         self.listener_forward = listener_forward
-        # The listening port.
         self.listener_port = listener_port
-        # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
-        # The network transmission protocol that is used by the listener.
-        # 
-        # *   **tcp**
-        # *   **udp**
-        # *   **http**
-        # *   **https**
         self.protocol = protocol
-        # The status of the listener. Valid values:
-        # 
-        # *   **running**
-        # *   **stopped**
         self.status = status
 
     def validate(self):

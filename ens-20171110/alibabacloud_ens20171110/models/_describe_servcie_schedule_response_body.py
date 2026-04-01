@@ -112,7 +112,6 @@ class DescribeServcieScheduleResponseBodyPodAbstractInfo(DaraModel):
     ):
         # The name of the container service.
         self.container_service = container_service
-        # The information about the container.
         self.container_statuses = container_statuses
         # The name of the pod.
         self.name = name
@@ -216,9 +215,7 @@ class DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatusesContain
         container_id: str = None,
         name: str = None,
     ):
-        # The ID of the container.
         self.container_id = container_id
-        # The name of the container.
         self.name = name
 
     def validate(self):

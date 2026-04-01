@@ -16,7 +16,6 @@ class DescribeNetworkInterfacesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the ENIs.
         self.network_interface_sets = network_interface_sets
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -129,49 +128,21 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         v_switch_id: str = None,
         vmnc_learn: bool = None,
     ):
-        # The time when the ENI was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of ENI.
         self.description = description
-        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The ID of the instance to which the ENI is bound.
         self.instance_id = instance_id
-        # The IPv6 addresses of the ENIs.
         self.ipv_6sets = ipv_6sets
-        # The MAC address of the ENI.
         self.mac_address = mac_address
-        # The ID of the network.
         self.network_id = network_id
-        # The ID of the ENI.
         self.network_interface_id = network_interface_id
-        # The ENI name.
         self.network_interface_name = network_interface_name
-        # The private IP address of the server.
         self.primary_ip = primary_ip
-        # The primary private IP address. Valid values:
-        # 
-        # *   **Public**: public IP address.
-        # *   **Private**: internal IP address.
         self.primary_ip_type = primary_ip_type
-        # Details about the private IP address.
         self.private_ip_sets = private_ip_sets
-        # The ID of the security group.
         self.security_group_ids = security_group_ids
-        # The status of the ENI. Valid values:
-        # 
-        # *   Available: The ENI is available.
-        # *   Attaching: The ENI is being attached to an instance.
-        # *   InUse: The ENI is attached to an instance.
-        # *   Detaching: The ENI is being detached from an instance.
-        # *   Deleting: The ENI is being deleted.
         self.status = status
-        # The type of the ENI. Valid values:
-        # 
-        # *   Primary
-        # *   Secondary
         self.type = type
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         self.vmnc_learn = vmnc_learn
 
@@ -368,12 +339,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         private_ip_address: str = None,
         private_ip_status: str = None,
     ):
-        # Specifies whether the private IP address is the primary private IP address. Valid values:
-        # 
-        # *   true
-        # *   false
         self.primary = primary
-        # The private IP address.
         self.private_ip_address = private_ip_address
         self.private_ip_status = private_ip_status
 
@@ -449,7 +415,6 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self,
         ipv_6address: str = None,
     ):
-        # The IPv6 address of the ENI.
         self.ipv_6address = ipv_6address
 
     def validate(self):

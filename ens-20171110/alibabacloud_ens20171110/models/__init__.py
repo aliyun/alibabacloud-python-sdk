@@ -46,6 +46,14 @@ from ._attach_instance_sdgrequest import AttachInstanceSDGRequest
 from ._attach_instance_sdgshrink_request import AttachInstanceSDGShrinkRequest
 from ._attach_instance_sdgresponse_body import AttachInstanceSDGResponseBody
 from ._attach_instance_sdgresponse import AttachInstanceSDGResponse
+from ._attach_instances_to_node_pool_request import AttachInstancesToNodePoolRequest
+from ._attach_instances_to_node_pool_shrink_request import AttachInstancesToNodePoolShrinkRequest
+from ._attach_instances_to_node_pool_response_body import AttachInstancesToNodePoolResponseBody
+from ._attach_instances_to_node_pool_response import AttachInstancesToNodePoolResponse
+from ._attach_key_pair_request import AttachKeyPairRequest
+from ._attach_key_pair_shrink_request import AttachKeyPairShrinkRequest
+from ._attach_key_pair_response_body import AttachKeyPairResponseBody
+from ._attach_key_pair_response import AttachKeyPairResponse
 from ._attach_network_interface_request import AttachNetworkInterfaceRequest
 from ._attach_network_interface_response_body import AttachNetworkInterfaceResponseBody
 from ._attach_network_interface_response import AttachNetworkInterfaceResponse
@@ -349,6 +357,9 @@ from ._describe_cloud_disk_types_response import DescribeCloudDiskTypesResponse
 from ._describe_cluster_request import DescribeClusterRequest
 from ._describe_cluster_response_body import DescribeClusterResponseBody
 from ._describe_cluster_response import DescribeClusterResponse
+from ._describe_cluster_attach_scripts_request import DescribeClusterAttachScriptsRequest
+from ._describe_cluster_attach_scripts_response_body import DescribeClusterAttachScriptsResponseBody
+from ._describe_cluster_attach_scripts_response import DescribeClusterAttachScriptsResponse
 from ._describe_cluster_detail_request import DescribeClusterDetailRequest
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBody
 from ._describe_cluster_detail_response import DescribeClusterDetailResponse
@@ -649,6 +660,10 @@ from ._detach_instance_sdgrequest import DetachInstanceSDGRequest
 from ._detach_instance_sdgshrink_request import DetachInstanceSDGShrinkRequest
 from ._detach_instance_sdgresponse_body import DetachInstanceSDGResponseBody
 from ._detach_instance_sdgresponse import DetachInstanceSDGResponse
+from ._detach_key_pair_request import DetachKeyPairRequest
+from ._detach_key_pair_shrink_request import DetachKeyPairShrinkRequest
+from ._detach_key_pair_response_body import DetachKeyPairResponseBody
+from ._detach_key_pair_response import DetachKeyPairResponse
 from ._detach_network_interface_request import DetachNetworkInterfaceRequest
 from ._detach_network_interface_response_body import DetachNetworkInterfaceResponseBody
 from ._detach_network_interface_response import DetachNetworkInterfaceResponse
@@ -1063,6 +1078,7 @@ from ._attach_instance_sdgrequest import AttachInstanceSDGRequestLoadOpt
 from ._attach_instance_sdgresponse_body import AttachInstanceSDGResponseBodyDataResultFailedItems
 from ._attach_instance_sdgresponse_body import AttachInstanceSDGResponseBodyDataResult
 from ._attach_instance_sdgresponse_body import AttachInstanceSDGResponseBodyData
+from ._attach_key_pair_response_body import AttachKeyPairResponseBodyResults
 from ._batch_event_migrate_instance_request import BatchEventMigrateInstanceRequestEventInfos
 from ._batch_event_migrate_instance_response_body import BatchEventMigrateInstanceResponseBodyResults
 from ._batch_event_reboot_instance_request import BatchEventRebootInstanceRequestEventInfos
@@ -1434,6 +1450,7 @@ from ._describe_vswitches_response_body import DescribeVSwitchesResponseBodyVSwi
 from ._detach_instance_sdgresponse_body import DetachInstanceSDGResponseBodyDataResultFailedItems
 from ._detach_instance_sdgresponse_body import DetachInstanceSDGResponseBodyDataResult
 from ._detach_instance_sdgresponse_body import DetachInstanceSDGResponseBodyData
+from ._detach_key_pair_response_body import DetachKeyPairResponseBodyResults
 from ._dist_application_data_response_body import DistApplicationDataResponseBodyDistInstanceIds
 from ._dist_application_data_response_body import DistApplicationDataResponseBodyDistResultsDistResult
 from ._dist_application_data_response_body import DistApplicationDataResponseBodyDistResults
@@ -1554,6 +1571,14 @@ __all__ = [
     AttachInstanceSDGShrinkRequest,
     AttachInstanceSDGResponseBody,
     AttachInstanceSDGResponse,
+    AttachInstancesToNodePoolRequest,
+    AttachInstancesToNodePoolShrinkRequest,
+    AttachInstancesToNodePoolResponseBody,
+    AttachInstancesToNodePoolResponse,
+    AttachKeyPairRequest,
+    AttachKeyPairShrinkRequest,
+    AttachKeyPairResponseBody,
+    AttachKeyPairResponse,
     AttachNetworkInterfaceRequest,
     AttachNetworkInterfaceResponseBody,
     AttachNetworkInterfaceResponse,
@@ -1857,6 +1882,9 @@ __all__ = [
     DescribeClusterRequest,
     DescribeClusterResponseBody,
     DescribeClusterResponse,
+    DescribeClusterAttachScriptsRequest,
+    DescribeClusterAttachScriptsResponseBody,
+    DescribeClusterAttachScriptsResponse,
     DescribeClusterDetailRequest,
     DescribeClusterDetailResponseBody,
     DescribeClusterDetailResponse,
@@ -2157,6 +2185,10 @@ __all__ = [
     DetachInstanceSDGShrinkRequest,
     DetachInstanceSDGResponseBody,
     DetachInstanceSDGResponse,
+    DetachKeyPairRequest,
+    DetachKeyPairShrinkRequest,
+    DetachKeyPairResponseBody,
+    DetachKeyPairResponse,
     DetachNetworkInterfaceRequest,
     DetachNetworkInterfaceResponseBody,
     DetachNetworkInterfaceResponse,
@@ -2571,6 +2603,7 @@ __all__ = [
     AttachInstanceSDGResponseBodyDataResultFailedItems,
     AttachInstanceSDGResponseBodyDataResult,
     AttachInstanceSDGResponseBodyData,
+    AttachKeyPairResponseBodyResults,
     BatchEventMigrateInstanceRequestEventInfos,
     BatchEventMigrateInstanceResponseBodyResults,
     BatchEventRebootInstanceRequestEventInfos,
@@ -2942,6 +2975,7 @@ __all__ = [
     DetachInstanceSDGResponseBodyDataResultFailedItems,
     DetachInstanceSDGResponseBodyDataResult,
     DetachInstanceSDGResponseBodyData,
+    DetachKeyPairResponseBodyResults,
     DistApplicationDataResponseBodyDistInstanceIds,
     DistApplicationDataResponseBodyDistResultsDistResult,
     DistApplicationDataResponseBodyDistResults,

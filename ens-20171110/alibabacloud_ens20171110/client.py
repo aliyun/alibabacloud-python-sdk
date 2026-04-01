@@ -832,6 +832,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.attach_instance_sdgwith_options_async(request, runtime)
 
+    def attach_instances_to_node_pool_with_options(
+        self,
+        tmp_req: main_models.AttachInstancesToNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachInstancesToNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.AttachInstancesToNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instances):
+            request.instances_shrink = Utils.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.instances_shrink):
+            query['Instances'] = request.instances_shrink
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachInstancesToNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachInstancesToNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_instances_to_node_pool_with_options_async(
+        self,
+        tmp_req: main_models.AttachInstancesToNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachInstancesToNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.AttachInstancesToNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instances):
+            request.instances_shrink = Utils.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.instances_shrink):
+            query['Instances'] = request.instances_shrink
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachInstancesToNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachInstancesToNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_instances_to_node_pool(
+        self,
+        request: main_models.AttachInstancesToNodePoolRequest,
+    ) -> main_models.AttachInstancesToNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.attach_instances_to_node_pool_with_options(request, runtime)
+
+    async def attach_instances_to_node_pool_async(
+        self,
+        request: main_models.AttachInstancesToNodePoolRequest,
+    ) -> main_models.AttachInstancesToNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_instances_to_node_pool_with_options_async(request, runtime)
+
+    def attach_key_pair_with_options(
+        self,
+        tmp_req: main_models.AttachKeyPairRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachKeyPairResponse:
+        tmp_req.validate()
+        request = main_models.AttachKeyPairShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
+        if not DaraCore.is_null(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachKeyPair',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_key_pair_with_options_async(
+        self,
+        tmp_req: main_models.AttachKeyPairRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachKeyPairResponse:
+        tmp_req.validate()
+        request = main_models.AttachKeyPairShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
+        if not DaraCore.is_null(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachKeyPair',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_key_pair(
+        self,
+        request: main_models.AttachKeyPairRequest,
+    ) -> main_models.AttachKeyPairResponse:
+        runtime = RuntimeOptions()
+        return self.attach_key_pair_with_options(request, runtime)
+
+    async def attach_key_pair_async(
+        self,
+        request: main_models.AttachKeyPairRequest,
+    ) -> main_models.AttachKeyPairResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_key_pair_with_options_async(request, runtime)
+
     def attach_network_interface_with_options(
         self,
         request: main_models.AttachNetworkInterfaceRequest,
@@ -5517,6 +5689,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.retain_resources):
+            query['RetainResources'] = request.retain_resources
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5545,6 +5719,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.retain_resources):
+            query['RetainResources'] = request.retain_resources
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5667,6 +5843,8 @@ class Client(OpenApiClient):
             query['Body'] = request.body_shrink
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.release_node):
+            query['ReleaseNode'] = request.release_node
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5701,6 +5879,8 @@ class Client(OpenApiClient):
             query['Body'] = request.body_shrink
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.release_node):
+            query['ReleaseNode'] = request.release_node
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8747,6 +8927,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeClusterResponse:
         runtime = RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
+
+    def describe_cluster_attach_scripts_with_options(
+        self,
+        request: main_models.DescribeClusterAttachScriptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterAttachScriptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterAttachScripts',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterAttachScriptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_attach_scripts_with_options_async(
+        self,
+        request: main_models.DescribeClusterAttachScriptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterAttachScriptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterAttachScripts',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterAttachScriptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_attach_scripts(
+        self,
+        request: main_models.DescribeClusterAttachScriptsRequest,
+    ) -> main_models.DescribeClusterAttachScriptsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cluster_attach_scripts_with_options(request, runtime)
+
+    async def describe_cluster_attach_scripts_async(
+        self,
+        request: main_models.DescribeClusterAttachScriptsRequest,
+    ) -> main_models.DescribeClusterAttachScriptsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cluster_attach_scripts_with_options_async(request, runtime)
 
     def describe_cluster_detail_with_options(
         self,
@@ -16626,6 +16884,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.detach_instance_sdgwith_options_async(request, runtime)
 
+    def detach_key_pair_with_options(
+        self,
+        tmp_req: main_models.DetachKeyPairRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachKeyPairResponse:
+        tmp_req.validate()
+        request = main_models.DetachKeyPairShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
+        if not DaraCore.is_null(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachKeyPair',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_key_pair_with_options_async(
+        self,
+        tmp_req: main_models.DetachKeyPairRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachKeyPairResponse:
+        tmp_req.validate()
+        request = main_models.DetachKeyPairShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
+        if not DaraCore.is_null(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachKeyPair',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_key_pair(
+        self,
+        request: main_models.DetachKeyPairRequest,
+    ) -> main_models.DetachKeyPairResponse:
+        runtime = RuntimeOptions()
+        return self.detach_key_pair_with_options(request, runtime)
+
+    async def detach_key_pair_async(
+        self,
+        request: main_models.DetachKeyPairRequest,
+    ) -> main_models.DetachKeyPairResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_key_pair_with_options_async(request, runtime)
+
     def detach_network_interface_with_options(
         self,
         request: main_models.DetachNetworkInterfaceRequest,
@@ -16791,6 +17135,8 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not DaraCore.is_null(request.plan_time):
             query['PlanTime'] = request.plan_time
+        if not DaraCore.is_null(request.plan_utc_time):
+            query['PlanUtcTime'] = request.plan_utc_time
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         req = open_api_util_models.OpenApiRequest(
@@ -16829,6 +17175,8 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not DaraCore.is_null(request.plan_time):
             query['PlanTime'] = request.plan_time
+        if not DaraCore.is_null(request.plan_utc_time):
+            query['PlanUtcTime'] = request.plan_utc_time
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         req = open_api_util_models.OpenApiRequest(
@@ -16877,6 +17225,8 @@ class Client(OpenApiClient):
             query['OpsType'] = request.ops_type
         if not DaraCore.is_null(request.plan_time):
             query['PlanTime'] = request.plan_time
+        if not DaraCore.is_null(request.plan_utc_time):
+            query['PlanUtcTime'] = request.plan_utc_time
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         req = open_api_util_models.OpenApiRequest(
@@ -16911,6 +17261,8 @@ class Client(OpenApiClient):
             query['OpsType'] = request.ops_type
         if not DaraCore.is_null(request.plan_time):
             query['PlanTime'] = request.plan_time
+        if not DaraCore.is_null(request.plan_utc_time):
+            query['PlanUtcTime'] = request.plan_utc_time
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         req = open_api_util_models.OpenApiRequest(
@@ -16959,6 +17311,8 @@ class Client(OpenApiClient):
             query['OpsType'] = request.ops_type
         if not DaraCore.is_null(request.plan_time):
             query['PlanTime'] = request.plan_time
+        if not DaraCore.is_null(request.plan_utc_time):
+            query['PlanUtcTime'] = request.plan_utc_time
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         req = open_api_util_models.OpenApiRequest(
@@ -16993,6 +17347,8 @@ class Client(OpenApiClient):
             query['OpsType'] = request.ops_type
         if not DaraCore.is_null(request.plan_time):
             query['PlanTime'] = request.plan_time
+        if not DaraCore.is_null(request.plan_utc_time):
+            query['PlanUtcTime'] = request.plan_utc_time
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         req = open_api_util_models.OpenApiRequest(

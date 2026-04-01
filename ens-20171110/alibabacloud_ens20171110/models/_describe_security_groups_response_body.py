@@ -22,7 +22,6 @@ class DescribeSecurityGroupsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Details about security groups.
         self.security_groups = security_groups
         # The total number of returned pages.
         self.total_count = total_count
@@ -119,19 +118,12 @@ class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup(DaraModel):
         security_group_id: str = None,
         security_group_name: str = None,
     ):
-        # The creation time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the security group.
         self.description = description
-        # The number of associated instances.
         self.instance_count = instance_count
-        # The IDs of the instances that are associated with the security group.
         self.instance_ids = instance_ids
-        # The IDs of the ENIs that are associated with the security group.
         self.network_interface_ids = network_interface_ids
-        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The name of the security group.
         self.security_group_name = security_group_name
 
     def validate(self):

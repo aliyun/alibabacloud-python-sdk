@@ -16,7 +16,6 @@ class DescribeExportImageInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned result. For more information, see the Images parameter described in the JSON-formatted sample success response.
         self.images = images
         # The page number.
         self.page_number = page_number
@@ -120,29 +119,13 @@ class DescribeExportImageInfoResponseBodyImagesImage(DaraModel):
         image_owner_alias: str = None,
         platform: str = None,
     ):
-        # The architecture of the image. Example: **x86_64**.
         self.architecture = architecture
-        # The time when the image was created.
         self.creation_time = creation_time
-        # The URL of the exported image.
         self.exported_image_url = exported_image_url
-        # The export status of the image. Valid values:
-        # 
-        # *   Exporting
-        # *   Exported
-        # *   ExportError
-        # *   Unexported
         self.image_export_status = image_export_status
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
-        # The source of the image. Valid values:
-        # 
-        # *   system: public image
-        # *   self: custom image
         self.image_owner_alias = image_owner_alias
-        # The OS.
         self.platform = platform
 
     def validate(self):

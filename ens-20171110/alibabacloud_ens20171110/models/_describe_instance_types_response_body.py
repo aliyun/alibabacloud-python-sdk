@@ -16,7 +16,6 @@ class DescribeInstanceTypesResponseBody(DaraModel):
     ):
         # The status code. If the request is successful, 0 is returned. If the request fails, a non-zero error code is returned.
         self.code = code
-        # Details about the instance types.
         self.instance_types = instance_types
         # The request ID.
         self.request_id = request_id
@@ -98,13 +97,9 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         instance_type_name: str = None,
         memory_size: int = None,
     ):
-        # The number of vCPUs.
         self.cpu_core_count = cpu_core_count
-        # This parameter is unavailable.
         self.instance_type_id = instance_type_id
-        # The name of the instance type.
         self.instance_type_name = instance_type_name
-        # The memory size. Unit: MB.
         self.memory_size = memory_size
 
     def validate(self):

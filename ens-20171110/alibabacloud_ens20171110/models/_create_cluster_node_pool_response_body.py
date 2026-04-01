@@ -118,6 +118,7 @@ class CreateClusterNodePoolResponseBodyNodepoolStatus(DaraModel):
     def __init__(
         self,
         desired_nodes: int = None,
+        failed_nodes: int = None,
         initial_nodes: int = None,
         removing_nodes: int = None,
         serving_nodes: int = None,
@@ -125,6 +126,7 @@ class CreateClusterNodePoolResponseBodyNodepoolStatus(DaraModel):
         total_nodes: int = None,
     ):
         self.desired_nodes = desired_nodes
+        self.failed_nodes = failed_nodes
         self.initial_nodes = initial_nodes
         self.removing_nodes = removing_nodes
         self.serving_nodes = serving_nodes
@@ -141,6 +143,9 @@ class CreateClusterNodePoolResponseBodyNodepoolStatus(DaraModel):
             result = _map
         if self.desired_nodes is not None:
             result['DesiredNodes'] = self.desired_nodes
+
+        if self.failed_nodes is not None:
+            result['FailedNodes'] = self.failed_nodes
 
         if self.initial_nodes is not None:
             result['InitialNodes'] = self.initial_nodes
@@ -163,6 +168,9 @@ class CreateClusterNodePoolResponseBodyNodepoolStatus(DaraModel):
         m = m or dict()
         if m.get('DesiredNodes') is not None:
             self.desired_nodes = m.get('DesiredNodes')
+
+        if m.get('FailedNodes') is not None:
+            self.failed_nodes = m.get('FailedNodes')
 
         if m.get('InitialNodes') is not None:
             self.initial_nodes = m.get('InitialNodes')

@@ -19,7 +19,6 @@ class DescribeSelfImagesResponseBody(DaraModel):
     ):
         # The HTTP status code that is returned.
         self.code = code
-        # The image information.
         self.images = images
         # The page number.
         self.page_number = page_number
@@ -136,57 +135,20 @@ class DescribeSelfImagesResponseBodyImagesImage(DaraModel):
         snapshot_id: str = None,
         status: str = None,
     ):
-        # The image architecture. Valid values:
-        # 
-        # *   i386
-        # *   x86_64
         self.architecture = architecture
-        # Computing type. ens_vm/ens: x86 computing. bare_metal: x86 bare machine or x86 bare metal. arm_vm: ARM computing. arm_bare_metal: ARM bare machine or ARM bare metal. pcfarm: heterogeneous computing.
         self.compute_type = compute_type
-        # The image creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The mappings between the disk and the snapshot in the image.
         self.disk_device_mappings = disk_device_mappings
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
-        # The source of the image. Valid values:
-        # 
-        # *   **others**: a custom image that is shared by other Alibaba Cloud accounts.
-        # *   **self**: your own custom image.
         self.image_owner_alias = image_owner_alias
-        # The size of the image. Unit: GiB.
         self.image_size = image_size
-        # The size of the image storage.
         self.image_storage_size = image_storage_size
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The operating system version.
         self.os_version = os_version
-        # The platform.
-        # 
-        # *   centos
-        # *   ubuntu
-        # *   alios
-        # *   debian
-        # *   rhel
-        # *   windows
         self.platform = platform
-        # The ID of the region.
         self.region_id = region_id
-        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The state of the image.
-        # 
-        # *   Creating.
-        # *   Packing.
-        # *   Uploading.
-        # *   Pack_failed.
-        # *   Upload_failed.
-        # *   Available: Only images in the Available state can be used and operated.
-        # *   Unavailable.
-        # *   Copying.
         self.status = status
 
     def validate(self):
@@ -338,16 +300,9 @@ class DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMappi
         type: str = None,
         image_id: str = None,
     ):
-        # The format of the image.
         self.format = format
-        # The size of the disk. Unit: GiB.
         self.size = size
-        # The type of the disk. Valid values:
-        # 
-        # *   system: system disk.
-        # *   data: data disk.
         self.type = type
-        # The ID of image.
         self.image_id = image_id
 
     def validate(self):

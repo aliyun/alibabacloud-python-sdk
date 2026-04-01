@@ -16,7 +16,6 @@ class DescribeEnsRegionsResponseBody(DaraModel):
     ):
         # The service code. 0 is returned for a successful request. An error code is returned for a failed request.
         self.code = code
-        # The information about the regions.
         self.ens_regions = ens_regions
         # The request ID.
         self.request_id = request_id
@@ -99,15 +98,10 @@ class DescribeEnsRegionsResponseBodyEnsRegionsEnsRegions(DaraModel):
         name: str = None,
         province: str = None,
     ):
-        # The code of the region.
         self.area = area
-        # The name of the node.
         self.en_name = en_name
-        # The ID of the node.
         self.ens_region_id = ens_region_id
-        # The name of the node.
         self.name = name
-        # The province where the node is deployed.
         self.province = province
 
     def validate(self):

@@ -13,7 +13,6 @@ class RemoveBackendServersResponseBody(DaraModel):
         backend_servers: main_models.RemoveBackendServersResponseBodyBackendServers = None,
         request_id: str = None,
     ):
-        # The list of backend servers that you want to add to the SLB instance.
         self.backend_servers = backend_servers
         # The request ID.
         self.request_id = request_id
@@ -90,20 +89,10 @@ class RemoveBackendServersResponseBodyBackendServersBackendServer(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The IP address of the backend server.
         self.ip = ip
-        # The backend port that is used by the ELB instance.
         self.port = port
-        # The instance ID of the backend server.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ens**: an ENS instance.
-        # *   **eni**: an ENI.
         self.type = type
-        # The weight of the backend server.
-        # 
-        # >  The value 0 indicates that requests are not forwarded to the backend server.
         self.weight = weight
 
     def validate(self):

@@ -13,7 +13,6 @@ class SetBackendServersResponseBody(DaraModel):
         backend_servers: main_models.SetBackendServersResponseBodyBackendServers = None,
         request_id: str = None,
     ):
-        # The backend servers.
         self.backend_servers = backend_servers
         # The request ID.
         self.request_id = request_id
@@ -90,20 +89,10 @@ class SetBackendServersResponseBodyBackendServersBackendServer(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The IP address of the backend server.
         self.ip = ip
-        # The backend port that is used by the ELB instance.
         self.port = port
-        # The ID of the instance that you want to use as the backend server.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ens**: ENS instance.
-        # *   **eni**: ENI instance.
         self.type = type
-        # The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
-        # 
-        # >  The value 0 indicates that requests are not forwarded to the backend server.
         self.weight = weight
 
     def validate(self):

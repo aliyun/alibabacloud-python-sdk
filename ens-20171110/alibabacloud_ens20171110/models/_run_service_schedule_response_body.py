@@ -19,7 +19,6 @@ class RunServiceScheduleResponseBody(DaraModel):
         request_repeated: str = None,
         tcp_ports: bool = None,
     ):
-        # The execution results of the commands.
         self.command_results = command_results
         # The index number of the scheduled virtual device (pod).
         self.index = index
@@ -142,11 +141,8 @@ class RunServiceScheduleResponseBodyCommandResultsCommandResult(DaraModel):
         container_name: str = None,
         result_msg: str = None,
     ):
-        # The command.
         self.command = command
-        # The name of the container.
         self.container_name = container_name
-        # The execution result of the command.
         self.result_msg = result_msg
 
     def validate(self):

@@ -17,11 +17,9 @@ class DescribeAvailableResourceResponseBody(DaraModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The details of the images.
         self.images = images
         # The ID of the request. This is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The specifications of resources that you can purchase.
         self.support_resources = support_resources
 
     def validate(self):
@@ -111,15 +109,10 @@ class DescribeAvailableResourceResponseBodySupportResourcesSupportResource(DaraM
         support_resources_count: str = None,
         system_disk_size: str = None,
     ):
-        # The size of the data disk. Unit: GB.
         self.data_disk_size = data_disk_size
-        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The specifications of the resource plan.
         self.instance_spec = instance_spec
-        # The number of resources that you can purchase.
         self.support_resources_count = support_resources_count
-        # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -207,9 +200,7 @@ class DescribeAvailableResourceResponseBodyImagesImage(DaraModel):
         image_id: str = None,
         image_name: str = None,
     ):
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
 
     def validate(self):

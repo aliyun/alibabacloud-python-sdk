@@ -88,7 +88,9 @@ class DescribeHistoryEventsResponseBodyEvents(DaraModel):
         event_type: str = None,
         extended_attribute: str = None,
         not_before: int = None,
+        not_before_utc_time: str = None,
         publish_time: int = None,
+        publish_utc_time: str = None,
         reason: str = None,
         resource_id: str = None,
     ):
@@ -126,8 +128,10 @@ class DescribeHistoryEventsResponseBodyEvents(DaraModel):
         self.extended_attribute = extended_attribute
         # The scheduled execution time of the event in milliseconds.
         self.not_before = not_before
+        self.not_before_utc_time = not_before_utc_time
         # The release time in milliseconds.
         self.publish_time = publish_time
+        self.publish_utc_time = publish_utc_time
         # The event cause.
         self.reason = reason
         # The ID of the associated resources.
@@ -159,8 +163,14 @@ class DescribeHistoryEventsResponseBodyEvents(DaraModel):
         if self.not_before is not None:
             result['NotBefore'] = self.not_before
 
+        if self.not_before_utc_time is not None:
+            result['NotBeforeUtcTime'] = self.not_before_utc_time
+
         if self.publish_time is not None:
             result['PublishTime'] = self.publish_time
+
+        if self.publish_utc_time is not None:
+            result['PublishUtcTime'] = self.publish_utc_time
 
         if self.reason is not None:
             result['Reason'] = self.reason
@@ -190,8 +200,14 @@ class DescribeHistoryEventsResponseBodyEvents(DaraModel):
         if m.get('NotBefore') is not None:
             self.not_before = m.get('NotBefore')
 
+        if m.get('NotBeforeUtcTime') is not None:
+            self.not_before_utc_time = m.get('NotBeforeUtcTime')
+
         if m.get('PublishTime') is not None:
             self.publish_time = m.get('PublishTime')
+
+        if m.get('PublishUtcTime') is not None:
+            self.publish_utc_time = m.get('PublishUtcTime')
 
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')

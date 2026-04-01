@@ -36,17 +36,12 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         self.description = description
         # The ENS node ID.
         self.ens_region_id = ens_region_id
-        # A list of high-availability VIP instance IDs.
         self.ha_vip_ids = ha_vip_ids
-        # A list of instance IDs.
         self.instance_ids = instance_ids
-        # A list of load balancer instance IDs.
         self.load_balancer_ids = load_balancer_ids
-        # A list of NAT gateway IDs.
         self.nat_gateway_ids = nat_gateway_ids
         # The network ID.
         self.network_id = network_id
-        # A list of elastic network interface IDs.
         self.network_interface_ids = network_interface_ids
         # The request ID.
         self.request_id = request_id

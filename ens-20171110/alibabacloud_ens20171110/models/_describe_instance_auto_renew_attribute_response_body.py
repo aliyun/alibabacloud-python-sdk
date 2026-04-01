@@ -16,7 +16,6 @@ class DescribeInstanceAutoRenewAttributeResponseBody(DaraModel):
     ):
         # The returned service code. A value of 0 indicates that the operation was successful.
         self.code = code
-        # The renewal status of the instance.
         self.instance_renew_attributes = instance_renew_attributes
         # The request ID.
         self.request_id = request_id
@@ -97,14 +96,8 @@ class DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInsta
         duration: str = None,
         instance_id: str = None,
     ):
-        # The renewal type of the instance.
-        # 
-        # *   **true**: enables auto-renewal.
-        # *   **false**: disables auto-renewal.
         self.auto_renewal = auto_renewal
-        # The unit of the auto-renewal period.
         self.duration = duration
-        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

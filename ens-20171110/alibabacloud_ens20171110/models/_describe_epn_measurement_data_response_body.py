@@ -13,7 +13,6 @@ class DescribeEpnMeasurementDataResponseBody(DaraModel):
         measurement_datas: main_models.DescribeEpnMeasurementDataResponseBodyMeasurementDatas = None,
         request_id: str = None,
     ):
-        # The metering data returned.
         self.measurement_datas = measurement_datas
         # The request ID.
         self.request_id = request_id
@@ -90,18 +89,10 @@ class DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData(Dara
         cost_end_time: str = None,
         cost_start_time: str = None,
     ):
-        # The bandwidth data returned.
         self.band_width_fee_datas = band_width_fee_datas
-        # The metering method. Valid values:
-        # 
-        # *   ChargeByUnified: unified metering.
-        # *   ChargeByGrade: differential metering.
         self.charge_model = charge_model
-        # The metering cycle.
         self.cost_cycle = cost_cycle
-        # The end time of the metering cycle.
         self.cost_end_time = cost_end_time
-        # The start time of the metering cycle.
         self.cost_start_time = cost_start_time
 
     def validate(self):
@@ -194,18 +185,10 @@ class DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
         cost_val: int = None,
         isp_line: str = None,
     ):
-        # The code of the billable item.
         self.cost_code = cost_code
-        # The name of the billable item.
         self.cost_name = cost_name
-        # Metering method
-        # 
-        # *   SpeedUp: bandwidth of intelligent acceleration
-        # *   IntranetConnection: internal bandwidth
         self.cost_type = cost_type
-        # The value of the billable item.
         self.cost_val = cost_val
-        # This parameter is unavailable.
         self.isp_line = isp_line
 
     def validate(self):

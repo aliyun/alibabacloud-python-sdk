@@ -19,7 +19,6 @@ class DescribeImagesResponseBody(DaraModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about the images.
         self.images = images
         # The page number.
         self.page_number = page_number
@@ -131,32 +130,15 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
-        # The architecture of the image. Example: **x86_64**.
         self.architecture = architecture
-        # The time when the image was created. The time follows the ISO 8601 standard.
         self.creation_time = creation_time
-        # The mappings between the disk and the snapshot in the image.
         self.disk_device_mappings = disk_device_mappings
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
-        # The source of the image. Valid values:
-        # 
-        # *   system: Alibaba Cloud public images
-        # *   self: your custom images
-        # *   others: shared images from other Alibaba Cloud accounts, or community images published by other Alibaba Cloud accounts
         self.image_owner_alias = image_owner_alias
-        # The size of the image. Unit: GiB.
         self.image_size = image_size
-        # The operating system type of the image. Valid values:
-        # 
-        # *   Linux
-        # *   Windows
         self.platform = platform
-        # The region ID.
         self.region_id = region_id
-        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -278,16 +260,9 @@ class DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping(D
         type: str = None,
         image_id: str = None,
     ):
-        # The format of the image.
         self.format = format
-        # The size of the disk. Unit: GiB.
         self.size = size
-        # The type of the disk. Valid values:
-        # 
-        # *   system: system disk.
-        # *   data: data disk.
         self.type = type
-        # The ID of image.
         self.image_id = image_id
 
     def validate(self):

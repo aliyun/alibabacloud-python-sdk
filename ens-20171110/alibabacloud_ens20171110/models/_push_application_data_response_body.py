@@ -13,7 +13,6 @@ class PushApplicationDataResponseBody(DaraModel):
         push_results: main_models.PushApplicationDataResponseBodyPushResults = None,
         request_id: str = None,
     ):
-        # The push results of data files.
         self.push_results = push_results
         # The ID of the request.
         self.request_id = request_id
@@ -89,18 +88,9 @@ class PushApplicationDataResponseBodyPushResultsPushResult(DaraModel):
         result_descrip: str = None,
         version: str = None,
     ):
-        # The name of the data file.
         self.name = name
-        # The push result. The value is of the enumeration type. Valid values:
-        # 
-        # *   0: The push operation is successful.
-        # *   100: The push operation has been performed and the file is pushed.
-        # *   200: The push operation has been performed and the file is being pushed to specific file servers.
-        # *   300: The push operation failed. You must trigger the push operation again. The ResultDescrip parameter indicates the error description.
         self.result_code = result_code
-        # The description of the push status.
         self.result_descrip = result_descrip
-        # The version number of the data file.
         self.version = version
 
     def validate(self):

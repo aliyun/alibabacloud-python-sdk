@@ -1,3 +1,23 @@
+2026-04-01 Version: 11.0.0
+- Support API AttachInstancesToNodePool.
+- Support API AttachKeyPair.
+- Support API DescribeClusterAttachScripts.
+- Support API DetachKeyPair.
+- Update API BatchEventMigrateInstance: add request parameters EventInfos.$.PlanUtcTime.
+- Update API BatchEventRebootInstance: add request parameters EventInfos.$.PlanUtcTime.
+- Update API BatchEventRedeployInstance: add request parameters EventInfos.$.PlanUtcTime.
+- Update API CreateClusterNodePool: add response parameters Body.Nodepool.Status.FailedNodes.
+- Update API DeleteCluster: add request parameters RetainResources.
+- Update API DeleteClusterNodes: add request parameters ReleaseNode.
+- Update API DescribeClusterNodePools: add response parameters Body.NodePools.$.Status.FailedNodes.
+- Update API DescribeHistoryEvents: add response parameters Body.Events.$.NotBeforeUtcTime.
+- Update API DescribeHistoryEvents: add response parameters Body.Events.$.PublishUtcTime.
+- Update API EventMigrateInstance: add request parameters PlanUtcTime.
+- Update API EventRebootInstance: add request parameters PlanUtcTime.
+- Update API EventRedeployInstance: add request parameters PlanUtcTime.
+- Update API PutBucketLifecycle: update request parameters AllowSameActionOverlap' type has changed.
+
+
 2026-02-03 Version: 10.1.1
 - Update API DescribeNetworkInterfaces: add response parameters Body.NetworkInterfaceSets.$.VmncLearn.
 

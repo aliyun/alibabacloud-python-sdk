@@ -16,7 +16,6 @@ class DescribeEnsRegionIdResourceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned data. For more information, see EnsRegionIdResources in sample JSON responses.
         self.ens_region_id_resources = ens_region_id_resources
         # The page number.
         self.page_number = page_number
@@ -121,28 +120,14 @@ class DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdReso
         isp: str = None,
         vcpu: int = None,
     ):
-        # The region. Set the value to West.
         self.area = area
-        # The code of the region.
         self.area_code = area_code
-        # The date when the transaction was processed.
         self.biz_date = biz_date
-        # The ID of the node.
         self.ens_region_id = ens_region_id
-        # The name of the node.
         self.ens_region_id_name = ens_region_id_name
-        # The number of instances.
         self.instance_count = instance_count
-        # The public bandwidth of the instance. Unit: Bits/s.
         self.internet_bandwidth = internet_bandwidth
-        # The ISP. Valid values:
-        # 
-        # *   cmcc: China Mobile
-        # *   unicom: China Unicom
-        # *   telecom: China Telecom
-        # *   multiCarrier: multi-line ISP
         self.isp = isp
-        # The number of vCPUs.
         self.vcpu = vcpu
 
     def validate(self):

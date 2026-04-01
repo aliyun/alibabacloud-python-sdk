@@ -18,7 +18,6 @@ class DescribeSecurityGroupAttributeResponseBody(DaraModel):
     ):
         # The description of the security group.
         self.description = description
-        # Details about the rules.
         self.permissions = permissions
         # The request ID.
         self.request_id = request_id
@@ -124,27 +123,17 @@ class DescribeSecurityGroupAttributeResponseBodyPermissionsPermission(DaraModel)
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
-        # The time at which the security group rule was created. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description.
         self.description = description
-        # The range of destination IP addresses for outbound access control.
         self.dest_cidr_ip = dest_cidr_ip
-        # The direction in which the security group rule is applied.
         self.direction = direction
-        # The transport layer protocol.
         self.ip_protocol = ip_protocol
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The policy.
         self.policy = policy
-        # The source port range.
         self.port_range = port_range
-        # The priority of the rule.
         self.priority = priority
-        # The range of source IP addresses for inbound access control.
         self.source_cidr_ip = source_cidr_ip
-        # The source port number range for the security group.
         self.source_port_range = source_port_range
 
     def validate(self):

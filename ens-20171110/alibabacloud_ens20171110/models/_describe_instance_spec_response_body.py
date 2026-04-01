@@ -26,7 +26,6 @@ class DescribeInstanceSpecResponseBody(DaraModel):
         self.data_disk_max_size = data_disk_max_size
         # The minimum capacity of a data disk. Unit: GB.
         self.data_disk_min_size = data_disk_min_size
-        # The information about instance specifications.
         self.instance_specs = instance_specs
         # The request ID.
         self.request_id = request_id
@@ -134,13 +133,9 @@ class DescribeInstanceSpecResponseBodyInstanceSpecsInstanceSpec(DaraModel):
         instance_type: str = None,
         memory: str = None,
     ):
-        # The number of CPU cores.
         self.core = core
-        # The display name of the instance type.
         self.display_name = display_name
-        # The type of the instance.
         self.instance_type = instance_type
-        # The memory size. Unit: MB.
         self.memory = memory
 
     def validate(self):

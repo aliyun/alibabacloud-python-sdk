@@ -12,11 +12,13 @@ class DeleteClusterNodesRequest(DaraModel):
         self,
         body: main_models.DeleteClusterNodesRequestBody = None,
         cluster_id: str = None,
+        release_node: bool = None,
     ):
         # This parameter is required.
         self.body = body
         # This parameter is required.
         self.cluster_id = cluster_id
+        self.release_node = release_node
 
     def validate(self):
         if self.body:
@@ -33,6 +35,9 @@ class DeleteClusterNodesRequest(DaraModel):
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
 
+        if self.release_node is not None:
+            result['ReleaseNode'] = self.release_node
+
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +48,9 @@ class DeleteClusterNodesRequest(DaraModel):
 
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+
+        if m.get('ReleaseNode') is not None:
+            self.release_node = m.get('ReleaseNode')
 
         return self
 

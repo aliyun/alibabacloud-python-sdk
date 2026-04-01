@@ -17,7 +17,6 @@ class DescribeImageSharePermissionResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The account information.
         self.accounts = accounts
         # The ID of the image.
         self.image_id = image_id
@@ -122,7 +121,6 @@ class DescribeImageSharePermissionResponseBodyAccountsAccount(DaraModel):
         self,
         aliyun_uid: str = None,
     ):
-        # The Alibaba Cloud account with which you share the image.
         self.aliyun_uid = aliyun_uid
 
     def validate(self):

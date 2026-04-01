@@ -13,7 +13,6 @@ class DescribeMeasurementDataResponseBody(DaraModel):
         measurement_datas: main_models.DescribeMeasurementDataResponseBodyMeasurementDatas = None,
         request_id: str = None,
     ):
-        # The metering data returned.
         self.measurement_datas = measurement_datas
         # The ID of the request.
         self.request_id = request_id
@@ -92,22 +91,12 @@ class DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementData(DaraMod
         resource_fee_data: main_models.DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData = None,
         resource_fee_data_details: main_models.DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetails = None,
     ):
-        # The bandwidth data returned.
         self.band_width_fee_datas = band_width_fee_datas
-        # The metering method. Valid values:
-        # 
-        # *   ChargeByUnified: unified metering.
-        # *   ChargeByGrade: differential metering.
         self.charge_model = charge_model
-        # The metering cycle.
         self.cost_cycle = cost_cycle
-        # The end time of the metering cycle.
         self.cost_end_time = cost_end_time
-        # The start time of the metering cycle.
         self.cost_start_time = cost_start_time
-        # The information about computing resources.
         self.resource_fee_data = resource_fee_data
-        # Details of the computing resources.
         self.resource_fee_data_details = resource_fee_data_details
 
     def validate(self):
@@ -217,17 +206,9 @@ class DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResource
         cost_val: int = None,
         resource_type: str = None,
     ):
-        # The code of the resource.
         self.cost_code = cost_code
-        # The name of the resource.
         self.cost_name = cost_name
-        # The consumption of the resource.
-        # 
-        # *   Memory unit: GB.
-        # *   CPU unit: vCPU.
-        # *   Storage unit: GB.
         self.cost_val = cost_val
-        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -275,11 +256,8 @@ class DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResource
         storage: int = None,
         vcpu: int = None,
     ):
-        # The memory size. Unit: GB.
         self.memory = memory
-        # The storage capacity. Unit: GB.
         self.storage = storage
-        # The number of vCPUs.
         self.vcpu = vcpu
 
     def validate(self):
@@ -356,11 +334,8 @@ class DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidt
         cost_name: str = None,
         cost_val: int = None,
     ):
-        # The code of the bandwidth plan.
         self.cost_code = cost_code
-        # The name of the bandwidth plan.
         self.cost_name = cost_name
-        # The bandwidth consumption. Unit: bit/second.
         self.cost_val = cost_val
 
     def validate(self):

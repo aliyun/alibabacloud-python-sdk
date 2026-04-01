@@ -20,7 +20,6 @@ class DescribeDataPushResultResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The push results of data files.
         self.push_results = push_results
         # The ID of the request.
         self.request_id = request_id
@@ -115,11 +114,8 @@ class DescribeDataPushResultResponseBodyPushResultsPushResult(DaraModel):
         status_stat_s: main_models.DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS = None,
         version: str = None,
     ):
-        # The name of the data file.
         self.name = name
-        # The push status of data files.
         self.status_stat_s = status_stat_s
-        # The version number of the data file.
         self.version = version
 
     def validate(self):
@@ -198,11 +194,8 @@ class DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusSt
         region_ids: main_models.DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds = None,
         status: str = None,
     ):
-        # The total number of ENS nodes.
         self.region_id_count = region_id_count
-        # The push status of data files on the ENS node.
         self.region_ids = region_ids
-        # The push status. The value is of the enumeration type. Valid values: SUCCESS FAILED PUSHING
         self.status = status
 
     def validate(self):
@@ -282,13 +275,9 @@ class DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusSt
         status_descrip: str = None,
         update_time: str = None,
     ):
-        # The ID of the ENS node.
         self.region_id = region_id
-        # The start time of the push operation. The time is displayed in UTC.
         self.start_time = start_time
-        # The description of the status.
         self.status_descrip = status_descrip
-        # The time when the status was last updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

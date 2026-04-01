@@ -16,7 +16,6 @@ class DescribeNetworksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The VPCs.
         self.networks = networks
         # The page number of the returned page.
         self.page_number = page_number
@@ -127,36 +126,20 @@ class DescribeNetworksResponseBodyNetworksNetwork(DaraModel):
         tags: main_models.DescribeNetworksResponseBodyNetworksNetworkTags = None,
         v_switch_ids: main_models.DescribeNetworksResponseBodyNetworksNetworkVSwitchIds = None,
     ):
-        # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
-        # The timestamp when the instance was created. Unit: milliseconds.
         self.created_time = created_time
-        # The description of the network.
         self.description = description
-        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The ID of the gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
-        # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
-        # The ID of the network.
         self.network_id = network_id
-        # The name of the network.
         self.network_name = network_name
-        # The ID of the route table.
         self.route_table_id = route_table_id
-        # The IDs of the route tables.
         self.route_table_ids = route_table_ids
-        # The route table ID.
         self.router_table_id = router_table_id
         self.secondary_cidr_blocks = secondary_cidr_blocks
-        # The status of the network. Valid values:
-        # 
-        # *   Pending
-        # *   Available
         self.status = status
         self.tags = tags
-        # The list of vSwitches in the network.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -344,11 +327,9 @@ class DescribeNetworksResponseBodyNetworksNetworkTagsTag(DaraModel):
         tag_value: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
-        # The bandwidth.
         self.value = value
 
     def validate(self):

@@ -16,7 +16,6 @@ class ListApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about applications.
         self.applications = applications
         # The page number.
         self.page_number = page_number
@@ -114,9 +113,7 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
         app_list: main_models.ListApplicationsResponseBodyApplicationsApplicationAppList = None,
         cluster_name: str = None,
     ):
-        # Details about the application.
         self.app_list = app_list
-        # The name of the cluster.
         self.cluster_name = cluster_name
 
     def validate(self):
@@ -188,9 +185,7 @@ class ListApplicationsResponseBodyApplicationsApplicationAppListApp(DaraModel):
         app_id: str = None,
         app_info: str = None,
     ):
-        # The ID of the application.
         self.app_id = app_id
-        # The information about the application, such as the resource specification, parameter configuration, and resources.
         self.app_info = app_info
 
     def validate(self):

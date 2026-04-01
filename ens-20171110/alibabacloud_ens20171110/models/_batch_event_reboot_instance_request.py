@@ -49,6 +49,7 @@ class BatchEventRebootInstanceRequestEventInfos(DaraModel):
         event_id: str = None,
         ops_type: str = None,
         plan_time: int = None,
+        plan_utc_time: str = None,
         resource_id: str = None,
     ):
         # The ID of the system event.
@@ -60,6 +61,7 @@ class BatchEventRebootInstanceRequestEventInfos(DaraModel):
         self.ops_type = ops_type
         # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        self.plan_utc_time = plan_utc_time
         # A client ID.
         self.resource_id = resource_id
 
@@ -80,6 +82,9 @@ class BatchEventRebootInstanceRequestEventInfos(DaraModel):
         if self.plan_time is not None:
             result['PlanTime'] = self.plan_time
 
+        if self.plan_utc_time is not None:
+            result['PlanUtcTime'] = self.plan_utc_time
+
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
 
@@ -95,6 +100,9 @@ class BatchEventRebootInstanceRequestEventInfos(DaraModel):
 
         if m.get('PlanTime') is not None:
             self.plan_time = m.get('PlanTime')
+
+        if m.get('PlanUtcTime') is not None:
+            self.plan_utc_time = m.get('PlanUtcTime')
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')

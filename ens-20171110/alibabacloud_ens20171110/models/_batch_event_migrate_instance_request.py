@@ -51,6 +51,7 @@ class BatchEventMigrateInstanceRequestEventInfos(DaraModel):
         ops_type: str = None,
         password: str = None,
         plan_time: int = None,
+        plan_utc_time: str = None,
         resource_id: str = None,
     ):
         # The data migration policy. Valid values:
@@ -78,6 +79,7 @@ class BatchEventMigrateInstanceRequestEventInfos(DaraModel):
         self.password = password
         # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        self.plan_utc_time = plan_utc_time
         # Resource ID i-\\*.
         # 
         # This parameter is required.
@@ -106,6 +108,9 @@ class BatchEventMigrateInstanceRequestEventInfos(DaraModel):
         if self.plan_time is not None:
             result['PlanTime'] = self.plan_time
 
+        if self.plan_utc_time is not None:
+            result['PlanUtcTime'] = self.plan_utc_time
+
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
 
@@ -127,6 +132,9 @@ class BatchEventMigrateInstanceRequestEventInfos(DaraModel):
 
         if m.get('PlanTime') is not None:
             self.plan_time = m.get('PlanTime')
+
+        if m.get('PlanUtcTime') is not None:
+            self.plan_utc_time = m.get('PlanUtcTime')
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')

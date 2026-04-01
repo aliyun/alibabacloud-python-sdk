@@ -16,7 +16,6 @@ class DescribeLoadBalancersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array of ELB instances.
         self.load_balancers = load_balancers
         # The page number.
         self.page_number = page_number
@@ -124,33 +123,17 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(DaraModel):
         pay_type: str = None,
         v_switch_id: str = None,
     ):
-        # The IP address that the ELB instance uses to provide services.
         self.address = address
-        # The IP version. Valid values: ipv4 and ipv6.
         self.address_ipversion = address_ipversion
         self.address_type = address_type
-        # The time when the ELB instance was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the ELB instance.
         self.load_balancer_name = load_balancer_name
-        # The status of the listener for the ELB instance. Valid values:
-        # 
-        # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
-        # *   **InActive**: The listener for the instance does not forward the received traffic.
         self.load_balancer_status = load_balancer_status
         self.load_balancer_type = load_balancer_type
-        # The ID of the network.
         self.network_id = network_id
-        # The billing method. Valid values:
-        # 
-        # *   **PrePaid**: subscription.
-        # *   **PostPaid**: pay-as-you-go. Only this billing method is supported.
         self.pay_type = pay_type
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

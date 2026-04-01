@@ -24,7 +24,6 @@ class DescribeVSwitchesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The information about the vSwitches. For more information, see the array of vSwitches in the response examples in the JSON format.
         self.v_switches = v_switches
 
     def validate(self):
@@ -122,27 +121,15 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
-        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # The time when the VPC was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.created_time = created_time
-        # The description of the vSwitch.
         self.description = description
-        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The number of available IP addresses.
         self.free_ip_count = free_ip_count
-        # The ID of the virtual private cloud (VPC).
         self.network_id = network_id
-        # The status of the vSwitch. Valid values:
-        # 
-        # *   Pending
-        # *   Available
         self.status = status
         self.tags = tags
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -264,11 +251,9 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(DaraModel):
         tag_value: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
-        # The request error rate.
         self.value = value
 
     def validate(self):

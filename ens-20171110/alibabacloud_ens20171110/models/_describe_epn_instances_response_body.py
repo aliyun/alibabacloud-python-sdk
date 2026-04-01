@@ -16,7 +16,6 @@ class DescribeEpnInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of EPN instances.
         self.epninstances = epninstances
         # The page number.
         self.page_number = page_number
@@ -122,33 +121,15 @@ class DescribeEpnInstancesResponseBodyEPNInstancesEPNInstance(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The time when the instance was created. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
-        # The name of the EPN instance.
         self.epninstance_name = epninstance_name
-        # Set the value to EdgeToEdge.
         self.epninstance_type = epninstance_type
-        # The end of the time range during which the data was queried. The time is displayed in UTC.
         self.end_time = end_time
-        # The inbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The time when the instance was last modified. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The networking mode. Valid values:
-        # 
-        # *   SpeedUp: intelligent acceleration network (Internet)
-        # *   Connection: internal network
-        # *   SpeedUpAndConnection: intelligent acceleration network and internal network
         self.networking_model = networking_model
-        # The beginning of the time range during which the data was queried. The time is displayed in UTC.
         self.start_time = start_time
-        # The status of the instance. Valid values:
-        # 
-        # *   Running
-        # *   Excuting
-        # *   Stopped
         self.status = status
 
     def validate(self):

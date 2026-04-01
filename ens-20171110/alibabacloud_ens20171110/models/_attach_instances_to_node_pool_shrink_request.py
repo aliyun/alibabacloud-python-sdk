@@ -4,18 +4,19 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteClusterNodesShrinkRequest(DaraModel):
+class AttachInstancesToNodePoolShrinkRequest(DaraModel):
     def __init__(
         self,
-        body_shrink: str = None,
         cluster_id: str = None,
-        release_node: bool = None,
+        instances_shrink: str = None,
+        nodepool_id: str = None,
     ):
         # This parameter is required.
-        self.body_shrink = body_shrink
-        # This parameter is required.
         self.cluster_id = cluster_id
-        self.release_node = release_node
+        # This parameter is required.
+        self.instances_shrink = instances_shrink
+        # This parameter is required.
+        self.nodepool_id = nodepool_id
 
     def validate(self):
         pass
@@ -25,27 +26,27 @@ class DeleteClusterNodesShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.body_shrink is not None:
-            result['Body'] = self.body_shrink
-
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
 
-        if self.release_node is not None:
-            result['ReleaseNode'] = self.release_node
+        if self.instances_shrink is not None:
+            result['Instances'] = self.instances_shrink
+
+        if self.nodepool_id is not None:
+            result['NodepoolId'] = self.nodepool_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Body') is not None:
-            self.body_shrink = m.get('Body')
-
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
 
-        if m.get('ReleaseNode') is not None:
-            self.release_node = m.get('ReleaseNode')
+        if m.get('Instances') is not None:
+            self.instances_shrink = m.get('Instances')
+
+        if m.get('NodepoolId') is not None:
+            self.nodepool_id = m.get('NodepoolId')
 
         return self
 

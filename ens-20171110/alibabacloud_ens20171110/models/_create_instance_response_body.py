@@ -18,7 +18,6 @@ class CreateInstanceResponseBody(DaraModel):
         # 
         # >  If you call this operation by using SDKs, the return value is of the integer type. If you call this operation by using common methods or HTTP requests, the return value is of the string type.
         self.code = code
-        # The IDs of instances.
         self.instance_ids = instance_ids
         # The request ID.
         self.request_id = request_id

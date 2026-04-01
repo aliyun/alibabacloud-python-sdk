@@ -17,11 +17,9 @@ class DescribeReservedResourceResponseBody(DaraModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about the image.
         self.images = images
         # The request ID.
         self.request_id = request_id
-        # The resources.
         self.support_resources = support_resources
 
     def validate(self):
@@ -111,15 +109,10 @@ class DescribeReservedResourceResponseBodySupportResourcesSupportResource(DaraMo
         support_resources_count: str = None,
         system_disk_sizes: main_models.DescribeReservedResourceResponseBodySupportResourcesSupportResourceSystemDiskSizes = None,
     ):
-        # The sizes of data disks.
         self.data_disk_sizes = data_disk_sizes
-        # The ID of the node.
         self.ens_region_id = ens_region_id
-        # The specifications of instances.
         self.instance_spec = instance_spec
-        # The number of resources that you can purchase.
         self.support_resources_count = support_resources_count
-        # The sizes of system disks.
         self.system_disk_sizes = system_disk_sizes
 
     def validate(self):
@@ -266,9 +259,7 @@ class DescribeReservedResourceResponseBodyImagesImage(DaraModel):
         image_id: str = None,
         image_name: str = None,
     ):
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeKeyPairsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the key pairs.
         self.key_pairs = key_pairs
         # The page number.
         self.page_number = page_number
@@ -116,13 +115,9 @@ class DescribeKeyPairsResponseBodyKeyPairsKeyPair(DaraModel):
         key_pair_id: str = None,
         key_pair_name: str = None,
     ):
-        # The time when the key pair was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The fingerprint of the key pair.
         self.key_pair_finger_print = key_pair_finger_print
-        # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The name of the SSH key pair.
         self.key_pair_name = key_pair_name
 
     def validate(self):

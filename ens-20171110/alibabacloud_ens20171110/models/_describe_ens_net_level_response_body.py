@@ -16,7 +16,6 @@ class DescribeEnsNetLevelResponseBody(DaraModel):
     ):
         # The returned service code. A value of 0 indicates that the operation was successful.
         self.code = code
-        # The network levels.
         self.ens_net_levels = ens_net_levels
         # The request ID.
         self.request_id = request_id
@@ -95,11 +94,6 @@ class DescribeEnsNetLevelResponseBodyEnsNetLevelsEnsNetLevel(DaraModel):
         self,
         ens_net_level_code: str = None,
     ):
-        # The network level. Valid values:
-        # 
-        # *   Big: greater area.
-        # *   Middle: province.
-        # *   Small: city.
         self.ens_net_level_code = ens_net_level_code
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeEnsNetDistrictResponseBody(DaraModel):
     ):
         # The returned service code. A value of 0 indicates that the operation was successful.
         self.code = code
-        # The information about the regions.
         self.ens_net_districts = ens_net_districts
         # The request ID.
         self.request_id = request_id
@@ -100,21 +99,11 @@ class DescribeEnsNetDistrictResponseBodyEnsNetDistrictsEnsNetDistrict(DaraModel)
         net_district_level: str = None,
         net_district_name: str = None,
     ):
-        # The number of nodes in the region.
         self.ens_region_id_count = ens_region_id_count
-        # The code of the region.
         self.net_district_code = net_district_code
-        # The name of the region.
         self.net_district_en_name = net_district_en_name
-        # The parent code of the region.
         self.net_district_father_code = net_district_father_code
-        # The level of the region.
-        # 
-        # *   **Big**: area
-        # *   **Middle**: province
-        # *   **Small**: city
         self.net_district_level = net_district_level
-        # The name of the region.
         self.net_district_name = net_district_name
 
     def validate(self):

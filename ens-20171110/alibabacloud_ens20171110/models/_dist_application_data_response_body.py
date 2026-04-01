@@ -15,11 +15,9 @@ class DistApplicationDataResponseBody(DaraModel):
         dist_results: main_models.DistApplicationDataResponseBodyDistResults = None,
         request_id: str = None,
     ):
-        # The list of ENS instance IDs.
         self.dist_instance_ids = dist_instance_ids
         # The total number of ENS instance IDs.
         self.dist_instance_total_count = dist_instance_total_count
-        # The distribution result of the data file.
         self.dist_results = dist_results
         # The ID of the request.
         self.request_id = request_id
@@ -110,13 +108,9 @@ class DistApplicationDataResponseBodyDistResultsDistResult(DaraModel):
         result_descrip: str = None,
         version: str = None,
     ):
-        # The name of the data file.
         self.name = name
-        # The error code. The value is of the enumerated data type.
         self.result_code = result_code
-        # The description of the distribution result.
         self.result_descrip = result_descrip
-        # The version number of the data file.
         self.version = version
 
     def validate(self):

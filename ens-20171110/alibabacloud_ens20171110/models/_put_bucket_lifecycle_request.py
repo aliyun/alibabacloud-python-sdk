@@ -7,7 +7,7 @@ from darabonba.model import DaraModel
 class PutBucketLifecycleRequest(DaraModel):
     def __init__(
         self,
-        allow_same_action_overlap: str = None,
+        allow_same_action_overlap: bool = None,
         bucket_name: str = None,
         created_before_date: str = None,
         expiration_days: int = None,
