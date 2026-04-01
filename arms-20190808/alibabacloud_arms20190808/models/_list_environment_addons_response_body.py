@@ -74,10 +74,12 @@ class ListEnvironmentAddonsResponseBodyData(DaraModel):
     def __init__(
         self,
         addons: List[main_models.ListEnvironmentAddonsResponseBodyDataAddons] = None,
+        contains_v2addon: bool = None,
         total: int = None,
     ):
         # The queried add-ons.
         self.addons = addons
+        self.contains_v2addon = contains_v2addon
         self.total = total
 
     def validate(self):
@@ -96,6 +98,9 @@ class ListEnvironmentAddonsResponseBodyData(DaraModel):
             for k1 in self.addons:
                 result['Addons'].append(k1.to_map() if k1 else None)
 
+        if self.contains_v2addon is not None:
+            result['ContainsV2Addon'] = self.contains_v2addon
+
         if self.total is not None:
             result['Total'] = self.total
 
@@ -108,6 +113,9 @@ class ListEnvironmentAddonsResponseBodyData(DaraModel):
             for k1 in m.get('Addons'):
                 temp_model = main_models.ListEnvironmentAddonsResponseBodyDataAddons()
                 self.addons.append(temp_model.from_map(k1))
+
+        if m.get('ContainsV2Addon') is not None:
+            self.contains_v2addon = m.get('ContainsV2Addon')
 
         if m.get('Total') is not None:
             self.total = m.get('Total')
