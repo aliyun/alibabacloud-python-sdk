@@ -12,6 +12,7 @@ class DescribeRCClustersRequest(DaraModel):
         vpc_id: str = None,
     ):
         self.profile = profile
+        # The region ID.
         self.region_id = region_id
         self.vpc_id = vpc_id
 

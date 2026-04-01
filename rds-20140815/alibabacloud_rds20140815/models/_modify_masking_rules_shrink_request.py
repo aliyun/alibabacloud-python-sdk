@@ -19,27 +19,17 @@ class ModifyMaskingRulesShrinkRequest(DaraModel):
         rule_config_shrink: str = None,
         rule_name: str = None,
     ):
-        # Instance ID
-        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # Database name
         self.dbname = dbname
-        # Name of the default encryption or masking algorithm
         self.default_algo = default_algo
-        # Indicates whether the rule is enabled. Valid values: true, false
         self.enabled = enabled
-        # Rule algorithm. Multiple algorithms can be specified. Masking Algorithm can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, number of encrypted digits}}
         self.masking_algo = masking_algo
         self.owner_id = owner_id
-        # Region ID
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Rule configuration, in JSON string format
         self.rule_config_shrink = rule_config_shrink
-        # Name of the rule to modify
-        # 
         # This parameter is required.
         self.rule_name = rule_name
 

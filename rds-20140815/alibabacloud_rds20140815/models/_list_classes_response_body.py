@@ -14,8 +14,11 @@ class ListClassesResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The list of instance specifications.
         self.items = items
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -74,17 +77,51 @@ class ListClassesResponseBodyItems(DaraModel):
         category: str = None,
         storage_type: str = None,
     ):
+        # The code of the instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/145759.html).
         self.class_code = class_code
+        # The instance family. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/57184.html).
         self.class_group = class_group
+        # The number of CPU cores that are supported by the instance type. Unit: cores.
         self.cpu = cpu
+        # The size of the encrypted memory that is supported by the security-enhanced instance type. Unit: GB.
         self.encrypted_memory = encrypted_memory
+        # The architecture of the instance type. Valid values:
+        # 
+        # *   If the architecture of the instance type is **x86**, an empty string is returned by default.
+        # *   If the architecture of the instance type is **ARM**, **arm** is returned.
         self.instruction_set_arch = instruction_set_arch
+        # The maximum number of connections that are supported by the instance type. Unit: connections.
         self.max_connections = max_connections
+        # The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
         self.max_iombps = max_iombps
+        # The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
         self.max_iops = max_iops
+        # The memory size that is supported by the instance type. Unit: GB.
         self.memory_class = memory_class
+        # The fee that you must pay for the instance type.
+        # 
+        # *   Unit: cents (USD).
+        # 
+        # > *   If you set **CommodityCode** to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
+        # > *   If you set **CommodityCode** to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
         self.reference_price = reference_price
+        # The RDS edition of the instance. Valid values:
+        # 
+        # *   Regular instance
+        # 
+        #     *   **Basic**: RDS Basic Edition
+        #     *   **HighAvailability**: RDS High-availability Edition
+        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
+        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+        #     *   **Finance**: RDS Basic Edition for serverless instances
+        # 
+        # *   Serverless instance
+        # 
+        #     *   **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+        #     *   **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+        #     *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         self.category = category
+        # The storage type of the instance.
         self.storage_type = storage_type
 
     def validate(self):

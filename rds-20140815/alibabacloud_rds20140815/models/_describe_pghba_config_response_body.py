@@ -18,11 +18,20 @@ class DescribePGHbaConfigResponseBody(DaraModel):
         request_id: str = None,
         running_hba_items: main_models.DescribePGHbaConfigResponseBodyRunningHbaItems = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.default_hba_items = default_hba_items
+        # The time when the previous modification was made to the pg_hba.conf file.
         self.hba_modify_time = hba_modify_time
+        # The status of the previous modification to the pg_hba.conf file. Valid values:
+        # 
+        # *   **success**
+        # *   **setting**
+        # *   **failed**
         self.last_modify_status = last_modify_status
+        # The reason why the previous modification was made to the pg_hba.conf file.
         self.modify_status_reason = modify_status_reason
+        # The request ID.
         self.request_id = request_id
         self.running_hba_items = running_hba_items
 

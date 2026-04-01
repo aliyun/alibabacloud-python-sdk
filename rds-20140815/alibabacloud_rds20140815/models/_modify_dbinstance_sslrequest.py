@@ -28,27 +28,73 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         server_key: str = None,
         tls_version: str = None,
     ):
+        # The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        # 
+        # *   **cert**
+        # *   **prefer**
+        # *   **verify-ca**
+        # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
         self.acl = acl
+        # The type of the server certificate. This parameter is supported only when the instance runs MySQL or PostgreSQL with cloud disks. If you set SSLEnabled to **1**, the default value of this parameter is **aliyun**. Valid values:
+        # 
+        # *   **aliyun**: a cloud certificate
+        # *   **custom**: a custom certificate
         self.catype = catype
+        # The custom certificate. The custom certificate is in the `PFX` format.
+        # 
+        # *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
+        # *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
         self.certificate = certificate
+        # The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCAEbabled is set to **1**.
         self.client_cacert = client_cacert
+        # Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
+        # 
+        # *   **1**: enables the public key.
+        # *   **0**: disables the public key.
         self.client_caenabled = client_caenabled
+        # The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCrlEnabled is set to **1**.
         self.client_cert_revocation_list = client_cert_revocation_list
+        # Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        # 
+        # *   **1**: enables the CRL.
+        # *   **0**: disables the CRL.
         self.client_crl_enabled = client_crl_enabled
+        # The internal or public endpoint for which the server certificate needs to be created or updated.
+        # 
         # This parameter is required.
         self.connection_string = connection_string
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html). Valid values:
+        # 
+        # *   **1**: enables the feature.
+        # *   **0**: disables the feature.
         self.force_encryption = force_encryption
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The password of the certificate.
         self.pass_word = pass_word
+        # The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        # 
+        # *   **cert**
+        # *   **prefer**
+        # *   **verify-ca**
+        # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
         self.replication_acl = replication_acl
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable or disable the SSL encryption feature. Valid values:
+        # 
+        # *   **1**: enables the feature.
+        # *   **0**: disables the feature.
         self.sslenabled = sslenabled
+        # The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
         self.server_cert = server_cert
+        # The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
         self.server_key = server_key
+        # The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html).
         self.tls_version = tls_version
 
     def validate(self):

@@ -13,7 +13,9 @@ class DescribeRCInstanceTypeFamiliesResponseBody(DaraModel):
         instance_type_families: main_models.DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies = None,
         request_id: str = None,
     ):
+        # The instance families.
         self.instance_type_families = instance_type_families
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies(DaraModel):
         self,
         instance_type_family: List[main_models.DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily] = None,
     ):
+        # The instance family.
         self.instance_type_family = instance_type_family
 
     def validate(self):
@@ -85,7 +88,9 @@ class DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceType
         instance_type_family_desc: str = None,
         instance_type_family_id: str = None,
     ):
+        # The description of the instance family.
         self.instance_type_family_desc = instance_type_family_desc
+        # The ID of the instance family.
         self.instance_type_family_id = instance_type_family_id
 
     def validate(self):

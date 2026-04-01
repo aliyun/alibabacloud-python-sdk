@@ -18,18 +18,32 @@ class ModifyDBInstanceEndpointAddressRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The endpoint that you want to modify. The endpoint can be a public endpoint or an internal endpoint.
+        # 
         # This parameter is required.
         self.connection_string = connection_string
+        # The prefix of the new endpoint. You can modify only the prefix of the endpoint that is specified by the ConnectionString parameter.
         self.connection_string_prefix = connection_string_prefix
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The port number of the new endpoint.
         self.port = port
+        # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
         self.resource_owner_id = resource_owner_id
+        # The vSwitch ID of the internal endpoint.
         self.v_switch_id = v_switch_id
+        # The VPC ID of the internal endpoint.
         self.vpc_id = vpc_id
 
     def validate(self):

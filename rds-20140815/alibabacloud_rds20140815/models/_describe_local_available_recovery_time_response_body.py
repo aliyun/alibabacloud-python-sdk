@@ -12,9 +12,13 @@ class DescribeLocalAvailableRecoveryTimeResponseBody(DaraModel):
         recovery_end_time: str = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The start of the time range to which the instance can be restored.
         self.recovery_begin_time = recovery_begin_time
+        # The end of the time range to which the instance can be restored.
         self.recovery_end_time = recovery_end_time
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

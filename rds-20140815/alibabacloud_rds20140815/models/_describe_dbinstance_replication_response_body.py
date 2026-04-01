@@ -27,17 +27,14 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         # *   **ON**
         # *   **OFF**
         self.external_replication = external_replication
-        # The executed global transaction identifier.
         self.gtid_executed = gtid_executed
-        # Indicates whether full data has been successfully imported.
+        # COMPLETED: 导入完成，INIT: 初始化，IMPORTING: 正在导入
         self.import_status = import_status
         # The replication latency. Unit: seconds.
         self.replication_delay = replication_delay
         # The replication error message.
         self.replication_error_message = replication_error_message
-        # The replication IP address.
         self.replication_ip = replication_ip
-        # The replication port.
         self.replication_port = replication_port
         # The source of the native replication.
         self.replication_source = replication_source

@@ -20,17 +20,32 @@ class DescribeDBInstancesByExpireTimeRequest(DaraModel):
         tags: str = None,
         proxy_id: str = None,
     ):
+        # The number of remaining days for which the instances are available. Valid values: **0 to 180**.
         self.expire_period = expire_period
+        # Specifies whether to query instances that have expired. Valid values:
+        # 
+        # *   **True**: queries instances that have expired.
+        # *   **False**: does not query instances that have expired.
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Valid values: any **non-zero** positive integer.
+        # 
+        # Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **1 to 100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag that is added to the instance. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. You can specify a maximum of five tags in the following format for each request: `{"key1":"value1","key2":"value2"...}`.
         self.tags = tags
+        # A deprecated parameter. You do not need to configure this parameter.
         self.proxy_id = proxy_id
 
     def validate(self):

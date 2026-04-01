@@ -11,8 +11,11 @@ class ModifyDatabaseConfigResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The code.
         self.code = code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

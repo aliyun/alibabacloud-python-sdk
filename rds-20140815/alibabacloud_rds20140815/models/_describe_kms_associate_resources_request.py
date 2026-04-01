@@ -19,17 +19,29 @@ class DescribeKmsAssociateResourcesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the KMS resource. Only key IDs are supported.
+        # 
         # This parameter is required.
         self.kms_resource_id = kms_resource_id
+        # The ID of the region to which the KMS resource belongs.
         self.kms_resource_region_id = kms_resource_region_id
+        # The type of the KMS resource. Only key is supported.
+        # 
         # This parameter is required.
         self.kms_resource_type = kms_resource_type
+        # The ID of the Alibaba Cloud account to which the KMS resource belongs.
+        # 
         # This parameter is required.
         self.kms_resource_user = kms_resource_user
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

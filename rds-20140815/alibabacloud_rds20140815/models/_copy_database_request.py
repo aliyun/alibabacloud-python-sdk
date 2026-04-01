@@ -16,13 +16,18 @@ class CopyDatabaseRequest(DaraModel):
         resource_owner_id: int = None,
         src_dbname: str = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The destination database name.
         self.dst_dbname = dst_dbname
         self.owner_id = owner_id
+        # The reserved account.
         self.reserve_account = reserve_account
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The source database name.
         self.src_dbname = src_dbname
 
     def validate(self):

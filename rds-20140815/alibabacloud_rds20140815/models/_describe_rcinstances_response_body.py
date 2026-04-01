@@ -120,23 +120,14 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.auto_renew = auto_renew
         # The cluster name.
         self.cluster_name = cluster_name
-        # Number of vCPUs.
         self.cpu = cpu
-        # Indicates whether the instance can be added to an ACK cluster. When this parameter is set to **1**, the created instance can be added to an ACK cluster by using the **AttachRCInstances** API operation, enabling efficient management of container applications.  
-        # 
-        # - **1**: Yes  
-        # - **0** (default): No
         self.create_mode = create_mode
         # The database type.
         self.db_type = db_type
-        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
         # The instance description.
         self.description = description
         self.ecs_host_name = ecs_host_name
-        # Instance Expiration Time. It is represented in ISO 8601 format using UTC+0 time, with the pattern `yyyy-MM-ddTHH:mm:ssZ`.  
-        # 
-        # > The expiration time displayed in the console is 8 hours later.
         self.expired_time = expired_time
         # The time when the task was created. The time is displayed in GMT.
         self.gmt_created = gmt_created
@@ -144,40 +135,21 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.host_ip = host_ip
         # The host name.
         self.host_name = host_name
-        # Image ID.
         self.image_id = image_id
-        # Billing method. Valid values:  
-        # * **PrePaid**: subscription  
-        # * **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
-        # Instance name
         self.instance_name = instance_name
-        # Instance Type.  
-        # 
-        # For more information, see [RDS Custom Instance Type List](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
-        # Instance family.  
-        # 
-        # For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type_family = instance_type_family
-        # Memory size, in MiB.
         self.memory = memory
-        # File Type. When **rds_vnode** is returned, it indicates that the node is a container node.
         self.node_type = node_type
         self.osname = osname
         self.ostype = ostype
-        # Public IP address of the instance.
         self.public_ip = public_ip
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
         self.security_group_id = security_group_id
-        # Spot strategy for pay-as-you-go instances. The return value is as follows:  
-        # 
-        # - **NoSpot**: Normal pay-as-you-go instance.  
-        # - **SpotAsPriceGo**: System automatically bids based on the current market price.
         self.spot_strategy = spot_strategy
         self.start_time = start_time
         # The instance status. Valid values:
@@ -191,15 +163,11 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         # >  If the value returned for the DescribeRCInstances operation is different from the value that is returned for the **DescribeRCInstanceAttribute** operation, the value returned for the **DescribeRCInstanceAttribute** operation shall prevail.
         self.status = status
         self.stopped_mode = stopped_mode
-        # The queried instances and tag details.
         self.tag_resources = tag_resources
-        # Tag Details.
         self.tags = tags
-        # The virtual private cloud (VPC) attributes.
         self.vpc_attributes = vpc_attributes
         # The VPC ID.
         self.vpc_id = vpc_id
-        # Zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -448,13 +416,9 @@ class DescribeRCInstancesResponseBodyRCInstancesVpcAttributes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Reserved parameter.
         self.nat_ip_address = nat_ip_address
-        # The private IP addresses.
         self.private_ip_address = private_ip_address
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -503,16 +467,9 @@ class DescribeRCInstancesResponseBodyRCInstancesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Resource ID.
         self.resource_id = resource_id
-        # Resource type.
-        # 
-        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance  
-        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
         self.resource_type = resource_type
-        # Tag key.
         self.tag_key = tag_key
-        # Tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -561,16 +518,9 @@ class DescribeRCInstancesResponseBodyRCInstancesTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Resource ID.
         self.resource_id = resource_id
-        # Resource type.  
-        # 
-        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance  
-        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
         self.resource_type = resource_type
-        # Tag key.
         self.tag_key = tag_key
-        # Tag value.
         self.tag_value = tag_value
 
     def validate(self):

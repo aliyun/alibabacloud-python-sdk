@@ -13,9 +13,13 @@ class ModifyDBInstanceDelayedReplicationTimeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The replication latency of the read-only instance. Unit: seconds.
+        # 
         # This parameter is required.
         self.read_sqlreplication_time = read_sqlreplication_time
         self.resource_owner_account = resource_owner_account

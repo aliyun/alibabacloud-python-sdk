@@ -12,9 +12,13 @@ class DeleteReplicationLinkResponseBody(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
+        # The ID of the DR instance.
         self.dbinstance_id = dbinstance_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

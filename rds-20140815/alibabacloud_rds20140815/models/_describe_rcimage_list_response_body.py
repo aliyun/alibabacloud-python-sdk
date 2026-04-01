@@ -117,7 +117,6 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
-        # The mapping between disks and snapshots in the image.
         self.disk_device_mappings = disk_device_mappings
         # The image ID.
         self.image_id = image_id
@@ -130,10 +129,6 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         # *   **true**: The image is a public image.
         # *   **false**: The image is not a public image.
         self.is_public = is_public
-        # Indicates whether RDS Custom instances are supported. Valid values:
-        # 
-        # - **true**: Yes.
-        # - **false**: No.
         self.is_support_rds_custom = is_support_rds_custom
         # The display name of the operating system in Chinese.
         self.osname = osname
@@ -144,7 +139,6 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         # *   **windows**
         # *   **linux**
         self.ostype = ostype
-        # Operating system platform.
         self.platform = platform
         # The image size. Unit: GiB.
         self.size = size
@@ -286,14 +280,8 @@ class DescribeRCImageListResponseBodyImagesDiskDeviceMappings(DaraModel):
         size: str = None,
         type: str = None,
     ):
-        # The device information of the disk, such as `/dev/xvdb`.
         self.device = device
-        # The size of the disk. Unit: GiB.
         self.size = size
-        # The property of the disk.
-        # 
-        # - **system**: system disk.
-        # - **data**: data disk.
         self.type = type
 
     def validate(self):

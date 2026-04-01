@@ -87,7 +87,6 @@ class CreateReadOnlyDBInstanceRequest(DaraModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # A reserved parameter. No configuration is required.
         self.custom_extra_info = custom_extra_info
         # The instance type of the read-only instance. For more information, see [Read-only instance types](https://help.aliyun.com/document_detail/145759.html). We recommend that you specify an instance type whose specifications are higher than or equal to the specifications of the instance type of the primary instance. If the specifications of the read-only instance are lower than the specifications of the primary instance, the read-only instance may encounter issues such as high latency and heavy load.
         # 
@@ -148,12 +147,6 @@ class CreateReadOnlyDBInstanceRequest(DaraModel):
         self.instruction_set_arch = instruction_set_arch
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to create a DuckDB analytic instance. Valid values:
-        # 
-        # - **true**: Enabled
-        # - **false**: Disabled
-        # 
-        # > Currently, only RDS MySQL and RDS PostgreSQL support creating DuckDB analytic instances.
         self.is_analytic_read_only_ins = is_analytic_read_only_ins
         self.owner_account = owner_account
         self.owner_id = owner_id

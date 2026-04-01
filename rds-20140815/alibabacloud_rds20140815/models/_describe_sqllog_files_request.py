@@ -16,12 +16,17 @@ class DescribeSQLLogFilesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the audit log file.
         self.file_name = file_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Valid values: **1 to 100000**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

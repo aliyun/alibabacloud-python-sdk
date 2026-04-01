@@ -17,14 +17,29 @@ class ModifyInstanceCrossBackupPolicyResponseBody(DaraModel):
         retent_type: int = None,
         retention: int = None,
     ):
+        # The status of the cross-region backup feature on the instance. Valid values:
+        # 
+        # *   **Disable**
+        # *   **Enable**
         self.backup_enabled = backup_enabled
+        # The ID of the region in which the cross-region backup files of the instance are stored.
         self.cross_backup_region = cross_backup_region
+        # The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
         self.cross_backup_type = cross_backup_type
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The status of the cross-region log backup feature on the instance. Valid values:
+        # 
+        # *   **Disable**
+        # *   **Enable**
         self.log_backup_enabled = log_backup_enabled
+        # The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The policy that is used to retain the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that the cross-region backup files of the instance are retained based on the specified retention period.
         self.retent_type = retent_type
+        # The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
         self.retention = retention
 
     def validate(self):

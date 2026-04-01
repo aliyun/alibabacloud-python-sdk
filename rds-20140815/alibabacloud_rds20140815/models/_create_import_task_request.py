@@ -20,56 +20,24 @@ class CreateImportTaskRequest(DaraModel):
         user: str = None,
         xtrabackup_path: str = None,
     ):
-        # The instance ID.
-        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # Estimated data space, in GB
         self.estimated_size = estimated_size
-        # The source MySQL host IP address. RDS will access this IP address to retrieve the backup.
-        # 
         # This parameter is required.
         self.host = host
         self.owner_id = owner_id
-        # The Password of the source MySQL Account, which must be Base64-encoded.
-        # 
         # This parameter is required.
         self.password = password
-        # Source MySQL port
-        # 
         # This parameter is required.
         self.port = port
-        # The Region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to obtain it.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The source cloud instance ID.
         self.source_instance_id = source_instance_id
-        # Source cloud instance type
         self.source_platform = source_platform
-        # Stream port used for backup transmission
-        # 
         # This parameter is required.
         self.stream_port = stream_port
-        # Source MySQL account, which must have permissions to create backups and set up replication. Refer to the following SQL for granting permissions:  
-        # ```  
-        # -- MySQL 5.7  
-        # mysql> CREATE USER \\"myadmin\\"@\\"%\\" IDENTIFIED BY \\"s3cret\\";  
-        # mysql> GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO  
-        #        \\"myadmin\\"@\\"%\\";  
-        # mysql> FLUSH PRIVILEGES;  
-        # -- MySQL 8.0  
-        # mysql> CREATE USER \\"myadmin\\"@\\"%\\" IDENTIFIED BY \\"Test123!\\";  
-        # mysql> GRANT BACKUP_ADMIN, PROCESS, RELOAD, LOCK TABLES, REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO \\"myadmin\\"@\\"%\\";  
-        # mysql> GRANT SELECT ON performance_schema.log_status TO \\"myadmin\\"@\\"%\\";  
-        # mysql> GRANT SELECT ON performance_schema.keyring_component_status TO myadmin@\\"%\\";  
-        # mysql> GRANT SELECT ON performance_schema.replication_group_members TO myadmin@\\"%\\";  
-        # mysql> FLUSH PRIVILEGES;  
-        # ```
-        # 
         # This parameter is required.
         self.user = user
-        # Installation path of xtrabackup on the source
         self.xtrabackup_path = xtrabackup_path
 
     def validate(self):

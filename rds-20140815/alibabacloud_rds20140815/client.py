@@ -28067,6 +28067,172 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_dbdescription_with_options_async(request, runtime)
 
+    def modify_dbinstance_with_options(
+        self,
+        tmp_req: main_models.ModifyDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceResponse:
+        tmp_req.validate()
+        request = main_models.ModifyDBInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dbnodes):
+            request.dbnodes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbnodes, 'DBNodes', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbinstance_storage):
+            query['DBInstanceStorage'] = request.dbinstance_storage
+        if not DaraCore.is_null(request.dbinstance_storage_type):
+            query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not DaraCore.is_null(request.dbnodes_shrink):
+            query['DBNodes'] = request.dbnodes_shrink
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not DaraCore.is_null(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not DaraCore.is_null(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not DaraCore.is_null(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstance',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_with_options_async(
+        self,
+        tmp_req: main_models.ModifyDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceResponse:
+        tmp_req.validate()
+        request = main_models.ModifyDBInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dbnodes):
+            request.dbnodes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbnodes, 'DBNodes', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbinstance_storage):
+            query['DBInstanceStorage'] = request.dbinstance_storage
+        if not DaraCore.is_null(request.dbinstance_storage_type):
+            query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not DaraCore.is_null(request.dbnodes_shrink):
+            query['DBNodes'] = request.dbnodes_shrink
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not DaraCore.is_null(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not DaraCore.is_null(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not DaraCore.is_null(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstance',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance(
+        self,
+        request: main_models.ModifyDBInstanceRequest,
+    ) -> main_models.ModifyDBInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.modify_dbinstance_with_options(request, runtime)
+
+    async def modify_dbinstance_async(
+        self,
+        request: main_models.ModifyDBInstanceRequest,
+    ) -> main_models.ModifyDBInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_dbinstance_with_options_async(request, runtime)
+
     def modify_dbinstance_auto_upgrade_minor_version_with_options(
         self,
         request: main_models.ModifyDBInstanceAutoUpgradeMinorVersionRequest,

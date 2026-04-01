@@ -14,8 +14,11 @@ class DescribeRCInstanceIpAddressResponseBody(DaraModel):
         request_id: str = None,
         total: str = None,
     ):
+        # An array that consists of details of the instance.
         self.rcinstance_list = rcinstance_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of the assets.
         self.total = total
 
     def validate(self):
@@ -67,10 +70,18 @@ class DescribeRCInstanceIpAddressResponseBodyRCInstanceList(DaraModel):
         instance_type: str = None,
         ip_address_config: List[main_models.DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig] = None,
     ):
+        # The ID of the RDS Custom instance.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The DDoS mitigation status of the instance. Valid values:
+        # 
+        # *   **normal**
+        # *   **abnormal**
         self.instance_status = instance_status
+        # The type of the asset. The value is fixed to **ecs**.
         self.instance_type = instance_type
+        # An array that consists of the details of the asset.
         self.ip_address_config = ip_address_config
 
     def validate(self):
@@ -139,15 +150,38 @@ class DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig(DaraM
         is_full_protection: int = None,
         region_id: str = None,
     ):
+        # The basic protection threshold for the asset. Unit: Mbit/s.
         self.blackhole_threshold = blackhole_threshold
+        # The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
         self.defense_bps_threshold = defense_bps_threshold
+        # The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: packets per second (pps).
         self.defense_pps_threshold = defense_pps_threshold
+        # The burstable protection threshold for the asset. Unit: Mbit/s.
         self.elastic_threshold = elastic_threshold
+        # The IP address of the asset.
         self.instance_ip = instance_ip
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **mitigating**
+        # *   **blackholed**
+        # *   **normal**
         self.ip_status = ip_status
+        # The IP version of the instance. Valid values:
+        # 
+        # *   **v4**
+        # *   **v6**
         self.ip_version = ip_version
+        # Indicates whether the asset is added to the instance. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.is_bgppack = is_bgppack
+        # Indicates whether best-effort protection is enabled for the asset. Valid values:
+        # 
+        # *   **0**: Best-effort protection is disabled.
+        # *   **1**: Best-effort protection is enabled.
         self.is_full_protection = is_full_protection
+        # The region code of the asset.
         self.region_id = region_id
 
     def validate(self):

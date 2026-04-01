@@ -14,6 +14,7 @@ class GetDbProxyInstanceSslResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.db_proxy_cert_list_items = db_proxy_cert_list_items
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

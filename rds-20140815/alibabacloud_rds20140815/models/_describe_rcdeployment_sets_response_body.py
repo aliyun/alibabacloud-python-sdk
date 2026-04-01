@@ -18,10 +18,15 @@ class DescribeRCDeploymentSetsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.deployment_sets = deployment_sets
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

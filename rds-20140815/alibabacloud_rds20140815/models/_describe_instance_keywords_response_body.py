@@ -14,7 +14,9 @@ class DescribeInstanceKeywordsResponseBody(DaraModel):
         request_id: str = None,
         words: main_models.DescribeInstanceKeywordsResponseBodyWords = None,
     ):
+        # The type of reserved keyword returned.
         self.key = key
+        # The ID of the request.
         self.request_id = request_id
         self.words = words
 

@@ -17,11 +17,20 @@ class ModifyRCInstanceChargeTypeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The billing method.
+        # *   **POSTPAY**: pay-as-you-go.
+        # *   **PREPAY**: subscription.
         self.charge_type = charge_type
+        # The time when the instance expires.
+        # >  If you change the billing method from subscription to pay-as-you-go, this parameter is not returned.
         self.expired_time = expired_time
+        # The reserved parameter. This parameter is not supported.
         self.fee_of_instances = fee_of_instances
+        # The list of instance IDs.
         self.instance_ids = instance_ids
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89,8 +98,11 @@ class ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances(DaraModel):
         fee: str = None,
         instance_id: str = None,
     ):
+        # The reserved parameter. This parameter is not supported.
         self.currency = currency
+        # The reserved parameter. This parameter is not supported.
         self.fee = fee
+        # The reserved parameter. This parameter is not supported.
         self.instance_id = instance_id
 
     def validate(self):

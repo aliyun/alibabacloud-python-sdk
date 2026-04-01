@@ -17,11 +17,30 @@ class DescribeAllWhitelistTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code returned. Valid values:
+        # 
+        # *   **200**: success
+        # *   **400**: client error
+        # *   **401**: identity authentication failed
+        # *   **404**: request page not found
+        # *   **500**: server error
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code returned. Valid values:
+        # 
+        # *   **200**: success
+        # *   **400**: client error
+        # *   **500**: server error
         self.http_status_code = http_status_code
+        # The response parameters.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.success = success
 
     def validate(self):
@@ -87,12 +106,25 @@ class DescribeAllWhitelistTemplateResponseBodyData(DaraModel):
         total_page_numbers: int = None,
         total_records: int = None,
     ):
+        # The page number.
         self.curr_page_numbers = curr_page_numbers
+        # Indicates whether the data that meets the conditions is displayed on the next page. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.has_next = has_next
+        # Indicates whether the data that meets the conditions is displayed on the previous page. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.has_prev = has_prev
+        # The number of entries to return on each page.
         self.max_records_per_page = max_records_per_page
+        # The information about whitelist templates that are returned by page.
         self.templates = templates
+        # The total number of pages returned.
         self.total_page_numbers = total_page_numbers
+        # The total number of entries returned.
         self.total_records = total_records
 
     def validate(self):
@@ -168,10 +200,15 @@ class DescribeAllWhitelistTemplateResponseBodyDataTemplates(DaraModel):
         template_name: str = None,
         user_id: int = None,
     ):
+        # The primary key of the data table.
         self.id = id
+        # The IP addresses.
         self.ips = ips
+        # The ID of the whitelist template.
         self.template_id = template_id
+        # The name of the whitelist template.
         self.template_name = template_name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

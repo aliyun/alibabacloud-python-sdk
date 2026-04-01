@@ -17,16 +17,29 @@ class DeleteSlotRequest(DaraModel):
         slot_name: str = None,
         slot_status: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the replication slot. You can call the DescribeSlots operation to query the name of the replication slot.
+        # 
         # This parameter is required.
         self.slot_name = slot_name
+        # The status of the replication slot. You can call the DescribeSlots operation to query the status of the replication slot. Valid values:
+        # 
+        # *   **ACTIVE**
+        # *   **INACTIVE**
+        # 
         # This parameter is required.
         self.slot_status = slot_status
 

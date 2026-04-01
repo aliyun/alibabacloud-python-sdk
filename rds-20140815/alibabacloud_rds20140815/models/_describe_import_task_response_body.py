@@ -20,32 +20,17 @@ class DescribeImportTaskResponseBody(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # Account name.
         self.account = account
-        # Milvus version number.
         self.db_version = db_version
-        # Detailed information about the job
         self.detail = detail
-        # Request ID.
         self.request_id = request_id
-        # Source instance category.  
-        # 
-        # - **ECS**: Alibaba Cloud ECS.  
-        # - **other**: Other.
         self.source_category = source_category
-        # Source IP address for access.
         self.source_ip = source_ip
-        # Source MySQL port
         self.source_port = source_port
-        # Task Status
         self.status = status
-        # Name of the target disaster recovery instance to switch to.
         self.target_instance_name = target_instance_name
-        # Job ID
         self.task_id = task_id
-        # Task Name.
         self.task_name = task_name
-        # Task Type, used to query jobs of specific types. Separate multiple types with commas. A maximum of 30 types are supported. The default value is empty, indicating no restriction.
         self.task_type = task_type
 
     def validate(self):

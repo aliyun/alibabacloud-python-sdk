@@ -16,16 +16,29 @@ class DescribeCloudMigrationPrecheckResultRequest(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The page number. Pages start from page 1. Default value: **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **30** to **100**. Default value: 30.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
+        # The private or public IP address that is used to connect to the self-managed PostgreSQL instance.
+        # 
+        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
+        # *   If the self-managed PostgreSQL instance resides in an on-premises data center, enter the private IP address of the on-premises data center.
         self.source_ip_address = source_ip_address
+        # The port number that is used to connect to the self-managed PostgreSQL instance. You can run the netstat -a | grep PGSQL command to obtain the port number.
         self.source_port = source_port
+        # The task ID. You can obtain the task ID from the response that is returned after you call the CreateCloudMigrationPrecheckTask operation to create the task.
         self.task_id = task_id
+        # The task name. You can obtain the task name from the response that is returned after you call the CreateCloudMigrationPrecheckTask operation to create the task.
         self.task_name = task_name
 
     def validate(self):

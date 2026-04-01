@@ -112,7 +112,6 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The mount time.
         self.attached_time = attached_time
         self.bursting_enabled = bursting_enabled
         # The category of the disk. Valid values:

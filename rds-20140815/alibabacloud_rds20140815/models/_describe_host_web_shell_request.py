@@ -16,15 +16,25 @@ class DescribeHostWebShellRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The username of the account that is used to log on to the host of the instance.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The password of the host account.
+        # 
         # This parameter is required.
         self.account_password = account_password
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The instance hostname. You can call the DescribeDBInstanceIpHostname operation to query the hostname.
+        # 
         # This parameter is required.
         self.host_name = host_name
         self.owner_id = owner_id
+        # The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

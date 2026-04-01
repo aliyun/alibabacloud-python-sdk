@@ -13,7 +13,9 @@ class DescribeHistoryEventsStatResponseBody(DaraModel):
         items: List[main_models.DescribeHistoryEventsStatResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The event.
         self.items = items
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeHistoryEventsStatResponseBodyItems(DaraModel):
         event_category: str = None,
         total_count: int = None,
     ):
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_category = event_category
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

@@ -11,8 +11,11 @@ class MigrateToOtherZoneResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The ID of the order. This parameter is returned only when the instance runs MySQL.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

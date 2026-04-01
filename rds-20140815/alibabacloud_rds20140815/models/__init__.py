@@ -874,6 +874,10 @@ from ._modify_custins_resource_response import ModifyCustinsResourceResponse
 from ._modify_dbdescription_request import ModifyDBDescriptionRequest
 from ._modify_dbdescription_response_body import ModifyDBDescriptionResponseBody
 from ._modify_dbdescription_response import ModifyDBDescriptionResponse
+from ._modify_dbinstance_request import ModifyDBInstanceRequest
+from ._modify_dbinstance_shrink_request import ModifyDBInstanceShrinkRequest
+from ._modify_dbinstance_response_body import ModifyDBInstanceResponseBody
+from ._modify_dbinstance_response import ModifyDBInstanceResponse
 from ._modify_dbinstance_auto_upgrade_minor_version_request import ModifyDBInstanceAutoUpgradeMinorVersionRequest
 from ._modify_dbinstance_auto_upgrade_minor_version_response_body import ModifyDBInstanceAutoUpgradeMinorVersionResponseBody
 from ._modify_dbinstance_auto_upgrade_minor_version_response import ModifyDBInstanceAutoUpgradeMinorVersionResponse
@@ -1654,6 +1658,7 @@ from ._list_user_backup_files_response_body import ListUserBackupFilesResponseBo
 from ._migrate_dbnodes_request import MigrateDBNodesRequestDBNode
 from ._modify_backup_policy_request import ModifyBackupPolicyRequestAdvancedDataPolicies
 from ._modify_backup_policy_request import ModifyBackupPolicyRequestAdvancedLogPolicies
+from ._modify_dbinstance_request import ModifyDBInstanceRequestDBNodes
 from ._modify_dbinstance_endpoint_request import ModifyDBInstanceEndpointRequestNodeItems
 from ._modify_dbinstance_endpoint_response_body import ModifyDBInstanceEndpointResponseBodyData
 from ._modify_dbinstance_endpoint_address_response_body import ModifyDBInstanceEndpointAddressResponseBodyData
@@ -2559,6 +2564,10 @@ __all__ = [
     ModifyDBDescriptionRequest,
     ModifyDBDescriptionResponseBody,
     ModifyDBDescriptionResponse,
+    ModifyDBInstanceRequest,
+    ModifyDBInstanceShrinkRequest,
+    ModifyDBInstanceResponseBody,
+    ModifyDBInstanceResponse,
     ModifyDBInstanceAutoUpgradeMinorVersionRequest,
     ModifyDBInstanceAutoUpgradeMinorVersionResponseBody,
     ModifyDBInstanceAutoUpgradeMinorVersionResponse,
@@ -3339,6 +3348,7 @@ __all__ = [
     MigrateDBNodesRequestDBNode,
     ModifyBackupPolicyRequestAdvancedDataPolicies,
     ModifyBackupPolicyRequestAdvancedLogPolicies,
+    ModifyDBInstanceRequestDBNodes,
     ModifyDBInstanceEndpointRequestNodeItems,
     ModifyDBInstanceEndpointResponseBodyData,
     ModifyDBInstanceEndpointAddressResponseBodyData,

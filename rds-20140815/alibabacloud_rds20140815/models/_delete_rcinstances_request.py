@@ -15,11 +15,26 @@ class DeleteRCInstancesRequest(DaraModel):
         region_id: str = None,
         terminate_subscription: bool = None,
     ):
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
+        # Specifies whether to forcefully release a running instance. Valid values:
+        # 
+        # *   **Yes**
+        # *   **No** (default)
         self.force = force
+        # The details of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the instance.
         self.region_id = region_id
+        # Specifies whether to release an expired subscription instance. Valid values:
+        # 
+        # *   **true**
+        # *   **false** (default)
         self.terminate_subscription = terminate_subscription
 
     def validate(self):

@@ -23,22 +23,45 @@ class DescribeRenewalPriceRequest(DaraModel):
         time_type: str = None,
         used_time: int = None,
     ):
+        # The additional business information about the instance.
         self.business_info = business_info
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The instance type of the instance. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). By default, the current instance type applies.
         self.dbinstance_class = dbinstance_class
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The type of order. Set the value to **BUY**.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # The number of the instances. Default value: **1**.
         self.quantity = quantity
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The renewal cycle of the instance. Valid values:
+        # 
+        # *   **Year**
+        # *   **Month**
+        # 
         # This parameter is required.
         self.time_type = time_type
+        # The subscription duration of the instance. Valid values:
+        # 
+        # *   If you set the **TimeType** parameter to **Year**, the value of the UsedTime parameter is within the range of **1 to 3**.
+        # *   If you set the **TimeType** parameter to **Month**, the value of the UsedTime parameter is within the range of **1 to 9**.
+        # 
         # This parameter is required.
         self.used_time = used_time
 

@@ -12,9 +12,13 @@ class UpgradeDBInstanceKernelVersionResponseBody(DaraModel):
         target_minor_version: str = None,
         task_id: str = None,
     ):
+        # The ID of the instance.
         self.dbinstance_name = dbinstance_name
+        # The ID of the request.
         self.request_id = request_id
+        # The new minor engine version of the instance.
         self.target_minor_version = target_minor_version
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

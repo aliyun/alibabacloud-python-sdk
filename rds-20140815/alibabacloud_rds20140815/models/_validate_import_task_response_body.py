@@ -12,7 +12,6 @@ class ValidateImportTaskResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # Precheck task ID
         self.task_id = task_id
 
     def validate(self):

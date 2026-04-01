@@ -15,12 +15,21 @@ class GrantOperatorPermissionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The expiration time of the permissions. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.expired_time = expired_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The permissions that you want to grant to the service account. Valid values:
+        # 
+        # *   **Control**: the configuration permissions, which allow you to view and modify configurations of the instance.
+        # *   **Data**: the data permissions, which allow you to view schemas, indexes, and SQL statements of the instance.
+        # 
         # This parameter is required.
         self.privileges = privileges
         self.resource_owner_account = resource_owner_account

@@ -11,7 +11,9 @@ class SyncRCKeyPairRequest(DaraModel):
         region_id: str = None,
         sync_mode: bool = None,
     ):
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The region ID.
         self.region_id = region_id
         self.sync_mode = sync_mode
 

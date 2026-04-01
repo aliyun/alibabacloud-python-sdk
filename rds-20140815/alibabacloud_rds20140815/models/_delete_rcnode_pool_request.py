@@ -11,10 +11,16 @@ class DeleteRCNodePoolRequest(DaraModel):
         node_pool_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the ACK cluster to which the RDS Custom instance belongs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The node pool ID.
+        # 
         # This parameter is required.
         self.node_pool_id = node_pool_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

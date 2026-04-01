@@ -20,19 +20,36 @@ class MigrateDBInstanceRequest(DaraModel):
         zone_id_for_follower: str = None,
         zone_id_for_log: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+        # 
         # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The time when you want the system to start the migration. Valid values:
+        # 
+        # *   **Immediately**: The system immediately starts the migration. This is the default value.
+        # *   **MaintainTime**: The system starts the migration during the specified maintenance window.
+        # *   **Specified**: The system starts the migration at the specified point in time.
         self.effective_time = effective_time
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The point in time when you want the system to start the migration. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # > This parameter must be specified when you set **EffectiveTime** to **Specified**.
         self.specified_time = specified_time
+        # The ID of the host to which you want to migrate the primary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
         self.target_dedicated_host_id_for_master = target_dedicated_host_id_for_master
+        # The ID of the host to which you want to migrate the secondary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
         self.target_dedicated_host_id_for_slave = target_dedicated_host_id_for_slave
+        # The zone ID of the secondary node.
         self.zone_id_for_follower = zone_id_for_follower
+        # The zone ID of the logger instance.
         self.zone_id_for_log = zone_id_for_log
 
     def validate(self):

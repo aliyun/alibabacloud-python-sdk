@@ -14,13 +14,21 @@ class ModifyHADiagnoseConfigRequest(DaraModel):
         resource_owner_id: int = None,
         tcp_connection_type: str = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The availability check method of the instance. Valid values:
+        # 
+        # *   **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        # *   **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         self.tcp_connection_type = tcp_connection_type
 
     def validate(self):

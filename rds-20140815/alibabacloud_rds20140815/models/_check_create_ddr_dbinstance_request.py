@@ -22,25 +22,63 @@ class CheckCreateDdrDBInstanceRequest(DaraModel):
         source_dbinstance_name: str = None,
         source_region: str = None,
     ):
+        # The ID of the backup set that is used for the restoration. You can call the DescribeCrossRegionBackups operation to query the backup set ID.
+        # 
+        # >  This parameter must be specified when the **RestoreType** parameter is set to **0**.
         self.backup_set_id = backup_set_id
+        # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
+        # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
         # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
+        # The database engine of the destination instance. Valid values:
+        # 
+        # *   **MySQL**
+        # *   **SQLServer**
+        # *   **PostgreSQL**
+        # 
         # This parameter is required.
         self.engine = engine
+        # The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
+        # 
+        # *   Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**
+        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**
+        # *   PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**
+        # 
         # This parameter is required.
         self.engine_version = engine_version
         self.owner_id = owner_id
+        # The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # 
+        # > If you set **RestoreType** to **1**, you must also specify this parameter.
         self.restore_time = restore_time
+        # The method that is used to restore data. Valid values:
+        # 
+        # *   **0**: restores data from a backup set. If you set this parameter to 0, you must also specify the **BackupSetId** parameter.
+        # *   **1**: restores data to a point in time. If you set this parameter to 1, you must also specify the **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName** parameters.
+        # 
+        # Default value: **0**.
+        # 
         # This parameter is required.
         self.restore_type = restore_type
+        # The ID of the source instance if you want to restore data to a point in time.
+        # 
+        # >  This parameter must be specified when the **RestoreType** parameter is set to **1**.
         self.source_dbinstance_name = source_dbinstance_name
+        # The region ID of the source instance if you want to restore data to a point in time.
+        # 
+        # > If you set **RestoreType** to **1**, you must also specify this parameter.
         self.source_region = source_region
 
     def validate(self):

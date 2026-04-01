@@ -21,15 +21,28 @@ class DescribeDBInstanceEncryptionKeyResponseBody(DaraModel):
         origin: str = None,
         request_id: str = None,
     ):
+        # The user who created the key.
         self.creator = creator
+        # The scheduled time at which the key is deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.delete_date = delete_date
+        # The description of the key.
         self.description = description
+        # The ID of the key.
         self.encryption_key = encryption_key
+        # The details about the key.
         self.encryption_key_list = encryption_key_list
+        # The status of the key. Valid values:
+        # 
+        # *   **Enabled**
+        # *   **Disabled**
         self.encryption_key_status = encryption_key_status
+        # The purpose of the key.
         self.key_usage = key_usage
+        # The time at which the key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.material_expire_time = material_expire_time
+        # The source of the key.
         self.origin = origin
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -129,16 +142,36 @@ class DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList(DaraModel):
         origin: str = None,
         used_by: str = None,
     ):
+        # The alias of the key.
         self.alias_name = alias_name
+        # The user who created the key.
         self.creator = creator
+        # The scheduled time at which the key is deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.delete_date = delete_date
+        # The description of the key.
         self.description = description
+        # The ID of the key.
         self.encryption_key = encryption_key
+        # The status of the key. Valid values:
+        # 
+        # *   **Enabled**
+        # *   **Disabled**
         self.encryption_key_status = encryption_key_status
+        # The type of the key. Valid values:
+        # 
+        # *   **CMK**
+        # *   **ServiceKey**
         self.key_type = key_type
+        # The purpose of the key.
         self.key_usage = key_usage
+        # The time at which the key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.material_expire_time = material_expire_time
+        # The source of the key.
         self.origin = origin
+        # The role of the instance. Valid values:
+        # 
+        # *   **Master**: primary instance
+        # *   **slave**: read-only instance
         self.used_by = used_by
 
     def validate(self):

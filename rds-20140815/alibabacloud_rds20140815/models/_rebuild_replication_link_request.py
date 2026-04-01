@@ -9,6 +9,8 @@ class RebuildReplicationLinkRequest(DaraModel):
         self,
         dbinstance_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
 

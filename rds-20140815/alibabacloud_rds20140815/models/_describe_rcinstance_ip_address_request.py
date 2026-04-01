@@ -18,15 +18,28 @@ class DescribeRCInstanceIpAddressRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The page number. Default value: 1. Pages start from page 1.
         self.current_page = current_page
+        # The region ID of the asset.
         self.ddos_region_id = ddos_region_id
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **defense**: queries assets for which traffic scrubbing is performed.
+        # *   **blackhole**: queries assets for which blackhole filtering is triggered.
         self.ddos_status = ddos_status
+        # The ID of the RDS Custom instance to which the asset to query is added.
         self.instance_id = instance_id
+        # The IP address of the asset to query.
         self.instance_ip = instance_ip
+        # The name of the RDS Custom instance to which the asset to query is added.
         self.instance_name = instance_name
+        # The type of the asset that is assigned a public IP address. Set the value to **ecs**.
         self.instance_type = instance_type
+        # The number of instances on each page.
         self.page_size = page_size
+        # The ID of the region in which the RDS Custom instance resides.
         self.region_id = region_id
+        # The type of the resource. Set the value to **ecs**.
         self.resource_type = resource_type
 
     def validate(self):

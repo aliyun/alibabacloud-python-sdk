@@ -15,9 +15,13 @@ class DescribeDBInstanceMetricsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # An array consisting of the Enhanced Monitoring metrics that are enabled for the instance.
         self.items = items
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of enhanced monitoring metrics that are enabled for the instance.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -79,14 +83,30 @@ class DescribeDBInstanceMetricsResponseBodyItems(DaraModel):
         sort_rule: int = None,
         unit: str = None,
     ):
+        # The description of the enhanced monitoring metric.
         self.description = description
+        # The category of the enhanced monitoring metric. Valid values:
+        # 
+        # *   **os**: OS metric
+        # *   **db**: database metric
         self.dimension = dimension
+        # The key of the group to which the enhanced monitoring metric belongs.
         self.group_key = group_key
+        # The name of the group to which the enhanced monitoring metric belongs.
         self.group_key_type = group_key_type
+        # The method that is used to aggregate the monitoring data of the enhanced monitoring metric. Valid values:
+        # 
+        # *   **avg**: The system calculates the average value of the enhanced monitoring metric.
+        # *   **min**: The system calculates the minimum value of the enhanced monitoring metric.
+        # *   **max**: The system calculates the maximum value of the enhanced monitoring metric.
         self.method = method
+        # The key of the enhanced monitoring metric.
         self.metrics_key = metrics_key
+        # The alias of the enhanced monitoring metric.
         self.metrics_key_alias = metrics_key_alias
+        # The serial number of the enhanced monitoring metric.
         self.sort_rule = sort_rule
+        # The unit of the enhanced monitoring metric.
         self.unit = unit
 
     def validate(self):

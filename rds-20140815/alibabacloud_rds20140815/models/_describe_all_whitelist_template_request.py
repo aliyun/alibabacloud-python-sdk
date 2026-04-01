@@ -16,15 +16,26 @@ class DescribeAllWhitelistTemplateRequest(DaraModel):
         resource_owner_id: int = None,
         template_name: str = None,
     ):
+        # Specifies whether to enable fuzzy search. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.fuzzy_search = fuzzy_search
+        # The number of entries to return on each page. Enumerated valid values: 10, 30, and 50.
+        # 
         # This parameter is required.
         self.max_records_per_page = max_records_per_page
+        # The page number.
+        # 
         # This parameter is required.
         self.page_numbers = page_numbers
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID. For more information about resource groups, see related documentation.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the IP whitelist template. If you specify this parameter when you perform a fuzzy search, you can call the DescribeWhitelistTemplate operation to query the name of the whitelist template during the fuzzy search.
         self.template_name = template_name
 
     def validate(self):

@@ -11,8 +11,11 @@ class ModifyDBInstanceNetworkTypeResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The endpoint that is used to connect to the instance.
         self.connection_string = connection_string
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

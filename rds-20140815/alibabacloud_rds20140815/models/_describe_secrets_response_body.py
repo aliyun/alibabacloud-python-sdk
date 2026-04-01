@@ -15,9 +15,13 @@ class DescribeSecretsResponseBody(DaraModel):
         request_id: str = None,
         secrets: List[main_models.DescribeSecretsResponseBodySecrets] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the credential.
         self.secrets = secrets
 
     def validate(self):
@@ -76,11 +80,17 @@ class DescribeSecretsResponseBodySecrets(DaraModel):
         secret_name: str = None,
         username: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The description of the credential.
         self.description = description
+        # The region ID.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account.
         self.secret_arn = secret_arn
+        # The name of the credential.
         self.secret_name = secret_name
+        # The username that is used to access the database.
         self.username = username
 
     def validate(self):

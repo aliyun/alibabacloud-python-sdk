@@ -11,7 +11,9 @@ class SyncRCKeyPairResponseBody(DaraModel):
         data: main_models.SyncRCKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,10 @@ class SyncRCKeyPairResponseBodyData(DaraModel):
         self,
         is_sync_info: bool = None,
     ):
+        # Indicates whether the synchronization succeeded. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.is_sync_info = is_sync_info
 
     def validate(self):

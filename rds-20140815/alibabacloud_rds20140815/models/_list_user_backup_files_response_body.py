@@ -13,7 +13,9 @@ class ListUserBackupFilesResponseBody(DaraModel):
         records: List[main_models.ListUserBackupFilesResponseBodyRecords] = None,
         request_id: str = None,
     ):
+        # The information about the full backup files.
         self.records = records
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -73,24 +75,49 @@ class ListUserBackupFilesResponseBodyRecords(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
+        # The ID of the full backup file.
         self.backup_id = backup_id
+        # The information about the binary log file that contains incremental data. If incremental data is generated during the full backup, this parameter is returned.
         self.binlog_info = binlog_info
+        # The description of the full backup file.
         self.comment = comment
+        # The time when the system started to import the full backup file. The value is a UNIX timestamp. Unit: milliseconds.
         self.creation_time = creation_time
+        # The database engine of the instance.
         self.engine = engine
+        # The database engine version.
         self.engine_version = engine_version
+        # The time when the full backup file is successfully imported. The value is a UNIX timestamp. Unit: milliseconds.
         self.finish_time = finish_time
+        # The time when the full backup file is successfully imported. The value is a UNIX timestamp. Unit: milliseconds.
         self.modification_time = modification_time
+        # The name of the OSS bucket in which the full backup file is stored as an object.
         self.oss_bucket = oss_bucket
+        # The metadata of the full backup file. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.oss_file_meta_data = oss_file_meta_data
+        # The name of the full backup file that is stored as an object in an OSS bucket.
         self.oss_file_name = oss_file_name
+        # The path of the full backup file that is stored as an object in an OSS bucket.
         self.oss_file_path = oss_file_path
+        # The size of the full backup file that is stored as an object in an OSS bucket. Unit: KB.
         self.oss_file_size = oss_file_size
+        # The URL to download the full backup file from the OSS bucket.
         self.oss_url = oss_url
+        # The reason why the full backup file failed to be imported.
         self.reason = reason
+        # The amount of storage that is required to restore the data of the full backup file. Unit: GB.
         self.restore_size = restore_size
+        # The retention period of the full backup file. Unit: days.
         self.retention = retention
+        # The status of the full backup file. Valid values:
+        # 
+        # *   **Importing**: The full backup file is being imported.
+        # *   **Failed**: The full backup file fails to be imported.
+        # *   **CheckSucccess**: The full backup file passes the check.
+        # *   **BackupSuccess**: The full backup file is imported.
+        # *   **Deleted**: The full backup file is deleted.
         self.status = status
+        # The zone ID of the full backup file.
         self.zone_id = zone_id
 
     def validate(self):

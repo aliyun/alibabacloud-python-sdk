@@ -12,11 +12,22 @@ class ModifyDBInstanceMetricsRequest(DaraModel):
         resource_owner_id: int = None,
         scope: str = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The keys of the Enhanced Monitoring metrics that you want to display for the instance. You can enter a maximum of 30 metric keys. If you enter multiple metric keys, you must separate the metric keys with commas (,).
+        # 
+        # You can call the DescribeAvailableMetrics operation to query the keys of metrics.
+        # 
         # This parameter is required.
         self.metrics_config = metrics_config
         self.resource_owner_id = resource_owner_id
+        # The application scope of this modification. Valid values:
+        # 
+        # *   **instance**: This modification is applied only to the current instance.
+        # *   **region**: This modification is applied to all ApsaraDB RDS for PostgreSQL instances that are equipped with the same type of storage media as the current instance in the region to which the current instance belongs. For example, if the current instance is equipped with cloud disks, this modification is applied to all ApsaraDB RDS for PostgreSQL instances that are equipped with cloud disks in the region to which the current instance belongs.
+        # 
         # This parameter is required.
         self.scope = scope
 

@@ -18,20 +18,37 @@ class ModifyDBInstanceSecurityGroupRuleRequest(DaraModel):
         security_group_rule_id: str = None,
         source_cidr_ip: str = None,
     ):
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description of the security group rule.
+        # 
         # This parameter is required.
         self.description = description
+        # The type of the transport layer protocol. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+        # 
+        # Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+        # 
         # This parameter is required.
         self.port_range = port_range
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the ID of the security group rule.
+        # 
         # This parameter is required.
         self.security_group_rule_id = security_group_rule_id
+        # The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
+        # 
         # This parameter is required.
         self.source_cidr_ip = source_cidr_ip
 

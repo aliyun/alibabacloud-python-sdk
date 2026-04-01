@@ -10,7 +10,11 @@ class DescribeRCInstanceVncUrlResponseBody(DaraModel):
         login_url: str = None,
         request_id: str = None,
     ):
+        # The VNC logon address.
+        # 
+        # >  The address returned is valid only for 15 seconds. If you do not use the returned address to establish a connection within 15 seconds, the address expires and you must call the operation again to obtain a new address.
         self.login_url = login_url
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

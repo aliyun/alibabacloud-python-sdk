@@ -20,43 +20,24 @@ class ValidateImportTaskRequest(DaraModel):
         user: str = None,
         xtrabackup_path: str = None,
     ):
-        # Instance ID. You can obtain the value of this parameter by invoking the DescribeDBInstances API.
-        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # Estimated instance size (GB)
         self.estimated_size = estimated_size
-        # Source MySQL host address
-        # 
         # This parameter is required.
         self.host = host
         self.owner_id = owner_id
-        # Password for the source MySQL user (Base64 encrypted)
-        # 
         # This parameter is required.
         self.password = password
-        # Source MySQL port number
-        # 
         # This parameter is required.
         self.port = port
-        # Region ID. You can obtain this by invoking the DescribeRegions API.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # Source cloud instance ID
         self.source_instance_id = source_instance_id
-        # Source platform type  
-        # - ECS
         self.source_platform = source_platform
-        # Backup transfer port number
-        # 
         # This parameter is required.
         self.stream_port = stream_port
-        # Source MySQL user
-        # 
         # This parameter is required.
         self.user = user
-        # Path to the Xtrabackup tool on the source
         self.xtrabackup_path = xtrabackup_path
 
     def validate(self):

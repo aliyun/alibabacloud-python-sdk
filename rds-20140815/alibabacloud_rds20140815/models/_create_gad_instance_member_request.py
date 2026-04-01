@@ -18,18 +18,40 @@ class CreateGadInstanceMemberRequest(DaraModel):
         gad_instance_id: str = None,
         unit_node: List[main_models.CreateGadInstanceMemberRequestUnitNode] = None,
     ):
+        # The ID of the central node . You can call the DescribeGadInstances operation to query the ID.
+        # 
         # This parameter is required.
         self.central_dbinstance_id = central_dbinstance_id
+        # The username of the privileged account of the central node. You can call the DescribeAccounts operation to query the privileged account of the central node.
+        # 
         # This parameter is required.
         self.central_rds_dts_admin_account = central_rds_dts_admin_account
+        # The password of the privileged account of the central node.
+        # 
         # This parameter is required.
         self.central_rds_dts_admin_password = central_rds_dts_admin_password
+        # The region ID of the central node. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.central_region_id = central_region_id
+        # A JSON array that consists of the information about the databases on the central node. All database information that you specify in this array is synchronized to the unit nodes of the global active database cluster. The JSON array contains the following fields:
+        # 
+        # *   **name**: the name of the database.
+        # *   **all**: specifies whether to synchronize all data in the database or the table. Valid values: **true** and **false**.
+        # *   **Table**: the name of the table. If you set the **all** field to **false**, you must nest the name of the table that you want to synchronize into the JSON array.
+        # 
+        # Example: `{ "testdb": { "name": "testdb", "all": false, "Table": { "order": { "name": "order", "all": true }, "ordernew": { "name": "ordernew", "all": true } } } }`
+        # 
+        # >  For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # 
         # This parameter is required.
         self.dblist = dblist
+        # The ID of the global active database cluster. You can call the DescribeGadInstances operation to query the ID.
+        # 
         # This parameter is required.
         self.gad_instance_id = gad_instance_id
+        # The information about the unit node.
+        # 
         # This parameter is required.
         self.unit_node = unit_node
 
@@ -116,25 +138,80 @@ class CreateGadInstanceMemberRequestUnitNode(DaraModel):
         zone_idslave_1: str = None,
         zone_idslave_2: str = None,
     ):
+        # The name of the unit node that you want to create. The name must meet the following requirements:
+        # 
+        # *   The name must be **2 to 255** characters in length.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
+        # *   The name cannot start with `http://` or `https://`.
         self.dbinstance_description = dbinstance_description
+        # The storage capacity of the unit node that you want to create. Unit: GB The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
         self.dbinstance_storage = dbinstance_storage
+        # The storage type of the instance. Valid values:
+        # 
+        # *   **local_ssd**: local SSD
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
+        # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
         self.db_instance_class = db_instance_class
+        # The conflict resolution policy based on which Data Transmission Service (DTS) responds to primary key conflicts during data synchronization to the unit node that you want to create. Valid values:
+        # 
+        # *   **overwrite**: DTS overwrites the conflicting primary key on the destination node.
+        # *   **interrupt**: DTS stops the synchronization task, reports an error, and then exits.
+        # *   **ignore**: DTS overwrites the conflicting primary key on the logger node.
+        # 
         # This parameter is required.
         self.dts_conflict = dts_conflict
+        # The specifications of the data synchronization task for the unit node that you want to create. Valid values:
+        # 
+        # *   **small**
+        # *   **medium**
+        # *   **large**
+        # *   **micro**
+        # 
+        # >  For more information, see [Specifications of data synchronization tasks](https://help.aliyun.com/document_detail/26605.html).
+        # 
         # This parameter is required.
         self.dts_instance_class = dts_instance_class
+        # The database engine of the unit node that you want to create. Set the value to **MySQL**.
         self.engine = engine
+        # The database engine version of the unit node that you want to create. Valid values:
+        # 
+        # *   **8.0**
+        # *   **5.7**
+        # *   **5.6**
+        # *   **5.5**
         self.engine_version = engine_version
+        # The region ID of the unit node or secondary node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the unit node that you want to create. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # 
+        # *   IP addresses, such as `10.10.XX.XX`.
+        # *   CIDR blocks, such as `10.10.XX.XX/24`. In this example, **24** indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
         self.security_iplist = security_iplist
+        # The vSwitch ID of the unit node that you want to create.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC) ID of the unit node that you want to create.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
         self.zone_id = zone_id
+        # The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
+        # 
+        # *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
+        # *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
         self.zone_idslave_1 = zone_idslave_1
+        # The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
+        # 
+        # *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
+        # *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
         self.zone_idslave_2 = zone_idslave_2
 
     def validate(self):

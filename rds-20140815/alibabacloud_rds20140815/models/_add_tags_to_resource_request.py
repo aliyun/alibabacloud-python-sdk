@@ -23,17 +23,29 @@ class AddTagsToResourceRequest(DaraModel):
         proxy_id: str = None,
     ):
         self.tag = tag
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance ID.
+        # 
+        # >  You can enter up to 30 instance IDs in a single request. If you enter more than one instance ID, you must separate the instance IDs with commas (,).
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags that you want to add. Each tag consists of a tag key and a tag value. You can specify a maximum of five tags in the following format for each request: {"key1":"value1","key2":"value2"...}.
+        # 
+        # >  The tag key is required and the tag value is optional.
         self.tags = tags
+        # The ID of the proxy mode.
         self.proxy_id = proxy_id
 
     def validate(self):
@@ -132,7 +144,9 @@ class AddTagsToResourceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the first tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
         self.key = key
+        # The tag value of the first tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
         self.value = value
 
     def validate(self):

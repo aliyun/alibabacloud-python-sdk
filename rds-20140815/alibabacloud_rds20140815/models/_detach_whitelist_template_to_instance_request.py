@@ -14,12 +14,18 @@ class DetachWhitelistTemplateToInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
+        # The instance name.
+        # 
         # This parameter is required.
         self.ins_name = ins_name
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID. For more information about resource groups, see Resource groups.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to obtain the ID of the whitelist template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

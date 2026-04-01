@@ -10,7 +10,9 @@ class DeleteDBInstanceResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query region ID of the instance.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -11,8 +11,11 @@ class DeleteDBInstanceSecurityGroupRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The information about the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -13,10 +13,19 @@ class CreateDdrInstanceResponseBody(DaraModel):
         port: str = None,
         request_id: str = None,
     ):
+        # The endpoint that is used to connect to the destination instance.
+        # 
+        # >  The **DBInstanceNetType** parameter indicates whether the endpoint is internal or public.
         self.connection_string = connection_string
+        # The destination instance ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
+        # The port number that is used to connect to the destination instance.
+        # 
+        # > **DBInstanceNetType** indicates whether the port is internal or public.
         self.port = port
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

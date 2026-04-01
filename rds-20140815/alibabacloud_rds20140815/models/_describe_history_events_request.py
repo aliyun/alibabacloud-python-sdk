@@ -24,22 +24,60 @@ class DescribeHistoryEventsRequest(DaraModel):
         task_id: str = None,
         to_start_time: str = None,
     ):
+        # The resource status. Valid values: **importing**, failed, checksuccess, and deleted.
         self.archive_status = archive_status
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_category = event_category
+        # The event ID.
         self.event_id = event_id
+        # The event level. Valid values: ***high***, **medium**, and **low**.
         self.event_level = event_level
+        # The status of the exception. Valid values:
+        # 
+        # *   1: pending
+        # *   2: ignored
+        # *   4: confirmed
+        # *   8: marked as false positive
+        # *   16: handling
+        # *   32: handled
+        # *   64: expired
         self.event_status = event_status
+        # The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values:
+        # 
+        # *   SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # *   SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+        # *   SystemFailure.Reboot: The instance is restarted due to a system error.
+        # *   SystemFailure.Redeploy: The instance is redeployed due to a system error.
+        # *   SystemFailure.Delete: The instance is released due to an instance creation failure.
+        # *   InstanceFailure.Reboot: The instance is restarted due to an instance error.
+        # *   InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
+        # *   InstanceExpiration.Delete: The subscription instance is released due to expiration.
+        # *   AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
+        # *   AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
+        # 
+        # >  For more information, see Overview. The values of this parameter are applicable only to instance system events, but not to disk system events.
         self.event_type = event_type
+        # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
+        # 
         # This parameter is required.
         self.from_start_time = from_start_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: 30.
         self.page_size = page_size
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
         self.security_token = security_token
+        # The task ID. This value is used to query the data of a specific task.
         self.task_id = task_id
+        # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.to_start_time = to_start_time
 

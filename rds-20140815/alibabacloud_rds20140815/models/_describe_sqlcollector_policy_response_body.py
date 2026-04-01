@@ -11,8 +11,14 @@ class DescribeSQLCollectorPolicyResponseBody(DaraModel):
         sqlcollector_status: str = None,
         storage_period: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The status of the SQL Explorer (SQL Audit) feature. Valid values:
+        # 
+        # *   **Enable**
+        # *   **Disabled**
         self.sqlcollector_status = sqlcollector_status
+        # A reserved parameter.
         self.storage_period = storage_period
 
     def validate(self):

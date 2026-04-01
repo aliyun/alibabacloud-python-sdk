@@ -14,11 +14,16 @@ class DescribeDBInstancePromoteActivityRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
+        # 
         # This parameter is required.
         self.ali_uid = ali_uid
+        # The instance ID.
+        # 
         # This parameter is required.
         self.db_instance_name = db_instance_name
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

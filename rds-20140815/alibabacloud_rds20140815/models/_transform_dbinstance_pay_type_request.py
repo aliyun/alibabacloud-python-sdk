@@ -21,20 +21,53 @@ class TransformDBInstancePayTypeRequest(DaraModel):
         resource_owner_id: int = None,
         used_time: int = None,
     ):
+        # Specifies whether to enable the auto-renewal feature for the instance. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
+        # 
+        # > - This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
+        # > - All strings except **true** are considered **false**.
         self.auto_renew = auto_renew
+        # Specifies whether to use vouchers to offset fees. Valid values:
+        # 
+        # *   **true**
+        # *   **false** (default)
         self.auto_use_coupon = auto_use_coupon
+        # The additional business information about the instance.
         self.business_info = business_info
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The new billing method of the instance. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The renewal cycle of the instance. Valid values:
+        # 
+        # *   **Year**
+        # *   **Month**
+        # 
+        # > This parameter must be specified if you set **PayType** to **Prepaid**.
         self.period = period
+        # The coupon code.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The subscription duration of the instance. Valid values:
+        # 
+        # *   If you set **Period** to **Year**, the value of UsedTime ranges from **1 to 5**.
+        # *   If you set **Period** to **Month**, the value of UsedTime ranges from **1 to 11**.
+        # 
+        # > This parameter must be specified when **PayType** is set to **Prepaid**.
         self.used_time = used_time
 
     def validate(self):

@@ -27,19 +27,33 @@ class DescribeDBInstancesByPerformanceRequest(DaraModel):
         proxy_id: str = None,
     ):
         self.tag = tag
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Valid values: any non-zero positive integer.
+        # 
+        # Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **5** to **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The sorting basis.
         self.sort_key = sort_key
+        # The sorting method.
         self.sort_method = sort_method
+        # The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
         self.tags = tags
+        # The ID of the proxy mode.
         self.proxy_id = proxy_id
 
     def validate(self):
@@ -160,7 +174,9 @@ class DescribeDBInstancesByPerformanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag 1 that is added to the instances.
         self.key = key
+        # The value of tag 1 that is added to the instances.
         self.value = value
 
     def validate(self):

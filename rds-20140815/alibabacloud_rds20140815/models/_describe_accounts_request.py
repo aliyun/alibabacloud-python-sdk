@@ -14,10 +14,17 @@ class DescribeAccountsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the database account.
         self.account_name = account_name
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # >  This parameter is not supported for RDS instances that run SQL Server 2017 on RDS Cluster Edition.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The page number. Default value: **1**. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

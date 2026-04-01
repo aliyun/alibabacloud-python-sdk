@@ -18,15 +18,37 @@ class DescribeMigrateTaskByIdResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The type of the migration task. Valid values:
+        # 
+        # *   **FULL**: The migration task migrates full backup files that can be used to restore the full data of the instance.
+        # *   **UPDF**: The migration task migrates incremental or log backup files that can be used to restore the incremental data of the instance.
         self.backup_mode = backup_mode
+        # The time when the migration task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The name of the database.
         self.dbname = dbname
+        # The description of the migration task.
         self.description = description
+        # The time when the migration task was completed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
+        # Indicates whether the imported data overwrites the existing data. Valid values:
+        # 
+        # *   **False**: The imported data does not overwrite the existing data.
+        # *   **True**: The imported data overwrites the existing data.
         self.is_dbreplaced = is_dbreplaced
+        # The ID of the migration task.
         self.migrate_task_id = migrate_task_id
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the migration task. Valid values:
+        # 
+        # *   **NoStart**: The task has not started.
+        # *   **Running**:The task is in progress.
+        # *   **Success**: The task is successful.
+        # *   **Failed**: The task failed.
+        # *   **Waiting**: The task is waiting for an incremental backup file to be imported.
         self.status = status
 
     def validate(self):

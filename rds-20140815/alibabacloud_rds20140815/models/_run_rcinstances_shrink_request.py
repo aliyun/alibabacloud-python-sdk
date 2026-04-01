@@ -55,7 +55,6 @@ class RunRCInstancesShrinkRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # ACU type
         self.acu_type = acu_type
         # The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
         # 
@@ -73,28 +72,14 @@ class RunRCInstancesShrinkRequest(DaraModel):
         # *   **true** (default)
         # *   **false**
         self.auto_renew = auto_renew
-        # Specifies whether to automatically use a coupon. Valid values:
-        # * **true** (default): Yes.
-        # * **false**: No.
-        # 
-        # > If you use a coupon and later decrease the quota, the amount offset by the coupon will not be refunded.
         self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Information about the ACK Edge cluster.
         self.create_ack_edge_param_shrink = create_ack_edge_param_shrink
-        # Reserved parameter. Not supported currently.
         self.create_extra_param = create_extra_param
-        # Specifies whether the instance can be added to an ACK cluster. When this parameter is set to **1**, the created instance can be added to an ACK cluster by invoking the **AttachRCInstances** API operation, enabling efficient management of container applications.
-        # 
-        # - **1**: Yes.
-        # - **0** (default): No.
         self.create_mode = create_mode
         # The information about the data disks.
         self.data_disk_shrink = data_disk_shrink
-        # Specifies whether to enable release protection. Valid values:  
-        # * **true**: Enabled  
-        # * **false** (default): Disabled
         self.deletion_protection = deletion_protection
         # The deployment set ID.
         self.deployment_set_id = deployment_set_id
@@ -105,10 +90,6 @@ class RunRCInstancesShrinkRequest(DaraModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
         self.dry_run = dry_run
-        # Hostname of the instance (2–64 characters).  
-        # 
-        # - Multiple segments separated by periods (.) are supported. Each segment can contain uppercase and lowercase English letters, digits, and hyphens (-).  
-        # - A period (.) or hyphen (-) cannot appear at the beginning or end of a segment, nor can two periods or hyphens appear consecutively.
         self.host_name = host_name
         # The ID of the image used by the instance.
         self.image_id = image_id
@@ -131,7 +112,6 @@ class RunRCInstancesShrinkRequest(DaraModel):
         self.network_options_shrink = network_options_shrink
         # The password of the account that is used to log on to the instance.
         self.password = password
-        # Specifies whether to use the password preset in the image. When this parameter is used, the Password parameter must be empty, and you must ensure that the selected image has a password already configured. Default value: false.
         self.password_inherit = password_inherit
         # The subscription duration of the instance. Default value: **1**.
         self.period = period
@@ -141,15 +121,12 @@ class RunRCInstancesShrinkRequest(DaraModel):
         # *   **Month** (default)
         self.period_unit = period_unit
         self.private_ip_address = private_ip_address
-        # The coupon code.
         self.promotion_code = promotion_code
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Scheduled elasticity rule
         self.scheduled_rule = scheduled_rule
         # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
@@ -158,36 +135,12 @@ class RunRCInstancesShrinkRequest(DaraModel):
         # >  The network type of the instance is determined by the security group specified by the SecurityGroupId parameter. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance. In this case, you must specify the VSwitchId parameter.
         self.security_group_id = security_group_id
         self.security_group_ids_shrink = security_group_ids_shrink
-        # The spot strategy for pay-as-you-go instances. This parameter takes effect only when the **InstanceChargeType** parameter is set to **PostPaid**. Valid values:  
-        # 
-        # - **NoSpot**: Normal pay-as-you-go instance.  
-        # - **SpotAsPriceGo**: The system automatically bids based on the current market price.  
-        # 
-        # Default value: **NoSpot**.
         self.spot_strategy = spot_strategy
-        # The deployment type of RDS Custom. Valid values:
-        # 
-        # - **eni**: Dual network interface cards.
-        # - **edge**: Point of presence (POP) node pool.
-        # - **share**: VPC.
         self.support_case = support_case
         # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
-        # The list of tags.
         self.tag = tag
-        # The instance user data. The raw data can be up to 32 KB in size.  
-        # 
-        # Do not pass sensitive information, such as passwords and private keys, in plaintext. If you must pass such information, encrypt it first, encode it in Base64, and then transmit it. Decrypt and use it inside the instance. The following is an example of converting a script into a Base64-encoded string:  
-        # 
-        # ```
-        # echo -n \\"#!/bin/sh
-        # echo "Hello World"\\" | base64 -w 0
-        # ```
         self.user_data = user_data
-        # Specifies whether custom data is Base64-encoded.  
-        # 
-        # - **true**: Yes.  
-        # - **false** (default): No.
         self.user_data_in_base_64 = user_data_in_base_64
         # The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
         # 
@@ -492,9 +445,7 @@ class RunRCInstancesShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can create up to N tag keys at the same time, where N ranges from **1 to 20**. Empty strings are not allowed.
         self.key = key
-        # The tag value corresponding to the tag key. You can create up to N tag values at the same time, where N ranges from **1 to 20**. Empty strings are allowed.
         self.value = value
 
     def validate(self):

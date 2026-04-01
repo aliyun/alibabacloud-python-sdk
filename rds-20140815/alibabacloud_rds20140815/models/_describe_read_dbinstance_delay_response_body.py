@@ -16,10 +16,14 @@ class DescribeReadDBInstanceDelayResponseBody(DaraModel):
         read_dbinstance_id: str = None,
         request_id: str = None,
     ):
+        # The primary instance ID.
         self.dbinstance_id = dbinstance_id
+        # The latency of data replication. Unit: seconds.
         self.delay_time = delay_time
         self.items = items
+        # The read-only instance ID.
         self.read_dbinstance_id = read_dbinstance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

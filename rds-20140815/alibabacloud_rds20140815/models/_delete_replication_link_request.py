@@ -11,8 +11,15 @@ class DeleteReplicationLinkRequest(DaraModel):
         promote_to_master: bool = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the DR instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to delete the data synchronization link between the DR instance and the primary instance and promote the DR instance to the primary instance. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
+        # 
         # This parameter is required.
         self.promote_to_master = promote_to_master
         self.resource_owner_id = resource_owner_id

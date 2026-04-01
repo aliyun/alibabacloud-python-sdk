@@ -14,10 +14,19 @@ class DeleteDBInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The policy that is used to retain archived backup files if the instance is released. Default value: None. Valid values:
+        # 
+        # *   **None**: No archived backup files are retained.
+        # *   **Lastest**: Only the last archived backup file is retained.
+        # *   **All**: All archived backup files are retained.
+        # 
+        # > This parameter is supported only for ApsaraDB RDS for MySQL instance with local disks.
         self.released_keep_policy = released_keep_policy
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -16,13 +16,21 @@ class DeleteDBNodesShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
+        # 
+        # The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The node IDs.
+        # 
         # This parameter is required.
         self.dbnode_id_shrink = dbnode_id_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

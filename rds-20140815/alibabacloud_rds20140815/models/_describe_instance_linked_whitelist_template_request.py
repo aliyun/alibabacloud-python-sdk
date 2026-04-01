@@ -13,9 +13,13 @@ class DescribeInstanceLinkedWhitelistTemplateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance name.
+        # 
         # This parameter is required.
         self.ins_name = ins_name
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

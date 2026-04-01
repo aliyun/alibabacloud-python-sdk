@@ -19,16 +19,38 @@ class DescribeDedicatedHostsRequest(DaraModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # Specifies whether instances can be deployed on the host. Valid values:
+        # 
+        # *   **0**: Instances cannot be deployed on the host.
+        # *   **1**: Instances can be deployed on the host.
         self.allocation_status = allocation_status
+        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The ID of the host in the dedicated cluster.
         self.dedicated_host_id = dedicated_host_id
+        # The status of the host. Valid values:
+        # 
+        # *   **0**: creating
+        # *   **1**: running
+        # *   **2**: faulty
+        # *   **3**: being replaced
+        # *   **4**: deprecated
+        # *   **5**: deleting
+        # *   **6**: restarting
         self.host_status = host_status
+        # The storage type of the host. Valid values:
+        # 
+        # *   **dhg_cloud_ssd**: enhanced SSD (ESSD)
+        # *   **dhg_local_ssd**: local SSD
         self.host_type = host_type
+        # The order ID.
         self.order_id = order_id
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

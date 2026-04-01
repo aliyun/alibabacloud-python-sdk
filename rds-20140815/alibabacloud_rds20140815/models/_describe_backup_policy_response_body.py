@@ -46,34 +46,132 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         self.advanced_backup_policy_enabled = advanced_backup_policy_enabled
         self.advanced_data_policies = advanced_data_policies
         self.advanced_log_policies = advanced_log_policies
+        # The number of archived backup files that are retained.
         self.archive_backup_keep_count = archive_backup_keep_count
+        # The cycle based on which archived backup files are retained.
         self.archive_backup_keep_policy = archive_backup_keep_policy
+        # The number of days for which archived backup files are retained.
         self.archive_backup_retention_period = archive_backup_retention_period
+        # The backup interval. Unit: minutes.
+        # 
+        # *   If the instance runs MySQL, the interval is the same as the value of the Snapshot Backup Start Time parameter rather than the Snapshot Backup Period parameter in the ApsaraDB RDS console. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
+        # *   If the instance runs SQL Server, the interval is the same as the log backup frequency.
         self.backup_interval = backup_interval
+        # Indicates whether the log backup feature is enabled. Valid values:
+        # 
+        # *   **Enable**
+        # *   **Disabled**
         self.backup_log = backup_log
+        # The backup method of the instance. Valid values:
+        # 
+        # *   **Physical**: physical backup
+        # *   **Snapshot**: snapshot backup
+        # 
+        # > This parameter is returned only when the instance runs SQL Server and uses cloud disks.
         self.backup_method = backup_method
+        # The backup settings of the secondary instance. Valid values:
+        # 
+        # *   **1**: Secondary instance preferred
+        # *   **2**: Primary instance preferred
+        # 
+        # >  This parameter is available only for instances that run SQL Server on RDS Cluster Edition. This parameter is returned only when SupportModifyBackupPriority is set to True.
         self.backup_priority = backup_priority
+        # The number of days for which data backup files are retained.
         self.backup_retention_period = backup_retention_period
+        # Indicates whether to enable the single-digit second backup feature. This feature allows ApsaraDB RDS to complete a backup within single-digit seconds. Valid values:
+        # 
+        # *   **Flash**: The single-digit second backup feature is enabled.
+        # *   **Standard**: The single-digit second backup feature is disabled.
+        # 
+        # > This parameter takes effect only when you set the **BackupPolicyMode** parameter to **DataBackupPolicy**.
         self.category = category
+        # The method that is used to compress backup data. Valid values:
+        # 
+        # *   **0**: Backup data is not compressed.
+        # *   **1**: Backup data is compressed by using zlib.
+        # *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
+        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
         self.compress_type = compress_type
+        # Indicates whether the log backup feature is enabled. Valid values:
+        # 
+        # *   **1**: enabled
+        # *   **0**: disabled
         self.enable_backup_log = enable_backup_log
+        # Indicates whether incremental backup is enabled. Valid values:
+        # 
+        # *   **True**: Incremental backup is enabled.
+        # *   **False**: Incremental backup is disabled.
         self.enable_increment_data_backup = enable_increment_data_backup
+        # Indicates whether the point-in-time restoration (PITR) feature is enabled. The PITR feature is an enhancement of the log backup feature. Valid values:
+        # 
+        # *   **True**
+        # *   **False**
+        # 
+        # >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](https://help.aliyun.com/document_detail/2666046.html).
         self.enable_pitr_protection = enable_pitr_protection
+        # Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
+        # 
+        # *   **Disable**
+        # *   **Enable**
         self.high_space_usage_protection = high_space_usage_protection
+        # The number of hours for which log backup files are retained on the instance.
         self.local_log_retention_hours = local_log_retention_hours
+        # The maximum storage usage that is allowed for log files on the instance.
         self.local_log_retention_space = local_log_retention_space
+        # The backup frequency of logs. Valid values:
+        # 
+        # *   **LogInterval**: Log backups are performed every 30 minutes.
+        # *   Default value: same as the value of the **PreferredBackupPeriod** parameter.
+        # 
+        # >  This parameter is returned only when the instance runs SQL Server.
         self.log_backup_frequency = log_backup_frequency
+        # The number of binary log files that you want to retain on the instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
+        # The number of days for which log backup files are retained.
         self.log_backup_retention_period = log_backup_retention_period
+        # The number of days during which you can restore data of the instance to any point in time.
         self.pitr_retention_period = pitr_retention_period
+        # The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
+        # 
+        # *   **Monday**
+        # *   **Tuesday**
+        # *   **Wednesday**
+        # *   **Thursday**
+        # *   **Friday**
+        # *   **Saturday**
+        # *   **Sunday**
         self.preferred_backup_period = preferred_backup_period
+        # The time when a data backup is performed. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
         self.preferred_backup_time = preferred_backup_time
+        # The time when the next backup is performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.preferred_next_backup_time = preferred_next_backup_time
+        # The policy that is used to retain archived backup files if the instance is released. Valid values:
+        # 
+        # *   **None**: No archived backup files are retained.
+        # *   **Lastest**: Only the last archived backup file is retained.
+        # *   **All**: All archived backup files are retained.
         self.released_keep_policy = released_keep_policy
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the backup settings of a secondary instance can be modified. Valid values:
+        # 
+        # *   **True**
+        # *   **False**
         self.support_modify_backup_priority = support_modify_backup_priority
+        # A reserved parameter.
         self.support_released_keep = support_released_keep
+        # Indicates whether the instance supports snapshot backups. Valid values:
+        # 
+        # *   **1**: The instance supports snapshot backups.
+        # *   **0**: The instance does not support snapshot backups.
+        # 
+        # >  This parameter is returned only when the instance runs SQL Server.
         self.support_volume_shadow_copy = support_volume_shadow_copy
+        # Indicates whether log backups for SQL Server are performed verery five minutes.
+        # 
+        # *   0: No
+        # *   1: Yes
         self.supports_high_frequency_backup = supports_high_frequency_backup
 
     def validate(self):

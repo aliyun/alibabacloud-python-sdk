@@ -41,45 +41,154 @@ class CreateDdrInstanceRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The backup set ID that you want to use for the restoration. You can call the DescribeCrossRegionBackups operation to query backup set ID.
+        # 
+        # >  This parameter is required when you set the **RestoreType** parameter to **BackupSet**.
         self.backup_set_id = backup_set_id
+        # The region where the backup set is located.
         self.backup_set_region = backup_set_region
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The connection mode of the destination instance. Valid values:
+        # 
+        # *   **Standard**: standard mode
+        # *   **Safe**: database proxy mode
+        # 
+        # Default value: **Standard**.
         self.connection_mode = connection_mode
+        # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
+        # The instance name. The name must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+        # 
+        # >  The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
+        # The network connection type of the destination instance. Valid values:
+        # 
+        # *   **Internet**
+        # *   **Intranet**
+        # 
         # This parameter is required.
         self.dbinstance_net_type = dbinstance_net_type
+        # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_storage = dbinstance_storage
+        # The storage type of the destination instance. Only the local SSD storage type is supported. Default value: **local_ssd**.
         self.dbinstance_storage_type = dbinstance_storage_type
+        # The ID of the customer master key (CMK) for cloud disk encryption. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled. You can obtain the ID of the key in the KMS console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
+        # 
+        # **
+        # 
+        # **Notes**
+        # 
+        # *   This parameter is applicable only to ApsaraDB RDS for SQL Server instances.
+        # 
+        # *   You can leave this parameter empty. If you do not specify this parameter, you only need to specify the **RoleARN** to use the service key that is managed by ApsaraDB RDS to encrypt cloud disks.
         self.encryption_key = encryption_key
+        # The database engine of the destination instance. Valid values:
+        # 
+        # *   **MySQL**
+        # *   **SQLServer**
+        # *   **PostgreSQL**
+        # 
         # This parameter is required.
         self.engine = engine
+        # The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
+        # 
+        # *   Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**
+        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**
+        # *   Valid values when Engine is set to PostgreSQL: **9.4, 10.0, 11.0, 12.0, and 13.0**
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The network type of the instance. Valid values:
+        # 
+        # *   **VPC**
+        # *   **Classic**
+        # 
+        # Default value: Classic.
+        # 
+        # > If you set this parameter to **VPC**, you must also specify **VpcId** and **VSwitchId**.
         self.instance_network_type = instance_network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The unit that is used to measure the subscription duration of the destination instance. Valid values:
+        # 
+        # *   **Year**
+        # *   **Month**
+        # 
+        # > If you set PayType to **Prepaid**, you must specify UsedTime.
         self.period = period
+        # The private IP address of the destination instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. The system automatically assigns an internal IP address based on the values of the **VPCId** and **VSwitchId** parameters.
         self.private_ip_address = private_ip_address
+        # The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # > If **RestoreType** is set to **BackupTime**, you must specify this parameter.
         self.restore_time = restore_time
+        # The restoration method that you want to use. Valid values:
+        # 
+        # *   **BackupSet**: restores data from a backup set. If you use this value, you must also specify **BackupSetId**.
+        # *   **BackupTime**: restores data to a point in time. If you use this value, you must also specify **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName**.
+        # 
         # This parameter is required.
         self.restore_type = restore_type
+        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the [CheckCloudResourceAuthorized](https://help.aliyun.com/document_detail/2628797.html) operation to query the ARN.
+        # 
+        # >  This parameter is applicable only to ApsaraDB RDS for SQL Server instances.
         self.role_arn = role_arn
+        # The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
+        # 
+        # *   IP address. Example: 10.23.12.24.
+        # *   CIDR block. Example: 10.23.12.24/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges from 1 to 32.
+        # 
         # This parameter is required.
         self.security_iplist = security_iplist
+        # The source instance ID, which is used if you want to restore data to a point in time.
+        # 
+        # >  This parameter is required when you set the **RestoreType** parameter to **BackupTime**.
         self.source_dbinstance_name = source_dbinstance_name
+        # The region ID of the source instance if you want to restore data to a point in time.
+        # 
+        # > If you set **RestoreType** to **BackupTime**, you must specify this parameter.
         self.source_region = source_region
+        # The character set of the destination instance. Valid values:
+        # 
+        # *   **utf8**
+        # *   **gbk**
+        # *   **latin1**
+        # *   **utf8mb4**
         self.system_dbcharset = system_dbcharset
+        # The subscription duration of the instance.
+        # 
+        # *   If you set **Period** to **Year**, the value of UsedTime ranges from **1 to 3**.
+        # *   If you set **Period** to **Month**, the value of UsedTime ranges from **1 to 9**.
+        # 
+        # > If you set PayType to **Prepaid**, you must specify UsedTime.
         self.used_time = used_time
+        # The VPC ID of the destination instance. This parameter is available only when you set the **InstanceNetworkType** parameter to **VPC**.
+        # 
+        # >  If you specify this parameter, you must also specify the **ZoneId** parameter.
         self.vpcid = vpcid
+        # The vSwitch ID of the destination instance. If you specify more than one vSwitch, separate the IDs of the vSwitches with commas (,). This parameter is available only when you set the **InstanceNetworkType** parameter to **VPC**.
+        # 
+        # >  If you specify this parameter, you must also specify the **ZoneId** parameter.
         self.v_switch_id = v_switch_id
+        # The zone ID of the destination instance. If the destination instance is deployed in multiple zones, separate the IDs of the zones with colons (:).
+        # 
+        # > If you specify a virtual private cloud (VPC) and a vSwitch, you must specify this parameter to identify the zone for the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):

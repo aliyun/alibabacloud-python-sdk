@@ -26,22 +26,60 @@ class ModifyDBProxyRequest(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
+        # Specifies whether to enable or disable the database proxy feature. Valid values:
+        # 
+        # *   **Startup**: enables the feature.
+        # *   **Shutdown**: disables the feature.
+        # *   **Modify**: modifies the configuration of the feature.
+        # 
         # This parameter is required.
         self.config_dbproxy_service = config_dbproxy_service
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # A deprecated parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
+        # The number of proxy instances that are enabled. Valid values: **1** to **16**. Default value: **1**.
+        # 
+        # >  The capability of the database proxy to process requests increases with the number of proxy instances that are enabled. You can monitor the load on the instance and specify an appropriate number of proxy instances based on the load monitoring data.
         self.dbproxy_instance_num = dbproxy_instance_num
+        # The database proxy type. Valid values:
+        # 
+        # *   **common**: general-purpose database proxy
+        # *   **exclusive** (default): dedicated database proxy
         self.dbproxy_instance_type = dbproxy_instance_type
+        # The proxy nodes.
         self.dbproxy_nodes = dbproxy_nodes
+        # The network type of the instance. Only the VPC network type is supported. Set the value to **VPC**.
+        # 
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
+        # Specifies whether to enable persistent connections. Valid values:
+        # 
+        # *   **Enabled**
+        # *   **Disabled**
+        # 
+        # > 
+        # 
+        # *   This parameter is available only for instances that run MySQL.
+        # 
+        # *   If you want to modify persistent connections, you must set the **ConfigDBProxyService** parameter to **Modify**.
         self.persistent_connection_status = persistent_connection_status
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
+        # 
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.vpcid = vpcid
+        # The ID of the vSwitch to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
+        # 
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -163,8 +201,17 @@ class ModifyDBProxyRequestDBProxyNodes(DaraModel):
         node_counts: str = None,
         zone_id: str = None,
     ):
+        # The number of CPU cores of the node. Valid values: **1** to **16**.
+        # 
+        # >  This parameter is required when you configure the **DBProxyNodes** parameter.
         self.cpu_cores = cpu_cores
+        # The number of proxy nodes in the zone. Valid values: **1** and **2**.
+        # 
+        # >  This parameter is required when you configure the **DBProxyNodes** parameter.
         self.node_counts = node_counts
+        # The ID of the zone in which the node resides.
+        # 
+        # >  This parameter is required when you configure the **DBProxyNodes** parameter.
         self.zone_id = zone_id
 
     def validate(self):

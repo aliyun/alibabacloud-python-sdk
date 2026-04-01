@@ -32,13 +32,11 @@ class CreateRCSnapshotRequest(DaraModel):
         self.instant_access_retention_days = instant_access_retention_days
         # The region ID.
         self.region_id = region_id
-        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
         # 
         # By default, this parameter is left empty, which specifies that the snapshot is not automatically released.
         self.retention_days = retention_days
-        # Tag Details.
         self.tag = tag
         # This parameter has been deprecated.
         self.zone_id = zone_id
@@ -125,9 +123,7 @@ class CreateRCSnapshotRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # tag key.
         self.key = key
-        # tag value.
         self.value = value
 
     def validate(self):

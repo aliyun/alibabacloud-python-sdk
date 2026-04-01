@@ -11,7 +11,9 @@ class DescribeRCInstanceDdosCountResponseBody(DaraModel):
         ddos_count: main_models.DescribeRCInstanceDdosCountResponseBodyDdosCount = None,
         request_id: str = None,
     ):
+        # The number of instances that are under DDoS attacks.
         self.ddos_count = ddos_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,8 +51,11 @@ class DescribeRCInstanceDdosCountResponseBodyDdosCount(DaraModel):
         defense_count: str = None,
         instacen_count: str = None,
     ):
+        # The number of instances for which blackhole filtering is triggered.
         self.blackhole_count = blackhole_count
+        # The number of instances for which traffic scrubbing is triggered.
         self.defense_count = defense_count
+        # The total number of instances.
         self.instacen_count = instacen_count
 
     def validate(self):

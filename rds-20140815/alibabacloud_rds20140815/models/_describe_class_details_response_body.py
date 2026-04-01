@@ -20,17 +20,45 @@ class DescribeClassDetailsResponseBody(DaraModel):
         reference_price: str = None,
         request_id: str = None,
     ):
+        # The RDS edition of the instance. Valid values:
+        # 
+        # *   **Basic**: RDS Basic Edition
+        # *   **HighAvailability**: RDS High-availability Edition
+        # *   **AlwaysOn**: RDS Cluster Edition
+        # *   **Finance**: RDS Enterprise Edition
         self.category = category
+        # The code of the instance type.
         self.class_code = class_code
+        # The instance family of the instance.
         self.class_group = class_group
+        # The number of CPU cores that are supported by the instance type. Unit: cores.
         self.cpu = cpu
+        # The storage type of the instance. Valid values:
+        # 
+        # *   **local_ssd**: local SSDs
+        # *   **cloud_ssd**: standard SSDs
+        # *   **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
+        # *   **cloud_essd2**: ESSDs of PL2
+        # *   **cloud_essd3**: ESSD of PL3
         self.dbinstance_storage_type = dbinstance_storage_type
+        # The architecture of the instance.
         self.instruction_set_arch = instruction_set_arch
+        # The maximum number of connections.
         self.max_connections = max_connections
+        # The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
         self.max_iombps = max_iombps
+        # The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
         self.max_iops = max_iops
+        # The memory size. Unit: GB.
         self.memory_class = memory_class
+        # The price.
+        # 
+        # Unit: cents (US dollars).
+        # 
+        # > *   If you set the CommodityCode parameter to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
+        # > *   If you set the CommodityCode parameter to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
         self.reference_price = reference_price
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

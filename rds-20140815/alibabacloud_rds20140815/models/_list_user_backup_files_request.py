@@ -18,16 +18,32 @@ class ListUserBackupFilesRequest(DaraModel):
         status: str = None,
         tags: str = None,
     ):
+        # The ID of the full backup file.
         self.backup_id = backup_id
+        # The description of the full backup file.
+        # 
+        # > The system implements a fuzzy match based on the value of this parameter.
         self.comment = comment
+        # The URL from which you can download the full backup file that is stored as an object in an Object Storage Service (OSS) bucket. For more information about how to obtain the URL, see [Obtain the access URL after you upload objects](https://help.aliyun.com/document_detail/39607.html).
         self.oss_url = oss_url
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the full backup file. Valid values:
+        # 
+        # *   **Importing**: The full backup file is being imported.
+        # *   **Failed**: The full backup file fails to be imported.
+        # *   **CheckSucccess**: The full backup file passes the check.
+        # *   **BackupSuccess**: The full backup file is imported.
+        # *   **Deleted**: The full backup file is deleted.
         self.status = status
+        # The tag that is added to the full backup file.
         self.tags = tags
 
     def validate(self):

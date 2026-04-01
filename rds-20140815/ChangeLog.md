@@ -1,3 +1,7 @@
+2026-04-01 Version: 15.8.0
+- Support API ModifyDBInstance.
+
+
 2026-03-23 Version: 15.7.1
 - Update API DescribeBackupPolicy: add response parameters Body.AdvancedBackupPolicyEnabled.
 - Update API DescribeBackupPolicy: add response parameters Body.AdvancedDataPolicies.

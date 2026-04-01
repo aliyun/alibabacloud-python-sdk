@@ -13,20 +13,11 @@ class ListImportTasksRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # Instance ID. You can invoke DescribeDBInstances to obtain it.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Number of records per page. Valid values: **1–100**.  
-        # 
-        # Default Value: **30**.  
-        # >If you specify this parameter, the **PageSize** and **PageNumber** parameters are unavailable.
         self.max_results = max_results
-        # Paging cursor identity.
         self.next_token = next_token
         self.owner_id = owner_id
-        # Region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
 

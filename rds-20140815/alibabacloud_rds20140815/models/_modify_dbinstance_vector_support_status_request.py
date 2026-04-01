@@ -10,15 +10,8 @@ class ModifyDBInstanceVectorSupportStatusRequest(DaraModel):
         dbinstance_id: str = None,
         status: str = None,
     ):
-        # Instance ID. You can obtain it by invoking DescribeDBInstances.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The status of the vector storage toggle. Valid values:
-        # 
-        # - **ON**: Enabled.
-        # - **OFF**: Disabled.
-        # 
         # This parameter is required.
         self.status = status
 

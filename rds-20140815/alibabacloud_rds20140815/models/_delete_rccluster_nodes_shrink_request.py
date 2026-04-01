@@ -12,9 +12,15 @@ class DeleteRCClusterNodesShrinkRequest(DaraModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
+        # The instance IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The node information.
         self.nodes_shrink = nodes_shrink
+        # The region ID.
         self.region_id = region_id
+        # The virtual private cloud (VPC) ID.
+        # 
+        # >  This is a reserved parameter.
         self.vpc_id = vpc_id
 
     def validate(self):

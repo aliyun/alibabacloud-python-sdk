@@ -18,16 +18,31 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to delete all tags of the instance. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
+        # 
+        # Default value: **false**.
+        # 
+        # > This parameter is valid if parameters that contain **TagKey.N** are not specified.
         self.all = all
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The instance ID. You can remove tags from N instances at a time. Valid values of N: **1** to **50**.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Set the value to **INSTANCE**.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of tag keys. You can delete N tag keys at a time. Valid values of N: **1** to **20**. The value of this parameter cannot be an empty string.
         self.tag_key = tag_key
 
     def validate(self):

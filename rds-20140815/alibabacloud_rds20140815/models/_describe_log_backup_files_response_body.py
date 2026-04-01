@@ -18,10 +18,15 @@ class DescribeLogBackupFilesResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.items = items
+        # The page number of the page returned.
         self.page_number = page_number
+        # The number of log files on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total size of log files. Unit: bytes.
         self.total_file_size = total_file_size
+        # The total number of log files.
         self.total_record_count = total_record_count
 
     def validate(self):

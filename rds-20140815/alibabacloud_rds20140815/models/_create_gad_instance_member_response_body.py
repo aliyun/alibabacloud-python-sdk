@@ -11,7 +11,9 @@ class CreateGadInstanceMemberResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CreateGadInstanceMemberResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # An array that consists of the information returned.
         self.result = result
 
     def validate(self):
@@ -48,7 +50,9 @@ class CreateGadInstanceMemberResponseBodyResult(DaraModel):
         create_count: str = None,
         gad_instance_name: str = None,
     ):
+        # The number of unit nodes that are created by calling this operation.
         self.create_count = create_count
+        # The ID of the global active database cluster.
         self.gad_instance_name = gad_instance_name
 
     def validate(self):

@@ -16,10 +16,23 @@ class UpgradeDBInstanceEngineVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The effective time. Valid values:
+        # 
+        # *   **Immediate**: This is the default value.
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
+        # The major engine version that the new instance runs. Valid values:
+        # 
+        # *   **8.0**
+        # *   **5.7**
+        # *   **5.6**
+        # 
         # This parameter is required.
         self.engine_version = engine_version
         self.owner_account = owner_account

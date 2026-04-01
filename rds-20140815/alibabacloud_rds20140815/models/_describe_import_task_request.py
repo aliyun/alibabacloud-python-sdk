@@ -12,17 +12,11 @@ class DescribeImportTaskRequest(DaraModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # Instance ID. You can obtain it by calling DescribeDBInstances.
-        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # Region ID. You can obtain it by calling DescribeRegions.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # Job ID.
-        # 
         # This parameter is required.
         self.task_id = task_id
 

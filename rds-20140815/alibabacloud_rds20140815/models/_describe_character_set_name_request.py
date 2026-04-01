@@ -15,12 +15,22 @@ class DescribeCharacterSetNameRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of the database engine. Valid values:
+        # 
+        # *   **mysql**
+        # *   **mssql**
+        # *   **PostgreSQL**
+        # *   **MariaDB**
+        # 
         # This parameter is required.
         self.engine = engine
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

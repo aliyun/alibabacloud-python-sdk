@@ -11,8 +11,11 @@ class ModifyActionEventPolicyResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the event history feature is enabled.
         self.enable_event_log = enable_event_log
+        # The ID of the region for which the event history feature is enabled or disabled.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

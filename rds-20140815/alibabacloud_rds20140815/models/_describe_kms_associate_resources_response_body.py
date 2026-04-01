@@ -14,8 +14,14 @@ class DescribeKmsAssociateResourcesResponseBody(DaraModel):
         associate_status: bool = None,
         request_id: str = None,
     ):
+        # The information about the associated ApsaraDB RDS instances.
         self.associate_dbinstances = associate_dbinstances
+        # Indicates whether an associated RDS instance exists.
+        # 
+        # - **true**: Yes
+        # - **false**: No
         self.associate_status = associate_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +72,29 @@ class DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances(DaraModel):
         key_used_by: str = None,
         status: str = None,
     ):
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**
+        # *   **SQLServer**
+        # *   **PostgreSQL**
         self.engine = engine
+        # The purpose of the key. Valid values:
+        # 
+        # *   **DiskEncryption**: cloud disk encryption
+        # *   **TDE**: transparent data encryption
         self.key_used_by = key_used_by
+        # The state of the instance. Valid values:
+        # 
+        # *   **CREATING**: The instance is being created.
+        # *   **ACTIVATION**: The instance is running.
+        # *   **DELETING**: The instance is being deleted.
+        # *   **RESTARTING**: The instance is being restarted.
+        # *   **INS_MAINTAINING**: The configuration of the instance is being changed.
+        # *   **INS_MAINTAINING**: The instance is being maintained.
+        # *   **BACKUP_RECOVERING**: The instance is being restored.
+        # *   **NET_MODIFYING**: The network type of the instance is being changed.
         self.status = status
 
     def validate(self):

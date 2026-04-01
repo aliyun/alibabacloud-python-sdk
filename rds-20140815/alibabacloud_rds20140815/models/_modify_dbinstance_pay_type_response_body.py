@@ -9,6 +9,7 @@ class ModifyDBInstancePayTypeResponseBody(DaraModel):
         self,
         order_id: int = None,
     ):
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

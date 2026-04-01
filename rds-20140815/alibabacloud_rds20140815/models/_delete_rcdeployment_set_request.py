@@ -10,8 +10,12 @@ class DeleteRCDeploymentSetRequest(DaraModel):
         deployment_set_id: str = None,
         region_id: str = None,
     ):
+        # The deployment set ID.
+        # 
         # This parameter is required.
         self.deployment_set_id = deployment_set_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

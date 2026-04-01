@@ -13,10 +13,15 @@ class ActivateMigrationTargetInstanceResponseBody(DaraModel):
         source_port: int = None,
         task_id: int = None,
     ):
+        # The name of the destination instance.
         self.dbinstance_name = dbinstance_name
+        # The ID of the request.
         self.request_id = request_id
+        # The private IP address that is used to connect to the self-managed PostgreSQL instance.
         self.source_ip_address = source_ip_address
+        # The port number that is used to connect to the self-managed PostgreSQL instance.
         self.source_port = source_port
+        # The ID of the identification task.
         self.task_id = task_id
 
     def validate(self):

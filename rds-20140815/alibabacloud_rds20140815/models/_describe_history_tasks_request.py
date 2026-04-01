@@ -25,23 +25,48 @@ class DescribeHistoryTasksRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
+        # The minimum execution duration of the task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
+        # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, the specified time is automatically converted to a time that is exactly 30 days earlier than the current time.
+        # 
         # This parameter is required.
         self.from_start_time = from_start_time
+        # The instance ID. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs.
         self.instance_id = instance_id
+        # Only Instance is supported.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **10 to 100**. Default value: **10**.
         self.page_size = page_size
+        # The region ID of the pending event. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The task status. Valid values:
+        # 
+        # *   **Scheduled**
+        # *   **Running**
+        # *   **Succeed**
+        # *   **Failed**
+        # *   **Cancelling**
+        # *   **Canceled**
+        # *   **Waiting**
+        # 
+        # Separate multiple values with commas (,). By default, this parameter is left empty, which indicates that tasks in all statuses are queried.
         self.status = status
+        # The task ID. You can call the DescribeTasks operation to query the task ID. If multiple task IDs exist, separate them with commas (,). You can specify up to 30 task IDs. By default, this parameter is left empty, which indicates that all tasks are queried.
         self.task_id = task_id
+        # The task type. Separate multiple task types with commas (,). You can specify up to 30 task types. This parameter is empty by default, which indicates that you can specify an unlimited number of task types.
         self.task_type = task_type
+        # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
+        # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.to_start_time = to_start_time
 

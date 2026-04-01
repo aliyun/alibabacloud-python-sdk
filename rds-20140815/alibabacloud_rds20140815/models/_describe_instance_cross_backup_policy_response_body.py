@@ -24,21 +24,51 @@ class DescribeInstanceCrossBackupPolicyResponseBody(DaraModel):
         retent_type: int = None,
         retention: int = None,
     ):
+        # The status of the cross-region backup feature on the instance. Valid values:
+        # 
+        # *   **Disable**
+        # *   **Enable**
         self.backup_enabled = backup_enabled
+        # The point in time at which the cross-region backup feature is enabled. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.backup_enabled_time = backup_enabled_time
+        # The ID of the destination region where the cross-region backup files of the instance are stored.
         self.cross_backup_region = cross_backup_region
+        # The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
         self.cross_backup_type = cross_backup_type
+        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+        # 
+        # >  The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
+        # The database engine of the instance.
         self.engine = engine
+        # The database engine version.
         self.engine_version = engine_version
+        # The lock status of the instance. Valid values:
+        # 
+        # *   **Unlock**: The instance is not locked.
+        # *   **ManualLock**: The instance is manually locked.
+        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
+        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
+        # The status of the cross-region log backup feature on the instance. Valid values:
+        # 
+        # *   **Disable**
+        # *   **Enable**
         self.log_backup_enabled = log_backup_enabled
+        # The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_backup_enabled_time = log_backup_enabled_time
+        # The region ID of the instance.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The policy that is used to retain the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that the cross-region backup files of the instance are retained based on the specified retention period.
         self.retent_type = retent_type
+        # The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
         self.retention = retention
 
     def validate(self):

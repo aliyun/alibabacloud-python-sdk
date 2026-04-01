@@ -18,12 +18,18 @@ class DescribeMetaListResponseBody(DaraModel):
         total_page_count: int = None,
         total_record_count: int = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
         self.items = items
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of pages returned.
         self.total_page_count = total_page_count
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):

@@ -17,11 +17,16 @@ class DescribeMigrateTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.items = items
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):

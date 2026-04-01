@@ -21,21 +21,53 @@ class ModifyDBProxyInstanceShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         v_switch_ids: str = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # A deprecated parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
+        # The number of database proxies. If you set this parameter to 0, the database proxy feature is disabled for the instance. Valid values: **1** to **16**.
+        # 
+        # >  The capability of the database proxy feature to process requests increases with the number of database proxies that are enabled. You can monitor the load on the instance and specify an appropriate number of database proxies based on the load monitoring data.
+        # 
         # This parameter is required.
         self.dbproxy_instance_num = dbproxy_instance_num
+        # The database proxy type. Valid values:
+        # 
+        # *   **common**: general-purpose database proxy
+        # *   **exclusive** (default): dedicated database proxy
+        # 
         # This parameter is required.
         self.dbproxy_instance_type = dbproxy_instance_type
+        # List of proxy nodes.
+        # 
+        # > This parameter must be passed when the current proxy instance is deployed in multiple availability zones.
         self.dbproxy_nodes_shrink = dbproxy_nodes_shrink
+        # The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # >  If the **EffectiveTime** parameter is set to **SpecificTime**, you must specify this parameter.
         self.effective_specific_time = effective_specific_time
+        # The effective time. Valid values:
+        # 
+        # *   **Immediate**: The effective time is immediate.
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # *   **SpecificTime**: The effective time is a specified point in time.
+        # 
+        # Default value: **MaintainTime**.
         self.effective_time = effective_time
+        # The list of available zones for migration agents.
+        # 
+        # > Currently, only RDS MySQL cloud disk version agent instance migration is supported.
         self.migrate_azshrink = migrate_azshrink
         self.owner_id = owner_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the vSwitch in the destination zone. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/610431.html) operation to query existing vSwitches.
+        # 
+        # >  Only database proxies for ApsaraDB RDS for MySQL instances that use cloud disks can be migrated to different zones.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

@@ -14,6 +14,7 @@ class DescribeDedicatedHostGroupsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.dedicated_host_groups = dedicated_host_groups
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

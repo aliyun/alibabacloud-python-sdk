@@ -23,23 +23,50 @@ class CreateDBInstanceEndpointRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The prefix of the internal endpoint.
+        # 
+        # When you create any type of endpoint, an internal endpoint is automatically created for the endpoint. This parameter specifies the prefix of the internal endpoint.
+        # 
         # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
+        # The user-defined description of the endpoint.
         self.dbinstance_endpoint_description = dbinstance_endpoint_description
+        # The endpoint type. Valid values:
+        # 
+        # *   Primary: read/write endpoint of the instance
+        # *   Readonly: read-only endpoint of the instance
+        # 
         # This parameter is required.
         self.dbinstance_endpoint_type = dbinstance_endpoint_type
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The information about the endpoint.
+        # 
         # This parameter is required.
         self.node_items = node_items
+        # The port number of the internal endpoint. You can specify the port number for the internal endpoint.
+        # 
+        # Valid values: 3000 to 5999.
+        # 
         # This parameter is required.
         self.port = port
+        # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        # The vSwitch ID of the internal endpoint.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The VPC ID of the internal endpoint.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 
@@ -144,10 +171,17 @@ class CreateDBInstanceEndpointRequestNodeItems(DaraModel):
         node_id: str = None,
         weight: int = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The node ID.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The weight of the node. Read requests are distributed based on the weight.
+        # 
+        # Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):

@@ -22,7 +22,6 @@ class ResizeRCInstanceDiskRequest(DaraModel):
         # 
         # >  If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
         self.auto_pay = auto_pay
-        # The disk ID.
         self.disk_id = disk_id
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 

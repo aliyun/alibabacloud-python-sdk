@@ -10,8 +10,11 @@ class StartRCInstanceRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
