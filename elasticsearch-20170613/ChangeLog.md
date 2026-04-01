@@ -1,3 +1,15 @@
+2026-04-01 Version: 5.3.0
+- Support API GetKeystores.
+- Support API InitModel.
+- Support API ListUserPlugin.
+- Support API PluginAnalysis.
+- Support API RemovePlugin.
+- Support API UpdateFalconSeek.
+- Support API UpdateKeystores.
+- Support API UpdateKibanaSso.
+- Support API UpgradeInfo.
+
+
 2026-03-19 Version: 5.2.0
 - Support API ListEventRecords.
 - Support API ListStatsEventRecords.
