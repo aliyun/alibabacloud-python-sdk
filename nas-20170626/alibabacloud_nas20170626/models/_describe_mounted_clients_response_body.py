@@ -16,7 +16,6 @@ class DescribeMountedClientsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried clients.
         self.clients = clients
         # The page number.
         self.page_number = page_number
@@ -113,7 +112,6 @@ class DescribeMountedClientsResponseBodyClientsClient(DaraModel):
         self,
         client_ip: str = None,
     ):
-        # The IP address of the client.
         self.client_ip = client_ip
 
     def validate(self):

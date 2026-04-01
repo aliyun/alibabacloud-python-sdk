@@ -16,7 +16,6 @@ class DescribeFileSystemsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The file system list.
         self.file_systems = file_systems
         # The page number.
         self.page_number = page_number
@@ -146,125 +145,39 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         vsw_ids: main_models.DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds = None,
         zone_id: str = None,
     ):
-        # Number of access points.
         self.access_point_count = access_point_count
-        # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The bandwidth of the file system.
-        # 
-        # Unit: MB/s. This parameter is unavailable for General-purpose NAS file systems.
         self.bandwidth = bandwidth
-        # The capacity of the file system.
-        # 
-        # Unit: GiB.
         self.capacity = capacity
-        # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   Subscription
-        # *   PayAsYouGo
-        # *   Package: storage plan
         self.charge_type = charge_type
-        # The time when the file system was created.
         self.create_time = create_time
-        # The description of the file system.
         self.description = description
-        # Indicates whether the data in the file system is encrypted.
-        # 
-        # Valid values:
-        # 
-        # *   0: The data in the file system is not encrypted.
-        # *   1: A NAS-managed key is used to encrypt the data in the file system.
-        # *   2: A KMS-managed key is used to encrypt the data in the file system.
         self.encrypt_type = encrypt_type
-        # The time when the file system expires.
         self.expired_time = expired_time
-        # The ID of the file system.
         self.file_system_id = file_system_id
-        # The file system type.
-        # 
-        # Valid values:
-        # 
-        # *   standard: General-purpose NAS
-        # *   extreme: Extreme NAS
-        # *   cpfs: CPFS (locally redundant storage)
-        # *   cpfsse: CPFS SE (zone-redundant storage)
         self.file_system_type = file_system_type
-        # The ID of the key that is managed by Key Management Service (KMS).
         self.kmskey_id = kmskey_id
-        # The Lightweight Directory Access Protocol (LDAP) configurations.
-        # 
-        # This parameter is available only for CPFS file systems.
         self.ldap = ldap
-        # Archive storage usage.
-        # 
-        # Unit: Byte.
         self.metered_archive_size = metered_archive_size
-        # The storage usage of the Infrequent Access (IA) storage medium.
-        # 
-        # Unit: bytes.
         self.metered_iasize = metered_iasize
-        # The storage usage of the file system.
-        # 
-        # The value of this parameter is the maximum storage usage of the file system over the last hour. Unit: bytes.
         self.metered_size = metered_size
-        # The queried mount targets.
         self.mount_targets = mount_targets
-        # The options.
         self.options = options
-        # The information about storage plans.
         self.packages = packages
-        # The protocol type of the file system.
-        # 
-        # Valid values:
-        # 
-        # *   NFS: Network File System.
-        # *   SMB: Server Message Block.
-        # *   cpfs: The protocol type supported by the CPFS file system.
         self.protocol_type = protocol_type
-        # The vSwitch ID.
         self.quorum_vsw_id = quorum_vsw_id
-        # Storage redundancy type. Returned only for CPFS SE.
         self.redundancy_type = redundancy_type
-        # A list of IDs for the zone-redundant vSwitches.
         self.redundancy_vswitch_ids = redundancy_vswitch_ids
-        # The region ID.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the file system. Valid values:
-        # - Pending: The file system is being created or modified.
-        # - Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
-        # - Stopped: The file system is unavailable.
-        # - Extending: The file system is being scaled up.
-        # - Stopping: The file system is being stopped.
-        # - Deleting: The file system is being deleted.
         self.status = status
-        # The storage type.
-        # 
-        # Valid values:
-        # 
-        # *   General-purpose NAS: Capacity, Performance, Premium
-        # *   Extreme NAS: standard, advance
-        # *   CPFS: advance_100 (100 MB/s/TiB Baseline), advance_200 (200 MB/s/TiB Baseline), economic
-        # *   CPFS SE: advance_100 (100 MB/s/TiB Baseline)
         self.storage_type = storage_type
-        # The features that are supported by the file system.
         self.supported_features = supported_features
-        # The tags that are attached to the file system.
         self.tags = tags
-        # The version number of the file system.
-        # 
-        # This parameter is available only for Extreme NAS file systems and CPFS file systems.
         self.version = version
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # >  This parameter is not publicly available.
         self.vsc_target = vsc_target
-        # The information about vSwitch.
         self.vsw_ids = vsw_ids
-        # The ID of the zone where the file system resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -576,9 +489,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -705,20 +616,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage(DaraMo
         size: int = None,
         start_time: str = None,
     ):
-        # The end time of the validity period for the storage plan.
         self.expired_time = expired_time
-        # The ID of the storage plan.
         self.package_id = package_id
-        # The type of the storage plan.
-        # 
-        # Valid values:
-        # 
-        # *   ssd: The storage plan for Performance NAS file systems.
-        # *   hybrid: The storage plan for Capacity NAS file systems.
         self.package_type = package_type
-        # The capacity of the storage plan. Unit: bytes.
         self.size = size
-        # The start time of the validity period for the storage plan.
         self.start_time = start_time
 
     def validate(self):
@@ -772,12 +673,6 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions(DaraModel):
         enable_oplock: bool = None,
     ):
         self.enable_abe = enable_abe
-        # Specifies whether to enable the oplock feature. Valid values:
-        # 
-        # *   true: enables the feature.
-        # *   false: disables the feature.
-        # 
-        # >  Only Server Message Block (SMB) file systems support this feature.
         self.enable_oplock = enable_oplock
 
     def validate(self):
@@ -854,35 +749,14 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         vpc_id: str = None,
         vsw_id: str = None,
     ):
-        # The name of the permission group that is attached to the mount target.
         self.access_group_name = access_group_name
-        # The information about client management nodes.
-        # 
-        # This parameter is available only for CPFS file systems.
         self.client_master_nodes = client_master_nodes
-        # The dual-stack (IPv4 and IPv6) domain name of the mount target.
-        # > Only Extreme NAS file systems that reside in the Chinese mainland support IPv6.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
-        # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The network type. Valid value: vpc.
         self.network_type = network_type
-        # The status of the mount target.
-        # 
-        # Valid values:
-        # 
-        # *   Active
-        # *   Inactive
-        # *   Pending
-        # *   Deleting
-        # *   Hibernating
-        # *   Hibernated
         self.status = status
-        # The tags that are attached to the mount target.
         self.tags = tags
-        # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -999,9 +873,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1072,11 +944,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         ecs_id: str = None,
         ecs_ip: str = None,
     ):
-        # The default logon password of the ECS instance on the client management node.
         self.default_passwd = default_passwd
-        # The ID of the ECS instance on the client management node.
         self.ecs_id = ecs_id
-        # The IP address of the ECS instance on the client management node.
         self.ecs_ip = ecs_ip
 
     def validate(self):
@@ -1118,11 +987,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap(DaraModel):
         search_base: str = None,
         uri: str = None,
     ):
-        # An LDAP entry.
         self.bind_dn = bind_dn
-        # An LDAP search base.
         self.search_base = search_base
-        # An LDAP URI.
         self.uri = uri
 
     def validate(self):

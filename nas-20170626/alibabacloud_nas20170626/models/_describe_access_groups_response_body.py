@@ -16,7 +16,6 @@ class DescribeAccessGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried permission groups.
         self.access_groups = access_groups
         # The page number.
         self.page_number = page_number
@@ -120,27 +119,13 @@ class DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup(DaraModel):
         region_id: str = None,
         rule_count: int = None,
     ):
-        # The name of the permission group.
         self.access_group_name = access_group_name
-        # The network type of the permission group. Valid value: **Vpc**.
         self.access_group_type = access_group_type
-        # The time when the permission group was created.
         self.create_time = create_time
-        # The description of the permission group.
         self.description = description
-        # The type of the file system.
-        # 
-        # Valid values:
-        # 
-        # *   standard: General-purpose NAS
-        # *   extreme: Extreme NAS
-        # *   cpfs: CPFS
         self.file_system_type = file_system_type
-        # The number of mount targets to which the permission group is attached.
         self.mount_target_count = mount_target_count
-        # Region ID.
         self.region_id = region_id
-        # The total number of rules in the permission group.
         self.rule_count = rule_count
 
     def validate(self):

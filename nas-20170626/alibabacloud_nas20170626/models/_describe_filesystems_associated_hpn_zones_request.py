@@ -13,7 +13,12 @@ class DescribeFilesystemsAssociatedHpnZonesRequest(DaraModel):
         filesystems: List[main_models.DescribeFilesystemsAssociatedHpnZonesRequestFilesystems] = None,
         region_id: str = None,
     ):
+        # The collection of file system IDs.
+        # 
+        # >  The maximum number of elements in the set must be less than or equal to 20.
         self.filesystems = filesystems
+        # The ID of the region where the file system resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -56,6 +61,7 @@ class DescribeFilesystemsAssociatedHpnZonesRequestFilesystems(DaraModel):
         self,
         file_system_id: str = None,
     ):
+        # The ID of the CPFS for Lingjun file system. Must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         self.file_system_id = file_system_id
 
     def validate(self):

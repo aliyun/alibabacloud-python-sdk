@@ -13,7 +13,9 @@ class DescribeFilesystemsAssociatedHpnZonesResponseBody(DaraModel):
         filesystems: List[main_models.DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems] = None,
         request_id: str = None,
     ):
+        # The list of HpnZones associated with the file system.
         self.filesystems = filesystems
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems(DaraModel):
         file_system_id: str = None,
         zone_id: str = None,
     ):
+        # The list of HpnZones supported by the file system.
         self.associated_hpn_zones = associated_hpn_zones
+        # The ID of the CPFS for Lingjun file system.
         self.file_system_id = file_system_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

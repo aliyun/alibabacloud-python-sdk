@@ -198,6 +198,9 @@ from ._describe_filesystems_vsc_attach_info_response import DescribeFilesystemsV
 from ._describe_lifecycle_policies_request import DescribeLifecyclePoliciesRequest
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBody
 from ._describe_lifecycle_policies_response import DescribeLifecyclePoliciesResponse
+from ._describe_lifecycle_policy_logs_request import DescribeLifecyclePolicyLogsRequest
+from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBody
+from ._describe_lifecycle_policy_logs_response import DescribeLifecyclePolicyLogsResponse
 from ._describe_log_analysis_request import DescribeLogAnalysisRequest
 from ._describe_log_analysis_response_body import DescribeLogAnalysisResponseBody
 from ._describe_log_analysis_response import DescribeLogAnalysisResponse
@@ -345,15 +348,24 @@ from ._set_fileset_quota_response import SetFilesetQuotaResponse
 from ._start_data_flow_request import StartDataFlowRequest
 from ._start_data_flow_response_body import StartDataFlowResponseBody
 from ._start_data_flow_response import StartDataFlowResponse
+from ._start_lifecycle_policy_execution_request import StartLifecyclePolicyExecutionRequest
+from ._start_lifecycle_policy_execution_response_body import StartLifecyclePolicyExecutionResponseBody
+from ._start_lifecycle_policy_execution_response import StartLifecyclePolicyExecutionResponse
 from ._stop_data_flow_request import StopDataFlowRequest
 from ._stop_data_flow_response_body import StopDataFlowResponseBody
 from ._stop_data_flow_response import StopDataFlowResponse
+from ._stop_lifecycle_policy_execution_request import StopLifecyclePolicyExecutionRequest
+from ._stop_lifecycle_policy_execution_response_body import StopLifecyclePolicyExecutionResponseBody
+from ._stop_lifecycle_policy_execution_response import StopLifecyclePolicyExecutionResponse
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequest
+from ._update_lifecycle_policy_response_body import UpdateLifecyclePolicyResponseBody
+from ._update_lifecycle_policy_response import UpdateLifecyclePolicyResponse
 from ._update_recycle_bin_attribute_request import UpdateRecycleBinAttributeRequest
 from ._update_recycle_bin_attribute_response_body import UpdateRecycleBinAttributeResponseBody
 from ._update_recycle_bin_attribute_response import UpdateRecycleBinAttributeResponse
@@ -442,6 +454,9 @@ from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesys
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePolicies
+from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules
+from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules
+from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs
 from ._describe_log_analysis_response_body import DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue
 from ._describe_log_analysis_response_body import DescribeLogAnalysisResponseBodyAnalysesAnalysis
 from ._describe_log_analysis_response_body import DescribeLogAnalysisResponseBodyAnalyses
@@ -486,6 +501,8 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_file_system_request import ModifyFileSystemRequestOptions
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequestRetrieveRules
+from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequestTransitRules
 
 __all__ = [
     AddClientToBlackListRequest,
@@ -684,6 +701,9 @@ __all__ = [
     DescribeLifecyclePoliciesRequest,
     DescribeLifecyclePoliciesResponseBody,
     DescribeLifecyclePoliciesResponse,
+    DescribeLifecyclePolicyLogsRequest,
+    DescribeLifecyclePolicyLogsResponseBody,
+    DescribeLifecyclePolicyLogsResponse,
     DescribeLogAnalysisRequest,
     DescribeLogAnalysisResponseBody,
     DescribeLogAnalysisResponse,
@@ -831,15 +851,24 @@ __all__ = [
     StartDataFlowRequest,
     StartDataFlowResponseBody,
     StartDataFlowResponse,
+    StartLifecyclePolicyExecutionRequest,
+    StartLifecyclePolicyExecutionResponseBody,
+    StartLifecyclePolicyExecutionResponse,
     StopDataFlowRequest,
     StopDataFlowResponseBody,
     StopDataFlowResponse,
+    StopLifecyclePolicyExecutionRequest,
+    StopLifecyclePolicyExecutionResponseBody,
+    StopLifecyclePolicyExecutionResponse,
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateLifecyclePolicyRequest,
+    UpdateLifecyclePolicyResponseBody,
+    UpdateLifecyclePolicyResponse,
     UpdateRecycleBinAttributeRequest,
     UpdateRecycleBinAttributeResponseBody,
     UpdateRecycleBinAttributeResponse,
@@ -928,6 +957,9 @@ __all__ = [
     DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules,
     DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules,
     DescribeLifecyclePoliciesResponseBodyLifecyclePolicies,
+    DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules,
+    DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules,
+    DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs,
     DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue,
     DescribeLogAnalysisResponseBodyAnalysesAnalysis,
     DescribeLogAnalysisResponseBodyAnalyses,
@@ -971,5 +1003,7 @@ __all__ = [
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
     ModifyFileSystemRequestOptions,
-    TagResourcesRequestTag
+    TagResourcesRequestTag,
+    UpdateLifecyclePolicyRequestRetrieveRules,
+    UpdateLifecyclePolicyRequestTransitRules
 ]

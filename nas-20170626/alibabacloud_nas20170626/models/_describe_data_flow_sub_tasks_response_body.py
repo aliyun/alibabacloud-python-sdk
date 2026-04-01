@@ -14,7 +14,6 @@ class DescribeDataFlowSubTasksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details about data streaming tasks.
         self.data_flow_sub_task = data_flow_sub_task
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
@@ -108,51 +107,19 @@ class DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask(DaraMod
         start_time: str = None,
         status: str = None,
     ):
-        # The time when the data streaming task was created.
         self.create_time = create_time
-        # The ID of the data flow.
         self.data_flow_id = data_flow_id
-        # The ID of the data streaming task.
         self.data_flow_sub_task_id = data_flow_sub_task_id
-        # The ID of the data flow task.
         self.data_flow_task_id = data_flow_task_id
-        # The path of the destination file. Limits:
-        # 
-        # *   The path must be 1 to 1,023 characters in length.
-        # *   The path must be encoded in UTF-8.
-        # *   The path must start with a forward slash (/).
-        # *   The path must end with the file name.
         self.dst_file_path = dst_file_path
-        # The time when the data streaming task ended.
         self.end_time = end_time
-        # The error message returned when the task failed.
         self.error_msg = error_msg
-        # The file information.
         self.file_detail = file_detail
-        # The ID of the file system.
         self.file_system_id = file_system_id
-        # The progress of the data streaming task. Valid values: 0 to 10000.
         self.progress = progress
-        # The progress information about data streaming tasks.
         self.progress_stats = progress_stats
-        # The path of the source file. Limits:
-        # 
-        # *   The path must be 1 to 1,023 characters in length.
-        # *   The path must be encoded in UTF-8.
-        # *   The path must start with a forward slash (/).
-        # *   The path must end with the file name.
         self.src_file_path = src_file_path
-        # The time when the data streaming task started.
         self.start_time = start_time
-        # The status of the data streaming task. Valid values:
-        # 
-        # *   EXPIRED: The task is terminated.
-        # *   CREATED: The task is created.
-        # *   RUNNING: The task is running.
-        # *   COMPLETE: The task is complete.
-        # *   CANCELING: The task is being canceled.
-        # *   FAILED: The task failed to be executed.
-        # *   CANCELED: The task is canceled.
         self.status = status
 
     def validate(self):
@@ -266,13 +233,9 @@ class DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgress
         bytes_done: int = None,
         bytes_total: int = None,
     ):
-        # The actual amount of data for which the data flow task is complete. Unit: bytes.
         self.actual_bytes = actual_bytes
-        # The average flow velocity. Unit: bytes/s.
         self.average_speed = average_speed
-        # The amount of data (including skipped data) for which the data flow task is complete. Unit: bytes.
         self.bytes_done = bytes_done
-        # The amount of data scanned on the source. Unit: bytes.
         self.bytes_total = bytes_total
 
     def validate(self):
@@ -320,11 +283,8 @@ class DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDeta
         modify_time: int = None,
         size: int = None,
     ):
-        # The checksum. Format example: crc64:123456.
         self.checksum = checksum
-        # The time when the file was modified. The value is a UNIX timestamp. Unit: ns.
         self.modify_time = modify_time
-        # The file size. Unit: bytes.
         self.size = size
 
     def validate(self):

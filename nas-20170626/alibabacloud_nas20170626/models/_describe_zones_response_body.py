@@ -15,7 +15,6 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried zones.
         self.zones = zones
 
     def validate(self):
@@ -89,13 +88,9 @@ class DescribeZonesResponseBodyZonesZone(DaraModel):
         performance: main_models.DescribeZonesResponseBodyZonesZonePerformance = None,
         zone_id: str = None,
     ):
-        # This parameter is reserved. You can ignore this parameter.
         self.capacity = capacity
-        # The details about file system types.
         self.instance_types = instance_types
-        # This parameter is reserved. You can ignore this parameter.
         self.performance = performance
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -212,17 +207,7 @@ class DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType(DaraModel):
         protocol_type: str = None,
         storage_type: str = None,
     ):
-        # The protocol type.
-        # 
-        # *   If the FileSystemType parameter is set to standard, the protocol type is nfs or smb.
-        # *   If the FileSystemType parameter is set to extreme, the protocol type is nfs.
-        # *   If the FileSystemType parameter is set to cpfs, the protocol type is cpfs.
         self.protocol_type = protocol_type
-        # The storage type.
-        # 
-        # *   If the FileSystemType parameter is set to standard, the storage type is Performance or Capacity.
-        # *   If the FileSystemType parameter is set to extreme, the storage type is standard or advance.
-        # *   If the FileSystemType parameter is set to cpfs, the storage type is advance_100 (100 MB/s/TiB baseline) or advance_200 (200 MB/s/TiB baseline).
         self.storage_type = storage_type
 
     def validate(self):

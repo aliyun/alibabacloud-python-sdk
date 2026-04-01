@@ -17,7 +17,6 @@ class DescribeLogAnalysisResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of log dump information.
         self.analyses = analyses
         # The HTTP status code.
         self.code = code
@@ -123,9 +122,7 @@ class DescribeLogAnalysisResponseBodyAnalysesAnalysis(DaraModel):
         meta_key: str = None,
         meta_value: main_models.DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue = None,
     ):
-        # The ID of the file system.
         self.meta_key = meta_key
-        # The log dump information of the file system.
         self.meta_value = meta_value
 
     def validate(self):
@@ -164,13 +161,9 @@ class DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue(DaraModel):
         region: str = None,
         role_arn: str = None,
     ):
-        # The name of the dedicated Logstore that is used to store NAS operation logs.
         self.logstore = logstore
-        # The name of the project where the dedicated Logstore resides.
         self.project = project
-        # The region where the dedicated Logstore resides.
         self.region = region
-        # The role that is used by NAS to access Simple Log Service.
         self.role_arn = role_arn
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeAutoSnapshotTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried automatic snapshot tasks.
         self.auto_snapshot_tasks = auto_snapshot_tasks
         # The page number.
         self.page_number = page_number
@@ -114,9 +113,7 @@ class DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask(Dar
         auto_snapshot_policy_id: str = None,
         source_file_system_id: str = None,
     ):
-        # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The ID of the file system.
         self.source_file_system_id = source_file_system_id
 
     def validate(self):

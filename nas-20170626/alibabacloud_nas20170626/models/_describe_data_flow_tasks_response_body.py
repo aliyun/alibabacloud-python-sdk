@@ -18,7 +18,6 @@ class DescribeDataFlowTasksResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about dataflow tasks.
         self.task_info = task_info
 
     def validate(self):
@@ -117,126 +116,28 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(DaraModel):
         task_id: str = None,
         transfer_file_list_path: str = None,
     ):
-        # The conflict policy for files with the same name. Valid values:
-        # 
-        # *   SKIP_THE_FILE: skips files with the same name.
-        # *   KEEP_LATEST: compares the update time and keeps the latest version.
-        # *   OVERWRITE_EXISTING: forcibly overwrites the existing file.
         self.conflict_policy = conflict_policy
-        # The time when the task was created.
         self.create_time = create_time
-        # The ID of the dataflow.
         self.data_flow_id = data_flow_id
-        # The type of data on which operations are performed by the dataflow task. The following information is displayed:
-        # 
-        # *   Metadata: the metadata of a file, including the timestamp, ownership, and permission information of the file. If you select Metadata, only the metadata of the file is imported. You can only query the file. When you access the file data, the file is loaded from the source storage as required.
-        # *   Data: the data blocks of the file.
-        # *   MetaAndData: the metadata and data blocks of the file.
-        # 
-        # >  CPFS for Lingjun supports only the MetaAndData type.
         self.data_type = data_type
-        # The directory in which the dataflow task is executed.
         self.directory = directory
-        # The directory mapped to the dataflow task.
         self.dst_directory = dst_directory
-        # The end time of the task.
         self.end_time = end_time
-        # The cause of the task exception.
-        # 
-        # >  If this parameter is not returned or the return value is empty, no error occurs.
         self.error_msg = error_msg
-        # The directory of the fileset in the CPFS file system.
-        # 
-        # Limits:
-        # 
-        # *   The directory must be 2 to 1024 characters in length.
-        # *   The directory must be encoded in UTF-8.
-        # *   The directory must start and end with a forward slash (/).
-        # *   The directory must be a fileset directory in the CPFS file system.
-        # 
-        # >  Only CPFS supports this parameter.
         self.file_system_path = file_system_path
-        # The ID of the file system.
         self.filesystem_id = filesystem_id
-        # The path of the smart directory.
         self.fs_path = fs_path
-        # Filters subdirectories and transfers their contents.
-        # 
-        # >  Only CPFS for Lingjun supports this operation.
         self.includes = includes
-        # The initiator of the dataflow task. The following information is displayed:
-        # 
-        # *   User: The task is initiated by a user.
-        # *   System: The task is automatically initiated by CPFS based on the automatic update interval.
-        # 
-        # >  Only CPFS supports this parameter.
         self.originator = originator
-        # The progress of the dataflow task. The number of operations that have been performed by the dataflow task.
         self.progress = progress
-        # The progress of the dataflow task.
         self.progress_stats = progress_stats
-        # The save path of dataflow task reports in the CPFS file system.
-        # 
-        # *   The task reports for a CPFS file system are generated in the `.dataflow_report` directory of the CPFS file system.
-        # *   CPFS for Lingjun returns an OSS download link for you to download the task reports.
         self.report_path = report_path
-        # The reports.
-        # 
-        # > 
-        # 
-        # *   Streaming tasks do not support reports.
-        # 
-        # *   If the WithReport parameter is set to True, the CPFS for Lingjun report data is returned.
-        # 
-        # *   Only CPFS for Lingjun supports the WithReport parameter.
         self.reports = reports
-        # The access path of the source storage. Format: `<storage type>://[<account id>:]<path>`.
-        # 
-        # Among them:
-        # 
-        # *   storage type: Only Object Storage Service (OSS) is supported.
-        # 
-        # *   account id: the UID of the account of the source storage.
-        # 
-        # *   path: the name of the OSS bucket. Limits:
-        # 
-        #     *   The name can contain only lowercase letters, digits, and hyphens (-). The name must start and end with a lowercase letter or digit.
-        #     *   The name can be up to 128 characters in length.
-        #     *   The name must be encoded in UTF-8.
-        # 
-        # > 
-        # 
-        # *   The OSS bucket must be an existing bucket in the region.
-        # 
-        # *   Only CPFS for Lingjun V2.6.0 and later support the account id parameter.
         self.source_storage = source_storage
-        # The start time of the task.
         self.start_time = start_time
-        # The status of the dataflow task. The following information is displayed:
-        # 
-        # *   Pending: The dataflow task has been created and has not started.
-        # *   Executing: The dataflow task is being executed.
-        # *   Failed: The dataflow task failed to be executed. You can view the cause of the failure in the dataflow task report.
-        # *   Completed: The dataflow task is completed. You can check that all the files have been correctly transferred in the dataflow task report.
-        # *   Canceled: The dataflow task is canceled and is not completed.
-        # *   Canceling: The dataflow task is being canceled.
         self.status = status
-        # The type of the dataflow task. The following information is displayed:
-        # 
-        # *   Import: imports data stored in the source storage to a CPFS file system.
-        # *   Export: exports specified data from a CPFS file system to the source storage.
-        # *   StreamImport: imports the specified data from the source storage to a CPFS file system in streaming mode.
-        # *   StreamExport: exports specified data from a CPFS file system to the source storage in streaming mode.
-        # *   Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
-        # *   Inventory: obtains the inventory list managed by a dataflow from the CPFS file system, providing the cache status of inventories in the dataflow.
-        # 
-        # >  Only CPFS for Lingjun V2.6.0 and later support StreamImport and StreamExport.
         self.task_action = task_action
-        # The ID of the dataflow task.
         self.task_id = task_id
-        # Specify the OSS directory and synchronize data based on the content of the CSV file in the OSS directory.
-        # 
-        # >  Only CPFS for Lingjun supports this operation.
         self.transfer_file_list_path = transfer_file_list_path
 
     def validate(self):
@@ -437,19 +338,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The name of the report.
-        # 
-        # *   CPFS:
-        # 
-        #     TotalFilesReport: task reports.
-        # 
-        # *   CPFS for Lingjun:
-        # 
-        #     *   FailedFilesReport: failed file reports.
-        #     *   SkippedFilesReport: skipped file reports.
-        #     *   SuccessFilesReport: successful file reports.
         self.name = name
-        # The report URL.
         self.path = path
 
     def validate(self):
@@ -490,21 +379,13 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats(DaraModel):
         files_total: int = None,
         remain_time: int = None,
     ):
-        # The actual amount of data for which the dataflow task is complete. Unit: bytes.
         self.actual_bytes = actual_bytes
-        # The actual number of files for which the dataflow task is complete.
         self.actual_files = actual_files
-        # The average flow velocity. Unit: bytes/s.
         self.average_speed = average_speed
-        # The amount of data (including skipped data) for which the dataflow task is complete. Unit: bytes.
         self.bytes_done = bytes_done
-        # The amount of data scanned on the source. Unit: bytes.
         self.bytes_total = bytes_total
-        # The number of files (including skipped files) for which the dataflow task is complete.
         self.files_done = files_done
-        # The number of files scanned on the source.
         self.files_total = files_total
-        # The estimated remaining execution time. Unit: seconds.
         self.remain_time = remain_time
 
     def validate(self):

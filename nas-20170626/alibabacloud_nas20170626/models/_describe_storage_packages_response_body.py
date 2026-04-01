@@ -16,7 +16,6 @@ class DescribeStoragePackagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of storage plans.
         self.packages = packages
         # The page number of the returned page.
         self.page_number = page_number
@@ -119,31 +118,12 @@ class DescribeStoragePackagesResponseBodyPackagesPackage(DaraModel):
         status: str = None,
         storage_type: str = None,
     ):
-        # The end time of the validity period for the storage plan.
         self.expired_time = expired_time
-        # The ID of the file system that is bound to the storage plan.
         self.file_system_id = file_system_id
-        # The ID of the storage plan.
         self.package_id = package_id
-        # The capacity of the storage plan.
-        # 
-        # Unit: bytes.
         self.size = size
-        # The start time of the validity period for the storage plan.
         self.start_time = start_time
-        # The status of the storage plan.
-        # 
-        # Valid values:
-        # 
-        # *   free: The storage plan is not bound to a file system. You can bind the storage plan to a file system of the same storage type.
-        # *   bound: The storage plan is bound to a file system.
         self.status = status
-        # The type of the storage plan.
-        # 
-        # Valid values:
-        # 
-        # *   Performance
-        # *   Capacity
         self.storage_type = storage_type
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeAccessRulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The rules in the permission group.
         self.access_rules = access_rules
         # The page number.
         self.page_number = page_number
@@ -121,45 +120,14 @@ class DescribeAccessRulesResponseBodyAccessRulesAccessRule(DaraModel):
         source_cidr_ip: str = None,
         user_access: str = None,
     ):
-        # The name of the permission group.
         self.access_group_name = access_group_name
-        # The ID of the rule.
         self.access_rule_id = access_rule_id
-        # The type of the file system.
-        # 
-        # Valid values:
-        # 
-        # *   standard: General-purpose File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system
         self.file_system_type = file_system_type
-        # The IPv6 address or CIDR block of the authorized object.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The priority of the rule.
-        # 
-        # If multiple rules are attached to the authorized object, the rule with the highest priority takes effect.
-        # 
-        # Valid values: 1 to 100. The value 1 indicates the highest priority.
         self.priority = priority
-        # The access permissions of the authorized object on the file system.
-        # 
-        # Valid values:
-        # 
-        # *   RDWR (default): the read and write permissions
-        # *   RDONLY: the read-only permissions
         self.rwaccess = rwaccess
-        # The region ID.
         self.region_id = region_id
-        # The IP address or CIDR block of the authorized object.
         self.source_cidr_ip = source_cidr_ip
-        # The access permissions for different types of users in the authorized object.
-        # 
-        # Valid values:
-        # 
-        # *   no_squash: allows access from root users to the file system.
-        # *   root_squash: grants root users the least permissions as the nobody user.
-        # *   all_squash: grants all users the least permissions as the nobody user.
-        # 
-        # The nobody user has the least permissions in Linux and can access only the public content of the file system. This ensures the security of the file system.
         self.user_access = user_access
 
     def validate(self):

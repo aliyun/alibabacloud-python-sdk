@@ -15,7 +15,6 @@ class DescribeFilesetsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The fileset information.
         self.entries = entries
         # The ID of the file system.
         # 
@@ -117,50 +116,16 @@ class DescribeFilesetsResponseBodyEntriesEntrie(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The time when the fileset was created.
-        # 
-        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
-        # 
-        # *   true: enables release protection.
-        # *   false: disables release protection.
-        # 
-        # > This parameter can protect filesets only against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
-        # The fileset description.
         self.description = description
-        # The usage of the file quantity.
-        # 
-        # >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
         self.file_count_usage = file_count_usage
-        # The ID of the file system.
-        # 
-        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         self.file_system_id = file_system_id
-        # The fileset path.
         self.file_system_path = file_system_path
-        # The fileset ID.
         self.fset_id = fset_id
-        # The quota information.
-        # 
-        # >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
         self.quota = quota
-        # The capacity usage. Unit: bytes.
-        # 
-        # >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
         self.space_usage = space_usage
-        # The fileset status. Valid values:
-        # 
-        # *   CREATING: The fileset is being created.
-        # *   CREATED: The fileset has been created and is running properly.
-        # *   RELEASING: The fileset is being released.
-        # *   RELEASED: The fileset has been deleted.
         self.status = status
-        # The time when the fileset was last updated.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time = update_time
 
     def validate(self):
@@ -251,15 +216,7 @@ class DescribeFilesetsResponseBodyEntriesEntrieQuota(DaraModel):
         file_count_limit: int = None,
         size_limit: int = None,
     ):
-        # The file quantity quota. Valid values:
-        # 
-        # *   Minimum value: 10000.
-        # *   Maximum value: 10000000000.
         self.file_count_limit = file_count_limit
-        # The capacity quota. Unit: bytes.
-        # 
-        # *   Minimum value: 10737418240 (10 GiB).
-        # *   Step size: 1073741824 (1 GiB).
         self.size_limit = size_limit
 
     def validate(self):

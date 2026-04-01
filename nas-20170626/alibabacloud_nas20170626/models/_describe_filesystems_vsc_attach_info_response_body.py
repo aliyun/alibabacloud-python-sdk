@@ -28,7 +28,6 @@ class DescribeFilesystemsVscAttachInfoResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of associated information.
         self.total_count = total_count
-        # A collection of file system and virtual channel association data.
         self.vsc_attach_info = vsc_attach_info
 
     def validate(self):
@@ -119,17 +118,8 @@ class DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo(Dar
         status: str = None,
         vsc_id: str = None,
     ):
-        # The ID of the file system.
         self.file_system_id = file_system_id
-        # The association status of the file system and virtual channel. Valid values:
-        # 
-        # *   Attaching: The association is being made.
-        # *   Attached: The association is complete.
-        # *   Detaching: The association is being canceled.
-        # *   Detached: The association is canceled.
-        # *   Failed: The association failed.
         self.status = status
-        # The ID of the virtual storage channel.
         self.vsc_id = vsc_id
 
     def validate(self):

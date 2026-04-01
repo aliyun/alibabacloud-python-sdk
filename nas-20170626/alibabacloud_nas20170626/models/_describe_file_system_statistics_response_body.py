@@ -17,9 +17,7 @@ class DescribeFileSystemStatisticsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The statistics of file systems.
         self.file_system_statistics = file_system_statistics
-        # The queried file systems.
         self.file_systems = file_systems
         # The page number.
         self.page_number = page_number
@@ -139,74 +137,20 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem(DaraModel):
         storage_type: str = None,
         zone_id: str = None,
     ):
-        # The capacity of the file system.
-        # 
-        # Unit: GiB.
         self.capacity = capacity
-        # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   Subscription: The subscription billing method is used.
-        # *   PayAsYouGo: The pay-as-you-go billing method is used.
-        # *   Package: A storage plan is attached to the file system.
         self.charge_type = charge_type
-        # The time when the NAS file system was created.
         self.create_time = create_time
-        # The description of the file system.
         self.description = description
-        # The time when the file system expires.
         self.expired_time = expired_time
-        # The ID of the file system.
         self.file_system_id = file_system_id
-        # The type of the file system.
-        # 
-        # Valid values:
-        # 
-        # *   standard: General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: CPFS file system
         self.file_system_type = file_system_type
-        # The storage usage of the Infrequent Access (IA) storage medium.
-        # 
-        # Unit: bytes.
         self.metered_iasize = metered_iasize
-        # The storage usage of the file system.
-        # 
-        # The value of this parameter is the maximum storage usage of the file system over the last hour. Unit: bytes.
         self.metered_size = metered_size
-        # The information about storage plans.
         self.packages = packages
-        # The protocol type of the file system.
-        # 
-        # Valid values:
-        # 
-        # *   NFS: Network File System (NFS)
-        # *   SMB: Server Message Block (SMB)
-        # *   cpfs: the protocol type supported by the CPFS file system
         self.protocol_type = protocol_type
-        # The region ID.
         self.region_id = region_id
-        # The status of the file system.
-        # 
-        # This parameter is returned for Extreme NAS file systems and Cloud Parallel File Storage (CPFS) file systems. Valid values:
-        # 
-        # *   Pending: The file system is being created or modified.
-        # *   Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
-        # *   Stopped: The file system is unavailable.
-        # *   Extending: The file system is being scaled out.
-        # *   Stopping: The file system is being disabled.
-        # *   Deleting: The file system is being deleted.
         self.status = status
-        # The storage type.
-        # 
-        # Valid values:
-        # 
-        # *   Valid values for General-purpose NAS file systems: Capacity and Performance.
-        # *   Valid values for Extreme NAS file systems: standard and advance.
-        # *   Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
         self.storage_type = storage_type
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -358,13 +302,9 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPacka
         size: int = None,
         start_time: str = None,
     ):
-        # The end time of the validity period for the storage plan.
         self.expired_time = expired_time
-        # The ID of the storage plan.
         self.package_id = package_id
-        # The capacity of the storage plan.
         self.size = size
-        # The start time of the validity period for the storage plan.
         self.start_time = start_time
 
     def validate(self):
@@ -449,21 +389,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStat
         metered_size: int = None,
         total_count: int = None,
     ):
-        # The number of expired file systems.
         self.expired_count = expired_count
-        # The number of expiring file systems.
-        # 
-        # File systems whose expiration time is less than or equal to seven days away from the current time are counted.
         self.expiring_count = expiring_count
-        # The type of the file system.
         self.file_system_type = file_system_type
-        # The storage usage of the file system.
-        # 
-        # The value of this parameter is the maximum storage usage of the file system over the last hour.
-        # 
-        # Unit: bytes.
         self.metered_size = metered_size
-        # The number of file systems of the current type.
         self.total_count = total_count
 
     def validate(self):

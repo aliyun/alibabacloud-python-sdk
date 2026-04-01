@@ -16,7 +16,6 @@ class DescribeMountTargetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried mount targets.
         self.mount_targets = mount_targets
         # The page number.
         self.page_number = page_number
@@ -122,39 +121,15 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(DaraModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
-        # The name of the permission group that is attached to the mount target.
         self.access_group = access_group
-        # The information about client management nodes.
         self.client_master_nodes = client_master_nodes
-        # The dual-stack (IPv4 and IPv6) domain name of the mount target.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
-        # The type of the mount target.
-        # 
-        # *   IPv4: an IPv4 mount target
-        # *   DualStack: a dual-stack mount target
         self.ipversion = ipversion
-        # The IPv4 domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The network type. Valid value: **Vpc**.
         self.network_type = network_type
-        # The status of the mount target.
-        # 
-        # Valid values:
-        # 
-        # *   Active: The mount target is available.
-        # *   Inactive: The mount target is unavailable.
-        # *   Pending: The mount target is being created or modified.
-        # *   Deleting: The mount target is being deleted.
-        # *   Hibernating: The mount target is being hibernated.
-        # *   Hibernated: The mount target is hibernated.
-        # 
-        # > You can mount a file system only when the mount target of the file system is in the Active state.
         self.status = status
-        # An array of tags. The array may contain up to 20 tags. If the array contains multiple tags, each tag key is unique.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -277,19 +252,7 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTargetTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. Limits:
-        # 
-        # *   The tag key cannot be null or an empty string.
-        # *   The tag key can be up to 128 characters in length.
-        # *   The key value cannot start with aliyun or acs:.
-        # *   The key value cannot contain http:// or https://.
         self.key = key
-        # The tag value.
-        # 
-        # Limits:
-        # 
-        # *   The tag value can be up to 128 characters in length.
-        # *   The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -360,11 +323,8 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesCl
         ecs_id: str = None,
         ecs_ip: str = None,
     ):
-        # The default logon password of the ECS instance.
         self.default_passwd = default_passwd
-        # The ID of the ECS instance on the client management node.
         self.ecs_id = ecs_id
-        # The IP address of the ECS instance on the client management node.
         self.ecs_ip = ecs_ip
 
     def validate(self):

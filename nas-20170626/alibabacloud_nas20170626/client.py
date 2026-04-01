@@ -5572,6 +5572,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_lifecycle_policies_with_options_async(request, runtime)
 
+    def describe_lifecycle_policy_logs_with_options(
+        self,
+        request: main_models.DescribeLifecyclePolicyLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLifecyclePolicyLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLifecyclePolicyLogs',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLifecyclePolicyLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lifecycle_policy_logs_with_options_async(
+        self,
+        request: main_models.DescribeLifecyclePolicyLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLifecyclePolicyLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLifecyclePolicyLogs',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLifecyclePolicyLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lifecycle_policy_logs(
+        self,
+        request: main_models.DescribeLifecyclePolicyLogsRequest,
+    ) -> main_models.DescribeLifecyclePolicyLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_lifecycle_policy_logs_with_options(request, runtime)
+
+    async def describe_lifecycle_policy_logs_async(
+        self,
+        request: main_models.DescribeLifecyclePolicyLogsRequest,
+    ) -> main_models.DescribeLifecyclePolicyLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_lifecycle_policy_logs_with_options_async(request, runtime)
+
     def describe_log_analysis_with_options(
         self,
         request: main_models.DescribeLogAnalysisRequest,
@@ -9526,6 +9608,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.start_data_flow_with_options_async(request, runtime)
 
+    def start_lifecycle_policy_execution_with_options(
+        self,
+        request: main_models.StartLifecyclePolicyExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartLifecyclePolicyExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartLifecyclePolicyExecution',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartLifecyclePolicyExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_lifecycle_policy_execution_with_options_async(
+        self,
+        request: main_models.StartLifecyclePolicyExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartLifecyclePolicyExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartLifecyclePolicyExecution',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartLifecyclePolicyExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_lifecycle_policy_execution(
+        self,
+        request: main_models.StartLifecyclePolicyExecutionRequest,
+    ) -> main_models.StartLifecyclePolicyExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.start_lifecycle_policy_execution_with_options(request, runtime)
+
+    async def start_lifecycle_policy_execution_async(
+        self,
+        request: main_models.StartLifecyclePolicyExecutionRequest,
+    ) -> main_models.StartLifecyclePolicyExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.start_lifecycle_policy_execution_with_options_async(request, runtime)
+
     def stop_data_flow_with_options(
         self,
         request: main_models.StopDataFlowRequest,
@@ -9607,6 +9763,80 @@ class Client(OpenApiClient):
     ) -> main_models.StopDataFlowResponse:
         runtime = RuntimeOptions()
         return await self.stop_data_flow_with_options_async(request, runtime)
+
+    def stop_lifecycle_policy_execution_with_options(
+        self,
+        request: main_models.StopLifecyclePolicyExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopLifecyclePolicyExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopLifecyclePolicyExecution',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopLifecyclePolicyExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_lifecycle_policy_execution_with_options_async(
+        self,
+        request: main_models.StopLifecyclePolicyExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopLifecyclePolicyExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopLifecyclePolicyExecution',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopLifecyclePolicyExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_lifecycle_policy_execution(
+        self,
+        request: main_models.StopLifecyclePolicyExecutionRequest,
+    ) -> main_models.StopLifecyclePolicyExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.stop_lifecycle_policy_execution_with_options(request, runtime)
+
+    async def stop_lifecycle_policy_execution_async(
+        self,
+        request: main_models.StopLifecyclePolicyExecutionRequest,
+    ) -> main_models.StopLifecyclePolicyExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.stop_lifecycle_policy_execution_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
@@ -9767,6 +9997,100 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_lifecycle_policy_with_options(
+        self,
+        request: main_models.UpdateLifecyclePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLifecyclePolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        if not DaraCore.is_null(request.paths):
+            query['Paths'] = request.paths
+        if not DaraCore.is_null(request.retrieve_rules):
+            query['RetrieveRules'] = request.retrieve_rules
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.transit_rules):
+            query['TransitRules'] = request.transit_rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLifecyclePolicy',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLifecyclePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_lifecycle_policy_with_options_async(
+        self,
+        request: main_models.UpdateLifecyclePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLifecyclePolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
+        if not DaraCore.is_null(request.paths):
+            query['Paths'] = request.paths
+        if not DaraCore.is_null(request.retrieve_rules):
+            query['RetrieveRules'] = request.retrieve_rules
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.transit_rules):
+            query['TransitRules'] = request.transit_rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLifecyclePolicy',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLifecyclePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_lifecycle_policy(
+        self,
+        request: main_models.UpdateLifecyclePolicyRequest,
+    ) -> main_models.UpdateLifecyclePolicyResponse:
+        runtime = RuntimeOptions()
+        return self.update_lifecycle_policy_with_options(request, runtime)
+
+    async def update_lifecycle_policy_async(
+        self,
+        request: main_models.UpdateLifecyclePolicyRequest,
+    ) -> main_models.UpdateLifecyclePolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_lifecycle_policy_with_options_async(request, runtime)
 
     def update_recycle_bin_attribute_with_options(
         self,

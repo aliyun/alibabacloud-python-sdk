@@ -20,7 +20,6 @@ class DescribeRegionsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The queried regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -115,11 +114,8 @@ class DescribeRegionsResponseBodyRegionsRegion(DaraModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The region name.
         self.local_name = local_name
-        # The endpoint for the region.
         self.region_endpoint = region_endpoint
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

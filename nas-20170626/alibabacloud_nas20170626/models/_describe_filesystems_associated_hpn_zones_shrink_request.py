@@ -10,7 +10,12 @@ class DescribeFilesystemsAssociatedHpnZonesShrinkRequest(DaraModel):
         filesystems_shrink: str = None,
         region_id: str = None,
     ):
+        # The collection of file system IDs.
+        # 
+        # >  The maximum number of elements in the set must be less than or equal to 20.
         self.filesystems_shrink = filesystems_shrink
+        # The ID of the region where the file system resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -22,7 +22,6 @@ class DescribeSnapshotsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The details about snapshots.
         self.snapshots = snapshots
         # The total number of snapshots returned.
         self.total_count = total_count
@@ -127,70 +126,20 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(DaraModel):
         source_file_system_version: str = None,
         status: str = None,
     ):
-        # The time when snapshot creation was complete.
-        # 
-        # The time follows the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard in UTC. The time is displayed in the `yyyy-MM-ddThh:mmZ` format.
-        # 
-        # >  This parameter is valid only when the snapshot is created. During snapshot creation, the value of this parameter is the same as that of CreateTime.
         self.completed_time = completed_time
-        # The time when the snapshot was created.
-        # 
-        # The time follows the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard in UTC. The time is displayed in the `yyyy-MM-ddThh:mmZ` format.
         self.create_time = create_time
-        # The description of the snapshot.
         self.description = description
-        # Indicates whether the snapshot is encrypted.
-        # 
-        # Valid values:
-        # 
-        # *   0: The snapshot is not encrypted.
-        # *   1: The snapshot is encrypted.
         self.encrypt_type = encrypt_type
-        # The type of the file system.
         self.file_system_type = file_system_type
-        # The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
         self.progress = progress
-        # The remaining time that is required to create the snapshot.
-        # 
-        # Unit: seconds.
         self.remain_time = remain_time
-        # The retention period of the auto snapshot.
-        # 
-        # Unit: days.
-        # 
-        # Valid values:
-        # 
-        # *   \\-1: Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
-        # *   1 to 65536: Auto snapshots are retained for the specified days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
-        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The snapshot name.
-        # 
-        # If you specify a name to create a snapshot, the name of the snapshot is returned. Otherwise, no value is returned for this parameter.
         self.snapshot_name = snapshot_name
-        # The snapshot type. Valid values:
-        # 
-        # *   auto: automatically created snapshots
-        # *   user: manually created snapshots
         self.snapshot_type = snapshot_type
-        # The ID of the source file system.
-        # 
-        # This parameter is retained even if the source file system of the snapshot is deleted.
         self.source_file_system_id = source_file_system_id
-        # The capacity of the source file system.
-        # 
-        # Unit: GiB.
         self.source_file_system_size = source_file_system_size
-        # The version of the source file system.
         self.source_file_system_version = source_file_system_version
-        # The status of the snapshot.
-        # 
-        # Valid values:
-        # 
-        # *   progressing: The snapshot is being created.
-        # *   accomplished: The snapshot is created.
-        # *   failed: The snapshot fails to be created.
         self.status = status
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-04-01 Version: 3.4.0
+- Support API DescribeLifecyclePolicyLogs.
+- Support API StartLifecyclePolicyExecution.
+- Support API StopLifecyclePolicyExecution.
+- Support API UpdateLifecyclePolicy.
+
+
 2026-01-27 Version: 3.3.1
 - Update API DescribeFileSystems: add response parameters Body.FileSystems.$.Options.EnableABE.
 - Update API GetDirectoryOrFileProperties: add response parameters Body.Entry.OfflineDuration.
