@@ -9,6 +9,7 @@ class ListCertRequest(DaraModel):
         self,
         cert_type: str = None,
         current_page: int = None,
+        identifiers: str = None,
         key_word: str = None,
         show_size: int = None,
         source_type: str = None,
@@ -22,6 +23,7 @@ class ListCertRequest(DaraModel):
         self.cert_type = cert_type
         # The number of the page to return. Default value: 1.
         self.current_page = current_page
+        self.identifiers = identifiers
         # The keyword for the query. You can enter a name, domain name, or Subject Alternative Name (SAN) extension. Fuzzy match is supported.
         self.key_word = key_word
         # The number of entries to return on each page. Default value: 50.
@@ -53,6 +55,9 @@ class ListCertRequest(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.identifiers is not None:
+            result['Identifiers'] = self.identifiers
+
         if self.key_word is not None:
             result['KeyWord'] = self.key_word
 
@@ -77,6 +82,9 @@ class ListCertRequest(DaraModel):
 
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+
+        if m.get('Identifiers') is not None:
+            self.identifiers = m.get('Identifiers')
 
         if m.get('KeyWord') is not None:
             self.key_word = m.get('KeyWord')

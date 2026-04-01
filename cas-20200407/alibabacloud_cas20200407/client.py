@@ -3054,6 +3054,8 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.identifiers):
+            query['Identifiers'] = request.identifiers
         if not DaraCore.is_null(request.key_word):
             query['KeyWord'] = request.key_word
         if not DaraCore.is_null(request.show_size):
@@ -3094,6 +3096,8 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.identifiers):
+            query['Identifiers'] = request.identifiers
         if not DaraCore.is_null(request.key_word):
             query['KeyWord'] = request.key_word
         if not DaraCore.is_null(request.show_size):
