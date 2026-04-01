@@ -12,11 +12,16 @@ class PartitionSummary(DaraModel):
         created_at: int = None,
         database_name: str = None,
         last_access_time: int = None,
+        last_requester: str = None,
         partition_name: str = None,
         storage_action_params: Dict[str, str] = None,
         storage_action_timestamp: int = None,
         storage_class: str = None,
         table_name: str = None,
+        top_requester: str = None,
+        total_file_access_num: int = None,
+        total_file_access_num_30d: int = None,
+        total_file_access_num_7d: int = None,
         total_file_count: int = None,
         total_file_size_in_bytes: int = None,
         updated_at: int = None,
@@ -27,6 +32,7 @@ class PartitionSummary(DaraModel):
         self.database_name = database_name
         # Total files in partition
         self.last_access_time = last_access_time
+        self.last_requester = last_requester
         # Partition identifier
         self.partition_name = partition_name
         self.storage_action_params = storage_action_params
@@ -34,6 +40,10 @@ class PartitionSummary(DaraModel):
         self.storage_class = storage_class
         # Table name
         self.table_name = table_name
+        self.top_requester = top_requester
+        self.total_file_access_num = total_file_access_num
+        self.total_file_access_num_30d = total_file_access_num_30d
+        self.total_file_access_num_7d = total_file_access_num_7d
         # 24h access count
         self.total_file_count = total_file_count
         # Last data access timestamp in milliseconds
@@ -57,6 +67,9 @@ class PartitionSummary(DaraModel):
         if self.last_access_time is not None:
             result['lastAccessTime'] = self.last_access_time
 
+        if self.last_requester is not None:
+            result['lastRequester'] = self.last_requester
+
         if self.partition_name is not None:
             result['partitionName'] = self.partition_name
 
@@ -71,6 +84,18 @@ class PartitionSummary(DaraModel):
 
         if self.table_name is not None:
             result['tableName'] = self.table_name
+
+        if self.top_requester is not None:
+            result['topRequester'] = self.top_requester
+
+        if self.total_file_access_num is not None:
+            result['totalFileAccessNum'] = self.total_file_access_num
+
+        if self.total_file_access_num_30d is not None:
+            result['totalFileAccessNum30d'] = self.total_file_access_num_30d
+
+        if self.total_file_access_num_7d is not None:
+            result['totalFileAccessNum7d'] = self.total_file_access_num_7d
 
         if self.total_file_count is not None:
             result['totalFileCount'] = self.total_file_count
@@ -94,6 +119,9 @@ class PartitionSummary(DaraModel):
         if m.get('lastAccessTime') is not None:
             self.last_access_time = m.get('lastAccessTime')
 
+        if m.get('lastRequester') is not None:
+            self.last_requester = m.get('lastRequester')
+
         if m.get('partitionName') is not None:
             self.partition_name = m.get('partitionName')
 
@@ -108,6 +136,18 @@ class PartitionSummary(DaraModel):
 
         if m.get('tableName') is not None:
             self.table_name = m.get('tableName')
+
+        if m.get('topRequester') is not None:
+            self.top_requester = m.get('topRequester')
+
+        if m.get('totalFileAccessNum') is not None:
+            self.total_file_access_num = m.get('totalFileAccessNum')
+
+        if m.get('totalFileAccessNum30d') is not None:
+            self.total_file_access_num_30d = m.get('totalFileAccessNum30d')
+
+        if m.get('totalFileAccessNum7d') is not None:
+            self.total_file_access_num_7d = m.get('totalFileAccessNum7d')
 
         if m.get('totalFileCount') is not None:
             self.total_file_count = m.get('totalFileCount')
