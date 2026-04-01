@@ -524,6 +524,7 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
         self,
         auto_scaling: bool = None,
         capacity_type: str = None,
+        dr_replication_mode: str = None,
         message_retention_time: int = None,
         msg_process_spec: str = None,
         provisioned_capacity: int = None,
@@ -543,6 +544,7 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
         # This parameter is valid only when the supportAutoScaling parameter is set to enable.
         self.auto_scaling = auto_scaling
         self.capacity_type = capacity_type
+        self.dr_replication_mode = dr_replication_mode
         # The retention period of messages. Unit: hours.
         # 
         # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
@@ -591,6 +593,9 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
         if self.capacity_type is not None:
             result['capacityType'] = self.capacity_type
 
+        if self.dr_replication_mode is not None:
+            result['drReplicationMode'] = self.dr_replication_mode
+
         if self.message_retention_time is not None:
             result['messageRetentionTime'] = self.message_retention_time
 
@@ -624,6 +629,9 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
 
         if m.get('capacityType') is not None:
             self.capacity_type = m.get('capacityType')
+
+        if m.get('drReplicationMode') is not None:
+            self.dr_replication_mode = m.get('drReplicationMode')
 
         if m.get('messageRetentionTime') is not None:
             self.message_retention_time = m.get('messageRetentionTime')

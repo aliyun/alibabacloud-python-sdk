@@ -1,3 +1,11 @@
+2026-04-01 Version: 5.0.4
+- Update API CreateInstance: add request parameters body.productInfo.drReplicationMode.
+- Update API GetInstance: add response parameters Body.data.productInfo.drReplicationMode.
+- Update API VerifySendMessage: add request parameters body.deliveryTimeStamp.
+- Update API VerifySendMessage: add request parameters body.messageGroup.
+- Update API VerifySendMessage: add request parameters body.userProperties.
+
+
 2026-02-04 Version: 5.0.3
 - Update API CreateInstance: add request parameters body.aclInfo.
 

@@ -5899,14 +5899,20 @@ class Client(OpenApiClient):
     ) -> main_models.VerifySendMessageResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.delivery_time_stamp):
+            body['deliveryTimeStamp'] = request.delivery_time_stamp
         if not DaraCore.is_null(request.lite_topic_name):
             body['liteTopicName'] = request.lite_topic_name
         if not DaraCore.is_null(request.message):
             body['message'] = request.message
+        if not DaraCore.is_null(request.message_group):
+            body['messageGroup'] = request.message_group
         if not DaraCore.is_null(request.message_key):
             body['messageKey'] = request.message_key
         if not DaraCore.is_null(request.message_tag):
             body['messageTag'] = request.message_tag
+        if not DaraCore.is_null(request.user_properties):
+            body['userProperties'] = request.user_properties
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -5937,14 +5943,20 @@ class Client(OpenApiClient):
     ) -> main_models.VerifySendMessageResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.delivery_time_stamp):
+            body['deliveryTimeStamp'] = request.delivery_time_stamp
         if not DaraCore.is_null(request.lite_topic_name):
             body['liteTopicName'] = request.lite_topic_name
         if not DaraCore.is_null(request.message):
             body['message'] = request.message
+        if not DaraCore.is_null(request.message_group):
+            body['messageGroup'] = request.message_group
         if not DaraCore.is_null(request.message_key):
             body['messageKey'] = request.message_key
         if not DaraCore.is_null(request.message_tag):
             body['messageTag'] = request.message_tag
+        if not DaraCore.is_null(request.user_properties):
+            body['userProperties'] = request.user_properties
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
