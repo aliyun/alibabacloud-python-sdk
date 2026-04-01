@@ -1932,6 +1932,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.identifiers):
+            query['Identifiers'] = request.identifiers
+        if not DaraCore.is_null(request.key_word):
+            query['KeyWord'] = request.key_word
         if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
         req = open_api_util_models.OpenApiRequest(
@@ -1962,6 +1966,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.identifiers):
+            query['Identifiers'] = request.identifiers
+        if not DaraCore.is_null(request.key_word):
+            query['KeyWord'] = request.key_word
         if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
         req = open_api_util_models.OpenApiRequest(

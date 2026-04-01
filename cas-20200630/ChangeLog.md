@@ -1,3 +1,8 @@
+2026-04-01 Version: 2.0.1
+- Update API DescribePcaAndExternalCACertificateList: add request parameters Identifiers.
+- Update API DescribePcaAndExternalCACertificateList: add request parameters KeyWord.
+
+
 2026-01-16 Version: 2.0.0
 - Update API CreateClientCertificate: add request parameters AliasName.
 - Update API CreateClientCertificate: add request parameters ClientToken.
