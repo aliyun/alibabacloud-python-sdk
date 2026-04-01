@@ -13,10 +13,21 @@ class FieldOutputConfig(DaraModel):
         field_name: str = None,
         field_type: str = None,
     ):
+        # Field default value.
         self.default_value = default_value
+        # Field description information.
         self.field_description = field_description
+        # Field example.
         self.field_example = field_example
+        # Field name.
         self.field_name = field_name
+        # Field type, with the following values:
+        # 
+        # - **String**: String.
+        # - **Long**: Long integer.
+        # - **Integer**: Integer.
+        # - **Double**: Double.
+        # - **Boolean**: Boolean.
         self.field_type = field_type
 
     def validate(self):

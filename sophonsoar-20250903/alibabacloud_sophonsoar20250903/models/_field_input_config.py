@@ -22,16 +22,50 @@ class FieldInputConfig(DaraModel):
         field_type: str = None,
         required: bool = None,
     ):
+        # Is the field arrayed? Possible values are:
+        # 
+        # - true: Arrayed.
+        # - false: Not Arrayed.
         self.arrayed = arrayed
+        # Field default value.
         self.default_value = default_value
+        # Field check regex.
         self.field_check_regex = field_check_regex
+        # Field types, with the following values:
+        # 
+        # - **normal**: Normal type.
+        # - **custom**: Complex type; in this mode, FieldConfigs can be configured.
         self.field_class = field_class
+        # Supports configuring nested input parameters in complex-type scenarios.
         self.field_configs = field_configs
+        # Field description.
         self.field_description = field_description
+        # Field example.
         self.field_example = field_example
+        # Field name.
         self.field_name = field_name
+        # Field path.
         self.field_path = field_path
+        # The field type. The value is as follows:
+        # 
+        # - **String**: String.
+        # - **Long**: Long integer.
+        # - **Integer**: Integer.
+        # - **Double**: Floating-point type.
+        # - **Boolean**: Boolean.
+        # - **ip**: The IP entity.
+        # - **file**: file entity.
+        # - **process**: process entity.
+        # - **incident**: event entity.
+        # - **alert**: alert entity.
+        # - **host**: host entity.
+        # - **domain**: The domain name entity.
+        # - **container**: container entity.
         self.field_type = field_type
+        # Is the field mandatory? Possible values are:
+        # 
+        # - **true**: Required.
+        # - **false**: Optional.
         self.required = required
 
     def validate(self):

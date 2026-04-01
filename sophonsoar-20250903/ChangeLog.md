@@ -1,3 +1,7 @@
+2026-04-01 Version: 1.2.0
+- Support API AbortPlaybookExecution.
+
+
 2026-01-28 Version: 1.1.0
 - Support API ExecuteComponent.
 

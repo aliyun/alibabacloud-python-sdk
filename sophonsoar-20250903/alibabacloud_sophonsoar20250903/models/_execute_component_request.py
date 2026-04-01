@@ -15,12 +15,24 @@ class ExecuteComponentRequest(DaraModel):
         play_book_node_name: str = None,
         playbook_uuid: str = None,
     ):
+        # The name of the component action.
         self.component_action_name = component_action_name
+        # Asset UUID.
         self.component_asset_uuid = component_asset_uuid
+        # Component input parameters.
         self.component_input = component_input
+        # The name of the component.
         self.component_name = component_name
+        # The language type for requests and responses. Values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The name of the node corresponding to the current component in the playbook.
         self.play_book_node_name = play_book_node_name
+        # The UUID of the playbook.
+        # > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
         self.playbook_uuid = playbook_uuid
 
     def validate(self):

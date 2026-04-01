@@ -41,6 +41,92 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def abort_playbook_execution_with_options(
+        self,
+        request: main_models.AbortPlaybookExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbortPlaybookExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.playbook_execution_uuid):
+            body['PlaybookExecutionUuid'] = request.playbook_execution_uuid
+        if not DaraCore.is_null(request.playbook_uuid):
+            body['PlaybookUuid'] = request.playbook_uuid
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbortPlaybookExecution',
+            version = '2025-09-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbortPlaybookExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def abort_playbook_execution_with_options_async(
+        self,
+        request: main_models.AbortPlaybookExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbortPlaybookExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.playbook_execution_uuid):
+            body['PlaybookExecutionUuid'] = request.playbook_execution_uuid
+        if not DaraCore.is_null(request.playbook_uuid):
+            body['PlaybookUuid'] = request.playbook_uuid
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbortPlaybookExecution',
+            version = '2025-09-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbortPlaybookExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def abort_playbook_execution(
+        self,
+        request: main_models.AbortPlaybookExecutionRequest,
+    ) -> main_models.AbortPlaybookExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.abort_playbook_execution_with_options(request, runtime)
+
+    async def abort_playbook_execution_async(
+        self,
+        request: main_models.AbortPlaybookExecutionRequest,
+    ) -> main_models.AbortPlaybookExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.abort_playbook_execution_with_options_async(request, runtime)
+
     def create_component_asset_with_options(
         self,
         request: main_models.CreateComponentAssetRequest,
