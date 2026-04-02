@@ -5,21 +5,18 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class InitializeResponseBody(DaraModel):
+class FaceCompareV2ResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.InitializeResponseBodyResult = None,
+        result: main_models.FaceCompareV2ResponseBodyResult = None,
     ):
-        # Return code
         self.code = code
-        # Return message
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return result
         self.result = result
 
     def validate(self):
@@ -57,29 +54,21 @@ class InitializeResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.InitializeResponseBodyResult()
+            temp_model = main_models.FaceCompareV2ResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class InitializeResponseBodyResult(DaraModel):
+class FaceCompareV2ResponseBodyResult(DaraModel):
     def __init__(
         self,
-        client_cfg: str = None,
-        protocol: str = None,
+        face_comparison_score: float = None,
+        passed: str = None,
         transaction_id: str = None,
-        transaction_url: str = None,
     ):
-        # Client configuration
-        self.client_cfg = client_cfg
-        # Standard encryption protocol for authentication.
-        # 
-        # > Required when integrating with H5 web pages using iframe embedding.
-        self.protocol = protocol
-        # Authentication ID
+        self.face_comparison_score = face_comparison_score
+        self.passed = passed
         self.transaction_id = transaction_id
-        # Web authentication URL
-        self.transaction_url = transaction_url
 
     def validate(self):
         pass
@@ -89,33 +78,27 @@ class InitializeResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.client_cfg is not None:
-            result['ClientCfg'] = self.client_cfg
+        if self.face_comparison_score is not None:
+            result['FaceComparisonScore'] = self.face_comparison_score
 
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
+        if self.passed is not None:
+            result['Passed'] = self.passed
 
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
-
-        if self.transaction_url is not None:
-            result['TransactionUrl'] = self.transaction_url
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientCfg') is not None:
-            self.client_cfg = m.get('ClientCfg')
+        if m.get('FaceComparisonScore') is not None:
+            self.face_comparison_score = m.get('FaceComparisonScore')
 
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
 
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
-
-        if m.get('TransactionUrl') is not None:
-            self.transaction_url = m.get('TransactionUrl')
 
         return self
 

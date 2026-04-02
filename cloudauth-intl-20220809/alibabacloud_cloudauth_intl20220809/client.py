@@ -2437,6 +2437,286 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.doc_ocr_max_with_options_async(request, runtime)
 
+    def doc_ocr_v2with_options(
+        self,
+        request: main_models.DocOcrV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DocOcrV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.card_side):
+            query['CardSide'] = request.card_side
+        if not DaraCore.is_null(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not DaraCore.is_null(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not DaraCore.is_null(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_threshold):
+            query['IdThreshold'] = request.id_threshold
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not DaraCore.is_null(request.ocr):
+            query['Ocr'] = request.ocr
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.spoof):
+            query['Spoof'] = request.spoof
+        body = {}
+        if not DaraCore.is_null(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not DaraCore.is_null(request.id_ocr_picture_file):
+            body['IdOcrPictureFile'] = request.id_ocr_picture_file
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DocOcrV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DocOcrV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def doc_ocr_v2with_options_async(
+        self,
+        request: main_models.DocOcrV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DocOcrV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.card_side):
+            query['CardSide'] = request.card_side
+        if not DaraCore.is_null(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not DaraCore.is_null(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not DaraCore.is_null(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_threshold):
+            query['IdThreshold'] = request.id_threshold
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not DaraCore.is_null(request.ocr):
+            query['Ocr'] = request.ocr
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.spoof):
+            query['Spoof'] = request.spoof
+        body = {}
+        if not DaraCore.is_null(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not DaraCore.is_null(request.id_ocr_picture_file):
+            body['IdOcrPictureFile'] = request.id_ocr_picture_file
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DocOcrV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DocOcrV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def doc_ocr_v2(
+        self,
+        request: main_models.DocOcrV2Request,
+    ) -> main_models.DocOcrV2Response:
+        runtime = RuntimeOptions()
+        return self.doc_ocr_v2with_options(request, runtime)
+
+    async def doc_ocr_v2_async(
+        self,
+        request: main_models.DocOcrV2Request,
+    ) -> main_models.DocOcrV2Response:
+        runtime = RuntimeOptions()
+        return await self.doc_ocr_v2with_options_async(request, runtime)
+
+    def doc_ocr_v2advance(
+        self,
+        request: main_models.DocOcrV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DocOcrV2Response:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        doc_ocr_v2req = main_models.DocOcrV2Request()
+        Utils.convert(request, doc_ocr_v2req)
+        if not DaraCore.is_null(request.id_ocr_picture_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.id_ocr_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            doc_ocr_v2req.id_ocr_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        doc_ocr_v2resp = self.doc_ocr_v2with_options(doc_ocr_v2req, runtime)
+        return doc_ocr_v2resp
+
+    async def doc_ocr_v2advance_async(
+        self,
+        request: main_models.DocOcrV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DocOcrV2Response:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        doc_ocr_v2req = main_models.DocOcrV2Request()
+        Utils.convert(request, doc_ocr_v2req)
+        if not DaraCore.is_null(request.id_ocr_picture_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.id_ocr_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            doc_ocr_v2req.id_ocr_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        doc_ocr_v2resp = await self.doc_ocr_v2with_options_async(doc_ocr_v2req, runtime)
+        return doc_ocr_v2resp
+
     def download_verify_record_intl_with_options(
         self,
         request: main_models.DownloadVerifyRecordIntlRequest,
@@ -2645,6 +2925,340 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.ekyc_verify_with_options_async(request, runtime)
 
+    def ekyc_verify_v2with_options(
+        self,
+        request: main_models.EkycVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.EkycVerifyV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorize):
+            query['Authorize'] = request.authorize
+        if not DaraCore.is_null(request.crop):
+            query['Crop'] = request.crop
+        if not DaraCore.is_null(request.doc_name):
+            query['DocName'] = request.doc_name
+        if not DaraCore.is_null(request.doc_no):
+            query['DocNo'] = request.doc_no
+        if not DaraCore.is_null(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not DaraCore.is_null(request.face_picture_url):
+            query['FacePictureUrl'] = request.face_picture_url
+        if not DaraCore.is_null(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_threshold):
+            query['IdThreshold'] = request.id_threshold
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not DaraCore.is_null(request.face_picture_base_64):
+            body['FacePictureBase64'] = request.face_picture_base_64
+        if not DaraCore.is_null(request.face_picture_file):
+            body['FacePictureFile'] = request.face_picture_file
+        if not DaraCore.is_null(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not DaraCore.is_null(request.id_ocr_picture_file):
+            body['IdOcrPictureFile'] = request.id_ocr_picture_file
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EkycVerifyV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EkycVerifyV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ekyc_verify_v2with_options_async(
+        self,
+        request: main_models.EkycVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.EkycVerifyV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorize):
+            query['Authorize'] = request.authorize
+        if not DaraCore.is_null(request.crop):
+            query['Crop'] = request.crop
+        if not DaraCore.is_null(request.doc_name):
+            query['DocName'] = request.doc_name
+        if not DaraCore.is_null(request.doc_no):
+            query['DocNo'] = request.doc_no
+        if not DaraCore.is_null(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not DaraCore.is_null(request.face_picture_url):
+            query['FacePictureUrl'] = request.face_picture_url
+        if not DaraCore.is_null(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_threshold):
+            query['IdThreshold'] = request.id_threshold
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not DaraCore.is_null(request.face_picture_base_64):
+            body['FacePictureBase64'] = request.face_picture_base_64
+        if not DaraCore.is_null(request.face_picture_file):
+            body['FacePictureFile'] = request.face_picture_file
+        if not DaraCore.is_null(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not DaraCore.is_null(request.id_ocr_picture_file):
+            body['IdOcrPictureFile'] = request.id_ocr_picture_file
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EkycVerifyV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EkycVerifyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ekyc_verify_v2(
+        self,
+        request: main_models.EkycVerifyV2Request,
+    ) -> main_models.EkycVerifyV2Response:
+        runtime = RuntimeOptions()
+        return self.ekyc_verify_v2with_options(request, runtime)
+
+    async def ekyc_verify_v2_async(
+        self,
+        request: main_models.EkycVerifyV2Request,
+    ) -> main_models.EkycVerifyV2Response:
+        runtime = RuntimeOptions()
+        return await self.ekyc_verify_v2with_options_async(request, runtime)
+
+    def ekyc_verify_v2advance(
+        self,
+        request: main_models.EkycVerifyV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EkycVerifyV2Response:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        ekyc_verify_v2req = main_models.EkycVerifyV2Request()
+        Utils.convert(request, ekyc_verify_v2req)
+        if not DaraCore.is_null(request.face_picture_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            ekyc_verify_v2req.face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        if not DaraCore.is_null(request.id_ocr_picture_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.id_ocr_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            ekyc_verify_v2req.id_ocr_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        ekyc_verify_v2resp = self.ekyc_verify_v2with_options(ekyc_verify_v2req, runtime)
+        return ekyc_verify_v2resp
+
+    async def ekyc_verify_v2advance_async(
+        self,
+        request: main_models.EkycVerifyV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EkycVerifyV2Response:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        ekyc_verify_v2req = main_models.EkycVerifyV2Request()
+        Utils.convert(request, ekyc_verify_v2req)
+        if not DaraCore.is_null(request.face_picture_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            ekyc_verify_v2req.face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        if not DaraCore.is_null(request.id_ocr_picture_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.id_ocr_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            ekyc_verify_v2req.id_ocr_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        ekyc_verify_v2resp = await self.ekyc_verify_v2with_options_async(ekyc_verify_v2req, runtime)
+        return ekyc_verify_v2resp
+
     def face_compare_with_options(
         self,
         request: main_models.FaceCompareRequest,
@@ -2738,6 +3352,312 @@ class Client(OpenApiClient):
     ) -> main_models.FaceCompareResponse:
         runtime = RuntimeOptions()
         return await self.face_compare_with_options_async(request, runtime)
+
+    def face_compare_v2with_options(
+        self,
+        request: main_models.FaceCompareV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.FaceCompareV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.face_picture_quality_check):
+            query['FacePictureQualityCheck'] = request.face_picture_quality_check
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.source_face_picture_url):
+            query['SourceFacePictureUrl'] = request.source_face_picture_url
+        if not DaraCore.is_null(request.target_face_picture_url):
+            query['TargetFacePictureUrl'] = request.target_face_picture_url
+        body = {}
+        if not DaraCore.is_null(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        if not DaraCore.is_null(request.source_face_picture_file):
+            body['SourceFacePictureFile'] = request.source_face_picture_file
+        if not DaraCore.is_null(request.target_face_picture):
+            body['TargetFacePicture'] = request.target_face_picture
+        if not DaraCore.is_null(request.target_face_picture_file):
+            body['TargetFacePictureFile'] = request.target_face_picture_file
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FaceCompareV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FaceCompareV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def face_compare_v2with_options_async(
+        self,
+        request: main_models.FaceCompareV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.FaceCompareV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.face_picture_quality_check):
+            query['FacePictureQualityCheck'] = request.face_picture_quality_check
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.source_face_picture_url):
+            query['SourceFacePictureUrl'] = request.source_face_picture_url
+        if not DaraCore.is_null(request.target_face_picture_url):
+            query['TargetFacePictureUrl'] = request.target_face_picture_url
+        body = {}
+        if not DaraCore.is_null(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        if not DaraCore.is_null(request.source_face_picture_file):
+            body['SourceFacePictureFile'] = request.source_face_picture_file
+        if not DaraCore.is_null(request.target_face_picture):
+            body['TargetFacePicture'] = request.target_face_picture
+        if not DaraCore.is_null(request.target_face_picture_file):
+            body['TargetFacePictureFile'] = request.target_face_picture_file
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FaceCompareV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FaceCompareV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def face_compare_v2(
+        self,
+        request: main_models.FaceCompareV2Request,
+    ) -> main_models.FaceCompareV2Response:
+        runtime = RuntimeOptions()
+        return self.face_compare_v2with_options(request, runtime)
+
+    async def face_compare_v2_async(
+        self,
+        request: main_models.FaceCompareV2Request,
+    ) -> main_models.FaceCompareV2Response:
+        runtime = RuntimeOptions()
+        return await self.face_compare_v2with_options_async(request, runtime)
+
+    def face_compare_v2advance(
+        self,
+        request: main_models.FaceCompareV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FaceCompareV2Response:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        face_compare_v2req = main_models.FaceCompareV2Request()
+        Utils.convert(request, face_compare_v2req)
+        if not DaraCore.is_null(request.source_face_picture_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.source_face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            face_compare_v2req.source_face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        if not DaraCore.is_null(request.target_face_picture_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.target_face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            face_compare_v2req.target_face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        face_compare_v2resp = self.face_compare_v2with_options(face_compare_v2req, runtime)
+        return face_compare_v2resp
+
+    async def face_compare_v2advance_async(
+        self,
+        request: main_models.FaceCompareV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FaceCompareV2Response:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        face_compare_v2req = main_models.FaceCompareV2Request()
+        Utils.convert(request, face_compare_v2req)
+        if not DaraCore.is_null(request.source_face_picture_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.source_face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            face_compare_v2req.source_face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        if not DaraCore.is_null(request.target_face_picture_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.target_face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            face_compare_v2req.target_face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        face_compare_v2resp = await self.face_compare_v2with_options_async(face_compare_v2req, runtime)
+        return face_compare_v2resp
 
     def face_cross_compare_intl_with_options(
         self,

@@ -5,21 +5,18 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class InitializeResponseBody(DaraModel):
+class EkycVerifyV2ResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.InitializeResponseBodyResult = None,
+        result: main_models.EkycVerifyV2ResponseBodyResult = None,
     ):
-        # Return code
         self.code = code
-        # Return message
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return result
         self.result = result
 
     def validate(self):
@@ -57,29 +54,25 @@ class InitializeResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.InitializeResponseBodyResult()
+            temp_model = main_models.EkycVerifyV2ResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class InitializeResponseBodyResult(DaraModel):
+class EkycVerifyV2ResponseBodyResult(DaraModel):
     def __init__(
         self,
-        client_cfg: str = None,
-        protocol: str = None,
+        ext_face_info: str = None,
+        ext_id_info: str = None,
+        passed: str = None,
+        sub_code: str = None,
         transaction_id: str = None,
-        transaction_url: str = None,
     ):
-        # Client configuration
-        self.client_cfg = client_cfg
-        # Standard encryption protocol for authentication.
-        # 
-        # > Required when integrating with H5 web pages using iframe embedding.
-        self.protocol = protocol
-        # Authentication ID
+        self.ext_face_info = ext_face_info
+        self.ext_id_info = ext_id_info
+        self.passed = passed
+        self.sub_code = sub_code
         self.transaction_id = transaction_id
-        # Web authentication URL
-        self.transaction_url = transaction_url
 
     def validate(self):
         pass
@@ -89,33 +82,39 @@ class InitializeResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.client_cfg is not None:
-            result['ClientCfg'] = self.client_cfg
+        if self.ext_face_info is not None:
+            result['ExtFaceInfo'] = self.ext_face_info
 
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
+        if self.ext_id_info is not None:
+            result['ExtIdInfo'] = self.ext_id_info
+
+        if self.passed is not None:
+            result['Passed'] = self.passed
+
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
 
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
-
-        if self.transaction_url is not None:
-            result['TransactionUrl'] = self.transaction_url
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientCfg') is not None:
-            self.client_cfg = m.get('ClientCfg')
+        if m.get('ExtFaceInfo') is not None:
+            self.ext_face_info = m.get('ExtFaceInfo')
 
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
+        if m.get('ExtIdInfo') is not None:
+            self.ext_id_info = m.get('ExtIdInfo')
+
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
 
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
-
-        if m.get('TransactionUrl') is not None:
-            self.transaction_url = m.get('TransactionUrl')
 
         return self
 

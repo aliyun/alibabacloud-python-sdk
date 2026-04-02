@@ -62,23 +62,23 @@ class InitializeRequest(DaraModel):
         use_nfc: str = None,
         verify_model: str = None,
     ):
-        # <warning>This feature is currently not supported by **Web SDK**. Please refer to the App SDK integration if needed.</warning>
+        # <warning>This feature is not supported by **Web SDK**. Please refer to the App SDK integration if needed.</warning>
         # 
-        # Whether to enable strict face quality detection:
-        # - Y: Enable (default)
-        # - N: Disable
+        # Whether to enable strict face quality check:
+        # - Y: Enabled (default)
+        # - N: Disabled
         self.app_quality_check = app_quality_check
         # Whether to enable authoritative identity verification, currently applicable only to the second-generation ID card in mainland China. (IDV product input parameter)
         self.authorize = authorize
         # Whether to enable automatic registration
         self.auto_registration = auto_registration
-        # Security Token, used for preventing duplication and tampering. If this parameter is passed, the CallbackToken field will be displayed in the callback address.
+        # Security token used for preventing duplication and tampering. If this parameter is passed, the CallbackToken field will be displayed in the callback URL.
         self.callback_token = callback_token
-        # Callback notification address for authentication results. The default callback request method is GET, and the callback address must start with https. After completing the authentication, the platform will call back this address and automatically add the transactionId, passed, and subcode fields.
+        # Callback notification URL for authentication results. The default callback request method is GET, and the callback URL must start with https. After completing the authentication, the platform will call back this URL and automatically add the transactionId, passed, and subcode fields.
         self.callback_url = callback_url
         # Whether to enable adaptive color-changing window border
-        # - **Y**: Enable
-        # - **N**: Disable
+        # - **Y**: Enabled
+        # - **N**: Disabled
         self.chameleon_frame_enable = chameleon_frame_enable
         # Whether to crop. (IDV product input parameter)
         self.crop = crop
@@ -90,47 +90,52 @@ class InitializeRequest(DaraModel):
         # 
         # **MRTDInput = 2** is required.
         self.date_of_expiry = date_of_expiry
-        # User\\"s real name.
+        # The real name of the user.
         self.doc_name = doc_name
         # User\\"s document number.
         self.doc_no = doc_no
-        # Customer-defined input to specify whether to collect more pages
+        # Customer-defined input for whether to capture additional pages
         self.doc_page_config = doc_page_config
         # Document capture mode.
         # 
         # - manual: Manual capture.
         # - auto: Automatic capture (default)
         self.doc_scan_mode = doc_scan_mode
-        # Document type, uniquely identified by an 8-digit combination.
-        # Note: This parameter is required only when ProductCode is KYC_GLOBAL, OCR_GLOBAL, or IDR_GLOBAL.
+        # Document type
+        # > For eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
+        # 
+        # > For ID_OCR, eKYC, and eYKC_MIN solutions, see the official documentation: Document Type List https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
         self.doc_type = doc_type
-        # Whether to require a video for evidence.
+        # Whether to require evidence video.
         # 
         # - N: Not required (default).
         # 
-        # - Y: During the authentication process, a 1~2 second video of the user\\"s face will be captured and returned via the query interface.
+        # - Y: During the authentication process, a 1-2 second video of the user\\"s face will be captured and returned via the query interface.
         # 
-        # > Due to the large size of the video file, the system may discard it when the network is unstable, prioritizing the transmission of necessary images for authentication.
+        # > Due to the large size of video files, the system may discard them in case of network instability, prioritizing the transmission of necessary images for authentication.
         self.doc_video = doc_video
         # Document number
         # 
         # **MRTDInput = 2** is required.
         self.document_number = document_number
-        # In the document OCR recognition step, whether the recognition result page is editable:
+        # Whether the OCR result page is editable in the document OCR recognition process:
         # 
         # - **0**: Not editable
         # 
         # - **1** (default): Editable
         self.edit_ocr_result = edit_ocr_result
+        # Enter an Indonesian email address. This field is only effective when Authorize=T.
+        # 
+        # > 
+        # > - This field is required only when the Indonesian data source is enabled.
         self.email = email
         # Experience code
         self.experience_code = experience_code
-        # Face library to be compared
+        # The face library to be compared
         self.face_group_codes = face_group_codes
-        # Base64 encoded face image. If you choose to pass the face image via FacePictureBase64, please check the image size and do not upload images larger than 1 MB.
-        # When productCode is FV_GLOBAL, choose one of the parameters between FacePictureBase64 and FacePictureUrl to pass in.
+        # Base64 encoded photo. If you choose to pass the face photo via FacePictureBase64, please check the photo size and avoid uploading overly large photos.
         self.face_picture_base_64 = face_picture_base_64
-        # Face image URL. A publicly accessible HTTP or HTTPS link. When productCode is FV_GLOBAL, choose one of the parameters between FacePictureUrl and FacePictureBase to pass in.
+        # URL of the face photo. A publicly accessible HTTP or HTTPS link.
         self.face_picture_url = face_picture_url
         # Face library for registration.
         self.face_register_group_code = face_register_group_code
@@ -140,68 +145,67 @@ class InitializeRequest(DaraModel):
         self.id_face_quality = id_face_quality
         # Whether to enable certificate anti-counterfeiting detection. (IDV product input parameter)
         self.id_spoof = id_spoof
-        # Custom OCR quality detection threshold mode:
+        # Custom OCR quality check threshold mode:
         # - **0**: Standard mode
         # - **1**: Strict mode
         # - **2**: Lenient mode
-        # - **3** (default): Disable quality detection
+        # - **3** (default): Quality check disabled
         self.id_threshold = id_threshold
         # Language configuration. (IDV product input parameter)
         self.language_config = language_config
-        # Source of MRTD verification parameters. This parameter is required to decrypt information when reading the document chip via NFC.
+        # Source of MRTD verification parameters. This parameter is required for decrypting information when reading the document chip via NFC.
         # 
         # - **0**: User input
         # 
         # - **1**: OCR read
         # 
-        # - **2**: Passed through the API
+        # - **2**: Passed through the interface
         self.mrtdinput = mrtdinput
-        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
+        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Ensure its uniqueness.
         self.merchant_biz_id = merchant_biz_id
-        # Your custom user ID or other identifiers that can recognize specific users, such as phone numbers or email addresses. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
+        # Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
         self.merchant_user_id = merchant_user_id
         # Metainfo environment parameter, which needs to be obtained through the client SDK.
         self.meta_info = meta_info
+        # Enter an Indonesian phone number, which must be in the format (starting with +62, followed by 9-11 digits). This field is only effective when Authorize=T.
+        # 
+        # > 
+        # > - This field is required only when the Indonesian data source is enabled.
         self.mobile = mobile
-        # The type of liveness detection to be performed:
+        # Type of liveness detection to be performed:
         # 
         # - **LIVENESS** (default): Blinking action liveness detection.
         # 
-        # - **PHOTINUS_LIVENESS**: Blinking action liveness + photinus liveness dual detection.
+        # - **PHOTINUS_LIVENESS**: Dual liveness detection with blinking action and photinus liveness.
         # 
         # > 
-        # > - For supported SDK versions, see [SDK Publishing Record](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
-        # > - PC does not support photinus liveness dual detection.
+        # > - For supported SDK versions, see [SDK Release Records](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
+        # > - PC does not support dual liveness detection with photinus.
         self.model = model
         # Whether to enable OCR. (IDV product input parameter)
         self.ocr = ocr
-        # Page configuration for collection, multiple pages are connected using commas. The value range is as follows:
+        # Page configuration for collection, multiple pages are connected using commas. Value range:
         # - **01**: Front side of the document
         # 
         # - **01,02**: Front and back sides of the document
         # 
-        # > When this value is 01,02, currently only Chinese and Vietnamese IDs are supported.
+        # > When this value is set to 01,02, it currently only supports Chinese and Vietnamese IDs.
         self.pages = pages
         # When compatibility issues occur with H5-based mobile authentication, whether to allow a fallback handling method.
         # 
-        # - **url** (default): Support fallback. The page displays the authentication URL, which users can copy and open in another browser to continue the authentication process.
+        # - **url** (default): Fallback supported. The page displays the authentication URL, which users can copy and open or switch browsers to continue the authentication process.
         # 
-        # - **keep**: Do not support fallback. Directly return the error reason and end the authentication process.
+        # - **keep**: Fallback not supported. The error reason is returned directly, and the authentication process ends.
         # 
         # 
         # > 
         # > - This switch is not supported on PC.
-        # > - If the business scenario involves completing authentication through an embedded web page in an app, it is recommended to set this parameter to `keep` to disallow URL fallback.
+        # > - If the business scenario involves completing authentication within an embedded web page in an app, it is recommended to set this parameter to keep, disallowing URL fallback.
         self.procedure_priority = procedure_priority
-        # The product solution to be integrated. The values are as follows:
-        # 
-        # - KYC_GLOBAL (eKYC product solution)
-        # - FV_GLOBAL (Live Face Verification)
-        # - FL_GLOBAL (Liveness Detection)
-        # - IDR_GLOBAL (Single Document Verification)
-        # - OCR_GLOBAL (Single Document OCR)
+        # The product solution to be integrated
+        # > For more details, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
         self.product_code = product_code
-        # Supports card and face sequential arrangement:
+        # Supports card and face sequence arrangement:
         # 
         # - DOC_FACE (default)
         # - FACE_DOC
@@ -210,46 +214,46 @@ class InitializeRequest(DaraModel):
         self.product_flow = product_flow
         # Number of duplicate faces returned
         self.return_faces = return_faces
-        # Client-side callback address.
+        # Callback URL on the client side.
         self.return_url = return_url
         # Whether to save the face image
         self.save_face_picture = save_face_picture
         # Scene code. (IDV product input parameter)
         self.scene_code = scene_code
-        # Represents different security levels in the authentication process. The available values are as follows:
+        # Represents different security levels in the authentication process. Available values:
         # 
         # 01: Normal mode (default).
-        # 02: Secure mode, a relatively strict mode, suitable for high-risk scenarios. (IDV product input parameter)
+        # 02: Secure mode, a relatively strict mode suitable for high-risk scenarios. (IDV product input parameter)
         self.security_level = security_level
-        # In the document OCR recognition step, whether to display the album upload entry:
+        # Whether to display the album upload entry during the document OCR recognition phase:
         # 
         # - **1**: Display (default)
         # 
         # - **0**: Do not display
         self.show_album_icon = show_album_icon
-        # Switch to control whether to display the guide page:
+        # Switch for displaying the guide page:
         # 
         # - **1**: Display (default)
         # 
         # - **0**: Do not display
         self.show_guide_page = show_guide_page
-        # In the document OCR recognition step, whether to display the recognition result page:
+        # Whether to display the recognition result page during the document OCR recognition phase:
         # 
         # - **1**: Display (default)
         # 
         # - **0**: Do not display
         self.show_ocr_result = show_ocr_result
-        # Custom UI configuration. Based on the configuration template, convert your custom UI configuration into a JSON string and pass it through this interface. For more information, see [IDV UI Customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
+        # Custom UI configuration. Based on the configuration template, convert your custom UI settings into a JSON string and pass it through this interface. For more information, see [IDV UI Customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
         self.style_config = style_config
         # Base64 encoding of the portrait photo.
         self.target_face_picture = target_face_picture
-        # Portrait image URL, accessible via public HTTP or HTTPS link.
+        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.target_face_picture_url = target_face_picture_url
-        # When **DocType**=01000000 (global passport), you can choose whether to enable NFC verification.
-        # - **Y** (enable)
-        # - **N** (disable)
+        # Optional to enable NFC verification when **DocType**=01000000 (global passport).
+        # - **Y** (Enabled)
+        # - **N** (Disabled)
         self.use_nfc = use_nfc
-        # Type of verification
+        # The type of verification
         self.verify_model = verify_model
 
     def validate(self):

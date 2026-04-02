@@ -62,15 +62,27 @@ from ._doc_ocr_response import DocOcrResponse
 from ._doc_ocr_max_request import DocOcrMaxRequest
 from ._doc_ocr_max_response_body import DocOcrMaxResponseBody
 from ._doc_ocr_max_response import DocOcrMaxResponse
+from ._doc_ocr_v2request import DocOcrV2Request
+from ._doc_ocr_v2advance_request import DocOcrV2AdvanceRequest
+from ._doc_ocr_v2response_body import DocOcrV2ResponseBody
+from ._doc_ocr_v2response import DocOcrV2Response
 from ._download_verify_record_intl_request import DownloadVerifyRecordIntlRequest
 from ._download_verify_record_intl_response_body import DownloadVerifyRecordIntlResponseBody
 from ._download_verify_record_intl_response import DownloadVerifyRecordIntlResponse
 from ._ekyc_verify_request import EkycVerifyRequest
 from ._ekyc_verify_response_body import EkycVerifyResponseBody
 from ._ekyc_verify_response import EkycVerifyResponse
+from ._ekyc_verify_v2request import EkycVerifyV2Request
+from ._ekyc_verify_v2advance_request import EkycVerifyV2AdvanceRequest
+from ._ekyc_verify_v2response_body import EkycVerifyV2ResponseBody
+from ._ekyc_verify_v2response import EkycVerifyV2Response
 from ._face_compare_request import FaceCompareRequest
 from ._face_compare_response_body import FaceCompareResponseBody
 from ._face_compare_response import FaceCompareResponse
+from ._face_compare_v2request import FaceCompareV2Request
+from ._face_compare_v2advance_request import FaceCompareV2AdvanceRequest
+from ._face_compare_v2response_body import FaceCompareV2ResponseBody
+from ._face_compare_v2response import FaceCompareV2Response
 from ._face_cross_compare_intl_request import FaceCrossCompareIntlRequest
 from ._face_cross_compare_intl_response_body import FaceCrossCompareIntlResponseBody
 from ._face_cross_compare_intl_response import FaceCrossCompareIntlResponse
@@ -139,9 +151,12 @@ from ._deepfake_detect_intl_stream_response_body import DeepfakeDetectIntlStream
 from ._delete_verify_result_response_body import DeleteVerifyResultResponseBodyResult
 from ._doc_ocr_response_body import DocOcrResponseBodyResult
 from ._doc_ocr_max_response_body import DocOcrMaxResponseBodyResult
+from ._doc_ocr_v2response_body import DocOcrV2ResponseBodyResult
 from ._download_verify_record_intl_response_body import DownloadVerifyRecordIntlResponseBodyData
 from ._ekyc_verify_response_body import EkycVerifyResponseBodyResult
+from ._ekyc_verify_v2response_body import EkycVerifyV2ResponseBodyResult
 from ._face_compare_response_body import FaceCompareResponseBodyResult
+from ._face_compare_v2response_body import FaceCompareV2ResponseBodyResult
 from ._face_cross_compare_intl_response_body import FaceCrossCompareIntlResponseBodyResult
 from ._face_duplication_check_intl_response_body import FaceDuplicationCheckIntlResponseBodyResult
 from ._face_guard_risk_response_body import FaceGuardRiskResponseBodyResult
@@ -219,15 +234,27 @@ __all__ = [
     DocOcrMaxRequest,
     DocOcrMaxResponseBody,
     DocOcrMaxResponse,
+    DocOcrV2Request,
+    DocOcrV2AdvanceRequest,
+    DocOcrV2ResponseBody,
+    DocOcrV2Response,
     DownloadVerifyRecordIntlRequest,
     DownloadVerifyRecordIntlResponseBody,
     DownloadVerifyRecordIntlResponse,
     EkycVerifyRequest,
     EkycVerifyResponseBody,
     EkycVerifyResponse,
+    EkycVerifyV2Request,
+    EkycVerifyV2AdvanceRequest,
+    EkycVerifyV2ResponseBody,
+    EkycVerifyV2Response,
     FaceCompareRequest,
     FaceCompareResponseBody,
     FaceCompareResponse,
+    FaceCompareV2Request,
+    FaceCompareV2AdvanceRequest,
+    FaceCompareV2ResponseBody,
+    FaceCompareV2Response,
     FaceCrossCompareIntlRequest,
     FaceCrossCompareIntlResponseBody,
     FaceCrossCompareIntlResponse,
@@ -296,9 +323,12 @@ __all__ = [
     DeleteVerifyResultResponseBodyResult,
     DocOcrResponseBodyResult,
     DocOcrMaxResponseBodyResult,
+    DocOcrV2ResponseBodyResult,
     DownloadVerifyRecordIntlResponseBodyData,
     EkycVerifyResponseBodyResult,
+    EkycVerifyV2ResponseBodyResult,
     FaceCompareResponseBodyResult,
+    FaceCompareV2ResponseBodyResult,
     FaceCrossCompareIntlResponseBodyResult,
     FaceDuplicationCheckIntlResponseBodyResult,
     FaceGuardRiskResponseBodyResult,

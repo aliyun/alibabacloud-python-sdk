@@ -1,3 +1,9 @@
+2026-04-02 Version: 3.18.0
+- Support API DocOcrV2.
+- Support API EkycVerifyV2.
+- Support API FaceCompareV2.
+
+
 2026-03-24 Version: 3.17.2
 - Update API DeepfakeDetectIntl: add response parameters Body.ResultObject.TransactionId.
 - Update API DeepfakeDetectIntlStream: add response parameters Body.ResultObject.TransactionId.
