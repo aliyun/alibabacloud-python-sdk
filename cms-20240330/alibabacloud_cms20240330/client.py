@@ -951,6 +951,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_cloud_resource_with_options_async(headers, runtime)
 
+    def create_dataset_with_options(
+        self,
+        workspace: str,
+        request: main_models.CreateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_name):
+            body['datasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.schema):
+            body['schema'] = request.schema
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.CreateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_name):
+            body['datasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.schema):
+            body['schema'] = request.schema
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset(
+        self,
+        workspace: str,
+        request: main_models.CreateDatasetRequest,
+    ) -> main_models.CreateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_dataset_with_options(workspace, request, headers, runtime)
+
+    async def create_dataset_async(
+        self,
+        workspace: str,
+        request: main_models.CreateDatasetRequest,
+    ) -> main_models.CreateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_with_options_async(workspace, request, headers, runtime)
+
     def create_delivery_task_with_options(
         self,
         request: main_models.CreateDeliveryTaskRequest,
@@ -2633,6 +2721,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_cloud_resource_with_options_async(headers, runtime)
 
+    def delete_dataset_with_options(
+        self,
+        workspace: str,
+        dataset_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_with_options_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset(
+        self,
+        workspace: str,
+        dataset_name: str,
+    ) -> main_models.DeleteDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_with_options(workspace, dataset_name, headers, runtime)
+
+    async def delete_dataset_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+    ) -> main_models.DeleteDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_with_options_async(workspace, dataset_name, headers, runtime)
+
     def delete_delivery_task_with_options(
         self,
         task_id: str,
@@ -3353,6 +3511,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_prometheus_view_with_options_async(prometheus_view_id, headers, runtime)
 
+    def delete_prometheus_virtual_instance_with_options(
+        self,
+        prometheus_instance_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePrometheusVirtualInstanceResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePrometheusVirtualInstance',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/virtual-instances/{DaraURL.percent_encode(prometheus_instance_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePrometheusVirtualInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prometheus_virtual_instance_with_options_async(
+        self,
+        prometheus_instance_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePrometheusVirtualInstanceResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePrometheusVirtualInstance',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/virtual-instances/{DaraURL.percent_encode(prometheus_instance_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePrometheusVirtualInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prometheus_virtual_instance(
+        self,
+        prometheus_instance_id: str,
+    ) -> main_models.DeletePrometheusVirtualInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_prometheus_virtual_instance_with_options(prometheus_instance_id, headers, runtime)
+
+    async def delete_prometheus_virtual_instance_async(
+        self,
+        prometheus_instance_id: str,
+    ) -> main_models.DeletePrometheusVirtualInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_prometheus_virtual_instance_with_options_async(prometheus_instance_id, headers, runtime)
+
     def delete_service_with_options(
         self,
         workspace: str,
@@ -3868,6 +4092,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
+
+    def execute_query_with_options(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.ExecuteQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteQueryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteQuery',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_query_with_options_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.ExecuteQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteQueryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteQuery',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_query(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.ExecuteQueryRequest,
+    ) -> main_models.ExecuteQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.execute_query_with_options(workspace, dataset_name, request, headers, runtime)
+
+    async def execute_query_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.ExecuteQueryRequest,
+    ) -> main_models.ExecuteQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.execute_query_with_options_async(workspace, dataset_name, request, headers, runtime)
 
     def get_addon_with_options(
         self,
@@ -4556,6 +4868,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_cms_service_with_options_async(request, headers, runtime)
+
+    def get_dataset_with_options(
+        self,
+        workspace: str,
+        dataset_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDatasetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_with_options_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDatasetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset(
+        self,
+        workspace: str,
+        dataset_name: str,
+    ) -> main_models.GetDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_dataset_with_options(workspace, dataset_name, headers, runtime)
+
+    async def get_dataset_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+    ) -> main_models.GetDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_with_options_async(workspace, dataset_name, headers, runtime)
 
     def get_delivery_task_with_options(
         self,
@@ -6804,6 +7186,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_biz_traces_with_options_async(request, headers, runtime)
+
+    def list_datasets_with_options(
+        self,
+        workspace: str,
+        request: main_models.ListDatasetsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dataset_name):
+            query['datasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasets',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_datasets_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.ListDatasetsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dataset_name):
+            query['datasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasets',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_datasets(
+        self,
+        workspace: str,
+        request: main_models.ListDatasetsRequest,
+    ) -> main_models.ListDatasetsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_datasets_with_options(workspace, request, headers, runtime)
+
+    async def list_datasets_async(
+        self,
+        workspace: str,
+        request: main_models.ListDatasetsRequest,
+    ) -> main_models.ListDatasetsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_datasets_with_options_async(workspace, request, headers, runtime)
 
     def list_delivery_tasks_with_options(
         self,
@@ -9704,6 +10174,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
+
+    def update_dataset_with_options(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.UpdateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDatasetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_with_options_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.UpdateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDatasetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataset',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/dataset/{DaraURL.percent_encode(dataset_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.UpdateDatasetRequest,
+    ) -> main_models.UpdateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_dataset_with_options(workspace, dataset_name, request, headers, runtime)
+
+    async def update_dataset_async(
+        self,
+        workspace: str,
+        dataset_name: str,
+        request: main_models.UpdateDatasetRequest,
+    ) -> main_models.UpdateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_dataset_with_options_async(workspace, dataset_name, request, headers, runtime)
 
     def update_delivery_task_with_options(
         self,

@@ -1,3 +1,13 @@
+2026-04-02 Version: 6.4.0
+- Support API CreateDataset.
+- Support API DeleteDataset.
+- Support API DeletePrometheusVirtualInstance.
+- Support API ExecuteQuery.
+- Support API GetDataset.
+- Support API ListDatasets.
+- Support API UpdateDataset.
+
+
 2026-03-27 Version: 6.3.0
 - Support API CreateDeliveryTask.
 - Support API DeleteDeliveryTask.

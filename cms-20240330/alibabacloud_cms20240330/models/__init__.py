@@ -103,6 +103,9 @@ from ._create_chat_response_body import CreateChatResponseBody
 from ._create_chat_response import CreateChatResponse
 from ._create_cloud_resource_response_body import CreateCloudResourceResponseBody
 from ._create_cloud_resource_response import CreateCloudResourceResponse
+from ._create_dataset_request import CreateDatasetRequest
+from ._create_dataset_response_body import CreateDatasetResponseBody
+from ._create_dataset_response import CreateDatasetResponse
 from ._create_delivery_task_request import CreateDeliveryTaskRequest
 from ._create_delivery_task_response_body import CreateDeliveryTaskResponseBody
 from ._create_delivery_task_response import CreateDeliveryTaskResponse
@@ -156,6 +159,8 @@ from ._delete_biz_trace_response_body import DeleteBizTraceResponseBody
 from ._delete_biz_trace_response import DeleteBizTraceResponse
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
+from ._delete_dataset_response_body import DeleteDatasetResponseBody
+from ._delete_dataset_response import DeleteDatasetResponse
 from ._delete_delivery_task_response_body import DeleteDeliveryTaskResponseBody
 from ._delete_delivery_task_response import DeleteDeliveryTaskResponse
 from ._delete_digital_employee_response_body import DeleteDigitalEmployeeResponseBody
@@ -178,6 +183,8 @@ from ._delete_prometheus_instance_response_body import DeletePrometheusInstanceR
 from ._delete_prometheus_instance_response import DeletePrometheusInstanceResponse
 from ._delete_prometheus_view_response_body import DeletePrometheusViewResponseBody
 from ._delete_prometheus_view_response import DeletePrometheusViewResponse
+from ._delete_prometheus_virtual_instance_response_body import DeletePrometheusVirtualInstanceResponseBody
+from ._delete_prometheus_virtual_instance_response import DeletePrometheusVirtualInstanceResponse
 from ._delete_service_response_body import DeleteServiceResponseBody
 from ._delete_service_response import DeleteServiceResponse
 from ._delete_thread_response_body import DeleteThreadResponseBody
@@ -195,6 +202,9 @@ from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
+from ._execute_query_request import ExecuteQueryRequest
+from ._execute_query_response_body import ExecuteQueryResponseBody
+from ._execute_query_response import ExecuteQueryResponse
 from ._get_addon_request import GetAddonRequest
 from ._get_addon_response_body import GetAddonResponseBody
 from ._get_addon_response import GetAddonResponse
@@ -218,6 +228,8 @@ from ._get_cloud_resource_data_response import GetCloudResourceDataResponse
 from ._get_cms_service_request import GetCmsServiceRequest
 from ._get_cms_service_response_body import GetCmsServiceResponseBody
 from ._get_cms_service_response import GetCmsServiceResponse
+from ._get_dataset_response_body import GetDatasetResponseBody
+from ._get_dataset_response import GetDatasetResponse
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBody
 from ._get_delivery_task_response import GetDeliveryTaskResponse
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBody
@@ -293,6 +305,9 @@ from ._list_alert_webhooks_response import ListAlertWebhooksResponse
 from ._list_biz_traces_request import ListBizTracesRequest
 from ._list_biz_traces_response_body import ListBizTracesResponseBody
 from ._list_biz_traces_response import ListBizTracesResponse
+from ._list_datasets_request import ListDatasetsRequest
+from ._list_datasets_response_body import ListDatasetsResponseBody
+from ._list_datasets_response import ListDatasetsResponse
 from ._list_delivery_tasks_request import ListDeliveryTasksRequest
 from ._list_delivery_tasks_shrink_request import ListDeliveryTasksShrinkRequest
 from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBody
@@ -391,6 +406,9 @@ from ._update_alert_webhook_response import UpdateAlertWebhookResponse
 from ._update_biz_trace_request import UpdateBizTraceRequest
 from ._update_biz_trace_response_body import UpdateBizTraceResponseBody
 from ._update_biz_trace_response import UpdateBizTraceResponse
+from ._update_dataset_request import UpdateDatasetRequest
+from ._update_dataset_response_body import UpdateDatasetResponseBody
+from ._update_dataset_response import UpdateDatasetResponse
 from ._update_delivery_task_request import UpdateDeliveryTaskRequest
 from ._update_delivery_task_response_body import UpdateDeliveryTaskResponseBody
 from ._update_delivery_task_response import UpdateDeliveryTaskResponse
@@ -522,6 +540,7 @@ from ._create_prometheus_virtual_instance_response_body import CreatePrometheusV
 from ._create_service_request import CreateServiceRequestTags
 from ._create_thread_request import CreateThreadRequestVariables
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_addon_response_body import GetAddonResponseBodyDataDashboards
 from ._get_addon_response_body import GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs
 from ._get_addon_response_body import GetAddonResponseBodyDataEnvironmentsDependencies
@@ -603,6 +622,7 @@ from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlert
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsWebhookParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActions
 from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
+from ._list_datasets_response_body import ListDatasetsResponseBodyDatasets
 from ._list_delivery_tasks_request import ListDeliveryTasksRequestTag
 from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo
 from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksSinkList
@@ -773,6 +793,9 @@ __all__ = [
     CreateChatResponse,
     CreateCloudResourceResponseBody,
     CreateCloudResourceResponse,
+    CreateDatasetRequest,
+    CreateDatasetResponseBody,
+    CreateDatasetResponse,
     CreateDeliveryTaskRequest,
     CreateDeliveryTaskResponseBody,
     CreateDeliveryTaskResponse,
@@ -826,6 +849,8 @@ __all__ = [
     DeleteBizTraceResponse,
     DeleteCloudResourceResponseBody,
     DeleteCloudResourceResponse,
+    DeleteDatasetResponseBody,
+    DeleteDatasetResponse,
     DeleteDeliveryTaskResponseBody,
     DeleteDeliveryTaskResponse,
     DeleteDigitalEmployeeResponseBody,
@@ -848,6 +873,8 @@ __all__ = [
     DeletePrometheusInstanceResponse,
     DeletePrometheusViewResponseBody,
     DeletePrometheusViewResponse,
+    DeletePrometheusVirtualInstanceResponseBody,
+    DeletePrometheusVirtualInstanceResponse,
     DeleteServiceResponseBody,
     DeleteServiceResponse,
     DeleteThreadResponseBody,
@@ -865,6 +892,9 @@ __all__ = [
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
+    ExecuteQueryRequest,
+    ExecuteQueryResponseBody,
+    ExecuteQueryResponse,
     GetAddonRequest,
     GetAddonResponseBody,
     GetAddonResponse,
@@ -888,6 +918,8 @@ __all__ = [
     GetCmsServiceRequest,
     GetCmsServiceResponseBody,
     GetCmsServiceResponse,
+    GetDatasetResponseBody,
+    GetDatasetResponse,
     GetDeliveryTaskResponseBody,
     GetDeliveryTaskResponse,
     GetDigitalEmployeeResponseBody,
@@ -963,6 +995,9 @@ __all__ = [
     ListBizTracesRequest,
     ListBizTracesResponseBody,
     ListBizTracesResponse,
+    ListDatasetsRequest,
+    ListDatasetsResponseBody,
+    ListDatasetsResponse,
     ListDeliveryTasksRequest,
     ListDeliveryTasksShrinkRequest,
     ListDeliveryTasksResponseBody,
@@ -1061,6 +1096,9 @@ __all__ = [
     UpdateBizTraceRequest,
     UpdateBizTraceResponseBody,
     UpdateBizTraceResponse,
+    UpdateDatasetRequest,
+    UpdateDatasetResponseBody,
+    UpdateDatasetResponse,
     UpdateDeliveryTaskRequest,
     UpdateDeliveryTaskResponseBody,
     UpdateDeliveryTaskResponse,
@@ -1192,6 +1230,7 @@ __all__ = [
     CreateServiceRequestTags,
     CreateThreadRequestVariables,
     DescribeRegionsResponseBodyRegions,
+    ExecuteQueryResponseBodyMeta,
     GetAddonResponseBodyDataDashboards,
     GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs,
     GetAddonResponseBodyDataEnvironmentsDependencies,
@@ -1273,6 +1312,7 @@ __all__ = [
     ListAlertActionsResponseBodyAlertActionsWebhookParam,
     ListAlertActionsResponseBodyAlertActions,
     ListAlertWebhooksResponseBodyWebhooks,
+    ListDatasetsResponseBodyDatasets,
     ListDeliveryTasksRequestTag,
     ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo,
     ListDeliveryTasksResponseBodyDeliveryTasksSinkList,
