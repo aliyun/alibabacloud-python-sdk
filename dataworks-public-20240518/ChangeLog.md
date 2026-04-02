@@ -1,3 +1,8 @@
+2026-04-02 Version: 8.0.6
+- Update API CreateDIJob: add request parameters DestinationDataSourceSettings.$.DataSourceProperties.
+- Update API CreateDIJob: add request parameters SourceDataSourceSettings.$.DataSourceProperties.ConnectionProperties.
+
+
 2026-03-27 Version: 8.0.5
 - Update API CreateDIJob: add request parameters FileSpec.
 - Update API UpdateDIJob: add request parameters FileSpec.

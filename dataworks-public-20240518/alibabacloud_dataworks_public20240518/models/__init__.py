@@ -948,6 +948,7 @@ from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSe
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettings
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestTriggerConditions
+from ._create_dijob_request import CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties
 from ._create_dijob_request import CreateDIJobRequestDestinationDataSourceSettings
 from ._create_dijob_request import CreateDIJobRequestJobSettingsColumnDataTypeSettings
 from ._create_dijob_request import CreateDIJobRequestJobSettingsCycleScheduleSettings
@@ -2532,6 +2533,7 @@ __all__ = [
     CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers,
     CreateDIAlarmRuleRequestNotificationSettings,
     CreateDIAlarmRuleRequestTriggerConditions,
+    CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties,
     CreateDIJobRequestDestinationDataSourceSettings,
     CreateDIJobRequestJobSettingsColumnDataTypeSettings,
     CreateDIJobRequestJobSettingsCycleScheduleSettings,

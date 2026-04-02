@@ -549,9 +549,11 @@ class CreateDIJobRequestSourceDataSourceSettings(DaraModel):
 class CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties(DaraModel):
     def __init__(
         self,
+        connection_properties: str = None,
         encoding: str = None,
         timezone: str = None,
     ):
+        self.connection_properties = connection_properties
         # The database encoding.
         self.encoding = encoding
         # The time zone.
@@ -565,6 +567,9 @@ class CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+
         if self.encoding is not None:
             result['Encoding'] = self.encoding
 
@@ -575,6 +580,9 @@ class CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
+
         if m.get('Encoding') is not None:
             self.encoding = m.get('Encoding')
 
@@ -1034,12 +1042,15 @@ class CreateDIJobRequestDestinationDataSourceSettings(DaraModel):
     def __init__(
         self,
         data_source_name: str = None,
+        data_source_properties: main_models.CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties = None,
     ):
         # The data source name.
         self.data_source_name = data_source_name
+        self.data_source_properties = data_source_properties
 
     def validate(self):
-        pass
+        if self.data_source_properties:
+            self.data_source_properties.validate()
 
     def to_map(self):
         result = dict()
@@ -1049,12 +1060,46 @@ class CreateDIJobRequestDestinationDataSourceSettings(DaraModel):
         if self.data_source_name is not None:
             result['DataSourceName'] = self.data_source_name
 
+        if self.data_source_properties is not None:
+            result['DataSourceProperties'] = self.data_source_properties.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DataSourceName') is not None:
             self.data_source_name = m.get('DataSourceName')
+
+        if m.get('DataSourceProperties') is not None:
+            temp_model = main_models.CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties()
+            self.data_source_properties = temp_model.from_map(m.get('DataSourceProperties'))
+
+        return self
+
+class CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties(DaraModel):
+    def __init__(
+        self,
+        connection_properties: str = None,
+    ):
+        self.connection_properties = connection_properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
 
         return self
 
