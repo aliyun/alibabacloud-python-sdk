@@ -16,6 +16,7 @@ class AgentRuntimeEndpoint(DaraModel):
         disable_public_network_access: bool = None,
         endpoint_public_url: str = None,
         routing_configuration: main_models.RoutingConfiguration = None,
+        scaling_status: main_models.ScalingStatus = None,
         status: str = None,
         status_reason: str = None,
         target_version: str = None,
@@ -31,6 +32,8 @@ class AgentRuntimeEndpoint(DaraModel):
         self.endpoint_public_url = endpoint_public_url
         # 智能体运行时端点的路由配置，支持多版本权重分配
         self.routing_configuration = routing_configuration
+        # 端点的弹性伸缩状态，包括最小/目标/当前实例数及定时策略（复用 ScalingStatus）
+        self.scaling_status = scaling_status
         self.status = status
         self.status_reason = status_reason
         self.target_version = target_version
@@ -38,6 +41,8 @@ class AgentRuntimeEndpoint(DaraModel):
     def validate(self):
         if self.routing_configuration:
             self.routing_configuration.validate()
+        if self.scaling_status:
+            self.scaling_status.validate()
 
     def to_map(self):
         result = dict()
@@ -67,6 +72,9 @@ class AgentRuntimeEndpoint(DaraModel):
 
         if self.routing_configuration is not None:
             result['routingConfiguration'] = self.routing_configuration.to_map()
+
+        if self.scaling_status is not None:
+            result['scalingStatus'] = self.scaling_status.to_map()
 
         if self.status is not None:
             result['status'] = self.status
@@ -105,6 +113,10 @@ class AgentRuntimeEndpoint(DaraModel):
         if m.get('routingConfiguration') is not None:
             temp_model = main_models.RoutingConfiguration()
             self.routing_configuration = temp_model.from_map(m.get('routingConfiguration'))
+
+        if m.get('scalingStatus') is not None:
+            temp_model = main_models.ScalingStatus()
+            self.scaling_status = temp_model.from_map(m.get('scalingStatus'))
 
         if m.get('status') is not None:
             self.status = m.get('status')

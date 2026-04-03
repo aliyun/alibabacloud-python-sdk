@@ -12,6 +12,7 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
         description: str = None,
         disable_public_network_access: bool = None,
         routing_configuration: main_models.RoutingConfiguration = None,
+        scaling_config: main_models.ScalingConfig = None,
         target_version: str = None,
     ):
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
@@ -20,12 +21,16 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
         self.disable_public_network_access = disable_public_network_access
         # 智能体运行时端点的路由配置，支持多版本权重分配
         self.routing_configuration = routing_configuration
+        # 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
+        self.scaling_config = scaling_config
         # 智能体运行时的目标版本
         self.target_version = target_version
 
     def validate(self):
         if self.routing_configuration:
             self.routing_configuration.validate()
+        if self.scaling_config:
+            self.scaling_config.validate()
 
     def to_map(self):
         result = dict()
@@ -43,6 +48,9 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
 
         if self.routing_configuration is not None:
             result['routingConfiguration'] = self.routing_configuration.to_map()
+
+        if self.scaling_config is not None:
+            result['scalingConfig'] = self.scaling_config.to_map()
 
         if self.target_version is not None:
             result['targetVersion'] = self.target_version
@@ -63,6 +71,10 @@ class CreateAgentRuntimeEndpointInput(DaraModel):
         if m.get('routingConfiguration') is not None:
             temp_model = main_models.RoutingConfiguration()
             self.routing_configuration = temp_model.from_map(m.get('routingConfiguration'))
+
+        if m.get('scalingConfig') is not None:
+            temp_model = main_models.ScalingConfig()
+            self.scaling_config = temp_model.from_map(m.get('scalingConfig'))
 
         if m.get('targetVersion') is not None:
             self.target_version = m.get('targetVersion')

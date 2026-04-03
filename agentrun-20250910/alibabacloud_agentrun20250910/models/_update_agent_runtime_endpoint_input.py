@@ -9,23 +9,31 @@ class UpdateAgentRuntimeEndpointInput(DaraModel):
     def __init__(
         self,
         agent_runtime_endpoint_name: str = None,
+        delete_scaling_config: bool = None,
         description: str = None,
         disable_public_network_access: bool = None,
         routing_configuration: main_models.RoutingConfiguration = None,
+        scaling_config: main_models.ScalingConfig = None,
         target_version: str = None,
     ):
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
+        # 为 true 时删除该端点的弹性配置
+        self.delete_scaling_config = delete_scaling_config
         self.description = description
         # 是否禁用该端点的公网访问
         self.disable_public_network_access = disable_public_network_access
         # 智能体运行时端点的路由配置，支持多版本权重分配
         self.routing_configuration = routing_configuration
+        # 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
+        self.scaling_config = scaling_config
         # 智能体运行时的目标版本
         self.target_version = target_version
 
     def validate(self):
         if self.routing_configuration:
             self.routing_configuration.validate()
+        if self.scaling_config:
+            self.scaling_config.validate()
 
     def to_map(self):
         result = dict()
@@ -35,6 +43,9 @@ class UpdateAgentRuntimeEndpointInput(DaraModel):
         if self.agent_runtime_endpoint_name is not None:
             result['agentRuntimeEndpointName'] = self.agent_runtime_endpoint_name
 
+        if self.delete_scaling_config is not None:
+            result['deleteScalingConfig'] = self.delete_scaling_config
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -43,6 +54,9 @@ class UpdateAgentRuntimeEndpointInput(DaraModel):
 
         if self.routing_configuration is not None:
             result['routingConfiguration'] = self.routing_configuration.to_map()
+
+        if self.scaling_config is not None:
+            result['scalingConfig'] = self.scaling_config.to_map()
 
         if self.target_version is not None:
             result['targetVersion'] = self.target_version
@@ -54,6 +68,9 @@ class UpdateAgentRuntimeEndpointInput(DaraModel):
         if m.get('agentRuntimeEndpointName') is not None:
             self.agent_runtime_endpoint_name = m.get('agentRuntimeEndpointName')
 
+        if m.get('deleteScalingConfig') is not None:
+            self.delete_scaling_config = m.get('deleteScalingConfig')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -63,6 +80,10 @@ class UpdateAgentRuntimeEndpointInput(DaraModel):
         if m.get('routingConfiguration') is not None:
             temp_model = main_models.RoutingConfiguration()
             self.routing_configuration = temp_model.from_map(m.get('routingConfiguration'))
+
+        if m.get('scalingConfig') is not None:
+            temp_model = main_models.ScalingConfig()
+            self.scaling_config = temp_model.from_map(m.get('scalingConfig'))
 
         if m.get('targetVersion') is not None:
             self.target_version = m.get('targetVersion')

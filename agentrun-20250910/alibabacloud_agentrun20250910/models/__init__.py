@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._access_denied_detail import AccessDeniedDetail
 from ._agent_endpoint_config import AgentEndpointConfig
 from ._agent_runtime import AgentRuntime
 from ._agent_runtime_endpoint import AgentRuntimeEndpoint
@@ -15,6 +16,11 @@ from ._ai_service_config import AiServiceConfig
 from ._apig_llmmodel import ApigLLMModel
 from ._arms_configuration import ArmsConfiguration
 from ._attach_policy_config import AttachPolicyConfig
+from ._batch_evaluate_workspace_permissions_input import BatchEvaluateWorkspacePermissionsInput
+from ._batch_evaluate_workspace_permissions_output import BatchEvaluateWorkspacePermissionsOutput
+from ._batch_evaluate_workspace_permissions_result import BatchEvaluateWorkspacePermissionsResult
+from ._bound_configuration import BoundConfiguration
+from ._bound_tool import BoundTool
 from ._browser import Browser
 from ._browser_automation_stream import BrowserAutomationStream
 from ._browser_configuration import BrowserConfiguration
@@ -49,8 +55,10 @@ from ._create_credential_input import CreateCredentialInput
 from ._create_credential_output import CreateCredentialOutput
 from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_domain_input import CreateDomainInput
+from ._create_funagent_input import CreateFunagentInput
 from ._create_gateway_input import CreateGatewayInput
 from ._create_gateway_target_input import CreateGatewayTargetInput
+from ._create_imbot_input import CreateIMBotInput
 from ._create_knowledge_base_input import CreateKnowledgeBaseInput
 from ._create_memory_collection_input import CreateMemoryCollectionInput
 from ._create_model_input import CreateModelInput
@@ -60,6 +68,7 @@ from ._create_sandbox_input import CreateSandboxInput
 from ._create_template_input import CreateTemplateInput
 from ._create_tool_data import CreateToolData
 from ._create_tool_input import CreateToolInput
+from ._create_tool_input_v2 import CreateToolInputV2
 from ._create_tool_output import CreateToolOutput
 from ._create_workspace_input import CreateWorkspaceInput
 from ._credential import Credential
@@ -74,6 +83,7 @@ from ._delete_browser_out import DeleteBrowserOut
 from ._delete_browser_result import DeleteBrowserResult
 from ._delete_code_interpreter_out import DeleteCodeInterpreterOut
 from ._delete_code_interpreter_result import DeleteCodeInterpreterResult
+from ._delete_imbot_no_content import DeleteIMBotNoContent
 from ._delete_knowledge_base_result import DeleteKnowledgeBaseResult
 from ._delete_model_proxy_result import DeleteModelProxyResult
 from ._delete_model_service_result import DeleteModelServiceResult
@@ -85,6 +95,9 @@ from ._domain_info import DomainInfo
 from ._embedder_config import EmbedderConfig
 from ._error_result import ErrorResult
 from ._fclink_config import FCLinkConfig
+from ._funagent import Funagent
+from ._funagent_result import FunagentResult
+from ._funagent_version_item import FunagentVersionItem
 from ._gateway import Gateway
 from ._gateway_network_configuration import GatewayNetworkConfiguration
 from ._get_browser_session_result import GetBrowserSessionResult
@@ -92,10 +105,16 @@ from ._get_code_interpreter_session_result import GetCodeInterpreterSessionResul
 from ._get_credential_output import GetCredentialOutput
 from ._get_discovery_endpoints_output import GetDiscoveryEndpointsOutput
 from ._get_discovery_endpoints_result import GetDiscoveryEndpointsResult
+from ._get_funagent_versions_output import GetFunagentVersionsOutput
+from ._get_funagent_versions_result import GetFunagentVersionsResult
 from ._get_tool_output import GetToolOutput
 from ._gray_traffic_weight import GrayTrafficWeight
 from ._health_check_config import HealthCheckConfig
 from ._health_check_configuration import HealthCheckConfiguration
+from ._hook import Hook
+from ._imbot_info import IMBotInfo
+from ._imbot_metadata import IMBotMetadata
+from ._imbot_result import IMBotResult
 from ._knowledge_base import KnowledgeBase
 from ._knowledge_base_result import KnowledgeBaseResult
 from ._llmapiconfiguration import LLMAPIConfiguration
@@ -123,7 +142,12 @@ from ._list_credentials_result import ListCredentialsResult
 from ._list_custom_domains_output import ListCustomDomainsOutput
 from ._list_custom_domains_result import ListCustomDomainsResult
 from ._list_domains_output import ListDomainsOutput
+from ._list_funagents_input import ListFunagentsInput
+from ._list_funagents_output import ListFunagentsOutput
+from ._list_funagents_result import ListFunagentsResult
 from ._list_gateways_output import ListGatewaysOutput
+from ._list_imbots_output import ListIMBotsOutput
+from ._list_imbots_result import ListIMBotsResult
 from ._list_knowledge_bases_output import ListKnowledgeBasesOutput
 from ._list_knowledge_bases_result import ListKnowledgeBasesResult
 from ._list_memory_collections_output import ListMemoryCollectionsOutput
@@ -137,6 +161,8 @@ from ._list_sandboxes_result import ListSandboxesResult
 from ._list_templates_output import ListTemplatesOutput
 from ._list_templates_result import ListTemplatesResult
 from ._list_tools_output import ListToolsOutput
+from ._list_tools_output_v2 import ListToolsOutputV2
+from ._list_tools_result import ListToolsResult
 from ._list_workspaces_output import ListWorkspacesOutput
 from ._list_workspaces_result import ListWorkspacesResult
 from ._log_configuration import LogConfiguration
@@ -147,6 +173,8 @@ from ._mcpmatch import MCPMatch
 from ._mcppath_match import MCPPathMatch
 from ._mcpserver_config import MCPServerConfig
 from ._mcpservice_config import MCPServiceConfig
+from ._mcp_config import McpConfig
+from ._mcp_proxy_configuration import McpProxyConfiguration
 from ._memory_collection import MemoryCollection
 from ._memory_collection_result import MemoryCollectionResult
 from ._model import Model
@@ -201,8 +229,10 @@ from ._target_configuration import TargetConfiguration
 from ._target_service_config import TargetServiceConfig
 from ._template import Template
 from ._template_result import TemplateResult
+from ._tool import Tool
 from ._tool_info import ToolInfo
 from ._tool_list_item import ToolListItem
+from ._tool_result import ToolResult
 from ._trigger_config import TriggerConfig
 from ._update_agent_runtime_endpoint_input import UpdateAgentRuntimeEndpointInput
 from ._update_agent_runtime_input import UpdateAgentRuntimeInput
@@ -212,6 +242,8 @@ from ._update_credential_output import UpdateCredentialOutput
 from ._update_custom_domain_input import UpdateCustomDomainInput
 from ._update_discovery_endpoints_input import UpdateDiscoveryEndpointsInput
 from ._update_domain_input import UpdateDomainInput
+from ._update_funagent_input import UpdateFunagentInput
+from ._update_imbot_input import UpdateIMBotInput
 from ._update_knowledge_base_input import UpdateKnowledgeBaseInput
 from ._update_memory_collection_input import UpdateMemoryCollectionInput
 from ._update_model_input import UpdateModelInput
@@ -221,12 +253,15 @@ from ._update_target_configuration_input import UpdateTargetConfigurationInput
 from ._update_template_input import UpdateTemplateInput
 from ._update_tool_data import UpdateToolData
 from ._update_tool_input import UpdateToolInput
+from ._update_tool_input_v2 import UpdateToolInputV2
 from ._update_tool_output import UpdateToolOutput
 from ._update_workspace_input import UpdateWorkspaceInput
 from ._vector_store_config import VectorStoreConfig
 from ._version_weight import VersionWeight
 from ._view_port_configuration import ViewPortConfiguration
 from ._workspace import Workspace
+from ._workspace_permission_evaluate_result import WorkspacePermissionEvaluateResult
+from ._workspace_permission_item import WorkspacePermissionItem
 from ._workspace_result import WorkspaceResult
 from ._activate_template_mcprequest import ActivateTemplateMCPRequest
 from ._activate_template_mcpresponse import ActivateTemplateMCPResponse
@@ -254,6 +289,8 @@ from ._create_sandbox_request import CreateSandboxRequest
 from ._create_sandbox_response import CreateSandboxResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response import CreateTemplateResponse
+from ._create_tool_request import CreateToolRequest
+from ._create_tool_response import CreateToolResponse
 from ._create_workspace_request import CreateWorkspaceRequest
 from ._create_workspace_response import CreateWorkspaceResponse
 from ._delete_agent_runtime_response import DeleteAgentRuntimeResponse
@@ -268,6 +305,7 @@ from ._delete_model_proxy_response import DeleteModelProxyResponse
 from ._delete_model_service_response import DeleteModelServiceResponse
 from ._delete_sandbox_response import DeleteSandboxResponse
 from ._delete_template_response import DeleteTemplateResponse
+from ._delete_tool_response import DeleteToolResponse
 from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._get_access_token_request import GetAccessTokenRequest
 from ._get_access_token_response_body import GetAccessTokenResponseBody
@@ -285,6 +323,7 @@ from ._get_model_proxy_response import GetModelProxyResponse
 from ._get_model_service_response import GetModelServiceResponse
 from ._get_sandbox_response import GetSandboxResponse
 from ._get_template_response import GetTemplateResponse
+from ._get_tool_response import GetToolResponse
 from ._get_workspace_response import GetWorkspaceResponse
 from ._get_workspace_discovery_endpoints_response import GetWorkspaceDiscoveryEndpointsResponse
 from ._list_agent_runtime_endpoints_request import ListAgentRuntimeEndpointsRequest
@@ -316,10 +355,14 @@ from ._list_sandboxes_request import ListSandboxesRequest
 from ._list_sandboxes_response import ListSandboxesResponse
 from ._list_templates_request import ListTemplatesRequest
 from ._list_templates_response import ListTemplatesResponse
+from ._list_tools_request import ListToolsRequest
+from ._list_tools_response import ListToolsResponse
 from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_response import ListWorkspacesResponse
+from ._pause_sandbox_response import PauseSandboxResponse
 from ._publish_runtime_version_request import PublishRuntimeVersionRequest
 from ._publish_runtime_version_response import PublishRuntimeVersionResponse
+from ._resume_sandbox_response import ResumeSandboxResponse
 from ._stop_sandbox_response import StopSandboxResponse
 from ._stop_template_mcpresponse import StopTemplateMCPResponse
 from ._update_agent_runtime_request import UpdateAgentRuntimeRequest
@@ -340,6 +383,8 @@ from ._update_model_service_request import UpdateModelServiceRequest
 from ._update_model_service_response import UpdateModelServiceResponse
 from ._update_template_request import UpdateTemplateRequest
 from ._update_template_response import UpdateTemplateResponse
+from ._update_tool_request import UpdateToolRequest
+from ._update_tool_response import UpdateToolResponse
 from ._update_workspace_request import UpdateWorkspaceRequest
 from ._update_workspace_response import UpdateWorkspaceResponse
 from ._update_workspace_discovery_endpoints_request import UpdateWorkspaceDiscoveryEndpointsRequest
@@ -362,6 +407,7 @@ from ._list_model_providers_response_body import ListModelProvidersResponseBodyD
 from ._list_model_providers_response_body import ListModelProvidersResponseBodyData
 
 __all__ = [
+    AccessDeniedDetail,
     AgentEndpointConfig,
     AgentRuntime,
     AgentRuntimeEndpoint,
@@ -375,6 +421,11 @@ __all__ = [
     ApigLLMModel,
     ArmsConfiguration,
     AttachPolicyConfig,
+    BatchEvaluateWorkspacePermissionsInput,
+    BatchEvaluateWorkspacePermissionsOutput,
+    BatchEvaluateWorkspacePermissionsResult,
+    BoundConfiguration,
+    BoundTool,
     Browser,
     BrowserAutomationStream,
     BrowserConfiguration,
@@ -409,8 +460,10 @@ __all__ = [
     CreateCredentialOutput,
     CreateCustomDomainInput,
     CreateDomainInput,
+    CreateFunagentInput,
     CreateGatewayInput,
     CreateGatewayTargetInput,
+    CreateIMBotInput,
     CreateKnowledgeBaseInput,
     CreateMemoryCollectionInput,
     CreateModelInput,
@@ -420,6 +473,7 @@ __all__ = [
     CreateTemplateInput,
     CreateToolData,
     CreateToolInput,
+    CreateToolInputV2,
     CreateToolOutput,
     CreateWorkspaceInput,
     Credential,
@@ -434,6 +488,7 @@ __all__ = [
     DeleteBrowserResult,
     DeleteCodeInterpreterOut,
     DeleteCodeInterpreterResult,
+    DeleteIMBotNoContent,
     DeleteKnowledgeBaseResult,
     DeleteModelProxyResult,
     DeleteModelServiceResult,
@@ -445,6 +500,9 @@ __all__ = [
     EmbedderConfig,
     ErrorResult,
     FCLinkConfig,
+    Funagent,
+    FunagentResult,
+    FunagentVersionItem,
     Gateway,
     GatewayNetworkConfiguration,
     GetBrowserSessionResult,
@@ -452,10 +510,16 @@ __all__ = [
     GetCredentialOutput,
     GetDiscoveryEndpointsOutput,
     GetDiscoveryEndpointsResult,
+    GetFunagentVersionsOutput,
+    GetFunagentVersionsResult,
     GetToolOutput,
     GrayTrafficWeight,
     HealthCheckConfig,
     HealthCheckConfiguration,
+    Hook,
+    IMBotInfo,
+    IMBotMetadata,
+    IMBotResult,
     KnowledgeBase,
     KnowledgeBaseResult,
     LLMAPIConfiguration,
@@ -483,7 +547,12 @@ __all__ = [
     ListCustomDomainsOutput,
     ListCustomDomainsResult,
     ListDomainsOutput,
+    ListFunagentsInput,
+    ListFunagentsOutput,
+    ListFunagentsResult,
     ListGatewaysOutput,
+    ListIMBotsOutput,
+    ListIMBotsResult,
     ListKnowledgeBasesOutput,
     ListKnowledgeBasesResult,
     ListMemoryCollectionsOutput,
@@ -497,6 +566,8 @@ __all__ = [
     ListTemplatesOutput,
     ListTemplatesResult,
     ListToolsOutput,
+    ListToolsOutputV2,
+    ListToolsResult,
     ListWorkspacesOutput,
     ListWorkspacesResult,
     LogConfiguration,
@@ -507,6 +578,8 @@ __all__ = [
     MCPPathMatch,
     MCPServerConfig,
     MCPServiceConfig,
+    McpConfig,
+    McpProxyConfiguration,
     MemoryCollection,
     MemoryCollectionResult,
     Model,
@@ -561,8 +634,10 @@ __all__ = [
     TargetServiceConfig,
     Template,
     TemplateResult,
+    Tool,
     ToolInfo,
     ToolListItem,
+    ToolResult,
     TriggerConfig,
     UpdateAgentRuntimeEndpointInput,
     UpdateAgentRuntimeInput,
@@ -572,6 +647,8 @@ __all__ = [
     UpdateCustomDomainInput,
     UpdateDiscoveryEndpointsInput,
     UpdateDomainInput,
+    UpdateFunagentInput,
+    UpdateIMBotInput,
     UpdateKnowledgeBaseInput,
     UpdateMemoryCollectionInput,
     UpdateModelInput,
@@ -581,12 +658,15 @@ __all__ = [
     UpdateTemplateInput,
     UpdateToolData,
     UpdateToolInput,
+    UpdateToolInputV2,
     UpdateToolOutput,
     UpdateWorkspaceInput,
     VectorStoreConfig,
     VersionWeight,
     ViewPortConfiguration,
     Workspace,
+    WorkspacePermissionEvaluateResult,
+    WorkspacePermissionItem,
     WorkspaceResult,
     ActivateTemplateMCPRequest,
     ActivateTemplateMCPResponse,
@@ -614,6 +694,8 @@ __all__ = [
     CreateSandboxResponse,
     CreateTemplateRequest,
     CreateTemplateResponse,
+    CreateToolRequest,
+    CreateToolResponse,
     CreateWorkspaceRequest,
     CreateWorkspaceResponse,
     DeleteAgentRuntimeResponse,
@@ -628,6 +710,7 @@ __all__ = [
     DeleteModelServiceResponse,
     DeleteSandboxResponse,
     DeleteTemplateResponse,
+    DeleteToolResponse,
     DeleteWorkspaceResponse,
     GetAccessTokenRequest,
     GetAccessTokenResponseBody,
@@ -645,6 +728,7 @@ __all__ = [
     GetModelServiceResponse,
     GetSandboxResponse,
     GetTemplateResponse,
+    GetToolResponse,
     GetWorkspaceResponse,
     GetWorkspaceDiscoveryEndpointsResponse,
     ListAgentRuntimeEndpointsRequest,
@@ -676,10 +760,14 @@ __all__ = [
     ListSandboxesResponse,
     ListTemplatesRequest,
     ListTemplatesResponse,
+    ListToolsRequest,
+    ListToolsResponse,
     ListWorkspacesRequest,
     ListWorkspacesResponse,
+    PauseSandboxResponse,
     PublishRuntimeVersionRequest,
     PublishRuntimeVersionResponse,
+    ResumeSandboxResponse,
     StopSandboxResponse,
     StopTemplateMCPResponse,
     UpdateAgentRuntimeRequest,
@@ -700,6 +788,8 @@ __all__ = [
     UpdateModelServiceResponse,
     UpdateTemplateRequest,
     UpdateTemplateResponse,
+    UpdateToolRequest,
+    UpdateToolResponse,
     UpdateWorkspaceRequest,
     UpdateWorkspaceResponse,
     UpdateWorkspaceDiscoveryEndpointsRequest,

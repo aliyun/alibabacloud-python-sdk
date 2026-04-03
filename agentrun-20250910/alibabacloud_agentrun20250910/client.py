@@ -969,6 +969,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_template_with_options_async(request, headers, runtime)
 
+    def create_tool_with_options(
+        self,
+        request: main_models.CreateToolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateToolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateToolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tool_with_options_async(
+        self,
+        request: main_models.CreateToolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateToolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateToolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tool(
+        self,
+        request: main_models.CreateToolRequest,
+    ) -> main_models.CreateToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_tool_with_options(request, headers, runtime)
+
+    async def create_tool_async(
+        self,
+        request: main_models.CreateToolRequest,
+    ) -> main_models.CreateToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_tool_with_options_async(request, headers, runtime)
+
     def create_workspace_with_options(
         self,
         request: main_models.CreateWorkspaceRequest,
@@ -1834,6 +1904,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_template_with_options_async(template_name, headers, runtime)
+
+    def delete_tool_with_options(
+        self,
+        tool_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteToolResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools/{DaraURL.percent_encode(tool_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteToolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tool_with_options_async(
+        self,
+        tool_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteToolResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools/{DaraURL.percent_encode(tool_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteToolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tool(
+        self,
+        tool_name: str,
+    ) -> main_models.DeleteToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_tool_with_options(tool_name, headers, runtime)
+
+    async def delete_tool_async(
+        self,
+        tool_name: str,
+    ) -> main_models.DeleteToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_tool_with_options_async(tool_name, headers, runtime)
 
     def delete_workspace_with_options(
         self,
@@ -2794,6 +2930,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_template_with_options_async(template_name, headers, runtime)
+
+    def get_tool_with_options(
+        self,
+        tool_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetToolResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools/{DaraURL.percent_encode(tool_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetToolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tool_with_options_async(
+        self,
+        tool_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetToolResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools/{DaraURL.percent_encode(tool_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetToolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tool(
+        self,
+        tool_name: str,
+    ) -> main_models.GetToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_tool_with_options(tool_name, headers, runtime)
+
+    async def get_tool_async(
+        self,
+        tool_name: str,
+    ) -> main_models.GetToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_tool_with_options_async(tool_name, headers, runtime)
 
     def get_workspace_with_options(
         self,
@@ -4263,6 +4465,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_templates_with_options_async(request, headers, runtime)
 
+    def list_tools_with_options(
+        self,
+        request: main_models.ListToolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListToolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.tool_type):
+            query['toolType'] = request.tool_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_ids):
+            query['workspaceIds'] = request.workspace_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTools',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListToolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tools_with_options_async(
+        self,
+        request: main_models.ListToolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListToolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.tool_type):
+            query['toolType'] = request.tool_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_ids):
+            query['workspaceIds'] = request.workspace_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTools',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListToolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tools(
+        self,
+        request: main_models.ListToolsRequest,
+    ) -> main_models.ListToolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_tools_with_options(request, headers, runtime)
+
+    async def list_tools_async(
+        self,
+        request: main_models.ListToolsRequest,
+    ) -> main_models.ListToolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_tools_with_options_async(request, headers, runtime)
+
     def list_workspaces_with_options(
         self,
         request: main_models.ListWorkspacesRequest,
@@ -4351,6 +4645,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_workspaces_with_options_async(request, headers, runtime)
 
+    def pause_sandbox_with_options(
+        self,
+        sandbox_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSandboxResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSandbox',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/sandboxes/{DaraURL.percent_encode(sandbox_id)}/pause',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSandboxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_sandbox_with_options_async(
+        self,
+        sandbox_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSandboxResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSandbox',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/sandboxes/{DaraURL.percent_encode(sandbox_id)}/pause',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSandboxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_sandbox(
+        self,
+        sandbox_id: str,
+    ) -> main_models.PauseSandboxResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.pause_sandbox_with_options(sandbox_id, headers, runtime)
+
+    async def pause_sandbox_async(
+        self,
+        sandbox_id: str,
+    ) -> main_models.PauseSandboxResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.pause_sandbox_with_options_async(sandbox_id, headers, runtime)
+
     def publish_runtime_version_with_options(
         self,
         agent_runtime_id: str,
@@ -4424,6 +4784,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.publish_runtime_version_with_options_async(agent_runtime_id, request, headers, runtime)
+
+    def resume_sandbox_with_options(
+        self,
+        sandbox_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSandboxResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSandbox',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/sandboxes/{DaraURL.percent_encode(sandbox_id)}/resume',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSandboxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_sandbox_with_options_async(
+        self,
+        sandbox_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSandboxResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSandbox',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/sandboxes/{DaraURL.percent_encode(sandbox_id)}/resume',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSandboxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_sandbox(
+        self,
+        sandbox_id: str,
+    ) -> main_models.ResumeSandboxResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resume_sandbox_with_options(sandbox_id, headers, runtime)
+
+    async def resume_sandbox_async(
+        self,
+        sandbox_id: str,
+    ) -> main_models.ResumeSandboxResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resume_sandbox_with_options_async(sandbox_id, headers, runtime)
 
     def stop_sandbox_with_options(
         self,
@@ -5234,6 +5660,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_template_with_options_async(template_name, request, headers, runtime)
+
+    def update_tool_with_options(
+        self,
+        tool_name: str,
+        request: main_models.UpdateToolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateToolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools/{DaraURL.percent_encode(tool_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateToolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tool_with_options_async(
+        self,
+        tool_name: str,
+        request: main_models.UpdateToolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateToolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTool',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/tools/{DaraURL.percent_encode(tool_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateToolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tool(
+        self,
+        tool_name: str,
+        request: main_models.UpdateToolRequest,
+    ) -> main_models.UpdateToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_tool_with_options(tool_name, request, headers, runtime)
+
+    async def update_tool_async(
+        self,
+        tool_name: str,
+        request: main_models.UpdateToolRequest,
+    ) -> main_models.UpdateToolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_tool_with_options_async(tool_name, request, headers, runtime)
 
     def update_workspace_with_options(
         self,
