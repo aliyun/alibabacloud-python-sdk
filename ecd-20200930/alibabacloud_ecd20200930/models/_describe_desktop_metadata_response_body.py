@@ -61,6 +61,7 @@ class DescribeDesktopMetadataResponseBody(DaraModel):
 class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
     def __init__(
         self,
+        agent_provider_list: List[str] = None,
         charge_type: str = None,
         creation_time: str = None,
         desktop_group_id: str = None,
@@ -80,6 +81,7 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         resource_group_name: str = None,
         start_time: str = None,
     ):
+        self.agent_provider_list = agent_provider_list
         self.charge_type = charge_type
         self.creation_time = creation_time
         self.desktop_group_id = desktop_group_id
@@ -107,6 +109,9 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_provider_list is not None:
+            result['AgentProviderList'] = self.agent_provider_list
+
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
@@ -165,6 +170,9 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentProviderList') is not None:
+            self.agent_provider_list = m.get('AgentProviderList')
+
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 

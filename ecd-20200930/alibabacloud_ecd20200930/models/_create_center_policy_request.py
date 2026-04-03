@@ -12,6 +12,8 @@ class CreateCenterPolicyRequest(DaraModel):
         self,
         academic_proxy: str = None,
         admin_access: str = None,
+        admin_keyboard_on_full_screen: str = None,
+        admin_keyboard_on_windows: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rule: List[main_models.CreateCenterPolicyRequestAuthorizeAccessPolicyRule] = None,
         authorize_security_policy_rule: List[main_models.CreateCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
@@ -34,6 +36,7 @@ class CreateCenterPolicyRequest(DaraModel):
         cpu_rate_limit: int = None,
         cpu_sample_duration: int = None,
         cpu_single_rate_limit: int = None,
+        description: str = None,
         device_connect_hint: str = None,
         device_redirects: List[main_models.CreateCenterPolicyRequestDeviceRedirects] = None,
         device_rules: List[main_models.CreateCenterPolicyRequestDeviceRules] = None,
@@ -56,6 +59,7 @@ class CreateCenterPolicyRequest(DaraModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         internet_printer: str = None,
+        keyboard_control: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
@@ -151,6 +155,8 @@ class CreateCenterPolicyRequest(DaraModel):
         # *   deny: forcibly rejects granting admin permissions.
         # *   inherited: inherits the admin permissions from the user dimension.
         self.admin_access = admin_access
+        self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
+        self.admin_keyboard_on_windows = admin_keyboard_on_windows
         # The anti-screenshot policy.
         # 
         # Valid values:
@@ -221,6 +227,7 @@ class CreateCenterPolicyRequest(DaraModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The single-CPU usage. Valid values: 70 to 100. Unit: %.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        self.description = description
         # Specifies whether to display the peripheral connection prompt.
         self.device_connect_hint = device_connect_hint
         # The device redirection rules.
@@ -313,6 +320,7 @@ class CreateCenterPolicyRequest(DaraModel):
         # *   both: UDP is used for office and HD graphic design use.
         self.internet_communication_protocol = internet_communication_protocol
         self.internet_printer = internet_printer
+        self.keyboard_control = keyboard_control
         # The read/write permissions on the on-premises drive.
         # 
         # Valid values:
@@ -707,6 +715,12 @@ class CreateCenterPolicyRequest(DaraModel):
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
 
+        if self.admin_keyboard_on_full_screen is not None:
+            result['AdminKeyboardOnFullScreen'] = self.admin_keyboard_on_full_screen
+
+        if self.admin_keyboard_on_windows is not None:
+            result['AdminKeyboardOnWindows'] = self.admin_keyboard_on_windows
+
         if self.app_content_protection is not None:
             result['AppContentProtection'] = self.app_content_protection
 
@@ -781,6 +795,9 @@ class CreateCenterPolicyRequest(DaraModel):
         if self.cpu_single_rate_limit is not None:
             result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.device_connect_hint is not None:
             result['DeviceConnectHint'] = self.device_connect_hint
 
@@ -852,6 +869,9 @@ class CreateCenterPolicyRequest(DaraModel):
 
         if self.internet_printer is not None:
             result['InternetPrinter'] = self.internet_printer
+
+        if self.keyboard_control is not None:
+            result['KeyboardControl'] = self.keyboard_control
 
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
@@ -1118,6 +1138,12 @@ class CreateCenterPolicyRequest(DaraModel):
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
 
+        if m.get('AdminKeyboardOnFullScreen') is not None:
+            self.admin_keyboard_on_full_screen = m.get('AdminKeyboardOnFullScreen')
+
+        if m.get('AdminKeyboardOnWindows') is not None:
+            self.admin_keyboard_on_windows = m.get('AdminKeyboardOnWindows')
+
         if m.get('AppContentProtection') is not None:
             self.app_content_protection = m.get('AppContentProtection')
 
@@ -1196,6 +1222,9 @@ class CreateCenterPolicyRequest(DaraModel):
         if m.get('CpuSingleRateLimit') is not None:
             self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
 
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
         if m.get('DeviceConnectHint') is not None:
             self.device_connect_hint = m.get('DeviceConnectHint')
 
@@ -1270,6 +1299,9 @@ class CreateCenterPolicyRequest(DaraModel):
 
         if m.get('InternetPrinter') is not None:
             self.internet_printer = m.get('InternetPrinter')
+
+        if m.get('KeyboardControl') is not None:
+            self.keyboard_control = m.get('KeyboardControl')
 
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')

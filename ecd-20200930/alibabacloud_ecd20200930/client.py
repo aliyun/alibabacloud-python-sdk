@@ -3390,6 +3390,10 @@ class Client(OpenApiClient):
             query['AcademicProxy'] = request.academic_proxy
         if not DaraCore.is_null(request.admin_access):
             query['AdminAccess'] = request.admin_access
+        if not DaraCore.is_null(request.admin_keyboard_on_full_screen):
+            query['AdminKeyboardOnFullScreen'] = request.admin_keyboard_on_full_screen
+        if not DaraCore.is_null(request.admin_keyboard_on_windows):
+            query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
         if not DaraCore.is_null(request.authorize_access_policy_rule):
@@ -3434,6 +3438,8 @@ class Client(OpenApiClient):
             query['CpuSampleDuration'] = request.cpu_sample_duration
         if not DaraCore.is_null(request.cpu_single_rate_limit):
             query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.device_connect_hint):
             query['DeviceConnectHint'] = request.device_connect_hint
         if not DaraCore.is_null(request.device_redirects):
@@ -3478,6 +3484,8 @@ class Client(OpenApiClient):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
         if not DaraCore.is_null(request.internet_printer):
             query['InternetPrinter'] = request.internet_printer
+        if not DaraCore.is_null(request.keyboard_control):
+            query['KeyboardControl'] = request.keyboard_control
         if not DaraCore.is_null(request.local_drive):
             query['LocalDrive'] = request.local_drive
         if not DaraCore.is_null(request.max_reconnect_time):
@@ -3674,6 +3682,10 @@ class Client(OpenApiClient):
             query['AcademicProxy'] = request.academic_proxy
         if not DaraCore.is_null(request.admin_access):
             query['AdminAccess'] = request.admin_access
+        if not DaraCore.is_null(request.admin_keyboard_on_full_screen):
+            query['AdminKeyboardOnFullScreen'] = request.admin_keyboard_on_full_screen
+        if not DaraCore.is_null(request.admin_keyboard_on_windows):
+            query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
         if not DaraCore.is_null(request.authorize_access_policy_rule):
@@ -3718,6 +3730,8 @@ class Client(OpenApiClient):
             query['CpuSampleDuration'] = request.cpu_sample_duration
         if not DaraCore.is_null(request.cpu_single_rate_limit):
             query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.device_connect_hint):
             query['DeviceConnectHint'] = request.device_connect_hint
         if not DaraCore.is_null(request.device_redirects):
@@ -3762,6 +3776,8 @@ class Client(OpenApiClient):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
         if not DaraCore.is_null(request.internet_printer):
             query['InternetPrinter'] = request.internet_printer
+        if not DaraCore.is_null(request.keyboard_control):
+            query['KeyboardControl'] = request.keyboard_control
         if not DaraCore.is_null(request.local_drive):
             query['LocalDrive'] = request.local_drive
         if not DaraCore.is_null(request.max_reconnect_time):
@@ -20198,6 +20214,10 @@ class Client(OpenApiClient):
             query['AcademicProxy'] = request.academic_proxy
         if not DaraCore.is_null(request.admin_access):
             query['AdminAccess'] = request.admin_access
+        if not DaraCore.is_null(request.admin_keyboard_on_full_screen):
+            query['AdminKeyboardOnFullScreen'] = request.admin_keyboard_on_full_screen
+        if not DaraCore.is_null(request.admin_keyboard_on_windows):
+            query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
         if not DaraCore.is_null(request.authorize_access_policy_rule):
@@ -20242,6 +20262,8 @@ class Client(OpenApiClient):
             query['CpuSampleDuration'] = request.cpu_sample_duration
         if not DaraCore.is_null(request.cpu_single_rate_limit):
             query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.device_connect_hint):
             query['DeviceConnectHint'] = request.device_connect_hint
         if not DaraCore.is_null(request.device_redirects):
@@ -20488,6 +20510,10 @@ class Client(OpenApiClient):
             query['AcademicProxy'] = request.academic_proxy
         if not DaraCore.is_null(request.admin_access):
             query['AdminAccess'] = request.admin_access
+        if not DaraCore.is_null(request.admin_keyboard_on_full_screen):
+            query['AdminKeyboardOnFullScreen'] = request.admin_keyboard_on_full_screen
+        if not DaraCore.is_null(request.admin_keyboard_on_windows):
+            query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
         if not DaraCore.is_null(request.authorize_access_policy_rule):
@@ -20532,6 +20558,8 @@ class Client(OpenApiClient):
             query['CpuSampleDuration'] = request.cpu_sample_duration
         if not DaraCore.is_null(request.cpu_single_rate_limit):
             query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.device_connect_hint):
             query['DeviceConnectHint'] = request.device_connect_hint
         if not DaraCore.is_null(request.device_redirects):

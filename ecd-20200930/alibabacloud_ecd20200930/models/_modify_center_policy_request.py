@@ -12,6 +12,8 @@ class ModifyCenterPolicyRequest(DaraModel):
         self,
         academic_proxy: str = None,
         admin_access: str = None,
+        admin_keyboard_on_full_screen: str = None,
+        admin_keyboard_on_windows: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rule: List[main_models.ModifyCenterPolicyRequestAuthorizeAccessPolicyRule] = None,
         authorize_security_policy_rule: List[main_models.ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
@@ -34,6 +36,7 @@ class ModifyCenterPolicyRequest(DaraModel):
         cpu_rate_limit: int = None,
         cpu_sample_duration: int = None,
         cpu_single_rate_limit: int = None,
+        description: str = None,
         device_connect_hint: str = None,
         device_redirects: List[main_models.ModifyCenterPolicyRequestDeviceRedirects] = None,
         device_rules: List[main_models.ModifyCenterPolicyRequestDeviceRules] = None,
@@ -154,6 +157,8 @@ class ModifyCenterPolicyRequest(DaraModel):
         # *   deny: forcibly rejects granting admin permissions.
         # *   inherited: inherits the admin permissions from the user dimension.
         self.admin_access = admin_access
+        self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
+        self.admin_keyboard_on_windows = admin_keyboard_on_windows
         # The anti-screenshot policy.
         # 
         # Valid values:
@@ -224,6 +229,7 @@ class ModifyCenterPolicyRequest(DaraModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The single-CPU usage. Valid values: 70 to 100. Unit: %.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        self.description = description
         # Specifies whether to display the peripheral connection prompt.
         # 
         # Valid values:
@@ -744,6 +750,12 @@ class ModifyCenterPolicyRequest(DaraModel):
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
 
+        if self.admin_keyboard_on_full_screen is not None:
+            result['AdminKeyboardOnFullScreen'] = self.admin_keyboard_on_full_screen
+
+        if self.admin_keyboard_on_windows is not None:
+            result['AdminKeyboardOnWindows'] = self.admin_keyboard_on_windows
+
         if self.app_content_protection is not None:
             result['AppContentProtection'] = self.app_content_protection
 
@@ -817,6 +829,9 @@ class ModifyCenterPolicyRequest(DaraModel):
 
         if self.cpu_single_rate_limit is not None:
             result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.device_connect_hint is not None:
             result['DeviceConnectHint'] = self.device_connect_hint
@@ -1168,6 +1183,12 @@ class ModifyCenterPolicyRequest(DaraModel):
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
 
+        if m.get('AdminKeyboardOnFullScreen') is not None:
+            self.admin_keyboard_on_full_screen = m.get('AdminKeyboardOnFullScreen')
+
+        if m.get('AdminKeyboardOnWindows') is not None:
+            self.admin_keyboard_on_windows = m.get('AdminKeyboardOnWindows')
+
         if m.get('AppContentProtection') is not None:
             self.app_content_protection = m.get('AppContentProtection')
 
@@ -1245,6 +1266,9 @@ class ModifyCenterPolicyRequest(DaraModel):
 
         if m.get('CpuSingleRateLimit') is not None:
             self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('DeviceConnectHint') is not None:
             self.device_connect_hint = m.get('DeviceConnectHint')

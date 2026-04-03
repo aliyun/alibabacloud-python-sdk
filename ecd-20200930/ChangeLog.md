@@ -1,3 +1,17 @@
+2026-04-03 Version: 4.23.4
+- Update API CreateCenterPolicy: add request parameters AdminKeyboardOnFullScreen.
+- Update API CreateCenterPolicy: add request parameters AdminKeyboardOnWindows.
+- Update API CreateCenterPolicy: add request parameters Description.
+- Update API CreateCenterPolicy: add request parameters KeyboardControl.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnFullScreen.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnWindows.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.Description.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.KeyboardControl.
+- Update API ModifyCenterPolicy: add request parameters AdminKeyboardOnFullScreen.
+- Update API ModifyCenterPolicy: add request parameters AdminKeyboardOnWindows.
+- Update API ModifyCenterPolicy: add request parameters Description.
+
+
 2026-03-31 Version: 4.23.2
 - Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.EnvId.
 - Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.EnvType.

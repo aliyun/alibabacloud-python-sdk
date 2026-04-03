@@ -92,6 +92,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
     def __init__(
         self,
         account_type: str = None,
+        agent_provider_list: List[str] = None,
         bind_amount: int = None,
         bundle_id: str = None,
         bundle_name: str = None,
@@ -163,6 +164,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         zone_type: str = None,
     ):
         self.account_type = account_type
+        self.agent_provider_list = agent_provider_list
         # The number of concurrent sessions of each cloud computer in a multi-session cloud computer pool.
         self.bind_amount = bind_amount
         # The ID of the template used to create the cloud computer.
@@ -408,6 +410,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if self.account_type is not None:
             result['AccountType'] = self.account_type
 
+        if self.agent_provider_list is not None:
+            result['AgentProviderList'] = self.agent_provider_list
+
         if self.bind_amount is not None:
             result['BindAmount'] = self.bind_amount
 
@@ -631,6 +636,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         m = m or dict()
         if m.get('AccountType') is not None:
             self.account_type = m.get('AccountType')
+
+        if m.get('AgentProviderList') is not None:
+            self.agent_provider_list = m.get('AgentProviderList')
 
         if m.get('BindAmount') is not None:
             self.bind_amount = m.get('BindAmount')

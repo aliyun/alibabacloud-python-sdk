@@ -90,6 +90,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         self,
         academic_proxy: str = None,
         admin_access: str = None,
+        admin_keyboard_on_full_screen: str = None,
+        admin_keyboard_on_windows: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rules: List[main_models.DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
         authorize_security_policy_rules: List[main_models.DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules] = None,
@@ -111,6 +113,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         cpu_rate_limit: int = None,
         cpu_sample_duration: int = None,
         cpu_single_rate_limit: int = None,
+        description: str = None,
         desktop_count: int = None,
         desktop_group_count: int = None,
         device_connect_hint: str = None,
@@ -139,6 +142,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         internet_printer: str = None,
+        keyboard_control: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
@@ -230,6 +234,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This parameter is in invitational preview for specific users and not available to the public.
         self.admin_access = admin_access
+        self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
+        self.admin_keyboard_on_windows = admin_keyboard_on_windows
         # Indicates whether the anti-screenshot feature is enabled.
         # 
         # Valid values:
@@ -292,6 +298,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The single-CPU usage. Valid values: 70 to 100. Unit: %.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        self.description = description
         # The number of cloud computers bound with this policy.
         self.desktop_count = desktop_count
         # The number of shared cloud computers bound with this policy.
@@ -385,6 +392,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # *   BOTH: TCP and UDP.
         self.internet_communication_protocol = internet_communication_protocol
         self.internet_printer = internet_printer
+        self.keyboard_control = keyboard_control
         # The permissions on local disk mapping.
         # 
         # Valid values:
@@ -789,6 +797,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
 
+        if self.admin_keyboard_on_full_screen is not None:
+            result['AdminKeyboardOnFullScreen'] = self.admin_keyboard_on_full_screen
+
+        if self.admin_keyboard_on_windows is not None:
+            result['AdminKeyboardOnWindows'] = self.admin_keyboard_on_windows
+
         if self.app_content_protection is not None:
             result['AppContentProtection'] = self.app_content_protection
 
@@ -857,6 +871,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.cpu_single_rate_limit is not None:
             result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.desktop_count is not None:
             result['DesktopCount'] = self.desktop_count
@@ -947,6 +964,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.internet_printer is not None:
             result['InternetPrinter'] = self.internet_printer
+
+        if self.keyboard_control is not None:
+            result['KeyboardControl'] = self.keyboard_control
 
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
@@ -1219,6 +1239,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
 
+        if m.get('AdminKeyboardOnFullScreen') is not None:
+            self.admin_keyboard_on_full_screen = m.get('AdminKeyboardOnFullScreen')
+
+        if m.get('AdminKeyboardOnWindows') is not None:
+            self.admin_keyboard_on_windows = m.get('AdminKeyboardOnWindows')
+
         if m.get('AppContentProtection') is not None:
             self.app_content_protection = m.get('AppContentProtection')
 
@@ -1290,6 +1316,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('CpuSingleRateLimit') is not None:
             self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('DesktopCount') is not None:
             self.desktop_count = m.get('DesktopCount')
@@ -1383,6 +1412,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('InternetPrinter') is not None:
             self.internet_printer = m.get('InternetPrinter')
+
+        if m.get('KeyboardControl') is not None:
+            self.keyboard_control = m.get('KeyboardControl')
 
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
