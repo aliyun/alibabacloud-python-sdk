@@ -8,6 +8,7 @@ class ModifyNoticeConfigRequest(DaraModel):
     def __init__(
         self,
         biz_type: str = None,
+        focus_level: str = None,
         project: str = None,
         route: int = None,
         source_ip: str = None,
@@ -16,6 +17,7 @@ class ModifyNoticeConfigRequest(DaraModel):
         # Notification configuration type, default is SMS/email/in-site message. Value:
         # - **cms**: Cloud Monitor push
         self.biz_type = biz_type
+        self.focus_level = focus_level
         # The identifier of the notification item. Valid values:
         # 
         # *   **yundun_security_Weekreport**: notification for vulnerabilities
@@ -78,6 +80,9 @@ class ModifyNoticeConfigRequest(DaraModel):
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
 
+        if self.focus_level is not None:
+            result['FocusLevel'] = self.focus_level
+
         if self.project is not None:
             result['Project'] = self.project
 
@@ -96,6 +101,9 @@ class ModifyNoticeConfigRequest(DaraModel):
         m = m or dict()
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+
+        if m.get('FocusLevel') is not None:
+            self.focus_level = m.get('FocusLevel')
 
         if m.get('Project') is not None:
             self.project = m.get('Project')

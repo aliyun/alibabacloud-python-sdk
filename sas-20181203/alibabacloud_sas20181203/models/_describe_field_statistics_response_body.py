@@ -50,6 +50,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         ali_yun_instance_count: int = None,
         aws_instance_count: int = None,
         azure_instance_count: int = None,
+        baidu_instance_count: int = None,
         exposed_instance_core_count: int = None,
         exposed_instance_count: int = None,
         general_asset_count: int = None,
@@ -61,6 +62,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         instance_core_count: int = None,
         instance_count: int = None,
         instance_sync_task_count: int = None,
+        kingsoft_instance_count: int = None,
         new_instance_core_count: int = None,
         new_instance_count: int = None,
         no_risk_instance_count: int = None,
@@ -73,9 +75,11 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         region_count: int = None,
         risk_instance_core_count: int = None,
         risk_instance_count: int = None,
+        state_cloud_instance_count: int = None,
         tencent_instance_count: int = None,
         test_asset_count: int = None,
         tripartite_instance_count: int = None,
+        ucloud_instance_count: int = None,
         un_know_status_instance_count: int = None,
         unprotected_instance_core_count: int = None,
         unprotected_instance_count: int = None,
@@ -88,6 +92,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         self.aws_instance_count = aws_instance_count
         # The number of third-party cloud servers.
         self.azure_instance_count = azure_instance_count
+        self.baidu_instance_count = baidu_instance_count
         # The number of cores of exposed assets.
         self.exposed_instance_core_count = exposed_instance_core_count
         # The number of exposed servers.
@@ -110,6 +115,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         self.instance_count = instance_count
         # The total number of tasks for the specified type of assets. If no asset types are specified, this parameter indicates the total number of all servers and Alibaba Cloud services within your account.
         self.instance_sync_task_count = instance_sync_task_count
+        self.kingsoft_instance_count = kingsoft_instance_count
         # The number of cores of new servers.
         self.new_instance_core_count = new_instance_core_count
         # The number of newly added servers.
@@ -134,12 +140,14 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         self.risk_instance_core_count = risk_instance_core_count
         # The number of assets that are at risk.
         self.risk_instance_count = risk_instance_count
+        self.state_cloud_instance_count = state_cloud_instance_count
         # The total number of cloud services that are protected by Security Center.
         self.tencent_instance_count = tencent_instance_count
         # The number of assets whose importance is test.
         self.test_asset_count = test_asset_count
         # The number of simple application servers.
         self.tripartite_instance_count = tripartite_instance_count
+        self.ucloud_instance_count = ucloud_instance_count
         # The number of servers that are in the Unknown state.
         self.un_know_status_instance_count = un_know_status_instance_count
         # The number of cores of unprotected assets.
@@ -167,6 +175,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
 
         if self.azure_instance_count is not None:
             result['AzureInstanceCount'] = self.azure_instance_count
+
+        if self.baidu_instance_count is not None:
+            result['BaiduInstanceCount'] = self.baidu_instance_count
 
         if self.exposed_instance_core_count is not None:
             result['ExposedInstanceCoreCount'] = self.exposed_instance_core_count
@@ -200,6 +211,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
 
         if self.instance_sync_task_count is not None:
             result['InstanceSyncTaskCount'] = self.instance_sync_task_count
+
+        if self.kingsoft_instance_count is not None:
+            result['KingsoftInstanceCount'] = self.kingsoft_instance_count
 
         if self.new_instance_core_count is not None:
             result['NewInstanceCoreCount'] = self.new_instance_core_count
@@ -237,6 +251,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         if self.risk_instance_count is not None:
             result['RiskInstanceCount'] = self.risk_instance_count
 
+        if self.state_cloud_instance_count is not None:
+            result['StateCloudInstanceCount'] = self.state_cloud_instance_count
+
         if self.tencent_instance_count is not None:
             result['TencentInstanceCount'] = self.tencent_instance_count
 
@@ -245,6 +262,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
 
         if self.tripartite_instance_count is not None:
             result['TripartiteInstanceCount'] = self.tripartite_instance_count
+
+        if self.ucloud_instance_count is not None:
+            result['UcloudInstanceCount'] = self.ucloud_instance_count
 
         if self.un_know_status_instance_count is not None:
             result['UnKnowStatusInstanceCount'] = self.un_know_status_instance_count
@@ -273,6 +293,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
 
         if m.get('AzureInstanceCount') is not None:
             self.azure_instance_count = m.get('AzureInstanceCount')
+
+        if m.get('BaiduInstanceCount') is not None:
+            self.baidu_instance_count = m.get('BaiduInstanceCount')
 
         if m.get('ExposedInstanceCoreCount') is not None:
             self.exposed_instance_core_count = m.get('ExposedInstanceCoreCount')
@@ -306,6 +329,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
 
         if m.get('InstanceSyncTaskCount') is not None:
             self.instance_sync_task_count = m.get('InstanceSyncTaskCount')
+
+        if m.get('KingsoftInstanceCount') is not None:
+            self.kingsoft_instance_count = m.get('KingsoftInstanceCount')
 
         if m.get('NewInstanceCoreCount') is not None:
             self.new_instance_core_count = m.get('NewInstanceCoreCount')
@@ -343,6 +369,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
         if m.get('RiskInstanceCount') is not None:
             self.risk_instance_count = m.get('RiskInstanceCount')
 
+        if m.get('StateCloudInstanceCount') is not None:
+            self.state_cloud_instance_count = m.get('StateCloudInstanceCount')
+
         if m.get('TencentInstanceCount') is not None:
             self.tencent_instance_count = m.get('TencentInstanceCount')
 
@@ -351,6 +380,9 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(DaraModel):
 
         if m.get('TripartiteInstanceCount') is not None:
             self.tripartite_instance_count = m.get('TripartiteInstanceCount')
+
+        if m.get('UcloudInstanceCount') is not None:
+            self.ucloud_instance_count = m.get('UcloudInstanceCount')
 
         if m.get('UnKnowStatusInstanceCount') is not None:
             self.un_know_status_instance_count = m.get('UnKnowStatusInstanceCount')

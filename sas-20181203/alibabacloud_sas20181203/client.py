@@ -62480,6 +62480,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.focus_level):
+            query['FocusLevel'] = request.focus_level
         if not DaraCore.is_null(request.project):
             query['Project'] = request.project
         if not DaraCore.is_null(request.route):
@@ -62516,6 +62518,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.focus_level):
+            query['FocusLevel'] = request.focus_level
         if not DaraCore.is_null(request.project):
             query['Project'] = request.project
         if not DaraCore.is_null(request.route):

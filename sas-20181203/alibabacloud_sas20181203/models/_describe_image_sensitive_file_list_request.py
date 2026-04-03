@@ -164,6 +164,7 @@ class DescribeImageSensitiveFileListRequest(DaraModel):
         # *   **image**
         # *   **container**
         self.scan_range = scan_range
+        # 敏感文件Key列表
         self.sensitive_key_list = sensitive_key_list
 
     def validate(self):

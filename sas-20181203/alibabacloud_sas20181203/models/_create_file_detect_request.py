@@ -28,8 +28,6 @@ class CreateFileDetectRequest(DaraModel):
         # The URL that is used to download the file. You can specify this parameter to trigger file detection without the need to upload the file in advance.
         self.download_url = download_url
         # The identifier of the file. Only MD5 hash values are supported.
-        # 
-        # This parameter is required.
         self.hash_key = hash_key
         # The key of the file that is stored in the Object Storage Service (OSS) bucket. You can call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation to query the keys of files.
         self.oss_key = oss_key

@@ -172,6 +172,7 @@ class DescribeImageListBySensitiveFileResponseBodyImageInfos(DaraModel):
         digest: str = None,
         first_scan_time: int = None,
         instance_id: str = None,
+        instance_name: str = None,
         last_scan_time: int = None,
         region_id: str = None,
         repo_name: str = None,
@@ -187,6 +188,7 @@ class DescribeImageListBySensitiveFileResponseBodyImageInfos(DaraModel):
         self.first_scan_time = first_scan_time
         # The image instance ID.
         self.instance_id = instance_id
+        self.instance_name = instance_name
         # The timestamp when the last scan was performed. Unit: milliseconds.
         self.last_scan_time = last_scan_time
         # The ID of the region in which the image instance resides.
@@ -229,6 +231,9 @@ class DescribeImageListBySensitiveFileResponseBodyImageInfos(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+
         if self.last_scan_time is not None:
             result['LastScanTime'] = self.last_scan_time
 
@@ -265,6 +270,9 @@ class DescribeImageListBySensitiveFileResponseBodyImageInfos(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
 
         if m.get('LastScanTime') is not None:
             self.last_scan_time = m.get('LastScanTime')
