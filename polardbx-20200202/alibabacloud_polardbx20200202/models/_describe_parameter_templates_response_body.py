@@ -112,6 +112,7 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
         revisable: int = None,
+        user_changable: int = None,
     ):
         self.checking_code = checking_code
         self.dynamic = dynamic
@@ -119,6 +120,7 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
         self.parameter_name = parameter_name
         self.parameter_value = parameter_value
         self.revisable = revisable
+        self.user_changable = user_changable
 
     def validate(self):
         pass
@@ -146,6 +148,9 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
         if self.revisable is not None:
             result['Revisable'] = self.revisable
 
+        if self.user_changable is not None:
+            result['UserChangable'] = self.user_changable
+
         return result
 
     def from_map(self, m: dict = None):
@@ -167,6 +172,9 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
 
         if m.get('Revisable') is not None:
             self.revisable = m.get('Revisable')
+
+        if m.get('UserChangable') is not None:
+            self.user_changable = m.get('UserChangable')
 
         return self
 

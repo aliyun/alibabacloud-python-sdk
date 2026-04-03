@@ -1,3 +1,7 @@
+2026-04-03 Version: 3.1.7
+- Update API DescribeParameterTemplates: add response parameters Body.Data.Parameters.$.UserChangable.
+
+
 2026-03-16 Version: 3.1.6
 - Update API SwitchGdnMemberRole: add request parameters DstMainConnectString.
 - Update API SwitchGdnMemberRole: add request parameters DstMainPort.
