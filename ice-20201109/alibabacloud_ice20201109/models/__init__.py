@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._aiagent_call_info import AIAgentCallInfo
 from ._aiagent_config import AIAgentConfig
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfig
 from ._aiagent_runtime_config import AIAgentRuntimeConfig
@@ -2113,6 +2114,7 @@ from ._update_rtc_robot_instance_request import UpdateRtcRobotInstanceRequestCon
 from ._upload_media_by_urlresponse_body import UploadMediaByURLResponseBodyUploadJobs
 
 __all__ = [
+    AIAgentCallInfo,
     AIAgentConfig,
     AIAgentOutboundCallConfig,
     AIAgentRuntimeConfig,

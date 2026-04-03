@@ -48,6 +48,7 @@ class DescribeAIAgentInstanceResponseBodyInstance(DaraModel):
     def __init__(
         self,
         agent_config: main_models.AIAgentConfig = None,
+        call_info: main_models.AIAgentCallInfo = None,
         call_log_url: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -58,6 +59,7 @@ class DescribeAIAgentInstanceResponseBodyInstance(DaraModel):
         user_data: str = None,
     ):
         self.agent_config = agent_config
+        self.call_info = call_info
         # The URL of the call log file.
         self.call_log_url = call_log_url
         self.gmt_create = gmt_create
@@ -75,6 +77,8 @@ class DescribeAIAgentInstanceResponseBodyInstance(DaraModel):
     def validate(self):
         if self.agent_config:
             self.agent_config.validate()
+        if self.call_info:
+            self.call_info.validate()
         if self.runtime_config:
             self.runtime_config.validate()
         if self.template_config:
@@ -87,6 +91,9 @@ class DescribeAIAgentInstanceResponseBodyInstance(DaraModel):
             result = _map
         if self.agent_config is not None:
             result['AgentConfig'] = self.agent_config.to_map()
+
+        if self.call_info is not None:
+            result['CallInfo'] = self.call_info.to_map()
 
         if self.call_log_url is not None:
             result['CallLogUrl'] = self.call_log_url
@@ -119,6 +126,10 @@ class DescribeAIAgentInstanceResponseBodyInstance(DaraModel):
         if m.get('AgentConfig') is not None:
             temp_model = main_models.AIAgentConfig()
             self.agent_config = temp_model.from_map(m.get('AgentConfig'))
+
+        if m.get('CallInfo') is not None:
+            temp_model = main_models.AIAgentCallInfo()
+            self.call_info = temp_model.from_map(m.get('CallInfo'))
 
         if m.get('CallLogUrl') is not None:
             self.call_log_url = m.get('CallLogUrl')

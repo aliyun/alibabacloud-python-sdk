@@ -909,10 +909,12 @@ class AIAgentOutboundCallConfigAutoSpeechConfig(DaraModel):
 class AIAgentOutboundCallConfigAutoSpeechConfigUserIdle(DaraModel):
     def __init__(
         self,
+        hangup_end_word: str = None,
         max_repeats: int = None,
         messages: List[main_models.AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages] = None,
         wait_time: int = None,
     ):
+        self.hangup_end_word = hangup_end_word
         self.max_repeats = max_repeats
         self.messages = messages
         self.wait_time = wait_time
@@ -928,6 +930,9 @@ class AIAgentOutboundCallConfigAutoSpeechConfigUserIdle(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.hangup_end_word is not None:
+            result['HangupEndWord'] = self.hangup_end_word
+
         if self.max_repeats is not None:
             result['MaxRepeats'] = self.max_repeats
 
@@ -943,6 +948,9 @@ class AIAgentOutboundCallConfigAutoSpeechConfigUserIdle(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HangupEndWord') is not None:
+            self.hangup_end_word = m.get('HangupEndWord')
+
         if m.get('MaxRepeats') is not None:
             self.max_repeats = m.get('MaxRepeats')
 
@@ -996,9 +1004,11 @@ class AIAgentOutboundCallConfigAutoSpeechConfigLlmPending(DaraModel):
     def __init__(
         self,
         messages: List[main_models.AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages] = None,
+        mode: str = None,
         wait_time: int = None,
     ):
         self.messages = messages
+        self.mode = mode
         self.wait_time = wait_time
 
     def validate(self):
@@ -1017,6 +1027,9 @@ class AIAgentOutboundCallConfigAutoSpeechConfigLlmPending(DaraModel):
             for k1 in self.messages:
                 result['Messages'].append(k1.to_map() if k1 else None)
 
+        if self.mode is not None:
+            result['Mode'] = self.mode
+
         if self.wait_time is not None:
             result['WaitTime'] = self.wait_time
 
@@ -1029,6 +1042,9 @@ class AIAgentOutboundCallConfigAutoSpeechConfigLlmPending(DaraModel):
             for k1 in m.get('Messages'):
                 temp_model = main_models.AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages()
                 self.messages.append(temp_model.from_map(k1))
+
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
 
         if m.get('WaitTime') is not None:
             self.wait_time = m.get('WaitTime')

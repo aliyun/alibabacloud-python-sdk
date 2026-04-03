@@ -8,6 +8,7 @@ class GenerateAIAgentCallResponseBody(DaraModel):
     def __init__(
         self,
         aiagent_user_id: str = None,
+        avatar_user_id: str = None,
         channel_id: str = None,
         instance_id: str = None,
         request_id: str = None,
@@ -16,6 +17,7 @@ class GenerateAIAgentCallResponseBody(DaraModel):
     ):
         # The username of the AI agent in the Alibaba Real-Time Communication (ARTC) channel.
         self.aiagent_user_id = aiagent_user_id
+        self.avatar_user_id = avatar_user_id
         # The ARTC channel ID.
         self.channel_id = channel_id
         # The ID of the AI agent.
@@ -38,6 +40,9 @@ class GenerateAIAgentCallResponseBody(DaraModel):
         if self.aiagent_user_id is not None:
             result['AIAgentUserId'] = self.aiagent_user_id
 
+        if self.avatar_user_id is not None:
+            result['AvatarUserId'] = self.avatar_user_id
+
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
 
@@ -59,6 +64,9 @@ class GenerateAIAgentCallResponseBody(DaraModel):
         m = m or dict()
         if m.get('AIAgentUserId') is not None:
             self.aiagent_user_id = m.get('AIAgentUserId')
+
+        if m.get('AvatarUserId') is not None:
+            self.avatar_user_id = m.get('AvatarUserId')
 
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
