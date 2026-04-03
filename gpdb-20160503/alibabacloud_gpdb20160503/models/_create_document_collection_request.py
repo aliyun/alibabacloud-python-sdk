@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateDocumentCollectionRequest(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         collection: str = None,
         dbinstance_id: str = None,
         dimension: int = None,
@@ -36,7 +37,9 @@ class CreateDocumentCollectionRequest(DaraModel):
         sparse_retrieval_fields: str = None,
         sparse_vector_index_config: main_models.CreateDocumentCollectionRequestSparseVectorIndexConfig = None,
         support_sparse: bool = None,
+        vector_index_config: main_models.CreateDocumentCollectionRequestVectorIndexConfig = None,
     ):
+        self.algorithm = algorithm
         # The name of the document collection that you want to create.
         # 
         # > The name must comply with PostgreSQL object naming restrictions.
@@ -156,16 +159,22 @@ class CreateDocumentCollectionRequest(DaraModel):
         self.sparse_retrieval_fields = sparse_retrieval_fields
         self.sparse_vector_index_config = sparse_vector_index_config
         self.support_sparse = support_sparse
+        self.vector_index_config = vector_index_config
 
     def validate(self):
         if self.sparse_vector_index_config:
             self.sparse_vector_index_config.validate()
+        if self.vector_index_config:
+            self.vector_index_config.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.collection is not None:
             result['Collection'] = self.collection
 
@@ -244,10 +253,16 @@ class CreateDocumentCollectionRequest(DaraModel):
         if self.support_sparse is not None:
             result['SupportSparse'] = self.support_sparse
 
+        if self.vector_index_config is not None:
+            result['VectorIndexConfig'] = self.vector_index_config.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
 
@@ -327,14 +342,55 @@ class CreateDocumentCollectionRequest(DaraModel):
         if m.get('SupportSparse') is not None:
             self.support_sparse = m.get('SupportSparse')
 
+        if m.get('VectorIndexConfig') is not None:
+            temp_model = main_models.CreateDocumentCollectionRequestVectorIndexConfig()
+            self.vector_index_config = temp_model.from_map(m.get('VectorIndexConfig'))
+
+        return self
+
+class CreateDocumentCollectionRequestVectorIndexConfig(DaraModel):
+    def __init__(
+        self,
+        nlist: int = None,
+        rabitq_bits: int = None,
+    ):
+        self.nlist = nlist
+        self.rabitq_bits = rabitq_bits
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.nlist is not None:
+            result['Nlist'] = self.nlist
+
+        if self.rabitq_bits is not None:
+            result['RabitqBits'] = self.rabitq_bits
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Nlist') is not None:
+            self.nlist = m.get('Nlist')
+
+        if m.get('RabitqBits') is not None:
+            self.rabitq_bits = m.get('RabitqBits')
+
         return self
 
 class CreateDocumentCollectionRequestSparseVectorIndexConfig(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         hnsw_ef_construction: int = None,
         hnsw_m: int = None,
     ):
+        self.algorithm = algorithm
         self.hnsw_ef_construction = hnsw_ef_construction
         self.hnsw_m = hnsw_m
 
@@ -346,6 +402,9 @@ class CreateDocumentCollectionRequestSparseVectorIndexConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.hnsw_ef_construction is not None:
             result['HnswEfConstruction'] = self.hnsw_ef_construction
 
@@ -356,6 +415,9 @@ class CreateDocumentCollectionRequestSparseVectorIndexConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('HnswEfConstruction') is not None:
             self.hnsw_ef_construction = m.get('HnswEfConstruction')
 

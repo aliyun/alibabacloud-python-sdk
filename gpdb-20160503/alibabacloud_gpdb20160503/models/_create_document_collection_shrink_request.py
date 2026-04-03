@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateDocumentCollectionShrinkRequest(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         collection: str = None,
         dbinstance_id: str = None,
         dimension: int = None,
@@ -33,7 +34,9 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         sparse_retrieval_fields: str = None,
         sparse_vector_index_config_shrink: str = None,
         support_sparse: bool = None,
+        vector_index_config_shrink: str = None,
     ):
+        self.algorithm = algorithm
         # The name of the document collection that you want to create.
         # 
         # > The name must comply with PostgreSQL object naming restrictions.
@@ -153,6 +156,7 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         self.sparse_retrieval_fields = sparse_retrieval_fields
         self.sparse_vector_index_config_shrink = sparse_vector_index_config_shrink
         self.support_sparse = support_sparse
+        self.vector_index_config_shrink = vector_index_config_shrink
 
     def validate(self):
         pass
@@ -162,6 +166,9 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.collection is not None:
             result['Collection'] = self.collection
 
@@ -240,10 +247,16 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         if self.support_sparse is not None:
             result['SupportSparse'] = self.support_sparse
 
+        if self.vector_index_config_shrink is not None:
+            result['VectorIndexConfig'] = self.vector_index_config_shrink
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
 
@@ -321,6 +334,9 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
 
         if m.get('SupportSparse') is not None:
             self.support_sparse = m.get('SupportSparse')
+
+        if m.get('VectorIndexConfig') is not None:
+            self.vector_index_config_shrink = m.get('VectorIndexConfig')
 
         return self
 

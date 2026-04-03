@@ -1,3 +1,6 @@
+2026-04-03 Version: 5.1.2
+- Generated python 2016-05-03 for gpdb.
+
 2026-03-19 Version: 5.1.0
 - Support API CreateAIService.
 - Support API DeleteAIService.

@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateCollectionShrinkRequest(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         collection: str = None,
         dbinstance_id: str = None,
         dimension: int = None,
@@ -26,8 +27,10 @@ class CreateCollectionShrinkRequest(DaraModel):
         region_id: str = None,
         sparse_vector_index_config_shrink: str = None,
         support_sparse: bool = None,
+        vector_index_config_shrink: str = None,
         workspace_id: str = None,
     ):
+        self.algorithm = algorithm
         # The name of the collection that you want to create.
         # 
         # >  The name must comply with the naming conventions of PostgreSQL objects.
@@ -115,6 +118,7 @@ class CreateCollectionShrinkRequest(DaraModel):
         self.region_id = region_id
         self.sparse_vector_index_config_shrink = sparse_vector_index_config_shrink
         self.support_sparse = support_sparse
+        self.vector_index_config_shrink = vector_index_config_shrink
         # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
         self.workspace_id = workspace_id
 
@@ -126,6 +130,9 @@ class CreateCollectionShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.collection is not None:
             result['Collection'] = self.collection
 
@@ -183,6 +190,9 @@ class CreateCollectionShrinkRequest(DaraModel):
         if self.support_sparse is not None:
             result['SupportSparse'] = self.support_sparse
 
+        if self.vector_index_config_shrink is not None:
+            result['VectorIndexConfig'] = self.vector_index_config_shrink
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -190,6 +200,9 @@ class CreateCollectionShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
 
@@ -246,6 +259,9 @@ class CreateCollectionShrinkRequest(DaraModel):
 
         if m.get('SupportSparse') is not None:
             self.support_sparse = m.get('SupportSparse')
+
+        if m.get('VectorIndexConfig') is not None:
+            self.vector_index_config_shrink = m.get('VectorIndexConfig')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

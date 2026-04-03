@@ -17,6 +17,7 @@ class QueryKnowledgeBasesContentRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
         rerank_factor: float = None,
+        rerank_model: main_models.QueryKnowledgeBasesContentRequestRerankModel = None,
         source_collection: List[main_models.QueryKnowledgeBasesContentRequestSourceCollection] = None,
         top_k: int = None,
     ):
@@ -50,6 +51,7 @@ class QueryKnowledgeBasesContentRequest(DaraModel):
         # 
         # *   We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
         self.rerank_factor = rerank_factor
+        self.rerank_model = rerank_model
         # The information about collections to retrieve from.
         # 
         # This parameter is required.
@@ -60,6 +62,8 @@ class QueryKnowledgeBasesContentRequest(DaraModel):
     def validate(self):
         if self.merge_method_args:
             self.merge_method_args.validate()
+        if self.rerank_model:
+            self.rerank_model.validate()
         if self.source_collection:
             for v1 in self.source_collection:
                  if v1:
@@ -90,6 +94,9 @@ class QueryKnowledgeBasesContentRequest(DaraModel):
 
         if self.rerank_factor is not None:
             result['RerankFactor'] = self.rerank_factor
+
+        if self.rerank_model is not None:
+            result['RerankModel'] = self.rerank_model.to_map()
 
         result['SourceCollection'] = []
         if self.source_collection is not None:
@@ -124,6 +131,10 @@ class QueryKnowledgeBasesContentRequest(DaraModel):
 
         if m.get('RerankFactor') is not None:
             self.rerank_factor = m.get('RerankFactor')
+
+        if m.get('RerankModel') is not None:
+            temp_model = main_models.QueryKnowledgeBasesContentRequestRerankModel()
+            self.rerank_model = temp_model.from_map(m.get('RerankModel'))
 
         self.source_collection = []
         if m.get('SourceCollection') is not None:
@@ -216,6 +227,7 @@ class QueryKnowledgeBasesContentRequestSourceCollectionQueryParams(DaraModel):
         order_by: str = None,
         recall_window: List[int] = None,
         rerank_factor: float = None,
+        rerank_model: main_models.QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel = None,
         top_k: int = None,
         use_full_text_retrieval: bool = None,
     ):
@@ -289,6 +301,7 @@ class QueryKnowledgeBasesContentRequestSourceCollectionQueryParams(DaraModel):
         # 
         # *   We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
         self.rerank_factor = rerank_factor
+        self.rerank_model = rerank_model
         # The number of top results.
         self.top_k = top_k
         # Specifies whether to use full-text retrieval (dual-path retrieval). The default value is false, which means only vector retrieval is used.
@@ -297,6 +310,8 @@ class QueryKnowledgeBasesContentRequestSourceCollectionQueryParams(DaraModel):
     def validate(self):
         if self.graph_search_args:
             self.graph_search_args.validate()
+        if self.rerank_model:
+            self.rerank_model.validate()
 
     def to_map(self):
         result = dict()
@@ -332,6 +347,9 @@ class QueryKnowledgeBasesContentRequestSourceCollectionQueryParams(DaraModel):
 
         if self.rerank_factor is not None:
             result['RerankFactor'] = self.rerank_factor
+
+        if self.rerank_model is not None:
+            result['RerankModel'] = self.rerank_model.to_map()
 
         if self.top_k is not None:
             result['TopK'] = self.top_k
@@ -374,11 +392,50 @@ class QueryKnowledgeBasesContentRequestSourceCollectionQueryParams(DaraModel):
         if m.get('RerankFactor') is not None:
             self.rerank_factor = m.get('RerankFactor')
 
+        if m.get('RerankModel') is not None:
+            temp_model = main_models.QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel()
+            self.rerank_model = temp_model.from_map(m.get('RerankModel'))
+
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
 
         if m.get('UseFullTextRetrieval') is not None:
             self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
+
+        return self
+
+class QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel(DaraModel):
+    def __init__(
+        self,
+        instruct: str = None,
+        name: str = None,
+    ):
+        self.instruct = instruct
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.instruct is not None:
+            result['Instruct'] = self.instruct
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instruct') is not None:
+            self.instruct = m.get('Instruct')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         return self
 
@@ -407,6 +464,41 @@ class QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearchArg
         m = m or dict()
         if m.get('GraphTopK') is not None:
             self.graph_top_k = m.get('GraphTopK')
+
+        return self
+
+class QueryKnowledgeBasesContentRequestRerankModel(DaraModel):
+    def __init__(
+        self,
+        instruct: str = None,
+        name: str = None,
+    ):
+        self.instruct = instruct
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.instruct is not None:
+            result['Instruct'] = self.instruct
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instruct') is not None:
+            self.instruct = m.get('Instruct')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         return self
 

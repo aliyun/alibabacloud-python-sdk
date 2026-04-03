@@ -1758,7 +1758,11 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.sparse_vector_index_config):
             request.sparse_vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
+        if not DaraCore.is_null(tmp_req.vector_index_config):
+            request.vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.vector_index_config, 'VectorIndexConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
         if not DaraCore.is_null(request.dbinstance_id):
@@ -1797,6 +1801,8 @@ class Client(OpenApiClient):
             query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
         if not DaraCore.is_null(request.support_sparse):
             query['SupportSparse'] = request.support_sparse
+        if not DaraCore.is_null(request.vector_index_config_shrink):
+            query['VectorIndexConfig'] = request.vector_index_config_shrink
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -1828,7 +1834,11 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.sparse_vector_index_config):
             request.sparse_vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
+        if not DaraCore.is_null(tmp_req.vector_index_config):
+            request.vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.vector_index_config, 'VectorIndexConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
         if not DaraCore.is_null(request.dbinstance_id):
@@ -1867,6 +1877,8 @@ class Client(OpenApiClient):
             query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
         if not DaraCore.is_null(request.support_sparse):
             query['SupportSparse'] = request.support_sparse
+        if not DaraCore.is_null(request.vector_index_config_shrink):
+            query['VectorIndexConfig'] = request.vector_index_config_shrink
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -2534,7 +2546,11 @@ class Client(OpenApiClient):
             request.relationship_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
         if not DaraCore.is_null(tmp_req.sparse_vector_index_config):
             request.sparse_vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
+        if not DaraCore.is_null(tmp_req.vector_index_config):
+            request.vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.vector_index_config, 'VectorIndexConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
         if not DaraCore.is_null(request.dbinstance_id):
@@ -2587,6 +2603,8 @@ class Client(OpenApiClient):
             query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
         if not DaraCore.is_null(request.support_sparse):
             query['SupportSparse'] = request.support_sparse
+        if not DaraCore.is_null(request.vector_index_config_shrink):
+            query['VectorIndexConfig'] = request.vector_index_config_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2620,7 +2638,11 @@ class Client(OpenApiClient):
             request.relationship_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
         if not DaraCore.is_null(tmp_req.sparse_vector_index_config):
             request.sparse_vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
+        if not DaraCore.is_null(tmp_req.vector_index_config):
+            request.vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.vector_index_config, 'VectorIndexConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
         if not DaraCore.is_null(request.dbinstance_id):
@@ -2673,6 +2695,8 @@ class Client(OpenApiClient):
             query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
         if not DaraCore.is_null(request.support_sparse):
             query['SupportSparse'] = request.support_sparse
+        if not DaraCore.is_null(request.vector_index_config_shrink):
+            query['VectorIndexConfig'] = request.vector_index_config_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4259,6 +4283,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateVectorIndexResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
         if not DaraCore.is_null(request.dbinstance_id):
@@ -4279,10 +4305,14 @@ class Client(OpenApiClient):
             query['Metrics'] = request.metrics
         if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.nlist):
+            query['Nlist'] = request.nlist
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.pq_enable):
             query['PqEnable'] = request.pq_enable
+        if not DaraCore.is_null(request.rabitq_bits):
+            query['RabitqBits'] = request.rabitq_bits
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.type):
@@ -4313,6 +4343,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateVectorIndexResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.algorithm):
+            query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
         if not DaraCore.is_null(request.dbinstance_id):
@@ -4333,10 +4365,14 @@ class Client(OpenApiClient):
             query['Metrics'] = request.metrics
         if not DaraCore.is_null(request.namespace):
             query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.nlist):
+            query['Nlist'] = request.nlist
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.pq_enable):
             query['PqEnable'] = request.pq_enable
+        if not DaraCore.is_null(request.rabitq_bits):
+            query['RabitqBits'] = request.rabitq_bits
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.type):
@@ -4681,6 +4717,104 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteBackupResponse:
         runtime = RuntimeOptions()
         return await self.delete_backup_with_options_async(request, runtime)
+
+    def delete_chunks_with_options(
+        self,
+        tmp_req: main_models.DeleteChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteChunksResponse:
+        tmp_req.validate()
+        request = main_models.DeleteChunksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_ids):
+            request.chunk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_ids, 'ChunkIds', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.chunk_ids_shrink):
+            query['ChunkIds'] = request.chunk_ids_shrink
+        if not DaraCore.is_null(request.collection):
+            query['Collection'] = request.collection
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteChunks',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chunks_with_options_async(
+        self,
+        tmp_req: main_models.DeleteChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteChunksResponse:
+        tmp_req.validate()
+        request = main_models.DeleteChunksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_ids):
+            request.chunk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_ids, 'ChunkIds', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.chunk_ids_shrink):
+            query['ChunkIds'] = request.chunk_ids_shrink
+        if not DaraCore.is_null(request.collection):
+            query['Collection'] = request.collection
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteChunks',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chunks(
+        self,
+        request: main_models.DeleteChunksRequest,
+    ) -> main_models.DeleteChunksResponse:
+        runtime = RuntimeOptions()
+        return self.delete_chunks_with_options(request, runtime)
+
+    async def delete_chunks_async(
+        self,
+        request: main_models.DeleteChunksRequest,
+    ) -> main_models.DeleteChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_chunks_with_options_async(request, runtime)
 
     def delete_collection_with_options(
         self,
@@ -14888,6 +15022,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_backup_jobs_with_options_async(request, runtime)
 
+    def list_chunks_with_options(
+        self,
+        request: main_models.ListChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChunksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.collection):
+            query['Collection'] = request.collection
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.include_vector):
+            query['IncludeVector'] = request.include_vector
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChunks',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chunks_with_options_async(
+        self,
+        request: main_models.ListChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChunksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.collection):
+            query['Collection'] = request.collection
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.include_vector):
+            query['IncludeVector'] = request.include_vector
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChunks',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chunks(
+        self,
+        request: main_models.ListChunksRequest,
+    ) -> main_models.ListChunksResponse:
+        runtime = RuntimeOptions()
+        return self.list_chunks_with_options(request, runtime)
+
+    async def list_chunks_async(
+        self,
+        request: main_models.ListChunksRequest,
+    ) -> main_models.ListChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_chunks_with_options_async(request, runtime)
+
     def list_collections_with_options(
         self,
         request: main_models.ListCollectionsRequest,
@@ -19730,6 +19970,8 @@ class Client(OpenApiClient):
             request.hybrid_search_args_shrink = Utils.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
         if not DaraCore.is_null(tmp_req.recall_window):
             request.recall_window_shrink = Utils.array_to_string_with_specified_style(tmp_req.recall_window, 'RecallWindow', 'json')
+        if not DaraCore.is_null(tmp_req.rerank_model):
+            request.rerank_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.rerank_model, 'RerankModel', 'json')
         query = {}
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
@@ -19773,6 +20015,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rerank_factor):
             query['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.rerank_model_shrink):
+            query['RerankModel'] = request.rerank_model_shrink
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         if not DaraCore.is_null(request.url_expiration):
@@ -19816,6 +20060,8 @@ class Client(OpenApiClient):
             request.hybrid_search_args_shrink = Utils.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
         if not DaraCore.is_null(tmp_req.recall_window):
             request.recall_window_shrink = Utils.array_to_string_with_specified_style(tmp_req.recall_window, 'RecallWindow', 'json')
+        if not DaraCore.is_null(tmp_req.rerank_model):
+            request.rerank_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.rerank_model, 'RerankModel', 'json')
         query = {}
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
@@ -19859,6 +20105,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rerank_factor):
             query['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.rerank_model_shrink):
+            query['RerankModel'] = request.rerank_model_shrink
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         if not DaraCore.is_null(request.url_expiration):
@@ -20074,6 +20322,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.merge_method_args):
             request.merge_method_args_shrink = Utils.array_to_string_with_specified_style(tmp_req.merge_method_args, 'MergeMethodArgs', 'json')
+        if not DaraCore.is_null(tmp_req.rerank_model):
+            request.rerank_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.rerank_model, 'RerankModel', 'json')
         if not DaraCore.is_null(tmp_req.source_collection):
             request.source_collection_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_collection, 'SourceCollection', 'json')
         query = {}
@@ -20091,6 +20341,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rerank_factor):
             query['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.rerank_model_shrink):
+            query['RerankModel'] = request.rerank_model_shrink
         if not DaraCore.is_null(request.source_collection_shrink):
             query['SourceCollection'] = request.source_collection_shrink
         if not DaraCore.is_null(request.top_k):
@@ -20124,6 +20376,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.merge_method_args):
             request.merge_method_args_shrink = Utils.array_to_string_with_specified_style(tmp_req.merge_method_args, 'MergeMethodArgs', 'json')
+        if not DaraCore.is_null(tmp_req.rerank_model):
+            request.rerank_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.rerank_model, 'RerankModel', 'json')
         if not DaraCore.is_null(tmp_req.source_collection):
             request.source_collection_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_collection, 'SourceCollection', 'json')
         query = {}
@@ -20141,6 +20395,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rerank_factor):
             query['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.rerank_model_shrink):
+            query['RerankModel'] = request.rerank_model_shrink
         if not DaraCore.is_null(request.source_collection_shrink):
             query['SourceCollection'] = request.source_collection_shrink
         if not DaraCore.is_null(request.top_k):
@@ -20350,6 +20606,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.documents_shrink):
             body['Documents'] = request.documents_shrink
+        if not DaraCore.is_null(request.instruct):
+            body['Instruct'] = request.instruct
         if not DaraCore.is_null(request.max_chunks_per_doc):
             body['MaxChunksPerDoc'] = request.max_chunks_per_doc
         if not DaraCore.is_null(request.model):
@@ -20400,6 +20658,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.documents_shrink):
             body['Documents'] = request.documents_shrink
+        if not DaraCore.is_null(request.instruct):
+            body['Instruct'] = request.instruct
         if not DaraCore.is_null(request.max_chunks_per_doc):
             body['MaxChunksPerDoc'] = request.max_chunks_per_doc
         if not DaraCore.is_null(request.model):

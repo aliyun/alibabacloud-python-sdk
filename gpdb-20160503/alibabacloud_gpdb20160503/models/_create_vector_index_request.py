@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateVectorIndexRequest(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         collection: str = None,
         dbinstance_id: str = None,
         dimension: int = None,
@@ -17,11 +18,14 @@ class CreateVectorIndexRequest(DaraModel):
         manager_account_password: str = None,
         metrics: str = None,
         namespace: str = None,
+        nlist: int = None,
         owner_id: int = None,
         pq_enable: int = None,
+        rabitq_bits: int = None,
         region_id: str = None,
         type: str = None,
     ):
+        self.algorithm = algorithm
         # Collection name.
         # > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
         # 
@@ -70,11 +74,13 @@ class CreateVectorIndexRequest(DaraModel):
         # 
         # > You can use the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API to view the list.
         self.namespace = namespace
+        self.nlist = nlist
         self.owner_id = owner_id
         # Whether to enable PQ (Product Quantization) algorithm acceleration for the index. It is recommended to enable this when the data volume exceeds 500,000. Value description:
         # - 0: Disabled.
         # - 1: Enabled (default).
         self.pq_enable = pq_enable
+        self.rabitq_bits = rabitq_bits
         # Region ID where the instance is located.
         # 
         # This parameter is required.
@@ -89,6 +95,9 @@ class CreateVectorIndexRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.collection is not None:
             result['Collection'] = self.collection
 
@@ -119,11 +128,17 @@ class CreateVectorIndexRequest(DaraModel):
         if self.namespace is not None:
             result['Namespace'] = self.namespace
 
+        if self.nlist is not None:
+            result['Nlist'] = self.nlist
+
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
         if self.pq_enable is not None:
             result['PqEnable'] = self.pq_enable
+
+        if self.rabitq_bits is not None:
+            result['RabitqBits'] = self.rabitq_bits
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -135,6 +150,9 @@ class CreateVectorIndexRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
 
@@ -165,11 +183,17 @@ class CreateVectorIndexRequest(DaraModel):
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
 
+        if m.get('Nlist') is not None:
+            self.nlist = m.get('Nlist')
+
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
         if m.get('PqEnable') is not None:
             self.pq_enable = m.get('PqEnable')
+
+        if m.get('RabitqBits') is not None:
+            self.rabitq_bits = m.get('RabitqBits')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -142,6 +142,10 @@ from ._delete_account_response import DeleteAccountResponse
 from ._delete_backup_request import DeleteBackupRequest
 from ._delete_backup_response_body import DeleteBackupResponseBody
 from ._delete_backup_response import DeleteBackupResponse
+from ._delete_chunks_request import DeleteChunksRequest
+from ._delete_chunks_shrink_request import DeleteChunksShrinkRequest
+from ._delete_chunks_response_body import DeleteChunksResponseBody
+from ._delete_chunks_response import DeleteChunksResponse
 from ._delete_collection_request import DeleteCollectionRequest
 from ._delete_collection_response_body import DeleteCollectionResponseBody
 from ._delete_collection_response import DeleteCollectionResponse
@@ -502,6 +506,9 @@ from ._list_aiservices_response import ListAIServicesResponse
 from ._list_backup_jobs_request import ListBackupJobsRequest
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBody
 from ._list_backup_jobs_response import ListBackupJobsResponse
+from ._list_chunks_request import ListChunksRequest
+from ._list_chunks_response_body import ListChunksResponseBody
+from ._list_chunks_response import ListChunksResponse
 from ._list_collections_request import ListCollectionsRequest
 from ._list_collections_response_body import ListCollectionsResponseBody
 from ._list_collections_response import ListCollectionsResponse
@@ -771,7 +778,9 @@ from ._add_ainode_request import AddAINodeRequestAINodeSpecInfos
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs
+from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs
+from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection
 from ._chat_with_knowledge_base_request import ChatWithKnowledgeBaseRequestKnowledgeParams
@@ -792,7 +801,9 @@ from ._chat_with_knowledge_base_response_body import ChatWithKnowledgeBaseRespon
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsRrf
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs
+from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs
+from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection
 from ._chat_with_knowledge_base_stream_request import ChatWithKnowledgeBaseStreamRequestKnowledgeParams
@@ -811,9 +822,11 @@ from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBas
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult
 from ._create_collection_request import CreateCollectionRequestSparseVectorIndexConfig
+from ._create_collection_request import CreateCollectionRequestVectorIndexConfig
 from ._create_dbinstance_request import CreateDBInstanceRequestAINodeSpecInfos
 from ._create_dbinstance_request import CreateDBInstanceRequestTag
 from ._create_document_collection_request import CreateDocumentCollectionRequestSparseVectorIndexConfig
+from ._create_document_collection_request import CreateDocumentCollectionRequestVectorIndexConfig
 from ._create_remote_adbdata_source_response_body import CreateRemoteADBDataSourceResponseBodyDataSourceItem
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsDBInstanceAccount
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccounts
@@ -930,6 +943,9 @@ from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodeP
 from ._list_aiservices_response_body import ListAIServicesResponseBodyServices
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItemsBackupJob
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItems
+from ._list_chunks_response_body import ListChunksResponseBodyChunksChunksVector
+from ._list_chunks_response_body import ListChunksResponseBodyChunksChunks
+from ._list_chunks_response_body import ListChunksResponseBodyChunks
 from ._list_collections_response_body import ListCollectionsResponseBodyCollections
 from ._list_database_extensions_response_body import ListDatabaseExtensionsResponseBodyExtensions
 from ._list_databases_response_body import ListDatabasesResponseBodyDatabases
@@ -971,7 +987,9 @@ from ._query_collection_data_response_body import QueryCollectionDataResponseBod
 from ._query_collection_data_response_body import QueryCollectionDataResponseBodyMatchesMatch
 from ._query_collection_data_response_body import QueryCollectionDataResponseBodyMatches
 from ._query_content_request import QueryContentRequestGraphSearchArgs
+from ._query_content_request import QueryContentRequestRerankModel
 from ._query_content_advance_request import QueryContentAdvanceRequestGraphSearchArgs
+from ._query_content_advance_request import QueryContentAdvanceRequestRerankModel
 from ._query_content_response_body import QueryContentResponseBodyEntitiesEntities
 from ._query_content_response_body import QueryContentResponseBodyEntities
 from ._query_content_response_body import QueryContentResponseBodyMatchesMatchListVector
@@ -987,7 +1005,9 @@ from ._query_content_response_body import QueryContentResponseBodyWindowMatches
 from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestMergeMethodArgsRrf
 from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestMergeMethodArgsWeight
 from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestMergeMethodArgs
+from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestRerankModel
 from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearchArgs
+from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel
 from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestSourceCollectionQueryParams
 from ._query_knowledge_bases_content_request import QueryKnowledgeBasesContentRequestSourceCollection
 from ._query_knowledge_bases_content_response_body import QueryKnowledgeBasesContentResponseBodyEntitiesEntities
@@ -1148,6 +1168,10 @@ __all__ = [
     DeleteBackupRequest,
     DeleteBackupResponseBody,
     DeleteBackupResponse,
+    DeleteChunksRequest,
+    DeleteChunksShrinkRequest,
+    DeleteChunksResponseBody,
+    DeleteChunksResponse,
     DeleteCollectionRequest,
     DeleteCollectionResponseBody,
     DeleteCollectionResponse,
@@ -1508,6 +1532,9 @@ __all__ = [
     ListBackupJobsRequest,
     ListBackupJobsResponseBody,
     ListBackupJobsResponse,
+    ListChunksRequest,
+    ListChunksResponseBody,
+    ListChunksResponse,
     ListCollectionsRequest,
     ListCollectionsResponseBody,
     ListCollectionsResponse,
@@ -1777,7 +1804,9 @@ __all__ = [
     ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf,
     ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight,
     ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs,
+    ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel,
     ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs,
+    ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel,
     ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams,
     ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection,
     ChatWithKnowledgeBaseRequestKnowledgeParams,
@@ -1798,7 +1827,9 @@ __all__ = [
     ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsRrf,
     ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight,
     ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs,
+    ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel,
     ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs,
+    ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel,
     ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams,
     ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection,
     ChatWithKnowledgeBaseStreamRequestKnowledgeParams,
@@ -1817,9 +1848,11 @@ __all__ = [
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage,
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult,
     CreateCollectionRequestSparseVectorIndexConfig,
+    CreateCollectionRequestVectorIndexConfig,
     CreateDBInstanceRequestAINodeSpecInfos,
     CreateDBInstanceRequestTag,
     CreateDocumentCollectionRequestSparseVectorIndexConfig,
+    CreateDocumentCollectionRequestVectorIndexConfig,
     CreateRemoteADBDataSourceResponseBodyDataSourceItem,
     DescribeAccountsResponseBodyAccountsDBInstanceAccount,
     DescribeAccountsResponseBodyAccounts,
@@ -1936,6 +1969,9 @@ __all__ = [
     ListAIServicesResponseBodyServices,
     ListBackupJobsResponseBodyItemsBackupJob,
     ListBackupJobsResponseBodyItems,
+    ListChunksResponseBodyChunksChunksVector,
+    ListChunksResponseBodyChunksChunks,
+    ListChunksResponseBodyChunks,
     ListCollectionsResponseBodyCollections,
     ListDatabaseExtensionsResponseBodyExtensions,
     ListDatabasesResponseBodyDatabases,
@@ -1977,7 +2013,9 @@ __all__ = [
     QueryCollectionDataResponseBodyMatchesMatch,
     QueryCollectionDataResponseBodyMatches,
     QueryContentRequestGraphSearchArgs,
+    QueryContentRequestRerankModel,
     QueryContentAdvanceRequestGraphSearchArgs,
+    QueryContentAdvanceRequestRerankModel,
     QueryContentResponseBodyEntitiesEntities,
     QueryContentResponseBodyEntities,
     QueryContentResponseBodyMatchesMatchListVector,
@@ -1993,7 +2031,9 @@ __all__ = [
     QueryKnowledgeBasesContentRequestMergeMethodArgsRrf,
     QueryKnowledgeBasesContentRequestMergeMethodArgsWeight,
     QueryKnowledgeBasesContentRequestMergeMethodArgs,
+    QueryKnowledgeBasesContentRequestRerankModel,
     QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearchArgs,
+    QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel,
     QueryKnowledgeBasesContentRequestSourceCollectionQueryParams,
     QueryKnowledgeBasesContentRequestSourceCollection,
     QueryKnowledgeBasesContentResponseBodyEntitiesEntities,

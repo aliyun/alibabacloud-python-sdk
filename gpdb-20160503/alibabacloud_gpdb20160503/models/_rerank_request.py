@@ -11,6 +11,7 @@ class RerankRequest(DaraModel):
         self,
         dbinstance_id: str = None,
         documents: List[str] = None,
+        instruct: str = None,
         max_chunks_per_doc: int = None,
         model: str = None,
         owner_id: int = None,
@@ -27,6 +28,7 @@ class RerankRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # List of documents to be re-ordered.
         self.documents = documents
+        self.instruct = instruct
         # Maximum number of chunks allowed when the text exceeds the model window:
         # - bge-reranker-v2-m3: default value is 10.
         # - bge-reranker-v2-minicpm-layerwise: default value is 5:
@@ -64,6 +66,9 @@ class RerankRequest(DaraModel):
         if self.documents is not None:
             result['Documents'] = self.documents
 
+        if self.instruct is not None:
+            result['Instruct'] = self.instruct
+
         if self.max_chunks_per_doc is not None:
             result['MaxChunksPerDoc'] = self.max_chunks_per_doc
 
@@ -94,6 +99,9 @@ class RerankRequest(DaraModel):
 
         if m.get('Documents') is not None:
             self.documents = m.get('Documents')
+
+        if m.get('Instruct') is not None:
+            self.instruct = m.get('Instruct')
 
         if m.get('MaxChunksPerDoc') is not None:
             self.max_chunks_per_doc = m.get('MaxChunksPerDoc')

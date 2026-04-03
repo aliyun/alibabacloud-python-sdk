@@ -14,6 +14,7 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
         rerank_factor: float = None,
+        rerank_model_shrink: str = None,
         source_collection_shrink: str = None,
         top_k: int = None,
     ):
@@ -47,6 +48,7 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         # 
         # *   We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
         self.rerank_factor = rerank_factor
+        self.rerank_model_shrink = rerank_model_shrink
         # The information about collections to retrieve from.
         # 
         # This parameter is required.
@@ -83,6 +85,9 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         if self.rerank_factor is not None:
             result['RerankFactor'] = self.rerank_factor
 
+        if self.rerank_model_shrink is not None:
+            result['RerankModel'] = self.rerank_model_shrink
+
         if self.source_collection_shrink is not None:
             result['SourceCollection'] = self.source_collection_shrink
 
@@ -113,6 +118,9 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
 
         if m.get('RerankFactor') is not None:
             self.rerank_factor = m.get('RerankFactor')
+
+        if m.get('RerankModel') is not None:
+            self.rerank_model_shrink = m.get('RerankModel')
 
         if m.get('SourceCollection') is not None:
             self.source_collection_shrink = m.get('SourceCollection')

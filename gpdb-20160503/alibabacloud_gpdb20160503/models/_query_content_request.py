@@ -32,6 +32,7 @@ class QueryContentRequest(DaraModel):
         recall_window: List[int] = None,
         region_id: str = None,
         rerank_factor: float = None,
+        rerank_model: main_models.QueryContentRequestRerankModel = None,
         top_k: int = None,
         url_expiration: str = None,
         use_full_text_retrieval: bool = None,
@@ -143,6 +144,7 @@ class QueryContentRequest(DaraModel):
         # > - Re-ranking is slower when documents are sparsely split.
         # > - It is recommended that the re-ranked count (TopK * Factor, rounded up) does not exceed 50.
         self.rerank_factor = rerank_factor
+        self.rerank_model = rerank_model
         # The number of the returned top results.
         self.top_k = top_k
         # The validity period of the returned image URL.
@@ -161,6 +163,8 @@ class QueryContentRequest(DaraModel):
     def validate(self):
         if self.graph_search_args:
             self.graph_search_args.validate()
+        if self.rerank_model:
+            self.rerank_model.validate()
 
     def to_map(self):
         result = dict()
@@ -232,6 +236,9 @@ class QueryContentRequest(DaraModel):
 
         if self.rerank_factor is not None:
             result['RerankFactor'] = self.rerank_factor
+
+        if self.rerank_model is not None:
+            result['RerankModel'] = self.rerank_model.to_map()
 
         if self.top_k is not None:
             result['TopK'] = self.top_k
@@ -313,6 +320,10 @@ class QueryContentRequest(DaraModel):
         if m.get('RerankFactor') is not None:
             self.rerank_factor = m.get('RerankFactor')
 
+        if m.get('RerankModel') is not None:
+            temp_model = main_models.QueryContentRequestRerankModel()
+            self.rerank_model = temp_model.from_map(m.get('RerankModel'))
+
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
 
@@ -321,6 +332,41 @@ class QueryContentRequest(DaraModel):
 
         if m.get('UseFullTextRetrieval') is not None:
             self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
+
+        return self
+
+class QueryContentRequestRerankModel(DaraModel):
+    def __init__(
+        self,
+        instruct: str = None,
+        name: str = None,
+    ):
+        self.instruct = instruct
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.instruct is not None:
+            result['Instruct'] = self.instruct
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instruct') is not None:
+            self.instruct = m.get('Instruct')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         return self
 

@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class CreateCollectionRequest(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         collection: str = None,
         dbinstance_id: str = None,
         dimension: int = None,
@@ -27,8 +28,10 @@ class CreateCollectionRequest(DaraModel):
         region_id: str = None,
         sparse_vector_index_config: main_models.CreateCollectionRequestSparseVectorIndexConfig = None,
         support_sparse: bool = None,
+        vector_index_config: main_models.CreateCollectionRequestVectorIndexConfig = None,
         workspace_id: str = None,
     ):
+        self.algorithm = algorithm
         # The name of the collection that you want to create.
         # 
         # >  The name must comply with the naming conventions of PostgreSQL objects.
@@ -116,18 +119,24 @@ class CreateCollectionRequest(DaraModel):
         self.region_id = region_id
         self.sparse_vector_index_config = sparse_vector_index_config
         self.support_sparse = support_sparse
+        self.vector_index_config = vector_index_config
         # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
         self.workspace_id = workspace_id
 
     def validate(self):
         if self.sparse_vector_index_config:
             self.sparse_vector_index_config.validate()
+        if self.vector_index_config:
+            self.vector_index_config.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.collection is not None:
             result['Collection'] = self.collection
 
@@ -185,6 +194,9 @@ class CreateCollectionRequest(DaraModel):
         if self.support_sparse is not None:
             result['SupportSparse'] = self.support_sparse
 
+        if self.vector_index_config is not None:
+            result['VectorIndexConfig'] = self.vector_index_config.to_map()
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -192,6 +204,9 @@ class CreateCollectionRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
 
@@ -250,17 +265,58 @@ class CreateCollectionRequest(DaraModel):
         if m.get('SupportSparse') is not None:
             self.support_sparse = m.get('SupportSparse')
 
+        if m.get('VectorIndexConfig') is not None:
+            temp_model = main_models.CreateCollectionRequestVectorIndexConfig()
+            self.vector_index_config = temp_model.from_map(m.get('VectorIndexConfig'))
+
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class CreateCollectionRequestVectorIndexConfig(DaraModel):
+    def __init__(
+        self,
+        nlist: int = None,
+        rabitq_bits: int = None,
+    ):
+        self.nlist = nlist
+        self.rabitq_bits = rabitq_bits
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.nlist is not None:
+            result['Nlist'] = self.nlist
+
+        if self.rabitq_bits is not None:
+            result['RabitqBits'] = self.rabitq_bits
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Nlist') is not None:
+            self.nlist = m.get('Nlist')
+
+        if m.get('RabitqBits') is not None:
+            self.rabitq_bits = m.get('RabitqBits')
 
         return self
 
 class CreateCollectionRequestSparseVectorIndexConfig(DaraModel):
     def __init__(
         self,
+        algorithm: str = None,
         hnsw_ef_construction: int = None,
         hnsw_m: int = None,
     ):
+        self.algorithm = algorithm
         self.hnsw_ef_construction = hnsw_ef_construction
         self.hnsw_m = hnsw_m
 
@@ -272,6 +328,9 @@ class CreateCollectionRequestSparseVectorIndexConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.hnsw_ef_construction is not None:
             result['HnswEfConstruction'] = self.hnsw_ef_construction
 
@@ -282,6 +341,9 @@ class CreateCollectionRequestSparseVectorIndexConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+
         if m.get('HnswEfConstruction') is not None:
             self.hnsw_ef_construction = m.get('HnswEfConstruction')
 

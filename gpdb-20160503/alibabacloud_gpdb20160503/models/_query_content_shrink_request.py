@@ -29,6 +29,7 @@ class QueryContentShrinkRequest(DaraModel):
         recall_window_shrink: str = None,
         region_id: str = None,
         rerank_factor: float = None,
+        rerank_model_shrink: str = None,
         top_k: int = None,
         url_expiration: str = None,
         use_full_text_retrieval: bool = None,
@@ -140,6 +141,7 @@ class QueryContentShrinkRequest(DaraModel):
         # > - Re-ranking is slower when documents are sparsely split.
         # > - It is recommended that the re-ranked count (TopK * Factor, rounded up) does not exceed 50.
         self.rerank_factor = rerank_factor
+        self.rerank_model_shrink = rerank_model_shrink
         # The number of the returned top results.
         self.top_k = top_k
         # The validity period of the returned image URL.
@@ -229,6 +231,9 @@ class QueryContentShrinkRequest(DaraModel):
         if self.rerank_factor is not None:
             result['RerankFactor'] = self.rerank_factor
 
+        if self.rerank_model_shrink is not None:
+            result['RerankModel'] = self.rerank_model_shrink
+
         if self.top_k is not None:
             result['TopK'] = self.top_k
 
@@ -307,6 +312,9 @@ class QueryContentShrinkRequest(DaraModel):
 
         if m.get('RerankFactor') is not None:
             self.rerank_factor = m.get('RerankFactor')
+
+        if m.get('RerankModel') is not None:
+            self.rerank_model_shrink = m.get('RerankModel')
 
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
