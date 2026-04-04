@@ -396,6 +396,256 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_resource_measure_with_options_async(request, runtime)
 
+    def check_user_resource_measure_with_options(
+        self,
+        request: main_models.CheckUserResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckUserResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.esp_biz_id):
+            query['EspBizId'] = request.esp_biz_id
+        if not DaraCore.is_null(request.order_component_params):
+            query['OrderComponentParams'] = request.order_component_params
+        if not DaraCore.is_null(request.resource_code):
+            query['ResourceCode'] = request.resource_code
+        if not DaraCore.is_null(request.resource_value):
+            query['ResourceValue'] = request.resource_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckUserResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckUserResourceMeasureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_user_resource_measure_with_options_async(
+        self,
+        request: main_models.CheckUserResourceMeasureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckUserResourceMeasureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.esp_biz_id):
+            query['EspBizId'] = request.esp_biz_id
+        if not DaraCore.is_null(request.order_component_params):
+            query['OrderComponentParams'] = request.order_component_params
+        if not DaraCore.is_null(request.resource_code):
+            query['ResourceCode'] = request.resource_code
+        if not DaraCore.is_null(request.resource_value):
+            query['ResourceValue'] = request.resource_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckUserResourceMeasure',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckUserResourceMeasureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_user_resource_measure(
+        self,
+        request: main_models.CheckUserResourceMeasureRequest,
+    ) -> main_models.CheckUserResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return self.check_user_resource_measure_with_options(request, runtime)
+
+    async def check_user_resource_measure_async(
+        self,
+        request: main_models.CheckUserResourceMeasureRequest,
+    ) -> main_models.CheckUserResourceMeasureResponse:
+        runtime = RuntimeOptions()
+        return await self.check_user_resource_measure_with_options_async(request, runtime)
+
+    def create_app_assistant_agent_with_options(
+        self,
+        request: main_models.CreateAppAssistantAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppAssistantAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppAssistantAgent',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppAssistantAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_assistant_agent_with_options_async(
+        self,
+        request: main_models.CreateAppAssistantAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppAssistantAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppAssistantAgent',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppAssistantAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_assistant_agent(
+        self,
+        request: main_models.CreateAppAssistantAgentRequest,
+    ) -> main_models.CreateAppAssistantAgentResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_assistant_agent_with_options(request, runtime)
+
+    async def create_app_assistant_agent_async(
+        self,
+        request: main_models.CreateAppAssistantAgentRequest,
+    ) -> main_models.CreateAppAssistantAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_assistant_agent_with_options_async(request, runtime)
+
+    def create_app_assistant_agent_sso_login_with_options(
+        self,
+        request: main_models.CreateAppAssistantAgentSsoLoginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppAssistantAgentSsoLoginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        if not DaraCore.is_null(request.target_url):
+            query['TargetUrl'] = request.target_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppAssistantAgentSsoLogin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppAssistantAgentSsoLoginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_assistant_agent_sso_login_with_options_async(
+        self,
+        request: main_models.CreateAppAssistantAgentSsoLoginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppAssistantAgentSsoLoginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        if not DaraCore.is_null(request.target_url):
+            query['TargetUrl'] = request.target_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppAssistantAgentSsoLogin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppAssistantAgentSsoLoginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_assistant_agent_sso_login(
+        self,
+        request: main_models.CreateAppAssistantAgentSsoLoginRequest,
+    ) -> main_models.CreateAppAssistantAgentSsoLoginResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_assistant_agent_sso_login_with_options(request, runtime)
+
+    async def create_app_assistant_agent_sso_login_async(
+        self,
+        request: main_models.CreateAppAssistantAgentSsoLoginRequest,
+    ) -> main_models.CreateAppAssistantAgentSsoLoginResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_assistant_agent_sso_login_with_options_async(request, runtime)
+
     def create_app_instance_with_options(
         self,
         tmp_req: main_models.CreateAppInstanceRequest,
@@ -2333,6 +2583,80 @@ class Client(OpenApiClient):
     ) -> main_models.IntrospectAppInstanceTicketForPreviewResponse:
         runtime = RuntimeOptions()
         return await self.introspect_app_instance_ticket_for_preview_with_options_async(request, runtime)
+
+    def list_app_assistant_agents_with_options(
+        self,
+        request: main_models.ListAppAssistantAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppAssistantAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppAssistantAgents',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppAssistantAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_assistant_agents_with_options_async(
+        self,
+        request: main_models.ListAppAssistantAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppAssistantAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppAssistantAgents',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppAssistantAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_assistant_agents(
+        self,
+        request: main_models.ListAppAssistantAgentsRequest,
+    ) -> main_models.ListAppAssistantAgentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_assistant_agents_with_options(request, runtime)
+
+    async def list_app_assistant_agents_async(
+        self,
+        request: main_models.ListAppAssistantAgentsRequest,
+    ) -> main_models.ListAppAssistantAgentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_assistant_agents_with_options_async(request, runtime)
 
     def list_app_commodity_specifications_for_partner_with_options(
         self,

@@ -37,6 +37,15 @@ from ._bind_app_domain_response import BindAppDomainResponse
 from ._check_resource_measure_request import CheckResourceMeasureRequest
 from ._check_resource_measure_response_body import CheckResourceMeasureResponseBody
 from ._check_resource_measure_response import CheckResourceMeasureResponse
+from ._check_user_resource_measure_request import CheckUserResourceMeasureRequest
+from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBody
+from ._check_user_resource_measure_response import CheckUserResourceMeasureResponse
+from ._create_app_assistant_agent_request import CreateAppAssistantAgentRequest
+from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBody
+from ._create_app_assistant_agent_response import CreateAppAssistantAgentResponse
+from ._create_app_assistant_agent_sso_login_request import CreateAppAssistantAgentSsoLoginRequest
+from ._create_app_assistant_agent_sso_login_response_body import CreateAppAssistantAgentSsoLoginResponseBody
+from ._create_app_assistant_agent_sso_login_response import CreateAppAssistantAgentSsoLoginResponse
 from ._create_app_instance_request import CreateAppInstanceRequest
 from ._create_app_instance_shrink_request import CreateAppInstanceShrinkRequest
 from ._create_app_instance_response_body import CreateAppInstanceResponseBody
@@ -114,6 +123,9 @@ from ._get_user_tmp_identity_for_partner_response import GetUserTmpIdentityForPa
 from ._introspect_app_instance_ticket_for_preview_request import IntrospectAppInstanceTicketForPreviewRequest
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBody
 from ._introspect_app_instance_ticket_for_preview_response import IntrospectAppInstanceTicketForPreviewResponse
+from ._list_app_assistant_agents_request import ListAppAssistantAgentsRequest
+from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBody
+from ._list_app_assistant_agents_response import ListAppAssistantAgentsResponse
 from ._list_app_commodity_specifications_for_partner_response_body import ListAppCommoditySpecificationsForPartnerResponseBody
 from ._list_app_commodity_specifications_for_partner_response import ListAppCommoditySpecificationsForPartnerResponse
 from ._list_app_commodity_specifications_v2for_partner_request import ListAppCommoditySpecificationsV2ForPartnerRequest
@@ -246,6 +258,11 @@ from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdmin
 from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasureResponseBodyModule
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
 from ._check_resource_measure_response_body import CheckResourceMeasureResponseBodyModule
+from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBodyModule
+from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModuleCredential
+from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModuleEmbedConfig
+from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModule
+from ._create_app_assistant_agent_sso_login_response_body import CreateAppAssistantAgentSsoLoginResponseBodyModule
 from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
@@ -286,6 +303,9 @@ from ._get_user_access_token_for_partner_response_body import GetUserAccessToken
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBodyModule
+from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModuleCredential
+from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModuleEmbedConfig
+from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModule
 from ._list_app_commodity_specifications_for_partner_response_body import ListAppCommoditySpecificationsForPartnerResponseBodyModule
 from ._list_app_commodity_specifications_v2for_partner_response_body import ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData
 from ._list_app_commodity_specifications_v2for_partner_response_body import ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext
@@ -374,6 +394,15 @@ __all__ = [
     CheckResourceMeasureRequest,
     CheckResourceMeasureResponseBody,
     CheckResourceMeasureResponse,
+    CheckUserResourceMeasureRequest,
+    CheckUserResourceMeasureResponseBody,
+    CheckUserResourceMeasureResponse,
+    CreateAppAssistantAgentRequest,
+    CreateAppAssistantAgentResponseBody,
+    CreateAppAssistantAgentResponse,
+    CreateAppAssistantAgentSsoLoginRequest,
+    CreateAppAssistantAgentSsoLoginResponseBody,
+    CreateAppAssistantAgentSsoLoginResponse,
     CreateAppInstanceRequest,
     CreateAppInstanceShrinkRequest,
     CreateAppInstanceResponseBody,
@@ -451,6 +480,9 @@ __all__ = [
     IntrospectAppInstanceTicketForPreviewRequest,
     IntrospectAppInstanceTicketForPreviewResponseBody,
     IntrospectAppInstanceTicketForPreviewResponse,
+    ListAppAssistantAgentsRequest,
+    ListAppAssistantAgentsResponseBody,
+    ListAppAssistantAgentsResponse,
     ListAppCommoditySpecificationsForPartnerResponseBody,
     ListAppCommoditySpecificationsForPartnerResponse,
     ListAppCommoditySpecificationsV2ForPartnerRequest,
@@ -583,6 +615,11 @@ __all__ = [
     BatchCheckResourceMeasureResponseBodyModule,
     BindAppDomainResponseBodyModule,
     CheckResourceMeasureResponseBodyModule,
+    CheckUserResourceMeasureResponseBodyModule,
+    CreateAppAssistantAgentResponseBodyModuleCredential,
+    CreateAppAssistantAgentResponseBodyModuleEmbedConfig,
+    CreateAppAssistantAgentResponseBodyModule,
+    CreateAppAssistantAgentSsoLoginResponseBodyModule,
     CreateAppInstanceRequestTags,
     CreateAppInstanceResponseBodyModule,
     CreateAppInstanceTicketResponseBodyModule,
@@ -623,6 +660,9 @@ __all__ = [
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
     IntrospectAppInstanceTicketForPreviewResponseBodyModule,
+    ListAppAssistantAgentsResponseBodyModuleCredential,
+    ListAppAssistantAgentsResponseBodyModuleEmbedConfig,
+    ListAppAssistantAgentsResponseBodyModule,
     ListAppCommoditySpecificationsForPartnerResponseBodyModule,
     ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData,
     ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext,

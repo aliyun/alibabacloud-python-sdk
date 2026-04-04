@@ -1,3 +1,10 @@
+2026-04-04 Version: 2.20.0
+- Support API CheckUserResourceMeasure.
+- Support API CreateAppAssistantAgent.
+- Support API CreateAppAssistantAgentSsoLogin.
+- Support API ListAppAssistantAgents.
+
+
 2026-03-27 Version: 2.19.1
 - Update API GetAppRecommendedCommodities: add request parameters Extend.
 
