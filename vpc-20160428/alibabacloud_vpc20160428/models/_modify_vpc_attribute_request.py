@@ -31,7 +31,7 @@ class ModifyVpcAttributeRequest(DaraModel):
         # 
         # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
-        # Indicates whether the DNS hostname feature is enabled. Valid values:
+        # Specifies whether to enable the DNS hostname feature. Valid values:
         # 
         # *   **false** (default): disabled.
         # *   **true**: enabled.

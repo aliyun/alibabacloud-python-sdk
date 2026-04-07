@@ -134,6 +134,9 @@ from ._create_default_vpc_response import CreateDefaultVpcResponse
 from ._create_dhcp_options_set_request import CreateDhcpOptionsSetRequest
 from ._create_dhcp_options_set_response_body import CreateDhcpOptionsSetResponseBody
 from ._create_dhcp_options_set_response import CreateDhcpOptionsSetResponse
+from ._create_enhanced_vpn_gateway_request import CreateEnhancedVpnGatewayRequest
+from ._create_enhanced_vpn_gateway_response_body import CreateEnhancedVpnGatewayResponseBody
+from ._create_enhanced_vpn_gateway_response import CreateEnhancedVpnGatewayResponse
 from ._create_express_cloud_connection_request import CreateExpressCloudConnectionRequest
 from ._create_express_cloud_connection_response_body import CreateExpressCloudConnectionResponseBody
 from ._create_express_cloud_connection_response import CreateExpressCloudConnectionResponse
@@ -315,6 +318,9 @@ from ._delete_customer_gateway_response import DeleteCustomerGatewayResponse
 from ._delete_dhcp_options_set_request import DeleteDhcpOptionsSetRequest
 from ._delete_dhcp_options_set_response_body import DeleteDhcpOptionsSetResponseBody
 from ._delete_dhcp_options_set_response import DeleteDhcpOptionsSetResponse
+from ._delete_enhanced_vpn_gateway_request import DeleteEnhancedVpnGatewayRequest
+from ._delete_enhanced_vpn_gateway_response_body import DeleteEnhancedVpnGatewayResponseBody
+from ._delete_enhanced_vpn_gateway_response import DeleteEnhancedVpnGatewayResponse
 from ._delete_express_connect_request import DeleteExpressConnectRequest
 from ._delete_express_connect_response_body import DeleteExpressConnectResponseBody
 from ._delete_express_connect_response import DeleteExpressConnectResponse
@@ -1148,6 +1154,9 @@ from ._untag_resources_for_express_connect_response import UntagResourcesForExpr
 from ._update_dhcp_options_set_attribute_request import UpdateDhcpOptionsSetAttributeRequest
 from ._update_dhcp_options_set_attribute_response_body import UpdateDhcpOptionsSetAttributeResponseBody
 from ._update_dhcp_options_set_attribute_response import UpdateDhcpOptionsSetAttributeResponse
+from ._update_enhanced_vpn_gateway_request import UpdateEnhancedVpnGatewayRequest
+from ._update_enhanced_vpn_gateway_response_body import UpdateEnhancedVpnGatewayResponseBody
+from ._update_enhanced_vpn_gateway_response import UpdateEnhancedVpnGatewayResponse
 from ._update_failover_test_job_request import UpdateFailoverTestJobRequest
 from ._update_failover_test_job_response_body import UpdateFailoverTestJobResponseBody
 from ._update_failover_test_job_response import UpdateFailoverTestJobResponse
@@ -1708,6 +1717,9 @@ from ._switch_active_route_target_request import SwitchActiveRouteTargetRequestT
 from ._tag_resources_request import TagResourcesRequestTag
 from ._tag_resources_for_express_connect_request import TagResourcesForExpressConnectRequestTag
 from ._unassociate_network_acl_request import UnassociateNetworkAclRequestResource
+from ._update_enhanced_vpn_gateway_response_body import UpdateEnhancedVpnGatewayResponseBodyEniInstanceIds
+from ._update_enhanced_vpn_gateway_response_body import UpdateEnhancedVpnGatewayResponseBodyTagsTag
+from ._update_enhanced_vpn_gateway_response_body import UpdateEnhancedVpnGatewayResponseBodyTags
 from ._update_network_acl_entries_request import UpdateNetworkAclEntriesRequestEgressAclEntries
 from ._update_network_acl_entries_request import UpdateNetworkAclEntriesRequestIngressAclEntries
 from ._update_route_target_group_request import UpdateRouteTargetGroupRequestRouteTargetMemberList
@@ -1846,6 +1858,9 @@ __all__ = [
     CreateDhcpOptionsSetRequest,
     CreateDhcpOptionsSetResponseBody,
     CreateDhcpOptionsSetResponse,
+    CreateEnhancedVpnGatewayRequest,
+    CreateEnhancedVpnGatewayResponseBody,
+    CreateEnhancedVpnGatewayResponse,
     CreateExpressCloudConnectionRequest,
     CreateExpressCloudConnectionResponseBody,
     CreateExpressCloudConnectionResponse,
@@ -2027,6 +2042,9 @@ __all__ = [
     DeleteDhcpOptionsSetRequest,
     DeleteDhcpOptionsSetResponseBody,
     DeleteDhcpOptionsSetResponse,
+    DeleteEnhancedVpnGatewayRequest,
+    DeleteEnhancedVpnGatewayResponseBody,
+    DeleteEnhancedVpnGatewayResponse,
     DeleteExpressConnectRequest,
     DeleteExpressConnectResponseBody,
     DeleteExpressConnectResponse,
@@ -2860,6 +2878,9 @@ __all__ = [
     UpdateDhcpOptionsSetAttributeRequest,
     UpdateDhcpOptionsSetAttributeResponseBody,
     UpdateDhcpOptionsSetAttributeResponse,
+    UpdateEnhancedVpnGatewayRequest,
+    UpdateEnhancedVpnGatewayResponseBody,
+    UpdateEnhancedVpnGatewayResponse,
     UpdateFailoverTestJobRequest,
     UpdateFailoverTestJobResponseBody,
     UpdateFailoverTestJobResponse,
@@ -3420,6 +3441,9 @@ __all__ = [
     TagResourcesRequestTag,
     TagResourcesForExpressConnectRequestTag,
     UnassociateNetworkAclRequestResource,
+    UpdateEnhancedVpnGatewayResponseBodyEniInstanceIds,
+    UpdateEnhancedVpnGatewayResponseBodyTagsTag,
+    UpdateEnhancedVpnGatewayResponseBodyTags,
     UpdateNetworkAclEntriesRequestEgressAclEntries,
     UpdateNetworkAclEntriesRequestIngressAclEntries,
     UpdateRouteTargetGroupRequestRouteTargetMemberList,

@@ -42,6 +42,8 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         # 
         # *   **true**
         # *   **false**
+        # 
+        # This field is returned only when IPv6 is enabled for the vSwitch.
         self.enabled_ipv_6 = enabled_ipv_6
         # The IPv6 CIDR block of the vSwitch.
         self.ipv_6cidr_block = ipv_6cidr_block

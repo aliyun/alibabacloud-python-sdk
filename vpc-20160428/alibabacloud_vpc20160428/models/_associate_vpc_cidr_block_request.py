@@ -63,7 +63,7 @@ class AssociateVpcCidrBlockRequest(DaraModel):
         # *   The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
         # *   The CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block of the VPC.
         # 
-        # >  You must and can specify only one of **SecondaryCidrBlock** and **Ipv6CidrBlock**.
+        # >  You must and can specify only one of **SecondaryCidrBlock** and **IPv6CidrBlock**.
         self.secondary_cidr_block = secondary_cidr_block
         # Add an IPv4 CIDR block from the IPAM pool to the VPC by specifying a mask.
         # 

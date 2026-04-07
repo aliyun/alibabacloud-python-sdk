@@ -39,9 +39,9 @@ class DescribeGrantRulesToCenRequest(DaraModel):
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Minimum value: **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Minimum value: **1**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the network instance that you want to query.
         # 

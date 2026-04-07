@@ -22,7 +22,7 @@ class RevokeInstanceFromCenRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The user ID (UID) of the Apsara Stack tenant account to which the CEN instance belongs.
+        # The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         # 
         # This parameter is required.
         self.cen_owner_id = cen_owner_id

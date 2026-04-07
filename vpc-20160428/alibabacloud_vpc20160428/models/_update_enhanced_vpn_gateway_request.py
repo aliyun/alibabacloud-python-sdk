@@ -4,34 +4,32 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteVSwitchRequest(DaraModel):
+class UpdateEnhancedVpnGatewayRequest(DaraModel):
     def __init__(
         self,
-        dry_run: bool = None,
+        auto_propagate: bool = None,
+        client_token: str = None,
+        description: str = None,
+        name: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        v_switch_id: str = None,
+        vpn_gateway_id: str = None,
     ):
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends the request directly without performing a dry run. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
-        self.dry_run = dry_run
+        self.auto_propagate = auto_propagate
+        self.client_token = client_token
+        self.description = description
+        self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the vSwitch.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vSwitch that you want to delete.
-        # 
         # This parameter is required.
-        self.v_switch_id = v_switch_id
+        self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
         pass
@@ -41,8 +39,17 @@ class DeleteVSwitchRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
+        if self.auto_propagate is not None:
+            result['AutoPropagate'] = self.auto_propagate
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.name is not None:
+            result['Name'] = self.name
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -59,15 +66,24 @@ class DeleteVSwitchRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
+        if self.vpn_gateway_id is not None:
+            result['VpnGatewayId'] = self.vpn_gateway_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
+        if m.get('AutoPropagate') is not None:
+            self.auto_propagate = m.get('AutoPropagate')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
@@ -84,8 +100,8 @@ class DeleteVSwitchRequest(DaraModel):
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
 
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpnGatewayId') is not None:
+            self.vpn_gateway_id = m.get('VpnGatewayId')
 
         return self
 

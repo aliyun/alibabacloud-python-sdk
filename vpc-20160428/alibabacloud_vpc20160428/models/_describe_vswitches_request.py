@@ -68,7 +68,7 @@ class DescribeVSwitchesRequest(DaraModel):
         self.tag = tag
         # The ID of the vSwitch that you want to query.
         self.v_switch_id = v_switch_id
-        # The vSwitch name.
+        # The exact name of the vSwitch that you want to query. Fuzzy match is not supported.
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.v_switch_name = v_switch_name

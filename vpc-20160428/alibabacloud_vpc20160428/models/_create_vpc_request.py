@@ -32,7 +32,7 @@ class CreateVpcRequest(DaraModel):
         user_cidr: str = None,
         vpc_name: str = None,
     ):
-        # The CIDR block of the VPC.
+        # VPC CIDR.
         # 
         # *   We recommend using the private IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC with a recommended mask length of 16 to 28 bits. For example, 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
         # *   You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the primary IPv4 CIDR block.

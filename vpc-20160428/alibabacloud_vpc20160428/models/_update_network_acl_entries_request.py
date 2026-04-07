@@ -36,7 +36,7 @@ class UpdateNetworkAclEntriesRequest(DaraModel):
         self.dry_run = dry_run
         # The information about the outbound rules.
         self.egress_acl_entries = egress_acl_entries
-        # The information about the inbound rule.
+        # The information about the inbound rules.
         self.ingress_acl_entries = ingress_acl_entries
         # The ID of the network ACL.
         # 
@@ -185,42 +185,43 @@ class UpdateNetworkAclEntriesRequestIngressAclEntries(DaraModel):
     ):
         # The description of the inbound rule.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The type of the rule. Set the value to **custom**, which specifies custom rules.
+        # The rule type. Set the value to **custom**.
         self.entry_type = entry_type
-        # The IP version. Valid values:
+        # The IP version:
         # 
-        # *   **IPv4** (default)
+        # *   **IPv4**
         # *   **IPv6**
         self.ip_version = ip_version
         # The ID of the inbound rule.
         # 
-        # Valid values of **N**: **0** to **99**. You can specify at most 100 inbound rules.
+        # Valid values of **N**: **0** to **99**. You can specify at most 100 inbound rule IDs.
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the inbound rule.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action to be performed on network traffic that matches the rule. Valid values:
+        # The access control policy. Valid values:
         # 
-        # *   **accept**
+        # *   **accept**: allows network traffic.
         # *   **drop**
         self.policy = policy
         # The source port range of the inbound rule.
         # 
-        # *   If the **protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
-        # *   If the **protocol** of the inbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1** to **65535**.
+        # *   If **Protocol** is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates all ports are available.
+        # *   If **Protocol** is set to **tcp** or **udp**, valid port numbers are **1** to **65535**. Format: **1/200** (port 1 to 200) or **80/80** (port 80).
         self.port = port
-        # The protocol. Valid values:
+        # Protocol type. Valid values:
         # 
         # *   **icmp**
         # *   **gre**
         # *   **tcp**
         # *   **udp**
         # *   **all**
+        # *   **icmpv6**
         self.protocol = protocol
-        # The source CIDR block.
+        # The source CIDR block. Alternatively, a prefix list ID can be provided.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -306,42 +307,43 @@ class UpdateNetworkAclEntriesRequestEgressAclEntries(DaraModel):
     ):
         # The description of the outbound rule.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block.
+        # The destination CIDR block. Alternatively, a prefix list ID can be provided.
         self.destination_cidr_ip = destination_cidr_ip
-        # The type of the rule. Set the value to **custom**, which specifies custom rules.
+        # The rule type. Set the value to **custom**.
         self.entry_type = entry_type
-        # The IP version. Valid values:
+        # The IP version:
         # 
-        # *   **IPv4** (default)
+        # *   **IPv4**
         # *   **IPv6**
         self.ip_version = ip_version
         # The ID of the outbound rule.
         # 
-        # Valid values of **N**: **0** to **99**. You can specify at most 100 outbound rules.
+        # Valid values of **N**: **0** to **99**. You can specify at most 100 outbound rule IDs.
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the outbound rule.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action to be performed on network traffic that matches the rule. Valid values:
+        # The access control policy. Valid values:
         # 
         # *   **accept**
         # *   **drop**
         self.policy = policy
         # The destination port range of the outbound traffic.
         # 
-        # *   If the **protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
-        # *   If the **protocol** of the outbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1** to **65535**.
+        # *   If **Protocol** is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates all ports are available.
+        # *   If **Protocol** is set to **tcp** or **udp**, valid port numbers are **1** to **65535**. Format: **1/200** (port 1 to 200) or **80/80** (port 80).
         self.port = port
-        # The protocol. Valid values:
+        # The protocol type. Valid values:
         # 
         # *   **icmp**
         # *   **gre**
         # *   **tcp**
         # *   **udp**
         # *   **all**
+        # *   **icmpv6**
         self.protocol = protocol
 
     def validate(self):

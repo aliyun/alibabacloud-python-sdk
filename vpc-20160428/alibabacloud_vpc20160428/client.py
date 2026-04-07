@@ -4811,6 +4811,128 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dhcp_options_set_with_options_async(request, runtime)
 
+    def create_enhanced_vpn_gateway_with_options(
+        self,
+        request: main_models.CreateEnhancedVpnGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEnhancedVpnGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.disaster_recovery_vswitch_id):
+            query['DisasterRecoveryVSwitchId'] = request.disaster_recovery_vswitch_id
+        if not DaraCore.is_null(request.gateway_type):
+            query['GatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpn_type):
+            query['VpnType'] = request.vpn_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEnhancedVpnGateway',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEnhancedVpnGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_enhanced_vpn_gateway_with_options_async(
+        self,
+        request: main_models.CreateEnhancedVpnGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEnhancedVpnGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.disaster_recovery_vswitch_id):
+            query['DisasterRecoveryVSwitchId'] = request.disaster_recovery_vswitch_id
+        if not DaraCore.is_null(request.gateway_type):
+            query['GatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpn_type):
+            query['VpnType'] = request.vpn_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEnhancedVpnGateway',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEnhancedVpnGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_enhanced_vpn_gateway(
+        self,
+        request: main_models.CreateEnhancedVpnGatewayRequest,
+    ) -> main_models.CreateEnhancedVpnGatewayResponse:
+        runtime = RuntimeOptions()
+        return self.create_enhanced_vpn_gateway_with_options(request, runtime)
+
+    async def create_enhanced_vpn_gateway_async(
+        self,
+        request: main_models.CreateEnhancedVpnGatewayRequest,
+    ) -> main_models.CreateEnhancedVpnGatewayResponse:
+        runtime = RuntimeOptions()
+        return await self.create_enhanced_vpn_gateway_with_options_async(request, runtime)
+
     def create_express_cloud_connection_with_options(
         self,
         request: main_models.CreateExpressCloudConnectionRequest,
@@ -12062,6 +12184,100 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDhcpOptionsSetResponse:
         runtime = RuntimeOptions()
         return await self.delete_dhcp_options_set_with_options_async(request, runtime)
+
+    def delete_enhanced_vpn_gateway_with_options(
+        self,
+        request: main_models.DeleteEnhancedVpnGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEnhancedVpnGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEnhancedVpnGateway',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEnhancedVpnGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_enhanced_vpn_gateway_with_options_async(
+        self,
+        request: main_models.DeleteEnhancedVpnGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEnhancedVpnGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEnhancedVpnGateway',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEnhancedVpnGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_enhanced_vpn_gateway(
+        self,
+        request: main_models.DeleteEnhancedVpnGatewayRequest,
+    ) -> main_models.DeleteEnhancedVpnGatewayResponse:
+        runtime = RuntimeOptions()
+        return self.delete_enhanced_vpn_gateway_with_options(request, runtime)
+
+    async def delete_enhanced_vpn_gateway_async(
+        self,
+        request: main_models.DeleteEnhancedVpnGatewayRequest,
+    ) -> main_models.DeleteEnhancedVpnGatewayResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_enhanced_vpn_gateway_with_options_async(request, runtime)
 
     def delete_express_connect_with_options(
         self,
@@ -41048,6 +41264,112 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDhcpOptionsSetAttributeResponse:
         runtime = RuntimeOptions()
         return await self.update_dhcp_options_set_attribute_with_options_async(request, runtime)
+
+    def update_enhanced_vpn_gateway_with_options(
+        self,
+        request: main_models.UpdateEnhancedVpnGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEnhancedVpnGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_propagate):
+            query['AutoPropagate'] = request.auto_propagate
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEnhancedVpnGateway',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEnhancedVpnGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_enhanced_vpn_gateway_with_options_async(
+        self,
+        request: main_models.UpdateEnhancedVpnGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEnhancedVpnGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_propagate):
+            query['AutoPropagate'] = request.auto_propagate
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEnhancedVpnGateway',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEnhancedVpnGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_enhanced_vpn_gateway(
+        self,
+        request: main_models.UpdateEnhancedVpnGatewayRequest,
+    ) -> main_models.UpdateEnhancedVpnGatewayResponse:
+        runtime = RuntimeOptions()
+        return self.update_enhanced_vpn_gateway_with_options(request, runtime)
+
+    async def update_enhanced_vpn_gateway_async(
+        self,
+        request: main_models.UpdateEnhancedVpnGatewayRequest,
+    ) -> main_models.UpdateEnhancedVpnGatewayResponse:
+        runtime = RuntimeOptions()
+        return await self.update_enhanced_vpn_gateway_with_options_async(request, runtime)
 
     def update_failover_test_job_with_options(
         self,
