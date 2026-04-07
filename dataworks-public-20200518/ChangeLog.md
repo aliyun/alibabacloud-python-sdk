@@ -1,3 +1,24 @@
+2026-04-07 Version: 9.0.0
+- Support API DsgQueryDesensStatusList.
+- Support API DsgUpdateDesensStatusList.
+- Update API DsgDesensPlanAddOrUpdate: add request parameters DesensRules.$.columns.
+- Update API DsgDesensPlanAddOrUpdate: add request parameters DesensRules.$.emptyNotDesesn.
+- Update API DsgDesensPlanAddOrUpdate: update request parameters DesensRules.$.Id' format has changed.
+- Update API DsgDesensPlanAddOrUpdate: update request parameters DesensRules.$.SceneIds.$' format has changed.
+- Update API DsgDesensPlanQueryList: add request parameters columns.
+- Update API DsgDesensPlanQueryList: add request parameters dataType.
+- Update API DsgDesensPlanQueryList: add request parameters emptyNotDesesn.
+- Update API DsgDesensPlanQueryList: add response parameters Body.PageData.Data.$.columns.
+- Update API DsgDesensPlanQueryList: add response parameters Body.PageData.Data.$.emptyNotDesesn.
+- Update API DsgDesensPlanQueryList: update request parameters SceneId' format has changed.
+- Update API DsgQueryDefaultTemplates: update request parameters SceneId' format has changed.
+- Update API DsgSceneQuerySceneListByName: add response parameters Body.Data.$.scenceDbType.
+- Update API DsgUserGroupAddOrUpdate: add request parameters UserGroups.$.projects.
+- Update API DsgUserGroupQueryList: add request parameters userGroupType.
+- Update API DsgUserGroupQueryList: add response parameters Body.PageData.Data.$.mcAggregationInfo.
+- Update API DsgUserGroupQueryList: update response parameters Body.PageData.Data.$.Id' format has changed.
+
+
 2025-09-17 Version: 8.0.4
 - Update API GetPermissionApplyOrderDetail: add response parameters Body.ApplyOrderDetail.FinishAapprovalTimestamp.
 - Update API GetPermissionApplyOrderDetail: add response parameters Body.ApplyOrderDetail.FinishApprovalComment.
