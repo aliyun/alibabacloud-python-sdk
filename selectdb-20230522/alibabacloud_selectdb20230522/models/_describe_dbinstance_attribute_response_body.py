@@ -28,6 +28,8 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         maintain_endtime: str = None,
         maintain_starttime: str = None,
         multi_zone: List[main_models.DescribeDBInstanceAttributeResponseBodyMultiZone] = None,
+        otel_bearer_token: str = None,
+        otel_grafana_service_status: str = None,
         object_store_size: int = None,
         region_id: str = None,
         request_id: str = None,
@@ -80,6 +82,8 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         # The start time of the instance maintenance window.
         self.maintain_starttime = maintain_starttime
         self.multi_zone = multi_zone
+        self.otel_bearer_token = otel_bearer_token
+        self.otel_grafana_service_status = otel_grafana_service_status
         # The storage capacity of the instance.
         self.object_store_size = object_store_size
         # The Region ID.
@@ -195,6 +199,12 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
             for k1 in self.multi_zone:
                 result['MultiZone'].append(k1.to_map() if k1 else None)
 
+        if self.otel_bearer_token is not None:
+            result['OTelBearerToken'] = self.otel_bearer_token
+
+        if self.otel_grafana_service_status is not None:
+            result['OTelGrafanaServiceStatus'] = self.otel_grafana_service_status
+
         if self.object_store_size is not None:
             result['ObjectStoreSize'] = self.object_store_size
 
@@ -307,6 +317,12 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
             for k1 in m.get('MultiZone'):
                 temp_model = main_models.DescribeDBInstanceAttributeResponseBodyMultiZone()
                 self.multi_zone.append(temp_model.from_map(k1))
+
+        if m.get('OTelBearerToken') is not None:
+            self.otel_bearer_token = m.get('OTelBearerToken')
+
+        if m.get('OTelGrafanaServiceStatus') is not None:
+            self.otel_grafana_service_status = m.get('OTelGrafanaServiceStatus')
 
         if m.get('ObjectStoreSize') is not None:
             self.object_store_size = m.get('ObjectStoreSize')
