@@ -587,6 +587,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_mms_job_with_options_async(source_id, request, headers, runtime)
 
+    def create_mms_timer_with_options(
+        self,
+        source_id: str,
+        request: main_models.CreateMmsTimerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMmsTimerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.column_mapping):
+            body['columnMapping'] = request.column_mapping
+        if not DaraCore.is_null(request.enable_data_migration):
+            body['enableDataMigration'] = request.enable_data_migration
+        if not DaraCore.is_null(request.enable_schema_migration):
+            body['enableSchemaMigration'] = request.enable_schema_migration
+        if not DaraCore.is_null(request.enable_verification):
+            body['enableVerification'] = request.enable_verification
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.others):
+            body['others'] = request.others
+        if not DaraCore.is_null(request.partition_filters):
+            body['partitionFilters'] = request.partition_filters
+        if not DaraCore.is_null(request.partitions):
+            body['partitions'] = request.partitions
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        if not DaraCore.is_null(request.src_db_name):
+            body['srcDbName'] = request.src_db_name
+        if not DaraCore.is_null(request.table_black_list):
+            body['tableBlackList'] = request.table_black_list
+        if not DaraCore.is_null(request.table_mapping):
+            body['tableMapping'] = request.table_mapping
+        if not DaraCore.is_null(request.table_white_list):
+            body['tableWhiteList'] = request.table_white_list
+        if not DaraCore.is_null(request.tables):
+            body['tables'] = request.tables
+        if not DaraCore.is_null(request.value):
+            body['value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMmsTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mms_timer_with_options_async(
+        self,
+        source_id: str,
+        request: main_models.CreateMmsTimerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMmsTimerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.column_mapping):
+            body['columnMapping'] = request.column_mapping
+        if not DaraCore.is_null(request.enable_data_migration):
+            body['enableDataMigration'] = request.enable_data_migration
+        if not DaraCore.is_null(request.enable_schema_migration):
+            body['enableSchemaMigration'] = request.enable_schema_migration
+        if not DaraCore.is_null(request.enable_verification):
+            body['enableVerification'] = request.enable_verification
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.others):
+            body['others'] = request.others
+        if not DaraCore.is_null(request.partition_filters):
+            body['partitionFilters'] = request.partition_filters
+        if not DaraCore.is_null(request.partitions):
+            body['partitions'] = request.partitions
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        if not DaraCore.is_null(request.src_db_name):
+            body['srcDbName'] = request.src_db_name
+        if not DaraCore.is_null(request.table_black_list):
+            body['tableBlackList'] = request.table_black_list
+        if not DaraCore.is_null(request.table_mapping):
+            body['tableMapping'] = request.table_mapping
+        if not DaraCore.is_null(request.table_white_list):
+            body['tableWhiteList'] = request.table_white_list
+        if not DaraCore.is_null(request.tables):
+            body['tables'] = request.tables
+        if not DaraCore.is_null(request.value):
+            body['value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMmsTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mms_timer(
+        self,
+        source_id: str,
+        request: main_models.CreateMmsTimerRequest,
+    ) -> main_models.CreateMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_mms_timer_with_options(source_id, request, headers, runtime)
+
+    async def create_mms_timer_async(
+        self,
+        source_id: str,
+        request: main_models.CreateMmsTimerRequest,
+    ) -> main_models.CreateMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_mms_timer_with_options_async(source_id, request, headers, runtime)
+
     def create_package_with_options(
         self,
         project_name: str,
@@ -1192,6 +1332,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def delete_mms_timer_with_options(
+        self,
+        source_id: str,
+        timer_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMmsTimerResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMmsTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mms_timer_with_options_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMmsTimerResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMmsTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mms_timer(
+        self,
+        source_id: str,
+        timer_id: str,
+    ) -> main_models.DeleteMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_mms_timer_with_options(source_id, timer_id, headers, runtime)
+
+    async def delete_mms_timer_async(
+        self,
+        source_id: str,
+        timer_id: str,
+    ) -> main_models.DeleteMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_mms_timer_with_options_async(source_id, timer_id, headers, runtime)
 
     def delete_project_with_options(
         self,
@@ -2320,6 +2530,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_mms_task_with_options_async(source_id, task_id, headers, runtime)
+
+    def get_mms_timer_with_options(
+        self,
+        source_id: str,
+        timer_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMmsTimerResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMmsTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_timer_with_options_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMmsTimerResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMmsTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_timer(
+        self,
+        source_id: str,
+        timer_id: str,
+    ) -> main_models.GetMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_mms_timer_with_options(source_id, timer_id, headers, runtime)
+
+    async def get_mms_timer_async(
+        self,
+        source_id: str,
+        timer_id: str,
+    ) -> main_models.GetMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_mms_timer_with_options_async(source_id, timer_id, headers, runtime)
 
     def get_package_with_options(
         self,
@@ -4427,6 +4707,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_job_snapshot_infos_with_options_async(request, headers, runtime)
 
+    def list_mms_data_source_config_items_with_options(
+        self,
+        request: main_models.ListMmsDataSourceConfigItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMmsDataSourceConfigItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['lang'] = request.lang
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMmsDataSourceConfigItems',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/configItems',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMmsDataSourceConfigItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_data_source_config_items_with_options_async(
+        self,
+        request: main_models.ListMmsDataSourceConfigItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMmsDataSourceConfigItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['lang'] = request.lang
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMmsDataSourceConfigItems',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/configItems',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMmsDataSourceConfigItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_data_source_config_items(
+        self,
+        request: main_models.ListMmsDataSourceConfigItemsRequest,
+    ) -> main_models.ListMmsDataSourceConfigItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mms_data_source_config_items_with_options(request, headers, runtime)
+
+    async def list_mms_data_source_config_items_async(
+        self,
+        request: main_models.ListMmsDataSourceConfigItemsRequest,
+    ) -> main_models.ListMmsDataSourceConfigItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mms_data_source_config_items_with_options_async(request, headers, runtime)
+
     def list_mms_data_sources_with_options(
         self,
         request: main_models.ListMmsDataSourcesRequest,
@@ -5208,6 +5568,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_mms_tasks_with_options_async(source_id, request, headers, runtime)
+
+    def list_mms_timer_logs_with_options(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.ListMmsTimerLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMmsTimerLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMmsTimerLogs',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMmsTimerLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_timer_logs_with_options_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.ListMmsTimerLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMmsTimerLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMmsTimerLogs',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMmsTimerLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_timer_logs(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.ListMmsTimerLogsRequest,
+    ) -> main_models.ListMmsTimerLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mms_timer_logs_with_options(source_id, timer_id, request, headers, runtime)
+
+    async def list_mms_timer_logs_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.ListMmsTimerLogsRequest,
+    ) -> main_models.ListMmsTimerLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mms_timer_logs_with_options_async(source_id, timer_id, request, headers, runtime)
 
     def list_packages_with_options(
         self,

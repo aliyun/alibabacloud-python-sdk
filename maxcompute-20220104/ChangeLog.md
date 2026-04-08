@@ -1,3 +1,11 @@
+2026-04-08 Version: 6.1.0
+- Support API CreateMmsTimer.
+- Support API DeleteMmsTimer.
+- Support API GetMmsTimer.
+- Support API ListMmsDataSourceConfigItems.
+- Support API ListMmsTimerLogs.
+
+
 2026-03-31 Version: 6.0.1
 - Update API ListMmsDataSources: add response parameters Body.data.objectList.$.scanErrMsg.
 - Update API ListMmsDataSources: add response parameters Body.data.objectList.$.scanStatus.
