@@ -40,6 +40,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         security_iparray_name: str = None,
         security_iplist: str = None,
         security_iptype: str = None,
+        skill_template_id: str = None,
         tag: List[main_models.CreateApplicationShrinkRequestTag] = None,
         target_version: str = None,
         used_time: str = None,
@@ -79,6 +80,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.security_iparray_name = security_iparray_name
         self.security_iplist = security_iplist
         self.security_iptype = security_iptype
+        self.skill_template_id = skill_template_id
         self.tag = tag
         self.target_version = target_version
         self.used_time = used_time
@@ -186,6 +188,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.security_iptype is not None:
             result['SecurityIPType'] = self.security_iptype
+
+        if self.skill_template_id is not None:
+            result['SkillTemplateId'] = self.skill_template_id
 
         result['Tag'] = []
         if self.tag is not None:
@@ -300,6 +305,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('SecurityIPType') is not None:
             self.security_iptype = m.get('SecurityIPType')
+
+        if m.get('SkillTemplateId') is not None:
+            self.skill_template_id = m.get('SkillTemplateId')
 
         self.tag = []
         if m.get('Tag') is not None:

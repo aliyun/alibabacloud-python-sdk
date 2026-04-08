@@ -2558,6 +2558,8 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.security_iptype):
             query['SecurityIPType'] = request.security_iptype
+        if not DaraCore.is_null(request.skill_template_id):
+            query['SkillTemplateId'] = request.skill_template_id
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.target_version):
@@ -2664,6 +2666,8 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.security_iptype):
             query['SecurityIPType'] = request.security_iptype
+        if not DaraCore.is_null(request.skill_template_id):
+            query['SkillTemplateId'] = request.skill_template_id
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.target_version):

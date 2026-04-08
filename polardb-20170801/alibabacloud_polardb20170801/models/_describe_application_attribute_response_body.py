@@ -499,8 +499,10 @@ class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(
     def __init__(
         self,
         auth_callback_url: str = None,
+        supabase_cluster_id: str = None,
     ):
         self.auth_callback_url = auth_callback_url
+        self.supabase_cluster_id = supabase_cluster_id
 
     def validate(self):
         pass
@@ -513,12 +515,18 @@ class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(
         if self.auth_callback_url is not None:
             result['AuthCallbackURL'] = self.auth_callback_url
 
+        if self.supabase_cluster_id is not None:
+            result['SupabaseClusterId'] = self.supabase_cluster_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AuthCallbackURL') is not None:
             self.auth_callback_url = m.get('AuthCallbackURL')
+
+        if m.get('SupabaseClusterId') is not None:
+            self.supabase_cluster_id = m.get('SupabaseClusterId')
 
         return self
 

@@ -57,18 +57,23 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         self,
         address_items: List[main_models.DescribeDBClusterEndpointsResponseBodyItemsAddressItems] = None,
         auto_add_new_nodes: str = None,
+        connection_string: str = None,
         dbcluster_id: str = None,
         dbendpoint_description: str = None,
         dbendpoint_id: str = None,
         endpoint_config: str = None,
         endpoint_type: str = None,
+        net_type: str = None,
         node_with_roles: str = None,
         nodes: str = None,
         polar_scc_timeout_action: str = None,
         polar_scc_wait_timeout: str = None,
+        port: str = None,
+        protocol: str = None,
         read_write_mode: str = None,
         scc_mode: str = None,
         service_name: str = None,
+        vpcid: str = None,
     ):
         # The details of the endpoint.
         self.address_items = address_items
@@ -77,6 +82,7 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         # *   **Enable**
         # *   **Disable**
         self.auto_add_new_nodes = auto_add_new_nodes
+        self.connection_string = connection_string
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         # The name of the endpoint.
@@ -109,6 +115,7 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         # *   **Primary**: the primary endpoint.
         # *   **Custom**: a custom cluster endpoint.
         self.endpoint_type = endpoint_type
+        self.net_type = net_type
         # The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number. For example, you can use **Reader1** and **Reader2** as the role names.
         # 
         # >  This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
@@ -122,6 +129,8 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         self.polar_scc_timeout_action = polar_scc_timeout_action
         # Global consistency timeout.
         self.polar_scc_wait_timeout = polar_scc_wait_timeout
+        self.port = port
+        self.protocol = protocol
         # The read/write mode. Valid values:
         # 
         # *   **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
@@ -133,6 +142,7 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         # *   **off**: disabled
         self.scc_mode = scc_mode
         self.service_name = service_name
+        self.vpcid = vpcid
 
     def validate(self):
         if self.address_items:
@@ -153,6 +163,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         if self.auto_add_new_nodes is not None:
             result['AutoAddNewNodes'] = self.auto_add_new_nodes
 
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
@@ -168,6 +181,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
 
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+
         if self.node_with_roles is not None:
             result['NodeWithRoles'] = self.node_with_roles
 
@@ -180,6 +196,12 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         if self.polar_scc_wait_timeout is not None:
             result['PolarSccWaitTimeout'] = self.polar_scc_wait_timeout
 
+        if self.port is not None:
+            result['Port'] = self.port
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+
         if self.read_write_mode is not None:
             result['ReadWriteMode'] = self.read_write_mode
 
@@ -188,6 +210,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
 
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
 
         return result
 
@@ -201,6 +226,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
 
         if m.get('AutoAddNewNodes') is not None:
             self.auto_add_new_nodes = m.get('AutoAddNewNodes')
+
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
 
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
@@ -217,6 +245,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
 
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+
         if m.get('NodeWithRoles') is not None:
             self.node_with_roles = m.get('NodeWithRoles')
 
@@ -229,6 +260,12 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         if m.get('PolarSccWaitTimeout') is not None:
             self.polar_scc_wait_timeout = m.get('PolarSccWaitTimeout')
 
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+
         if m.get('ReadWriteMode') is not None:
             self.read_write_mode = m.get('ReadWriteMode')
 
@@ -237,6 +274,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
 
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
 
         return self
 

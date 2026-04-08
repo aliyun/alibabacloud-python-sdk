@@ -35,8 +35,6 @@ class CreateDBEndpointAddressRequest(DaraModel):
         # The ID of the endpoint.
         # 
         # >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint details.
-        # 
-        # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         # The network type of the endpoint. Set the value to **Public**.
         # 
