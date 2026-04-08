@@ -55,6 +55,8 @@ from ._create_credential_input import CreateCredentialInput
 from ._create_credential_output import CreateCredentialOutput
 from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_domain_input import CreateDomainInput
+from ._create_flow_endpoint_input import CreateFlowEndpointInput
+from ._create_flow_input import CreateFlowInput
 from ._create_funagent_input import CreateFunagentInput
 from ._create_gateway_input import CreateGatewayInput
 from ._create_gateway_target_input import CreateGatewayTargetInput
@@ -93,8 +95,17 @@ from ._deregister_service_input import DeregisterServiceInput
 from ._discovery_endpoint import DiscoveryEndpoint
 from ._domain_info import DomainInfo
 from ._embedder_config import EmbedderConfig
+from ._environment_configuration import EnvironmentConfiguration
+from ._environment_variable import EnvironmentVariable
 from ._error_result import ErrorResult
 from ._fclink_config import FCLinkConfig
+from ._flow import Flow
+from ._flow_endpoint import FlowEndpoint
+from ._flow_endpoint_result import FlowEndpointResult
+from ._flow_endpoint_routing_config import FlowEndpointRoutingConfig
+from ._flow_result import FlowResult
+from ._flow_version import FlowVersion
+from ._flow_version_result import FlowVersionResult
 from ._funagent import Funagent
 from ._funagent_result import FunagentResult
 from ._funagent_version_item import FunagentVersionItem
@@ -142,6 +153,12 @@ from ._list_credentials_result import ListCredentialsResult
 from ._list_custom_domains_output import ListCustomDomainsOutput
 from ._list_custom_domains_result import ListCustomDomainsResult
 from ._list_domains_output import ListDomainsOutput
+from ._list_flow_endpoints_output import ListFlowEndpointsOutput
+from ._list_flow_endpoints_result import ListFlowEndpointsResult
+from ._list_flow_versions_output import ListFlowVersionsOutput
+from ._list_flow_versions_result import ListFlowVersionsResult
+from ._list_flows_output import ListFlowsOutput
+from ._list_flows_result import ListFlowsResult
 from ._list_funagents_input import ListFunagentsInput
 from ._list_funagents_output import ListFunagentsOutput
 from ._list_funagents_result import ListFunagentsResult
@@ -166,6 +183,8 @@ from ._list_tools_result import ListToolsResult
 from ._list_workspaces_output import ListWorkspacesOutput
 from ._list_workspaces_result import ListWorkspacesResult
 from ._log_configuration import LogConfiguration
+from ._log_destination import LogDestination
+from ._logging_configuration import LoggingConfiguration
 from ._mcpapi import MCPAPI
 from ._mcpapiconfiguration import MCPAPIConfiguration
 from ._mcpbackend_config import MCPBackendConfig
@@ -201,6 +220,7 @@ from ._protocol_configuration import ProtocolConfiguration
 from ._protocol_settings import ProtocolSettings
 from ._provider_settings import ProviderSettings
 from ._proxy_config import ProxyConfig
+from ._publish_flow_version_input import PublishFlowVersionInput
 from ._publish_runtime_version_input import PublishRuntimeVersionInput
 from ._recording_configuration import RecordingConfiguration
 from ._register_service_input import RegisterServiceInput
@@ -208,6 +228,7 @@ from ._related_resource import RelatedResource
 from ._related_workload import RelatedWorkload
 from ._route_config import RouteConfig
 from ._routing_configuration import RoutingConfiguration
+from ._slslog_destination import SLSLogDestination
 from ._sandbox import Sandbox
 from ._sandbox_health_check_out import SandboxHealthCheckOut
 from ._sandbox_health_check_result import SandboxHealthCheckResult
@@ -233,6 +254,7 @@ from ._tool import Tool
 from ._tool_info import ToolInfo
 from ._tool_list_item import ToolListItem
 from ._tool_result import ToolResult
+from ._tracing_configuration import TracingConfiguration
 from ._trigger_config import TriggerConfig
 from ._update_agent_runtime_endpoint_input import UpdateAgentRuntimeEndpointInput
 from ._update_agent_runtime_input import UpdateAgentRuntimeInput
@@ -242,6 +264,9 @@ from ._update_credential_output import UpdateCredentialOutput
 from ._update_custom_domain_input import UpdateCustomDomainInput
 from ._update_discovery_endpoints_input import UpdateDiscoveryEndpointsInput
 from ._update_domain_input import UpdateDomainInput
+from ._update_flow_draft_input import UpdateFlowDraftInput
+from ._update_flow_endpoint_input import UpdateFlowEndpointInput
+from ._update_flow_input import UpdateFlowInput
 from ._update_funagent_input import UpdateFunagentInput
 from ._update_imbot_input import UpdateIMBotInput
 from ._update_knowledge_base_input import UpdateKnowledgeBaseInput
@@ -460,6 +485,8 @@ __all__ = [
     CreateCredentialOutput,
     CreateCustomDomainInput,
     CreateDomainInput,
+    CreateFlowEndpointInput,
+    CreateFlowInput,
     CreateFunagentInput,
     CreateGatewayInput,
     CreateGatewayTargetInput,
@@ -498,8 +525,17 @@ __all__ = [
     DiscoveryEndpoint,
     DomainInfo,
     EmbedderConfig,
+    EnvironmentConfiguration,
+    EnvironmentVariable,
     ErrorResult,
     FCLinkConfig,
+    Flow,
+    FlowEndpoint,
+    FlowEndpointResult,
+    FlowEndpointRoutingConfig,
+    FlowResult,
+    FlowVersion,
+    FlowVersionResult,
     Funagent,
     FunagentResult,
     FunagentVersionItem,
@@ -547,6 +583,12 @@ __all__ = [
     ListCustomDomainsOutput,
     ListCustomDomainsResult,
     ListDomainsOutput,
+    ListFlowEndpointsOutput,
+    ListFlowEndpointsResult,
+    ListFlowVersionsOutput,
+    ListFlowVersionsResult,
+    ListFlowsOutput,
+    ListFlowsResult,
     ListFunagentsInput,
     ListFunagentsOutput,
     ListFunagentsResult,
@@ -571,6 +613,8 @@ __all__ = [
     ListWorkspacesOutput,
     ListWorkspacesResult,
     LogConfiguration,
+    LogDestination,
+    LoggingConfiguration,
     MCPAPI,
     MCPAPIConfiguration,
     MCPBackendConfig,
@@ -606,6 +650,7 @@ __all__ = [
     ProtocolSettings,
     ProviderSettings,
     ProxyConfig,
+    PublishFlowVersionInput,
     PublishRuntimeVersionInput,
     RecordingConfiguration,
     RegisterServiceInput,
@@ -613,6 +658,7 @@ __all__ = [
     RelatedWorkload,
     RouteConfig,
     RoutingConfiguration,
+    SLSLogDestination,
     Sandbox,
     SandboxHealthCheckOut,
     SandboxHealthCheckResult,
@@ -638,6 +684,7 @@ __all__ = [
     ToolInfo,
     ToolListItem,
     ToolResult,
+    TracingConfiguration,
     TriggerConfig,
     UpdateAgentRuntimeEndpointInput,
     UpdateAgentRuntimeInput,
@@ -647,6 +694,9 @@ __all__ = [
     UpdateCustomDomainInput,
     UpdateDiscoveryEndpointsInput,
     UpdateDomainInput,
+    UpdateFlowDraftInput,
+    UpdateFlowEndpointInput,
+    UpdateFlowInput,
     UpdateFunagentInput,
     UpdateIMBotInput,
     UpdateKnowledgeBaseInput,
