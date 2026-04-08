@@ -8,6 +8,11 @@
 - Update API DescribeDBInstanceAttribute: add response parameters Body.OTelGrafanaServiceStatus.
 
 
+2026-04-08 Version: 5.0.3
+- Update API DescribeDBInstanceAttribute: add response parameters Body.OTelBearerToken.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.OTelGrafanaServiceStatus.
+
+
 2026-01-19 Version: 5.0.2
 - Update API CreateDBInstance: add request parameters ConfigPatternType.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.ConfigPatternType.
