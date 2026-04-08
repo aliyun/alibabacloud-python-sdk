@@ -1,3 +1,7 @@
+2026-04-08 Version: 1.1.0
+- Support API InvokeAction.
+
+
 2025-09-08 Version: 1.0.1
 - Update API GenerateUserSessionToken: add request parameters ExtraInfo.
 
