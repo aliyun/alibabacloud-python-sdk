@@ -35492,6 +35492,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.export_id):
             query['ExportId'] = request.export_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -35520,6 +35522,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.export_id):
             query['ExportId'] = request.export_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -38810,6 +38814,8 @@ class Client(OpenApiClient):
             query['Path'] = request.path
         if not DaraCore.is_null(request.rasp_defend):
             query['RaspDefend'] = request.rasp_defend
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.search_tags):
             query['SearchTags'] = request.search_tags
         if not DaraCore.is_null(request.type):
@@ -38872,6 +38878,8 @@ class Client(OpenApiClient):
             query['Path'] = request.path
         if not DaraCore.is_null(request.rasp_defend):
             query['RaspDefend'] = request.rasp_defend
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.search_tags):
             query['SearchTags'] = request.search_tags
         if not DaraCore.is_null(request.type):

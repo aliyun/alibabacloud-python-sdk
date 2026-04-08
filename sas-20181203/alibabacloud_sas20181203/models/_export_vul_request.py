@@ -23,6 +23,7 @@ class ExportVulRequest(DaraModel):
         necessity: str = None,
         path: str = None,
         rasp_defend: int = None,
+        resource_directory_account_id: int = None,
         search_tags: str = None,
         type: str = None,
         uuids: str = None,
@@ -77,6 +78,7 @@ class ExportVulRequest(DaraModel):
         # 
         # - **1**: yes.
         self.rasp_defend = rasp_defend
+        self.resource_directory_account_id = resource_directory_account_id
         # The tag that is used to search for the vulnerabilities. Valid values:
         # 
         # *   Restart required
@@ -155,6 +157,9 @@ class ExportVulRequest(DaraModel):
         if self.rasp_defend is not None:
             result['RaspDefend'] = self.rasp_defend
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.search_tags is not None:
             result['SearchTags'] = self.search_tags
 
@@ -214,6 +219,9 @@ class ExportVulRequest(DaraModel):
 
         if m.get('RaspDefend') is not None:
             self.rasp_defend = m.get('RaspDefend')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SearchTags') is not None:
             self.search_tags = m.get('SearchTags')
