@@ -96,7 +96,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
         acl_id: str = None,
         architecture: str = None,
         begin_time: int = None,
+        enable_ai_function: bool = None,
         enable_auto_minor_version_upgrade: bool = None,
+        enable_multi_az: bool = None,
         enable_ssl: bool = None,
         enabled_audit_loader: bool = None,
         encrypted: bool = None,
@@ -126,7 +128,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
         self.acl_id = acl_id
         self.architecture = architecture
         self.begin_time = begin_time
+        self.enable_ai_function = enable_ai_function
         self.enable_auto_minor_version_upgrade = enable_auto_minor_version_upgrade
+        self.enable_multi_az = enable_multi_az
         self.enable_ssl = enable_ssl
         self.enabled_audit_loader = enabled_audit_loader
         self.encrypted = encrypted
@@ -178,8 +182,14 @@ class DescribeInstancesResponseBodyData(DaraModel):
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
 
+        if self.enable_ai_function is not None:
+            result['EnableAiFunction'] = self.enable_ai_function
+
         if self.enable_auto_minor_version_upgrade is not None:
             result['EnableAutoMinorVersionUpgrade'] = self.enable_auto_minor_version_upgrade
+
+        if self.enable_multi_az is not None:
+            result['EnableMultiAz'] = self.enable_multi_az
 
         if self.enable_ssl is not None:
             result['EnableSSL'] = self.enable_ssl
@@ -273,8 +283,14 @@ class DescribeInstancesResponseBodyData(DaraModel):
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
 
+        if m.get('EnableAiFunction') is not None:
+            self.enable_ai_function = m.get('EnableAiFunction')
+
         if m.get('EnableAutoMinorVersionUpgrade') is not None:
             self.enable_auto_minor_version_upgrade = m.get('EnableAutoMinorVersionUpgrade')
+
+        if m.get('EnableMultiAz') is not None:
+            self.enable_multi_az = m.get('EnableMultiAz')
 
         if m.get('EnableSSL') is not None:
             self.enable_ssl = m.get('EnableSSL')

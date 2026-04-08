@@ -19,6 +19,7 @@ class CreateInstanceV1Request(DaraModel):
         dlf_catalog_name: str = None,
         dlf_catalog_type: str = None,
         duration: int = None,
+        enable_multi_az: bool = None,
         encrypted: bool = None,
         frontend_node_groups: List[main_models.CreateInstanceV1RequestFrontendNodeGroups] = None,
         gateway_type: str = None,
@@ -52,6 +53,7 @@ class CreateInstanceV1Request(DaraModel):
         self.dlf_catalog_name = dlf_catalog_name
         self.dlf_catalog_type = dlf_catalog_type
         self.duration = duration
+        self.enable_multi_az = enable_multi_az
         self.encrypted = encrypted
         self.frontend_node_groups = frontend_node_groups
         self.gateway_type = gateway_type
@@ -142,6 +144,9 @@ class CreateInstanceV1Request(DaraModel):
 
         if self.duration is not None:
             result['Duration'] = self.duration
+
+        if self.enable_multi_az is not None:
+            result['EnableMultiAz'] = self.enable_multi_az
 
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
@@ -251,6 +256,9 @@ class CreateInstanceV1Request(DaraModel):
 
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+
+        if m.get('EnableMultiAz') is not None:
+            self.enable_multi_az = m.get('EnableMultiAz')
 
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')

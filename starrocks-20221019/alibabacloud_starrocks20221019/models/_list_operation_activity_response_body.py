@@ -103,13 +103,17 @@ class ListOperationActivityResponseBodyData(DaraModel):
         self,
         activity_id: str = None,
         activity_status: str = None,
+        console_retry_count: int = None,
         end_time: int = None,
+        err_message: str = None,
         name: str = None,
         start_time: int = None,
     ):
         self.activity_id = activity_id
         self.activity_status = activity_status
+        self.console_retry_count = console_retry_count
         self.end_time = end_time
+        self.err_message = err_message
         self.name = name
         self.start_time = start_time
 
@@ -127,8 +131,14 @@ class ListOperationActivityResponseBodyData(DaraModel):
         if self.activity_status is not None:
             result['ActivityStatus'] = self.activity_status
 
+        if self.console_retry_count is not None:
+            result['ConsoleRetryCount'] = self.console_retry_count
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
 
         if self.name is not None:
             result['Name'] = self.name
@@ -146,8 +156,14 @@ class ListOperationActivityResponseBodyData(DaraModel):
         if m.get('ActivityStatus') is not None:
             self.activity_status = m.get('ActivityStatus')
 
+        if m.get('ConsoleRetryCount') is not None:
+            self.console_retry_count = m.get('ConsoleRetryCount')
+
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

@@ -522,6 +522,8 @@ class Client(OpenApiClient):
             body['DlfCatalogType'] = request.dlf_catalog_type
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
+        if not DaraCore.is_null(request.enable_multi_az):
+            body['EnableMultiAz'] = request.enable_multi_az
         if not DaraCore.is_null(request.encrypted):
             body['Encrypted'] = request.encrypted
         if not DaraCore.is_null(request.frontend_node_groups):
@@ -612,6 +614,8 @@ class Client(OpenApiClient):
             body['DlfCatalogType'] = request.dlf_catalog_type
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
+        if not DaraCore.is_null(request.enable_multi_az):
+            body['EnableMultiAz'] = request.enable_multi_az
         if not DaraCore.is_null(request.encrypted):
             body['Encrypted'] = request.encrypted
         if not DaraCore.is_null(request.frontend_node_groups):
