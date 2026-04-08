@@ -104,6 +104,7 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(DaraModel):
         log: str = None,
         logic: bool = None,
         skip: bool = None,
+        sql_id: int = None,
         sql_type: str = None,
         start_time: str = None,
         status: str = None,
@@ -135,6 +136,7 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(DaraModel):
         # *   **true**: The SQL statement was skipped.
         # *   **false**: The SQL statement was not skipped.
         self.skip = skip
+        self.sql_id = sql_id
         # The type of the SQL statement, such as DELETE, UPDATE, or ALTER_TABLE.
         self.sql_type = sql_type
         # The point in time when the SQL task started.
@@ -191,6 +193,9 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(DaraModel):
         if self.skip is not None:
             result['Skip'] = self.skip
 
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+
         if self.sql_type is not None:
             result['SqlType'] = self.sql_type
 
@@ -236,6 +241,9 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(DaraModel):
 
         if m.get('Skip') is not None:
             self.skip = m.get('Skip')
+
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
 
         if m.get('SqlType') is not None:
             self.sql_type = m.get('SqlType')

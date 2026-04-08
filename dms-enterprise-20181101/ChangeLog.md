@@ -1,3 +1,7 @@
+2026-04-08 Version: 2.4.1
+- Update API ListDBTaskSQLJobDetail: add response parameters Body.DBTaskSQLJobDetailList.$.SqlId.
+
+
 2026-03-27 Version: 2.4.0
 - Support API SearchTableKnowledge.
 
