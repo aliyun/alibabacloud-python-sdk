@@ -9175,6 +9175,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceDomainsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.domain_keywords):
+            query['DomainKeywords'] = request.domain_keywords
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
@@ -9209,6 +9211,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceDomainsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.domain_keywords):
+            query['DomainKeywords'] = request.domain_keywords
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):

@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class DescribeInstanceDomainsRequest(DaraModel):
     def __init__(
         self,
+        domain_keywords: str = None,
         instance_id: str = None,
         lang: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.domain_keywords = domain_keywords
         # The ID of the Alibaba Cloud Domain Name System (DNS) instance. You can call the [DescribeDomainInfo](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
@@ -36,6 +38,9 @@ class DescribeInstanceDomainsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.domain_keywords is not None:
+            result['DomainKeywords'] = self.domain_keywords
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -52,6 +57,9 @@ class DescribeInstanceDomainsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DomainKeywords') is not None:
+            self.domain_keywords = m.get('DomainKeywords')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 

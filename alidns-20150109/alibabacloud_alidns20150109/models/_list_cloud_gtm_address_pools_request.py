@@ -37,8 +37,12 @@ class ListCloudGtmAddressPoolsRequest(DaraModel):
         # *   disable: The address pool is disabled.
         self.enable_status = enable_status
         # Current page number, starting at **1**, default is **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The additional description of the address pool.
         self.remark = remark

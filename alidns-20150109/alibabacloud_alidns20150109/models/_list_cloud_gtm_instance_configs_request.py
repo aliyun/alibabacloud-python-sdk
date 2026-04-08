@@ -32,8 +32,12 @@ class ListCloudGtmInstanceConfigsRequest(DaraModel):
         # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
         # Current page number, starting at **1**, default is **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # Remarks.
         self.remark = remark

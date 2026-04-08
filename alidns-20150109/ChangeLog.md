@@ -1,3 +1,7 @@
+2026-04-08 Version: 4.3.4
+- Update API DescribeInstanceDomains: add request parameters DomainKeywords.
+
+
 2026-03-18 Version: 4.3.1
 - Update API DescribeInternetDnsLogs: add request parameters PreciseSort.
 - Update API ListCloudGtmMonitorNodes: add request parameters ShowDisabledNodes.

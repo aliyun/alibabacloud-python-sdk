@@ -114,6 +114,7 @@ class SearchCloudGtmMonitorTemplatesResponseBodyTemplates(DaraModel):
 class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(DaraModel):
     def __init__(
         self,
+        cloud_gtm_monitor_template_id: str = None,
         create_time: str = None,
         create_timestamp: int = None,
         evaluation_count: int = None,
@@ -130,6 +131,7 @@ class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        self.cloud_gtm_monitor_template_id = cloud_gtm_monitor_template_id
         self.create_time = create_time
         self.create_timestamp = create_timestamp
         self.evaluation_count = evaluation_count
@@ -155,6 +157,9 @@ class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cloud_gtm_monitor_template_id is not None:
+            result['CloudGtmMonitorTemplateId'] = self.cloud_gtm_monitor_template_id
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -204,6 +209,9 @@ class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudGtmMonitorTemplateId') is not None:
+            self.cloud_gtm_monitor_template_id = m.get('CloudGtmMonitorTemplateId')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
