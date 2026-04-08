@@ -753,6 +753,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_idp_department_with_options_async(request, runtime)
 
+    def create_padiagnosis_task_with_options(
+        self,
+        tmp_req: main_models.CreatePADiagnosisTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePADiagnosisTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreatePADiagnosisTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.udp_extra_configs):
+            request.udp_extra_configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.udp_extra_configs, 'UdpExtraConfigs', 'json')
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.diagnose_type):
+            body['DiagnoseType'] = request.diagnose_type
+        if not DaraCore.is_null(request.host):
+            body['Host'] = request.host
+        if not DaraCore.is_null(request.pop_id):
+            body['PopId'] = request.pop_id
+        if not DaraCore.is_null(request.pop_mode):
+            body['PopMode'] = request.pop_mode
+        if not DaraCore.is_null(request.port):
+            body['Port'] = request.port
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.udp_extra_configs_shrink):
+            body['UdpExtraConfigs'] = request.udp_extra_configs_shrink
+        if not DaraCore.is_null(request.user_group_id):
+            body['UserGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.username):
+            body['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePADiagnosisTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePADiagnosisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_padiagnosis_task_with_options_async(
+        self,
+        tmp_req: main_models.CreatePADiagnosisTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePADiagnosisTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreatePADiagnosisTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.udp_extra_configs):
+            request.udp_extra_configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.udp_extra_configs, 'UdpExtraConfigs', 'json')
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.diagnose_type):
+            body['DiagnoseType'] = request.diagnose_type
+        if not DaraCore.is_null(request.host):
+            body['Host'] = request.host
+        if not DaraCore.is_null(request.pop_id):
+            body['PopId'] = request.pop_id
+        if not DaraCore.is_null(request.pop_mode):
+            body['PopMode'] = request.pop_mode
+        if not DaraCore.is_null(request.port):
+            body['Port'] = request.port
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.udp_extra_configs_shrink):
+            body['UdpExtraConfigs'] = request.udp_extra_configs_shrink
+        if not DaraCore.is_null(request.user_group_id):
+            body['UserGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.username):
+            body['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePADiagnosisTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePADiagnosisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_padiagnosis_task(
+        self,
+        request: main_models.CreatePADiagnosisTaskRequest,
+    ) -> main_models.CreatePADiagnosisTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_padiagnosis_task_with_options(request, runtime)
+
+    async def create_padiagnosis_task_async(
+        self,
+        request: main_models.CreatePADiagnosisTaskRequest,
+    ) -> main_models.CreatePADiagnosisTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_padiagnosis_task_with_options_async(request, runtime)
+
     def create_private_access_application_with_options(
         self,
         tmp_req: main_models.CreatePrivateAccessApplicationRequest,
@@ -3646,6 +3760,72 @@ class Client(OpenApiClient):
     ) -> main_models.GetIdpConfigResponse:
         runtime = RuntimeOptions()
         return await self.get_idp_config_with_options_async(request, runtime)
+
+    def get_padiagnosis_task_with_options(
+        self,
+        request: main_models.GetPADiagnosisTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPADiagnosisTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPADiagnosisTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPADiagnosisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_padiagnosis_task_with_options_async(
+        self,
+        request: main_models.GetPADiagnosisTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPADiagnosisTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPADiagnosisTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPADiagnosisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_padiagnosis_task(
+        self,
+        request: main_models.GetPADiagnosisTaskRequest,
+    ) -> main_models.GetPADiagnosisTaskResponse:
+        runtime = RuntimeOptions()
+        return self.get_padiagnosis_task_with_options(request, runtime)
+
+    async def get_padiagnosis_task_async(
+        self,
+        request: main_models.GetPADiagnosisTaskRequest,
+    ) -> main_models.GetPADiagnosisTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.get_padiagnosis_task_with_options_async(request, runtime)
 
     def get_private_access_application_with_options(
         self,

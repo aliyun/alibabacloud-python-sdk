@@ -1,3 +1,8 @@
+2026-04-08 Version: 1.11.0
+- Support API CreatePADiagnosisTask.
+- Support API GetPADiagnosisTask.
+
+
 2026-03-16 Version: 1.10.20
 - Update API GetUserDevice: add response parameters Body.Device.BatteryHealthPercentage.
 - Update API GetUserDevice: add response parameters Body.Device.BatteryRemainingPercentage.
