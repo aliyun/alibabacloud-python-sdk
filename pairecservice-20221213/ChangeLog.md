@@ -1,3 +1,9 @@
+2026-04-08 Version: 6.1.0
+- Support API DeployTrafficControlTaskCode.
+- Support API QueryTrafficControlTaskDeployResult.
+- Support API QueryTrafficControlTaskItemReport.
+
+
 2026-03-29 Version: 6.0.0
 - Support API CreateDataDiagnosis.
 - Support API CreateDataDiagnosisJobs.

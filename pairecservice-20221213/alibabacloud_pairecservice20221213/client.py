@@ -6123,6 +6123,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_traffic_control_task_with_options_async(traffic_control_task_id, request, headers, runtime)
 
+    def deploy_traffic_control_task_code_with_options(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.DeployTrafficControlTaskCodeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeployTrafficControlTaskCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.retry_deploy):
+            body['RetryDeploy'] = request.retry_deploy
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeployTrafficControlTaskCode',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/deploycode',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeployTrafficControlTaskCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_traffic_control_task_code_with_options_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.DeployTrafficControlTaskCodeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeployTrafficControlTaskCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.retry_deploy):
+            body['RetryDeploy'] = request.retry_deploy
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeployTrafficControlTaskCode',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/deploycode',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeployTrafficControlTaskCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_traffic_control_task_code(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.DeployTrafficControlTaskCodeRequest,
+    ) -> main_models.DeployTrafficControlTaskCodeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.deploy_traffic_control_task_code_with_options(traffic_control_task_id, request, headers, runtime)
+
+    async def deploy_traffic_control_task_code_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.DeployTrafficControlTaskCodeRequest,
+    ) -> main_models.DeployTrafficControlTaskCodeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.deploy_traffic_control_task_code_with_options_async(traffic_control_task_id, request, headers, runtime)
+
     def generate_algorithm_customization_script_with_options(
         self,
         algorithm_customization_id: str,
@@ -13084,6 +13172,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.query_traffic_control_target_item_report_detail_with_options_async(traffic_control_target_id, request, headers, runtime)
+
+    def query_traffic_control_task_deploy_result_with_options(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskDeployResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryTrafficControlTaskDeployResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.environment):
+            query['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryTrafficControlTaskDeployResult',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/queryresult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryTrafficControlTaskDeployResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_traffic_control_task_deploy_result_with_options_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskDeployResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryTrafficControlTaskDeployResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.environment):
+            query['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryTrafficControlTaskDeployResult',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/queryresult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryTrafficControlTaskDeployResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_traffic_control_task_deploy_result(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskDeployResultRequest,
+    ) -> main_models.QueryTrafficControlTaskDeployResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_traffic_control_task_deploy_result_with_options(traffic_control_task_id, request, headers, runtime)
+
+    async def query_traffic_control_task_deploy_result_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskDeployResultRequest,
+    ) -> main_models.QueryTrafficControlTaskDeployResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_traffic_control_task_deploy_result_with_options_async(traffic_control_task_id, request, headers, runtime)
+
+    def query_traffic_control_task_item_report_with_options(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskItemReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryTrafficControlTaskItemReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.environment):
+            query['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryTrafficControlTaskItemReport',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/queryitemreport',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryTrafficControlTaskItemReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_traffic_control_task_item_report_with_options_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskItemReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryTrafficControlTaskItemReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.environment):
+            query['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryTrafficControlTaskItemReport',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/queryitemreport',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryTrafficControlTaskItemReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_traffic_control_task_item_report(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskItemReportRequest,
+    ) -> main_models.QueryTrafficControlTaskItemReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_traffic_control_task_item_report_with_options(traffic_control_task_id, request, headers, runtime)
+
+    async def query_traffic_control_task_item_report_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.QueryTrafficControlTaskItemReportRequest,
+    ) -> main_models.QueryTrafficControlTaskItemReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_traffic_control_task_item_report_with_options_async(traffic_control_task_id, request, headers, runtime)
 
     def release_traffic_control_task_with_options(
         self,

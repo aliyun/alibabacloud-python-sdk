@@ -4,12 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateTrafficControlTaskResponseBody(DaraModel):
+class DeployTrafficControlTaskCodeResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
