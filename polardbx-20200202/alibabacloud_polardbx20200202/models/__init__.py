@@ -54,6 +54,9 @@ from ._create_data_import_task_response import CreateDataImportTaskResponse
 from ._create_gdn_instance_request import CreateGdnInstanceRequest
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBody
 from ._create_gdn_instance_response import CreateGdnInstanceResponse
+from ._create_mem_0request import CreateMem0Request
+from ._create_mem_0response_body import CreateMem0ResponseBody
+from ._create_mem_0response import CreateMem0Response
 from ._create_rpl_inspection_task_request import CreateRplInspectionTaskRequest
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBody
 from ._create_rpl_inspection_task_response import CreateRplInspectionTaskResponse
@@ -90,6 +93,9 @@ from ._delete_evaluate_and_import_task_response import DeleteEvaluateAndImportTa
 from ._delete_gdn_instance_request import DeleteGdnInstanceRequest
 from ._delete_gdn_instance_response_body import DeleteGdnInstanceResponseBody
 from ._delete_gdn_instance_response import DeleteGdnInstanceResponse
+from ._delete_mem_0request import DeleteMem0Request
+from ._delete_mem_0response_body import DeleteMem0ResponseBody
+from ._delete_mem_0response import DeleteMem0Response
 from ._describe_account_list_request import DescribeAccountListRequest
 from ._describe_account_list_response_body import DescribeAccountListResponseBody
 from ._describe_account_list_response import DescribeAccountListResponse
@@ -201,6 +207,9 @@ from ._describe_events_response import DescribeEventsResponse
 from ._describe_gdn_instances_request import DescribeGdnInstancesRequest
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBody
 from ._describe_gdn_instances_response import DescribeGdnInstancesResponse
+from ._describe_mem_0info_request import DescribeMem0InfoRequest
+from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBody
+from ._describe_mem_0info_response import DescribeMem0InfoResponse
 from ._describe_open_backup_set_request import DescribeOpenBackupSetRequest
 from ._describe_open_backup_set_response_body import DescribeOpenBackupSetResponseBody
 from ._describe_open_backup_set_response import DescribeOpenBackupSetResponse
@@ -411,10 +420,12 @@ from ._create_backup_response_body import CreateBackupResponseBodyData
 from ._create_custom_endpoint_response_body import CreateCustomEndpointResponseBodyData
 from ._create_data_import_task_response_body import CreateDataImportTaskResponseBodyData
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBodyData
+from ._create_mem_0response_body import CreateMem0ResponseBodyData
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBodyData
 from ._create_sqlevaluate_task_response_body import CreateSQLEvaluateTaskResponseBodyData
 from ._create_structure_import_task_response_body import CreateStructureImportTaskResponseBodyData
 from ._delete_gdn_instance_response_body import DeleteGdnInstanceResponseBodyData
+from ._delete_mem_0response_body import DeleteMem0ResponseBodyData
 from ._describe_account_list_response_body import DescribeAccountListResponseBodyData
 from ._describe_active_operation_maintain_conf_response_body import DescribeActiveOperationMaintainConfResponseBodyConfig
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
@@ -484,6 +495,9 @@ from ._describe_events_response_body import DescribeEventsResponseBodyEventItems
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyDataGdnInstanceList
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyData
+from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyDataInstanceConnAddrs
+from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyDataInstance
+from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyData
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyDataParameterGroups
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyData
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBodyDataParameters
@@ -595,6 +609,9 @@ __all__ = [
     CreateGdnInstanceRequest,
     CreateGdnInstanceResponseBody,
     CreateGdnInstanceResponse,
+    CreateMem0Request,
+    CreateMem0ResponseBody,
+    CreateMem0Response,
     CreateRplInspectionTaskRequest,
     CreateRplInspectionTaskResponseBody,
     CreateRplInspectionTaskResponse,
@@ -631,6 +648,9 @@ __all__ = [
     DeleteGdnInstanceRequest,
     DeleteGdnInstanceResponseBody,
     DeleteGdnInstanceResponse,
+    DeleteMem0Request,
+    DeleteMem0ResponseBody,
+    DeleteMem0Response,
     DescribeAccountListRequest,
     DescribeAccountListResponseBody,
     DescribeAccountListResponse,
@@ -742,6 +762,9 @@ __all__ = [
     DescribeGdnInstancesRequest,
     DescribeGdnInstancesResponseBody,
     DescribeGdnInstancesResponse,
+    DescribeMem0InfoRequest,
+    DescribeMem0InfoResponseBody,
+    DescribeMem0InfoResponse,
     DescribeOpenBackupSetRequest,
     DescribeOpenBackupSetResponseBody,
     DescribeOpenBackupSetResponse,
@@ -952,10 +975,12 @@ __all__ = [
     CreateCustomEndpointResponseBodyData,
     CreateDataImportTaskResponseBodyData,
     CreateGdnInstanceResponseBodyData,
+    CreateMem0ResponseBodyData,
     CreateRplInspectionTaskResponseBodyData,
     CreateSQLEvaluateTaskResponseBodyData,
     CreateStructureImportTaskResponseBodyData,
     DeleteGdnInstanceResponseBodyData,
+    DeleteMem0ResponseBodyData,
     DescribeAccountListResponseBodyData,
     DescribeActiveOperationMaintainConfResponseBodyConfig,
     DescribeActiveOperationTasksResponseBodyItems,
@@ -1025,6 +1050,9 @@ __all__ = [
     DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList,
     DescribeGdnInstancesResponseBodyDataGdnInstanceList,
     DescribeGdnInstancesResponseBodyData,
+    DescribeMem0InfoResponseBodyDataInstanceConnAddrs,
+    DescribeMem0InfoResponseBodyDataInstance,
+    DescribeMem0InfoResponseBodyData,
     DescribeParameterGroupsResponseBodyDataParameterGroups,
     DescribeParameterGroupsResponseBodyData,
     DescribeParameterTemplatesResponseBodyDataParameters,

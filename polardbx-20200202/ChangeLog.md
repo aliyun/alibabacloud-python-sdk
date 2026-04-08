@@ -1,3 +1,9 @@
+2026-04-08 Version: 3.2.0
+- Support API CreateMem0.
+- Support API DeleteMem0.
+- Support API DescribeMem0Info.
+
+
 2026-04-03 Version: 3.1.7
 - Update API DescribeParameterTemplates: add response parameters Body.Data.Parameters.$.UserChangable.
 

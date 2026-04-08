@@ -1661,6 +1661,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gdn_instance_with_options_async(request, runtime)
 
+    def create_mem_0with_options(
+        self,
+        request: main_models.CreateMem0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMem0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMem0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMem0Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mem_0with_options_async(
+        self,
+        request: main_models.CreateMem0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMem0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMem0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMem0Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mem_0(
+        self,
+        request: main_models.CreateMem0Request,
+    ) -> main_models.CreateMem0Response:
+        runtime = RuntimeOptions()
+        return self.create_mem_0with_options(request, runtime)
+
+    async def create_mem_0_async(
+        self,
+        request: main_models.CreateMem0Request,
+    ) -> main_models.CreateMem0Response:
+        runtime = RuntimeOptions()
+        return await self.create_mem_0with_options_async(request, runtime)
+
     def create_rpl_inspection_task_with_options(
         self,
         request: main_models.CreateRplInspectionTaskRequest,
@@ -2676,6 +2750,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteGdnInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_gdn_instance_with_options_async(request, runtime)
+
+    def delete_mem_0with_options(
+        self,
+        request: main_models.DeleteMem0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMem0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMem0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMem0Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mem_0with_options_async(
+        self,
+        request: main_models.DeleteMem0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMem0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMem0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMem0Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mem_0(
+        self,
+        request: main_models.DeleteMem0Request,
+    ) -> main_models.DeleteMem0Response:
+        runtime = RuntimeOptions()
+        return self.delete_mem_0with_options(request, runtime)
+
+    async def delete_mem_0_async(
+        self,
+        request: main_models.DeleteMem0Request,
+    ) -> main_models.DeleteMem0Response:
+        runtime = RuntimeOptions()
+        return await self.delete_mem_0with_options_async(request, runtime)
 
     def describe_account_list_with_options(
         self,
@@ -5570,6 +5718,80 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeGdnInstancesResponse:
         runtime = RuntimeOptions()
         return await self.describe_gdn_instances_with_options_async(request, runtime)
+
+    def describe_mem_0info_with_options(
+        self,
+        request: main_models.DescribeMem0InfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMem0InfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMem0Info',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMem0InfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mem_0info_with_options_async(
+        self,
+        request: main_models.DescribeMem0InfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMem0InfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMem0Info',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMem0InfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mem_0info(
+        self,
+        request: main_models.DescribeMem0InfoRequest,
+    ) -> main_models.DescribeMem0InfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_mem_0info_with_options(request, runtime)
+
+    async def describe_mem_0info_async(
+        self,
+        request: main_models.DescribeMem0InfoRequest,
+    ) -> main_models.DescribeMem0InfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_mem_0info_with_options_async(request, runtime)
 
     def describe_open_backup_set_with_options(
         self,
