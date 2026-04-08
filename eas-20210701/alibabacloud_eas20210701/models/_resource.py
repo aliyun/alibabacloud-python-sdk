@@ -31,6 +31,7 @@ class Resource(DaraModel):
         resource_type: str = None,
         status: str = None,
         update_time: str = None,
+        usage_mode: str = None,
         vendor: str = None,
     ):
         # The information about the clusters.
@@ -72,6 +73,7 @@ class Resource(DaraModel):
         self.status = status
         # The time when the instance was last updated.
         self.update_time = update_time
+        self.usage_mode = usage_mode
         # The vendor of the resource group instances.
         # 
         # Valid values:
@@ -154,6 +156,9 @@ class Resource(DaraModel):
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
+        if self.usage_mode is not None:
+            result['UsageMode'] = self.usage_mode
+
         if self.vendor is not None:
             result['Vendor'] = self.vendor
 
@@ -226,6 +231,9 @@ class Resource(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        if m.get('UsageMode') is not None:
+            self.usage_mode = m.get('UsageMode')
 
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')

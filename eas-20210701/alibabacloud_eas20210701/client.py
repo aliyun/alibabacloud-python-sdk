@@ -1010,6 +1010,8 @@ class Client(OpenApiClient):
             body['SelfManagedResourceOptions'] = request.self_managed_resource_options
         if not DaraCore.is_null(request.system_disk_size):
             body['SystemDiskSize'] = request.system_disk_size
+        if not DaraCore.is_null(request.usage_mode):
+            body['UsageMode'] = request.usage_mode
         if not DaraCore.is_null(request.zone):
             body['Zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
@@ -1058,6 +1060,8 @@ class Client(OpenApiClient):
             body['SelfManagedResourceOptions'] = request.self_managed_resource_options
         if not DaraCore.is_null(request.system_disk_size):
             body['SystemDiskSize'] = request.system_disk_size
+        if not DaraCore.is_null(request.usage_mode):
+            body['UsageMode'] = request.usage_mode
         if not DaraCore.is_null(request.zone):
             body['Zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
@@ -6318,6 +6322,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.sort):
             query['Sort'] = request.sort
+        if not DaraCore.is_null(request.usage_mode):
+            query['UsageMode'] = request.usage_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6362,6 +6368,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.sort):
             query['Sort'] = request.sort
+        if not DaraCore.is_null(request.usage_mode):
+            query['UsageMode'] = request.usage_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

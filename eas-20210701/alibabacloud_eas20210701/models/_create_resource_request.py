@@ -19,6 +19,7 @@ class CreateResourceRequest(DaraModel):
         resource_type: str = None,
         self_managed_resource_options: main_models.CreateResourceRequestSelfManagedResourceOptions = None,
         system_disk_size: int = None,
+        usage_mode: str = None,
         zone: str = None,
     ):
         # Specifies whether to enable auto-renewal. Valid values:
@@ -55,6 +56,7 @@ class CreateResourceRequest(DaraModel):
         self.self_managed_resource_options = self_managed_resource_options
         # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
+        self.usage_mode = usage_mode
         # The ID of the zone in which the instance resides.
         self.zone = zone
 
@@ -94,6 +96,9 @@ class CreateResourceRequest(DaraModel):
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
 
+        if self.usage_mode is not None:
+            result['UsageMode'] = self.usage_mode
+
         if self.zone is not None:
             result['Zone'] = self.zone
 
@@ -128,6 +133,9 @@ class CreateResourceRequest(DaraModel):
 
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
+
+        if m.get('UsageMode') is not None:
+            self.usage_mode = m.get('UsageMode')
 
         if m.get('Zone') is not None:
             self.zone = m.get('Zone')

@@ -1,3 +1,9 @@
+2026-04-08 Version: 6.13.1
+- Update API CreateResource: add request parameters body.UsageMode.
+- Update API DescribeResource: add response parameters Body.UsageMode.
+- Update API ListResources: add request parameters UsageMode.
+
+
 2026-03-24 Version: 6.13.0
 - Support API ScaleService.
 - Update API ListServices: add request parameters Accessibility.

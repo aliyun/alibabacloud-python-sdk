@@ -15,6 +15,7 @@ class ListResourcesRequest(DaraModel):
         resource_status: str = None,
         resource_type: str = None,
         sort: str = None,
+        usage_mode: str = None,
     ):
         # The sorting order. Valid values:
         # 
@@ -51,6 +52,7 @@ class ListResourcesRequest(DaraModel):
         # *   CpuUsed
         # *   ServiceCount
         self.sort = sort
+        self.usage_mode = usage_mode
 
     def validate(self):
         pass
@@ -84,6 +86,9 @@ class ListResourcesRequest(DaraModel):
         if self.sort is not None:
             result['Sort'] = self.sort
 
+        if self.usage_mode is not None:
+            result['UsageMode'] = self.usage_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -111,6 +116,9 @@ class ListResourcesRequest(DaraModel):
 
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+
+        if m.get('UsageMode') is not None:
+            self.usage_mode = m.get('UsageMode')
 
         return self
 

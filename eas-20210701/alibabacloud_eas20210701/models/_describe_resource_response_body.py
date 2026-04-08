@@ -33,6 +33,7 @@ class DescribeResourceResponseBody(DaraModel):
         resource_type: str = None,
         status: str = None,
         update_time: str = None,
+        usage_mode: str = None,
     ):
         # The ID of the cluster to which the resource group belongs.
         self.cluster_id = cluster_id
@@ -81,6 +82,7 @@ class DescribeResourceResponseBody(DaraModel):
         self.status = status
         # The time when the resource group was last updated.
         self.update_time = update_time
+        self.usage_mode = usage_mode
 
     def validate(self):
         pass
@@ -162,6 +164,9 @@ class DescribeResourceResponseBody(DaraModel):
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
+        if self.usage_mode is not None:
+            result['UsageMode'] = self.usage_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -237,6 +242,9 @@ class DescribeResourceResponseBody(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        if m.get('UsageMode') is not None:
+            self.usage_mode = m.get('UsageMode')
 
         return self
 
