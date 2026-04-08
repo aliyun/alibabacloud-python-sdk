@@ -382,7 +382,6 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatus(DaraModel):
         percent: str = None,
         status: str = None,
     ):
-        # The result of each precheck item.
         self.detail = detail
         # The precheck progress. Unit: %.
         self.percent = percent
@@ -472,20 +471,9 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem(DaraMo
         item_name: str = None,
         repair_method: str = None,
     ):
-        # The precheck result. Valid values:
-        # 
-        # *   **Success**: The task passed the precheck.
-        # *   **Failed**: The task failed to pass the precheck.
         self.check_status = check_status
-        # The error message returned if the task failed to pass the precheck.
-        # 
-        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.error_message = error_message
-        # The name of the precheck item.
         self.item_name = item_name
-        # The method to fix the precheck failure.
-        # 
-        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.repair_method = repair_method
 
     def validate(self):

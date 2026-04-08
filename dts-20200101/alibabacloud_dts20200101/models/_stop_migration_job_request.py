@@ -23,6 +23,7 @@ class StopMigrationJobRequest(DaraModel):
         # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
+        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id

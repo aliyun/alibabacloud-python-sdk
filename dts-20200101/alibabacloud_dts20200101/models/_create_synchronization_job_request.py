@@ -54,6 +54,7 @@ class CreateSynchronizationJobRequest(DaraModel):
         # 
         # >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
         self.period = period
+        # The ID of the region where the data synchronization instance resides. The region ID is the same as the value of the **DestRegion** parameter.
         self.region_id = region_id
         # Resource GroupId
         self.resource_group_id = resource_group_id

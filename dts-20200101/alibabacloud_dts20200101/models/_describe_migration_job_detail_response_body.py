@@ -21,9 +21,7 @@ class DescribeMigrationJobDetailResponseBody(DaraModel):
         success: str = None,
         total_record_count: int = None,
     ):
-        # The maximum number of data migration instances that can be displayed on one page.
         self.data_initialization_detail_list = data_initialization_detail_list
-        # The error message returned if full data migration failed.
         self.data_synchronization_detail_list = data_synchronization_detail_list
         # Specifies whether to query the details of incremental data migration. Valid values:
         # 
@@ -47,7 +45,6 @@ class DescribeMigrationJobDetailResponseBody(DaraModel):
         # 
         # > Default value: **false**
         self.request_id = request_id
-        # The name of the database to which the migration object in the source instance belongs.
         self.structure_initialization_detail_list = structure_initialization_detail_list
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.success = success
@@ -183,26 +180,13 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
         source_owner_dbname: str = None,
         status: str = None,
     ):
-        # The schema of the migration object.
         self.constraint_list = constraint_list
-        # The status of schema migration. Valid values:
-        # 
-        # - **NotStarted**: Schema migration is not started.
-        # - **Migrating**: Schema migration is in progress.
-        # - **Failed**: Schema migration failed.
-        # - **Finished**: Schema migration is completed.
         self.destination_owner_dbname = destination_owner_dbname
-        # The details of schema migration.
         self.error_message = error_message
-        # The task has failed for too long and cannot be restored
         self.object_definition = object_definition
-        # The name of the database to which the migration object in the source instance belongs.
         self.object_name = object_name
-        # The name of the database to which the migration object in the destination instance belongs.
         self.object_type = object_type
-        # The error message returned if incremental data migration failed.
         self.source_owner_dbname = source_owner_dbname
-        # The table name.
         self.status = status
 
     def validate(self):
@@ -315,26 +299,12 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
         source_owner_dbname: str = None,
         status: str = None,
     ):
-        # The status of constraint creation. Valid values:
-        # 
-        # - **NotStarted**
-        # - **Migrating**
-        # - **Failed**
-        # - **Finished**
         self.destination_owner_dbname = destination_owner_dbname
-        # The constraints of the migration object, such as indexes and foreign keys. 
-        # 
-        # >  This parameter is returned only if the **ObjectType** parameter is set to **Table** and the migration object has constraints.
         self.error_message = error_message
-        # The name of the database to which the migration object in the destination instance belongs.
         self.object_definition = object_definition
-        # The name of the database to which the migration object in the source instance belongs.
         self.object_name = object_name
-        # The name of migration object.
         self.object_type = object_type
-        # The error message returned if schema migration failed.
         self.source_owner_dbname = source_owner_dbname
-        # The type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
         self.status = status
 
     def validate(self):
@@ -437,20 +407,10 @@ class DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailListDataSyn
         status: str = None,
         table_name: str = None,
     ):
-        # The status of incremental data migration. Valid values:
-        # 
-        # *   **NotStarted**: Incremental data migration is not started.
-        # *   **Migrating**: Incremental data migration is in progress.
-        # *   **Failed**: Incremental data migration failed.
-        # *   **Finished**: Incremental data migration is completed.
         self.destination_owner_dbname = destination_owner_dbname
-        # The total number of records that are supposed to be migrated by the task.
         self.error_message = error_message
-        # The time taken by full data migration.
         self.source_owner_dbname = source_owner_dbname
-        # The number of records that have been migrated.
         self.status = status
-        # The name of the database to which the migration object in the destination instance belongs.
         self.table_name = table_name
 
     def validate(self):
@@ -544,26 +504,13 @@ class DescribeMigrationJobDetailResponseBodyDataInitializationDetailListDataInit
         table_name: str = None,
         total_row_num: str = None,
     ):
-        # The status of full data migration. Valid values:
-        # 
-        # - **NotStarted**: Full data migration is not started.
-        # - **Migrating**: Full data migration is in progress.
-        # - **Failed**: Full data migration failed.
-        # - **Finished**: Full data migration is completed.
         self.destination_owner_dbname = destination_owner_dbname
-        # The page number of the returned page.
         self.error_message = error_message
-        # The details of full data migration.
         self.finish_row_num = finish_row_num
-        # The name of the database to which the migration object in the source instance belongs.
         self.migration_time = migration_time
-        # Indicates whether the call was successful.
         self.source_owner_dbname = source_owner_dbname
-        # The total number of entries that are returned.
         self.status = status
-        # The error message returned if the call failed.
         self.table_name = table_name
-        # The table name.
         self.total_row_num = total_row_num
 
     def validate(self):

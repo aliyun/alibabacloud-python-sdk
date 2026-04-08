@@ -17,6 +17,7 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         err_message: str = None,
         file_url: str = None,
         http_status_code: int = None,
+        outer_file_url: str = None,
         request_id: str = None,
         success: bool = None,
     ):
@@ -27,6 +28,7 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         self.err_message = err_message
         self.file_url = file_url
         self.http_status_code = http_status_code
+        self.outer_file_url = outer_file_url
         self.request_id = request_id
         self.success = success
 
@@ -64,6 +66,9 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
 
+        if self.outer_file_url is not None:
+            result['OuterFileUrl'] = self.outer_file_url
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -97,6 +102,9 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('OuterFileUrl') is not None:
+            self.outer_file_url = m.get('OuterFileUrl')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

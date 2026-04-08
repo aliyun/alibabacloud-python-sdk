@@ -19,7 +19,6 @@ class DescribeConsumerGroupResponseBody(DaraModel):
         success: str = None,
         total_record_count: int = None,
     ):
-        # The list of consumer groups.
         self.consumer_channels = consumer_channels
         # The error code returned if the call failed.
         self.err_code = err_code
@@ -145,21 +144,11 @@ class DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChannel(D
         message_delay: int = None,
         unconsumed_data: int = None,
     ):
-        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The name of the consumer group.
         self.consumer_group_name = consumer_group_name
-        # The username of the consumer group.
         self.consumer_group_user_name = consumer_group_user_name
-        # The consumption checkpoint, which is the time when the latest data record was consumed by the change tracking client. The format is *yyyy-MM-dd*T*HH:mm:ss*Z. The time is displayed in UTC.
         self.consumption_checkpoint = consumption_checkpoint
-        # The message delay, which is the current time minus the timestamp of the earliest unconsumed message in the change tracking instance. Unit: seconds.
-        # 
-        # >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
         self.message_delay = message_delay
-        # The total number of unconsumed messages, which is the number of unconsumed data records plus the number of heartbeat messages.
-        # 
-        # >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
         self.unconsumed_data = unconsumed_data
 
     def validate(self):

@@ -11,6 +11,8 @@ class DescribeDtsJobDetailResponseBody(DaraModel):
     def __init__(
         self,
         app_name: str = None,
+        approval_process_status: int = None,
+        approval_process_url: str = None,
         begin_timestamp: str = None,
         binlog: str = None,
         binlog_site: str = None,
@@ -74,6 +76,8 @@ class DescribeDtsJobDetailResponseBody(DaraModel):
         # 
         # > This parameter is returned only for change tracking instances of the new version.
         self.app_name = app_name
+        self.approval_process_status = approval_process_status
+        self.approval_process_url = approval_process_url
         # The start of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.begin_timestamp = begin_timestamp
         # The binary logs.
@@ -290,6 +294,12 @@ class DescribeDtsJobDetailResponseBody(DaraModel):
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
+        if self.approval_process_status is not None:
+            result['ApprovalProcessStatus'] = self.approval_process_status
+
+        if self.approval_process_url is not None:
+            result['ApprovalProcessUrl'] = self.approval_process_url
+
         if self.begin_timestamp is not None:
             result['BeginTimestamp'] = self.begin_timestamp
 
@@ -474,6 +484,12 @@ class DescribeDtsJobDetailResponseBody(DaraModel):
         m = m or dict()
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+
+        if m.get('ApprovalProcessStatus') is not None:
+            self.approval_process_status = m.get('ApprovalProcessStatus')
+
+        if m.get('ApprovalProcessUrl') is not None:
+            self.approval_process_url = m.get('ApprovalProcessUrl')
 
         if m.get('BeginTimestamp') is not None:
             self.begin_timestamp = m.get('BeginTimestamp')

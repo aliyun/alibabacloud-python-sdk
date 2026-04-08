@@ -36,6 +36,7 @@ class ModifyConsumerGroupPasswordRequest(DaraModel):
         # The username of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the username.
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id

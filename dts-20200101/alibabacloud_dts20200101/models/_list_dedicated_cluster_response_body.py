@@ -20,7 +20,6 @@ class ListDedicatedClusterResponseBody(DaraModel):
         success: str = None,
         total_record_count: int = None,
     ):
-        # The statuses of all clusters.
         self.dedicated_cluster_status_list = dedicated_cluster_status_list
         # The error code returned if the request failed.
         self.err_code = err_code
@@ -168,54 +167,25 @@ class ListDedicatedClusterResponseBodyDedicatedClusterStatusListDedicatedCluster
         used_du: int = None,
         used_mem_gbsize: int = None,
     ):
-        # The CPU utilization, in percentage.
         self.cpu_utilization = cpu_utilization
-        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
-        # The disk usage.
         self.disk_utilization = disk_utilization
-        # The ID of the DTS instance.
         self.dts_instance_id = dts_instance_id
-        # The number of DTS units (DUs).
         self.du = du
-        # The DU usage, in percentage.
         self.du_utilization = du_utilization
-        # The time when the cluster was created.
         self.gmt_created = gmt_created
-        # The memory usage.
         self.mem_utilization = mem_utilization
-        # The number of nodes in the cluster.
         self.node_count = node_count
-        # The number of over-provisioned DUs.
         self.oversold_du = oversold_du
-        # The ID of the region in which the DTS instance resides.
         self.region_id = region_id
-        # The status of the cluster. Valid values:
-        # 
-        # *   **init**: The cluster is being initialized.
-        # *   **schedule**: The cluster is pending scheduling.
-        # *   **running**: The cluster is running.
-        # *   **upgrade**: The cluster is being upgraded.
-        # *   **downgrade**: The cluster is being downgraded.
-        # *   **locked**: The cluster is locked.
-        # *   **releasing**: The cluster is being released.
-        # *   **released**: The cluster is released.
         self.state = state
-        # The total number of CPU cores.
         self.total_cpu_core = total_cpu_core
-        # The total disk capacity. Unit: GB.
         self.total_disk_gbsize = total_disk_gbsize
-        # The total memory capacity. Unit: GB.
         self.total_mem_gbsize = total_mem_gbsize
-        # The number of used CPU cores.
         self.used_cpu_core = used_cpu_core
-        # The used disk capacity. Unit: GB.
         self.used_disk_gbsize = used_disk_gbsize
-        # The number of used DUs.
         self.used_du = used_du
-        # The used memory capacity. Unit: GB.
         self.used_mem_gbsize = used_mem_gbsize
 
     def validate(self):

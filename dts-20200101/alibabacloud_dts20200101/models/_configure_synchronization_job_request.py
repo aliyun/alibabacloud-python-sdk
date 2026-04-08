@@ -45,6 +45,7 @@ class ConfigureSynchronizationJobRequest(DaraModel):
         # >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](https://help.aliyun.com/document_detail/155967.html).
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # 资源组ID。
         self.resource_group_id = resource_group_id

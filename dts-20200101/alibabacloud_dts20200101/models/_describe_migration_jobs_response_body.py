@@ -23,7 +23,6 @@ class DescribeMigrationJobsResponseBody(DaraModel):
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The list of data migration instances and the details of each instance.
         self.migration_jobs = migration_jobs
         # The page number of the returned page.
         self.page_number = page_number
@@ -155,45 +154,21 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob(DaraModel):
         structure_initialization: main_models.DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobStructureInitialization = None,
         tags: main_models.DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTags = None,
     ):
-        # The details of full data migration.
         self.data_initialization = data_initialization
-        # The details of incremental data migration.
         self.data_synchronization = data_synchronization
-        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
-        # The time when the data migration instance was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.instance_create_time = instance_create_time
-        # The time when the data migration task was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.job_create_time = job_create_time
-        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
         self.migration_job_class = migration_job_class
-        # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
-        # The name of the data migration task.
         self.migration_job_name = migration_job_name
-        # The status of the data migration task. Valid values:
-        # 
-        # *   **NotStarted**: The task is not started.
-        # *   **Prechecking**: The task is being prechecked.
-        # *   **PrecheckFailed**: The task failed to pass the precheck.
-        # *   **Migrating**: The task is migrating data.
-        # *   **Suspending**: The task is paused.
-        # *   **MigrationFailed**: The task failed to migrate data.
-        # *   **Finished**: The task is completed.
         self.migration_job_status = migration_job_status
-        # The migration types.
         self.migration_mode = migration_mode
-        # The objects that are migrated by the task.
         self.migration_object = migration_object
-        # The billing method of the data migration instance. The value is **PostPaid** (pay-as-you-go).
         self.pay_type = pay_type
-        # The precheck details.
         self.precheck = precheck
-        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
-        # The details of schema migration.
         self.structure_initialization = structure_initialization
-        # The collection of tags.
         self.tags = tags
 
     def validate(self):
@@ -373,9 +348,7 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTagsTag(DaraMode
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value that corresponds to the tag key.
         self.value = value
 
     def validate(self):
@@ -412,18 +385,9 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobStructureInitial
         progress: str = None,
         status: str = None,
     ):
-        # The error message returned if schema migration failed.
         self.error_message = error_message
-        # The progress of schema migration. Unit: %.
         self.percent = percent
-        # The number of tables whose schemas have been migrated.
         self.progress = progress
-        # The status of schema migration. Valid values:
-        # 
-        # *   **NotStarted**: Schema migration is not started.
-        # *   **Migrating**: Schema migration is in progress.
-        # *   **Failed**: Schema migration failed.
-        # *   **Finished**: Schema migration is completed.
         self.status = status
 
     def validate(self):
@@ -476,21 +440,13 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobSourceEndpoint(D
         port: str = None,
         user_name: str = None,
     ):
-        # The name of the database to which the migration object in the source instance belongs.
         self.database_name = database_name
-        # The database type of the source instance.
         self.engine_name = engine_name
-        # The endpoint of the source instance.
         self.ip = ip
-        # The ID of the source instance.
         self.instance_id = instance_id
-        # The type of the source instance.
         self.instance_type = instance_type
-        # This parameter is returned only if the database type of the source instance is **Oracle**.
         self.oracle_sid = oracle_sid
-        # The database service port of the source instance.
         self.port = port
-        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -561,12 +517,7 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobPrecheck(DaraMod
         percent: str = None,
         status: str = None,
     ):
-        # The precheck progress. Unit: %.
         self.percent = percent
-        # The precheck result. Valid values:
-        # 
-        # *   **Success**: The task passed the precheck.
-        # *   **Failed**: The task failed to pass the precheck.
         self.status = status
 
     def validate(self):
@@ -637,14 +588,8 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectS
         table_list: main_models.DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectSynchronousObjectTableList = None,
         whole_database: str = None,
     ):
-        # The name of the database to which the migration object in the source instance belongs.
         self.database_name = database_name
-        # The names of the migrated tables.
         self.table_list = table_list
-        # Indicates whether an entire database is migrated. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.whole_database = whole_database
 
     def validate(self):
@@ -715,20 +660,8 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationMode(Da
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
-        # Indicates whether full data migration is performed. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.data_initialization = data_initialization
-        # Indicates whether incremental data migration is performed. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.data_synchronization = data_synchronization
-        # Indicates whether schema migration is performed. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -775,21 +708,13 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDestinationEndpo
         port: str = None,
         user_name: str = None,
     ):
-        # The name of the database to which the migration object in the destination instance belongs.
         self.database_name = database_name
-        # The database type of the destination instance.
         self.engine_name = engine_name
-        # The endpoint of the destination instance.
         self.ip = ip
-        # The ID of the destination instance.
         self.instance_id = instance_id
-        # The type of the destination instance.
         self.instance_type = instance_type
-        # This parameter is returned only if the database type of the destination instance is **Oracle**.
         self.oracle_sid = oracle_sid
-        # The database service port of the destination instance.
         self.port = port
-        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -862,19 +787,9 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataSynchronizat
         percent: str = None,
         status: str = None,
     ):
-        # The latency of incremental data migration. Unit: seconds.
         self.delay = delay
-        # The error message returned if incremental data migration failed.
         self.error_message = error_message
-        # The progress of incremental data migration. Unit: %.
         self.percent = percent
-        # The status of incremental data migration. Valid values:
-        # 
-        # *   **NotStarted**: Incremental data migration is not started.
-        # *   **Migrating**: Incremental data migration is in progress.
-        # *   **Failed**: Incremental data migration failed.
-        # *   **Finished**: Incremental data migration is completed.
-        # *   **Catched**: Incremental data migration is not delayed.
         self.status = status
 
     def validate(self):
@@ -923,18 +838,9 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataInitializati
         progress: str = None,
         status: str = None,
     ):
-        # The error message returned if full data migration failed.
         self.error_message = error_message
-        # The migration progress. Unit: %.
         self.percent = percent
-        # The number of records that have been migrated during full data migration.
         self.progress = progress
-        # The status of full data migration. Valid values:
-        # 
-        # *   **NotStarted**: Full data migration is not started.
-        # *   **Migrating**: Full data migration is in progress.
-        # *   **Failed**: Full data migration failed.
-        # *   **Finished**: Full data migration is completed.
         self.status = status
 
     def validate(self):

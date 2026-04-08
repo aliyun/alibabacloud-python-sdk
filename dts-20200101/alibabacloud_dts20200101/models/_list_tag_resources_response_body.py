@@ -29,7 +29,6 @@ class ListTagResourcesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success
-        # The collection of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -127,13 +126,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the DTS instance.
         self.resource_id = resource_id
-        # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value that corresponds to the tag key.
         self.tag_value = tag_value
 
     def validate(self):

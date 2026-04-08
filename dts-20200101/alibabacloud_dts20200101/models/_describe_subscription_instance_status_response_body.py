@@ -74,7 +74,6 @@ class DescribeSubscriptionInstanceStatusResponseBody(DaraModel):
         self.subscription_instance_id = subscription_instance_id
         # The name of the change tracking instance.
         self.subscription_instance_name = subscription_instance_name
-        # The objects for change tracking.
         self.subscription_object = subscription_object
         # Indicates whether the call was successful.
         self.success = success
@@ -262,14 +261,8 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronou
         table_list: main_models.DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObjectTableList = None,
         whole_database: str = None,
     ):
-        # The name of the database to which the object belongs.
         self.database_name = database_name
-        # The table name.
         self.table_list = table_list
-        # Indicates whether the data of an entire database is tracked. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.whole_database = whole_database
 
     def validate(self):

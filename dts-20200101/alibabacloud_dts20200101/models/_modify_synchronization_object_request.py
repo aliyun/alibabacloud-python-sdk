@@ -18,6 +18,7 @@ class ModifySynchronizationObjectRequest(DaraModel):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id
@@ -34,6 +35,8 @@ class ModifySynchronizationObjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
+        # The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](https://help.aliyun.com/document_detail/141901.html).
+        # 
         # This parameter is required.
         self.synchronization_objects = synchronization_objects
 
