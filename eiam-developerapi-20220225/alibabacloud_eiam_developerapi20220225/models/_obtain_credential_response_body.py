@@ -15,10 +15,12 @@ class ObtainCredentialResponseBody(DaraModel):
         credential_identifier: str = None,
         credential_name: str = None,
         credential_scenario_label: str = None,
+        credential_sharing_scope: str = None,
         credential_subject_id: str = None,
         credential_subject_type: str = None,
         credential_type: str = None,
         description: str = None,
+        exclusive_user_id: str = None,
         instance_id: str = None,
         status: str = None,
         update_time: int = None,
@@ -37,6 +39,8 @@ class ObtainCredentialResponseBody(DaraModel):
         self.credential_name = credential_name
         # 凭据的使用场景标签。
         self.credential_scenario_label = credential_scenario_label
+        # 凭据的共享范围。
+        self.credential_sharing_scope = credential_sharing_scope
         # 凭据所属的主体ID。
         self.credential_subject_id = credential_subject_id
         # 凭据所属的主体类型。
@@ -45,6 +49,8 @@ class ObtainCredentialResponseBody(DaraModel):
         self.credential_type = credential_type
         # 描述
         self.description = description
+        # 凭据的专属账户ID。
+        self.exclusive_user_id = exclusive_user_id
         # EIAM实例ID。
         self.instance_id = instance_id
         # 凭据状态
@@ -82,6 +88,9 @@ class ObtainCredentialResponseBody(DaraModel):
         if self.credential_scenario_label is not None:
             result['credentialScenarioLabel'] = self.credential_scenario_label
 
+        if self.credential_sharing_scope is not None:
+            result['credentialSharingScope'] = self.credential_sharing_scope
+
         if self.credential_subject_id is not None:
             result['credentialSubjectId'] = self.credential_subject_id
 
@@ -93,6 +102,9 @@ class ObtainCredentialResponseBody(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.exclusive_user_id is not None:
+            result['exclusiveUserId'] = self.exclusive_user_id
 
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
@@ -129,6 +141,9 @@ class ObtainCredentialResponseBody(DaraModel):
         if m.get('credentialScenarioLabel') is not None:
             self.credential_scenario_label = m.get('credentialScenarioLabel')
 
+        if m.get('credentialSharingScope') is not None:
+            self.credential_sharing_scope = m.get('credentialSharingScope')
+
         if m.get('credentialSubjectId') is not None:
             self.credential_subject_id = m.get('credentialSubjectId')
 
@@ -140,6 +155,9 @@ class ObtainCredentialResponseBody(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('exclusiveUserId') is not None:
+            self.exclusive_user_id = m.get('exclusiveUserId')
 
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')

@@ -1,3 +1,8 @@
+2026-04-08 Version: 1.6.1
+- Update API ObtainCredential: add response parameters Body.credentialSharingScope.
+- Update API ObtainCredential: add response parameters Body.exclusiveUserId.
+
+
 2026-03-30 Version: 1.6.0
 - Support API ObtainJwtAuthenticationToken.
 - Update API ObtainCloudAccountRoleAccessCredential: add request parameters durationSeconds.
