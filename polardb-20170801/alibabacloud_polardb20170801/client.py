@@ -2497,6 +2497,8 @@ class Client(OpenApiClient):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
         if not DaraCore.is_null(tmp_req.mem_application_spec):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.aidbcluster_id):
             query['AIDBClusterId'] = request.aidbcluster_id
@@ -2538,6 +2540,8 @@ class Client(OpenApiClient):
             query['ModelFrom'] = request.model_from
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -2605,6 +2609,8 @@ class Client(OpenApiClient):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
         if not DaraCore.is_null(tmp_req.mem_application_spec):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.aidbcluster_id):
             query['AIDBClusterId'] = request.aidbcluster_id
@@ -2646,6 +2652,8 @@ class Client(OpenApiClient):
             query['ModelFrom'] = request.model_from
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):

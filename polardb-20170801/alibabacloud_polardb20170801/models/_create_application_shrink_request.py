@@ -30,6 +30,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         model_base_url: str = None,
         model_from: str = None,
         model_name: str = None,
+        parameters_shrink: str = None,
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
@@ -70,6 +71,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.model_base_url = model_base_url
         self.model_from = model_from
         self.model_name = model_name
+        self.parameters_shrink = parameters_shrink
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -158,6 +160,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.model_name is not None:
             result['ModelName'] = self.model_name
+
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -275,6 +280,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
+
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')

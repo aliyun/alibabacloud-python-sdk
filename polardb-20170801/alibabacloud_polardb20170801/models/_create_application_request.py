@@ -30,6 +30,7 @@ class CreateApplicationRequest(DaraModel):
         model_base_url: str = None,
         model_from: str = None,
         model_name: str = None,
+        parameters: List[main_models.CreateApplicationRequestParameters] = None,
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
@@ -70,6 +71,7 @@ class CreateApplicationRequest(DaraModel):
         self.model_base_url = model_base_url
         self.model_from = model_from
         self.model_name = model_name
+        self.parameters = parameters
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -99,6 +101,10 @@ class CreateApplicationRequest(DaraModel):
                     v1.validate()
         if self.mem_application_spec:
             self.mem_application_spec.validate()
+        if self.parameters:
+            for v1 in self.parameters:
+                 if v1:
+                    v1.validate()
         if self.tag:
             for v1 in self.tag:
                  if v1:
@@ -172,6 +178,11 @@ class CreateApplicationRequest(DaraModel):
 
         if self.model_name is not None:
             result['ModelName'] = self.model_name
+
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k1 in self.parameters:
+                result['Parameters'].append(k1.to_map() if k1 else None)
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -297,6 +308,12 @@ class CreateApplicationRequest(DaraModel):
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
 
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k1 in m.get('Parameters'):
+                temp_model = main_models.CreateApplicationRequestParameters()
+                self.parameters.append(temp_model.from_map(k1))
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
@@ -385,6 +402,41 @@ class CreateApplicationRequestTag(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class CreateApplicationRequestParameters(DaraModel):
+    def __init__(
+        self,
+        parameter_name: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_name = parameter_name
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
 
         return self
 

@@ -901,6 +901,7 @@ from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
 from ._create_application_request import CreateApplicationRequestEndpoints
 from ._create_application_request import CreateApplicationRequestMemApplicationSpec
+from ._create_application_request import CreateApplicationRequestParameters
 from ._create_application_request import CreateApplicationRequestTag
 from ._create_application_shrink_request import CreateApplicationShrinkRequestTag
 from ._create_application_response_body import CreateApplicationResponseBodyComponents
@@ -2056,6 +2057,7 @@ __all__ = [
     CreateApplicationRequestComponents,
     CreateApplicationRequestEndpoints,
     CreateApplicationRequestMemApplicationSpec,
+    CreateApplicationRequestParameters,
     CreateApplicationRequestTag,
     CreateApplicationShrinkRequestTag,
     CreateApplicationResponseBodyComponents,
