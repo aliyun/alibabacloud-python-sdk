@@ -1,3 +1,14 @@
+2026-04-08 Version: 7.0.0
+- Support API ListExternalServices.
+- Update API ExportHttpApi: add request parameters body.
+- Update API ExportHttpApi: add request The number of query or body parameters has changed from zero to many.
+- Update API UpdateHttpApiRoute: delete request parameters body.deployConfigs.
+- Update API UpdateHttpApiRoute: delete request parameters body.name.
+- Update API UpdateHttpApiRoute: update request parameters body.policyConfigs.$' type has changed.
+- Update API UpdateHttpApiRoute: update request parameters body.policyConfigs.$' ref has changed.
+- Update API UpdateHttpApiRoute: delete request parameters body.policyConfigs.$.
+
+
 2026-03-25 Version: 6.0.6
 - Update API ImportHttpApi: add response parameters Body.data.dryRunInfo.mcpToolsDefinition.
 

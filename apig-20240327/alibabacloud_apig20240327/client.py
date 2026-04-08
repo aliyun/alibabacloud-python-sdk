@@ -3430,11 +3430,21 @@ class Client(OpenApiClient):
     def export_http_api_with_options(
         self,
         http_api_id: str,
+        request: main_models.ExportHttpApiRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ExportHttpApiResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.extension_config):
+            body['extensionConfig'] = request.extension_config
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.operation_ids):
+            body['operationIds'] = request.operation_ids
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ExportHttpApi',
@@ -3455,11 +3465,21 @@ class Client(OpenApiClient):
     async def export_http_api_with_options_async(
         self,
         http_api_id: str,
+        request: main_models.ExportHttpApiRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ExportHttpApiResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.extension_config):
+            body['extensionConfig'] = request.extension_config
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.operation_ids):
+            body['operationIds'] = request.operation_ids
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ExportHttpApi',
@@ -3480,18 +3500,20 @@ class Client(OpenApiClient):
     def export_http_api(
         self,
         http_api_id: str,
+        request: main_models.ExportHttpApiRequest,
     ) -> main_models.ExportHttpApiResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.export_http_api_with_options(http_api_id, headers, runtime)
+        return self.export_http_api_with_options(http_api_id, request, headers, runtime)
 
     async def export_http_api_async(
         self,
         http_api_id: str,
+        request: main_models.ExportHttpApiRequest,
     ) -> main_models.ExportHttpApiResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.export_http_api_with_options_async(http_api_id, headers, runtime)
+        return await self.export_http_api_with_options_async(http_api_id, request, headers, runtime)
 
     def get_consumer_with_options(
         self,
@@ -5448,6 +5470,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_environments_with_options_async(request, headers, runtime)
+
+    def list_external_services_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListExternalServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExternalServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.importable_only):
+            query['importableOnly'] = request.importable_only
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.pai_workspace_id):
+            query['paiWorkspaceId'] = request.pai_workspace_id
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExternalServices',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/external-services',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExternalServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_external_services_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListExternalServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExternalServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.importable_only):
+            query['importableOnly'] = request.importable_only
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.pai_workspace_id):
+            query['paiWorkspaceId'] = request.pai_workspace_id
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExternalServices',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/external-services',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExternalServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_external_services(
+        self,
+        gateway_id: str,
+        request: main_models.ListExternalServicesRequest,
+    ) -> main_models.ListExternalServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_external_services_with_options(gateway_id, request, headers, runtime)
+
+    async def list_external_services_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListExternalServicesRequest,
+    ) -> main_models.ListExternalServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_external_services_with_options_async(gateway_id, request, headers, runtime)
 
     def list_gateway_features_with_options(
         self,
@@ -8521,8 +8639,6 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.backend_config):
             body['backendConfig'] = request.backend_config
-        if not DaraCore.is_null(request.deploy_configs):
-            body['deployConfigs'] = request.deploy_configs
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
         if not DaraCore.is_null(request.domain_ids):
@@ -8533,8 +8649,6 @@ class Client(OpenApiClient):
             body['match'] = request.match
         if not DaraCore.is_null(request.mcp_route_config):
             body['mcpRouteConfig'] = request.mcp_route_config
-        if not DaraCore.is_null(request.name):
-            body['name'] = request.name
         if not DaraCore.is_null(request.policy_configs):
             body['policyConfigs'] = request.policy_configs
         req = open_api_util_models.OpenApiRequest(
@@ -8569,8 +8683,6 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.backend_config):
             body['backendConfig'] = request.backend_config
-        if not DaraCore.is_null(request.deploy_configs):
-            body['deployConfigs'] = request.deploy_configs
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
         if not DaraCore.is_null(request.domain_ids):
@@ -8581,8 +8693,6 @@ class Client(OpenApiClient):
             body['match'] = request.match
         if not DaraCore.is_null(request.mcp_route_config):
             body['mcpRouteConfig'] = request.mcp_route_config
-        if not DaraCore.is_null(request.name):
-            body['name'] = request.name
         if not DaraCore.is_null(request.policy_configs):
             body['policyConfigs'] = request.policy_configs
         req = open_api_util_models.OpenApiRequest(
