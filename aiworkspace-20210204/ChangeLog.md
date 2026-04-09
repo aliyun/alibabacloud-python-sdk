@@ -1,3 +1,7 @@
+2026-04-09 Version: 8.1.4
+- Update API ListMembers: add request parameters UserId.
+
+
 2026-02-03 Version: 8.1.0
 - Support API ValidateConnection.
 - Update API GetPermission: add request parameters CallerType.

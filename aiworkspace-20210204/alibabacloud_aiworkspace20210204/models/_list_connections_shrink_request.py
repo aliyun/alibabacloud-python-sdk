@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListConnectionsShrinkRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
         connection_ids_shrink: str = None,
         connection_name: str = None,
         connection_types_shrink: str = None,
@@ -21,6 +22,7 @@ class ListConnectionsShrinkRequest(DaraModel):
         tool_call: bool = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         # The list of connection IDs.
         self.connection_ids_shrink = connection_ids_shrink
         # The connection name.
@@ -66,6 +68,9 @@ class ListConnectionsShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
         if self.connection_ids_shrink is not None:
             result['ConnectionIds'] = self.connection_ids_shrink
 
@@ -109,6 +114,9 @@ class ListConnectionsShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
         if m.get('ConnectionIds') is not None:
             self.connection_ids_shrink = m.get('ConnectionIds')
 

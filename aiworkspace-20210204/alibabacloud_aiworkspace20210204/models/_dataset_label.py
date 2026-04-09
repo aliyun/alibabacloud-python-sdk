@@ -10,7 +10,9 @@ class DatasetLabel(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Key
         self.key = key
+        # Value
         self.value = value
 
     def validate(self):

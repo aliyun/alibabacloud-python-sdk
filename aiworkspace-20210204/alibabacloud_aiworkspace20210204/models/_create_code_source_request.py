@@ -8,6 +8,7 @@ class CreateCodeSourceRequest(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        clone_type: int = None,
         code_branch: str = None,
         code_commit: str = None,
         code_repo: str = None,
@@ -23,6 +24,7 @@ class CreateCodeSourceRequest(DaraModel):
         # *   PUBLIC: The code build is visible to all members in the workspace.
         # *   PRIVATE: The code build is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        self.clone_type = clone_type
         # The code branch.
         self.code_branch = code_branch
         self.code_commit = code_commit
@@ -55,6 +57,9 @@ class CreateCodeSourceRequest(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.clone_type is not None:
+            result['CloneType'] = self.clone_type
 
         if self.code_branch is not None:
             result['CodeBranch'] = self.code_branch
@@ -89,6 +94,9 @@ class CreateCodeSourceRequest(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('CloneType') is not None:
+            self.clone_type = m.get('CloneType')
 
         if m.get('CodeBranch') is not None:
             self.code_branch = m.get('CodeBranch')

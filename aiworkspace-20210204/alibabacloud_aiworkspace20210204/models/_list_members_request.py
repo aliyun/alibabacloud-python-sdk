@@ -11,6 +11,7 @@ class ListMembersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         roles: str = None,
+        user_id: str = None,
     ):
         # The member name. Fuzzy match is supported.
         self.member_name = member_name
@@ -28,6 +29,7 @@ class ListMembersRequest(DaraModel):
         # *   PAI.WorkspaceGuest: guest
         # *   PAI.WorkspaceOwner: owner
         self.roles = roles
+        self.user_id = user_id
 
     def validate(self):
         pass
@@ -49,6 +51,9 @@ class ListMembersRequest(DaraModel):
         if self.roles is not None:
             result['Roles'] = self.roles
 
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -64,6 +69,9 @@ class ListMembersRequest(DaraModel):
 
         if m.get('Roles') is not None:
             self.roles = m.get('Roles')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
 
         return self
 

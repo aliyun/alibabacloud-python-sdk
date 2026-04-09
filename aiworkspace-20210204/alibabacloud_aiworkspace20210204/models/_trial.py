@@ -22,17 +22,29 @@ class Trial(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # Accessibility
         self.accessibility = accessibility
+        # ExperimentId
         self.experiment_id = experiment_id
+        # GmtCreateTime
         self.gmt_create_time = gmt_create_time
+        # GmtModifiedTime
         self.gmt_modified_time = gmt_modified_time
+        # Labels
         self.labels = labels
+        # Name
         self.name = name
+        # OwnerId
         self.owner_id = owner_id
+        # SourceId
         self.source_id = source_id
+        # SourceType
         self.source_type = source_type
+        # TrialId
         self.trial_id = trial_id
+        # UserId
         self.user_id = user_id
+        # WorkspaceId
         self.workspace_id = workspace_id
 
     def validate(self):

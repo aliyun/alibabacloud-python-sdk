@@ -24,18 +24,44 @@ class Connection(DaraModel):
         secrets: Dict[str, str] = None,
         workspace_id: str = None,
     ):
+        # The workspace accessibility. Valid values:
+        # 
+        # *   PRIVATE (default): accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: accessible to all members in the workspace.
         self.accessibility = accessibility
+        # The connection configuration.
         self.configs = configs
+        # The connection ID.
         self.connection_id = connection_id
+        # The connection name.
         self.connection_name = connection_name
+        # The connection type. Valid values:
+        # 
+        # *   DashScopeConnection
+        # *   OpenLLMConnection
+        # *   MilvusConnection
+        # *   OpenSearchConnection
+        # *   LindormConnection
+        # *   ElasticsearchConnection
+        # *   HologresConnection
+        # *   RDSConnection
+        # *   CustomConnection
         self.connection_type = connection_type
+        # The connection creator.
         self.creator = creator
+        # The connection description.
         self.description = description
+        # The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The models.
         self.models = models
+        # The connection resource. This parameter is used for the connection configuration of the database type.
         self.resource_meta = resource_meta
+        # The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
         self.secrets = secrets
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -149,7 +175,9 @@ class ConnectionResourceMeta(DaraModel):
         instance_name: str = None,
     ):
         self.extra = extra
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -194,9 +222,20 @@ class ConnectionModels(DaraModel):
         model_type: str = None,
         tool_call: bool = None,
     ):
+        # The display name of the model.
         self.display_name = display_name
+        # The model identifier.
         self.model = model
+        # The model type. Valid values:
+        # 
+        # *   LLM
+        # *   Embedding
+        # *   ReRank
         self.model_type = model_type
+        # Indicates whether tool calling was supported. Valid values:
+        # 
+        # *   true
+        # *   false
         self.tool_call = tool_call
 
     def validate(self):

@@ -12,10 +12,16 @@ class RunMetric(DaraModel):
         timestamp: int = None,
         value: float = None,
     ):
+        # The metric name.
+        # 
         # This parameter is required.
         self.key = key
+        # The step number that generated the metric.
         self.step = step
+        # The timestamp when the metric was generated.
         self.timestamp = timestamp
+        # The metric value.
+        # 
         # This parameter is required.
         self.value = value
 

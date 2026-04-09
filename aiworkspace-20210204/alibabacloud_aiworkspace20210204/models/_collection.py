@@ -13,10 +13,15 @@ class Collection(DaraModel):
         owner_id: str = None,
         user_id: str = None,
     ):
+        # The name of the collection. The name must be globally unique.
         self.collection_name = collection_name
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last update time.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # The ID of the user that created the collection.
         self.user_id = user_id
 
     def validate(self):

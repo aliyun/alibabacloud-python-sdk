@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class UpdateCodeSourceRequest(DaraModel):
     def __init__(
         self,
+        clone_type: int = None,
         code_branch: str = None,
         code_commit: str = None,
         code_repo: str = None,
@@ -16,6 +17,7 @@ class UpdateCodeSourceRequest(DaraModel):
         display_name: str = None,
         mount_path: str = None,
     ):
+        self.clone_type = clone_type
         # The name of the code branch.
         self.code_branch = code_branch
         # The code commit ID.
@@ -41,6 +43,9 @@ class UpdateCodeSourceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.clone_type is not None:
+            result['CloneType'] = self.clone_type
+
         if self.code_branch is not None:
             result['CodeBranch'] = self.code_branch
 
@@ -69,6 +74,9 @@ class UpdateCodeSourceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloneType') is not None:
+            self.clone_type = m.get('CloneType')
+
         if m.get('CodeBranch') is not None:
             self.code_branch = m.get('CodeBranch')
 

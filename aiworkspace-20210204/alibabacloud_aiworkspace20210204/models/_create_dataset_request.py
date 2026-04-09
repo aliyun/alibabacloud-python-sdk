@@ -11,6 +11,7 @@ class CreateDatasetRequest(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        accessible_role_id_list: List[str] = None,
         data_count: int = None,
         data_size: int = None,
         data_source_type: str = None,
@@ -40,6 +41,7 @@ class CreateDatasetRequest(DaraModel):
         # *   PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
         # *   PUBLIC: The workspace is accessible to all users.
         self.accessibility = accessibility
+        self.accessible_role_id_list = accessible_role_id_list
         # The number of dataset files.
         self.data_count = data_count
         # The size of the dataset file. Unit: bytes.
@@ -188,6 +190,9 @@ class CreateDatasetRequest(DaraModel):
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
 
+        if self.accessible_role_id_list is not None:
+            result['AccessibleRoleIdList'] = self.accessible_role_id_list
+
         if self.data_count is not None:
             result['DataCount'] = self.data_count
 
@@ -267,6 +272,9 @@ class CreateDatasetRequest(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('AccessibleRoleIdList') is not None:
+            self.accessible_role_id_list = m.get('AccessibleRoleIdList')
 
         if m.get('DataCount') is not None:
             self.data_count = m.get('DataCount')

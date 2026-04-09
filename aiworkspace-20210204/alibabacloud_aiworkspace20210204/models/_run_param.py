@@ -10,8 +10,12 @@ class RunParam(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the parameter.
+        # 
         # This parameter is required.
         self.value = value
 

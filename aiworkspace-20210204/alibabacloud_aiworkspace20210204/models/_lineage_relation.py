@@ -11,8 +11,11 @@ class LineageRelation(DaraModel):
         relationship_guid: str = None,
         src_entity_qualified_name: str = None,
     ):
+        # DestEntityQualifiedName
         self.dest_entity_qualified_name = dest_entity_qualified_name
+        # RelationshipGuid
         self.relationship_guid = relationship_guid
+        # SrcEntityQualifiedName
         self.src_entity_qualified_name = src_entity_qualified_name
 
     def validate(self):

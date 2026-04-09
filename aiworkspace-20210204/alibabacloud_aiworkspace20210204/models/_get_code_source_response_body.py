@@ -8,6 +8,7 @@ class GetCodeSourceResponseBody(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        clone_type: int = None,
         code_branch: str = None,
         code_commit: str = None,
         code_repo: str = None,
@@ -28,6 +29,7 @@ class GetCodeSourceResponseBody(DaraModel):
         # *   PRIVATE: Visible only to you and the administrator of the workspace.
         # *   PUBLIC: Visible to all members in the workspace.
         self.accessibility = accessibility
+        self.clone_type = clone_type
         # The code repository branch.
         self.code_branch = code_branch
         # The code commit ID.
@@ -67,6 +69,9 @@ class GetCodeSourceResponseBody(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.clone_type is not None:
+            result['CloneType'] = self.clone_type
 
         if self.code_branch is not None:
             result['CodeBranch'] = self.code_branch
@@ -116,6 +121,9 @@ class GetCodeSourceResponseBody(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('CloneType') is not None:
+            self.clone_type = m.get('CloneType')
 
         if m.get('CodeBranch') is not None:
             self.code_branch = m.get('CodeBranch')

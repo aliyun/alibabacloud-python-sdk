@@ -26,20 +26,35 @@ class Run(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The visibility.
         self.accessibility = accessibility
+        # The ID of the experiment that corresponds to the run.
         self.experiment_id = experiment_id
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modified time.
         self.gmt_modified_time = gmt_modified_time
+        # The labels added to the run.
         self.labels = labels
+        # The metrics of the run.
         self.metrics = metrics
+        # Parameter
         self.name = name
+        # The ID of the owner account.
         self.owner_id = owner_id
+        # The hyperparameters of the run.
         self.params = params
+        # The request ID.
         self.request_id = request_id
+        # The run ID.
         self.run_id = run_id
+        # The ID of the source PAI workload.
         self.source_id = source_id
+        # The type of the source PAI workload.
         self.source_type = source_type
+        # The owner ID.
         self.user_id = user_id
+        # The ID of the workspace to which the run belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

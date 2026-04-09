@@ -33,27 +33,49 @@ class Model(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The workspace accessibility. Valid values:
+        # 
+        # *   PRIVATE (default): The model is accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: The model is accessible to all members of the workspace.
         self.accessibility = accessibility
+        # The domain where the model is applied, such as nlp (Natural Language Processing) and cv (Computer Vision).
         self.domain = domain
+        # The additional information.
         self.extra_info = extra_info
+        # The time when the model was created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
         self.gmt_latest_version_modified_time = gmt_latest_version_modified_time
+        # The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The labels.
         self.labels = labels
+        # The latest version of the model.
         self.latest_version = latest_version
+        # The model description.
         self.model_description = model_description
+        # The model document.
         self.model_doc = model_doc
+        # The model ID.
         self.model_id = model_id
+        # The model name.
         self.model_name = model_name
+        # The model type, such as checkpoint and LoRA.
         self.model_type = model_type
+        # The sequence number of the model.
         self.order_number = order_number
+        # The community or organization to which the source model belongs, such as ModelScope or Hugging Face.
         self.origin = origin
+        # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
         self.parameter_size = parameter_size
+        # The model provider.
         self.provider = provider
         self.tags = tags
+        # The task. The specific issue that the model resolves, such as text-classification.
         self.task = task
+        # The user ID.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

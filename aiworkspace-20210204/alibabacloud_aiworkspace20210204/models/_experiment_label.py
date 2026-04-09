@@ -13,10 +13,15 @@ class ExperimentLabel(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # ExperimentId
         self.experiment_id = experiment_id
+        # Create time
         self.gmt_create_time = gmt_create_time
+        # Modified time
         self.gmt_modified_time = gmt_modified_time
+        # Key of Experiment Label
         self.key = key
+        # Value of Experiment Label
         self.value = value
 
     def validate(self):

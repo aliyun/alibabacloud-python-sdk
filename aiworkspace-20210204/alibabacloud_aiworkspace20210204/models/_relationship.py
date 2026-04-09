@@ -14,9 +14,13 @@ class Relationship(DaraModel):
         relationship_guid: str = None,
         relationship_type: str = None,
     ):
+        # Attributes
         self.attributes = attributes
+        # DataChannel
         self.data_channel = data_channel
+        # RelationshipGuid
         self.relationship_guid = relationship_guid
+        # RelationshipType
         self.relationship_type = relationship_type
 
     def validate(self):

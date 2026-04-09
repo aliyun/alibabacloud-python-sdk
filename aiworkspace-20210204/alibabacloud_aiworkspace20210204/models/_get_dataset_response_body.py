@@ -11,6 +11,7 @@ class GetDatasetResponseBody(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        accessible_role_id_list: List[str] = None,
         data_source_type: str = None,
         data_type: str = None,
         dataset_id: str = None,
@@ -47,6 +48,7 @@ class GetDatasetResponseBody(DaraModel):
         # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace.
         # *   PUBLIC: The workspace is visible to all users.
         self.accessibility = accessibility
+        self.accessible_role_id_list = accessible_role_id_list
         # The type of the data source. Valid values:
         # 
         # *   OSS: Object Storage Service (OSS)
@@ -193,6 +195,9 @@ class GetDatasetResponseBody(DaraModel):
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
 
+        if self.accessible_role_id_list is not None:
+            result['AccessibleRoleIdList'] = self.accessible_role_id_list
+
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
 
@@ -291,6 +296,9 @@ class GetDatasetResponseBody(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('AccessibleRoleIdList') is not None:
+            self.accessible_role_id_list = m.get('AccessibleRoleIdList')
 
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')

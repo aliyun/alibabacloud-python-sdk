@@ -32,26 +32,86 @@ class ModelVersion(DaraModel):
         version_description: str = None,
         version_name: str = None,
     ):
+        # The approval status. Valid values:
+        # 
+        # *   Pending
+        # *   Approved
+        # *   Rejected
         self.approval_status = approval_status
+        # The compression configuration.
         self.compression_spec = compression_spec
         self.distillation_spec = distillation_spec
+        # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
+        # The additional information.
         self.extra_info = extra_info
+        # The model format.
+        # 
+        # *   OfflineModel
+        # *   SavedModel
+        # *   Keras H5
+        # *   Frozen Pb
+        # *   Caffe Prototxt
+        # *   TorchScript
+        # *   XGBoost
+        # *   PMML
+        # *   AlinkModel
+        # *   ONNX
         self.format_type = format_type
+        # The model framework.
+        # 
+        # *   Pytorch
+        # *   XGBoost
+        # *   Keras
+        # *   Caffe
+        # *   Alink
+        # *   Xflow
+        # *   TensorFlow
         self.framework_type = framework_type
+        # The time when the model was created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The inference configurations applied to the downstream, such as the configuration of the processor or container of Elastic Algorithm Service (EAS). Example: `{ "processor": "tensorflow_gpu_1.12" }`
         self.inference_spec = inference_spec
+        # The labels.
         self.labels = labels
+        # The model metrics.
         self.metrics = metrics
+        # The extended field. The value is a JSON string.
         self.options = options
+        # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # The source ID.
+        # 
+        # *   If the source type is Custom, this field is not limited.
+        # *   If the source type is PAIFlow or TrainingService, the format is:
+        # 
+        # <!---->
+        # 
+        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # 
+        # region is the ID of the Alibaba Cloud region. workspacceId is the ID of the workspace. kind is the type. Valid values: PipelineRun (PAIFlow pipeline) and ServiceJob (training service). id is the unique identifier.
         self.source_id = source_id
+        # The source type of the model. Default value: Custom.
+        # 
+        # *   Custom
+        # *   PAIFlow
+        # *   TrainingService
         self.source_type = source_type
+        # The training configuration, used for fine-tuning and incremental training.
         self.training_spec = training_spec
+        # The URI of the model version, which is the location where the model is stored. The value can be the HTTP(S) address of the model, such as `https://myweb.com/mymodel.tar.gz`. If the model is stored in an Object Storage Service (OSS) bucket, the value is in the `oss://<bucket>.<endpoint>/object` format. The endpoint can be queried in the OSS console, such as `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
         self.uri = uri
+        # The user ID.
         self.user_id = user_id
+        # The model version description.
         self.version_description = version_description
+        # The model version, which is unique for the model. If you leave this parameter empty, `0.1.0` is the first version by default. Then, the minor version number incremented by 1 is used as the second version `0.2.0`.
+        # 
+        # The version consists of a major version number, a minor version number, and a patch version number. The version numbers are separated with periods (`.`). The major and minor version numbers are digits, and the patch version number starts with a digit followed by an underscore (`_`) and a letter. such as 1.1.0 or 2.3.4_beta.
+        # 
+        # Regular expression: `"^\\\\d+\\\\.\\\\d+\\\\.\\\\d+(_\\\\w+)?$"`
         self.version_name = version_name
 
     def validate(self):

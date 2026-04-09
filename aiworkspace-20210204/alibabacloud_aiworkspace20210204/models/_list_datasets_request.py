@@ -10,6 +10,7 @@ class ListDatasetsRequest(DaraModel):
         accessibility: str = None,
         data_source_types: str = None,
         data_types: str = None,
+        dataset_ids: str = None,
         edition: str = None,
         label: str = None,
         name: str = None,
@@ -39,6 +40,7 @@ class ListDatasetsRequest(DaraModel):
         # *   PIC: picture
         # *   AUDIO: audio
         self.data_types = data_types
+        self.dataset_ids = dataset_ids
         self.edition = edition
         # The dataset tag, which is used to filter datasets. Datasets whose tag key or tag value contains a specified string are filtered.
         self.label = label
@@ -97,6 +99,9 @@ class ListDatasetsRequest(DaraModel):
         if self.data_types is not None:
             result['DataTypes'] = self.data_types
 
+        if self.dataset_ids is not None:
+            result['DatasetIds'] = self.dataset_ids
+
         if self.edition is not None:
             result['Edition'] = self.edition
 
@@ -151,6 +156,9 @@ class ListDatasetsRequest(DaraModel):
 
         if m.get('DataTypes') is not None:
             self.data_types = m.get('DataTypes')
+
+        if m.get('DatasetIds') is not None:
+            self.dataset_ids = m.get('DatasetIds')
 
         if m.get('Edition') is not None:
             self.edition = m.get('Edition')

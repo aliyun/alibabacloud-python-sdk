@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class UpdateDatasetRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
+        accessible_role_id_list: List[str] = None,
         description: str = None,
         edition: str = None,
         mount_access_read_write_role_id_list: List[str] = None,
@@ -17,6 +19,8 @@ class UpdateDatasetRequest(DaraModel):
         options: str = None,
         sharing_config: main_models.UpdateDatasetRequestSharingConfig = None,
     ):
+        self.accessibility = accessibility
+        self.accessible_role_id_list = accessible_role_id_list
         # The description of the dataset.
         self.description = description
         self.edition = edition
@@ -41,6 +45,12 @@ class UpdateDatasetRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
+        if self.accessible_role_id_list is not None:
+            result['AccessibleRoleIdList'] = self.accessible_role_id_list
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -63,6 +73,12 @@ class UpdateDatasetRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
+        if m.get('AccessibleRoleIdList') is not None:
+            self.accessible_role_id_list = m.get('AccessibleRoleIdList')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

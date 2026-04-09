@@ -8,6 +8,7 @@ class CodeSourceItem(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        clone_type: int = None,
         code_branch: str = None,
         code_commit: str = None,
         code_repo: str = None,
@@ -22,19 +23,37 @@ class CodeSourceItem(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the code source. Valid values:
+        # 
+        # *   PRIVATE: Visible only to you and the administrator in the workspace.
+        # *   PUBLIC: Visible to all users in the workspace.
         self.accessibility = accessibility
+        self.clone_type = clone_type
+        # The code branch.
         self.code_branch = code_branch
+        # The code commit ID
         self.code_commit = code_commit
+        # The address of the code repository.
         self.code_repo = code_repo
+        # The token used to access the code repository.
         self.code_repo_access_token = code_repo_access_token
+        # The username of the code repository.
         self.code_repo_user_name = code_repo_user_name
+        # The code source ID.
         self.code_source_id = code_source_id
+        # The code source description.
         self.description = description
+        # The code source name.
         self.display_name = display_name
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modified time.
         self.gmt_modify_time = gmt_modify_time
+        # The local mount path of the code.
         self.mount_path = mount_path
+        # The ID of the creator.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -47,6 +66,9 @@ class CodeSourceItem(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.clone_type is not None:
+            result['CloneType'] = self.clone_type
 
         if self.code_branch is not None:
             result['CodeBranch'] = self.code_branch
@@ -93,6 +115,9 @@ class CodeSourceItem(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('CloneType') is not None:
+            self.clone_type = m.get('CloneType')
 
         if m.get('CodeBranch') is not None:
             self.code_branch = m.get('CodeBranch')

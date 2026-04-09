@@ -14,6 +14,7 @@ class ListDatasetJobsRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
         status: str = None,
+        with_logs: bool = None,
         workspace_id: str = None,
     ):
         # The dataset version name.
@@ -27,6 +28,7 @@ class ListDatasetJobsRequest(DaraModel):
         self.page_size = page_size
         self.sort_by = sort_by
         self.status = status
+        self.with_logs = with_logs
         # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
@@ -59,6 +61,9 @@ class ListDatasetJobsRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.with_logs is not None:
+            result['WithLogs'] = self.with_logs
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -86,6 +91,9 @@ class ListDatasetJobsRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('WithLogs') is not None:
+            self.with_logs = m.get('WithLogs')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

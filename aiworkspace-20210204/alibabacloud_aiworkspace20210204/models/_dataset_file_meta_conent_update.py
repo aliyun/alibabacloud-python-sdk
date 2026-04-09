@@ -21,22 +21,84 @@ class DatasetFileMetaConentUpdate(DaraModel):
         semantic_index_update_time: str = None,
         tags: str = None,
     ):
+        # The file comment.
         self.comment = comment
+        # The MIME type of the file. The value consists of a type and a subtype.
+        # 
+        # Valid values:
+        # 
+        # *   image/png
+        # *   image/svg+xml
+        # *   image/jpeg
+        # *   image/tiff
+        # *   image/gif
+        # *   image/bmp
+        # *   image/x-icon
+        # *   image/heic
+        # *   image/webp
         self.content_type = content_type
+        # The file size. Unit: byte.
         self.data_size = data_size
+        # The metadata ID of the dataset file.
+        # 
         # This parameter is required.
         self.dataset_file_meta_id = dataset_file_meta_id
+        # The time when the file is created. The time follows the ISO 8601 standard.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
+        # The fingerprint information of the file.
         self.file_finger_print = file_finger_print
+        # The file name.
         self.file_name = file_name
+        # The file type, which is the same as Multipurpose Internet Mail Extensions (MIME) type.
+        # 
+        # Valid values:
+        # 
+        # *   image
+        # *   application
+        # *   audio
+        # *   video
+        # *   text
         self.file_type = file_type
+        # The time when the file is last modified. The time follows the ISO 8601 standard.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
+        # The specific metadata of the file, such as the width and height of an image and the bitrate and resolution of a video file. You cannot retrieve the metadata. The value is a JSON string.
         self.meta_attributes = meta_attributes
+        # The ID of the semantic index-based job.
         self.semantic_index_job_id = semantic_index_job_id
+        # The time when the semantic index is created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
+        # The tags to be updated.
+        # 
+        # *   Update an algorithm tag group (a valid TagJobId must be set):
+        # 
+        # <!---->
+        # 
+        #     {
+        #        "ai":["Lane line", "Water horse", "Sunny day"]
+        #     }
+        # 
+        # *   Update a user-defined tag group (add or remove indicates that tags are added or deleted): Tag groups that can be updated:
+        # 
+        #     *   user: a list of user-defined tags that can be added to or deleted from a single piece of metadata.
+        #     *   user-delete-ai-tags: a list of tags that you want to delete from an algorithm tag group.
+        # 
+        # <!---->
+        # 
+        #     {
+        #         "user":{
+        #             "add":["Lane line","Sunny day"],
+        #             "remove":["Water horse"]    },
+        #         "user-delete-ai-tags":{
+        #             "add": ["Ground shadow"],
+        #             "remove": []
+        #         }
+        #     }
         self.tags = tags
 
     def validate(self):

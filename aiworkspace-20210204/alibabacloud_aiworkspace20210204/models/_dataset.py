@@ -11,6 +11,7 @@ class Dataset(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        accessible_role_id_list: List[str] = None,
         data_source_type: str = None,
         data_type: str = None,
         dataset_id: str = None,
@@ -40,34 +41,102 @@ class Dataset(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The workspace accessibility. Valid values:
+        # 
+        # *   PRIVATE (default): The dataset is accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: The dataset is accessible to all members in the workspace.
         self.accessibility = accessibility
+        self.accessible_role_id_list = accessible_role_id_list
+        # The data source type.
+        # 
+        # Valid values:
+        # 
+        # *   NAS
+        # *   OSS
         self.data_source_type = data_source_type
+        # The data type. Valid values:
+        # 
+        # *   COMMON (default)
+        # *   PIC
+        # *   TEXT
+        # *   Video
+        # *   AUDIO
         self.data_type = data_type
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset description.
         self.description = description
         self.edition = edition
+        # The time when the dataset was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the dataset was modified.
         self.gmt_modified_time = gmt_modified_time
+        # The dataset import information, such as OSS, NAS, and CPFS.
+        # 
+        # **OSS**
+        # 
+        # { "region": "${region}",//The region ID. "bucket": "${bucket}",//The bucket name. "path": "${path}" //The file path. }
+        # 
+        # **NAS**
+        # 
+        # **CPFS**
+        # 
+        # **CPFS for Lingjun**
         self.import_info = import_info
         self.is_shared = is_shared
+        # The labels.
         self.labels = labels
+        # The latest dataset version.
         self.latest_version = latest_version
+        # MountAccess
         self.mount_access = mount_access
+        # The IDs of the roles that have read and write permissions on the dataset in the workspace. The IDs starting with PAI is the IDs of the basic roles, and the IDs starting with role- is the IDs of the custom roles. If the list contains "\\*", all roles have read and write permissions.
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
+        # The dataset name.
         self.name = name
+        # The extended field that can be used as an option. The value is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
         self.options = options
+        # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # The dataset property. Valid values:
+        # 
+        # *   FILE
+        # *   DIRECTORY
         self.property = property
+        # The provider type of the dataset. Valid values:
+        # 
+        # *   Ecs (default)
+        # *   Lingjun
         self.provider_type = provider_type
         self.shared_from = shared_from
         self.sharing_config = sharing_config
+        # The ID of the source dataset for the labeled dataset.
         self.source_dataset_id = source_dataset_id
+        # The version of the source dataset for the labeled dataset.
         self.source_dataset_version = source_dataset_version
+        # The source ID.
         self.source_id = source_id
+        # The source type.
+        # Valid values:
+        # 
+        # *   PAI_PUBLIC_DATASET
+        # *   ITAG
+        # *   USER
         self.source_type = source_type
+        # The labeling template of the iTAG labeled dataset.
         self.tag_template_type = tag_template_type
+        # URI examples:
+        # 
+        # *   Object Storage Service (OSS) data source: `oss://bucket.endpoint/object`
+        # *   File Storage NAS (NAS) data source: `nas://<nasfisid>.region/subpath/to/dir/`
+        # *   Cloud Parallel File Storage (CPFS) 1.0 data source: `nas://<cpfs-fsid>.region/subpath/to/dir/`
+        # *   CPFS 2.0 data source: `nas://<cpfs-fsid>.region/<protocolserviceid>/`
+        # 
+        # >  You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID of the CPFS 1.0 file system is in the cpfs-<8-bit ASCII characters> format. The ID of the CPFS 2.0 file system is in the cpfs-<16-bit ASCII characters> format.
         self.uri = uri
+        # The user ID.
         self.user_id = user_id
+        # The ID of the workspace to which the dataset belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -89,6 +158,9 @@ class Dataset(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.accessible_role_id_list is not None:
+            result['AccessibleRoleIdList'] = self.accessible_role_id_list
 
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
@@ -182,6 +254,9 @@ class Dataset(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('AccessibleRoleIdList') is not None:
+            self.accessible_role_id_list = m.get('AccessibleRoleIdList')
 
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')

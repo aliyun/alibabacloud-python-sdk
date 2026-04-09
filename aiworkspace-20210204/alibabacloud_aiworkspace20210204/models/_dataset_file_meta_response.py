@@ -11,10 +11,15 @@ class DatasetFileMetaResponse(DaraModel):
         result: str = None,
         uri: str = None,
     ):
+        # The metadata ID of the dataset file.
+        # 
         # This parameter is required.
         self.dataset_file_meta_id = dataset_file_meta_id
+        # The description of the reason why the metadata operation failed.
+        # 
         # This parameter is required.
         self.result = result
+        # The file URI.
         self.uri = uri
 
     def validate(self):

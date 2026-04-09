@@ -25,26 +25,83 @@ class DatasetFileMetaContentGet(DaraModel):
         tags: str = None,
         uri: str = None,
     ):
+        # The file comment.
         self.comment = comment
+        # The MIME type of the file. It contains a Type and a SubType.
+        # 
+        # Valid value:
+        # 
+        # *   image/png: PNG
+        # *   image/jpeg: JPEG
+        # *   image/tiff: TIFF
+        # *   image/bmp: BMP
+        # *   image/gif: GIF
+        # *   image/x-icon: ICON
+        # *   image/svg + xml: SVG
+        # *   image/heic: HEIC
+        # *   image/webp: WEBP
         self.content_type = content_type
+        # The file size. Unit: byte.
         self.data_size = data_size
+        # The metadata ID of the dataset file.
         self.dataset_file_meta_id = dataset_file_meta_id
+        # The time when the file was created. Format: ISO8601.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
+        # The directory of the file that is stored in OSS, NAS, or Cloud Parallel File Storage (CPFS).
         self.file_dir = file_dir
+        # The fingerprint value of the file. Used to check the uniqueness of the file. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5.
         self.file_finger_print = file_finger_print
+        # The file name.
         self.file_name = file_name
+        # The file type. The same as MIME type.
+        # 
+        # Valid value:
+        # 
+        # *   image
+        # *   application
+        # *   audio
+        # *   video
+        # *   text
         self.file_type = file_type
+        # The time when the file was last modified. Format: ISO8601.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
+        # The specific metadata of the file. You cannot retrieve the metadata. In JSON String format.
         self.meta_attributes = meta_attributes
+        # The ID of the semantic index-based job.
         self.semantic_index_job_id = semantic_index_job_id
+        # The time when the semantic index-based job is created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
         self.status = status
+        # The time when the tag is last modified. The time follows the ISO 8601 standard.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.tag_update_time = tag_update_time
+        # The tags for the metadata. The tags are divided into the following groups:
+        # 
+        # *   Algorithm tag group:
+        # 
+        #     *   ai: a list of tags that are aggregated by all algorithm tagging tasks for a single piece of metadata.
+        # 
+        # *   User-defined tag groups:
+        # 
+        #     *   user: a list of user-defined tags that are added to a single piece of metadata.
+        #     *   user-delete-ai-tags: a list of tags that you want to delete from an algorithm tag group.
         self.tags = tags
+        # The unique URI of the file. Used to record the unique path of the file. File paths in OSS and NAS are supported.
+        # 
+        # **OSS**
+        # 
+        # oss://${bucket}/${path}
+        # 
+        # **NAS**
+        # 
+        # nas://${fileSystemId}/${path}
         self.uri = uri
 
     def validate(self):

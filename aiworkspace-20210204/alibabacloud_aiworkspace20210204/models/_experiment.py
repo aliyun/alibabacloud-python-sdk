@@ -24,18 +24,31 @@ class Experiment(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # Accessibility
         self.accessibility = accessibility
+        # ArtifactUri
         self.artifact_uri = artifact_uri
+        # ExperimentId
         self.experiment_id = experiment_id
+        # GmtCreatedTime
         self.gmt_create_time = gmt_create_time
+        # GmtModifiedTime
         self.gmt_modified_time = gmt_modified_time
+        # Labels
         self.labels = labels
+        # LatestRun
         self.latest_run = latest_run
+        # Name
         self.name = name
+        # OwnerId
         self.owner_id = owner_id
+        # RequestId
         self.request_id = request_id
+        # TensorboardLogUri
         self.tensorboard_log_uri = tensorboard_log_uri
+        # UserId
         self.user_id = user_id
+        # WorkspaceId
         self.workspace_id = workspace_id
 
     def validate(self):

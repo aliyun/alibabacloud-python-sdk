@@ -43,6 +43,7 @@ from ._add_image_response import AddImageResponse
 from ._add_image_labels_request import AddImageLabelsRequest
 from ._add_image_labels_response_body import AddImageLabelsResponseBody
 from ._add_image_labels_response import AddImageLabelsResponse
+from ._add_member_role_request import AddMemberRoleRequest
 from ._add_member_role_response_body import AddMemberRoleResponseBody
 from ._add_member_role_response import AddMemberRoleResponse
 from ._change_resource_group_request import ChangeResourceGroupRequest
@@ -108,18 +109,22 @@ from ._create_workspace_response import CreateWorkspaceResponse
 from ._create_workspace_resource_request import CreateWorkspaceResourceRequest
 from ._create_workspace_resource_response_body import CreateWorkspaceResourceResponseBody
 from ._create_workspace_resource_response import CreateWorkspaceResourceResponse
+from ._delete_code_source_request import DeleteCodeSourceRequest
 from ._delete_code_source_response_body import DeleteCodeSourceResponseBody
 from ._delete_code_source_response import DeleteCodeSourceResponse
 from ._delete_config_request import DeleteConfigRequest
 from ._delete_config_response_body import DeleteConfigResponseBody
 from ._delete_config_response import DeleteConfigResponse
+from ._delete_connection_request import DeleteConnectionRequest
 from ._delete_connection_response_body import DeleteConnectionResponseBody
 from ._delete_connection_response import DeleteConnectionResponse
+from ._delete_dataset_request import DeleteDatasetRequest
 from ._delete_dataset_response_body import DeleteDatasetResponseBody
 from ._delete_dataset_response import DeleteDatasetResponse
 from ._delete_dataset_file_metas_request import DeleteDatasetFileMetasRequest
 from ._delete_dataset_file_metas_response_body import DeleteDatasetFileMetasResponseBody
 from ._delete_dataset_file_metas_response import DeleteDatasetFileMetasResponse
+from ._delete_dataset_job_request import DeleteDatasetJobRequest
 from ._delete_dataset_job_response_body import DeleteDatasetJobResponseBody
 from ._delete_dataset_job_response import DeleteDatasetJobResponse
 from ._delete_dataset_job_config_request import DeleteDatasetJobConfigRequest
@@ -128,40 +133,49 @@ from ._delete_dataset_job_config_response import DeleteDatasetJobConfigResponse
 from ._delete_dataset_labels_request import DeleteDatasetLabelsRequest
 from ._delete_dataset_labels_response_body import DeleteDatasetLabelsResponseBody
 from ._delete_dataset_labels_response import DeleteDatasetLabelsResponse
+from ._delete_dataset_version_request import DeleteDatasetVersionRequest
 from ._delete_dataset_version_response_body import DeleteDatasetVersionResponseBody
 from ._delete_dataset_version_response import DeleteDatasetVersionResponse
 from ._delete_dataset_version_labels_request import DeleteDatasetVersionLabelsRequest
 from ._delete_dataset_version_labels_response_body import DeleteDatasetVersionLabelsResponseBody
 from ._delete_dataset_version_labels_response import DeleteDatasetVersionLabelsResponse
+from ._delete_experiment_request import DeleteExperimentRequest
 from ._delete_experiment_response_body import DeleteExperimentResponseBody
 from ._delete_experiment_response import DeleteExperimentResponse
+from ._delete_experiment_label_request import DeleteExperimentLabelRequest
 from ._delete_experiment_label_response_body import DeleteExperimentLabelResponseBody
 from ._delete_experiment_label_response import DeleteExperimentLabelResponse
 from ._delete_members_request import DeleteMembersRequest
 from ._delete_members_response_body import DeleteMembersResponseBody
 from ._delete_members_response import DeleteMembersResponse
+from ._delete_model_request import DeleteModelRequest
 from ._delete_model_response_body import DeleteModelResponseBody
 from ._delete_model_response import DeleteModelResponse
 from ._delete_model_labels_request import DeleteModelLabelsRequest
 from ._delete_model_labels_response_body import DeleteModelLabelsResponseBody
 from ._delete_model_labels_response import DeleteModelLabelsResponse
+from ._delete_model_version_request import DeleteModelVersionRequest
 from ._delete_model_version_response_body import DeleteModelVersionResponseBody
 from ._delete_model_version_response import DeleteModelVersionResponse
 from ._delete_model_version_labels_request import DeleteModelVersionLabelsRequest
 from ._delete_model_version_labels_response_body import DeleteModelVersionLabelsResponseBody
 from ._delete_model_version_labels_response import DeleteModelVersionLabelsResponse
+from ._delete_run_request import DeleteRunRequest
 from ._delete_run_response_body import DeleteRunResponseBody
 from ._delete_run_response import DeleteRunResponse
+from ._delete_run_label_request import DeleteRunLabelRequest
 from ._delete_run_label_response_body import DeleteRunLabelResponseBody
 from ._delete_run_label_response import DeleteRunLabelResponse
 from ._delete_user_config_request import DeleteUserConfigRequest
 from ._delete_user_config_response_body import DeleteUserConfigResponseBody
 from ._delete_user_config_response import DeleteUserConfigResponse
+from ._delete_workspace_request import DeleteWorkspaceRequest
 from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
 from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._delete_workspace_resource_request import DeleteWorkspaceResourceRequest
 from ._delete_workspace_resource_response_body import DeleteWorkspaceResourceResponseBody
 from ._delete_workspace_resource_response import DeleteWorkspaceResourceResponse
+from ._get_code_source_request import GetCodeSourceRequest
 from ._get_code_source_response_body import GetCodeSourceResponseBody
 from ._get_code_source_response import GetCodeSourceResponse
 from ._get_config_request import GetConfigRequest
@@ -170,6 +184,7 @@ from ._get_config_response import GetConfigResponse
 from ._get_connection_request import GetConnectionRequest
 from ._get_connection_response_body import GetConnectionResponseBody
 from ._get_connection_response import GetConnectionResponse
+from ._get_dataset_request import GetDatasetRequest
 from ._get_dataset_response_body import GetDatasetResponseBody
 from ._get_dataset_response import GetDatasetResponse
 from ._get_dataset_file_meta_request import GetDatasetFileMetaRequest
@@ -184,6 +199,7 @@ from ._get_dataset_job_response import GetDatasetJobResponse
 from ._get_dataset_job_config_request import GetDatasetJobConfigRequest
 from ._get_dataset_job_config_response_body import GetDatasetJobConfigResponseBody
 from ._get_dataset_job_config_response import GetDatasetJobConfigResponse
+from ._get_dataset_version_request import GetDatasetVersionRequest
 from ._get_dataset_version_response_body import GetDatasetVersionResponseBody
 from ._get_dataset_version_response import GetDatasetVersionResponse
 from ._get_default_workspace_request import GetDefaultWorkspaceRequest
@@ -197,8 +213,10 @@ from ._get_image_response import GetImageResponse
 from ._get_member_request import GetMemberRequest
 from ._get_member_response_body import GetMemberResponseBody
 from ._get_member_response import GetMemberResponse
+from ._get_model_request import GetModelRequest
 from ._get_model_response_body import GetModelResponseBody
 from ._get_model_response import GetModelResponse
+from ._get_model_version_request import GetModelVersionRequest
 from ._get_model_version_response_body import GetModelVersionResponseBody
 from ._get_model_version_response import GetModelVersionResponse
 from ._get_permission_request import GetPermissionRequest
@@ -259,6 +277,7 @@ from ._list_models_request import ListModelsRequest
 from ._list_models_shrink_request import ListModelsShrinkRequest
 from ._list_models_response_body import ListModelsResponseBody
 from ._list_models_response import ListModelsResponse
+from ._list_permissions_request import ListPermissionsRequest
 from ._list_permissions_response_body import ListPermissionsResponseBody
 from ._list_permissions_response import ListPermissionsResponse
 from ._list_products_request import ListProductsRequest
@@ -288,16 +307,22 @@ from ._list_workspaces_response import ListWorkspacesResponse
 from ._log_run_metrics_request import LogRunMetricsRequest
 from ._log_run_metrics_response_body import LogRunMetricsResponseBody
 from ._log_run_metrics_response import LogRunMetricsResponse
+from ._publish_code_source_request import PublishCodeSourceRequest
 from ._publish_code_source_response_body import PublishCodeSourceResponseBody
 from ._publish_code_source_response import PublishCodeSourceResponse
+from ._publish_dataset_request import PublishDatasetRequest
 from ._publish_dataset_response_body import PublishDatasetResponseBody
 from ._publish_dataset_response import PublishDatasetResponse
+from ._publish_image_request import PublishImageRequest
 from ._publish_image_response_body import PublishImageResponseBody
 from ._publish_image_response import PublishImageResponse
+from ._remove_image_request import RemoveImageRequest
 from ._remove_image_response_body import RemoveImageResponseBody
 from ._remove_image_response import RemoveImageResponse
+from ._remove_image_labels_request import RemoveImageLabelsRequest
 from ._remove_image_labels_response_body import RemoveImageLabelsResponseBody
 from ._remove_image_labels_response import RemoveImageLabelsResponse
+from ._remove_member_role_request import RemoveMemberRoleRequest
 from ._remove_member_role_response_body import RemoveMemberRoleResponseBody
 from ._remove_member_role_response import RemoveMemberRoleResponse
 from ._set_experiment_labels_request import SetExperimentLabelsRequest
@@ -466,6 +491,7 @@ __all__ = [
     AddImageLabelsRequest,
     AddImageLabelsResponseBody,
     AddImageLabelsResponse,
+    AddMemberRoleRequest,
     AddMemberRoleResponseBody,
     AddMemberRoleResponse,
     ChangeResourceGroupRequest,
@@ -531,18 +557,22 @@ __all__ = [
     CreateWorkspaceResourceRequest,
     CreateWorkspaceResourceResponseBody,
     CreateWorkspaceResourceResponse,
+    DeleteCodeSourceRequest,
     DeleteCodeSourceResponseBody,
     DeleteCodeSourceResponse,
     DeleteConfigRequest,
     DeleteConfigResponseBody,
     DeleteConfigResponse,
+    DeleteConnectionRequest,
     DeleteConnectionResponseBody,
     DeleteConnectionResponse,
+    DeleteDatasetRequest,
     DeleteDatasetResponseBody,
     DeleteDatasetResponse,
     DeleteDatasetFileMetasRequest,
     DeleteDatasetFileMetasResponseBody,
     DeleteDatasetFileMetasResponse,
+    DeleteDatasetJobRequest,
     DeleteDatasetJobResponseBody,
     DeleteDatasetJobResponse,
     DeleteDatasetJobConfigRequest,
@@ -551,40 +581,49 @@ __all__ = [
     DeleteDatasetLabelsRequest,
     DeleteDatasetLabelsResponseBody,
     DeleteDatasetLabelsResponse,
+    DeleteDatasetVersionRequest,
     DeleteDatasetVersionResponseBody,
     DeleteDatasetVersionResponse,
     DeleteDatasetVersionLabelsRequest,
     DeleteDatasetVersionLabelsResponseBody,
     DeleteDatasetVersionLabelsResponse,
+    DeleteExperimentRequest,
     DeleteExperimentResponseBody,
     DeleteExperimentResponse,
+    DeleteExperimentLabelRequest,
     DeleteExperimentLabelResponseBody,
     DeleteExperimentLabelResponse,
     DeleteMembersRequest,
     DeleteMembersResponseBody,
     DeleteMembersResponse,
+    DeleteModelRequest,
     DeleteModelResponseBody,
     DeleteModelResponse,
     DeleteModelLabelsRequest,
     DeleteModelLabelsResponseBody,
     DeleteModelLabelsResponse,
+    DeleteModelVersionRequest,
     DeleteModelVersionResponseBody,
     DeleteModelVersionResponse,
     DeleteModelVersionLabelsRequest,
     DeleteModelVersionLabelsResponseBody,
     DeleteModelVersionLabelsResponse,
+    DeleteRunRequest,
     DeleteRunResponseBody,
     DeleteRunResponse,
+    DeleteRunLabelRequest,
     DeleteRunLabelResponseBody,
     DeleteRunLabelResponse,
     DeleteUserConfigRequest,
     DeleteUserConfigResponseBody,
     DeleteUserConfigResponse,
+    DeleteWorkspaceRequest,
     DeleteWorkspaceResponseBody,
     DeleteWorkspaceResponse,
     DeleteWorkspaceResourceRequest,
     DeleteWorkspaceResourceResponseBody,
     DeleteWorkspaceResourceResponse,
+    GetCodeSourceRequest,
     GetCodeSourceResponseBody,
     GetCodeSourceResponse,
     GetConfigRequest,
@@ -593,6 +632,7 @@ __all__ = [
     GetConnectionRequest,
     GetConnectionResponseBody,
     GetConnectionResponse,
+    GetDatasetRequest,
     GetDatasetResponseBody,
     GetDatasetResponse,
     GetDatasetFileMetaRequest,
@@ -607,6 +647,7 @@ __all__ = [
     GetDatasetJobConfigRequest,
     GetDatasetJobConfigResponseBody,
     GetDatasetJobConfigResponse,
+    GetDatasetVersionRequest,
     GetDatasetVersionResponseBody,
     GetDatasetVersionResponse,
     GetDefaultWorkspaceRequest,
@@ -620,8 +661,10 @@ __all__ = [
     GetMemberRequest,
     GetMemberResponseBody,
     GetMemberResponse,
+    GetModelRequest,
     GetModelResponseBody,
     GetModelResponse,
+    GetModelVersionRequest,
     GetModelVersionResponseBody,
     GetModelVersionResponse,
     GetPermissionRequest,
@@ -682,6 +725,7 @@ __all__ = [
     ListModelsShrinkRequest,
     ListModelsResponseBody,
     ListModelsResponse,
+    ListPermissionsRequest,
     ListPermissionsResponseBody,
     ListPermissionsResponse,
     ListProductsRequest,
@@ -711,16 +755,22 @@ __all__ = [
     LogRunMetricsRequest,
     LogRunMetricsResponseBody,
     LogRunMetricsResponse,
+    PublishCodeSourceRequest,
     PublishCodeSourceResponseBody,
     PublishCodeSourceResponse,
+    PublishDatasetRequest,
     PublishDatasetResponseBody,
     PublishDatasetResponse,
+    PublishImageRequest,
     PublishImageResponseBody,
     PublishImageResponse,
+    RemoveImageRequest,
     RemoveImageResponseBody,
     RemoveImageResponse,
+    RemoveImageLabelsRequest,
     RemoveImageLabelsResponseBody,
     RemoveImageLabelsResponse,
+    RemoveMemberRoleRequest,
     RemoveMemberRoleResponseBody,
     RemoveMemberRoleResponse,
     SetExperimentLabelsRequest,

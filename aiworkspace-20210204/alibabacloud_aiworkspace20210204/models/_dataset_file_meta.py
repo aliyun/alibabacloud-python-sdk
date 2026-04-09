@@ -25,25 +25,61 @@ class DatasetFileMeta(DaraModel):
         thumbnail_url: str = None,
         uri: str = None,
     ):
+        # The MIME Type of the file.
         self.content_type = content_type
+        # The file size. Unit: bytes.
         self.data_size = data_size
+        # The metadata ID of the dataset file.
         self.dataset_file_meta_id = dataset_file_meta_id
+        # The download URL of the file.
         self.download_url = download_url
+        # The time when the file was created. A UTC timestamp in the ISO 8601 format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
+        # The file fingerprint, used to determine the uniqueness of the file content. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5 values.
         self.file_finger_print = file_finger_print
+        # The file name.
         self.file_name = file_name
+        # The file type.
         self.file_type = file_type
+        # The last modified time of the file. A UTC timestamp in the ISO 8601 format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
+        # The specific metadata of the file. For example, the width and height of an image file, or the bitrate and resolution of a video file. This parameter cannot be used for retrieval. In JSON String format.
         self.meta_attributes = meta_attributes
+        # The similarity score.
         self.score = score
+        # The ID of the last semantic indexing job.
         self.semantic_index_job_id = semantic_index_job_id
+        # The last update time of the semantic index. A UTC timestamp in the ISO 8601 format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
         self.status = status
+        # The tags of the metadata, in JSON string format. Including:
+        # 
+        # *   Algorithm tag group:
+        # 
+        #     *   ai: tags from all algorithm tagging tasks on this metadata.
+        # 
+        # *   User-defined tag group:
+        # 
+        #     *   user: tags added by the user to this metadata.
+        #     *   user-delete-ai-tags: tags from the algorithm tag group that the user needs to delete.
         self.tags = tags
+        # The URL of the thumbnail.
         self.thumbnail_url = thumbnail_url
+        # The URI of the file. Used to record the unique path of the file. File paths in Object Storage Service (OSS) and File Storage NAS (NAS) are supported.
+        # 
+        # **OSS**
+        # 
+        # oss://${bucket}/${path}
+        # 
+        # **NAS**
+        # 
+        # nas://${fileSystemId}/${path}
         self.uri = uri
 
     def validate(self):

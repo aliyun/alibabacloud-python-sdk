@@ -10,7 +10,9 @@ class LabelInfo(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Key of Label
         self.key = key
+        # Value of Label
         self.value = value
 
     def validate(self):

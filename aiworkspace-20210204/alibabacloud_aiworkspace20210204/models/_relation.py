@@ -12,8 +12,11 @@ class Relation(DaraModel):
         lineage_relation: main_models.LineageRelation = None,
         result: bool = None,
     ):
+        # ErrMsg
         self.err_msg = err_msg
+        # LineageRelation
         self.lineage_relation = lineage_relation
+        # Result
         self.result = result
 
     def validate(self):

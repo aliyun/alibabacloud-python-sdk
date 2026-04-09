@@ -26,20 +26,35 @@ class DatasetVersion(DaraModel):
         uri: str = None,
         version_name: str = None,
     ):
+        # DataCount
         self.data_count = data_count
+        # DataSize
         self.data_size = data_size
+        # DataSourceType
         self.data_source_type = data_source_type
+        # Description
         self.description = description
+        # create time
         self.gmt_create_time = gmt_create_time
+        # modify time
         self.gmt_modified_time = gmt_modified_time
+        # ImportInfo
         self.import_info = import_info
+        # Labels
         self.labels = labels
+        # MountAccess
         self.mount_access = mount_access
+        # Options
         self.options = options
+        # property
         self.property = property
+        # SourceId
         self.source_id = source_id
+        # SourceType
         self.source_type = source_type
+        # Uri
         self.uri = uri
+        # version name
         self.version_name = version_name
 
     def validate(self):
