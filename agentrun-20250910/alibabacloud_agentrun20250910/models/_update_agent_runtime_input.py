@@ -11,6 +11,7 @@ class UpdateAgentRuntimeInput(DaraModel):
     def __init__(
         self,
         agent_runtime_name: str = None,
+        arms_configuration: main_models.ArmsConfiguration = None,
         artifact_type: str = None,
         code_configuration: main_models.CodeConfiguration = None,
         container_configuration: main_models.ContainerConfiguration = None,
@@ -34,6 +35,8 @@ class UpdateAgentRuntimeInput(DaraModel):
         workspace_id: str = None,
     ):
         self.agent_runtime_name = agent_runtime_name
+        # 应用实时监控服务（ARMS）的配置信息
+        self.arms_configuration = arms_configuration
         self.artifact_type = artifact_type
         # 当artifactType为Code时的代码配置信息，包括代码源、入口文件等
         self.code_configuration = code_configuration
@@ -72,6 +75,8 @@ class UpdateAgentRuntimeInput(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.arms_configuration:
+            self.arms_configuration.validate()
         if self.code_configuration:
             self.code_configuration.validate()
         if self.container_configuration:
@@ -96,6 +101,9 @@ class UpdateAgentRuntimeInput(DaraModel):
             result = _map
         if self.agent_runtime_name is not None:
             result['agentRuntimeName'] = self.agent_runtime_name
+
+        if self.arms_configuration is not None:
+            result['armsConfiguration'] = self.arms_configuration.to_map()
 
         if self.artifact_type is not None:
             result['artifactType'] = self.artifact_type
@@ -166,6 +174,10 @@ class UpdateAgentRuntimeInput(DaraModel):
         m = m or dict()
         if m.get('agentRuntimeName') is not None:
             self.agent_runtime_name = m.get('agentRuntimeName')
+
+        if m.get('armsConfiguration') is not None:
+            temp_model = main_models.ArmsConfiguration()
+            self.arms_configuration = temp_model.from_map(m.get('armsConfiguration'))
 
         if m.get('artifactType') is not None:
             self.artifact_type = m.get('artifactType')

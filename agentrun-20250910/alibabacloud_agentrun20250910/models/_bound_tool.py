@@ -2,15 +2,20 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
 
 class BoundTool(DaraModel):
     def __init__(
         self,
+        apis: List[main_models.BoundToolApi] = None,
         method: str = None,
         path: str = None,
         tool_name: str = None,
     ):
+        self.apis = apis
         # 绑定的 HTTP 请求方法，支持：GET、PUT、POST、PATCH、DELETE、OPTIONS
         self.method = method
         # 绑定的 URL 路径，用于路由匹配
@@ -19,13 +24,21 @@ class BoundTool(DaraModel):
         self.tool_name = tool_name
 
     def validate(self):
-        pass
+        if self.apis:
+            for v1 in self.apis:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['apis'] = []
+        if self.apis is not None:
+            for k1 in self.apis:
+                result['apis'].append(k1.to_map() if k1 else None)
+
         if self.method is not None:
             result['method'] = self.method
 
@@ -39,6 +52,12 @@ class BoundTool(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.apis = []
+        if m.get('apis') is not None:
+            for k1 in m.get('apis'):
+                temp_model = main_models.BoundToolApi()
+                self.apis.append(temp_model.from_map(k1))
+
         if m.get('method') is not None:
             self.method = m.get('method')
 
