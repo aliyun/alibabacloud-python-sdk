@@ -73,11 +73,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -149,11 +151,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -1825,9 +1829,11 @@ class Client(OpenApiClient):
     def get_app_config_with_options(
         self,
         workspace_id: str,
+        request: main_models.GetAppConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAppConfigResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1850,9 +1856,11 @@ class Client(OpenApiClient):
     async def get_app_config_with_options_async(
         self,
         workspace_id: str,
+        request: main_models.GetAppConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAppConfigResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1875,18 +1883,20 @@ class Client(OpenApiClient):
     def get_app_config(
         self,
         workspace_id: str,
+        request: main_models.GetAppConfigRequest,
     ) -> main_models.GetAppConfigResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_app_config_with_options(workspace_id, headers, runtime)
+        return self.get_app_config_with_options(workspace_id, request, headers, runtime)
 
     async def get_app_config_async(
         self,
         workspace_id: str,
+        request: main_models.GetAppConfigRequest,
     ) -> main_models.GetAppConfigResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_app_config_with_options_async(workspace_id, headers, runtime)
+        return await self.get_app_config_with_options_async(workspace_id, request, headers, runtime)
 
     def get_chat_question_resp_with_options(
         self,
@@ -3764,17 +3774,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RealTimeDialogResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RealTimeDialogResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def real_time_dialog_with_sse_async(
         self,
@@ -3824,17 +3834,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RealTimeDialogResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RealTimeDialogResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def real_time_dialog_with_options(
         self,
@@ -4398,17 +4408,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunAgentResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_agent_with_sse_async(
         self,
@@ -4452,17 +4462,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunAgentResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_agent_with_options(
         self,
@@ -4610,17 +4620,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunChatResultGenerationResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunChatResultGenerationResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_chat_result_generation_with_sse_async(
         self,
@@ -4660,17 +4670,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunChatResultGenerationResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunChatResultGenerationResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_chat_result_generation_with_options(
         self,
@@ -4800,17 +4810,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunDialogAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunDialogAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_dialog_analysis_with_sse_async(
         self,
@@ -4840,17 +4850,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunDialogAnalysisResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunDialogAnalysisResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_dialog_analysis_with_options(
         self,
@@ -4994,17 +5004,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunLibraryChatGenerationResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunLibraryChatGenerationResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def run_library_chat_generation_with_sse_async(
         self,
@@ -5068,17 +5078,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.RunLibraryChatGenerationResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunLibraryChatGenerationResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def run_library_chat_generation_with_options(
         self,
@@ -5846,7 +5856,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -5929,7 +5939,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),

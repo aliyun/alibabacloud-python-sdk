@@ -1,3 +1,6 @@
+2026-04-09 Version: 1.19.6
+- Generated python 2024-06-28 for DianJin.
+
 2026-02-02 Version: 1.19.5
 - Update API GetDialogDetail: add response parameters Body.data.dialogueList.$.recordId.
 

@@ -56,6 +56,7 @@ from ._evict_task_response import EvictTaskResponse
 from ._gen_doc_qa_result_request import GenDocQaResultRequest
 from ._gen_doc_qa_result_response_body import GenDocQaResultResponseBody
 from ._gen_doc_qa_result_response import GenDocQaResultResponse
+from ._get_app_config_request import GetAppConfigRequest
 from ._get_app_config_response_body import GetAppConfigResponseBody
 from ._get_app_config_response import GetAppConfigResponse
 from ._get_chat_question_resp_request import GetChatQuestionRespRequest
@@ -369,6 +370,7 @@ __all__ = [
     GenDocQaResultRequest,
     GenDocQaResultResponseBody,
     GenDocQaResultResponse,
+    GetAppConfigRequest,
     GetAppConfigResponseBody,
     GetAppConfigResponse,
     GetChatQuestionRespRequest,
