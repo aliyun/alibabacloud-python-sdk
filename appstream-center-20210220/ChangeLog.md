@@ -1,3 +1,9 @@
+2026-04-09 Version: 1.3.1
+- Update API GetStsToken: add response parameters Body.StsTokenModel.EndUserId.
+- Update API GetStsToken: add response parameters Body.StsTokenModel.LoginToken.
+- Update API GetStsToken: add response parameters Body.StsTokenModel.ProfileRegion.
+
+
 2025-12-08 Version: 1.3.0
 - Support API ClientUserLogout.
 
