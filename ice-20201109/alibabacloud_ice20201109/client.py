@@ -25612,6 +25612,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_rtc_robot_instance_with_options_async(request, runtime)
 
+    def sub_yike_user_credit_with_options(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit):
+            query['Credit'] = request.credit
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubYikeUserCredit',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubYikeUserCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sub_yike_user_credit_with_options_async(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit):
+            query['Credit'] = request.credit
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubYikeUserCredit',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubYikeUserCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sub_yike_user_credit(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+    ) -> main_models.SubYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return self.sub_yike_user_credit_with_options(request, runtime)
+
+    async def sub_yike_user_credit_async(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+    ) -> main_models.SubYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.sub_yike_user_credit_with_options_async(request, runtime)
+
     def submit_aiagent_video_audit_task_with_options(
         self,
         tmp_req: main_models.SubmitAIAgentVideoAuditTaskRequest,

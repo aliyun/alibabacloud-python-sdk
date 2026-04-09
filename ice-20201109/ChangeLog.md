@@ -1,3 +1,7 @@
+2026-04-09 Version: 6.17.0
+- Support API SubYikeUserCredit.
+
+
 2026-04-03 Version: 6.16.1
 - Update API DescribeAIAgentInstance: add response parameters Body.Instance.CallInfo.
 - Update API GenerateAIAgentCall: add response parameters Body.AvatarUserId.

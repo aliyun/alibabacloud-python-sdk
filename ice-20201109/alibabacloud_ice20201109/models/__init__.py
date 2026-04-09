@@ -1017,6 +1017,9 @@ from ._stop_media_live_channel_response import StopMediaLiveChannelResponse
 from ._stop_rtc_robot_instance_request import StopRtcRobotInstanceRequest
 from ._stop_rtc_robot_instance_response_body import StopRtcRobotInstanceResponseBody
 from ._stop_rtc_robot_instance_response import StopRtcRobotInstanceResponse
+from ._sub_yike_user_credit_request import SubYikeUserCreditRequest
+from ._sub_yike_user_credit_response_body import SubYikeUserCreditResponseBody
+from ._sub_yike_user_credit_response import SubYikeUserCreditResponse
 from ._submit_aiagent_video_audit_task_request import SubmitAIAgentVideoAuditTaskRequest
 from ._submit_aiagent_video_audit_task_shrink_request import SubmitAIAgentVideoAuditTaskShrinkRequest
 from ._submit_aiagent_video_audit_task_response_body import SubmitAIAgentVideoAuditTaskResponseBody
@@ -3129,6 +3132,9 @@ __all__ = [
     StopRtcRobotInstanceRequest,
     StopRtcRobotInstanceResponseBody,
     StopRtcRobotInstanceResponse,
+    SubYikeUserCreditRequest,
+    SubYikeUserCreditResponseBody,
+    SubYikeUserCreditResponse,
     SubmitAIAgentVideoAuditTaskRequest,
     SubmitAIAgentVideoAuditTaskShrinkRequest,
     SubmitAIAgentVideoAuditTaskResponseBody,
