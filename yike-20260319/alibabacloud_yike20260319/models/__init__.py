@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._batch_get_yike_aiapp_job_request import BatchGetYikeAIAppJobRequest
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBody
+from ._batch_get_yike_aiapp_job_response import BatchGetYikeAIAppJobResponse
+from ._create_yike_asset_upload_request import CreateYikeAssetUploadRequest
+from ._create_yike_asset_upload_response_body import CreateYikeAssetUploadResponseBody
+from ._create_yike_asset_upload_response import CreateYikeAssetUploadResponse
+from ._get_yike_aiapp_job_request import GetYikeAIAppJobRequest
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBody
+from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
+from ._get_yike_storyboard_job_request import GetYikeStoryboardJobRequest
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBody
+from ._get_yike_storyboard_job_response import GetYikeStoryboardJobResponse
+from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
+from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
+from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
+from ._submit_yike_storyboard_job_request import SubmitYikeStoryboardJobRequest
+from ._submit_yike_storyboard_job_response_body import SubmitYikeStoryboardJobResponseBody
+from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobResponse
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultImageResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResult
+from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobList
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultAudioResult
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultVideoResult
+from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResult
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
+
+__all__ = [
+    BatchGetYikeAIAppJobRequest,
+    BatchGetYikeAIAppJobResponseBody,
+    BatchGetYikeAIAppJobResponse,
+    CreateYikeAssetUploadRequest,
+    CreateYikeAssetUploadResponseBody,
+    CreateYikeAssetUploadResponse,
+    GetYikeAIAppJobRequest,
+    GetYikeAIAppJobResponseBody,
+    GetYikeAIAppJobResponse,
+    GetYikeStoryboardJobRequest,
+    GetYikeStoryboardJobResponseBody,
+    GetYikeStoryboardJobResponse,
+    SubmitYikeAIAppJobRequest,
+    SubmitYikeAIAppJobResponseBody,
+    SubmitYikeAIAppJobResponse,
+    SubmitYikeStoryboardJobRequest,
+    SubmitYikeStoryboardJobResponseBody,
+    SubmitYikeStoryboardJobResponse,
+    BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult,
+    BatchGetYikeAIAppJobResponseBodyJobListResultImageResult,
+    BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult,
+    BatchGetYikeAIAppJobResponseBodyJobListResult,
+    BatchGetYikeAIAppJobResponseBodyJobList,
+    GetYikeAIAppJobResponseBodyResultAudioResult,
+    GetYikeAIAppJobResponseBodyResultImageResult,
+    GetYikeAIAppJobResponseBodyResultVideoResult,
+    GetYikeAIAppJobResponseBodyResult,
+    GetYikeStoryboardJobResponseBodyJobParams,
+    GetYikeStoryboardJobResponseBodyJobResult
+]
