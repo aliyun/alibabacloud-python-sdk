@@ -76,6 +76,7 @@ from ._create_job_response import CreateJobResponse
 from ._create_tensorboard_request import CreateTensorboardRequest
 from ._create_tensorboard_response_body import CreateTensorboardResponseBody
 from ._create_tensorboard_response import CreateTensorboardResponse
+from ._delete_job_request import DeleteJobRequest
 from ._delete_job_response_body import DeleteJobResponseBody
 from ._delete_job_response import DeleteJobResponse
 from ._delete_tensorboard_request import DeleteTensorboardRequest
@@ -132,6 +133,7 @@ from ._list_tensorboards_response import ListTensorboardsResponse
 from ._start_tensorboard_request import StartTensorboardRequest
 from ._start_tensorboard_response_body import StartTensorboardResponseBody
 from ._start_tensorboard_response import StartTensorboardResponse
+from ._stop_job_request import StopJobRequest
 from ._stop_job_response_body import StopJobResponseBody
 from ._stop_job_response import StopJobResponse
 from ._stop_tensorboard_request import StopTensorboardRequest
@@ -238,6 +240,7 @@ __all__ = [
     CreateTensorboardRequest,
     CreateTensorboardResponseBody,
     CreateTensorboardResponse,
+    DeleteJobRequest,
     DeleteJobResponseBody,
     DeleteJobResponse,
     DeleteTensorboardRequest,
@@ -294,6 +297,7 @@ __all__ = [
     StartTensorboardRequest,
     StartTensorboardResponseBody,
     StartTensorboardResponse,
+    StopJobRequest,
     StopJobResponseBody,
     StopJobResponse,
     StopTensorboardRequest,

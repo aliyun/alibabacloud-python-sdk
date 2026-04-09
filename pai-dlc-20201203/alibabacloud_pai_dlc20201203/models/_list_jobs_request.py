@@ -12,6 +12,7 @@ class ListJobsRequest(DaraModel):
         accessibility: str = None,
         business_user_id: str = None,
         caller: str = None,
+        description: str = None,
         display_name: str = None,
         display_name_search_mode: str = None,
         enable_assign_node: str = None,
@@ -54,6 +55,7 @@ class ListJobsRequest(DaraModel):
         self.business_user_id = business_user_id
         # The caller.
         self.caller = caller
+        self.description = description
         # The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
         self.display_name = display_name
         self.display_name_search_mode = display_name_search_mode
@@ -163,6 +165,9 @@ class ListJobsRequest(DaraModel):
         if self.caller is not None:
             result['Caller'] = self.caller
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
 
@@ -271,6 +276,9 @@ class ListJobsRequest(DaraModel):
 
         if m.get('Caller') is not None:
             self.caller = m.get('Caller')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')

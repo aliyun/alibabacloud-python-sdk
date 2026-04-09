@@ -16,6 +16,7 @@ class CreateJobRequest(DaraModel):
         custom_envs: List[main_models.CreateJobRequestCustomEnvs] = None,
         data_sources: List[main_models.CreateJobRequestDataSources] = None,
         debugger_config_content: str = None,
+        description: str = None,
         display_name: str = None,
         elastic_spec: main_models.JobElasticSpec = None,
         envs: Dict[str, str] = None,
@@ -49,6 +50,7 @@ class CreateJobRequest(DaraModel):
         self.data_sources = data_sources
         # This parameter is not supported.
         self.debugger_config_content = debugger_config_content
+        self.description = description
         # The job name. The name must be in the following format:
         # 
         # *   The name must be 1 to 256 characters in length.
@@ -179,6 +181,9 @@ class CreateJobRequest(DaraModel):
         if self.debugger_config_content is not None:
             result['DebuggerConfigContent'] = self.debugger_config_content
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
 
@@ -264,6 +269,9 @@ class CreateJobRequest(DaraModel):
 
         if m.get('DebuggerConfigContent') is not None:
             self.debugger_config_content = m.get('DebuggerConfigContent')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')

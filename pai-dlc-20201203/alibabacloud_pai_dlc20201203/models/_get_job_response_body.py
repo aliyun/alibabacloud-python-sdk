@@ -16,6 +16,7 @@ class GetJobResponseBody(DaraModel):
         credential_config: main_models.CredentialConfig = None,
         custom_envs: List[main_models.GetJobResponseBodyCustomEnvs] = None,
         data_sources: List[main_models.GetJobResponseBodyDataSources] = None,
+        description: str = None,
         display_name: str = None,
         duration: int = None,
         elastic_spec: main_models.JobElasticSpec = None,
@@ -70,6 +71,7 @@ class GetJobResponseBody(DaraModel):
         self.custom_envs = custom_envs
         # The data sources.
         self.data_sources = data_sources
+        self.description = description
         # The job name.
         self.display_name = display_name
         # The duration of the job (seconds).
@@ -227,6 +229,9 @@ class GetJobResponseBody(DaraModel):
             for k1 in self.data_sources:
                 result['DataSources'].append(k1.to_map() if k1 else None)
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
 
@@ -383,6 +388,9 @@ class GetJobResponseBody(DaraModel):
             for k1 in m.get('DataSources'):
                 temp_model = main_models.GetJobResponseBodyDataSources()
                 self.data_sources.append(temp_model.from_map(k1))
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')

@@ -11,6 +11,7 @@ class UpdateJobRequest(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        description: str = None,
         job_specs: List[main_models.JobSpec] = None,
         priority: int = None,
     ):
@@ -19,6 +20,7 @@ class UpdateJobRequest(DaraModel):
         # *   PUBLIC: The job is visible to all members in the workspace.
         # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        self.description = description
         self.job_specs = job_specs
         # The job priority. Valid values: 1 to 9.
         # 
@@ -40,6 +42,9 @@ class UpdateJobRequest(DaraModel):
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         result['JobSpecs'] = []
         if self.job_specs is not None:
             for k1 in self.job_specs:
@@ -54,6 +59,9 @@ class UpdateJobRequest(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         self.job_specs = []
         if m.get('JobSpecs') is not None:
