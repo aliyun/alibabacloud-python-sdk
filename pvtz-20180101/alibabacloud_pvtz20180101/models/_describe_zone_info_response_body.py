@@ -33,7 +33,6 @@ class DescribeZoneInfoResponseBody(DaraModel):
         zone_type: str = None,
     ):
         self.bind_edge_dns_clusters = bind_edge_dns_clusters
-        # The VPCs associated with the zone.
         self.bind_vpcs = bind_vpcs
         # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -282,20 +281,11 @@ class DescribeZoneInfoResponseBodyBindVpcsVpc(DaraModel):
         vpc_type: str = None,
         vpc_user_id: int = None,
     ):
-        # The region ID of the VPC.
         self.region_id = region_id
-        # The name of the region where the VPC resides.
         self.region_name = region_name
-        # The VPC ID. This ID uniquely identifies the VPC.
         self.vpc_id = vpc_id
-        # The VPC name.
         self.vpc_name = vpc_name
-        # The VPC type. Valid values:
-        # 
-        # *   STANDARD: standard VPC
-        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
-        # The user ID to which the VPC belongs. If null is returned, the VPC belongs to the current user.
         self.vpc_user_id = vpc_user_id
 
     def validate(self):

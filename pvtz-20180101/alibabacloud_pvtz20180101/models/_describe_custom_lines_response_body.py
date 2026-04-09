@@ -17,7 +17,6 @@ class DescribeCustomLinesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The custom lines.
         self.custom_lines = custom_lines
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -132,34 +131,16 @@ class DescribeCustomLinesResponseBodyCustomLinesCustomLine(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the custom line was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the custom line was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The creator of the custom line.
         self.creator = creator
-        # The type of the creator for the custom line. Valid values:
-        # 
-        # *   CUSTOM: Alibaba Cloud account
-        # *   SUB: RAM user
-        # *   STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
-        # *   OTHER: other roles
         self.creator_sub_type = creator_sub_type
-        # The role of the creator for the custom line. Valid values:
-        # 
-        # *   USER: user
-        # *   SYSTEM: system
         self.creator_type = creator_type
         self.dns_category = dns_category
-        # The IPv4 CIDR blocks.
         self.ipv_4s = ipv_4s
-        # The unique ID of the custom line.
         self.line_id = line_id
-        # The name of the custom line.
         self.name = name
-        # The time when the custom line was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # The time when the custom line was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
 
     def validate(self):

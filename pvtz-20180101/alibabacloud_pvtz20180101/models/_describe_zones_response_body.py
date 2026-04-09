@@ -27,7 +27,6 @@ class DescribeZonesResponseBody(DaraModel):
         self.total_items = total_items
         # The total number of returned pages.
         self.total_pages = total_pages
-        # The zones.
         self.zones = zones
 
     def validate(self):
@@ -140,65 +139,24 @@ class DescribeZonesResponseBodyZonesZone(DaraModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
-        # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The creator of the zone.
         self.creator = creator
-        # The account type. Valid values:
-        # 
-        # *   **CUSTOMER**: Alibaba Cloud account
-        # *   **SUB**: RAM user
-        # *   **STS**: assumed role that obtains the Security Token Service (STS) token of a RAM role
-        # *   **OTHER**: other types
         self.creator_sub_type = creator_sub_type
-        # The logical location type of the built-in authoritative module in which the zone is added. Valid values:
-        # 
-        # *   **NORMAL_ZONE**: regular module
-        # *   **FAST_ZONE**: acceleration module
         self.dns_group = dns_group
-        # Indicates whether the zone is being removed to another logical location. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.dns_group_changing = dns_group_changing
-        # Indicates whether the zone is a reverse lookup zone. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_ptr = is_ptr
-        # Indicates whether the recursive resolution proxy for subdomain names is enabled. Valid values:
-        # 
-        # *   **ZONE**: The recursive resolution proxy for subdomain names is disabled. In this case, NXDOMAIN is returned if the queried domain name does not exist in the zone.
-        # *   **RECORD**: The recursive resolution proxy for subdomain names is enabled. In this case, if the queried domain name does not exist in the zone, DNS requests are recursively forwarded to the forward module and then to the recursion module until DNS results are returned.
         self.proxy_pattern = proxy_pattern
-        # The number of Domain Name System (DNS) records added in the zone.
         self.record_count = record_count
-        # The description of the zone.
         self.remark = remark
-        # The ID of the resource group to which the zone belongs.
         self.resource_group_id = resource_group_id
-        # The tags added to the zone.
         self.resource_tags = resource_tags
         self.slave_dns_status = slave_dns_status
-        # The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.update_timestamp = update_timestamp
-        # The zone ID. This ID uniquely identifies the zone.
         self.zone_id = zone_id
-        # The name of the zone.
         self.zone_name = zone_name
-        # The type of the cloud service. Valid values:
-        # 
-        # *   If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
-        # *   If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
         self.zone_tag = zone_tag
-        # The zone type. Valid values:
-        # 
-        # *   **AUTH_ZONE**: authoritative zone
-        # *   **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
         self.zone_type = zone_type
 
     def validate(self):
@@ -372,9 +330,7 @@ class DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the zone.
         self.key = key
-        # The value of tag N added to the zone.
         self.value = value
 
     def validate(self):

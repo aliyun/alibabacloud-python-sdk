@@ -13,7 +13,6 @@ class DescribeRequestGraphResponseBody(DaraModel):
         request_details: main_models.DescribeRequestGraphResponseBodyRequestDetails = None,
         request_id: str = None,
     ):
-        # The details of the DNS requests.
         self.request_details = request_details
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop(DaraModel):
         time: str = None,
         timestamp: int = None,
     ):
-        # The number of DNS requests.
         self.request_count = request_count
-        # The time when the data was collected. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.time = time
-        # The time when the data was collected. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):

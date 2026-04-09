@@ -17,9 +17,7 @@ class DescribeSyncEcsHostTaskResponseBody(DaraModel):
         success: bool = None,
         zone_id: str = None,
     ):
-        # The synchronized regions where the ECS instances are deployed.
         self.ecs_regions = ecs_regions
-        # The synchronized region IDs of the ECS instances.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -159,9 +157,7 @@ class DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion(DaraModel):
         region_ids: main_models.DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds = None,
         user_id: int = None,
     ):
-        # The synchronized region IDs.
         self.region_ids = region_ids
-        # The user ID to which the region belongs. This parameter is used in cross-account synchronization scenarios.
         self.user_id = user_id
 
     def validate(self):

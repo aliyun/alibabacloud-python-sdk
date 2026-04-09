@@ -21,7 +21,6 @@ class DescribeZoneRecordsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The DNS records.
         self.records = records
         # The request ID.
         self.request_id = request_id
@@ -136,46 +135,20 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(DaraModel):
         weight: int = None,
         zone_id: str = None,
     ):
-        # The time when the DNS record was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The resolution line.
         self.line = line
-        # The priority of the mail exchanger (MX) record.
         self.priority = priority
-        # The ID of the DNS record.
         self.record_id = record_id
-        # The description of the DNS record.
         self.remark = remark
-        # The hostname.
         self.rr = rr
-        # The state of the DNS record. Valid values:
-        # 
-        # *   ENABLE: The DNS record is enabled.
-        # *   DISABLE: The DNS record is disabled.
         self.status = status
-        # The time to live (TTL) period.
         self.ttl = ttl
-        # The type of the DNS record. Valid values:
-        # 
-        # *   **A**: An A record points a domain name to an IPv4 address.
-        # *   **AAAA**: An AAAA record points a domain name to an IPv6 address.
-        # *   **CNAME**: A canonical name (CNAME) record points a domain name to another domain name.
-        # *   **TXT**: A text (TXT) record usually serves as a Sender Policy Framework (SPF) record to prevent email spam. The record value of the TXT record can be up to 255 characters in length.
-        # *   **MX**: A mail exchanger (MX) record points a domain name to a mail server address.
-        # *   **PTR**: A pointer (PTR) points an IP address to a domain name.
-        # *   **SRV**: A service (SRV) record specifies a server that hosts a specific service.
         self.type = type
-        # The time when the DNS record was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
-        # The record value.
         self.value = value
-        # The weight value of the address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for DNS requests. A weight value must be an integer that ranges from 1 to 100.
         self.weight = weight
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

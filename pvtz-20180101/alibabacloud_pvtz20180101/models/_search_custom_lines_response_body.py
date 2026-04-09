@@ -17,7 +17,6 @@ class SearchCustomLinesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The custom lines.
         self.custom_lines = custom_lines
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -132,34 +131,16 @@ class SearchCustomLinesResponseBodyCustomLinesCustomLine(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the custom line was created.
         self.create_time = create_time
-        # The time when the custom line was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The ID of the creator for the custom line.
         self.creator = creator
-        # The creator type. Valid values:
-        # 
-        # *   CUSTOM: Alibaba Cloud account
-        # *   SUB: RAM user
-        # *   STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
-        # *   OTHER: other types
         self.creator_sub_type = creator_sub_type
-        # The role of the creator for the custom line. Valid values:
-        # 
-        # *   USER: user
-        # *   SYSTEM: system
         self.creator_type = creator_type
         self.dns_category = dns_category
-        # The IPv4 CIDR blocks.
         self.ipv_4s = ipv_4s
-        # The unique ID of the custom line.
         self.line_id = line_id
-        # The name of the custom line.
         self.name = name
-        # The time when the custom line was updated.
         self.update_time = update_time
-        # The time when the custom line was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
 
     def validate(self):

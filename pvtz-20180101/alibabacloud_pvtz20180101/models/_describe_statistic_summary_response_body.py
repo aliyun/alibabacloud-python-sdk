@@ -19,9 +19,7 @@ class DescribeStatisticSummaryResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The top three VPCs with the largest number of DNS requests.
         self.vpc_request_tops = vpc_request_tops
-        # The top three zones with the largest number of DNS requests.
         self.zone_request_tops = zone_request_tops
 
     def validate(self):
@@ -109,15 +107,8 @@ class DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop(DaraMode
         request_count: int = None,
         zone_name: str = None,
     ):
-        # The business type. Valid values:
-        # 
-        # *   AUTH_ZONE: authoritative zone
-        # *   RESOLVER_RULE: forwarding rule
-        # *   INBOUND: inbound endpoint
         self.biz_type = biz_type
-        # The number of DNS requests on the previous day.
         self.request_count = request_count
-        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):
@@ -197,20 +188,11 @@ class DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop(DaraModel)
         vpc_id: str = None,
         vpc_type: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
-        # The name of the region.
         self.region_name = region_name
-        # The number of DNS requests on the previous day.
         self.request_count = request_count
-        # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # The VPC ID.
         self.vpc_id = vpc_id
-        # The VPC type. Valid values:
-        # 
-        # *   STANDARD: standard VPC
-        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):

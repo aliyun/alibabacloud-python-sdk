@@ -15,7 +15,6 @@ class DescribeZoneVpcTreeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The zones.
         self.zones = zones
 
     def validate(self):
@@ -101,56 +100,21 @@ class DescribeZoneVpcTreeResponseBodyZonesZone(DaraModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
-        # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The creator of the zone.
         self.creator = creator
-        # The operator type.
         self.creator_type = creator_type
-        # The logical location of the built-in authoritative module in which the zone is added. Valid values:
-        # 
-        # *   NORMAL_ZONE: regular module
-        # *   FAST_ZONE: acceleration module
         self.dns_group = dns_group
-        # Indicates whether the zone is being removed to another logical location. Valid values:
-        # 
-        # *   true
-        # *   false
         self.dns_group_changing = dns_group_changing
-        # Indicates whether the zone is a reverse lookup zone. Valid values:
-        # 
-        # *   true
-        # *   false
         self.is_ptr = is_ptr
-        # The number of Domain Name System (DNS) records added for the zone.
         self.record_count = record_count
-        # The description of the zone.
         self.remark = remark
-        # The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # The time when the zone was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
-        # The VPCs associated with the zone.
         self.vpcs = vpcs
-        # The zone ID. This ID uniquely identifies the zone.
         self.zone_id = zone_id
-        # The zone name.
         self.zone_name = zone_name
-        # The type of the cloud service.
-        # 
-        # 
-        # **Valid values:**
-        # 
-        # *   If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
-        # 
-        # *   If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
         self.zone_tag = zone_tag
-        # The zone type. Valid values:
-        # 
-        # *   AUTH_ZONE: authoritative zone
-        # *   CLOUD_PRODUCT_ZONE: authoritative zone for cloud services
         self.zone_type = zone_type
 
     def validate(self):
@@ -309,18 +273,10 @@ class DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc(DaraModel):
         vpc_name: str = None,
         vpc_type: str = None,
     ):
-        # The region ID of the VPC.
         self.region_id = region_id
-        # The name of the region to which the VPC belongs.
         self.region_name = region_name
-        # The VPC ID. The unique ID of the VPC.
         self.vpc_id = vpc_id
-        # The VPC name.
         self.vpc_name = vpc_name
-        # The VPC type. Valid values:
-        # 
-        # *   STANDARD: standard VPC
-        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):

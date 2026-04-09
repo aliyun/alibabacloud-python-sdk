@@ -17,7 +17,6 @@ class DescribeChangeLogsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The operation logs.
         self.change_logs = change_logs
         # The page number.
         self.page_number = page_number
@@ -134,44 +133,18 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(DaraModel):
         oper_time: str = None,
         oper_timestamp: int = None,
     ):
-        # The operation content.
         self.content = content
-        # The operator ID.
         self.creator_id = creator_id
-        # The subtype of the operator. Valid values:
-        # 
-        # *   CUSTOMER: Alibaba Cloud account
-        # *   SUB: RAM user
-        # *   STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
-        # *   OTHER: other types
         self.creator_sub_type = creator_sub_type
-        # The operator type. No value or **USER** is returned for this parameter.
         self.creator_type = creator_type
-        # The operator ID.
         self.creator_user_id = creator_user_id
-        # The unique ID of the zone, user-defined line, forwarding rule, outbound endpoint, or inbound endpoint.
         self.entity_id = entity_id
-        # The name of the object on which the operation was performed, such as the domain name, user-defined line, cache retention domain name, forwarding rule, outbound endpoint, or inbound endpoint.
         self.entity_name = entity_name
-        # The ID of the operation log.
         self.id = id
-        # The specific operation performed on the object, such as adding, deleting, modifying, or associating the object.
         self.oper_action = oper_action
-        # The public IP address of the operator terminal. If the IP address of the operator terminal is a private IP address, the value of this parameter is the public IP address to which the private IP address is mapped after network address translation (NAT).
         self.oper_ip = oper_ip
-        # The type of the object on which the operation was performed. Valid values:
-        # 
-        # *   **PV_ZONE**: the built-in authoritative zone
-        # *   **PV_RECORD**: the DNS record
-        # *   **RESOLVER_RULE**: the forwarding rule
-        # *   **CUSTOM_LINE**: the user-defined line
-        # *   **RESOLVER_ENDPOINT**: the outbound endpoint
-        # *   **INBOUND_ENDPOINT**: the inbound endpoint
-        # *   **CACHE_RESERVE_DOMAIN**: the cache retention domain name
         self.oper_object = oper_object
-        # The time when the operation is performed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.oper_time = oper_time
-        # The time when the operation was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.oper_timestamp = oper_timestamp
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-04-09 Version: 1.3.4
+- Generated python 2018-01-01 for pvtz.
+
 2025-12-30 Version: 1.3.3
 - Update API DescribeResolverRules: add response parameters Body.Rules.$.PriorityForwardConfigs.
 - Update API UpdateResolverRule: add request parameters PriorityForwardConfigs.
