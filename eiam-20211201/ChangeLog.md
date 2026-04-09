@@ -1,3 +1,18 @@
+2026-04-09 Version: 2.15.5
+- Update API CreateCredential: add request parameters CredentialSharingScope.
+- Update API CreateCredential: add request parameters ExclusiveUserId.
+- Update API CreateFederatedCredentialProvider: add request parameters CloudIdPProviderConfig.
+- Update API GetCredential: add response parameters Body.Credential.CredentialSharingScope.
+- Update API GetCredential: add response parameters Body.Credential.ExclusiveUserId.
+- Update API GetFederatedCredentialProvider: add response parameters Body.FederatedCredentialProvider.CloudIdPProviderConfig.
+- Update API ListCredentials: add request parameters CredentialSharingScopes.
+- Update API ListCredentials: add response parameters Body.Credentials.$.CredentialSharingScope.
+- Update API ListCredentials: add response parameters Body.Credentials.$.ExclusiveUserId.
+- Update API ListFederatedCredentialProviders: add response parameters Body.FederatedCredentialProviders.$.CloudIdPProviderConfig.
+- Update API ObtainCredential: add response parameters Body.Credential.CredentialSharingScope.
+- Update API ObtainCredential: add response parameters Body.Credential.ExclusiveUserId.
+
+
 2026-03-31 Version: 2.15.4
 - Update API CreateApplication: add request parameters ApplicationOwner.
 - Update API CreateApplication: add request parameters CustomFields.

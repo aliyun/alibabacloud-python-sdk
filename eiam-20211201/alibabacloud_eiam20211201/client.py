@@ -2719,6 +2719,8 @@ class Client(OpenApiClient):
             query['CredentialName'] = request.credential_name
         if not DaraCore.is_null(request.credential_scenario_label):
             query['CredentialScenarioLabel'] = request.credential_scenario_label
+        if not DaraCore.is_null(request.credential_sharing_scope):
+            query['CredentialSharingScope'] = request.credential_sharing_scope
         if not DaraCore.is_null(request.credential_subject_id):
             query['CredentialSubjectId'] = request.credential_subject_id
         if not DaraCore.is_null(request.credential_subject_type):
@@ -2727,6 +2729,8 @@ class Client(OpenApiClient):
             query['CredentialType'] = request.credential_type
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.exclusive_user_id):
+            query['ExclusiveUserId'] = request.exclusive_user_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -2765,6 +2769,8 @@ class Client(OpenApiClient):
             query['CredentialName'] = request.credential_name
         if not DaraCore.is_null(request.credential_scenario_label):
             query['CredentialScenarioLabel'] = request.credential_scenario_label
+        if not DaraCore.is_null(request.credential_sharing_scope):
+            query['CredentialSharingScope'] = request.credential_sharing_scope
         if not DaraCore.is_null(request.credential_subject_id):
             query['CredentialSubjectId'] = request.credential_subject_id
         if not DaraCore.is_null(request.credential_subject_type):
@@ -2773,6 +2779,8 @@ class Client(OpenApiClient):
             query['CredentialType'] = request.credential_type
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.exclusive_user_id):
+            query['ExclusiveUserId'] = request.exclusive_user_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -3273,6 +3281,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateFederatedCredentialProviderResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cloud_id_pprovider_config):
+            query['CloudIdPProviderConfig'] = request.cloud_id_pprovider_config
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.federated_credential_provider_name):
@@ -3315,6 +3325,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateFederatedCredentialProviderResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cloud_id_pprovider_config):
+            query['CloudIdPProviderConfig'] = request.cloud_id_pprovider_config
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.federated_credential_provider_name):
@@ -17355,6 +17367,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.credential_ids):
             query['CredentialIds'] = request.credential_ids
+        if not DaraCore.is_null(request.credential_sharing_scopes):
+            query['CredentialSharingScopes'] = request.credential_sharing_scopes
         if not DaraCore.is_null(request.credential_types):
             query['CredentialTypes'] = request.credential_types
         if not DaraCore.is_null(request.filter):
@@ -17395,6 +17409,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.credential_ids):
             query['CredentialIds'] = request.credential_ids
+        if not DaraCore.is_null(request.credential_sharing_scopes):
+            query['CredentialSharingScopes'] = request.credential_sharing_scopes
         if not DaraCore.is_null(request.credential_types):
             query['CredentialTypes'] = request.credential_types
         if not DaraCore.is_null(request.filter):

@@ -11,6 +11,7 @@ class ListCredentialsRequest(DaraModel):
     def __init__(
         self,
         credential_ids: List[str] = None,
+        credential_sharing_scopes: List[str] = None,
         credential_types: List[str] = None,
         filter: List[main_models.ListCredentialsRequestFilter] = None,
         instance_id: str = None,
@@ -19,6 +20,7 @@ class ListCredentialsRequest(DaraModel):
         statuses: List[str] = None,
     ):
         self.credential_ids = credential_ids
+        self.credential_sharing_scopes = credential_sharing_scopes
         self.credential_types = credential_types
         self.filter = filter
         # IDaaS EIAM实例的ID。
@@ -44,6 +46,9 @@ class ListCredentialsRequest(DaraModel):
             result = _map
         if self.credential_ids is not None:
             result['CredentialIds'] = self.credential_ids
+
+        if self.credential_sharing_scopes is not None:
+            result['CredentialSharingScopes'] = self.credential_sharing_scopes
 
         if self.credential_types is not None:
             result['CredentialTypes'] = self.credential_types
@@ -71,6 +76,9 @@ class ListCredentialsRequest(DaraModel):
         m = m or dict()
         if m.get('CredentialIds') is not None:
             self.credential_ids = m.get('CredentialIds')
+
+        if m.get('CredentialSharingScopes') is not None:
+            self.credential_sharing_scopes = m.get('CredentialSharingScopes')
 
         if m.get('CredentialTypes') is not None:
             self.credential_types = m.get('CredentialTypes')

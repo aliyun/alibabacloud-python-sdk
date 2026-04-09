@@ -88,6 +88,7 @@ class ListFederatedCredentialProvidersResponseBody(DaraModel):
 class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(DaraModel):
     def __init__(
         self,
+        cloud_id_pprovider_config: main_models.ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig = None,
         create_time: int = None,
         description: str = None,
         federated_credential_provider_id: str = None,
@@ -101,6 +102,7 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
         status: str = None,
         update_time: int = None,
     ):
+        self.cloud_id_pprovider_config = cloud_id_pprovider_config
         # 创建时间
         self.create_time = create_time
         # 描述
@@ -127,6 +129,8 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
         self.update_time = update_time
 
     def validate(self):
+        if self.cloud_id_pprovider_config:
+            self.cloud_id_pprovider_config.validate()
         if self.oidc_provider_config:
             self.oidc_provider_config.validate()
         if self.pkcs_7provider_config:
@@ -139,6 +143,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cloud_id_pprovider_config is not None:
+            result['CloudIdPProviderConfig'] = self.cloud_id_pprovider_config.to_map()
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -179,6 +186,10 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudIdPProviderConfig') is not None:
+            temp_model = main_models.ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig()
+            self.cloud_id_pprovider_config = temp_model.from_map(m.get('CloudIdPProviderConfig'))
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -612,6 +623,33 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOi
 
         if m.get('TrustCondition') is not None:
             self.trust_condition = m.get('TrustCondition')
+
+        return self
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig(DaraModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+    ):
+        self.identity_provider_id = identity_provider_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
 
         return self
 

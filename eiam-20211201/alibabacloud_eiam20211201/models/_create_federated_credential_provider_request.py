@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateFederatedCredentialProviderRequest(DaraModel):
     def __init__(
         self,
+        cloud_id_pprovider_config: main_models.CreateFederatedCredentialProviderRequestCloudIdPProviderConfig = None,
         description: str = None,
         federated_credential_provider_name: str = None,
         federated_credential_provider_type: str = None,
@@ -19,6 +20,7 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         pkcs_7provider_config: main_models.CreateFederatedCredentialProviderRequestPkcs7ProviderConfig = None,
         private_ca_provider_config: main_models.CreateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
     ):
+        self.cloud_id_pprovider_config = cloud_id_pprovider_config
         # 联邦凭证提供方描述
         self.description = description
         # 联邦凭证提供方名称
@@ -43,6 +45,8 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         self.private_ca_provider_config = private_ca_provider_config
 
     def validate(self):
+        if self.cloud_id_pprovider_config:
+            self.cloud_id_pprovider_config.validate()
         if self.oidc_provider_config:
             self.oidc_provider_config.validate()
         if self.pkcs_7provider_config:
@@ -55,6 +59,9 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cloud_id_pprovider_config is not None:
+            result['CloudIdPProviderConfig'] = self.cloud_id_pprovider_config.to_map()
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -83,6 +90,10 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudIdPProviderConfig') is not None:
+            temp_model = main_models.CreateFederatedCredentialProviderRequestCloudIdPProviderConfig()
+            self.cloud_id_pprovider_config = temp_model.from_map(m.get('CloudIdPProviderConfig'))
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
@@ -372,6 +383,33 @@ class CreateFederatedCredentialProviderRequestOidcProviderConfig(DaraModel):
 
         if m.get('TrustCondition') is not None:
             self.trust_condition = m.get('TrustCondition')
+
+        return self
+
+class CreateFederatedCredentialProviderRequestCloudIdPProviderConfig(DaraModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+    ):
+        self.identity_provider_id = identity_provider_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
 
         return self
 
