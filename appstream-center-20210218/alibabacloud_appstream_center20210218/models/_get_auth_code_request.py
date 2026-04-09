@@ -11,11 +11,13 @@ class GetAuthCodeRequest(DaraModel):
         end_user_id: str = None,
         external_user_id: str = None,
         policy: str = None,
+        token_type: str = None,
     ):
         self.auto_create_user = auto_create_user
         self.end_user_id = end_user_id
         self.external_user_id = external_user_id
         self.policy = policy
+        self.token_type = token_type
 
     def validate(self):
         pass
@@ -37,6 +39,9 @@ class GetAuthCodeRequest(DaraModel):
         if self.policy is not None:
             result['Policy'] = self.policy
 
+        if self.token_type is not None:
+            result['TokenType'] = self.token_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +57,9 @@ class GetAuthCodeRequest(DaraModel):
 
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
+
+        if m.get('TokenType') is not None:
+            self.token_type = m.get('TokenType')
 
         return self
 

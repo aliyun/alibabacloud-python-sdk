@@ -1,3 +1,7 @@
+2026-04-09 Version: 1.1.1
+- Update API GetAuthCode: add request parameters TokenType.
+
+
 2026-02-04 Version: 1.1.0
 - Support API GetStsToken.
 

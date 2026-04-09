@@ -128,6 +128,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetAuthCodeResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.token_type):
+            query['TokenType'] = request.token_type
         body = {}
         if not DaraCore.is_null(request.auto_create_user):
             body['AutoCreateUser'] = request.auto_create_user
@@ -138,6 +141,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -162,6 +166,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetAuthCodeResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.token_type):
+            query['TokenType'] = request.token_type
         body = {}
         if not DaraCore.is_null(request.auto_create_user):
             body['AutoCreateUser'] = request.auto_create_user
@@ -172,6 +179,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
