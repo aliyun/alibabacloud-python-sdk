@@ -1089,16 +1089,26 @@ class Client(OpenApiClient):
     ) -> main_models.CreateABMetricResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.aggregation_by_user):
+            body['AggregationByUser'] = request.aggregation_by_user
         if not DaraCore.is_null(request.definition):
             body['Definition'] = request.definition
+        if not DaraCore.is_null(request.denominator):
+            body['Denominator'] = request.denominator
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_binomial_distribution):
+            body['IsBinomialDistribution'] = request.is_binomial_distribution
         if not DaraCore.is_null(request.left_metric_id):
             body['LeftMetricId'] = request.left_metric_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.need_significance):
+            body['NeedSignificance'] = request.need_significance
+        if not DaraCore.is_null(request.numerator):
+            body['Numerator'] = request.numerator
         if not DaraCore.is_null(request.operator):
             body['Operator'] = request.operator
         if not DaraCore.is_null(request.realtime):
@@ -1143,16 +1153,26 @@ class Client(OpenApiClient):
     ) -> main_models.CreateABMetricResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.aggregation_by_user):
+            body['AggregationByUser'] = request.aggregation_by_user
         if not DaraCore.is_null(request.definition):
             body['Definition'] = request.definition
+        if not DaraCore.is_null(request.denominator):
+            body['Denominator'] = request.denominator
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_binomial_distribution):
+            body['IsBinomialDistribution'] = request.is_binomial_distribution
         if not DaraCore.is_null(request.left_metric_id):
             body['LeftMetricId'] = request.left_metric_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.need_significance):
+            body['NeedSignificance'] = request.need_significance
+        if not DaraCore.is_null(request.numerator):
+            body['Numerator'] = request.numerator
         if not DaraCore.is_null(request.operator):
             body['Operator'] = request.operator
         if not DaraCore.is_null(request.realtime):
@@ -4837,9 +4857,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.DeleteInstanceResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteInstanceResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4863,9 +4885,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.DeleteInstanceResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteInstanceResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4889,19 +4913,21 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.DeleteInstanceResourceRequest,
     ) -> main_models.DeleteInstanceResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_instance_resource_with_options(instance_id, resource_id, headers, runtime)
+        return self.delete_instance_resource_with_options(instance_id, resource_id, request, headers, runtime)
 
     async def delete_instance_resource_async(
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.DeleteInstanceResourceRequest,
     ) -> main_models.DeleteInstanceResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_instance_resource_with_options_async(instance_id, resource_id, headers, runtime)
+        return await self.delete_instance_resource_with_options_async(instance_id, resource_id, request, headers, runtime)
 
     def delete_laboratory_with_options(
         self,
@@ -7186,9 +7212,11 @@ class Client(OpenApiClient):
     def get_instance_with_options(
         self,
         instance_id: str,
+        request: main_models.GetInstanceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7211,9 +7239,11 @@ class Client(OpenApiClient):
     async def get_instance_with_options_async(
         self,
         instance_id: str,
+        request: main_models.GetInstanceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7236,26 +7266,30 @@ class Client(OpenApiClient):
     def get_instance(
         self,
         instance_id: str,
+        request: main_models.GetInstanceRequest,
     ) -> main_models.GetInstanceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_instance_with_options(instance_id, headers, runtime)
+        return self.get_instance_with_options(instance_id, request, headers, runtime)
 
     async def get_instance_async(
         self,
         instance_id: str,
+        request: main_models.GetInstanceRequest,
     ) -> main_models.GetInstanceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_instance_with_options_async(instance_id, headers, runtime)
+        return await self.get_instance_with_options_async(instance_id, request, headers, runtime)
 
     def get_instance_resource_with_options(
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.GetInstanceResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7279,9 +7313,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.GetInstanceResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7305,28 +7341,32 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.GetInstanceResourceRequest,
     ) -> main_models.GetInstanceResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_instance_resource_with_options(instance_id, resource_id, headers, runtime)
+        return self.get_instance_resource_with_options(instance_id, resource_id, request, headers, runtime)
 
     async def get_instance_resource_async(
         self,
         instance_id: str,
         resource_id: str,
+        request: main_models.GetInstanceResourceRequest,
     ) -> main_models.GetInstanceResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_instance_resource_with_options_async(instance_id, resource_id, headers, runtime)
+        return await self.get_instance_resource_with_options_async(instance_id, resource_id, request, headers, runtime)
 
     def get_instance_resource_table_with_options(
         self,
         instance_id: str,
         resource_id: str,
         table_name: str,
+        request: main_models.GetInstanceResourceTableRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceResourceTableResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7351,9 +7391,11 @@ class Client(OpenApiClient):
         instance_id: str,
         resource_id: str,
         table_name: str,
+        request: main_models.GetInstanceResourceTableRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceResourceTableResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7378,20 +7420,22 @@ class Client(OpenApiClient):
         instance_id: str,
         resource_id: str,
         table_name: str,
+        request: main_models.GetInstanceResourceTableRequest,
     ) -> main_models.GetInstanceResourceTableResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_instance_resource_table_with_options(instance_id, resource_id, table_name, headers, runtime)
+        return self.get_instance_resource_table_with_options(instance_id, resource_id, table_name, request, headers, runtime)
 
     async def get_instance_resource_table_async(
         self,
         instance_id: str,
         resource_id: str,
         table_name: str,
+        request: main_models.GetInstanceResourceTableRequest,
     ) -> main_models.GetInstanceResourceTableResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_instance_resource_table_with_options_async(instance_id, resource_id, table_name, headers, runtime)
+        return await self.get_instance_resource_table_with_options_async(instance_id, resource_id, table_name, request, headers, runtime)
 
     def get_laboratory_with_options(
         self,
@@ -14342,16 +14386,26 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateABMetricResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.aggregation_by_user):
+            body['AggregationByUser'] = request.aggregation_by_user
         if not DaraCore.is_null(request.definition):
             body['Definition'] = request.definition
+        if not DaraCore.is_null(request.denominator):
+            body['Denominator'] = request.denominator
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_binomial_distribution):
+            body['IsBinomialDistribution'] = request.is_binomial_distribution
         if not DaraCore.is_null(request.left_metric_id):
             body['LeftMetricId'] = request.left_metric_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.need_significance):
+            body['NeedSignificance'] = request.need_significance
+        if not DaraCore.is_null(request.numerator):
+            body['Numerator'] = request.numerator
         if not DaraCore.is_null(request.operator):
             body['Operator'] = request.operator
         if not DaraCore.is_null(request.realtime):
@@ -14397,16 +14451,26 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateABMetricResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.aggregation_by_user):
+            body['AggregationByUser'] = request.aggregation_by_user
         if not DaraCore.is_null(request.definition):
             body['Definition'] = request.definition
+        if not DaraCore.is_null(request.denominator):
+            body['Denominator'] = request.denominator
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_binomial_distribution):
+            body['IsBinomialDistribution'] = request.is_binomial_distribution
         if not DaraCore.is_null(request.left_metric_id):
             body['LeftMetricId'] = request.left_metric_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.need_significance):
+            body['NeedSignificance'] = request.need_significance
+        if not DaraCore.is_null(request.numerator):
+            body['Numerator'] = request.numerator
         if not DaraCore.is_null(request.operator):
             body['Operator'] = request.operator
         if not DaraCore.is_null(request.realtime):

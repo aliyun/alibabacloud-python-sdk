@@ -1,3 +1,26 @@
+2026-04-09 Version: 6.1.1
+- Update API CreateABMetric: add request parameters body.AggregationByUser.
+- Update API CreateABMetric: add request parameters body.Denominator.
+- Update API CreateABMetric: add request parameters body.IsBinomialDistribution.
+- Update API CreateABMetric: add request parameters body.NeedSignificance.
+- Update API CreateABMetric: add request parameters body.Numerator.
+- Update API GetABMetric: add response parameters Body.AggregationByUser.
+- Update API GetABMetric: add response parameters Body.Denominator.
+- Update API GetABMetric: add response parameters Body.IsBinomialDistribution.
+- Update API GetABMetric: add response parameters Body.NeedSignificance.
+- Update API GetABMetric: add response parameters Body.Numerator.
+- Update API ListABMetrics: add response parameters Body.ABMetrics.$.AggregationByUser.
+- Update API ListABMetrics: add response parameters Body.ABMetrics.$.Denominator.
+- Update API ListABMetrics: add response parameters Body.ABMetrics.$.IsBinomialDistribution.
+- Update API ListABMetrics: add response parameters Body.ABMetrics.$.NeedSignificance.
+- Update API ListABMetrics: add response parameters Body.ABMetrics.$.Numerator.
+- Update API UpdateABMetric: add request parameters body.AggregationByUser.
+- Update API UpdateABMetric: add request parameters body.Denominator.
+- Update API UpdateABMetric: add request parameters body.IsBinomialDistribution.
+- Update API UpdateABMetric: add request parameters body.NeedSignificance.
+- Update API UpdateABMetric: add request parameters body.Numerator.
+
+
 2026-04-08 Version: 6.1.0
 - Support API DeployTrafficControlTaskCode.
 - Support API QueryTrafficControlTaskDeployResult.

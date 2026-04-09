@@ -62,10 +62,15 @@ class ListABMetricsResponseBodyABMetrics(DaraModel):
     def __init__(
         self,
         abmetric_id: str = None,
+        aggregation_by_user: bool = None,
         definition: str = None,
+        denominator: str = None,
         description: str = None,
+        is_binomial_distribution: bool = None,
         left_metric_id: str = None,
         name: str = None,
+        need_significance: bool = None,
+        numerator: str = None,
         operator: str = None,
         realtime: str = None,
         result_resource_id: str = None,
@@ -78,10 +83,15 @@ class ListABMetricsResponseBodyABMetrics(DaraModel):
         type: str = None,
     ):
         self.abmetric_id = abmetric_id
+        self.aggregation_by_user = aggregation_by_user
         self.definition = definition
+        self.denominator = denominator
         self.description = description
+        self.is_binomial_distribution = is_binomial_distribution
         self.left_metric_id = left_metric_id
         self.name = name
+        self.need_significance = need_significance
+        self.numerator = numerator
         self.operator = operator
         self.realtime = realtime
         self.result_resource_id = result_resource_id
@@ -104,17 +114,32 @@ class ListABMetricsResponseBodyABMetrics(DaraModel):
         if self.abmetric_id is not None:
             result['ABMetricId'] = self.abmetric_id
 
+        if self.aggregation_by_user is not None:
+            result['AggregationByUser'] = self.aggregation_by_user
+
         if self.definition is not None:
             result['Definition'] = self.definition
 
+        if self.denominator is not None:
+            result['Denominator'] = self.denominator
+
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.is_binomial_distribution is not None:
+            result['IsBinomialDistribution'] = self.is_binomial_distribution
 
         if self.left_metric_id is not None:
             result['LeftMetricId'] = self.left_metric_id
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.need_significance is not None:
+            result['NeedSignificance'] = self.need_significance
+
+        if self.numerator is not None:
+            result['Numerator'] = self.numerator
 
         if self.operator is not None:
             result['Operator'] = self.operator
@@ -153,17 +178,32 @@ class ListABMetricsResponseBodyABMetrics(DaraModel):
         if m.get('ABMetricId') is not None:
             self.abmetric_id = m.get('ABMetricId')
 
+        if m.get('AggregationByUser') is not None:
+            self.aggregation_by_user = m.get('AggregationByUser')
+
         if m.get('Definition') is not None:
             self.definition = m.get('Definition')
 
+        if m.get('Denominator') is not None:
+            self.denominator = m.get('Denominator')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('IsBinomialDistribution') is not None:
+            self.is_binomial_distribution = m.get('IsBinomialDistribution')
 
         if m.get('LeftMetricId') is not None:
             self.left_metric_id = m.get('LeftMetricId')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('NeedSignificance') is not None:
+            self.need_significance = m.get('NeedSignificance')
+
+        if m.get('Numerator') is not None:
+            self.numerator = m.get('Numerator')
 
         if m.get('Operator') is not None:
             self.operator = m.get('Operator')

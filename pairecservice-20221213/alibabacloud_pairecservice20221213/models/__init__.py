@@ -150,6 +150,7 @@ from ._delete_experiment_response import DeleteExperimentResponse
 from ._delete_experiment_group_request import DeleteExperimentGroupRequest
 from ._delete_experiment_group_response_body import DeleteExperimentGroupResponseBody
 from ._delete_experiment_group_response import DeleteExperimentGroupResponse
+from ._delete_instance_resource_request import DeleteInstanceResourceRequest
 from ._delete_instance_resource_response_body import DeleteInstanceResourceResponseBody
 from ._delete_instance_resource_response import DeleteInstanceResourceResponse
 from ._delete_laboratory_request import DeleteLaboratoryRequest
@@ -236,10 +237,13 @@ from ._get_feature_consistency_check_job_response import GetFeatureConsistencyCh
 from ._get_feature_consistency_check_job_config_request import GetFeatureConsistencyCheckJobConfigRequest
 from ._get_feature_consistency_check_job_config_response_body import GetFeatureConsistencyCheckJobConfigResponseBody
 from ._get_feature_consistency_check_job_config_response import GetFeatureConsistencyCheckJobConfigResponse
+from ._get_instance_request import GetInstanceRequest
 from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
+from ._get_instance_resource_request import GetInstanceResourceRequest
 from ._get_instance_resource_response_body import GetInstanceResourceResponseBody
 from ._get_instance_resource_response import GetInstanceResourceResponse
+from ._get_instance_resource_table_request import GetInstanceResourceTableRequest
 from ._get_instance_resource_table_response_body import GetInstanceResourceTableResponseBody
 from ._get_instance_resource_table_response import GetInstanceResourceTableResponse
 from ._get_laboratory_request import GetLaboratoryRequest
@@ -831,6 +835,7 @@ __all__ = [
     DeleteExperimentGroupRequest,
     DeleteExperimentGroupResponseBody,
     DeleteExperimentGroupResponse,
+    DeleteInstanceResourceRequest,
     DeleteInstanceResourceResponseBody,
     DeleteInstanceResourceResponse,
     DeleteLaboratoryRequest,
@@ -917,10 +922,13 @@ __all__ = [
     GetFeatureConsistencyCheckJobConfigRequest,
     GetFeatureConsistencyCheckJobConfigResponseBody,
     GetFeatureConsistencyCheckJobConfigResponse,
+    GetInstanceRequest,
     GetInstanceResponseBody,
     GetInstanceResponse,
+    GetInstanceResourceRequest,
     GetInstanceResourceResponseBody,
     GetInstanceResourceResponse,
+    GetInstanceResourceTableRequest,
     GetInstanceResourceTableResponseBody,
     GetInstanceResourceTableResponse,
     GetLaboratoryRequest,
