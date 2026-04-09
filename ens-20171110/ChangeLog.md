@@ -1,3 +1,12 @@
+2026-04-09 Version: 11.1.1
+- Update API DescribeInstances: add request parameters VpdId.
+- Update API DescribeInstances: add request parameters VpdVSwitchId.
+- Update API DescribeInstances: add response parameters Body.Instances.$.NetworkInterfaces.$.VpdId.
+- Update API DescribeInstances: add response parameters Body.Instances.$.NetworkInterfaces.$.VpdVSwitchId.
+- Update API RunInstances: add request parameters VpdId.
+- Update API RunInstances: add request parameters VpdVSwitchIds.
+
+
 2026-04-01 Version: 11.1.0
 - Support API DeleteNetworkPeerConnection.
 - Support API DescribeNetworkPeerConnections.

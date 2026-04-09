@@ -835,6 +835,8 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         primary_ip_address: str = None,
         private_ip_sets: main_models.DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets = None,
         type: str = None,
+        vpd_id: str = None,
+        vpd_vswitch_id: str = None,
     ):
         self.ipv_6sets = ipv_6sets
         self.mac_address = mac_address
@@ -842,6 +844,8 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         self.primary_ip_address = primary_ip_address
         self.private_ip_sets = private_ip_sets
         self.type = type
+        self.vpd_id = vpd_id
+        self.vpd_vswitch_id = vpd_vswitch_id
 
     def validate(self):
         if self.ipv_6sets:
@@ -872,6 +876,12 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.vpd_id is not None:
+            result['VpdId'] = self.vpd_id
+
+        if self.vpd_vswitch_id is not None:
+            result['VpdVSwitchId'] = self.vpd_vswitch_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -895,6 +905,12 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        if m.get('VpdId') is not None:
+            self.vpd_id = m.get('VpdId')
+
+        if m.get('VpdVSwitchId') is not None:
+            self.vpd_vswitch_id = m.get('VpdVSwitchId')
 
         return self
 

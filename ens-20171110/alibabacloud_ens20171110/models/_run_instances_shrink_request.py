@@ -52,6 +52,8 @@ class RunInstancesShrinkRequest(DaraModel):
         unique_suffix: bool = None,
         user_data: str = None,
         v_switch_id: str = None,
+        vpd_id: str = None,
+        vpd_vswitch_ids_shrink: str = None,
     ):
         # The number of instances that you want to create. Valid values: 1 to 100.
         self.amount = amount
@@ -215,6 +217,8 @@ class RunInstancesShrinkRequest(DaraModel):
         # 
         # >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
         self.v_switch_id = v_switch_id
+        self.vpd_id = vpd_id
+        self.vpd_vswitch_ids_shrink = vpd_vswitch_ids_shrink
 
     def validate(self):
         if self.tag:
@@ -355,6 +359,12 @@ class RunInstancesShrinkRequest(DaraModel):
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
+        if self.vpd_id is not None:
+            result['VpdId'] = self.vpd_id
+
+        if self.vpd_vswitch_ids_shrink is not None:
+            result['VpdVSwitchIds'] = self.vpd_vswitch_ids_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -487,6 +497,12 @@ class RunInstancesShrinkRequest(DaraModel):
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+
+        if m.get('VpdId') is not None:
+            self.vpd_id = m.get('VpdId')
+
+        if m.get('VpdVSwitchIds') is not None:
+            self.vpd_vswitch_ids_shrink = m.get('VpdVSwitchIds')
 
         return self
 

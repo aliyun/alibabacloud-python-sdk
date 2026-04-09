@@ -31,6 +31,8 @@ class DescribeInstancesRequest(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeInstancesRequestTags] = None,
         v_switch_id: str = None,
+        vpd_id: str = None,
+        vpd_vswitch_id: str = None,
     ):
         self.eip_addresses = eip_addresses
         # The region ID.
@@ -88,6 +90,8 @@ class DescribeInstancesRequest(DaraModel):
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        self.vpd_id = vpd_id
+        self.vpd_vswitch_id = vpd_vswitch_id
 
     def validate(self):
         if self.tags:
@@ -165,6 +169,12 @@ class DescribeInstancesRequest(DaraModel):
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
+        if self.vpd_id is not None:
+            result['VpdId'] = self.vpd_id
+
+        if self.vpd_vswitch_id is not None:
+            result['VpdVSwitchId'] = self.vpd_vswitch_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -234,6 +244,12 @@ class DescribeInstancesRequest(DaraModel):
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+
+        if m.get('VpdId') is not None:
+            self.vpd_id = m.get('VpdId')
+
+        if m.get('VpdVSwitchId') is not None:
+            self.vpd_vswitch_id = m.get('VpdVSwitchId')
 
         return self
 

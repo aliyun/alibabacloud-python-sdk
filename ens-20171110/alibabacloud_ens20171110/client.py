@@ -13209,6 +13209,10 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpd_id):
+            query['VpdId'] = request.vpd_id
+        if not DaraCore.is_null(request.vpd_vswitch_id):
+            query['VpdVSwitchId'] = request.vpd_vswitch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13285,6 +13289,10 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpd_id):
+            query['VpdId'] = request.vpd_id
+        if not DaraCore.is_null(request.vpd_vswitch_id):
+            query['VpdVSwitchId'] = request.vpd_vswitch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -24434,6 +24442,8 @@ class Client(OpenApiClient):
             request.data_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
         if not DaraCore.is_null(tmp_req.system_disk):
             request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
+        if not DaraCore.is_null(tmp_req.vpd_vswitch_ids):
+            request.vpd_vswitch_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.vpd_vswitch_ids, 'VpdVSwitchIds', 'json')
         query = {}
         if not DaraCore.is_null(request.amount):
             query['Amount'] = request.amount
@@ -24519,6 +24529,10 @@ class Client(OpenApiClient):
             query['UserData'] = request.user_data
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpd_id):
+            query['VpdId'] = request.vpd_id
+        if not DaraCore.is_null(request.vpd_vswitch_ids_shrink):
+            query['VpdVSwitchIds'] = request.vpd_vswitch_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -24550,6 +24564,8 @@ class Client(OpenApiClient):
             request.data_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
         if not DaraCore.is_null(tmp_req.system_disk):
             request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
+        if not DaraCore.is_null(tmp_req.vpd_vswitch_ids):
+            request.vpd_vswitch_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.vpd_vswitch_ids, 'VpdVSwitchIds', 'json')
         query = {}
         if not DaraCore.is_null(request.amount):
             query['Amount'] = request.amount
@@ -24635,6 +24651,10 @@ class Client(OpenApiClient):
             query['UserData'] = request.user_data
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpd_id):
+            query['VpdId'] = request.vpd_id
+        if not DaraCore.is_null(request.vpd_vswitch_ids_shrink):
+            query['VpdVSwitchIds'] = request.vpd_vswitch_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
