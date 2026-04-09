@@ -138,6 +138,10 @@ from ._create_network_response import CreateNetworkResponse
 from ._create_node_request import CreateNodeRequest
 from ._create_node_response_body import CreateNodeResponseBody
 from ._create_node_response import CreateNodeResponse
+from ._create_parameter_request import CreateParameterRequest
+from ._create_parameter_shrink_request import CreateParameterShrinkRequest
+from ._create_parameter_response_body import CreateParameterResponseBody
+from ._create_parameter_response import CreateParameterResponse
 from ._create_pipeline_run_request import CreatePipelineRunRequest
 from ._create_pipeline_run_shrink_request import CreatePipelineRunShrinkRequest
 from ._create_pipeline_run_response_body import CreatePipelineRunResponseBody
@@ -251,6 +255,9 @@ from ._delete_network_response import DeleteNetworkResponse
 from ._delete_node_request import DeleteNodeRequest
 from ._delete_node_response_body import DeleteNodeResponseBody
 from ._delete_node_response import DeleteNodeResponse
+from ._delete_parameter_request import DeleteParameterRequest
+from ._delete_parameter_response_body import DeleteParameterResponseBody
+from ._delete_parameter_response import DeleteParameterResponse
 from ._delete_project_request import DeleteProjectRequest
 from ._delete_project_response_body import DeleteProjectResponseBody
 from ._delete_project_response import DeleteProjectResponse
@@ -397,6 +404,9 @@ from ._get_network_response import GetNetworkResponse
 from ._get_node_request import GetNodeRequest
 from ._get_node_response_body import GetNodeResponseBody
 from ._get_node_response import GetNodeResponse
+from ._get_parameter_request import GetParameterRequest
+from ._get_parameter_response_body import GetParameterResponseBody
+from ._get_parameter_response import GetParameterResponse
 from ._get_partition_request import GetPartitionRequest
 from ._get_partition_response_body import GetPartitionResponseBody
 from ._get_partition_response import GetPartitionResponse
@@ -599,6 +609,13 @@ from ._list_node_dependencies_response import ListNodeDependenciesResponse
 from ._list_nodes_request import ListNodesRequest
 from ._list_nodes_response_body import ListNodesResponseBody
 from ._list_nodes_response import ListNodesResponse
+from ._list_parameter_versions_request import ListParameterVersionsRequest
+from ._list_parameter_versions_response_body import ListParameterVersionsResponseBody
+from ._list_parameter_versions_response import ListParameterVersionsResponse
+from ._list_parameters_request import ListParametersRequest
+from ._list_parameters_shrink_request import ListParametersShrinkRequest
+from ._list_parameters_response_body import ListParametersResponseBody
+from ._list_parameters_response import ListParametersResponse
 from ._list_partitions_request import ListPartitionsRequest
 from ._list_partitions_response_body import ListPartitionsResponseBody
 from ._list_partitions_response import ListPartitionsResponse
@@ -725,6 +742,9 @@ from ._revoke_member_project_roles_request import RevokeMemberProjectRolesReques
 from ._revoke_member_project_roles_shrink_request import RevokeMemberProjectRolesShrinkRequest
 from ._revoke_member_project_roles_response_body import RevokeMemberProjectRolesResponseBody
 from ._revoke_member_project_roles_response import RevokeMemberProjectRolesResponse
+from ._rollback_parameter_request import RollbackParameterRequest
+from ._rollback_parameter_response_body import RollbackParameterResponseBody
+from ._rollback_parameter_response import RollbackParameterResponse
 from ._set_success_task_instances_request import SetSuccessTaskInstancesRequest
 from ._set_success_task_instances_shrink_request import SetSuccessTaskInstancesShrinkRequest
 from ._set_success_task_instances_response_body import SetSuccessTaskInstancesResponseBody
@@ -848,6 +868,10 @@ from ._update_meta_collection_response import UpdateMetaCollectionResponse
 from ._update_node_request import UpdateNodeRequest
 from ._update_node_response_body import UpdateNodeResponseBody
 from ._update_node_response import UpdateNodeResponse
+from ._update_parameter_request import UpdateParameterRequest
+from ._update_parameter_shrink_request import UpdateParameterShrinkRequest
+from ._update_parameter_response_body import UpdateParameterResponseBody
+from ._update_parameter_response import UpdateParameterResponse
 from ._update_project_request import UpdateProjectRequest
 from ._update_project_response_body import UpdateProjectResponseBody
 from ._update_project_response import UpdateProjectResponse
@@ -1003,6 +1027,7 @@ from ._create_data_quality_scan_request import CreateDataQualityScanRequestTrigg
 from ._create_data_quality_scan_run_request import CreateDataQualityScanRunRequestParameters
 from ._create_data_quality_scan_run_request import CreateDataQualityScanRunRequestRuntimeResource
 from ._create_dataset_request import CreateDatasetRequestInitVersion
+from ._create_parameter_request import CreateParameterRequestProperties
 from ._create_project_request import CreateProjectRequestAliyunResourceTags
 from ._create_resource_group_request import CreateResourceGroupRequestAliyunResourceTags
 from ._create_resource_group_response_body import CreateResourceGroupResponseBodyResourceGroupOrder
@@ -1152,6 +1177,8 @@ from ._get_job_status_response_body import GetJobStatusResponseBodyJobStatus
 from ._get_meta_collection_response_body import GetMetaCollectionResponseBodyMetaCollection
 from ._get_network_response_body import GetNetworkResponseBodyNetwork
 from ._get_node_response_body import GetNodeResponseBodyNode
+from ._get_parameter_response_body import GetParameterResponseBodyParameterProperties
+from ._get_parameter_response_body import GetParameterResponseBodyParameter
 from ._get_pipeline_run_response_body import GetPipelineRunResponseBodyPipelineStages
 from ._get_pipeline_run_response_body import GetPipelineRunResponseBodyPipeline
 from ._get_project_response_body import GetProjectResponseBodyProjectAliyunResourceTags
@@ -1408,6 +1435,12 @@ from ._list_nodes_response_body import ListNodesResponseBodyPagingInfoNodesTags
 from ._list_nodes_response_body import ListNodesResponseBodyPagingInfoNodesTrigger
 from ._list_nodes_response_body import ListNodesResponseBodyPagingInfoNodes
 from ._list_nodes_response_body import ListNodesResponseBodyPagingInfo
+from ._list_parameter_versions_response_body import ListParameterVersionsResponseBodyPagingInfoParameterVersionProperties
+from ._list_parameter_versions_response_body import ListParameterVersionsResponseBodyPagingInfoParameterVersion
+from ._list_parameter_versions_response_body import ListParameterVersionsResponseBodyPagingInfo
+from ._list_parameters_response_body import ListParametersResponseBodyPagingInfoParametersProperties
+from ._list_parameters_response_body import ListParametersResponseBodyPagingInfoParameters
+from ._list_parameters_response_body import ListParametersResponseBodyPagingInfo
 from ._list_partitions_response_body import ListPartitionsResponseBodyPagingInfo
 from ._list_pipeline_run_items_response_body import ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems
 from ._list_pipeline_run_items_response_body import ListPipelineRunItemsResponseBodyPagingInfo
@@ -1555,6 +1588,7 @@ from ._update_data_quality_scan_request import UpdateDataQualityScanRequestHooks
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestParameters
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestRuntimeResource
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestTrigger
+from ._update_parameter_request import UpdateParameterRequestProperties
 from ._update_task_request import UpdateTaskRequestDataSource
 from ._update_task_request import UpdateTaskRequestDependencies
 from ._update_task_request import UpdateTaskRequestInputsVariables
@@ -1723,6 +1757,10 @@ __all__ = [
     CreateNodeRequest,
     CreateNodeResponseBody,
     CreateNodeResponse,
+    CreateParameterRequest,
+    CreateParameterShrinkRequest,
+    CreateParameterResponseBody,
+    CreateParameterResponse,
     CreatePipelineRunRequest,
     CreatePipelineRunShrinkRequest,
     CreatePipelineRunResponseBody,
@@ -1836,6 +1874,9 @@ __all__ = [
     DeleteNodeRequest,
     DeleteNodeResponseBody,
     DeleteNodeResponse,
+    DeleteParameterRequest,
+    DeleteParameterResponseBody,
+    DeleteParameterResponse,
     DeleteProjectRequest,
     DeleteProjectResponseBody,
     DeleteProjectResponse,
@@ -1982,6 +2023,9 @@ __all__ = [
     GetNodeRequest,
     GetNodeResponseBody,
     GetNodeResponse,
+    GetParameterRequest,
+    GetParameterResponseBody,
+    GetParameterResponse,
     GetPartitionRequest,
     GetPartitionResponseBody,
     GetPartitionResponse,
@@ -2184,6 +2228,13 @@ __all__ = [
     ListNodesRequest,
     ListNodesResponseBody,
     ListNodesResponse,
+    ListParameterVersionsRequest,
+    ListParameterVersionsResponseBody,
+    ListParameterVersionsResponse,
+    ListParametersRequest,
+    ListParametersShrinkRequest,
+    ListParametersResponseBody,
+    ListParametersResponse,
     ListPartitionsRequest,
     ListPartitionsResponseBody,
     ListPartitionsResponse,
@@ -2310,6 +2361,9 @@ __all__ = [
     RevokeMemberProjectRolesShrinkRequest,
     RevokeMemberProjectRolesResponseBody,
     RevokeMemberProjectRolesResponse,
+    RollbackParameterRequest,
+    RollbackParameterResponseBody,
+    RollbackParameterResponse,
     SetSuccessTaskInstancesRequest,
     SetSuccessTaskInstancesShrinkRequest,
     SetSuccessTaskInstancesResponseBody,
@@ -2433,6 +2487,10 @@ __all__ = [
     UpdateNodeRequest,
     UpdateNodeResponseBody,
     UpdateNodeResponse,
+    UpdateParameterRequest,
+    UpdateParameterShrinkRequest,
+    UpdateParameterResponseBody,
+    UpdateParameterResponse,
     UpdateProjectRequest,
     UpdateProjectResponseBody,
     UpdateProjectResponse,
@@ -2588,6 +2646,7 @@ __all__ = [
     CreateDataQualityScanRunRequestParameters,
     CreateDataQualityScanRunRequestRuntimeResource,
     CreateDatasetRequestInitVersion,
+    CreateParameterRequestProperties,
     CreateProjectRequestAliyunResourceTags,
     CreateResourceGroupRequestAliyunResourceTags,
     CreateResourceGroupResponseBodyResourceGroupOrder,
@@ -2737,6 +2796,8 @@ __all__ = [
     GetMetaCollectionResponseBodyMetaCollection,
     GetNetworkResponseBodyNetwork,
     GetNodeResponseBodyNode,
+    GetParameterResponseBodyParameterProperties,
+    GetParameterResponseBodyParameter,
     GetPipelineRunResponseBodyPipelineStages,
     GetPipelineRunResponseBodyPipeline,
     GetProjectResponseBodyProjectAliyunResourceTags,
@@ -2993,6 +3054,12 @@ __all__ = [
     ListNodesResponseBodyPagingInfoNodesTrigger,
     ListNodesResponseBodyPagingInfoNodes,
     ListNodesResponseBodyPagingInfo,
+    ListParameterVersionsResponseBodyPagingInfoParameterVersionProperties,
+    ListParameterVersionsResponseBodyPagingInfoParameterVersion,
+    ListParameterVersionsResponseBodyPagingInfo,
+    ListParametersResponseBodyPagingInfoParametersProperties,
+    ListParametersResponseBodyPagingInfoParameters,
+    ListParametersResponseBodyPagingInfo,
     ListPartitionsResponseBodyPagingInfo,
     ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems,
     ListPipelineRunItemsResponseBodyPagingInfo,
@@ -3140,6 +3207,7 @@ __all__ = [
     UpdateDataQualityScanRequestParameters,
     UpdateDataQualityScanRequestRuntimeResource,
     UpdateDataQualityScanRequestTrigger,
+    UpdateParameterRequestProperties,
     UpdateTaskRequestDataSource,
     UpdateTaskRequestDependencies,
     UpdateTaskRequestInputsVariables,

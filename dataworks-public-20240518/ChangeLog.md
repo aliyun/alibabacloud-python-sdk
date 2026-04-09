@@ -1,3 +1,13 @@
+2026-04-09 Version: 8.1.0
+- Support API CreateParameter.
+- Support API DeleteParameter.
+- Support API GetParameter.
+- Support API ListParameterVersions.
+- Support API ListParameters.
+- Support API RollbackParameter.
+- Support API UpdateParameter.
+
+
 2026-04-02 Version: 8.0.6
 - Update API CreateDIJob: add request parameters DestinationDataSourceSettings.$.DataSourceProperties.
 - Update API CreateDIJob: add request parameters SourceDataSourceSettings.$.DataSourceProperties.ConnectionProperties.

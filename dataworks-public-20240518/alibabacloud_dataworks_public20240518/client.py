@@ -129,11 +129,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -205,11 +207,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -3410,6 +3414,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_node_with_options_async(request, runtime)
 
+    def create_parameter_with_options(
+        self,
+        tmp_req: main_models.CreateParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateParameterResponse:
+        tmp_req.validate()
+        request = main_models.CreateParameterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.properties):
+            request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not DaraCore.is_null(request.scope):
+            body['Scope'] = request.scope
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_parameter_with_options_async(
+        self,
+        tmp_req: main_models.CreateParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateParameterResponse:
+        tmp_req.validate()
+        request = main_models.CreateParameterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.properties):
+            request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not DaraCore.is_null(request.scope):
+            body['Scope'] = request.scope
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_parameter(
+        self,
+        request: main_models.CreateParameterRequest,
+    ) -> main_models.CreateParameterResponse:
+        runtime = RuntimeOptions()
+        return self.create_parameter_with_options(request, runtime)
+
+    async def create_parameter_async(
+        self,
+        request: main_models.CreateParameterRequest,
+    ) -> main_models.CreateParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.create_parameter_with_options_async(request, runtime)
+
     def create_pipeline_run_with_options(
         self,
         tmp_req: main_models.CreatePipelineRunRequest,
@@ -3838,7 +3944,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -3919,7 +4025,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -4114,7 +4220,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -4195,7 +4301,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -6543,6 +6649,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteNodeResponse:
         runtime = RuntimeOptions()
         return await self.delete_node_with_options_async(request, runtime)
+
+    def delete_parameter_with_options(
+        self,
+        request: main_models.DeleteParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteParameterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_parameter_with_options_async(
+        self,
+        request: main_models.DeleteParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteParameterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_parameter(
+        self,
+        request: main_models.DeleteParameterRequest,
+    ) -> main_models.DeleteParameterResponse:
+        runtime = RuntimeOptions()
+        return self.delete_parameter_with_options(request, runtime)
+
+    async def delete_parameter_async(
+        self,
+        request: main_models.DeleteParameterRequest,
+    ) -> main_models.DeleteParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_parameter_with_options_async(request, runtime)
 
     def delete_project_with_options(
         self,
@@ -10016,6 +10192,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_node_with_options_async(request, runtime)
 
+    def get_parameter_with_options(
+        self,
+        request: main_models.GetParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetParameterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_parameter_with_options_async(
+        self,
+        request: main_models.GetParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetParameterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_parameter(
+        self,
+        request: main_models.GetParameterRequest,
+    ) -> main_models.GetParameterResponse:
+        runtime = RuntimeOptions()
+        return self.get_parameter_with_options(request, runtime)
+
+    async def get_parameter_async(
+        self,
+        request: main_models.GetParameterRequest,
+    ) -> main_models.GetParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.get_parameter_with_options_async(request, runtime)
+
     def get_partition_with_options(
         self,
         request: main_models.GetPartitionRequest,
@@ -11394,7 +11640,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -11475,7 +11721,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -14986,6 +15232,202 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
 
+    def list_parameter_versions_with_options(
+        self,
+        request: main_models.ListParameterVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParameterVersionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameterVersions',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParameterVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_parameter_versions_with_options_async(
+        self,
+        request: main_models.ListParameterVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParameterVersionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameterVersions',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParameterVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_parameter_versions(
+        self,
+        request: main_models.ListParameterVersionsRequest,
+    ) -> main_models.ListParameterVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_parameter_versions_with_options(request, runtime)
+
+    async def list_parameter_versions_async(
+        self,
+        request: main_models.ListParameterVersionsRequest,
+    ) -> main_models.ListParameterVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_parameter_versions_with_options_async(request, runtime)
+
+    def list_parameters_with_options(
+        self,
+        tmp_req: main_models.ListParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParametersResponse:
+        tmp_req.validate()
+        request = main_models.ListParametersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not DaraCore.is_null(tmp_req.names):
+            request.names_shrink = Utils.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not DaraCore.is_null(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not DaraCore.is_null(request.names_shrink):
+            body['Names'] = request.names_shrink
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.scope):
+            body['Scope'] = request.scope
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameters',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_parameters_with_options_async(
+        self,
+        tmp_req: main_models.ListParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParametersResponse:
+        tmp_req.validate()
+        request = main_models.ListParametersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not DaraCore.is_null(tmp_req.names):
+            request.names_shrink = Utils.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not DaraCore.is_null(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not DaraCore.is_null(request.names_shrink):
+            body['Names'] = request.names_shrink
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.scope):
+            body['Scope'] = request.scope
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameters',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_parameters(
+        self,
+        request: main_models.ListParametersRequest,
+    ) -> main_models.ListParametersResponse:
+        runtime = RuntimeOptions()
+        return self.list_parameters_with_options(request, runtime)
+
+    async def list_parameters_async(
+        self,
+        request: main_models.ListParametersRequest,
+    ) -> main_models.ListParametersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_parameters_with_options_async(request, runtime)
+
     def list_partitions_with_options(
         self,
         request: main_models.ListPartitionsRequest,
@@ -18131,6 +18573,80 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeMemberProjectRolesResponse:
         runtime = RuntimeOptions()
         return await self.revoke_member_project_roles_with_options_async(request, runtime)
+
+    def rollback_parameter_with_options(
+        self,
+        request: main_models.RollbackParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackParameterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.rollback_version):
+            body['RollbackVersion'] = request.rollback_version
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_parameter_with_options_async(
+        self,
+        request: main_models.RollbackParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackParameterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.rollback_version):
+            body['RollbackVersion'] = request.rollback_version
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_parameter(
+        self,
+        request: main_models.RollbackParameterRequest,
+    ) -> main_models.RollbackParameterResponse:
+        runtime = RuntimeOptions()
+        return self.rollback_parameter_with_options(request, runtime)
+
+    async def rollback_parameter_async(
+        self,
+        request: main_models.RollbackParameterRequest,
+    ) -> main_models.RollbackParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.rollback_parameter_with_options_async(request, runtime)
 
     def set_success_task_instances_with_options(
         self,
@@ -21398,6 +21914,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_node_with_options_async(request, runtime)
 
+    def update_parameter_with_options(
+        self,
+        tmp_req: main_models.UpdateParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateParameterResponse:
+        tmp_req.validate()
+        request = main_models.UpdateParameterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.properties):
+            request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_parameter_with_options_async(
+        self,
+        tmp_req: main_models.UpdateParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateParameterResponse:
+        tmp_req.validate()
+        request = main_models.UpdateParameterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.properties):
+            request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateParameter',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_parameter(
+        self,
+        request: main_models.UpdateParameterRequest,
+    ) -> main_models.UpdateParameterResponse:
+        runtime = RuntimeOptions()
+        return self.update_parameter_with_options(request, runtime)
+
+    async def update_parameter_async(
+        self,
+        request: main_models.UpdateParameterRequest,
+    ) -> main_models.UpdateParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.update_parameter_with_options_async(request, runtime)
+
     def update_project_with_options(
         self,
         request: main_models.UpdateProjectRequest,
@@ -21642,7 +22248,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -21723,7 +22329,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
