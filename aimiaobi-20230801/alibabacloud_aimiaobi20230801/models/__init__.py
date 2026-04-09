@@ -58,6 +58,10 @@ from ._clear_intervenes_response import ClearIntervenesResponse
 from ._confirm_and_post_process_audit_note_request import ConfirmAndPostProcessAuditNoteRequest
 from ._confirm_and_post_process_audit_note_response_body import ConfirmAndPostProcessAuditNoteResponseBody
 from ._confirm_and_post_process_audit_note_response import ConfirmAndPostProcessAuditNoteResponse
+from ._create_data_permissions_request import CreateDataPermissionsRequest
+from ._create_data_permissions_shrink_request import CreateDataPermissionsShrinkRequest
+from ._create_data_permissions_response_body import CreateDataPermissionsResponseBody
+from ._create_data_permissions_response import CreateDataPermissionsResponse
 from ._create_dataset_request import CreateDatasetRequest
 from ._create_dataset_shrink_request import CreateDatasetShrinkRequest
 from ._create_dataset_response_body import CreateDatasetResponseBody
@@ -88,6 +92,10 @@ from ._delete_custom_topic_by_topic_response import DeleteCustomTopicByTopicResp
 from ._delete_custom_topic_view_point_by_id_request import DeleteCustomTopicViewPointByIdRequest
 from ._delete_custom_topic_view_point_by_id_response_body import DeleteCustomTopicViewPointByIdResponseBody
 from ._delete_custom_topic_view_point_by_id_response import DeleteCustomTopicViewPointByIdResponse
+from ._delete_data_permissions_request import DeleteDataPermissionsRequest
+from ._delete_data_permissions_shrink_request import DeleteDataPermissionsShrinkRequest
+from ._delete_data_permissions_response_body import DeleteDataPermissionsResponseBody
+from ._delete_data_permissions_response import DeleteDataPermissionsResponse
 from ._delete_dataset_request import DeleteDatasetRequest
 from ._delete_dataset_response_body import DeleteDatasetResponseBody
 from ._delete_dataset_response import DeleteDatasetResponse
@@ -362,6 +370,9 @@ from ._list_custom_view_points_request import ListCustomViewPointsRequest
 from ._list_custom_view_points_shrink_request import ListCustomViewPointsShrinkRequest
 from ._list_custom_view_points_response_body import ListCustomViewPointsResponseBody
 from ._list_custom_view_points_response import ListCustomViewPointsResponse
+from ._list_data_permissions_request import ListDataPermissionsRequest
+from ._list_data_permissions_response_body import ListDataPermissionsResponseBody
+from ._list_data_permissions_response import ListDataPermissionsResponse
 from ._list_dataset_documents_request import ListDatasetDocumentsRequest
 from ._list_dataset_documents_shrink_request import ListDatasetDocumentsShrinkRequest
 from ._list_dataset_documents_response_body import ListDatasetDocumentsResponseBody
@@ -745,6 +756,7 @@ from ._async_writing_bidding_doc_response_body import AsyncWritingBiddingDocResp
 from ._bind_ppt_artifact_response_body import BindPptArtifactResponseBodyData
 from ._cancel_deep_write_task_response_body import CancelDeepWriteTaskResponseBodyData
 from ._clear_intervenes_response_body import ClearIntervenesResponseBodyData
+from ._create_data_permissions_request import CreateDataPermissionsRequestPermissionUserInfos
 from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfig
 from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders
 from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams
@@ -943,9 +955,11 @@ from ._list_custom_text_response_body import ListCustomTextResponseBodyData
 from ._list_custom_view_points_response_body import ListCustomViewPointsResponseBodyDataViewPointsOutlines
 from ._list_custom_view_points_response_body import ListCustomViewPointsResponseBodyDataViewPoints
 from ._list_custom_view_points_response_body import ListCustomViewPointsResponseBodyData
+from ._list_data_permissions_response_body import ListDataPermissionsResponseBodyData
 from ._list_dataset_documents_response_body import ListDatasetDocumentsResponseBodyDataMultimodalMedias
 from ._list_dataset_documents_response_body import ListDatasetDocumentsResponseBodyData
 from ._list_datasets_response_body import ListDatasetsResponseBodyCustomSemanticSearchConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyDataAdministrators
 from ._list_datasets_response_body import ListDatasetsResponseBodyData
 from ._list_datasets_response_body import ListDatasetsResponseBodyThirdSearchConfig
 from ._list_dialogues_response_body import ListDialoguesResponseBodyData
@@ -1420,6 +1434,10 @@ __all__ = [
     ConfirmAndPostProcessAuditNoteRequest,
     ConfirmAndPostProcessAuditNoteResponseBody,
     ConfirmAndPostProcessAuditNoteResponse,
+    CreateDataPermissionsRequest,
+    CreateDataPermissionsShrinkRequest,
+    CreateDataPermissionsResponseBody,
+    CreateDataPermissionsResponse,
     CreateDatasetRequest,
     CreateDatasetShrinkRequest,
     CreateDatasetResponseBody,
@@ -1450,6 +1468,10 @@ __all__ = [
     DeleteCustomTopicViewPointByIdRequest,
     DeleteCustomTopicViewPointByIdResponseBody,
     DeleteCustomTopicViewPointByIdResponse,
+    DeleteDataPermissionsRequest,
+    DeleteDataPermissionsShrinkRequest,
+    DeleteDataPermissionsResponseBody,
+    DeleteDataPermissionsResponse,
     DeleteDatasetRequest,
     DeleteDatasetResponseBody,
     DeleteDatasetResponse,
@@ -1724,6 +1746,9 @@ __all__ = [
     ListCustomViewPointsShrinkRequest,
     ListCustomViewPointsResponseBody,
     ListCustomViewPointsResponse,
+    ListDataPermissionsRequest,
+    ListDataPermissionsResponseBody,
+    ListDataPermissionsResponse,
     ListDatasetDocumentsRequest,
     ListDatasetDocumentsShrinkRequest,
     ListDatasetDocumentsResponseBody,
@@ -2107,6 +2132,7 @@ __all__ = [
     BindPptArtifactResponseBodyData,
     CancelDeepWriteTaskResponseBodyData,
     ClearIntervenesResponseBodyData,
+    CreateDataPermissionsRequestPermissionUserInfos,
     CreateDatasetRequestDatasetConfigSearchSourceConfig,
     CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders,
     CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams,
@@ -2305,9 +2331,11 @@ __all__ = [
     ListCustomViewPointsResponseBodyDataViewPointsOutlines,
     ListCustomViewPointsResponseBodyDataViewPoints,
     ListCustomViewPointsResponseBodyData,
+    ListDataPermissionsResponseBodyData,
     ListDatasetDocumentsResponseBodyDataMultimodalMedias,
     ListDatasetDocumentsResponseBodyData,
     ListDatasetsResponseBodyCustomSemanticSearchConfig,
+    ListDatasetsResponseBodyDataAdministrators,
     ListDatasetsResponseBodyData,
     ListDatasetsResponseBodyThirdSearchConfig,
     ListDialoguesResponseBodyData,

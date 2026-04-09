@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListDatasetsRequest(DaraModel):
     def __init__(
         self,
+        dataset_description: str = None,
         dataset_id: int = None,
         dataset_name: str = None,
         dataset_type: str = None,
@@ -18,6 +19,7 @@ class ListDatasetsRequest(DaraModel):
         start_time: str = None,
         workspace_id: str = None,
     ):
+        self.dataset_description = dataset_description
         self.dataset_id = dataset_id
         self.dataset_name = dataset_name
         self.dataset_type = dataset_type
@@ -38,6 +40,9 @@ class ListDatasetsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dataset_description is not None:
+            result['DatasetDescription'] = self.dataset_description
+
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
 
@@ -72,6 +77,9 @@ class ListDatasetsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatasetDescription') is not None:
+            self.dataset_description = m.get('DatasetDescription')
+
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
 

@@ -166,6 +166,8 @@ class ListDatasetsResponseBodyThirdSearchConfig(DaraModel):
 class ListDatasetsResponseBodyData(DaraModel):
     def __init__(
         self,
+        access_level: str = None,
+        administrators: List[main_models.ListDatasetsResponseBodyDataAdministrators] = None,
         create_time: str = None,
         create_user: str = None,
         dataset_description: str = None,
@@ -175,6 +177,8 @@ class ListDatasetsResponseBodyData(DaraModel):
         doc_used_quota: int = None,
         search_dataset_enable: int = None,
     ):
+        self.access_level = access_level
+        self.administrators = administrators
         self.create_time = create_time
         self.create_user = create_user
         self.dataset_description = dataset_description
@@ -185,13 +189,24 @@ class ListDatasetsResponseBodyData(DaraModel):
         self.search_dataset_enable = search_dataset_enable
 
     def validate(self):
-        pass
+        if self.administrators:
+            for v1 in self.administrators:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_level is not None:
+            result['AccessLevel'] = self.access_level
+
+        result['Administrators'] = []
+        if self.administrators is not None:
+            for k1 in self.administrators:
+                result['Administrators'].append(k1.to_map() if k1 else None)
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -220,6 +235,15 @@ class ListDatasetsResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessLevel') is not None:
+            self.access_level = m.get('AccessLevel')
+
+        self.administrators = []
+        if m.get('Administrators') is not None:
+            for k1 in m.get('Administrators'):
+                temp_model = main_models.ListDatasetsResponseBodyDataAdministrators()
+                self.administrators.append(temp_model.from_map(k1))
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -243,6 +267,41 @@ class ListDatasetsResponseBodyData(DaraModel):
 
         if m.get('SearchDatasetEnable') is not None:
             self.search_dataset_enable = m.get('SearchDatasetEnable')
+
+        return self
+
+class ListDatasetsResponseBodyDataAdministrators(DaraModel):
+    def __init__(
+        self,
+        user_id: str = None,
+        username: str = None,
+    ):
+        self.user_id = user_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
+        if self.username is not None:
+            result['Username'] = self.username
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
 
         return self
 

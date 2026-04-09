@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class UpdateDatasetRequest(DaraModel):
     def __init__(
         self,
+        access_level: str = None,
         dataset_config: main_models.UpdateDatasetRequestDatasetConfig = None,
         dataset_description: str = None,
         dataset_id: int = None,
         search_dataset_enable: int = None,
         workspace_id: str = None,
     ):
+        self.access_level = access_level
         self.dataset_config = dataset_config
         self.dataset_description = dataset_description
         self.dataset_id = dataset_id
@@ -32,6 +34,9 @@ class UpdateDatasetRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_level is not None:
+            result['AccessLevel'] = self.access_level
+
         if self.dataset_config is not None:
             result['DatasetConfig'] = self.dataset_config.to_map()
 
@@ -51,6 +56,9 @@ class UpdateDatasetRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessLevel') is not None:
+            self.access_level = m.get('AccessLevel')
+
         if m.get('DatasetConfig') is not None:
             temp_model = main_models.UpdateDatasetRequestDatasetConfig()
             self.dataset_config = temp_model.from_map(m.get('DatasetConfig'))

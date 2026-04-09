@@ -1,3 +1,15 @@
+2026-04-09 Version: 1.42.0
+- Support API CreateDataPermissions.
+- Support API DeleteDataPermissions.
+- Support API ListDataPermissions.
+- Update API CreateDataset: add request parameters AccessLevel.
+- Update API GetDataset: add response parameters Body.Data.AccessLevel.
+- Update API ListDatasets: add request parameters DatasetDescription.
+- Update API ListDatasets: add response parameters Body.Data.$.AccessLevel.
+- Update API ListDatasets: add response parameters Body.Data.$.Administrators.
+- Update API UpdateDataset: add request parameters AccessLevel.
+
+
 2026-03-19 Version: 1.41.0
 - Support API ExportPptArtifact.
 - Support API GetPptArtifactExportResult.

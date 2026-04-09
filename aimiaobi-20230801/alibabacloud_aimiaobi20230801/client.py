@@ -1350,6 +1350,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.confirm_and_post_process_audit_note_with_options_async(request, runtime)
 
+    def create_data_permissions_with_options(
+        self,
+        tmp_req: main_models.CreateDataPermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataPermissionsResponse:
+        tmp_req.validate()
+        request = main_models.CreateDataPermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.permission_user_infos):
+            request.permission_user_infos_shrink = Utils.array_to_string_with_specified_style(tmp_req.permission_user_infos, 'PermissionUserInfos', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_id):
+            body['DataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            body['DataType'] = request.data_type
+        if not DaraCore.is_null(request.permission_user_infos_shrink):
+            body['PermissionUserInfos'] = request.permission_user_infos_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataPermissions',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_permissions_with_options_async(
+        self,
+        tmp_req: main_models.CreateDataPermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataPermissionsResponse:
+        tmp_req.validate()
+        request = main_models.CreateDataPermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.permission_user_infos):
+            request.permission_user_infos_shrink = Utils.array_to_string_with_specified_style(tmp_req.permission_user_infos, 'PermissionUserInfos', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_id):
+            body['DataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            body['DataType'] = request.data_type
+        if not DaraCore.is_null(request.permission_user_infos_shrink):
+            body['PermissionUserInfos'] = request.permission_user_infos_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataPermissions',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_permissions(
+        self,
+        request: main_models.CreateDataPermissionsRequest,
+    ) -> main_models.CreateDataPermissionsResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_permissions_with_options(request, runtime)
+
+    async def create_data_permissions_async(
+        self,
+        request: main_models.CreateDataPermissionsRequest,
+    ) -> main_models.CreateDataPermissionsResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_permissions_with_options_async(request, runtime)
+
     def create_dataset_with_options(
         self,
         tmp_req: main_models.CreateDatasetRequest,
@@ -1363,6 +1453,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.document_handle_config):
             request.document_handle_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.document_handle_config, 'DocumentHandleConfig', 'json')
         body = {}
+        if not DaraCore.is_null(request.access_level):
+            body['AccessLevel'] = request.access_level
         if not DaraCore.is_null(request.dataset_config_shrink):
             body['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_description):
@@ -1411,6 +1503,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.document_handle_config):
             request.document_handle_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.document_handle_config, 'DocumentHandleConfig', 'json')
         body = {}
+        if not DaraCore.is_null(request.access_level):
+            body['AccessLevel'] = request.access_level
         if not DaraCore.is_null(request.dataset_config_shrink):
             body['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_description):
@@ -2115,6 +2209,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCustomTopicViewPointByIdResponse:
         runtime = RuntimeOptions()
         return await self.delete_custom_topic_view_point_by_id_with_options_async(request, runtime)
+
+    def delete_data_permissions_with_options(
+        self,
+        tmp_req: main_models.DeleteDataPermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataPermissionsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDataPermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        body = {}
+        if not DaraCore.is_null(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataPermissions',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_permissions_with_options_async(
+        self,
+        tmp_req: main_models.DeleteDataPermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataPermissionsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDataPermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        body = {}
+        if not DaraCore.is_null(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataPermissions',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_permissions(
+        self,
+        request: main_models.DeleteDataPermissionsRequest,
+    ) -> main_models.DeleteDataPermissionsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_permissions_with_options(request, runtime)
+
+    async def delete_data_permissions_async(
+        self,
+        request: main_models.DeleteDataPermissionsRequest,
+    ) -> main_models.DeleteDataPermissionsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_permissions_with_options_async(request, runtime)
 
     def delete_dataset_with_options(
         self,
@@ -9164,6 +9340,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_custom_view_points_with_options_async(request, runtime)
 
+    def list_data_permissions_with_options(
+        self,
+        request: main_models.ListDataPermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataPermissionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_id):
+            body['DataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            body['DataType'] = request.data_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataPermissions',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_permissions_with_options_async(
+        self,
+        request: main_models.ListDataPermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataPermissionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_id):
+            body['DataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            body['DataType'] = request.data_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataPermissions',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_permissions(
+        self,
+        request: main_models.ListDataPermissionsRequest,
+    ) -> main_models.ListDataPermissionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_permissions_with_options(request, runtime)
+
+    async def list_data_permissions_async(
+        self,
+        request: main_models.ListDataPermissionsRequest,
+    ) -> main_models.ListDataPermissionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_permissions_with_options_async(request, runtime)
+
     def list_dataset_documents_with_options(
         self,
         tmp_req: main_models.ListDatasetDocumentsRequest,
@@ -9361,6 +9623,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDatasetsResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
         if not DaraCore.is_null(request.dataset_id):
             body['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.dataset_name):
@@ -9407,6 +9671,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDatasetsResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
         if not DaraCore.is_null(request.dataset_id):
             body['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.dataset_name):
@@ -21969,6 +22235,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.dataset_config):
             request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         body = {}
+        if not DaraCore.is_null(request.access_level):
+            body['AccessLevel'] = request.access_level
         if not DaraCore.is_null(request.dataset_config_shrink):
             body['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_description):
@@ -22009,6 +22277,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.dataset_config):
             request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         body = {}
+        if not DaraCore.is_null(request.access_level):
+            body['AccessLevel'] = request.access_level
         if not DaraCore.is_null(request.dataset_config_shrink):
             body['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_description):

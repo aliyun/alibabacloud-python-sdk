@@ -79,6 +79,7 @@ class GetDatasetResponseBody(DaraModel):
 class GetDatasetResponseBodyData(DaraModel):
     def __init__(
         self,
+        access_level: str = None,
         create_time: str = None,
         create_user: str = None,
         dataset_config: main_models.GetDatasetResponseBodyDataDatasetConfig = None,
@@ -89,6 +90,7 @@ class GetDatasetResponseBodyData(DaraModel):
         document_handle_config: main_models.GetDatasetResponseBodyDataDocumentHandleConfig = None,
         search_dataset_enable: int = None,
     ):
+        self.access_level = access_level
         self.create_time = create_time
         self.create_user = create_user
         self.dataset_config = dataset_config
@@ -110,6 +112,9 @@ class GetDatasetResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_level is not None:
+            result['AccessLevel'] = self.access_level
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -141,6 +146,9 @@ class GetDatasetResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessLevel') is not None:
+            self.access_level = m.get('AccessLevel')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

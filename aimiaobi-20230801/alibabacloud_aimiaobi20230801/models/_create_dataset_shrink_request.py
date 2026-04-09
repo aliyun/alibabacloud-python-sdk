@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateDatasetShrinkRequest(DaraModel):
     def __init__(
         self,
+        access_level: str = None,
         dataset_config_shrink: str = None,
         dataset_description: str = None,
         dataset_name: str = None,
@@ -16,6 +17,7 @@ class CreateDatasetShrinkRequest(DaraModel):
         search_dataset_enable: int = None,
         workspace_id: str = None,
     ):
+        self.access_level = access_level
         self.dataset_config_shrink = dataset_config_shrink
         self.dataset_description = dataset_description
         # This parameter is required.
@@ -35,6 +37,9 @@ class CreateDatasetShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_level is not None:
+            result['AccessLevel'] = self.access_level
+
         if self.dataset_config_shrink is not None:
             result['DatasetConfig'] = self.dataset_config_shrink
 
@@ -63,6 +68,9 @@ class CreateDatasetShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessLevel') is not None:
+            self.access_level = m.get('AccessLevel')
+
         if m.get('DatasetConfig') is not None:
             self.dataset_config_shrink = m.get('DatasetConfig')
 
