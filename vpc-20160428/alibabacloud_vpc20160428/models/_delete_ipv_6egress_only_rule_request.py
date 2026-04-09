@@ -8,6 +8,7 @@ class DeleteIpv6EgressOnlyRuleRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         ipv_6egress_only_rule_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -21,6 +22,7 @@ class DeleteIpv6EgressOnlyRuleRequest(DaraModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # The ID of the egress-only rule that you want to delete.
         # 
         # This parameter is required.
@@ -44,6 +46,9 @@ class DeleteIpv6EgressOnlyRuleRequest(DaraModel):
             result = _map
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.ipv_6egress_only_rule_id is not None:
             result['Ipv6EgressOnlyRuleId'] = self.ipv_6egress_only_rule_id
@@ -69,6 +74,9 @@ class DeleteIpv6EgressOnlyRuleRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Ipv6EgressOnlyRuleId') is not None:
             self.ipv_6egress_only_rule_id = m.get('Ipv6EgressOnlyRuleId')

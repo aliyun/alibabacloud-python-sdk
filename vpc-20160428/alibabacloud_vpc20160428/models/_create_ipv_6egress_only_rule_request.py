@@ -9,6 +9,7 @@ class CreateIpv6EgressOnlyRuleRequest(DaraModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         instance_id: str = None,
         instance_type: str = None,
         ipv_6gateway_id: str = None,
@@ -29,6 +30,7 @@ class CreateIpv6EgressOnlyRuleRequest(DaraModel):
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        self.dry_run = dry_run
         # The ID of the IPv6 address for which you want to create an egress-only rule.
         # 
         # This parameter is required.
@@ -70,6 +72,9 @@ class CreateIpv6EgressOnlyRuleRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -106,6 +111,9 @@ class CreateIpv6EgressOnlyRuleRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

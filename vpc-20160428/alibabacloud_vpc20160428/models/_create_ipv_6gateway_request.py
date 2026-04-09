@@ -12,6 +12,7 @@ class CreateIpv6GatewayRequest(DaraModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -32,6 +33,7 @@ class CreateIpv6GatewayRequest(DaraModel):
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        self.dry_run = dry_run
         # The name of the IPv6 gateway.
         # 
         # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -69,6 +71,9 @@ class CreateIpv6GatewayRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.name is not None:
             result['Name'] = self.name
@@ -108,6 +113,9 @@ class CreateIpv6GatewayRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

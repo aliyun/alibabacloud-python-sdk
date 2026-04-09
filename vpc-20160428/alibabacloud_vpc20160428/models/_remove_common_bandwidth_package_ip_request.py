@@ -9,6 +9,7 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
         self,
         bandwidth_package_id: str = None,
         client_token: str = None,
+        dry_run: bool = None,
         ip_instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -19,6 +20,7 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         self.client_token = client_token
+        self.dry_run = dry_run
         # This parameter is required.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
@@ -41,6 +43,9 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.ip_instance_id is not None:
             result['IpInstanceId'] = self.ip_instance_id
@@ -69,6 +74,9 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('IpInstanceId') is not None:
             self.ip_instance_id = m.get('IpInstanceId')

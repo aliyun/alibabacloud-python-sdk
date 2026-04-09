@@ -368,6 +368,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageId'] = request.bandwidth_package_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_instance_id):
             query['IpInstanceId'] = request.ip_instance_id
         if not DaraCore.is_null(request.ip_type):
@@ -412,6 +414,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageId'] = request.bandwidth_package_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_instance_id):
             query['IpInstanceId'] = request.ip_instance_id
         if not DaraCore.is_null(request.ip_type):
@@ -6872,6 +6876,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_type):
@@ -6922,6 +6928,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_type):
@@ -6986,6 +6994,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.owner_account):
@@ -7036,6 +7046,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.owner_account):
@@ -13722,6 +13734,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ipv_6egress_only_rule_id):
             query['Ipv6EgressOnlyRuleId'] = request.ipv_6egress_only_rule_id
         if not DaraCore.is_null(request.owner_account):
@@ -13764,6 +13778,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ipv_6egress_only_rule_id):
             query['Ipv6EgressOnlyRuleId'] = request.ipv_6egress_only_rule_id
         if not DaraCore.is_null(request.owner_account):
@@ -38456,6 +38472,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageId'] = request.bandwidth_package_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_instance_id):
             query['IpInstanceId'] = request.ip_instance_id
         if not DaraCore.is_null(request.owner_account):
@@ -38498,6 +38516,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageId'] = request.bandwidth_package_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_instance_id):
             query['IpInstanceId'] = request.ip_instance_id
         if not DaraCore.is_null(request.owner_account):
