@@ -583,14 +583,126 @@ class Client(OpenApiClient):
         headers = main_models.CreateUserHeaders()
         return await self.create_user_with_options_async(instance_id, application_id, request, headers, runtime)
 
+    def create_user_exclusive_credential_with_options(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserExclusiveCredentialRequest,
+        headers: main_models.CreateUserExclusiveCredentialHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserExclusiveCredentialResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.credential_content):
+            body['credentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_identifier):
+            body['credentialIdentifier'] = request.credential_identifier
+        if not DaraCore.is_null(request.credential_name):
+            body['credentialName'] = request.credential_name
+        if not DaraCore.is_null(request.credential_scenario_label):
+            body['credentialScenarioLabel'] = request.credential_scenario_label
+        if not DaraCore.is_null(request.credential_type):
+            body['credentialType'] = request.credential_type
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserExclusiveCredential',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/credentials/_/actions/createUserExclusive',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserExclusiveCredentialResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def create_user_exclusive_credential_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserExclusiveCredentialRequest,
+        headers: main_models.CreateUserExclusiveCredentialHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserExclusiveCredentialResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.credential_content):
+            body['credentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_identifier):
+            body['credentialIdentifier'] = request.credential_identifier
+        if not DaraCore.is_null(request.credential_name):
+            body['credentialName'] = request.credential_name
+        if not DaraCore.is_null(request.credential_scenario_label):
+            body['credentialScenarioLabel'] = request.credential_scenario_label
+        if not DaraCore.is_null(request.credential_type):
+            body['credentialType'] = request.credential_type
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserExclusiveCredential',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/credentials/_/actions/createUserExclusive',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserExclusiveCredentialResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def create_user_exclusive_credential(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserExclusiveCredentialRequest,
+    ) -> main_models.CreateUserExclusiveCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.CreateUserExclusiveCredentialHeaders()
+        return self.create_user_exclusive_credential_with_options(instance_id, request, headers, runtime)
+
+    async def create_user_exclusive_credential_async(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserExclusiveCredentialRequest,
+    ) -> main_models.CreateUserExclusiveCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.CreateUserExclusiveCredentialHeaders()
+        return await self.create_user_exclusive_credential_with_options_async(instance_id, request, headers, runtime)
+
     def delete_group_with_options(
         self,
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
         headers: main_models.DeleteGroupHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteGroupResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -620,9 +732,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
         headers: main_models.DeleteGroupHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteGroupResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -652,29 +766,33 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
     ) -> main_models.DeleteGroupResponse:
         runtime = RuntimeOptions()
         headers = main_models.DeleteGroupHeaders()
-        return self.delete_group_with_options(instance_id, application_id, group_id, headers, runtime)
+        return self.delete_group_with_options(instance_id, application_id, group_id, request, headers, runtime)
 
     async def delete_group_async(
         self,
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
     ) -> main_models.DeleteGroupResponse:
         runtime = RuntimeOptions()
         headers = main_models.DeleteGroupHeaders()
-        return await self.delete_group_with_options_async(instance_id, application_id, group_id, headers, runtime)
+        return await self.delete_group_with_options_async(instance_id, application_id, group_id, request, headers, runtime)
 
     def delete_organizational_unit_with_options(
         self,
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.DeleteOrganizationalUnitRequest,
         headers: main_models.DeleteOrganizationalUnitHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteOrganizationalUnitResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -704,9 +822,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.DeleteOrganizationalUnitRequest,
         headers: main_models.DeleteOrganizationalUnitHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteOrganizationalUnitResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -736,29 +856,33 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.DeleteOrganizationalUnitRequest,
     ) -> main_models.DeleteOrganizationalUnitResponse:
         runtime = RuntimeOptions()
         headers = main_models.DeleteOrganizationalUnitHeaders()
-        return self.delete_organizational_unit_with_options(instance_id, application_id, organizational_unit_id, headers, runtime)
+        return self.delete_organizational_unit_with_options(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     async def delete_organizational_unit_async(
         self,
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.DeleteOrganizationalUnitRequest,
     ) -> main_models.DeleteOrganizationalUnitResponse:
         runtime = RuntimeOptions()
         headers = main_models.DeleteOrganizationalUnitHeaders()
-        return await self.delete_organizational_unit_with_options_async(instance_id, application_id, organizational_unit_id, headers, runtime)
+        return await self.delete_organizational_unit_with_options_async(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     def delete_user_with_options(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DeleteUserRequest,
         headers: main_models.DeleteUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -788,9 +912,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DeleteUserRequest,
         headers: main_models.DeleteUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -820,29 +946,33 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DeleteUserRequest,
     ) -> main_models.DeleteUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.DeleteUserHeaders()
-        return self.delete_user_with_options(instance_id, application_id, user_id, headers, runtime)
+        return self.delete_user_with_options(instance_id, application_id, user_id, request, headers, runtime)
 
     async def delete_user_async(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DeleteUserRequest,
     ) -> main_models.DeleteUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.DeleteUserHeaders()
-        return await self.delete_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
+        return await self.delete_user_with_options_async(instance_id, application_id, user_id, request, headers, runtime)
 
     def disable_user_with_options(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DisableUserRequest,
         headers: main_models.DisableUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DisableUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -872,9 +1002,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DisableUserRequest,
         headers: main_models.DisableUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.DisableUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -904,29 +1036,33 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DisableUserRequest,
     ) -> main_models.DisableUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.DisableUserHeaders()
-        return self.disable_user_with_options(instance_id, application_id, user_id, headers, runtime)
+        return self.disable_user_with_options(instance_id, application_id, user_id, request, headers, runtime)
 
     async def disable_user_async(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.DisableUserRequest,
     ) -> main_models.DisableUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.DisableUserHeaders()
-        return await self.disable_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
+        return await self.disable_user_with_options_async(instance_id, application_id, user_id, request, headers, runtime)
 
     def enable_user_with_options(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.EnableUserRequest,
         headers: main_models.EnableUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.EnableUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -956,9 +1092,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.EnableUserRequest,
         headers: main_models.EnableUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.EnableUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -988,20 +1126,22 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.EnableUserRequest,
     ) -> main_models.EnableUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.EnableUserHeaders()
-        return self.enable_user_with_options(instance_id, application_id, user_id, headers, runtime)
+        return self.enable_user_with_options(instance_id, application_id, user_id, request, headers, runtime)
 
     async def enable_user_async(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.EnableUserRequest,
     ) -> main_models.EnableUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.EnableUserHeaders()
-        return await self.enable_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
+        return await self.enable_user_with_options_async(instance_id, application_id, user_id, request, headers, runtime)
 
     def fetch_oauth_authentication_token_with_options(
         self,
@@ -1571,9 +1711,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetApplicationProvisioningScopeRequest,
         headers: main_models.GetApplicationProvisioningScopeHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetApplicationProvisioningScopeResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1602,9 +1744,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetApplicationProvisioningScopeRequest,
         headers: main_models.GetApplicationProvisioningScopeHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetApplicationProvisioningScopeResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1633,28 +1777,32 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetApplicationProvisioningScopeRequest,
     ) -> main_models.GetApplicationProvisioningScopeResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetApplicationProvisioningScopeHeaders()
-        return self.get_application_provisioning_scope_with_options(instance_id, application_id, headers, runtime)
+        return self.get_application_provisioning_scope_with_options(instance_id, application_id, request, headers, runtime)
 
     async def get_application_provisioning_scope_async(
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetApplicationProvisioningScopeRequest,
     ) -> main_models.GetApplicationProvisioningScopeResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetApplicationProvisioningScopeHeaders()
-        return await self.get_application_provisioning_scope_with_options_async(instance_id, application_id, headers, runtime)
+        return await self.get_application_provisioning_scope_with_options_async(instance_id, application_id, request, headers, runtime)
 
     def get_group_with_options(
         self,
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.GetGroupRequest,
         headers: main_models.GetGroupHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetGroupResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1684,9 +1832,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.GetGroupRequest,
         headers: main_models.GetGroupHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetGroupResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1716,29 +1866,33 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.GetGroupRequest,
     ) -> main_models.GetGroupResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetGroupHeaders()
-        return self.get_group_with_options(instance_id, application_id, group_id, headers, runtime)
+        return self.get_group_with_options(instance_id, application_id, group_id, request, headers, runtime)
 
     async def get_group_async(
         self,
         instance_id: str,
         application_id: str,
         group_id: str,
+        request: main_models.GetGroupRequest,
     ) -> main_models.GetGroupResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetGroupHeaders()
-        return await self.get_group_with_options_async(instance_id, application_id, group_id, headers, runtime)
+        return await self.get_group_with_options_async(instance_id, application_id, group_id, request, headers, runtime)
 
     def get_organizational_unit_with_options(
         self,
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.GetOrganizationalUnitRequest,
         headers: main_models.GetOrganizationalUnitHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetOrganizationalUnitResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1768,9 +1922,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.GetOrganizationalUnitRequest,
         headers: main_models.GetOrganizationalUnitHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetOrganizationalUnitResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1800,20 +1956,22 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.GetOrganizationalUnitRequest,
     ) -> main_models.GetOrganizationalUnitResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetOrganizationalUnitHeaders()
-        return self.get_organizational_unit_with_options(instance_id, application_id, organizational_unit_id, headers, runtime)
+        return self.get_organizational_unit_with_options(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     async def get_organizational_unit_async(
         self,
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.GetOrganizationalUnitRequest,
     ) -> main_models.GetOrganizationalUnitResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetOrganizationalUnitHeaders()
-        return await self.get_organizational_unit_with_options_async(instance_id, application_id, organizational_unit_id, headers, runtime)
+        return await self.get_organizational_unit_with_options_async(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     def get_organizational_unit_id_by_external_id_with_options(
         self,
@@ -1922,9 +2080,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.GetUserRequest,
         headers: main_models.GetUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1954,9 +2114,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.GetUserRequest,
         headers: main_models.GetUserHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetUserResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1986,20 +2148,22 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.GetUserRequest,
     ) -> main_models.GetUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetUserHeaders()
-        return self.get_user_with_options(instance_id, application_id, user_id, headers, runtime)
+        return self.get_user_with_options(instance_id, application_id, user_id, request, headers, runtime)
 
     async def get_user_async(
         self,
         instance_id: str,
         application_id: str,
         user_id: str,
+        request: main_models.GetUserRequest,
     ) -> main_models.GetUserResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetUserHeaders()
-        return await self.get_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
+        return await self.get_user_with_options_async(instance_id, application_id, user_id, request, headers, runtime)
 
     def get_user_id_by_email_with_options(
         self,
@@ -2389,9 +2553,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetUserInfoRequest,
         headers: main_models.GetUserInfoHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetUserInfoResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -2420,9 +2586,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetUserInfoRequest,
         headers: main_models.GetUserInfoHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetUserInfoResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -2451,19 +2619,21 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetUserInfoRequest,
     ) -> main_models.GetUserInfoResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetUserInfoHeaders()
-        return self.get_user_info_with_options(instance_id, application_id, headers, runtime)
+        return self.get_user_info_with_options(instance_id, application_id, request, headers, runtime)
 
     async def get_user_info_async(
         self,
         instance_id: str,
         application_id: str,
+        request: main_models.GetUserInfoRequest,
     ) -> main_models.GetUserInfoResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetUserInfoHeaders()
-        return await self.get_user_info_with_options_async(instance_id, application_id, headers, runtime)
+        return await self.get_user_info_with_options_async(instance_id, application_id, request, headers, runtime)
 
     def list_authentication_tokens_with_options(
         self,
@@ -2784,9 +2954,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.ListOrganizationalUnitParentIdsRequest,
         headers: main_models.ListOrganizationalUnitParentIdsHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.ListOrganizationalUnitParentIdsResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -2816,9 +2988,11 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.ListOrganizationalUnitParentIdsRequest,
         headers: main_models.ListOrganizationalUnitParentIdsHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.ListOrganizationalUnitParentIdsResponse:
+        request.validate()
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -2848,20 +3022,22 @@ class Client(OpenApiClient):
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.ListOrganizationalUnitParentIdsRequest,
     ) -> main_models.ListOrganizationalUnitParentIdsResponse:
         runtime = RuntimeOptions()
         headers = main_models.ListOrganizationalUnitParentIdsHeaders()
-        return self.list_organizational_unit_parent_ids_with_options(instance_id, application_id, organizational_unit_id, headers, runtime)
+        return self.list_organizational_unit_parent_ids_with_options(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     async def list_organizational_unit_parent_ids_async(
         self,
         instance_id: str,
         application_id: str,
         organizational_unit_id: str,
+        request: main_models.ListOrganizationalUnitParentIdsRequest,
     ) -> main_models.ListOrganizationalUnitParentIdsResponse:
         runtime = RuntimeOptions()
         headers = main_models.ListOrganizationalUnitParentIdsHeaders()
-        return await self.list_organizational_unit_parent_ids_with_options_async(instance_id, application_id, organizational_unit_id, headers, runtime)
+        return await self.list_organizational_unit_parent_ids_with_options_async(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     def list_organizational_units_with_options(
         self,

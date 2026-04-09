@@ -20,15 +20,24 @@ from ._create_user_headers import CreateUserHeaders
 from ._create_user_request import CreateUserRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
+from ._create_user_exclusive_credential_headers import CreateUserExclusiveCredentialHeaders
+from ._create_user_exclusive_credential_request import CreateUserExclusiveCredentialRequest
+from ._create_user_exclusive_credential_response_body import CreateUserExclusiveCredentialResponseBody
+from ._create_user_exclusive_credential_response import CreateUserExclusiveCredentialResponse
 from ._delete_group_headers import DeleteGroupHeaders
+from ._delete_group_request import DeleteGroupRequest
 from ._delete_group_response import DeleteGroupResponse
 from ._delete_organizational_unit_headers import DeleteOrganizationalUnitHeaders
+from ._delete_organizational_unit_request import DeleteOrganizationalUnitRequest
 from ._delete_organizational_unit_response import DeleteOrganizationalUnitResponse
 from ._delete_user_headers import DeleteUserHeaders
+from ._delete_user_request import DeleteUserRequest
 from ._delete_user_response import DeleteUserResponse
 from ._disable_user_headers import DisableUserHeaders
+from ._disable_user_request import DisableUserRequest
 from ._disable_user_response import DisableUserResponse
 from ._enable_user_headers import EnableUserHeaders
+from ._enable_user_request import EnableUserRequest
 from ._enable_user_response import EnableUserResponse
 from ._fetch_oauth_authentication_token_headers import FetchOAuthAuthenticationTokenHeaders
 from ._fetch_oauth_authentication_token_request import FetchOAuthAuthenticationTokenRequest
@@ -48,12 +57,15 @@ from ._generate_token_by_authorization_server_request import GenerateTokenByAuth
 from ._generate_token_by_authorization_server_response_body import GenerateTokenByAuthorizationServerResponseBody
 from ._generate_token_by_authorization_server_response import GenerateTokenByAuthorizationServerResponse
 from ._get_application_provisioning_scope_headers import GetApplicationProvisioningScopeHeaders
+from ._get_application_provisioning_scope_request import GetApplicationProvisioningScopeRequest
 from ._get_application_provisioning_scope_response_body import GetApplicationProvisioningScopeResponseBody
 from ._get_application_provisioning_scope_response import GetApplicationProvisioningScopeResponse
 from ._get_group_headers import GetGroupHeaders
+from ._get_group_request import GetGroupRequest
 from ._get_group_response_body import GetGroupResponseBody
 from ._get_group_response import GetGroupResponse
 from ._get_organizational_unit_headers import GetOrganizationalUnitHeaders
+from ._get_organizational_unit_request import GetOrganizationalUnitRequest
 from ._get_organizational_unit_response_body import GetOrganizationalUnitResponseBody
 from ._get_organizational_unit_response import GetOrganizationalUnitResponse
 from ._get_organizational_unit_id_by_external_id_headers import GetOrganizationalUnitIdByExternalIdHeaders
@@ -61,6 +73,7 @@ from ._get_organizational_unit_id_by_external_id_request import GetOrganizationa
 from ._get_organizational_unit_id_by_external_id_response_body import GetOrganizationalUnitIdByExternalIdResponseBody
 from ._get_organizational_unit_id_by_external_id_response import GetOrganizationalUnitIdByExternalIdResponse
 from ._get_user_headers import GetUserHeaders
+from ._get_user_request import GetUserRequest
 from ._get_user_response_body import GetUserResponseBody
 from ._get_user_response import GetUserResponse
 from ._get_user_id_by_email_headers import GetUserIdByEmailHeaders
@@ -80,6 +93,7 @@ from ._get_user_id_by_username_request import GetUserIdByUsernameRequest
 from ._get_user_id_by_username_response_body import GetUserIdByUsernameResponseBody
 from ._get_user_id_by_username_response import GetUserIdByUsernameResponse
 from ._get_user_info_headers import GetUserInfoHeaders
+from ._get_user_info_request import GetUserInfoRequest
 from ._get_user_info_response import GetUserInfoResponse
 from ._list_authentication_tokens_headers import ListAuthenticationTokensHeaders
 from ._list_authentication_tokens_request import ListAuthenticationTokensRequest
@@ -94,6 +108,7 @@ from ._list_groups_for_user_request import ListGroupsForUserRequest
 from ._list_groups_for_user_response_body import ListGroupsForUserResponseBody
 from ._list_groups_for_user_response import ListGroupsForUserResponse
 from ._list_organizational_unit_parent_ids_headers import ListOrganizationalUnitParentIdsHeaders
+from ._list_organizational_unit_parent_ids_request import ListOrganizationalUnitParentIdsRequest
 from ._list_organizational_unit_parent_ids_response_body import ListOrganizationalUnitParentIdsResponseBody
 from ._list_organizational_unit_parent_ids_response import ListOrganizationalUnitParentIdsResponse
 from ._list_organizational_units_headers import ListOrganizationalUnitsHeaders
@@ -163,6 +178,8 @@ from ._validate_authentication_token_response_body import ValidateAuthentication
 from ._validate_authentication_token_response import ValidateAuthenticationTokenResponse
 from ._create_user_request import CreateUserRequestCustomFields
 from ._create_user_request import CreateUserRequestPasswordInitializationConfig
+from ._create_user_exclusive_credential_request import CreateUserExclusiveCredentialRequestCredentialContentApiKeyContent
+from ._create_user_exclusive_credential_request import CreateUserExclusiveCredentialRequestCredentialContent
 from ._fetch_oauth_authentication_token_response_body import FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent
 from ._generate_jwt_authentication_token_response_body import GenerateJwtAuthenticationTokenResponseBodyJwtContent
 from ._get_user_response_body import GetUserResponseBodyCustomFields
@@ -203,15 +220,24 @@ __all__ = [
     CreateUserRequest,
     CreateUserResponseBody,
     CreateUserResponse,
+    CreateUserExclusiveCredentialHeaders,
+    CreateUserExclusiveCredentialRequest,
+    CreateUserExclusiveCredentialResponseBody,
+    CreateUserExclusiveCredentialResponse,
     DeleteGroupHeaders,
+    DeleteGroupRequest,
     DeleteGroupResponse,
     DeleteOrganizationalUnitHeaders,
+    DeleteOrganizationalUnitRequest,
     DeleteOrganizationalUnitResponse,
     DeleteUserHeaders,
+    DeleteUserRequest,
     DeleteUserResponse,
     DisableUserHeaders,
+    DisableUserRequest,
     DisableUserResponse,
     EnableUserHeaders,
+    EnableUserRequest,
     EnableUserResponse,
     FetchOAuthAuthenticationTokenHeaders,
     FetchOAuthAuthenticationTokenRequest,
@@ -231,12 +257,15 @@ __all__ = [
     GenerateTokenByAuthorizationServerResponseBody,
     GenerateTokenByAuthorizationServerResponse,
     GetApplicationProvisioningScopeHeaders,
+    GetApplicationProvisioningScopeRequest,
     GetApplicationProvisioningScopeResponseBody,
     GetApplicationProvisioningScopeResponse,
     GetGroupHeaders,
+    GetGroupRequest,
     GetGroupResponseBody,
     GetGroupResponse,
     GetOrganizationalUnitHeaders,
+    GetOrganizationalUnitRequest,
     GetOrganizationalUnitResponseBody,
     GetOrganizationalUnitResponse,
     GetOrganizationalUnitIdByExternalIdHeaders,
@@ -244,6 +273,7 @@ __all__ = [
     GetOrganizationalUnitIdByExternalIdResponseBody,
     GetOrganizationalUnitIdByExternalIdResponse,
     GetUserHeaders,
+    GetUserRequest,
     GetUserResponseBody,
     GetUserResponse,
     GetUserIdByEmailHeaders,
@@ -263,6 +293,7 @@ __all__ = [
     GetUserIdByUsernameResponseBody,
     GetUserIdByUsernameResponse,
     GetUserInfoHeaders,
+    GetUserInfoRequest,
     GetUserInfoResponse,
     ListAuthenticationTokensHeaders,
     ListAuthenticationTokensRequest,
@@ -277,6 +308,7 @@ __all__ = [
     ListGroupsForUserResponseBody,
     ListGroupsForUserResponse,
     ListOrganizationalUnitParentIdsHeaders,
+    ListOrganizationalUnitParentIdsRequest,
     ListOrganizationalUnitParentIdsResponseBody,
     ListOrganizationalUnitParentIdsResponse,
     ListOrganizationalUnitsHeaders,
@@ -346,6 +378,8 @@ __all__ = [
     ValidateAuthenticationTokenResponse,
     CreateUserRequestCustomFields,
     CreateUserRequestPasswordInitializationConfig,
+    CreateUserExclusiveCredentialRequestCredentialContentApiKeyContent,
+    CreateUserExclusiveCredentialRequestCredentialContent,
     FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent,
     GenerateJwtAuthenticationTokenResponseBodyJwtContent,
     GetUserResponseBodyCustomFields,

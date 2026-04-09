@@ -1,3 +1,7 @@
+2026-04-09 Version: 1.7.0
+- Support API CreateUserExclusiveCredential.
+
+
 2026-04-08 Version: 1.6.1
 - Update API ObtainCredential: add response parameters Body.credentialSharingScope.
 - Update API ObtainCredential: add response parameters Body.exclusiveUserId.
