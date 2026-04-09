@@ -17,19 +17,12 @@ class ApiMcpServerValidateHclResponseBody(DaraModel):
         request_id: str = None,
         warnings: List[str] = None,
     ):
-        # The diagnostic report of the code.
         self.diagnostic_report = diagnostic_report
-        # The list of error messages.
         self.errors = errors
-        # The unique identifier of the Terraform HCL code.
         self.hash = hash
-        # Indicates whether the code is valid.
         self.is_valid = is_valid
-        # The list of parameters.
         self.parameters = parameters
-        # The request ID.
         self.request_id = request_id
-        # The list of warning messages.
         self.warnings = warnings
 
     def validate(self):

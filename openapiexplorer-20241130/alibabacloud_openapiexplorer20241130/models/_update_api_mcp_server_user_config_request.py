@@ -12,9 +12,7 @@ class UpdateApiMcpServerUserConfigRequest(DaraModel):
         enable_public_access: bool = None,
         vpc_whitelists: List[str] = None,
     ):
-        # Specifies whether to enable public network access for all API MCP Servers in your account, including the system MCP Server. By default, public network access is enabled. If you disable it, you can only access the servers through their VPC domain names.
         self.enable_public_access = enable_public_access
-        # The VPC whitelist. After disabling public network access, use this parameter to specify allowed source VPCs. If you do not set this parameter or leave it empty, all source VPCs are allowed.
         self.vpc_whitelists = vpc_whitelists
 
     def validate(self):

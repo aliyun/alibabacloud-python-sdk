@@ -28,45 +28,24 @@ class CreateApiMcpServerRequest(DaraModel):
         terraform_tools: List[main_models.CreateApiMcpServerRequestTerraformTools] = None,
         vpc_whitelists: List[str] = None,
     ):
-        # The list of supplementary API descriptions.
         self.additional_api_descriptions = additional_api_descriptions
-        # The list of APIs to add. This parameter cannot be empty.
-        # 
         # This parameter is required.
         self.apis = apis
-        # An additional policy for role assumption when multi-account access is enabled. If this policy exists, the permissions for role assumption are based on this policy, which overwrites the permissions defined for the role itself.
         self.assume_role_extra_policy = assume_role_extra_policy
-        # The name of the RAM role in the destination account that is assumed for cross-account operations when multi-account access is enabled.
         self.assume_role_name = assume_role_name
-        # Ensures the idempotence of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. Use a universally unique identifier (UUID). The token expires in three days.
         self.client_token = client_token
-        # The description of the API MCP service.
         self.description = description
-        # Specifies whether to enable multi-account access.
         self.enable_assume_role = enable_assume_role
-        # Specifies whether to enable a custom VPC whitelist. If not enabled, the account-level configuration is used.
         self.enable_custom_vpc_whitelist = enable_custom_vpc_whitelist
-        # The MCP instruction. It prompts the large language model on how to use the MCP. The client must support the Instructions field of the standard MCP protocol.
         self.instructions = instructions
-        # The language of the API documentation for the API MCP service. You can select Chinese or English API documentation. The prompts in different languages may affect the AI\\"s response.
         self.language = language
-        # The name of the MCP server. The name must be 3 to 64 characters in length and can contain only lowercase letters, digits, underscores (_), and hyphens (-). It cannot start with a digit. The name must be unique within the same Alibaba Cloud account.
-        # 
         # This parameter is required.
         self.name = name
-        # The custom OAuth client ID when you select a custom OAuth configuration.
-        # 
-        # `Only web and native applications are supported. The OAuth scope must include /acs/mcp-server.`
         self.oauth_client_id = oauth_client_id
-        # The list of prompt configurations.
         self.prompts = prompts
-        # Specifies whether to enable public network access.
         self.public_access = public_access
-        # The list of system tools.
         self.system_tools = system_tools
-        # The list of Terraform tools.
         self.terraform_tools = terraform_tools
-        # The VPC whitelist that restricts the source of access after public network access is disabled. If you do not set this parameter or leave it empty, the source is not restricted.
         self.vpc_whitelists = vpc_whitelists
 
     def validate(self):
@@ -229,21 +208,10 @@ class CreateApiMcpServerRequestTerraformTools(DaraModel):
         destroy_policy: str = None,
         name: str = None,
     ):
-        # Specifies whether to execute the task asynchronously. If set to true, the system immediately proceeds to the next task after initiating a task execution, without waiting for each resource operation to complete.
         self.async_ = async_
-        # The code of the Terraform tool. For more information, see [HCL language overview](https://www.alibabacloud.com/help/en/terraform/terraform-configuration-and-hcl-language-overview).
         self.code = code
-        # The description of the Terraform tool.
         self.description = description
-        # The deletion policy. After a task is executed, the system applies the following cleanup policy to temporary resources based on the task execution status.
-        # 
-        # - NEVER: Does not delete any created resources, regardless of whether the task execution succeeds or fails.
-        # 
-        # - ALWAYS: Immediately destroys all related resources after the task is executed, regardless of whether the execution succeeds or fails.
-        # 
-        # - ON_FAILURE: Deletes related resources only when the task execution fails. If the task execution succeeds, the resources are retained.
         self.destroy_policy = destroy_policy
-        # The name of the Terraform tool.
         self.name = name
 
     def validate(self):
@@ -298,13 +266,9 @@ class CreateApiMcpServerRequestPrompts(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The list of parameters supported by the prompt.
         self.arguments = arguments
-        # The content of the prompt. Variables are specified in the {{xxx}} format. xxx is a variable that must be defined in the arguments parameter.
         self.content = content
-        # The description.
         self.description = description
-        # The prompt name.
         self.name = name
 
     def validate(self):
@@ -360,11 +324,8 @@ class CreateApiMcpServerRequestPromptsArguments(DaraModel):
         name: str = None,
         required: bool = None,
     ):
-        # The description of the parameter.
         self.description = description
-        # The parameter name.
         self.name = name
-        # Specifies whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -406,20 +367,10 @@ class CreateApiMcpServerRequestApis(DaraModel):
         product: str = None,
         selectors: List[str] = None,
     ):
-        # The POP version of the API that is exposed to the MCP server.
-        # 
         # This parameter is required.
         self.api_version = api_version
-        # The product code.
-        # 
-        # - Call the GetRequestLog operation to obtain the product code from the response.
-        # 
-        # - Find the product code from the URL of the product in OpenAPI Portal. For example, the URL of Short Message Service in OpenAPI Portal is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is Dysmsapi.
-        # 
         # This parameter is required.
         self.product = product
-        # The list of API name matching rules. This parameter cannot be empty.
-        # 
         # This parameter is required.
         self.selectors = selectors
 
@@ -466,23 +417,12 @@ class CreateApiMcpServerRequestAdditionalApiDescriptions(DaraModel):
         execute_cli_command: bool = None,
         product: str = None,
     ):
-        # The API name.
         self.api_name = api_name
-        # The API metadata in JSON format. For more information about the format, see https\\://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json. You can overwrite the summary and parameters.
         self.api_override_json = api_override_json
-        # The POP version of the API that is exposed to the MCP server.
         self.api_version = api_version
-        # The list of constant input parameters. These parameters are not included in the output during API parameter parsing.
         self.const_parameters = const_parameters
-        # Specifies whether to return the schema of the response parameters. Returning the schema increases the size of the entire API MCP server. The default value is null, which means the schema is not returned.
         self.enable_output_schema = enable_output_schema
-        # Specifies whether to return the command-line interface (CLI) command for execution. In this mode, the API call is not executed. Instead, the corresponding CLI command is returned. This is suitable for long-running tasks that need to be executed using Alibaba Cloud CLI.
         self.execute_cli_command = execute_cli_command
-        # The product code.
-        # 
-        # - Call the GetRequestLog operation to obtain the product code from the response.
-        # 
-        # - Find the product code from the URL of the product in OpenAPI Portal. For example, the URL of Short Message Service in OpenAPI Portal is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is Dysmsapi.
         self.product = product
 
     def validate(self):
@@ -557,9 +497,7 @@ class CreateApiMcpServerRequestAdditionalApiDescriptionsConstParameters(DaraMode
         key: str = None,
         value: Any = None,
     ):
-        # The parameter name. Only first-level parameter names are supported. For ROA-style APIs, you can set the parameter to body.xx. You cannot set values that exceed the top-level parameters.
         self.key = key
-        # The value of the parameter.
         self.value = value
 
     def validate(self):

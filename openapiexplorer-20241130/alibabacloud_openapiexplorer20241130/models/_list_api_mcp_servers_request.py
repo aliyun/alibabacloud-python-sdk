@@ -18,31 +18,15 @@ class ListApiMcpServersRequest(DaraModel):
         source_type: str = None,
         update_time: str = None,
     ):
-        # The time when the API MCP server was created.
         self.create_time = create_time
-        # The description of the API MCP service.
         self.description = description
-        # The ID of the API MCP service.
         self.id = id
-        # The search keyword. Supports fuzzy search by API name and exact search by API ID.
         self.keyword = keyword
-        # The language of the API reference for the API MCP service. The language of the prompt can affect the response from the AI. Valid values: \\`ZH_CN\\`, \\`EN_US\\`.
         self.language = language
-        # The maximum number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The token that is used to start the next query. Set this parameter to the \\`nextToken\\` value that was returned from the previous API call.
-        # 
-        # > This parameter is not required for the first query. If a query does not return all results, pass the \\`nextToken\\` value from the previous query to continue.
         self.next_token = next_token
-        # The number of data entries to skip.
         self.skip = skip
-        # The type of the API MCP service.
-        # 
-        # - custom: a custom service
-        # 
-        # - system: a system service
         self.source_type = source_type
-        # The time when the API MCP server was last updated.
         self.update_time = update_time
 
     def validate(self):

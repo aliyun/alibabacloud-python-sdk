@@ -10,10 +10,7 @@ class DeleteApiMcpServerRequest(DaraModel):
         client_token: str = None,
         id: str = None,
     ):
-        # The client token used to ensure the idempotence of the request. Generate this value on your client and make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. Use a universally unique identifier (UUID). The token is valid for three days.
         self.client_token = client_token
-        # The ID of the API MCP service.
-        # 
         # This parameter is required.
         self.id = id
 

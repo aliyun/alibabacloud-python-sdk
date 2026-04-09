@@ -41,6 +41,9 @@ from ._list_api_mcp_server_system_tools_response import ListApiMcpServerSystemTo
 from ._list_api_mcp_servers_request import ListApiMcpServersRequest
 from ._list_api_mcp_servers_response_body import ListApiMcpServersResponseBody
 from ._list_api_mcp_servers_response import ListApiMcpServersResponse
+from ._list_products_request import ListProductsRequest
+from ._list_products_response_body import ListProductsResponseBody
+from ._list_products_response import ListProductsResponse
 from ._update_api_mcp_server_request import UpdateApiMcpServerRequest
 from ._update_api_mcp_server_response_body import UpdateApiMcpServerResponseBody
 from ._update_api_mcp_server_response import UpdateApiMcpServerResponse
@@ -92,6 +95,7 @@ from ._list_api_mcp_servers_response_body import ListApiMcpServersResponseBodyAp
 from ._list_api_mcp_servers_response_body import ListApiMcpServersResponseBodyApiMcpServersTerraformTools
 from ._list_api_mcp_servers_response_body import ListApiMcpServersResponseBodyApiMcpServersUrls
 from ._list_api_mcp_servers_response_body import ListApiMcpServersResponseBodyApiMcpServers
+from ._list_products_response_body import ListProductsResponseBodyProducts
 from ._update_api_mcp_server_request import UpdateApiMcpServerRequestAdditionalApiDescriptionsConstParameters
 from ._update_api_mcp_server_request import UpdateApiMcpServerRequestAdditionalApiDescriptions
 from ._update_api_mcp_server_request import UpdateApiMcpServerRequestApis
@@ -139,6 +143,9 @@ __all__ = [
     ListApiMcpServersRequest,
     ListApiMcpServersResponseBody,
     ListApiMcpServersResponse,
+    ListProductsRequest,
+    ListProductsResponseBody,
+    ListProductsResponse,
     UpdateApiMcpServerRequest,
     UpdateApiMcpServerResponseBody,
     UpdateApiMcpServerResponse,
@@ -190,6 +197,7 @@ __all__ = [
     ListApiMcpServersResponseBodyApiMcpServersTerraformTools,
     ListApiMcpServersResponseBodyApiMcpServersUrls,
     ListApiMcpServersResponseBodyApiMcpServers,
+    ListProductsResponseBodyProducts,
     UpdateApiMcpServerRequestAdditionalApiDescriptionsConstParameters,
     UpdateApiMcpServerRequestAdditionalApiDescriptions,
     UpdateApiMcpServerRequestApis,

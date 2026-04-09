@@ -10,17 +10,8 @@ class ListApiDefinitionsRequest(DaraModel):
         api_version: str = None,
         product: str = None,
     ):
-        # The version of the API.
-        # 
         # This parameter is required.
         self.api_version = api_version
-        # The product code.
-        # 
-        # - Call the GetRequestLog operation to obtain the product code from the response.
-        # 
-        # - Find the product code in the URL of the OpenAPI Portal. For example, <props="china">the URL of the OpenAPI Portal for Short Message Service is https\\://api.aliyun.com/product/Dysmsapi. The product code for Short Message Service is Dysmsapi.
-        #   <props="intl">the URL of the OpenAPI Portal for Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code for Short Message Service is Dysmsapi.
-        # 
         # This parameter is required.
         self.product = product
 

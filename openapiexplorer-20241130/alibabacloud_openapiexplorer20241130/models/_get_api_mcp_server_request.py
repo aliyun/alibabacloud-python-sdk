@@ -9,8 +9,6 @@ class GetApiMcpServerRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID of the API MCP service.
-        # 
         # This parameter is required.
         self.id = id
 

@@ -12,11 +12,8 @@ class CreateApiMcpServerResponseBody(DaraModel):
         request_id: str = None,
         urls: main_models.CreateApiMcpServerResponseBodyUrls = None,
     ):
-        # The ID of the successfully created API MCP service.
         self.id = id
-        # The request ID.
         self.request_id = request_id
-        # The connection information for the API MCP service.
         self.urls = urls
 
     def validate(self):
@@ -61,13 +58,9 @@ class CreateApiMcpServerResponseBodyUrls(DaraModel):
         vpc_mcp: str = None,
         vpc_sse: str = None,
     ):
-        # The connection information for the streamable HTTP protocol. This is the recommended protocol.
         self.mcp = mcp
-        # The connection information for the Server-Sent Events (SSE) protocol.
         self.sse = sse
-        # The endpoint of the streamable HTTP protocol in a VPC.
         self.vpc_mcp = vpc_mcp
-        # The endpoint of the SSE protocol in a VPC.
         self.vpc_sse = vpc_sse
 
     def validate(self):

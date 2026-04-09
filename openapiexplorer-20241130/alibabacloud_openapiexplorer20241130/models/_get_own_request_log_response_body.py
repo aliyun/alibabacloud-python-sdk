@@ -13,9 +13,9 @@ class GetOwnRequestLogResponseBody(DaraModel):
         log_info: main_models.GetOwnRequestLogResponseBodyLogInfo = None,
         request_id: str = None,
     ):
-        # The details of the API request log.
+        # The detailed information about the log of the API call.
         self.log_info = log_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,13 +57,13 @@ class GetOwnRequestLogResponseBodyLogInfo(DaraModel):
     ):
         # The authentication information.
         self.authentication_info = authentication_info
-        # The basic information about the API request.
+        # The basic information about the log of the API call.
         self.basic_info = basic_info
         # The information about the caller.
         self.caller_info = caller_info
-        # The request parameters.
+        # The information about the request parameters.
         self.parameters = parameters
-        # The information returned for the request.
+        # The information that is returned for the request.
         self.responses = responses
 
     def validate(self):
@@ -136,9 +136,9 @@ class GetOwnRequestLogResponseBodyLogInfoResponses(DaraModel):
         response_body: str = None,
         response_body_format: str = None,
     ):
-        # The returned information.
+        # The response body.
         self.response_body = response_body
-        # The format of the response body. Valid values: \\`JSON\\`, \\`XML\\`, and \\`HTML\\`.
+        # The type of the response body. Valid values: JSON, XML, and HTML.
         self.response_body_format = response_body_format
 
     def validate(self):
@@ -177,7 +177,7 @@ class GetOwnRequestLogResponseBodyLogInfoParameters(DaraModel):
     ):
         # The name of the request parameter.
         self.name = name
-        # Specifies whether the request parameter is required.
+        # Indicates whether the request parameter is required.
         self.required = required
         # The type of the request parameter.
         self.type = type
@@ -231,21 +231,19 @@ class GetOwnRequestLogResponseBodyLogInfoCallerInfo(DaraModel):
         master_account_id: str = None,
         user_agent: str = None,
     ):
-        # The ID of the caller\\"s account.
+        # The account ID of the caller.
         self.caller_account_id = caller_account_id
         # The IP address of the caller.
         self.caller_ip = caller_ip
         # The type of the caller. Valid values:
         # 
-        # 1. customer: An Alibaba Cloud account.
-        # 
-        # 2. sub: A RAM user.
-        # 
-        # 3. AssumedRoleUser: A temporary identity that uses a Security Token Service (STS) token.
+        # 1.  customer: an Alibaba Cloud account
+        # 2.  sub: a RAM user
+        # 3.  AssumedRoleUser: a user that uses a temporary Security Token Service (STS) token
         self.caller_type = caller_type
         # The ID of the Alibaba Cloud account.
         self.master_account_id = master_account_id
-        # The user agent.
+        # The information about the user agent.
         self.user_agent = user_agent
 
     def validate(self):
@@ -314,41 +312,41 @@ class GetOwnRequestLogResponseBodyLogInfoBasicInfo(DaraModel):
         sdk_request_time: str = None,
         throttling_result: str = None,
     ):
-        # The details of the permission error.
+        # The error message returned if the operator does not have the required permissions.
         self.access_denied_detail = access_denied_detail
-        # The name of the API in the queried log.
+        # The name of the API.
         self.api = api
-        # Information about the API reference.
+        # The information about the API documentation.
         self.api_doc = api_doc
-        # The API style. Valid values: \\`ROA\\` and \\`RPC\\`.
+        # The API style. Valid values: roa and rpc.
         self.api_style = api_style
-        # The API version.
+        # The version of the API.
         self.api_version = api_version
-        # The endpoint of the service in the region.
+        # The endpoint of the service region.
         self.endpoint = endpoint
-        # The error code in the queried log. This parameter is empty if no error is reported for the request.
+        # The error code in the log. This parameter is left empty if no error is reported in the API call.
         self.error_code = error_code
-        # The error message in the queried log. This parameter is empty if no error is reported for the request.
+        # The error message in the log. This parameter is left empty if no error is reported in the API call.
         self.error_message = error_message
-        # The time when the gateway received the request. The time is in the \\`yyyy-MM-ddTHH:mm:ssZ\\` format and is in UTC.
+        # The time when the gateway receives the request. Indicate the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.gateway_process_time = gateway_process_time
         # The HTTP request method.
         self.http_method = http_method
-        # The HTTP status code in the queried log.
+        # The HTTP status code in the log.
         self.http_status_code = http_status_code
-        # The request ID that is passed in the request.
+        # The request ID.
         self.log_request_id = log_request_id
         # The product code.
         self.product = product
-        # The name of the product in Chinese and English.
+        # The product name, which includes the Chinese name and English name.
         self.product_name = product_name
-        # The ID of the region.
+        # The service region ID.
         self.region_id = region_id
-        # The time that elapses from when the gateway receives the request to when the gateway returns the response. Unit: ms.
+        # The duration from when the gateway receives the request to when the client receives a response. Unit: milliseconds.
         self.request_duration = request_duration
-        # The time when the request was initiated. The time is in the \\`yyyy-MM-ddTHH:mm:ssZ\\` format and is in UTC.
+        # The time when the request is initiated. Indicate the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.sdk_request_time = sdk_request_time
-        # The result of the throttling check.\\`FC.PASS\\`: The request was not blocked by throttling.\\`FC.DENY\\`: The request was blocked by throttling.
+        # The throttling result. Valid values: FC.PASS: The task is not blocked by throttling. FC.DENY: The task is blocked by throttling.
         self.throttling_result = throttling_result
 
     def validate(self):
@@ -487,9 +485,9 @@ class GetOwnRequestLogResponseBodyLogInfoBasicInfoProductName(DaraModel):
         cn_name: str = None,
         en_name: str = None,
     ):
-        # The Chinese name of the product.
+        # The product name in Chinese.
         self.cn_name = cn_name
-        # The English name of the product.
+        # The product name in English.
         self.en_name = en_name
 
     def validate(self):
@@ -524,9 +522,9 @@ class GetOwnRequestLogResponseBodyLogInfoBasicInfoApiDoc(DaraModel):
         alibabacloud_site: str = None,
         aliyun_site: str = None,
     ):
-        # The URL of the API reference for the international site (alibabacloud.com).
+        # The documentation URL on the international site (alibabacloud.com).
         self.alibabacloud_site = alibabacloud_site
-        # The URL of the API reference for the China site (aliyun.com).
+        # The documentation URL on the China site (aliyun.com).
         self.aliyun_site = aliyun_site
 
     def validate(self):
@@ -566,19 +564,19 @@ class GetOwnRequestLogResponseBodyLogInfoBasicInfoAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The specific operation that caused the permission error.
+        # The operation that the operator does not have permissions to perform.
         self.auth_action = auth_action
         # The identity.
         self.auth_principal_display_name = auth_principal_display_name
-        # The UID of the Alibaba Cloud account to which the current identity belongs.
+        # The ID of the Alibaba Cloud account to which the current identity belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type of the operator.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic information. Call the \\`DecodeDiagnosticMessage\\` operation of RAM to obtain more diagnostic information.
+        # The information after encoding, which can be used for troubleshooting. You can call the DecodeDiagnosticMessage operation of Resource Access Management (RAM) for further diagnostics.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The reason why the permission was denied.
+        # The cause of the permission-related error.
         self.no_permission_type = no_permission_type
-        # The type of the policy that caused the permission error.
+        # The type of the policy that causes the permission-related error.
         self.policy_type = policy_type
 
     def validate(self):
@@ -646,23 +644,17 @@ class GetOwnRequestLogResponseBodyLogInfoAuthenticationInfo(DaraModel):
     ):
         # The authentication type. Valid values:
         # 
-        # - \\`AK\\`: an AccessKey, which can be a permanent AccessKey, a temporary AccessKey, or an STS token.
-        # 
-        # - \\`PRIVATEKEY\\`: an AccessKey for asymmetric key encryption.
-        # 
-        # - \\`BEARERTOKEN\\`: an authentication mechanism that is widely used in the OAuth 2.0 framework and cloud services.
-        # 
-        # - \\`CUSTOM_SPI\\`: an efficient and secure authentication method that is suitable for the delivery and management of Software as a Service (SaaS) products in Alibaba Cloud Marketplace.
-        # 
-        # - \\`Anonymous\\`: anonymous access.
-        # 
-        # - \\`DPS\\`: similar to an AccessKey, but uses a product-specific signature algorithm that is different from the official Alibaba Cloud algorithm.
+        # *   AK: includes a permanent AccessKey pair, a temporary AccessKey pair, and a STS token.
+        # *   PRIVATEKEY: an AccessKey pair for an asymmetric cryptography algorithm.
+        # *   BEARETOKEN: an authentication mechanism that is widely used in the OAuth 2.0 framework and cloud services.
+        # *   CUSTOM_SPI: an efficient and secure authentication method that is suitable for the delivery and management of Software as a Service (SaaS) services in Alibaba Cloud Marketplace.
+        # *   Anonymous: anonymous access.
+        # *   DPS: an authentication method that is similar to AK. Its signature algorithm is different from that of Alibaba Cloud services and is exclusive to specific products.
         self.authentication_type = authentication_type
         # The signature algorithm. Valid values:
         # 
-        # - \\`HMAC-SHA1\\`: The request is signed using the HMAC-SHA1 algorithm.
-        # 
-        # - \\`HMAC-SHA256\\`: The request is signed using the HMAC-SHA256 algorithm.
+        # *   HMAC-SHA1
+        # *   HMAC-SHA256
         self.signature_method = signature_method
         # The signature version.
         self.signature_version = signature_version

@@ -11,9 +11,7 @@ class GenerateCLICommandResponseBody(DaraModel):
         request_id: str = None,
         unified_cli: str = None,
     ):
-        # CLI command.
         self.cli = cli
-        # Request ID.
         self.request_id = request_id
         self.unified_cli = unified_cli
 

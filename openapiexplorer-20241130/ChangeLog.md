@@ -1,3 +1,7 @@
+2026-04-09 Version: 1.2.0
+- Support API ListProducts.
+
+
 2026-03-18 Version: 1.1.3
 - Update API GenerateCLICommand: add response parameters Body.unifiedCli.
 

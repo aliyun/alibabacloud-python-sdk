@@ -22,9 +22,8 @@ class GetErrorCodeSolutionsRequest(DaraModel):
         self.error_message = error_message
         # The product code. You can use one of the following methods to query a product code:
         # 
-        # - Call the GetRequestLog operation to query a product code from the response.
-        # 
-        # - Query the code of a product in the OpenAPI Explorer URL of the product. For example, the OpenAPI Explorer URL of Short Message Service (SMS) is https\\://api.alibabacloud.com/product/Dysmsapi. Therefore, the product code of SMS is Dysmsapi.
+        # *   Call the GetRequestLog operation to query a product code from the response.
+        # *   Query the code of a product in the OpenAPI Explorer URL of the product. For example, the OpenAPI Explorer URL of Short Message Service (SMS) is https://api.alibabacloud.com/product/Dysmsapi. Therefore, the product code of SMS is Dysmsapi.
         self.product = product
 
     def validate(self):

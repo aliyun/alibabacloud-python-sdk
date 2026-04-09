@@ -16,17 +16,10 @@ class ListApiMcpServerSystemToolsResponseBody(DaraModel):
         system_tools: List[main_models.ListApiMcpServerSystemToolsResponseBodySystemTools] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return on each page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The NextToken value. Use this value to retrieve more results.
-        # 
-        # > If this parameter is not returned, no more results are available.
         self.next_token = next_token
-        # The request ID.
         self.request_id = request_id
-        # The list of system tools.
         self.system_tools = system_tools
-        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -87,9 +80,7 @@ class ListApiMcpServerSystemToolsResponseBodySystemTools(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The description of the system tool.
         self.description = description
-        # The name of the system tool.
         self.name = name
 
     def validate(self):

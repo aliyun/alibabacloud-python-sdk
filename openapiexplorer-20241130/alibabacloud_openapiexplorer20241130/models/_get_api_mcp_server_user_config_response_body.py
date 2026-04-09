@@ -16,17 +16,11 @@ class GetApiMcpServerUserConfigResponseBody(DaraModel):
         request_id: str = None,
         vpc_whitelists: List[str] = None,
     ):
-        # The ID of your Alibaba Cloud account.
         self.account_id = account_id
-        # Specifies whether to enable public network access for all API MCP Servers, including system MCP Servers, under your account. By default, this feature is enabled. If you disable it, you can access the servers only through VPC domain names.
         self.enable_public_access = enable_public_access
-        # The time when the configuration was created.
         self.gmt_create = gmt_create
-        # The time when the configuration was last updated.
         self.gmt_modified = gmt_modified
-        # The request ID.
         self.request_id = request_id
-        # The whitelist of source VPCs that are allowed to send requests after public network access is disabled. If you do not set this parameter or leave it empty, requests from all sources are allowed.
         self.vpc_whitelists = vpc_whitelists
 
     def validate(self):

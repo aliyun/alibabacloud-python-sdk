@@ -4,13 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetProductEndpointsRequest(DaraModel):
+class ListProductsRequest(DaraModel):
     def __init__(
         self,
-        product: str = None,
+        filter: str = None,
     ):
-        # This parameter is required.
-        self.product = product
+        self.filter = filter
 
     def validate(self):
         pass
@@ -20,15 +19,15 @@ class GetProductEndpointsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.product is not None:
-            result['product'] = self.product
+        if self.filter is not None:
+            result['filter'] = self.filter
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('product') is not None:
-            self.product = m.get('product')
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
 
         return self
 
