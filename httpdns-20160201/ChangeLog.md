@@ -1,3 +1,6 @@
+2026-04-09 Version: 2.1.2
+- Generated python 2016-02-01 for Httpdns.
+
 2025-04-09 Version: 2.1.1
 - Update API GetAccountInfo: add response parameters Body.AccountInfo.MonthHttpAesResolveCount.
 - Update API GetAccountInfo: add response parameters Body.AccountInfo.MonthHttpsAesResolveCount.
