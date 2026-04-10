@@ -1,3 +1,10 @@
+2026-04-10 Version: 7.7.1
+- Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.AllocatedResources.$.FailedAmount.
+- Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.AllocatedResources.$.LockedAmount.
+- Update API DescribeElasticityAssurances: add response parameters Body.ElasticityAssuranceSet.$.AllocatedResources.$.FailedAmount.
+- Update API DescribeElasticityAssurances: add response parameters Body.ElasticityAssuranceSet.$.AllocatedResources.$.LockedAmount.
+
+
 2026-03-30 Version: 7.7.0
 - Support API CloneDisks.
 - Update API DescribeSnapshots: add response parameters Body.Snapshots.$.FullSnapshotSizeInBytes.

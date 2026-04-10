@@ -482,14 +482,18 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         self,
         available_amount: int = None,
         elasticity_assurance_usages: main_models.DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResourceElasticityAssuranceUsages = None,
+        failed_amount: int = None,
         instance_type: str = None,
+        locked_amount: int = None,
         total_amount: int = None,
         used_amount: int = None,
         zone_id: str = None,
     ):
         self.available_amount = available_amount
         self.elasticity_assurance_usages = elasticity_assurance_usages
+        self.failed_amount = failed_amount
         self.instance_type = instance_type
+        self.locked_amount = locked_amount
         self.total_amount = total_amount
         self.used_amount = used_amount
         self.zone_id = zone_id
@@ -509,8 +513,14 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
         if self.elasticity_assurance_usages is not None:
             result['ElasticityAssuranceUsages'] = self.elasticity_assurance_usages.to_map()
 
+        if self.failed_amount is not None:
+            result['FailedAmount'] = self.failed_amount
+
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+
+        if self.locked_amount is not None:
+            result['LockedAmount'] = self.locked_amount
 
         if self.total_amount is not None:
             result['TotalAmount'] = self.total_amount
@@ -532,8 +542,14 @@ class DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAs
             temp_model = main_models.DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResourceElasticityAssuranceUsages()
             self.elasticity_assurance_usages = temp_model.from_map(m.get('ElasticityAssuranceUsages'))
 
+        if m.get('FailedAmount') is not None:
+            self.failed_amount = m.get('FailedAmount')
+
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+
+        if m.get('LockedAmount') is not None:
+            self.locked_amount = m.get('LockedAmount')
 
         if m.get('TotalAmount') is not None:
             self.total_amount = m.get('TotalAmount')
