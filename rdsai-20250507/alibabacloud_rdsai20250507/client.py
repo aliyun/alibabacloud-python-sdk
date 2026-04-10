@@ -312,6 +312,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateAppInstanceShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.components):
+            request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.dbinstance_config):
             request.dbinstance_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbinstance_config, 'DBInstanceConfig', 'json')
         query = {}
@@ -321,6 +323,8 @@ class Client(OpenApiClient):
             query['AppType'] = request.app_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.components_shrink):
+            query['Components'] = request.components_shrink
         if not DaraCore.is_null(request.dbinstance_config_shrink):
             query['DBInstanceConfig'] = request.dbinstance_config_shrink
         if not DaraCore.is_null(request.dbinstance_name):
@@ -372,6 +376,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateAppInstanceShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.components):
+            request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.dbinstance_config):
             request.dbinstance_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbinstance_config, 'DBInstanceConfig', 'json')
         query = {}
@@ -381,6 +387,8 @@ class Client(OpenApiClient):
             query['AppType'] = request.app_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.components_shrink):
+            query['Components'] = request.components_shrink
         if not DaraCore.is_null(request.dbinstance_config_shrink):
             query['DBInstanceConfig'] = request.dbinstance_config_shrink
         if not DaraCore.is_null(request.dbinstance_name):
@@ -663,6 +671,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_region_id):
+            query['ReportRegionId'] = request.report_region_id
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
@@ -703,6 +713,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_region_id):
+            query['ReportRegionId'] = request.report_region_id
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
@@ -759,6 +771,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_region_id):
+            query['ReportRegionId'] = request.report_region_id
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
@@ -803,6 +817,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_language):
             query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_region_id):
+            query['ReportRegionId'] = request.report_region_id
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
@@ -2085,6 +2101,100 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceStorageConfigResponse:
         runtime = RuntimeOptions()
         return await self.describe_instance_storage_config_with_options_async(request, runtime)
+
+    def describe_sandbox_templates_with_options(
+        self,
+        request: main_models.DescribeSandboxTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSandboxTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSandboxTemplates',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSandboxTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sandbox_templates_with_options_async(
+        self,
+        request: main_models.DescribeSandboxTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSandboxTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSandboxTemplates',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSandboxTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sandbox_templates(
+        self,
+        request: main_models.DescribeSandboxTemplatesRequest,
+    ) -> main_models.DescribeSandboxTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sandbox_templates_with_options(request, runtime)
+
+    async def describe_sandbox_templates_async(
+        self,
+        request: main_models.DescribeSandboxTemplatesRequest,
+    ) -> main_models.DescribeSandboxTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sandbox_templates_with_options_async(request, runtime)
 
     def get_conversations_with_options(
         self,

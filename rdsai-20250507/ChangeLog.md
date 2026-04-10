@@ -1,3 +1,7 @@
+2026-04-10 Version: 2.5.0
+- Support API DescribeSandboxTemplates.
+
+
 2026-03-23 Version: 2.4.0
 - Support API CreateEdgeFunction.
 - Support API DeleteEdgeFunction.

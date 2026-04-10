@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
 
 class DescribeAppInstanceAttributeResponseBody(DaraModel):
@@ -9,6 +12,7 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self,
         app_name: str = None,
         app_type: str = None,
+        components: List[main_models.DescribeAppInstanceAttributeResponseBodyComponents] = None,
         dbinstance_name: str = None,
         eip_id: str = None,
         eip_status: str = None,
@@ -30,6 +34,7 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.app_name = app_name
         # The application type. Only **supabase** is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
+        self.components = components
         # The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
         self.dbinstance_name = dbinstance_name
         self.eip_id = eip_id
@@ -59,7 +64,10 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.components:
+            for v1 in self.components:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -71,6 +79,11 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if self.app_type is not None:
             result['AppType'] = self.app_type
+
+        result['Components'] = []
+        if self.components is not None:
+            for k1 in self.components:
+                result['Components'].append(k1.to_map() if k1 else None)
 
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
@@ -130,6 +143,12 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        self.components = []
+        if m.get('Components') is not None:
+            for k1 in m.get('Components'):
+                temp_model = main_models.DescribeAppInstanceAttributeResponseBodyComponents()
+                self.components.append(temp_model.from_map(k1))
+
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
 
@@ -177,6 +196,41 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class DescribeAppInstanceAttributeResponseBodyComponents(DaraModel):
+    def __init__(
+        self,
+        status: str = None,
+        type: str = None,
+    ):
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

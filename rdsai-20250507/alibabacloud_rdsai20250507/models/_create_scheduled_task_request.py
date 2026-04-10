@@ -13,6 +13,7 @@ class CreateScheduledTaskRequest(DaraModel):
         name: str = None,
         region_id: str = None,
         report_language: str = None,
+        report_region_id: str = None,
         report_type: str = None,
         start_time: str = None,
         time_range: str = None,
@@ -39,6 +40,7 @@ class CreateScheduledTaskRequest(DaraModel):
         self.name = name
         self.region_id = region_id
         self.report_language = report_language
+        self.report_region_id = report_region_id
         self.report_type = report_type
         # The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
         self.start_time = start_time
@@ -71,6 +73,9 @@ class CreateScheduledTaskRequest(DaraModel):
         if self.report_language is not None:
             result['ReportLanguage'] = self.report_language
 
+        if self.report_region_id is not None:
+            result['ReportRegionId'] = self.report_region_id
+
         if self.report_type is not None:
             result['ReportType'] = self.report_type
 
@@ -101,6 +106,9 @@ class CreateScheduledTaskRequest(DaraModel):
 
         if m.get('ReportLanguage') is not None:
             self.report_language = m.get('ReportLanguage')
+
+        if m.get('ReportRegionId') is not None:
+            self.report_region_id = m.get('ReportRegionId')
 
         if m.get('ReportType') is not None:
             self.report_type = m.get('ReportType')

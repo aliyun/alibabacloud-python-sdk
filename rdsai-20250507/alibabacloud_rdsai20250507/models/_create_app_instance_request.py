@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
 
@@ -11,6 +13,7 @@ class CreateAppInstanceRequest(DaraModel):
         app_name: str = None,
         app_type: str = None,
         client_token: str = None,
+        components: List[main_models.CreateAppInstanceRequestComponents] = None,
         dbinstance_config: main_models.CreateAppInstanceRequestDBInstanceConfig = None,
         dbinstance_name: str = None,
         dashboard_password: str = None,
@@ -32,6 +35,7 @@ class CreateAppInstanceRequest(DaraModel):
         self.app_type = app_type
         # The name of the new AI application.
         self.client_token = client_token
+        self.components = components
         # A reserved parameter.
         self.dbinstance_config = dbinstance_config
         # The instance type. Only **rdsai.supabase.basic** is supported.
@@ -70,6 +74,10 @@ class CreateAppInstanceRequest(DaraModel):
         self.v_switch_id = v_switch_id
 
     def validate(self):
+        if self.components:
+            for v1 in self.components:
+                 if v1:
+                    v1.validate()
         if self.dbinstance_config:
             self.dbinstance_config.validate()
 
@@ -86,6 +94,11 @@ class CreateAppInstanceRequest(DaraModel):
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        result['Components'] = []
+        if self.components is not None:
+            for k1 in self.components:
+                result['Components'].append(k1.to_map() if k1 else None)
 
         if self.dbinstance_config is not None:
             result['DBInstanceConfig'] = self.dbinstance_config.to_map()
@@ -135,6 +148,12 @@ class CreateAppInstanceRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        self.components = []
+        if m.get('Components') is not None:
+            for k1 in m.get('Components'):
+                temp_model = main_models.CreateAppInstanceRequestComponents()
+                self.components.append(temp_model.from_map(k1))
 
         if m.get('DBInstanceConfig') is not None:
             temp_model = main_models.CreateAppInstanceRequestDBInstanceConfig()
@@ -215,6 +234,33 @@ class CreateAppInstanceRequestDBInstanceConfig(DaraModel):
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+
+        return self
+
+class CreateAppInstanceRequestComponents(DaraModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

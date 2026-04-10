@@ -10,6 +10,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         app_name: str = None,
         app_type: str = None,
         client_token: str = None,
+        components_shrink: str = None,
         dbinstance_config_shrink: str = None,
         dbinstance_name: str = None,
         dashboard_password: str = None,
@@ -31,6 +32,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         self.app_type = app_type
         # The name of the new AI application.
         self.client_token = client_token
+        self.components_shrink = components_shrink
         # A reserved parameter.
         self.dbinstance_config_shrink = dbinstance_config_shrink
         # The instance type. Only **rdsai.supabase.basic** is supported.
@@ -85,6 +87,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.components_shrink is not None:
+            result['Components'] = self.components_shrink
+
         if self.dbinstance_config_shrink is not None:
             result['DBInstanceConfig'] = self.dbinstance_config_shrink
 
@@ -133,6 +138,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('Components') is not None:
+            self.components_shrink = m.get('Components')
 
         if m.get('DBInstanceConfig') is not None:
             self.dbinstance_config_shrink = m.get('DBInstanceConfig')

@@ -76,6 +76,9 @@ from ._describe_instance_sslresponse import DescribeInstanceSSLResponse
 from ._describe_instance_storage_config_request import DescribeInstanceStorageConfigRequest
 from ._describe_instance_storage_config_response_body import DescribeInstanceStorageConfigResponseBody
 from ._describe_instance_storage_config_response import DescribeInstanceStorageConfigResponse
+from ._describe_sandbox_templates_request import DescribeSandboxTemplatesRequest
+from ._describe_sandbox_templates_response_body import DescribeSandboxTemplatesResponseBody
+from ._describe_sandbox_templates_response import DescribeSandboxTemplatesResponse
 from ._get_conversations_request import GetConversationsRequest
 from ._get_conversations_response_body import GetConversationsResponseBody
 from ._get_conversations_response import GetConversationsResponse
@@ -167,10 +170,13 @@ from ._update_skill_shrink_request import UpdateSkillShrinkRequest
 from ._update_skill_response_body import UpdateSkillResponseBody
 from ._update_skill_response import UpdateSkillResponse
 from ._chat_messages_request import ChatMessagesRequestInputs
+from ._create_app_instance_request import CreateAppInstanceRequestComponents
 from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
 from ._create_edge_function_request import CreateEdgeFunctionRequestCode
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
+from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyComponents
+from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstancesComponents
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstances
 from ._describe_edge_functions_response_body import DescribeEdgeFunctionsResponseBodyEdgeFunctions
 from ._describe_events_list_response_body import DescribeEventsListResponseBodyEvents
@@ -181,6 +187,7 @@ from ._describe_instance_endpoints_response_body import DescribeInstanceEndpoint
 from ._describe_instance_ip_whitelist_response_body import DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups
 from ._describe_instance_ragconfig_response_body import DescribeInstanceRAGConfigResponseBodyConfigList
 from ._describe_instance_storage_config_response_body import DescribeInstanceStorageConfigResponseBodyConfigList
+from ._describe_sandbox_templates_response_body import DescribeSandboxTemplatesResponseBodySandboxTemplates
 from ._get_conversations_response_body import GetConversationsResponseBodyData
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodySkills
 from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataDataItemsData
@@ -279,6 +286,9 @@ __all__ = [
     DescribeInstanceStorageConfigRequest,
     DescribeInstanceStorageConfigResponseBody,
     DescribeInstanceStorageConfigResponse,
+    DescribeSandboxTemplatesRequest,
+    DescribeSandboxTemplatesResponseBody,
+    DescribeSandboxTemplatesResponse,
     GetConversationsRequest,
     GetConversationsResponseBody,
     GetConversationsResponse,
@@ -370,10 +380,13 @@ __all__ = [
     UpdateSkillResponseBody,
     UpdateSkillResponse,
     ChatMessagesRequestInputs,
+    CreateAppInstanceRequestComponents,
     CreateAppInstanceRequestDBInstanceConfig,
     CreateCustomAgentResponseBodySkills,
     CreateEdgeFunctionRequestCode,
     CreateInspectionTaskResponseBodyData,
+    DescribeAppInstanceAttributeResponseBodyComponents,
+    DescribeAppInstancesResponseBodyInstancesComponents,
     DescribeAppInstancesResponseBodyInstances,
     DescribeEdgeFunctionsResponseBodyEdgeFunctions,
     DescribeEventsListResponseBodyEvents,
@@ -384,6 +397,7 @@ __all__ = [
     DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups,
     DescribeInstanceRAGConfigResponseBodyConfigList,
     DescribeInstanceStorageConfigResponseBodyConfigList,
+    DescribeSandboxTemplatesResponseBodySandboxTemplates,
     GetConversationsResponseBodyData,
     GetCustomAgentResponseBodySkills,
     GetInspectionReportResponseBodyDataDataItemsData,
