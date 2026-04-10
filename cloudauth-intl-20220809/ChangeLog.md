@@ -1,3 +1,7 @@
+2026-04-10 Version: 3.18.1
+- Update API FaceGuardRisk: add request parameters Type.
+
+
 2026-04-02 Version: 3.18.0
 - Support API DocOcrV2.
 - Support API EkycVerifyV2.

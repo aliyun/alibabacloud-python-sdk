@@ -11,6 +11,7 @@ class FaceGuardRiskRequest(DaraModel):
         device_token: str = None,
         merchant_biz_id: str = None,
         product_code: str = None,
+        type: str = None,
     ):
         # The unique ID of the current business authentication. It is used with FACE_GUARD for verification during queries.
         self.biz_id = biz_id
@@ -20,6 +21,7 @@ class FaceGuardRiskRequest(DaraModel):
         self.merchant_biz_id = merchant_biz_id
         # The product code. Set this to the static field **FACE_GUARD**.
         self.product_code = product_code
+        self.type = type
 
     def validate(self):
         pass
@@ -41,6 +43,9 @@ class FaceGuardRiskRequest(DaraModel):
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +61,9 @@ class FaceGuardRiskRequest(DaraModel):
 
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 
