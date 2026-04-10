@@ -1,3 +1,8 @@
+2026-04-10 Version: 6.10.0
+- Support API SearchMemories.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Branch.
+
+
 2026-04-08 Version: 6.9.6
 - Update API CreateApplication: add request parameters Parameters.
 

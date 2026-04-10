@@ -866,6 +866,9 @@ from ._revoke_account_privilege_response import RevokeAccountPrivilegeResponse
 from ._revoke_account_privilege_zonal_request import RevokeAccountPrivilegeZonalRequest
 from ._revoke_account_privilege_zonal_response_body import RevokeAccountPrivilegeZonalResponseBody
 from ._revoke_account_privilege_zonal_response import RevokeAccountPrivilegeZonalResponse
+from ._search_memories_request import SearchMemoriesRequest
+from ._search_memories_response_body import SearchMemoriesResponseBody
+from ._search_memories_response import SearchMemoriesResponse
 from ._set_polar_fs_file_quota_request import SetPolarFsFileQuotaRequest
 from ._set_polar_fs_file_quota_response_body import SetPolarFsFileQuotaResponseBody
 from ._set_polar_fs_file_quota_response import SetPolarFsFileQuotaResponse
@@ -984,6 +987,8 @@ from ._describe_dbcluster_access_whitelist_response_body import DescribeDBCluste
 from ._describe_dbcluster_access_whitelist_response_body import DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups
 from ._describe_dbcluster_access_whitelist_response_body import DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray
 from ._describe_dbcluster_access_whitelist_response_body import DescribeDBClusterAccessWhitelistResponseBodyItems
+from ._describe_dbcluster_attribute_response_body import DescribeDBClusterAttributeResponseBodyBranchChildBranch
+from ._describe_dbcluster_attribute_response_body import DescribeDBClusterAttributeResponseBodyBranch
 from ._describe_dbcluster_attribute_response_body import DescribeDBClusterAttributeResponseBodyDBNodes
 from ._describe_dbcluster_attribute_response_body import DescribeDBClusterAttributeResponseBodyTags
 from ._describe_dbcluster_available_resources_response_body import DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources
@@ -1153,6 +1158,7 @@ from ._modify_global_security_ipgroup_response_body import ModifyGlobalSecurityI
 from ._modify_global_security_ipgroup_name_response_body import ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup
 from ._modify_global_security_ipgroup_relation_response_body import ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel
 from ._modify_log_backup_policy_request import ModifyLogBackupPolicyRequestAdvancedLogPolicies
+from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._set_polar_fs_file_quota_request import SetPolarFsFileQuotaRequestFilePathQuotas
 from ._tag_resources_request import TagResourcesRequestTag
 from ._temp_modify_dbnode_request import TempModifyDBNodeRequestDBNode
@@ -2022,6 +2028,9 @@ __all__ = [
     RevokeAccountPrivilegeZonalRequest,
     RevokeAccountPrivilegeZonalResponseBody,
     RevokeAccountPrivilegeZonalResponse,
+    SearchMemoriesRequest,
+    SearchMemoriesResponseBody,
+    SearchMemoriesResponse,
     SetPolarFsFileQuotaRequest,
     SetPolarFsFileQuotaResponseBody,
     SetPolarFsFileQuotaResponse,
@@ -2140,6 +2149,8 @@ __all__ = [
     DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups,
     DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray,
     DescribeDBClusterAccessWhitelistResponseBodyItems,
+    DescribeDBClusterAttributeResponseBodyBranchChildBranch,
+    DescribeDBClusterAttributeResponseBodyBranch,
     DescribeDBClusterAttributeResponseBodyDBNodes,
     DescribeDBClusterAttributeResponseBodyTags,
     DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources,
@@ -2309,6 +2320,7 @@ __all__ = [
     ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup,
     ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel,
     ModifyLogBackupPolicyRequestAdvancedLogPolicies,
+    SearchMemoriesResponseBodyResults,
     SetPolarFsFileQuotaRequestFilePathQuotas,
     TagResourcesRequestTag,
     TempModifyDBNodeRequestDBNode

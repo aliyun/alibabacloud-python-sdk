@@ -16,6 +16,7 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         auto_upgrade_minor_version: str = None,
         blktag_total: int = None,
         blktag_used: int = None,
+        branch: main_models.DescribeDBClusterAttributeResponseBodyBranch = None,
         bursting_enabled: str = None,
         category: str = None,
         compress_storage_mode: str = None,
@@ -100,6 +101,7 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.blktag_total = blktag_total
         # Current blktag usage.
         self.blktag_used = blktag_used
+        self.branch = branch
         self.bursting_enabled = bursting_enabled
         # [Product Series](https://help.aliyun.com/document_detail/183258.html), with values as follows:
         # * **Normal**: Cluster Edition
@@ -309,6 +311,8 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.zone_ids = zone_ids
 
     def validate(self):
+        if self.branch:
+            self.branch.validate()
         if self.dbnodes:
             for v1 in self.dbnodes:
                  if v1:
@@ -340,6 +344,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if self.blktag_used is not None:
             result['BlktagUsed'] = self.blktag_used
+
+        if self.branch is not None:
+            result['Branch'] = self.branch.to_map()
 
         if self.bursting_enabled is not None:
             result['BurstingEnabled'] = self.bursting_enabled
@@ -555,6 +562,10 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if m.get('BlktagUsed') is not None:
             self.blktag_used = m.get('BlktagUsed')
+
+        if m.get('Branch') is not None:
+            temp_model = main_models.DescribeDBClusterAttributeResponseBodyBranch()
+            self.branch = temp_model.from_map(m.get('Branch'))
 
         if m.get('BurstingEnabled') is not None:
             self.bursting_enabled = m.get('BurstingEnabled')
@@ -1084,6 +1095,124 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class DescribeDBClusterAttributeResponseBodyBranch(DaraModel):
+    def __init__(
+        self,
+        branch_lsn: str = None,
+        branch_time: str = None,
+        child_branch: List[main_models.DescribeDBClusterAttributeResponseBodyBranchChildBranch] = None,
+        parent_ins_name: str = None,
+    ):
+        self.branch_lsn = branch_lsn
+        self.branch_time = branch_time
+        self.child_branch = child_branch
+        self.parent_ins_name = parent_ins_name
+
+    def validate(self):
+        if self.child_branch:
+            for v1 in self.child_branch:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.branch_lsn is not None:
+            result['BranchLsn'] = self.branch_lsn
+
+        if self.branch_time is not None:
+            result['BranchTime'] = self.branch_time
+
+        result['ChildBranch'] = []
+        if self.child_branch is not None:
+            for k1 in self.child_branch:
+                result['ChildBranch'].append(k1.to_map() if k1 else None)
+
+        if self.parent_ins_name is not None:
+            result['ParentInsName'] = self.parent_ins_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchLsn') is not None:
+            self.branch_lsn = m.get('BranchLsn')
+
+        if m.get('BranchTime') is not None:
+            self.branch_time = m.get('BranchTime')
+
+        self.child_branch = []
+        if m.get('ChildBranch') is not None:
+            for k1 in m.get('ChildBranch'):
+                temp_model = main_models.DescribeDBClusterAttributeResponseBodyBranchChildBranch()
+                self.child_branch.append(temp_model.from_map(k1))
+
+        if m.get('ParentInsName') is not None:
+            self.parent_ins_name = m.get('ParentInsName')
+
+        return self
+
+class DescribeDBClusterAttributeResponseBodyBranchChildBranch(DaraModel):
+    def __init__(
+        self,
+        branch_lsn: str = None,
+        branch_time: str = None,
+        dbcluster_description: str = None,
+        has_child: bool = None,
+        ins_name: str = None,
+    ):
+        self.branch_lsn = branch_lsn
+        self.branch_time = branch_time
+        self.dbcluster_description = dbcluster_description
+        self.has_child = has_child
+        self.ins_name = ins_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.branch_lsn is not None:
+            result['BranchLsn'] = self.branch_lsn
+
+        if self.branch_time is not None:
+            result['BranchTime'] = self.branch_time
+
+        if self.dbcluster_description is not None:
+            result['DBClusterDescription'] = self.dbcluster_description
+
+        if self.has_child is not None:
+            result['HasChild'] = self.has_child
+
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchLsn') is not None:
+            self.branch_lsn = m.get('BranchLsn')
+
+        if m.get('BranchTime') is not None:
+            self.branch_time = m.get('BranchTime')
+
+        if m.get('DBClusterDescription') is not None:
+            self.dbcluster_description = m.get('DBClusterDescription')
+
+        if m.get('HasChild') is not None:
+            self.has_child = m.get('HasChild')
+
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
 
         return self
 

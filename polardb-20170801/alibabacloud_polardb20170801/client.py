@@ -28349,6 +28349,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.revoke_account_privilege_zonal_with_options_async(request, runtime)
 
+    def search_memories_with_options(
+        self,
+        request: main_models.SearchMemoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMemoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.create_time_begin):
+            query['CreateTimeBegin'] = request.create_time_begin
+        if not DaraCore.is_null(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.memory_agent_id):
+            query['MemoryAgentId'] = request.memory_agent_id
+        if not DaraCore.is_null(request.memory_user_id):
+            query['MemoryUserId'] = request.memory_user_id
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMemories',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMemoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_memories_with_options_async(
+        self,
+        request: main_models.SearchMemoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMemoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.create_time_begin):
+            query['CreateTimeBegin'] = request.create_time_begin
+        if not DaraCore.is_null(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.memory_agent_id):
+            query['MemoryAgentId'] = request.memory_agent_id
+        if not DaraCore.is_null(request.memory_user_id):
+            query['MemoryUserId'] = request.memory_user_id
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMemories',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMemoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_memories(
+        self,
+        request: main_models.SearchMemoriesRequest,
+    ) -> main_models.SearchMemoriesResponse:
+        runtime = RuntimeOptions()
+        return self.search_memories_with_options(request, runtime)
+
+    async def search_memories_async(
+        self,
+        request: main_models.SearchMemoriesRequest,
+    ) -> main_models.SearchMemoriesResponse:
+        runtime = RuntimeOptions()
+        return await self.search_memories_with_options_async(request, runtime)
+
     def set_polar_fs_file_quota_with_options(
         self,
         request: main_models.SetPolarFsFileQuotaRequest,
