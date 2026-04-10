@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class ExperimentConfig(DaraModel):
     def __init__(
         self,
+        endpoint_connector_id: str = None,
         label: str = None,
         model_name: str = None,
         model_parameters: main_models.ModelParameters = None,
@@ -17,6 +18,7 @@ class ExperimentConfig(DaraModel):
         name: str = None,
         prompt_template: List[main_models.PromptTemplateItem] = None,
     ):
+        self.endpoint_connector_id = endpoint_connector_id
         self.label = label
         self.model_name = model_name
         self.model_parameters = model_parameters
@@ -37,6 +39,9 @@ class ExperimentConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.endpoint_connector_id is not None:
+            result['endpointConnectorId'] = self.endpoint_connector_id
+
         if self.label is not None:
             result['label'] = self.label
 
@@ -61,6 +66,9 @@ class ExperimentConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('endpointConnectorId') is not None:
+            self.endpoint_connector_id = m.get('endpointConnectorId')
+
         if m.get('label') is not None:
             self.label = m.get('label')
 

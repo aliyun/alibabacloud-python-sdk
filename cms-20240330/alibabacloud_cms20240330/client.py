@@ -1354,9 +1354,11 @@ class Client(OpenApiClient):
     def create_entity_store_with_options(
         self,
         workspace_name: str,
+        request: main_models.CreateEntityStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CreateEntityStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1379,9 +1381,11 @@ class Client(OpenApiClient):
     async def create_entity_store_with_options_async(
         self,
         workspace_name: str,
+        request: main_models.CreateEntityStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CreateEntityStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1404,18 +1408,20 @@ class Client(OpenApiClient):
     def create_entity_store(
         self,
         workspace_name: str,
+        request: main_models.CreateEntityStoreRequest,
     ) -> main_models.CreateEntityStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.create_entity_store_with_options(workspace_name, headers, runtime)
+        return self.create_entity_store_with_options(workspace_name, request, headers, runtime)
 
     async def create_entity_store_async(
         self,
         workspace_name: str,
+        request: main_models.CreateEntityStoreRequest,
     ) -> main_models.CreateEntityStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.create_entity_store_with_options_async(workspace_name, headers, runtime)
+        return await self.create_entity_store_with_options_async(workspace_name, request, headers, runtime)
 
     def create_integration_policy_with_options(
         self,
@@ -2041,9 +2047,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         type: str,
+        request: main_models.CreateServiceObservabilityRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CreateServiceObservabilityResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2067,9 +2075,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         type: str,
+        request: main_models.CreateServiceObservabilityRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CreateServiceObservabilityResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2093,19 +2103,21 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         type: str,
+        request: main_models.CreateServiceObservabilityRequest,
     ) -> main_models.CreateServiceObservabilityResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.create_service_observability_with_options(workspace, type, headers, runtime)
+        return self.create_service_observability_with_options(workspace, type, request, headers, runtime)
 
     async def create_service_observability_async(
         self,
         workspace: str,
         type: str,
+        request: main_models.CreateServiceObservabilityRequest,
     ) -> main_models.CreateServiceObservabilityResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.create_service_observability_with_options_async(workspace, type, headers, runtime)
+        return await self.create_service_observability_with_options_async(workspace, type, request, headers, runtime)
 
     def create_thread_with_options(
         self,
@@ -2447,9 +2459,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.DeleteAggTaskGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteAggTaskGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2473,9 +2487,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.DeleteAggTaskGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteAggTaskGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2499,19 +2515,21 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.DeleteAggTaskGroupRequest,
     ) -> main_models.DeleteAggTaskGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_agg_task_group_with_options(instance_id, group_id, headers, runtime)
+        return self.delete_agg_task_group_with_options(instance_id, group_id, request, headers, runtime)
 
     async def delete_agg_task_group_async(
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.DeleteAggTaskGroupRequest,
     ) -> main_models.DeleteAggTaskGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
+        return await self.delete_agg_task_group_with_options_async(instance_id, group_id, request, headers, runtime)
 
     def delete_alert_webhooks_with_options(
         self,
@@ -2600,9 +2618,11 @@ class Client(OpenApiClient):
     def delete_biz_trace_with_options(
         self,
         biz_trace_id: str,
+        request: main_models.DeleteBizTraceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteBizTraceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2625,9 +2645,11 @@ class Client(OpenApiClient):
     async def delete_biz_trace_with_options_async(
         self,
         biz_trace_id: str,
+        request: main_models.DeleteBizTraceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteBizTraceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2650,18 +2672,20 @@ class Client(OpenApiClient):
     def delete_biz_trace(
         self,
         biz_trace_id: str,
+        request: main_models.DeleteBizTraceRequest,
     ) -> main_models.DeleteBizTraceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_biz_trace_with_options(biz_trace_id, headers, runtime)
+        return self.delete_biz_trace_with_options(biz_trace_id, request, headers, runtime)
 
     async def delete_biz_trace_async(
         self,
         biz_trace_id: str,
+        request: main_models.DeleteBizTraceRequest,
     ) -> main_models.DeleteBizTraceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_biz_trace_with_options_async(biz_trace_id, headers, runtime)
+        return await self.delete_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
 
     def delete_cloud_resource_with_options(
         self,
@@ -2725,9 +2749,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.DeleteDatasetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDatasetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2751,9 +2777,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.DeleteDatasetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDatasetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2777,26 +2805,30 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.DeleteDatasetRequest,
     ) -> main_models.DeleteDatasetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_dataset_with_options(workspace, dataset_name, headers, runtime)
+        return self.delete_dataset_with_options(workspace, dataset_name, request, headers, runtime)
 
     async def delete_dataset_async(
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.DeleteDatasetRequest,
     ) -> main_models.DeleteDatasetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_dataset_with_options_async(workspace, dataset_name, headers, runtime)
+        return await self.delete_dataset_with_options_async(workspace, dataset_name, request, headers, runtime)
 
     def delete_delivery_task_with_options(
         self,
         task_id: str,
+        request: main_models.DeleteDeliveryTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDeliveryTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2819,9 +2851,11 @@ class Client(OpenApiClient):
     async def delete_delivery_task_with_options_async(
         self,
         task_id: str,
+        request: main_models.DeleteDeliveryTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDeliveryTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2844,25 +2878,29 @@ class Client(OpenApiClient):
     def delete_delivery_task(
         self,
         task_id: str,
+        request: main_models.DeleteDeliveryTaskRequest,
     ) -> main_models.DeleteDeliveryTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_delivery_task_with_options(task_id, headers, runtime)
+        return self.delete_delivery_task_with_options(task_id, request, headers, runtime)
 
     async def delete_delivery_task_async(
         self,
         task_id: str,
+        request: main_models.DeleteDeliveryTaskRequest,
     ) -> main_models.DeleteDeliveryTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_delivery_task_with_options_async(task_id, headers, runtime)
+        return await self.delete_delivery_task_with_options_async(task_id, request, headers, runtime)
 
     def delete_digital_employee_with_options(
         self,
         name: str,
+        request: main_models.DeleteDigitalEmployeeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDigitalEmployeeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2885,9 +2923,11 @@ class Client(OpenApiClient):
     async def delete_digital_employee_with_options_async(
         self,
         name: str,
+        request: main_models.DeleteDigitalEmployeeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDigitalEmployeeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2910,26 +2950,30 @@ class Client(OpenApiClient):
     def delete_digital_employee(
         self,
         name: str,
+        request: main_models.DeleteDigitalEmployeeRequest,
     ) -> main_models.DeleteDigitalEmployeeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_digital_employee_with_options(name, headers, runtime)
+        return self.delete_digital_employee_with_options(name, request, headers, runtime)
 
     async def delete_digital_employee_async(
         self,
         name: str,
+        request: main_models.DeleteDigitalEmployeeRequest,
     ) -> main_models.DeleteDigitalEmployeeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_digital_employee_with_options_async(name, headers, runtime)
+        return await self.delete_digital_employee_with_options_async(name, request, headers, runtime)
 
     def delete_digital_employee_skill_with_options(
         self,
         name: str,
         skill_name: str,
+        request: main_models.DeleteDigitalEmployeeSkillRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDigitalEmployeeSkillResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2953,9 +2997,11 @@ class Client(OpenApiClient):
         self,
         name: str,
         skill_name: str,
+        request: main_models.DeleteDigitalEmployeeSkillRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteDigitalEmployeeSkillResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2979,26 +3025,30 @@ class Client(OpenApiClient):
         self,
         name: str,
         skill_name: str,
+        request: main_models.DeleteDigitalEmployeeSkillRequest,
     ) -> main_models.DeleteDigitalEmployeeSkillResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_digital_employee_skill_with_options(name, skill_name, headers, runtime)
+        return self.delete_digital_employee_skill_with_options(name, skill_name, request, headers, runtime)
 
     async def delete_digital_employee_skill_async(
         self,
         name: str,
         skill_name: str,
+        request: main_models.DeleteDigitalEmployeeSkillRequest,
     ) -> main_models.DeleteDigitalEmployeeSkillResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_digital_employee_skill_with_options_async(name, skill_name, headers, runtime)
+        return await self.delete_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
 
     def delete_entity_store_with_options(
         self,
         workspace_name: str,
+        request: main_models.DeleteEntityStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteEntityStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3021,9 +3071,11 @@ class Client(OpenApiClient):
     async def delete_entity_store_with_options_async(
         self,
         workspace_name: str,
+        request: main_models.DeleteEntityStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteEntityStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3046,18 +3098,20 @@ class Client(OpenApiClient):
     def delete_entity_store(
         self,
         workspace_name: str,
+        request: main_models.DeleteEntityStoreRequest,
     ) -> main_models.DeleteEntityStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_entity_store_with_options(workspace_name, headers, runtime)
+        return self.delete_entity_store_with_options(workspace_name, request, headers, runtime)
 
     async def delete_entity_store_async(
         self,
         workspace_name: str,
+        request: main_models.DeleteEntityStoreRequest,
     ) -> main_models.DeleteEntityStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_entity_store_with_options_async(workspace_name, headers, runtime)
+        return await self.delete_entity_store_with_options_async(workspace_name, request, headers, runtime)
 
     def delete_integration_policy_with_options(
         self,
@@ -3240,9 +3294,11 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3267,9 +3323,11 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3294,28 +3352,32 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
     ) -> main_models.DeleteMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_memory_with_options(workspace, memory_store_name, memory_id, headers, runtime)
+        return self.delete_memory_with_options(workspace, memory_store_name, memory_id, request, headers, runtime)
 
     async def delete_memory_async(
         self,
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
     ) -> main_models.DeleteMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_memory_with_options_async(workspace, memory_store_name, memory_id, headers, runtime)
+        return await self.delete_memory_with_options_async(workspace, memory_store_name, memory_id, request, headers, runtime)
 
     def delete_memory_store_with_options(
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3339,9 +3401,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3365,26 +3429,30 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
     ) -> main_models.DeleteMemoryStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_memory_store_with_options(workspace, memory_store_name, headers, runtime)
+        return self.delete_memory_store_with_options(workspace, memory_store_name, request, headers, runtime)
 
     async def delete_memory_store_async(
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
     ) -> main_models.DeleteMemoryStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_memory_store_with_options_async(workspace, memory_store_name, headers, runtime)
+        return await self.delete_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
 
     def delete_prometheus_instance_with_options(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusInstanceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePrometheusInstanceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3407,9 +3475,11 @@ class Client(OpenApiClient):
     async def delete_prometheus_instance_with_options_async(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusInstanceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePrometheusInstanceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3432,25 +3502,29 @@ class Client(OpenApiClient):
     def delete_prometheus_instance(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusInstanceRequest,
     ) -> main_models.DeletePrometheusInstanceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_prometheus_instance_with_options(prometheus_instance_id, headers, runtime)
+        return self.delete_prometheus_instance_with_options(prometheus_instance_id, request, headers, runtime)
 
     async def delete_prometheus_instance_async(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusInstanceRequest,
     ) -> main_models.DeletePrometheusInstanceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_prometheus_instance_with_options_async(prometheus_instance_id, headers, runtime)
+        return await self.delete_prometheus_instance_with_options_async(prometheus_instance_id, request, headers, runtime)
 
     def delete_prometheus_view_with_options(
         self,
         prometheus_view_id: str,
+        request: main_models.DeletePrometheusViewRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePrometheusViewResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3473,9 +3547,11 @@ class Client(OpenApiClient):
     async def delete_prometheus_view_with_options_async(
         self,
         prometheus_view_id: str,
+        request: main_models.DeletePrometheusViewRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePrometheusViewResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3498,25 +3574,29 @@ class Client(OpenApiClient):
     def delete_prometheus_view(
         self,
         prometheus_view_id: str,
+        request: main_models.DeletePrometheusViewRequest,
     ) -> main_models.DeletePrometheusViewResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_prometheus_view_with_options(prometheus_view_id, headers, runtime)
+        return self.delete_prometheus_view_with_options(prometheus_view_id, request, headers, runtime)
 
     async def delete_prometheus_view_async(
         self,
         prometheus_view_id: str,
+        request: main_models.DeletePrometheusViewRequest,
     ) -> main_models.DeletePrometheusViewResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_prometheus_view_with_options_async(prometheus_view_id, headers, runtime)
+        return await self.delete_prometheus_view_with_options_async(prometheus_view_id, request, headers, runtime)
 
     def delete_prometheus_virtual_instance_with_options(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusVirtualInstanceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePrometheusVirtualInstanceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3539,9 +3619,11 @@ class Client(OpenApiClient):
     async def delete_prometheus_virtual_instance_with_options_async(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusVirtualInstanceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePrometheusVirtualInstanceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3564,26 +3646,30 @@ class Client(OpenApiClient):
     def delete_prometheus_virtual_instance(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusVirtualInstanceRequest,
     ) -> main_models.DeletePrometheusVirtualInstanceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_prometheus_virtual_instance_with_options(prometheus_instance_id, headers, runtime)
+        return self.delete_prometheus_virtual_instance_with_options(prometheus_instance_id, request, headers, runtime)
 
     async def delete_prometheus_virtual_instance_async(
         self,
         prometheus_instance_id: str,
+        request: main_models.DeletePrometheusVirtualInstanceRequest,
     ) -> main_models.DeletePrometheusVirtualInstanceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_prometheus_virtual_instance_with_options_async(prometheus_instance_id, headers, runtime)
+        return await self.delete_prometheus_virtual_instance_with_options_async(prometheus_instance_id, request, headers, runtime)
 
     def delete_service_with_options(
         self,
         workspace: str,
         service_id: str,
+        request: main_models.DeleteServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3607,9 +3693,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         service_id: str,
+        request: main_models.DeleteServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3633,27 +3721,31 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         service_id: str,
+        request: main_models.DeleteServiceRequest,
     ) -> main_models.DeleteServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_service_with_options(workspace, service_id, headers, runtime)
+        return self.delete_service_with_options(workspace, service_id, request, headers, runtime)
 
     async def delete_service_async(
         self,
         workspace: str,
         service_id: str,
+        request: main_models.DeleteServiceRequest,
     ) -> main_models.DeleteServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_service_with_options_async(workspace, service_id, headers, runtime)
+        return await self.delete_service_with_options_async(workspace, service_id, request, headers, runtime)
 
     def delete_thread_with_options(
         self,
         name: str,
         thread_id: str,
+        request: main_models.DeleteThreadRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteThreadResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3677,9 +3769,11 @@ class Client(OpenApiClient):
         self,
         name: str,
         thread_id: str,
+        request: main_models.DeleteThreadRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteThreadResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3703,26 +3797,30 @@ class Client(OpenApiClient):
         self,
         name: str,
         thread_id: str,
+        request: main_models.DeleteThreadRequest,
     ) -> main_models.DeleteThreadResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_thread_with_options(name, thread_id, headers, runtime)
+        return self.delete_thread_with_options(name, thread_id, request, headers, runtime)
 
     async def delete_thread_async(
         self,
         name: str,
         thread_id: str,
+        request: main_models.DeleteThreadRequest,
     ) -> main_models.DeleteThreadResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_thread_with_options_async(name, thread_id, headers, runtime)
+        return await self.delete_thread_with_options_async(name, thread_id, request, headers, runtime)
 
     def delete_umodel_with_options(
         self,
         workspace: str,
+        request: main_models.DeleteUmodelRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteUmodelResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3745,9 +3843,11 @@ class Client(OpenApiClient):
     async def delete_umodel_with_options_async(
         self,
         workspace: str,
+        request: main_models.DeleteUmodelRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteUmodelResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3770,18 +3870,20 @@ class Client(OpenApiClient):
     def delete_umodel(
         self,
         workspace: str,
+        request: main_models.DeleteUmodelRequest,
     ) -> main_models.DeleteUmodelResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_umodel_with_options(workspace, headers, runtime)
+        return self.delete_umodel_with_options(workspace, request, headers, runtime)
 
     async def delete_umodel_async(
         self,
         workspace: str,
+        request: main_models.DeleteUmodelRequest,
     ) -> main_models.DeleteUmodelResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_umodel_with_options_async(workspace, headers, runtime)
+        return await self.delete_umodel_with_options_async(workspace, request, headers, runtime)
 
     def delete_umodel_common_schema_ref_with_options(
         self,
@@ -3954,9 +4056,11 @@ class Client(OpenApiClient):
     def delete_workspace_with_options(
         self,
         workspace_name: str,
+        request: main_models.DeleteWorkspaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3979,9 +4083,11 @@ class Client(OpenApiClient):
     async def delete_workspace_with_options_async(
         self,
         workspace_name: str,
+        request: main_models.DeleteWorkspaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4004,18 +4110,20 @@ class Client(OpenApiClient):
     def delete_workspace(
         self,
         workspace_name: str,
+        request: main_models.DeleteWorkspaceRequest,
     ) -> main_models.DeleteWorkspaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_workspace_with_options(workspace_name, headers, runtime)
+        return self.delete_workspace_with_options(workspace_name, request, headers, runtime)
 
     async def delete_workspace_async(
         self,
         workspace_name: str,
+        request: main_models.DeleteWorkspaceRequest,
     ) -> main_models.DeleteWorkspaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_workspace_with_options_async(workspace_name, headers, runtime)
+        return await self.delete_workspace_with_options_async(workspace_name, request, headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -4357,9 +4465,11 @@ class Client(OpenApiClient):
         self,
         release_name: str,
         policy_id: str,
+        request: main_models.GetAddonReleaseRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAddonReleaseResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4383,9 +4493,11 @@ class Client(OpenApiClient):
         self,
         release_name: str,
         policy_id: str,
+        request: main_models.GetAddonReleaseRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAddonReleaseResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4409,19 +4521,21 @@ class Client(OpenApiClient):
         self,
         release_name: str,
         policy_id: str,
+        request: main_models.GetAddonReleaseRequest,
     ) -> main_models.GetAddonReleaseResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_addon_release_with_options(release_name, policy_id, headers, runtime)
+        return self.get_addon_release_with_options(release_name, policy_id, request, headers, runtime)
 
     async def get_addon_release_async(
         self,
         release_name: str,
         policy_id: str,
+        request: main_models.GetAddonReleaseRequest,
     ) -> main_models.GetAddonReleaseResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_addon_release_with_options_async(release_name, policy_id, headers, runtime)
+        return await self.get_addon_release_with_options_async(release_name, policy_id, request, headers, runtime)
 
     def get_addon_schema_with_options(
         self,
@@ -4515,9 +4629,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.GetAggTaskGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAggTaskGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4541,9 +4657,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.GetAggTaskGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAggTaskGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4567,26 +4685,30 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.GetAggTaskGroupRequest,
     ) -> main_models.GetAggTaskGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_agg_task_group_with_options(instance_id, group_id, headers, runtime)
+        return self.get_agg_task_group_with_options(instance_id, group_id, request, headers, runtime)
 
     async def get_agg_task_group_async(
         self,
         instance_id: str,
         group_id: str,
+        request: main_models.GetAggTaskGroupRequest,
     ) -> main_models.GetAggTaskGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
+        return await self.get_agg_task_group_with_options_async(instance_id, group_id, request, headers, runtime)
 
     def get_biz_trace_with_options(
         self,
         biz_trace_id: str,
+        request: main_models.GetBizTraceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetBizTraceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4609,9 +4731,11 @@ class Client(OpenApiClient):
     async def get_biz_trace_with_options_async(
         self,
         biz_trace_id: str,
+        request: main_models.GetBizTraceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetBizTraceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4634,18 +4758,20 @@ class Client(OpenApiClient):
     def get_biz_trace(
         self,
         biz_trace_id: str,
+        request: main_models.GetBizTraceRequest,
     ) -> main_models.GetBizTraceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_biz_trace_with_options(biz_trace_id, headers, runtime)
+        return self.get_biz_trace_with_options(biz_trace_id, request, headers, runtime)
 
     async def get_biz_trace_async(
         self,
         biz_trace_id: str,
+        request: main_models.GetBizTraceRequest,
     ) -> main_models.GetBizTraceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_biz_trace_with_options_async(biz_trace_id, headers, runtime)
+        return await self.get_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
 
     def get_cloud_resource_with_options(
         self,
@@ -4873,9 +4999,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.GetDatasetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetDatasetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4899,9 +5027,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.GetDatasetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetDatasetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4925,26 +5055,30 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.GetDatasetRequest,
     ) -> main_models.GetDatasetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_dataset_with_options(workspace, dataset_name, headers, runtime)
+        return self.get_dataset_with_options(workspace, dataset_name, request, headers, runtime)
 
     async def get_dataset_async(
         self,
         workspace: str,
         dataset_name: str,
+        request: main_models.GetDatasetRequest,
     ) -> main_models.GetDatasetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_dataset_with_options_async(workspace, dataset_name, headers, runtime)
+        return await self.get_dataset_with_options_async(workspace, dataset_name, request, headers, runtime)
 
     def get_delivery_task_with_options(
         self,
         task_id: str,
+        request: main_models.GetDeliveryTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetDeliveryTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4967,9 +5101,11 @@ class Client(OpenApiClient):
     async def get_delivery_task_with_options_async(
         self,
         task_id: str,
+        request: main_models.GetDeliveryTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetDeliveryTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4992,25 +5128,29 @@ class Client(OpenApiClient):
     def get_delivery_task(
         self,
         task_id: str,
+        request: main_models.GetDeliveryTaskRequest,
     ) -> main_models.GetDeliveryTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_delivery_task_with_options(task_id, headers, runtime)
+        return self.get_delivery_task_with_options(task_id, request, headers, runtime)
 
     async def get_delivery_task_async(
         self,
         task_id: str,
+        request: main_models.GetDeliveryTaskRequest,
     ) -> main_models.GetDeliveryTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_delivery_task_with_options_async(task_id, headers, runtime)
+        return await self.get_delivery_task_with_options_async(task_id, request, headers, runtime)
 
     def get_digital_employee_with_options(
         self,
         name: str,
+        request: main_models.GetDigitalEmployeeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetDigitalEmployeeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5033,9 +5173,11 @@ class Client(OpenApiClient):
     async def get_digital_employee_with_options_async(
         self,
         name: str,
+        request: main_models.GetDigitalEmployeeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetDigitalEmployeeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5058,18 +5200,20 @@ class Client(OpenApiClient):
     def get_digital_employee(
         self,
         name: str,
+        request: main_models.GetDigitalEmployeeRequest,
     ) -> main_models.GetDigitalEmployeeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_digital_employee_with_options(name, headers, runtime)
+        return self.get_digital_employee_with_options(name, request, headers, runtime)
 
     async def get_digital_employee_async(
         self,
         name: str,
+        request: main_models.GetDigitalEmployeeRequest,
     ) -> main_models.GetDigitalEmployeeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_digital_employee_with_options_async(name, headers, runtime)
+        return await self.get_digital_employee_with_options_async(name, request, headers, runtime)
 
     def get_digital_employee_skill_with_options(
         self,
@@ -5158,9 +5302,11 @@ class Client(OpenApiClient):
     def get_entity_store_with_options(
         self,
         workspace_name: str,
+        request: main_models.GetEntityStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetEntityStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5183,9 +5329,11 @@ class Client(OpenApiClient):
     async def get_entity_store_with_options_async(
         self,
         workspace_name: str,
+        request: main_models.GetEntityStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetEntityStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5208,18 +5356,20 @@ class Client(OpenApiClient):
     def get_entity_store(
         self,
         workspace_name: str,
+        request: main_models.GetEntityStoreRequest,
     ) -> main_models.GetEntityStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_entity_store_with_options(workspace_name, headers, runtime)
+        return self.get_entity_store_with_options(workspace_name, request, headers, runtime)
 
     async def get_entity_store_async(
         self,
         workspace_name: str,
+        request: main_models.GetEntityStoreRequest,
     ) -> main_models.GetEntityStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_entity_store_with_options_async(workspace_name, headers, runtime)
+        return await self.get_entity_store_with_options_async(workspace_name, request, headers, runtime)
 
     def get_entity_store_data_with_options(
         self,
@@ -5322,9 +5472,11 @@ class Client(OpenApiClient):
     def get_integration_policy_with_options(
         self,
         policy_id: str,
+        request: main_models.GetIntegrationPolicyRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetIntegrationPolicyResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5347,9 +5499,11 @@ class Client(OpenApiClient):
     async def get_integration_policy_with_options_async(
         self,
         policy_id: str,
+        request: main_models.GetIntegrationPolicyRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetIntegrationPolicyResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5372,18 +5526,20 @@ class Client(OpenApiClient):
     def get_integration_policy(
         self,
         policy_id: str,
+        request: main_models.GetIntegrationPolicyRequest,
     ) -> main_models.GetIntegrationPolicyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_integration_policy_with_options(policy_id, headers, runtime)
+        return self.get_integration_policy_with_options(policy_id, request, headers, runtime)
 
     async def get_integration_policy_async(
         self,
         policy_id: str,
+        request: main_models.GetIntegrationPolicyRequest,
     ) -> main_models.GetIntegrationPolicyResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_integration_policy_with_options_async(policy_id, headers, runtime)
+        return await self.get_integration_policy_with_options_async(policy_id, request, headers, runtime)
 
     def get_integration_version_for_cswith_options(
         self,
@@ -5479,6 +5635,8 @@ class Client(OpenApiClient):
             body['agentId'] = request.agent_id
         if not DaraCore.is_null(request.app_id):
             body['appId'] = request.app_id
+        if not DaraCore.is_null(request.filters):
+            body['filters'] = request.filters
         if not DaraCore.is_null(request.page):
             body['page'] = request.page
         if not DaraCore.is_null(request.page_size):
@@ -5521,6 +5679,8 @@ class Client(OpenApiClient):
             body['agentId'] = request.agent_id
         if not DaraCore.is_null(request.app_id):
             body['appId'] = request.app_id
+        if not DaraCore.is_null(request.filters):
+            body['filters'] = request.filters
         if not DaraCore.is_null(request.page):
             body['page'] = request.page
         if not DaraCore.is_null(request.page_size):
@@ -5574,9 +5734,11 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5601,9 +5763,11 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5628,29 +5792,33 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
     ) -> main_models.GetMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_memory_with_options(workspace, memory_store_name, memory_id, headers, runtime)
+        return self.get_memory_with_options(workspace, memory_store_name, memory_id, request, headers, runtime)
 
     async def get_memory_async(
         self,
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
     ) -> main_models.GetMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_memory_with_options_async(workspace, memory_store_name, memory_id, headers, runtime)
+        return await self.get_memory_with_options_async(workspace, memory_store_name, memory_id, request, headers, runtime)
 
     def get_memory_history_with_options(
         self,
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryHistoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryHistoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5675,9 +5843,11 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryHistoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryHistoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5702,28 +5872,32 @@ class Client(OpenApiClient):
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryHistoryRequest,
     ) -> main_models.GetMemoryHistoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_memory_history_with_options(workspace, memory_store_name, memory_id, headers, runtime)
+        return self.get_memory_history_with_options(workspace, memory_store_name, memory_id, request, headers, runtime)
 
     async def get_memory_history_async(
         self,
         workspace: str,
         memory_store_name: str,
         memory_id: str,
+        request: main_models.GetMemoryHistoryRequest,
     ) -> main_models.GetMemoryHistoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_memory_history_with_options_async(workspace, memory_store_name, memory_id, headers, runtime)
+        return await self.get_memory_history_with_options_async(workspace, memory_store_name, memory_id, request, headers, runtime)
 
     def get_memory_store_with_options(
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5747,9 +5921,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryStoreResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5773,19 +5949,21 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
     ) -> main_models.GetMemoryStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_memory_store_with_options(workspace, memory_store_name, headers, runtime)
+        return self.get_memory_store_with_options(workspace, memory_store_name, request, headers, runtime)
 
     async def get_memory_store_async(
         self,
         workspace: str,
         memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
     ) -> main_models.GetMemoryStoreResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_memory_store_with_options_async(workspace, memory_store_name, headers, runtime)
+        return await self.get_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
 
     def get_prometheus_instance_with_options(
         self,
@@ -6035,9 +6213,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         service_id: str,
+        request: main_models.GetServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6061,9 +6241,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         service_id: str,
+        request: main_models.GetServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6087,27 +6269,31 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         service_id: str,
+        request: main_models.GetServiceRequest,
     ) -> main_models.GetServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_service_with_options(workspace, service_id, headers, runtime)
+        return self.get_service_with_options(workspace, service_id, request, headers, runtime)
 
     async def get_service_async(
         self,
         workspace: str,
         service_id: str,
+        request: main_models.GetServiceRequest,
     ) -> main_models.GetServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_service_with_options_async(workspace, service_id, headers, runtime)
+        return await self.get_service_with_options_async(workspace, service_id, request, headers, runtime)
 
     def get_service_observability_with_options(
         self,
         workspace: str,
         type: str,
+        request: main_models.GetServiceObservabilityRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetServiceObservabilityResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6131,9 +6317,11 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         type: str,
+        request: main_models.GetServiceObservabilityRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetServiceObservabilityResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6157,27 +6345,31 @@ class Client(OpenApiClient):
         self,
         workspace: str,
         type: str,
+        request: main_models.GetServiceObservabilityRequest,
     ) -> main_models.GetServiceObservabilityResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_service_observability_with_options(workspace, type, headers, runtime)
+        return self.get_service_observability_with_options(workspace, type, request, headers, runtime)
 
     async def get_service_observability_async(
         self,
         workspace: str,
         type: str,
+        request: main_models.GetServiceObservabilityRequest,
     ) -> main_models.GetServiceObservabilityResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_service_observability_with_options_async(workspace, type, headers, runtime)
+        return await self.get_service_observability_with_options_async(workspace, type, request, headers, runtime)
 
     def get_thread_with_options(
         self,
         name: str,
         thread_id: str,
+        request: main_models.GetThreadRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetThreadResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6201,9 +6393,11 @@ class Client(OpenApiClient):
         self,
         name: str,
         thread_id: str,
+        request: main_models.GetThreadRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetThreadResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6227,19 +6421,21 @@ class Client(OpenApiClient):
         self,
         name: str,
         thread_id: str,
+        request: main_models.GetThreadRequest,
     ) -> main_models.GetThreadResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_thread_with_options(name, thread_id, headers, runtime)
+        return self.get_thread_with_options(name, thread_id, request, headers, runtime)
 
     async def get_thread_async(
         self,
         name: str,
         thread_id: str,
+        request: main_models.GetThreadRequest,
     ) -> main_models.GetThreadResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_thread_with_options_async(name, thread_id, headers, runtime)
+        return await self.get_thread_with_options_async(name, thread_id, request, headers, runtime)
 
     def get_thread_data_with_options(
         self,
@@ -6332,9 +6528,11 @@ class Client(OpenApiClient):
     def get_umodel_with_options(
         self,
         workspace: str,
+        request: main_models.GetUmodelRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetUmodelResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6357,9 +6555,11 @@ class Client(OpenApiClient):
     async def get_umodel_with_options_async(
         self,
         workspace: str,
+        request: main_models.GetUmodelRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetUmodelResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6382,25 +6582,29 @@ class Client(OpenApiClient):
     def get_umodel(
         self,
         workspace: str,
+        request: main_models.GetUmodelRequest,
     ) -> main_models.GetUmodelResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_umodel_with_options(workspace, headers, runtime)
+        return self.get_umodel_with_options(workspace, request, headers, runtime)
 
     async def get_umodel_async(
         self,
         workspace: str,
+        request: main_models.GetUmodelRequest,
     ) -> main_models.GetUmodelResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_umodel_with_options_async(workspace, headers, runtime)
+        return await self.get_umodel_with_options_async(workspace, request, headers, runtime)
 
     def get_umodel_common_schema_ref_with_options(
         self,
         workspace: str,
+        request: main_models.GetUmodelCommonSchemaRefRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetUmodelCommonSchemaRefResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6423,9 +6627,11 @@ class Client(OpenApiClient):
     async def get_umodel_common_schema_ref_with_options_async(
         self,
         workspace: str,
+        request: main_models.GetUmodelCommonSchemaRefRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetUmodelCommonSchemaRefResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6448,18 +6654,20 @@ class Client(OpenApiClient):
     def get_umodel_common_schema_ref(
         self,
         workspace: str,
+        request: main_models.GetUmodelCommonSchemaRefRequest,
     ) -> main_models.GetUmodelCommonSchemaRefResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_umodel_common_schema_ref_with_options(workspace, headers, runtime)
+        return self.get_umodel_common_schema_ref_with_options(workspace, request, headers, runtime)
 
     async def get_umodel_common_schema_ref_async(
         self,
         workspace: str,
+        request: main_models.GetUmodelCommonSchemaRefRequest,
     ) -> main_models.GetUmodelCommonSchemaRefResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_umodel_common_schema_ref_with_options_async(workspace, headers, runtime)
+        return await self.get_umodel_common_schema_ref_with_options_async(workspace, request, headers, runtime)
 
     def get_umodel_data_with_options(
         self,
@@ -6552,9 +6760,11 @@ class Client(OpenApiClient):
     def get_workspace_with_options(
         self,
         workspace_name: str,
+        request: main_models.GetWorkspaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetWorkspaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6577,9 +6787,11 @@ class Client(OpenApiClient):
     async def get_workspace_with_options_async(
         self,
         workspace_name: str,
+        request: main_models.GetWorkspaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetWorkspaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6602,18 +6814,20 @@ class Client(OpenApiClient):
     def get_workspace(
         self,
         workspace_name: str,
+        request: main_models.GetWorkspaceRequest,
     ) -> main_models.GetWorkspaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_workspace_with_options(workspace_name, headers, runtime)
+        return self.get_workspace_with_options(workspace_name, request, headers, runtime)
 
     async def get_workspace_async(
         self,
         workspace_name: str,
+        request: main_models.GetWorkspaceRequest,
     ) -> main_models.GetWorkspaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_workspace_with_options_async(workspace_name, headers, runtime)
+        return await self.get_workspace_with_options_async(workspace_name, request, headers, runtime)
 
     def list_addon_releases_with_options(
         self,
@@ -7379,9 +7593,11 @@ class Client(OpenApiClient):
         self,
         name: str,
         skill_name: str,
+        request: main_models.ListDigitalEmployeeSkillVersionsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7405,9 +7621,11 @@ class Client(OpenApiClient):
         self,
         name: str,
         skill_name: str,
+        request: main_models.ListDigitalEmployeeSkillVersionsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7431,19 +7649,21 @@ class Client(OpenApiClient):
         self,
         name: str,
         skill_name: str,
+        request: main_models.ListDigitalEmployeeSkillVersionsRequest,
     ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_digital_employee_skill_versions_with_options(name, skill_name, headers, runtime)
+        return self.list_digital_employee_skill_versions_with_options(name, skill_name, request, headers, runtime)
 
     async def list_digital_employee_skill_versions_async(
         self,
         name: str,
         skill_name: str,
+        request: main_models.ListDigitalEmployeeSkillVersionsRequest,
     ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_digital_employee_skill_versions_with_options_async(name, skill_name, headers, runtime)
+        return await self.list_digital_employee_skill_versions_with_options_async(name, skill_name, request, headers, runtime)
 
     def list_digital_employee_skills_with_options(
         self,
@@ -7780,9 +8000,11 @@ class Client(OpenApiClient):
     def list_integration_policy_addons_with_options(
         self,
         policy_id: str,
+        request: main_models.ListIntegrationPolicyAddonsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListIntegrationPolicyAddonsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7805,9 +8027,11 @@ class Client(OpenApiClient):
     async def list_integration_policy_addons_with_options_async(
         self,
         policy_id: str,
+        request: main_models.ListIntegrationPolicyAddonsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListIntegrationPolicyAddonsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7830,18 +8054,20 @@ class Client(OpenApiClient):
     def list_integration_policy_addons(
         self,
         policy_id: str,
+        request: main_models.ListIntegrationPolicyAddonsRequest,
     ) -> main_models.ListIntegrationPolicyAddonsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_integration_policy_addons_with_options(policy_id, headers, runtime)
+        return self.list_integration_policy_addons_with_options(policy_id, request, headers, runtime)
 
     async def list_integration_policy_addons_async(
         self,
         policy_id: str,
+        request: main_models.ListIntegrationPolicyAddonsRequest,
     ) -> main_models.ListIntegrationPolicyAddonsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_integration_policy_addons_with_options_async(policy_id, headers, runtime)
+        return await self.list_integration_policy_addons_with_options_async(policy_id, request, headers, runtime)
 
     def list_integration_policy_collectors_with_options(
         self,
@@ -9275,6 +9501,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_workspaces_with_options_async(request, headers, runtime)
 
+    def manage_alert_rules_with_options(
+        self,
+        tmp_req: main_models.ManageAlertRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageAlertRulesResponse:
+        tmp_req.validate()
+        request = main_models.ManageAlertRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ManageAlertRules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/manageAlertRules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ManageAlertRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_alert_rules_with_options_async(
+        self,
+        tmp_req: main_models.ManageAlertRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageAlertRulesResponse:
+        tmp_req.validate()
+        request = main_models.ManageAlertRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ManageAlertRules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/manageAlertRules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ManageAlertRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manage_alert_rules(
+        self,
+        request: main_models.ManageAlertRulesRequest,
+    ) -> main_models.ManageAlertRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.manage_alert_rules_with_options(request, headers, runtime)
+
+    async def manage_alert_rules_async(
+        self,
+        request: main_models.ManageAlertRulesRequest,
+    ) -> main_models.ManageAlertRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.manage_alert_rules_with_options_async(request, headers, runtime)
+
     def put_workspace_with_options(
         self,
         workspace_name: str,
@@ -9363,6 +9673,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.put_workspace_with_options_async(workspace_name, request, headers, runtime)
 
+    def query_alert_rules_with_options(
+        self,
+        tmp_req: main_models.QueryAlertRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAlertRulesResponse:
+        tmp_req.validate()
+        request = main_models.QueryAlertRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAlertRules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/queryAlertRules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAlertRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_alert_rules_with_options_async(
+        self,
+        tmp_req: main_models.QueryAlertRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAlertRulesResponse:
+        tmp_req.validate()
+        request = main_models.QueryAlertRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAlertRules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/queryAlertRules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAlertRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_alert_rules(
+        self,
+        request: main_models.QueryAlertRulesRequest,
+    ) -> main_models.QueryAlertRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_alert_rules_with_options(request, headers, runtime)
+
+    async def query_alert_rules_async(
+        self,
+        request: main_models.QueryAlertRulesRequest,
+    ) -> main_models.QueryAlertRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_alert_rules_with_options_async(request, headers, runtime)
+
     def search_memories_with_options(
         self,
         workspace: str,
@@ -9377,14 +9787,18 @@ class Client(OpenApiClient):
             body['agentId'] = request.agent_id
         if not DaraCore.is_null(request.app_id):
             body['appId'] = request.app_id
-        if not DaraCore.is_null(request.metadata):
-            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.filters):
+            body['filters'] = request.filters
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
         if not DaraCore.is_null(request.rerank):
             body['rerank'] = request.rerank
+        if not DaraCore.is_null(request.retrieve_level):
+            body['retrieveLevel'] = request.retrieve_level
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
+        if not DaraCore.is_null(request.threshold):
+            body['threshold'] = request.threshold
         if not DaraCore.is_null(request.top_k):
             body['topK'] = request.top_k
         if not DaraCore.is_null(request.user_id):
@@ -9423,14 +9837,18 @@ class Client(OpenApiClient):
             body['agentId'] = request.agent_id
         if not DaraCore.is_null(request.app_id):
             body['appId'] = request.app_id
-        if not DaraCore.is_null(request.metadata):
-            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.filters):
+            body['filters'] = request.filters
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
         if not DaraCore.is_null(request.rerank):
             body['rerank'] = request.rerank
+        if not DaraCore.is_null(request.retrieve_level):
+            body['retrieveLevel'] = request.retrieve_level
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
+        if not DaraCore.is_null(request.threshold):
+            body['threshold'] = request.threshold
         if not DaraCore.is_null(request.top_k):
             body['topK'] = request.top_k
         if not DaraCore.is_null(request.user_id):

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, Any
+
 from darabonba.model import DaraModel
 
 class GetMemoriesRequest(DaraModel):
@@ -9,6 +11,7 @@ class GetMemoriesRequest(DaraModel):
         self,
         agent_id: str = None,
         app_id: str = None,
+        filters: Dict[str, Any] = None,
         page: int = None,
         page_size: int = None,
         run_id: str = None,
@@ -16,6 +19,7 @@ class GetMemoriesRequest(DaraModel):
     ):
         self.agent_id = agent_id
         self.app_id = app_id
+        self.filters = filters
         self.page = page
         self.page_size = page_size
         self.run_id = run_id
@@ -34,6 +38,9 @@ class GetMemoriesRequest(DaraModel):
 
         if self.app_id is not None:
             result['appId'] = self.app_id
+
+        if self.filters is not None:
+            result['filters'] = self.filters
 
         if self.page is not None:
             result['page'] = self.page
@@ -56,6 +63,9 @@ class GetMemoriesRequest(DaraModel):
 
         if m.get('appId') is not None:
             self.app_id = m.get('appId')
+
+        if m.get('filters') is not None:
+            self.filters = m.get('filters')
 
         if m.get('page') is not None:
             self.page = m.get('page')

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -76,7 +76,7 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         hash: str = None,
         id: str = None,
         memory: str = None,
-        metadata: str = None,
+        metadata: Dict[str, Any] = None,
         role: str = None,
         run_id: str = None,
         score: float = None,

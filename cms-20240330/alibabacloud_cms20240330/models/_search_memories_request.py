@@ -11,19 +11,23 @@ class SearchMemoriesRequest(DaraModel):
         self,
         agent_id: str = None,
         app_id: str = None,
-        metadata: Dict[str, Any] = None,
+        filters: Dict[str, Any] = None,
         query: str = None,
         rerank: bool = None,
+        retrieve_level: str = None,
         run_id: str = None,
+        threshold: float = None,
         top_k: int = None,
         user_id: str = None,
     ):
         self.agent_id = agent_id
         self.app_id = app_id
-        self.metadata = metadata
+        self.filters = filters
         self.query = query
         self.rerank = rerank
+        self.retrieve_level = retrieve_level
         self.run_id = run_id
+        self.threshold = threshold
         self.top_k = top_k
         self.user_id = user_id
 
@@ -41,8 +45,8 @@ class SearchMemoriesRequest(DaraModel):
         if self.app_id is not None:
             result['appId'] = self.app_id
 
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
+        if self.filters is not None:
+            result['filters'] = self.filters
 
         if self.query is not None:
             result['query'] = self.query
@@ -50,8 +54,14 @@ class SearchMemoriesRequest(DaraModel):
         if self.rerank is not None:
             result['rerank'] = self.rerank
 
+        if self.retrieve_level is not None:
+            result['retrieveLevel'] = self.retrieve_level
+
         if self.run_id is not None:
             result['runId'] = self.run_id
+
+        if self.threshold is not None:
+            result['threshold'] = self.threshold
 
         if self.top_k is not None:
             result['topK'] = self.top_k
@@ -69,8 +79,8 @@ class SearchMemoriesRequest(DaraModel):
         if m.get('appId') is not None:
             self.app_id = m.get('appId')
 
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
+        if m.get('filters') is not None:
+            self.filters = m.get('filters')
 
         if m.get('query') is not None:
             self.query = m.get('query')
@@ -78,8 +88,14 @@ class SearchMemoriesRequest(DaraModel):
         if m.get('rerank') is not None:
             self.rerank = m.get('rerank')
 
+        if m.get('retrieveLevel') is not None:
+            self.retrieve_level = m.get('retrieveLevel')
+
         if m.get('runId') is not None:
             self.run_id = m.get('runId')
+
+        if m.get('threshold') is not None:
+            self.threshold = m.get('threshold')
 
         if m.get('topK') is not None:
             self.top_k = m.get('topK')

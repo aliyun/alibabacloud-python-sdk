@@ -1,3 +1,12 @@
+2026-04-10 Version: 7.0.0
+- Update API GetMemories: add request parameters body.filters.
+- Update API SearchMemories: add request parameters body.filters.
+- Update API SearchMemories: add request parameters body.retrieveLevel.
+- Update API SearchMemories: add request parameters body.threshold.
+- Update API SearchMemories: delete request parameters body.metadata.
+- Update API SearchMemories: update response parameters Body.results.$.metadata' type has changed.
+
+
 2026-04-02 Version: 6.4.0
 - Support API CreateDataset.
 - Support API DeleteDataset.

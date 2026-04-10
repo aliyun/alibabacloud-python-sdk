@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._action_integration_config import ActionIntegrationConfig
 from ._addon_meta import AddonMeta
 from ._alert_event_integration_policy_for_modify import AlertEventIntegrationPolicyForModify
 from ._alert_event_integration_policy_for_view import AlertEventIntegrationPolicyForView
@@ -21,12 +22,23 @@ from ._alert_rule_rca_config import AlertRuleRcaConfig
 from ._alert_rule_send import AlertRuleSend
 from ._alert_rule_sls_query_join import AlertRuleSlsQueryJoin
 from ._alert_rule_time_span import AlertRuleTimeSpan
+from ._alert_rule_v2 import AlertRuleV2
+from ._apm_composite_compare_config import ApmCompositeCompareConfig
+from ._apm_filter_config import ApmFilterConfig
+from ._apm_measure_config import ApmMeasureConfig
+from ._apm_threshold_config import ApmThresholdConfig
+from ._arms_integration_config import ArmsIntegrationConfig
 from ._biz_trace_config import BizTraceConfig
 from ._cms_event_for_view import CmsEventForView
+from ._condition_config_unified import ConditionConfigUnified
 from ._contact_for_incident_view import ContactForIncidentView
 from ._custom_extraction_strategy import CustomExtractionStrategy
 from ._data_storage_item import DataStorageItem
+from ._datasource_config_unified import DatasourceConfigUnified
+from ._direct_notify_channel import DirectNotifyChannel
+from ._display_name_filter import DisplayNameFilter
 from ._effect_time_range import EffectTimeRange
+from ._enabled_filter import EnabledFilter
 from ._entity_discover_rule import EntityDiscoverRule
 from ._entity_group_base import EntityGroupBase
 from ._evaluator import Evaluator
@@ -35,6 +47,7 @@ from ._event_resource_for_incident_view import EventResourceForIncidentView
 from ._experiment_config import ExperimentConfig
 from ._experiment_plan_data import ExperimentPlanData
 from ._experiment_record import ExperimentRecord
+from ._filter import Filter
 from ._filter_setting import FilterSetting
 from ._incident_contact_struct import IncidentContactStruct
 from ._incident_escalation_policy_for_modify import IncidentEscalationPolicyForModify
@@ -58,27 +71,45 @@ from ._incident_timeline import IncidentTimeline
 from ._incident_timeline_for_view import IncidentTimelineForView
 from ._index_json_key import IndexJsonKey
 from ._index_key import IndexKey
+from ._label_matcher import LabelMatcher
+from ._labels_filter import LabelsFilter
 from ._maintain_window_for_modify import MaintainWindowForModify
 from ._maintain_window_for_view import MaintainWindowForView
+from ._manage_alert_rules_result import ManageAlertRulesResult
+from ._manage_alert_rules_unified_action_input import ManageAlertRulesUnifiedActionInput
 from ._merge_contact import MergeContact
 from ._merge_contact_group import MergeContactGroup
 from ._merge_robot import MergeRobot
 from ._merge_webhook import MergeWebhook
 from ._model_parameters import ModelParameters
 from ._notify_channel import NotifyChannel
+from ._notify_config_unified import NotifyConfigUnified
 from ._notify_strategy_for_modify import NotifyStrategyForModify
 from ._notify_strategy_for_view import NotifyStrategyForView
+from ._pagination import Pagination
 from ._prometheus_managed_instance import PrometheusManagedInstance
 from ._prompt_template_item import PromptTemplateItem
 from ._pushing_setting import PushingSetting
+from ._query_alert_rules_filter import QueryAlertRulesFilter
+from ._query_alert_rules_input import QueryAlertRulesInput
+from ._query_alert_rules_result import QueryAlertRulesResult
+from ._query_config_unified import QueryConfigUnified
 from ._repeat_notify_setting import RepeatNotifySetting
 from ._rum_dns_response import RumDnsResponse
+from ._schedule_config_unified import ScheduleConfigUnified
+from ._server_response_manage_alert_rules_result import ServerResponseManageAlertRulesResult
+from ._server_response_query_alert_rules_result import ServerResponseQueryAlertRulesResult
+from ._status_filter import StatusFilter
 from ._subscription_for_modify import SubscriptionForModify
 from ._subscription_for_view import SubscriptionForView
 from ._tag import Tag
 from ._transform_action import TransformAction
 from ._transformer_for_modify import TransformerForModify
 from ._transformer_for_view import TransformerForView
+from ._umodel_entity_field import UmodelEntityField
+from ._umodel_entity_filter import UmodelEntityFilter
+from ._umodel_label_filter import UmodelLabelFilter
+from ._uuid_filter import UuidFilter
 from ._workspace_filter_setting import WorkspaceFilterSetting
 from ._add_memories_request import AddMemoriesRequest
 from ._add_memories_response_body import AddMemoriesResponseBody
@@ -115,6 +146,7 @@ from ._create_digital_employee_response import CreateDigitalEmployeeResponse
 from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequest
 from ._create_digital_employee_skill_response_body import CreateDigitalEmployeeSkillResponseBody
 from ._create_digital_employee_skill_response import CreateDigitalEmployeeSkillResponse
+from ._create_entity_store_request import CreateEntityStoreRequest
 from ._create_entity_store_response_body import CreateEntityStoreResponseBody
 from ._create_entity_store_response import CreateEntityStoreResponse
 from ._create_integration_policy_request import CreateIntegrationPolicyRequest
@@ -135,6 +167,7 @@ from ._create_prometheus_virtual_instance_response import CreatePrometheusVirtua
 from ._create_service_request import CreateServiceRequest
 from ._create_service_response_body import CreateServiceResponseBody
 from ._create_service_response import CreateServiceResponse
+from ._create_service_observability_request import CreateServiceObservabilityRequest
 from ._create_service_observability_response_body import CreateServiceObservabilityResponseBody
 from ._create_service_observability_response import CreateServiceObservabilityResponse
 from ._create_thread_request import CreateThreadRequest
@@ -149,24 +182,31 @@ from ._create_umodel_response import CreateUmodelResponse
 from ._delete_addon_release_request import DeleteAddonReleaseRequest
 from ._delete_addon_release_response_body import DeleteAddonReleaseResponseBody
 from ._delete_addon_release_response import DeleteAddonReleaseResponse
+from ._delete_agg_task_group_request import DeleteAggTaskGroupRequest
 from ._delete_agg_task_group_response_body import DeleteAggTaskGroupResponseBody
 from ._delete_agg_task_group_response import DeleteAggTaskGroupResponse
 from ._delete_alert_webhooks_request import DeleteAlertWebhooksRequest
 from ._delete_alert_webhooks_shrink_request import DeleteAlertWebhooksShrinkRequest
 from ._delete_alert_webhooks_response_body import DeleteAlertWebhooksResponseBody
 from ._delete_alert_webhooks_response import DeleteAlertWebhooksResponse
+from ._delete_biz_trace_request import DeleteBizTraceRequest
 from ._delete_biz_trace_response_body import DeleteBizTraceResponseBody
 from ._delete_biz_trace_response import DeleteBizTraceResponse
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
+from ._delete_dataset_request import DeleteDatasetRequest
 from ._delete_dataset_response_body import DeleteDatasetResponseBody
 from ._delete_dataset_response import DeleteDatasetResponse
+from ._delete_delivery_task_request import DeleteDeliveryTaskRequest
 from ._delete_delivery_task_response_body import DeleteDeliveryTaskResponseBody
 from ._delete_delivery_task_response import DeleteDeliveryTaskResponse
+from ._delete_digital_employee_request import DeleteDigitalEmployeeRequest
 from ._delete_digital_employee_response_body import DeleteDigitalEmployeeResponseBody
 from ._delete_digital_employee_response import DeleteDigitalEmployeeResponse
+from ._delete_digital_employee_skill_request import DeleteDigitalEmployeeSkillRequest
 from ._delete_digital_employee_skill_response_body import DeleteDigitalEmployeeSkillResponseBody
 from ._delete_digital_employee_skill_response import DeleteDigitalEmployeeSkillResponse
+from ._delete_entity_store_request import DeleteEntityStoreRequest
 from ._delete_entity_store_response_body import DeleteEntityStoreResponseBody
 from ._delete_entity_store_response import DeleteEntityStoreResponse
 from ._delete_integration_policy_request import DeleteIntegrationPolicyRequest
@@ -175,20 +215,28 @@ from ._delete_integration_policy_response import DeleteIntegrationPolicyResponse
 from ._delete_memories_request import DeleteMemoriesRequest
 from ._delete_memories_response_body import DeleteMemoriesResponseBody
 from ._delete_memories_response import DeleteMemoriesResponse
+from ._delete_memory_request import DeleteMemoryRequest
 from ._delete_memory_response_body import DeleteMemoryResponseBody
 from ._delete_memory_response import DeleteMemoryResponse
+from ._delete_memory_store_request import DeleteMemoryStoreRequest
 from ._delete_memory_store_response_body import DeleteMemoryStoreResponseBody
 from ._delete_memory_store_response import DeleteMemoryStoreResponse
+from ._delete_prometheus_instance_request import DeletePrometheusInstanceRequest
 from ._delete_prometheus_instance_response_body import DeletePrometheusInstanceResponseBody
 from ._delete_prometheus_instance_response import DeletePrometheusInstanceResponse
+from ._delete_prometheus_view_request import DeletePrometheusViewRequest
 from ._delete_prometheus_view_response_body import DeletePrometheusViewResponseBody
 from ._delete_prometheus_view_response import DeletePrometheusViewResponse
+from ._delete_prometheus_virtual_instance_request import DeletePrometheusVirtualInstanceRequest
 from ._delete_prometheus_virtual_instance_response_body import DeletePrometheusVirtualInstanceResponseBody
 from ._delete_prometheus_virtual_instance_response import DeletePrometheusVirtualInstanceResponse
+from ._delete_service_request import DeleteServiceRequest
 from ._delete_service_response_body import DeleteServiceResponseBody
 from ._delete_service_response import DeleteServiceResponse
+from ._delete_thread_request import DeleteThreadRequest
 from ._delete_thread_response_body import DeleteThreadResponseBody
 from ._delete_thread_response import DeleteThreadResponse
+from ._delete_umodel_request import DeleteUmodelRequest
 from ._delete_umodel_response_body import DeleteUmodelResponseBody
 from ._delete_umodel_response import DeleteUmodelResponse
 from ._delete_umodel_common_schema_ref_request import DeleteUmodelCommonSchemaRefRequest
@@ -197,6 +245,7 @@ from ._delete_umodel_common_schema_ref_response import DeleteUmodelCommonSchemaR
 from ._delete_umodel_data_request import DeleteUmodelDataRequest
 from ._delete_umodel_data_response_body import DeleteUmodelDataResponseBody
 from ._delete_umodel_data_response import DeleteUmodelDataResponse
+from ._delete_workspace_request import DeleteWorkspaceRequest
 from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
 from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._describe_regions_request import DescribeRegionsRequest
@@ -211,13 +260,16 @@ from ._get_addon_response import GetAddonResponse
 from ._get_addon_code_template_request import GetAddonCodeTemplateRequest
 from ._get_addon_code_template_response_body import GetAddonCodeTemplateResponseBody
 from ._get_addon_code_template_response import GetAddonCodeTemplateResponse
+from ._get_addon_release_request import GetAddonReleaseRequest
 from ._get_addon_release_response_body import GetAddonReleaseResponseBody
 from ._get_addon_release_response import GetAddonReleaseResponse
 from ._get_addon_schema_request import GetAddonSchemaRequest
 from ._get_addon_schema_response_body import GetAddonSchemaResponseBody
 from ._get_addon_schema_response import GetAddonSchemaResponse
+from ._get_agg_task_group_request import GetAggTaskGroupRequest
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBody
 from ._get_agg_task_group_response import GetAggTaskGroupResponse
+from ._get_biz_trace_request import GetBizTraceRequest
 from ._get_biz_trace_response_body import GetBizTraceResponseBody
 from ._get_biz_trace_response import GetBizTraceResponse
 from ._get_cloud_resource_response_body import GetCloudResourceResponseBody
@@ -228,21 +280,26 @@ from ._get_cloud_resource_data_response import GetCloudResourceDataResponse
 from ._get_cms_service_request import GetCmsServiceRequest
 from ._get_cms_service_response_body import GetCmsServiceResponseBody
 from ._get_cms_service_response import GetCmsServiceResponse
+from ._get_dataset_request import GetDatasetRequest
 from ._get_dataset_response_body import GetDatasetResponseBody
 from ._get_dataset_response import GetDatasetResponse
+from ._get_delivery_task_request import GetDeliveryTaskRequest
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBody
 from ._get_delivery_task_response import GetDeliveryTaskResponse
+from ._get_digital_employee_request import GetDigitalEmployeeRequest
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBody
 from ._get_digital_employee_response import GetDigitalEmployeeResponse
 from ._get_digital_employee_skill_request import GetDigitalEmployeeSkillRequest
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBody
 from ._get_digital_employee_skill_response import GetDigitalEmployeeSkillResponse
+from ._get_entity_store_request import GetEntityStoreRequest
 from ._get_entity_store_response_body import GetEntityStoreResponseBody
 from ._get_entity_store_response import GetEntityStoreResponse
 from ._get_entity_store_data_headers import GetEntityStoreDataHeaders
 from ._get_entity_store_data_request import GetEntityStoreDataRequest
 from ._get_entity_store_data_response_body import GetEntityStoreDataResponseBody
 from ._get_entity_store_data_response import GetEntityStoreDataResponse
+from ._get_integration_policy_request import GetIntegrationPolicyRequest
 from ._get_integration_policy_response_body import GetIntegrationPolicyResponseBody
 from ._get_integration_policy_response import GetIntegrationPolicyResponse
 from ._get_integration_version_for_csrequest import GetIntegrationVersionForCSRequest
@@ -251,10 +308,13 @@ from ._get_integration_version_for_csresponse import GetIntegrationVersionForCSR
 from ._get_memories_request import GetMemoriesRequest
 from ._get_memories_response_body import GetMemoriesResponseBody
 from ._get_memories_response import GetMemoriesResponse
+from ._get_memory_request import GetMemoryRequest
 from ._get_memory_response_body import GetMemoryResponseBody
 from ._get_memory_response import GetMemoryResponse
+from ._get_memory_history_request import GetMemoryHistoryRequest
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBody
 from ._get_memory_history_response import GetMemoryHistoryResponse
+from ._get_memory_store_request import GetMemoryStoreRequest
 from ._get_memory_store_response_body import GetMemoryStoreResponseBody
 from ._get_memory_store_response import GetMemoryStoreResponse
 from ._get_prometheus_instance_request import GetPrometheusInstanceRequest
@@ -266,22 +326,28 @@ from ._get_prometheus_user_setting_response import GetPrometheusUserSettingRespo
 from ._get_prometheus_view_request import GetPrometheusViewRequest
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBody
 from ._get_prometheus_view_response import GetPrometheusViewResponse
+from ._get_service_request import GetServiceRequest
 from ._get_service_response_body import GetServiceResponseBody
 from ._get_service_response import GetServiceResponse
+from ._get_service_observability_request import GetServiceObservabilityRequest
 from ._get_service_observability_response_body import GetServiceObservabilityResponseBody
 from ._get_service_observability_response import GetServiceObservabilityResponse
+from ._get_thread_request import GetThreadRequest
 from ._get_thread_response_body import GetThreadResponseBody
 from ._get_thread_response import GetThreadResponse
 from ._get_thread_data_request import GetThreadDataRequest
 from ._get_thread_data_response_body import GetThreadDataResponseBody
 from ._get_thread_data_response import GetThreadDataResponse
+from ._get_umodel_request import GetUmodelRequest
 from ._get_umodel_response_body import GetUmodelResponseBody
 from ._get_umodel_response import GetUmodelResponse
+from ._get_umodel_common_schema_ref_request import GetUmodelCommonSchemaRefRequest
 from ._get_umodel_common_schema_ref_response_body import GetUmodelCommonSchemaRefResponseBody
 from ._get_umodel_common_schema_ref_response import GetUmodelCommonSchemaRefResponse
 from ._get_umodel_data_request import GetUmodelDataRequest
 from ._get_umodel_data_response_body import GetUmodelDataResponseBody
 from ._get_umodel_data_response import GetUmodelDataResponse
+from ._get_workspace_request import GetWorkspaceRequest
 from ._get_workspace_response_body import GetWorkspaceResponseBody
 from ._get_workspace_response import GetWorkspaceResponse
 from ._list_addon_releases_request import ListAddonReleasesRequest
@@ -312,6 +378,7 @@ from ._list_delivery_tasks_request import ListDeliveryTasksRequest
 from ._list_delivery_tasks_shrink_request import ListDeliveryTasksShrinkRequest
 from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBody
 from ._list_delivery_tasks_response import ListDeliveryTasksResponse
+from ._list_digital_employee_skill_versions_request import ListDigitalEmployeeSkillVersionsRequest
 from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBody
 from ._list_digital_employee_skill_versions_response import ListDigitalEmployeeSkillVersionsResponse
 from ._list_digital_employee_skills_request import ListDigitalEmployeeSkillsRequest
@@ -325,6 +392,7 @@ from ._list_integration_policies_request import ListIntegrationPoliciesRequest
 from ._list_integration_policies_shrink_request import ListIntegrationPoliciesShrinkRequest
 from ._list_integration_policies_response_body import ListIntegrationPoliciesResponseBody
 from ._list_integration_policies_response import ListIntegrationPoliciesResponse
+from ._list_integration_policy_addons_request import ListIntegrationPolicyAddonsRequest
 from ._list_integration_policy_addons_response_body import ListIntegrationPolicyAddonsResponseBody
 from ._list_integration_policy_addons_response import ListIntegrationPolicyAddonsResponse
 from ._list_integration_policy_collectors_request import ListIntegrationPolicyCollectorsRequest
@@ -378,9 +446,15 @@ from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_shrink_request import ListWorkspacesShrinkRequest
 from ._list_workspaces_response_body import ListWorkspacesResponseBody
 from ._list_workspaces_response import ListWorkspacesResponse
+from ._manage_alert_rules_request import ManageAlertRulesRequest
+from ._manage_alert_rules_shrink_request import ManageAlertRulesShrinkRequest
+from ._manage_alert_rules_response import ManageAlertRulesResponse
 from ._put_workspace_request import PutWorkspaceRequest
 from ._put_workspace_response_body import PutWorkspaceResponseBody
 from ._put_workspace_response import PutWorkspaceResponse
+from ._query_alert_rules_request import QueryAlertRulesRequest
+from ._query_alert_rules_shrink_request import QueryAlertRulesShrinkRequest
+from ._query_alert_rules_response import QueryAlertRulesResponse
 from ._search_memories_request import SearchMemoriesRequest
 from ._search_memories_response_body import SearchMemoriesResponseBody
 from ._search_memories_response import SearchMemoriesResponse
@@ -692,6 +766,7 @@ from ._update_integration_policy_request import UpdateIntegrationPolicyRequestTa
 from ._update_prometheus_view_request import UpdatePrometheusViewRequestPrometheusInstances
 
 __all__ = [
+    ActionIntegrationConfig,
     AddonMeta,
     AlertEventIntegrationPolicyForModify,
     AlertEventIntegrationPolicyForView,
@@ -711,12 +786,23 @@ __all__ = [
     AlertRuleSend,
     AlertRuleSlsQueryJoin,
     AlertRuleTimeSpan,
+    AlertRuleV2,
+    ApmCompositeCompareConfig,
+    ApmFilterConfig,
+    ApmMeasureConfig,
+    ApmThresholdConfig,
+    ArmsIntegrationConfig,
     BizTraceConfig,
     CmsEventForView,
+    ConditionConfigUnified,
     ContactForIncidentView,
     CustomExtractionStrategy,
     DataStorageItem,
+    DatasourceConfigUnified,
+    DirectNotifyChannel,
+    DisplayNameFilter,
     EffectTimeRange,
+    EnabledFilter,
     EntityDiscoverRule,
     EntityGroupBase,
     Evaluator,
@@ -725,6 +811,7 @@ __all__ = [
     ExperimentConfig,
     ExperimentPlanData,
     ExperimentRecord,
+    Filter,
     FilterSetting,
     IncidentContactStruct,
     IncidentEscalationPolicyForModify,
@@ -748,27 +835,45 @@ __all__ = [
     IncidentTimelineForView,
     IndexJsonKey,
     IndexKey,
+    LabelMatcher,
+    LabelsFilter,
     MaintainWindowForModify,
     MaintainWindowForView,
+    ManageAlertRulesResult,
+    ManageAlertRulesUnifiedActionInput,
     MergeContact,
     MergeContactGroup,
     MergeRobot,
     MergeWebhook,
     ModelParameters,
     NotifyChannel,
+    NotifyConfigUnified,
     NotifyStrategyForModify,
     NotifyStrategyForView,
+    Pagination,
     PrometheusManagedInstance,
     PromptTemplateItem,
     PushingSetting,
+    QueryAlertRulesFilter,
+    QueryAlertRulesInput,
+    QueryAlertRulesResult,
+    QueryConfigUnified,
     RepeatNotifySetting,
     RumDnsResponse,
+    ScheduleConfigUnified,
+    ServerResponseManageAlertRulesResult,
+    ServerResponseQueryAlertRulesResult,
+    StatusFilter,
     SubscriptionForModify,
     SubscriptionForView,
     Tag,
     TransformAction,
     TransformerForModify,
     TransformerForView,
+    UmodelEntityField,
+    UmodelEntityFilter,
+    UmodelLabelFilter,
+    UuidFilter,
     WorkspaceFilterSetting,
     AddMemoriesRequest,
     AddMemoriesResponseBody,
@@ -805,6 +910,7 @@ __all__ = [
     CreateDigitalEmployeeSkillRequest,
     CreateDigitalEmployeeSkillResponseBody,
     CreateDigitalEmployeeSkillResponse,
+    CreateEntityStoreRequest,
     CreateEntityStoreResponseBody,
     CreateEntityStoreResponse,
     CreateIntegrationPolicyRequest,
@@ -825,6 +931,7 @@ __all__ = [
     CreateServiceRequest,
     CreateServiceResponseBody,
     CreateServiceResponse,
+    CreateServiceObservabilityRequest,
     CreateServiceObservabilityResponseBody,
     CreateServiceObservabilityResponse,
     CreateThreadRequest,
@@ -839,24 +946,31 @@ __all__ = [
     DeleteAddonReleaseRequest,
     DeleteAddonReleaseResponseBody,
     DeleteAddonReleaseResponse,
+    DeleteAggTaskGroupRequest,
     DeleteAggTaskGroupResponseBody,
     DeleteAggTaskGroupResponse,
     DeleteAlertWebhooksRequest,
     DeleteAlertWebhooksShrinkRequest,
     DeleteAlertWebhooksResponseBody,
     DeleteAlertWebhooksResponse,
+    DeleteBizTraceRequest,
     DeleteBizTraceResponseBody,
     DeleteBizTraceResponse,
     DeleteCloudResourceResponseBody,
     DeleteCloudResourceResponse,
+    DeleteDatasetRequest,
     DeleteDatasetResponseBody,
     DeleteDatasetResponse,
+    DeleteDeliveryTaskRequest,
     DeleteDeliveryTaskResponseBody,
     DeleteDeliveryTaskResponse,
+    DeleteDigitalEmployeeRequest,
     DeleteDigitalEmployeeResponseBody,
     DeleteDigitalEmployeeResponse,
+    DeleteDigitalEmployeeSkillRequest,
     DeleteDigitalEmployeeSkillResponseBody,
     DeleteDigitalEmployeeSkillResponse,
+    DeleteEntityStoreRequest,
     DeleteEntityStoreResponseBody,
     DeleteEntityStoreResponse,
     DeleteIntegrationPolicyRequest,
@@ -865,20 +979,28 @@ __all__ = [
     DeleteMemoriesRequest,
     DeleteMemoriesResponseBody,
     DeleteMemoriesResponse,
+    DeleteMemoryRequest,
     DeleteMemoryResponseBody,
     DeleteMemoryResponse,
+    DeleteMemoryStoreRequest,
     DeleteMemoryStoreResponseBody,
     DeleteMemoryStoreResponse,
+    DeletePrometheusInstanceRequest,
     DeletePrometheusInstanceResponseBody,
     DeletePrometheusInstanceResponse,
+    DeletePrometheusViewRequest,
     DeletePrometheusViewResponseBody,
     DeletePrometheusViewResponse,
+    DeletePrometheusVirtualInstanceRequest,
     DeletePrometheusVirtualInstanceResponseBody,
     DeletePrometheusVirtualInstanceResponse,
+    DeleteServiceRequest,
     DeleteServiceResponseBody,
     DeleteServiceResponse,
+    DeleteThreadRequest,
     DeleteThreadResponseBody,
     DeleteThreadResponse,
+    DeleteUmodelRequest,
     DeleteUmodelResponseBody,
     DeleteUmodelResponse,
     DeleteUmodelCommonSchemaRefRequest,
@@ -887,6 +1009,7 @@ __all__ = [
     DeleteUmodelDataRequest,
     DeleteUmodelDataResponseBody,
     DeleteUmodelDataResponse,
+    DeleteWorkspaceRequest,
     DeleteWorkspaceResponseBody,
     DeleteWorkspaceResponse,
     DescribeRegionsRequest,
@@ -901,13 +1024,16 @@ __all__ = [
     GetAddonCodeTemplateRequest,
     GetAddonCodeTemplateResponseBody,
     GetAddonCodeTemplateResponse,
+    GetAddonReleaseRequest,
     GetAddonReleaseResponseBody,
     GetAddonReleaseResponse,
     GetAddonSchemaRequest,
     GetAddonSchemaResponseBody,
     GetAddonSchemaResponse,
+    GetAggTaskGroupRequest,
     GetAggTaskGroupResponseBody,
     GetAggTaskGroupResponse,
+    GetBizTraceRequest,
     GetBizTraceResponseBody,
     GetBizTraceResponse,
     GetCloudResourceResponseBody,
@@ -918,21 +1044,26 @@ __all__ = [
     GetCmsServiceRequest,
     GetCmsServiceResponseBody,
     GetCmsServiceResponse,
+    GetDatasetRequest,
     GetDatasetResponseBody,
     GetDatasetResponse,
+    GetDeliveryTaskRequest,
     GetDeliveryTaskResponseBody,
     GetDeliveryTaskResponse,
+    GetDigitalEmployeeRequest,
     GetDigitalEmployeeResponseBody,
     GetDigitalEmployeeResponse,
     GetDigitalEmployeeSkillRequest,
     GetDigitalEmployeeSkillResponseBody,
     GetDigitalEmployeeSkillResponse,
+    GetEntityStoreRequest,
     GetEntityStoreResponseBody,
     GetEntityStoreResponse,
     GetEntityStoreDataHeaders,
     GetEntityStoreDataRequest,
     GetEntityStoreDataResponseBody,
     GetEntityStoreDataResponse,
+    GetIntegrationPolicyRequest,
     GetIntegrationPolicyResponseBody,
     GetIntegrationPolicyResponse,
     GetIntegrationVersionForCSRequest,
@@ -941,10 +1072,13 @@ __all__ = [
     GetMemoriesRequest,
     GetMemoriesResponseBody,
     GetMemoriesResponse,
+    GetMemoryRequest,
     GetMemoryResponseBody,
     GetMemoryResponse,
+    GetMemoryHistoryRequest,
     GetMemoryHistoryResponseBody,
     GetMemoryHistoryResponse,
+    GetMemoryStoreRequest,
     GetMemoryStoreResponseBody,
     GetMemoryStoreResponse,
     GetPrometheusInstanceRequest,
@@ -956,22 +1090,28 @@ __all__ = [
     GetPrometheusViewRequest,
     GetPrometheusViewResponseBody,
     GetPrometheusViewResponse,
+    GetServiceRequest,
     GetServiceResponseBody,
     GetServiceResponse,
+    GetServiceObservabilityRequest,
     GetServiceObservabilityResponseBody,
     GetServiceObservabilityResponse,
+    GetThreadRequest,
     GetThreadResponseBody,
     GetThreadResponse,
     GetThreadDataRequest,
     GetThreadDataResponseBody,
     GetThreadDataResponse,
+    GetUmodelRequest,
     GetUmodelResponseBody,
     GetUmodelResponse,
+    GetUmodelCommonSchemaRefRequest,
     GetUmodelCommonSchemaRefResponseBody,
     GetUmodelCommonSchemaRefResponse,
     GetUmodelDataRequest,
     GetUmodelDataResponseBody,
     GetUmodelDataResponse,
+    GetWorkspaceRequest,
     GetWorkspaceResponseBody,
     GetWorkspaceResponse,
     ListAddonReleasesRequest,
@@ -1002,6 +1142,7 @@ __all__ = [
     ListDeliveryTasksShrinkRequest,
     ListDeliveryTasksResponseBody,
     ListDeliveryTasksResponse,
+    ListDigitalEmployeeSkillVersionsRequest,
     ListDigitalEmployeeSkillVersionsResponseBody,
     ListDigitalEmployeeSkillVersionsResponse,
     ListDigitalEmployeeSkillsRequest,
@@ -1015,6 +1156,7 @@ __all__ = [
     ListIntegrationPoliciesShrinkRequest,
     ListIntegrationPoliciesResponseBody,
     ListIntegrationPoliciesResponse,
+    ListIntegrationPolicyAddonsRequest,
     ListIntegrationPolicyAddonsResponseBody,
     ListIntegrationPolicyAddonsResponse,
     ListIntegrationPolicyCollectorsRequest,
@@ -1068,9 +1210,15 @@ __all__ = [
     ListWorkspacesShrinkRequest,
     ListWorkspacesResponseBody,
     ListWorkspacesResponse,
+    ManageAlertRulesRequest,
+    ManageAlertRulesShrinkRequest,
+    ManageAlertRulesResponse,
     PutWorkspaceRequest,
     PutWorkspaceResponseBody,
     PutWorkspaceResponse,
+    QueryAlertRulesRequest,
+    QueryAlertRulesShrinkRequest,
+    QueryAlertRulesResponse,
     SearchMemoriesRequest,
     SearchMemoriesResponseBody,
     SearchMemoriesResponse,
