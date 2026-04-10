@@ -1,3 +1,10 @@
+2026-04-10 Version: 1.20.0
+- Support API ExchangeEntitlement.
+- Support API GetUsage.
+- Support API QueryApiKeys.
+- Support API QueryRedemptionRecords.
+
+
 2026-04-09 Version: 1.19.6
 - Generated python 2024-06-28 for DianJin.
 

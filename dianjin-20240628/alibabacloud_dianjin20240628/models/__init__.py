@@ -53,6 +53,10 @@ from ._end_to_end_real_time_dialog_response import EndToEndRealTimeDialogRespons
 from ._evict_task_request import EvictTaskRequest
 from ._evict_task_response_body import EvictTaskResponseBody
 from ._evict_task_response import EvictTaskResponse
+from ._exchange_entitlement_headers import ExchangeEntitlementHeaders
+from ._exchange_entitlement_request import ExchangeEntitlementRequest
+from ._exchange_entitlement_response_body import ExchangeEntitlementResponseBody
+from ._exchange_entitlement_response import ExchangeEntitlementResponse
 from ._gen_doc_qa_result_request import GenDocQaResultRequest
 from ._gen_doc_qa_result_response_body import GenDocQaResultResponseBody
 from ._gen_doc_qa_result_response import GenDocQaResultResponse
@@ -111,6 +115,10 @@ from ._get_task_result_response import GetTaskResultResponse
 from ._get_task_status_request import GetTaskStatusRequest
 from ._get_task_status_response_body import GetTaskStatusResponseBody
 from ._get_task_status_response import GetTaskStatusResponse
+from ._get_usage_headers import GetUsageHeaders
+from ._get_usage_request import GetUsageRequest
+from ._get_usage_response_body import GetUsageResponseBody
+from ._get_usage_response import GetUsageResponse
 from ._get_video_creation_task_result_headers import GetVideoCreationTaskResultHeaders
 from ._get_video_creation_task_result_request import GetVideoCreationTaskResultRequest
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBody
@@ -121,6 +129,14 @@ from ._invoke_plugin_response import InvokePluginResponse
 from ._preview_document_request import PreviewDocumentRequest
 from ._preview_document_response_body import PreviewDocumentResponseBody
 from ._preview_document_response import PreviewDocumentResponse
+from ._query_api_keys_headers import QueryApiKeysHeaders
+from ._query_api_keys_request import QueryApiKeysRequest
+from ._query_api_keys_response_body import QueryApiKeysResponseBody
+from ._query_api_keys_response import QueryApiKeysResponse
+from ._query_redemption_records_headers import QueryRedemptionRecordsHeaders
+from ._query_redemption_records_request import QueryRedemptionRecordsRequest
+from ._query_redemption_records_response_body import QueryRedemptionRecordsResponseBody
+from ._query_redemption_records_response import QueryRedemptionRecordsResponse
 from ._re_index_request import ReIndexRequest
 from ._re_index_response_body import ReIndexResponseBody
 from ._re_index_response import ReIndexResponse
@@ -192,6 +208,8 @@ from ._create_quality_check_task_response_body import CreateQualityCheckTaskResp
 from ._create_video_creation_task_request import CreateVideoCreationTaskRequestCreationInstruction
 from ._create_video_creation_task_request import CreateVideoCreationTaskRequestFileInfo
 from ._create_video_creation_task_response_body import CreateVideoCreationTaskResponseBodyData
+from ._exchange_entitlement_response_body import ExchangeEntitlementResponseBodyDataTemplate
+from ._exchange_entitlement_response_body import ExchangeEntitlementResponseBodyData
 from ._gen_doc_qa_result_response_body import GenDocQaResultResponseBodyDataParseQaResults
 from ._gen_doc_qa_result_response_body import GenDocQaResultResponseBodyData
 from ._get_app_config_response_body import GetAppConfigResponseBodyData
@@ -248,6 +266,10 @@ from ._get_summary_task_result_response_body import GetSummaryTaskResultResponse
 from ._get_summary_task_result_response_body import GetSummaryTaskResultResponseBodyDataChoices
 from ._get_summary_task_result_response_body import GetSummaryTaskResultResponseBodyDataUsage
 from ._get_summary_task_result_response_body import GetSummaryTaskResultResponseBodyData
+from ._get_usage_response_body import GetUsageResponseBodyDataEntitlements
+from ._get_usage_response_body import GetUsageResponseBodyDataModelStats
+from ._get_usage_response_body import GetUsageResponseBodyDataSummary
+from ._get_usage_response_body import GetUsageResponseBodyData
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyDataFileInfo
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResultDetectionDetails
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResult
@@ -255,6 +277,9 @@ from ._get_video_creation_task_result_response_body import GetVideoCreationTaskR
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyData
 from ._preview_document_response_body import PreviewDocumentResponseBodyData
+from ._query_api_keys_response_body import QueryApiKeysResponseBodyData
+from ._query_redemption_records_response_body import QueryRedemptionRecordsResponseBodyDataItems
+from ._query_redemption_records_response_body import QueryRedemptionRecordsResponseBodyData
 from ._real_time_dialog_request import RealTimeDialogRequestConversationModel
 from ._real_time_dialog_response_body import RealTimeDialogResponseBodyChoicesDelta
 from ._real_time_dialog_response_body import RealTimeDialogResponseBodyChoicesMessage
@@ -367,6 +392,10 @@ __all__ = [
     EvictTaskRequest,
     EvictTaskResponseBody,
     EvictTaskResponse,
+    ExchangeEntitlementHeaders,
+    ExchangeEntitlementRequest,
+    ExchangeEntitlementResponseBody,
+    ExchangeEntitlementResponse,
     GenDocQaResultRequest,
     GenDocQaResultResponseBody,
     GenDocQaResultResponse,
@@ -425,6 +454,10 @@ __all__ = [
     GetTaskStatusRequest,
     GetTaskStatusResponseBody,
     GetTaskStatusResponse,
+    GetUsageHeaders,
+    GetUsageRequest,
+    GetUsageResponseBody,
+    GetUsageResponse,
     GetVideoCreationTaskResultHeaders,
     GetVideoCreationTaskResultRequest,
     GetVideoCreationTaskResultResponseBody,
@@ -435,6 +468,14 @@ __all__ = [
     PreviewDocumentRequest,
     PreviewDocumentResponseBody,
     PreviewDocumentResponse,
+    QueryApiKeysHeaders,
+    QueryApiKeysRequest,
+    QueryApiKeysResponseBody,
+    QueryApiKeysResponse,
+    QueryRedemptionRecordsHeaders,
+    QueryRedemptionRecordsRequest,
+    QueryRedemptionRecordsResponseBody,
+    QueryRedemptionRecordsResponse,
     ReIndexRequest,
     ReIndexResponseBody,
     ReIndexResponse,
@@ -506,6 +547,8 @@ __all__ = [
     CreateVideoCreationTaskRequestCreationInstruction,
     CreateVideoCreationTaskRequestFileInfo,
     CreateVideoCreationTaskResponseBodyData,
+    ExchangeEntitlementResponseBodyDataTemplate,
+    ExchangeEntitlementResponseBodyData,
     GenDocQaResultResponseBodyDataParseQaResults,
     GenDocQaResultResponseBodyData,
     GetAppConfigResponseBodyData,
@@ -562,6 +605,10 @@ __all__ = [
     GetSummaryTaskResultResponseBodyDataChoices,
     GetSummaryTaskResultResponseBodyDataUsage,
     GetSummaryTaskResultResponseBodyData,
+    GetUsageResponseBodyDataEntitlements,
+    GetUsageResponseBodyDataModelStats,
+    GetUsageResponseBodyDataSummary,
+    GetUsageResponseBodyData,
     GetVideoCreationTaskResultResponseBodyDataFileInfo,
     GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResultDetectionDetails,
     GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResult,
@@ -569,6 +616,9 @@ __all__ = [
     GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult,
     GetVideoCreationTaskResultResponseBodyData,
     PreviewDocumentResponseBodyData,
+    QueryApiKeysResponseBodyData,
+    QueryRedemptionRecordsResponseBodyDataItems,
+    QueryRedemptionRecordsResponseBodyData,
     RealTimeDialogRequestConversationModel,
     RealTimeDialogResponseBodyChoicesDelta,
     RealTimeDialogResponseBodyChoicesMessage,

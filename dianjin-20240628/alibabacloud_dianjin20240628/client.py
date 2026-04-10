@@ -1738,6 +1738,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.evict_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def exchange_entitlement_with_options(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.ExchangeEntitlementRequest,
+        headers: main_models.ExchangeEntitlementHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExchangeEntitlementResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['externalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.key_hash):
+            body['keyHash'] = request.key_hash
+        if not DaraCore.is_null(request.request_id):
+            body['requestId'] = request.request_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.user_name):
+            body['userName'] = request.user_name
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExchangeEntitlement',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/redeem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExchangeEntitlementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exchange_entitlement_with_options_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.ExchangeEntitlementRequest,
+        headers: main_models.ExchangeEntitlementHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExchangeEntitlementResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['externalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.key_hash):
+            body['keyHash'] = request.key_hash
+        if not DaraCore.is_null(request.request_id):
+            body['requestId'] = request.request_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.user_name):
+            body['userName'] = request.user_name
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExchangeEntitlement',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/redeem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExchangeEntitlementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exchange_entitlement(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.ExchangeEntitlementRequest,
+    ) -> main_models.ExchangeEntitlementResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ExchangeEntitlementHeaders()
+        return self.exchange_entitlement_with_options(workspace_id, tenant_id, request, headers, runtime)
+
+    async def exchange_entitlement_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.ExchangeEntitlementRequest,
+    ) -> main_models.ExchangeEntitlementResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ExchangeEntitlementHeaders()
+        return await self.exchange_entitlement_with_options_async(workspace_id, tenant_id, request, headers, runtime)
+
     def gen_doc_qa_result_with_options(
         self,
         workspace_id: str,
@@ -3388,6 +3498,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_task_status_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_usage_with_options(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.GetUsageRequest,
+        headers: main_models.GetUsageHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.external_user_id):
+            query['externalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.redemption_order_no):
+            query['redemptionOrderNo'] = request.redemption_order_no
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUsage',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_usage_with_options_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.GetUsageRequest,
+        headers: main_models.GetUsageHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.external_user_id):
+            query['externalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.redemption_order_no):
+            query['redemptionOrderNo'] = request.redemption_order_no
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUsage',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_usage(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.GetUsageRequest,
+    ) -> main_models.GetUsageResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetUsageHeaders()
+        return self.get_usage_with_options(workspace_id, tenant_id, request, headers, runtime)
+
+    async def get_usage_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.GetUsageRequest,
+    ) -> main_models.GetUsageResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetUsageHeaders()
+        return await self.get_usage_with_options_async(workspace_id, tenant_id, request, headers, runtime)
+
     def get_video_creation_task_result_with_options(
         self,
         workspace_id: str,
@@ -3645,6 +3853,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.preview_document_with_options_async(workspace_id, request, headers, runtime)
+
+    def query_api_keys_with_options(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryApiKeysRequest,
+        headers: main_models.QueryApiKeysHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.external_user_id):
+            query['externalUserId'] = request.external_user_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryApiKeys',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/apikeys',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_api_keys_with_options_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryApiKeysRequest,
+        headers: main_models.QueryApiKeysHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.external_user_id):
+            query['externalUserId'] = request.external_user_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryApiKeys',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/apikeys',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_api_keys(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryApiKeysRequest,
+    ) -> main_models.QueryApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.QueryApiKeysHeaders()
+        return self.query_api_keys_with_options(workspace_id, tenant_id, request, headers, runtime)
+
+    async def query_api_keys_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryApiKeysRequest,
+    ) -> main_models.QueryApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.QueryApiKeysHeaders()
+        return await self.query_api_keys_with_options_async(workspace_id, tenant_id, request, headers, runtime)
+
+    def query_redemption_records_with_options(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryRedemptionRecordsRequest,
+        headers: main_models.QueryRedemptionRecordsHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRedemptionRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.external_user_id):
+            query['externalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.redemption_order_no):
+            query['redemptionOrderNo'] = request.redemption_order_no
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRedemptionRecords',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/redemption-records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRedemptionRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_redemption_records_with_options_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryRedemptionRecordsRequest,
+        headers: main_models.QueryRedemptionRecordsHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRedemptionRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.external_user_id):
+            query['externalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.redemption_order_no):
+            query['redemptionOrderNo'] = request.redemption_order_no
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_load_test):
+            real_headers['X-Load-Test'] = DaraCore.to_json_string(headers.x_load_test)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRedemptionRecords',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/tenants/{DaraURL.percent_encode(tenant_id)}/redemption-records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRedemptionRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_redemption_records(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryRedemptionRecordsRequest,
+    ) -> main_models.QueryRedemptionRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.QueryRedemptionRecordsHeaders()
+        return self.query_redemption_records_with_options(workspace_id, tenant_id, request, headers, runtime)
+
+    async def query_redemption_records_async(
+        self,
+        workspace_id: str,
+        tenant_id: str,
+        request: main_models.QueryRedemptionRecordsRequest,
+    ) -> main_models.QueryRedemptionRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.QueryRedemptionRecordsHeaders()
+        return await self.query_redemption_records_with_options_async(workspace_id, tenant_id, request, headers, runtime)
 
     def re_index_with_options(
         self,
