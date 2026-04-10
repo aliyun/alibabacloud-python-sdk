@@ -126,6 +126,7 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         has_reservation_data: str = None,
         line_operator: str = None,
         loa_status: str = None,
+        macsec_keys: main_models.DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys = None,
         name: str = None,
         optical_module_model: str = None,
         order_mode: str = None,
@@ -166,6 +167,7 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         self.has_reservation_data = has_reservation_data
         self.line_operator = line_operator
         self.loa_status = loa_status
+        self.macsec_keys = macsec_keys
         self.name = name
         self.optical_module_model = optical_module_model
         self.order_mode = order_mode
@@ -191,6 +193,8 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         self.vpconn_status = vpconn_status
 
     def validate(self):
+        if self.macsec_keys:
+            self.macsec_keys.validate()
         if self.tags:
             self.tags.validate()
 
@@ -246,6 +250,9 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
 
         if self.loa_status is not None:
             result['LoaStatus'] = self.loa_status
+
+        if self.macsec_keys is not None:
+            result['MacsecKeys'] = self.macsec_keys.to_map()
 
         if self.name is not None:
             result['Name'] = self.name
@@ -367,6 +374,10 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
 
         if m.get('LoaStatus') is not None:
             self.loa_status = m.get('LoaStatus')
+
+        if m.get('MacsecKeys') is not None:
+            temp_model = main_models.DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys()
+            self.macsec_keys = temp_model.from_map(m.get('MacsecKeys'))
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -507,6 +518,100 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys(DaraModel):
+    def __init__(
+        self,
+        macsec_key: List[main_models.DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey] = None,
+    ):
+        self.macsec_key = macsec_key
+
+    def validate(self):
+        if self.macsec_key:
+            for v1 in self.macsec_key:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['MacsecKey'] = []
+        if self.macsec_key is not None:
+            for k1 in self.macsec_key:
+                result['MacsecKey'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.macsec_key = []
+        if m.get('MacsecKey') is not None:
+            for k1 in m.get('MacsecKey'):
+                temp_model = main_models.DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey()
+                self.macsec_key.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey(DaraModel):
+    def __init__(
+        self,
+        cak: str = None,
+        cipher_suite: str = None,
+        ckn: str = None,
+        start_on: str = None,
+        status: str = None,
+    ):
+        self.cak = cak
+        self.cipher_suite = cipher_suite
+        self.ckn = ckn
+        self.start_on = start_on
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cak is not None:
+            result['Cak'] = self.cak
+
+        if self.cipher_suite is not None:
+            result['CipherSuite'] = self.cipher_suite
+
+        if self.ckn is not None:
+            result['Ckn'] = self.ckn
+
+        if self.start_on is not None:
+            result['StartOn'] = self.start_on
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cak') is not None:
+            self.cak = m.get('Cak')
+
+        if m.get('CipherSuite') is not None:
+            self.cipher_suite = m.get('CipherSuite')
+
+        if m.get('Ckn') is not None:
+            self.ckn = m.get('Ckn')
+
+        if m.get('StartOn') is not None:
+            self.start_on = m.get('StartOn')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

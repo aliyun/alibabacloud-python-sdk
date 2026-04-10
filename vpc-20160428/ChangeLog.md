@@ -1,3 +1,7 @@
+2026-04-10 Version: 7.0.5
+- Update API DescribePhysicalConnections: add response parameters Body.PhysicalConnectionSet.$.MacsecKeys.
+
+
 2026-04-09 Version: 7.0.4
 - Update API AddCommonBandwidthPackageIp: add request parameters DryRun.
 - Update API CreateIpv6EgressOnlyRule: add request parameters DryRun.
