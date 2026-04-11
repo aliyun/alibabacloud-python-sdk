@@ -2,27 +2,40 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_eds_aic20230930 import models as main_models
 from darabonba.model import DaraModel
 
 class UninstallAppResponseBody(DaraModel):
     def __init__(
         self,
+        child_task_info: List[main_models.UninstallAppResponseBodyChildTaskInfo] = None,
         request_id: str = None,
         task_id: str = None,
     ):
+        self.child_task_info = child_task_info
         # The ID of the request.
         self.request_id = request_id
         # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
-        pass
+        if self.child_task_info:
+            for v1 in self.child_task_info:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['ChildTaskInfo'] = []
+        if self.child_task_info is not None:
+            for k1 in self.child_task_info:
+                result['ChildTaskInfo'].append(k1.to_map() if k1 else None)
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -33,11 +46,52 @@ class UninstallAppResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.child_task_info = []
+        if m.get('ChildTaskInfo') is not None:
+            for k1 in m.get('ChildTaskInfo'):
+                temp_model = main_models.UninstallAppResponseBodyChildTaskInfo()
+                self.child_task_info.append(temp_model.from_map(k1))
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        return self
+
+class UninstallAppResponseBodyChildTaskInfo(DaraModel):
+    def __init__(
+        self,
+        child_task_id: str = None,
+        instance_id: str = None,
+    ):
+        self.child_task_id = child_task_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.child_task_id is not None:
+            result['ChildTaskId'] = self.child_task_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChildTaskId') is not None:
+            self.child_task_id = m.get('ChildTaskId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         return self
 

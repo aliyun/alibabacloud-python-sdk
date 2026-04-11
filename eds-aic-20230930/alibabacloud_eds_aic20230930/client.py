@@ -797,6 +797,8 @@ class Client(OpenApiClient):
             query['InstanceGroupName'] = request.instance_group_name
         if not DaraCore.is_null(request.instance_group_spec):
             query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
         if not DaraCore.is_null(request.ipv_6bandwidth):
             query['Ipv6Bandwidth'] = request.ipv_6bandwidth
         if not DaraCore.is_null(request.key_pair_id):
@@ -883,6 +885,8 @@ class Client(OpenApiClient):
             query['InstanceGroupName'] = request.instance_group_name
         if not DaraCore.is_null(request.instance_group_spec):
             query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
         if not DaraCore.is_null(request.ipv_6bandwidth):
             query['Ipv6Bandwidth'] = request.ipv_6bandwidth
         if not DaraCore.is_null(request.key_pair_id):
@@ -2295,6 +2299,8 @@ class Client(OpenApiClient):
             query['InstanceGroupIds'] = request.instance_group_ids
         if not DaraCore.is_null(request.instance_group_name):
             query['InstanceGroupName'] = request.instance_group_name
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
         if not DaraCore.is_null(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not DaraCore.is_null(request.max_results):
@@ -2343,6 +2349,8 @@ class Client(OpenApiClient):
             query['InstanceGroupIds'] = request.instance_group_ids
         if not DaraCore.is_null(request.instance_group_name):
             query['InstanceGroupName'] = request.instance_group_name
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
         if not DaraCore.is_null(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not DaraCore.is_null(request.max_results):
@@ -2415,6 +2423,8 @@ class Client(OpenApiClient):
             query['InstanceGroupIds'] = request.instance_group_ids
         if not DaraCore.is_null(request.instance_group_name):
             query['InstanceGroupName'] = request.instance_group_name
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
         if not DaraCore.is_null(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not DaraCore.is_null(request.max_results):
@@ -2433,6 +2443,10 @@ class Client(OpenApiClient):
             query['QosRuleIds'] = request.qos_rule_ids
         if not DaraCore.is_null(request.sale_mode):
             query['SaleMode'] = request.sale_mode
+        if not DaraCore.is_null(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not DaraCore.is_null(request.sort_type):
+            query['SortType'] = request.sort_type
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tag):
@@ -2481,6 +2495,8 @@ class Client(OpenApiClient):
             query['InstanceGroupIds'] = request.instance_group_ids
         if not DaraCore.is_null(request.instance_group_name):
             query['InstanceGroupName'] = request.instance_group_name
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
         if not DaraCore.is_null(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not DaraCore.is_null(request.max_results):
@@ -2499,6 +2515,10 @@ class Client(OpenApiClient):
             query['QosRuleIds'] = request.qos_rule_ids
         if not DaraCore.is_null(request.sale_mode):
             query['SaleMode'] = request.sale_mode
+        if not DaraCore.is_null(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not DaraCore.is_null(request.sort_type):
+            query['SortType'] = request.sort_type
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tag):
@@ -4517,6 +4537,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not DaraCore.is_null(request.upload_endpoint):
@@ -4553,6 +4575,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not DaraCore.is_null(request.upload_endpoint):
@@ -7117,6 +7141,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
         if not DaraCore.is_null(request.auto_install):
             query['AutoInstall'] = request.auto_install
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not DaraCore.is_null(request.target_file_name):
@@ -7157,6 +7183,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
         if not DaraCore.is_null(request.auto_install):
             query['AutoInstall'] = request.auto_install
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not DaraCore.is_null(request.target_file_name):

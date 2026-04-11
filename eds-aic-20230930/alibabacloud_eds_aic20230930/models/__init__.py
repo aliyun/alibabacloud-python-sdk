@@ -379,6 +379,7 @@ from ._fetch_file_response_body import FetchFileResponseBodyData
 from ._get_instance_properties_response_body import GetInstancePropertiesResponseBodyPropertyTemplateModel
 from ._get_network_blacklist_response_body import GetNetworkBlacklistResponseBodyNetworkBlacklistModel
 from ._import_key_pair_response_body import ImportKeyPairResponseBodyData
+from ._install_app_response_body import InstallAppResponseBodyChildTaskInfo
 from ._instance_healer_response_body import InstanceHealerResponseBodyInstanceHealerModel
 from ._list_instance_adb_attributes_response_body import ListInstanceAdbAttributesResponseBodyData
 from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules
@@ -406,6 +407,7 @@ from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
 from ._send_file_response_body import SendFileResponseBodyData
 from ._set_adb_secure_response_body import SetAdbSecureResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
+from ._uninstall_app_response_body import UninstallAppResponseBodyChildTaskInfo
 from ._update_instance_image_response_body import UpdateInstanceImageResponseBodyTasksChildTasks
 from ._update_instance_image_response_body import UpdateInstanceImageResponseBodyTasks
 
@@ -787,6 +789,7 @@ __all__ = [
     GetInstancePropertiesResponseBodyPropertyTemplateModel,
     GetNetworkBlacklistResponseBodyNetworkBlacklistModel,
     ImportKeyPairResponseBodyData,
+    InstallAppResponseBodyChildTaskInfo,
     InstanceHealerResponseBodyInstanceHealerModel,
     ListInstanceAdbAttributesResponseBodyData,
     ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules,
@@ -814,6 +817,7 @@ __all__ = [
     SendFileResponseBodyData,
     SetAdbSecureResponseBodyData,
     TagResourcesRequestTag,
+    UninstallAppResponseBodyChildTaskInfo,
     UpdateInstanceImageResponseBodyTasksChildTasks,
     UpdateInstanceImageResponseBodyTasks
 ]

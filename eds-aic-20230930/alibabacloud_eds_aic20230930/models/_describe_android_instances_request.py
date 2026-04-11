@@ -19,6 +19,7 @@ class DescribeAndroidInstancesRequest(DaraModel):
         instance_group_id: str = None,
         instance_group_ids: List[str] = None,
         instance_group_name: str = None,
+        instance_version: str = None,
         key_pair_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -28,6 +29,8 @@ class DescribeAndroidInstancesRequest(DaraModel):
         private_ip_address: str = None,
         qos_rule_ids: List[str] = None,
         sale_mode: str = None,
+        sort_key: str = None,
+        sort_type: str = None,
         status: str = None,
         tag: List[main_models.DescribeAndroidInstancesRequestTag] = None,
     ):
@@ -52,6 +55,7 @@ class DescribeAndroidInstancesRequest(DaraModel):
         self.instance_group_ids = instance_group_ids
         # The name of the instance group.
         self.instance_group_name = instance_group_name
+        self.instance_version = instance_version
         # The ID of the bound key pair.
         self.key_pair_id = key_pair_id
         # The maximum number of entries per page. Valid values: 1 to 100. Default value: 100.
@@ -72,6 +76,8 @@ class DescribeAndroidInstancesRequest(DaraModel):
         # *   Instance: the standard mode.
         # *   Node: the node mode.
         self.sale_mode = sale_mode
+        self.sort_key = sort_key
+        self.sort_type = sort_type
         # The state of the instance.
         # 
         # Valid values:
@@ -133,6 +139,9 @@ class DescribeAndroidInstancesRequest(DaraModel):
         if self.instance_group_name is not None:
             result['InstanceGroupName'] = self.instance_group_name
 
+        if self.instance_version is not None:
+            result['InstanceVersion'] = self.instance_version
+
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
 
@@ -159,6 +168,12 @@ class DescribeAndroidInstancesRequest(DaraModel):
 
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
+
+        if self.sort_key is not None:
+            result['SortKey'] = self.sort_key
+
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
 
         if self.status is not None:
             result['Status'] = self.status
@@ -199,6 +214,9 @@ class DescribeAndroidInstancesRequest(DaraModel):
         if m.get('InstanceGroupName') is not None:
             self.instance_group_name = m.get('InstanceGroupName')
 
+        if m.get('InstanceVersion') is not None:
+            self.instance_version = m.get('InstanceVersion')
+
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
 
@@ -225,6 +243,12 @@ class DescribeAndroidInstancesRequest(DaraModel):
 
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
+
+        if m.get('SortKey') is not None:
+            self.sort_key = m.get('SortKey')
+
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

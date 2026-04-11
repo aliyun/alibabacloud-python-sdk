@@ -11,6 +11,7 @@ class SendFileRequest(DaraModel):
         self,
         android_instance_id_list: List[str] = None,
         auto_install: bool = None,
+        client_token: str = None,
         source_file_path: str = None,
         target_file_name: str = None,
         upload_endpoint: str = None,
@@ -22,6 +23,7 @@ class SendFileRequest(DaraModel):
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
         self.auto_install = auto_install
+        self.client_token = client_token
         # The path to which you want to upload the pushed file in the cloud phone instance.
         # 
         # This parameter is required.
@@ -61,6 +63,9 @@ class SendFileRequest(DaraModel):
         if self.auto_install is not None:
             result['AutoInstall'] = self.auto_install
 
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.source_file_path is not None:
             result['SourceFilePath'] = self.source_file_path
 
@@ -85,6 +90,9 @@ class SendFileRequest(DaraModel):
 
         if m.get('AutoInstall') is not None:
             self.auto_install = m.get('AutoInstall')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('SourceFilePath') is not None:
             self.source_file_path = m.get('SourceFilePath')

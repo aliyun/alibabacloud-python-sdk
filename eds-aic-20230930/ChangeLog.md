@@ -1,3 +1,15 @@
+2026-04-11 Version: 4.22.2
+- Update API CreateAndroidInstanceGroup: add request parameters InstanceVersion.
+- Update API DescribeAndroidInstanceGroups: add request parameters InstanceVersion.
+- Update API DescribeAndroidInstances: add request parameters InstanceVersion.
+- Update API DescribeAndroidInstances: add request parameters SortKey.
+- Update API DescribeAndroidInstances: add request parameters SortType.
+- Update API FetchFile: add request parameters ClientToken.
+- Update API InstallApp: add response parameters Body.ChildTaskInfo.
+- Update API SendFile: add request parameters ClientToken.
+- Update API UninstallApp: add response parameters Body.ChildTaskInfo.
+
+
 2026-03-31 Version: 4.22.1
 - Update API CreateAndroidInstanceGroup: add request parameters SaleMode.
 

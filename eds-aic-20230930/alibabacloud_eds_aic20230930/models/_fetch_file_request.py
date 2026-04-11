@@ -10,6 +10,7 @@ class FetchFileRequest(DaraModel):
     def __init__(
         self,
         android_instance_id_list: List[str] = None,
+        client_token: str = None,
         source_file_path: str = None,
         upload_endpoint: str = None,
         upload_type: str = None,
@@ -19,6 +20,7 @@ class FetchFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        self.client_token = client_token
         # The path to the file that you want to pull from the cloud phone instance.
         # 
         # This parameter is required.
@@ -53,6 +55,9 @@ class FetchFileRequest(DaraModel):
         if self.android_instance_id_list is not None:
             result['AndroidInstanceIdList'] = self.android_instance_id_list
 
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.source_file_path is not None:
             result['SourceFilePath'] = self.source_file_path
 
@@ -71,6 +76,9 @@ class FetchFileRequest(DaraModel):
         m = m or dict()
         if m.get('AndroidInstanceIdList') is not None:
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('SourceFilePath') is not None:
             self.source_file_path = m.get('SourceFilePath')

@@ -14,6 +14,7 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         charge_type: str = None,
         instance_group_ids: List[str] = None,
         instance_group_name: str = None,
+        instance_version: str = None,
         key_pair_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -35,6 +36,7 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         self.instance_group_ids = instance_group_ids
         # The name of the instance group. Instance groups support fuzzy search by name.
         self.instance_group_name = instance_group_name
+        self.instance_version = instance_version
         # The ID of the key pair.
         self.key_pair_id = key_pair_id
         # The maximum number of entries per page. Value range: 0 to 100. Default value: 100.
@@ -88,6 +90,9 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         if self.instance_group_name is not None:
             result['InstanceGroupName'] = self.instance_group_name
 
+        if self.instance_version is not None:
+            result['InstanceVersion'] = self.instance_version
+
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
 
@@ -126,6 +131,9 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
 
         if m.get('InstanceGroupName') is not None:
             self.instance_group_name = m.get('InstanceGroupName')
+
+        if m.get('InstanceVersion') is not None:
+            self.instance_version = m.get('InstanceVersion')
 
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')

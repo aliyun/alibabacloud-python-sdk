@@ -23,6 +23,7 @@ class CreateAndroidInstanceGroupRequest(DaraModel):
         image_id: str = None,
         instance_group_name: str = None,
         instance_group_spec: str = None,
+        instance_version: str = None,
         ipv_6bandwidth: int = None,
         key_pair_id: str = None,
         network_info: main_models.CreateAndroidInstanceGroupRequestNetworkInfo = None,
@@ -106,6 +107,7 @@ class CreateAndroidInstanceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
+        self.instance_version = instance_version
         # >  This parameter is not publicly available.
         self.ipv_6bandwidth = ipv_6bandwidth
         # The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually bind key pairs to individual cloud phone instances.
@@ -197,6 +199,9 @@ class CreateAndroidInstanceGroupRequest(DaraModel):
         if self.instance_group_spec is not None:
             result['InstanceGroupSpec'] = self.instance_group_spec
 
+        if self.instance_version is not None:
+            result['InstanceVersion'] = self.instance_version
+
         if self.ipv_6bandwidth is not None:
             result['Ipv6Bandwidth'] = self.ipv_6bandwidth
 
@@ -286,6 +291,9 @@ class CreateAndroidInstanceGroupRequest(DaraModel):
 
         if m.get('InstanceGroupSpec') is not None:
             self.instance_group_spec = m.get('InstanceGroupSpec')
+
+        if m.get('InstanceVersion') is not None:
+            self.instance_version = m.get('InstanceVersion')
 
         if m.get('Ipv6Bandwidth') is not None:
             self.ipv_6bandwidth = m.get('Ipv6Bandwidth')
