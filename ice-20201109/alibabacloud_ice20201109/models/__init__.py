@@ -646,6 +646,9 @@ from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
 from ._get_yike_storyboard_job_request import GetYikeStoryboardJobRequest
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBody
 from ._get_yike_storyboard_job_response import GetYikeStoryboardJobResponse
+from ._get_yike_user_request import GetYikeUserRequest
+from ._get_yike_user_response_body import GetYikeUserResponseBody
+from ._get_yike_user_response import GetYikeUserResponse
 from ._get_yike_user_credit_request import GetYikeUserCreditRequest
 from ._get_yike_user_credit_response_body import GetYikeUserCreditResponseBody
 from ._get_yike_user_credit_response import GetYikeUserCreditResponse
@@ -1680,6 +1683,7 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
+from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
 from ._list_aiagent_dialogues_response_body import ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList
 from ._list_aiagent_dialogues_response_body import ListAIAgentDialoguesResponseBodyDialogues
 from ._list_aiagent_instance_response_body import ListAIAgentInstanceResponseBodyInstances
@@ -2761,6 +2765,9 @@ __all__ = [
     GetYikeStoryboardJobRequest,
     GetYikeStoryboardJobResponseBody,
     GetYikeStoryboardJobResponse,
+    GetYikeUserRequest,
+    GetYikeUserResponseBody,
+    GetYikeUserResponse,
     GetYikeUserCreditRequest,
     GetYikeUserCreditResponseBody,
     GetYikeUserCreditResponse,
@@ -3795,6 +3802,7 @@ __all__ = [
     GetYikeAssetMediaInfoResponseBodyMediaInfo,
     GetYikeStoryboardJobResponseBodyJobParams,
     GetYikeStoryboardJobResponseBodyJobResult,
+    GetYikeUserResponseBodyUserInfo,
     ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList,
     ListAIAgentDialoguesResponseBodyDialogues,
     ListAIAgentInstanceResponseBodyInstances,

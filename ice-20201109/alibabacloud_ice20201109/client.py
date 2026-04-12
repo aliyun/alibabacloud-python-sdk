@@ -15204,6 +15204,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_yike_storyboard_job_with_options_async(request, runtime)
 
+    def get_yike_user_with_options(
+        self,
+        request: main_models.GetYikeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeUser',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_user_with_options_async(
+        self,
+        request: main_models.GetYikeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeUser',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_user(
+        self,
+        request: main_models.GetYikeUserRequest,
+    ) -> main_models.GetYikeUserResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_user_with_options(request, runtime)
+
+    async def get_yike_user_async(
+        self,
+        request: main_models.GetYikeUserRequest,
+    ) -> main_models.GetYikeUserResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_user_with_options_async(request, runtime)
+
     def get_yike_user_credit_with_options(
         self,
         request: main_models.GetYikeUserCreditRequest,
