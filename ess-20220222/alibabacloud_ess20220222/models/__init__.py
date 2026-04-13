@@ -99,6 +99,9 @@ from ._describe_alarms_response import DescribeAlarmsResponse
 from ._describe_alert_configuration_request import DescribeAlertConfigurationRequest
 from ._describe_alert_configuration_response_body import DescribeAlertConfigurationResponseBody
 from ._describe_alert_configuration_response import DescribeAlertConfigurationResponse
+from ._describe_candidate_instance_type_request import DescribeCandidateInstanceTypeRequest
+from ._describe_candidate_instance_type_response_body import DescribeCandidateInstanceTypeResponseBody
+from ._describe_candidate_instance_type_response import DescribeCandidateInstanceTypeResponse
 from ._describe_diagnose_reports_request import DescribeDiagnoseReportsRequest
 from ._describe_diagnose_reports_response_body import DescribeDiagnoseReportsResponseBody
 from ._describe_diagnose_reports_response import DescribeDiagnoseReportsResponse
@@ -693,6 +696,9 @@ __all__ = [
     DescribeAlertConfigurationRequest,
     DescribeAlertConfigurationResponseBody,
     DescribeAlertConfigurationResponse,
+    DescribeCandidateInstanceTypeRequest,
+    DescribeCandidateInstanceTypeResponseBody,
+    DescribeCandidateInstanceTypeResponse,
     DescribeDiagnoseReportsRequest,
     DescribeDiagnoseReportsResponseBody,
     DescribeDiagnoseReportsResponse,

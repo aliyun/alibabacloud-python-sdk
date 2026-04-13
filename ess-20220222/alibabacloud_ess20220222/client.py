@@ -3726,6 +3726,136 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_alert_configuration_with_options_async(request, runtime)
 
+    def describe_candidate_instance_type_with_options(
+        self,
+        request: main_models.DescribeCandidateInstanceTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCandidateInstanceTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_cross_az):
+            query['AllowCrossAz'] = request.allow_cross_az
+        if not DaraCore.is_null(request.allow_different_generation):
+            query['AllowDifferentGeneration'] = request.allow_different_generation
+        if not DaraCore.is_null(request.data_disk_categories):
+            query['DataDiskCategories'] = request.data_disk_categories
+        if not DaraCore.is_null(request.image_family):
+            query['ImageFamily'] = request.image_family
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.image_name):
+            query['ImageName'] = request.image_name
+        if not DaraCore.is_null(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
+        if not DaraCore.is_null(request.ipv_6address_count):
+            query['Ipv6AddressCount'] = request.ipv_6address_count
+        if not DaraCore.is_null(request.max_price):
+            query['MaxPrice'] = request.max_price
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
+        if not DaraCore.is_null(request.system_disk_categories):
+            query['SystemDiskCategories'] = request.system_disk_categories
+        if not DaraCore.is_null(request.zone_ids):
+            query['ZoneIds'] = request.zone_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCandidateInstanceType',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCandidateInstanceTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_candidate_instance_type_with_options_async(
+        self,
+        request: main_models.DescribeCandidateInstanceTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCandidateInstanceTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_cross_az):
+            query['AllowCrossAz'] = request.allow_cross_az
+        if not DaraCore.is_null(request.allow_different_generation):
+            query['AllowDifferentGeneration'] = request.allow_different_generation
+        if not DaraCore.is_null(request.data_disk_categories):
+            query['DataDiskCategories'] = request.data_disk_categories
+        if not DaraCore.is_null(request.image_family):
+            query['ImageFamily'] = request.image_family
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.image_name):
+            query['ImageName'] = request.image_name
+        if not DaraCore.is_null(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
+        if not DaraCore.is_null(request.ipv_6address_count):
+            query['Ipv6AddressCount'] = request.ipv_6address_count
+        if not DaraCore.is_null(request.max_price):
+            query['MaxPrice'] = request.max_price
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
+        if not DaraCore.is_null(request.system_disk_categories):
+            query['SystemDiskCategories'] = request.system_disk_categories
+        if not DaraCore.is_null(request.zone_ids):
+            query['ZoneIds'] = request.zone_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCandidateInstanceType',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCandidateInstanceTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_candidate_instance_type(
+        self,
+        request: main_models.DescribeCandidateInstanceTypeRequest,
+    ) -> main_models.DescribeCandidateInstanceTypeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_candidate_instance_type_with_options(request, runtime)
+
+    async def describe_candidate_instance_type_async(
+        self,
+        request: main_models.DescribeCandidateInstanceTypeRequest,
+    ) -> main_models.DescribeCandidateInstanceTypeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_candidate_instance_type_with_options_async(request, runtime)
+
     def describe_diagnose_reports_with_options(
         self,
         request: main_models.DescribeDiagnoseReportsRequest,

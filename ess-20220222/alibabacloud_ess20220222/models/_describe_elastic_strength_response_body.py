@@ -100,6 +100,7 @@ class DescribeElasticStrengthResponseBodyResourcePools(DaraModel):
     def __init__(
         self,
         code: str = None,
+        elastic_strength: str = None,
         instance_type: str = None,
         inventory_health: main_models.DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth = None,
         msg: str = None,
@@ -110,6 +111,7 @@ class DescribeElasticStrengthResponseBodyResourcePools(DaraModel):
     ):
         # The error code returned when the scaling strength is the weakest.
         self.code = code
+        self.elastic_strength = elastic_strength
         # The instance type of the resource pool.
         self.instance_type = instance_type
         # The inventory health.
@@ -140,6 +142,9 @@ class DescribeElasticStrengthResponseBodyResourcePools(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
+        if self.elastic_strength is not None:
+            result['ElasticStrength'] = self.elastic_strength
+
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
 
@@ -167,6 +172,9 @@ class DescribeElasticStrengthResponseBodyResourcePools(DaraModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+
+        if m.get('ElasticStrength') is not None:
+            self.elastic_strength = m.get('ElasticStrength')
 
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
@@ -334,6 +342,7 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(Dara
     def __init__(
         self,
         code: str = None,
+        elastic_strength: str = None,
         instance_type: str = None,
         inventory_health: main_models.DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth = None,
         msg: str = None,
@@ -344,6 +353,7 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(Dara
     ):
         # The error code returned when the scaling strength is the weakest.
         self.code = code
+        self.elastic_strength = elastic_strength
         # The instance type of the resource pool.
         self.instance_type = instance_type
         # The inventory health.
@@ -378,6 +388,9 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(Dara
         if self.code is not None:
             result['Code'] = self.code
 
+        if self.elastic_strength is not None:
+            result['ElasticStrength'] = self.elastic_strength
+
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
 
@@ -405,6 +418,9 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(Dara
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+
+        if m.get('ElasticStrength') is not None:
+            self.elastic_strength = m.get('ElasticStrength')
 
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
