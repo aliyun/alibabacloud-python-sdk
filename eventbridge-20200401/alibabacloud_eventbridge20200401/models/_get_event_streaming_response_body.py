@@ -1112,16 +1112,24 @@ class GetEventStreamingResponseBodyDataSourceSourceMQTTParameters(DaraModel):
         self,
         body_data_type: str = None,
         instance_id: str = None,
+        network_type: str = None,
         region_id: str = None,
+        security_group_id: str = None,
         topic: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
     ):
         self.body_data_type = body_data_type
         # The instance ID.
         self.instance_id = instance_id
+        self.network_type = network_type
         # The region ID of the Message Queue for MQTT instance.
         self.region_id = region_id
+        self.security_group_id = security_group_id
         # The name of the topic in the Message Queue for MQTT instance.
         self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -1137,11 +1145,23 @@ class GetEventStreamingResponseBodyDataSourceSourceMQTTParameters(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
         if self.topic is not None:
             result['Topic'] = self.topic
+
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
 
         return result
 
@@ -1153,11 +1173,23 @@ class GetEventStreamingResponseBodyDataSourceSourceMQTTParameters(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
 
         return self
 

@@ -1,3 +1,22 @@
+2026-04-13 Version: 8.0.8
+- Update API CreateEventStreaming: add request parameters Source.SourceMQTTParameters.NetworkType.
+- Update API CreateEventStreaming: add request parameters Source.SourceMQTTParameters.SecurityGroupId.
+- Update API CreateEventStreaming: add request parameters Source.SourceMQTTParameters.VSwitchIds.
+- Update API CreateEventStreaming: add request parameters Source.SourceMQTTParameters.VpcId.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceMQTTParameters.NetworkType.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceMQTTParameters.SecurityGroupId.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceMQTTParameters.VSwitchIds.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceMQTTParameters.VpcId.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceMQTTParameters.NetworkType.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceMQTTParameters.SecurityGroupId.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceMQTTParameters.VSwitchIds.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceMQTTParameters.VpcId.
+- Update API UpdateEventStreaming: add request parameters Source.SourceMQTTParameters.NetworkType.
+- Update API UpdateEventStreaming: add request parameters Source.SourceMQTTParameters.SecurityGroupId.
+- Update API UpdateEventStreaming: add request parameters Source.SourceMQTTParameters.VSwitchIds.
+- Update API UpdateEventStreaming: add request parameters Source.SourceMQTTParameters.VpcId.
+
+
 2026-03-31 Version: 8.0.7
 - Generated python 2020-04-01 for eventbridge.
 
