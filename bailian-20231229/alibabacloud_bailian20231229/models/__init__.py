@@ -13,6 +13,10 @@ from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssReq
 from ._add_files_from_authorized_oss_shrink_request import AddFilesFromAuthorizedOssShrinkRequest
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBody
 from ._add_files_from_authorized_oss_response import AddFilesFromAuthorizedOssResponse
+from ._add_table_request import AddTableRequest
+from ._add_table_shrink_request import AddTableShrinkRequest
+from ._add_table_response_body import AddTableResponseBody
+from ._add_table_response import AddTableResponse
 from ._apply_file_upload_lease_request import ApplyFileUploadLeaseRequest
 from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBody
 from ._apply_file_upload_lease_response import ApplyFileUploadLeaseResponse
@@ -40,14 +44,17 @@ from ._create_memory_node_response import CreateMemoryNodeResponse
 from ._create_prompt_template_request import CreatePromptTemplateRequest
 from ._create_prompt_template_response_body import CreatePromptTemplateResponseBody
 from ._create_prompt_template_response import CreatePromptTemplateResponse
+from ._delete_agent_request import DeleteAgentRequest
 from ._delete_agent_response_body import DeleteAgentResponseBody
 from ._delete_agent_response import DeleteAgentResponse
+from ._delete_category_request import DeleteCategoryRequest
 from ._delete_category_response_body import DeleteCategoryResponseBody
 from ._delete_category_response import DeleteCategoryResponse
 from ._delete_chunk_request import DeleteChunkRequest
 from ._delete_chunk_shrink_request import DeleteChunkShrinkRequest
 from ._delete_chunk_response_body import DeleteChunkResponseBody
 from ._delete_chunk_response import DeleteChunkResponse
+from ._delete_file_request import DeleteFileRequest
 from ._delete_file_response_body import DeleteFileResponseBody
 from ._delete_file_response import DeleteFileResponse
 from ._delete_index_request import DeleteIndexRequest
@@ -57,12 +64,16 @@ from ._delete_index_document_request import DeleteIndexDocumentRequest
 from ._delete_index_document_shrink_request import DeleteIndexDocumentShrinkRequest
 from ._delete_index_document_response_body import DeleteIndexDocumentResponseBody
 from ._delete_index_document_response import DeleteIndexDocumentResponse
+from ._delete_memory_request import DeleteMemoryRequest
 from ._delete_memory_response_body import DeleteMemoryResponseBody
 from ._delete_memory_response import DeleteMemoryResponse
+from ._delete_memory_node_request import DeleteMemoryNodeRequest
 from ._delete_memory_node_response_body import DeleteMemoryNodeResponseBody
 from ._delete_memory_node_response import DeleteMemoryNodeResponse
+from ._delete_prompt_template_request import DeletePromptTemplateRequest
 from ._delete_prompt_template_response_body import DeletePromptTemplateResponseBody
 from ._delete_prompt_template_response import DeletePromptTemplateResponse
+from ._describe_file_request import DescribeFileRequest
 from ._describe_file_response_body import DescribeFileResponseBody
 from ._describe_file_response import DescribeFileResponse
 from ._get_alipay_transfer_status_request import GetAlipayTransferStatusRequest
@@ -80,15 +91,19 @@ from ._get_index_job_status_response import GetIndexJobStatusResponse
 from ._get_index_monitor_request import GetIndexMonitorRequest
 from ._get_index_monitor_response_body import GetIndexMonitorResponseBody
 from ._get_index_monitor_response import GetIndexMonitorResponse
+from ._get_memory_request import GetMemoryRequest
 from ._get_memory_response_body import GetMemoryResponseBody
 from ._get_memory_response import GetMemoryResponse
+from ._get_memory_node_request import GetMemoryNodeRequest
 from ._get_memory_node_response_body import GetMemoryNodeResponseBody
 from ._get_memory_node_response import GetMemoryNodeResponse
 from ._get_parse_settings_request import GetParseSettingsRequest
 from ._get_parse_settings_response_body import GetParseSettingsResponseBody
 from ._get_parse_settings_response import GetParseSettingsResponse
+from ._get_prompt_template_request import GetPromptTemplateRequest
 from ._get_prompt_template_response_body import GetPromptTemplateResponseBody
 from ._get_prompt_template_response import GetPromptTemplateResponse
+from ._get_published_agent_request import GetPublishedAgentRequest
 from ._get_published_agent_response_body import GetPublishedAgentResponseBody
 from ._get_published_agent_response import GetPublishedAgentResponse
 from ._high_code_deploy_request import HighCodeDeployRequest
@@ -162,11 +177,16 @@ from ._update_memory_node_response import UpdateMemoryNodeResponse
 from ._update_prompt_template_request import UpdatePromptTemplateRequest
 from ._update_prompt_template_response_body import UpdatePromptTemplateResponseBody
 from ._update_prompt_template_response import UpdatePromptTemplateResponse
+from ._update_table_from_authorized_oss_request import UpdateTableFromAuthorizedOssRequest
+from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBody
+from ._update_table_from_authorized_oss_response import UpdateTableFromAuthorizedOssResponse
 from ._add_category_response_body import AddCategoryResponseBodyData
 from ._add_file_response_body import AddFileResponseBodyData
 from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetails
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyData
+from ._add_table_request import AddTableRequestTableColumns
+from ._add_table_response_body import AddTableResponseBodyData
 from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBodyDataParam
 from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBodyData
 from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBodyDataParam
@@ -258,6 +278,7 @@ from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSe
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestSampleLibrary
 from ._update_file_tag_response_body import UpdateFileTagResponseBodyData
 from ._update_index_response_body import UpdateIndexResponseBodyData
+from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBodyData
 
 __all__ = [
     AddCategoryRequest,
@@ -271,6 +292,10 @@ __all__ = [
     AddFilesFromAuthorizedOssShrinkRequest,
     AddFilesFromAuthorizedOssResponseBody,
     AddFilesFromAuthorizedOssResponse,
+    AddTableRequest,
+    AddTableShrinkRequest,
+    AddTableResponseBody,
+    AddTableResponse,
     ApplyFileUploadLeaseRequest,
     ApplyFileUploadLeaseResponseBody,
     ApplyFileUploadLeaseResponse,
@@ -298,14 +323,17 @@ __all__ = [
     CreatePromptTemplateRequest,
     CreatePromptTemplateResponseBody,
     CreatePromptTemplateResponse,
+    DeleteAgentRequest,
     DeleteAgentResponseBody,
     DeleteAgentResponse,
+    DeleteCategoryRequest,
     DeleteCategoryResponseBody,
     DeleteCategoryResponse,
     DeleteChunkRequest,
     DeleteChunkShrinkRequest,
     DeleteChunkResponseBody,
     DeleteChunkResponse,
+    DeleteFileRequest,
     DeleteFileResponseBody,
     DeleteFileResponse,
     DeleteIndexRequest,
@@ -315,12 +343,16 @@ __all__ = [
     DeleteIndexDocumentShrinkRequest,
     DeleteIndexDocumentResponseBody,
     DeleteIndexDocumentResponse,
+    DeleteMemoryRequest,
     DeleteMemoryResponseBody,
     DeleteMemoryResponse,
+    DeleteMemoryNodeRequest,
     DeleteMemoryNodeResponseBody,
     DeleteMemoryNodeResponse,
+    DeletePromptTemplateRequest,
     DeletePromptTemplateResponseBody,
     DeletePromptTemplateResponse,
+    DescribeFileRequest,
     DescribeFileResponseBody,
     DescribeFileResponse,
     GetAlipayTransferStatusRequest,
@@ -338,15 +370,19 @@ __all__ = [
     GetIndexMonitorRequest,
     GetIndexMonitorResponseBody,
     GetIndexMonitorResponse,
+    GetMemoryRequest,
     GetMemoryResponseBody,
     GetMemoryResponse,
+    GetMemoryNodeRequest,
     GetMemoryNodeResponseBody,
     GetMemoryNodeResponse,
     GetParseSettingsRequest,
     GetParseSettingsResponseBody,
     GetParseSettingsResponse,
+    GetPromptTemplateRequest,
     GetPromptTemplateResponseBody,
     GetPromptTemplateResponse,
+    GetPublishedAgentRequest,
     GetPublishedAgentResponseBody,
     GetPublishedAgentResponse,
     HighCodeDeployRequest,
@@ -420,11 +456,16 @@ __all__ = [
     UpdatePromptTemplateRequest,
     UpdatePromptTemplateResponseBody,
     UpdatePromptTemplateResponse,
+    UpdateTableFromAuthorizedOssRequest,
+    UpdateTableFromAuthorizedOssResponseBody,
+    UpdateTableFromAuthorizedOssResponse,
     AddCategoryResponseBodyData,
     AddFileResponseBodyData,
     AddFilesFromAuthorizedOssRequestFileDetails,
     AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList,
     AddFilesFromAuthorizedOssResponseBodyData,
+    AddTableRequestTableColumns,
+    AddTableResponseBodyData,
     ApplyFileUploadLeaseResponseBodyDataParam,
     ApplyFileUploadLeaseResponseBodyData,
     ApplyTempStorageLeaseResponseBodyDataParam,
@@ -515,5 +556,6 @@ __all__ = [
     UpdateAndPublishAgentSelectiveRequestApplicationConfig,
     UpdateAndPublishAgentSelectiveRequestSampleLibrary,
     UpdateFileTagResponseBodyData,
-    UpdateIndexResponseBodyData
+    UpdateIndexResponseBodyData,
+    UpdateTableFromAuthorizedOssResponseBodyData
 ]

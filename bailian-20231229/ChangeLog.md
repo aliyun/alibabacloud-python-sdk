@@ -1,3 +1,8 @@
+2026-04-13 Version: 2.9.0
+- Support API AddTable.
+- Support API UpdateTableFromAuthorizedOss.
+
+
 2026-03-30 Version: 2.8.4
 - Update API CreateIndex: add request parameters RerankInstruct.
 - Update API CreateIndex: add request parameters RerankMode.

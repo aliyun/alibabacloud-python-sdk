@@ -353,6 +353,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_files_from_authorized_oss_with_options_async(workspace_id, request, headers, runtime)
 
+    def add_table_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.AddTableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddTableResponse:
+        tmp_req.validate()
+        request = main_models.AddTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.table_columns):
+            request.table_columns_shrink = Utils.array_to_string_with_specified_style(tmp_req.table_columns, 'TableColumns', 'json')
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.table_columns_shrink):
+            body['TableColumns'] = request.table_columns_shrink
+        if not DaraCore.is_null(request.table_name):
+            body['TableName'] = request.table_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddTable',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/table',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_table_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.AddTableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddTableResponse:
+        tmp_req.validate()
+        request = main_models.AddTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.table_columns):
+            request.table_columns_shrink = Utils.array_to_string_with_specified_style(tmp_req.table_columns, 'TableColumns', 'json')
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.table_columns_shrink):
+            body['TableColumns'] = request.table_columns_shrink
+        if not DaraCore.is_null(request.table_name):
+            body['TableName'] = request.table_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddTable',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/table',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_table(
+        self,
+        workspace_id: str,
+        request: main_models.AddTableRequest,
+    ) -> main_models.AddTableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_table_with_options(workspace_id, request, headers, runtime)
+
+    async def add_table_async(
+        self,
+        workspace_id: str,
+        request: main_models.AddTableRequest,
+    ) -> main_models.AddTableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_table_with_options_async(workspace_id, request, headers, runtime)
+
     def apply_file_upload_lease_with_options(
         self,
         category_id: str,
@@ -1233,9 +1329,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.DeleteAgentRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteAgentResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1259,9 +1357,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.DeleteAgentRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteAgentResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1285,27 +1385,31 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.DeleteAgentRequest,
     ) -> main_models.DeleteAgentResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_agent_with_options(workspace_id, app_code, headers, runtime)
+        return self.delete_agent_with_options(workspace_id, app_code, request, headers, runtime)
 
     async def delete_agent_async(
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.DeleteAgentRequest,
     ) -> main_models.DeleteAgentResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_agent_with_options_async(workspace_id, app_code, headers, runtime)
+        return await self.delete_agent_with_options_async(workspace_id, app_code, request, headers, runtime)
 
     def delete_category_with_options(
         self,
         category_id: str,
         workspace_id: str,
+        request: main_models.DeleteCategoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteCategoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1329,9 +1433,11 @@ class Client(OpenApiClient):
         self,
         category_id: str,
         workspace_id: str,
+        request: main_models.DeleteCategoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteCategoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1355,19 +1461,21 @@ class Client(OpenApiClient):
         self,
         category_id: str,
         workspace_id: str,
+        request: main_models.DeleteCategoryRequest,
     ) -> main_models.DeleteCategoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_category_with_options(category_id, workspace_id, headers, runtime)
+        return self.delete_category_with_options(category_id, workspace_id, request, headers, runtime)
 
     async def delete_category_async(
         self,
         category_id: str,
         workspace_id: str,
+        request: main_models.DeleteCategoryRequest,
     ) -> main_models.DeleteCategoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_category_with_options_async(category_id, workspace_id, headers, runtime)
+        return await self.delete_category_with_options_async(category_id, workspace_id, request, headers, runtime)
 
     def delete_chunk_with_options(
         self,
@@ -1465,9 +1573,11 @@ class Client(OpenApiClient):
         self,
         file_id: str,
         workspace_id: str,
+        request: main_models.DeleteFileRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFileResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1491,9 +1601,11 @@ class Client(OpenApiClient):
         self,
         file_id: str,
         workspace_id: str,
+        request: main_models.DeleteFileRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFileResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1517,19 +1629,21 @@ class Client(OpenApiClient):
         self,
         file_id: str,
         workspace_id: str,
+        request: main_models.DeleteFileRequest,
     ) -> main_models.DeleteFileResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_file_with_options(file_id, workspace_id, headers, runtime)
+        return self.delete_file_with_options(file_id, workspace_id, request, headers, runtime)
 
     async def delete_file_async(
         self,
         file_id: str,
         workspace_id: str,
+        request: main_models.DeleteFileRequest,
     ) -> main_models.DeleteFileResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_file_with_options_async(file_id, workspace_id, headers, runtime)
+        return await self.delete_file_with_options_async(file_id, workspace_id, request, headers, runtime)
 
     def delete_index_with_options(
         self,
@@ -1707,9 +1821,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1733,9 +1849,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1759,28 +1877,32 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
     ) -> main_models.DeleteMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_memory_with_options(workspace_id, memory_id, headers, runtime)
+        return self.delete_memory_with_options(workspace_id, memory_id, request, headers, runtime)
 
     async def delete_memory_async(
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.DeleteMemoryRequest,
     ) -> main_models.DeleteMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_memory_with_options_async(workspace_id, memory_id, headers, runtime)
+        return await self.delete_memory_with_options_async(workspace_id, memory_id, request, headers, runtime)
 
     def delete_memory_node_with_options(
         self,
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.DeleteMemoryNodeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryNodeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1805,9 +1927,11 @@ class Client(OpenApiClient):
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.DeleteMemoryNodeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteMemoryNodeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1832,28 +1956,32 @@ class Client(OpenApiClient):
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.DeleteMemoryNodeRequest,
     ) -> main_models.DeleteMemoryNodeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_memory_node_with_options(workspace_id, memory_id, memory_node_id, headers, runtime)
+        return self.delete_memory_node_with_options(workspace_id, memory_id, memory_node_id, request, headers, runtime)
 
     async def delete_memory_node_async(
         self,
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.DeleteMemoryNodeRequest,
     ) -> main_models.DeleteMemoryNodeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
+        return await self.delete_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, request, headers, runtime)
 
     def delete_prompt_template_with_options(
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.DeletePromptTemplateRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePromptTemplateResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1877,9 +2005,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.DeletePromptTemplateRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeletePromptTemplateResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1903,27 +2033,31 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.DeletePromptTemplateRequest,
     ) -> main_models.DeletePromptTemplateResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_prompt_template_with_options(workspace_id, prompt_template_id, headers, runtime)
+        return self.delete_prompt_template_with_options(workspace_id, prompt_template_id, request, headers, runtime)
 
     async def delete_prompt_template_async(
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.DeletePromptTemplateRequest,
     ) -> main_models.DeletePromptTemplateResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_prompt_template_with_options_async(workspace_id, prompt_template_id, headers, runtime)
+        return await self.delete_prompt_template_with_options_async(workspace_id, prompt_template_id, request, headers, runtime)
 
     def describe_file_with_options(
         self,
         workspace_id: str,
         file_id: str,
+        request: main_models.DescribeFileRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeFileResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1947,9 +2081,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         file_id: str,
+        request: main_models.DescribeFileRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeFileResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1973,19 +2109,21 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         file_id: str,
+        request: main_models.DescribeFileRequest,
     ) -> main_models.DescribeFileResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_file_with_options(workspace_id, file_id, headers, runtime)
+        return self.describe_file_with_options(workspace_id, file_id, request, headers, runtime)
 
     async def describe_file_async(
         self,
         workspace_id: str,
         file_id: str,
+        request: main_models.DescribeFileRequest,
     ) -> main_models.DescribeFileResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_file_with_options_async(workspace_id, file_id, headers, runtime)
+        return await self.describe_file_with_options_async(workspace_id, file_id, request, headers, runtime)
 
     def get_alipay_transfer_status_with_options(
         self,
@@ -2411,9 +2549,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2437,9 +2577,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2463,28 +2605,32 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
     ) -> main_models.GetMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_memory_with_options(workspace_id, memory_id, headers, runtime)
+        return self.get_memory_with_options(workspace_id, memory_id, request, headers, runtime)
 
     async def get_memory_async(
         self,
         workspace_id: str,
         memory_id: str,
+        request: main_models.GetMemoryRequest,
     ) -> main_models.GetMemoryResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_memory_with_options_async(workspace_id, memory_id, headers, runtime)
+        return await self.get_memory_with_options_async(workspace_id, memory_id, request, headers, runtime)
 
     def get_memory_node_with_options(
         self,
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.GetMemoryNodeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryNodeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2509,9 +2655,11 @@ class Client(OpenApiClient):
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.GetMemoryNodeRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetMemoryNodeResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2536,20 +2684,22 @@ class Client(OpenApiClient):
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.GetMemoryNodeRequest,
     ) -> main_models.GetMemoryNodeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_memory_node_with_options(workspace_id, memory_id, memory_node_id, headers, runtime)
+        return self.get_memory_node_with_options(workspace_id, memory_id, memory_node_id, request, headers, runtime)
 
     async def get_memory_node_async(
         self,
         workspace_id: str,
         memory_id: str,
         memory_node_id: str,
+        request: main_models.GetMemoryNodeRequest,
     ) -> main_models.GetMemoryNodeResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
+        return await self.get_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, request, headers, runtime)
 
     def get_parse_settings_with_options(
         self,
@@ -2635,9 +2785,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.GetPromptTemplateRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetPromptTemplateResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2661,9 +2813,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.GetPromptTemplateRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetPromptTemplateResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2687,27 +2841,31 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.GetPromptTemplateRequest,
     ) -> main_models.GetPromptTemplateResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_prompt_template_with_options(workspace_id, prompt_template_id, headers, runtime)
+        return self.get_prompt_template_with_options(workspace_id, prompt_template_id, request, headers, runtime)
 
     async def get_prompt_template_async(
         self,
         workspace_id: str,
         prompt_template_id: str,
+        request: main_models.GetPromptTemplateRequest,
     ) -> main_models.GetPromptTemplateResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_prompt_template_with_options_async(workspace_id, prompt_template_id, headers, runtime)
+        return await self.get_prompt_template_with_options_async(workspace_id, prompt_template_id, request, headers, runtime)
 
     def get_published_agent_with_options(
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.GetPublishedAgentRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetPublishedAgentResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2731,9 +2889,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.GetPublishedAgentRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetPublishedAgentResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2757,19 +2917,21 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.GetPublishedAgentRequest,
     ) -> main_models.GetPublishedAgentResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_published_agent_with_options(workspace_id, app_code, headers, runtime)
+        return self.get_published_agent_with_options(workspace_id, app_code, request, headers, runtime)
 
     async def get_published_agent_async(
         self,
         workspace_id: str,
         app_code: str,
+        request: main_models.GetPublishedAgentRequest,
     ) -> main_models.GetPublishedAgentResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_published_agent_with_options_async(workspace_id, app_code, headers, runtime)
+        return await self.get_published_agent_with_options_async(workspace_id, app_code, request, headers, runtime)
 
     def high_code_deploy_with_options(
         self,
@@ -4938,3 +5100,99 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_prompt_template_with_options_async(workspace_id, prompt_template_id, request, headers, runtime)
+
+    def update_table_from_authorized_oss_with_options(
+        self,
+        workspace_id: str,
+        table_id: str,
+        request: main_models.UpdateTableFromAuthorizedOssRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTableFromAuthorizedOssResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.oss_bucket):
+            body['OssBucket'] = request.oss_bucket
+        if not DaraCore.is_null(request.oss_key):
+            body['OssKey'] = request.oss_key
+        if not DaraCore.is_null(request.oss_region_id):
+            body['OssRegionId'] = request.oss_region_id
+        if not DaraCore.is_null(request.update_mode):
+            body['UpdateMode'] = request.update_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTableFromAuthorizedOss',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/table/fromoss/{DaraURL.percent_encode(table_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTableFromAuthorizedOssResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_table_from_authorized_oss_with_options_async(
+        self,
+        workspace_id: str,
+        table_id: str,
+        request: main_models.UpdateTableFromAuthorizedOssRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTableFromAuthorizedOssResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.oss_bucket):
+            body['OssBucket'] = request.oss_bucket
+        if not DaraCore.is_null(request.oss_key):
+            body['OssKey'] = request.oss_key
+        if not DaraCore.is_null(request.oss_region_id):
+            body['OssRegionId'] = request.oss_region_id
+        if not DaraCore.is_null(request.update_mode):
+            body['UpdateMode'] = request.update_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTableFromAuthorizedOss',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/table/fromoss/{DaraURL.percent_encode(table_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTableFromAuthorizedOssResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_table_from_authorized_oss(
+        self,
+        workspace_id: str,
+        table_id: str,
+        request: main_models.UpdateTableFromAuthorizedOssRequest,
+    ) -> main_models.UpdateTableFromAuthorizedOssResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_table_from_authorized_oss_with_options(workspace_id, table_id, request, headers, runtime)
+
+    async def update_table_from_authorized_oss_async(
+        self,
+        workspace_id: str,
+        table_id: str,
+        request: main_models.UpdateTableFromAuthorizedOssRequest,
+    ) -> main_models.UpdateTableFromAuthorizedOssResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_table_from_authorized_oss_with_options_async(workspace_id, table_id, request, headers, runtime)
