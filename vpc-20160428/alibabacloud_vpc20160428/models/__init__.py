@@ -59,6 +59,9 @@ from ._associate_eip_address_batch_response import AssociateEipAddressBatchRespo
 from ._associate_ha_vip_request import AssociateHaVipRequest
 from ._associate_ha_vip_response_body import AssociateHaVipResponseBody
 from ._associate_ha_vip_response import AssociateHaVipResponse
+from ._associate_mac_sec_key_request import AssociateMacSecKeyRequest
+from ._associate_mac_sec_key_response_body import AssociateMacSecKeyResponseBody
+from ._associate_mac_sec_key_response import AssociateMacSecKeyResponse
 from ._associate_network_acl_request import AssociateNetworkAclRequest
 from ._associate_network_acl_response_body import AssociateNetworkAclResponseBody
 from ._associate_network_acl_response import AssociateNetworkAclResponse
@@ -714,6 +717,9 @@ from ._diagnose_vpn_gateway_response import DiagnoseVpnGatewayResponse
 from ._disable_vpc_classic_link_request import DisableVpcClassicLinkRequest
 from ._disable_vpc_classic_link_response_body import DisableVpcClassicLinkResponseBody
 from ._disable_vpc_classic_link_response import DisableVpcClassicLinkResponse
+from ._disassociate_mac_sec_key_request import DisassociateMacSecKeyRequest
+from ._disassociate_mac_sec_key_response_body import DisassociateMacSecKeyResponseBody
+from ._disassociate_mac_sec_key_response import DisassociateMacSecKeyResponse
 from ._dissociate_route_table_from_gateway_request import DissociateRouteTableFromGatewayRequest
 from ._dissociate_route_table_from_gateway_response_body import DissociateRouteTableFromGatewayResponseBody
 from ._dissociate_route_table_from_gateway_response import DissociateRouteTableFromGatewayResponse
@@ -1785,6 +1791,9 @@ __all__ = [
     AssociateHaVipRequest,
     AssociateHaVipResponseBody,
     AssociateHaVipResponse,
+    AssociateMacSecKeyRequest,
+    AssociateMacSecKeyResponseBody,
+    AssociateMacSecKeyResponse,
     AssociateNetworkAclRequest,
     AssociateNetworkAclResponseBody,
     AssociateNetworkAclResponse,
@@ -2440,6 +2449,9 @@ __all__ = [
     DisableVpcClassicLinkRequest,
     DisableVpcClassicLinkResponseBody,
     DisableVpcClassicLinkResponse,
+    DisassociateMacSecKeyRequest,
+    DisassociateMacSecKeyResponseBody,
+    DisassociateMacSecKeyResponse,
     DissociateRouteTableFromGatewayRequest,
     DissociateRouteTableFromGatewayResponseBody,
     DissociateRouteTableFromGatewayResponse,

@@ -2193,6 +2193,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.associate_ha_vip_with_options_async(request, runtime)
 
+    def associate_mac_sec_key_with_options(
+        self,
+        request: main_models.AssociateMacSecKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateMacSecKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cak):
+            query['Cak'] = request.cak
+        if not DaraCore.is_null(request.cipher_suite):
+            query['CipherSuite'] = request.cipher_suite
+        if not DaraCore.is_null(request.ckn):
+            query['Ckn'] = request.ckn
+        if not DaraCore.is_null(request.physical_connection_id):
+            query['PhysicalConnectionId'] = request.physical_connection_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateMacSecKey',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateMacSecKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_mac_sec_key_with_options_async(
+        self,
+        request: main_models.AssociateMacSecKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateMacSecKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cak):
+            query['Cak'] = request.cak
+        if not DaraCore.is_null(request.cipher_suite):
+            query['CipherSuite'] = request.cipher_suite
+        if not DaraCore.is_null(request.ckn):
+            query['Ckn'] = request.ckn
+        if not DaraCore.is_null(request.physical_connection_id):
+            query['PhysicalConnectionId'] = request.physical_connection_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateMacSecKey',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateMacSecKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_mac_sec_key(
+        self,
+        request: main_models.AssociateMacSecKeyRequest,
+    ) -> main_models.AssociateMacSecKeyResponse:
+        runtime = RuntimeOptions()
+        return self.associate_mac_sec_key_with_options(request, runtime)
+
+    async def associate_mac_sec_key_async(
+        self,
+        request: main_models.AssociateMacSecKeyRequest,
+    ) -> main_models.AssociateMacSecKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.associate_mac_sec_key_with_options_async(request, runtime)
+
     def associate_network_acl_with_options(
         self,
         request: main_models.AssociateNetworkAclRequest,
@@ -25920,6 +26006,84 @@ class Client(OpenApiClient):
     ) -> main_models.DisableVpcClassicLinkResponse:
         runtime = RuntimeOptions()
         return await self.disable_vpc_classic_link_with_options_async(request, runtime)
+
+    def disassociate_mac_sec_key_with_options(
+        self,
+        request: main_models.DisassociateMacSecKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisassociateMacSecKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ckn):
+            query['Ckn'] = request.ckn
+        if not DaraCore.is_null(request.physical_connection_id):
+            query['PhysicalConnectionId'] = request.physical_connection_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisassociateMacSecKey',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisassociateMacSecKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disassociate_mac_sec_key_with_options_async(
+        self,
+        request: main_models.DisassociateMacSecKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisassociateMacSecKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ckn):
+            query['Ckn'] = request.ckn
+        if not DaraCore.is_null(request.physical_connection_id):
+            query['PhysicalConnectionId'] = request.physical_connection_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisassociateMacSecKey',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisassociateMacSecKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disassociate_mac_sec_key(
+        self,
+        request: main_models.DisassociateMacSecKeyRequest,
+    ) -> main_models.DisassociateMacSecKeyResponse:
+        runtime = RuntimeOptions()
+        return self.disassociate_mac_sec_key_with_options(request, runtime)
+
+    async def disassociate_mac_sec_key_async(
+        self,
+        request: main_models.DisassociateMacSecKeyRequest,
+    ) -> main_models.DisassociateMacSecKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.disassociate_mac_sec_key_with_options_async(request, runtime)
 
     def dissociate_route_table_from_gateway_with_options(
         self,
