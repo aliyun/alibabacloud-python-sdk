@@ -81,6 +81,9 @@ from ._delete_policy_group_response import DeletePolicyGroupResponse
 from ._delete_system_property_templates_request import DeleteSystemPropertyTemplatesRequest
 from ._delete_system_property_templates_response_body import DeleteSystemPropertyTemplatesResponseBody
 from ._delete_system_property_templates_response import DeleteSystemPropertyTemplatesResponse
+from ._describe_agent_task_request import DescribeAgentTaskRequest
+from ._describe_agent_task_response_body import DescribeAgentTaskResponseBody
+from ._describe_agent_task_response import DescribeAgentTaskResponse
 from ._describe_android_instance_groups_request import DescribeAndroidInstanceGroupsRequest
 from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBody
 from ._describe_android_instance_groups_response import DescribeAndroidInstanceGroupsResponse
@@ -243,6 +246,9 @@ from ._renew_cloud_phone_nodes_response import RenewCloudPhoneNodesResponse
 from ._reset_android_instances_in_group_request import ResetAndroidInstancesInGroupRequest
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBody
 from ._reset_android_instances_in_group_response import ResetAndroidInstancesInGroupResponse
+from ._run_agent_task_request import RunAgentTaskRequest
+from ._run_agent_task_response_body import RunAgentTaskResponseBody
+from ._run_agent_task_response import RunAgentTaskResponse
 from ._run_command_request import RunCommandRequest
 from ._run_command_response_body import RunCommandResponseBody
 from ._run_command_response import RunCommandResponse
@@ -326,6 +332,7 @@ from ._create_screenshot_response_body import CreateScreenshotResponseBodyTasks
 from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
 from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfo
 from ._delete_images_response_body import DeleteImagesResponseBodyData
+from ._describe_agent_task_response_body import DescribeAgentTaskResponseBodyTasks
 from ._describe_android_instance_groups_request import DescribeAndroidInstanceGroupsRequestTags
 from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule
 from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules
@@ -402,6 +409,7 @@ from ._recover_app_response_body import RecoverAppResponseBodyData
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
+from ._run_agent_task_response_body import RunAgentTaskResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
 from ._send_file_response_body import SendFileResponseBodyData
@@ -491,6 +499,9 @@ __all__ = [
     DeleteSystemPropertyTemplatesRequest,
     DeleteSystemPropertyTemplatesResponseBody,
     DeleteSystemPropertyTemplatesResponse,
+    DescribeAgentTaskRequest,
+    DescribeAgentTaskResponseBody,
+    DescribeAgentTaskResponse,
     DescribeAndroidInstanceGroupsRequest,
     DescribeAndroidInstanceGroupsResponseBody,
     DescribeAndroidInstanceGroupsResponse,
@@ -653,6 +664,9 @@ __all__ = [
     ResetAndroidInstancesInGroupRequest,
     ResetAndroidInstancesInGroupResponseBody,
     ResetAndroidInstancesInGroupResponse,
+    RunAgentTaskRequest,
+    RunAgentTaskResponseBody,
+    RunAgentTaskResponse,
     RunCommandRequest,
     RunCommandResponseBody,
     RunCommandResponse,
@@ -736,6 +750,7 @@ __all__ = [
     CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
     CreateSystemPropertyTemplateRequestSystemPropertyInfo,
     DeleteImagesResponseBodyData,
+    DescribeAgentTaskResponseBodyTasks,
     DescribeAndroidInstanceGroupsRequestTags,
     DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule,
     DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules,
@@ -812,6 +827,7 @@ __all__ = [
     RecoveryFileResponseBodyData,
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
+    RunAgentTaskResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
     RunSyncCommandResponseBodyData,
     SendFileResponseBodyData,

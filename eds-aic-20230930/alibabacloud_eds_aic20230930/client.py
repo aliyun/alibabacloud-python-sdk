@@ -2284,6 +2284,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_system_property_templates_with_options_async(request, runtime)
 
+    def describe_agent_task_with_options(
+        self,
+        request: main_models.DescribeAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_agent_task_with_options_async(
+        self,
+        request: main_models.DescribeAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_agent_task(
+        self,
+        request: main_models.DescribeAgentTaskRequest,
+    ) -> main_models.DescribeAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.describe_agent_task_with_options(request, runtime)
+
+    async def describe_agent_task_async(
+        self,
+        request: main_models.DescribeAgentTaskRequest,
+    ) -> main_models.DescribeAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_agent_task_with_options_async(request, runtime)
+
     def describe_android_instance_groups_with_options(
         self,
         request: main_models.DescribeAndroidInstanceGroupsRequest,
@@ -6961,6 +7031,92 @@ class Client(OpenApiClient):
     ) -> main_models.ResetAndroidInstancesInGroupResponse:
         runtime = RuntimeOptions()
         return await self.reset_android_instances_in_group_with_options_async(request, runtime)
+
+    def run_agent_task_with_options(
+        self,
+        request: main_models.RunAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_steps):
+            query['MaxSteps'] = request.max_steps
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not DaraCore.is_null(request.user_prompt):
+            query['UserPrompt'] = request.user_prompt
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_agent_task_with_options_async(
+        self,
+        request: main_models.RunAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_steps):
+            query['MaxSteps'] = request.max_steps
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not DaraCore.is_null(request.user_prompt):
+            query['UserPrompt'] = request.user_prompt
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_agent_task(
+        self,
+        request: main_models.RunAgentTaskRequest,
+    ) -> main_models.RunAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.run_agent_task_with_options(request, runtime)
+
+    async def run_agent_task_async(
+        self,
+        request: main_models.RunAgentTaskRequest,
+    ) -> main_models.RunAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.run_agent_task_with_options_async(request, runtime)
 
     def run_command_with_options(
         self,
