@@ -73,11 +73,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -149,11 +151,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -287,6 +291,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.add_shared_accounts_with_options_async(request, headers, runtime)
+
+    def associate_detect_config_with_options(
+        self,
+        request: main_models.AssociateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.detect_config_id):
+            body['detectConfigId'] = request.detect_config_id
+        if not DaraCore.is_null(request.target_id):
+            body['targetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/operations/associate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateDetectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_detect_config_with_options_async(
+        self,
+        request: main_models.AssociateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.detect_config_id):
+            body['detectConfigId'] = request.detect_config_id
+        if not DaraCore.is_null(request.target_id):
+            body['targetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/operations/associate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateDetectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_detect_config(
+        self,
+        request: main_models.AssociateDetectConfigRequest,
+    ) -> main_models.AssociateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.associate_detect_config_with_options(request, headers, runtime)
+
+    async def associate_detect_config_async(
+        self,
+        request: main_models.AssociateDetectConfigRequest,
+    ) -> main_models.AssociateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.associate_detect_config_with_options_async(request, headers, runtime)
 
     def associate_group_with_options(
         self,
@@ -543,6 +631,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.cancel_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
+
+    def create_detect_config_with_options(
+        self,
+        request: main_models.CreateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alarm_configs):
+            body['alarmConfigs'] = request.alarm_configs
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.cron_expression):
+            body['cronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.detect_config_name):
+            body['detectConfigName'] = request.detect_config_name
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.trigger_type):
+            body['triggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDetectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_detect_config_with_options_async(
+        self,
+        request: main_models.CreateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alarm_configs):
+            body['alarmConfigs'] = request.alarm_configs
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.cron_expression):
+            body['cronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.detect_config_name):
+            body['detectConfigName'] = request.detect_config_name
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.trigger_type):
+            body['triggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDetectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_detect_config(
+        self,
+        request: main_models.CreateDetectConfigRequest,
+    ) -> main_models.CreateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_detect_config_with_options(request, headers, runtime)
+
+    async def create_detect_config_async(
+        self,
+        request: main_models.CreateDetectConfigRequest,
+    ) -> main_models.CreateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_detect_config_with_options_async(request, headers, runtime)
 
     def create_group_with_options(
         self,
@@ -1576,12 +1764,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_task_with_options_async(request, headers, runtime)
 
+    def delete_detect_config_with_options(
+        self,
+        detect_config_id: str,
+        request: main_models.DeleteDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDetectConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/{DaraURL.percent_encode(detect_config_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDetectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_detect_config_with_options_async(
+        self,
+        detect_config_id: str,
+        request: main_models.DeleteDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDetectConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/{DaraURL.percent_encode(detect_config_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDetectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_detect_config(
+        self,
+        detect_config_id: str,
+        request: main_models.DeleteDetectConfigRequest,
+    ) -> main_models.DeleteDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_detect_config_with_options(detect_config_id, request, headers, runtime)
+
+    async def delete_detect_config_async(
+        self,
+        detect_config_id: str,
+        request: main_models.DeleteDetectConfigRequest,
+    ) -> main_models.DeleteDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_detect_config_with_options_async(detect_config_id, request, headers, runtime)
+
     def delete_group_with_options(
         self,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1604,9 +1866,11 @@ class Client(OpenApiClient):
     async def delete_group_with_options_async(
         self,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1629,25 +1893,29 @@ class Client(OpenApiClient):
     def delete_group(
         self,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
     ) -> main_models.DeleteGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_group_with_options(group_id, headers, runtime)
+        return self.delete_group_with_options(group_id, request, headers, runtime)
 
     async def delete_group_async(
         self,
         group_id: str,
+        request: main_models.DeleteGroupRequest,
     ) -> main_models.DeleteGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_group_with_options_async(group_id, headers, runtime)
+        return await self.delete_group_with_options_async(group_id, request, headers, runtime)
 
     def delete_module_with_options(
         self,
         module_id: str,
+        request: main_models.DeleteModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1670,9 +1938,11 @@ class Client(OpenApiClient):
     async def delete_module_with_options_async(
         self,
         module_id: str,
+        request: main_models.DeleteModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1695,25 +1965,29 @@ class Client(OpenApiClient):
     def delete_module(
         self,
         module_id: str,
+        request: main_models.DeleteModuleRequest,
     ) -> main_models.DeleteModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_module_with_options(module_id, headers, runtime)
+        return self.delete_module_with_options(module_id, request, headers, runtime)
 
     async def delete_module_async(
         self,
         module_id: str,
+        request: main_models.DeleteModuleRequest,
     ) -> main_models.DeleteModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_module_with_options_async(module_id, headers, runtime)
+        return await self.delete_module_with_options_async(module_id, request, headers, runtime)
 
     def delete_parameter_set_with_options(
         self,
         parameter_set_id: str,
+        request: main_models.DeleteParameterSetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteParameterSetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1736,9 +2010,11 @@ class Client(OpenApiClient):
     async def delete_parameter_set_with_options_async(
         self,
         parameter_set_id: str,
+        request: main_models.DeleteParameterSetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteParameterSetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1761,25 +2037,29 @@ class Client(OpenApiClient):
     def delete_parameter_set(
         self,
         parameter_set_id: str,
+        request: main_models.DeleteParameterSetRequest,
     ) -> main_models.DeleteParameterSetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_parameter_set_with_options(parameter_set_id, headers, runtime)
+        return self.delete_parameter_set_with_options(parameter_set_id, request, headers, runtime)
 
     async def delete_parameter_set_async(
         self,
         parameter_set_id: str,
+        request: main_models.DeleteParameterSetRequest,
     ) -> main_models.DeleteParameterSetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_parameter_set_with_options_async(parameter_set_id, headers, runtime)
+        return await self.delete_parameter_set_with_options_async(parameter_set_id, request, headers, runtime)
 
     def delete_project_with_options(
         self,
         project_id: str,
+        request: main_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteProjectResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1802,9 +2082,11 @@ class Client(OpenApiClient):
     async def delete_project_with_options_async(
         self,
         project_id: str,
+        request: main_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteProjectResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1827,26 +2109,30 @@ class Client(OpenApiClient):
     def delete_project(
         self,
         project_id: str,
+        request: main_models.DeleteProjectRequest,
     ) -> main_models.DeleteProjectResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(project_id, headers, runtime)
+        return self.delete_project_with_options(project_id, request, headers, runtime)
 
     async def delete_project_async(
         self,
         project_id: str,
+        request: main_models.DeleteProjectRequest,
     ) -> main_models.DeleteProjectResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(project_id, headers, runtime)
+        return await self.delete_project_with_options_async(project_id, request, headers, runtime)
 
     def delete_registry_module_with_options(
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.DeleteRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteRegistryModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1870,9 +2156,11 @@ class Client(OpenApiClient):
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.DeleteRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteRegistryModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1896,28 +2184,32 @@ class Client(OpenApiClient):
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.DeleteRegistryModuleRequest,
     ) -> main_models.DeleteRegistryModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_registry_module_with_options(namespace_name, module_name, headers, runtime)
+        return self.delete_registry_module_with_options(namespace_name, module_name, request, headers, runtime)
 
     async def delete_registry_module_async(
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.DeleteRegistryModuleRequest,
     ) -> main_models.DeleteRegistryModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_registry_module_with_options_async(namespace_name, module_name, headers, runtime)
+        return await self.delete_registry_module_with_options_async(namespace_name, module_name, request, headers, runtime)
 
     def delete_registry_module_version_with_options(
         self,
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.DeleteRegistryModuleVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteRegistryModuleVersionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1942,9 +2234,11 @@ class Client(OpenApiClient):
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.DeleteRegistryModuleVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteRegistryModuleVersionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1969,27 +2263,31 @@ class Client(OpenApiClient):
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.DeleteRegistryModuleVersionRequest,
     ) -> main_models.DeleteRegistryModuleVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_registry_module_version_with_options(namespace_name, module_name, version, headers, runtime)
+        return self.delete_registry_module_version_with_options(namespace_name, module_name, version, request, headers, runtime)
 
     async def delete_registry_module_version_async(
         self,
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.DeleteRegistryModuleVersionRequest,
     ) -> main_models.DeleteRegistryModuleVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_registry_module_version_with_options_async(namespace_name, module_name, version, headers, runtime)
+        return await self.delete_registry_module_version_with_options_async(namespace_name, module_name, version, request, headers, runtime)
 
     def delete_registry_namespace_with_options(
         self,
         namespace_name: str,
+        request: main_models.DeleteRegistryNamespaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteRegistryNamespaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2012,9 +2310,11 @@ class Client(OpenApiClient):
     async def delete_registry_namespace_with_options_async(
         self,
         namespace_name: str,
+        request: main_models.DeleteRegistryNamespaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteRegistryNamespaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2037,25 +2337,29 @@ class Client(OpenApiClient):
     def delete_registry_namespace(
         self,
         namespace_name: str,
+        request: main_models.DeleteRegistryNamespaceRequest,
     ) -> main_models.DeleteRegistryNamespaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_registry_namespace_with_options(namespace_name, headers, runtime)
+        return self.delete_registry_namespace_with_options(namespace_name, request, headers, runtime)
 
     async def delete_registry_namespace_async(
         self,
         namespace_name: str,
+        request: main_models.DeleteRegistryNamespaceRequest,
     ) -> main_models.DeleteRegistryNamespaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_registry_namespace_with_options_async(namespace_name, headers, runtime)
+        return await self.delete_registry_namespace_with_options_async(namespace_name, request, headers, runtime)
 
     def delete_resource_export_task_with_options(
         self,
         export_task_id: str,
+        request: main_models.DeleteResourceExportTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceExportTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2078,9 +2382,11 @@ class Client(OpenApiClient):
     async def delete_resource_export_task_with_options_async(
         self,
         export_task_id: str,
+        request: main_models.DeleteResourceExportTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceExportTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2103,25 +2409,109 @@ class Client(OpenApiClient):
     def delete_resource_export_task(
         self,
         export_task_id: str,
+        request: main_models.DeleteResourceExportTaskRequest,
     ) -> main_models.DeleteResourceExportTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_resource_export_task_with_options(export_task_id, headers, runtime)
+        return self.delete_resource_export_task_with_options(export_task_id, request, headers, runtime)
 
     async def delete_resource_export_task_async(
         self,
         export_task_id: str,
+        request: main_models.DeleteResourceExportTaskRequest,
     ) -> main_models.DeleteResourceExportTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_resource_export_task_with_options_async(export_task_id, headers, runtime)
+        return await self.delete_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
+
+    def delete_stack_with_options(
+        self,
+        stack_id: str,
+        request: main_models.DeleteStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteStackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.clean_resources):
+            query['cleanResources'] = request.clean_resources
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteStackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_stack_with_options_async(
+        self,
+        stack_id: str,
+        request: main_models.DeleteStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteStackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.clean_resources):
+            query['cleanResources'] = request.clean_resources
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_stack(
+        self,
+        stack_id: str,
+        request: main_models.DeleteStackRequest,
+    ) -> main_models.DeleteStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_stack_with_options(stack_id, request, headers, runtime)
+
+    async def delete_stack_async(
+        self,
+        stack_id: str,
+        request: main_models.DeleteStackRequest,
+    ) -> main_models.DeleteStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_stack_with_options_async(stack_id, request, headers, runtime)
 
     def delete_task_with_options(
         self,
         task_id: str,
+        request: main_models.DeleteTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2144,9 +2534,11 @@ class Client(OpenApiClient):
     async def delete_task_with_options_async(
         self,
         task_id: str,
+        request: main_models.DeleteTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2169,18 +2561,188 @@ class Client(OpenApiClient):
     def delete_task(
         self,
         task_id: str,
+        request: main_models.DeleteTaskRequest,
     ) -> main_models.DeleteTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_task_with_options(task_id, headers, runtime)
+        return self.delete_task_with_options(task_id, request, headers, runtime)
 
     async def delete_task_async(
         self,
         task_id: str,
+        request: main_models.DeleteTaskRequest,
     ) -> main_models.DeleteTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_task_with_options_async(task_id, headers, runtime)
+        return await self.delete_task_with_options_async(task_id, request, headers, runtime)
+
+    def detect_terraform_state_with_options(
+        self,
+        request: main_models.DetectTerraformStateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DetectTerraformStateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.identifier):
+            body['identifier'] = request.identifier
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetectTerraformState',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detect',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetectTerraformStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_terraform_state_with_options_async(
+        self,
+        request: main_models.DetectTerraformStateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DetectTerraformStateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.identifier):
+            body['identifier'] = request.identifier
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetectTerraformState',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detect',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetectTerraformStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_terraform_state(
+        self,
+        request: main_models.DetectTerraformStateRequest,
+    ) -> main_models.DetectTerraformStateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.detect_terraform_state_with_options(request, headers, runtime)
+
+    async def detect_terraform_state_async(
+        self,
+        request: main_models.DetectTerraformStateRequest,
+    ) -> main_models.DetectTerraformStateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.detect_terraform_state_with_options_async(request, headers, runtime)
+
+    def dissociate_detect_config_with_options(
+        self,
+        request: main_models.DissociateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DissociateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.detect_config_id):
+            body['detectConfigId'] = request.detect_config_id
+        if not DaraCore.is_null(request.target_id):
+            body['targetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DissociateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/operations/dissociate',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DissociateDetectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_detect_config_with_options_async(
+        self,
+        request: main_models.DissociateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DissociateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.detect_config_id):
+            body['detectConfigId'] = request.detect_config_id
+        if not DaraCore.is_null(request.target_id):
+            body['targetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DissociateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/operations/dissociate',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DissociateDetectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_detect_config(
+        self,
+        request: main_models.DissociateDetectConfigRequest,
+    ) -> main_models.DissociateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.dissociate_detect_config_with_options(request, headers, runtime)
+
+    async def dissociate_detect_config_async(
+        self,
+        request: main_models.DissociateDetectConfigRequest,
+    ) -> main_models.DissociateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.dissociate_detect_config_with_options_async(request, headers, runtime)
 
     def dissociate_group_with_options(
         self,
@@ -2874,12 +3436,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.generate_module_with_options_async(request, headers, runtime)
 
+    def get_detect_config_with_options(
+        self,
+        detect_config_id: str,
+        request: main_models.GetDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDetectConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/{DaraURL.percent_encode(detect_config_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDetectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_detect_config_with_options_async(
+        self,
+        detect_config_id: str,
+        request: main_models.GetDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDetectConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/{DaraURL.percent_encode(detect_config_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDetectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_detect_config(
+        self,
+        detect_config_id: str,
+        request: main_models.GetDetectConfigRequest,
+    ) -> main_models.GetDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_detect_config_with_options(detect_config_id, request, headers, runtime)
+
+    async def get_detect_config_async(
+        self,
+        detect_config_id: str,
+        request: main_models.GetDetectConfigRequest,
+    ) -> main_models.GetDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_detect_config_with_options_async(detect_config_id, request, headers, runtime)
+
     def get_execute_state_with_options(
         self,
         state_id: str,
+        request: main_models.GetExecuteStateRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetExecuteStateResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2902,9 +3538,11 @@ class Client(OpenApiClient):
     async def get_execute_state_with_options_async(
         self,
         state_id: str,
+        request: main_models.GetExecuteStateRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetExecuteStateResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2927,25 +3565,29 @@ class Client(OpenApiClient):
     def get_execute_state(
         self,
         state_id: str,
+        request: main_models.GetExecuteStateRequest,
     ) -> main_models.GetExecuteStateResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_execute_state_with_options(state_id, headers, runtime)
+        return self.get_execute_state_with_options(state_id, request, headers, runtime)
 
     async def get_execute_state_async(
         self,
         state_id: str,
+        request: main_models.GetExecuteStateRequest,
     ) -> main_models.GetExecuteStateResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_execute_state_with_options_async(state_id, headers, runtime)
+        return await self.get_execute_state_with_options_async(state_id, request, headers, runtime)
 
     def get_group_with_options(
         self,
         group_id: str,
+        request: main_models.GetGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2968,9 +3610,11 @@ class Client(OpenApiClient):
     async def get_group_with_options_async(
         self,
         group_id: str,
+        request: main_models.GetGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2993,18 +3637,20 @@ class Client(OpenApiClient):
     def get_group(
         self,
         group_id: str,
+        request: main_models.GetGroupRequest,
     ) -> main_models.GetGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_group_with_options(group_id, headers, runtime)
+        return self.get_group_with_options(group_id, request, headers, runtime)
 
     async def get_group_async(
         self,
         group_id: str,
+        request: main_models.GetGroupRequest,
     ) -> main_models.GetGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_group_with_options_async(group_id, headers, runtime)
+        return await self.get_group_with_options_async(group_id, request, headers, runtime)
 
     def get_job_with_options(
         self,
@@ -3093,9 +3739,11 @@ class Client(OpenApiClient):
     def get_module_with_options(
         self,
         module_id: str,
+        request: main_models.GetModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3118,9 +3766,11 @@ class Client(OpenApiClient):
     async def get_module_with_options_async(
         self,
         module_id: str,
+        request: main_models.GetModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3143,26 +3793,30 @@ class Client(OpenApiClient):
     def get_module(
         self,
         module_id: str,
+        request: main_models.GetModuleRequest,
     ) -> main_models.GetModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_module_with_options(module_id, headers, runtime)
+        return self.get_module_with_options(module_id, request, headers, runtime)
 
     async def get_module_async(
         self,
         module_id: str,
+        request: main_models.GetModuleRequest,
     ) -> main_models.GetModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_module_with_options_async(module_id, headers, runtime)
+        return await self.get_module_with_options_async(module_id, request, headers, runtime)
 
     def get_module_version_with_options(
         self,
         module_id: str,
         module_version: str,
+        request: main_models.GetModuleVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetModuleVersionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3186,9 +3840,11 @@ class Client(OpenApiClient):
         self,
         module_id: str,
         module_version: str,
+        request: main_models.GetModuleVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetModuleVersionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3212,26 +3868,30 @@ class Client(OpenApiClient):
         self,
         module_id: str,
         module_version: str,
+        request: main_models.GetModuleVersionRequest,
     ) -> main_models.GetModuleVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_module_version_with_options(module_id, module_version, headers, runtime)
+        return self.get_module_version_with_options(module_id, module_version, request, headers, runtime)
 
     async def get_module_version_async(
         self,
         module_id: str,
         module_version: str,
+        request: main_models.GetModuleVersionRequest,
     ) -> main_models.GetModuleVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_module_version_with_options_async(module_id, module_version, headers, runtime)
+        return await self.get_module_version_with_options_async(module_id, module_version, request, headers, runtime)
 
     def get_parameter_set_with_options(
         self,
         parameter_set_id: str,
+        request: main_models.GetParameterSetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetParameterSetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3254,9 +3914,11 @@ class Client(OpenApiClient):
     async def get_parameter_set_with_options_async(
         self,
         parameter_set_id: str,
+        request: main_models.GetParameterSetRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetParameterSetResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3279,25 +3941,29 @@ class Client(OpenApiClient):
     def get_parameter_set(
         self,
         parameter_set_id: str,
+        request: main_models.GetParameterSetRequest,
     ) -> main_models.GetParameterSetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_parameter_set_with_options(parameter_set_id, headers, runtime)
+        return self.get_parameter_set_with_options(parameter_set_id, request, headers, runtime)
 
     async def get_parameter_set_async(
         self,
         parameter_set_id: str,
+        request: main_models.GetParameterSetRequest,
     ) -> main_models.GetParameterSetResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_parameter_set_with_options_async(parameter_set_id, headers, runtime)
+        return await self.get_parameter_set_with_options_async(parameter_set_id, request, headers, runtime)
 
     def get_project_with_options(
         self,
         project_id: str,
+        request: main_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetProjectResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3320,9 +3986,11 @@ class Client(OpenApiClient):
     async def get_project_with_options_async(
         self,
         project_id: str,
+        request: main_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetProjectResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3345,26 +4013,30 @@ class Client(OpenApiClient):
     def get_project(
         self,
         project_id: str,
+        request: main_models.GetProjectRequest,
     ) -> main_models.GetProjectResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(project_id, headers, runtime)
+        return self.get_project_with_options(project_id, request, headers, runtime)
 
     async def get_project_async(
         self,
         project_id: str,
+        request: main_models.GetProjectRequest,
     ) -> main_models.GetProjectResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(project_id, headers, runtime)
+        return await self.get_project_with_options_async(project_id, request, headers, runtime)
 
     def get_registry_module_with_options(
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.GetRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetRegistryModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3388,9 +4060,11 @@ class Client(OpenApiClient):
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.GetRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetRegistryModuleResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3414,28 +4088,32 @@ class Client(OpenApiClient):
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.GetRegistryModuleRequest,
     ) -> main_models.GetRegistryModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_registry_module_with_options(namespace_name, module_name, headers, runtime)
+        return self.get_registry_module_with_options(namespace_name, module_name, request, headers, runtime)
 
     async def get_registry_module_async(
         self,
         namespace_name: str,
         module_name: str,
+        request: main_models.GetRegistryModuleRequest,
     ) -> main_models.GetRegistryModuleResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_registry_module_with_options_async(namespace_name, module_name, headers, runtime)
+        return await self.get_registry_module_with_options_async(namespace_name, module_name, request, headers, runtime)
 
     def get_registry_module_version_with_options(
         self,
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.GetRegistryModuleVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetRegistryModuleVersionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3460,9 +4138,11 @@ class Client(OpenApiClient):
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.GetRegistryModuleVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetRegistryModuleVersionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3487,27 +4167,31 @@ class Client(OpenApiClient):
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.GetRegistryModuleVersionRequest,
     ) -> main_models.GetRegistryModuleVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_registry_module_version_with_options(namespace_name, module_name, version, headers, runtime)
+        return self.get_registry_module_version_with_options(namespace_name, module_name, version, request, headers, runtime)
 
     async def get_registry_module_version_async(
         self,
         namespace_name: str,
         module_name: str,
         version: str,
+        request: main_models.GetRegistryModuleVersionRequest,
     ) -> main_models.GetRegistryModuleVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_registry_module_version_with_options_async(namespace_name, module_name, version, headers, runtime)
+        return await self.get_registry_module_version_with_options_async(namespace_name, module_name, version, request, headers, runtime)
 
     def get_registry_namespace_with_options(
         self,
         namespace_name: str,
+        request: main_models.GetRegistryNamespaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetRegistryNamespaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3530,9 +4214,11 @@ class Client(OpenApiClient):
     async def get_registry_namespace_with_options_async(
         self,
         namespace_name: str,
+        request: main_models.GetRegistryNamespaceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetRegistryNamespaceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3555,18 +4241,20 @@ class Client(OpenApiClient):
     def get_registry_namespace(
         self,
         namespace_name: str,
+        request: main_models.GetRegistryNamespaceRequest,
     ) -> main_models.GetRegistryNamespaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_registry_namespace_with_options(namespace_name, headers, runtime)
+        return self.get_registry_namespace_with_options(namespace_name, request, headers, runtime)
 
     async def get_registry_namespace_async(
         self,
         namespace_name: str,
+        request: main_models.GetRegistryNamespaceRequest,
     ) -> main_models.GetRegistryNamespaceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_registry_namespace_with_options_async(namespace_name, headers, runtime)
+        return await self.get_registry_namespace_with_options_async(namespace_name, request, headers, runtime)
 
     def get_resource_export_task_with_options(
         self,
@@ -3736,12 +4424,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_resource_type_with_options_async(resource_type, request, headers, runtime)
 
+    def get_stack_deployments_with_options(
+        self,
+        stack_id: str,
+        request: main_models.GetStackDeploymentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStackDeploymentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_version):
+            query['configVersion'] = request.config_version
+        if not DaraCore.is_null(request.deployment_name):
+            query['deploymentName'] = request.deployment_name
+        if not DaraCore.is_null(request.deployment_no):
+            query['deploymentNo'] = request.deployment_no
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStackDeployments',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}/deployments',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStackDeploymentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_stack_deployments_with_options_async(
+        self,
+        stack_id: str,
+        request: main_models.GetStackDeploymentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStackDeploymentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_version):
+            query['configVersion'] = request.config_version
+        if not DaraCore.is_null(request.deployment_name):
+            query['deploymentName'] = request.deployment_name
+        if not DaraCore.is_null(request.deployment_no):
+            query['deploymentNo'] = request.deployment_no
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStackDeployments',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}/deployments',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStackDeploymentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_stack_deployments(
+        self,
+        stack_id: str,
+        request: main_models.GetStackDeploymentsRequest,
+    ) -> main_models.GetStackDeploymentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_stack_deployments_with_options(stack_id, request, headers, runtime)
+
+    async def get_stack_deployments_async(
+        self,
+        stack_id: str,
+        request: main_models.GetStackDeploymentsRequest,
+    ) -> main_models.GetStackDeploymentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_stack_deployments_with_options_async(stack_id, request, headers, runtime)
+
     def get_stack_execution_result_with_options(
         self,
         trigger_id: str,
+        request: main_models.GetStackExecutionResultRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetStackExecutionResultResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3764,9 +4554,11 @@ class Client(OpenApiClient):
     async def get_stack_execution_result_with_options_async(
         self,
         trigger_id: str,
+        request: main_models.GetStackExecutionResultRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetStackExecutionResultResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3789,25 +4581,29 @@ class Client(OpenApiClient):
     def get_stack_execution_result(
         self,
         trigger_id: str,
+        request: main_models.GetStackExecutionResultRequest,
     ) -> main_models.GetStackExecutionResultResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_stack_execution_result_with_options(trigger_id, headers, runtime)
+        return self.get_stack_execution_result_with_options(trigger_id, request, headers, runtime)
 
     async def get_stack_execution_result_async(
         self,
         trigger_id: str,
+        request: main_models.GetStackExecutionResultRequest,
     ) -> main_models.GetStackExecutionResultResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_stack_execution_result_with_options_async(trigger_id, headers, runtime)
+        return await self.get_stack_execution_result_with_options_async(trigger_id, request, headers, runtime)
 
     def get_task_with_options(
         self,
         task_id: str,
+        request: main_models.GetTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3830,9 +4626,11 @@ class Client(OpenApiClient):
     async def get_task_with_options_async(
         self,
         task_id: str,
+        request: main_models.GetTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3855,18 +4653,260 @@ class Client(OpenApiClient):
     def get_task(
         self,
         task_id: str,
+        request: main_models.GetTaskRequest,
     ) -> main_models.GetTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_task_with_options(task_id, headers, runtime)
+        return self.get_task_with_options(task_id, request, headers, runtime)
 
     async def get_task_async(
         self,
         task_id: str,
+        request: main_models.GetTaskRequest,
     ) -> main_models.GetTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_task_with_options_async(task_id, headers, runtime)
+        return await self.get_task_with_options_async(task_id, request, headers, runtime)
+
+    def get_terraform_state_detection_with_options(
+        self,
+        detection_id: str,
+        request: main_models.GetTerraformStateDetectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTerraformStateDetectionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTerraformStateDetection',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detect/{DaraURL.percent_encode(detection_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTerraformStateDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_terraform_state_detection_with_options_async(
+        self,
+        detection_id: str,
+        request: main_models.GetTerraformStateDetectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTerraformStateDetectionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTerraformStateDetection',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detect/{DaraURL.percent_encode(detection_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTerraformStateDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_terraform_state_detection(
+        self,
+        detection_id: str,
+        request: main_models.GetTerraformStateDetectionRequest,
+    ) -> main_models.GetTerraformStateDetectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_terraform_state_detection_with_options(detection_id, request, headers, runtime)
+
+    async def get_terraform_state_detection_async(
+        self,
+        detection_id: str,
+        request: main_models.GetTerraformStateDetectionRequest,
+    ) -> main_models.GetTerraformStateDetectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_terraform_state_detection_with_options_async(detection_id, request, headers, runtime)
+
+    def list_detect_config_relations_with_options(
+        self,
+        request: main_models.ListDetectConfigRelationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDetectConfigRelationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.detect_config_id):
+            query['detectConfigId'] = request.detect_config_id
+        if not DaraCore.is_null(request.target_id):
+            query['targetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            query['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDetectConfigRelations',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/operations/relation',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDetectConfigRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_detect_config_relations_with_options_async(
+        self,
+        request: main_models.ListDetectConfigRelationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDetectConfigRelationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.detect_config_id):
+            query['detectConfigId'] = request.detect_config_id
+        if not DaraCore.is_null(request.target_id):
+            query['targetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            query['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDetectConfigRelations',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/operations/relation',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDetectConfigRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_detect_config_relations(
+        self,
+        request: main_models.ListDetectConfigRelationsRequest,
+    ) -> main_models.ListDetectConfigRelationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_detect_config_relations_with_options(request, headers, runtime)
+
+    async def list_detect_config_relations_async(
+        self,
+        request: main_models.ListDetectConfigRelationsRequest,
+    ) -> main_models.ListDetectConfigRelationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_detect_config_relations_with_options_async(request, headers, runtime)
+
+    def list_detect_configs_with_options(
+        self,
+        request: main_models.ListDetectConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDetectConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.detect_config_name):
+            query['detectConfigName'] = request.detect_config_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDetectConfigs',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDetectConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_detect_configs_with_options_async(
+        self,
+        request: main_models.ListDetectConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDetectConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.detect_config_name):
+            query['detectConfigName'] = request.detect_config_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDetectConfigs',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDetectConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_detect_configs(
+        self,
+        request: main_models.ListDetectConfigsRequest,
+    ) -> main_models.ListDetectConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_detect_configs_with_options(request, headers, runtime)
+
+    async def list_detect_configs_async(
+        self,
+        request: main_models.ListDetectConfigsRequest,
+    ) -> main_models.ListDetectConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_detect_configs_with_options_async(request, headers, runtime)
 
     def list_explorer_registry_module_examples_with_options(
         self,
@@ -6244,6 +7284,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.trigger_stack_execution_with_options_async(request, headers, runtime)
 
+    def update_detect_config_with_options(
+        self,
+        detect_config_id: str,
+        request: main_models.UpdateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alarm_configs):
+            body['alarmConfigs'] = request.alarm_configs
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.cron_expression):
+            body['cronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.detect_config_name):
+            body['detectConfigName'] = request.detect_config_name
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.trigger_type):
+            body['triggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/{DaraURL.percent_encode(detect_config_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDetectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_detect_config_with_options_async(
+        self,
+        detect_config_id: str,
+        request: main_models.UpdateDetectConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDetectConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alarm_configs):
+            body['alarmConfigs'] = request.alarm_configs
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.cron_expression):
+            body['cronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.detect_config_name):
+            body['detectConfigName'] = request.detect_config_name
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.trigger_type):
+            body['triggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDetectConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/detectConfig/{DaraURL.percent_encode(detect_config_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDetectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_detect_config(
+        self,
+        detect_config_id: str,
+        request: main_models.UpdateDetectConfigRequest,
+    ) -> main_models.UpdateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_detect_config_with_options(detect_config_id, request, headers, runtime)
+
+    async def update_detect_config_async(
+        self,
+        detect_config_id: str,
+        request: main_models.UpdateDetectConfigRequest,
+    ) -> main_models.UpdateDetectConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_detect_config_with_options_async(detect_config_id, request, headers, runtime)
+
     def update_explorer_module_attribute_with_options(
         self,
         explorer_module_id: str,
@@ -7346,7 +8490,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -7429,7 +8573,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),

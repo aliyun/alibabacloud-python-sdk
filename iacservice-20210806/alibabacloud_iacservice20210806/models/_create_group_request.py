@@ -201,8 +201,6 @@ class CreateGroupRequestTriggerConfig(DaraModel):
 
         return self
 
-
-
 class CreateGroupRequestNotifyConfig(DaraModel):
     def __init__(
         self,

@@ -7,6 +7,9 @@ from ._jobs_status_detail_value import JobsStatusDetailValue
 from ._add_shared_accounts_request import AddSharedAccountsRequest
 from ._add_shared_accounts_response_body import AddSharedAccountsResponseBody
 from ._add_shared_accounts_response import AddSharedAccountsResponse
+from ._associate_detect_config_request import AssociateDetectConfigRequest
+from ._associate_detect_config_response_body import AssociateDetectConfigResponseBody
+from ._associate_detect_config_response import AssociateDetectConfigResponse
 from ._associate_group_request import AssociateGroupRequest
 from ._associate_group_response_body import AssociateGroupResponseBody
 from ._associate_group_response import AssociateGroupResponse
@@ -16,6 +19,9 @@ from ._associate_parameter_set_response import AssociateParameterSetResponse
 from ._cancel_resource_export_task_request import CancelResourceExportTaskRequest
 from ._cancel_resource_export_task_response_body import CancelResourceExportTaskResponseBody
 from ._cancel_resource_export_task_response import CancelResourceExportTaskResponse
+from ._create_detect_config_request import CreateDetectConfigRequest
+from ._create_detect_config_response_body import CreateDetectConfigResponseBody
+from ._create_detect_config_response import CreateDetectConfigResponse
 from ._create_group_request import CreateGroupRequest
 from ._create_group_response_body import CreateGroupResponseBody
 from ._create_group_response import CreateGroupResponse
@@ -46,24 +52,45 @@ from ._create_resource_export_task_response import CreateResourceExportTaskRespo
 from ._create_task_request import CreateTaskRequest
 from ._create_task_response_body import CreateTaskResponseBody
 from ._create_task_response import CreateTaskResponse
+from ._delete_detect_config_request import DeleteDetectConfigRequest
+from ._delete_detect_config_response_body import DeleteDetectConfigResponseBody
+from ._delete_detect_config_response import DeleteDetectConfigResponse
+from ._delete_group_request import DeleteGroupRequest
 from ._delete_group_response_body import DeleteGroupResponseBody
 from ._delete_group_response import DeleteGroupResponse
+from ._delete_module_request import DeleteModuleRequest
 from ._delete_module_response_body import DeleteModuleResponseBody
 from ._delete_module_response import DeleteModuleResponse
+from ._delete_parameter_set_request import DeleteParameterSetRequest
 from ._delete_parameter_set_response_body import DeleteParameterSetResponseBody
 from ._delete_parameter_set_response import DeleteParameterSetResponse
+from ._delete_project_request import DeleteProjectRequest
 from ._delete_project_response_body import DeleteProjectResponseBody
 from ._delete_project_response import DeleteProjectResponse
+from ._delete_registry_module_request import DeleteRegistryModuleRequest
 from ._delete_registry_module_response_body import DeleteRegistryModuleResponseBody
 from ._delete_registry_module_response import DeleteRegistryModuleResponse
+from ._delete_registry_module_version_request import DeleteRegistryModuleVersionRequest
 from ._delete_registry_module_version_response_body import DeleteRegistryModuleVersionResponseBody
 from ._delete_registry_module_version_response import DeleteRegistryModuleVersionResponse
+from ._delete_registry_namespace_request import DeleteRegistryNamespaceRequest
 from ._delete_registry_namespace_response_body import DeleteRegistryNamespaceResponseBody
 from ._delete_registry_namespace_response import DeleteRegistryNamespaceResponse
+from ._delete_resource_export_task_request import DeleteResourceExportTaskRequest
 from ._delete_resource_export_task_response_body import DeleteResourceExportTaskResponseBody
 from ._delete_resource_export_task_response import DeleteResourceExportTaskResponse
+from ._delete_stack_request import DeleteStackRequest
+from ._delete_stack_response_body import DeleteStackResponseBody
+from ._delete_stack_response import DeleteStackResponse
+from ._delete_task_request import DeleteTaskRequest
 from ._delete_task_response_body import DeleteTaskResponseBody
 from ._delete_task_response import DeleteTaskResponse
+from ._detect_terraform_state_request import DetectTerraformStateRequest
+from ._detect_terraform_state_response_body import DetectTerraformStateResponseBody
+from ._detect_terraform_state_response import DetectTerraformStateResponse
+from ._dissociate_detect_config_request import DissociateDetectConfigRequest
+from ._dissociate_detect_config_response_body import DissociateDetectConfigResponseBody
+from ._dissociate_detect_config_response import DissociateDetectConfigResponse
 from ._dissociate_group_request import DissociateGroupRequest
 from ._dissociate_group_response_body import DissociateGroupResponseBody
 from ._dissociate_group_response import DissociateGroupResponse
@@ -88,25 +115,37 @@ from ._execute_terraform_plan_response import ExecuteTerraformPlanResponse
 from ._generate_module_request import GenerateModuleRequest
 from ._generate_module_response_body import GenerateModuleResponseBody
 from ._generate_module_response import GenerateModuleResponse
+from ._get_detect_config_request import GetDetectConfigRequest
+from ._get_detect_config_response_body import GetDetectConfigResponseBody
+from ._get_detect_config_response import GetDetectConfigResponse
+from ._get_execute_state_request import GetExecuteStateRequest
 from ._get_execute_state_response_body import GetExecuteStateResponseBody
 from ._get_execute_state_response import GetExecuteStateResponse
+from ._get_group_request import GetGroupRequest
 from ._get_group_response_body import GetGroupResponseBody
 from ._get_group_response import GetGroupResponse
 from ._get_job_request import GetJobRequest
 from ._get_job_response_body import GetJobResponseBody
 from ._get_job_response import GetJobResponse
+from ._get_module_request import GetModuleRequest
 from ._get_module_response_body import GetModuleResponseBody
 from ._get_module_response import GetModuleResponse
+from ._get_module_version_request import GetModuleVersionRequest
 from ._get_module_version_response_body import GetModuleVersionResponseBody
 from ._get_module_version_response import GetModuleVersionResponse
+from ._get_parameter_set_request import GetParameterSetRequest
 from ._get_parameter_set_response_body import GetParameterSetResponseBody
 from ._get_parameter_set_response import GetParameterSetResponse
+from ._get_project_request import GetProjectRequest
 from ._get_project_response_body import GetProjectResponseBody
 from ._get_project_response import GetProjectResponse
+from ._get_registry_module_request import GetRegistryModuleRequest
 from ._get_registry_module_response_body import GetRegistryModuleResponseBody
 from ._get_registry_module_response import GetRegistryModuleResponse
+from ._get_registry_module_version_request import GetRegistryModuleVersionRequest
 from ._get_registry_module_version_response_body import GetRegistryModuleVersionResponseBody
 from ._get_registry_module_version_response import GetRegistryModuleVersionResponse
+from ._get_registry_namespace_request import GetRegistryNamespaceRequest
 from ._get_registry_namespace_response_body import GetRegistryNamespaceResponseBody
 from ._get_registry_namespace_response import GetRegistryNamespaceResponse
 from ._get_resource_export_task_request import GetResourceExportTaskRequest
@@ -115,10 +154,24 @@ from ._get_resource_export_task_response import GetResourceExportTaskResponse
 from ._get_resource_type_request import GetResourceTypeRequest
 from ._get_resource_type_response_body import GetResourceTypeResponseBody
 from ._get_resource_type_response import GetResourceTypeResponse
+from ._get_stack_deployments_request import GetStackDeploymentsRequest
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBody
+from ._get_stack_deployments_response import GetStackDeploymentsResponse
+from ._get_stack_execution_result_request import GetStackExecutionResultRequest
 from ._get_stack_execution_result_response_body import GetStackExecutionResultResponseBody
 from ._get_stack_execution_result_response import GetStackExecutionResultResponse
+from ._get_task_request import GetTaskRequest
 from ._get_task_response_body import GetTaskResponseBody
 from ._get_task_response import GetTaskResponse
+from ._get_terraform_state_detection_request import GetTerraformStateDetectionRequest
+from ._get_terraform_state_detection_response_body import GetTerraformStateDetectionResponseBody
+from ._get_terraform_state_detection_response import GetTerraformStateDetectionResponse
+from ._list_detect_config_relations_request import ListDetectConfigRelationsRequest
+from ._list_detect_config_relations_response_body import ListDetectConfigRelationsResponseBody
+from ._list_detect_config_relations_response import ListDetectConfigRelationsResponse
+from ._list_detect_configs_request import ListDetectConfigsRequest
+from ._list_detect_configs_response_body import ListDetectConfigsResponseBody
+from ._list_detect_configs_response import ListDetectConfigsResponse
 from ._list_explorer_registry_module_examples_request import ListExplorerRegistryModuleExamplesRequest
 from ._list_explorer_registry_module_examples_response_body import ListExplorerRegistryModuleExamplesResponseBody
 from ._list_explorer_registry_module_examples_response import ListExplorerRegistryModuleExamplesResponse
@@ -200,6 +253,9 @@ from ._remove_shared_accounts_response import RemoveSharedAccountsResponse
 from ._trigger_stack_execution_request import TriggerStackExecutionRequest
 from ._trigger_stack_execution_response_body import TriggerStackExecutionResponseBody
 from ._trigger_stack_execution_response import TriggerStackExecutionResponse
+from ._update_detect_config_request import UpdateDetectConfigRequest
+from ._update_detect_config_response_body import UpdateDetectConfigResponseBody
+from ._update_detect_config_response import UpdateDetectConfigResponse
 from ._update_explorer_module_attribute_request import UpdateExplorerModuleAttributeRequest
 from ._update_explorer_module_attribute_response_body import UpdateExplorerModuleAttributeResponseBody
 from ._update_explorer_module_attribute_response import UpdateExplorerModuleAttributeResponse
@@ -234,6 +290,7 @@ from ._upload_module_response import UploadModuleResponse
 from ._validate_module_request import ValidateModuleRequest
 from ._validate_module_response_body import ValidateModuleResponseBody
 from ._validate_module_response import ValidateModuleResponse
+from ._create_detect_config_request import CreateDetectConfigRequestAlarmConfigs
 from ._create_group_request import CreateGroupRequestNotifyConfig
 from ._create_group_request import CreateGroupRequestTriggerConfig
 from ._create_module_request import CreateModuleRequestGroupInfo
@@ -245,6 +302,8 @@ from ._create_resource_export_task_request import CreateResourceExportTaskReques
 from ._create_task_request import CreateTaskRequestGroupInfo
 from ._create_task_request import CreateTaskRequestTags
 from ._create_task_request import CreateTaskRequestTaskBackend
+from ._get_detect_config_response_body import GetDetectConfigResponseBodyDetectConfigAlarmConfigs
+from ._get_detect_config_response_body import GetDetectConfigResponseBodyDetectConfig
 from ._get_group_response_body import GetGroupResponseBodyGroupNotifyConfig
 from ._get_group_response_body import GetGroupResponseBodyGroupTriggerConfig
 from ._get_group_response_body import GetGroupResponseBodyGroup
@@ -269,12 +328,27 @@ from ._get_resource_export_task_response_body import GetResourceExportTaskRespon
 from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTask
 from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceTypeOperations
 from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceType
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsConfig
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsOutputs
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsParameters
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsPlanOutputs
+from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeployments
 from ._get_stack_execution_result_response_body import GetStackExecutionResultResponseBodyStackResultsDeployments
 from ._get_stack_execution_result_response_body import GetStackExecutionResultResponseBodyStackResults
 from ._get_task_response_body import GetTaskResponseBodyTaskGroupInfo
 from ._get_task_response_body import GetTaskResponseBodyTaskTags
 from ._get_task_response_body import GetTaskResponseBodyTaskTaskBackend
 from ._get_task_response_body import GetTaskResponseBodyTask
+from ._get_terraform_state_detection_response_body import GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges
+from ._get_terraform_state_detection_response_body import GetTerraformStateDetectionResponseBodyJobChangedResources
+from ._get_terraform_state_detection_response_body import GetTerraformStateDetectionResponseBodyJobDriftedResourcesAttributeDrifts
+from ._get_terraform_state_detection_response_body import GetTerraformStateDetectionResponseBodyJobDriftedResources
+from ._get_terraform_state_detection_response_body import GetTerraformStateDetectionResponseBodyJob
+from ._list_detect_config_relations_response_body import ListDetectConfigRelationsResponseBodyDetectConfigRelations
+from ._list_detect_configs_response_body import ListDetectConfigsResponseBodyDetectConfigsAlarmConfigs
+from ._list_detect_configs_response_body import ListDetectConfigsResponseBodyDetectConfigs
 from ._list_explorer_registry_module_examples_response_body import ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples
 from ._list_explorer_registry_module_versions_response_body import ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions
 from ._list_explorer_registry_modules_response_body import ListExplorerRegistryModulesResponseBodyExplorerRegistryModules
@@ -317,6 +391,7 @@ from ._list_tasks_response_body import ListTasksResponseBodyTasksGroupInfo
 from ._list_tasks_response_body import ListTasksResponseBodyTasksTags
 from ._list_tasks_response_body import ListTasksResponseBodyTasks
 from ._list_terraform_provider_versions_response_body import ListTerraformProviderVersionsResponseBodyVersions
+from ._update_detect_config_request import UpdateDetectConfigRequestAlarmConfigs
 from ._update_group_request import UpdateGroupRequestNotifyConfig
 from ._update_group_request import UpdateGroupRequestTriggerConfig
 from ._update_module_attribute_request import UpdateModuleAttributeRequestGroupInfo
@@ -334,6 +409,9 @@ __all__ = [
     AddSharedAccountsRequest,
     AddSharedAccountsResponseBody,
     AddSharedAccountsResponse,
+    AssociateDetectConfigRequest,
+    AssociateDetectConfigResponseBody,
+    AssociateDetectConfigResponse,
     AssociateGroupRequest,
     AssociateGroupResponseBody,
     AssociateGroupResponse,
@@ -343,6 +421,9 @@ __all__ = [
     CancelResourceExportTaskRequest,
     CancelResourceExportTaskResponseBody,
     CancelResourceExportTaskResponse,
+    CreateDetectConfigRequest,
+    CreateDetectConfigResponseBody,
+    CreateDetectConfigResponse,
     CreateGroupRequest,
     CreateGroupResponseBody,
     CreateGroupResponse,
@@ -373,24 +454,45 @@ __all__ = [
     CreateTaskRequest,
     CreateTaskResponseBody,
     CreateTaskResponse,
+    DeleteDetectConfigRequest,
+    DeleteDetectConfigResponseBody,
+    DeleteDetectConfigResponse,
+    DeleteGroupRequest,
     DeleteGroupResponseBody,
     DeleteGroupResponse,
+    DeleteModuleRequest,
     DeleteModuleResponseBody,
     DeleteModuleResponse,
+    DeleteParameterSetRequest,
     DeleteParameterSetResponseBody,
     DeleteParameterSetResponse,
+    DeleteProjectRequest,
     DeleteProjectResponseBody,
     DeleteProjectResponse,
+    DeleteRegistryModuleRequest,
     DeleteRegistryModuleResponseBody,
     DeleteRegistryModuleResponse,
+    DeleteRegistryModuleVersionRequest,
     DeleteRegistryModuleVersionResponseBody,
     DeleteRegistryModuleVersionResponse,
+    DeleteRegistryNamespaceRequest,
     DeleteRegistryNamespaceResponseBody,
     DeleteRegistryNamespaceResponse,
+    DeleteResourceExportTaskRequest,
     DeleteResourceExportTaskResponseBody,
     DeleteResourceExportTaskResponse,
+    DeleteStackRequest,
+    DeleteStackResponseBody,
+    DeleteStackResponse,
+    DeleteTaskRequest,
     DeleteTaskResponseBody,
     DeleteTaskResponse,
+    DetectTerraformStateRequest,
+    DetectTerraformStateResponseBody,
+    DetectTerraformStateResponse,
+    DissociateDetectConfigRequest,
+    DissociateDetectConfigResponseBody,
+    DissociateDetectConfigResponse,
     DissociateGroupRequest,
     DissociateGroupResponseBody,
     DissociateGroupResponse,
@@ -415,25 +517,37 @@ __all__ = [
     GenerateModuleRequest,
     GenerateModuleResponseBody,
     GenerateModuleResponse,
+    GetDetectConfigRequest,
+    GetDetectConfigResponseBody,
+    GetDetectConfigResponse,
+    GetExecuteStateRequest,
     GetExecuteStateResponseBody,
     GetExecuteStateResponse,
+    GetGroupRequest,
     GetGroupResponseBody,
     GetGroupResponse,
     GetJobRequest,
     GetJobResponseBody,
     GetJobResponse,
+    GetModuleRequest,
     GetModuleResponseBody,
     GetModuleResponse,
+    GetModuleVersionRequest,
     GetModuleVersionResponseBody,
     GetModuleVersionResponse,
+    GetParameterSetRequest,
     GetParameterSetResponseBody,
     GetParameterSetResponse,
+    GetProjectRequest,
     GetProjectResponseBody,
     GetProjectResponse,
+    GetRegistryModuleRequest,
     GetRegistryModuleResponseBody,
     GetRegistryModuleResponse,
+    GetRegistryModuleVersionRequest,
     GetRegistryModuleVersionResponseBody,
     GetRegistryModuleVersionResponse,
+    GetRegistryNamespaceRequest,
     GetRegistryNamespaceResponseBody,
     GetRegistryNamespaceResponse,
     GetResourceExportTaskRequest,
@@ -442,10 +556,24 @@ __all__ = [
     GetResourceTypeRequest,
     GetResourceTypeResponseBody,
     GetResourceTypeResponse,
+    GetStackDeploymentsRequest,
+    GetStackDeploymentsResponseBody,
+    GetStackDeploymentsResponse,
+    GetStackExecutionResultRequest,
     GetStackExecutionResultResponseBody,
     GetStackExecutionResultResponse,
+    GetTaskRequest,
     GetTaskResponseBody,
     GetTaskResponse,
+    GetTerraformStateDetectionRequest,
+    GetTerraformStateDetectionResponseBody,
+    GetTerraformStateDetectionResponse,
+    ListDetectConfigRelationsRequest,
+    ListDetectConfigRelationsResponseBody,
+    ListDetectConfigRelationsResponse,
+    ListDetectConfigsRequest,
+    ListDetectConfigsResponseBody,
+    ListDetectConfigsResponse,
     ListExplorerRegistryModuleExamplesRequest,
     ListExplorerRegistryModuleExamplesResponseBody,
     ListExplorerRegistryModuleExamplesResponse,
@@ -527,6 +655,9 @@ __all__ = [
     TriggerStackExecutionRequest,
     TriggerStackExecutionResponseBody,
     TriggerStackExecutionResponse,
+    UpdateDetectConfigRequest,
+    UpdateDetectConfigResponseBody,
+    UpdateDetectConfigResponse,
     UpdateExplorerModuleAttributeRequest,
     UpdateExplorerModuleAttributeResponseBody,
     UpdateExplorerModuleAttributeResponse,
@@ -561,6 +692,7 @@ __all__ = [
     ValidateModuleRequest,
     ValidateModuleResponseBody,
     ValidateModuleResponse,
+    CreateDetectConfigRequestAlarmConfigs,
     CreateGroupRequestNotifyConfig,
     CreateGroupRequestTriggerConfig,
     CreateModuleRequestGroupInfo,
@@ -572,6 +704,8 @@ __all__ = [
     CreateTaskRequestGroupInfo,
     CreateTaskRequestTags,
     CreateTaskRequestTaskBackend,
+    GetDetectConfigResponseBodyDetectConfigAlarmConfigs,
+    GetDetectConfigResponseBodyDetectConfig,
     GetGroupResponseBodyGroupNotifyConfig,
     GetGroupResponseBodyGroupTriggerConfig,
     GetGroupResponseBodyGroup,
@@ -596,12 +730,27 @@ __all__ = [
     GetResourceExportTaskResponseBodyTask,
     GetResourceTypeResponseBodyResourceTypeOperations,
     GetResourceTypeResponseBodyResourceType,
+    GetStackDeploymentsResponseBodyDeploymentsConfig,
+    GetStackDeploymentsResponseBodyDeploymentsOutputs,
+    GetStackDeploymentsResponseBodyDeploymentsParameters,
+    GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail,
+    GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges,
+    GetStackDeploymentsResponseBodyDeploymentsPlanOutputs,
+    GetStackDeploymentsResponseBodyDeployments,
     GetStackExecutionResultResponseBodyStackResultsDeployments,
     GetStackExecutionResultResponseBodyStackResults,
     GetTaskResponseBodyTaskGroupInfo,
     GetTaskResponseBodyTaskTags,
     GetTaskResponseBodyTaskTaskBackend,
     GetTaskResponseBodyTask,
+    GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges,
+    GetTerraformStateDetectionResponseBodyJobChangedResources,
+    GetTerraformStateDetectionResponseBodyJobDriftedResourcesAttributeDrifts,
+    GetTerraformStateDetectionResponseBodyJobDriftedResources,
+    GetTerraformStateDetectionResponseBodyJob,
+    ListDetectConfigRelationsResponseBodyDetectConfigRelations,
+    ListDetectConfigsResponseBodyDetectConfigsAlarmConfigs,
+    ListDetectConfigsResponseBodyDetectConfigs,
     ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples,
     ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions,
     ListExplorerRegistryModulesResponseBodyExplorerRegistryModules,
@@ -644,6 +793,7 @@ __all__ = [
     ListTasksResponseBodyTasksTags,
     ListTasksResponseBodyTasks,
     ListTerraformProviderVersionsResponseBodyVersions,
+    UpdateDetectConfigRequestAlarmConfigs,
     UpdateGroupRequestNotifyConfig,
     UpdateGroupRequestTriggerConfig,
     UpdateModuleAttributeRequestGroupInfo,

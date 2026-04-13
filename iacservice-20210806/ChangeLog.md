@@ -1,3 +1,18 @@
+2026-04-13 Version: 2.7.0
+- Support API AssociateDetectConfig.
+- Support API CreateDetectConfig.
+- Support API DeleteDetectConfig.
+- Support API DeleteStack.
+- Support API DetectTerraformState.
+- Support API DissociateDetectConfig.
+- Support API GetDetectConfig.
+- Support API GetStackDeployments.
+- Support API GetTerraformStateDetection.
+- Support API ListDetectConfigRelations.
+- Support API ListDetectConfigs.
+- Support API UpdateDetectConfig.
+
+
 2026-03-23 Version: 2.6.1
 - Update API GetStackExecutionResult: add response parameters Body.triggeredStatus.
 
