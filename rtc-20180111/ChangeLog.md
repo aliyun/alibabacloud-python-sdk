@@ -1,3 +1,7 @@
+2026-04-13 Version: 5.3.5
+- Update API StartAgent: add request parameters VoiceChatConfig.BackChannelConfig.Version.
+
+
 2026-03-06 Version: 5.3.4
 - Update API CreateAppAgentTemplate: add request parameters EnableVideoUnderstanding.
 - Update API CreateAppAgentTemplate: add request parameters PreferVideo.

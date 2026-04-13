@@ -464,8 +464,10 @@ class StartAgentRequestVoiceChatConfigBackChannelConfig(DaraModel):
     def __init__(
         self,
         user_turn_end: bool = None,
+        version: int = None,
     ):
         self.user_turn_end = user_turn_end
+        self.version = version
 
     def validate(self):
         pass
@@ -478,12 +480,18 @@ class StartAgentRequestVoiceChatConfigBackChannelConfig(DaraModel):
         if self.user_turn_end is not None:
             result['UserTurnEnd'] = self.user_turn_end
 
+        if self.version is not None:
+            result['Version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('UserTurnEnd') is not None:
             self.user_turn_end = m.get('UserTurnEnd')
+
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
 
         return self
 
