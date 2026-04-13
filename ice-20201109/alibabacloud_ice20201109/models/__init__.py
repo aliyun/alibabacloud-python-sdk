@@ -1893,6 +1893,7 @@ from ._query_trace_extract_job_response_body import QueryTraceExtractJobResponse
 from ._query_trace_m3u_8job_list_response_body import QueryTraceM3u8JobListResponseBodyDataOutput
 from ._query_trace_m3u_8job_list_response_body import QueryTraceM3u8JobListResponseBodyData
 from ._query_video_cognition_job_request import QueryVideoCognitionJobRequestIncludeResults
+from ._query_video_cognition_job_response_body import QueryVideoCognitionJobResponseBodyInput
 from ._query_video_cognition_job_response_body import QueryVideoCognitionJobResponseBodyResultsResult
 from ._query_video_cognition_job_response_body import QueryVideoCognitionJobResponseBodyResults
 from ._search_editing_project_response_body import SearchEditingProjectResponseBodyProjectList
@@ -4012,6 +4013,7 @@ __all__ = [
     QueryTraceM3u8JobListResponseBodyDataOutput,
     QueryTraceM3u8JobListResponseBodyData,
     QueryVideoCognitionJobRequestIncludeResults,
+    QueryVideoCognitionJobResponseBodyInput,
     QueryVideoCognitionJobResponseBodyResultsResult,
     QueryVideoCognitionJobResponseBodyResults,
     SearchEditingProjectResponseBodyProjectList,
