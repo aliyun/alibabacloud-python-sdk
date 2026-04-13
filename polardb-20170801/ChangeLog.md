@@ -1,3 +1,7 @@
+2026-04-13 Version: 6.10.1
+- Update API DescribeApplicationAttribute: add response parameters Body.PolarClawSaaSApplicationAttribute.AuthProviders.
+
+
 2026-04-10 Version: 6.10.0
 - Support API SearchMemories.
 - Update API DescribeDBClusterAttribute: add response parameters Body.Branch.
