@@ -10,6 +10,7 @@ class ModifyAuditPolicyRequest(DaraModel):
         audit_log_switch_source: str = None,
         audit_status: str = None,
         dbinstance_id: str = None,
+        hot_storage_period: int = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -30,6 +31,7 @@ class ModifyAuditPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.hot_storage_period = hot_storage_period
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -61,6 +63,9 @@ class ModifyAuditPolicyRequest(DaraModel):
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
 
+        if self.hot_storage_period is not None:
+            result['HotStoragePeriod'] = self.hot_storage_period
+
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
 
@@ -91,6 +96,9 @@ class ModifyAuditPolicyRequest(DaraModel):
 
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('HotStoragePeriod') is not None:
+            self.hot_storage_period = m.get('HotStoragePeriod')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

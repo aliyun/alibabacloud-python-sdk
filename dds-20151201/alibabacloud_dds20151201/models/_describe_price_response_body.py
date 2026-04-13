@@ -25,9 +25,7 @@ class DescribePriceResponseBody(DaraModel):
         self.order_params = order_params
         # The request ID.
         self.request_id = request_id
-        # The promotion rules.
         self.rules = rules
-        # The coupon rules.
         self.sub_orders = sub_orders
         # The ID of the trace.
         self.trace_id = trace_id
@@ -143,33 +141,19 @@ class DescribePriceResponseBodySubOrdersSubOrder(DaraModel):
         stand_price: float = None,
         trade_amount: str = None,
     ):
-        # Indicates whether the contract promotion is hit.
         self.contract_activity = contract_activity
-        # The price reduction information.
         self.depreciate_info = depreciate_info
-        # The discount amount of the order.
         self.discount_amount = discount_amount
-        # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the contract promotion is hit.
         self.is_contract_activity = is_contract_activity
-        # Indicates whether the discount is hit.
         self.is_new_official_activity = is_new_official_activity
-        # The configuration item of the instance in the order.
         self.module_instance = module_instance
-        # The promotional options that can be configured.
         self.optional_promotions = optional_promotions
-        # The original price of the order.
         self.original_amount = original_amount
-        # The promotion details.
         self.prom_detail_list = prom_detail_list
-        # The activity rules.
         self.rule_ids = rule_ids
-        # The discount.
         self.stand_discount_price = stand_discount_price
-        # The discount.
         self.stand_price = stand_price
-        # The actual price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -358,21 +342,13 @@ class DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail(DaraMod
         promotion_id: int = None,
         promotion_name: str = None,
     ):
-        # The additional activity information.
         self.activity_ext_info = activity_ext_info
-        # The sub-type of the promotion.
         self.derived_prom_type = derived_prom_type
-        # The discount amount.
         self.final_prom_fee = final_prom_fee
-        # The code of the coupon.
         self.option_code = option_code
-        # The sub-type of the promotion.
         self.prom_type = prom_type
-        # The coupon code.
         self.promotion_code = promotion_code
-        # The promotion ID.
         self.promotion_id = promotion_id
-        # The name of the promotional activity.
         self.promotion_name = promotion_name
 
     def validate(self):
@@ -486,25 +462,15 @@ class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromot
         show: bool = None,
         target_article_item_codes: main_models.DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes = None,
     ):
-        # The activity type.
         self.activity_category = activity_category
-        # The additional activity information.
         self.activity_ext_info = activity_ext_info
-        # The amount that can be deducted by using the coupon.
         self.can_prom_fee = can_prom_fee
-        # The promotion type.
         self.option_code = option_code
-        # The promotion name.
         self.promotion_name = promotion_name
-        # The promotion ID.
         self.promotion_option_no = promotion_option_no
-        # The promotion IDs.
         self.promotion_rule_id_list = promotion_rule_id_list
-        # Indicates whether
         self.selected = selected
-        # Indicates whether the discount is displayed.
         self.show = show
-        # The specification codes of the product.
         self.target_article_item_codes = target_article_item_codes
 
     def validate(self):
@@ -697,40 +663,23 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Dar
         price_type: str = None,
         price_unit: str = None,
     ):
-        # Indicates whether the contract promotion is hit.
         self.contract_activity = contract_activity
-        # The cycle fee of the module.
         self.cycle_fee = cycle_fee
-        # The activity information.
         self.depreciate_info = depreciate_info
-        # The discount.
         self.discount_fee = discount_fee
-        # The module attributes.
         self.module_attrs = module_attrs
-        # The module code.
         self.module_code = module_code
-        # The module ID
         self.module_id = module_id
-        # The module name.
         self.module_name = module_name
-        # Indicates whether the order is paid.
         self.need_order_pay = need_order_pay
-        # The actual amount paid.
         self.pay_fee = pay_fee
-        # Indicates whether the item is billed.
         self.pricing_module = pricing_module
-        # The promotion details.
         self.prom_detail_list = prom_detail_list
-        # The discounted price.
         self.stand_discount_price = stand_discount_price
-        # The discount.
         self.stand_price = stand_price
-        # The original price of the product.
         self.total_product_fee = total_product_fee
         self.unit_price_unit_4buy = unit_price_unit_4buy
-        # The price type.
         self.price_type = price_type
-        # The unit of the price.
         self.price_unit = price_unit
 
     def validate(self):
@@ -910,21 +859,13 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceProm
         promotion_id: int = None,
         promotion_name: str = None,
     ):
-        # The additional promotion information.
         self.activity_ext_info = activity_ext_info
-        # The sub-type of the promotion.
         self.derived_prom_type = derived_prom_type
-        # The discount amount.
         self.final_prom_fee = final_prom_fee
-        # The code of the commodity to which the coupon can be applied.
         self.option_code = option_code
-        # The sub-type of the promotion.
         self.prom_type = prom_type
-        # The coupon code.
         self.promotion_code = promotion_code
-        # The ID of the promotional activity.
         self.promotion_id = promotion_id
-        # The promotional activity name.
         self.promotion_name = promotion_name
 
     def validate(self):
@@ -1032,13 +973,9 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModu
         type: str = None,
         value: str = None,
     ):
-        # The attribute code.
         self.code = code
-        # The attribute name.
         self.name = name
-        # The attribute type.
         self.type = type
-        # The attribute value.
         self.value = value
 
     def validate(self):
@@ -1092,23 +1029,14 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepr
         month_price: float = None,
         original_stand_amount: float = None,
     ):
-        # The price reduction rate.
         self.cheap_rate = cheap_rate
-        # The new total price displayed on the official website.
         self.cheap_stand_amount = cheap_stand_amount
-        # The price difference displayed in the total order amount.
         self.differential = differential
-        # The name of the price difference.
         self.differential_name = differential_name
-        # Indicates whether the contract promotion is hit.
         self.is_contract_activity = is_contract_activity
-        # Indicates whether the price reduction rate is displayed.
         self.is_show = is_show
-        # The list price.
         self.list_price = list_price
-        # The monthly price.
         self.month_price = month_price
-        # The original total price displayed on the official website.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -1194,27 +1122,16 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(DaraModel):
         original_stand_amount: float = None,
         start_time: str = None,
     ):
-        # The price reduction rate.
         self.cheap_rate = cheap_rate
-        # The new total price displayed on the official website.
         self.cheap_stand_amount = cheap_stand_amount
-        # The activity information.
         self.contract_activity = contract_activity
-        # The price difference displayed in the total order amount.
         self.differential = differential
-        # The name of the price difference.
         self.differential_name = differential_name
-        # Indicates whether the contract promotion is hit.
         self.is_contract_activity = is_contract_activity
-        # Indicates whether the price reduction rate is displayed.
         self.is_show = is_show
-        # The list price.
         self.list_price = list_price
-        # The monthly price.
         self.month_price = month_price
-        # The original total price displayed on the official website.
         self.original_stand_amount = original_stand_amount
-        # The start time of the activity.
         self.start_time = start_time
 
     def validate(self):
@@ -1310,19 +1227,12 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity(D
         option_ids: main_models.DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds = None,
         prod_fee: float = None,
     ):
-        # The activity ID.
         self.activity_id = activity_id
-        # The activity name.
         self.activity_name = activity_name
-        # The price after the promotion.
         self.final_fee = final_fee
-        # The total discount amount.
         self.final_prom_fee = final_prom_fee
-        # The promotion ID.
         self.option_code = option_code
-        # The promotion IDs.
         self.option_ids = option_ids
-        # The original price.
         self.prod_fee = prod_fee
 
     def validate(self):
@@ -1452,11 +1362,8 @@ class DescribePriceResponseBodyRulesRule(DaraModel):
         rule_desc_id: int = None,
         title: str = None,
     ):
-        # The rule name.
         self.name = name
-        # The rule ID.
         self.rule_desc_id = rule_desc_id
-        # The rule title.
         self.title = title
 
     def validate(self):
@@ -1516,7 +1423,6 @@ class DescribePriceResponseBodyOrder(DaraModel):
         self.code = code
         # Indicates whether the contract promotion is hit.
         self.contract_activity = contract_activity
-        # The information of coupons.
         self.coupons = coupons
         # The currency.
         self.currency = currency
@@ -1534,7 +1440,6 @@ class DescribePriceResponseBodyOrder(DaraModel):
         self.original_amount = original_amount
         # The promotional activity that is hit.
         self.prom_detail_list = prom_detail_list
-        # The rules of the order.
         self.rule_ids = rule_ids
         # Indicates whether the discount information is displayed.
         self.show_discount_info = show_discount_info
@@ -1829,7 +1734,6 @@ class DescribePriceResponseBodyOrderDepreciateInfoContractActivity(DaraModel):
         self.final_prom_fee = final_prom_fee
         # The promotion ID.
         self.option_code = option_code
-        # The promotion IDs.
         self.option_ids = option_ids
         # The original price.
         self.prod_fee = prod_fee
@@ -1958,35 +1862,25 @@ class DescribePriceResponseBodyOrderCouponsCoupon(DaraModel):
     def __init__(
         self,
         activity_category: str = None,
+        activity_ext_info: Dict[str, Any] = None,
         coupon_no: str = None,
         description: str = None,
+        effective: bool = None,
         is_selected: str = None,
         name: str = None,
         option_code: str = None,
         promotion_option_code: str = None,
         promotion_rule_id_list: main_models.DescribePriceResponseBodyOrderCouponsCouponPromotionRuleIdList = None,
     ):
-        # The activity type of the coupon. Valid values:
-        # 
-        # *   **payondemand**: subscription
-        # *   **payasyougo**: pay-as-you-go
         self.activity_category = activity_category
-        # The coupon ID.
+        self.activity_ext_info = activity_ext_info
         self.coupon_no = coupon_no
-        # The description of the coupon.
         self.description = description
-        # Indicates whether the coupon was selected. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        self.effective = effective
         self.is_selected = is_selected
-        # The coupon name.
         self.name = name
-        # The code of the coupon.
         self.option_code = option_code
-        # The promotional option code.
         self.promotion_option_code = promotion_option_code
-        # The IDs of the rules that correspond to the coupon.
         self.promotion_rule_id_list = promotion_rule_id_list
 
     def validate(self):
@@ -2001,11 +1895,17 @@ class DescribePriceResponseBodyOrderCouponsCoupon(DaraModel):
         if self.activity_category is not None:
             result['ActivityCategory'] = self.activity_category
 
+        if self.activity_ext_info is not None:
+            result['ActivityExtInfo'] = self.activity_ext_info
+
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.effective is not None:
+            result['Effective'] = self.effective
 
         if self.is_selected is not None:
             result['IsSelected'] = self.is_selected
@@ -2029,11 +1929,17 @@ class DescribePriceResponseBodyOrderCouponsCoupon(DaraModel):
         if m.get('ActivityCategory') is not None:
             self.activity_category = m.get('ActivityCategory')
 
+        if m.get('ActivityExtInfo') is not None:
+            self.activity_ext_info = m.get('ActivityExtInfo')
+
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
 
         if m.get('IsSelected') is not None:
             self.is_selected = m.get('IsSelected')

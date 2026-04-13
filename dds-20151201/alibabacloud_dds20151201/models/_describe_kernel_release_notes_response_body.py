@@ -13,7 +13,6 @@ class DescribeKernelReleaseNotesResponseBody(DaraModel):
         release_notes: main_models.DescribeKernelReleaseNotesResponseBodyReleaseNotes = None,
         request_id: str = None,
     ):
-        # The list of the version release notes.
         self.release_notes = release_notes
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeKernelReleaseNotesResponseBodyReleaseNotesReleaseNote(DaraModel):
         kernel_version: str = None,
         release_note: str = None,
     ):
-        # The version number.
         self.kernel_version = kernel_version
-        # The release notes.
         self.release_note = release_note
 
     def validate(self):

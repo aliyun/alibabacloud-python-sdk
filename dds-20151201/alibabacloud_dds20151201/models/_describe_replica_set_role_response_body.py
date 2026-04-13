@@ -10,13 +10,14 @@ from darabonba.model import DaraModel
 class DescribeReplicaSetRoleResponseBody(DaraModel):
     def __init__(
         self,
+        connection_string_suffix: str = None,
         dbinstance_id: str = None,
         replica_sets: main_models.DescribeReplicaSetRoleResponseBodyReplicaSets = None,
         request_id: str = None,
     ):
+        self.connection_string_suffix = connection_string_suffix
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The details of the roles of the replica set instance.
         self.replica_sets = replica_sets
         # The request ID.
         self.request_id = request_id
@@ -30,6 +31,9 @@ class DescribeReplicaSetRoleResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.connection_string_suffix is not None:
+            result['ConnectionStringSuffix'] = self.connection_string_suffix
+
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
 
@@ -43,6 +47,9 @@ class DescribeReplicaSetRoleResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionStringSuffix') is not None:
+            self.connection_string_suffix = m.get('ConnectionStringSuffix')
+
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
 
@@ -101,26 +108,12 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(DaraModel):
         replica_set_role: str = None,
         role_id: str = None,
     ):
-        # The endpoint of the node.
         self.connection_domain = connection_domain
-        # The port number that is used to connect to the node.
         self.connection_port = connection_port
-        # The connection type of the node.
         self.connection_type = connection_type
-        # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
-        # The network type of the instance. Valid values:
-        # 
-        # *   **VPC**: the virtual private cloud (VPC)
-        # *   **Classic**: the classic network
-        # *   **Public**: the Internet
         self.network_type = network_type
-        # The role of the node in the replica set instance. Valid values:
-        # 
-        # *   **Primary**
-        # *   **Secondary**
         self.replica_set_role = replica_set_role
-        # The role ID of the node.
         self.role_id = role_id
 
     def validate(self):

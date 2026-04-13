@@ -8,6 +8,7 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
     def __init__(
         self,
         enable_audit: bool = None,
+        hot_ttl_for_v2standard: int = None,
         is_etl_meta_exist: int = None,
         is_user_project_logstore_exist: int = None,
         preserve_storage_for_standard: int = None,
@@ -16,6 +17,7 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
         service_type: str = None,
         ttl_for_standard: int = None,
         ttl_for_trail: int = None,
+        ttl_for_v2standard: int = None,
         used_storage_for_standard: int = None,
         used_storage_for_trail: int = None,
         user_project_name: str = None,
@@ -25,6 +27,7 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
         # *   **true**: The audit log feature is enabled.
         # *   **false**: The audit log feature is disabled.
         self.enable_audit = enable_audit
+        self.hot_ttl_for_v2standard = hot_ttl_for_v2standard
         # Indicates whether a rule to distribute logs to Logtail is created. For more information, see [Logtail overview](https://help.aliyun.com/document_detail/28979.html). Valid values:
         # 
         # *   **1**: A rule to distribute logs to Logtail is created.
@@ -50,6 +53,7 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
         self.ttl_for_standard = ttl_for_standard
         # The retention period for the free trial edition of the audit log feature.
         self.ttl_for_trail = ttl_for_trail
+        self.ttl_for_v2standard = ttl_for_v2standard
         # The used storage capacity for the formal edition of the audit log feature. Unit: bytes.
         self.used_storage_for_standard = used_storage_for_standard
         # The used storage capacity for the free trial edition of the audit log feature. Unit: bytes.
@@ -67,6 +71,9 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
             result = _map
         if self.enable_audit is not None:
             result['EnableAudit'] = self.enable_audit
+
+        if self.hot_ttl_for_v2standard is not None:
+            result['HotTtlForV2Standard'] = self.hot_ttl_for_v2standard
 
         if self.is_etl_meta_exist is not None:
             result['IsEtlMetaExist'] = self.is_etl_meta_exist
@@ -92,6 +99,9 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
         if self.ttl_for_trail is not None:
             result['TtlForTrail'] = self.ttl_for_trail
 
+        if self.ttl_for_v2standard is not None:
+            result['TtlForV2Standard'] = self.ttl_for_v2standard
+
         if self.used_storage_for_standard is not None:
             result['UsedStorageForStandard'] = self.used_storage_for_standard
 
@@ -107,6 +117,9 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
         m = m or dict()
         if m.get('EnableAudit') is not None:
             self.enable_audit = m.get('EnableAudit')
+
+        if m.get('HotTtlForV2Standard') is not None:
+            self.hot_ttl_for_v2standard = m.get('HotTtlForV2Standard')
 
         if m.get('IsEtlMetaExist') is not None:
             self.is_etl_meta_exist = m.get('IsEtlMetaExist')
@@ -131,6 +144,9 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
 
         if m.get('TtlForTrail') is not None:
             self.ttl_for_trail = m.get('TtlForTrail')
+
+        if m.get('TtlForV2Standard') is not None:
+            self.ttl_for_v2standard = m.get('TtlForV2Standard')
 
         if m.get('UsedStorageForStandard') is not None:
             self.used_storage_for_standard = m.get('UsedStorageForStandard')

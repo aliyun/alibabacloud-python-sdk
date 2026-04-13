@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_dds20151201 import models as main_models
 from darabonba.model import DaraModel
@@ -19,9 +19,7 @@ class DescribeRenewalPriceResponseBody(DaraModel):
         self.order = order
         # The ID of the request.
         self.request_id = request_id
-        # Details about the promotion rules.
         self.rules = rules
-        # The rules matching the coupons.
         self.sub_orders = sub_orders
 
     def validate(self):
@@ -114,15 +112,10 @@ class DescribeRenewalPriceResponseBodySubOrdersSubOrder(DaraModel):
         rule_ids: main_models.DescribeRenewalPriceResponseBodySubOrdersSubOrderRuleIds = None,
         trade_amount: float = None,
     ):
-        # The discount amount of the order.
         self.discount_amount = discount_amount
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The original price of the order.
         self.original_amount = original_amount
-        # The IDs of the matched rules.
         self.rule_ids = rule_ids
-        # The actual price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -240,11 +233,8 @@ class DescribeRenewalPriceResponseBodyRulesRule(DaraModel):
         rule_desc_id: int = None,
         title: str = None,
     ):
-        # The name of the rule.
         self.name = name
-        # The ID of the rule.
         self.rule_desc_id = rule_desc_id
-        # The title of the rule.
         self.title = title
 
     def validate(self):
@@ -289,7 +279,6 @@ class DescribeRenewalPriceResponseBodyOrder(DaraModel):
         rule_ids: main_models.DescribeRenewalPriceResponseBodyOrderRuleIds = None,
         trade_amount: float = None,
     ):
-        # Details about the coupons.
         self.coupons = coupons
         # The type of the currency. Valid values:
         # 
@@ -300,7 +289,6 @@ class DescribeRenewalPriceResponseBodyOrder(DaraModel):
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The IDs of the matched rules.
         self.rule_ids = rule_ids
         # The actual price of the order.
         self.trade_amount = trade_amount
@@ -425,18 +413,18 @@ class DescribeRenewalPriceResponseBodyOrderCoupons(DaraModel):
 class DescribeRenewalPriceResponseBodyOrderCouponsCoupon(DaraModel):
     def __init__(
         self,
+        activity_ext_info: Dict[str, Any] = None,
         coupon_no: str = None,
         description: str = None,
+        effective: bool = None,
         is_selected: str = None,
         name: str = None,
     ):
-        # The coupon number.
+        self.activity_ext_info = activity_ext_info
         self.coupon_no = coupon_no
-        # The description of the coupon.
         self.description = description
-        # Indicates whether the coupon was selected.
+        self.effective = effective
         self.is_selected = is_selected
-        # The name of the coupon.
         self.name = name
 
     def validate(self):
@@ -447,11 +435,17 @@ class DescribeRenewalPriceResponseBodyOrderCouponsCoupon(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.activity_ext_info is not None:
+            result['ActivityExtInfo'] = self.activity_ext_info
+
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.effective is not None:
+            result['Effective'] = self.effective
 
         if self.is_selected is not None:
             result['IsSelected'] = self.is_selected
@@ -463,11 +457,17 @@ class DescribeRenewalPriceResponseBodyOrderCouponsCoupon(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityExtInfo') is not None:
+            self.activity_ext_info = m.get('ActivityExtInfo')
+
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
 
         if m.get('IsSelected') is not None:
             self.is_selected = m.get('IsSelected')

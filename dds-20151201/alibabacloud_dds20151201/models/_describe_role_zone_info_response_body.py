@@ -15,7 +15,6 @@ class DescribeRoleZoneInfoResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information of nodes in the zone.
         self.zone_infos = zone_infos
 
     def validate(self):
@@ -90,26 +89,10 @@ class DescribeRoleZoneInfoResponseBodyZoneInfosZoneInfo(DaraModel):
         role_type: str = None,
         zone_id: str = None,
     ):
-        # The ID of the node.
         self.ins_name = ins_name
-        # The type of the node. Valid values:
-        # 
-        # *   **normal**
-        # *   **configServer**
-        # *   **shard**
-        # *   **mongos**
-        # 
-        # > Valid value for replica set instances: **normal**. Valid values for sharded cluster instances: **configServer**, **shard**, and **mongos**.
         self.node_type = node_type
-        # The role ID.
         self.role_id = role_id
-        # The role of the node. Valid values:
-        # 
-        # *   **Primary**
-        # *   **Secondary**
-        # *   **Hidden**
         self.role_type = role_type
-        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):

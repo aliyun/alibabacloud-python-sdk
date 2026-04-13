@@ -13,7 +13,6 @@ class DescribeSecurityGroupConfigurationResponseBody(DaraModel):
         items: main_models.DescribeSecurityGroupConfigurationResponseBodyItems = None,
         request_id: str = None,
     ):
-        # Details about the ECS security groups.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class DescribeSecurityGroupConfigurationResponseBodyItemsRdsEcsSecurityGroupRel(
         region_id: str = None,
         security_group_id: str = None,
     ):
-        # The network type of the ECS security group. Valid values:
-        # 
-        # *   **vpc**
-        # *   **classic**
         self.net_type = net_type
-        # The region ID of the ECS security group.
         self.region_id = region_id
-        # The ID of the ECS security group.
         self.security_group_id = security_group_id
 
     def validate(self):

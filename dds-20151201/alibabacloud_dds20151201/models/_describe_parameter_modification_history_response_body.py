@@ -13,7 +13,6 @@ class DescribeParameterModificationHistoryResponseBody(DaraModel):
         historical_parameters: main_models.DescribeParameterModificationHistoryResponseBodyHistoricalParameters = None,
         request_id: str = None,
     ):
-        # Details about the parameter modification records.
         self.historical_parameters = historical_parameters
         # The request ID.
         self.request_id = request_id
@@ -89,13 +88,9 @@ class DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistor
         old_parameter_value: str = None,
         parameter_name: str = None,
     ):
-        # The time when the parameter was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The parameter value after modification.
         self.new_parameter_value = new_parameter_value
-        # The parameter value before modification.
         self.old_parameter_value = old_parameter_value
-        # The name of the modified parameter.
         self.parameter_name = parameter_name
 
     def validate(self):

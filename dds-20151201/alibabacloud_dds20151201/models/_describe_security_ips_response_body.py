@@ -16,7 +16,6 @@ class DescribeSecurityIpsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array that consists of the information of IP whitelists.
         self.security_ip_groups = security_ip_groups
         # The IP addresses in the default whitelist.
         self.security_ips = security_ips
@@ -97,11 +96,8 @@ class DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup(DaraModel):
         security_ip_group_name: str = None,
         security_ip_list: str = None,
     ):
-        # The attribute of the IP address whitelist.
         self.security_ip_group_attribute = security_ip_group_attribute
-        # The name of the IP whitelist.
         self.security_ip_group_name = security_ip_group_name
-        # The name of the IP whitelist.
         self.security_ip_list = security_ip_list
 
     def validate(self):

@@ -11,12 +11,12 @@ class DescribeShardingNetworkAddressResponseBody(DaraModel):
     def __init__(
         self,
         compatible_connections: main_models.DescribeShardingNetworkAddressResponseBodyCompatibleConnections = None,
+        connection_string_suffix: str = None,
         network_addresses: main_models.DescribeShardingNetworkAddressResponseBodyNetworkAddresses = None,
         request_id: str = None,
     ):
-        # The endpoints of DynamoDB-compatible instances.
         self.compatible_connections = compatible_connections
-        # The endpoints of the ApsaraDB for MongoDB sharded cluster instance.
+        self.connection_string_suffix = connection_string_suffix
         self.network_addresses = network_addresses
         # The request ID.
         self.request_id = request_id
@@ -35,6 +35,9 @@ class DescribeShardingNetworkAddressResponseBody(DaraModel):
         if self.compatible_connections is not None:
             result['CompatibleConnections'] = self.compatible_connections.to_map()
 
+        if self.connection_string_suffix is not None:
+            result['ConnectionStringSuffix'] = self.connection_string_suffix
+
         if self.network_addresses is not None:
             result['NetworkAddresses'] = self.network_addresses.to_map()
 
@@ -48,6 +51,9 @@ class DescribeShardingNetworkAddressResponseBody(DaraModel):
         if m.get('CompatibleConnections') is not None:
             temp_model = main_models.DescribeShardingNetworkAddressResponseBodyCompatibleConnections()
             self.compatible_connections = temp_model.from_map(m.get('CompatibleConnections'))
+
+        if m.get('ConnectionStringSuffix') is not None:
+            self.connection_string_suffix = m.get('ConnectionStringSuffix')
 
         if m.get('NetworkAddresses') is not None:
             temp_model = main_models.DescribeShardingNetworkAddressResponseBodyNetworkAddresses()
@@ -109,47 +115,17 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(D
         vpcid: str = None,
         vswitch_id: str = None,
     ):
-        # The public endpoint type. Valid values:
-        # 
-        # *   **SRV**
-        # *   **Normal**
         self.connection_type = connection_type
-        # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
-        # The IP address of the instance.
         self.ipaddress = ipaddress
-        # The connection string of the instance.
         self.network_address = network_address
-        # The network type of the instance.
-        # 
-        # *   **VPC**: virtual private cloud
-        # *   **Classic**: classic network
-        # *   **Public**: the Internet
         self.network_type = network_type
-        # The ID of the mongos node.
         self.node_id = node_id
-        # The type of the node. Valid values:
-        # 
-        # *   **mongos**: mongos node
-        # *   **shard**: shard node
-        # *   **configserver**: Configserver node
         self.node_type = node_type
-        # The port that is used to connect to the instance.
         self.port = port
-        # The role of the node. Valid values:
-        # 
-        # *   Primary
-        # *   Secondary
         self.role = role
-        # Txt record which can be used to store MongoDB-related meta data, such as version, configuration parameters and etc. With the combination of txt record and other technology, for example SRV record, the MongoDB client can complete the complex service discovery and configuration passing.
         self.txt_record = txt_record
-        # The VPC ID of the instance.
-        # 
-        # >  This parameter is returned when the network type is **VPC**.
         self.vpcid = vpcid
-        # The ID of the vSwitch in the VPC.
-        # 
-        # >  This parameter is returned when the network type is **VPC**.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -284,27 +260,12 @@ class DescribeShardingNetworkAddressResponseBodyCompatibleConnectionsCompatibleC
         vpcid: str = None,
         vswitch_id: str = None,
     ):
-        # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
-        # The IP address of the instance.
         self.ipaddress = ipaddress
-        # The endpoint of the instance.
         self.network_address = network_address
-        # The network type of the instance.
-        # 
-        # *   **VPC**: virtual private cloud
-        # *   **Classic**: classic network
-        # *   **Public**: the Internet
         self.network_type = network_type
-        # The port that is used to connect to the instance.
         self.port = port
-        # The VPC ID of the instance.
-        # 
-        # >  This parameter is returned when the network type is **VPC**.
         self.vpcid = vpcid
-        # The ID of the vSwitch in the Virtual Private Cloud (VPC).
-        # 
-        # >  This parameter is returned when the network type is **VPC**.
         self.vswitch_id = vswitch_id
 
     def validate(self):

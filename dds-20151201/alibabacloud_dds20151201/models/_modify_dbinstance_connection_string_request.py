@@ -9,17 +9,18 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         self,
         current_connection_string: str = None,
         dbinstance_id: str = None,
+        force_modify_suffix: bool = None,
+        network_type: str = None,
         new_connection_string: str = None,
         new_port: int = None,
         node_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        port_modify_only: bool = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         # The current endpoint that is to be modified.
-        # 
-        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The instance ID.
         # 
@@ -27,11 +28,11 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.force_modify_suffix = force_modify_suffix
+        self.network_type = network_type
         # The new endpoint. It must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter.
         # 
         # > You need only to specify the prefix of the endpoint. The content other than the prefix cannot be modified.
-        # 
-        # This parameter is required.
         self.new_connection_string = new_connection_string
         # The new port number of the instance. The port number must be within the range from 1000 to 65535.
         # 
@@ -43,6 +44,7 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.port_modify_only = port_modify_only
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -60,6 +62,12 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
 
+        if self.force_modify_suffix is not None:
+            result['ForceModifySuffix'] = self.force_modify_suffix
+
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+
         if self.new_connection_string is not None:
             result['NewConnectionString'] = self.new_connection_string
 
@@ -74,6 +82,9 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.port_modify_only is not None:
+            result['PortModifyOnly'] = self.port_modify_only
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -91,6 +102,12 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
 
+        if m.get('ForceModifySuffix') is not None:
+            self.force_modify_suffix = m.get('ForceModifySuffix')
+
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+
         if m.get('NewConnectionString') is not None:
             self.new_connection_string = m.get('NewConnectionString')
 
@@ -105,6 +122,9 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PortModifyOnly') is not None:
+            self.port_modify_only = m.get('PortModifyOnly')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

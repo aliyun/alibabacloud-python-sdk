@@ -17,7 +17,6 @@ class DescribeDBInstancePerformanceResponseBody(DaraModel):
     ):
         # The end of the queried time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The details of performance metrics.
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
@@ -107,15 +106,9 @@ class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey(Dar
         unit: str = None,
         value_format: str = None,
     ):
-        # The performance metrics that are returned.
         self.key = key
-        # The details of the performance metric values.
         self.performance_values = performance_values
-        # The unit of the performance metric.
         self.unit = unit
-        # The format of the performance metric value. If the performance metric contains multiple fields, the fields are separated with ampersands ( &).
-        # 
-        # For example, if you query disk space usage, the returned value of the **ValueFormat** parameter is **ins_size\\&data_size\\&log_size**.
         self.value_format = value_format
 
     def validate(self):
@@ -199,9 +192,7 @@ class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerf
         date: str = None,
         value: str = None,
     ):
-        # The date and time when the metric value was generated.
         self.date = date
-        # The value of the performance metric.
         self.value = value
 
     def validate(self):

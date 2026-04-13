@@ -13,7 +13,6 @@ class DescribeAccountsResponseBody(DaraModel):
         accounts: main_models.DescribeAccountsResponseBodyAccounts = None,
         request_id: str = None,
     ):
-        # The details of the account.
         self.accounts = accounts
         # The request ID.
         self.request_id = request_id
@@ -90,24 +89,10 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
         character_type: str = None,
         dbinstance_id: str = None,
     ):
-        # The description of the account.
         self.account_description = account_description
-        # The name of the account.
         self.account_name = account_name
-        # The status of the account. Valid values:
-        # 
-        # *   **Unavailable**
-        # *   **Available**
         self.account_status = account_status
-        # The role of the account. Valid values:
-        # 
-        # *   **db**: shard node
-        # *   **cs**: Configserver node
-        # *   **mongos**: mongos node
-        # *   **logic**: sharded cluster instance
-        # *   **normal**: replica set instance
         self.character_type = character_type
-        # The ID of the instance to which the account belongs.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

@@ -13,9 +13,6 @@ class DescribeAvailableEngineVersionResponseBody(DaraModel):
         engine_versions: main_models.DescribeAvailableEngineVersionResponseBodyEngineVersions = None,
         request_id: str = None,
     ):
-        # The list of one or more engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
-        # 
-        # >  An empty string is returned if the latest version is being used.
         self.engine_versions = engine_versions
         # The ID of the request.
         self.request_id = request_id

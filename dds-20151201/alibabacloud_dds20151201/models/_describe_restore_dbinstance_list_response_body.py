@@ -16,7 +16,6 @@ class DescribeRestoreDBInstanceListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # DB instances list.
         self.dbinstances = dbinstances
         # The page number.
         self.page_number = page_number
@@ -124,48 +123,17 @@ class DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance(DaraModel):
         secondary_zone_id: str = None,
         zone_id: str = None,
     ):
-        # The time of instance creation, formatted as <i>yyyy-MM-dd</i>T<i>HH:00:00</i>Z (UTC time).
         self.creation_time = creation_time
-        # The description of the instance.
         self.dbinstance_description = dbinstance_description
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.dbinstance_status = dbinstance_status
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **sharding**: sharded cluster instance
-        # *   **replicate**: replica set or standalone instance
         self.dbinstance_type = dbinstance_type
-        # The database engine version of the instance. Valid values:
-        # 
-        # *   **7.0**
-        # *   **6.0**
-        # *   **5.0**
-        # *   **4.4**
-        # *   **4.2**
-        # *   **4.0**
-        # *   **3.4**
         self.engine_version = engine_version
-        # The secondary availability zone 2 for the instance when implementing multi-AZ deployment.
         self.hidden_zone_id = hidden_zone_id
-        # Specifies whether the instance is deleted. Valid values:
-        # 
-        # *   **0**: not deleted
-        # *   **1**: deleted
         self.is_deleted = is_deleted
-        # The locked state of the instance, value description:
-        # - Unlock: Normal.
-        # - ManualLock: Manually triggered lock.
-        # - LockByExpiration: Automatically locked due to expiration.
-        # - LockByRestoration: Automatically locked before restoration.
-        # - LockByDiskQuota: Automatically locked due to disk quota exceeded.
         self.lock_mode = lock_mode
-        # The region ID of the instance.
         self.region_id = region_id
-        # The secondary availability zone 1 for the instance when implementing multi-AZ deployment.
         self.secondary_zone_id = secondary_zone_id
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):

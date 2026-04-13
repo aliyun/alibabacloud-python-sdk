@@ -13,7 +13,6 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         dbinstances: main_models.DescribeDBInstanceAttributeResponseBodyDBInstances = None,
         request_id: str = None,
     ):
-        # The instance details.
         self.dbinstances = dbinstances
         # The request ID.
         self.request_id = request_id
@@ -87,6 +86,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         bursting_enabled: bool = None,
         capacity_unit: str = None,
         charge_type: str = None,
+        cold_data_enabled: bool = None,
         configserver_list: main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList = None,
         creation_time: str = None,
         current_kernel_version: str = None,
@@ -141,240 +141,62 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         vpc_auth_mode: str = None,
         zone_id: str = None,
     ):
-        # Indicates whether performance burst is enabled for the ESSD AutoPL disk.
         self.bursting_enabled = bursting_enabled
-        # The read and write throughput consumed by the instance.
         self.capacity_unit = capacity_unit
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The details of the ConfigServer node.
-        # 
-        # >  This parameter is returned if the instance is a sharded cluster instance.
+        self.cold_data_enabled = cold_data_enabled
         self.configserver_list = configserver_list
-        # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The minor version of the current database in the instance.
         self.current_kernel_version = current_kernel_version
-        # The instance type of the instance.
         self.dbinstance_class = dbinstance_class
-        # The name of the instance.
         self.dbinstance_description = dbinstance_description
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the orders generated for the instance. Valid values:
-        # 
-        # *   **all_completed**: All orders are being produced or complete.
-        # *   **order_unpaid**: The instance has unpaid orders.
-        # *   **order_wait_for_produce**: Orders are being delivered for production.
-        # 
-        # >  The order production process includes the following steps: place an order, pay for an order, deliver an order for production, produce an order, and complete the production.
-        # 
-        # *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
-        # *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
         self.dbinstance_order_status = dbinstance_order_status
-        # Indicates whether release protection is enabled for the instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.dbinstance_release_protection = dbinstance_release_protection
-        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.dbinstance_status = dbinstance_status
-        # The storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **replicate**: replica set instance
-        # *   **sharding**: sharded cluster instance
         self.dbinstance_type = dbinstance_type
-        # The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.destroy_time = destroy_time
         self.disaster_recovery_info = disaster_recovery_info
-        # Indicates whether disk encryption is enabled.
         self.encrypted = encrypted
-        # The Key Management Service (KMS) key used for disk encryption.
         self.encryption_key = encryption_key
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine version of the instance.
-        # 
-        # *   **6.0**
-        # *   **5.0**
-        # *   **4.4**
-        # *   **4.2**
-        # *   **4.0**
         self.engine_version = engine_version
-        # The time when the subscription instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-        # 
-        # >  This parameter is returned if the instance is a subscription instance.
         self.expire_time = expire_time
-        # The ID of the secondary zone 2 of the instance. Valid values:
-        # 
-        # *   **cn-hangzhou-g**: Hangzhou Zone G
-        # *   **cn-hangzhou-h**: Hangzhou Zone H
-        # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
-        # *   **cn-wulanchabu-a**: Ulanqab Zone A
-        # *   **cn-wulanchabu-b**: Ulanqab Zone B
-        # *   **cn-wulanchabu-c**: Ulanqab Zone C
-        # *   **ap-southeast-1a**: Singapore Zone A
-        # *   **ap-southeast-1b**: Singapore Zone B
-        # *   **ap-southeast-1c**: Singapore Zone C
-        # *   **ap-southeast-5a**: Jakarta Zone A
-        # *   **ap-southeast-5b**: Jakarta Zone B
-        # *   **ap-southeast-5c**: Jakarta Zone C
-        # *   **eu-central-1a**: Frankfurt Zone A
-        # *   **eu-central-1b**: Frankfurt Zone B
-        # *   **eu-central-1c**: Frankfurt Zone C
-        # 
-        # > 
-        # 
-        # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-        # 
-        # *   This parameter is returned only if you use the China site (aliyun.com).
         self.hidden_zone_id = hidden_zone_id
-        # The kind code of the instance. Valid values:
-        # 
-        # *   **0**: physical machine
-        # *   **1**: Elastic Compute Service (ECS) instance
-        # *   **2**: Docker cluster
-        # *   **18**: Kubernetes cluster
         self.kind_code = kind_code
-        # The date when the last downgrade operation was performed on the instance.
         self.last_downgrade_time = last_downgrade_time
-        # The lock status of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before the instance is rolled back.
-        # *   **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
-        # *   **Released**: The instance is released.
         self.lock_mode = lock_mode
-        # The end time of the maintenance window. The time follows the ISO 8601 standard in the *HH:mm*Z format. The time is displayed in UTC.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time follows the ISO 8601 standard in the *HH:mm*Z format. The time is displayed in UTC.
         self.maintain_start_time = maintain_start_time
-        # The maximum number of connections to the instance.
         self.max_connections = max_connections
-        # The maximum IOPS of the instance.
         self.max_iops = max_iops
-        # The maximum MBPS of the instance.
         self.max_mbps = max_mbps
-        # The details of the mongos node.
-        # 
-        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.mongos_list = mongos_list
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**: classic network
-        # *   **VPC**: VPC
         self.network_type = network_type
-        # The access protocol type of the instance. Valid values:
-        # 
-        # *   **mongodb**
-        # *   **dynamodb**
-        # 
-        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.protocol_type = protocol_type
-        # The provisioned performance of the ESSD AutoPL disk.
         self.provisioned_iops = provisioned_iops
-        # The number of read-only nodes in the instance.
         self.readonly_replicas = readonly_replicas
-        # The region ID of the instance.
         self.region_id = region_id
-        # The logical ID of the replica set instance.
-        # 
-        # >  ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica set instances.
         self.replacate_id = replacate_id
-        # The name of the replica set instance.
-        # 
-        # >  This parameter is returned if the instance is a replica set instance.
         self.replica_set_name = replica_set_name
-        # The information of the replica set instance.
-        # 
-        # >  This parameter is returned if the instance is a replica set instance.
         self.replica_sets = replica_sets
-        # The number of nodes in the instance.
-        # 
-        # >  This parameter is returned if the instance is a replica set instance.
         self.replication_factor = replication_factor
-        # The ID of the resource group to which the instance belongs.
-        # 
-        # >  This parameter is returned only if you use the China site (aliyun.com).
         self.resource_group_id = resource_group_id
         self.search_node_class = search_node_class
         self.search_node_count = search_node_count
         self.search_node_storage = search_node_storage
-        # The ID of the secondary zone 1 of the instance. Valid values:
-        # 
-        # *   **cn-hangzhou-g**: Hangzhou Zone G
-        # *   **cn-hangzhou-h**: Hangzhou Zone H
-        # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
-        # *   **cn-wulanchabu-a**: Ulanqab Zone A
-        # *   **cn-wulanchabu-b**: Ulanqab Zone B
-        # *   **cn-wulanchabu-c**: Ulanqab Zone C
-        # *   **ap-southeast-1a**: Singapore Zone A
-        # *   **ap-southeast-1b**: Singapore Zone B
-        # *   **ap-southeast-1c**: Singapore Zone C
-        # *   **ap-southeast-5a**: Jakarta Zone A
-        # *   **ap-southeast-5b**: Jakarta Zone B
-        # *   **ap-southeast-5c**: Jakarta Zone C
-        # *   **eu-central-1a**: Frankfurt Zone A
-        # *   **eu-central-1b**: Frankfurt Zone B
-        # *   **eu-central-1c**: Frankfurt Zone C
-        # 
-        # > 
-        # 
-        # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-        # 
-        # *   This parameter is returned only if you use the China site (aliyun.com).
         self.secondary_zone_id = secondary_zone_id
-        # The details of the shard node.
-        # 
-        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.shard_list = shard_list
-        # The storage engine of the instance.
         self.storage_engine = storage_engine
-        # The storage type of the instance. Valid values:
-        # 
-        # **cloud_essd1**: ESSD PL1 **cloud_essd2**: ESSD PL2 **cloud_essd3**: ESSD PL3 **local_ssd**: local SSD **cloud_essd_dbfs_s**: DBFS disk
         self.storage_type = storage_type
-        # The progress of data synchronization in percentage. When you are changing the configurations of the instance, you must synchronize the data of the instance. You can obtain the data synchronization progress based on the value returned for this parameter.
         self.sync_percent = sync_percent
-        # The details of the instance tags.
         self.tags = tags
-        # Indicates whether the cluster backup mode is enabled. Valid values:
-        # 
-        # *   **true**: The cluster backup mode is enabled.
-        # *   **false**: The cluster backup mode is disabled.
         self.use_cluster_backup = use_cluster_backup
-        # The instance ID.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpccloud_instance_ids = vpccloud_instance_ids
-        # The VPC ID of the instance.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.v_switch_id = v_switch_id
-        # Indicates whether password-free access within the VPC is enabled. Valid values:
-        # 
-        # *   **Open**: Password-free access within the VPC is enabled.
-        # *   **Close**: Password-free access within the VPC is disabled, and you must use a password for access.
-        # *   **NotSupport**: Password-free access within the VPC is not supported.
         self.vpc_auth_mode = vpc_auth_mode
-        # The ID of the zone in which the instance resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -402,6 +224,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+
+        if self.cold_data_enabled is not None:
+            result['ColdDataEnabled'] = self.cold_data_enabled
 
         if self.configserver_list is not None:
             result['ConfigserverList'] = self.configserver_list.to_map()
@@ -574,6 +399,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+
+        if m.get('ColdDataEnabled') is not None:
+            self.cold_data_enabled = m.get('ColdDataEnabled')
 
         if m.get('ConfigserverList') is not None:
             temp_model = main_models.DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList()
@@ -782,9 +610,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag(DaraMo
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -866,38 +692,19 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         replica_set_name: str = None,
         status: str = None,
     ):
-        # The endpoint of the shard node.
         self.connect_string = connect_string
-        # The minor version of the current MongoDB kernel.
         self.current_kernel_version = current_kernel_version
-        # The lock status of the shard node. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
-        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
-        # The maximum number of connections to the shard node.
         self.max_connections = max_connections
-        # The maximum MBPS of the shard node.
         self.max_disk_mbps = max_disk_mbps
-        # The maximum IOPS of the shard node.
         self.max_iops = max_iops
-        # The instance type of the shard node.
         self.node_class = node_class
-        # The name of the shard node.
         self.node_description = node_description
-        # The ID of the shard node.
         self.node_id = node_id
-        # The storage capacity of the shard node. Unit: GB.
         self.node_storage = node_storage
-        # The port number that is used to connect to the shard node.
         self.port = port
-        # The number of read-only nodes in the shard node. Valid values: **0** to **5**. The value must be an integer.
         self.readonly_replicas = readonly_replicas
         self.replica_set_name = replica_set_name
-        # The status of the shard node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.status = status
 
     def validate(self):
@@ -1044,31 +851,12 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsRep
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The endpoint of the node.
         self.connection_domain = connection_domain
-        # The port number that is used to connect to the node.
         self.connection_port = connection_port
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**: classic network
-        # *   **VPC**: VPC
         self.network_type = network_type
-        # The role of the node. Valid values:
-        # 
-        # *   **Primary**
-        # *   **Secondary**
         self.replica_set_role = replica_set_role
-        # The instance ID.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpccloud_instance_id = vpccloud_instance_id
-        # The VPC ID of the instance.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance.
-        # 
-        # >  This parameter is returned if the network type of the instance is virtual private cloud (VPC).
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1180,43 +968,19 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         v_switch_id: str = None,
         vpc_cloud_instance_id: str = None,
     ):
-        # The endpoint of the mongos node.
         self.connect_sting = connect_sting
-        # The endpoint of the mongos node.
         self.connect_string = connect_string
-        # The minor version of the current MongoDB kernel.
         self.current_kernel_version = current_kernel_version
-        # The lock status of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
-        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
-        # The maximum number of connections to the mongos node.
         self.max_connections = max_connections
-        # The maximum IOPS of the mongos node.
         self.max_iops = max_iops
-        # The instance type of the mongos node.
         self.node_class = node_class
-        # The name of the mongos node.
         self.node_description = node_description
-        # The ID of the mongos node.
         self.node_id = node_id
-        # The port number that is used to connect to the mongos node.
         self.port = port
-        # The status of the mongos node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.status = status
-        # The VPC ID of the instance.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance.
-        # 
-        # >  This parameter is returned if the network type of the instance is VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the mongos node.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
 
     def validate(self):
@@ -1367,33 +1131,16 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         port: int = None,
         status: str = None,
     ):
-        # The endpoint of the Configserver node.
         self.connect_string = connect_string
-        # The minor version of the current MongoDB kernel.
         self.current_kernel_version = current_kernel_version
-        # The lock status of the Configserver node. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
-        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
-        # The maximum number of connections to the Configserver node.
         self.max_connections = max_connections
-        # The maximum IOPS of the Configserver node.
         self.max_iops = max_iops
-        # The instance type of the Configserver node.
         self.node_class = node_class
-        # The name of the Configserver node.
         self.node_description = node_description
-        # The ID of the Configserver node.
         self.node_id = node_id
-        # The storage capacity of the Configserver node. Unit: GB.
         self.node_storage = node_storage
-        # The port number that is used to connect to the Configserver node.
         self.port = port
-        # The status of the Configserver node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.status = status
 
     def validate(self):

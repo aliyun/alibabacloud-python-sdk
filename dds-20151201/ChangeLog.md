@@ -1,3 +1,21 @@
+2026-04-13 Version: 9.4.0
+- Support API DescribeBinlogFiles.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ColdDataEnabled.
+- Update API DescribeMongoDBLogConfig: add response parameters Body.HotTtlForV2Standard.
+- Update API DescribeMongoDBLogConfig: add response parameters Body.TtlForV2Standard.
+- Update API DescribePrice: add response parameters Body.Order.Coupons.$.ActivityExtInfo.
+- Update API DescribePrice: add response parameters Body.Order.Coupons.$.Effective.
+- Update API DescribeRenewalPrice: add response parameters Body.Order.Coupons.$.ActivityExtInfo.
+- Update API DescribeRenewalPrice: add response parameters Body.Order.Coupons.$.Effective.
+- Update API DescribeReplicaSetRole: add response parameters Body.ConnectionStringSuffix.
+- Update API DescribeShardingNetworkAddress: add response parameters Body.ConnectionStringSuffix.
+- Update API ModifyAuditPolicy: add request parameters HotStoragePeriod.
+- Update API ModifyDBInstanceConnectionString: add request parameters ForceModifySuffix.
+- Update API ModifyDBInstanceConnectionString: add request parameters NetworkType.
+- Update API ModifyDBInstanceConnectionString: add request parameters PortModifyOnly.
+- Update API ModifyDBInstanceConnectionString: add response parameters Body.ModifiedConnectionString.
+
+
 2025-12-29 Version: 9.3.0
 - Support API CancelActiveOperationTasks.
 - Support API CreateNodeRoleTag.

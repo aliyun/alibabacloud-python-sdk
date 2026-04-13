@@ -16,7 +16,6 @@ class DescribeInstanceAutoRenewalAttributeResponseBody(DaraModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
-        # Details about returned entries.
         self.items = items
         # The total number of entries returned.
         self.items_numbers = items_numbers
@@ -117,24 +116,10 @@ class DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem(DaraModel):
         duration: str = None,
         region_id: str = None,
     ):
-        # Indicates whether auto-renewal is enabled for the instance. Valid values:
-        # 
-        # *   **true**: Auto-renewal is enabled for the instance.
-        # *   **false**: Auto-renewal is disabled for the instance.
         self.auto_renew = auto_renew
-        # The category of the instance. Valid values:
-        # 
-        # *   **replicate**: the standalone or replica set instance
-        # *   **sharding**: the sharded cluster instance
         self.dbinstance_type = dbinstance_type
-        # The ID of the instance.
         self.db_instance_id = db_instance_id
-        # The auto-renewal period. Unit: months.
-        # 
-        # > * This parameter is ruturned only when the returned value of the **AutoRenew** parameter is **true**.
-        # > * You can call the [ModifyInstanceAutoRenewalAttribute](https://help.aliyun.com/document_detail/145979.html) operation to modify the auto-renewal period.
         self.duration = duration
-        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

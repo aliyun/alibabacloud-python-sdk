@@ -19,7 +19,6 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
     ):
         # The database engine.
         self.engine = engine
-        # An array that consists of the information about each slow query.
         self.items = items
         # The page number of the returned page. The value is a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
@@ -131,25 +130,15 @@ class DescribeSlowLogRecordsResponseBodyItemsLogRecords(DaraModel):
         sqltext: str = None,
         table_name: str = None,
     ):
-        # The username of the database account that performs the operation.
         self.account_name = account_name
-        # The name of the database.
         self.dbname = dbname
-        # The number of documents that are scanned during the operation.
         self.docs_examined = docs_examined
-        # The start time of the operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.execution_start_time = execution_start_time
-        # The host IP address that is used to connect to the database.
         self.host_address = host_address
-        # The number of rows involved in index scans.
         self.keys_examined = keys_examined
-        # The execution time of the statement. Unit: milliseconds.
         self.query_times = query_times
-        # The number of rows returned by the SQL statement.
         self.return_row_counts = return_row_counts
-        # The SQL statement that is executed during the slow operation.
         self.sqltext = sqltext
-        # The name of the collection.
         self.table_name = table_name
 
     def validate(self):

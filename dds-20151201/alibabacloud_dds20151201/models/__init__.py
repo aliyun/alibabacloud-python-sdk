@@ -113,6 +113,9 @@ from ._describe_backup_tasks_response import DescribeBackupTasksResponse
 from ._describe_backups_request import DescribeBackupsRequest
 from ._describe_backups_response_body import DescribeBackupsResponseBody
 from ._describe_backups_response import DescribeBackupsResponse
+from ._describe_binlog_files_request import DescribeBinlogFilesRequest
+from ._describe_binlog_files_response_body import DescribeBinlogFilesResponseBody
+from ._describe_binlog_files_response import DescribeBinlogFilesResponse
 from ._describe_cluster_backups_request import DescribeClusterBackupsRequest
 from ._describe_cluster_backups_response_body import DescribeClusterBackupsResponseBody
 from ._describe_cluster_backups_response import DescribeClusterBackupsResponse
@@ -427,6 +430,8 @@ from ._describe_backup_dbs_response_body import DescribeBackupDBsResponseBodyDat
 from ._describe_backup_tasks_response_body import DescribeBackupTasksResponseBodyBackupJobs
 from ._describe_backups_response_body import DescribeBackupsResponseBodyBackupsBackup
 from ._describe_backups_response_body import DescribeBackupsResponseBodyBackups
+from ._describe_binlog_files_response_body import DescribeBinlogFilesResponseBodyItemsLogFile
+from ._describe_binlog_files_response_body import DescribeBinlogFilesResponseBodyItems
 from ._describe_cluster_backups_response_body import DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo
 from ._describe_cluster_backups_response_body import DescribeClusterBackupsResponseBodyClusterBackupsBackups
 from ._describe_cluster_backups_response_body import DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo
@@ -669,6 +674,9 @@ __all__ = [
     DescribeBackupsRequest,
     DescribeBackupsResponseBody,
     DescribeBackupsResponse,
+    DescribeBinlogFilesRequest,
+    DescribeBinlogFilesResponseBody,
+    DescribeBinlogFilesResponse,
     DescribeClusterBackupsRequest,
     DescribeClusterBackupsResponseBody,
     DescribeClusterBackupsResponse,
@@ -983,6 +991,8 @@ __all__ = [
     DescribeBackupTasksResponseBodyBackupJobs,
     DescribeBackupsResponseBodyBackupsBackup,
     DescribeBackupsResponseBodyBackups,
+    DescribeBinlogFilesResponseBodyItemsLogFile,
+    DescribeBinlogFilesResponseBodyItems,
     DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo,
     DescribeClusterBackupsResponseBodyClusterBackupsBackups,
     DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo,

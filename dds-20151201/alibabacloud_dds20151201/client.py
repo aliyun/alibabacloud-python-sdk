@@ -22,7 +22,7 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-qingdao': 'mongodb.aliyuncs.com',
+            'cn-qingdao': 'mongodb.cn-qingdao.aliyuncs.com',
             'cn-beijing': 'mongodb.aliyuncs.com',
             'cn-zhangjiakou': 'mongodb.cn-zhangjiakou.aliyuncs.com',
             'cn-huhehaote': 'mongodb.cn-huhehaote.aliyuncs.com',
@@ -50,7 +50,7 @@ class Client(OpenApiClient):
             'cn-shenzhen-finance-1': 'mongodb.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-north-2-gov-1': 'mongodb.cn-north-2-gov-1.aliyuncs.com',
             'ap-northeast-2-pop': 'mongodb.aliyuncs.com',
-            'cn-beijing-finance-1': 'mongodb.aliyuncs.com',
+            'cn-beijing-finance-1': 'mongodb.cn-beijing-finance-1.aliyuncs.com',
             'cn-beijing-finance-pop': 'mongodb.aliyuncs.com',
             'cn-beijing-gov-1': 'mongodb.aliyuncs.com',
             'cn-beijing-nu16-b01': 'mongodb.aliyuncs.com',
@@ -4070,6 +4070,132 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeBackupsResponse:
         runtime = RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
+
+    def describe_binlog_files_with_options(
+        self,
+        request: main_models.DescribeBinlogFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBinlogFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.binlog_id):
+            query['BinlogId'] = request.binlog_id
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dest_region):
+            query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.node_id):
+            query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.src_region):
+            query['SrcRegion'] = request.src_region
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBinlogFiles',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBinlogFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_binlog_files_with_options_async(
+        self,
+        request: main_models.DescribeBinlogFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBinlogFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.binlog_id):
+            query['BinlogId'] = request.binlog_id
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dest_region):
+            query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.node_id):
+            query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.src_region):
+            query['SrcRegion'] = request.src_region
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBinlogFiles',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBinlogFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_binlog_files(
+        self,
+        request: main_models.DescribeBinlogFilesRequest,
+    ) -> main_models.DescribeBinlogFilesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_binlog_files_with_options(request, runtime)
+
+    async def describe_binlog_files_async(
+        self,
+        request: main_models.DescribeBinlogFilesRequest,
+    ) -> main_models.DescribeBinlogFilesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_binlog_files_with_options_async(request, runtime)
 
     def describe_cluster_backups_with_options(
         self,
@@ -9222,6 +9348,8 @@ class Client(OpenApiClient):
             query['AuditStatus'] = request.audit_status
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.hot_storage_period):
+            query['HotStoragePeriod'] = request.hot_storage_period
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -9266,6 +9394,8 @@ class Client(OpenApiClient):
             query['AuditStatus'] = request.audit_status
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.hot_storage_period):
+            query['HotStoragePeriod'] = request.hot_storage_period
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -9766,6 +9896,10 @@ class Client(OpenApiClient):
             query['CurrentConnectionString'] = request.current_connection_string
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.force_modify_suffix):
+            query['ForceModifySuffix'] = request.force_modify_suffix
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.new_connection_string):
             query['NewConnectionString'] = request.new_connection_string
         if not DaraCore.is_null(request.new_port):
@@ -9776,6 +9910,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.port_modify_only):
+            query['PortModifyOnly'] = request.port_modify_only
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -9810,6 +9946,10 @@ class Client(OpenApiClient):
             query['CurrentConnectionString'] = request.current_connection_string
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.force_modify_suffix):
+            query['ForceModifySuffix'] = request.force_modify_suffix
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.new_connection_string):
             query['NewConnectionString'] = request.new_connection_string
         if not DaraCore.is_null(request.new_port):
@@ -9820,6 +9960,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.port_modify_only):
+            query['PortModifyOnly'] = request.port_modify_only
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):

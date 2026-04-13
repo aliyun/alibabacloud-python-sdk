@@ -19,7 +19,6 @@ class DescribeRunningLogRecordsResponseBody(DaraModel):
     ):
         # The database engine.
         self.engine = engine
-        # Details about the operational log entries.
         self.items = items
         # The number of the page to return.
         self.page_number = page_number
@@ -125,13 +124,9 @@ class DescribeRunningLogRecordsResponseBodyItemsLogRecords(DaraModel):
         content: str = None,
         create_time: str = None,
     ):
-        # The category of the log entry.
         self.category = category
-        # The connection information of the log entry.
         self.conn_info = conn_info
-        # The content of the log entry.
         self.content = content
-        # The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
 
     def validate(self):

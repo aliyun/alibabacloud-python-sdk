@@ -16,7 +16,6 @@ class DescribeParametersResponseBody(DaraModel):
         request_id: str = None,
         running_parameters: main_models.DescribeParametersResponseBodyRunningParameters = None,
     ):
-        # The parameter settings in the configuration template.
         self.config_parameters = config_parameters
         # The database engine of the instance. Default value: **mongodb**.
         self.engine = engine
@@ -24,7 +23,6 @@ class DescribeParametersResponseBody(DaraModel):
         self.engine_version = engine_version
         # The request ID.
         self.request_id = request_id
-        # The settings of the parameters that have taken effect.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -122,29 +120,12 @@ class DescribeParametersResponseBodyRunningParametersParameter(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # 实例的角色类型，取值说明：
-        # 
-        # - **db**：shard角色。
-        # - **cs**：config server角色。
-        # - **mongos**：mongos角色。
         self.character_type = character_type
-        # The valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether a restart is required for parameter modifications to take effect. Valid values:
-        # 
-        # *   **false**: A restart is not required. Modifications take effect immediately.
-        # *   **true**: A restart is required for parameter modifications to take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter value can be modified. Valid values:
-        # 
-        # *   **false**: The parameter value cannot be modified.
-        # *   **true**: The parameter value can be modified.
         self.modifiable_status = modifiable_status
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -248,23 +229,11 @@ class DescribeParametersResponseBodyConfigParametersParameter(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether a restart is required for parameter modifications to take effect. Valid values:
-        # 
-        # *   **false**: A restart is not required. Modifications take effect immediately.
-        # *   **true**: A restart is required for parameter modifications to take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter value can be modified. Valid values:
-        # 
-        # *   **false**: The parameter value cannot be modified.
-        # *   **true**: The parameter value can be modified.
         self.modifiable_status = modifiable_status
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):

@@ -19,7 +19,6 @@ class DescribeErrorLogRecordsResponseBody(DaraModel):
     ):
         # The database engine.
         self.engine = engine
-        # Details about the log entries returned.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -126,25 +125,10 @@ class DescribeErrorLogRecordsResponseBodyItemsLogRecords(DaraModel):
         create_time: str = None,
         id: int = None,
     ):
-        # The category of the log entry. Valid values:
-        # 
-        # *   NETWORK: network connection log
-        # *   ACCESS: access control log
-        # *   \\-: general log
-        # *   COMMAND: slow query log
-        # *   SHARDING: sharded cluster log
-        # *   STORAGE: storage engine log
-        # *   CONNPOOL: connection pool log
-        # *   ASIO: asynchronous I/O operation log
-        # *   WRITE: slow update log
         self.category = category
-        # The connection information of the log entry.
         self.conn_info = conn_info
-        # The content of the log entry.
         self.content = content
-        # The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the log entry.
         self.id = id
 
     def validate(self):

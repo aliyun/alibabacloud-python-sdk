@@ -15,7 +15,6 @@ class DescribeAvailableResourceResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The supported database types.
         self.supported_dbtypes = supported_dbtypes
 
     def validate(self):
@@ -87,12 +86,7 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType(DaraM
         available_zones: main_models.DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones = None,
         db_type: str = None,
     ):
-        # The available zones.
         self.available_zones = available_zones
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **normal**: replica set instance
-        # *   **sharding**: sharded cluster instance
         self.db_type = db_type
 
     def validate(self):
@@ -165,11 +159,8 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         supported_engine_versions: main_models.DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions = None,
         zone_id: str = None,
     ):
-        # The ID of the region.
         self.region_id = region_id
-        # The supported storage engine versions.
         self.supported_engine_versions = supported_engine_versions
-        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -247,9 +238,7 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         supported_engines: main_models.DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines = None,
         version: str = None,
     ):
-        # The supported storage engines.
         self.supported_engines = supported_engines
-        # The database engine version of the instance.
         self.version = version
 
     def validate(self):
@@ -321,9 +310,7 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         engine: str = None,
         supported_node_types: main_models.DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes = None,
     ):
-        # The storage engine of the instance.
         self.engine = engine
-        # The supported instance types.
         self.supported_node_types = supported_node_types
 
     def validate(self):
@@ -396,11 +383,8 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         network_types: str = None,
         node_type: str = None,
     ):
-        # The details of the available resources.
         self.available_resources = available_resources
-        # The network type of the instance.
         self.network_types = network_types
-        # The number of nodes in the instance.
         self.node_type = node_type
 
     def validate(self):
@@ -479,11 +463,8 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         instance_class: str = None,
         instance_class_remark: str = None,
     ):
-        # The storage capacity range of the instance.
         self.dbinstance_storage_range = dbinstance_storage_range
-        # The instance family.
         self.instance_class = instance_class
-        # The type of the instance.
         self.instance_class_remark = instance_class_remark
 
     def validate(self):
@@ -527,11 +508,8 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         min: int = None,
         step: int = None,
     ):
-        # The maximum storage capacity. Unit: GB.
         self.max = max
-        # The minimum storage capacity. Unit: GB.
         self.min = min
-        # The step size for adjusting the storage capacity. Unit: GB.
         self.step = step
 
     def validate(self):

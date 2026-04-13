@@ -16,7 +16,6 @@ class DescribeBackupDBsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the databases.
         self.databases = databases
         # The page number of the page returned.
         self.page_number = page_number
@@ -113,7 +112,6 @@ class DescribeBackupDBsResponseBodyDatabasesDatabase(DaraModel):
         self,
         dbname: str = None,
     ):
-        # The name of the database.
         self.dbname = dbname
 
     def validate(self):

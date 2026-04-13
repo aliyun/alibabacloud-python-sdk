@@ -16,7 +16,6 @@ class DescribeBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the backup set.
         self.backups = backups
         # The page number of the returned page.
         self.page_number = page_number
@@ -133,62 +132,22 @@ class DescribeBackupsResponseBodyBackupsBackup(DaraModel):
         engine_version: str = None,
         is_avail: bool = None,
     ):
-        # The name of the database that has been backed up.
         self.backup_dbnames = backup_dbnames
-        # The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, an empty string is returned.
         self.backup_download_url = backup_download_url
-        # The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
         self.backup_expire_time = backup_expire_time
-        # The ID of the backup set.
         self.backup_id = backup_id
-        # The internal download URL of the backup set.
-        # 
-        # >  You can use the URL to download the specified backup set on an Elastic Compute Service (ECS) instance that is in the same virtual private cloud (VPC) as the ApsaraDB for MongoDB instance.
         self.backup_intranet_download_url = backup_intranet_download_url
-        # The ID of the backup task.
         self.backup_job_id = backup_job_id
-        # The method that is used to generate the backup set. Valid values:
-        # 
-        # *   **Snapshot**
-        # *   **Physical**
-        # *   **Logical**
         self.backup_method = backup_method
-        # The backup mode of the backup set. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.backup_mode = backup_mode
-        # The name of the backup set. The parameter is invalid.
         self.backup_name = backup_name
-        # The backup granularity. The parameter is invalid.
         self.backup_scale = backup_scale
-        # The size of the backup set. Unit: bytes.
         self.backup_size = backup_size
-        # The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
-        # The status of the backup task. Valid values:
-        # 
-        # *   **Success**: The backup task is successful.
-        # *   **Failed**: The backup task failed.
         self.backup_status = backup_status
-        # The backup type. Valid values:
-        # 
-        # *   **FullBackup**
-        # *   **IncrementalBackup**
         self.backup_type = backup_type
-        # Version of the backuped instance.
-        # 
-        # *   **6.0**
-        # *   **5.0**
-        # *   **4.4**
-        # *   **4.2**
-        # *   **4.0**
-        # *   **3.4**
         self.engine_version = engine_version
-        # Availability of the backup set.
-        # - 0: unavailable
-        # - 1: available
         self.is_avail = is_avail
 
     def validate(self):
