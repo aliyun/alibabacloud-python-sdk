@@ -6781,6 +6781,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.created_by_product):
             query['CreatedByProduct'] = request.created_by_product
+        if not DaraCore.is_null(request.has_snapshot):
+            query['HasSnapshot'] = request.has_snapshot
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -6819,6 +6821,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.created_by_product):
             query['CreatedByProduct'] = request.created_by_product
+        if not DaraCore.is_null(request.has_snapshot):
+            query['HasSnapshot'] = request.has_snapshot
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):

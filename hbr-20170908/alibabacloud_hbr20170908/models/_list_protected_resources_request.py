@@ -8,6 +8,7 @@ class ListProtectedResourcesRequest(DaraModel):
     def __init__(
         self,
         created_by_product: str = None,
+        has_snapshot: bool = None,
         max_results: int = None,
         next_token: str = None,
         resource_id: str = None,
@@ -15,6 +16,7 @@ class ListProtectedResourcesRequest(DaraModel):
         source_type: str = None,
     ):
         self.created_by_product = created_by_product
+        self.has_snapshot = has_snapshot
         self.max_results = max_results
         self.next_token = next_token
         self.resource_id = resource_id
@@ -31,6 +33,9 @@ class ListProtectedResourcesRequest(DaraModel):
             result = _map
         if self.created_by_product is not None:
             result['CreatedByProduct'] = self.created_by_product
+
+        if self.has_snapshot is not None:
+            result['HasSnapshot'] = self.has_snapshot
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -53,6 +58,9 @@ class ListProtectedResourcesRequest(DaraModel):
         m = m or dict()
         if m.get('CreatedByProduct') is not None:
             self.created_by_product = m.get('CreatedByProduct')
+
+        if m.get('HasSnapshot') is not None:
+            self.has_snapshot = m.get('HasSnapshot')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

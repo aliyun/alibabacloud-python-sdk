@@ -170,6 +170,7 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(DaraModel):
         snapshot_hash: str = None,
         snapshot_id: str = None,
         source_instance_id: str = None,
+        source_resource_id: str = None,
         source_type: str = None,
         speed: int = None,
         start_time: int = None,
@@ -220,6 +221,7 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(DaraModel):
         self.snapshot_hash = snapshot_hash
         self.snapshot_id = snapshot_id
         self.source_instance_id = source_instance_id
+        self.source_resource_id = source_resource_id
         self.source_type = source_type
         self.speed = speed
         self.start_time = start_time
@@ -340,6 +342,9 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(DaraModel):
 
         if self.source_instance_id is not None:
             result['SourceInstanceId'] = self.source_instance_id
+
+        if self.source_resource_id is not None:
+            result['SourceResourceId'] = self.source_resource_id
 
         if self.source_type is not None:
             result['SourceType'] = self.source_type
@@ -493,6 +498,9 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(DaraModel):
 
         if m.get('SourceInstanceId') is not None:
             self.source_instance_id = m.get('SourceInstanceId')
+
+        if m.get('SourceResourceId') is not None:
+            self.source_resource_id = m.get('SourceResourceId')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')

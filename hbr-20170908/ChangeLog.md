@@ -1,3 +1,10 @@
+2026-04-13 Version: 2.6.1
+- Update API DescribeRestoreJobs2: add response parameters Body.RestoreJobs.$.SourceResourceId.
+- Update API ListProtectedResources: add request parameters HasSnapshot.
+- Update API ListProtectedResources: add response parameters Body.ProtectedResources.$.BackupPlanCount.
+- Update API ListProtectedResources: add response parameters Body.ProtectedResources.$.ResourceRegionId.
+
+
 2026-03-31 Version: 2.6.0
 - Support API DescribeDataSources.
 - Support API RemoveDataSource.

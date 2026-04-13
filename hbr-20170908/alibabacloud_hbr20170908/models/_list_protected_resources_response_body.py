@@ -101,19 +101,23 @@ class ListProtectedResourcesResponseBody(DaraModel):
 class ListProtectedResourcesResponseBodyProtectedResources(DaraModel):
     def __init__(
         self,
+        backup_plan_count: int = None,
         created_by_product: str = None,
         protected_data_size: int = None,
         protected_resource_id: str = None,
         resource_id: str = None,
         resource_owner_id: int = None,
+        resource_region_id: str = None,
         snapshot_count: int = None,
         source_type: str = None,
     ):
+        self.backup_plan_count = backup_plan_count
         self.created_by_product = created_by_product
         self.protected_data_size = protected_data_size
         self.protected_resource_id = protected_resource_id
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
+        self.resource_region_id = resource_region_id
         self.snapshot_count = snapshot_count
         self.source_type = source_type
 
@@ -125,6 +129,9 @@ class ListProtectedResourcesResponseBodyProtectedResources(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.backup_plan_count is not None:
+            result['BackupPlanCount'] = self.backup_plan_count
+
         if self.created_by_product is not None:
             result['CreatedByProduct'] = self.created_by_product
 
@@ -140,6 +147,9 @@ class ListProtectedResourcesResponseBodyProtectedResources(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
+
         if self.snapshot_count is not None:
             result['SnapshotCount'] = self.snapshot_count
 
@@ -150,6 +160,9 @@ class ListProtectedResourcesResponseBodyProtectedResources(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupPlanCount') is not None:
+            self.backup_plan_count = m.get('BackupPlanCount')
+
         if m.get('CreatedByProduct') is not None:
             self.created_by_product = m.get('CreatedByProduct')
 
@@ -164,6 +177,9 @@ class ListProtectedResourcesResponseBodyProtectedResources(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
 
         if m.get('SnapshotCount') is not None:
             self.snapshot_count = m.get('SnapshotCount')
