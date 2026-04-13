@@ -203,10 +203,16 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
+        if not DaraCore.is_null(request.ai_function):
+            body['aiFunction'] = request.ai_function
         if not DaraCore.is_null(request.auto_backup):
             body['autoBackup'] = request.auto_backup
+        if not DaraCore.is_null(request.auto_pay):
+            body['autoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             body['autoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.backup_restore_info):
+            body['backupRestoreInfo'] = request.backup_restore_info
         if not DaraCore.is_null(request.components):
             body['components'] = request.components
         if not DaraCore.is_null(request.configuration):
@@ -281,10 +287,16 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
+        if not DaraCore.is_null(request.ai_function):
+            body['aiFunction'] = request.ai_function
         if not DaraCore.is_null(request.auto_backup):
             body['autoBackup'] = request.auto_backup
+        if not DaraCore.is_null(request.auto_pay):
+            body['autoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             body['autoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.backup_restore_info):
+            body['backupRestoreInfo'] = request.backup_restore_info
         if not DaraCore.is_null(request.components):
             body['components'] = request.components
         if not DaraCore.is_null(request.configuration):
@@ -1349,6 +1361,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.auto_backup):
             body['autoBackup'] = request.auto_backup
+        if not DaraCore.is_null(request.auto_pay):
+            body['autoPay'] = request.auto_pay
         if not DaraCore.is_null(request.components):
             body['components'] = request.components
         if not DaraCore.is_null(request.configuration):
@@ -1395,6 +1409,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.auto_backup):
             body['autoBackup'] = request.auto_backup
+        if not DaraCore.is_null(request.auto_pay):
+            body['autoPay'] = request.auto_pay
         if not DaraCore.is_null(request.components):
             body['components'] = request.components
         if not DaraCore.is_null(request.configuration):

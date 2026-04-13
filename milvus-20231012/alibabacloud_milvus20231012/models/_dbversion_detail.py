@@ -64,11 +64,13 @@ class DBVersionDetailSpecs(DaraModel):
         component_specs: List[main_models.DBVersionDetailSpecsComponentSpecs] = None,
         is_ha: bool = None,
         is_standalone: bool = None,
+        is_standalone_pro: bool = None,
         zone_mode: str = None,
     ):
         self.component_specs = component_specs
         self.is_ha = is_ha
         self.is_standalone = is_standalone
+        self.is_standalone_pro = is_standalone_pro
         self.zone_mode = zone_mode
 
     def validate(self):
@@ -93,6 +95,9 @@ class DBVersionDetailSpecs(DaraModel):
         if self.is_standalone is not None:
             result['isStandalone'] = self.is_standalone
 
+        if self.is_standalone_pro is not None:
+            result['isStandalonePro'] = self.is_standalone_pro
+
         if self.zone_mode is not None:
             result['zoneMode'] = self.zone_mode
 
@@ -111,6 +116,9 @@ class DBVersionDetailSpecs(DaraModel):
 
         if m.get('isStandalone') is not None:
             self.is_standalone = m.get('isStandalone')
+
+        if m.get('isStandalonePro') is not None:
+            self.is_standalone_pro = m.get('isStandalonePro')
 
         if m.get('zoneMode') is not None:
             self.zone_mode = m.get('zoneMode')

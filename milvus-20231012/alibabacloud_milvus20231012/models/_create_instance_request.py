@@ -11,8 +11,11 @@ class CreateInstanceRequest(DaraModel):
     def __init__(
         self,
         region_id: str = None,
+        ai_function: bool = None,
         auto_backup: bool = None,
+        auto_pay: bool = None,
         auto_renew: bool = None,
+        backup_restore_info: main_models.CreateInstanceRequestBackupRestoreInfo = None,
         components: List[main_models.CreateInstanceRequestComponents] = None,
         configuration: str = None,
         db_admin_password: str = None,
@@ -36,8 +39,11 @@ class CreateInstanceRequest(DaraModel):
         client_token: str = None,
     ):
         self.region_id = region_id
+        self.ai_function = ai_function
         self.auto_backup = auto_backup
+        self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        self.backup_restore_info = backup_restore_info
         self.components = components
         self.configuration = configuration
         self.db_admin_password = db_admin_password
@@ -65,6 +71,8 @@ class CreateInstanceRequest(DaraModel):
         self.client_token = client_token
 
     def validate(self):
+        if self.backup_restore_info:
+            self.backup_restore_info.validate()
         if self.components:
             for v1 in self.components:
                  if v1:
@@ -86,11 +94,20 @@ class CreateInstanceRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.ai_function is not None:
+            result['aiFunction'] = self.ai_function
+
         if self.auto_backup is not None:
             result['autoBackup'] = self.auto_backup
 
+        if self.auto_pay is not None:
+            result['autoPay'] = self.auto_pay
+
         if self.auto_renew is not None:
             result['autoRenew'] = self.auto_renew
+
+        if self.backup_restore_info is not None:
+            result['backupRestoreInfo'] = self.backup_restore_info.to_map()
 
         result['components'] = []
         if self.components is not None:
@@ -168,11 +185,21 @@ class CreateInstanceRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('aiFunction') is not None:
+            self.ai_function = m.get('aiFunction')
+
         if m.get('autoBackup') is not None:
             self.auto_backup = m.get('autoBackup')
 
+        if m.get('autoPay') is not None:
+            self.auto_pay = m.get('autoPay')
+
         if m.get('autoRenew') is not None:
             self.auto_renew = m.get('autoRenew')
+
+        if m.get('backupRestoreInfo') is not None:
+            temp_model = main_models.CreateInstanceRequestBackupRestoreInfo()
+            self.backup_restore_info = temp_model.from_map(m.get('backupRestoreInfo'))
 
         self.components = []
         if m.get('components') is not None:
@@ -377,6 +404,49 @@ class CreateInstanceRequestComponents(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class CreateInstanceRequestBackupRestoreInfo(DaraModel):
+    def __init__(
+        self,
+        backup_id: str = None,
+        backup_name: str = None,
+        source_cluster_id: str = None,
+    ):
+        self.backup_id = backup_id
+        self.backup_name = backup_name
+        self.source_cluster_id = source_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.backup_id is not None:
+            result['backupId'] = self.backup_id
+
+        if self.backup_name is not None:
+            result['backupName'] = self.backup_name
+
+        if self.source_cluster_id is not None:
+            result['sourceClusterId'] = self.source_cluster_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backupId') is not None:
+            self.backup_id = m.get('backupId')
+
+        if m.get('backupName') is not None:
+            self.backup_name = m.get('backupName')
+
+        if m.get('sourceClusterId') is not None:
+            self.source_cluster_id = m.get('sourceClusterId')
 
         return self
 

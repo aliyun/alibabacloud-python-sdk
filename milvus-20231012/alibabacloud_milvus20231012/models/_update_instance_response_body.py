@@ -9,10 +9,12 @@ class UpdateInstanceResponseBody(DaraModel):
         self,
         request_id: str = None,
         data: bool = None,
+        order_id: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
         self.data = data
+        self.order_id = order_id
         self.success = success
 
     def validate(self):
@@ -29,6 +31,9 @@ class UpdateInstanceResponseBody(DaraModel):
         if self.data is not None:
             result['data'] = self.data
 
+        if self.order_id is not None:
+            result['orderId'] = self.order_id
+
         if self.success is not None:
             result['success'] = self.success
 
@@ -41,6 +46,9 @@ class UpdateInstanceResponseBody(DaraModel):
 
         if m.get('data') is not None:
             self.data = m.get('data')
+
+        if m.get('orderId') is not None:
+            self.order_id = m.get('orderId')
 
         if m.get('success') is not None:
             self.success = m.get('success')

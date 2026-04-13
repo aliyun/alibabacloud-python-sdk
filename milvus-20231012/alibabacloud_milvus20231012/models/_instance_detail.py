@@ -46,6 +46,7 @@ class InstanceDetail(DaraModel):
         self.ha = ha
         self.instance_id = instance_id
         self.instance_name = instance_name
+        # kms key Id。
         self.kms_key_id = kms_key_id
         self.multi_zone_mode = multi_zone_mode
         self.order_id = order_id
@@ -314,12 +315,14 @@ class InstanceDetailComponents(DaraModel):
         cu_num: int = None,
         cu_type: str = None,
         disk_size_type: str = None,
+        pay_type: str = None,
         replica: int = None,
         type: str = None,
     ):
         self.cu_num = cu_num
         self.cu_type = cu_type
         self.disk_size_type = disk_size_type
+        self.pay_type = pay_type
         self.replica = replica
         self.type = type
 
@@ -340,6 +343,9 @@ class InstanceDetailComponents(DaraModel):
         if self.disk_size_type is not None:
             result['diskSizeType'] = self.disk_size_type
 
+        if self.pay_type is not None:
+            result['payType'] = self.pay_type
+
         if self.replica is not None:
             result['replica'] = self.replica
 
@@ -358,6 +364,9 @@ class InstanceDetailComponents(DaraModel):
 
         if m.get('diskSizeType') is not None:
             self.disk_size_type = m.get('diskSizeType')
+
+        if m.get('payType') is not None:
+            self.pay_type = m.get('payType')
 
         if m.get('replica') is not None:
             self.replica = m.get('replica')

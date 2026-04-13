@@ -7,6 +7,8 @@ from ._instance_detail import InstanceDetail
 from ._migration_source import MigrationSource
 from ._price_info import PriceInfo
 from ._promotion_info import PromotionInfo
+from ._scaling_activity import ScalingActivity
+from ._scaling_rule import ScalingRule
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
@@ -69,6 +71,8 @@ from ._migration_source import MigrationSourceAuthInfo
 from ._migration_source import MigrationSourceEndpoint
 from ._price_info import PriceInfoPriceModules
 from ._price_info import PriceInfoRules
+from ._scaling_rule import ScalingRuleAdjustInfos
+from ._create_instance_request import CreateInstanceRequestBackupRestoreInfo
 from ._create_instance_request import CreateInstanceRequestComponents
 from ._create_instance_request import CreateInstanceRequestTags
 from ._create_instance_request import CreateInstanceRequestVSwitchIds
@@ -96,6 +100,8 @@ __all__ = [
     MigrationSource,
     PriceInfo,
     PromotionInfo,
+    ScalingActivity,
+    ScalingRule,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
@@ -158,6 +164,8 @@ __all__ = [
     MigrationSourceEndpoint,
     PriceInfoPriceModules,
     PriceInfoRules,
+    ScalingRuleAdjustInfos,
+    CreateInstanceRequestBackupRestoreInfo,
     CreateInstanceRequestComponents,
     CreateInstanceRequestTags,
     CreateInstanceRequestVSwitchIds,

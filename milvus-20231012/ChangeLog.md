@@ -1,3 +1,15 @@
+2026-04-13 Version: 1.2.2
+- Update API CreateInstance: add request parameters body.aiFunction.
+- Update API CreateInstance: add request parameters body.autoPay.
+- Update API CreateInstance: add request parameters body.backupRestoreInfo.
+- Update API GetInstanceDetail: add response parameters Body.Data.MaintainablePeriod.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.MilvusResourceInfoList.$.PayType.
+- Update API ListInstances: add response parameters Body.Data.$.TemplateVersion.
+- Update API UpdateInstance: add request parameters body.autoPay.
+- Update API UpdateInstance: add request parameters body.components.$.payType.
+- Update API UpdateInstance: add response parameters Body.orderId.
+
+
 2025-12-25 Version: 1.2.1
 - Update API CreateInstance: add request parameters body.autoRenew.
 - Update API CreateInstance: add request parameters body.isMultiAzStorage.

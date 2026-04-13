@@ -12,6 +12,7 @@ class UpdateInstanceRequest(DaraModel):
         self,
         region_id: str = None,
         auto_backup: bool = None,
+        auto_pay: bool = None,
         components: List[main_models.UpdateInstanceRequestComponents] = None,
         configuration: str = None,
         ha: bool = None,
@@ -21,6 +22,7 @@ class UpdateInstanceRequest(DaraModel):
     ):
         self.region_id = region_id
         self.auto_backup = auto_backup
+        self.auto_pay = auto_pay
         self.components = components
         self.configuration = configuration
         self.ha = ha
@@ -45,6 +47,9 @@ class UpdateInstanceRequest(DaraModel):
 
         if self.auto_backup is not None:
             result['autoBackup'] = self.auto_backup
+
+        if self.auto_pay is not None:
+            result['autoPay'] = self.auto_pay
 
         result['components'] = []
         if self.components is not None:
@@ -76,6 +81,9 @@ class UpdateInstanceRequest(DaraModel):
         if m.get('autoBackup') is not None:
             self.auto_backup = m.get('autoBackup')
 
+        if m.get('autoPay') is not None:
+            self.auto_pay = m.get('autoPay')
+
         self.components = []
         if m.get('components') is not None:
             for k1 in m.get('components'):
@@ -103,11 +111,13 @@ class UpdateInstanceRequestComponents(DaraModel):
     def __init__(
         self,
         cu_num: int = None,
+        pay_type: str = None,
         replica: int = None,
         type: str = None,
     ):
         # This parameter is required.
         self.cu_num = cu_num
+        self.pay_type = pay_type
         # This parameter is required.
         self.replica = replica
         # This parameter is required.
@@ -124,6 +134,9 @@ class UpdateInstanceRequestComponents(DaraModel):
         if self.cu_num is not None:
             result['cuNum'] = self.cu_num
 
+        if self.pay_type is not None:
+            result['payType'] = self.pay_type
+
         if self.replica is not None:
             result['replica'] = self.replica
 
@@ -136,6 +149,9 @@ class UpdateInstanceRequestComponents(DaraModel):
         m = m or dict()
         if m.get('cuNum') is not None:
             self.cu_num = m.get('cuNum')
+
+        if m.get('payType') is not None:
+            self.pay_type = m.get('payType')
 
         if m.get('replica') is not None:
             self.replica = m.get('replica')

@@ -126,6 +126,7 @@ class ListInstancesResponseBodyData(DaraModel):
         running_time: int = None,
         sg_id: str = None,
         tags: List[main_models.ListInstancesResponseBodyDataTags] = None,
+        template_version: str = None,
         version: str = None,
         vpc_id: str = None,
         vsw_id: str = None,
@@ -175,6 +176,7 @@ class ListInstancesResponseBodyData(DaraModel):
         # The security group ID.
         self.sg_id = sg_id
         self.tags = tags
+        self.template_version = template_version
         self.version = version
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
@@ -249,6 +251,9 @@ class ListInstancesResponseBodyData(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+
         if self.version is not None:
             result['Version'] = self.version
 
@@ -319,6 +324,9 @@ class ListInstancesResponseBodyData(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.ListInstancesResponseBodyDataTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')

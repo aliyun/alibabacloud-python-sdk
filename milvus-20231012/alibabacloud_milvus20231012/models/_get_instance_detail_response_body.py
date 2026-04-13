@@ -107,6 +107,7 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         instance_id: str = None,
         instance_status: str = None,
         kms_key_id: str = None,
+        maintainable_period: str = None,
         measure_config: main_models.GetInstanceDetailResponseBodyDataMeasureConfig = None,
         multi_zone_mode: str = None,
         node_type: str = None,
@@ -156,6 +157,7 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         # *   deleted.
         self.instance_status = instance_status
         self.kms_key_id = kms_key_id
+        self.maintainable_period = maintainable_period
         self.measure_config = measure_config
         self.multi_zone_mode = multi_zone_mode
         self.node_type = node_type
@@ -255,6 +257,9 @@ class GetInstanceDetailResponseBodyData(DaraModel):
 
         if self.kms_key_id is not None:
             result['KmsKeyId'] = self.kms_key_id
+
+        if self.maintainable_period is not None:
+            result['MaintainablePeriod'] = self.maintainable_period
 
         if self.measure_config is not None:
             result['MeasureConfig'] = self.measure_config.to_map()
@@ -361,6 +366,9 @@ class GetInstanceDetailResponseBodyData(DaraModel):
 
         if m.get('KmsKeyId') is not None:
             self.kms_key_id = m.get('KmsKeyId')
+
+        if m.get('MaintainablePeriod') is not None:
+            self.maintainable_period = m.get('MaintainablePeriod')
 
         if m.get('MeasureConfig') is not None:
             temp_model = main_models.GetInstanceDetailResponseBodyDataMeasureConfig()
@@ -764,6 +772,7 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         cu_ratio: int = None,
         disk_size: int = None,
         disk_type: str = None,
+        pay_type: str = None,
         replica: int = None,
         zone_id: str = None,
     ):
@@ -783,6 +792,7 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         self.disk_size = disk_size
         # The disk type.
         self.disk_type = disk_type
+        self.pay_type = pay_type
         # The number of replicas.
         self.replica = replica
         self.zone_id = zone_id
@@ -810,6 +820,9 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         if self.disk_type is not None:
             result['DiskType'] = self.disk_type
 
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+
         if self.replica is not None:
             result['Replica'] = self.replica
 
@@ -834,6 +847,9 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
 
         if m.get('DiskType') is not None:
             self.disk_type = m.get('DiskType')
+
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
 
         if m.get('Replica') is not None:
             self.replica = m.get('Replica')
