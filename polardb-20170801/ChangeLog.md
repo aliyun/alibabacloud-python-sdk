@@ -6,6 +6,10 @@
 - Update API CreateApplication: add request parameters KnowledgeApplicationSpec.
 
 
+2026-04-14 Version: 6.10.2
+- Update API CreateApplication: add request parameters KnowledgeApplicationSpec.
+
+
 2026-04-13 Version: 6.10.1
 - Update API DescribeApplicationAttribute: add response parameters Body.PolarClawSaaSApplicationAttribute.AuthProviders.
 
