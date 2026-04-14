@@ -10,9 +10,7 @@ class ConfigSetCancelRelationFromAddressResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The result of the request.
         self.result = result
 
     def validate(self):

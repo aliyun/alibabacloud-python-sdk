@@ -19,43 +19,24 @@ class SenderStatisticsByTagNameAndBatchIDRequest(DaraModel):
         start_time: str = None,
         tag_name: str = None,
     ):
-        # The sender address. If you do not specify this parameter, statistics for all sender addresses are returned.
+        # Sending address. If not filled, it represents all addresses.
         self.account_name = account_name
-        # If you use Dedicated IPs, use this parameter to filter statistics by a specific Dedicated IP.
-        # 
-        # If you do not specify this parameter, statistics for all dedicated IPs that match the other criteria are returned.
         self.dedicated_ip = dedicated_ip
-        # If you use Dedicated IPs, specify the ID of the dedicated IP pool to query.
-        # 
-        # If you do not specify this parameter, statistics for all resources are returned.
         self.dedicated_ip_pool_id = dedicated_ip_pool_id
         self.domain = domain
-        # The end time for the query. The time range between `StartTime` and `EndTime` cannot exceed 7 days. The format must be `YYYY-MM-DD`.
+        # End time, which cannot exceed 7 days from the start time, in the format yyyy-MM-dd.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # If you use Dedicated IPs, use this parameter to filter statistics by a specific Email Service Provider (ESP). Valid values are:
-        # 
-        # - `gmail.com`
-        # 
-        # - `yahoo.com`
-        # 
-        # - `outlook.com`
-        # 
-        # - `icloud.com`
-        # 
-        # - `others` (matches data for all other ESPs)
-        # 
-        # If you do not specify this parameter, statistics for all ESPs are returned.
         self.esp = esp
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time for the query. The date cannot be more than 30 days in the past. The format must be `YYYY-MM-DD`.
+        # Start time, in the format yyyy-MM-dd.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The email tag. If you do not specify this parameter, statistics for all tags are returned.
+        # Email tag. If not filled, it represents all tags.
         self.tag_name = tag_name
 
     def validate(self):

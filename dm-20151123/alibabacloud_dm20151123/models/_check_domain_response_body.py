@@ -13,7 +13,6 @@ class CheckDomainResponseBody(DaraModel):
         # Domain status. Indicates whether the verification was successful, with values as follows:
         # 
         # - **0**: Available, verified successfully
-        # 
         # - **1**: Unavailable, verification failed
         self.domain_status = domain_status
         # Request ID

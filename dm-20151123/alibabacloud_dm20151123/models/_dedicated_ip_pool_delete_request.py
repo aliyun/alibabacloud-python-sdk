@@ -9,7 +9,6 @@ class DedicatedIpPoolDeleteRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The IP pool ID.
         self.id = id
 
     def validate(self):

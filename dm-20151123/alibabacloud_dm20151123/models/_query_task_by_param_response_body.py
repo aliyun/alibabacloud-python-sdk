@@ -16,13 +16,13 @@ class QueryTaskByParamResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.QueryTaskByParamResponseBodyData = None,
     ):
-        # The page number.
+        # Current page number
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size
         self.page_size = page_size
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The total number of entries.
+        # Total count
         self.total_count = total_count
         self.data = data
 

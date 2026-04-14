@@ -11,11 +11,8 @@ class ConfigSetCreateRequest(DaraModel):
         ip_pool_id: str = None,
         name: str = None,
     ):
-        # The description of the configuration set. The description can be up to 50 characters long.
         self.description = description
-        # The ID of the associated IP pool. This parameter is optional.
         self.ip_pool_id = ip_pool_id
-        # The name of the configuration set. This parameter is required. The name must be unique and can be up to 50 characters long.
         self.name = name
 
     def validate(self):

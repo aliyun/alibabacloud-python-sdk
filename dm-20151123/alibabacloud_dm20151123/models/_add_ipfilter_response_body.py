@@ -10,7 +10,9 @@ class AddIpfilterResponseBody(DaraModel):
         ip_filter_id: str = None,
         request_id: str = None,
     ):
+        # ID corresponding to the IP
         self.ip_filter_id = ip_filter_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

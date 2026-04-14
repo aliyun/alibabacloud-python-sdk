@@ -15,24 +15,14 @@ class SendValidateFileAdvanceRequest(DaraModel):
         has_header_row: bool = None,
         remove_duplicate: bool = None,
     ):
-        # The column that contains the email addresses in the file. The index starts from 1.
-        # 
         # This parameter is required.
         self.address_column = address_column
-        # The name of the file that contains the list of email addresses.
-        # 
         # This parameter is required.
         self.file_name = file_name
-        # The URL of the file that contains the list of email addresses.
-        # 
         # This parameter is required.
         self.file_url_object = file_url_object
-        # Specifies whether the first row is a table header.
-        # 
         # This parameter is required.
         self.has_header_row = has_header_row
-        # Specifies whether to remove duplicate email addresses in the output file.
-        # 
         # This parameter is required.
         self.remove_duplicate = remove_duplicate
 

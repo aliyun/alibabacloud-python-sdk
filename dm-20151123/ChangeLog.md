@@ -1,3 +1,7 @@
+2026-04-14 Version: 1.9.1
+- Update API DescDomain: add response parameters Body.DomainVersion.
+
+
 2026-03-23 Version: 1.9.0
 - Support API GetSendifyAutoLoginURL.
 - Support API GetSendifyInfo.

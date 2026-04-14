@@ -10,9 +10,7 @@ class ConfigSetCancelRelationFromAddressRequest(DaraModel):
         from_address: str = None,
         id: str = None,
     ):
-        # The sender address. This parameter is required.
         self.from_address = from_address
-        # The ID of the configuration set. This parameter is required.
         self.id = id
 
     def validate(self):

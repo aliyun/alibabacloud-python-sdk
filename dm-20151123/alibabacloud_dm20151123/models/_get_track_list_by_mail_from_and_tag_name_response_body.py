@@ -19,19 +19,18 @@ class GetTrackListByMailFromAndTagNameResponseBody(DaraModel):
         total_pages: str = None,
         track_list: main_models.GetTrackListByMailFromAndTagNameResponseBodyTrackList = None,
     ):
-        # Used for paging. Do not set this parameter for the first query. For subsequent queries, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated)
+        # Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
         self.offset_create_time = offset_create_time
         # (This field is deprecated)
         self.offset_create_time_desc = offset_create_time_desc
-        # The current page number.
+        # Current page number
         self.page_no = page_no
-        # The number of entries per page.
+        # Page size
         self.page_size = page_size
-        # The request ID.
+        # Request ID
         self.request_id = request_id
         # (This field is deprecated)
         self.total = total
-        # The total number of pages.
         self.total_pages = total_pages
         self.track_list = track_list
 

@@ -25,7 +25,6 @@ class QueryDomainByParamRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # - 0 indicates normal
-        # 
         # - 1 indicates abnormal
         self.status = status
 

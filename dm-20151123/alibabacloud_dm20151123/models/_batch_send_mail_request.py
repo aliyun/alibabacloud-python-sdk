@@ -24,106 +24,54 @@ class BatchSendMailRequest(DaraModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
-        # The sender address configured in the console.
+        # The sending address configured in the management console.
         # 
         # This parameter is required.
         self.account_name = account_name
         # - 0: Random account
-        # 
-        # - 1: Sender address
+        # - 1: Sending address
         # 
         # This parameter is required.
         self.address_type = address_type
-        # - 1: Enables the data tracking feature.
-        # 
-        # - 0 (default): Disables the data tracking feature.
+        # - 1: Enable data tracking function
+        # - 0 (default): Disable data tracking function
         self.click_trace = click_trace
-        # Enables domain-level authentication.
-        # 
-        # - true
-        # 
-        # - false
-        # 
-        # Use this parameter only for domain-level authentication. Ignore it for sender address-level authentication.
-        # 
-        # 1\\. The console creates the address \\`domain-auth-created-by-system\\@example.com\\`. Do not change the prefix before the at sign (@). Replace the domain suffix with your own domain.
-        # 
-        # 2\\.
-        # 
-        # **API scenario**
-        # 
-        # Set \\`AccountName\\` to your domain. Recipients see \\`domain-auth-created-by-system\\@example.com\\` as the sender.
-        # 
-        # **SMTP scenario**
-        # 
-        # a. Use the \\`ModifyPWByDomain\\` API to set a password for your domain.
-        # 
-        # b. Authenticate using your domain and the password. Set the actual sender address (\\`mailfrom\\`) to a custom address, such as \\`user\\@example.com\\`. Recipients see \\`user\\@example.com\\` as the sender.
         self.domain_auth = domain_auth
-        # Message header settings.
-        # 
-        # All fields, standard or non-standard, must follow standard header syntax. For API calls, the \\`headers\\` field supports up to 10 headers. Any headers beyond this limit are ignored. SMTP does not have a header limit.
-        # 
-        # 1\\. Standard fields
-        # 
-        # \\`Message-ID\\`, \\`List-Unsubscribe\\`, \\`List-Unsubscribe-Post\\`
-        # 
-        # Standard fields overwrite existing values in the message header.
-        # 
-        # 2\\. Non-standard fields
-        # 
-        # Case-insensitive
-        # 
-        # a. Start with \\`X-User-\\`. These fields are not pushed to EventBridge or Message Service. They are required only for API calls. SMTP supports any custom header.
-        # 
-        # b. Start with \\`X-User-Notify-\\`. These fields are pushed to EventBridge and Message Service. They are supported by both API and SMTP.
-        # 
-        # When pushed to EventBridge or Message Service, these fields appear under the \\`headers\\` object.
+        # Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields must start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
-        # The ID of the dedicated IP address pool. If you purchased dedicated IP addresses, use this parameter to specify the egress IP address for sending the email.
+        # dedicated IP pool ID. Users who have purchased an dedicated IP can use this parameter to specify the outgoing IP for this send operation.
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
-        # The name of a pre-created recipient list to which recipients have been uploaded.
-        # 
-        # Note:
-        # 
-        # The number of recipients in the list must not exceed your remaining daily quota. Otherwise, email sending fails.
-        # 
-        # Do not delete the recipient list for at least 10 minutes after triggering the task. Otherwise, email sending may fail.
+        # The name of the recipient list that has been created and uploaded with recipients. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
         # 
         # This parameter is required.
         self.receivers_name = receivers_name
-        # The reply-to address.
+        # Reply address
         self.reply_address = reply_address
-        # The alias for the reply-to address.
+        # Alias for the reply address
         self.reply_address_alias = reply_address_alias
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the email tag.
+        # Email tag name.
         self.tag_name = tag_name
-        # The name of a pre-created and approved template.
+        # The name of the template that has been created and approved in advance.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
-        # 
-        # - disabled: No filtering.
-        # 
-        # - default: Uses the default policy. Batch emails are filtered at the sender address level.
-        # 
-        # - mailfrom: Filters at the sender address level.
-        # 
-        # - mailfrom_domain: Filters at the email domain level.
-        # 
-        # - edm_id: Filters at the account level.
+        # Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # - disabled: No filtering
+        # - default: Use the default strategy, bulk addresses use sender address-level filtering
+        # - mailfrom: Sender address-level filtering
+        # - mailfrom_domain: Sender domain-level filtering
+        # - edm_id: Account-level filtering
         self.un_subscribe_filter_level = un_subscribe_filter_level
-        # The type of unsubscribe link to generate. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
-        # 
-        # - disabled: Does not generate a link.
-        # 
-        # - default: Uses the default policy. An unsubscribe link is generated when batch emails are sent from a sender address to specific domains, such as those containing the keywords "gmail", "yahoo", "google", "aol.com", "hotmail", "outlook", or "ymail.com".
-        # 
-        # The language of the unsubscribe link matches the recipient\\"s browser language setting.
+        # The type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # - disabled: Do not generate
+        # - default: Use the default strategy: Generate an unsubscribe link when a bulk-type sending address sends to specific domains, such as those containing keywords like "gmail", "yahoo",
+        # "google", "aol.com", "hotmail",
+        # "outlook", "ymail.com", etc.
+        # - zh-cn: Generate, for future content preparation
+        # - en-us: Generate, for future content preparation
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):

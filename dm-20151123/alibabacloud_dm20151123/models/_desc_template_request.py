@@ -13,13 +13,10 @@ class DescTemplateRequest(DaraModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
-        # This parameter is deprecated. It is retained for historical compatibility.
         self.from_type = from_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The template ID.
-        # 
         # This parameter is required.
         self.template_id = template_id
 

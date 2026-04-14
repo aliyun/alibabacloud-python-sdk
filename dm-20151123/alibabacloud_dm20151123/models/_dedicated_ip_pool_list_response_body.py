@@ -17,17 +17,17 @@ class DedicatedIpPoolListResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
-        # The current page number.
+        # Current page
         self.current_page = current_page
-        # Indicates whether more results are available.
+        # Whether there is a next page
         self.has_more = has_more
-        # A list of IP pools.
+        # List of IP pools
         self.ip_pools = ip_pools
-        # The number of entries on the current page.
+        # Page size
         self.page_size = page_size
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
-        # The total number of entries that match the query.
+        # Total number of data under the current request conditions
         self.total_counts = total_counts
 
     def validate(self):
@@ -97,15 +97,15 @@ class DedicatedIpPoolListResponseBodyIpPools(DaraModel):
         ips: List[main_models.DedicatedIpPoolListResponseBodyIpPoolsIps] = None,
         name: str = None,
     ):
-        # The time when the IP pool was created.
+        # Creation time
         self.create_time = create_time
-        # The ID of the IP pool.
+        # IP pool ID
         self.id = id
-        # The number of source IP addresses in the IP pool.
+        # Number of source IP addresses
         self.ip_count = ip_count
-        # A list of IP addresses.
+        # List of IPs
         self.ips = ips
-        # The name of the IP pool.
+        # IP pool name
         self.name = name
 
     def validate(self):
@@ -167,11 +167,10 @@ class DedicatedIpPoolListResponseBodyIpPoolsIps(DaraModel):
         ip: str = None,
         zone_id: str = None,
     ):
-        # The ID of the IP address instance.
+        # Instance purchase ID
         self.id = id
-        # The IP address.
+        # IP address
         self.ip = ip
-        # The ID of the Availability Zone.
         self.zone_id = zone_id
 
     def validate(self):

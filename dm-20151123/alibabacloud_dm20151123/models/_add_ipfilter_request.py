@@ -12,6 +12,8 @@ class AddIpfilterRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # IP Address/IP Range/IP Segment
+        # 
         # This parameter is required.
         self.ip_address = ip_address
         self.owner_id = owner_id

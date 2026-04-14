@@ -10,9 +10,7 @@ class ConfigSetDeleteRequest(DaraModel):
         ids: str = None,
         is_force: bool = None,
     ):
-        # The IDs of the configuration sets. Separate multiple IDs with commas. This parameter is required.
         self.ids = ids
-        # Specifies whether to force delete the associations with sender addresses.
         self.is_force = is_force
 
     def validate(self):

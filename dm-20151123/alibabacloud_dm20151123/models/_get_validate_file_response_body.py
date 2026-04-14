@@ -10,9 +10,7 @@ class GetValidateFileResponseBody(DaraModel):
         file_url: str = None,
         request_id: str = None,
     ):
-        # The download URL of the result file.
         self.file_url = file_url
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

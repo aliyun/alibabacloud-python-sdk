@@ -12,13 +12,9 @@ class ConfigSetListRequest(DaraModel):
         page_index: str = None,
         page_size: str = None,
     ):
-        # Specifies whether to query all configuration sets. This parameter is optional.
         self.all = all
-        # The keyword to search by name.
         self.keyword = keyword
-        # The page index. The value starts from 1. This parameter is required.
         self.page_index = page_index
-        # The number of entries per page. This parameter is required.
         self.page_size = page_size
 
     def validate(self):

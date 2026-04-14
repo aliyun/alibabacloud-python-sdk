@@ -18,19 +18,12 @@ class ListValidateFileResponseBody(DaraModel):
         total_pages: int = None,
         total_size: int = None,
     ):
-        # The list of files.
         self.files = files
-        # Indicates whether a next page of data exists.
         self.has_next = has_next
-        # The page number.
         self.page = page
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of pages.
         self.total_pages = total_pages
-        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -115,33 +108,19 @@ class ListValidateFileResponseBodyFiles(DaraModel):
         upload_time: str = None,
         valid_num: str = None,
     ):
-        # The number of addresses with the validation result \\"CatchAll\\".
         self.catch_all_num = catch_all_num
-        # The time when the task was completed.
         self.complete_time = complete_time
-        # The number of addresses with the validation result \\"DoNotMail\\".
         self.do_not_mail_num = do_not_mail_num
-        # The file ID.
         self.file_id = file_id
-        # The file name.
         self.file_name = file_name
-        # The number of addresses with the validation result \\"Invalid\\".
         self.invalid_num = invalid_num
-        # Indicates whether the result can be downloaded.
         self.is_downloadable = is_downloadable
-        # The task execution progress.
         self.percentage = percentage
-        # The number of addresses that have been validated.
         self.processed_num = processed_num
-        # The status of the task.
         self.status = status
-        # The number of addresses to validate in the task.
         self.total_num = total_num
-        # The number of addresses with the validation result \\"Unknown\\".
         self.unknown_num = unknown_num
-        # The time when the file was submitted.
         self.upload_time = upload_time
-        # The number of addresses with the validation result \\"Valid\\".
         self.valid_num = valid_num
 
     def validate(self):

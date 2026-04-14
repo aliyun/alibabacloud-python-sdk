@@ -9,8 +9,6 @@ class GetValidateFileStatusRequest(DaraModel):
         self,
         file_id: str = None,
     ):
-        # The file ID returned after the task is submitted.
-        # 
         # This parameter is required.
         self.file_id = file_id
 

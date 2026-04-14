@@ -10,9 +10,9 @@ class DedicatedIpChangeWarmupTypeRequest(DaraModel):
         id: str = None,
         warmup_type: str = None,
     ):
-        # The ID of the dedicated IP address.
+        # Dedicated IP ID
         self.id = id
-        # The prefetch method.
+        # Warmup method
         self.warmup_type = warmup_type
 
     def validate(self):

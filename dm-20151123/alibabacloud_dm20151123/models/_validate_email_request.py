@@ -11,13 +11,9 @@ class ValidateEmailRequest(DaraModel):
         email: str = None,
         timeout: int = None,
     ):
-        # Specifies whether to check the graylist. The default value is false. The result is sent through an asynchronous notification message from EventBridge.
         self.check_graylist = check_graylist
-        # The email address to validate.
-        # 
         # This parameter is required.
         self.email = email
-        # The timeout period. The default value is 60 seconds.
         self.timeout = timeout
 
     def validate(self):

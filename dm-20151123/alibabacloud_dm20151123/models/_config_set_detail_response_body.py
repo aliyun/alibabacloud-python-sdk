@@ -11,9 +11,7 @@ class ConfigSetDetailResponseBody(DaraModel):
         detail: main_models.ConfigSetDetailResponseBodyDetail = None,
         request_id: str = None,
     ):
-        # The details of the configuration set.
         self.detail = detail
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,13 +50,9 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         ip_pool: main_models.ConfigSetDetailResponseBodyDetailIpPool = None,
         name: str = None,
     ):
-        # The description.
         self.description = description
-        # The ID of the configuration set.
         self.id = id
-        # The associated IP pool.
         self.ip_pool = ip_pool
-        # The name of the configuration set.
         self.name = name
 
     def validate(self):
@@ -109,9 +103,7 @@ class ConfigSetDetailResponseBodyDetailIpPool(DaraModel):
         ip_pool_id: str = None,
         ip_pool_name: str = None,
     ):
-        # The ID of the associated IP pool.
         self.ip_pool_id = ip_pool_id
-        # The name of the associated IP pool.
         self.ip_pool_name = ip_pool_name
 
     def validate(self):

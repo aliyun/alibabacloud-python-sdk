@@ -10,9 +10,7 @@ class SendValidateFileResponseBody(DaraModel):
         file_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the file. Use this ID to query the results.
         self.file_id = file_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -15,11 +15,6 @@ class RemoveUserSuppressionRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the suppressed address. To specify multiple IDs, separate them with commas (,). Call the ListUserSuppression operation to obtain the suppression ID.
-        # 
-        # You can enter multiple values, separated by a comma ",".
-        # 
-        # You can call ListUserSuppression to obtain the SuppressionId.
         self.suppression_ids = suppression_ids
 
     def validate(self):

@@ -15,22 +15,13 @@ class ValidateEmailResponseBody(DaraModel):
         status: str = None,
         sub_status: str = None,
     ):
-        # The domain part of the email address parsed from the syntax check. The domain part is converted to lowercase.
         self.domain_part = domain_part
-        # Indicates whether the address is from a free email service.
         self.is_free_mail = is_free_mail
-        # The local part of the email address parsed from the syntax check. The local part is converted to lowercase and the content after the plus sign (+) is removed.
         self.local_part = local_part
-        # The email service provider of the address.
         self.provider = provider
-        # The request ID.
         self.request_id = request_id
-        # The validation status of the email address.
-        # 
         # This parameter is required.
         self.status = status
-        # The detailed validation status of the email address. This provides more information about the Status.
-        # 
         # This parameter is required.
         self.sub_status = sub_status
 

@@ -16,18 +16,13 @@ class QueryTemplateByParamRequest(DaraModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
-        # This parameter is deprecated. It is retained for historical compatibility.
         self.from_type = from_type
-        # The keyword of the template name. By default, a paged query is performed for all templates.
         self.key_word = key_word
         self.owner_id = owner_id
-        # The page number. The default value is 1.
         self.page_no = page_no
-        # The number of entries per page. The default value is 20.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # This parameter is deprecated. It is retained for historical compatibility.
         self.status = status
 
     def validate(self):

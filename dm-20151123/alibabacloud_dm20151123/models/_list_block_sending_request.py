@@ -15,26 +15,13 @@ class ListBlockSendingRequest(DaraModel):
         next_token: str = None,
         sender_email: str = None,
     ):
-        # The start of the time range to query blocked emails.
         self.begin_time = begin_time
-        # The recipient email address.
         self.block_email = block_email
-        # The type of block.
-        # 
-        # - UNSUB: Unsubscribe
-        # 
-        # - REPORT: Spam report
-        # 
         # This parameter is required.
         self.block_type = block_type
-        # The end of the time range to query blocked emails.
         self.end_time = end_time
-        # The maximum number of entries to return.<br>
-        # Valid values: 1 to 500.<br>
         self.max_results = max_results
-        # The token used to start the query. If you do not specify this parameter, the query starts from the beginning of the results.
         self.next_token = next_token
-        # The sender email address.
         self.sender_email = sender_email
 
     def validate(self):

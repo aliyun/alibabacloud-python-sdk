@@ -17,17 +17,11 @@ class ConfigSetListResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
-        # The list of configuration sets.
         self.config_sets = config_sets
-        # The current page number.
         self.current_page = current_page
-        # Indicates whether a next page of results exists.
         self.has_more = has_more
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries that match the request.
         self.total_counts = total_counts
 
     def validate(self):
@@ -97,15 +91,10 @@ class ConfigSetListResponseBodyConfigSets(DaraModel):
         ip_pool: main_models.ConfigSetListResponseBodyConfigSetsIpPool = None,
         name: str = None,
     ):
-        # The description.
         self.description = description
-        # The list of associated sender addresses.
         self.from_addresses = from_addresses
-        # The ID of the configuration set.
         self.id = id
-        # The IP pool information.
         self.ip_pool = ip_pool
-        # The name of the configuration set.
         self.name = name
 
     def validate(self):
@@ -160,9 +149,7 @@ class ConfigSetListResponseBodyConfigSetsIpPool(DaraModel):
         ip_pool_id: str = None,
         ip_pool_name: str = None,
     ):
-        # The ID of the associated IP pool.
         self.ip_pool_id = ip_pool_id
-        # The name of the associated IP pool.
         self.ip_pool_name = ip_pool_name
 
     def validate(self):

@@ -21,39 +21,33 @@ class SenderStatisticsDetailByParamRequest(DaraModel):
         tag_name: str = None,
         to_address: str = None,
     ):
-        # The sender address. If you leave this parameter empty, emails from all sender addresses are queried.
+        # Sending address. If not filled, it represents all addresses.
         # 
-        # > You can leave **AccountName**, **TagName**, and **ToAddress** empty. You can specify a value for only one of these parameters at a time.
+        # > **AccountName**, **TagName**, and **ToAddress** can all be left unfilled. If any are filled, only one of these parameters can be passed; you cannot pass a combination of two or more.
         self.account_name = account_name
-        # The ID of the configuration set.
         self.config_set_id = config_set_id
-        # The end time. The time range between the start time and the end time cannot exceed 30 days. The format is yyyy-MM-dd HH:mm.
+        # End time. The span between start and end times cannot exceed 30 days, format: yyyy-MM-dd HH:mm.
         self.end_time = end_time
-        # The ID of the independent IP address pool.
         self.ip_pool_id = ip_pool_id
-        # The number of results to return. The value can range from 1 to 100.
+        # Specifies the number of results to return in this request. Range is 1~100.
         self.length = length
-        # The offset for this request, used for paging. If more results are available, set the \\`NextStart\\` parameter in your next request to this return value.
+        # Used for pagination. Specifies the offset for this request. If there are more results, set this returned value to the NextStart in the next request.
         self.next_start = next_start
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time. The time range between the start time and the end time cannot exceed 30 days. The format is yyyy-MM-dd HH:mm.
+        # Start time. The span between start and end times cannot exceed 30 days, format: yyyy-MM-dd HH:mm
         self.start_time = start_time
-        # The delivery status. If you leave this parameter empty, emails in all delivery statuses are queried. Valid values:
+        # Delivery result. If not filled, it represents all statuses. Values:
         # 
-        # - 0: delivered successfully
-        # 
-        # - 2: invalid address
-        # 
-        # - 3: spam
-        # 
-        # - 4: failed
+        # - 0: Success
+        # - 2: Invalid Address
+        # - 3: Spam
+        # - 4: Failure
         self.status = status
-        # The email tag. If you leave this parameter empty, emails with all tags are queried.
-        # When you send an email using SMTP, specify the \\`TagName\\` and its value for the \\`X-AliDM-Trace\\` field. For more information, see the examples for email tracking.
+        # Email tag. If not filled, it represents all tags.
         self.tag_name = tag_name
-        # The recipient address. If you leave this parameter empty, emails sent to all recipient addresses are queried.
+        # Recipient address. If not filled, it represents all recipient addresses.
         self.to_address = to_address
 
     def validate(self):

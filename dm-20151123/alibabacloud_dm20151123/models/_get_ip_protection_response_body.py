@@ -10,7 +10,9 @@ class GetIpProtectionResponseBody(DaraModel):
         ip_protection: str = None,
         request_id: str = None,
     ):
+        # IP protection switch, On: 1 Off: 0
         self.ip_protection = ip_protection
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

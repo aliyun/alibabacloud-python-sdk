@@ -10,9 +10,9 @@ class SingleSendMailResponseBody(DaraModel):
         env_id: str = None,
         request_id: str = None,
     ):
-        # The event ID.
+        # Event ID
         self.env_id = env_id
-        # The request ID.
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

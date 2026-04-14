@@ -13,12 +13,12 @@ class DescDomainRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The domain name ID. Obtain this ID by calling the QueryDomainByParam operation.
+        # Domain ID. Can be obtained through QueryDomainByParam.
         # 
         # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
-        # Specifies whether to perform real-time DNS parsing.
+        # Determines whether to perform real-time DNS resolution
         self.require_real_time_dns_records = require_real_time_dns_records
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

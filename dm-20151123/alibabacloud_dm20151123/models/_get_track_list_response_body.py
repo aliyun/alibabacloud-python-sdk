@@ -19,19 +19,18 @@ class GetTrackListResponseBody(DaraModel):
         total_pages: int = None,
         data: main_models.GetTrackListResponseBodyData = None,
     ):
-        # Used for pagination. Do not set this parameter for the first request. For subsequent requests, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated.)
+        # Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
         self.offset_create_time = offset_create_time
-        # (This field is deprecated.)
+        # (This field is deprecated)
         self.offset_create_time_desc = offset_create_time_desc
-        # The current page number.
+        # Current page number
         self.page_no = page_no
-        # The number of entries returned per page.
+        # Number of items per page
         self.page_size = page_size
-        # The unique identifier for the request.
+        # Request ID
         self.request_id = request_id
-        # The total number of matching records.
+        # Total number of items
         self.total = total
-        # The total number of pages.
         self.total_pages = total_pages
         self.data = data
 

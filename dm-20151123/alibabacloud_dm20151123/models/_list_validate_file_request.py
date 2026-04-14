@@ -13,18 +13,11 @@ class ListValidateFileRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The end time. The time is in UTC and follows the RFC 3339 format.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # A keyword in the file name.
         self.file_keyword = file_keyword
-        # The page number.
         self.page = page
-        # The number of entries per page.
         self.page_size = page_size
-        # The start time. The time is in UTC and follows the RFC 3339 format.
-        # 
         # This parameter is required.
         self.start_time = start_time
 

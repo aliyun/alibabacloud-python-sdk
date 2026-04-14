@@ -15,13 +15,9 @@ class ListBlockSendingResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # A list of data about unsubscribes or spam reports.
         self.data = data
-        # The maximum number of entries returned.
         self.max_results = max_results
-        # The token to retrieve the next page of results. An empty string indicates that no more data is available.
         self.next_token = next_token
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,23 +75,10 @@ class ListBlockSendingResponseBodyData(DaraModel):
         send_time: int = None,
         sender_email: str = None,
     ):
-        # The recipient email address.
         self.block_email = block_email
-        # The time the block was initiated.
         self.block_time = block_time
-        # The reason for the block. The value is a bitset. The meaning of each bit is as follows:
-        # 
-        # - 0: The reason is not specified.
-        # 
-        # - 1: The recipient is not interested in the content.
-        # 
-        # - 2: The content is repetitive.
-        # 
-        # - 3: The content is sent too frequently.
         self.reason = reason
-        # The time the email was sent.
         self.send_time = send_time
-        # The sender email address.
         self.sender_email = sender_email
 
     def validate(self):
