@@ -10,6 +10,18 @@
 - Update API ModifyCustomAgent: add response parameters Body.Data.KnowledgeConfigList.$.KbUuid.
 
 
+2026-04-14 Version: 1.10.3
+- Update API CreateCustomAgent: add request parameters KnowledgeConfigList.$.KbUuid.
+- Update API CreateCustomAgent: add response parameters Body.Data.KnowledgeConfigList.$.KbUuid.
+- Update API CreateDataAgentSession: add request parameters SessionConfig.KbUuidList.
+- Update API CreateDataAgentSession: add response parameters Body.Data.SessionConfig.KbUuidList.
+- Update API DescribeCustomAgent: add response parameters Body.Data.KnowledgeConfigList.$.KbUuid.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.SessionConfig.KbUuidList.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.KnowledgeConfigList.$.KbUuid.
+- Update API ModifyCustomAgent: add request parameters KnowledgeConfigList.$.KbUuid.
+- Update API ModifyCustomAgent: add response parameters Body.Data.KnowledgeConfigList.$.KbUuid.
+
+
 2026-03-17 Version: 1.10.1
 - Update API CreateCustomAgent: add request parameters CallbackConfig.
 - Update API CreateCustomAgent: add response parameters Body.Data.CallbackConfig.
