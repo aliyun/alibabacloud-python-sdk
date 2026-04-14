@@ -63,9 +63,11 @@ class MobileRecycledMetaVerifyResponseBodyResultObject(DaraModel):
     def __init__(
         self,
         biz_code: str = None,
+        isp_name: str = None,
         sub_code: str = None,
     ):
         self.biz_code = biz_code
+        self.isp_name = isp_name
         self.sub_code = sub_code
 
     def validate(self):
@@ -79,6 +81,9 @@ class MobileRecycledMetaVerifyResponseBodyResultObject(DaraModel):
         if self.biz_code is not None:
             result['BizCode'] = self.biz_code
 
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+
         if self.sub_code is not None:
             result['SubCode'] = self.sub_code
 
@@ -88,6 +93,9 @@ class MobileRecycledMetaVerifyResponseBodyResultObject(DaraModel):
         m = m or dict()
         if m.get('BizCode') is not None:
             self.biz_code = m.get('BizCode')
+
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
 
         if m.get('SubCode') is not None:
             self.sub_code = m.get('SubCode')

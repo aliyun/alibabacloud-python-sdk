@@ -18,7 +18,6 @@ class DescribeDeviceInfoResponseBody(DaraModel):
     ):
         # The current page number being queried.
         self.current_page = current_page
-        # Array of device information.
         self.device_info_list = device_info_list
         # Number of items per page.
         self.page_size = page_size
@@ -117,15 +116,10 @@ class DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo(DaraModel):
         expired_day: str = None,
         user_device_id: str = None,
     ):
-        # Authorization start date.
         self.begin_day = begin_day
-        # Corresponds to the BizType in the request.
         self.biz_type = biz_type
-        # Corresponds to the DeviceId in the request.
         self.device_id = device_id
-        # Authorization expiration date.
         self.expired_day = expired_day
-        # Corresponds to the UserDeviceId in the request.
         self.user_device_id = user_device_id
 
     def validate(self):

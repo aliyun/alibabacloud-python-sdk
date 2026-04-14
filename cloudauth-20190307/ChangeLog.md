@@ -1,3 +1,7 @@
+2026-04-14 Version: 3.13.2
+- Update API MobileRecycledMetaVerify: add response parameters Body.ResultObject.IspName.
+
+
 2026-01-16 Version: 3.13.1
 - Update API DescribeVerifySearchPageList: add request parameters RiskBizScenario.
 - Update API DescribeVerifySearchPageList: add request parameters RiskDevice.

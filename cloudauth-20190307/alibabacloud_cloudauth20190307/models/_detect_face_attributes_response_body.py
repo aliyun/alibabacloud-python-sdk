@@ -80,7 +80,6 @@ class DetectFaceAttributesResponseBodyData(DaraModel):
         img_height: int = None,
         img_width: int = None,
     ):
-        # Face detection results.
         self.face_infos = face_infos
         # Original image height, in pixels.
         self.img_height = img_height
@@ -162,9 +161,7 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo(Dara
         face_attributes: main_models.DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes = None,
         face_rect: main_models.DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect = None,
     ):
-        # Face attributes.
         self.face_attributes = face_attributes
-        # Position of the face in the original image.
         self.face_rect = face_rect
 
     def validate(self):
@@ -206,13 +203,9 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceR
         top: int = None,
         width: int = None,
     ):
-        # Height of the face rectangle.
         self.height = height
-        # Distance from the top-left corner of the face rectangle to the left edge of the original image, in pixels.
         self.left = left
-        # Distance from the top-left corner of the face rectangle to the top edge of the original image, in pixels.
         self.top = top
-        # Width of the face rectangle.
         self.width = width
 
     def validate(self):
@@ -265,34 +258,13 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceA
         respirator: str = None,
         smiling: main_models.DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling = None,
     ):
-        # Face blur level, with higher values indicating more blurriness. Typically, a value ≥2.0 is considered quite blurry. It is recommended to adjust based on actual business data testing.
         self.blur = blur
-        # A score ranging from 0 to 100. The higher the score, the better the quality. It is recommended to consider a score of 50 or above as acceptable quality.
         self.facequal = facequal
-        # Whether it is a human face. Values:
-        # 
-        # - **None**: Not a human face
-        # - **Face**: Human face
-        # - **Profile**: Profile (head turned left or right by more than 30°)
-        # 
-        # > If no face is detected, the `faceInfos` in the response will be empty; here, `None` means that a face was detected but is considered to be a cartoon, pet, etc.
         self.facetype = facetype
-        # Whether wearing glasses. Values:
-        # 
-        # - **None**: Not wearing glasses
-        # - **Wear**: Wearing regular glasses
-        # - **Sunglass**: Wearing sunglasses
         self.glasses = glasses
-        # Face pose.
         self.headpose = headpose
-        # A score ranging from 0 to 100. The higher the score, the more complete the face. It is recommended to consider a score of 70 or above as acceptable completeness.
         self.integrity = integrity
-        # Whether wearing a mask. Values:
-        # 
-        # - Wear: Wearing a mask.
-        # - None: Not wearing a mask.
         self.respirator = respirator
-        # Whether smiling.
         self.smiling = smiling
 
     def validate(self):
@@ -368,9 +340,7 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceA
         threshold: float = None,
         value: float = None,
     ):
-        # Smile threshold.
         self.threshold = threshold
-        # Smile score.
         self.value = value
 
     def validate(self):
@@ -406,11 +376,8 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceA
         roll_angle: float = None,
         yaw_angle: float = None,
     ):
-        # Pitch angle, in degrees.
         self.pitch_angle = pitch_angle
-        # Roll angle, in degrees.
         self.roll_angle = roll_angle
-        # Yaw angle, in degrees.
         self.yaw_angle = yaw_angle
 
     def validate(self):

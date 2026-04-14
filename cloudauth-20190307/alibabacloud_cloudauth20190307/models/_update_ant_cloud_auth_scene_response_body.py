@@ -9,7 +9,7 @@ class UpdateAntCloudAuthSceneResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # ID of this request.
+        # Content of the uploaded verification file.
         self.request_id = request_id
 
     def validate(self):

@@ -20,36 +20,41 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         status: int = None,
         store_image: str = None,
     ):
-        # Whether to enable binding to a mini program:
-        # - **Y**: Enable
-        # - **N (default)**: Do not enable
-        # >Notice: If enabling the binding of a mini program, please ensure all parameters for the mini program are passed.
+        # Update Ant Blockchain Transaction Scenario
         self.bind_mini_program = bind_mini_program
-        # Content of the uploaded verification file.
+        # Whether to enable binding with a mini program:
+        # - **Y**: Enable
+        # - **N (default)**: Disable
+        # >Notice: If you enable binding with a mini program, please ensure that all parameters for the mini program are passed.
         self.check_file_body = check_file_body
-        # Name of the uploaded verification file.
+        # Scenario name.
         self.check_file_name = check_file_name
+        # Name of the uploaded verification file.
         self.device_risk_plus = device_risk_plus
-        # Mini program name.
+        # System-defined parameter. Value: **UpdateAntCloudAuthScene**.
         self.mini_program_name = mini_program_name
-        # Binding mini program platform:
+        # Currently meaningless, can be omitted.
+        self.platform = platform
+        # Mini program name.
+        self.return_pic_count = return_pic_count
+        # Platform for binding the mini program:
         # - **WECHAT**: WeChat
         # - **ALIPAY**: Alipay
         # - **TIKTOK**: TikTok
-        self.platform = platform
-        self.return_pic_count = return_pic_count
         self.return_video_length = return_video_length
-        # Scenario ID.
+        # Update Financial-Level Authentication Scenario
         # 
         # This parameter is required.
         self.scene_id = scene_id
-        # Scenario name.
+        # Update the information of a financial-level authentication scenario based on the scenario ID.
+        # - Service address: cloudauth.aliyuncs.com.
+        # - Request method: HTTPS POST.
         self.scene_name = scene_name
-        # Currently meaningless, can be omitted.
+        # Update Ant Blockchain Transaction Scenario
         self.status = status
-        # Whether to enable delivering the authentication files generated during the authentication process to the user\\"s OSS:
-        # - **Y**: Enable
-        # - **N (default)**: Disable
+        # Update the information of a financial-level authentication scenario based on the scenario ID.
+        # - Service address: cloudauth.aliyuncs.com.
+        # - Request method: HTTPS POST.
         self.store_image = store_image
 
     def validate(self):

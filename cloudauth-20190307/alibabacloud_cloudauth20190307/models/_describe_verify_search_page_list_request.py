@@ -38,11 +38,11 @@ class DescribeVerifySearchPageListRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # End date of the query. The format is a Unix timestamp, in milliseconds.
+        # End time of the query. Format is Unix timestamp, in milliseconds.
         self.end_date = end_date
-        # Whether there is device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
+        # Whether there is a device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
         self.has_device_risk = has_device_risk
-        # Liveness detection model.
+        # Model for liveness detection.
         self.model = model
         # Unique identifier for the customer request.
         self.outer_order_no = outer_order_no
@@ -56,10 +56,25 @@ class DescribeVerifySearchPageListRequest(DaraModel):
         self.passed = passed
         # Product code.
         self.product_code = product_code
+        # Business scenario risk
+        # - **0**: No risk
+        # - **1**: Risk present
         self.risk_biz_scenario = risk_biz_scenario
+        # Device risk:
+        # - **0**: No risk
+        # - **1**: Risk present
         self.risk_device = risk_device
+        # DeviceToken risk:
+        # - **0**: No risk
+        # - **1**: Risk present
         self.risk_device_token = risk_device_token
+        # General risk
+        # - **0**: No risk
+        # - **1**: Risk present
         self.risk_generic = risk_generic
+        # Large model mining risk
+        # - **0**: No risk
+        # - **1**: Risk present
         self.risk_model_mining = risk_model_mining
         # Whether it is rooted (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
         self.root = root
@@ -67,7 +82,7 @@ class DescribeVerifySearchPageListRequest(DaraModel):
         self.scene_id = scene_id
         # Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
         self.simulator = simulator
-        # Start date of the query.
+        # Start time of the query.
         self.start_date = start_date
         # Result Code. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
         self.sub_code = sub_code
