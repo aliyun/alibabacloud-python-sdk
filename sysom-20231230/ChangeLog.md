@@ -6,6 +6,14 @@
 - Update API UpdateAlertStrategy: add request parameters body.strategy.destinations.
 
 
+2026-04-14 Version: 1.15.0
+- Support API CpuHighAgentStreamResponse.
+- Update API CreateAlertStrategy: add request parameters body.strategy.destinations.
+- Update API GetAlertStrategy: add response parameters Body.data.strategy.destinations.
+- Update API ListAlertStrategies: add response parameters Body.data.$.strategy.destinations.
+- Update API UpdateAlertStrategy: add request parameters body.strategy.destinations.
+
+
 2026-02-01 Version: 1.14.1
 - Update API GetAgentTask: add response parameters Body.data.jobs.$.errorCode.
 - Update API GetAgentTask: add response parameters Body.data.jobs.$.errorMessage.
