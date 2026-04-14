@@ -14,6 +14,8 @@ class ListWhitelistTemplatesRequest(DaraModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        # RegionId
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.template_name = template_name

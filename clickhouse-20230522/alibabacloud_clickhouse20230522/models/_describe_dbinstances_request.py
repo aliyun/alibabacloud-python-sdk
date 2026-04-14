@@ -18,6 +18,7 @@ class DescribeDBInstancesRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[main_models.DescribeDBInstancesRequestTags] = None,
+        vpc_ids: str = None,
     ):
         # The cluster IDs. Separate multiple cluster IDs with commas (,).
         self.dbinstance_ids = dbinstance_ids
@@ -34,6 +35,7 @@ class DescribeDBInstancesRequest(DaraModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.tags = tags
+        self.vpc_ids = vpc_ids
 
     def validate(self):
         if self.tags:
@@ -72,6 +74,9 @@ class DescribeDBInstancesRequest(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.vpc_ids is not None:
+            result['VpcIds'] = self.vpc_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -102,6 +107,9 @@ class DescribeDBInstancesRequest(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.DescribeDBInstancesRequestTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('VpcIds') is not None:
+            self.vpc_ids = m.get('VpcIds')
 
         return self
 

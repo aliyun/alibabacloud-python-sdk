@@ -1,3 +1,8 @@
+2026-04-14 Version: 2.5.1
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.LangfuseInstanceIds.
+- Update API DescribeDBInstances: add request parameters VpcIds.
+
+
 2026-03-24 Version: 2.5.0
 - Support API DescribeRegions.
 

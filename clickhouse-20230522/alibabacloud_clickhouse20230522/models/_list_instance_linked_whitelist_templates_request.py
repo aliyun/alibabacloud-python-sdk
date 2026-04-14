@@ -12,6 +12,8 @@ class ListInstanceLinkedWhitelistTemplatesRequest(DaraModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # RegionId
+        # 
         # This parameter is required.
         self.region_id = region_id
 

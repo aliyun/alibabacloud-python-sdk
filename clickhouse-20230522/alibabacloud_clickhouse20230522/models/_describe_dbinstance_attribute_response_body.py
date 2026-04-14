@@ -64,6 +64,7 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         engine_minor_version: str = None,
         engine_version: str = None,
         expire_time: str = None,
+        langfuse_instance_ids: List[str] = None,
         latest_engine_minor_version: str = None,
         lock_mode: str = None,
         lock_reason: str = None,
@@ -123,6 +124,7 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         # 
         # >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
         self.expire_time = expire_time
+        self.langfuse_instance_ids = langfuse_instance_ids
         # The latest minor engine version.
         self.latest_engine_minor_version = latest_engine_minor_version
         # The lock mode of the cluster.
@@ -229,6 +231,9 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+
+        if self.langfuse_instance_ids is not None:
+            result['LangfuseInstanceIds'] = self.langfuse_instance_ids
 
         if self.latest_engine_minor_version is not None:
             result['LatestEngineMinorVersion'] = self.latest_engine_minor_version
@@ -353,6 +358,9 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
 
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+
+        if m.get('LangfuseInstanceIds') is not None:
+            self.langfuse_instance_ids = m.get('LangfuseInstanceIds')
 
         if m.get('LatestEngineMinorVersion') is not None:
             self.latest_engine_minor_version = m.get('LatestEngineMinorVersion')

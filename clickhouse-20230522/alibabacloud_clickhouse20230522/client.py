@@ -1969,6 +1969,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
+        if not DaraCore.is_null(request.vpc_ids):
+            query['VpcIds'] = request.vpc_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2011,6 +2013,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
+        if not DaraCore.is_null(request.vpc_ids):
+            query['VpcIds'] = request.vpc_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -12,6 +12,8 @@ class UpdateWhitelistTemplateRequest(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # RegionId
+        # 
         # This parameter is required.
         self.region_id = region_id
         # This parameter is required.
