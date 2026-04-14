@@ -1,3 +1,6 @@
+2026-04-14 Version: 6.13.3
+- Generated python 2021-07-01 for eas.
+
 2026-04-14 Version: 6.13.2
 - Update API DescribeServiceEvent: add response parameters Body.Events.$.Resource.
 
