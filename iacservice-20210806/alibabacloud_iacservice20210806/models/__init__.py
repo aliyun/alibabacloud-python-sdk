@@ -49,6 +49,9 @@ from ._create_registry_namespace_response import CreateRegistryNamespaceResponse
 from ._create_resource_export_task_request import CreateResourceExportTaskRequest
 from ._create_resource_export_task_response_body import CreateResourceExportTaskResponseBody
 from ._create_resource_export_task_response import CreateResourceExportTaskResponse
+from ._create_stack_request import CreateStackRequest
+from ._create_stack_response_body import CreateStackResponseBody
+from ._create_stack_response import CreateStackResponse
 from ._create_task_request import CreateTaskRequest
 from ._create_task_response_body import CreateTaskResponseBody
 from ._create_task_response import CreateTaskResponse
@@ -154,6 +157,9 @@ from ._get_resource_export_task_response import GetResourceExportTaskResponse
 from ._get_resource_type_request import GetResourceTypeRequest
 from ._get_resource_type_response_body import GetResourceTypeResponseBody
 from ._get_resource_type_response import GetResourceTypeResponse
+from ._get_stack_request import GetStackRequest
+from ._get_stack_response_body import GetStackResponseBody
+from ._get_stack_response import GetStackResponse
 from ._get_stack_deployments_request import GetStackDeploymentsRequest
 from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBody
 from ._get_stack_deployments_response import GetStackDeploymentsResponse
@@ -230,6 +236,12 @@ from ._list_resource_types_response import ListResourceTypesResponse
 from ._list_resources_request import ListResourcesRequest
 from ._list_resources_response_body import ListResourcesResponseBody
 from ._list_resources_response import ListResourcesResponse
+from ._list_stack_configs_request import ListStackConfigsRequest
+from ._list_stack_configs_response_body import ListStackConfigsResponseBody
+from ._list_stack_configs_response import ListStackConfigsResponse
+from ._list_stacks_request import ListStacksRequest
+from ._list_stacks_response_body import ListStacksResponseBody
+from ._list_stacks_response import ListStacksResponse
 from ._list_tasks_request import ListTasksRequest
 from ._list_tasks_shrink_request import ListTasksShrinkRequest
 from ._list_tasks_response_body import ListTasksResponseBody
@@ -280,6 +292,9 @@ from ._update_registry_namespace_attribute_response import UpdateRegistryNamespa
 from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequest
 from ._update_resource_export_task_attribute_response_body import UpdateResourceExportTaskAttributeResponseBody
 from ._update_resource_export_task_attribute_response import UpdateResourceExportTaskAttributeResponse
+from ._update_stack_request import UpdateStackRequest
+from ._update_stack_response_body import UpdateStackResponseBody
+from ._update_stack_response import UpdateStackResponse
 from ._update_task_attribute_request import UpdateTaskAttributeRequest
 from ._update_task_attribute_response_body import UpdateTaskAttributeResponseBody
 from ._update_task_attribute_response import UpdateTaskAttributeResponse
@@ -328,6 +343,8 @@ from ._get_resource_export_task_response_body import GetResourceExportTaskRespon
 from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTask
 from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceTypeOperations
 from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceType
+from ._get_stack_response_body import GetStackResponseBodyStackConfig
+from ._get_stack_response_body import GetStackResponseBodyStack
 from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsConfig
 from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsOutputs
 from ._get_stack_deployments_response_body import GetStackDeploymentsResponseBodyDeploymentsParameters
@@ -386,6 +403,16 @@ from ._list_resource_export_tasks_response_body import ListResourceExportTasksRe
 from ._list_resource_types_response_body import ListResourceTypesResponseBodyResourceTypes
 from ._list_resources_response_body import ListResourcesResponseBodyResourcesTags
 from ._list_resources_response_body import ListResourcesResponseBodyResources
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsComponentConfigComponent
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsComponentConfigOutput
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsComponentConfigVariable
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsComponentConfig
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsDeploymentConfigUpstreamInput
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigsDeploymentConfig
+from ._list_stack_configs_response_body import ListStackConfigsResponseBodyConfigs
+from ._list_stacks_response_body import ListStacksResponseBodyStacks
 from ._list_tasks_request import ListTasksRequestTag
 from ._list_tasks_response_body import ListTasksResponseBodyTasksGroupInfo
 from ._list_tasks_response_body import ListTasksResponseBodyTasksTags
@@ -451,6 +478,9 @@ __all__ = [
     CreateResourceExportTaskRequest,
     CreateResourceExportTaskResponseBody,
     CreateResourceExportTaskResponse,
+    CreateStackRequest,
+    CreateStackResponseBody,
+    CreateStackResponse,
     CreateTaskRequest,
     CreateTaskResponseBody,
     CreateTaskResponse,
@@ -556,6 +586,9 @@ __all__ = [
     GetResourceTypeRequest,
     GetResourceTypeResponseBody,
     GetResourceTypeResponse,
+    GetStackRequest,
+    GetStackResponseBody,
+    GetStackResponse,
     GetStackDeploymentsRequest,
     GetStackDeploymentsResponseBody,
     GetStackDeploymentsResponse,
@@ -632,6 +665,12 @@ __all__ = [
     ListResourcesRequest,
     ListResourcesResponseBody,
     ListResourcesResponse,
+    ListStackConfigsRequest,
+    ListStackConfigsResponseBody,
+    ListStackConfigsResponse,
+    ListStacksRequest,
+    ListStacksResponseBody,
+    ListStacksResponse,
     ListTasksRequest,
     ListTasksShrinkRequest,
     ListTasksResponseBody,
@@ -682,6 +721,9 @@ __all__ = [
     UpdateResourceExportTaskAttributeRequest,
     UpdateResourceExportTaskAttributeResponseBody,
     UpdateResourceExportTaskAttributeResponse,
+    UpdateStackRequest,
+    UpdateStackResponseBody,
+    UpdateStackResponse,
     UpdateTaskAttributeRequest,
     UpdateTaskAttributeResponseBody,
     UpdateTaskAttributeResponse,
@@ -730,6 +772,8 @@ __all__ = [
     GetResourceExportTaskResponseBodyTask,
     GetResourceTypeResponseBodyResourceTypeOperations,
     GetResourceTypeResponseBodyResourceType,
+    GetStackResponseBodyStackConfig,
+    GetStackResponseBodyStack,
     GetStackDeploymentsResponseBodyDeploymentsConfig,
     GetStackDeploymentsResponseBodyDeploymentsOutputs,
     GetStackDeploymentsResponseBodyDeploymentsParameters,
@@ -788,6 +832,16 @@ __all__ = [
     ListResourceTypesResponseBodyResourceTypes,
     ListResourcesResponseBodyResourcesTags,
     ListResourcesResponseBodyResources,
+    ListStackConfigsResponseBodyConfigsComponentConfigComponent,
+    ListStackConfigsResponseBodyConfigsComponentConfigOutput,
+    ListStackConfigsResponseBodyConfigsComponentConfigVariable,
+    ListStackConfigsResponseBodyConfigsComponentConfig,
+    ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment,
+    ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput,
+    ListStackConfigsResponseBodyConfigsDeploymentConfigUpstreamInput,
+    ListStackConfigsResponseBodyConfigsDeploymentConfig,
+    ListStackConfigsResponseBodyConfigs,
+    ListStacksResponseBodyStacks,
     ListTasksRequestTag,
     ListTasksResponseBodyTasksGroupInfo,
     ListTasksResponseBodyTasksTags,

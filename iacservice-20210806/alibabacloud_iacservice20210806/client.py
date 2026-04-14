@@ -1628,6 +1628,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_resource_export_task_with_options_async(request, headers, runtime)
 
+    def create_stack_with_options(
+        self,
+        request: main_models.CreateStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateStackResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.source_path):
+            body['sourcePath'] = request.source_path
+        if not DaraCore.is_null(request.working_directory):
+            body['workingDirectory'] = request.working_directory
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateStackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_stack_with_options_async(
+        self,
+        request: main_models.CreateStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateStackResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.source_path):
+            body['sourcePath'] = request.source_path
+        if not DaraCore.is_null(request.working_directory):
+            body['workingDirectory'] = request.working_directory
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_stack(
+        self,
+        request: main_models.CreateStackRequest,
+    ) -> main_models.CreateStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_stack_with_options(request, headers, runtime)
+
+    async def create_stack_async(
+        self,
+        request: main_models.CreateStackRequest,
+    ) -> main_models.CreateStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_stack_with_options_async(request, headers, runtime)
+
     def create_task_with_options(
         self,
         request: main_models.CreateTaskRequest,
@@ -4424,6 +4524,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_resource_type_with_options_async(resource_type, request, headers, runtime)
 
+    def get_stack_with_options(
+        self,
+        stack_id: str,
+        request: main_models.GetStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStackResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_stack_with_options_async(
+        self,
+        stack_id: str,
+        request: main_models.GetStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStackResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_stack(
+        self,
+        stack_id: str,
+        request: main_models.GetStackRequest,
+    ) -> main_models.GetStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_stack_with_options(stack_id, request, headers, runtime)
+
+    async def get_stack_async(
+        self,
+        stack_id: str,
+        request: main_models.GetStackRequest,
+    ) -> main_models.GetStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_stack_with_options_async(stack_id, request, headers, runtime)
+
     def get_stack_deployments_with_options(
         self,
         stack_id: str,
@@ -6620,6 +6792,194 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_resources_with_options_async(request, headers, runtime)
 
+    def list_stack_configs_with_options(
+        self,
+        stack_id: str,
+        request: main_models.ListStackConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListStackConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListStackConfigs',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}/configs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListStackConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_stack_configs_with_options_async(
+        self,
+        stack_id: str,
+        request: main_models.ListStackConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListStackConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListStackConfigs',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}/configs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListStackConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_stack_configs(
+        self,
+        stack_id: str,
+        request: main_models.ListStackConfigsRequest,
+    ) -> main_models.ListStackConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_stack_configs_with_options(stack_id, request, headers, runtime)
+
+    async def list_stack_configs_async(
+        self,
+        stack_id: str,
+        request: main_models.ListStackConfigsRequest,
+    ) -> main_models.ListStackConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_stack_configs_with_options_async(stack_id, request, headers, runtime)
+
+    def list_stacks_with_options(
+        self,
+        request: main_models.ListStacksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListStacksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListStacks',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListStacksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_stacks_with_options_async(
+        self,
+        request: main_models.ListStacksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListStacksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListStacks',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListStacksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_stacks(
+        self,
+        request: main_models.ListStacksRequest,
+    ) -> main_models.ListStacksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_stacks_with_options(request, headers, runtime)
+
+    async def list_stacks_async(
+        self,
+        request: main_models.ListStacksRequest,
+    ) -> main_models.ListStacksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_stacks_with_options_async(request, headers, runtime)
+
     def list_tasks_with_options(
         self,
         tmp_req: main_models.ListTasksRequest,
@@ -8187,6 +8547,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_resource_export_task_attribute_with_options_async(export_task_id, request, headers, runtime)
+
+    def update_stack_with_options(
+        self,
+        stack_id: str,
+        request: main_models.UpdateStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateStackResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.source_path):
+            body['sourcePath'] = request.source_path
+        if not DaraCore.is_null(request.working_directory):
+            body['workingDirectory'] = request.working_directory
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateStackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_stack_with_options_async(
+        self,
+        stack_id: str,
+        request: main_models.UpdateStackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateStackResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.source_path):
+            body['sourcePath'] = request.source_path
+        if not DaraCore.is_null(request.working_directory):
+            body['workingDirectory'] = request.working_directory
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateStack',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/stacks/{DaraURL.percent_encode(stack_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_stack(
+        self,
+        stack_id: str,
+        request: main_models.UpdateStackRequest,
+    ) -> main_models.UpdateStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_stack_with_options(stack_id, request, headers, runtime)
+
+    async def update_stack_async(
+        self,
+        stack_id: str,
+        request: main_models.UpdateStackRequest,
+    ) -> main_models.UpdateStackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_stack_with_options_async(stack_id, request, headers, runtime)
 
     def update_task_attribute_with_options(
         self,

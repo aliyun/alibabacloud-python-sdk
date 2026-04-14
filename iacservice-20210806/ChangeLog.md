@@ -1,3 +1,11 @@
+2026-04-14 Version: 2.8.0
+- Support API CreateStack.
+- Support API GetStack.
+- Support API ListStackConfigs.
+- Support API ListStacks.
+- Support API UpdateStack.
+
+
 2026-04-13 Version: 2.7.0
 - Support API AssociateDetectConfig.
 - Support API CreateDetectConfig.
