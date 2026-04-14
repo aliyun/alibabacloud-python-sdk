@@ -167,13 +167,19 @@ from ._create_trigger_request import CreateTriggerRequest
 from ._create_trigger_response import CreateTriggerResponse
 from ._create_vpc_binding_request import CreateVpcBindingRequest
 from ._create_vpc_binding_response import CreateVpcBindingResponse
+from ._delete_alias_request import DeleteAliasRequest
 from ._delete_alias_response import DeleteAliasResponse
 from ._delete_async_invoke_config_request import DeleteAsyncInvokeConfigRequest
 from ._delete_async_invoke_config_response import DeleteAsyncInvokeConfigResponse
+from ._delete_concurrency_config_request import DeleteConcurrencyConfigRequest
 from ._delete_concurrency_config_response import DeleteConcurrencyConfigResponse
+from ._delete_custom_domain_request import DeleteCustomDomainRequest
 from ._delete_custom_domain_response import DeleteCustomDomainResponse
+from ._delete_function_request import DeleteFunctionRequest
 from ._delete_function_response import DeleteFunctionResponse
+from ._delete_function_version_request import DeleteFunctionVersionRequest
 from ._delete_function_version_response import DeleteFunctionVersionResponse
+from ._delete_layer_version_request import DeleteLayerVersionRequest
 from ._delete_layer_version_response import DeleteLayerVersionResponse
 from ._delete_provision_config_request import DeleteProvisionConfigRequest
 from ._delete_provision_config_response import DeleteProvisionConfigResponse
@@ -181,27 +187,35 @@ from ._delete_scaling_config_request import DeleteScalingConfigRequest
 from ._delete_scaling_config_response import DeleteScalingConfigResponse
 from ._delete_session_request import DeleteSessionRequest
 from ._delete_session_response import DeleteSessionResponse
+from ._delete_trigger_request import DeleteTriggerRequest
 from ._delete_trigger_response import DeleteTriggerResponse
+from ._delete_vpc_binding_request import DeleteVpcBindingRequest
 from ._delete_vpc_binding_response import DeleteVpcBindingResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response import DescribeRegionsResponse
 from ._disable_function_invocation_request import DisableFunctionInvocationRequest
 from ._disable_function_invocation_response_body import DisableFunctionInvocationResponseBody
 from ._disable_function_invocation_response import DisableFunctionInvocationResponse
+from ._enable_function_invocation_request import EnableFunctionInvocationRequest
 from ._enable_function_invocation_response_body import EnableFunctionInvocationResponseBody
 from ._enable_function_invocation_response import EnableFunctionInvocationResponse
+from ._get_alias_request import GetAliasRequest
 from ._get_alias_response import GetAliasResponse
 from ._get_async_invoke_config_request import GetAsyncInvokeConfigRequest
 from ._get_async_invoke_config_response import GetAsyncInvokeConfigResponse
 from ._get_async_task_request import GetAsyncTaskRequest
 from ._get_async_task_response import GetAsyncTaskResponse
+from ._get_concurrency_config_request import GetConcurrencyConfigRequest
 from ._get_concurrency_config_response import GetConcurrencyConfigResponse
+from ._get_custom_domain_request import GetCustomDomainRequest
 from ._get_custom_domain_response import GetCustomDomainResponse
 from ._get_function_request import GetFunctionRequest
 from ._get_function_response import GetFunctionResponse
 from ._get_function_code_request import GetFunctionCodeRequest
 from ._get_function_code_response import GetFunctionCodeResponse
+from ._get_layer_version_request import GetLayerVersionRequest
 from ._get_layer_version_response import GetLayerVersionResponse
+from ._get_layer_version_by_arn_request import GetLayerVersionByArnRequest
 from ._get_layer_version_by_arn_response import GetLayerVersionByArnResponse
 from ._get_provision_config_request import GetProvisionConfigRequest
 from ._get_provision_config_response import GetProvisionConfigResponse
@@ -209,6 +223,7 @@ from ._get_scaling_config_request import GetScalingConfigRequest
 from ._get_scaling_config_response import GetScalingConfigResponse
 from ._get_session_request import GetSessionRequest
 from ._get_session_response import GetSessionResponse
+from ._get_trigger_request import GetTriggerRequest
 from ._get_trigger_response import GetTriggerResponse
 from ._invoke_function_headers import InvokeFunctionHeaders
 from ._invoke_function_request import InvokeFunctionRequest
@@ -246,6 +261,7 @@ from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
 from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_triggers_request import ListTriggersRequest
 from ._list_triggers_response import ListTriggersResponse
+from ._list_vpc_bindings_request import ListVpcBindingsRequest
 from ._list_vpc_bindings_response import ListVpcBindingsResponse
 from ._pause_session_request import PauseSessionRequest
 from ._pause_session_response import PauseSessionResponse
@@ -450,13 +466,19 @@ __all__ = [
     CreateTriggerResponse,
     CreateVpcBindingRequest,
     CreateVpcBindingResponse,
+    DeleteAliasRequest,
     DeleteAliasResponse,
     DeleteAsyncInvokeConfigRequest,
     DeleteAsyncInvokeConfigResponse,
+    DeleteConcurrencyConfigRequest,
     DeleteConcurrencyConfigResponse,
+    DeleteCustomDomainRequest,
     DeleteCustomDomainResponse,
+    DeleteFunctionRequest,
     DeleteFunctionResponse,
+    DeleteFunctionVersionRequest,
     DeleteFunctionVersionResponse,
+    DeleteLayerVersionRequest,
     DeleteLayerVersionResponse,
     DeleteProvisionConfigRequest,
     DeleteProvisionConfigResponse,
@@ -464,27 +486,35 @@ __all__ = [
     DeleteScalingConfigResponse,
     DeleteSessionRequest,
     DeleteSessionResponse,
+    DeleteTriggerRequest,
     DeleteTriggerResponse,
+    DeleteVpcBindingRequest,
     DeleteVpcBindingResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponse,
     DisableFunctionInvocationRequest,
     DisableFunctionInvocationResponseBody,
     DisableFunctionInvocationResponse,
+    EnableFunctionInvocationRequest,
     EnableFunctionInvocationResponseBody,
     EnableFunctionInvocationResponse,
+    GetAliasRequest,
     GetAliasResponse,
     GetAsyncInvokeConfigRequest,
     GetAsyncInvokeConfigResponse,
     GetAsyncTaskRequest,
     GetAsyncTaskResponse,
+    GetConcurrencyConfigRequest,
     GetConcurrencyConfigResponse,
+    GetCustomDomainRequest,
     GetCustomDomainResponse,
     GetFunctionRequest,
     GetFunctionResponse,
     GetFunctionCodeRequest,
     GetFunctionCodeResponse,
+    GetLayerVersionRequest,
     GetLayerVersionResponse,
+    GetLayerVersionByArnRequest,
     GetLayerVersionByArnResponse,
     GetProvisionConfigRequest,
     GetProvisionConfigResponse,
@@ -492,6 +522,7 @@ __all__ = [
     GetScalingConfigResponse,
     GetSessionRequest,
     GetSessionResponse,
+    GetTriggerRequest,
     GetTriggerResponse,
     InvokeFunctionHeaders,
     InvokeFunctionRequest,
@@ -529,6 +560,7 @@ __all__ = [
     ListTagResourcesResponse,
     ListTriggersRequest,
     ListTriggersResponse,
+    ListVpcBindingsRequest,
     ListVpcBindingsResponse,
     PauseSessionRequest,
     PauseSessionResponse,
