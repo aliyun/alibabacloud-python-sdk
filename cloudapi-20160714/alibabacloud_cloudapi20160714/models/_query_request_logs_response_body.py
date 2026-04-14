@@ -15,7 +15,6 @@ class QueryRequestLogsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The request logs.
         self.request_logs = request_logs
 
     def validate(self):
@@ -129,93 +128,49 @@ class QueryRequestLogsResponseBodyRequestLogsRequestLog(DaraModel):
         total_latency: str = None,
         plugin: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The application name.
         self.app_name = app_name
-        # The time when API Gateway finished forwarding the request to the backend service.
         self.backend_request_end = backend_request_end
-        # The time when API Gateway started to forward the request to the backend service.
         self.backend_request_start = backend_request_start
-        # The time when API Gateway finished receiving the response from the backend service.
         self.backend_response_end = backend_response_end
-        # The time when API Gateway started to receive the response from the backend service.
         self.backend_response_start = backend_response_start
-        # The IP address of the client that sends the request.
         self.client_ip = client_ip
-        # The X-Ca-Nonce header included in the request from the client.
         self.client_nonce = client_nonce
-        # The application ID that is used by the caller.
         self.consumer_app_id = consumer_app_id
-        # The App Key that is used by the caller.
         self.consumer_app_key = consumer_app_key
-        # The custom trace ID.
         self.custom_trace_id = custom_trace_id
-        # The requested domain name in the request.
         self.domain = domain
-        # The error code that is returned.
         self.error_code = error_code
-        # The error message returned if the call fails.
         self.error_message = error_message
-        # The specific error message returned by the backend service.
         self.exception = exception
-        # The time when API Gateway finished receiving the request.
         self.front_request_end = front_request_end
-        # The time when API Gateway started to receive the request.
         self.front_request_start = front_request_start
-        # The time when API Gateway finished forwarding the response to the client.
         self.front_response_end = front_response_end
-        # The time when API Gateway started to forward the response to the client.
         self.front_response_start = front_response_start
-        # The ID of the API group to which the API belongs.
         self.group_id = group_id
-        # The name of the API group to which the API belongs.
         self.group_name = group_name
-        # The HTTP method that is used to send the request.
         self.http_method = http_method
-        # The path of the request.
         self.http_path = http_path
-        # The initial request ID when API Gateway calls an API. For example, if API-1 calls API-2, the initialRequestId parameter in the log of API-2 indicates the ID of the request from API-1.
         self.initial_request_id = initial_request_id
-        # The ID of the API Gateway instance to which the API belongs.
         self.instance_id = instance_id
-        # The JSON web token (JWT) claims. The claims can be configured at the group level.
         self.jwt_claims = jwt_claims
-        # The region in which the instance resides.
         self.region = region
-        # The request body. A request body cannot exceed 1,024 bytes in size.
         self.request_body = request_body
-        # The request headers.
         self.request_headers = request_headers
-        # The request ID.
         self.request_id = request_id
-        # The protocol used by the client to send the request. Valid values: HTTP, HTTPS, and WS.
         self.request_protocol = request_protocol
-        # The query string for the request.
         self.request_query_string = request_query_string
-        # The size of the request. Unit: bytes.
         self.request_size = request_size
-        # The request time, in UTC.
         self.request_time = request_time
-        # The response body. A response body cannot exceed 1,024 bytes in size.
         self.response_body = response_body
-        # The headers in the API response.
         self.response_headers = response_headers
-        # The size of returned data. Unit: bytes.
         self.response_size = response_size
-        # The total time consumed to access the backend resources. The total time includes the time consumed to request a connection to the resources, the time consumed to establish the connection, and the time consumed to call the backend service. Unit: milliseconds.
         self.service_latency = service_latency
-        # The ID of the API environment.
         self.stage_id = stage_id
-        # The name of the API environment.
         self.stage_name = stage_name
-        # The status code returned.
         self.status_code = status_code
-        # The total time consumed by the request. Unit: milliseconds.
         self.total_latency = total_latency
-        # The plug-in hit by the request and the relevant context.
         self.plugin = plugin
 
     def validate(self):

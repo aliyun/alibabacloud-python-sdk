@@ -13,7 +13,6 @@ class RemoveVpcAccessResponseBody(DaraModel):
         apis: main_models.RemoveVpcAccessResponseBodyApis = None,
         request_id: str = None,
     ):
-        # API operations
         self.apis = apis
         # The ID of the request.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class RemoveVpcAccessResponseBodyApisApi(DaraModel):
         group_id: str = None,
         stage_id: str = None,
     ):
-        # API Id
         self.api_id = api_id
-        # The ID of the API group.
         self.group_id = group_id
-        # The ID of the runtime environment.
         self.stage_id = stage_id
 
     def validate(self):

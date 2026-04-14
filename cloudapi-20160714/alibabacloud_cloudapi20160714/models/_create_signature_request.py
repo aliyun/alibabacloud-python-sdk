@@ -12,7 +12,6 @@ class CreateSignatureRequest(DaraModel):
         signature_name: str = None,
         signature_secret: str = None,
     ):
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
         # 

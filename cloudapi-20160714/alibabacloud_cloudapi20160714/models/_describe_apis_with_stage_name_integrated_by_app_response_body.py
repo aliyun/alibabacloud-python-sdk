@@ -16,7 +16,6 @@ class DescribeApisWithStageNameIntegratedByAppResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The authorization information of the API.
         self.app_api_relation_infos = app_api_relation_infos
         # The page number of the returned page.
         self.page_number = page_number
@@ -124,32 +123,17 @@ class DescribeApisWithStageNameIntegratedByAppResponseBodyAppApiRelationInfosApp
         region_id: str = None,
         stage_name_and_auth: Dict[str, str] = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The authorization source.
         self.authorization_source = authorization_source
-        # The time when the authorization was created.
         self.created_time = created_time
-        # The API description.
         self.description = description
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the API group.
         self.group_name = group_name
-        # The request HTTP method of the API.
         self.method = method
-        # The authorizer. Valid values:
-        # 
-        # *   **PROVIDER:** the API owner
-        # *   **CONSUMER:** the API caller
         self.operator = operator
-        # The request path of the API.
         self.path = path
-        # The region ID.
         self.region_id = region_id
-        # The mapping information between environments and authorizations.
         self.stage_name_and_auth = stage_name_and_auth
 
     def validate(self):

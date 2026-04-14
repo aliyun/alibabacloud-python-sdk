@@ -14,9 +14,7 @@ class DescribeApiTrafficDataResponseBody(DaraModel):
         call_uploads: main_models.DescribeApiTrafficDataResponseBodyCallUploads = None,
         request_id: str = None,
     ):
-        # The returned downlink traffic data of API calls. It is an array consisting of MonitorItem data.
         self.call_downloads = call_downloads
-        # The returned uplink traffic data of API calls. It is an array consisting of MonitorItem data.
         self.call_uploads = call_uploads
         # The ID of the request.
         self.request_id = request_id
@@ -99,9 +97,7 @@ class DescribeApiTrafficDataResponseBodyCallUploadsMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The value corresponding to the monitoring metric.
         self.item_value = item_value
 
     def validate(self):
@@ -171,9 +167,7 @@ class DescribeApiTrafficDataResponseBodyCallDownloadsMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The value corresponding to the monitoring metric.
         self.item_value = item_value
 
     def validate(self):

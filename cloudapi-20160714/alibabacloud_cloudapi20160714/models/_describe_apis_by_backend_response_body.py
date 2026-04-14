@@ -16,7 +16,6 @@ class DescribeApisByBackendResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the returned API list.
         self.api_info_list = api_info_list
         # The number of the current page.
         self.page_number = page_number
@@ -119,19 +118,12 @@ class DescribeApisByBackendResponseBodyApiInfoListApiInfo(DaraModel):
         method: str = None,
         path: str = None,
     ):
-        # The ID of the API.
         self.api_id = api_id
-        # The name of the API.
         self.api_name = api_name
-        # The description of the API.
         self.description = description
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the API group.
         self.group_name = group_name
-        # The request method of the API.
         self.method = method
-        # The request path of the API.
         self.path = path
 
     def validate(self):

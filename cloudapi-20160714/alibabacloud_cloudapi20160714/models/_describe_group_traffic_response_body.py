@@ -15,7 +15,6 @@ class DescribeGroupTrafficResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The traffic information per second.
         self.traffic_per_second = traffic_per_second
 
     def validate(self):
@@ -88,14 +87,8 @@ class DescribeGroupTrafficResponseBodyTrafficPerSecondMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   inbound: traffic consumed by requests
-        # *   outbound: traffic consumed by responses
         self.item = item
-        # The corresponding time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ.
         self.item_time = item_time
-        # The traffic volume per second.
         self.item_value = item_value
 
     def validate(self):

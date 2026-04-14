@@ -17,17 +17,13 @@ class DryRunSwaggerResponseBody(DaraModel):
         request_id: str = None,
         success: main_models.DryRunSwaggerResponseBodySuccess = None,
     ):
-        # The APIs that failed to be created based on the Swagger-compliant data imported this time.
         self.failed = failed
         # The global condition.
         self.global_condition = global_condition
-        # The models that failed to be imported through the Swagger-compliant data this time.
         self.model_failed = model_failed
-        # The models that failed to be imported through the Swagger-compliant data this time.
         self.model_success = model_success
         # The ID of the request.
         self.request_id = request_id
-        # The APIs that are created based on the Swagger-compliant data imported this time.
         self.success = success
 
     def validate(self):
@@ -135,15 +131,10 @@ class DryRunSwaggerResponseBodySuccessApiDryRunSwaggerSuccess(DaraModel):
         http_method: str = None,
         path: str = None,
     ):
-        # Specifies whether the operation is CREATE or MODIFY.
         self.api_operation = api_operation
-        # The API definition that complies with the Swagger specification.
         self.api_swagger = api_swagger
-        # The UID of the successfully imported API.
         self.api_uid = api_uid
-        # The HTTP method configured when the API is created.
         self.http_method = http_method
-        # The request path configured when the API is created.
         self.path = path
 
     def validate(self):
@@ -233,13 +224,9 @@ class DryRunSwaggerResponseBodyModelSuccessApiImportModelSuccess(DaraModel):
         model_operation: str = None,
         model_uid: str = None,
     ):
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the model.
         self.model_name = model_name
-        # The model operation.
         self.model_operation = model_operation
-        # The UID of the model.
         self.model_uid = model_uid
 
     def validate(self):
@@ -322,11 +309,8 @@ class DryRunSwaggerResponseBodyModelFailedApiImportModelFailed(DaraModel):
         group_id: str = None,
         model_name: str = None,
     ):
-        # The error message.
         self.error_msg = error_msg
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the model.
         self.model_name = model_name
 
     def validate(self):
@@ -403,11 +387,8 @@ class DryRunSwaggerResponseBodyFailedApiImportSwaggerFailed(DaraModel):
         http_method: str = None,
         path: str = None,
     ):
-        # The error message returned when the API is created.
         self.error_msg = error_msg
-        # The HTTP method configured when the API is created.
         self.http_method = http_method
-        # The request path configured when the API is created.
         self.path = path
 
     def validate(self):

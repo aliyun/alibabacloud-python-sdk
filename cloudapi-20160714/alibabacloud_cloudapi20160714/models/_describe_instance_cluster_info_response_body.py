@@ -39,7 +39,6 @@ class DescribeInstanceClusterInfoResponseBody(DaraModel):
         self.instance_cluster_type = instance_cluster_type
         # The cluster version.
         self.instance_cluster_version = instance_cluster_version
-        # The dedicated instances contained in the cluster.
         self.instance_list = instance_list
         # The time when the cluster was last modified.
         self.modified_time = modified_time
@@ -182,13 +181,9 @@ class DescribeInstanceClusterInfoResponseBodyInstanceListInstance(DaraModel):
         instance_name: str = None,
         status: str = None,
     ):
-        # The error message returned if the call fails.
         self.error_message = error_message
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The instance status.
         self.status = status
 
     def validate(self):

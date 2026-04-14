@@ -16,7 +16,6 @@ class DescribeHistoryApisResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned API information. It is an array consisting of ApiHisItems.
         self.api_his_items = api_his_items
         # The page number of the returned page.
         self.page_number = page_number
@@ -123,30 +122,16 @@ class DescribeHistoryApisResponseBodyApiHisItemsApiHisItem(DaraModel):
         stage_name: str = None,
         status: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The time when the API was published. The time is displayed in UTC.
         self.deployed_time = deployed_time
-        # The API description.
         self.description = description
-        # The API group ID.
         self.group_id = group_id
-        # The name of the API group to which the API belongs.
         self.group_name = group_name
-        # The historical version of the API definition.
         self.history_version = history_version
-        # The region ID.
         self.region_id = region_id
-        # The environment alias.
         self.stage_alias = stage_alias
-        # The environment name. Valid values:
-        # 
-        # *   **RELEASE**
-        # *   **TEST**
         self.stage_name = stage_name
-        # Indicates whether an API version is effective. Valid values: ONLINE and OFFLINE.
         self.status = status
 
     def validate(self):

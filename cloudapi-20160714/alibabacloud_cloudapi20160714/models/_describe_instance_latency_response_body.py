@@ -13,7 +13,6 @@ class DescribeInstanceLatencyResponseBody(DaraModel):
         instance_latency: main_models.DescribeInstanceLatencyResponseBodyInstanceLatency = None,
         request_id: str = None,
     ):
-        # The list of average latencies in the instance.
         self.instance_latency = instance_latency
         # The ID of the request.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   gatewayLatency API: the processing latency of API Gateway
-        # *   latency: the processing latency of the backend service.
         self.item = item
-        # The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The value of the average latency.
         self.item_value = item_value
 
     def validate(self):

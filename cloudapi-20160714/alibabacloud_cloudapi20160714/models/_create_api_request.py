@@ -60,6 +60,9 @@ class CreateApiRequest(DaraModel):
         self.backend_enable = backend_enable
         # Specifies whether to enable backend services.
         self.backend_id = backend_id
+        # The parameters of API requests sent by API Gateway to the backend service.
+        # 
+        # For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
         self.constant_parameters = constant_parameters
         # The description of the API. The description can be up to 180 characters in length.
         self.description = description
@@ -70,7 +73,11 @@ class CreateApiRequest(DaraModel):
         # *   **HEADER**: AppCode can be placed in the Header parameter for authentication.
         # *   **HEADER_QUERY**: AppCode can be placed in the Header or Query parameter for authentication.
         self.disable_internet = disable_internet
+        # The return description of the API.
         self.error_code_samples = error_code_samples
+        # The sample error codes returned by the backend service.
+        # 
+        # For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).(Support up to 16KB)
         self.fail_result_sample = fail_result_sample
         # *   Specifies whether to set **DisableInternet** to **true** to limit API calls to within the VPC.
         # *   If you set **DisableInternet** to **false**, the limit is lifted. The default value is false when you create an API.
@@ -90,11 +97,14 @@ class CreateApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.request_config = request_config
+        # The common parameters of APIs in JSON format.
         self.request_parameters = request_parameters
         # *   Specifies whether to set **ForceNonceCheck** to **true** to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
         # *   If you set **ForceNonceCheck** to **false**, the check is not performed. The default value is false when you create an API.
         self.result_body_model = result_body_model
+        # The switch status of ACL. Valid values:- **on** and **off**.
         self.result_descriptions = result_descriptions
+        # An example of a response returned by the backend service. This value is used only to generate documentation. The actually returned result shall prevail.(Support up to 32KB)
         self.result_sample = result_sample
         # The sample response from the backend service.
         self.result_type = result_type
@@ -105,8 +115,13 @@ class CreateApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_config = service_config
+        # The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
+        # 
+        # For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
         self.service_parameters = service_parameters
+        # The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. Default value: JSON.
         self.service_parameters_map = service_parameters_map
+        # The parameters of the API.
         self.system_parameters = system_parameters
         # The list of tags.
         self.tag = tag

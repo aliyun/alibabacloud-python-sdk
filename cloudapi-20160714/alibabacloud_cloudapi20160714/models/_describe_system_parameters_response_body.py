@@ -15,7 +15,6 @@ class DescribeSystemParametersResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The returned information about system parameters. It is an array that consists of SystemParam data.
         self.system_params = system_params
 
     def validate(self):
@@ -89,13 +88,9 @@ class DescribeSystemParametersResponseBodySystemParamsSystemParamItem(DaraModel)
         param_name: str = None,
         param_type: str = None,
     ):
-        # Examples
         self.demo_value = demo_value
-        # The description of a parameter.
         self.description = description
-        # The name of the parameter.
         self.param_name = param_name
-        # The type of the parameter.
         self.param_type = param_type
 
     def validate(self):

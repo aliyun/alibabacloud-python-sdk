@@ -32,7 +32,6 @@ class UntagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The tag keys of the resource.
         self.tag_key = tag_key

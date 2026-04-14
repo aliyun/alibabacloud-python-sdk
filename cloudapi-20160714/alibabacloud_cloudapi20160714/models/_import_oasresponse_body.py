@@ -19,21 +19,15 @@ class ImportOASResponseBody(DaraModel):
         success_models: main_models.ImportOASResponseBodySuccessModels = None,
         warning_messages: main_models.ImportOASResponseBodyWarningMessages = None,
     ):
-        # The error messages that appear due to the invalid data in the imported file.
         self.error_messages = error_messages
-        # The APIs that failed to pass the precheck.
         self.failed_apis = failed_apis
-        # The information about the models that failed to pass the precheck.
         self.failed_models = failed_models
         # The ID of the asynchronous API import task that was generated during the import operation. This ID is used to query the execution status of the API import task.
         self.operation_id = operation_id
         # The ID of the request.
         self.request_id = request_id
-        # The information about the APIs that have passed the precheck.
         self.success_apis = success_apis
-        # The information about the models that have passed the precheck.
         self.success_models = success_models
-        # The warning messages that appear due to the invalid data in the imported file.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -185,13 +179,9 @@ class ImportOASResponseBodySuccessModelsSuccessModel(DaraModel):
         model_operation: str = None,
         model_uid: str = None,
     ):
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the model.
         self.model_name = model_name
-        # The operation of the model. Valid values: CREATE and MODIFY.
         self.model_operation = model_operation
-        # The UID of the model.
         self.model_uid = model_uid
 
     def validate(self):
@@ -275,13 +265,9 @@ class ImportOASResponseBodySuccessApisSuccessApi(DaraModel):
         http_method: str = None,
         path: str = None,
     ):
-        # The ID of the API.
         self.api_id = api_id
-        # Indicates that the operation is CREATE or MODIFY.
         self.api_operation = api_operation
-        # The HTTP method configured when you created the API.
         self.http_method = http_method
-        # The request path configured when you created the API.
         self.path = path
 
     def validate(self):
@@ -364,11 +350,8 @@ class ImportOASResponseBodyFailedModelsFailedModel(DaraModel):
         group_id: str = None,
         model_name: str = None,
     ):
-        # The error message.
         self.error_msg = error_msg
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the model.
         self.model_name = model_name
 
     def validate(self):
@@ -445,11 +428,8 @@ class ImportOASResponseBodyFailedApisFailedApi(DaraModel):
         http_method: str = None,
         path: str = None,
     ):
-        # The error message.
         self.error_msg = error_msg
-        # The HTTP method configured when you created the API.
         self.http_method = http_method
-        # The request path configured when you created the API.
         self.path = path
 
     def validate(self):

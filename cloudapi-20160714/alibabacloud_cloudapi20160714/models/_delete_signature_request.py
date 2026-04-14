@@ -10,7 +10,6 @@ class DeleteSignatureRequest(DaraModel):
         security_token: str = None,
         signature_id: str = None,
     ):
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The ID of the key to be deleted.
         # 

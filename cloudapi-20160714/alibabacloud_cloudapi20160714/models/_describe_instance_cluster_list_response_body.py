@@ -16,7 +16,6 @@ class DescribeInstanceClusterListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The instance cluster list.
         self.instance_clusters = instance_clusters
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,21 +119,13 @@ class DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster(Dar
         modified_time: str = None,
         region_id: str = None,
     ):
-        # The time when the cluster was created. The time is displayed in UTC.
         self.created_time = created_time
-        # The cluster description.
         self.description = description
-        # The cluster ID.
         self.instance_cluster_id = instance_cluster_id
-        # The cluster name.
         self.instance_cluster_name = instance_cluster_name
-        # The cluster status.
         self.instance_cluster_status = instance_cluster_status
-        # The cluster type.
         self.instance_cluster_type = instance_cluster_type
-        # The time when the cluster was last modified. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The region ID of the cluster.
         self.region_id = region_id
 
     def validate(self):

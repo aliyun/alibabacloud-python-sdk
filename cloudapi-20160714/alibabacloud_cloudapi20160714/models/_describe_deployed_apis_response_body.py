@@ -16,7 +16,6 @@ class DescribeDeployedApisResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned API information. It is an array consisting of DeployedApiItem data.
         self.deployed_apis = deployed_apis
         # The page number of the returned page.
         self.page_number = page_number
@@ -123,33 +122,16 @@ class DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem(DaraModel):
         stage_name: str = None,
         visibility: str = None,
     ):
-        # The ID of the API.
         self.api_id = api_id
-        # The HTTP method of the API request.
         self.api_method = api_method
-        # The name of the API.
         self.api_name = api_name
-        # The request path of the API.
         self.api_path = api_path
-        # The publising time (UTC) of the API.
         self.deployed_time = deployed_time
-        # The description of the API.
         self.description = description
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the group to which the API belongs.
         self.group_name = group_name
-        # The region where the API is located.
         self.region_id = region_id
-        # The name of the runtime environment. Valid values:
-        # 
-        # *   **RELEASE**
-        # *   **TEST**
         self.stage_name = stage_name
-        # Indicates whether the API is public. Valid values:
-        # 
-        # *   **PUBLIC**
-        # *   **PRIVATE**
         self.visibility = visibility
 
     def validate(self):

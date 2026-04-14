@@ -16,7 +16,6 @@ class DescribeApiProductApisResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the returned APIs.
         self.api_info_list = api_info_list
         # The page number.
         self.page_number = page_number
@@ -121,27 +120,14 @@ class DescribeApiProductApisResponseBodyApiInfoListApiInfo(DaraModel):
         region_id: str = None,
         stage_name: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The API description.
         self.description = description
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the API group to which the API belongs.
         self.group_name = group_name
-        # The request method of the API.
         self.method = method
-        # The request path of the API.
         self.path = path
-        # The ID of the region where the API is deployed.
         self.region_id = region_id
-        # The environment to which the API is published. Valid values:
-        # 
-        # *   **RELEASE**: the production environment
-        # *   **PRE**: the staging environment
-        # *   **TEST**: the test environment
         self.stage_name = stage_name
 
     def validate(self):

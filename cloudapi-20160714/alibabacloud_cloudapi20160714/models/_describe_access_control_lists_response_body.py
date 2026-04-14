@@ -16,7 +16,6 @@ class DescribeAccessControlListsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ACLs.
         self.acls = acls
         # The page number of the current page.
         self.page_number = page_number
@@ -115,13 +114,8 @@ class DescribeAccessControlListsResponseBodyAclsAcl(DaraModel):
         acl_name: str = None,
         address_ipversion: str = None,
     ):
-        # The ID of the access control policy.
         self.acl_id = acl_id
-        # The name of the access control policy.
         self.acl_name = acl_name
-        # 访问控制策略组的IP版本。
-        # - **IPv4**。
-        # - **IPv6**。
         self.address_ipversion = address_ipversion
 
     def validate(self):

@@ -20,7 +20,6 @@ class DescribePluginsByGroupResponseBody(DaraModel):
         self.page_number = page_number
         # Pagination parameter: number of items per page.
         self.page_size = page_size
-        # Returns information about the plugins
         self.plugins = plugins
         # Request ID
         self.request_id = request_id
@@ -120,21 +119,13 @@ class DescribePluginsByGroupResponseBodyPluginsPluginAttribute(DaraModel):
         plugin_type: str = None,
         region_id: str = None,
     ):
-        # Creation time, in GMT
         self.created_time = created_time
-        # Plugin description
         self.description = description
-        # Last modified time, in GMT
         self.modified_time = modified_time
-        # Plugin definition statement
         self.plugin_data = plugin_data
-        # Plugin ID
         self.plugin_id = plugin_id
-        # Plugin name
         self.plugin_name = plugin_name
-        # Plugin type
         self.plugin_type = plugin_type
-        # 插件所在Region
         self.region_id = region_id
 
     def validate(self):

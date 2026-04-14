@@ -16,7 +16,6 @@ class DescribeAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned app information. It is an array consisting of AppItem data.
         self.apps = apps
         # The page number of the returned page.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class DescribeAppsResponseBodyAppsAppItem(DaraModel):
         app_name: str = None,
         description: str = None,
     ):
-        # The ID of the app.
         self.app_id = app_id
-        # The name of the app.
         self.app_name = app_name
-        # The description of the app.
         self.description = description
 
     def validate(self):

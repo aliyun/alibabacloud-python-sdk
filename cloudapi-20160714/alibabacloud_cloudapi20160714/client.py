@@ -10139,6 +10139,10 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         if not DaraCore.is_null(request.tag):
@@ -10177,6 +10181,10 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         if not DaraCore.is_null(request.tag):

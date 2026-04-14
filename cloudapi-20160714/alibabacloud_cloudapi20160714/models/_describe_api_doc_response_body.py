@@ -43,7 +43,6 @@ class DescribeApiDocResponseBody(DaraModel):
         # *   Specifies whether to set **DisableInternet** to **true** to limit API calls to within the VPC.
         # *   If you set **DisableInternet** to **false**, the limit is lifted. The default value is false when you create an API.
         self.disable_internet = disable_internet
-        # The sample error codes returned by the backend service.
         self.error_code_samples = error_code_samples
         # The sample error response from the backend service.
         self.fail_result_sample = fail_result_sample
@@ -60,7 +59,6 @@ class DescribeApiDocResponseBody(DaraModel):
         self.request_config = request_config
         # The ID of the request.
         self.request_id = request_id
-        # The returned frontend input parameters in the API. It is an array consisting of RequestParameter data.
         self.request_parameters = request_parameters
         # The sample response.
         self.result_sample = result_sample
@@ -266,39 +264,22 @@ class DescribeApiDocResponseBodyRequestParametersRequestParameter(DaraModel):
         regular_expression: str = None,
         required: str = None,
     ):
-        # The name of the parameter in the API request.
         self.api_parameter_name = api_parameter_name
-        # The type of the array element.
         self.array_items_type = array_items_type
-        # The default value.
         self.default_value = default_value
-        # The example value.
         self.demo_value = demo_value
-        # The parameter description.
         self.description = description
-        # The order in which the parameter is sorted in the document.
         self.doc_order = doc_order
-        # Indicates whether the document is public. Valid values: **PUBLIC** and **PRIVATE**.
         self.doc_show = doc_show
-        # The hash values that are supported when **ParameterType** is set to Int, Long, Float, Double, or String. Separate values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
         self.enum_value = enum_value
-        # JSON scheme
         self.json_scheme = json_scheme
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The maximum length.
         self.max_length = max_length
-        # The maximum value.
         self.max_value = max_value
-        # The minimum length.
         self.min_length = min_length
-        # The minimum value.
         self.min_value = min_value
-        # The data type of the parameter.
         self.parameter_type = parameter_type
-        # The regular expression that is used for parameter validation when **ParameterType** is set to String.
         self.regular_expression = regular_expression
-        # Indicates whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -547,11 +528,8 @@ class DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample(DaraModel):
         description: str = None,
         message: str = None,
     ):
-        # The returned error code.
         self.code = code
-        # The error description.
         self.description = description
-        # The returned error message.
         self.message = message
 
     def validate(self):

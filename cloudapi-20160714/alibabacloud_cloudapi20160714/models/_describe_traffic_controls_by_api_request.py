@@ -20,7 +20,6 @@ class DescribeTrafficControlsByApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The runtime environment of the API. Valid values:
         # 

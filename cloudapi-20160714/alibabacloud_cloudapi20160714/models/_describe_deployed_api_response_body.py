@@ -57,9 +57,7 @@ class DescribeDeployedApiResponseBody(DaraModel):
         # 
         #     *   All users who have obtained the API service information can call this API. API Gateway does not authenticate callers and cannot set user-specific throttling policies. If you make this API public, set API-specific throttling policies.
         self.auth_type = auth_type
-        # The constant parameters.
         self.constant_parameters = constant_parameters
-        # The custom system parameters.
         self.custom_system_parameters = custom_system_parameters
         # The deployment time. Format: yyyy-mm-ddhh:mm:ss.
         self.deployed_time = deployed_time
@@ -70,9 +68,6 @@ class DescribeDeployedApiResponseBody(DaraModel):
         # 
         # >  If you do not set this parameter, the original value is not modified.
         self.disable_internet = disable_internet
-        # The sample error codes returned by the backend service.
-        # 
-        # For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).
         self.error_code_samples = error_code_samples
         # The sample error response from the backend service.
         self.fail_result_sample = fail_result_sample
@@ -93,13 +88,9 @@ class DescribeDeployedApiResponseBody(DaraModel):
         self.request_config = request_config
         # The ID of the request.
         self.request_id = request_id
-        # The parameters of API requests sent by the consumer to API Gateway.
-        # 
-        # For more information, see [RequestParameter](https://help.aliyun.com/document_detail/43986.html).
         self.request_parameters = request_parameters
         # The return description of the API.
         self.result_body_model = result_body_model
-        # The return description of the API.
         self.result_descriptions = result_descriptions
         # The sample response from the backend service.
         self.result_sample = result_sample
@@ -109,13 +100,7 @@ class DescribeDeployedApiResponseBody(DaraModel):
         # 
         # For more information, see [ServiceConfig](https://help.aliyun.com/document_detail/43987.html).
         self.service_config = service_config
-        # The parameters of API requests sent by API Gateway to the backend service.
-        # 
-        # For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
         self.service_parameters = service_parameters
-        # The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
-        # 
-        # For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
         self.service_parameters_map = service_parameters_map
         # The name of the runtime environment. Valid values:
         # 
@@ -123,7 +108,6 @@ class DescribeDeployedApiResponseBody(DaraModel):
         # *   **PRE: the pre-release environment**
         # *   **TEST**
         self.stage_name = stage_name
-        # System parameters
         self.system_parameters = system_parameters
         # Specifies whether to make the API public. Valid values:
         # 
@@ -395,15 +379,10 @@ class DescribeDeployedApiResponseBodySystemParametersSystemParameter(DaraModel):
         parameter_name: str = None,
         service_parameter_name: str = None,
     ):
-        # Examples
         self.demo_value = demo_value
-        # The description.
         self.description = description
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
         self.parameter_name = parameter_name
-        # The name of the corresponding backend parameter.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -491,9 +470,7 @@ class DescribeDeployedApiResponseBodyServiceParametersMapServiceParameterMap(Dar
         request_parameter_name: str = None,
         service_parameter_name: str = None,
     ):
-        # The name of the front-end input parameter.
         self.request_parameter_name = request_parameter_name
-        # The name of the backend service parameter.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -564,11 +541,8 @@ class DescribeDeployedApiResponseBodyServiceParametersServiceParameter(DaraModel
         parameter_type: str = None,
         service_parameter_name: str = None,
     ):
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The data type of the back-end service parameter.
         self.parameter_type = parameter_type
-        # The name of the backend service parameter.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -627,7 +601,6 @@ class DescribeDeployedApiResponseBodyServiceConfig(DaraModel):
         # *   **TRUE: The Mock mode is enabled.**
         # *   **FALSE: The Mock mode is not enabled.
         self.mock = mock
-        # The simulated Headers.
         self.mock_headers = mock_headers
         # The result returned when the Mock mode is enabled.
         self.mock_result = mock_result
@@ -848,9 +821,7 @@ class DescribeDeployedApiResponseBodyServiceConfigMockHeadersMockHeader(DaraMode
         header_name: str = None,
         header_value: str = None,
     ):
-        # The name of the HTTP header parameter.
         self.header_name = header_name
-        # The value of the HTTP header parameter.
         self.header_value = header_value
 
     def validate(self):
@@ -1057,21 +1028,13 @@ class DescribeDeployedApiResponseBodyResultDescriptionsResultDescription(DaraMod
         pid: str = None,
         type: str = None,
     ):
-        # The description.
         self.description = description
-        # Specifies whether a subnode exists.
         self.has_child = has_child
-        # The ID of the result.
         self.id = id
-        # The primary key of the result.
         self.key = key
-        # Specifies whether the parameter is required.
         self.mandatory = mandatory
-        # The name of the result.
         self.name = name
-        # The ID of the parent node.
         self.pid = pid
-        # The type of the result.
         self.type = type
 
     def validate(self):
@@ -1192,39 +1155,22 @@ class DescribeDeployedApiResponseBodyRequestParametersRequestParameter(DaraModel
         regular_expression: str = None,
         required: str = None,
     ):
-        # The name of the API parameter.
         self.api_parameter_name = api_parameter_name
-        # The type of the array element.
         self.array_items_type = array_items_type
-        # The default value.
         self.default_value = default_value
-        # Example
         self.demo_value = demo_value
-        # Description
         self.description = description
-        # The order in the document.
         self.doc_order = doc_order
-        # Specifies whether the document is public. Valid values: PUBLIC and PRIVATE.
         self.doc_show = doc_show
-        # The hash values that can be entered when ParameterType is set to Int, Long, Float, Double, or String. Separate different values with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
         self.enum_value = enum_value
-        # JSON scheme
         self.json_scheme = json_scheme
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The maximum parameter length when ParameterType is set to String.
         self.max_length = max_length
-        # The maximum parameter value when ParameterType is set to Int, Long, Float, or Double.
         self.max_value = max_value
-        # The minimum parameter length when ParameterType is set to String.
         self.min_length = min_length
-        # The minimum parameter value when ParameterType is set to Int, Long, Float, or Double.
         self.min_value = min_value
-        # The type of a request parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
         self.parameter_type = parameter_type
-        # The regular expression used for parameter validation when ParameterType is set to String.
         self.regular_expression = regular_expression
-        # Indicates whether the parameter is required. Valid values: REQUIRED and OPTIONAL.
         self.required = required
 
     def validate(self):
@@ -1531,11 +1477,8 @@ class DescribeDeployedApiResponseBodyErrorCodeSamplesErrorCodeSample(DaraModel):
         description: str = None,
         message: str = None,
     ):
-        # The error code.
         self.code = code
-        # The description.
         self.description = description
-        # The error message.
         self.message = message
 
     def validate(self):
@@ -1614,15 +1557,10 @@ class DescribeDeployedApiResponseBodyCustomSystemParametersCustomSystemParameter
         parameter_name: str = None,
         service_parameter_name: str = None,
     ):
-        # Example
         self.demo_value = demo_value
-        # The description.
         self.description = description
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The name of the custom system parameter.
         self.parameter_name = parameter_name
-        # The name of the corresponding backend parameter.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -1712,13 +1650,9 @@ class DescribeDeployedApiResponseBodyConstantParametersConstantParameter(DaraMod
         location: str = None,
         service_parameter_name: str = None,
     ):
-        # The constant value.
         self.constant_value = constant_value
-        # The description.
         self.description = description
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The name of the backend service parameter.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):

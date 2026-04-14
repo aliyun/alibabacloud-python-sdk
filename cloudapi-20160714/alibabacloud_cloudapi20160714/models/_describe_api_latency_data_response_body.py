@@ -13,7 +13,6 @@ class DescribeApiLatencyDataResponseBody(DaraModel):
         call_latencys: main_models.DescribeApiLatencyDataResponseBodyCallLatencys = None,
         request_id: str = None,
     ):
-        # The returned information about API call latency. It is an array consisting of MonitorItem data.
         self.call_latencys = call_latencys
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeApiLatencyDataResponseBodyCallLatencysMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The value corresponding to the monitoring metric.
         self.item_value = item_value
 
     def validate(self):

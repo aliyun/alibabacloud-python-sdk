@@ -21,7 +21,6 @@ class DescribePurchasedApiGroupResponseBody(DaraModel):
     ):
         # The description of the API group.
         self.description = description
-        # The list of domain names.
         self.domains = domains
         # The ID of the API group.
         self.group_id = group_id
@@ -143,7 +142,6 @@ class DescribePurchasedApiGroupResponseBodyDomainsDomainItem(DaraModel):
         self,
         domain_name: str = None,
     ):
-        # The domain name.
         self.domain_name = domain_name
 
     def validate(self):

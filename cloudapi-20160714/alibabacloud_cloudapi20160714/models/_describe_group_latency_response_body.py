@@ -13,7 +13,6 @@ class DescribeGroupLatencyResponseBody(DaraModel):
         latency_packet: main_models.DescribeGroupLatencyResponseBodyLatencyPacket = None,
         request_id: str = None,
     ):
-        # The latency information.
         self.latency_packet = latency_packet
         # The request ID.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class DescribeGroupLatencyResponseBodyLatencyPacketMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   latency: the backend processing latency
-        # *   gatewayLatency: the API Gateway processing latency
         self.item = item
-        # The point in time when the latency data was collected. The format is YYYY-MM-DDThh:mm:ssZ.
         self.item_time = item_time
-        # The latency. Unit: ms.
         self.item_value = item_value
 
     def validate(self):

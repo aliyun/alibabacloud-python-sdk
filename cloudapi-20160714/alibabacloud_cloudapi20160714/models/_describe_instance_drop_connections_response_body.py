@@ -13,7 +13,6 @@ class DescribeInstanceDropConnectionsResponseBody(DaraModel):
         instance_drop_connections: main_models.DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections = None,
         request_id: str = None,
     ):
-        # The list of dropped connections in the instance.
         self.instance_drop_connections = instance_drop_connections
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorI
         item_time: str = None,
         item_value: str = None,
     ):
-        # The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The number of dropped packets in the instance.
         self.item_value = item_value
 
     def validate(self):

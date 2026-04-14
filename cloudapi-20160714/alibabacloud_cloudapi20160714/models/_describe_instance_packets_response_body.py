@@ -13,7 +13,6 @@ class DescribeInstancePacketsResponseBody(DaraModel):
         instance_packets: main_models.DescribeInstancePacketsResponseBodyInstancePackets = None,
         request_id: str = None,
     ):
-        # The list of inbound and outbound data packets in the instance.
         self.instance_packets = instance_packets
         # The ID of the request.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   InstancePacketRX: inbound data packets
-        # *   InstancePacketTX: outbound data packets
         self.item = item
-        # The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The number of inbound and outbound data packets in the instance.
         self.item_value = item_value
 
     def validate(self):

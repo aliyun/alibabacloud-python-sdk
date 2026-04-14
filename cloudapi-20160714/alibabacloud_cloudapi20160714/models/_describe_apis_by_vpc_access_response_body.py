@@ -16,7 +16,6 @@ class DescribeApisByVpcAccessResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned API information. It is an array consisting of ApiInfo data.
         self.api_vpc_access_infos = api_vpc_access_infos
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -126,37 +125,19 @@ class DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo(DaraM
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The description, which can be up to 200 characters in length.
         self.description = description
-        # The ID of the API group to which the API belongs.
         self.group_id = group_id
-        # The name of the API group to which the API belongs.
         self.group_name = group_name
-        # The instance ID or IP address in the VPC access authorization.
         self.instance_id = instance_id
-        # The HTTP request method of the API.
         self.method = method
-        # The request path of the API.
         self.path = path
-        # The port number.
         self.port = port
-        # The region ID.
         self.region_id = region_id
-        # The environment ID.
         self.stage_id = stage_id
-        # The environment to which the API is published. Valid values:
-        # 
-        # *   **RELEASE**: the production environment
-        # *   **PRE**: the staging environment
-        # *   **TEST**: the test environment
         self.stage_name = stage_name
-        # vpc id
         self.vpc_id = vpc_id
-        # The name of the VPC access authorization.
         self.vpc_name = vpc_name
 
     def validate(self):

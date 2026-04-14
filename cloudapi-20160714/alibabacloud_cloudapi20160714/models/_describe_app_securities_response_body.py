@@ -13,7 +13,6 @@ class DescribeAppSecuritiesResponseBody(DaraModel):
         app_securitys: main_models.DescribeAppSecuritiesResponseBodyAppSecuritys = None,
         request_id: str = None,
     ):
-        # The associated security policy information.
         self.app_securitys = app_securitys
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity(DaraModel):
         created_time: str = None,
         modified_time: str = None,
     ):
-        # The application AppCode.
         self.app_code = app_code
-        # The application AppKey.
         self.app_key = app_key
-        # The application AppSecret.
         self.app_secret = app_secret
-        # The time when the AppKey was created.
         self.created_time = created_time
-        # The time when the AppSecret was last modified. The time is displayed in UTC.
         self.modified_time = modified_time
 
     def validate(self):

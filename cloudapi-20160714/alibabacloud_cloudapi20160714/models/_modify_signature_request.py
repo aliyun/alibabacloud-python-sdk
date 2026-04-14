@@ -13,7 +13,6 @@ class ModifySignatureRequest(DaraModel):
         signature_name: str = None,
         signature_secret: str = None,
     ):
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The ID of the signature key that you want to manage.
         # 

@@ -78,13 +78,10 @@ class DescribeApiResponseBody(DaraModel):
         self.backend_config = backend_config
         # Specifies whether to enable backend services.
         self.backend_enable = backend_enable
-        # System parameters sent by API Gateway to the backend service
         self.constant_parameters = constant_parameters
         # The creation time of the API.
         self.created_time = created_time
-        # Custom system parameters
         self.custom_system_parameters = custom_system_parameters
-        # The API publishing status.
         self.deployed_infos = deployed_infos
         # The description of the API.
         self.description = description
@@ -93,7 +90,6 @@ class DescribeApiResponseBody(DaraModel):
         # *   **true**: Only API calls from the VPC are supported.
         # *   **false**: API calls from the VPC and Internet are both supported.
         self.disable_internet = disable_internet
-        # The sample error codes returned by the backend service.
         self.error_code_samples = error_code_samples
         # The sample error response from the backend service.
         self.fail_result_sample = fail_result_sample
@@ -123,7 +119,6 @@ class DescribeApiResponseBody(DaraModel):
         self.request_config = request_config
         # The ID of the request.
         self.request_id = request_id
-        # The parameters of API requests sent by the consumer to API Gateway.
         self.request_parameters = request_parameters
         # The returned description of the API.
         self.result_body_model = result_body_model
@@ -133,13 +128,9 @@ class DescribeApiResponseBody(DaraModel):
         self.result_type = result_type
         # The configuration items of API requests that API Gateway sends to the backend service.
         self.service_config = service_config
-        # The parameters of API requests sent by API Gateway to the backend service.
         self.service_parameters = service_parameters
-        # The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
         self.service_parameters_map = service_parameters_map
-        # System parameters sent by API Gateway to the backend service
         self.system_parameters = system_parameters
-        # Tag List.
         self.tag_list = tag_list
         # Specifies whether to make the API public. Valid values:
         # 
@@ -463,9 +454,7 @@ class DescribeApiResponseBodyTagListTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Label key.
         self.tag_key = tag_key
-        # Label value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -538,15 +527,10 @@ class DescribeApiResponseBodySystemParametersSystemParameter(DaraModel):
         parameter_name: str = None,
         service_parameter_name: str = None,
     ):
-        # The example value.
         self.demo_value = demo_value
-        # The parameter description.
         self.description = description
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
         self.parameter_name = parameter_name
-        # The mapped parameter name in the backend service.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -634,9 +618,7 @@ class DescribeApiResponseBodyServiceParametersMapServiceParameterMap(DaraModel):
         request_parameter_name: str = None,
         service_parameter_name: str = None,
     ):
-        # The corresponding frontend parameter name. The value must be contained in RequestParametersObject and match RequestParam.ApiParameterName.
         self.request_parameter_name = request_parameter_name
-        # The mapped parameter name in the backend service.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -707,11 +689,8 @@ class DescribeApiResponseBodyServiceParametersServiceParameter(DaraModel):
         parameter_type: str = None,
         service_parameter_name: str = None,
     ):
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The data type of the parameter. Valid values: STRING, NUMBER, and BOOLEAN.
         self.parameter_type = parameter_type
-        # The mapped parameter name in the backend service.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -786,7 +765,6 @@ class DescribeApiResponseBodyServiceConfig(DaraModel):
         # *   **TRUE**: The Mock mode is enabled.
         # *   **FALSE**: The Mock mode is not enabled.
         self.mock = mock
-        # The simulated headers.
         self.mock_headers = mock_headers
         # The result returned when the Mock mode is enabled.
         self.mock_result = mock_result
@@ -1109,9 +1087,7 @@ class DescribeApiResponseBodyServiceConfigMockHeadersMockHeader(DaraModel):
         header_name: str = None,
         header_value: str = None,
     ):
-        # The HTTP header.
         self.header_name = header_name
-        # The value of the HTTP header.
         self.header_value = header_value
 
     def validate(self):
@@ -1401,39 +1377,22 @@ class DescribeApiResponseBodyRequestParametersRequestParameter(DaraModel):
         regular_expression: str = None,
         required: str = None,
     ):
-        # The parameter name.
         self.api_parameter_name = api_parameter_name
-        # The type of the array element.
         self.array_items_type = array_items_type
-        # The default value.
         self.default_value = default_value
-        # The example value.
         self.demo_value = demo_value
-        # The parameter description.
         self.description = description
-        # The order in which the parameter is sorted in the document.
         self.doc_order = doc_order
-        # Indicates whether the document is public. Valid values: **PUBLIC** and **PRIVATE**.
         self.doc_show = doc_show
-        # The hash values that are supported when **ParameterType** is set to Int, Long, Float, Double, or String. Separate values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
         self.enum_value = enum_value
-        # The JSON Schema used for JSON validation when **ParameterType** is set to String.
         self.json_scheme = json_scheme
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The maximum parameter length when **ParameterType** is set to String.
         self.max_length = max_length
-        # The maximum parameter value when **ParameterType** is set to Int, Long, Float, or Double.
         self.max_value = max_value
-        # The minimum parameter length when **ParameterType** is set to String.
         self.min_length = min_length
-        # The minimum parameter value when **ParameterType** is set to Int, Long, Float, or Double.
         self.min_value = min_value
-        # The data type of the parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
         self.parameter_type = parameter_type
-        # The regular expression that is used for parameter validation when **ParameterType** is set to String.
         self.regular_expression = regular_expression
-        # Indicates whether the parameter is required. Valid values: **REQUIRED** and **OPTIONAL**.
         self.required = required
 
     def validate(self):
@@ -1746,13 +1705,9 @@ class DescribeApiResponseBodyErrorCodeSamplesErrorCodeSample(DaraModel):
         message: str = None,
         model: str = None,
     ):
-        # The returned error code.
         self.code = code
-        # The error description.
         self.description = description
-        # The returned error message.
         self.message = message
-        # The model.
         self.model = model
 
     def validate(self):
@@ -1835,11 +1790,8 @@ class DescribeApiResponseBodyDeployedInfosDeployedInfo(DaraModel):
         effective_version: str = None,
         stage_name: str = None,
     ):
-        # The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
         self.deployed_status = deployed_status
-        # The effective version.
         self.effective_version = effective_version
-        # The environment to which the API is published. Valid values: RELEASE and TEST.
         self.stage_name = stage_name
 
     def validate(self):
@@ -1918,15 +1870,10 @@ class DescribeApiResponseBodyCustomSystemParametersCustomSystemParameter(DaraMod
         parameter_name: str = None,
         service_parameter_name: str = None,
     ):
-        # The example value.
         self.demo_value = demo_value
-        # The parameter description.
         self.description = description
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
         self.parameter_name = parameter_name
-        # The mapped parameter name in the backend service.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):
@@ -2016,13 +1963,9 @@ class DescribeApiResponseBodyConstantParametersConstantParameter(DaraModel):
         location: str = None,
         service_parameter_name: str = None,
     ):
-        # The constant parameter value.
         self.constant_value = constant_value
-        # The parameter description.
         self.description = description
-        # The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
         self.location = location
-        # The mapped parameter name in the backend service.
         self.service_parameter_name = service_parameter_name
 
     def validate(self):

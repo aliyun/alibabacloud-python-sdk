@@ -12,7 +12,6 @@ class DeleteTrafficSpecialControlRequest(DaraModel):
         special_type: str = None,
         traffic_control_id: str = None,
     ):
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The ID of the app or Alibaba Cloud account. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.343130a8sDi8cO#/secure) page.
         # 

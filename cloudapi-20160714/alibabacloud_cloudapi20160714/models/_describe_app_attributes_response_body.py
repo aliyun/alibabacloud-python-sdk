@@ -16,7 +16,6 @@ class DescribeAppAttributesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned app information. It is an array that consists of AppAttribute data.
         self.apps = apps
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,20 +119,13 @@ class DescribeAppAttributesResponseBodyAppsAppAttribute(DaraModel):
         modified_time: str = None,
         tags: main_models.DescribeAppAttributesResponseBodyAppsAppAttributeTags = None,
     ):
-        # The ID of the app.
         self.app_id = app_id
-        # The name of the app.
         self.app_name = app_name
-        # The creation time (UTC) of the app.
         self.created_time = created_time
-        # The description of the app.
         self.description = description
         self.disabled = disabled
-        # 扩展信息
         self.extend = extend
-        # The modification time (UTC) of the app.
         self.modified_time = modified_time
-        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -241,9 +233,7 @@ class DescribeAppAttributesResponseBodyAppsAppAttributeTagsTagInfo(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeApiIpControlsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the ACLs. The information is an array of ApiIpControlItem data.
         self.api_ip_controls = api_ip_controls
         # The page number of the returned page.
         self.page_number = page_number
@@ -117,15 +116,10 @@ class DescribeApiIpControlsResponseBodyApiIpControlsApiIpControlItem(DaraModel):
         ip_control_id: str = None,
         ip_control_name: str = None,
     ):
-        # The ID of the API.
         self.api_id = api_id
-        # The name of the API.
         self.api_name = api_name
-        # The time of binding.
         self.bound_time = bound_time
-        # The ID of the ACL.
         self.ip_control_id = ip_control_id
-        # The name of the ACL.
         self.ip_control_name = ip_control_name
 
     def validate(self):

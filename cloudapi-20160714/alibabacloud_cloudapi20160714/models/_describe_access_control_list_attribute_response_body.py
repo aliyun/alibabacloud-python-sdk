@@ -16,7 +16,6 @@ class DescribeAccessControlListAttributeResponseBody(DaraModel):
         address_ipversion: str = None,
         request_id: str = None,
     ):
-        # The information about the access control policy.
         self.acl_entrys = acl_entrys
         # The ID of the access control policy.
         self.acl_id = acl_id
@@ -114,9 +113,7 @@ class DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry(DaraModel)
         acl_entry_comment: str = None,
         acl_entry_ip: str = None,
     ):
-        # The entry description.
         self.acl_entry_comment = acl_entry_comment
-        # The ACL entry.
         self.acl_entry_ip = acl_entry_ip
 
     def validate(self):

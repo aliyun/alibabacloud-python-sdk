@@ -13,7 +13,6 @@ class DescribeInstanceTrafficResponseBody(DaraModel):
         instance_traffic: main_models.DescribeInstanceTrafficResponseBodyInstanceTraffic = None,
         request_id: str = None,
     ):
-        # The traffic consumed by the requests and responses in the instance.
         self.instance_traffic = instance_traffic
         # The ID of the request.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   inbound: traffic consumed by requests
-        # *   outbound: traffic consumed by responses
         self.item = item
-        # The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The amount of traffic consumed by the requests and responses in the instance.
         self.item_value = item_value
 
     def validate(self):

@@ -13,7 +13,6 @@ class DescribeInstanceDropPacketResponseBody(DaraModel):
         instance_drop_packet: main_models.DescribeInstanceDropPacketResponseBodyInstanceDropPacket = None,
         request_id: str = None,
     ):
-        # The list of dropped packets in the instance.
         self.instance_drop_packet = instance_drop_packet
         # The ID of the request.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem(DaraMo
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   InstanceDropPacketRX: the number of inbound packets dropped in the instance per second.
-        # *   InstanceDropPacketTX: the number of outbound packets dropped in the instance per second.
         self.item = item
-        # The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The number of dropped packets in the instance.
         self.item_value = item_value
 
     def validate(self):

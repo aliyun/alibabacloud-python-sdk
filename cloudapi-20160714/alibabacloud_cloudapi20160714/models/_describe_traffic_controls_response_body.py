@@ -24,7 +24,6 @@ class DescribeTrafficControlsResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of returned entries.
         self.total_count = total_count
-        # The returned throttling policy information. It is an array consisting of TrafficControl data.
         self.traffic_controls = traffic_controls
 
     def validate(self):
@@ -122,29 +121,15 @@ class DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl(DaraModel
         traffic_control_unit: str = None,
         user_default: int = None,
     ):
-        # The default throttling value for each API.
         self.api_default = api_default
-        # The default throttling value for each app.
         self.app_default = app_default
-        # The creation time (UTC) of the throttling policy.
         self.created_time = created_time
-        # The description of the throttling policy.
         self.description = description
-        # The last modification time (UTC) of the throttling policy.
         self.modified_time = modified_time
-        # The returned information about a special throttling policy. It is an array consisting of SpecialPolicy data.
         self.special_policies = special_policies
-        # The ID of the throttling policy.
         self.traffic_control_id = traffic_control_id
-        # The name of the throttling policy.
         self.traffic_control_name = traffic_control_name
-        # The unit to be used in the throttling policy. Valid values:
-        # 
-        # *   MINUTE
-        # *   HOUR
-        # *   DAY
         self.traffic_control_unit = traffic_control_unit
-        # The default throttling value for each user.
         self.user_default = user_default
 
     def validate(self):
@@ -264,12 +249,7 @@ class DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPol
         special_type: str = None,
         specials: main_models.DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecials = None,
     ):
-        # The type of the special throttling policy. Valid values:
-        # 
-        # *   **APP**
-        # *   **USER**
         self.special_type = special_type
-        # The returned information about a special throttling policy. It is an array consisting of Special data.
         self.specials = specials
 
     def validate(self):
@@ -341,9 +321,7 @@ class DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPol
         special_key: str = None,
         traffic_value: int = None,
     ):
-        # The AppId or user account corresponding to SpecialType.
         self.special_key = special_key
-        # The throttling value.
         self.traffic_value = traffic_value
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeApisByIpControlResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned API information. It is an array of ApiInfo data.
         self.api_infos = api_infos
         # The page number of the returned page.
         self.page_number = page_number
@@ -121,29 +120,14 @@ class DescribeApisByIpControlResponseBodyApiInfosApiInfo(DaraModel):
         stage_name: str = None,
         visibility: str = None,
     ):
-        # The ID of the API.
         self.api_id = api_id
-        # The name of the API
         self.api_name = api_name
-        # The time of API binding.
         self.bound_time = bound_time
-        # The description of the API.
         self.description = description
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the API group.
         self.group_name = group_name
-        # The region in which the API is located.
         self.region_id = region_id
-        # The name of the runtime environment. Valid values:
-        # 
-        # *   **RELEASE**
-        # *   **TEST.
         self.stage_name = stage_name
-        # The visibility of the API. Valid values:
-        # 
-        # *   **PUBLIC**
-        # *   **PRIVATE**
         self.visibility = visibility
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeApiProductsByAppResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about API products.
         self.api_product_info_list = api_product_info_list
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -113,7 +112,6 @@ class DescribeApiProductsByAppResponseBodyApiProductInfoListApiProductInfo(DaraM
         self,
         api_product_id: str = None,
     ):
-        # The ID of the API product.
         self.api_product_id = api_product_id
 
     def validate(self):

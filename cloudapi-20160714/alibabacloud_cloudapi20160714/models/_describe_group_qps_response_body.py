@@ -13,7 +13,6 @@ class DescribeGroupQpsResponseBody(DaraModel):
         group_qps: main_models.DescribeGroupQpsResponseBodyGroupQps = None,
         request_id: str = None,
     ):
-        # The number of requests directed to the API group.
         self.group_qps = group_qps
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeGroupQpsResponseBodyGroupQpsMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The point in time.
         self.item_time = item_time
-        # The number of requests at the specified point in time.
         self.item_value = item_value
 
     def validate(self):

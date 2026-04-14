@@ -13,7 +13,6 @@ class DescribeAbolishApiTaskResponseBody(DaraModel):
         api_abolish_results: main_models.DescribeAbolishApiTaskResponseBodyApiAbolishResults = None,
         request_id: str = None,
     ):
-        # The result returned.
         self.api_abolish_results = api_abolish_results
         # The ID of the request.
         self.request_id = request_id
@@ -93,24 +92,13 @@ class DescribeAbolishApiTaskResponseBodyApiAbolishResultsApiAbolishResult(DaraMo
         stage_id: str = None,
         stage_name: str = None,
     ):
-        # The unpublishing status.
         self.abolish_status = abolish_status
-        # The name of the API.
         self.api_name = api_name
-        # The ID of the API.
         self.api_uid = api_uid
-        # The error message.
         self.error_msg = error_msg
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the API group.
         self.group_name = group_name
-        # The ID of the runtime environment.
         self.stage_id = stage_id
-        # The name of the runtime environment. Valid values:
-        # 
-        # *   **RELEASE**
-        # *   **TEST**
         self.stage_name = stage_name
 
     def validate(self):

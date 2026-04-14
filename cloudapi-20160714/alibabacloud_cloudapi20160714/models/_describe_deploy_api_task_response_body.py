@@ -13,7 +13,6 @@ class DescribeDeployApiTaskResponseBody(DaraModel):
         deployed_results: main_models.DescribeDeployApiTaskResponseBodyDeployedResults = None,
         request_id: str = None,
     ):
-        # The returned result.
         self.deployed_results = deployed_results
         # The ID of the request.
         self.request_id = request_id
@@ -90,18 +89,10 @@ class DescribeDeployApiTaskResponseBodyDeployedResultsDeployedResult(DaraModel):
         group_id: str = None,
         stage_name: str = None,
     ):
-        # The ID of the API.
         self.api_uid = api_uid
-        # The deployment status of the API.
         self.deployed_status = deployed_status
-        # The error message.
         self.error_msg = error_msg
-        # The ID of the API group.
         self.group_id = group_id
-        # The runtime environment of the API. Valid values:
-        # 
-        # *   **RELEASE**
-        # *   **TEST**
         self.stage_name = stage_name
 
     def validate(self):

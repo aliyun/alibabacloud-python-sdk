@@ -20,7 +20,6 @@ class DescribePurchasedApiGroupsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned on each page.
         self.page_size = page_size
-        # The attributes of the API group.
         self.purchased_api_group_attributes = purchased_api_group_attributes
         # The ID of the request.
         self.request_id = request_id
@@ -122,28 +121,15 @@ class DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributesPurchased
         region_id: str = None,
         status: str = None,
     ):
-        # The billing method.
         self.billing_type = billing_type
-        # The description of the API group.
         self.description = description
-        # The time when the API group expires.
         self.expire_time = expire_time
-        # The ID of the API group.
         self.group_id = group_id
-        # The name of the API group.
         self.group_name = group_name
-        # The maximum number of calls.
         self.invoke_times_max = invoke_times_max
-        # The current number of calls.
         self.invoke_times_now = invoke_times_now
-        # The time when the API group was purchased.
         self.purchased_time = purchased_time
-        # The ID of the region where the API group is located.
         self.region_id = region_id
-        # The status of the API group.
-        # 
-        # *   **NORMAL**: The API group is normal.
-        # *   **DELETE**: The API group is deleted.
         self.status = status
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeApisResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried API definitions.
         self.api_summarys = api_summarys
         # The page number of the returned page.
         self.page_number = page_number
@@ -125,34 +124,18 @@ class DescribeApisResponseBodyApiSummarysApiSummary(DaraModel):
         tag_list: main_models.DescribeApisResponseBodyApiSummarysApiSummaryTagList = None,
         visibility: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The HTTP method of the API request.
         self.api_method = api_method
-        # The API name.
         self.api_name = api_name
-        # The request path of the API.
         self.api_path = api_path
-        # The time when the API was created. The time is displayed in UTC.
         self.created_time = created_time
-        # The API publishing statuses.
         self.deployed_infos = deployed_infos
-        # The API description.
         self.description = description
-        # The API group ID.
         self.group_id = group_id
-        # The name of the API group to which the API belongs.
         self.group_name = group_name
-        # The time when the API was modified. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The ID of the region to which the API belongs.
         self.region_id = region_id
-        # The tags that are added to the APIs.
         self.tag_list = tag_list
-        # Indicates whether the API is public. Valid values:
-        # 
-        # *   **PUBLIC**: The API is public.
-        # *   **PRIVATE**: The API is private.
         self.visibility = visibility
 
     def validate(self):
@@ -293,9 +276,7 @@ class DescribeApisResponseBodyApiSummarysApiSummaryTagListTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -366,15 +347,8 @@ class DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo(Dar
         effective_version: str = None,
         stage_name: str = None,
     ):
-        # The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
         self.deployed_status = deployed_status
-        # The deployed version.
         self.effective_version = effective_version
-        # Stage Name:
-        # 
-        # *   **RELEASE**: production environment
-        # *   **PRE**: staging environment
-        # *   **TEST**: test environment
         self.stage_name = stage_name
 
     def validate(self):

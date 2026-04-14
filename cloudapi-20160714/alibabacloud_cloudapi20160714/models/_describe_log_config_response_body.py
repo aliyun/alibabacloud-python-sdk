@@ -13,7 +13,6 @@ class DescribeLogConfigResponseBody(DaraModel):
         log_infos: main_models.DescribeLogConfigResponseBodyLogInfos = None,
         request_id: str = None,
     ):
-        # Info of the log config.
         self.log_infos = log_infos
         # The ID of the request.
         self.request_id = request_id
@@ -89,13 +88,9 @@ class DescribeLogConfigResponseBodyLogInfosLogInfo(DaraModel):
         sls_log_store: str = None,
         sls_project: str = None,
     ):
-        # The log type.
         self.log_type = log_type
-        # The region ID of the Logstore.
         self.region_id = region_id
-        # The name of the Logstore in Log Service.
         self.sls_log_store = sls_log_store
-        # The name of the Log Service project.
         self.sls_project = sls_project
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribePluginApisResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about APIs.
         self.api_summarys = api_summarys
         # The page number of the page to return.
         self.page_number = page_number
@@ -122,29 +121,15 @@ class DescribePluginApisResponseBodyApiSummarysApiPluginSummary(DaraModel):
         stage_alias: str = None,
         stage_name: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The API description.
         self.description = description
-        # The ID of the API group.
         self.group_id = group_id
-        # The API group to which the API belongs.
         self.group_name = group_name
-        # The HTTP method of the API.
         self.method = method
-        # The request path of the API.
         self.path = path
-        # The ID of the region in which the API resides.
         self.region_id = region_id
-        # The environment alias.
         self.stage_alias = stage_alias
-        # The environment to which the API is published. Valid values:
-        # 
-        # *   **RELEASE**: the production environment
-        # *   **PRE**: the pre-release environment
-        # *   **TEST**: the test environment
         self.stage_name = stage_name
 
     def validate(self):

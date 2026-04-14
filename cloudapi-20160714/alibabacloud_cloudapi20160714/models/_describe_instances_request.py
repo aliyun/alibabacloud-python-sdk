@@ -14,6 +14,8 @@ class DescribeInstancesRequest(DaraModel):
         instance_id: str = None,
         instance_type: str = None,
         language: str = None,
+        page_number: int = None,
+        page_size: int = None,
         security_token: str = None,
         tag: List[main_models.DescribeInstancesRequestTag] = None,
     ):
@@ -28,6 +30,8 @@ class DescribeInstancesRequest(DaraModel):
         # *   zh: Chinese
         # *   ja: Japanese
         self.language = language
+        self.page_number = page_number
+        self.page_size = page_size
         self.security_token = security_token
         # The tag that is bound to the instance.
         self.tag = tag
@@ -55,6 +59,12 @@ class DescribeInstancesRequest(DaraModel):
         if self.language is not None:
             result['Language'] = self.language
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
 
@@ -78,6 +88,12 @@ class DescribeInstancesRequest(DaraModel):
 
         if m.get('Language') is not None:
             self.language = m.get('Language')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
 
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')

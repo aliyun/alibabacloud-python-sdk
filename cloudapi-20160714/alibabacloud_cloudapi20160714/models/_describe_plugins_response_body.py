@@ -20,7 +20,6 @@ class DescribePluginsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The returned information about the plug-in. It is an array consisting of PluginAttribute data.
         self.plugins = plugins
         # The ID of the request.
         self.request_id = request_id
@@ -121,23 +120,14 @@ class DescribePluginsResponseBodyPluginsPluginAttribute(DaraModel):
         region_id: str = None,
         tags: main_models.DescribePluginsResponseBodyPluginsPluginAttributeTags = None,
     ):
-        # The creation time (UTC) of the plug-in.
         self.created_time = created_time
-        # The plug-in description.
         self.description = description
-        # The last modification time (UTC) of the plug-in.
         self.modified_time = modified_time
-        # The definition statement of the plug-in.
         self.plugin_data = plugin_data
-        # The ID of the plug-in.
         self.plugin_id = plugin_id
-        # The name of the plug-in.
         self.plugin_name = plugin_name
-        # The type of the plug-in.
         self.plugin_type = plugin_type
-        # The region where the plug-in is located.
         self.region_id = region_id
-        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -251,9 +241,7 @@ class DescribePluginsResponseBodyPluginsPluginAttributeTagsTagInfo(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):

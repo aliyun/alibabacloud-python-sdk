@@ -16,7 +16,6 @@ class DescribePluginGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Collection of group information
         self.group_summarys = group_summarys
         # Pagination parameter: current page number
         self.page_number = page_number
@@ -119,23 +118,12 @@ class DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary(DaraModel)
         stage_alias: str = None,
         stage_name: str = None,
     ):
-        # API root path
         self.base_path = base_path
-        # Description
         self.description = description
-        # API group ID
         self.group_id = group_id
-        # API group name
         self.group_name = group_name
-        # Region ID where the API group is located
         self.region_id = region_id
-        # Stage name Alias
         self.stage_alias = stage_alias
-        # Environment name, possible values:
-        # 
-        # - **RELEASE**: Production
-        # - **PRE**: Pre-release
-        # - **TEST**: Testing
         self.stage_name = stage_name
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeIpControlsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the ACL. The information is an array that consists of IpControlInfo data. The information does not include specific policies.
         self.ip_control_infos = ip_control_infos
         # The page number of the returned page.
         self.page_number = page_number
@@ -119,19 +118,12 @@ class DescribeIpControlsResponseBodyIpControlInfosIpControlInfo(DaraModel):
         modified_time: str = None,
         region_id: str = None,
     ):
-        # The time when the ACL was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the ACL.
         self.description = description
-        # The ID of the ACL.
         self.ip_control_id = ip_control_id
-        # The name of the ACL.
         self.ip_control_name = ip_control_name
-        # The type of the ACL.
         self.ip_control_type = ip_control_type
-        # The time when the ACL was modified. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The ID of the region in which the ACL is deployed.
         self.region_id = region_id
 
     def validate(self):

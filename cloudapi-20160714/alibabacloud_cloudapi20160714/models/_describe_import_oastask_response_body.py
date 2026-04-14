@@ -15,21 +15,7 @@ class DescribeImportOASTaskResponseBody(DaraModel):
         request_id: str = None,
         task_status: str = None,
     ):
-        # The execution status of the subtask. Valid values:
-        # 
-        # *   RUNNING
-        # *   WAIT
-        # *   OVER
-        # *   FAIL
-        # *   CANCEL
         self.api_results = api_results
-        # The execution status of the subtask. Valid values:
-        # 
-        # *   RUNNING
-        # *   WAIT
-        # *   OVER
-        # *   FAIL
-        # *   CANCEL
         self.model_results = model_results
         # The request ID.
         self.request_id = request_id
@@ -126,21 +112,10 @@ class DescribeImportOASTaskResponseBodyModelResultsModelResult(DaraModel):
         model_name: str = None,
         update_status: str = None,
     ):
-        # The cause of the failure if the model fails to be imported.
         self.error_message = error_message
-        # The API group ID.
         self.group_id = group_id
-        # The ID of the imported model.
         self.model_id = model_id
-        # The model name.
         self.model_name = model_name
-        # The execution status of the subtask. Valid values:
-        # 
-        # *   RUNNING
-        # *   WAIT
-        # *   OVER
-        # *   FAIL
-        # *   CANCEL
         self.update_status = update_status
 
     def validate(self):
@@ -234,27 +209,13 @@ class DescribeImportOASTaskResponseBodyApiResultsApiResult(DaraModel):
         path: str = None,
         update_status: str = None,
     ):
-        # The API ID.
         self.api_id = api_id
-        # The API name.
         self.api_name = api_name
-        # The API description.
         self.description = description
-        # The cause of the failure if the API fails to be imported.
         self.error_message = error_message
-        # The API group ID.
         self.group_id = group_id
-        # The HTTP request HTTP method of the API.
         self.method = method
-        # The request path of the API.
         self.path = path
-        # The execution status of the subtask. Valid values:
-        # 
-        # *   RUNNING
-        # *   WAIT
-        # *   OVER
-        # *   FAIL
-        # *   CANCEL
         self.update_status = update_status
 
     def validate(self):

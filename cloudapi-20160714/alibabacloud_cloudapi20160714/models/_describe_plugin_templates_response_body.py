@@ -15,7 +15,6 @@ class DescribePluginTemplatesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The templates.
         self.templates = templates
 
     def validate(self):
@@ -90,15 +89,10 @@ class DescribePluginTemplatesResponseBodyTemplatesTemplate(DaraModel):
         sample: str = None,
         title: str = None,
     ):
-        # The description.
         self.description = description
-        # The document anchor point.
         self.document_anchor = document_anchor
-        # The ID of the document.
         self.document_id = document_id
-        # The sample.
         self.sample = sample
-        # The title of the plug-in template title.
         self.title = title
 
     def validate(self):

@@ -15,7 +15,6 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The zones available in the current region.
         self.zones = zones
 
     def validate(self):
@@ -87,9 +86,7 @@ class DescribeZonesResponseBodyZonesZone(DaraModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # The name of the zone.
         self.local_name = local_name
-        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

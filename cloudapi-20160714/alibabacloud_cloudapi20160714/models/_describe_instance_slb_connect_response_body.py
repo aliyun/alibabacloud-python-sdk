@@ -13,7 +13,6 @@ class DescribeInstanceSlbConnectResponseBody(DaraModel):
         instance_slb_connect: main_models.DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect = None,
         request_id: str = None,
     ):
-        # The list of concurrent connections in the instance.
         self.instance_slb_connect = instance_slb_connect
         # The ID of the request.
         self.request_id = request_id
@@ -88,15 +87,8 @@ class DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem(DaraMo
         item_time: str = None,
         item_value: str = None,
     ):
-        # The metric. Valid values:
-        # 
-        # *   InstanceMaxConnection: the maximum number of connections
-        # *   InstanceInactiveConnection: the number of inactive connections
-        # *   InstanceActiveConnection: the number of active connections
         self.item = item
-        # The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The number of concurrent connections in the instance.
         self.item_value = item_value
 
     def validate(self):

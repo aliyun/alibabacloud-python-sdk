@@ -16,7 +16,6 @@ class DescribeAppsByApiProductResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about authorized applications.
         self.authorized_apps = authorized_apps
         # The page number.
         self.page_number = page_number
@@ -118,17 +117,11 @@ class DescribeAppsByApiProductResponseBodyAuthorizedAppsAuthorizedApp(DaraModel)
         description: str = None,
         extend: str = None,
     ):
-        # The application ID.
         self.app_id = app_id
-        # The application name.
         self.app_name = app_name
-        # The expiration time of the authorization. The time is in GMT. An empty value indicates that the authorization does not expire.
         self.auth_valid_time = auth_valid_time
-        # The time when the authorization was created. The time is in GMT.
         self.authorized_time = authorized_time
-        # The authorization description.
         self.description = description
-        # The extended information.
         self.extend = extend
 
     def validate(self):

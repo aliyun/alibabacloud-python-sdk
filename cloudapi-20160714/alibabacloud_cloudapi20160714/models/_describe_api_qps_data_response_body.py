@@ -14,9 +14,7 @@ class DescribeApiQpsDataResponseBody(DaraModel):
         call_successes: main_models.DescribeApiQpsDataResponseBodyCallSuccesses = None,
         request_id: str = None,
     ):
-        # The returned information about failed API calls. It is an array consisting of MonitorItem data.
         self.call_fails = call_fails
-        # The returned information about successful API calls. It is an array consisting of MonitorItem data.
         self.call_successes = call_successes
         # The ID of the request.
         self.request_id = request_id
@@ -99,9 +97,7 @@ class DescribeApiQpsDataResponseBodyCallSuccessesMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The value corresponding to the monitoring metric.
         self.item_value = item_value
 
     def validate(self):
@@ -171,9 +167,7 @@ class DescribeApiQpsDataResponseBodyCallFailsMonitorItem(DaraModel):
         item_time: str = None,
         item_value: str = None,
     ):
-        # The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
         self.item_time = item_time
-        # The value corresponding to the monitoring metric.
         self.item_value = item_value
 
     def validate(self):

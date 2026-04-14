@@ -15,7 +15,6 @@ class DescribeTrafficControlsByApiResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The returned throttling policy information. It is an array consisting of TrafficControlItem data.
         self.traffic_control_items = traffic_control_items
 
     def validate(self):
@@ -88,11 +87,8 @@ class DescribeTrafficControlsByApiResponseBodyTrafficControlItemsTrafficControlI
         traffic_control_item_id: str = None,
         traffic_control_item_name: str = None,
     ):
-        # The binding time of the policy.
         self.bound_time = bound_time
-        # The ID of the throttling policy.
         self.traffic_control_item_id = traffic_control_item_id
-        # The name of the throttling policy.
         self.traffic_control_item_name = traffic_control_item_name
 
     def validate(self):

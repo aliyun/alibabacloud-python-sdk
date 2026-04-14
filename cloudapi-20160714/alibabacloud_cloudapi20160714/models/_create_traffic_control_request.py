@@ -23,7 +23,6 @@ class CreateTrafficControlRequest(DaraModel):
         self.app_default = app_default
         # The description of the throttling policy.
         self.description = description
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The name of the throttling policy. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). It cannot start with an underscore.
         # 

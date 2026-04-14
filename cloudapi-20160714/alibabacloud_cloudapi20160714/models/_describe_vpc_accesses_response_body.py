@@ -24,7 +24,6 @@ class DescribeVpcAccessesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of returned entries.
         self.total_count = total_count
-        # The information about the VPC access authorization. The information is an array consisting of VpcAccessAttribute data.
         self.vpc_access_attributes = vpc_access_attributes
 
     def validate(self):
@@ -122,25 +121,15 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute(DaraM
         vpc_id: str = None,
         vpc_target_host_name: str = None,
     ):
-        # The time when the authorization was created.
         self.created_time = created_time
-        # The description of the VPC access authorization.
         self.description = description
-        # The ID of an Elastic Compute Service (ECS) or Server Load Balancer (SLB) instance in the VPC.
         self.instance_id = instance_id
-        # The name of the authorization.
         self.name = name
-        # The port number that corresponds to the instance.
         self.port = port
-        # The region ID.
         self.region_id = region_id
-        # The tags.
         self.tags = tags
-        # The ID of the VPC access authorization.
         self.vpc_access_id = vpc_access_id
-        # The VPC ID.
         self.vpc_id = vpc_id
-        # The host of the backend service.
         self.vpc_target_host_name = vpc_target_host_name
 
     def validate(self):
@@ -260,9 +249,7 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTagsTa
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

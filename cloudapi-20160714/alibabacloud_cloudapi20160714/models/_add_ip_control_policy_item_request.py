@@ -28,7 +28,6 @@ class AddIpControlPolicyItemRequest(DaraModel):
         # 
         # This parameter is required.
         self.ip_control_id = ip_control_id
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeApisByTrafficControlRequest(DaraModel):
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
         # The ID of the throttling policy that you want to query.
         # 

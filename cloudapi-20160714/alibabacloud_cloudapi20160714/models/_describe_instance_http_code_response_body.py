@@ -13,7 +13,6 @@ class DescribeInstanceHttpCodeResponseBody(DaraModel):
         instance_http_code: main_models.DescribeInstanceHttpCodeResponseBodyInstanceHttpCode = None,
         request_id: str = None,
     ):
-        # The HTTP status codes.
         self.instance_http_code = instance_http_code
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem(DaraModel)
         item_time: str = None,
         item_value: str = None,
     ):
-        # The HTTP status code returned.
         self.item_time = item_time
-        # The corresponding value.
         self.item_value = item_value
 
     def validate(self):

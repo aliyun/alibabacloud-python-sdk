@@ -16,7 +16,6 @@ class DescribeIpControlPolicyItemsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about policies. The information is an array of IpControlPolicyItem data.
         self.ip_control_policy_items = ip_control_policy_items
         # The page number of the returned page.
         self.page_number = page_number
@@ -117,15 +116,10 @@ class DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItemsIpControlPolic
         modified_time: str = None,
         policy_item_id: str = None,
     ):
-        # The ID of the application.
         self.app_id = app_id
-        # The IP addresses or CIDR blocks.
         self.cidr_ip = cidr_ip
-        # The time when the policy was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the policy was modified. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The ID of the policy.
         self.policy_item_id = policy_item_id
 
     def validate(self):

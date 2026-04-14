@@ -22,7 +22,6 @@ class DescribeSignaturesResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The returned signature information. It is an array consisting of SignatureInfo data.
         self.signature_infos = signature_infos
         # The total number of returned entries.
         self.total_count = total_count
@@ -119,19 +118,12 @@ class DescribeSignaturesResponseBodySignatureInfosSignatureInfo(DaraModel):
         signature_name: str = None,
         signature_secret: str = None,
     ):
-        # The creation time of the key.
         self.created_time = created_time
-        # The last modification time of the key.
         self.modified_time = modified_time
-        # The region where the key is located.
         self.region_id = region_id
-        # The ID of the backend signature key.
         self.signature_id = signature_id
-        # The Key value of the backend signature key.
         self.signature_key = signature_key
-        # The name of the backend signature key.
         self.signature_name = signature_name
-        # The Secret value of the backend signature key.
         self.signature_secret = signature_secret
 
     def validate(self):

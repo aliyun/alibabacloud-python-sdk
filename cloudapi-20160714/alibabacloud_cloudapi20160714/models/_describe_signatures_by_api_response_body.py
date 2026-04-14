@@ -15,7 +15,6 @@ class DescribeSignaturesByApiResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The returned signature key information. It is an array consisting of SignatureItem data.
         self.signatures = signatures
 
     def validate(self):
@@ -88,11 +87,8 @@ class DescribeSignaturesByApiResponseBodySignaturesSignatureItem(DaraModel):
         signature_id: str = None,
         signature_name: str = None,
     ):
-        # The time when the key was bound.
         self.bound_time = bound_time
-        # The ID of the backend signature key.
         self.signature_id = signature_id
-        # The name of the backend signature key.
         self.signature_name = signature_name
 
     def validate(self):

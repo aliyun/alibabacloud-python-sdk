@@ -16,7 +16,6 @@ class DescribeInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the instances.
         self.instances = instances
         # The page number of the returned page.
         self.page_number = page_number
@@ -156,117 +155,49 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(DaraModel):
         zone_id: str = None,
         zone_local_name: str = None,
     ):
-        # The ACL ID.
         self.acl_id = acl_id
-        # The name of the access control list (ACL).
         self.acl_name = acl_name
-        # Indicates whether the ACL is enabled. Valid values:
-        # 
-        # *   **on**
-        # *   **off**
         self.acl_status = acl_status
-        # The ACL type. Valid values:
-        # 
-        # *   black: blacklist
-        # *   white: whitelist
         self.acl_type = acl_type
-        # The egress IP address.
         self.classic_egress_address = classic_egress_address
-        # The internal CIDR block of the user\\"s VPC that can be accessed if the instance is a VPC integration instance.
         self.connect_cidr_blocks = connect_cidr_blocks
-        # The ID of the user\\"s VPC if the instance is a VPC integration instance.
         self.connect_vpc_id = connect_vpc_id
-        # The time when the instance was created.
         self.created_time = created_time
-        # The type of the dedicated instance. Valid values:
-        # 
-        # *   vpc_connect: VPC integration instance
-        # *   normal: conventional dedicated instance
         self.dedicated_instance_type = dedicated_instance_type
-        # Indicates whether outbound IPv6 traffic is supported.
         self.egress_ipv_6enable = egress_ipv_6enable
-        # The time when the instance expires.
         self.expired_time = expired_time
-        # The HTTPS security policy.
         self.https_policies = https_policies
-        # The ID of the IPv6 ACL.
         self.ipv6acl_id = ipv6acl_id
-        # The name of the IPv6 ACL.
         self.ipv6acl_name = ipv6acl_name
-        # Indicates whether the IPv6 ACL is enabled. Valid values:
-        # 
-        # *   **on**
-        # *   **off**
         self.ipv6acl_status = ipv6acl_status
-        # The type of the IPv6 ACL. Valid values:
-        # 
-        # *   black: blacklist
-        # *   white: whitelist
         self.ipv6acl_type = ipv6acl_type
-        # The billing method of the instance. Valid values:
-        # 
-        # *   PrePaid: subscription
-        # *   PayAsYouGo: pay-as-you-go
         self.instance_charge_type = instance_charge_type
-        # The CIDR block of the dedicated instance.
-        # 
-        # *   172.16.0.0/12
-        # *   192.168.0.0/16
         self.instance_cidr_block = instance_cidr_block
-        # The ID of the cluster to which the dedicated instance cluster belongs.
         self.instance_cluster_id = instance_cluster_id
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The requests per second (RPS) limit on the instance.
         self.instance_rps_limit = instance_rps_limit
-        # The instance specification.
         self.instance_spec = instance_spec
-        # The instance specification details.
         self.instance_spec_attributes = instance_spec_attributes
-        # The instance type. Valid values:
-        # 
-        # *   VPC_SHARED: shared instance (VPC)
-        # *   VPC_DEDICATED: dedicated instance (VPC)
         self.instance_type = instance_type
-        # The outbound public IP address.
         self.internet_egress_address = internet_egress_address
-        # The internal CIDR block that is allowed to access the API Gateway instance.
         self.intranet_segments = intranet_segments
-        # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
         self.maintain_start_time = maintain_start_time
-        # The network information of the user\\"s VPC if the instance is a VPC integration instance.
         self.network_interface_attributes = network_interface_attributes
-        # The new VPC egress CIDR block.
         self.new_vpc_egress_address = new_vpc_egress_address
-        # The private DNS list.
         self.private_dns_list = private_dns_list
-        # The region ID.
         self.region_id = region_id
-        # The instance status.
         self.status = status
-        # Indicates whether IPv6 traffic is supported.
         self.support_ipv_6 = support_ipv_6
-        # The tags of the instance.
         self.tags = tags
-        # The user VPC ID.
         self.user_vpc_id = user_vpc_id
-        # The user vSwitch ID.
         self.user_vswitch_id = user_vswitch_id
-        # The VPC egress CIDR block.
         self.vpc_egress_address = vpc_egress_address
-        # Indicates whether VPC access is enabled.
         self.vpc_intranet_enable = vpc_intranet_enable
-        # The ID of the account to which the VPC-based instance belongs.
         self.vpc_owner_id = vpc_owner_id
-        # Indicates whether virtual private cloud (VPC) Server Load Balancer (SLB) is enabled.
         self.vpc_slb_intranet_enable = vpc_slb_intranet_enable
-        # The zone ID.
         self.zone_id = zone_id
-        # The zone.
         self.zone_local_name = zone_local_name
 
     def validate(self):
@@ -599,9 +530,7 @@ class DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo(DaraMod
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instance.
         self.key = key
-        # The tag value of the instance.
         self.value = value
 
     def validate(self):
@@ -700,13 +629,9 @@ class DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAtt
         vswitch_id: str = None,
         zone_id: str = None,
     ):
-        # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # The security group ID. Services in the same security group can access each other.
         self.security_group_id = security_group_id
-        # The vSwitch ID.
         self.vswitch_id = vswitch_id
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -788,9 +713,7 @@ class DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttribu
         local_name: str = None,
         value: str = None,
     ):
-        # The variable name.
         self.local_name = local_name
-        # The variable value.
         self.value = value
 
     def validate(self):

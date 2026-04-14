@@ -16,7 +16,6 @@ class DescribeModelsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned information about models. It is an array consisting of ModelDetail data.
         self.model_details = model_details
         # The page number of the page to return.
         self.page_number = page_number
@@ -121,23 +120,14 @@ class DescribeModelsResponseBodyModelDetailsModelDetail(DaraModel):
         schema: str = None,
         tags: main_models.DescribeModelsResponseBodyModelDetailsModelDetailTags = None,
     ):
-        # The time when the model was created.
         self.created_time = created_time
-        # The description of the model definition.
         self.description = description
-        # The ID of the API group to which the model belongs.
         self.group_id = group_id
-        # The ID of the model.
         self.model_id = model_id
-        # The name of the model.
         self.model_name = model_name
-        # The URI of the model.
         self.model_ref = model_ref
-        # The time when the model was last modified.
         self.modified_time = modified_time
-        # The definition of the model.
         self.schema = schema
-        # The tags of the model.
         self.tags = tags
 
     def validate(self):
@@ -251,9 +241,7 @@ class DescribeModelsResponseBodyModelDetailsModelDetailTagsTagInfo(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
