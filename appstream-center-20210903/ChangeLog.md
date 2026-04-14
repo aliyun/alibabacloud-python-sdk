@@ -1,3 +1,7 @@
+2026-04-14 Version: 2.0.5
+- Update API Unbind: add request parameters AppInstancePersistentId.
+
+
 2025-10-15 Version: 2.0.4
 - Update API GetConnectionTicket: add response parameters Body.AvatarId.
 - Update API GetConnectionTicket: add response parameters Body.NextPollIntervalMs.
