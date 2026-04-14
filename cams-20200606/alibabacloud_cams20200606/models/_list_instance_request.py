@@ -11,24 +11,18 @@ class ListInstanceRequest(DaraModel):
         filter_str: str = None,
         instance_id: str = None,
         instance_name: str = None,
-        owner_id: int = None,
         page_index: int = None,
         page_size: int = None,
         resource_group_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         submit_time: str = None,
     ):
         self.channel_type = channel_type
         self.filter_str = filter_str
         self.instance_id = instance_id
         self.instance_name = instance_name
-        self.owner_id = owner_id
         self.page_index = page_index
         self.page_size = page_size
         self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.submit_time = submit_time
 
     def validate(self):
@@ -51,9 +45,6 @@ class ListInstanceRequest(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
 
@@ -62,12 +53,6 @@ class ListInstanceRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
 
         if self.submit_time is not None:
             result['SubmitTime'] = self.submit_time
@@ -88,9 +73,6 @@ class ListInstanceRequest(DaraModel):
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
 
@@ -99,12 +81,6 @@ class ListInstanceRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
 
         if m.get('SubmitTime') is not None:
             self.submit_time = m.get('SubmitTime')

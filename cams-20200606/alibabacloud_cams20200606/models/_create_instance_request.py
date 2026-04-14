@@ -16,10 +16,7 @@ class CreateInstanceRequest(DaraModel):
         is_confirm_audit: str = None,
         isv_terms: str = None,
         office_address: str = None,
-        owner_id: int = None,
         resource_group_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
     ):
         # This parameter is required.
         self.channel_type = channel_type
@@ -33,10 +30,7 @@ class CreateInstanceRequest(DaraModel):
         self.is_confirm_audit = is_confirm_audit
         self.isv_terms = isv_terms
         self.office_address = office_address
-        self.owner_id = owner_id
         self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -73,17 +67,8 @@ class CreateInstanceRequest(DaraModel):
         if self.office_address is not None:
             result['OfficeAddress'] = self.office_address
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
 
         return result
 
@@ -116,17 +101,8 @@ class CreateInstanceRequest(DaraModel):
         if m.get('OfficeAddress') is not None:
             self.office_address = m.get('OfficeAddress')
 
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
 
         return self
 

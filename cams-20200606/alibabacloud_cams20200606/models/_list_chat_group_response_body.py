@@ -123,20 +123,30 @@ class ListChatGroupResponseBodyDataList(DaraModel):
     def __init__(
         self,
         business_number: str = None,
+        business_role: str = None,
         description: str = None,
+        gmt_modifier: int = None,
         group_id: str = None,
+        group_link: str = None,
         group_status: str = None,
+        group_type: str = None,
         invite_link: str = None,
         profile_picture_file: str = None,
         subject: str = None,
+        total_participant_count: int = None,
     ):
         self.business_number = business_number
+        self.business_role = business_role
         self.description = description
+        self.gmt_modifier = gmt_modifier
         self.group_id = group_id
+        self.group_link = group_link
         self.group_status = group_status
+        self.group_type = group_type
         self.invite_link = invite_link
         self.profile_picture_file = profile_picture_file
         self.subject = subject
+        self.total_participant_count = total_participant_count
 
     def validate(self):
         pass
@@ -149,14 +159,26 @@ class ListChatGroupResponseBodyDataList(DaraModel):
         if self.business_number is not None:
             result['BusinessNumber'] = self.business_number
 
+        if self.business_role is not None:
+            result['BusinessRole'] = self.business_role
+
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.gmt_modifier is not None:
+            result['GmtModifier'] = self.gmt_modifier
 
         if self.group_id is not None:
             result['GroupId'] = self.group_id
 
+        if self.group_link is not None:
+            result['GroupLink'] = self.group_link
+
         if self.group_status is not None:
             result['GroupStatus'] = self.group_status
+
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
 
         if self.invite_link is not None:
             result['InviteLink'] = self.invite_link
@@ -167,6 +189,9 @@ class ListChatGroupResponseBodyDataList(DaraModel):
         if self.subject is not None:
             result['Subject'] = self.subject
 
+        if self.total_participant_count is not None:
+            result['TotalParticipantCount'] = self.total_participant_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -174,14 +199,26 @@ class ListChatGroupResponseBodyDataList(DaraModel):
         if m.get('BusinessNumber') is not None:
             self.business_number = m.get('BusinessNumber')
 
+        if m.get('BusinessRole') is not None:
+            self.business_role = m.get('BusinessRole')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('GmtModifier') is not None:
+            self.gmt_modifier = m.get('GmtModifier')
 
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
 
+        if m.get('GroupLink') is not None:
+            self.group_link = m.get('GroupLink')
+
         if m.get('GroupStatus') is not None:
             self.group_status = m.get('GroupStatus')
+
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
 
         if m.get('InviteLink') is not None:
             self.invite_link = m.get('InviteLink')
@@ -191,6 +228,9 @@ class ListChatGroupResponseBodyDataList(DaraModel):
 
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')
+
+        if m.get('TotalParticipantCount') is not None:
+            self.total_participant_count = m.get('TotalParticipantCount')
 
         return self
 

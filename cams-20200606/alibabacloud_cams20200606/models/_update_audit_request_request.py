@@ -102,7 +102,11 @@ class UpdateAuditRequestRequestAuditRecord(DaraModel):
         company_registered_country: str = None,
         company_tel: List[main_models.UpdateAuditRequestRequestAuditRecordCompanyTel] = None,
         complete_address_of_headquarters: str = None,
+        contact_email: str = None,
         contact_mail: str = None,
+        contact_name: str = None,
+        contact_phone: str = None,
+        contact_position: str = None,
         enable_auto_reply: str = None,
         industry_description: str = None,
         industry_involved: str = None,
@@ -131,7 +135,11 @@ class UpdateAuditRequestRequestAuditRecord(DaraModel):
         self.company_registered_country = company_registered_country
         self.company_tel = company_tel
         self.complete_address_of_headquarters = complete_address_of_headquarters
+        self.contact_email = contact_email
         self.contact_mail = contact_mail
+        self.contact_name = contact_name
+        self.contact_phone = contact_phone
+        self.contact_position = contact_position
         self.enable_auto_reply = enable_auto_reply
         self.industry_description = industry_description
         self.industry_involved = industry_involved
@@ -204,8 +212,20 @@ class UpdateAuditRequestRequestAuditRecord(DaraModel):
         if self.complete_address_of_headquarters is not None:
             result['CompleteAddressOfHeadquarters'] = self.complete_address_of_headquarters
 
+        if self.contact_email is not None:
+            result['ContactEmail'] = self.contact_email
+
         if self.contact_mail is not None:
             result['ContactMail'] = self.contact_mail
+
+        if self.contact_name is not None:
+            result['ContactName'] = self.contact_name
+
+        if self.contact_phone is not None:
+            result['ContactPhone'] = self.contact_phone
+
+        if self.contact_position is not None:
+            result['ContactPosition'] = self.contact_position
 
         if self.enable_auto_reply is not None:
             result['EnableAutoReply'] = self.enable_auto_reply
@@ -298,8 +318,20 @@ class UpdateAuditRequestRequestAuditRecord(DaraModel):
         if m.get('CompleteAddressOfHeadquarters') is not None:
             self.complete_address_of_headquarters = m.get('CompleteAddressOfHeadquarters')
 
+        if m.get('ContactEmail') is not None:
+            self.contact_email = m.get('ContactEmail')
+
         if m.get('ContactMail') is not None:
             self.contact_mail = m.get('ContactMail')
+
+        if m.get('ContactName') is not None:
+            self.contact_name = m.get('ContactName')
+
+        if m.get('ContactPhone') is not None:
+            self.contact_phone = m.get('ContactPhone')
+
+        if m.get('ContactPosition') is not None:
+            self.contact_position = m.get('ContactPosition')
 
         if m.get('EnableAutoReply') is not None:
             self.enable_auto_reply = m.get('EnableAutoReply')

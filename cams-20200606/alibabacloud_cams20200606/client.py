@@ -251,6 +251,8 @@ class Client(OpenApiClient):
             query['CustSpaceId'] = request.cust_space_id
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.group_link):
+            query['GroupLink'] = request.group_link
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.resource_owner_account):
@@ -293,6 +295,8 @@ class Client(OpenApiClient):
             query['CustSpaceId'] = request.cust_space_id
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.group_link):
+            query['GroupLink'] = request.group_link
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.resource_owner_account):
@@ -1988,6 +1992,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.chatapp_verify_and_register_with_options_async(request, runtime)
 
+    def check_direct_send_message_sample_with_options(
+        self,
+        tmp_req: main_models.CheckDirectSendMessageSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckDirectSendMessageSampleResponse:
+        tmp_req.validate()
+        request = main_models.CheckDirectSendMessageSampleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interactive):
+            request.interactive_shrink = Utils.array_to_string_with_specified_style(tmp_req.interactive, 'Interactive', 'json')
+        if not DaraCore.is_null(tmp_req.text):
+            request.text_shrink = Utils.array_to_string_with_specified_style(tmp_req.text, 'Text', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.interactive_shrink):
+            query['Interactive'] = request.interactive_shrink
+        if not DaraCore.is_null(request.text_shrink):
+            query['Text'] = request.text_shrink
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckDirectSendMessageSample',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckDirectSendMessageSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_direct_send_message_sample_with_options_async(
+        self,
+        tmp_req: main_models.CheckDirectSendMessageSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckDirectSendMessageSampleResponse:
+        tmp_req.validate()
+        request = main_models.CheckDirectSendMessageSampleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interactive):
+            request.interactive_shrink = Utils.array_to_string_with_specified_style(tmp_req.interactive, 'Interactive', 'json')
+        if not DaraCore.is_null(tmp_req.text):
+            request.text_shrink = Utils.array_to_string_with_specified_style(tmp_req.text, 'Text', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.interactive_shrink):
+            query['Interactive'] = request.interactive_shrink
+        if not DaraCore.is_null(request.text_shrink):
+            query['Text'] = request.text_shrink
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckDirectSendMessageSample',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckDirectSendMessageSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_direct_send_message_sample(
+        self,
+        request: main_models.CheckDirectSendMessageSampleRequest,
+    ) -> main_models.CheckDirectSendMessageSampleResponse:
+        runtime = RuntimeOptions()
+        return self.check_direct_send_message_sample_with_options(request, runtime)
+
+    async def check_direct_send_message_sample_async(
+        self,
+        request: main_models.CheckDirectSendMessageSampleRequest,
+    ) -> main_models.CheckDirectSendMessageSampleResponse:
+        runtime = RuntimeOptions()
+        return await self.check_direct_send_message_sample_with_options_async(request, runtime)
+
     def copy_template_with_options(
         self,
         request: main_models.CopyTemplateRequest,
@@ -2931,14 +3029,8 @@ class Client(OpenApiClient):
             query['IsvTerms'] = request.isv_terms
         if not DaraCore.is_null(request.office_address):
             query['OfficeAddress'] = request.office_address
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2983,14 +3075,8 @@ class Client(OpenApiClient):
             query['IsvTerms'] = request.isv_terms
         if not DaraCore.is_null(request.office_address):
             query['OfficeAddress'] = request.office_address
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4479,12 +4565,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4513,12 +4593,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5569,6 +5643,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetAuditRequestByTypeUnAuditResponse:
         runtime = RuntimeOptions()
         return await self.get_audit_request_by_type_un_audit_with_options_async(request, runtime)
+
+    def get_auto_generated_template_with_options(
+        self,
+        request: main_models.GetAutoGeneratedTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoGeneratedTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutoGeneratedTemplate',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutoGeneratedTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_generated_template_with_options_async(
+        self,
+        request: main_models.GetAutoGeneratedTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoGeneratedTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutoGeneratedTemplate',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutoGeneratedTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_generated_template(
+        self,
+        request: main_models.GetAutoGeneratedTemplateRequest,
+    ) -> main_models.GetAutoGeneratedTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.get_auto_generated_template_with_options(request, runtime)
+
+    async def get_auto_generated_template_async(
+        self,
+        request: main_models.GetAutoGeneratedTemplateRequest,
+    ) -> main_models.GetAutoGeneratedTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.get_auto_generated_template_with_options_async(request, runtime)
 
     def get_chat_flow_metric_with_options(
         self,
@@ -8969,8 +9121,12 @@ class Client(OpenApiClient):
             query['ChannelType'] = request.channel_type
         if not DaraCore.is_null(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.group_link):
+            query['GroupLink'] = request.group_link
         if not DaraCore.is_null(request.group_status):
             query['GroupStatus'] = request.group_status
+        if not DaraCore.is_null(request.group_type):
+            query['GroupType'] = request.group_type
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.page_shrink):
@@ -9017,8 +9173,12 @@ class Client(OpenApiClient):
             query['ChannelType'] = request.channel_type
         if not DaraCore.is_null(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.group_link):
+            query['GroupLink'] = request.group_link
         if not DaraCore.is_null(request.group_status):
             query['GroupStatus'] = request.group_status
+        if not DaraCore.is_null(request.group_type):
+            query['GroupType'] = request.group_type
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.page_shrink):
@@ -10387,18 +10547,12 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.page_index):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.submit_time):
             query['SubmitTime'] = request.submit_time
         req = open_api_util_models.OpenApiRequest(
@@ -10435,18 +10589,12 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.page_index):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.submit_time):
             query['SubmitTime'] = request.submit_time
         req = open_api_util_models.OpenApiRequest(
@@ -11281,6 +11429,80 @@ class Client(OpenApiClient):
     ) -> main_models.ListViberServiceMessageResponse:
         runtime = RuntimeOptions()
         return await self.list_viber_service_message_with_options_async(request, runtime)
+
+    def list_what_app_template_with_options(
+        self,
+        request: main_models.ListWhatAppTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWhatAppTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.hetu_params):
+            query['HetuParams'] = request.hetu_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWhatAppTemplate',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWhatAppTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_what_app_template_with_options_async(
+        self,
+        request: main_models.ListWhatAppTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWhatAppTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.hetu_params):
+            query['HetuParams'] = request.hetu_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWhatAppTemplate',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWhatAppTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_what_app_template(
+        self,
+        request: main_models.ListWhatAppTemplateRequest,
+    ) -> main_models.ListWhatAppTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.list_what_app_template_with_options(request, runtime)
+
+    async def list_what_app_template_async(
+        self,
+        request: main_models.ListWhatAppTemplateRequest,
+    ) -> main_models.ListWhatAppTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.list_what_app_template_with_options_async(request, runtime)
 
     def modify_chatapp_template_with_options(
         self,
@@ -12491,12 +12713,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12525,12 +12741,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15249,12 +15459,6 @@ class Client(OpenApiClient):
             query['IsvTerms'] = request.isv_terms
         if not DaraCore.is_null(request.office_address):
             query['OfficeAddress'] = request.office_address
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15299,12 +15503,6 @@ class Client(OpenApiClient):
             query['IsvTerms'] = request.isv_terms
         if not DaraCore.is_null(request.office_address):
             query['OfficeAddress'] = request.office_address
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -11,6 +11,7 @@ class AddChatGroupRequest(DaraModel):
         channel_type: str = None,
         cust_space_id: str = None,
         description: str = None,
+        group_link: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -22,10 +23,10 @@ class AddChatGroupRequest(DaraModel):
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.description = description
+        self.group_link = group_link
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # This parameter is required.
         self.subject = subject
 
     def validate(self):
@@ -47,6 +48,9 @@ class AddChatGroupRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.group_link is not None:
+            result['GroupLink'] = self.group_link
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -75,6 +79,9 @@ class AddChatGroupRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('GroupLink') is not None:
+            self.group_link = m.get('GroupLink')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')

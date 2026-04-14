@@ -11,7 +11,9 @@ class ListChatGroupRequest(DaraModel):
         business_number: str = None,
         channel_type: str = None,
         cust_space_id: str = None,
+        group_link: str = None,
         group_status: str = None,
+        group_type: str = None,
         owner_id: int = None,
         page: main_models.ListChatGroupRequestPage = None,
         resource_owner_account: str = None,
@@ -23,7 +25,9 @@ class ListChatGroupRequest(DaraModel):
         self.channel_type = channel_type
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.group_link = group_link
         self.group_status = group_status
+        self.group_type = group_type
         self.owner_id = owner_id
         # This parameter is required.
         self.page = page
@@ -49,8 +53,14 @@ class ListChatGroupRequest(DaraModel):
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
 
+        if self.group_link is not None:
+            result['GroupLink'] = self.group_link
+
         if self.group_status is not None:
             result['GroupStatus'] = self.group_status
+
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -80,8 +90,14 @@ class ListChatGroupRequest(DaraModel):
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
 
+        if m.get('GroupLink') is not None:
+            self.group_link = m.get('GroupLink')
+
         if m.get('GroupStatus') is not None:
             self.group_status = m.get('GroupStatus')
+
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
