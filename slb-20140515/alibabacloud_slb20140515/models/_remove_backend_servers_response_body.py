@@ -14,7 +14,6 @@ class RemoveBackendServersResponseBody(DaraModel):
         load_balancer_id: str = None,
         request_id: str = None,
     ):
-        # The backend servers.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
@@ -98,17 +97,9 @@ class RemoveBackendServersResponseBodyBackendServersBackendServer(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The description of the server group.
         self.description = description
-        # The ID of the backend server.
         self.server_id = server_id
-        # The type of backend server. Valid values:
-        # 
-        # *   **ecs**: ECS instance
-        # *   **eni**: ENI
-        # *   **eci**: elastic container instances
         self.type = type
-        # The weight of the backend server. Valid values: **0 to 100**.
         self.weight = weight
 
     def validate(self):

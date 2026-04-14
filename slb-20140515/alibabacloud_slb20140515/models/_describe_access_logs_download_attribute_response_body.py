@@ -16,7 +16,6 @@ class DescribeAccessLogsDownloadAttributeResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The configuration of the access log.
         self.logs_download_attributes = logs_download_attributes
         # The page number.
         self.page_number = page_number
@@ -117,15 +116,10 @@ class DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsD
         log_type: str = None,
         region: str = None,
     ):
-        # The CLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The name of the Log Service project.
         self.log_project = log_project
-        # The name of the Logstore.
         self.log_store = log_store
-        # The type of access log. Only **layer7** is returned, which indicates Layer 7 access logs.
         self.log_type = log_type
-        # The region ID of the CLB instance.
         self.region = region
 
     def validate(self):

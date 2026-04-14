@@ -21,7 +21,6 @@ class ListTagResourcesResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The resources to which the tags are added.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -101,13 +100,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID.
         self.resource_id = resource_id
-        # The resource type.
         self.resource_type = resource_type
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

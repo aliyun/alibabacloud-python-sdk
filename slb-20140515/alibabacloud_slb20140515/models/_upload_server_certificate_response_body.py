@@ -60,9 +60,6 @@ class UploadServerCertificateResponseBody(DaraModel):
         # 
         # The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (_), and hyphens (-).
         self.server_certificate_name = server_certificate_name
-        # The subject alternative names.
-        # 
-        # A domain name list is supported. A maximum of 10 domain names are supported.
         self.subject_alternative_names = subject_alternative_names
 
     def validate(self):

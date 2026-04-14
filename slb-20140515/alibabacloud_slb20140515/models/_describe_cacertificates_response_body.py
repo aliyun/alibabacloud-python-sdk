@@ -13,7 +13,6 @@ class DescribeCACertificatesResponseBody(DaraModel):
         cacertificates: main_models.DescribeCACertificatesResponseBodyCACertificates = None,
         request_id: str = None,
     ):
-        # The information about the CA certificate.
         self.cacertificates = cacertificates
         # The request ID.
         self.request_id = request_id
@@ -96,31 +95,16 @@ class DescribeCACertificatesResponseBodyCACertificatesCACertificate(DaraModel):
         resource_group_id: str = None,
         tags: main_models.DescribeCACertificatesResponseBodyCACertificatesCACertificateTags = None,
     ):
-        # The CA certificate ID.
         self.cacertificate_id = cacertificate_id
-        # The CA certificate name.
         self.cacertificate_name = cacertificate_name
-        # The domain name of the CA certificate.
         self.common_name = common_name
-        # The time when the CA certificate was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The timestamp when the CA certificate was created. Unit: milliseconds.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time_stamp = create_time_stamp
-        # The time when the CA certificate expires. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.expire_time = expire_time
-        # The timestamp that indicates when the CA certificate expires. Unit: milliseconds.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.expire_time_stamp = expire_time_stamp
-        # The fingerprint of the CA certificate.
         self.fingerprint = fingerprint
-        # The region of the CA certificate.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tag.
         self.tags = tags
 
     def validate(self):
@@ -246,9 +230,7 @@ class DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag(DaraM
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

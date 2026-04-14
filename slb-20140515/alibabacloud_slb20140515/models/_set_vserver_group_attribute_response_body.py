@@ -15,7 +15,6 @@ class SetVServerGroupAttributeResponseBody(DaraModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The backend servers.
         self.backend_servers = backend_servers
         # The request ID.
         self.request_id = request_id
@@ -108,19 +107,10 @@ class SetVServerGroupAttributeResponseBodyBackendServersBackendServer(DaraModel)
         type: str = None,
         weight: int = None,
     ):
-        # The description of the server group.
         self.description = description
-        # The port that is used by the backend server.
         self.port = port
-        # The ID of the backend server.
         self.server_id = server_id
-        # The type of backend server. Valid values:
-        # 
-        # *   **ecs** (default): ECS instance
-        # *   **eni**: ENI
-        # *   **eci**: elastic container instance
         self.type = type
-        # The weight of the backend server.
         self.weight = weight
 
     def validate(self):

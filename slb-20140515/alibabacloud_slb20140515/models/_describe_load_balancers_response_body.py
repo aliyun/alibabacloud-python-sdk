@@ -16,7 +16,6 @@ class DescribeLoadBalancersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array of CLB instances.
         self.load_balancers = load_balancers
         # The page number of the returned page.
         self.page_number = page_number
@@ -138,92 +137,31 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The endpoint of the CLB instance.
         self.address = address
-        # The IP version that is used by the CLB instance. Valid values: **ipv4** and **ipv6**.
         self.address_ipversion = address_ipversion
-        # The network type of the CLB instance. Valid values:
-        # 
-        # *   **internet:** After an Internet-facing CLB instance is created, the system assigns a public IP address to the CLB instance. Then, the CLB instance can forward requests over the Internet.
-        # *   **intranet:** After an internal-facing CLB instance is created, the system assigns a private IP address to the CLB instance. Then, the CLB instance can forward requests only over internal networks.
         self.address_type = address_type
-        # The maximum bandwidth of the listener. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The timestamp when the instance was created.
         self.create_time_stamp = create_time_stamp
-        # Indicates whether deletion protection is enabled for the CLB instance. Valid values:
-        # 
-        # *   **on:** Deletion protection is enabled.
-        # *   **off:** Deletion protection is disabled.
         self.delete_protection = delete_protection
-        # The metering method of the CLB instance. Valid values:
-        # 
-        # *   **PayBySpec:** pay-by-specification.
-        # *   **PayByCLCU:** pay-by-LCU.
-        # 
-        # >  This parameter takes effect only for accounts registered on the China site (aliyun.com) and when the **PayType** parameter is set to **PayOnDemand**.
         self.instance_charge_type = instance_charge_type
-        # The metering method of the Internet-facing CLB instance. Valid values:
-        # 
-        # *   **3:** pay-by-bandwidth (**paybybandwidth**).
-        # *   **4:** pay-by-data-transfer (**paybytraffic**).
         self.internet_charge_type = internet_charge_type
-        # The metering method of Internet data transfer. Valid values:
-        # 
-        # *   **paybybandwidth:** pay-by-bandwidth.
-        # *   **paybytraffic:** pay-by-data-transfer.
         self.internet_charge_type_alias = internet_charge_type_alias
-        # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the CLB instance.
         self.load_balancer_name = load_balancer_name
-        # The specification of the CLB instance.
-        # 
-        # >  Pay-as-you-go CLB instances are not subject to specifications. **slb.lcu.elastic** is returned by default.
         self.load_balancer_spec = load_balancer_spec
-        # The status of the CLB instance. Valid values:
-        # 
-        # *   **inactive:** The CLB instance is disabled. CLB instances in the inactive state do not forward traffic.
-        # *   **active:** The CLB instance runs as expected. By default, newly created CLB instances are in the **active** state.
-        # *   **locked:** The CLB instance is locked.
         self.load_balancer_status = load_balancer_status
-        # The ID of the primary zone to which the CLB instance belongs.
         self.master_zone_id = master_zone_id
-        # The reason why the configuration read-only mode was enabled. The reason must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
-        # 
-        # > This parameter takes effect only when you set the `ModificationProtectionStatus` parameter to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
-        # Indicates whether the configuration read-only mode is enabled for the CLB instance. Valid values:
-        # 
-        # *   **NonProtection:** The configuration read-only mode is disabled. In this case, you cannot specify the ModificationProtectionReason parameter. If you specify the `ModificationProtectionReason` parameter, the value is cleared.
-        # *   **ConsoleProtection:** The configuration read-only mode is enabled.
-        # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot modify the configurations of the CLB instance in the CLB console. However, you can call API operations to modify the configurations of the CLB instance.
         self.modification_protection_status = modification_protection_status
-        # The network type of the internal-facing CLB instance. Valid values:
-        # 
-        # *   **vpc**: VPC
-        # *   **Classic**: classic network
         self.network_type = network_type
-        # The billing method of the CLB instance.
-        # 
-        # *   **PayOnDemand** is returned, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
-        # The ID of the region where the CLB instance was deployed.
         self.region_id = region_id
-        # The region where the CLB instance was deployed.
         self.region_id_alias = region_id_alias
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the secondary zone to which the CLB instance belongs.
         self.slave_zone_id = slave_zone_id
-        # The tags.
         self.tags = tags
-        # The ID of the vSwitch to which the internal-facing CLB instance belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC in which the internal-facing CLB instance was deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -439,9 +377,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancerTagsTag(DaraMode
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

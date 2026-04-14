@@ -55,7 +55,6 @@ class DescribeLoadBalancerAttributeResponseBody(DaraModel):
         self.address_type = address_type
         # The timestamp generated when the CLB instance is released.
         self.auto_release_time = auto_release_time
-        # The backend servers of the CLB instance.
         self.backend_servers = backend_servers
         # The maximum bandwidth of the Internet-facing CLB instance that is billed on a pay-by-bandwidth basis.
         self.bandwidth = bandwidth
@@ -83,11 +82,8 @@ class DescribeLoadBalancerAttributeResponseBody(DaraModel):
         # *   **paybytraffic**
         # *   **paybybandwidth**
         self.internet_charge_type = internet_charge_type
-        # The frontend port used by the CLB instance.
         self.listener_ports = listener_ports
-        # The ports or protocols of the listeners.
         self.listener_ports_and_protocal = listener_ports_and_protocal
-        # The ports or protocols of the listeners.
         self.listener_ports_and_protocol = listener_ports_and_protocol
         # The CLB instance ID.
         self.load_balancer_id = load_balancer_id
@@ -156,7 +152,6 @@ class DescribeLoadBalancerAttributeResponseBody(DaraModel):
         self.resource_group_id = resource_group_id
         # The ID of the secondary zone to which the CLB instance belongs.
         self.slave_zone_id = slave_zone_id
-        # The tags.
         self.tags = tags
         # The ID of the vSwitch to which the internal-facing CLB instance belongs.
         self.v_switch_id = v_switch_id
@@ -448,13 +443,7 @@ class DescribeLoadBalancerAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
-        # 
-        # The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
         self.tag_key = tag_key
-        # The tag value. Valid values of N: **1** to **20**. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -527,15 +516,10 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerP
         listener_port: int = None,
         listener_protocol: str = None,
     ):
-        # Indicates whether the listener is enabled.
         self.description = description
-        # The destination listening port to which requests are forwarded. The port must be open and use HTTPS.
         self.forward_port = forward_port
-        # Indicates whether the listener is enabled.
         self.listener_forward = listener_forward
-        # The frontend port that is used by the CLB instance.
         self.listener_port = listener_port
-        # The frontend protocol that is used by the CLB instance.
         self.listener_protocol = listener_protocol
 
     def validate(self):
@@ -623,9 +607,7 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerP
         listener_port: int = None,
         listener_protocal: str = None,
     ):
-        # The frontend port that is used by the CLB instance.
         self.listener_port = listener_port
-        # The frontend protocol that is used by the CLB instance.
         self.listener_protocal = listener_protocal
 
     def validate(self):
@@ -725,17 +707,10 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer(DaraM
         type: str = None,
         weight: int = None,
     ):
-        # The description of the backend server.
-        # 
-        # > This parameter is not returned if Description is not set.
         self.description = description
-        # The backend server ID.
         self.server_id = server_id
-        # The ID of the elastic network interface (ENI) or elastic container instance.
         self.server_ip = server_ip
-        # The type of the backend server.
         self.type = type
-        # The weight of the backend server.
         self.weight = weight
 
     def validate(self):

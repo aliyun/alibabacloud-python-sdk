@@ -56,7 +56,6 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(DaraModel):
         # 
         # > This parameter is returned when **AclStatus** is set to **on**.
         self.acl_id = acl_id
-        # The ID of the access control list (ACL).
         self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
@@ -147,7 +146,6 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(DaraModel):
         # 
         # If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
         self.request_timeout = request_timeout
-        # The list of forwarding rules.
         self.rules = rules
         # The routing algorithm. Valid values:
         # 
@@ -183,7 +181,6 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(DaraModel):
         # 
         # > This parameter is required when **StickySession** is set to **on**.
         self.sticky_session_type = sticky_session_type
-        # The tags.
         self.tags = tags
         # The unhealthy threshold.
         self.unhealthy_threshold = unhealthy_threshold
@@ -529,9 +526,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N. Valid values of N: **1** to **20**. The tag value cannot be an empty string. The tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -604,15 +599,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(DaraModel):
         url: str = None,
         vserver_group_id: str = None,
     ):
-        # The domain name.
         self.domain = domain
-        # The ID of the forwarding rule.
         self.rule_id = rule_id
-        # The name of the forwarding rule.
         self.rule_name = rule_name
-        # The request URL.
         self.url = url
-        # The ID of the server group specified in the forwarding rule.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):

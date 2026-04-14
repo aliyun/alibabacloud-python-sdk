@@ -12,6 +12,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         acl_type: str = None,
         bandwidth: int = None,
         description: str = None,
+        dry_run: bool = None,
         health_check_connect_port: int = None,
         health_check_connect_timeout: int = None,
         health_check_interval: int = None,
@@ -64,6 +65,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         # 
         # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
+        self.dry_run = dry_run
         # The port that is used for health checks.
         # 
         # Valid values: **1** to **65535**.
@@ -179,6 +181,9 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
 
@@ -260,6 +265,9 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')

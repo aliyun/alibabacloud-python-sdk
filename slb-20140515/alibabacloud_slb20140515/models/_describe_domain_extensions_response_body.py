@@ -13,7 +13,6 @@ class DescribeDomainExtensionsResponseBody(DaraModel):
         domain_extensions: main_models.DescribeDomainExtensionsResponseBodyDomainExtensions = None,
         request_id: str = None,
     ):
-        # A list of additional certificates.
         self.domain_extensions = domain_extensions
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension(DaraMo
         domain_extension_id: str = None,
         server_certificate_id: str = None,
     ):
-        # The domain name.
         self.domain = domain
-        # The ID of the additional certificate.
         self.domain_extension_id = domain_extension_id
-        # The ID of the certificate used by the domain name.
         self.server_certificate_id = server_certificate_id
 
     def validate(self):

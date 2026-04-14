@@ -15,7 +15,6 @@ class DescribeServerCertificatesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The server certificates.
         self.server_certificates = server_certificates
 
     def validate(self):
@@ -100,38 +99,20 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
         subject_alternative_names: main_models.DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames = None,
         tags: main_models.DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags = None,
     ):
-        # The ID of the server certificate from Alibaba Cloud Certificate Management Service.
         self.ali_cloud_certificate_id = ali_cloud_certificate_id
-        # The name of the server certificate from Alibaba Cloud Certificate Management Service.
         self.ali_cloud_certificate_name = ali_cloud_certificate_name
-        # The domain name of the server certificate. The domain name is specified in the `CommonName` field.
         self.common_name = common_name
-        # The time when the server certificate was uploaded.
         self.create_time = create_time
-        # The timestamp when the server certificate was uploaded.
         self.create_time_stamp = create_time_stamp
-        # The time when the server certificate expires.
         self.expire_time = expire_time
-        # The timestamp when the server certificate expires.
         self.expire_time_stamp = expire_time_stamp
-        # The fingerprint of the server certificate.
         self.fingerprint = fingerprint
-        # Indicates whether the server certificate is from Alibaba Cloud Certificate Management Service. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
         self.is_ali_cloud_certificate = is_ali_cloud_certificate
-        # The region ID of the server certificate.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The server certificate ID.
         self.server_certificate_id = server_certificate_id
-        # The name of the server certificate.
         self.server_certificate_name = server_certificate_name
-        # The alternative domain names of the server certificate. The alternative domain names are specified in the Subject Alternative Name field of the server certificate.
         self.subject_alternative_names = subject_alternative_names
-        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -284,9 +265,7 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateT
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag keys of the resource.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

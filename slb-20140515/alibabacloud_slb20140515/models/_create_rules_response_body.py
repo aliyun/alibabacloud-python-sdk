@@ -15,7 +15,6 @@ class CreateRulesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The forwarding rules.
         self.rules = rules
 
     def validate(self):
@@ -87,9 +86,7 @@ class CreateRulesResponseBodyRulesRule(DaraModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # The forwarding rule ID.
         self.rule_id = rule_id
-        # The name of the forwarding rule.
         self.rule_name = rule_name
 
     def validate(self):

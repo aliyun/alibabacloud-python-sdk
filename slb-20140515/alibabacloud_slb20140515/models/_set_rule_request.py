@@ -9,6 +9,7 @@ class SetRuleRequest(DaraModel):
         self,
         cookie: str = None,
         cookie_timeout: int = None,
+        dry_run: bool = None,
         health_check: str = None,
         health_check_connect_port: int = None,
         health_check_domain: str = None,
@@ -41,6 +42,7 @@ class SetRuleRequest(DaraModel):
         # 
         # >  This parameter is required and takes effect if **StickySession** is set to **on** and **StickySessionType** is set to **insert**.
         self.cookie_timeout = cookie_timeout
+        self.dry_run = dry_run
         # Specifies whether to enable the health check feature. Valid values:
         # 
         # *   **on**: yes
@@ -155,6 +157,9 @@ class SetRuleRequest(DaraModel):
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
 
@@ -227,6 +232,9 @@ class SetRuleRequest(DaraModel):
 
         if m.get('CookieTimeout') is not None:
             self.cookie_timeout = m.get('CookieTimeout')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')

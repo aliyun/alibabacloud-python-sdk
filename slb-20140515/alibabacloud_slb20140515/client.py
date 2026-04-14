@@ -1882,6 +1882,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.listener_port):
             query['ListenerPort'] = request.listener_port
         if not DaraCore.is_null(request.listener_protocol):
@@ -1926,6 +1928,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.listener_port):
             query['ListenerPort'] = request.listener_port
         if not DaraCore.is_null(request.listener_protocol):
@@ -8058,6 +8062,8 @@ class Client(OpenApiClient):
             query['CookieTimeout'] = request.cookie_timeout
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.gzip):
             query['Gzip'] = request.gzip
         if not DaraCore.is_null(request.health_check):
@@ -8160,6 +8166,8 @@ class Client(OpenApiClient):
             query['CookieTimeout'] = request.cookie_timeout
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.gzip):
             query['Gzip'] = request.gzip
         if not DaraCore.is_null(request.health_check):
@@ -8278,6 +8286,8 @@ class Client(OpenApiClient):
             query['CookieTimeout'] = request.cookie_timeout
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_http_2):
             query['EnableHttp2'] = request.enable_http_2
         if not DaraCore.is_null(request.gzip):
@@ -8388,6 +8398,8 @@ class Client(OpenApiClient):
             query['CookieTimeout'] = request.cookie_timeout
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_http_2):
             query['EnableHttp2'] = request.enable_http_2
         if not DaraCore.is_null(request.gzip):
@@ -8796,6 +8808,8 @@ class Client(OpenApiClient):
             query['ConnectionDrainTimeout'] = request.connection_drain_timeout
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.established_timeout):
             query['EstablishedTimeout'] = request.established_timeout
         if not DaraCore.is_null(request.health_check_connect_port):
@@ -8888,6 +8902,8 @@ class Client(OpenApiClient):
             query['ConnectionDrainTimeout'] = request.connection_drain_timeout
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.established_timeout):
             query['EstablishedTimeout'] = request.established_timeout
         if not DaraCore.is_null(request.health_check_connect_port):
@@ -8990,6 +9006,8 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check_connect_port):
             query['HealthCheckConnectPort'] = request.health_check_connect_port
         if not DaraCore.is_null(request.health_check_connect_timeout):
@@ -9068,6 +9086,8 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check_connect_port):
             query['HealthCheckConnectPort'] = request.health_check_connect_port
         if not DaraCore.is_null(request.health_check_connect_timeout):
@@ -9154,6 +9174,8 @@ class Client(OpenApiClient):
             query['Cookie'] = request.cookie
         if not DaraCore.is_null(request.cookie_timeout):
             query['CookieTimeout'] = request.cookie_timeout
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check):
             query['HealthCheck'] = request.health_check
         if not DaraCore.is_null(request.health_check_connect_port):
@@ -9226,6 +9248,8 @@ class Client(OpenApiClient):
             query['Cookie'] = request.cookie
         if not DaraCore.is_null(request.cookie_timeout):
             query['CookieTimeout'] = request.cookie_timeout
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check):
             query['HealthCheck'] = request.health_check
         if not DaraCore.is_null(request.health_check_connect_port):

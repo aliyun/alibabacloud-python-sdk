@@ -22,7 +22,6 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(DaraModel):
         self.create_time = create_time
         # The ID of the associated CLB instance.
         self.load_balancer_id = load_balancer_id
-        # A list of backend servers in the primary/secondary server group.
         self.master_slave_backend_servers = master_slave_backend_servers
         # The ID of the primary/secondary server group.
         self.master_slave_server_group_id = master_slave_server_group_id
@@ -30,7 +29,6 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(DaraModel):
         self.master_slave_server_group_name = master_slave_server_group_name
         # The request ID.
         self.request_id = request_id
-        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -135,13 +133,7 @@ class DescribeMasterSlaveServerGroupAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.tag_key = tag_key
-        # The tag value. Valid values of N: **1** to **20**. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -215,21 +207,11 @@ class DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServe
         type: str = None,
         weight: int = None,
     ):
-        # The description of the primary/secondary server group.
         self.description = description
-        # The port that is used by the backend server.
         self.port = port
-        # The ID of the backend server.
         self.server_id = server_id
-        # The type of backend server. Valid values: **Master** and **Slave**.
         self.server_type = server_type
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ecs** (default): Elastic Compute Service (ECS) instance
-        # *   **eni**: elastic network interface (ENI)
-        # *   **eci**: elastic container instance
         self.type = type
-        # The weight of the backend server.
         self.weight = weight
 
     def validate(self):

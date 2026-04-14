@@ -14,6 +14,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         connection_drain: str = None,
         connection_drain_timeout: int = None,
         description: str = None,
+        dry_run: bool = None,
         established_timeout: int = None,
         health_check_connect_port: int = None,
         health_check_connect_timeout: int = None,
@@ -80,6 +81,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         # 
         # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
+        self.dry_run = dry_run
         # The timeout period of a connection. Unit: seconds. Valid values: **10** to **900**.
         self.established_timeout = established_timeout
         # The port that is used for health checks. Valid values: **1** to **65535**.
@@ -225,6 +227,9 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.established_timeout is not None:
             result['EstablishedTimeout'] = self.established_timeout
 
@@ -327,6 +332,9 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('EstablishedTimeout') is not None:
             self.established_timeout = m.get('EstablishedTimeout')

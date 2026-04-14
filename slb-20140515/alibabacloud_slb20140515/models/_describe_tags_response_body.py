@@ -22,7 +22,6 @@ class DescribeTagsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The tags that are queried.
         self.tag_sets = tag_sets
         # The number of instances returned.
         self.total_count = total_count
@@ -115,11 +114,8 @@ class DescribeTagsResponseBodyTagSetsTagSet(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The number of instances to which the tag is added.
         self.instance_count = instance_count
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

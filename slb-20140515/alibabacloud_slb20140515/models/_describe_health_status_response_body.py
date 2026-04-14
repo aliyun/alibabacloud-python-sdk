@@ -13,7 +13,6 @@ class DescribeHealthStatusResponseBody(DaraModel):
         backend_servers: main_models.DescribeHealthStatusResponseBodyBackendServers = None,
         request_id: str = None,
     ):
-        # The backend servers.
         self.backend_servers = backend_servers
         # The request ID.
         self.request_id = request_id
@@ -91,21 +90,11 @@ class DescribeHealthStatusResponseBodyBackendServersBackendServer(DaraModel):
         server_id: str = None,
         server_ip: str = None,
     ):
-        # The frontend port that is used by the SLB instance.
         self.listener_port = listener_port
-        # The backend port that is used by the SLB instance.
         self.port = port
-        # The frontend protocol that is used by the SLB instance.
         self.protocol = protocol
-        # The health status of the backend server. Valid values:
-        # 
-        # *   normal: The backend server is healthy.
-        # *   abnormal: The backend server is unhealthy.
-        # *   unavailable: The health check is not completed.
         self.server_health_status = server_health_status
-        # The ID of the backend server.
         self.server_id = server_id
-        # The IP address of the backend server.
         self.server_ip = server_ip
 
     def validate(self):

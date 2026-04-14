@@ -15,6 +15,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(DaraModel):
         cookie: str = None,
         cookie_timeout: int = None,
         description: str = None,
+        dry_run: bool = None,
         enable_http_2: str = None,
         gzip: str = None,
         health_check: str = None,
@@ -97,6 +98,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(DaraModel):
         # The description of the listener.
         # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
+        self.dry_run = dry_run
         # Specifies whether to use `HTTP 2.0`. Valid values:
         # 
         # *   **on**: yes
@@ -315,6 +317,9 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.enable_http_2 is not None:
             result['EnableHttp2'] = self.enable_http_2
 
@@ -444,6 +449,9 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('EnableHttp2') is not None:
             self.enable_http_2 = m.get('EnableHttp2')

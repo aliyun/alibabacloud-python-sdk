@@ -17,7 +17,6 @@ class DescribeAccessControlListsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of ACLs.
         self.acls = acls
         # The number of ACLs on the current page.
         self.count = count
@@ -127,17 +126,11 @@ class DescribeAccessControlListsResponseBodyAclsAcl(DaraModel):
         resource_group_id: str = None,
         tags: main_models.DescribeAccessControlListsResponseBodyAclsAclTags = None,
     ):
-        # The ACL ID.
         self.acl_id = acl_id
-        # The ACL name.
         self.acl_name = acl_name
-        # The IP version that is used by the CLB instance associated with the ACL.
         self.address_ipversion = address_ipversion
-        # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of tags added to the network ACL. The value of this parameter must be a STRING list in the JSON format.
         self.tags = tags
 
     def validate(self):
@@ -233,9 +226,7 @@ class DescribeAccessControlListsResponseBodyAclsAclTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

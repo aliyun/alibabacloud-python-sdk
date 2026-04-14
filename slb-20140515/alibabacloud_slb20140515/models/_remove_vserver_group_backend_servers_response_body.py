@@ -14,7 +14,6 @@ class RemoveVServerGroupBackendServersResponseBody(DaraModel):
         request_id: str = None,
         vserver_group_id: str = None,
     ):
-        # The backend servers.
         self.backend_servers = backend_servers
         # The request ID.
         self.request_id = request_id
@@ -98,17 +97,9 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer(Da
         type: str = None,
         weight: int = None,
     ):
-        # The port that is used by the backend server.
         self.port = port
-        # The ID of the backend server.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ecs** (default): ECS instance
-        # *   **eni**: ENI
-        # *   **eci**: elastic container instance
         self.type = type
-        # The weight of the backend server.
         self.weight = weight
 
     def validate(self):

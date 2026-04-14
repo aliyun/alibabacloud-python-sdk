@@ -14,7 +14,6 @@ class CreateMasterSlaveServerGroupResponseBody(DaraModel):
         master_slave_server_group_id: str = None,
         request_id: str = None,
     ):
-        # The backend servers in the primary/secondary server group.
         self.master_slave_backend_servers = master_slave_backend_servers
         # The ID of the active/standby server group.
         self.master_slave_server_group_id = master_slave_server_group_id
@@ -100,23 +99,11 @@ class CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSla
         type: str = None,
         weight: int = None,
     ):
-        # The description of the primary/secondary server group.
         self.description = description
-        # The port that is used by the backend server.
         self.port = port
-        # The ID of the backend server that you want to add.
         self.server_id = server_id
-        # The type of backend server.
-        # 
-        # Valid values: **Master** and **Slave**.
         self.server_type = server_type
-        # The type of backend server. Valid values:
-        # 
-        # *   **ecs**: ECS instance
-        # *   **eni**: ENI
-        # *   **eci**: elastic container instance
         self.type = type
-        # The weight of the backend server.
         self.weight = weight
 
     def validate(self):

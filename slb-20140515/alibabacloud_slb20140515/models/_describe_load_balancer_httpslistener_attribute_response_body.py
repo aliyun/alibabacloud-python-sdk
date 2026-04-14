@@ -63,7 +63,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(DaraModel):
         # 
         # > This parameter is required when **AclStatus** is set to **on**.
         self.acl_id = acl_id
-        # The ID of the network access control list (ACL) that is associated with the listener.
         self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
@@ -94,7 +93,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(DaraModel):
         self.cookie_timeout = cookie_timeout
         # The name of the listener.
         self.description = description
-        # A list of additional certificates.
         self.domain_extensions = domain_extensions
         # Indicates whether `HTTP/2` is used. Valid values:
         # 
@@ -145,7 +143,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(DaraModel):
         # 
         # If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
         self.request_timeout = request_timeout
-        # The list of forwarding rules that are associated with the listener.
         self.rules = rules
         # The routing algorithm. Valid values: **wrr** and **rr**.
         # 
@@ -215,7 +212,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(DaraModel):
         # 
         #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         self.tlscipher_policy = tlscipher_policy
-        # The tags.
         self.tags = tags
         # The unhealthy threshold.
         self.unhealthy_threshold = unhealthy_threshold
@@ -626,9 +622,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N. Valid values of N: **1** to **20**. The tag value cannot be an empty string. The tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -701,15 +695,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule(DaraModel)
         url: str = None,
         vserver_group_id: str = None,
     ):
-        # The domain name.
         self.domain = domain
-        # The ID of the forwarding rule.
         self.rule_id = rule_id
-        # The name of the forwarding rule.
         self.rule_name = rule_name
-        # The request URL.
         self.url = url
-        # The ID of the server group specified in the forwarding rule.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -798,11 +787,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDoma
         domain_extension_id: str = None,
         server_certificate_id: str = None,
     ):
-        # The domain name.
         self.domain = domain
-        # The ID of the additional certificate.
         self.domain_extension_id = domain_extension_id
-        # The ID of the certificate used by the domain name.
         self.server_certificate_id = server_certificate_id
 
     def validate(self):

@@ -47,7 +47,6 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(DaraModel):
         # 
         # If **AclStatus** is set to **on**, this parameter is returned.
         self.acl_id = acl_id
-        # The IDs of the ACLs.
         self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
@@ -156,7 +155,6 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(DaraModel):
         # *   **enable**: yes
         # *   **disable**: no
         self.syn_proxy = syn_proxy
-        # The tags.
         self.tags = tags
         # The unhealthy threshold. The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**. Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -415,9 +413,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N. Valid values of N: **1** to **20**. The tag value cannot be an empty string. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.tag_key = tag_key
-        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):

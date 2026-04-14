@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateRulesRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         listener_port: int = None,
         listener_protocol: str = None,
         load_balancer_id: str = None,
@@ -17,6 +18,7 @@ class CreateRulesRequest(DaraModel):
         resource_owner_id: int = None,
         rule_list: str = None,
     ):
+        self.dry_run = dry_run
         # The frontend listener port that is used by the SLB instance.
         # 
         # Valid values: **1 to 65535**.
@@ -61,6 +63,9 @@ class CreateRulesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
 
@@ -92,6 +97,9 @@ class CreateRulesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
 

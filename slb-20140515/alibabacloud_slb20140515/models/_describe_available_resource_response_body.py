@@ -13,7 +13,6 @@ class DescribeAvailableResourceResponseBody(DaraModel):
         available_resources: main_models.DescribeAvailableResourceResponseBodyAvailableResources = None,
         request_id: str = None,
     ):
-        # The zones and the supported resources.
         self.available_resources = available_resources
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource(D
         slave_zone_id: str = None,
         support_resources: main_models.DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources = None,
     ):
-        # The primary zone.
         self.master_zone_id = master_zone_id
-        # The secondary zone.
         self.slave_zone_id = slave_zone_id
-        # The supported resources.
         self.support_resources = support_resources
 
     def validate(self):
@@ -170,13 +166,7 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSu
         address_ipversion: str = None,
         address_type: str = None,
     ):
-        # The type of the IP address.
-        # 
-        # Valid values: **ipv4 and ipv6**.
         self.address_ipversion = address_ipversion
-        # The network type.
-        # 
-        # Valid values: **vpc, classic-internet, and classic-intranet**.
         self.address_type = address_type
 
     def validate(self):

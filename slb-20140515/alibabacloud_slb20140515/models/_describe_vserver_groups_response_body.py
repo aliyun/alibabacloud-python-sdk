@@ -15,7 +15,6 @@ class DescribeVServerGroupsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The backend servers.
         self.vserver_groups = vserver_groups
 
     def validate(self):
@@ -91,19 +90,11 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup(DaraModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The associated resources.
         self.associated_objects = associated_objects
-        # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The number of servers.
-        # 
-        # This parameter is unavailable by default. To use this parameter, submit a ticket or contact your account manager.
         self.server_count = server_count
-        # The tags.
         self.tags = tags
-        # The server group ID.
         self.vserver_group_id = vserver_group_id
-        # The server group name.
         self.vserver_group_name = vserver_group_name
 
     def validate(self):
@@ -202,9 +193,7 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTagsTag(DaraMode
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -239,9 +228,7 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         listeners: main_models.DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners = None,
         rules: main_models.DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules = None,
     ):
-        # The listeners.
         self.listeners = listeners
-        # The forwarding rules.
         self.rules = rules
 
     def validate(self):
@@ -318,13 +305,9 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         rule_name: str = None,
         url: str = None,
     ):
-        # The requested domain name.
         self.domain = domain
-        # The ID of the forwarding rule.
         self.rule_id = rule_id
-        # The name of the forwarding rule.
         self.rule_name = rule_name
-        # The request URL.
         self.url = url
 
     def validate(self):
@@ -406,9 +389,7 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         port: int = None,
         protocol: str = None,
     ):
-        # The listener port.
         self.port = port
-        # The listener protocol. Valid values: **tcp**, **udp**, **http**, and **https**.
         self.protocol = protocol
 
     def validate(self):

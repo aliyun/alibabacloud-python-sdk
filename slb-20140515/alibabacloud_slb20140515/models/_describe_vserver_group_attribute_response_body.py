@@ -18,7 +18,6 @@ class DescribeVServerGroupAttributeResponseBody(DaraModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The backend servers.
         self.backend_servers = backend_servers
         # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
@@ -26,7 +25,6 @@ class DescribeVServerGroupAttributeResponseBody(DaraModel):
         self.load_balancer_id = load_balancer_id
         # The request ID.
         self.request_id = request_id
-        # The tags of the backend server.
         self.tags = tags
         # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
@@ -135,13 +133,7 @@ class DescribeVServerGroupAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.tag_key = tag_key
-        # The tag value. Valid values of N: **1** to **20**. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -215,23 +207,11 @@ class DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer(DaraM
         type: str = None,
         weight: int = None,
     ):
-        # The description of the server group.
-        # 
-        # >  This parameter is not returned if the Description parameter is not specified in the request.
         self.description = description
-        # The port that is used by the backend server.
         self.port = port
-        # The ID of the backend server.
         self.server_id = server_id
-        # The IP address of the backend server.
         self.server_ip = server_ip
-        # The type of backend server. Valid values:
-        # 
-        # *   **ecs**: ECS instance
-        # *   **eni**: ENI
-        # *   **eci**: elastic container instance
         self.type = type
-        # The weight of the backend server.
         self.weight = weight
 
     def validate(self):

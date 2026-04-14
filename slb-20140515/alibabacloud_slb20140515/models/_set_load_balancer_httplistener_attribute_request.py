@@ -14,6 +14,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(DaraModel):
         cookie: str = None,
         cookie_timeout: int = None,
         description: str = None,
+        dry_run: bool = None,
         gzip: str = None,
         health_check: str = None,
         health_check_connect_port: int = None,
@@ -85,6 +86,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(DaraModel):
         self.cookie_timeout = cookie_timeout
         # The description of the listener.
         self.description = description
+        self.dry_run = dry_run
         # Specifies whether to enable `GZIP` compression to compress specific types of files. Valid values:
         # 
         # *   **on**
@@ -261,6 +263,9 @@ class SetLoadBalancerHTTPListenerAttributeRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.gzip is not None:
             result['Gzip'] = self.gzip
 
@@ -378,6 +383,9 @@ class SetLoadBalancerHTTPListenerAttributeRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Gzip') is not None:
             self.gzip = m.get('Gzip')

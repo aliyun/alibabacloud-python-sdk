@@ -21,7 +21,6 @@ class DescribeAccessControlListAttributeResponseBody(DaraModel):
         tags: main_models.DescribeAccessControlListAttributeResponseBodyTags = None,
         total_acl_entry: int = None,
     ):
-        # The information about the access control policy.
         self.acl_entrys = acl_entrys
         # The ACL ID.
         self.acl_id = acl_id
@@ -31,13 +30,11 @@ class DescribeAccessControlListAttributeResponseBody(DaraModel):
         self.address_ipversion = address_ipversion
         # The time when the ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The listeners with which the ACL is associated.
         self.related_listeners = related_listeners
         # The ID of the request.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags added to the ACL.
         self.tags = tags
         # The total number of ACL entries.
         self.total_acl_entry = total_acl_entry
@@ -165,9 +162,7 @@ class DescribeAccessControlListAttributeResponseBodyTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -239,16 +234,9 @@ class DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListe
         load_balancer_id: str = None,
         protocol: str = None,
     ):
-        # The type of ACL. Valid values:
-        # 
-        # *   **black**
-        # *   **white**
         self.acl_type = acl_type
-        # The frontend port of the listener with which the ACL is associated.
         self.listener_port = listener_port
-        # The CLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The type of protocol that the associated listener uses.
         self.protocol = protocol
 
     def validate(self):
@@ -330,9 +318,7 @@ class DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry(DaraModel)
         acl_entry_comment: str = None,
         acl_entry_ip: str = None,
     ):
-        # The remarks of the ACL entry.
         self.acl_entry_comment = acl_entry_comment
-        # The IP entry in the ACL.
         self.acl_entry_ip = acl_entry_ip
 
     def validate(self):

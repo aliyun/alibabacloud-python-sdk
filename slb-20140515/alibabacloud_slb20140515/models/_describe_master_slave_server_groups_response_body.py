@@ -13,7 +13,6 @@ class DescribeMasterSlaveServerGroupsResponseBody(DaraModel):
         master_slave_server_groups: main_models.DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups = None,
         request_id: str = None,
     ):
-        # The primary/secondary server groups.
         self.master_slave_server_groups = master_slave_server_groups
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
         master_slave_server_group_name: str = None,
         tags: main_models.DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTags = None,
     ):
-        # The associated resources.
         self.associated_objects = associated_objects
-        # The time when the CLB instance was created. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The ID of the primary/secondary server group.
         self.master_slave_server_group_id = master_slave_server_group_id
-        # The name of the primary/secondary server group.
         self.master_slave_server_group_name = master_slave_server_group_name
-        # The tags to add to the resource.
         self.tags = tags
 
     def validate(self):
@@ -191,9 +185,7 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -227,7 +219,6 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
         self,
         listeners: main_models.DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners = None,
     ):
-        # The listeners.
         self.listeners = listeners
 
     def validate(self):
@@ -293,9 +284,7 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
         port: int = None,
         protocol: str = None,
     ):
-        # The listener port.
         self.port = port
-        # The listener protocol.
         self.protocol = protocol
 
     def validate(self):

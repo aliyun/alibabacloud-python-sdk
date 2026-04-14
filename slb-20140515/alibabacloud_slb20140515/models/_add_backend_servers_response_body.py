@@ -14,7 +14,6 @@ class AddBackendServersResponseBody(DaraModel):
         load_balancer_id: str = None,
         request_id: str = None,
     ):
-        # The list of backend servers.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
@@ -100,21 +99,9 @@ class AddBackendServersResponseBodyBackendServersBackendServer(DaraModel):
         type: str = None,
         weight: str = None,
     ):
-        # The description of the backend server.
         self.description = description
-        # The ID of the ECS instance, ENI, or elastic container instance.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ecs** (default): an ECS instance
-        # *   **eni**: an ENI
-        # *   **eci**: an elastic container instance
         self.type = type
-        # The weight of the backend server.
-        # 
-        # Valid values: **0 to 100**. Default value: **100**.
-        # 
-        # If the value is set to **0**, no requests are forwarded to the backend server.
         self.weight = weight
 
     def validate(self):
