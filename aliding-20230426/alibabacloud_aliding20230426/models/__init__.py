@@ -805,6 +805,12 @@ from ._get_running_tasks_shrink_headers import GetRunningTasksShrinkHeaders
 from ._get_running_tasks_request import GetRunningTasksRequest
 from ._get_running_tasks_response_body import GetRunningTasksResponseBody
 from ._get_running_tasks_response import GetRunningTasksResponse
+from ._get_scenegroup_headers import GetScenegroupHeaders
+from ._get_scenegroup_shrink_headers import GetScenegroupShrinkHeaders
+from ._get_scenegroup_request import GetScenegroupRequest
+from ._get_scenegroup_shrink_request import GetScenegroupShrinkRequest
+from ._get_scenegroup_response_body import GetScenegroupResponseBody
+from ._get_scenegroup_response import GetScenegroupResponse
 from ._get_schedule_headers import GetScheduleHeaders
 from ._get_schedule_shrink_headers import GetScheduleShrinkHeaders
 from ._get_schedule_request import GetScheduleRequest
@@ -2114,6 +2120,9 @@ from ._get_report_un_read_count_headers import GetReportUnReadCountHeadersAccoun
 from ._get_report_un_read_count_request import GetReportUnReadCountRequestTenantContext
 from ._get_running_tasks_headers import GetRunningTasksHeadersAccountContext
 from ._get_running_tasks_response_body import GetRunningTasksResponseBodyResult
+from ._get_scenegroup_headers import GetScenegroupHeadersAccountContext
+from ._get_scenegroup_request import GetScenegroupRequestTenantContext
+from ._get_scenegroup_response_body import GetScenegroupResponseBodyManagementOptions
 from ._get_schedule_headers import GetScheduleHeadersAccountContext
 from ._get_schedule_request import GetScheduleRequestTenantContext
 from ._get_schedule_response_body import GetScheduleResponseBodyScheduleInformationScheduleItemsEnd
@@ -3455,6 +3464,12 @@ __all__ = [
     GetRunningTasksRequest,
     GetRunningTasksResponseBody,
     GetRunningTasksResponse,
+    GetScenegroupHeaders,
+    GetScenegroupShrinkHeaders,
+    GetScenegroupRequest,
+    GetScenegroupShrinkRequest,
+    GetScenegroupResponseBody,
+    GetScenegroupResponse,
     GetScheduleHeaders,
     GetScheduleShrinkHeaders,
     GetScheduleRequest,
@@ -4764,6 +4779,9 @@ __all__ = [
     GetReportUnReadCountRequestTenantContext,
     GetRunningTasksHeadersAccountContext,
     GetRunningTasksResponseBodyResult,
+    GetScenegroupHeadersAccountContext,
+    GetScenegroupRequestTenantContext,
+    GetScenegroupResponseBodyManagementOptions,
     GetScheduleHeadersAccountContext,
     GetScheduleRequestTenantContext,
     GetScheduleResponseBodyScheduleInformationScheduleItemsEnd,

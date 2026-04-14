@@ -1,3 +1,7 @@
+2026-04-14 Version: 2.49.0
+- Support API GetScenegroup.
+
+
 2026-03-17 Version: 2.48.3
 - Update API CreateMessage: add request parameters body.sourceIdOfAssistantId.
 - Update API CreateMessage: add request parameters body.sourceTypeOfAssistantId.
