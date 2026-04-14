@@ -14,6 +14,7 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         dbproxy_connect_string: str = None,
         dbproxy_connect_string_net_type: str = None,
         dbproxy_connect_string_port: str = None,
+        dbproxy_endpoint_cost_threshold_for_duckdb: str = None,
         dbproxy_endpoint_id: str = None,
         dbproxy_endpoint_min_slave_count: str = None,
         dbproxy_engine_type: str = None,
@@ -41,6 +42,7 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
         # The port number that is associated with the proxy endpoint.
         self.dbproxy_connect_string_port = dbproxy_connect_string_port
+        self.dbproxy_endpoint_cost_threshold_for_duckdb = dbproxy_endpoint_cost_threshold_for_duckdb
         # The ID of the proxy endpoint.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
         # The minimum number of reserved instances.
@@ -114,6 +116,9 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         if self.dbproxy_connect_string_port is not None:
             result['DBProxyConnectStringPort'] = self.dbproxy_connect_string_port
 
+        if self.dbproxy_endpoint_cost_threshold_for_duckdb is not None:
+            result['DBProxyEndpointCostThresholdForDuckdb'] = self.dbproxy_endpoint_cost_threshold_for_duckdb
+
         if self.dbproxy_endpoint_id is not None:
             result['DBProxyEndpointId'] = self.dbproxy_endpoint_id
 
@@ -174,6 +179,9 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
 
         if m.get('DBProxyConnectStringPort') is not None:
             self.dbproxy_connect_string_port = m.get('DBProxyConnectStringPort')
+
+        if m.get('DBProxyEndpointCostThresholdForDuckdb') is not None:
+            self.dbproxy_endpoint_cost_threshold_for_duckdb = m.get('DBProxyEndpointCostThresholdForDuckdb')
 
         if m.get('DBProxyEndpointId') is not None:
             self.dbproxy_endpoint_id = m.get('DBProxyEndpointId')

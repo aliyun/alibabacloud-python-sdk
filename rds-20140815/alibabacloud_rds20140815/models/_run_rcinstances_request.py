@@ -15,6 +15,7 @@ class RunRCInstancesRequest(DaraModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         auto_use_coupon: bool = None,
+        business_info: str = None,
         client_token: str = None,
         create_ack_edge_param: main_models.RunRCInstancesRequestCreateAckEdgeParam = None,
         create_extra_param: str = None,
@@ -73,6 +74,7 @@ class RunRCInstancesRequest(DaraModel):
         # *   **false**
         self.auto_renew = auto_renew
         self.auto_use_coupon = auto_use_coupon
+        self.business_info = business_info
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.create_ack_edge_param = create_ack_edge_param
@@ -188,6 +190,9 @@ class RunRCInstancesRequest(DaraModel):
 
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
+
+        if self.business_info is not None:
+            result['BusinessInfo'] = self.business_info
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -328,6 +333,9 @@ class RunRCInstancesRequest(DaraModel):
 
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
+
+        if m.get('BusinessInfo') is not None:
+            self.business_info = m.get('BusinessInfo')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')

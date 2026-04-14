@@ -15,6 +15,7 @@ class DescribeRCDisksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        status: str = None,
         tag: List[main_models.DescribeRCDisksRequestTag] = None,
     ):
         # The disk ID. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,). Format: `["Disk ID1","Disk ID2"]`.
@@ -29,6 +30,7 @@ class DescribeRCDisksRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.status = status
         # The list of the tags.
         self.tag = tag
 
@@ -58,6 +60,9 @@ class DescribeRCDisksRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -81,6 +86,9 @@ class DescribeRCDisksRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         self.tag = []
         if m.get('Tag') is not None:

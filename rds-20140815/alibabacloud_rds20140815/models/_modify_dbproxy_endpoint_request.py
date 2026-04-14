@@ -13,6 +13,7 @@ class ModifyDBProxyEndpointRequest(DaraModel):
         dbproxy_endpoint_id: str = None,
         dbproxy_engine_type: str = None,
         db_endpoint_aliases: str = None,
+        db_endpoint_cost_threshold_for_duckdb: str = None,
         db_endpoint_min_slave_count: str = None,
         db_endpoint_operator: str = None,
         db_endpoint_read_write_mode: str = None,
@@ -65,6 +66,7 @@ class ModifyDBProxyEndpointRequest(DaraModel):
         self.dbproxy_engine_type = dbproxy_engine_type
         # The description of the proxy terminal.
         self.db_endpoint_aliases = db_endpoint_aliases
+        self.db_endpoint_cost_threshold_for_duckdb = db_endpoint_cost_threshold_for_duckdb
         # The minimum number of reserved instances.
         self.db_endpoint_min_slave_count = db_endpoint_min_slave_count
         # The type of operation that you want to perform. Valid values:
@@ -158,6 +160,9 @@ class ModifyDBProxyEndpointRequest(DaraModel):
         if self.db_endpoint_aliases is not None:
             result['DbEndpointAliases'] = self.db_endpoint_aliases
 
+        if self.db_endpoint_cost_threshold_for_duckdb is not None:
+            result['DbEndpointCostThresholdForDuckdb'] = self.db_endpoint_cost_threshold_for_duckdb
+
         if self.db_endpoint_min_slave_count is not None:
             result['DbEndpointMinSlaveCount'] = self.db_endpoint_min_slave_count
 
@@ -224,6 +229,9 @@ class ModifyDBProxyEndpointRequest(DaraModel):
 
         if m.get('DbEndpointAliases') is not None:
             self.db_endpoint_aliases = m.get('DbEndpointAliases')
+
+        if m.get('DbEndpointCostThresholdForDuckdb') is not None:
+            self.db_endpoint_cost_threshold_for_duckdb = m.get('DbEndpointCostThresholdForDuckdb')
 
         if m.get('DbEndpointMinSlaveCount') is not None:
             self.db_endpoint_min_slave_count = m.get('DbEndpointMinSlaveCount')
