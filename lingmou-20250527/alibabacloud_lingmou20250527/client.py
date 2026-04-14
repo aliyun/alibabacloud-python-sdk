@@ -710,6 +710,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateChatSessionResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['appId'] = request.app_id
+        if not DaraCore.is_null(request.device_id):
+            query['deviceId'] = request.device_id
         if not DaraCore.is_null(request.instance_id):
             query['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.license):
@@ -745,6 +749,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateChatSessionResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['appId'] = request.app_id
+        if not DaraCore.is_null(request.device_id):
+            query['deviceId'] = request.device_id
         if not DaraCore.is_null(request.instance_id):
             query['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.license):

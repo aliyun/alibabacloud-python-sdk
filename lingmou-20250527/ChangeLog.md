@@ -1,3 +1,8 @@
+2026-04-14 Version: 1.7.1
+- Update API CreateChatSession: add request parameters appId.
+- Update API CreateChatSession: add request parameters deviceId.
+
+
 2026-03-24 Version: 1.7.0
 - Support API CopyBroadcastSceneFromTemplate.
 - Support API ListPublicBroadcastSceneTemplates.
