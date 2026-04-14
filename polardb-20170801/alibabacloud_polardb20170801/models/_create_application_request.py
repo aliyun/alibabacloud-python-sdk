@@ -24,6 +24,7 @@ class CreateApplicationRequest(DaraModel):
         description: str = None,
         dry_run: bool = None,
         endpoints: List[main_models.CreateApplicationRequestEndpoints] = None,
+        knowledge_application_spec: main_models.CreateApplicationRequestKnowledgeApplicationSpec = None,
         mem_application_spec: main_models.CreateApplicationRequestMemApplicationSpec = None,
         model_api: str = None,
         model_api_key: str = None,
@@ -65,6 +66,7 @@ class CreateApplicationRequest(DaraModel):
         self.description = description
         self.dry_run = dry_run
         self.endpoints = endpoints
+        self.knowledge_application_spec = knowledge_application_spec
         self.mem_application_spec = mem_application_spec
         self.model_api = model_api
         self.model_api_key = model_api_key
@@ -99,6 +101,8 @@ class CreateApplicationRequest(DaraModel):
             for v1 in self.endpoints:
                  if v1:
                     v1.validate()
+        if self.knowledge_application_spec:
+            self.knowledge_application_spec.validate()
         if self.mem_application_spec:
             self.mem_application_spec.validate()
         if self.parameters:
@@ -160,6 +164,9 @@ class CreateApplicationRequest(DaraModel):
         if self.endpoints is not None:
             for k1 in self.endpoints:
                 result['Endpoints'].append(k1.to_map() if k1 else None)
+
+        if self.knowledge_application_spec is not None:
+            result['KnowledgeApplicationSpec'] = self.knowledge_application_spec.to_map()
 
         if self.mem_application_spec is not None:
             result['MemApplicationSpec'] = self.mem_application_spec.to_map()
@@ -288,6 +295,10 @@ class CreateApplicationRequest(DaraModel):
             for k1 in m.get('Endpoints'):
                 temp_model = main_models.CreateApplicationRequestEndpoints()
                 self.endpoints.append(temp_model.from_map(k1))
+
+        if m.get('KnowledgeApplicationSpec') is not None:
+            temp_model = main_models.CreateApplicationRequestKnowledgeApplicationSpec()
+            self.knowledge_application_spec = temp_model.from_map(m.get('KnowledgeApplicationSpec'))
 
         if m.get('MemApplicationSpec') is not None:
             temp_model = main_models.CreateApplicationRequestMemApplicationSpec()
@@ -536,6 +547,49 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
 
         if m.get('Shard') is not None:
             self.shard = m.get('Shard')
+
+        return self
+
+class CreateApplicationRequestKnowledgeApplicationSpec(DaraModel):
+    def __init__(
+        self,
+        dashboard_password: str = None,
+        db_password: str = None,
+        llm_model: str = None,
+    ):
+        self.dashboard_password = dashboard_password
+        self.db_password = db_password
+        self.llm_model = llm_model
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dashboard_password is not None:
+            result['DashboardPassword'] = self.dashboard_password
+
+        if self.db_password is not None:
+            result['DbPassword'] = self.db_password
+
+        if self.llm_model is not None:
+            result['LlmModel'] = self.llm_model
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DashboardPassword') is not None:
+            self.dashboard_password = m.get('DashboardPassword')
+
+        if m.get('DbPassword') is not None:
+            self.db_password = m.get('DbPassword')
+
+        if m.get('LlmModel') is not None:
+            self.llm_model = m.get('LlmModel')
 
         return self
 

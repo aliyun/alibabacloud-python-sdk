@@ -903,6 +903,7 @@ from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
 from ._create_application_request import CreateApplicationRequestEndpoints
+from ._create_application_request import CreateApplicationRequestKnowledgeApplicationSpec
 from ._create_application_request import CreateApplicationRequestMemApplicationSpec
 from ._create_application_request import CreateApplicationRequestParameters
 from ._create_application_request import CreateApplicationRequestTag
@@ -2065,6 +2066,7 @@ __all__ = [
     CreateAINodesRequestDBNodes,
     CreateApplicationRequestComponents,
     CreateApplicationRequestEndpoints,
+    CreateApplicationRequestKnowledgeApplicationSpec,
     CreateApplicationRequestMemApplicationSpec,
     CreateApplicationRequestParameters,
     CreateApplicationRequestTag,

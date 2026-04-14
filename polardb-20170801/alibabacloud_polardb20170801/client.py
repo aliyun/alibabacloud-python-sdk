@@ -2495,6 +2495,8 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.endpoints):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_application_spec):
+            request.knowledge_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_application_spec, 'KnowledgeApplicationSpec', 'json')
         if not DaraCore.is_null(tmp_req.mem_application_spec):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         if not DaraCore.is_null(tmp_req.parameters):
@@ -2528,6 +2530,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.knowledge_application_spec_shrink):
+            query['KnowledgeApplicationSpec'] = request.knowledge_application_spec_shrink
         if not DaraCore.is_null(request.mem_application_spec_shrink):
             query['MemApplicationSpec'] = request.mem_application_spec_shrink
         if not DaraCore.is_null(request.model_api):
@@ -2607,6 +2611,8 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.endpoints):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_application_spec):
+            request.knowledge_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_application_spec, 'KnowledgeApplicationSpec', 'json')
         if not DaraCore.is_null(tmp_req.mem_application_spec):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         if not DaraCore.is_null(tmp_req.parameters):
@@ -2640,6 +2646,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.knowledge_application_spec_shrink):
+            query['KnowledgeApplicationSpec'] = request.knowledge_application_spec_shrink
         if not DaraCore.is_null(request.mem_application_spec_shrink):
             query['MemApplicationSpec'] = request.mem_application_spec_shrink
         if not DaraCore.is_null(request.model_api):

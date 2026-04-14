@@ -24,6 +24,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         description: str = None,
         dry_run: bool = None,
         endpoints_shrink: str = None,
+        knowledge_application_spec_shrink: str = None,
         mem_application_spec_shrink: str = None,
         model_api: str = None,
         model_api_key: str = None,
@@ -65,6 +66,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.description = description
         self.dry_run = dry_run
         self.endpoints_shrink = endpoints_shrink
+        self.knowledge_application_spec_shrink = knowledge_application_spec_shrink
         self.mem_application_spec_shrink = mem_application_spec_shrink
         self.model_api = model_api
         self.model_api_key = model_api_key
@@ -142,6 +144,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.endpoints_shrink is not None:
             result['Endpoints'] = self.endpoints_shrink
+
+        if self.knowledge_application_spec_shrink is not None:
+            result['KnowledgeApplicationSpec'] = self.knowledge_application_spec_shrink
 
         if self.mem_application_spec_shrink is not None:
             result['MemApplicationSpec'] = self.mem_application_spec_shrink
@@ -262,6 +267,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('Endpoints') is not None:
             self.endpoints_shrink = m.get('Endpoints')
+
+        if m.get('KnowledgeApplicationSpec') is not None:
+            self.knowledge_application_spec_shrink = m.get('KnowledgeApplicationSpec')
 
         if m.get('MemApplicationSpec') is not None:
             self.mem_application_spec_shrink = m.get('MemApplicationSpec')
