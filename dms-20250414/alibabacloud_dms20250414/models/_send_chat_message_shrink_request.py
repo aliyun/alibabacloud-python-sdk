@@ -10,6 +10,7 @@ class SendChatMessageShrinkRequest(DaraModel):
         agent_id: str = None,
         dmsunit: str = None,
         data_source_shrink: str = None,
+        data_sources_shrink: str = None,
         message: str = None,
         message_type: str = None,
         parent_session_id: str = None,
@@ -23,6 +24,7 @@ class SendChatMessageShrinkRequest(DaraModel):
         self.agent_id = agent_id
         self.dmsunit = dmsunit
         self.data_source_shrink = data_source_shrink
+        self.data_sources_shrink = data_sources_shrink
         # This parameter is required.
         self.message = message
         self.message_type = message_type
@@ -50,6 +52,9 @@ class SendChatMessageShrinkRequest(DaraModel):
 
         if self.data_source_shrink is not None:
             result['DataSource'] = self.data_source_shrink
+
+        if self.data_sources_shrink is not None:
+            result['DataSources'] = self.data_sources_shrink
 
         if self.message is not None:
             result['Message'] = self.message
@@ -87,6 +92,9 @@ class SendChatMessageShrinkRequest(DaraModel):
 
         if m.get('DataSource') is not None:
             self.data_source_shrink = m.get('DataSource')
+
+        if m.get('DataSources') is not None:
+            self.data_sources_shrink = m.get('DataSources')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')

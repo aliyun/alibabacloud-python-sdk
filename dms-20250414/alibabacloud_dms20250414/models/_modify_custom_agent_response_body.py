@@ -376,9 +376,11 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
     def __init__(
         self,
         access_type: str = None,
+        kb_uuid: str = None,
         mcp_server_id: str = None,
     ):
         self.access_type = access_type
+        self.kb_uuid = kb_uuid
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -392,6 +394,9 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         if self.access_type is not None:
             result['AccessType'] = self.access_type
 
+        if self.kb_uuid is not None:
+            result['KbUuid'] = self.kb_uuid
+
         if self.mcp_server_id is not None:
             result['McpServerId'] = self.mcp_server_id
 
@@ -401,6 +406,9 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         m = m or dict()
         if m.get('AccessType') is not None:
             self.access_type = m.get('AccessType')
+
+        if m.get('KbUuid') is not None:
+            self.kb_uuid = m.get('KbUuid')
 
         if m.get('McpServerId') is not None:
             self.mcp_server_id = m.get('McpServerId')

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._agent_service_order_summary_vo import AgentServiceOrderSummaryVO
+from ._agent_service_order_vo import AgentServiceOrderVO
 from ._dlcatalog import DLCatalog
 from ._dlcolumn import DLColumn
 from ._dldatabase import DLDatabase
@@ -17,14 +19,19 @@ from ._dlstorage_descriptor import DLStorageDescriptor
 from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
+from ._dms_knowledge_search_order_info_do import DmsKnowledgeSearchOrderInfoDO
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
 from ._one_meta_database_object import OneMetaDatabaseObject
+from ._one_meta_knowledge_base import OneMetaKnowledgeBase
+from ._one_meta_knowledge_base_chunk import OneMetaKnowledgeBaseChunk
+from ._one_meta_knowledge_base_document import OneMetaKnowledgeBaseDocument
 from ._one_meta_table_base_info import OneMetaTableBaseInfo
 from ._one_meta_table_column import OneMetaTableColumn
 from ._one_meta_table_column_engine_meta import OneMetaTableColumnEngineMeta
 from ._one_meta_table_engine_meta import OneMetaTableEngineMeta
 from ._one_meta_table_index import OneMetaTableIndex
+from ._open_claw_instance_quota_vo import OpenClawInstanceQuotaVO
 from ._open_claw_instance_vo import OpenClawInstanceVO
 from ._partition_error import PartitionError
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
@@ -303,6 +310,7 @@ from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDat
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyData
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyData
 from ._send_chat_message_request import SendChatMessageRequestDataSource
+from ._send_chat_message_request import SendChatMessageRequestDataSources
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
@@ -310,6 +318,8 @@ from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInf
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
 
 __all__ = [
+    AgentServiceOrderSummaryVO,
+    AgentServiceOrderVO,
     DLCatalog,
     DLColumn,
     DLDatabase,
@@ -325,14 +335,19 @@ __all__ = [
     DLTable,
     DLTableInput,
     DLTablebaseInfo,
+    DmsKnowledgeSearchOrderInfoDO,
     ForeignInstance,
     ForeignInstanceCredInfo,
     OneMetaDatabaseObject,
+    OneMetaKnowledgeBase,
+    OneMetaKnowledgeBaseChunk,
+    OneMetaKnowledgeBaseDocument,
     OneMetaTableBaseInfo,
     OneMetaTableColumn,
     OneMetaTableColumnEngineMeta,
     OneMetaTableEngineMeta,
     OneMetaTableIndex,
+    OpenClawInstanceQuotaVO,
     OpenClawInstanceVO,
     PartitionError,
     AddUserToDataAgentWorkspaceRequest,
@@ -611,6 +626,7 @@ __all__ = [
     ModifyCustomAgentResponseBodyData,
     OperateCustomAgentResponseBodyData,
     SendChatMessageRequestDataSource,
+    SendChatMessageRequestDataSources,
     SendChatMessageRequestSessionConfig,
     SendChatMessageResponseBodyData,
     UpdateAirflowResponseBodyRoot,

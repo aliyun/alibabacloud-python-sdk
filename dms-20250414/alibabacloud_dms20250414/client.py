@@ -5344,6 +5344,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.data_source):
             request.data_source_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
+        if not DaraCore.is_null(tmp_req.data_sources):
+            request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         if not DaraCore.is_null(tmp_req.session_config):
             request.session_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
         query = {}
@@ -5353,6 +5355,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.data_source_shrink):
             query['DataSource'] = request.data_source_shrink
+        if not DaraCore.is_null(request.data_sources_shrink):
+            query['DataSources'] = request.data_sources_shrink
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
         if not DaraCore.is_null(request.message_type):
@@ -5398,6 +5402,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.data_source):
             request.data_source_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
+        if not DaraCore.is_null(tmp_req.data_sources):
+            request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         if not DaraCore.is_null(tmp_req.session_config):
             request.session_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
         query = {}
@@ -5407,6 +5413,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.data_source_shrink):
             query['DataSource'] = request.data_source_shrink
+        if not DaraCore.is_null(request.data_sources_shrink):
+            query['DataSources'] = request.data_sources_shrink
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
         if not DaraCore.is_null(request.message_type):

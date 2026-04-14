@@ -76,6 +76,7 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         enable_search: bool = None,
         encrypt_key: str = None,
         encrypt_type: str = None,
+        kb_uuid_list: List[str] = None,
         language: str = None,
         mcp_server_ids: List[str] = None,
         mode: str = None,
@@ -88,6 +89,7 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         self.enable_search = enable_search
         self.encrypt_key = encrypt_key
         self.encrypt_type = encrypt_type
+        self.kb_uuid_list = kb_uuid_list
         self.language = language
         self.mcp_server_ids = mcp_server_ids
         self.mode = mode
@@ -117,6 +119,9 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
 
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+
+        if self.kb_uuid_list is not None:
+            result['KbUuidList'] = self.kb_uuid_list
 
         if self.language is not None:
             result['Language'] = self.language
@@ -154,6 +159,9 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
 
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+
+        if m.get('KbUuidList') is not None:
+            self.kb_uuid_list = m.get('KbUuidList')
 
         if m.get('Language') is not None:
             self.language = m.get('Language')

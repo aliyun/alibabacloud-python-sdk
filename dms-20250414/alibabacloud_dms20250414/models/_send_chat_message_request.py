@@ -13,6 +13,7 @@ class SendChatMessageRequest(DaraModel):
         agent_id: str = None,
         dmsunit: str = None,
         data_source: main_models.SendChatMessageRequestDataSource = None,
+        data_sources: List[main_models.SendChatMessageRequestDataSources] = None,
         message: str = None,
         message_type: str = None,
         parent_session_id: str = None,
@@ -26,6 +27,7 @@ class SendChatMessageRequest(DaraModel):
         self.agent_id = agent_id
         self.dmsunit = dmsunit
         self.data_source = data_source
+        self.data_sources = data_sources
         # This parameter is required.
         self.message = message
         self.message_type = message_type
@@ -40,6 +42,10 @@ class SendChatMessageRequest(DaraModel):
     def validate(self):
         if self.data_source:
             self.data_source.validate()
+        if self.data_sources:
+            for v1 in self.data_sources:
+                 if v1:
+                    v1.validate()
         if self.session_config:
             self.session_config.validate()
 
@@ -56,6 +62,11 @@ class SendChatMessageRequest(DaraModel):
 
         if self.data_source is not None:
             result['DataSource'] = self.data_source.to_map()
+
+        result['DataSources'] = []
+        if self.data_sources is not None:
+            for k1 in self.data_sources:
+                result['DataSources'].append(k1.to_map() if k1 else None)
 
         if self.message is not None:
             result['Message'] = self.message
@@ -94,6 +105,12 @@ class SendChatMessageRequest(DaraModel):
         if m.get('DataSource') is not None:
             temp_model = main_models.SendChatMessageRequestDataSource()
             self.data_source = temp_model.from_map(m.get('DataSource'))
+
+        self.data_sources = []
+        if m.get('DataSources') is not None:
+            for k1 in m.get('DataSources'):
+                temp_model = main_models.SendChatMessageRequestDataSources()
+                self.data_sources.append(temp_model.from_map(k1))
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
@@ -170,6 +187,113 @@ class SendChatMessageRequestSessionConfig(DaraModel):
 
         if m.get('ReportWaterMark') is not None:
             self.report_water_mark = m.get('ReportWaterMark')
+
+        return self
+
+class SendChatMessageRequestDataSources(DaraModel):
+    def __init__(
+        self,
+        data_source_id: str = None,
+        data_source_type: str = None,
+        database: str = None,
+        db_name: str = None,
+        dms_database_id: str = None,
+        dms_instance_id: str = None,
+        engine: str = None,
+        file_id: str = None,
+        location: str = None,
+        region_id: str = None,
+        tables: List[str] = None,
+    ):
+        self.data_source_id = data_source_id
+        self.data_source_type = data_source_type
+        self.database = database
+        self.db_name = db_name
+        self.dms_database_id = dms_database_id
+        self.dms_instance_id = dms_instance_id
+        self.engine = engine
+        self.file_id = file_id
+        self.location = location
+        self.region_id = region_id
+        self.tables = tables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+
+        if self.database is not None:
+            result['Database'] = self.database
+
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+
+        if self.dms_database_id is not None:
+            result['DmsDatabaseId'] = self.dms_database_id
+
+        if self.dms_instance_id is not None:
+            result['DmsInstanceId'] = self.dms_instance_id
+
+        if self.engine is not None:
+            result['Engine'] = self.engine
+
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+
+        if self.location is not None:
+            result['Location'] = self.location
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.tables is not None:
+            result['Tables'] = self.tables
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+
+        if m.get('DmsDatabaseId') is not None:
+            self.dms_database_id = m.get('DmsDatabaseId')
+
+        if m.get('DmsInstanceId') is not None:
+            self.dms_instance_id = m.get('DmsInstanceId')
+
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
 
         return self
 
