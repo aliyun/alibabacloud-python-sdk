@@ -42,8 +42,6 @@ class ConfigurationOverrides(DaraModel):
 
         return self
 
-
-
 class ConfigurationOverridesConfigurations(DaraModel):
     def __init__(
         self,

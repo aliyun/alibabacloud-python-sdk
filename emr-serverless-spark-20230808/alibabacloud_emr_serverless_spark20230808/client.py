@@ -761,6 +761,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
 
+    def create_network_service_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.CreateNetworkServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNetworkServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.security_group_id):
+            body['securityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vswitch_ids):
+            body['vswitchIds'] = request.vswitch_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNetworkService',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/networkServices',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNetworkServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_service_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateNetworkServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNetworkServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.security_group_id):
+            body['securityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vswitch_ids):
+            body['vswitchIds'] = request.vswitch_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNetworkService',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/networkServices',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNetworkServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_service(
+        self,
+        workspace_id: str,
+        request: main_models.CreateNetworkServiceRequest,
+    ) -> main_models.CreateNetworkServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_network_service_with_options(workspace_id, request, headers, runtime)
+
+    async def create_network_service_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateNetworkServiceRequest,
+    ) -> main_models.CreateNetworkServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_network_service_with_options_async(workspace_id, request, headers, runtime)
+
     def create_process_definition_with_schedule_with_options(
         self,
         biz_id: str,
@@ -4186,6 +4294,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_members_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_network_services_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListNetworkServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNetworkServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNetworkServices',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/networkServices',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNetworkServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_network_services_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListNetworkServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNetworkServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNetworkServices',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/networkServices',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNetworkServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_network_services(
+        self,
+        workspace_id: str,
+        request: main_models.ListNetworkServicesRequest,
+    ) -> main_models.ListNetworkServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_network_services_with_options(workspace_id, request, headers, runtime)
+
+    async def list_network_services_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListNetworkServicesRequest,
+    ) -> main_models.ListNetworkServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_network_services_with_options_async(workspace_id, request, headers, runtime)
 
     def list_ray_cluster_with_options(
         self,
