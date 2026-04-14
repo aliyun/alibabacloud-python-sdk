@@ -1865,6 +1865,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.namespace):
             body['namespace'] = request.namespace
+        if not DaraCore.is_null(request.tenant_id):
+            body['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1895,6 +1897,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.namespace):
             body['namespace'] = request.namespace
+        if not DaraCore.is_null(request.tenant_id):
+            body['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -9019,6 +9023,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -9049,6 +9055,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

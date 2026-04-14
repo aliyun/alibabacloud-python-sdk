@@ -8,9 +8,11 @@ class ListPrometheusVirtualInstancesRequest(DaraModel):
     def __init__(
         self,
         namespace: str = None,
+        tenant_id: str = None,
     ):
         # Optional cloud product
         self.namespace = namespace
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -23,12 +25,18 @@ class ListPrometheusVirtualInstancesRequest(DaraModel):
         if self.namespace is not None:
             result['namespace'] = self.namespace
 
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
 
         return self
 

@@ -1,3 +1,8 @@
+2026-04-14 Version: 7.0.1
+- Update API CreatePrometheusVirtualInstance: add request parameters body.tenantId.
+- Update API ListPrometheusVirtualInstances: add request parameters tenantId.
+
+
 2026-04-10 Version: 7.0.0
 - Update API GetMemories: add request parameters body.filters.
 - Update API SearchMemories: add request parameters body.filters.
