@@ -17,6 +17,7 @@ from ._clone_service_request import CloneServiceRequest
 from ._clone_service_shrink_request import CloneServiceShrinkRequest
 from ._clone_service_response_body import CloneServiceResponseBody
 from ._clone_service_response import CloneServiceResponse
+from ._commit_service_request import CommitServiceRequest
 from ._commit_service_response_body import CommitServiceResponseBody
 from ._commit_service_response import CommitServiceResponse
 from ._create_acl_policy_request import CreateAclPolicyRequest
@@ -74,10 +75,13 @@ from ._delete_acl_policy_request import DeleteAclPolicyRequest
 from ._delete_acl_policy_shrink_request import DeleteAclPolicyShrinkRequest
 from ._delete_acl_policy_response_body import DeleteAclPolicyResponseBody
 from ._delete_acl_policy_response import DeleteAclPolicyResponse
+from ._delete_benchmark_task_request import DeleteBenchmarkTaskRequest
 from ._delete_benchmark_task_response_body import DeleteBenchmarkTaskResponseBody
 from ._delete_benchmark_task_response import DeleteBenchmarkTaskResponse
+from ._delete_fault_injection_request import DeleteFaultInjectionRequest
 from ._delete_fault_injection_response_body import DeleteFaultInjectionResponseBody
 from ._delete_fault_injection_response import DeleteFaultInjectionResponse
+from ._delete_gateway_request import DeleteGatewayRequest
 from ._delete_gateway_response_body import DeleteGatewayResponseBody
 from ._delete_gateway_response import DeleteGatewayResponse
 from ._delete_gateway_intranet_linked_vpc_request import DeleteGatewayIntranetLinkedVpcRequest
@@ -91,8 +95,10 @@ from ._delete_gateway_label_request import DeleteGatewayLabelRequest
 from ._delete_gateway_label_shrink_request import DeleteGatewayLabelShrinkRequest
 from ._delete_gateway_label_response_body import DeleteGatewayLabelResponseBody
 from ._delete_gateway_label_response import DeleteGatewayLabelResponse
+from ._delete_resource_request import DeleteResourceRequest
 from ._delete_resource_response_body import DeleteResourceResponseBody
 from ._delete_resource_response import DeleteResourceResponse
+from ._delete_resource_dlink_request import DeleteResourceDLinkRequest
 from ._delete_resource_dlink_response_body import DeleteResourceDLinkResponseBody
 from ._delete_resource_dlink_response import DeleteResourceDLinkResponse
 from ._delete_resource_instance_label_request import DeleteResourceInstanceLabelRequest
@@ -102,12 +108,16 @@ from ._delete_resource_instance_label_response import DeleteResourceInstanceLabe
 from ._delete_resource_instances_request import DeleteResourceInstancesRequest
 from ._delete_resource_instances_response_body import DeleteResourceInstancesResponseBody
 from ._delete_resource_instances_response import DeleteResourceInstancesResponse
+from ._delete_resource_log_request import DeleteResourceLogRequest
 from ._delete_resource_log_response_body import DeleteResourceLogResponseBody
 from ._delete_resource_log_response import DeleteResourceLogResponse
+from ._delete_service_request import DeleteServiceRequest
 from ._delete_service_response_body import DeleteServiceResponseBody
 from ._delete_service_response import DeleteServiceResponse
+from ._delete_service_auto_scaler_request import DeleteServiceAutoScalerRequest
 from ._delete_service_auto_scaler_response_body import DeleteServiceAutoScalerResponseBody
 from ._delete_service_auto_scaler_response import DeleteServiceAutoScalerResponse
+from ._delete_service_cron_scaler_request import DeleteServiceCronScalerRequest
 from ._delete_service_cron_scaler_response_body import DeleteServiceCronScalerResponseBody
 from ._delete_service_cron_scaler_response import DeleteServiceCronScalerResponse
 from ._delete_service_instances_request import DeleteServiceInstancesRequest
@@ -117,18 +127,24 @@ from ._delete_service_label_request import DeleteServiceLabelRequest
 from ._delete_service_label_shrink_request import DeleteServiceLabelShrinkRequest
 from ._delete_service_label_response_body import DeleteServiceLabelResponseBody
 from ._delete_service_label_response import DeleteServiceLabelResponse
+from ._delete_service_mirror_request import DeleteServiceMirrorRequest
 from ._delete_service_mirror_response_body import DeleteServiceMirrorResponseBody
 from ._delete_service_mirror_response import DeleteServiceMirrorResponse
+from ._delete_virtual_resource_request import DeleteVirtualResourceRequest
 from ._delete_virtual_resource_response_body import DeleteVirtualResourceResponseBody
 from ._delete_virtual_resource_response import DeleteVirtualResourceResponse
+from ._describe_benchmark_task_request import DescribeBenchmarkTaskRequest
 from ._describe_benchmark_task_response_body import DescribeBenchmarkTaskResponseBody
 from ._describe_benchmark_task_response import DescribeBenchmarkTaskResponse
 from ._describe_benchmark_task_report_request import DescribeBenchmarkTaskReportRequest
 from ._describe_benchmark_task_report_response_body import DescribeBenchmarkTaskReportResponseBody
 from ._describe_benchmark_task_report_response import DescribeBenchmarkTaskReportResponse
+from ._describe_gateway_request import DescribeGatewayRequest
 from ._describe_gateway_response_body import DescribeGatewayResponseBody
 from ._describe_gateway_response import DescribeGatewayResponse
+from ._describe_group_request import DescribeGroupRequest
 from ._describe_group_response import DescribeGroupResponse
+from ._describe_group_endpoints_request import DescribeGroupEndpointsRequest
 from ._describe_group_endpoints_response_body import DescribeGroupEndpointsResponseBody
 from ._describe_group_endpoints_response import DescribeGroupEndpointsResponse
 from ._describe_machine_spec_request import DescribeMachineSpecRequest
@@ -137,29 +153,39 @@ from ._describe_machine_spec_response_body import DescribeMachineSpecResponseBod
 from ._describe_machine_spec_response import DescribeMachineSpecResponse
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_resource_request import DescribeResourceRequest
 from ._describe_resource_response_body import DescribeResourceResponseBody
 from ._describe_resource_response import DescribeResourceResponse
+from ._describe_resource_dlink_request import DescribeResourceDLinkRequest
 from ._describe_resource_dlink_response_body import DescribeResourceDLinkResponseBody
 from ._describe_resource_dlink_response import DescribeResourceDLinkResponse
+from ._describe_resource_log_request import DescribeResourceLogRequest
 from ._describe_resource_log_response_body import DescribeResourceLogResponseBody
 from ._describe_resource_log_response import DescribeResourceLogResponse
+from ._describe_service_request import DescribeServiceRequest
 from ._describe_service_response import DescribeServiceResponse
+from ._describe_service_auto_scaler_request import DescribeServiceAutoScalerRequest
 from ._describe_service_auto_scaler_response_body import DescribeServiceAutoScalerResponseBody
 from ._describe_service_auto_scaler_response import DescribeServiceAutoScalerResponse
+from ._describe_service_cron_scaler_request import DescribeServiceCronScalerRequest
 from ._describe_service_cron_scaler_response_body import DescribeServiceCronScalerResponseBody
 from ._describe_service_cron_scaler_response import DescribeServiceCronScalerResponse
+from ._describe_service_diagnosis_request import DescribeServiceDiagnosisRequest
 from ._describe_service_diagnosis_response_body import DescribeServiceDiagnosisResponseBody
 from ._describe_service_diagnosis_response import DescribeServiceDiagnosisResponse
+from ._describe_service_endpoints_request import DescribeServiceEndpointsRequest
 from ._describe_service_endpoints_response_body import DescribeServiceEndpointsResponseBody
 from ._describe_service_endpoints_response import DescribeServiceEndpointsResponse
 from ._describe_service_event_request import DescribeServiceEventRequest
 from ._describe_service_event_response_body import DescribeServiceEventResponseBody
 from ._describe_service_event_response import DescribeServiceEventResponse
+from ._describe_service_instance_diagnosis_request import DescribeServiceInstanceDiagnosisRequest
 from ._describe_service_instance_diagnosis_response_body import DescribeServiceInstanceDiagnosisResponseBody
 from ._describe_service_instance_diagnosis_response import DescribeServiceInstanceDiagnosisResponse
 from ._describe_service_log_request import DescribeServiceLogRequest
 from ._describe_service_log_response_body import DescribeServiceLogResponseBody
 from ._describe_service_log_response import DescribeServiceLogResponse
+from ._describe_service_mirror_request import DescribeServiceMirrorRequest
 from ._describe_service_mirror_response_body import DescribeServiceMirrorResponseBody
 from ._describe_service_mirror_response import DescribeServiceMirrorResponse
 from ._describe_service_signed_url_request import DescribeServiceSignedUrlRequest
@@ -168,6 +194,7 @@ from ._describe_service_signed_url_response import DescribeServiceSignedUrlRespo
 from ._describe_spot_discount_history_request import DescribeSpotDiscountHistoryRequest
 from ._describe_spot_discount_history_response_body import DescribeSpotDiscountHistoryResponseBody
 from ._describe_spot_discount_history_response import DescribeSpotDiscountHistoryResponse
+from ._describe_virtual_resource_request import DescribeVirtualResourceRequest
 from ._describe_virtual_resource_response_body import DescribeVirtualResourceResponseBody
 from ._describe_virtual_resource_response import DescribeVirtualResourceResponse
 from ._detach_gateway_domain_request import DetachGatewayDomainRequest
@@ -187,13 +214,16 @@ from ._list_gateway_request import ListGatewayRequest
 from ._list_gateway_shrink_request import ListGatewayShrinkRequest
 from ._list_gateway_response_body import ListGatewayResponseBody
 from ._list_gateway_response import ListGatewayResponse
+from ._list_gateway_domains_request import ListGatewayDomainsRequest
 from ._list_gateway_domains_response_body import ListGatewayDomainsResponseBody
 from ._list_gateway_domains_response import ListGatewayDomainsResponse
+from ._list_gateway_intranet_linked_vpc_request import ListGatewayIntranetLinkedVpcRequest
 from ._list_gateway_intranet_linked_vpc_response_body import ListGatewayIntranetLinkedVpcResponseBody
 from ._list_gateway_intranet_linked_vpc_response import ListGatewayIntranetLinkedVpcResponse
 from ._list_gateway_intranet_linked_vpc_peer_request import ListGatewayIntranetLinkedVpcPeerRequest
 from ._list_gateway_intranet_linked_vpc_peer_response_body import ListGatewayIntranetLinkedVpcPeerResponseBody
 from ._list_gateway_intranet_linked_vpc_peer_response import ListGatewayIntranetLinkedVpcPeerResponse
+from ._list_gateway_intranet_supported_zone_request import ListGatewayIntranetSupportedZoneRequest
 from ._list_gateway_intranet_supported_zone_response_body import ListGatewayIntranetSupportedZoneResponseBody
 from ._list_gateway_intranet_supported_zone_response import ListGatewayIntranetSupportedZoneResponse
 from ._list_groups_request import ListGroupsRequest
@@ -212,8 +242,10 @@ from ._list_resource_services_response import ListResourceServicesResponse
 from ._list_resources_request import ListResourcesRequest
 from ._list_resources_response_body import ListResourcesResponseBody
 from ._list_resources_response import ListResourcesResponse
+from ._list_service_containers_request import ListServiceContainersRequest
 from ._list_service_containers_response_body import ListServiceContainersResponseBody
 from ._list_service_containers_response import ListServiceContainersResponse
+from ._list_service_instance_fault_injection_info_request import ListServiceInstanceFaultInjectionInfoRequest
 from ._list_service_instance_fault_injection_info_response_body import ListServiceInstanceFaultInjectionInfoResponseBody
 from ._list_service_instance_fault_injection_info_response import ListServiceInstanceFaultInjectionInfoResponse
 from ._list_service_instances_request import ListServiceInstancesRequest
@@ -234,22 +266,28 @@ from ._list_virtual_resource_response import ListVirtualResourceResponse
 from ._migrate_resource_instance_request import MigrateResourceInstanceRequest
 from ._migrate_resource_instance_response_body import MigrateResourceInstanceResponseBody
 from ._migrate_resource_instance_response import MigrateResourceInstanceResponse
+from ._reinstall_tenant_addon_request import ReinstallTenantAddonRequest
 from ._reinstall_tenant_addon_response_body import ReinstallTenantAddonResponseBody
 from ._reinstall_tenant_addon_response import ReinstallTenantAddonResponse
 from ._release_service_request import ReleaseServiceRequest
 from ._release_service_response_body import ReleaseServiceResponseBody
 from ._release_service_response import ReleaseServiceResponse
+from ._restart_service_request import RestartServiceRequest
 from ._restart_service_response_body import RestartServiceResponseBody
 from ._restart_service_response import RestartServiceResponse
 from ._scale_service_request import ScaleServiceRequest
 from ._scale_service_response_body import ScaleServiceResponseBody
 from ._scale_service_response import ScaleServiceResponse
+from ._start_benchmark_task_request import StartBenchmarkTaskRequest
 from ._start_benchmark_task_response_body import StartBenchmarkTaskResponseBody
 from ._start_benchmark_task_response import StartBenchmarkTaskResponse
+from ._start_service_request import StartServiceRequest
 from ._start_service_response_body import StartServiceResponseBody
 from ._start_service_response import StartServiceResponse
+from ._stop_benchmark_task_request import StopBenchmarkTaskRequest
 from ._stop_benchmark_task_response_body import StopBenchmarkTaskResponseBody
 from ._stop_benchmark_task_response import StopBenchmarkTaskResponse
+from ._stop_service_request import StopServiceRequest
 from ._stop_service_response_body import StopServiceResponseBody
 from ._stop_service_response import StopServiceResponse
 from ._update_app_service_request import UpdateAppServiceRequest
@@ -381,6 +419,7 @@ __all__ = [
     CloneServiceShrinkRequest,
     CloneServiceResponseBody,
     CloneServiceResponse,
+    CommitServiceRequest,
     CommitServiceResponseBody,
     CommitServiceResponse,
     CreateAclPolicyRequest,
@@ -438,10 +477,13 @@ __all__ = [
     DeleteAclPolicyShrinkRequest,
     DeleteAclPolicyResponseBody,
     DeleteAclPolicyResponse,
+    DeleteBenchmarkTaskRequest,
     DeleteBenchmarkTaskResponseBody,
     DeleteBenchmarkTaskResponse,
+    DeleteFaultInjectionRequest,
     DeleteFaultInjectionResponseBody,
     DeleteFaultInjectionResponse,
+    DeleteGatewayRequest,
     DeleteGatewayResponseBody,
     DeleteGatewayResponse,
     DeleteGatewayIntranetLinkedVpcRequest,
@@ -455,8 +497,10 @@ __all__ = [
     DeleteGatewayLabelShrinkRequest,
     DeleteGatewayLabelResponseBody,
     DeleteGatewayLabelResponse,
+    DeleteResourceRequest,
     DeleteResourceResponseBody,
     DeleteResourceResponse,
+    DeleteResourceDLinkRequest,
     DeleteResourceDLinkResponseBody,
     DeleteResourceDLinkResponse,
     DeleteResourceInstanceLabelRequest,
@@ -466,12 +510,16 @@ __all__ = [
     DeleteResourceInstancesRequest,
     DeleteResourceInstancesResponseBody,
     DeleteResourceInstancesResponse,
+    DeleteResourceLogRequest,
     DeleteResourceLogResponseBody,
     DeleteResourceLogResponse,
+    DeleteServiceRequest,
     DeleteServiceResponseBody,
     DeleteServiceResponse,
+    DeleteServiceAutoScalerRequest,
     DeleteServiceAutoScalerResponseBody,
     DeleteServiceAutoScalerResponse,
+    DeleteServiceCronScalerRequest,
     DeleteServiceCronScalerResponseBody,
     DeleteServiceCronScalerResponse,
     DeleteServiceInstancesRequest,
@@ -481,18 +529,24 @@ __all__ = [
     DeleteServiceLabelShrinkRequest,
     DeleteServiceLabelResponseBody,
     DeleteServiceLabelResponse,
+    DeleteServiceMirrorRequest,
     DeleteServiceMirrorResponseBody,
     DeleteServiceMirrorResponse,
+    DeleteVirtualResourceRequest,
     DeleteVirtualResourceResponseBody,
     DeleteVirtualResourceResponse,
+    DescribeBenchmarkTaskRequest,
     DescribeBenchmarkTaskResponseBody,
     DescribeBenchmarkTaskResponse,
     DescribeBenchmarkTaskReportRequest,
     DescribeBenchmarkTaskReportResponseBody,
     DescribeBenchmarkTaskReportResponse,
+    DescribeGatewayRequest,
     DescribeGatewayResponseBody,
     DescribeGatewayResponse,
+    DescribeGroupRequest,
     DescribeGroupResponse,
+    DescribeGroupEndpointsRequest,
     DescribeGroupEndpointsResponseBody,
     DescribeGroupEndpointsResponse,
     DescribeMachineSpecRequest,
@@ -501,29 +555,39 @@ __all__ = [
     DescribeMachineSpecResponse,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
+    DescribeResourceRequest,
     DescribeResourceResponseBody,
     DescribeResourceResponse,
+    DescribeResourceDLinkRequest,
     DescribeResourceDLinkResponseBody,
     DescribeResourceDLinkResponse,
+    DescribeResourceLogRequest,
     DescribeResourceLogResponseBody,
     DescribeResourceLogResponse,
+    DescribeServiceRequest,
     DescribeServiceResponse,
+    DescribeServiceAutoScalerRequest,
     DescribeServiceAutoScalerResponseBody,
     DescribeServiceAutoScalerResponse,
+    DescribeServiceCronScalerRequest,
     DescribeServiceCronScalerResponseBody,
     DescribeServiceCronScalerResponse,
+    DescribeServiceDiagnosisRequest,
     DescribeServiceDiagnosisResponseBody,
     DescribeServiceDiagnosisResponse,
+    DescribeServiceEndpointsRequest,
     DescribeServiceEndpointsResponseBody,
     DescribeServiceEndpointsResponse,
     DescribeServiceEventRequest,
     DescribeServiceEventResponseBody,
     DescribeServiceEventResponse,
+    DescribeServiceInstanceDiagnosisRequest,
     DescribeServiceInstanceDiagnosisResponseBody,
     DescribeServiceInstanceDiagnosisResponse,
     DescribeServiceLogRequest,
     DescribeServiceLogResponseBody,
     DescribeServiceLogResponse,
+    DescribeServiceMirrorRequest,
     DescribeServiceMirrorResponseBody,
     DescribeServiceMirrorResponse,
     DescribeServiceSignedUrlRequest,
@@ -532,6 +596,7 @@ __all__ = [
     DescribeSpotDiscountHistoryRequest,
     DescribeSpotDiscountHistoryResponseBody,
     DescribeSpotDiscountHistoryResponse,
+    DescribeVirtualResourceRequest,
     DescribeVirtualResourceResponseBody,
     DescribeVirtualResourceResponse,
     DetachGatewayDomainRequest,
@@ -551,13 +616,16 @@ __all__ = [
     ListGatewayShrinkRequest,
     ListGatewayResponseBody,
     ListGatewayResponse,
+    ListGatewayDomainsRequest,
     ListGatewayDomainsResponseBody,
     ListGatewayDomainsResponse,
+    ListGatewayIntranetLinkedVpcRequest,
     ListGatewayIntranetLinkedVpcResponseBody,
     ListGatewayIntranetLinkedVpcResponse,
     ListGatewayIntranetLinkedVpcPeerRequest,
     ListGatewayIntranetLinkedVpcPeerResponseBody,
     ListGatewayIntranetLinkedVpcPeerResponse,
+    ListGatewayIntranetSupportedZoneRequest,
     ListGatewayIntranetSupportedZoneResponseBody,
     ListGatewayIntranetSupportedZoneResponse,
     ListGroupsRequest,
@@ -576,8 +644,10 @@ __all__ = [
     ListResourcesRequest,
     ListResourcesResponseBody,
     ListResourcesResponse,
+    ListServiceContainersRequest,
     ListServiceContainersResponseBody,
     ListServiceContainersResponse,
+    ListServiceInstanceFaultInjectionInfoRequest,
     ListServiceInstanceFaultInjectionInfoResponseBody,
     ListServiceInstanceFaultInjectionInfoResponse,
     ListServiceInstancesRequest,
@@ -598,22 +668,28 @@ __all__ = [
     MigrateResourceInstanceRequest,
     MigrateResourceInstanceResponseBody,
     MigrateResourceInstanceResponse,
+    ReinstallTenantAddonRequest,
     ReinstallTenantAddonResponseBody,
     ReinstallTenantAddonResponse,
     ReleaseServiceRequest,
     ReleaseServiceResponseBody,
     ReleaseServiceResponse,
+    RestartServiceRequest,
     RestartServiceResponseBody,
     RestartServiceResponse,
     ScaleServiceRequest,
     ScaleServiceResponseBody,
     ScaleServiceResponse,
+    StartBenchmarkTaskRequest,
     StartBenchmarkTaskResponseBody,
     StartBenchmarkTaskResponse,
+    StartServiceRequest,
     StartServiceResponseBody,
     StartServiceResponse,
+    StopBenchmarkTaskRequest,
     StopBenchmarkTaskResponseBody,
     StopBenchmarkTaskResponse,
+    StopServiceRequest,
     StopServiceResponseBody,
     StopServiceResponse,
     UpdateAppServiceRequest,

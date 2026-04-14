@@ -84,6 +84,7 @@ class DescribeServiceEventResponseBodyEvents(DaraModel):
         self,
         message: str = None,
         reason: str = None,
+        resource: str = None,
         time: str = None,
         type: str = None,
     ):
@@ -91,6 +92,7 @@ class DescribeServiceEventResponseBodyEvents(DaraModel):
         self.message = message
         # The cause of the event. The information about the change in the service status is returned.
         self.reason = reason
+        self.resource = resource
         # The time when the event occurred. The time must be in UTC.
         self.time = time
         # The event type. Valid values:
@@ -113,6 +115,9 @@ class DescribeServiceEventResponseBodyEvents(DaraModel):
         if self.reason is not None:
             result['Reason'] = self.reason
 
+        if self.resource is not None:
+            result['Resource'] = self.resource
+
         if self.time is not None:
             result['Time'] = self.time
 
@@ -128,6 +133,9 @@ class DescribeServiceEventResponseBodyEvents(DaraModel):
 
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
 
         if m.get('Time') is not None:
             self.time = m.get('Time')

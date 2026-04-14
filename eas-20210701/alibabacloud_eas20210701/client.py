@@ -248,9 +248,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.CommitServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CommitServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -274,9 +276,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.CommitServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CommitServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -300,19 +304,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.CommitServiceRequest,
     ) -> main_models.CommitServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.commit_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.commit_service_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def commit_service_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.CommitServiceRequest,
     ) -> main_models.CommitServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.commit_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.commit_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def create_acl_policy_with_options(
         self,
@@ -1942,9 +1948,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DeleteBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1968,9 +1976,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DeleteBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1994,19 +2004,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DeleteBenchmarkTaskRequest,
     ) -> main_models.DeleteBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.delete_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
 
     async def delete_benchmark_task_async(
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DeleteBenchmarkTaskRequest,
     ) -> main_models.DeleteBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def delete_fault_injection_with_options(
         self,
@@ -2014,9 +2026,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
         fault_type: str,
+        request: main_models.DeleteFaultInjectionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFaultInjectionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2042,9 +2056,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
         fault_type: str,
+        request: main_models.DeleteFaultInjectionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFaultInjectionResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2070,10 +2086,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
         fault_type: str,
+        request: main_models.DeleteFaultInjectionRequest,
     ) -> main_models.DeleteFaultInjectionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_fault_injection_with_options(cluster_id, service_name, instance_name, fault_type, headers, runtime)
+        return self.delete_fault_injection_with_options(cluster_id, service_name, instance_name, fault_type, request, headers, runtime)
 
     async def delete_fault_injection_async(
         self,
@@ -2081,18 +2098,21 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
         fault_type: str,
+        request: main_models.DeleteFaultInjectionRequest,
     ) -> main_models.DeleteFaultInjectionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_fault_injection_with_options_async(cluster_id, service_name, instance_name, fault_type, headers, runtime)
+        return await self.delete_fault_injection_with_options_async(cluster_id, service_name, instance_name, fault_type, request, headers, runtime)
 
     def delete_gateway_with_options(
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DeleteGatewayRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteGatewayResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2116,9 +2136,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DeleteGatewayRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteGatewayResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2142,19 +2164,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DeleteGatewayRequest,
     ) -> main_models.DeleteGatewayResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_gateway_with_options(cluster_id, gateway_id, headers, runtime)
+        return self.delete_gateway_with_options(cluster_id, gateway_id, request, headers, runtime)
 
     async def delete_gateway_async(
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DeleteGatewayRequest,
     ) -> main_models.DeleteGatewayResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_gateway_with_options_async(cluster_id, gateway_id, headers, runtime)
+        return await self.delete_gateway_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def delete_gateway_intranet_linked_vpc_with_options(
         self,
@@ -2436,9 +2460,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2462,9 +2488,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2488,27 +2516,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceRequest,
     ) -> main_models.DeleteResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_resource_with_options(cluster_id, resource_id, headers, runtime)
+        return self.delete_resource_with_options(cluster_id, resource_id, request, headers, runtime)
 
     async def delete_resource_async(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceRequest,
     ) -> main_models.DeleteResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_resource_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.delete_resource_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def delete_resource_dlink_with_options(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceDLinkRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceDLinkResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2532,9 +2564,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceDLinkRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceDLinkResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2558,19 +2592,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceDLinkRequest,
     ) -> main_models.DeleteResourceDLinkResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
+        return self.delete_resource_dlink_with_options(cluster_id, resource_id, request, headers, runtime)
 
     async def delete_resource_dlink_async(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceDLinkRequest,
     ) -> main_models.DeleteResourceDLinkResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.delete_resource_dlink_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def delete_resource_instance_label_with_options(
         self,
@@ -2776,9 +2812,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceLogRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceLogResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2802,9 +2840,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceLogRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteResourceLogResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2828,27 +2868,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceLogRequest,
     ) -> main_models.DeleteResourceLogResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_resource_log_with_options(cluster_id, resource_id, headers, runtime)
+        return self.delete_resource_log_with_options(cluster_id, resource_id, request, headers, runtime)
 
     async def delete_resource_log_async(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DeleteResourceLogRequest,
     ) -> main_models.DeleteResourceLogResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.delete_resource_log_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def delete_service_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2872,9 +2916,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2898,27 +2944,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceRequest,
     ) -> main_models.DeleteServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def delete_service_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceRequest,
     ) -> main_models.DeleteServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def delete_service_auto_scaler_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceAutoScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceAutoScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2942,9 +2992,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceAutoScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceAutoScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2968,27 +3020,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceAutoScalerRequest,
     ) -> main_models.DeleteServiceAutoScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def delete_service_auto_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceAutoScalerRequest,
     ) -> main_models.DeleteServiceAutoScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def delete_service_cron_scaler_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceCronScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceCronScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3012,9 +3068,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceCronScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceCronScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3038,19 +3096,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceCronScalerRequest,
     ) -> main_models.DeleteServiceCronScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def delete_service_cron_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceCronScalerRequest,
     ) -> main_models.DeleteServiceCronScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def delete_service_instances_with_options(
         self,
@@ -3252,9 +3312,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceMirrorRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceMirrorResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3278,9 +3340,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceMirrorRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceMirrorResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3304,27 +3368,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceMirrorRequest,
     ) -> main_models.DeleteServiceMirrorResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_service_mirror_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def delete_service_mirror_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DeleteServiceMirrorRequest,
     ) -> main_models.DeleteServiceMirrorResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def delete_virtual_resource_with_options(
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DeleteVirtualResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteVirtualResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3348,9 +3416,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DeleteVirtualResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteVirtualResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3374,27 +3444,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DeleteVirtualResourceRequest,
     ) -> main_models.DeleteVirtualResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_virtual_resource_with_options(cluster_id, virtual_resource_id, headers, runtime)
+        return self.delete_virtual_resource_with_options(cluster_id, virtual_resource_id, request, headers, runtime)
 
     async def delete_virtual_resource_async(
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DeleteVirtualResourceRequest,
     ) -> main_models.DeleteVirtualResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_virtual_resource_with_options_async(cluster_id, virtual_resource_id, headers, runtime)
+        return await self.delete_virtual_resource_with_options_async(cluster_id, virtual_resource_id, request, headers, runtime)
 
     def describe_benchmark_task_with_options(
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DescribeBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3418,9 +3492,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DescribeBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3444,19 +3520,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DescribeBenchmarkTaskRequest,
     ) -> main_models.DescribeBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.describe_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
 
     async def describe_benchmark_task_async(
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.DescribeBenchmarkTaskRequest,
     ) -> main_models.DescribeBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.describe_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def describe_benchmark_task_report_with_options(
         self,
@@ -3546,9 +3624,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DescribeGatewayRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeGatewayResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3572,9 +3652,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DescribeGatewayRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeGatewayResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3598,27 +3680,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DescribeGatewayRequest,
     ) -> main_models.DescribeGatewayResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_gateway_with_options(cluster_id, gateway_id, headers, runtime)
+        return self.describe_gateway_with_options(cluster_id, gateway_id, request, headers, runtime)
 
     async def describe_gateway_async(
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.DescribeGatewayRequest,
     ) -> main_models.DescribeGatewayResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_gateway_with_options_async(cluster_id, gateway_id, headers, runtime)
+        return await self.describe_gateway_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def describe_group_with_options(
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3642,9 +3728,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeGroupResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3668,27 +3756,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupRequest,
     ) -> main_models.DescribeGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_group_with_options(cluster_id, group_name, headers, runtime)
+        return self.describe_group_with_options(cluster_id, group_name, request, headers, runtime)
 
     async def describe_group_async(
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupRequest,
     ) -> main_models.DescribeGroupResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_group_with_options_async(cluster_id, group_name, headers, runtime)
+        return await self.describe_group_with_options_async(cluster_id, group_name, request, headers, runtime)
 
     def describe_group_endpoints_with_options(
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupEndpointsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeGroupEndpointsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3712,9 +3804,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupEndpointsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeGroupEndpointsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3738,19 +3832,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupEndpointsRequest,
     ) -> main_models.DescribeGroupEndpointsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_group_endpoints_with_options(cluster_id, group_name, headers, runtime)
+        return self.describe_group_endpoints_with_options(cluster_id, group_name, request, headers, runtime)
 
     async def describe_group_endpoints_async(
         self,
         cluster_id: str,
         group_name: str,
+        request: main_models.DescribeGroupEndpointsRequest,
     ) -> main_models.DescribeGroupEndpointsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_group_endpoints_with_options_async(cluster_id, group_name, headers, runtime)
+        return await self.describe_group_endpoints_with_options_async(cluster_id, group_name, request, headers, runtime)
 
     def describe_machine_spec_with_options(
         self,
@@ -3906,9 +4002,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3932,9 +4030,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -3958,27 +4058,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceRequest,
     ) -> main_models.DescribeResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_resource_with_options(cluster_id, resource_id, headers, runtime)
+        return self.describe_resource_with_options(cluster_id, resource_id, request, headers, runtime)
 
     async def describe_resource_async(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceRequest,
     ) -> main_models.DescribeResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_resource_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.describe_resource_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def describe_resource_dlink_with_options(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceDLinkRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeResourceDLinkResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4002,9 +4106,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceDLinkRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeResourceDLinkResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4028,27 +4134,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceDLinkRequest,
     ) -> main_models.DescribeResourceDLinkResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
+        return self.describe_resource_dlink_with_options(cluster_id, resource_id, request, headers, runtime)
 
     async def describe_resource_dlink_async(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceDLinkRequest,
     ) -> main_models.DescribeResourceDLinkResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.describe_resource_dlink_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def describe_resource_log_with_options(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceLogRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeResourceLogResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4072,9 +4182,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceLogRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeResourceLogResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4098,27 +4210,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceLogRequest,
     ) -> main_models.DescribeResourceLogResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_resource_log_with_options(cluster_id, resource_id, headers, runtime)
+        return self.describe_resource_log_with_options(cluster_id, resource_id, request, headers, runtime)
 
     async def describe_resource_log_async(
         self,
         cluster_id: str,
         resource_id: str,
+        request: main_models.DescribeResourceLogRequest,
     ) -> main_models.DescribeResourceLogResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.describe_resource_log_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def describe_service_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4142,9 +4258,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4168,27 +4286,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceRequest,
     ) -> main_models.DescribeServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def describe_service_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceRequest,
     ) -> main_models.DescribeServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_auto_scaler_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceAutoScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceAutoScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4212,9 +4334,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceAutoScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceAutoScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4238,27 +4362,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceAutoScalerRequest,
     ) -> main_models.DescribeServiceAutoScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def describe_service_auto_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceAutoScalerRequest,
     ) -> main_models.DescribeServiceAutoScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_cron_scaler_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceCronScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceCronScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4282,9 +4410,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceCronScalerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceCronScalerResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4308,27 +4438,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceCronScalerRequest,
     ) -> main_models.DescribeServiceCronScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def describe_service_cron_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceCronScalerRequest,
     ) -> main_models.DescribeServiceCronScalerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_diagnosis_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceDiagnosisRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceDiagnosisResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4352,9 +4486,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceDiagnosisRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceDiagnosisResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4378,27 +4514,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceDiagnosisRequest,
     ) -> main_models.DescribeServiceDiagnosisResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_diagnosis_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_diagnosis_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def describe_service_diagnosis_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceDiagnosisRequest,
     ) -> main_models.DescribeServiceDiagnosisResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_diagnosis_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_diagnosis_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_endpoints_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceEndpointsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceEndpointsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4422,9 +4562,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceEndpointsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceEndpointsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4448,19 +4590,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceEndpointsRequest,
     ) -> main_models.DescribeServiceEndpointsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_endpoints_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_endpoints_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def describe_service_endpoints_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceEndpointsRequest,
     ) -> main_models.DescribeServiceEndpointsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_endpoints_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_endpoints_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_event_with_options(
         self,
@@ -4571,9 +4715,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.DescribeServiceInstanceDiagnosisRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceInstanceDiagnosisResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4598,9 +4744,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.DescribeServiceInstanceDiagnosisRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceInstanceDiagnosisResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4625,20 +4773,22 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.DescribeServiceInstanceDiagnosisRequest,
     ) -> main_models.DescribeServiceInstanceDiagnosisResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_instance_diagnosis_with_options(cluster_id, service_name, instance_name, headers, runtime)
+        return self.describe_service_instance_diagnosis_with_options(cluster_id, service_name, instance_name, request, headers, runtime)
 
     async def describe_service_instance_diagnosis_async(
         self,
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.DescribeServiceInstanceDiagnosisRequest,
     ) -> main_models.DescribeServiceInstanceDiagnosisResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_instance_diagnosis_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
+        return await self.describe_service_instance_diagnosis_with_options_async(cluster_id, service_name, instance_name, request, headers, runtime)
 
     def describe_service_log_with_options(
         self,
@@ -4760,9 +4910,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceMirrorRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceMirrorResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4786,9 +4938,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceMirrorRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeServiceMirrorResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4812,19 +4966,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceMirrorRequest,
     ) -> main_models.DescribeServiceMirrorResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_service_mirror_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def describe_service_mirror_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.DescribeServiceMirrorRequest,
     ) -> main_models.DescribeServiceMirrorResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_signed_url_with_options(
         self,
@@ -5002,9 +5158,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DescribeVirtualResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeVirtualResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5028,9 +5186,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DescribeVirtualResourceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DescribeVirtualResourceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5054,19 +5214,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DescribeVirtualResourceRequest,
     ) -> main_models.DescribeVirtualResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.describe_virtual_resource_with_options(cluster_id, virtual_resource_id, headers, runtime)
+        return self.describe_virtual_resource_with_options(cluster_id, virtual_resource_id, request, headers, runtime)
 
     async def describe_virtual_resource_async(
         self,
         cluster_id: str,
         virtual_resource_id: str,
+        request: main_models.DescribeVirtualResourceRequest,
     ) -> main_models.DescribeVirtualResourceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.describe_virtual_resource_with_options_async(cluster_id, virtual_resource_id, headers, runtime)
+        return await self.describe_virtual_resource_with_options_async(cluster_id, virtual_resource_id, request, headers, runtime)
 
     def detach_gateway_domain_with_options(
         self,
@@ -5568,9 +5730,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayDomainsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListGatewayDomainsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5594,9 +5758,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayDomainsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListGatewayDomainsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5620,27 +5786,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayDomainsRequest,
     ) -> main_models.ListGatewayDomainsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_gateway_domains_with_options(cluster_id, gateway_id, headers, runtime)
+        return self.list_gateway_domains_with_options(cluster_id, gateway_id, request, headers, runtime)
 
     async def list_gateway_domains_async(
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayDomainsRequest,
     ) -> main_models.ListGatewayDomainsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_gateway_domains_with_options_async(cluster_id, gateway_id, headers, runtime)
+        return await self.list_gateway_domains_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def list_gateway_intranet_linked_vpc_with_options(
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayIntranetLinkedVpcRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListGatewayIntranetLinkedVpcResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5664,9 +5834,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayIntranetLinkedVpcRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListGatewayIntranetLinkedVpcResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5690,19 +5862,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayIntranetLinkedVpcRequest,
     ) -> main_models.ListGatewayIntranetLinkedVpcResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_gateway_intranet_linked_vpc_with_options(cluster_id, gateway_id, headers, runtime)
+        return self.list_gateway_intranet_linked_vpc_with_options(cluster_id, gateway_id, request, headers, runtime)
 
     async def list_gateway_intranet_linked_vpc_async(
         self,
         cluster_id: str,
         gateway_id: str,
+        request: main_models.ListGatewayIntranetLinkedVpcRequest,
     ) -> main_models.ListGatewayIntranetLinkedVpcResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, headers, runtime)
+        return await self.list_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def list_gateway_intranet_linked_vpc_peer_with_options(
         self,
@@ -5792,9 +5966,11 @@ class Client(OpenApiClient):
         self,
         gateway_id: str,
         cluster_id: str,
+        request: main_models.ListGatewayIntranetSupportedZoneRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListGatewayIntranetSupportedZoneResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5818,9 +5994,11 @@ class Client(OpenApiClient):
         self,
         gateway_id: str,
         cluster_id: str,
+        request: main_models.ListGatewayIntranetSupportedZoneRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListGatewayIntranetSupportedZoneResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -5844,19 +6022,21 @@ class Client(OpenApiClient):
         self,
         gateway_id: str,
         cluster_id: str,
+        request: main_models.ListGatewayIntranetSupportedZoneRequest,
     ) -> main_models.ListGatewayIntranetSupportedZoneResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_gateway_intranet_supported_zone_with_options(gateway_id, cluster_id, headers, runtime)
+        return self.list_gateway_intranet_supported_zone_with_options(gateway_id, cluster_id, request, headers, runtime)
 
     async def list_gateway_intranet_supported_zone_async(
         self,
         gateway_id: str,
         cluster_id: str,
+        request: main_models.ListGatewayIntranetSupportedZoneRequest,
     ) -> main_models.ListGatewayIntranetSupportedZoneResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_gateway_intranet_supported_zone_with_options_async(gateway_id, cluster_id, headers, runtime)
+        return await self.list_gateway_intranet_supported_zone_with_options_async(gateway_id, cluster_id, request, headers, runtime)
 
     def list_groups_with_options(
         self,
@@ -6411,9 +6591,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceContainersRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListServiceContainersResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6438,9 +6620,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceContainersRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListServiceContainersResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6465,29 +6649,33 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceContainersRequest,
     ) -> main_models.ListServiceContainersResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_service_containers_with_options(cluster_id, service_name, instance_name, headers, runtime)
+        return self.list_service_containers_with_options(cluster_id, service_name, instance_name, request, headers, runtime)
 
     async def list_service_containers_async(
         self,
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceContainersRequest,
     ) -> main_models.ListServiceContainersResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_service_containers_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
+        return await self.list_service_containers_with_options_async(cluster_id, service_name, instance_name, request, headers, runtime)
 
     def list_service_instance_fault_injection_info_with_options(
         self,
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceInstanceFaultInjectionInfoRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListServiceInstanceFaultInjectionInfoResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6512,9 +6700,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceInstanceFaultInjectionInfoRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListServiceInstanceFaultInjectionInfoResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -6539,20 +6729,22 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceInstanceFaultInjectionInfoRequest,
     ) -> main_models.ListServiceInstanceFaultInjectionInfoResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_service_instance_fault_injection_info_with_options(cluster_id, service_name, instance_name, headers, runtime)
+        return self.list_service_instance_fault_injection_info_with_options(cluster_id, service_name, instance_name, request, headers, runtime)
 
     async def list_service_instance_fault_injection_info_async(
         self,
         cluster_id: str,
         service_name: str,
         instance_name: str,
+        request: main_models.ListServiceInstanceFaultInjectionInfoRequest,
     ) -> main_models.ListServiceInstanceFaultInjectionInfoResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_service_instance_fault_injection_info_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
+        return await self.list_service_instance_fault_injection_info_with_options_async(cluster_id, service_name, instance_name, request, headers, runtime)
 
     def list_service_instances_with_options(
         self,
@@ -7232,9 +7424,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         tenant_addon_name: str,
+        request: main_models.ReinstallTenantAddonRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ReinstallTenantAddonResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7258,9 +7452,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         tenant_addon_name: str,
+        request: main_models.ReinstallTenantAddonRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ReinstallTenantAddonResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7284,19 +7480,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         tenant_addon_name: str,
+        request: main_models.ReinstallTenantAddonRequest,
     ) -> main_models.ReinstallTenantAddonResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.reinstall_tenant_addon_with_options(cluster_id, tenant_addon_name, headers, runtime)
+        return self.reinstall_tenant_addon_with_options(cluster_id, tenant_addon_name, request, headers, runtime)
 
     async def reinstall_tenant_addon_async(
         self,
         cluster_id: str,
         tenant_addon_name: str,
+        request: main_models.ReinstallTenantAddonRequest,
     ) -> main_models.ReinstallTenantAddonResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.reinstall_tenant_addon_with_options_async(cluster_id, tenant_addon_name, headers, runtime)
+        return await self.reinstall_tenant_addon_with_options_async(cluster_id, tenant_addon_name, request, headers, runtime)
 
     def release_service_with_options(
         self,
@@ -7390,9 +7588,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.RestartServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.RestartServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7416,9 +7616,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.RestartServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.RestartServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7442,19 +7644,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.RestartServiceRequest,
     ) -> main_models.RestartServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.restart_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.restart_service_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def restart_service_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.RestartServiceRequest,
     ) -> main_models.RestartServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.restart_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.restart_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def scale_service_with_options(
         self,
@@ -7548,9 +7752,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StartBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StartBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7574,9 +7780,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StartBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StartBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7600,27 +7808,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StartBenchmarkTaskRequest,
     ) -> main_models.StartBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.start_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.start_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
 
     async def start_benchmark_task_async(
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StartBenchmarkTaskRequest,
     ) -> main_models.StartBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.start_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.start_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def start_service_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StartServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StartServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7644,9 +7856,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StartServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StartServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7670,27 +7884,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StartServiceRequest,
     ) -> main_models.StartServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.start_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.start_service_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def start_service_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StartServiceRequest,
     ) -> main_models.StartServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.start_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.start_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def stop_benchmark_task_with_options(
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StopBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StopBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7714,9 +7932,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StopBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StopBenchmarkTaskResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7740,27 +7960,31 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StopBenchmarkTaskRequest,
     ) -> main_models.StopBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.stop_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.stop_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
 
     async def stop_benchmark_task_async(
         self,
         cluster_id: str,
         task_name: str,
+        request: main_models.StopBenchmarkTaskRequest,
     ) -> main_models.StopBenchmarkTaskResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.stop_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.stop_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def stop_service_with_options(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StopServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StopServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7784,9 +8008,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StopServiceRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StopServiceResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -7810,19 +8036,21 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StopServiceRequest,
     ) -> main_models.StopServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.stop_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.stop_service_with_options(cluster_id, service_name, request, headers, runtime)
 
     async def stop_service_async(
         self,
         cluster_id: str,
         service_name: str,
+        request: main_models.StopServiceRequest,
     ) -> main_models.StopServiceResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.stop_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.stop_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_app_service_with_options(
         self,
