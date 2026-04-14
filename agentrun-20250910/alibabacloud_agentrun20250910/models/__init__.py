@@ -46,6 +46,9 @@ from ._code_interpreter_session_list_out import CodeInterpreterSessionListOut
 from ._code_interpreter_session_out import CodeInterpreterSessionOut
 from ._common_result import CommonResult
 from ._container_configuration import ContainerConfiguration
+from ._convert_flow_dsldata import ConvertFlowDSLData
+from ._convert_flow_dslinput import ConvertFlowDSLInput
+from ._convert_flow_dslresult import ConvertFlowDSLResult
 from ._create_agent_runtime_endpoint_input import CreateAgentRuntimeEndpointInput
 from ._create_agent_runtime_input import CreateAgentRuntimeInput
 from ._create_agent_runtime_version_input import CreateAgentRuntimeVersionInput
@@ -225,6 +228,10 @@ from ._publish_flow_version_input import PublishFlowVersionInput
 from ._publish_runtime_version_input import PublishRuntimeVersionInput
 from ._recording_configuration import RecordingConfiguration
 from ._register_service_input import RegisterServiceInput
+from ._registry_auth_config import RegistryAuthConfig
+from ._registry_cert_config import RegistryCertConfig
+from ._registry_config import RegistryConfig
+from ._registry_network_config import RegistryNetworkConfig
 from ._related_resource import RelatedResource
 from ._related_workload import RelatedWorkload
 from ._route_config import RouteConfig
@@ -447,6 +454,14 @@ from ._update_workspace_request import UpdateWorkspaceRequest
 from ._update_workspace_response import UpdateWorkspaceResponse
 from ._update_workspace_discovery_endpoints_request import UpdateWorkspaceDiscoveryEndpointsRequest
 from ._update_workspace_discovery_endpoints_response import UpdateWorkspaceDiscoveryEndpointsResponse
+from ._convert_flow_dsldata import ConvertFlowDSLDataConversionPlanIssues
+from ._convert_flow_dsldata import ConvertFlowDSLDataConversionPlanSummary
+from ._convert_flow_dsldata import ConvertFlowDSLDataConversionPlan
+from ._convert_flow_dsldata import ConvertFlowDSLDataFlow
+from ._convert_flow_dsldata import ConvertFlowDSLDataPluginErrors
+from ._convert_flow_dsldata import ConvertFlowDSLDataToolsetInstallations
+from ._convert_flow_dslinput import ConvertFlowDSLInputDslSource
+from ._convert_flow_dslinput import ConvertFlowDSLInputOptions
 from ._credential_public_config import CredentialPublicConfigRemoteConfig
 from ._credential_public_config import CredentialPublicConfigUsers
 from ._embedder_config import EmbedderConfigConfig
@@ -509,6 +524,9 @@ __all__ = [
     CodeInterpreterSessionOut,
     CommonResult,
     ContainerConfiguration,
+    ConvertFlowDSLData,
+    ConvertFlowDSLInput,
+    ConvertFlowDSLResult,
     CreateAgentRuntimeEndpointInput,
     CreateAgentRuntimeInput,
     CreateAgentRuntimeVersionInput,
@@ -688,6 +706,10 @@ __all__ = [
     PublishRuntimeVersionInput,
     RecordingConfiguration,
     RegisterServiceInput,
+    RegistryAuthConfig,
+    RegistryCertConfig,
+    RegistryConfig,
+    RegistryNetworkConfig,
     RelatedResource,
     RelatedWorkload,
     RouteConfig,
@@ -910,6 +932,14 @@ __all__ = [
     UpdateWorkspaceResponse,
     UpdateWorkspaceDiscoveryEndpointsRequest,
     UpdateWorkspaceDiscoveryEndpointsResponse,
+    ConvertFlowDSLDataConversionPlanIssues,
+    ConvertFlowDSLDataConversionPlanSummary,
+    ConvertFlowDSLDataConversionPlan,
+    ConvertFlowDSLDataFlow,
+    ConvertFlowDSLDataPluginErrors,
+    ConvertFlowDSLDataToolsetInstallations,
+    ConvertFlowDSLInputDslSource,
+    ConvertFlowDSLInputOptions,
     CredentialPublicConfigRemoteConfig,
     CredentialPublicConfigUsers,
     EmbedderConfigConfig,

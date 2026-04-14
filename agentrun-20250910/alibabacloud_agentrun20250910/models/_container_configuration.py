@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
 
 class ContainerConfiguration(DaraModel):
@@ -14,6 +15,7 @@ class ContainerConfiguration(DaraModel):
         image: str = None,
         image_registry_type: str = None,
         port: int = None,
+        registry_config: main_models.RegistryConfig = None,
     ):
         # 阿里云容器镜像服务（ACR）的实例ID或名称
         self.acr_instance_id = acr_instance_id
@@ -23,9 +25,12 @@ class ContainerConfiguration(DaraModel):
         # 容器镜像的来源类型，支持ACR（阿里云容器镜像服务）、ACREE（阿里云容器镜像服务企业版）、CUSTOM（自定义镜像仓库）
         self.image_registry_type = image_registry_type
         self.port = port
+        # 自定义镜像仓库的配置信息，当imageRegistryType为CUSTOM时使用
+        self.registry_config = registry_config
 
     def validate(self):
-        pass
+        if self.registry_config:
+            self.registry_config.validate()
 
     def to_map(self):
         result = dict()
@@ -47,6 +52,9 @@ class ContainerConfiguration(DaraModel):
         if self.port is not None:
             result['port'] = self.port
 
+        if self.registry_config is not None:
+            result['registryConfig'] = self.registry_config.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -65,6 +73,10 @@ class ContainerConfiguration(DaraModel):
 
         if m.get('port') is not None:
             self.port = m.get('port')
+
+        if m.get('registryConfig') is not None:
+            temp_model = main_models.RegistryConfig()
+            self.registry_config = temp_model.from_map(m.get('registryConfig'))
 
         return self
 

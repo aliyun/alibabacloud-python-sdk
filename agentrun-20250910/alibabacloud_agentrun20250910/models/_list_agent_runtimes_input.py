@@ -13,6 +13,7 @@ class ListAgentRuntimesInput(DaraModel):
         page_number: int = None,
         page_size: int = None,
         statuses: List[str] = None,
+        system_tags: List[str] = None,
     ):
         # 按名称过滤
         self.agent_runtime_name = agent_runtime_name
@@ -22,6 +23,8 @@ class ListAgentRuntimesInput(DaraModel):
         self.page_size = page_size
         # 按状态过滤
         self.statuses = statuses
+        # 按系统标签过滤
+        self.system_tags = system_tags
 
     def validate(self):
         pass
@@ -43,6 +46,9 @@ class ListAgentRuntimesInput(DaraModel):
         if self.statuses is not None:
             result['statuses'] = self.statuses
 
+        if self.system_tags is not None:
+            result['systemTags'] = self.system_tags
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +64,9 @@ class ListAgentRuntimesInput(DaraModel):
 
         if m.get('statuses') is not None:
             self.statuses = m.get('statuses')
+
+        if m.get('systemTags') is not None:
+            self.system_tags = m.get('systemTags')
 
         return self
 

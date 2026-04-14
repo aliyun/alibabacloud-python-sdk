@@ -3495,6 +3495,8 @@ class Client(OpenApiClient):
             query['searchMode'] = request.search_mode
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
+        if not DaraCore.is_null(request.system_tags):
+            query['systemTags'] = request.system_tags
         if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         if not DaraCore.is_null(request.workspace_ids):
@@ -3541,6 +3543,8 @@ class Client(OpenApiClient):
             query['searchMode'] = request.search_mode
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
+        if not DaraCore.is_null(request.system_tags):
+            query['systemTags'] = request.system_tags
         if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         if not DaraCore.is_null(request.workspace_ids):

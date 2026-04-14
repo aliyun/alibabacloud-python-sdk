@@ -14,6 +14,7 @@ class ListAgentRuntimesRequest(DaraModel):
         resource_group_id: str = None,
         search_mode: str = None,
         status: str = None,
+        system_tags: str = None,
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
@@ -30,6 +31,8 @@ class ListAgentRuntimesRequest(DaraModel):
         self.search_mode = search_mode
         # 根据状态进行过滤，多个状态用逗号分隔，支持精确匹配
         self.status = status
+        # 根据系统标签进行过滤，多个标签用逗号分隔，支持精确匹配
+        self.system_tags = system_tags
         # 根据工作空间ID进行过滤，用于资源隔离和权限管理
         self.workspace_id = workspace_id
         self.workspace_ids = workspace_ids
@@ -63,6 +66,9 @@ class ListAgentRuntimesRequest(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.system_tags is not None:
+            result['systemTags'] = self.system_tags
+
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
@@ -93,6 +99,9 @@ class ListAgentRuntimesRequest(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('systemTags') is not None:
+            self.system_tags = m.get('systemTags')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')

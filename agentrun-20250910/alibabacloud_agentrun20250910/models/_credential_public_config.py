@@ -136,8 +136,6 @@ class CredentialPublicConfigUsers(DaraModel):
 
         return self
 
-
-
 class CredentialPublicConfigRemoteConfig(DaraModel):
     def __init__(
         self,
