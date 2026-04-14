@@ -76,9 +76,11 @@ class UpdateAlertStrategyRequestStrategy(DaraModel):
     def __init__(
         self,
         clusters: List[str] = None,
+        destinations: List[int] = None,
         items: List[str] = None,
     ):
         self.clusters = clusters
+        self.destinations = destinations
         self.items = items
 
     def validate(self):
@@ -92,6 +94,9 @@ class UpdateAlertStrategyRequestStrategy(DaraModel):
         if self.clusters is not None:
             result['clusters'] = self.clusters
 
+        if self.destinations is not None:
+            result['destinations'] = self.destinations
+
         if self.items is not None:
             result['items'] = self.items
 
@@ -101,6 +106,9 @@ class UpdateAlertStrategyRequestStrategy(DaraModel):
         m = m or dict()
         if m.get('clusters') is not None:
             self.clusters = m.get('clusters')
+
+        if m.get('destinations') is not None:
+            self.destinations = m.get('destinations')
 
         if m.get('items') is not None:
             self.items = m.get('items')

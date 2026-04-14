@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -206,6 +205,160 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.check_instance_support_with_options_async(request, headers, runtime)
+
+    def cpu_high_agent_stream_response_with_sse(
+        self,
+        request: main_models.CpuHighAgentStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.CpuHighAgentStreamResponseResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CpuHighAgentStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/highCpuAgent/streamResponse',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CpuHighAgentStreamResponseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def cpu_high_agent_stream_response_with_sse_async(
+        self,
+        request: main_models.CpuHighAgentStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.CpuHighAgentStreamResponseResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CpuHighAgentStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/highCpuAgent/streamResponse',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CpuHighAgentStreamResponseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def cpu_high_agent_stream_response_with_options(
+        self,
+        request: main_models.CpuHighAgentStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CpuHighAgentStreamResponseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CpuHighAgentStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/highCpuAgent/streamResponse',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CpuHighAgentStreamResponseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cpu_high_agent_stream_response_with_options_async(
+        self,
+        request: main_models.CpuHighAgentStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CpuHighAgentStreamResponseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CpuHighAgentStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/highCpuAgent/streamResponse',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CpuHighAgentStreamResponseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cpu_high_agent_stream_response(
+        self,
+        request: main_models.CpuHighAgentStreamResponseRequest,
+    ) -> main_models.CpuHighAgentStreamResponseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.cpu_high_agent_stream_response_with_options(request, headers, runtime)
+
+    async def cpu_high_agent_stream_response_async(
+        self,
+        request: main_models.CpuHighAgentStreamResponseRequest,
+    ) -> main_models.CpuHighAgentStreamResponseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.cpu_high_agent_stream_response_with_options_async(request, headers, runtime)
 
     def create_alert_strategy_with_options(
         self,
@@ -654,17 +807,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.GenerateCopilotStreamResponseResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GenerateCopilotStreamResponseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def generate_copilot_stream_response_with_sse_async(
         self,
@@ -693,17 +846,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.GenerateCopilotStreamResponseResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GenerateCopilotStreamResponseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def generate_copilot_stream_response_with_options(
         self,

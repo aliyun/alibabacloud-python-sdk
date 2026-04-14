@@ -8,6 +8,9 @@ from ._auth_diagnosis_response import AuthDiagnosisResponse
 from ._check_instance_support_request import CheckInstanceSupportRequest
 from ._check_instance_support_response_body import CheckInstanceSupportResponseBody
 from ._check_instance_support_response import CheckInstanceSupportResponse
+from ._cpu_high_agent_stream_response_request import CpuHighAgentStreamResponseRequest
+from ._cpu_high_agent_stream_response_response_body import CpuHighAgentStreamResponseResponseBody
+from ._cpu_high_agent_stream_response_response import CpuHighAgentStreamResponseResponse
 from ._create_alert_strategy_request import CreateAlertStrategyRequest
 from ._create_alert_strategy_response_body import CreateAlertStrategyResponseBody
 from ._create_alert_strategy_response import CreateAlertStrategyResponse
@@ -280,6 +283,9 @@ __all__ = [
     CheckInstanceSupportRequest,
     CheckInstanceSupportResponseBody,
     CheckInstanceSupportResponse,
+    CpuHighAgentStreamResponseRequest,
+    CpuHighAgentStreamResponseResponseBody,
+    CpuHighAgentStreamResponseResponse,
     CreateAlertStrategyRequest,
     CreateAlertStrategyResponseBody,
     CreateAlertStrategyResponse,
