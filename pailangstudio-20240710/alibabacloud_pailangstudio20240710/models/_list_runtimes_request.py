@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListRuntimesRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
         creator: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -21,6 +22,7 @@ class ListRuntimesRequest(DaraModel):
         work_dir: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         # The creator ID.
         self.creator = creator
         # The maximum number of records allowed to be returned by this request.
@@ -85,6 +87,9 @@ class ListRuntimesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
         if self.creator is not None:
             result['Creator'] = self.creator
 
@@ -128,6 +133,9 @@ class ListRuntimesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
 

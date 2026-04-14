@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListKnowledgeBaseJobsRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
         job_action: str = None,
         knowledge_base_job_id: str = None,
         max_results: int = None,
@@ -18,6 +19,7 @@ class ListKnowledgeBaseJobsRequest(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         # 任务操作类型。
         # - SyncIndex：更新知识库索引
         self.job_action = job_action
@@ -54,6 +56,9 @@ class ListKnowledgeBaseJobsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
         if self.job_action is not None:
             result['JobAction'] = self.job_action
 
@@ -88,6 +93,9 @@ class ListKnowledgeBaseJobsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
         if m.get('JobAction') is not None:
             self.job_action = m.get('JobAction')
 

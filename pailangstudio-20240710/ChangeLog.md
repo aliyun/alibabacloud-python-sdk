@@ -1,3 +1,11 @@
+2026-04-14 Version: 1.2.2
+- Update API ListDeployments: add request parameters Accessibility.
+- Update API ListKnowledgeBaseJobs: add request parameters Accessibility.
+- Update API ListKnowledgeBases: add request parameters Accessibility.
+- Update API ListRuntimes: add request parameters Accessibility.
+- Update API ListSnapshots: add request parameters Accessibility.
+
+
 2026-03-28 Version: 1.2.1
 - Update API CreateRuntime: add request parameters body.AutoUpdateImage.
 - Update API GetRuntime: add response parameters Body.AutoUpdateImage.

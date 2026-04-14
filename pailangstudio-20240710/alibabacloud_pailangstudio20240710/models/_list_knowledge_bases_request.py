@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListKnowledgeBasesRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
         creator: str = None,
         knowledge_base_id: str = None,
         knowledge_base_type: str = None,
@@ -19,6 +20,7 @@ class ListKnowledgeBasesRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         # Creator user ID.
         self.creator = creator
         # Knowledge Base ID.
@@ -58,6 +60,9 @@ class ListKnowledgeBasesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
         if self.creator is not None:
             result['Creator'] = self.creator
 
@@ -95,6 +100,9 @@ class ListKnowledgeBasesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
 

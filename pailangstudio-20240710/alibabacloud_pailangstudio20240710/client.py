@@ -1457,6 +1457,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDeploymentsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.deployment_id):
@@ -1515,6 +1517,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDeploymentsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.deployment_id):
@@ -1686,6 +1690,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListKnowledgeBaseJobsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.job_action):
             query['JobAction'] = request.job_action
         if not DaraCore.is_null(request.knowledge_base_job_id):
@@ -1735,6 +1741,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListKnowledgeBaseJobsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.job_action):
             query['JobAction'] = request.job_action
         if not DaraCore.is_null(request.knowledge_base_job_id):
@@ -1801,6 +1809,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListKnowledgeBasesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.knowledge_base_id):
@@ -1851,6 +1861,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListKnowledgeBasesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.knowledge_base_id):
@@ -1917,6 +1929,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListRuntimesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.max_results):
@@ -1971,6 +1985,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListRuntimesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.max_results):
@@ -2041,6 +2057,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListSnapshotsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creation_type):
             query['CreationType'] = request.creation_type
         if not DaraCore.is_null(request.creator):
@@ -2095,6 +2113,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListSnapshotsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.creation_type):
             query['CreationType'] = request.creation_type
         if not DaraCore.is_null(request.creator):

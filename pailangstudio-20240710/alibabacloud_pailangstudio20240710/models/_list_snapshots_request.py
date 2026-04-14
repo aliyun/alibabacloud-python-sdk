@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListSnapshotsRequest(DaraModel):
     def __init__(
         self,
+        accessibility: str = None,
         creation_type: str = None,
         creator: str = None,
         max_results: int = None,
@@ -21,6 +22,7 @@ class ListSnapshotsRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         # The creation type of the snapshot. To query multiple types at the same time, separate them with commas.
         self.creation_type = creation_type
         # The creator ID.
@@ -65,6 +67,9 @@ class ListSnapshotsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+
         if self.creation_type is not None:
             result['CreationType'] = self.creation_type
 
@@ -108,6 +113,9 @@ class ListSnapshotsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+
         if m.get('CreationType') is not None:
             self.creation_type = m.get('CreationType')
 
