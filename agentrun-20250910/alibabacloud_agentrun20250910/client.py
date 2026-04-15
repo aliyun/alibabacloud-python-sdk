@@ -125,6 +125,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.activate_template_mcpwith_options_async(template_name, request, headers, runtime)
 
+    def convert_flow_dslwith_options(
+        self,
+        request: main_models.ConvertFlowDSLRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ConvertFlowDSLResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConvertFlowDSL',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/action/convertDsl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConvertFlowDSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def convert_flow_dslwith_options_async(
+        self,
+        request: main_models.ConvertFlowDSLRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ConvertFlowDSLResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConvertFlowDSL',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/action/convertDsl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConvertFlowDSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def convert_flow_dsl(
+        self,
+        request: main_models.ConvertFlowDSLRequest,
+    ) -> main_models.ConvertFlowDSLResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.convert_flow_dslwith_options(request, headers, runtime)
+
+    async def convert_flow_dsl_async(
+        self,
+        request: main_models.ConvertFlowDSLRequest,
+    ) -> main_models.ConvertFlowDSLResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.convert_flow_dslwith_options_async(request, headers, runtime)
+
     def create_agent_runtime_with_options(
         self,
         request: main_models.CreateAgentRuntimeRequest,
@@ -548,6 +618,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_custom_domain_with_options_async(request, headers, runtime)
+
+    def create_flow_with_options(
+        self,
+        request: main_models.CreateFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_flow_with_options_async(
+        self,
+        request: main_models.CreateFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_flow(
+        self,
+        request: main_models.CreateFlowRequest,
+    ) -> main_models.CreateFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_flow_with_options(request, headers, runtime)
+
+    async def create_flow_async(
+        self,
+        request: main_models.CreateFlowRequest,
+    ) -> main_models.CreateFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_flow_with_options_async(request, headers, runtime)
+
+    def create_flow_endpoint_with_options(
+        self,
+        flow_name: str,
+        request: main_models.CreateFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFlowEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_flow_endpoint_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.CreateFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFlowEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_flow_endpoint(
+        self,
+        flow_name: str,
+        request: main_models.CreateFlowEndpointRequest,
+    ) -> main_models.CreateFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_flow_endpoint_with_options(flow_name, request, headers, runtime)
+
+    async def create_flow_endpoint_async(
+        self,
+        flow_name: str,
+        request: main_models.CreateFlowEndpointRequest,
+    ) -> main_models.CreateFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_flow_endpoint_with_options_async(flow_name, request, headers, runtime)
 
     def create_knowledge_base_with_options(
         self,
@@ -1544,6 +1758,230 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_custom_domain_with_options_async(domain_name, request, headers, runtime)
+
+    def delete_flow_with_options(
+        self,
+        flow_name: str,
+        request: main_models.DeleteFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.DeleteFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow(
+        self,
+        flow_name: str,
+        request: main_models.DeleteFlowRequest,
+    ) -> main_models.DeleteFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_flow_with_options(flow_name, request, headers, runtime)
+
+    async def delete_flow_async(
+        self,
+        flow_name: str,
+        request: main_models.DeleteFlowRequest,
+    ) -> main_models.DeleteFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_flow_with_options_async(flow_name, request, headers, runtime)
+
+    def delete_flow_endpoint_with_options(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.DeleteFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints/{DaraURL.percent_encode(flow_endpoint_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFlowEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_endpoint_with_options_async(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.DeleteFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints/{DaraURL.percent_encode(flow_endpoint_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFlowEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow_endpoint(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.DeleteFlowEndpointRequest,
+    ) -> main_models.DeleteFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_flow_endpoint_with_options(flow_name, flow_endpoint_name, request, headers, runtime)
+
+    async def delete_flow_endpoint_async(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.DeleteFlowEndpointRequest,
+    ) -> main_models.DeleteFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_flow_endpoint_with_options_async(flow_name, flow_endpoint_name, request, headers, runtime)
+
+    def delete_flow_version_with_options(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.DeleteFlowVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFlowVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFlowVersion',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions/{DaraURL.percent_encode(flow_version)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_version_with_options_async(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.DeleteFlowVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFlowVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFlowVersion',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions/{DaraURL.percent_encode(flow_version)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow_version(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.DeleteFlowVersionRequest,
+    ) -> main_models.DeleteFlowVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_flow_version_with_options(flow_name, flow_version, request, headers, runtime)
+
+    async def delete_flow_version_async(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.DeleteFlowVersionRequest,
+    ) -> main_models.DeleteFlowVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_flow_version_with_options_async(flow_name, flow_version, request, headers, runtime)
 
     def delete_knowledge_base_with_options(
         self,
@@ -2648,6 +3086,302 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_custom_domain_with_options_async(domain_name, request, headers, runtime)
+
+    def get_flow_with_options(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowRequest,
+    ) -> main_models.GetFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_flow_with_options(flow_name, request, headers, runtime)
+
+    async def get_flow_async(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowRequest,
+    ) -> main_models.GetFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_flow_with_options_async(flow_name, request, headers, runtime)
+
+    def get_flow_draft_with_options(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowDraftRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowDraftResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlowDraft',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/draft',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowDraftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_draft_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowDraftRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowDraftResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlowDraft',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/draft',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowDraftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow_draft(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowDraftRequest,
+    ) -> main_models.GetFlowDraftResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_flow_draft_with_options(flow_name, request, headers, runtime)
+
+    async def get_flow_draft_async(
+        self,
+        flow_name: str,
+        request: main_models.GetFlowDraftRequest,
+    ) -> main_models.GetFlowDraftResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_flow_draft_with_options_async(flow_name, request, headers, runtime)
+
+    def get_flow_endpoint_with_options(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.GetFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints/{DaraURL.percent_encode(flow_endpoint_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_endpoint_with_options_async(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.GetFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints/{DaraURL.percent_encode(flow_endpoint_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow_endpoint(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.GetFlowEndpointRequest,
+    ) -> main_models.GetFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_flow_endpoint_with_options(flow_name, flow_endpoint_name, request, headers, runtime)
+
+    async def get_flow_endpoint_async(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.GetFlowEndpointRequest,
+    ) -> main_models.GetFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_flow_endpoint_with_options_async(flow_name, flow_endpoint_name, request, headers, runtime)
+
+    def get_flow_version_with_options(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.GetFlowVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlowVersion',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions/{DaraURL.percent_encode(flow_version)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_version_with_options_async(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.GetFlowVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlowVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlowVersion',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions/{DaraURL.percent_encode(flow_version)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow_version(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.GetFlowVersionRequest,
+    ) -> main_models.GetFlowVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_flow_version_with_options(flow_name, flow_version, request, headers, runtime)
+
+    async def get_flow_version_async(
+        self,
+        flow_name: str,
+        flow_version: str,
+        request: main_models.GetFlowVersionRequest,
+    ) -> main_models.GetFlowVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_flow_version_with_options_async(flow_name, flow_version, request, headers, runtime)
 
     def get_knowledge_base_with_options(
         self,
@@ -3961,6 +4695,266 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_custom_domains_with_options_async(request, headers, runtime)
 
+    def list_flow_endpoints_with_options(
+        self,
+        flow_id: str,
+        request: main_models.ListFlowEndpointsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlowEndpoints',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_id)}/endpoints',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flow_endpoints_with_options_async(
+        self,
+        flow_id: str,
+        request: main_models.ListFlowEndpointsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlowEndpoints',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_id)}/endpoints',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flow_endpoints(
+        self,
+        flow_id: str,
+        request: main_models.ListFlowEndpointsRequest,
+    ) -> main_models.ListFlowEndpointsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_flow_endpoints_with_options(flow_id, request, headers, runtime)
+
+    async def list_flow_endpoints_async(
+        self,
+        flow_id: str,
+        request: main_models.ListFlowEndpointsRequest,
+    ) -> main_models.ListFlowEndpointsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_flow_endpoints_with_options_async(flow_id, request, headers, runtime)
+
+    def list_flow_versions_with_options(
+        self,
+        flow_name: str,
+        request: main_models.ListFlowVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlowVersions',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flow_versions_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.ListFlowVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlowVersions',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flow_versions(
+        self,
+        flow_name: str,
+        request: main_models.ListFlowVersionsRequest,
+    ) -> main_models.ListFlowVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_flow_versions_with_options(flow_name, request, headers, runtime)
+
+    async def list_flow_versions_async(
+        self,
+        flow_name: str,
+        request: main_models.ListFlowVersionsRequest,
+    ) -> main_models.ListFlowVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_flow_versions_with_options_async(flow_name, request, headers, runtime)
+
+    def list_flows_with_options(
+        self,
+        request: main_models.ListFlowsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.flow_name):
+            query['flowName'] = request.flow_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_ids):
+            query['workspaceIds'] = request.workspace_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlows',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flows_with_options_async(
+        self,
+        request: main_models.ListFlowsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.flow_name):
+            query['flowName'] = request.flow_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_ids):
+            query['workspaceIds'] = request.workspace_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlows',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flows(
+        self,
+        request: main_models.ListFlowsRequest,
+    ) -> main_models.ListFlowsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_flows_with_options(request, headers, runtime)
+
+    async def list_flows_async(
+        self,
+        request: main_models.ListFlowsRequest,
+    ) -> main_models.ListFlowsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_flows_with_options_async(request, headers, runtime)
+
     def list_knowledge_bases_with_options(
         self,
         request: main_models.ListKnowledgeBasesRequest,
@@ -4893,6 +5887,80 @@ class Client(OpenApiClient):
         headers = {}
         return await self.pause_sandbox_with_options_async(sandbox_id, request, headers, runtime)
 
+    def publish_flow_version_with_options(
+        self,
+        flow_name: str,
+        request: main_models.PublishFlowVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishFlowVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishFlowVersion',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_flow_version_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.PublishFlowVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishFlowVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishFlowVersion',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/versions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_flow_version(
+        self,
+        flow_name: str,
+        request: main_models.PublishFlowVersionRequest,
+    ) -> main_models.PublishFlowVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.publish_flow_version_with_options(flow_name, request, headers, runtime)
+
+    async def publish_flow_version_async(
+        self,
+        flow_name: str,
+        request: main_models.PublishFlowVersionRequest,
+    ) -> main_models.PublishFlowVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.publish_flow_version_with_options_async(flow_name, request, headers, runtime)
+
     def publish_runtime_version_with_options(
         self,
         agent_runtime_id: str,
@@ -5482,6 +6550,232 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_custom_domain_with_options_async(domain_name, request, headers, runtime)
+
+    def update_flow_with_options(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_flow_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFlowResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFlow',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_flow(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowRequest,
+    ) -> main_models.UpdateFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_flow_with_options(flow_name, request, headers, runtime)
+
+    async def update_flow_async(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowRequest,
+    ) -> main_models.UpdateFlowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_flow_with_options_async(flow_name, request, headers, runtime)
+
+    def update_flow_draft_with_options(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowDraftRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFlowDraftResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFlowDraft',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/draft',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFlowDraftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_flow_draft_with_options_async(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowDraftRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFlowDraftResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFlowDraft',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/draft',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFlowDraftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_flow_draft(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowDraftRequest,
+    ) -> main_models.UpdateFlowDraftResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_flow_draft_with_options(flow_name, request, headers, runtime)
+
+    async def update_flow_draft_async(
+        self,
+        flow_name: str,
+        request: main_models.UpdateFlowDraftRequest,
+    ) -> main_models.UpdateFlowDraftResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_flow_draft_with_options_async(flow_name, request, headers, runtime)
+
+    def update_flow_endpoint_with_options(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.UpdateFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints/{DaraURL.percent_encode(flow_endpoint_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFlowEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_flow_endpoint_with_options_async(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.UpdateFlowEndpointRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFlowEndpointResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFlowEndpoint',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/flows/{DaraURL.percent_encode(flow_name)}/endpoints/{DaraURL.percent_encode(flow_endpoint_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFlowEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_flow_endpoint(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.UpdateFlowEndpointRequest,
+    ) -> main_models.UpdateFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_flow_endpoint_with_options(flow_name, flow_endpoint_name, request, headers, runtime)
+
+    async def update_flow_endpoint_async(
+        self,
+        flow_name: str,
+        flow_endpoint_name: str,
+        request: main_models.UpdateFlowEndpointRequest,
+    ) -> main_models.UpdateFlowEndpointResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_flow_endpoint_with_options_async(flow_name, flow_endpoint_name, request, headers, runtime)
 
     def update_knowledge_base_with_options(
         self,

@@ -298,6 +298,8 @@ from ._workspace_permission_item import WorkspacePermissionItem
 from ._workspace_result import WorkspaceResult
 from ._activate_template_mcprequest import ActivateTemplateMCPRequest
 from ._activate_template_mcpresponse import ActivateTemplateMCPResponse
+from ._convert_flow_dslrequest import ConvertFlowDSLRequest
+from ._convert_flow_dslresponse import ConvertFlowDSLResponse
 from ._create_agent_runtime_request import CreateAgentRuntimeRequest
 from ._create_agent_runtime_response import CreateAgentRuntimeResponse
 from ._create_agent_runtime_endpoint_request import CreateAgentRuntimeEndpointRequest
@@ -310,6 +312,10 @@ from ._create_credential_request import CreateCredentialRequest
 from ._create_credential_response import CreateCredentialResponse
 from ._create_custom_domain_request import CreateCustomDomainRequest
 from ._create_custom_domain_response import CreateCustomDomainResponse
+from ._create_flow_request import CreateFlowRequest
+from ._create_flow_response import CreateFlowResponse
+from ._create_flow_endpoint_request import CreateFlowEndpointRequest
+from ._create_flow_endpoint_response import CreateFlowEndpointResponse
 from ._create_knowledge_base_request import CreateKnowledgeBaseRequest
 from ._create_knowledge_base_response import CreateKnowledgeBaseResponse
 from ._create_memory_collection_request import CreateMemoryCollectionRequest
@@ -338,6 +344,12 @@ from ._delete_credential_request import DeleteCredentialRequest
 from ._delete_credential_response import DeleteCredentialResponse
 from ._delete_custom_domain_request import DeleteCustomDomainRequest
 from ._delete_custom_domain_response import DeleteCustomDomainResponse
+from ._delete_flow_request import DeleteFlowRequest
+from ._delete_flow_response import DeleteFlowResponse
+from ._delete_flow_endpoint_request import DeleteFlowEndpointRequest
+from ._delete_flow_endpoint_response import DeleteFlowEndpointResponse
+from ._delete_flow_version_request import DeleteFlowVersionRequest
+from ._delete_flow_version_response import DeleteFlowVersionResponse
 from ._delete_knowledge_base_request import DeleteKnowledgeBaseRequest
 from ._delete_knowledge_base_response import DeleteKnowledgeBaseResponse
 from ._delete_memory_collection_request import DeleteMemoryCollectionRequest
@@ -369,6 +381,14 @@ from ._get_credential_request import GetCredentialRequest
 from ._get_credential_response import GetCredentialResponse
 from ._get_custom_domain_request import GetCustomDomainRequest
 from ._get_custom_domain_response import GetCustomDomainResponse
+from ._get_flow_request import GetFlowRequest
+from ._get_flow_response import GetFlowResponse
+from ._get_flow_draft_request import GetFlowDraftRequest
+from ._get_flow_draft_response import GetFlowDraftResponse
+from ._get_flow_endpoint_request import GetFlowEndpointRequest
+from ._get_flow_endpoint_response import GetFlowEndpointResponse
+from ._get_flow_version_request import GetFlowVersionRequest
+from ._get_flow_version_response import GetFlowVersionResponse
 from ._get_knowledge_base_request import GetKnowledgeBaseRequest
 from ._get_knowledge_base_response import GetKnowledgeBaseResponse
 from ._get_memory_collection_request import GetMemoryCollectionRequest
@@ -401,6 +421,12 @@ from ._list_credentials_request import ListCredentialsRequest
 from ._list_credentials_response import ListCredentialsResponse
 from ._list_custom_domains_request import ListCustomDomainsRequest
 from ._list_custom_domains_response import ListCustomDomainsResponse
+from ._list_flow_endpoints_request import ListFlowEndpointsRequest
+from ._list_flow_endpoints_response import ListFlowEndpointsResponse
+from ._list_flow_versions_request import ListFlowVersionsRequest
+from ._list_flow_versions_response import ListFlowVersionsResponse
+from ._list_flows_request import ListFlowsRequest
+from ._list_flows_response import ListFlowsResponse
 from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
 from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
 from ._list_memory_collections_request import ListMemoryCollectionsRequest
@@ -422,6 +448,8 @@ from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_response import ListWorkspacesResponse
 from ._pause_sandbox_request import PauseSandboxRequest
 from ._pause_sandbox_response import PauseSandboxResponse
+from ._publish_flow_version_request import PublishFlowVersionRequest
+from ._publish_flow_version_response import PublishFlowVersionResponse
 from ._publish_runtime_version_request import PublishRuntimeVersionRequest
 from ._publish_runtime_version_response import PublishRuntimeVersionResponse
 from ._resume_sandbox_request import ResumeSandboxRequest
@@ -438,6 +466,12 @@ from ._update_credential_request import UpdateCredentialRequest
 from ._update_credential_response import UpdateCredentialResponse
 from ._update_custom_domain_request import UpdateCustomDomainRequest
 from ._update_custom_domain_response import UpdateCustomDomainResponse
+from ._update_flow_request import UpdateFlowRequest
+from ._update_flow_response import UpdateFlowResponse
+from ._update_flow_draft_request import UpdateFlowDraftRequest
+from ._update_flow_draft_response import UpdateFlowDraftResponse
+from ._update_flow_endpoint_request import UpdateFlowEndpointRequest
+from ._update_flow_endpoint_response import UpdateFlowEndpointResponse
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
 from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
 from ._update_memory_collection_request import UpdateMemoryCollectionRequest
@@ -776,6 +810,8 @@ __all__ = [
     WorkspaceResult,
     ActivateTemplateMCPRequest,
     ActivateTemplateMCPResponse,
+    ConvertFlowDSLRequest,
+    ConvertFlowDSLResponse,
     CreateAgentRuntimeRequest,
     CreateAgentRuntimeResponse,
     CreateAgentRuntimeEndpointRequest,
@@ -788,6 +824,10 @@ __all__ = [
     CreateCredentialResponse,
     CreateCustomDomainRequest,
     CreateCustomDomainResponse,
+    CreateFlowRequest,
+    CreateFlowResponse,
+    CreateFlowEndpointRequest,
+    CreateFlowEndpointResponse,
     CreateKnowledgeBaseRequest,
     CreateKnowledgeBaseResponse,
     CreateMemoryCollectionRequest,
@@ -816,6 +856,12 @@ __all__ = [
     DeleteCredentialResponse,
     DeleteCustomDomainRequest,
     DeleteCustomDomainResponse,
+    DeleteFlowRequest,
+    DeleteFlowResponse,
+    DeleteFlowEndpointRequest,
+    DeleteFlowEndpointResponse,
+    DeleteFlowVersionRequest,
+    DeleteFlowVersionResponse,
     DeleteKnowledgeBaseRequest,
     DeleteKnowledgeBaseResponse,
     DeleteMemoryCollectionRequest,
@@ -847,6 +893,14 @@ __all__ = [
     GetCredentialResponse,
     GetCustomDomainRequest,
     GetCustomDomainResponse,
+    GetFlowRequest,
+    GetFlowResponse,
+    GetFlowDraftRequest,
+    GetFlowDraftResponse,
+    GetFlowEndpointRequest,
+    GetFlowEndpointResponse,
+    GetFlowVersionRequest,
+    GetFlowVersionResponse,
     GetKnowledgeBaseRequest,
     GetKnowledgeBaseResponse,
     GetMemoryCollectionRequest,
@@ -879,6 +933,12 @@ __all__ = [
     ListCredentialsResponse,
     ListCustomDomainsRequest,
     ListCustomDomainsResponse,
+    ListFlowEndpointsRequest,
+    ListFlowEndpointsResponse,
+    ListFlowVersionsRequest,
+    ListFlowVersionsResponse,
+    ListFlowsRequest,
+    ListFlowsResponse,
     ListKnowledgeBasesRequest,
     ListKnowledgeBasesResponse,
     ListMemoryCollectionsRequest,
@@ -900,6 +960,8 @@ __all__ = [
     ListWorkspacesResponse,
     PauseSandboxRequest,
     PauseSandboxResponse,
+    PublishFlowVersionRequest,
+    PublishFlowVersionResponse,
     PublishRuntimeVersionRequest,
     PublishRuntimeVersionResponse,
     ResumeSandboxRequest,
@@ -916,6 +978,12 @@ __all__ = [
     UpdateCredentialResponse,
     UpdateCustomDomainRequest,
     UpdateCustomDomainResponse,
+    UpdateFlowRequest,
+    UpdateFlowResponse,
+    UpdateFlowDraftRequest,
+    UpdateFlowDraftResponse,
+    UpdateFlowEndpointRequest,
+    UpdateFlowEndpointResponse,
     UpdateKnowledgeBaseRequest,
     UpdateKnowledgeBaseResponse,
     UpdateMemoryCollectionRequest,

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
@@ -92,7 +92,7 @@ class ConvertFlowDSLDataToolsetInstallations(DaraModel):
         self,
         description: str = None,
         name: str = None,
-        spec: Dict[str, str] = None,
+        spec: Dict[str, Any] = None,
     ):
         # Toolset描述
         self.description = description

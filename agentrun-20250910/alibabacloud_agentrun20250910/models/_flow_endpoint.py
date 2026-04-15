@@ -18,7 +18,6 @@ class FlowEndpoint(DaraModel):
         flow_id: str = None,
         last_updated_at: str = None,
         routing_configuration: List[main_models.FlowEndpointRoutingConfig] = None,
-        tags: List[str] = None,
         target_version: str = None,
     ):
         # 工作流端点的创建时间，采用ISO 8601格式
@@ -37,8 +36,6 @@ class FlowEndpoint(DaraModel):
         self.last_updated_at = last_updated_at
         # 工作流端点的版本路由配置
         self.routing_configuration = routing_configuration
-        # 工作流端点的标签信息
-        self.tags = tags
         # 工作流端点指向的目标版本号
         self.target_version = target_version
 
@@ -79,9 +76,6 @@ class FlowEndpoint(DaraModel):
             for k1 in self.routing_configuration:
                 result['routingConfiguration'].append(k1.to_map() if k1 else None)
 
-        if self.tags is not None:
-            result['tags'] = self.tags
-
         if self.target_version is not None:
             result['targetVersion'] = self.target_version
 
@@ -115,9 +109,6 @@ class FlowEndpoint(DaraModel):
             for k1 in m.get('routingConfiguration'):
                 temp_model = main_models.FlowEndpointRoutingConfig()
                 self.routing_configuration.append(temp_model.from_map(k1))
-
-        if m.get('tags') is not None:
-            self.tags = m.get('tags')
 
         if m.get('targetVersion') is not None:
             self.target_version = m.get('targetVersion')

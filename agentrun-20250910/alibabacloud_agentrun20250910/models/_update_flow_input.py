@@ -2,8 +2,6 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
 
@@ -18,7 +16,6 @@ class UpdateFlowInput(DaraModel):
         flow_name: str = None,
         logging_configuration: main_models.LoggingConfiguration = None,
         resource_group_id: str = None,
-        tags: List[str] = None,
         tracing_configuration: main_models.TracingConfiguration = None,
         workspace_id: str = None,
     ):
@@ -38,8 +35,6 @@ class UpdateFlowInput(DaraModel):
         self.logging_configuration = logging_configuration
         # 工作流所属的资源组标识符
         self.resource_group_id = resource_group_id
-        # 工作流的标签信息，用于资源分类和管理
-        self.tags = tags
         # 工作流的链路追踪配置
         self.tracing_configuration = tracing_configuration
         # 工作流所属的工作空间标识符，用于资源隔离和权限管理
@@ -82,9 +77,6 @@ class UpdateFlowInput(DaraModel):
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
 
-        if self.tags is not None:
-            result['tags'] = self.tags
-
         if self.tracing_configuration is not None:
             result['tracingConfiguration'] = self.tracing_configuration.to_map()
 
@@ -120,9 +112,6 @@ class UpdateFlowInput(DaraModel):
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
-
-        if m.get('tags') is not None:
-            self.tags = m.get('tags')
 
         if m.get('tracingConfiguration') is not None:
             temp_model = main_models.TracingConfiguration()
