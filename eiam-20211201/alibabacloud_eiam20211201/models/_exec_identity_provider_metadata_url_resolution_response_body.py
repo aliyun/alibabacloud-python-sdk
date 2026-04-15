@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_eiam20211201 import models as main_models
 from darabonba.model import DaraModel
 
@@ -46,13 +48,17 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
     def __init__(
         self,
         oidc_open_id_configuration: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration = None,
+        saml_metadata_configuration: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration = None,
     ):
         # OIDC IdP的Meta信息。
         self.oidc_open_id_configuration = oidc_open_id_configuration
+        self.saml_metadata_configuration = saml_metadata_configuration
 
     def validate(self):
         if self.oidc_open_id_configuration:
             self.oidc_open_id_configuration.validate()
+        if self.saml_metadata_configuration:
+            self.saml_metadata_configuration.validate()
 
     def to_map(self):
         result = dict()
@@ -62,6 +68,9 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         if self.oidc_open_id_configuration is not None:
             result['OidcOpenIdConfiguration'] = self.oidc_open_id_configuration.to_map()
 
+        if self.saml_metadata_configuration is not None:
+            result['SamlMetadataConfiguration'] = self.saml_metadata_configuration.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -69,6 +78,88 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         if m.get('OidcOpenIdConfiguration') is not None:
             temp_model = main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration()
             self.oidc_open_id_configuration = temp_model.from_map(m.get('OidcOpenIdConfiguration'))
+
+        if m.get('SamlMetadataConfiguration') is not None:
+            temp_model = main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration()
+            self.saml_metadata_configuration = temp_model.from_map(m.get('SamlMetadataConfiguration'))
+
+        return self
+
+class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration(DaraModel):
+    def __init__(
+        self,
+        certificates: List[main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates] = None,
+        id_pentity_id: str = None,
+        id_psso_url: str = None,
+    ):
+        self.certificates = certificates
+        self.id_pentity_id = id_pentity_id
+        self.id_psso_url = id_psso_url
+
+    def validate(self):
+        if self.certificates:
+            for v1 in self.certificates:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k1 in self.certificates:
+                result['Certificates'].append(k1.to_map() if k1 else None)
+
+        if self.id_pentity_id is not None:
+            result['IdPEntityId'] = self.id_pentity_id
+
+        if self.id_psso_url is not None:
+            result['IdPSsoUrl'] = self.id_psso_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k1 in m.get('Certificates'):
+                temp_model = main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates()
+                self.certificates.append(temp_model.from_map(k1))
+
+        if m.get('IdPEntityId') is not None:
+            self.id_pentity_id = m.get('IdPEntityId')
+
+        if m.get('IdPSsoUrl') is not None:
+            self.id_psso_url = m.get('IdPSsoUrl')
+
+        return self
+
+class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates(DaraModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content is not None:
+            result['Content'] = self.content
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
 
         return self
 

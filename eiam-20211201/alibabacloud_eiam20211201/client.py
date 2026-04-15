@@ -3493,6 +3493,8 @@ class Client(OpenApiClient):
             query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not DaraCore.is_null(request.oidc_config):
             query['OidcConfig'] = request.oidc_config
+        if not DaraCore.is_null(request.saml_config):
+            query['SamlConfig'] = request.saml_config
         if not DaraCore.is_null(request.ud_pull_config):
             query['UdPullConfig'] = request.ud_pull_config
         if not DaraCore.is_null(request.ud_push_config):
@@ -3553,6 +3555,8 @@ class Client(OpenApiClient):
             query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not DaraCore.is_null(request.oidc_config):
             query['OidcConfig'] = request.oidc_config
+        if not DaraCore.is_null(request.saml_config):
+            query['SamlConfig'] = request.saml_config
         if not DaraCore.is_null(request.ud_pull_config):
             query['UdPullConfig'] = request.ud_pull_config
         if not DaraCore.is_null(request.ud_push_config):
@@ -10647,6 +10651,8 @@ class Client(OpenApiClient):
             query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not DaraCore.is_null(request.oidc_issuer):
             query['OidcIssuer'] = request.oidc_issuer
+        if not DaraCore.is_null(request.saml_metadata_url):
+            query['SamlMetadataUrl'] = request.saml_metadata_url
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10681,6 +10687,8 @@ class Client(OpenApiClient):
             query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not DaraCore.is_null(request.oidc_issuer):
             query['OidcIssuer'] = request.oidc_issuer
+        if not DaraCore.is_null(request.saml_metadata_url):
+            query['SamlMetadataUrl'] = request.saml_metadata_url
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -26787,6 +26795,8 @@ class Client(OpenApiClient):
             query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not DaraCore.is_null(request.oidc_config):
             query['OidcConfig'] = request.oidc_config
+        if not DaraCore.is_null(request.saml_config):
+            query['SamlConfig'] = request.saml_config
         if not DaraCore.is_null(request.we_com_config):
             query['WeComConfig'] = request.we_com_config
         req = open_api_util_models.OpenApiRequest(
@@ -26835,6 +26845,8 @@ class Client(OpenApiClient):
             query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not DaraCore.is_null(request.oidc_config):
             query['OidcConfig'] = request.oidc_config
+        if not DaraCore.is_null(request.saml_config):
+            query['SamlConfig'] = request.saml_config
         if not DaraCore.is_null(request.we_com_config):
             query['WeComConfig'] = request.we_com_config
         req = open_api_util_models.OpenApiRequest(

@@ -24,6 +24,7 @@ class CreateIdentityProviderRequest(DaraModel):
         logo_url: str = None,
         network_access_endpoint_id: str = None,
         oidc_config: main_models.CreateIdentityProviderRequestOidcConfig = None,
+        saml_config: main_models.CreateIdentityProviderRequestSamlConfig = None,
         ud_pull_config: main_models.CreateIdentityProviderRequestUdPullConfig = None,
         ud_push_config: main_models.CreateIdentityProviderRequestUdPushConfig = None,
         we_com_config: main_models.CreateIdentityProviderRequestWeComConfig = None,
@@ -78,6 +79,7 @@ class CreateIdentityProviderRequest(DaraModel):
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC IdP configuration.
         self.oidc_config = oidc_config
+        self.saml_config = saml_config
         # Inbound synchronization configuration information.
         self.ud_pull_config = ud_pull_config
         # Outbound synchronization configuration information.
@@ -102,6 +104,8 @@ class CreateIdentityProviderRequest(DaraModel):
             self.ldap_config.validate()
         if self.oidc_config:
             self.oidc_config.validate()
+        if self.saml_config:
+            self.saml_config.validate()
         if self.ud_pull_config:
             self.ud_pull_config.validate()
         if self.ud_push_config:
@@ -155,6 +159,9 @@ class CreateIdentityProviderRequest(DaraModel):
 
         if self.oidc_config is not None:
             result['OidcConfig'] = self.oidc_config.to_map()
+
+        if self.saml_config is not None:
+            result['SamlConfig'] = self.saml_config.to_map()
 
         if self.ud_pull_config is not None:
             result['UdPullConfig'] = self.ud_pull_config.to_map()
@@ -218,6 +225,10 @@ class CreateIdentityProviderRequest(DaraModel):
         if m.get('OidcConfig') is not None:
             temp_model = main_models.CreateIdentityProviderRequestOidcConfig()
             self.oidc_config = temp_model.from_map(m.get('OidcConfig'))
+
+        if m.get('SamlConfig') is not None:
+            temp_model = main_models.CreateIdentityProviderRequestSamlConfig()
+            self.saml_config = temp_model.from_map(m.get('SamlConfig'))
 
         if m.get('UdPullConfig') is not None:
             temp_model = main_models.CreateIdentityProviderRequestUdPullConfig()
@@ -602,6 +613,108 @@ class CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig(DaraModel):
 
         if m.get('PeriodicSyncType') is not None:
             self.periodic_sync_type = m.get('PeriodicSyncType')
+
+        return self
+
+class CreateIdentityProviderRequestSamlConfig(DaraModel):
+    def __init__(
+        self,
+        binding_method: str = None,
+        certificates: List[main_models.CreateIdentityProviderRequestSamlConfigCertificates] = None,
+        id_pentity_id: str = None,
+        id_psso_url: str = None,
+        max_clock_skew: int = None,
+        require_request_signed: bool = None,
+    ):
+        self.binding_method = binding_method
+        self.certificates = certificates
+        self.id_pentity_id = id_pentity_id
+        self.id_psso_url = id_psso_url
+        self.max_clock_skew = max_clock_skew
+        self.require_request_signed = require_request_signed
+
+    def validate(self):
+        if self.certificates:
+            for v1 in self.certificates:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_method is not None:
+            result['BindingMethod'] = self.binding_method
+
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k1 in self.certificates:
+                result['Certificates'].append(k1.to_map() if k1 else None)
+
+        if self.id_pentity_id is not None:
+            result['IdPEntityId'] = self.id_pentity_id
+
+        if self.id_psso_url is not None:
+            result['IdPSsoUrl'] = self.id_psso_url
+
+        if self.max_clock_skew is not None:
+            result['MaxClockSkew'] = self.max_clock_skew
+
+        if self.require_request_signed is not None:
+            result['RequireRequestSigned'] = self.require_request_signed
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindingMethod') is not None:
+            self.binding_method = m.get('BindingMethod')
+
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k1 in m.get('Certificates'):
+                temp_model = main_models.CreateIdentityProviderRequestSamlConfigCertificates()
+                self.certificates.append(temp_model.from_map(k1))
+
+        if m.get('IdPEntityId') is not None:
+            self.id_pentity_id = m.get('IdPEntityId')
+
+        if m.get('IdPSsoUrl') is not None:
+            self.id_psso_url = m.get('IdPSsoUrl')
+
+        if m.get('MaxClockSkew') is not None:
+            self.max_clock_skew = m.get('MaxClockSkew')
+
+        if m.get('RequireRequestSigned') is not None:
+            self.require_request_signed = m.get('RequireRequestSigned')
+
+        return self
+
+class CreateIdentityProviderRequestSamlConfigCertificates(DaraModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content is not None:
+            result['Content'] = self.content
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
 
         return self
 

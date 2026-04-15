@@ -57,6 +57,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         description: str = None,
         dingtalk_app_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig = None,
         dingtalk_provisioning_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig = None,
+        endpoint_metadata: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata = None,
         identity_provider_external_id: str = None,
         identity_provider_id: str = None,
         identity_provider_name: str = None,
@@ -69,6 +70,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         logo_url: str = None,
         network_access_endpoint_id: str = None,
         oidc_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig = None,
+        saml_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig = None,
         ud_pull_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig = None,
         ud_pull_status: str = None,
         ud_push_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig = None,
@@ -117,6 +119,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         self.dingtalk_app_config = dingtalk_app_config
         # DingTalk synchronous configuration.
         self.dingtalk_provisioning_config = dingtalk_provisioning_config
+        self.endpoint_metadata = endpoint_metadata
         # Identity provider external ID.
         self.identity_provider_external_id = identity_provider_external_id
         # Identity provider ID.
@@ -141,6 +144,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC IdP configuration.
         self.oidc_config = oidc_config
+        self.saml_config = saml_config
         # Sync in configuration.
         self.ud_pull_config = ud_pull_config
         # Indicates whether the IDaaS EIAM system supports UD (User Directory) synchronization.
@@ -159,12 +163,16 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
             self.dingtalk_app_config.validate()
         if self.dingtalk_provisioning_config:
             self.dingtalk_provisioning_config.validate()
+        if self.endpoint_metadata:
+            self.endpoint_metadata.validate()
         if self.lark_config:
             self.lark_config.validate()
         if self.ldap_config:
             self.ldap_config.validate()
         if self.oidc_config:
             self.oidc_config.validate()
+        if self.saml_config:
+            self.saml_config.validate()
         if self.ud_pull_config:
             self.ud_pull_config.validate()
         if self.ud_push_config:
@@ -201,6 +209,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         if self.dingtalk_provisioning_config is not None:
             result['DingtalkProvisioningConfig'] = self.dingtalk_provisioning_config.to_map()
 
+        if self.endpoint_metadata is not None:
+            result['EndpointMetadata'] = self.endpoint_metadata.to_map()
+
         if self.identity_provider_external_id is not None:
             result['IdentityProviderExternalId'] = self.identity_provider_external_id
 
@@ -236,6 +247,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
 
         if self.oidc_config is not None:
             result['OidcConfig'] = self.oidc_config.to_map()
+
+        if self.saml_config is not None:
+            result['SamlConfig'] = self.saml_config.to_map()
 
         if self.ud_pull_config is not None:
             result['UdPullConfig'] = self.ud_pull_config.to_map()
@@ -285,6 +299,10 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
             temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig()
             self.dingtalk_provisioning_config = temp_model.from_map(m.get('DingtalkProvisioningConfig'))
 
+        if m.get('EndpointMetadata') is not None:
+            temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata()
+            self.endpoint_metadata = temp_model.from_map(m.get('EndpointMetadata'))
+
         if m.get('IdentityProviderExternalId') is not None:
             self.identity_provider_external_id = m.get('IdentityProviderExternalId')
 
@@ -323,6 +341,10 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         if m.get('OidcConfig') is not None:
             temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig()
             self.oidc_config = temp_model.from_map(m.get('OidcConfig'))
+
+        if m.get('SamlConfig') is not None:
+            temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig()
+            self.saml_config = temp_model.from_map(m.get('SamlConfig'))
 
         if m.get('UdPullConfig') is not None:
             temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig()
@@ -579,6 +601,153 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncSco
 
         if m.get('TargetScope') is not None:
             self.target_scope = m.get('TargetScope')
+
+        return self
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel):
+    def __init__(
+        self,
+        binding_method: str = None,
+        certificates: List[main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates] = None,
+        id_pentity_id: str = None,
+        id_psso_url: str = None,
+        max_clock_skew: int = None,
+        require_request_signed: bool = None,
+    ):
+        self.binding_method = binding_method
+        self.certificates = certificates
+        self.id_pentity_id = id_pentity_id
+        self.id_psso_url = id_psso_url
+        self.max_clock_skew = max_clock_skew
+        self.require_request_signed = require_request_signed
+
+    def validate(self):
+        if self.certificates:
+            for v1 in self.certificates:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_method is not None:
+            result['BindingMethod'] = self.binding_method
+
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k1 in self.certificates:
+                result['Certificates'].append(k1.to_map() if k1 else None)
+
+        if self.id_pentity_id is not None:
+            result['IdPEntityId'] = self.id_pentity_id
+
+        if self.id_psso_url is not None:
+            result['IdPSsoUrl'] = self.id_psso_url
+
+        if self.max_clock_skew is not None:
+            result['MaxClockSkew'] = self.max_clock_skew
+
+        if self.require_request_signed is not None:
+            result['RequireRequestSigned'] = self.require_request_signed
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindingMethod') is not None:
+            self.binding_method = m.get('BindingMethod')
+
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k1 in m.get('Certificates'):
+                temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates()
+                self.certificates.append(temp_model.from_map(k1))
+
+        if m.get('IdPEntityId') is not None:
+            self.id_pentity_id = m.get('IdPEntityId')
+
+        if m.get('IdPSsoUrl') is not None:
+            self.id_psso_url = m.get('IdPSsoUrl')
+
+        if m.get('MaxClockSkew') is not None:
+            self.max_clock_skew = m.get('MaxClockSkew')
+
+        if m.get('RequireRequestSigned') is not None:
+            self.require_request_signed = m.get('RequireRequestSigned')
+
+        return self
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates(DaraModel):
+    def __init__(
+        self,
+        certificate_metadata: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata = None,
+        content: str = None,
+    ):
+        self.certificate_metadata = certificate_metadata
+        self.content = content
+
+    def validate(self):
+        if self.certificate_metadata:
+            self.certificate_metadata.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.certificate_metadata is not None:
+            result['CertificateMetadata'] = self.certificate_metadata.to_map()
+
+        if self.content is not None:
+            result['Content'] = self.content
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateMetadata') is not None:
+            temp_model = main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata()
+            self.certificate_metadata = temp_model.from_map(m.get('CertificateMetadata'))
+
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+
+        return self
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata(DaraModel):
+    def __init__(
+        self,
+        not_after: int = None,
+        not_before: int = None,
+    ):
+        self.not_after = not_after
+        self.not_before = not_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
 
         return self
 
@@ -922,6 +1091,49 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(DaraModel)
 
         if m.get('VerificationToken') is not None:
             self.verification_token = m.get('VerificationToken')
+
+        return self
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata(DaraModel):
+    def __init__(
+        self,
+        saml_acs_endpoint: str = None,
+        saml_entity_id: str = None,
+        saml_meta_endpoint: str = None,
+    ):
+        self.saml_acs_endpoint = saml_acs_endpoint
+        self.saml_entity_id = saml_entity_id
+        self.saml_meta_endpoint = saml_meta_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.saml_acs_endpoint is not None:
+            result['SamlAcsEndpoint'] = self.saml_acs_endpoint
+
+        if self.saml_entity_id is not None:
+            result['SamlEntityId'] = self.saml_entity_id
+
+        if self.saml_meta_endpoint is not None:
+            result['SamlMetaEndpoint'] = self.saml_meta_endpoint
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SamlAcsEndpoint') is not None:
+            self.saml_acs_endpoint = m.get('SamlAcsEndpoint')
+
+        if m.get('SamlEntityId') is not None:
+            self.saml_entity_id = m.get('SamlEntityId')
+
+        if m.get('SamlMetaEndpoint') is not None:
+            self.saml_meta_endpoint = m.get('SamlMetaEndpoint')
 
         return self
 

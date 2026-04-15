@@ -11,6 +11,7 @@ class ExecIdentityProviderMetadataUrlResolutionRequest(DaraModel):
         instance_id: str = None,
         network_access_endpoint_id: str = None,
         oidc_issuer: str = None,
+        saml_metadata_url: str = None,
     ):
         self.identity_provider_id = identity_provider_id
         # IDaaS EIAM实例的ID。
@@ -19,9 +20,8 @@ class ExecIdentityProviderMetadataUrlResolutionRequest(DaraModel):
         self.instance_id = instance_id
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC Issuer地址。
-        # 
-        # This parameter is required.
         self.oidc_issuer = oidc_issuer
+        self.saml_metadata_url = saml_metadata_url
 
     def validate(self):
         pass
@@ -43,6 +43,9 @@ class ExecIdentityProviderMetadataUrlResolutionRequest(DaraModel):
         if self.oidc_issuer is not None:
             result['OidcIssuer'] = self.oidc_issuer
 
+        if self.saml_metadata_url is not None:
+            result['SamlMetadataUrl'] = self.saml_metadata_url
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +61,9 @@ class ExecIdentityProviderMetadataUrlResolutionRequest(DaraModel):
 
         if m.get('OidcIssuer') is not None:
             self.oidc_issuer = m.get('OidcIssuer')
+
+        if m.get('SamlMetadataUrl') is not None:
+            self.saml_metadata_url = m.get('SamlMetadataUrl')
 
         return self
 

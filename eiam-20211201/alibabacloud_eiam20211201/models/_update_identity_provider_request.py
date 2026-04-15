@@ -20,6 +20,7 @@ class UpdateIdentityProviderRequest(DaraModel):
         logo_url: str = None,
         network_access_endpoint_id: str = None,
         oidc_config: main_models.UpdateIdentityProviderRequestOidcConfig = None,
+        saml_config: main_models.UpdateIdentityProviderRequestSamlConfig = None,
         we_com_config: main_models.UpdateIdentityProviderRequestWeComConfig = None,
     ):
         self.client_token = client_token
@@ -44,6 +45,7 @@ class UpdateIdentityProviderRequest(DaraModel):
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC IdP配置。
         self.oidc_config = oidc_config
+        self.saml_config = saml_config
         # 企业微信基本信息
         self.we_com_config = we_com_config
 
@@ -56,6 +58,8 @@ class UpdateIdentityProviderRequest(DaraModel):
             self.ldap_config.validate()
         if self.oidc_config:
             self.oidc_config.validate()
+        if self.saml_config:
+            self.saml_config.validate()
         if self.we_com_config:
             self.we_com_config.validate()
 
@@ -93,6 +97,9 @@ class UpdateIdentityProviderRequest(DaraModel):
 
         if self.oidc_config is not None:
             result['OidcConfig'] = self.oidc_config.to_map()
+
+        if self.saml_config is not None:
+            result['SamlConfig'] = self.saml_config.to_map()
 
         if self.we_com_config is not None:
             result['WeComConfig'] = self.we_com_config.to_map()
@@ -134,6 +141,10 @@ class UpdateIdentityProviderRequest(DaraModel):
         if m.get('OidcConfig') is not None:
             temp_model = main_models.UpdateIdentityProviderRequestOidcConfig()
             self.oidc_config = temp_model.from_map(m.get('OidcConfig'))
+
+        if m.get('SamlConfig') is not None:
+            temp_model = main_models.UpdateIdentityProviderRequestSamlConfig()
+            self.saml_config = temp_model.from_map(m.get('SamlConfig'))
 
         if m.get('WeComConfig') is not None:
             temp_model = main_models.UpdateIdentityProviderRequestWeComConfig()
@@ -193,6 +204,108 @@ class UpdateIdentityProviderRequestWeComConfig(DaraModel):
 
         if m.get('TrustableDomain') is not None:
             self.trustable_domain = m.get('TrustableDomain')
+
+        return self
+
+class UpdateIdentityProviderRequestSamlConfig(DaraModel):
+    def __init__(
+        self,
+        binding_method: str = None,
+        certificates: List[main_models.UpdateIdentityProviderRequestSamlConfigCertificates] = None,
+        id_pentity_id: str = None,
+        id_psso_url: str = None,
+        max_clock_skew: int = None,
+        require_request_signed: bool = None,
+    ):
+        self.binding_method = binding_method
+        self.certificates = certificates
+        self.id_pentity_id = id_pentity_id
+        self.id_psso_url = id_psso_url
+        self.max_clock_skew = max_clock_skew
+        self.require_request_signed = require_request_signed
+
+    def validate(self):
+        if self.certificates:
+            for v1 in self.certificates:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_method is not None:
+            result['BindingMethod'] = self.binding_method
+
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k1 in self.certificates:
+                result['Certificates'].append(k1.to_map() if k1 else None)
+
+        if self.id_pentity_id is not None:
+            result['IdPEntityId'] = self.id_pentity_id
+
+        if self.id_psso_url is not None:
+            result['IdPSsoUrl'] = self.id_psso_url
+
+        if self.max_clock_skew is not None:
+            result['MaxClockSkew'] = self.max_clock_skew
+
+        if self.require_request_signed is not None:
+            result['RequireRequestSigned'] = self.require_request_signed
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindingMethod') is not None:
+            self.binding_method = m.get('BindingMethod')
+
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k1 in m.get('Certificates'):
+                temp_model = main_models.UpdateIdentityProviderRequestSamlConfigCertificates()
+                self.certificates.append(temp_model.from_map(k1))
+
+        if m.get('IdPEntityId') is not None:
+            self.id_pentity_id = m.get('IdPEntityId')
+
+        if m.get('IdPSsoUrl') is not None:
+            self.id_psso_url = m.get('IdPSsoUrl')
+
+        if m.get('MaxClockSkew') is not None:
+            self.max_clock_skew = m.get('MaxClockSkew')
+
+        if m.get('RequireRequestSigned') is not None:
+            self.require_request_signed = m.get('RequireRequestSigned')
+
+        return self
+
+class UpdateIdentityProviderRequestSamlConfigCertificates(DaraModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content is not None:
+            result['Content'] = self.content
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
 
         return self
 
