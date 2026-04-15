@@ -1,3 +1,7 @@
+2026-04-15 Version: 2.8.1
+- Update API ListStackConfigs: add response parameters Body.configs.$.failedReason.
+
+
 2026-04-14 Version: 2.8.0
 - Support API CreateStack.
 - Support API GetStack.

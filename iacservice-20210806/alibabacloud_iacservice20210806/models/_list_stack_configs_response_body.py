@@ -83,6 +83,7 @@ class ListStackConfigsResponseBodyConfigs(DaraModel):
         create_time: str = None,
         deployment_config: main_models.ListStackConfigsResponseBodyConfigsDeploymentConfig = None,
         deployment_content: str = None,
+        failed_reason: str = None,
         status: str = None,
         version: str = None,
     ):
@@ -91,6 +92,7 @@ class ListStackConfigsResponseBodyConfigs(DaraModel):
         self.create_time = create_time
         self.deployment_config = deployment_config
         self.deployment_content = deployment_content
+        self.failed_reason = failed_reason
         self.status = status
         self.version = version
 
@@ -120,6 +122,9 @@ class ListStackConfigsResponseBodyConfigs(DaraModel):
         if self.deployment_content is not None:
             result['deploymentContent'] = self.deployment_content
 
+        if self.failed_reason is not None:
+            result['failedReason'] = self.failed_reason
+
         if self.status is not None:
             result['status'] = self.status
 
@@ -146,6 +151,9 @@ class ListStackConfigsResponseBodyConfigs(DaraModel):
 
         if m.get('deploymentContent') is not None:
             self.deployment_content = m.get('deploymentContent')
+
+        if m.get('failedReason') is not None:
+            self.failed_reason = m.get('failedReason')
 
         if m.get('status') is not None:
             self.status = m.get('status')
