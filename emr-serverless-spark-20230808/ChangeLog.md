@@ -1,3 +1,6 @@
+2026-04-15 Version: 1.20.1
+- Generated python 2023-08-08 for emr-serverless-spark.
+
 2026-04-14 Version: 1.20.0
 - Support API CreateNetworkService.
 - Support API ListNetworkServices.
