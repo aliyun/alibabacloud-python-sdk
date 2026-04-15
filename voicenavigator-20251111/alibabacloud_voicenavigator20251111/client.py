@@ -118,6 +118,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_clone_voice_with_options_async(request, runtime)
 
+    def create_llm_access_profile_with_options(
+        self,
+        tmp_req: main_models.CreateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.CreateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLlmAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_llm_access_profile_with_options_async(
+        self,
+        tmp_req: main_models.CreateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.CreateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLlmAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_llm_access_profile(
+        self,
+        request: main_models.CreateLlmAccessProfileRequest,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.create_llm_access_profile_with_options(request, runtime)
+
+    async def create_llm_access_profile_async(
+        self,
+        request: main_models.CreateLlmAccessProfileRequest,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.create_llm_access_profile_with_options_async(request, runtime)
+
     def create_script_with_options(
         self,
         request: main_models.CreateScriptRequest,
@@ -657,6 +739,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCloneVoiceResponse:
         runtime = RuntimeOptions()
         return await self.delete_clone_voice_with_options_async(request, runtime)
+
+    def delete_llm_access_profile_with_options(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLlmAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_llm_access_profile_with_options_async(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLlmAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_llm_access_profile(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_llm_access_profile_with_options(request, runtime)
+
+    async def delete_llm_access_profile_async(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_llm_access_profile_with_options_async(request, runtime)
 
     def delete_script_with_options(
         self,
@@ -2156,6 +2312,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_clone_voice_models_with_options_async(request, runtime)
 
+    def list_llm_access_profiles_with_options(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLlmAccessProfiles',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLlmAccessProfilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_llm_access_profiles_with_options_async(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLlmAccessProfiles',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLlmAccessProfilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_llm_access_profiles(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        runtime = RuntimeOptions()
+        return self.list_llm_access_profiles_with_options(request, runtime)
+
+    async def list_llm_access_profiles_async(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_llm_access_profiles_with_options_async(request, runtime)
+
     def list_nlu_models_with_options(
         self,
         request: main_models.ListNluModelsRequest,
@@ -3057,6 +3291,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCloneVoiceResponse:
         runtime = RuntimeOptions()
         return await self.update_clone_voice_with_options_async(request, runtime)
+
+    def update_llm_access_profile_with_options(
+        self,
+        tmp_req: main_models.UpdateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLlmAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_llm_access_profile_with_options_async(
+        self,
+        tmp_req: main_models.UpdateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLlmAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_llm_access_profile(
+        self,
+        request: main_models.UpdateLlmAccessProfileRequest,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.update_llm_access_profile_with_options(request, runtime)
+
+    async def update_llm_access_profile_async(
+        self,
+        request: main_models.UpdateLlmAccessProfileRequest,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.update_llm_access_profile_with_options_async(request, runtime)
 
     def update_script_with_options(
         self,

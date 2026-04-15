@@ -5,6 +5,10 @@ from __future__ import annotations
 from ._create_clone_voice_request import CreateCloneVoiceRequest
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBody
 from ._create_clone_voice_response import CreateCloneVoiceResponse
+from ._create_llm_access_profile_request import CreateLlmAccessProfileRequest
+from ._create_llm_access_profile_shrink_request import CreateLlmAccessProfileShrinkRequest
+from ._create_llm_access_profile_response_body import CreateLlmAccessProfileResponseBody
+from ._create_llm_access_profile_response import CreateLlmAccessProfileResponse
 from ._create_script_request import CreateScriptRequest
 from ._create_script_response_body import CreateScriptResponseBody
 from ._create_script_response import CreateScriptResponse
@@ -26,6 +30,9 @@ from ._create_voice_access_profile_response import CreateVoiceAccessProfileRespo
 from ._delete_clone_voice_request import DeleteCloneVoiceRequest
 from ._delete_clone_voice_response_body import DeleteCloneVoiceResponseBody
 from ._delete_clone_voice_response import DeleteCloneVoiceResponse
+from ._delete_llm_access_profile_request import DeleteLlmAccessProfileRequest
+from ._delete_llm_access_profile_response_body import DeleteLlmAccessProfileResponseBody
+from ._delete_llm_access_profile_response import DeleteLlmAccessProfileResponse
 from ._delete_script_request import DeleteScriptRequest
 from ._delete_script_response_body import DeleteScriptResponseBody
 from ._delete_script_response import DeleteScriptResponse
@@ -85,6 +92,9 @@ from ._list_clone_voice_response import ListCloneVoiceResponse
 from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
 from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
+from ._list_llm_access_profiles_request import ListLlmAccessProfilesRequest
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBody
+from ._list_llm_access_profiles_response import ListLlmAccessProfilesResponse
 from ._list_nlu_models_request import ListNluModelsRequest
 from ._list_nlu_models_response_body import ListNluModelsResponseBody
 from ._list_nlu_models_response import ListNluModelsResponse
@@ -120,6 +130,10 @@ from ._publish_script_response import PublishScriptResponse
 from ._update_clone_voice_request import UpdateCloneVoiceRequest
 from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
 from ._update_clone_voice_response import UpdateCloneVoiceResponse
+from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequest
+from ._update_llm_access_profile_shrink_request import UpdateLlmAccessProfileShrinkRequest
+from ._update_llm_access_profile_response_body import UpdateLlmAccessProfileResponseBody
+from ._update_llm_access_profile_response import UpdateLlmAccessProfileResponse
 from ._update_script_request import UpdateScriptRequest
 from ._update_script_response_body import UpdateScriptResponseBody
 from ._update_script_response import UpdateScriptResponse
@@ -139,6 +153,7 @@ from ._update_voice_access_profile_shrink_request import UpdateVoiceAccessProfil
 from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfileResponseBody
 from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
+from ._create_llm_access_profile_request import CreateLlmAccessProfileRequestProfile
 from ._create_script_version_request import CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers
 from ._create_script_version_request import CreateScriptVersionRequestInteractionConfigEndConversationConfig
 from ._create_script_version_request import CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig
@@ -202,6 +217,9 @@ from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataClone
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyData
 from ._list_nlu_models_response_body import ListNluModelsResponseBodyData
 from ._list_script_profile_templates_response_body import ListScriptProfileTemplatesResponseBodyData
 from ._list_scripts_response_body import ListScriptsResponseBodyDataScripts
@@ -218,12 +236,17 @@ from ._list_voice_engines_response_body import ListVoiceEnginesResponseBodyData
 from ._list_voices_response_body import ListVoicesResponseBodyDataVoices
 from ._list_voices_response_body import ListVoicesResponseBodyData
 from ._preview_voice_request import PreviewVoiceRequestParams
+from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequestProfile
 from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequestProfile
 
 __all__ = [
     CreateCloneVoiceRequest,
     CreateCloneVoiceResponseBody,
     CreateCloneVoiceResponse,
+    CreateLlmAccessProfileRequest,
+    CreateLlmAccessProfileShrinkRequest,
+    CreateLlmAccessProfileResponseBody,
+    CreateLlmAccessProfileResponse,
     CreateScriptRequest,
     CreateScriptResponseBody,
     CreateScriptResponse,
@@ -245,6 +268,9 @@ __all__ = [
     DeleteCloneVoiceRequest,
     DeleteCloneVoiceResponseBody,
     DeleteCloneVoiceResponse,
+    DeleteLlmAccessProfileRequest,
+    DeleteLlmAccessProfileResponseBody,
+    DeleteLlmAccessProfileResponse,
     DeleteScriptRequest,
     DeleteScriptResponseBody,
     DeleteScriptResponse,
@@ -304,6 +330,9 @@ __all__ = [
     ListCloneVoiceModelsRequest,
     ListCloneVoiceModelsResponseBody,
     ListCloneVoiceModelsResponse,
+    ListLlmAccessProfilesRequest,
+    ListLlmAccessProfilesResponseBody,
+    ListLlmAccessProfilesResponse,
     ListNluModelsRequest,
     ListNluModelsResponseBody,
     ListNluModelsResponse,
@@ -339,6 +368,10 @@ __all__ = [
     UpdateCloneVoiceRequest,
     UpdateCloneVoiceResponseBody,
     UpdateCloneVoiceResponse,
+    UpdateLlmAccessProfileRequest,
+    UpdateLlmAccessProfileShrinkRequest,
+    UpdateLlmAccessProfileResponseBody,
+    UpdateLlmAccessProfileResponse,
     UpdateScriptRequest,
     UpdateScriptResponseBody,
     UpdateScriptResponse,
@@ -358,6 +391,7 @@ __all__ = [
     UpdateVoiceAccessProfileResponseBody,
     UpdateVoiceAccessProfileResponse,
     CreateCloneVoiceResponseBodyData,
+    CreateLlmAccessProfileRequestProfile,
     CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers,
     CreateScriptVersionRequestInteractionConfigEndConversationConfig,
     CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig,
@@ -421,6 +455,9 @@ __all__ = [
     ListCloneVoiceResponseBodyData,
     ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
     ListCloneVoiceModelsResponseBodyData,
+    ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile,
+    ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles,
+    ListLlmAccessProfilesResponseBodyData,
     ListNluModelsResponseBodyData,
     ListScriptProfileTemplatesResponseBodyData,
     ListScriptsResponseBodyDataScripts,
@@ -437,5 +474,6 @@ __all__ = [
     ListVoicesResponseBodyDataVoices,
     ListVoicesResponseBodyData,
     PreviewVoiceRequestParams,
+    UpdateLlmAccessProfileRequestProfile,
     UpdateVoiceAccessProfileRequestProfile
 ]
