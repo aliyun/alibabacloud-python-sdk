@@ -92,6 +92,10 @@ from ._create_open_global_data_response import CreateOpenGlobalDataResponse
 from ._create_open_single_data_request import CreateOpenSingleDataRequest
 from ._create_open_single_data_response_body import CreateOpenSingleDataResponseBody
 from ._create_open_single_data_response import CreateOpenSingleDataResponse
+from ._create_pay_order_to_msence_request import CreatePayOrderToMsenceRequest
+from ._create_pay_order_to_msence_shrink_request import CreatePayOrderToMsenceShrinkRequest
+from ._create_pay_order_to_msence_response_body import CreatePayOrderToMsenceResponseBody
+from ._create_pay_order_to_msence_response import CreatePayOrderToMsenceResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response_body import CreateTemplateResponseBody
 from ._create_template_response import CreateTemplateResponse
@@ -137,6 +141,9 @@ from ._exist_mcube_rsa_key_response import ExistMcubeRsaKeyResponse
 from ._export_mapp_center_app_config_request import ExportMappCenterAppConfigRequest
 from ._export_mapp_center_app_config_response_body import ExportMappCenterAppConfigResponseBody
 from ._export_mapp_center_app_config_response import ExportMappCenterAppConfigResponse
+from ._get_auth_token_to_msence_request import GetAuthTokenToMsenceRequest
+from ._get_auth_token_to_msence_response_body import GetAuthTokenToMsenceResponseBody
+from ._get_auth_token_to_msence_response import GetAuthTokenToMsenceResponse
 from ._get_file_token_for_upload_to_msa_request import GetFileTokenForUploadToMsaRequest
 from ._get_file_token_for_upload_to_msa_response_body import GetFileTokenForUploadToMsaResponseBody
 from ._get_file_token_for_upload_to_msa_response import GetFileTokenForUploadToMsaResponse
@@ -179,6 +186,7 @@ from ._get_user_app_upload_process_in_msa_response import GetUserAppUploadProces
 from ._list_analysis_core_index_request import ListAnalysisCoreIndexRequest
 from ._list_analysis_core_index_response_body import ListAnalysisCoreIndexResponseBody
 from ._list_analysis_core_index_response import ListAnalysisCoreIndexResponse
+from ._list_cubecard_apps_request import ListCubecardAppsRequest
 from ._list_cubecard_apps_response_body import ListCubecardAppsResponseBody
 from ._list_cubecard_apps_response import ListCubecardAppsResponse
 from ._list_mapp_center_apps_response_body import ListMappCenterAppsResponseBody
@@ -315,6 +323,9 @@ from ._query_mps_scheduler_list_response import QueryMpsSchedulerListResponse
 from ._query_mscp_risk_info_request import QueryMscpRiskInfoRequest
 from ._query_mscp_risk_info_response_body import QueryMscpRiskInfoResponseBody
 from ._query_mscp_risk_info_response import QueryMscpRiskInfoResponse
+from ._query_pay_order_to_msence_request import QueryPayOrderToMsenceRequest
+from ._query_pay_order_to_msence_response_body import QueryPayOrderToMsenceResponseBody
+from ._query_pay_order_to_msence_response import QueryPayOrderToMsenceResponse
 from ._query_push_analysis_core_index_request import QueryPushAnalysisCoreIndexRequest
 from ._query_push_analysis_core_index_response_body import QueryPushAnalysisCoreIndexResponseBody
 from ._query_push_analysis_core_index_response import QueryPushAnalysisCoreIndexResponse
@@ -327,6 +338,9 @@ from ._query_push_analysis_task_list_response import QueryPushAnalysisTaskListRe
 from ._query_push_scheduler_list_request import QueryPushSchedulerListRequest
 from ._query_push_scheduler_list_response_body import QueryPushSchedulerListResponseBody
 from ._query_push_scheduler_list_response import QueryPushSchedulerListResponse
+from ._query_user_info_to_msence_request import QueryUserInfoToMsenceRequest
+from ._query_user_info_to_msence_response_body import QueryUserInfoToMsenceResponseBody
+from ._query_user_info_to_msence_response import QueryUserInfoToMsenceResponse
 from ._revoke_push_message_request import RevokePushMessageRequest
 from ._revoke_push_message_response_body import RevokePushMessageResponseBody
 from ._revoke_push_message_response import RevokePushMessageResponse
@@ -339,6 +353,9 @@ from ._run_msa_diff_response import RunMsaDiffResponse
 from ._save_mgs_apirest_request import SaveMgsApirestRequest
 from ._save_mgs_apirest_response_body import SaveMgsApirestResponseBody
 from ._save_mgs_apirest_response import SaveMgsApirestResponse
+from ._save_order_relation_info_to_msence_request import SaveOrderRelationInfoToMsenceRequest
+from ._save_order_relation_info_to_msence_response_body import SaveOrderRelationInfoToMsenceResponseBody
+from ._save_order_relation_info_to_msence_response import SaveOrderRelationInfoToMsenceResponse
 from ._start_user_app_async_enhance_in_msa_request import StartUserAppAsyncEnhanceInMsaRequest
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBody
 from ._start_user_app_async_enhance_in_msa_response import StartUserAppAsyncEnhanceInMsaResponse
@@ -369,6 +386,9 @@ from ._upload_mcube_rsa_key_response import UploadMcubeRsaKeyResponse
 from ._upload_user_app_to_msa_request import UploadUserAppToMsaRequest
 from ._upload_user_app_to_msa_response_body import UploadUserAppToMsaResponseBody
 from ._upload_user_app_to_msa_response import UploadUserAppToMsaResponse
+from ._virtual_delivery_to_mscene_request import VirtualDeliveryToMsceneRequest
+from ._virtual_delivery_to_mscene_response_body import VirtualDeliveryToMsceneResponseBody
+from ._virtual_delivery_to_mscene_response import VirtualDeliveryToMsceneResponse
 from ._add_mds_mini_config_response_body import AddMdsMiniConfigResponseBodyResultContentData
 from ._add_mds_mini_config_response_body import AddMdsMiniConfigResponseBodyResultContent
 from ._change_mcube_mini_task_status_response_body import ChangeMcubeMiniTaskStatusResponseBodyChangeMiniTaskStatusResult
@@ -402,6 +422,7 @@ from ._create_mds_cube_template_response_body import CreateMdsCubeTemplateRespon
 from ._create_mds_cube_template_response_body import CreateMdsCubeTemplateResponseBodyResultContent
 from ._create_mds_miniprogram_task_response_body import CreateMdsMiniprogramTaskResponseBodyResultContentData
 from ._create_mds_miniprogram_task_response_body import CreateMdsMiniprogramTaskResponseBodyResultContent
+from ._create_pay_order_to_msence_response_body import CreatePayOrderToMsenceResponseBodyMpaasOrderCreateResponse
 from ._delete_cubecard_whitelist_content_response_body import DeleteCubecardWhitelistContentResponseBodyResultContentData
 from ._delete_cubecard_whitelist_content_response_body import DeleteCubecardWhitelistContentResponseBodyResultContent
 from ._delete_mcdp_aim_response_body import DeleteMcdpAimResponseBodyResultContent
@@ -418,6 +439,7 @@ from ._delete_mds_whitelist_content_response_body import DeleteMdsWhitelistConte
 from ._delete_mds_whitelist_content_response_body import DeleteMdsWhitelistContentResponseBodyResultContent
 from ._exist_mcube_rsa_key_response_body import ExistMcubeRsaKeyResponseBodyCheckRsaKeyResult
 from ._export_mapp_center_app_config_response_body import ExportMappCenterAppConfigResponseBodyExportMappCenterAppConfigResult
+from ._get_auth_token_to_msence_response_body import GetAuthTokenToMsenceResponseBodyMpaasSystemOauthTokenResponse
 from ._get_file_token_for_upload_to_msa_response_body import GetFileTokenForUploadToMsaResponseBodyResultContentContent
 from ._get_file_token_for_upload_to_msa_response_body import GetFileTokenForUploadToMsaResponseBodyResultContent
 from ._get_game_review_by_status_response_body import GetGameReviewByStatusResponseBodyResultContentContentReviewProgress
@@ -577,6 +599,7 @@ from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultC
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContentDataList
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContentData
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContent
+from ._query_pay_order_to_msence_response_body import QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse
 from ._query_push_analysis_core_index_response_body import QueryPushAnalysisCoreIndexResponseBodyResultContentData
 from ._query_push_analysis_core_index_response_body import QueryPushAnalysisCoreIndexResponseBodyResultContent
 from ._query_push_analysis_task_detail_response_body import QueryPushAnalysisTaskDetailResponseBodyResultContentData
@@ -587,10 +610,12 @@ from ._query_push_analysis_task_list_response_body import QueryPushAnalysisTaskL
 from ._query_push_scheduler_list_response_body import QueryPushSchedulerListResponseBodyResultContentDataList
 from ._query_push_scheduler_list_response_body import QueryPushSchedulerListResponseBodyResultContentData
 from ._query_push_scheduler_list_response_body import QueryPushSchedulerListResponseBodyResultContent
+from ._query_user_info_to_msence_response_body import QueryUserInfoToMsenceResponseBodyMpaasUserInfoShareResponse
 from ._revoke_push_message_response_body import RevokePushMessageResponseBodyPushResult
 from ._revoke_push_task_response_body import RevokePushTaskResponseBodyPushResult
 from ._run_msa_diff_response_body import RunMsaDiffResponseBodyResultContent
 from ._save_mgs_apirest_response_body import SaveMgsApirestResponseBodyResultContent
+from ._save_order_relation_info_to_msence_response_body import SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContent
@@ -610,6 +635,7 @@ from ._upload_user_app_to_msa_response_body import UploadUserAppToMsaResponseBod
 from ._upload_user_app_to_msa_response_body import UploadUserAppToMsaResponseBodyResultContentDataApkInfo
 from ._upload_user_app_to_msa_response_body import UploadUserAppToMsaResponseBodyResultContentData
 from ._upload_user_app_to_msa_response_body import UploadUserAppToMsaResponseBodyResultContent
+from ._virtual_delivery_to_mscene_response_body import VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse
 
 __all__ = [
     AddMdsMiniConfigRequest,
@@ -702,6 +728,10 @@ __all__ = [
     CreateOpenSingleDataRequest,
     CreateOpenSingleDataResponseBody,
     CreateOpenSingleDataResponse,
+    CreatePayOrderToMsenceRequest,
+    CreatePayOrderToMsenceShrinkRequest,
+    CreatePayOrderToMsenceResponseBody,
+    CreatePayOrderToMsenceResponse,
     CreateTemplateRequest,
     CreateTemplateResponseBody,
     CreateTemplateResponse,
@@ -747,6 +777,9 @@ __all__ = [
     ExportMappCenterAppConfigRequest,
     ExportMappCenterAppConfigResponseBody,
     ExportMappCenterAppConfigResponse,
+    GetAuthTokenToMsenceRequest,
+    GetAuthTokenToMsenceResponseBody,
+    GetAuthTokenToMsenceResponse,
     GetFileTokenForUploadToMsaRequest,
     GetFileTokenForUploadToMsaResponseBody,
     GetFileTokenForUploadToMsaResponse,
@@ -789,6 +822,7 @@ __all__ = [
     ListAnalysisCoreIndexRequest,
     ListAnalysisCoreIndexResponseBody,
     ListAnalysisCoreIndexResponse,
+    ListCubecardAppsRequest,
     ListCubecardAppsResponseBody,
     ListCubecardAppsResponse,
     ListMappCenterAppsResponseBody,
@@ -925,6 +959,9 @@ __all__ = [
     QueryMscpRiskInfoRequest,
     QueryMscpRiskInfoResponseBody,
     QueryMscpRiskInfoResponse,
+    QueryPayOrderToMsenceRequest,
+    QueryPayOrderToMsenceResponseBody,
+    QueryPayOrderToMsenceResponse,
     QueryPushAnalysisCoreIndexRequest,
     QueryPushAnalysisCoreIndexResponseBody,
     QueryPushAnalysisCoreIndexResponse,
@@ -937,6 +974,9 @@ __all__ = [
     QueryPushSchedulerListRequest,
     QueryPushSchedulerListResponseBody,
     QueryPushSchedulerListResponse,
+    QueryUserInfoToMsenceRequest,
+    QueryUserInfoToMsenceResponseBody,
+    QueryUserInfoToMsenceResponse,
     RevokePushMessageRequest,
     RevokePushMessageResponseBody,
     RevokePushMessageResponse,
@@ -949,6 +989,9 @@ __all__ = [
     SaveMgsApirestRequest,
     SaveMgsApirestResponseBody,
     SaveMgsApirestResponse,
+    SaveOrderRelationInfoToMsenceRequest,
+    SaveOrderRelationInfoToMsenceResponseBody,
+    SaveOrderRelationInfoToMsenceResponse,
     StartUserAppAsyncEnhanceInMsaRequest,
     StartUserAppAsyncEnhanceInMsaResponseBody,
     StartUserAppAsyncEnhanceInMsaResponse,
@@ -979,6 +1022,9 @@ __all__ = [
     UploadUserAppToMsaRequest,
     UploadUserAppToMsaResponseBody,
     UploadUserAppToMsaResponse,
+    VirtualDeliveryToMsceneRequest,
+    VirtualDeliveryToMsceneResponseBody,
+    VirtualDeliveryToMsceneResponse,
     AddMdsMiniConfigResponseBodyResultContentData,
     AddMdsMiniConfigResponseBodyResultContent,
     ChangeMcubeMiniTaskStatusResponseBodyChangeMiniTaskStatusResult,
@@ -1012,6 +1058,7 @@ __all__ = [
     CreateMdsCubeTemplateResponseBodyResultContent,
     CreateMdsMiniprogramTaskResponseBodyResultContentData,
     CreateMdsMiniprogramTaskResponseBodyResultContent,
+    CreatePayOrderToMsenceResponseBodyMpaasOrderCreateResponse,
     DeleteCubecardWhitelistContentResponseBodyResultContentData,
     DeleteCubecardWhitelistContentResponseBodyResultContent,
     DeleteMcdpAimResponseBodyResultContent,
@@ -1028,6 +1075,7 @@ __all__ = [
     DeleteMdsWhitelistContentResponseBodyResultContent,
     ExistMcubeRsaKeyResponseBodyCheckRsaKeyResult,
     ExportMappCenterAppConfigResponseBodyExportMappCenterAppConfigResult,
+    GetAuthTokenToMsenceResponseBodyMpaasSystemOauthTokenResponse,
     GetFileTokenForUploadToMsaResponseBodyResultContentContent,
     GetFileTokenForUploadToMsaResponseBodyResultContent,
     GetGameReviewByStatusResponseBodyResultContentContentReviewProgress,
@@ -1187,6 +1235,7 @@ __all__ = [
     QueryMpsSchedulerListResponseBodyResultContentDataList,
     QueryMpsSchedulerListResponseBodyResultContentData,
     QueryMpsSchedulerListResponseBodyResultContent,
+    QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse,
     QueryPushAnalysisCoreIndexResponseBodyResultContentData,
     QueryPushAnalysisCoreIndexResponseBodyResultContent,
     QueryPushAnalysisTaskDetailResponseBodyResultContentData,
@@ -1197,10 +1246,12 @@ __all__ = [
     QueryPushSchedulerListResponseBodyResultContentDataList,
     QueryPushSchedulerListResponseBodyResultContentData,
     QueryPushSchedulerListResponseBodyResultContent,
+    QueryUserInfoToMsenceResponseBodyMpaasUserInfoShareResponse,
     RevokePushMessageResponseBodyPushResult,
     RevokePushTaskResponseBodyPushResult,
     RunMsaDiffResponseBodyResultContent,
     SaveMgsApirestResponseBodyResultContent,
+    SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContent,
@@ -1219,5 +1270,6 @@ __all__ = [
     UploadUserAppToMsaResponseBodyResultContentDataApkInfoEnhanceMapping,
     UploadUserAppToMsaResponseBodyResultContentDataApkInfo,
     UploadUserAppToMsaResponseBodyResultContentData,
-    UploadUserAppToMsaResponseBodyResultContent
+    UploadUserAppToMsaResponseBodyResultContent,
+    VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse
 ]

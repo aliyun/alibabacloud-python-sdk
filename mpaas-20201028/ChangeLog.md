@@ -1,3 +1,12 @@
+2026-04-15 Version: 3.2.0
+- Support API CreatePayOrderToMsence.
+- Support API GetAuthTokenToMsence.
+- Support API QueryPayOrderToMsence.
+- Support API QueryUserInfoToMsence.
+- Support API SaveOrderRelationInfoToMsence.
+- Support API VirtualDeliveryToMscene.
+
+
 2026-02-09 Version: 3.1.0
 - Support API CreateMcubeHotpatchResource.
 - Support API CreateMcubeHotpatchRollbackTask.

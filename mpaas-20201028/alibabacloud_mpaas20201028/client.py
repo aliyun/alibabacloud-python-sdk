@@ -3220,6 +3220,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_open_single_data_with_options_async(request, runtime)
 
+    def create_pay_order_to_msence_with_options(
+        self,
+        tmp_req: main_models.CreatePayOrderToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePayOrderToMsenceResponse:
+        tmp_req.validate()
+        request = main_models.CreatePayOrderToMsenceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra_info):
+            request.extra_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra_info, 'ExtraInfo', 'json')
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['Amount'] = request.amount
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_token):
+            body['AuthToken'] = request.auth_token
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.extra_info_shrink):
+            body['ExtraInfo'] = request.extra_info_shrink
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePayOrderToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePayOrderToMsenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pay_order_to_msence_with_options_async(
+        self,
+        tmp_req: main_models.CreatePayOrderToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePayOrderToMsenceResponse:
+        tmp_req.validate()
+        request = main_models.CreatePayOrderToMsenceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra_info):
+            request.extra_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra_info, 'ExtraInfo', 'json')
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['Amount'] = request.amount
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_token):
+            body['AuthToken'] = request.auth_token
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.extra_info_shrink):
+            body['ExtraInfo'] = request.extra_info_shrink
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePayOrderToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePayOrderToMsenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pay_order_to_msence(
+        self,
+        request: main_models.CreatePayOrderToMsenceRequest,
+    ) -> main_models.CreatePayOrderToMsenceResponse:
+        runtime = RuntimeOptions()
+        return self.create_pay_order_to_msence_with_options(request, runtime)
+
+    async def create_pay_order_to_msence_async(
+        self,
+        request: main_models.CreatePayOrderToMsenceRequest,
+    ) -> main_models.CreatePayOrderToMsenceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_pay_order_to_msence_with_options_async(request, runtime)
+
     def create_template_with_options(
         self,
         request: main_models.CreateTemplateRequest,
@@ -4518,6 +4628,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.export_mapp_center_app_config_with_options_async(request, runtime)
 
+    def get_auth_token_to_msence_with_options(
+        self,
+        request: main_models.GetAuthTokenToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthTokenToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_code):
+            body['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthTokenToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthTokenToMsenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auth_token_to_msence_with_options_async(
+        self,
+        request: main_models.GetAuthTokenToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthTokenToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_code):
+            body['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthTokenToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthTokenToMsenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auth_token_to_msence(
+        self,
+        request: main_models.GetAuthTokenToMsenceRequest,
+    ) -> main_models.GetAuthTokenToMsenceResponse:
+        runtime = RuntimeOptions()
+        return self.get_auth_token_to_msence_with_options(request, runtime)
+
+    async def get_auth_token_to_msence_async(
+        self,
+        request: main_models.GetAuthTokenToMsenceRequest,
+    ) -> main_models.GetAuthTokenToMsenceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_auth_token_to_msence_with_options_async(request, runtime)
+
     def get_file_token_for_upload_to_msa_with_options(
         self,
         request: main_models.GetFileTokenForUploadToMsaRequest,
@@ -5708,8 +5908,10 @@ class Client(OpenApiClient):
 
     def list_cubecard_apps_with_options(
         self,
+        request: main_models.ListCubecardAppsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListCubecardAppsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest()
         params = open_api_util_models.Params(
             action = 'ListCubecardApps',
@@ -5729,8 +5931,10 @@ class Client(OpenApiClient):
 
     async def list_cubecard_apps_with_options_async(
         self,
+        request: main_models.ListCubecardAppsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListCubecardAppsResponse:
+        request.validate()
         req = open_api_util_models.OpenApiRequest()
         params = open_api_util_models.Params(
             action = 'ListCubecardApps',
@@ -5748,13 +5952,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_cubecard_apps(self) -> main_models.ListCubecardAppsResponse:
+    def list_cubecard_apps(
+        self,
+        request: main_models.ListCubecardAppsRequest,
+    ) -> main_models.ListCubecardAppsResponse:
         runtime = RuntimeOptions()
-        return self.list_cubecard_apps_with_options(runtime)
+        return self.list_cubecard_apps_with_options(request, runtime)
 
-    async def list_cubecard_apps_async(self) -> main_models.ListCubecardAppsResponse:
+    async def list_cubecard_apps_async(
+        self,
+        request: main_models.ListCubecardAppsRequest,
+    ) -> main_models.ListCubecardAppsResponse:
         runtime = RuntimeOptions()
-        return await self.list_cubecard_apps_with_options_async(runtime)
+        return await self.list_cubecard_apps_with_options_async(request, runtime)
 
     def list_mapp_center_apps_with_options(
         self,
@@ -10060,6 +10270,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_mscp_risk_info_with_options_async(request, runtime)
 
+    def query_pay_order_to_msence_with_options(
+        self,
+        request: main_models.QueryPayOrderToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPayOrderToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPayOrderToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPayOrderToMsenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_pay_order_to_msence_with_options_async(
+        self,
+        request: main_models.QueryPayOrderToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPayOrderToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPayOrderToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPayOrderToMsenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_pay_order_to_msence(
+        self,
+        request: main_models.QueryPayOrderToMsenceRequest,
+    ) -> main_models.QueryPayOrderToMsenceResponse:
+        runtime = RuntimeOptions()
+        return self.query_pay_order_to_msence_with_options(request, runtime)
+
+    async def query_pay_order_to_msence_async(
+        self,
+        request: main_models.QueryPayOrderToMsenceRequest,
+    ) -> main_models.QueryPayOrderToMsenceResponse:
+        runtime = RuntimeOptions()
+        return await self.query_pay_order_to_msence_with_options_async(request, runtime)
+
     def query_push_analysis_core_index_with_options(
         self,
         request: main_models.QueryPushAnalysisCoreIndexRequest,
@@ -10444,6 +10744,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_push_scheduler_list_with_options_async(request, runtime)
 
+    def query_user_info_to_msence_with_options(
+        self,
+        request: main_models.QueryUserInfoToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryUserInfoToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_token):
+            body['AuthToken'] = request.auth_token
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryUserInfoToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryUserInfoToMsenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_user_info_to_msence_with_options_async(
+        self,
+        request: main_models.QueryUserInfoToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryUserInfoToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_token):
+            body['AuthToken'] = request.auth_token
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryUserInfoToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryUserInfoToMsenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_user_info_to_msence(
+        self,
+        request: main_models.QueryUserInfoToMsenceRequest,
+    ) -> main_models.QueryUserInfoToMsenceResponse:
+        runtime = RuntimeOptions()
+        return self.query_user_info_to_msence_with_options(request, runtime)
+
+    async def query_user_info_to_msence_async(
+        self,
+        request: main_models.QueryUserInfoToMsenceRequest,
+    ) -> main_models.QueryUserInfoToMsenceResponse:
+        runtime = RuntimeOptions()
+        return await self.query_user_info_to_msence_with_options_async(request, runtime)
+
     def revoke_push_message_with_options(
         self,
         request: main_models.RevokePushMessageRequest,
@@ -10775,6 +11165,112 @@ class Client(OpenApiClient):
     ) -> main_models.SaveMgsApirestResponse:
         runtime = RuntimeOptions()
         return await self.save_mgs_apirest_with_options_async(request, runtime)
+
+    def save_order_relation_info_to_msence_with_options(
+        self,
+        request: main_models.SaveOrderRelationInfoToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveOrderRelationInfoToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['Amount'] = request.amount
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.biz_order_id):
+            body['BizOrderId'] = request.biz_order_id
+        if not DaraCore.is_null(request.biz_order_status):
+            body['BizOrderStatus'] = request.biz_order_status
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.open_uid):
+            body['OpenUid'] = request.open_uid
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveOrderRelationInfoToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveOrderRelationInfoToMsenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_order_relation_info_to_msence_with_options_async(
+        self,
+        request: main_models.SaveOrderRelationInfoToMsenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveOrderRelationInfoToMsenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['Amount'] = request.amount
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.biz_order_id):
+            body['BizOrderId'] = request.biz_order_id
+        if not DaraCore.is_null(request.biz_order_status):
+            body['BizOrderStatus'] = request.biz_order_status
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.open_uid):
+            body['OpenUid'] = request.open_uid
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveOrderRelationInfoToMsence',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveOrderRelationInfoToMsenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_order_relation_info_to_msence(
+        self,
+        request: main_models.SaveOrderRelationInfoToMsenceRequest,
+    ) -> main_models.SaveOrderRelationInfoToMsenceResponse:
+        runtime = RuntimeOptions()
+        return self.save_order_relation_info_to_msence_with_options(request, runtime)
+
+    async def save_order_relation_info_to_msence_async(
+        self,
+        request: main_models.SaveOrderRelationInfoToMsenceRequest,
+    ) -> main_models.SaveOrderRelationInfoToMsenceResponse:
+        runtime = RuntimeOptions()
+        return await self.save_order_relation_info_to_msence_with_options_async(request, runtime)
 
     def start_user_app_async_enhance_in_msa_with_options(
         self,
@@ -11835,3 +12331,93 @@ class Client(OpenApiClient):
     ) -> main_models.UploadUserAppToMsaResponse:
         runtime = RuntimeOptions()
         return await self.upload_user_app_to_msa_with_options_async(request, runtime)
+
+    def virtual_delivery_to_mscene_with_options(
+        self,
+        request: main_models.VirtualDeliveryToMsceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VirtualDeliveryToMsceneResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VirtualDeliveryToMscene',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VirtualDeliveryToMsceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def virtual_delivery_to_mscene_with_options_async(
+        self,
+        request: main_models.VirtualDeliveryToMsceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VirtualDeliveryToMsceneResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VirtualDeliveryToMscene',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VirtualDeliveryToMsceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def virtual_delivery_to_mscene(
+        self,
+        request: main_models.VirtualDeliveryToMsceneRequest,
+    ) -> main_models.VirtualDeliveryToMsceneResponse:
+        runtime = RuntimeOptions()
+        return self.virtual_delivery_to_mscene_with_options(request, runtime)
+
+    async def virtual_delivery_to_mscene_async(
+        self,
+        request: main_models.VirtualDeliveryToMsceneRequest,
+    ) -> main_models.VirtualDeliveryToMsceneResponse:
+        runtime = RuntimeOptions()
+        return await self.virtual_delivery_to_mscene_with_options_async(request, runtime)
