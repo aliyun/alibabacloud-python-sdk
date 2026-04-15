@@ -1,3 +1,16 @@
+2026-04-15 Version: 2.50.0
+- Support API BatchQueryGroupMember.
+- Support API GetScencegroupFileDownloadurl.
+- Update API CreateScheduleConference: add request parameters ScheduleConfSettingModel.AiAgentSummarySetting.
+- Update API CreateScheduleConference: add request parameters ScheduleConfSettingModel.MoziConfOpenRecordSetting.RestrictShareMinutesSummaryOnly.
+- Update API CreateScheduleConference: add request parameters ScheduleConfSettingModel.MoziConfVirtualExtraSetting.HiddenOwnerNick.
+- Update API CreateScheduleConference: add request parameters ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MinutesSummaryDiyTemplateVersion.
+- Update API CreateScheduleConference: add request parameters ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MinutesSummaryTemplateId.
+- Update API CreateScheduleConference: add request parameters ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MinutesSummaryTemplateType.
+- Update API CreateScheduleConference: add response parameters Body.vendorRequestId.
+- Update API CreateScheduleConference: add response parameters Body.vendorType.
+
+
 2026-04-14 Version: 2.49.0
 - Support API GetScenegroup.
 

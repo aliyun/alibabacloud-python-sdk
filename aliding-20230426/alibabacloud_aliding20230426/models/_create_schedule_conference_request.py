@@ -104,6 +104,7 @@ class CreateScheduleConferenceRequestTenantContext(DaraModel):
 class CreateScheduleConferenceRequestScheduleConfSettingModel(DaraModel):
     def __init__(
         self,
+        ai_agent_summary_setting: main_models.CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting = None,
         cohost_user_ids: List[str] = None,
         conf_allowed_corp_id: str = None,
         host_user_id: str = None,
@@ -113,6 +114,7 @@ class CreateScheduleConferenceRequestScheduleConfSettingModel(DaraModel):
         mute_on_join: int = None,
         screen_share_forbidden: int = None,
     ):
+        self.ai_agent_summary_setting = ai_agent_summary_setting
         self.cohost_user_ids = cohost_user_ids
         self.conf_allowed_corp_id = conf_allowed_corp_id
         self.host_user_id = host_user_id
@@ -123,6 +125,8 @@ class CreateScheduleConferenceRequestScheduleConfSettingModel(DaraModel):
         self.screen_share_forbidden = screen_share_forbidden
 
     def validate(self):
+        if self.ai_agent_summary_setting:
+            self.ai_agent_summary_setting.validate()
         if self.mozi_conf_open_record_setting:
             self.mozi_conf_open_record_setting.validate()
         if self.mozi_conf_virtual_extra_setting:
@@ -133,6 +137,9 @@ class CreateScheduleConferenceRequestScheduleConfSettingModel(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_agent_summary_setting is not None:
+            result['AiAgentSummarySetting'] = self.ai_agent_summary_setting.to_map()
+
         if self.cohost_user_ids is not None:
             result['CohostUserIds'] = self.cohost_user_ids
 
@@ -161,6 +168,10 @@ class CreateScheduleConferenceRequestScheduleConfSettingModel(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiAgentSummarySetting') is not None:
+            temp_model = main_models.CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting()
+            self.ai_agent_summary_setting = temp_model.from_map(m.get('AiAgentSummarySetting'))
+
         if m.get('CohostUserIds') is not None:
             self.cohost_user_ids = m.get('CohostUserIds')
 
@@ -195,10 +206,14 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtr
         cloud_record_owner_user_id: str = None,
         enable_chat: int = None,
         enable_web_anonymous_join: bool = None,
+        hidden_owner_nick: bool = None,
         join_before_host: int = None,
         lock_media_status_mic_mute: int = None,
         lock_nick: int = None,
         minutes_owner_user_id: str = None,
+        minutes_summary_diy_template_version: str = None,
+        minutes_summary_template_id: str = None,
+        minutes_summary_template_type: str = None,
         mozi_conf_extension_app_settings: List[main_models.CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings] = None,
         push_all_meeting_records: bool = None,
         push_cloud_record_card: bool = None,
@@ -208,10 +223,14 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtr
         self.cloud_record_owner_user_id = cloud_record_owner_user_id
         self.enable_chat = enable_chat
         self.enable_web_anonymous_join = enable_web_anonymous_join
+        self.hidden_owner_nick = hidden_owner_nick
         self.join_before_host = join_before_host
         self.lock_media_status_mic_mute = lock_media_status_mic_mute
         self.lock_nick = lock_nick
         self.minutes_owner_user_id = minutes_owner_user_id
+        self.minutes_summary_diy_template_version = minutes_summary_diy_template_version
+        self.minutes_summary_template_id = minutes_summary_template_id
+        self.minutes_summary_template_type = minutes_summary_template_type
         self.mozi_conf_extension_app_settings = mozi_conf_extension_app_settings
         self.push_all_meeting_records = push_all_meeting_records
         self.push_cloud_record_card = push_cloud_record_card
@@ -238,6 +257,9 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtr
         if self.enable_web_anonymous_join is not None:
             result['EnableWebAnonymousJoin'] = self.enable_web_anonymous_join
 
+        if self.hidden_owner_nick is not None:
+            result['HiddenOwnerNick'] = self.hidden_owner_nick
+
         if self.join_before_host is not None:
             result['JoinBeforeHost'] = self.join_before_host
 
@@ -249,6 +271,15 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtr
 
         if self.minutes_owner_user_id is not None:
             result['MinutesOwnerUserId'] = self.minutes_owner_user_id
+
+        if self.minutes_summary_diy_template_version is not None:
+            result['MinutesSummaryDiyTemplateVersion'] = self.minutes_summary_diy_template_version
+
+        if self.minutes_summary_template_id is not None:
+            result['MinutesSummaryTemplateId'] = self.minutes_summary_template_id
+
+        if self.minutes_summary_template_type is not None:
+            result['MinutesSummaryTemplateType'] = self.minutes_summary_template_type
 
         result['MoziConfExtensionAppSettings'] = []
         if self.mozi_conf_extension_app_settings is not None:
@@ -280,6 +311,9 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtr
         if m.get('EnableWebAnonymousJoin') is not None:
             self.enable_web_anonymous_join = m.get('EnableWebAnonymousJoin')
 
+        if m.get('HiddenOwnerNick') is not None:
+            self.hidden_owner_nick = m.get('HiddenOwnerNick')
+
         if m.get('JoinBeforeHost') is not None:
             self.join_before_host = m.get('JoinBeforeHost')
 
@@ -291,6 +325,15 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtr
 
         if m.get('MinutesOwnerUserId') is not None:
             self.minutes_owner_user_id = m.get('MinutesOwnerUserId')
+
+        if m.get('MinutesSummaryDiyTemplateVersion') is not None:
+            self.minutes_summary_diy_template_version = m.get('MinutesSummaryDiyTemplateVersion')
+
+        if m.get('MinutesSummaryTemplateId') is not None:
+            self.minutes_summary_template_id = m.get('MinutesSummaryTemplateId')
+
+        if m.get('MinutesSummaryTemplateType') is not None:
+            self.minutes_summary_template_type = m.get('MinutesSummaryTemplateType')
 
         self.mozi_conf_extension_app_settings = []
         if m.get('MoziConfExtensionAppSettings') is not None:
@@ -362,11 +405,13 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordS
         mode: str = None,
         record_auto_start: int = None,
         record_auto_start_type: int = None,
+        restrict_share_minutes_summary_only: int = None,
     ):
         self.is_follow_host = is_follow_host
         self.mode = mode
         self.record_auto_start = record_auto_start
         self.record_auto_start_type = record_auto_start_type
+        self.restrict_share_minutes_summary_only = restrict_share_minutes_summary_only
 
     def validate(self):
         pass
@@ -388,6 +433,9 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordS
         if self.record_auto_start_type is not None:
             result['RecordAutoStartType'] = self.record_auto_start_type
 
+        if self.restrict_share_minutes_summary_only is not None:
+            result['RestrictShareMinutesSummaryOnly'] = self.restrict_share_minutes_summary_only
+
         return result
 
     def from_map(self, m: dict = None):
@@ -403,6 +451,60 @@ class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordS
 
         if m.get('RecordAutoStartType') is not None:
             self.record_auto_start_type = m.get('RecordAutoStartType')
+
+        if m.get('RestrictShareMinutesSummaryOnly') is not None:
+            self.restrict_share_minutes_summary_only = m.get('RestrictShareMinutesSummaryOnly')
+
+        return self
+
+class CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting(DaraModel):
+    def __init__(
+        self,
+        allow_all_participants_start: int = None,
+        receiver_type: int = None,
+        restrict_share_minutes_summary_only: int = None,
+        value: str = None,
+    ):
+        self.allow_all_participants_start = allow_all_participants_start
+        self.receiver_type = receiver_type
+        self.restrict_share_minutes_summary_only = restrict_share_minutes_summary_only
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allow_all_participants_start is not None:
+            result['AllowAllParticipantsStart'] = self.allow_all_participants_start
+
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+
+        if self.restrict_share_minutes_summary_only is not None:
+            result['RestrictShareMinutesSummaryOnly'] = self.restrict_share_minutes_summary_only
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowAllParticipantsStart') is not None:
+            self.allow_all_participants_start = m.get('AllowAllParticipantsStart')
+
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+
+        if m.get('RestrictShareMinutesSummaryOnly') is not None:
+            self.restrict_share_minutes_summary_only = m.get('RestrictShareMinutesSummaryOnly')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

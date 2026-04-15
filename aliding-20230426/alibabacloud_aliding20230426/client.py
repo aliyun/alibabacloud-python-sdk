@@ -1776,6 +1776,124 @@ class Client(OpenApiClient):
         headers = main_models.BatchGetFormDataByIdListHeaders()
         return await self.batch_get_form_data_by_id_list_with_options_async(request, headers, runtime)
 
+    def batch_query_group_member_with_options(
+        self,
+        tmp_req: main_models.BatchQueryGroupMemberRequest,
+        tmp_header: main_models.BatchQueryGroupMemberHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryGroupMemberResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryGroupMemberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.BatchQueryGroupMemberShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.cool_app_code):
+            body['CoolAppCode'] = request.cool_app_code
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryGroupMember',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/batchQueryGroupMember',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryGroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_group_member_with_options_async(
+        self,
+        tmp_req: main_models.BatchQueryGroupMemberRequest,
+        tmp_header: main_models.BatchQueryGroupMemberHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryGroupMemberResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryGroupMemberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.BatchQueryGroupMemberShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.cool_app_code):
+            body['CoolAppCode'] = request.cool_app_code
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryGroupMember',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/batchQueryGroupMember',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryGroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_group_member(
+        self,
+        request: main_models.BatchQueryGroupMemberRequest,
+    ) -> main_models.BatchQueryGroupMemberResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchQueryGroupMemberHeaders()
+        return self.batch_query_group_member_with_options(request, headers, runtime)
+
+    async def batch_query_group_member_async(
+        self,
+        request: main_models.BatchQueryGroupMemberRequest,
+    ) -> main_models.BatchQueryGroupMemberResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchQueryGroupMemberHeaders()
+        return await self.batch_query_group_member_with_options_async(request, headers, runtime)
+
     def batch_removal_by_form_instance_id_list_with_options(
         self,
         tmp_req: main_models.BatchRemovalByFormInstanceIdListRequest,
@@ -16717,6 +16835,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.GetRunningTasksHeaders()
         return await self.get_running_tasks_with_options_async(request, headers, runtime)
+
+    def get_scencegroup_file_downloadurl_with_options(
+        self,
+        tmp_req: main_models.GetScencegroupFileDownloadurlRequest,
+        tmp_header: main_models.GetScencegroupFileDownloadurlHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScencegroupFileDownloadurlResponse:
+        tmp_req.validate()
+        request = main_models.GetScencegroupFileDownloadurlShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetScencegroupFileDownloadurlShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.download_code):
+            body['DownloadCode'] = request.download_code
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScencegroupFileDownloadurl',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/getScencegroupFileDownloadurl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScencegroupFileDownloadurlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scencegroup_file_downloadurl_with_options_async(
+        self,
+        tmp_req: main_models.GetScencegroupFileDownloadurlRequest,
+        tmp_header: main_models.GetScencegroupFileDownloadurlHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScencegroupFileDownloadurlResponse:
+        tmp_req.validate()
+        request = main_models.GetScencegroupFileDownloadurlShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetScencegroupFileDownloadurlShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.download_code):
+            body['DownloadCode'] = request.download_code
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScencegroupFileDownloadurl',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/getScencegroupFileDownloadurl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScencegroupFileDownloadurlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scencegroup_file_downloadurl(
+        self,
+        request: main_models.GetScencegroupFileDownloadurlRequest,
+    ) -> main_models.GetScencegroupFileDownloadurlResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetScencegroupFileDownloadurlHeaders()
+        return self.get_scencegroup_file_downloadurl_with_options(request, headers, runtime)
+
+    async def get_scencegroup_file_downloadurl_async(
+        self,
+        request: main_models.GetScencegroupFileDownloadurlRequest,
+    ) -> main_models.GetScencegroupFileDownloadurlResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetScencegroupFileDownloadurlHeaders()
+        return await self.get_scencegroup_file_downloadurl_with_options_async(request, headers, runtime)
 
     def get_scenegroup_with_options(
         self,

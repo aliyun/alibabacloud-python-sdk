@@ -93,6 +93,12 @@ from ._batch_get_form_data_by_id_list_request import BatchGetFormDataByIdListReq
 from ._batch_get_form_data_by_id_list_shrink_request import BatchGetFormDataByIdListShrinkRequest
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBody
 from ._batch_get_form_data_by_id_list_response import BatchGetFormDataByIdListResponse
+from ._batch_query_group_member_headers import BatchQueryGroupMemberHeaders
+from ._batch_query_group_member_shrink_headers import BatchQueryGroupMemberShrinkHeaders
+from ._batch_query_group_member_request import BatchQueryGroupMemberRequest
+from ._batch_query_group_member_shrink_request import BatchQueryGroupMemberShrinkRequest
+from ._batch_query_group_member_response_body import BatchQueryGroupMemberResponseBody
+from ._batch_query_group_member_response import BatchQueryGroupMemberResponse
 from ._batch_removal_by_form_instance_id_list_headers import BatchRemovalByFormInstanceIdListHeaders
 from ._batch_removal_by_form_instance_id_list_shrink_headers import BatchRemovalByFormInstanceIdListShrinkHeaders
 from ._batch_removal_by_form_instance_id_list_request import BatchRemovalByFormInstanceIdListRequest
@@ -805,6 +811,12 @@ from ._get_running_tasks_shrink_headers import GetRunningTasksShrinkHeaders
 from ._get_running_tasks_request import GetRunningTasksRequest
 from ._get_running_tasks_response_body import GetRunningTasksResponseBody
 from ._get_running_tasks_response import GetRunningTasksResponse
+from ._get_scencegroup_file_downloadurl_headers import GetScencegroupFileDownloadurlHeaders
+from ._get_scencegroup_file_downloadurl_shrink_headers import GetScencegroupFileDownloadurlShrinkHeaders
+from ._get_scencegroup_file_downloadurl_request import GetScencegroupFileDownloadurlRequest
+from ._get_scencegroup_file_downloadurl_shrink_request import GetScencegroupFileDownloadurlShrinkRequest
+from ._get_scencegroup_file_downloadurl_response_body import GetScencegroupFileDownloadurlResponseBody
+from ._get_scencegroup_file_downloadurl_response import GetScencegroupFileDownloadurlResponse
 from ._get_scenegroup_headers import GetScenegroupHeaders
 from ._get_scenegroup_shrink_headers import GetScenegroupShrinkHeaders
 from ._get_scenegroup_request import GetScenegroupRequest
@@ -1642,6 +1654,8 @@ from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdL
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBodyResultOriginatorName
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBodyResultOriginator
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBodyResult
+from ._batch_query_group_member_headers import BatchQueryGroupMemberHeadersAccountContext
+from ._batch_query_group_member_request import BatchQueryGroupMemberRequestTenantContext
 from ._batch_removal_by_form_instance_id_list_headers import BatchRemovalByFormInstanceIdListHeadersAccountContext
 from ._batch_save_form_data_headers import BatchSaveFormDataHeadersAccountContext
 from ._batch_update_form_data_by_instance_id_headers import BatchUpdateFormDataByInstanceIdHeadersAccountContext
@@ -1815,6 +1829,7 @@ from ._create_run_response_body import CreateRunResponseBodyRun
 from ._create_run_response_body import CreateRunResponseBodyThread
 from ._create_scenegroup_headers import CreateScenegroupHeadersAccountContext
 from ._create_schedule_conference_headers import CreateScheduleConferenceHeadersAccountContext
+from ._create_schedule_conference_request import CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting
 from ._create_schedule_conference_request import CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting
 from ._create_schedule_conference_request import CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings
 from ._create_schedule_conference_request import CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting
@@ -2120,6 +2135,8 @@ from ._get_report_un_read_count_headers import GetReportUnReadCountHeadersAccoun
 from ._get_report_un_read_count_request import GetReportUnReadCountRequestTenantContext
 from ._get_running_tasks_headers import GetRunningTasksHeadersAccountContext
 from ._get_running_tasks_response_body import GetRunningTasksResponseBodyResult
+from ._get_scencegroup_file_downloadurl_headers import GetScencegroupFileDownloadurlHeadersAccountContext
+from ._get_scencegroup_file_downloadurl_request import GetScencegroupFileDownloadurlRequestTenantContext
 from ._get_scenegroup_headers import GetScenegroupHeadersAccountContext
 from ._get_scenegroup_request import GetScenegroupRequestTenantContext
 from ._get_scenegroup_response_body import GetScenegroupResponseBodyManagementOptions
@@ -2752,6 +2769,12 @@ __all__ = [
     BatchGetFormDataByIdListShrinkRequest,
     BatchGetFormDataByIdListResponseBody,
     BatchGetFormDataByIdListResponse,
+    BatchQueryGroupMemberHeaders,
+    BatchQueryGroupMemberShrinkHeaders,
+    BatchQueryGroupMemberRequest,
+    BatchQueryGroupMemberShrinkRequest,
+    BatchQueryGroupMemberResponseBody,
+    BatchQueryGroupMemberResponse,
     BatchRemovalByFormInstanceIdListHeaders,
     BatchRemovalByFormInstanceIdListShrinkHeaders,
     BatchRemovalByFormInstanceIdListRequest,
@@ -3464,6 +3487,12 @@ __all__ = [
     GetRunningTasksRequest,
     GetRunningTasksResponseBody,
     GetRunningTasksResponse,
+    GetScencegroupFileDownloadurlHeaders,
+    GetScencegroupFileDownloadurlShrinkHeaders,
+    GetScencegroupFileDownloadurlRequest,
+    GetScencegroupFileDownloadurlShrinkRequest,
+    GetScencegroupFileDownloadurlResponseBody,
+    GetScencegroupFileDownloadurlResponse,
     GetScenegroupHeaders,
     GetScenegroupShrinkHeaders,
     GetScenegroupRequest,
@@ -4301,6 +4330,8 @@ __all__ = [
     BatchGetFormDataByIdListResponseBodyResultOriginatorName,
     BatchGetFormDataByIdListResponseBodyResultOriginator,
     BatchGetFormDataByIdListResponseBodyResult,
+    BatchQueryGroupMemberHeadersAccountContext,
+    BatchQueryGroupMemberRequestTenantContext,
     BatchRemovalByFormInstanceIdListHeadersAccountContext,
     BatchSaveFormDataHeadersAccountContext,
     BatchUpdateFormDataByInstanceIdHeadersAccountContext,
@@ -4474,6 +4505,7 @@ __all__ = [
     CreateRunResponseBodyThread,
     CreateScenegroupHeadersAccountContext,
     CreateScheduleConferenceHeadersAccountContext,
+    CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting,
     CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting,
     CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings,
     CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting,
@@ -4779,6 +4811,8 @@ __all__ = [
     GetReportUnReadCountRequestTenantContext,
     GetRunningTasksHeadersAccountContext,
     GetRunningTasksResponseBodyResult,
+    GetScencegroupFileDownloadurlHeadersAccountContext,
+    GetScencegroupFileDownloadurlRequestTenantContext,
     GetScenegroupHeadersAccountContext,
     GetScenegroupRequestTenantContext,
     GetScenegroupResponseBodyManagementOptions,
