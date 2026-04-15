@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class GetSupabaseProjectResponseBody(DaraModel):
     def __init__(
         self,
+        auto_scale: str = None,
         create_time: str = None,
         dbsecurity_ip_list: str = None,
         dashboard_password: str = None,
@@ -32,6 +33,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.auto_scale = auto_scale
         # The creation time.
         self.create_time = create_time
         self.dbsecurity_ip_list = dbsecurity_ip_list
@@ -97,6 +99,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_scale is not None:
+            result['AutoScale'] = self.auto_scale
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -173,6 +178,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoScale') is not None:
+            self.auto_scale = m.get('AutoScale')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

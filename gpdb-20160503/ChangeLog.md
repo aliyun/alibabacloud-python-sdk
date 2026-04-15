@@ -1,3 +1,13 @@
+2026-04-15 Version: 5.1.3
+- Update API CreateSupabaseProject: add request parameters AutoScale.
+- Update API GetSupabaseProject: add response parameters Body.AutoScale.
+- Update API ListSupabaseProjects: add request parameters SearchField.
+- Update API ListSupabaseProjects: add request parameters SearchValue.
+- Update API ListSupabaseProjects: add request parameters SortField.
+- Update API ListSupabaseProjects: add request parameters SortOrder.
+- Update API ListSupabaseProjects: add response parameters Body.Items.$.AutoScale.
+
+
 2026-04-03 Version: 5.1.2
 - Generated python 2016-05-03 for gpdb.
 

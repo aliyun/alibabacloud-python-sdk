@@ -8,6 +8,7 @@ class CreateSupabaseProjectRequest(DaraModel):
     def __init__(
         self,
         account_password: str = None,
+        auto_scale: bool = None,
         client_token: str = None,
         disk_performance_level: str = None,
         pay_type: str = None,
@@ -30,6 +31,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_password = account_password
+        self.auto_scale = auto_scale
         # The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
         # The performance level of Enterprise SSDs (ESSDs). Default value: PL0. Valid values:
@@ -100,6 +102,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         if self.account_password is not None:
             result['AccountPassword'] = self.account_password
 
+        if self.auto_scale is not None:
+            result['AutoScale'] = self.auto_scale
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -145,6 +150,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         m = m or dict()
         if m.get('AccountPassword') is not None:
             self.account_password = m.get('AccountPassword')
+
+        if m.get('AutoScale') is not None:
+            self.auto_scale = m.get('AutoScale')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')

@@ -12,6 +12,10 @@ class ListSupabaseProjectsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        search_field: str = None,
+        search_value: str = None,
+        sort_field: str = None,
+        sort_order: str = None,
     ):
         # The maximum number of instances to return per page. Default value: 10.
         self.max_results = max_results
@@ -23,6 +27,10 @@ class ListSupabaseProjectsRequest(DaraModel):
         # 
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
         self.region_id = region_id
+        self.search_field = search_field
+        self.search_value = search_value
+        self.sort_field = sort_field
+        self.sort_order = sort_order
 
     def validate(self):
         pass
@@ -47,6 +55,18 @@ class ListSupabaseProjectsRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.search_field is not None:
+            result['SearchField'] = self.search_field
+
+        if self.search_value is not None:
+            result['SearchValue'] = self.search_value
+
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
+
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+
         return result
 
     def from_map(self, m: dict = None):
@@ -65,6 +85,18 @@ class ListSupabaseProjectsRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('SearchField') is not None:
+            self.search_field = m.get('SearchField')
+
+        if m.get('SearchValue') is not None:
+            self.search_value = m.get('SearchValue')
+
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
+
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
 
         return self
 
