@@ -1,3 +1,11 @@
+2026-04-15 Version: 1.16.0
+- Support API CreateAlertDestination.
+- Support API DeleteAlertDestination.
+- Support API GetAlertDestination.
+- Support API ListAlertDestinations.
+- Support API UpdateAlertDestination.
+
+
 2026-04-14 Version: 1.15.0
 - Support API CpuHighAgentStreamResponse.
 - Update API CreateAlertStrategy: add request parameters body.strategy.destinations.

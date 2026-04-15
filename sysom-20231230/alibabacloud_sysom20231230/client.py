@@ -360,6 +360,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cpu_high_agent_stream_response_with_options_async(request, headers, runtime)
 
+    def create_alert_destination_with_options(
+        self,
+        request: main_models.CreateAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertDestinationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/createDestination',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_destination_with_options_async(
+        self,
+        request: main_models.CreateAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertDestinationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/createDestination',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_destination(
+        self,
+        request: main_models.CreateAlertDestinationRequest,
+    ) -> main_models.CreateAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_alert_destination_with_options(request, headers, runtime)
+
+    async def create_alert_destination_async(
+        self,
+        request: main_models.CreateAlertDestinationRequest,
+    ) -> main_models.CreateAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_alert_destination_with_options_async(request, headers, runtime)
+
     def create_alert_strategy_with_options(
         self,
         request: main_models.CreateAlertStrategyRequest,
@@ -539,6 +627,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
+
+    def delete_alert_destination_with_options(
+        self,
+        request: main_models.DeleteAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertDestinationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/deleteDestination',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_destination_with_options_async(
+        self,
+        request: main_models.DeleteAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertDestinationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/deleteDestination',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_destination(
+        self,
+        request: main_models.DeleteAlertDestinationRequest,
+    ) -> main_models.DeleteAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_alert_destination_with_options(request, headers, runtime)
+
+    async def delete_alert_destination_async(
+        self,
+        request: main_models.DeleteAlertDestinationRequest,
+    ) -> main_models.DeleteAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_destination_with_options_async(request, headers, runtime)
 
     def delete_alert_strategy_with_options(
         self,
@@ -1265,6 +1429,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_agent_task_with_options_async(request, headers, runtime)
+
+    def get_alert_destination_with_options(
+        self,
+        request: main_models.GetAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertDestinationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/getDestination',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAlertDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alert_destination_with_options_async(
+        self,
+        request: main_models.GetAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertDestinationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/getDestination',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAlertDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alert_destination(
+        self,
+        request: main_models.GetAlertDestinationRequest,
+    ) -> main_models.GetAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_alert_destination_with_options(request, headers, runtime)
+
+    async def get_alert_destination_async(
+        self,
+        request: main_models.GetAlertDestinationRequest,
+    ) -> main_models.GetAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_alert_destination_with_options_async(request, headers, runtime)
 
     def get_alert_strategy_with_options(
         self,
@@ -3558,6 +3798,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agents_with_options_async(request, headers, runtime)
 
+    def list_alert_destinations_with_options(
+        self,
+        request: main_models.ListAlertDestinationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertDestinationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertDestinations',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/listDestinations',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertDestinationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_destinations_with_options_async(
+        self,
+        request: main_models.ListAlertDestinationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertDestinationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertDestinations',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/listDestinations',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertDestinationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_destinations(
+        self,
+        request: main_models.ListAlertDestinationsRequest,
+    ) -> main_models.ListAlertDestinationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_alert_destinations_with_options(request, headers, runtime)
+
+    async def list_alert_destinations_async(
+        self,
+        request: main_models.ListAlertDestinationsRequest,
+    ) -> main_models.ListAlertDestinationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_alert_destinations_with_options_async(request, headers, runtime)
+
     def list_alert_items_with_options(
         self,
         headers: Dict[str, str],
@@ -5317,6 +5649,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.uninstall_agent_for_cluster_with_options_async(request, headers, runtime)
+
+    def update_alert_destination_with_options(
+        self,
+        request: main_models.UpdateAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertDestinationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/updateDestination',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_destination_with_options_async(
+        self,
+        request: main_models.UpdateAlertDestinationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertDestinationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertDestination',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/updateDestination',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_destination(
+        self,
+        request: main_models.UpdateAlertDestinationRequest,
+    ) -> main_models.UpdateAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_alert_destination_with_options(request, headers, runtime)
+
+    async def update_alert_destination_async(
+        self,
+        request: main_models.UpdateAlertDestinationRequest,
+    ) -> main_models.UpdateAlertDestinationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_alert_destination_with_options_async(request, headers, runtime)
 
     def update_alert_enabled_with_options(
         self,

@@ -11,12 +11,18 @@ from ._check_instance_support_response import CheckInstanceSupportResponse
 from ._cpu_high_agent_stream_response_request import CpuHighAgentStreamResponseRequest
 from ._cpu_high_agent_stream_response_response_body import CpuHighAgentStreamResponseResponseBody
 from ._cpu_high_agent_stream_response_response import CpuHighAgentStreamResponseResponse
+from ._create_alert_destination_request import CreateAlertDestinationRequest
+from ._create_alert_destination_response_body import CreateAlertDestinationResponseBody
+from ._create_alert_destination_response import CreateAlertDestinationResponse
 from ._create_alert_strategy_request import CreateAlertStrategyRequest
 from ._create_alert_strategy_response_body import CreateAlertStrategyResponseBody
 from ._create_alert_strategy_response import CreateAlertStrategyResponse
 from ._create_vmcore_diagnosis_task_request import CreateVmcoreDiagnosisTaskRequest
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBody
 from ._create_vmcore_diagnosis_task_response import CreateVmcoreDiagnosisTaskResponse
+from ._delete_alert_destination_request import DeleteAlertDestinationRequest
+from ._delete_alert_destination_response_body import DeleteAlertDestinationResponseBody
+from ._delete_alert_destination_response import DeleteAlertDestinationResponse
 from ._delete_alert_strategy_request import DeleteAlertStrategyRequest
 from ._delete_alert_strategy_response_body import DeleteAlertStrategyResponseBody
 from ._delete_alert_strategy_response import DeleteAlertStrategyResponse
@@ -41,6 +47,9 @@ from ._get_agent_response import GetAgentResponse
 from ._get_agent_task_request import GetAgentTaskRequest
 from ._get_agent_task_response_body import GetAgentTaskResponseBody
 from ._get_agent_task_response import GetAgentTaskResponse
+from ._get_alert_destination_request import GetAlertDestinationRequest
+from ._get_alert_destination_response_body import GetAlertDestinationResponseBody
+from ._get_alert_destination_response import GetAlertDestinationResponse
 from ._get_alert_strategy_request import GetAlertStrategyRequest
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBody
 from ._get_alert_strategy_response import GetAlertStrategyResponse
@@ -120,6 +129,9 @@ from ._list_agent_install_records_response import ListAgentInstallRecordsRespons
 from ._list_agents_request import ListAgentsRequest
 from ._list_agents_response_body import ListAgentsResponseBody
 from ._list_agents_response import ListAgentsResponse
+from ._list_alert_destinations_request import ListAlertDestinationsRequest
+from ._list_alert_destinations_response_body import ListAlertDestinationsResponseBody
+from ._list_alert_destinations_response import ListAlertDestinationsResponse
 from ._list_alert_items_response_body import ListAlertItemsResponseBody
 from ._list_alert_items_response import ListAlertItemsResponse
 from ._list_alert_strategies_request import ListAlertStrategiesRequest
@@ -176,6 +188,9 @@ from ._uninstall_agent_response import UninstallAgentResponse
 from ._uninstall_agent_for_cluster_request import UninstallAgentForClusterRequest
 from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBody
 from ._uninstall_agent_for_cluster_response import UninstallAgentForClusterResponse
+from ._update_alert_destination_request import UpdateAlertDestinationRequest
+from ._update_alert_destination_response_body import UpdateAlertDestinationResponseBody
+from ._update_alert_destination_response import UpdateAlertDestinationResponse
 from ._update_alert_enabled_request import UpdateAlertEnabledRequest
 from ._update_alert_enabled_response_body import UpdateAlertEnabledResponseBody
 from ._update_alert_enabled_response import UpdateAlertEnabledResponse
@@ -197,6 +212,9 @@ from ._upgrade_agent_for_cluster_response_body import UpgradeAgentForClusterResp
 from ._upgrade_agent_for_cluster_response import UpgradeAgentForClusterResponse
 from ._auth_diagnosis_request import AuthDiagnosisRequestInstances
 from ._check_instance_support_response_body import CheckInstanceSupportResponseBodyData
+from ._create_alert_destination_request import CreateAlertDestinationRequestParams
+from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyDataParams
+from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyData
 from ._create_alert_strategy_request import CreateAlertStrategyRequestStrategy
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBodyData
 from ._describe_metric_list_response_body import DescribeMetricListResponseBodyData
@@ -205,6 +223,7 @@ from ._get_agent_response_body import GetAgentResponseBodyDataVersions
 from ._get_agent_response_body import GetAgentResponseBodyData
 from ._get_agent_task_response_body import GetAgentTaskResponseBodyDataJobs
 from ._get_agent_task_response_body import GetAgentTaskResponseBodyData
+from ._get_alert_destination_response_body import GetAlertDestinationResponseBodyData
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyDataStrategy
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyData
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBodyData
@@ -267,6 +286,7 @@ from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequestTask2
 from ._uninstall_agent_request import UninstallAgentRequestInstances
 from ._uninstall_agent_response_body import UninstallAgentResponseBodyData
 from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBodyData
+from ._update_alert_destination_request import UpdateAlertDestinationRequestParams
 from ._update_alert_strategy_request import UpdateAlertStrategyRequestStrategy
 from ._update_events_attention_response_body import UpdateEventsAttentionResponseBodyData
 from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParamsArgs
@@ -286,12 +306,18 @@ __all__ = [
     CpuHighAgentStreamResponseRequest,
     CpuHighAgentStreamResponseResponseBody,
     CpuHighAgentStreamResponseResponse,
+    CreateAlertDestinationRequest,
+    CreateAlertDestinationResponseBody,
+    CreateAlertDestinationResponse,
     CreateAlertStrategyRequest,
     CreateAlertStrategyResponseBody,
     CreateAlertStrategyResponse,
     CreateVmcoreDiagnosisTaskRequest,
     CreateVmcoreDiagnosisTaskResponseBody,
     CreateVmcoreDiagnosisTaskResponse,
+    DeleteAlertDestinationRequest,
+    DeleteAlertDestinationResponseBody,
+    DeleteAlertDestinationResponse,
     DeleteAlertStrategyRequest,
     DeleteAlertStrategyResponseBody,
     DeleteAlertStrategyResponse,
@@ -316,6 +342,9 @@ __all__ = [
     GetAgentTaskRequest,
     GetAgentTaskResponseBody,
     GetAgentTaskResponse,
+    GetAlertDestinationRequest,
+    GetAlertDestinationResponseBody,
+    GetAlertDestinationResponse,
     GetAlertStrategyRequest,
     GetAlertStrategyResponseBody,
     GetAlertStrategyResponse,
@@ -395,6 +424,9 @@ __all__ = [
     ListAgentsRequest,
     ListAgentsResponseBody,
     ListAgentsResponse,
+    ListAlertDestinationsRequest,
+    ListAlertDestinationsResponseBody,
+    ListAlertDestinationsResponse,
     ListAlertItemsResponseBody,
     ListAlertItemsResponse,
     ListAlertStrategiesRequest,
@@ -451,6 +483,9 @@ __all__ = [
     UninstallAgentForClusterRequest,
     UninstallAgentForClusterResponseBody,
     UninstallAgentForClusterResponse,
+    UpdateAlertDestinationRequest,
+    UpdateAlertDestinationResponseBody,
+    UpdateAlertDestinationResponse,
     UpdateAlertEnabledRequest,
     UpdateAlertEnabledResponseBody,
     UpdateAlertEnabledResponse,
@@ -472,6 +507,9 @@ __all__ = [
     UpgradeAgentForClusterResponse,
     AuthDiagnosisRequestInstances,
     CheckInstanceSupportResponseBodyData,
+    CreateAlertDestinationRequestParams,
+    CreateAlertDestinationResponseBodyDataParams,
+    CreateAlertDestinationResponseBodyData,
     CreateAlertStrategyRequestStrategy,
     CreateVmcoreDiagnosisTaskResponseBodyData,
     DescribeMetricListResponseBodyData,
@@ -480,6 +518,7 @@ __all__ = [
     GetAgentResponseBodyData,
     GetAgentTaskResponseBodyDataJobs,
     GetAgentTaskResponseBodyData,
+    GetAlertDestinationResponseBodyData,
     GetAlertStrategyResponseBodyDataStrategy,
     GetAlertStrategyResponseBodyData,
     GetCopilotHistoryResponseBodyData,
@@ -542,6 +581,7 @@ __all__ = [
     UninstallAgentRequestInstances,
     UninstallAgentResponseBodyData,
     UninstallAgentForClusterResponseBodyData,
+    UpdateAlertDestinationRequestParams,
     UpdateAlertStrategyRequestStrategy,
     UpdateEventsAttentionResponseBodyData,
     UpdateFuncSwitchRecordRequestParamsArgs,
