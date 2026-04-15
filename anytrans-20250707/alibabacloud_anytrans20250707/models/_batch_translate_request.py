@@ -102,6 +102,7 @@ class BatchTranslateRequestExt(DaraModel):
         config: main_models.BatchTranslateRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[main_models.BatchTranslateRequestExtExamples] = None,
+        lang_detect: bool = None,
         param_map: Any = None,
         sensitives: List[str] = None,
         terminologies: List[main_models.BatchTranslateRequestExtTerminologies] = None,
@@ -110,6 +111,7 @@ class BatchTranslateRequestExt(DaraModel):
         self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
+        self.lang_detect = lang_detect
         self.param_map = param_map
         self.sensitives = sensitives
         self.terminologies = terminologies
@@ -145,6 +147,9 @@ class BatchTranslateRequestExt(DaraModel):
             for k1 in self.examples:
                 result['examples'].append(k1.to_map() if k1 else None)
 
+        if self.lang_detect is not None:
+            result['langDetect'] = self.lang_detect
+
         if self.param_map is not None:
             result['paramMap'] = self.param_map
 
@@ -175,6 +180,9 @@ class BatchTranslateRequestExt(DaraModel):
             for k1 in m.get('examples'):
                 temp_model = main_models.BatchTranslateRequestExtExamples()
                 self.examples.append(temp_model.from_map(k1))
+
+        if m.get('langDetect') is not None:
+            self.lang_detect = m.get('langDetect')
 
         if m.get('paramMap') is not None:
             self.param_map = m.get('paramMap')

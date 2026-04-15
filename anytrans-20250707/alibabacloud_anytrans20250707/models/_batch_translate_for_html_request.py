@@ -102,6 +102,7 @@ class BatchTranslateForHtmlRequestExt(DaraModel):
         config: main_models.BatchTranslateForHtmlRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[main_models.BatchTranslateForHtmlRequestExtExamples] = None,
+        lang_detect: bool = None,
         sensitives: List[str] = None,
         terminologies: List[main_models.BatchTranslateForHtmlRequestExtTerminologies] = None,
         text_transform: main_models.BatchTranslateForHtmlRequestExtTextTransform = None,
@@ -109,6 +110,7 @@ class BatchTranslateForHtmlRequestExt(DaraModel):
         self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
+        self.lang_detect = lang_detect
         self.sensitives = sensitives
         self.terminologies = terminologies
         self.text_transform = text_transform
@@ -143,6 +145,9 @@ class BatchTranslateForHtmlRequestExt(DaraModel):
             for k1 in self.examples:
                 result['examples'].append(k1.to_map() if k1 else None)
 
+        if self.lang_detect is not None:
+            result['langDetect'] = self.lang_detect
+
         if self.sensitives is not None:
             result['sensitives'] = self.sensitives
 
@@ -170,6 +175,9 @@ class BatchTranslateForHtmlRequestExt(DaraModel):
             for k1 in m.get('examples'):
                 temp_model = main_models.BatchTranslateForHtmlRequestExtExamples()
                 self.examples.append(temp_model.from_map(k1))
+
+        if m.get('langDetect') is not None:
+            self.lang_detect = m.get('langDetect')
 
         if m.get('sensitives') is not None:
             self.sensitives = m.get('sensitives')

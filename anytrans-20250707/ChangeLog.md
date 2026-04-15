@@ -1,3 +1,9 @@
+2026-04-15 Version: 2.1.6
+- Update API BatchTranslate: add request parameters ext.langDetect.
+- Update API BatchTranslateForHtml: add request parameters ext.langDetect.
+- Update API TextTranslate: add request parameters ext.langDetect.
+
+
 2026-03-26 Version: 2.1.5
 - Update API BatchTranslate: add response parameters Body.data.translationList.$.detectedLang.
 - Update API BatchTranslateForHtml: add response parameters Body.data.translationList.$.detectedLang.
