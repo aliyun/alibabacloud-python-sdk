@@ -1,3 +1,10 @@
+2026-04-15 Version: 2.1.0
+- Support API CreateResponseRule.
+- Support API DeleteResponseRule.
+- Support API ListResponseRules.
+- Support API UpdateResponseRule.
+
+
 2026-03-25 Version: 2.0.2
 - Update API ListDataIngestions: add request parameters NormalizationSchemaIds.
 

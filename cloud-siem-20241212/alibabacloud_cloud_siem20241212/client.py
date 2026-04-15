@@ -1229,6 +1229,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_product_with_options_async(request, runtime)
 
+    def create_response_rule_with_options(
+        self,
+        request: main_models.CreateResponseRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResponseRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_action_config):
+            body['ResponseActionConfig'] = request.response_action_config
+        if not DaraCore.is_null(request.response_action_type):
+            body['ResponseActionType'] = request.response_action_type
+        if not DaraCore.is_null(request.response_execution_condition):
+            body['ResponseExecutionCondition'] = request.response_execution_condition
+        if not DaraCore.is_null(request.response_rule_name):
+            body['ResponseRuleName'] = request.response_rule_name
+        if not DaraCore.is_null(request.response_rule_priority):
+            body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_trigger_type):
+            body['ResponseTriggerType'] = request.response_trigger_type
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateResponseRule',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateResponseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_response_rule_with_options_async(
+        self,
+        request: main_models.CreateResponseRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResponseRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_action_config):
+            body['ResponseActionConfig'] = request.response_action_config
+        if not DaraCore.is_null(request.response_action_type):
+            body['ResponseActionType'] = request.response_action_type
+        if not DaraCore.is_null(request.response_execution_condition):
+            body['ResponseExecutionCondition'] = request.response_execution_condition
+        if not DaraCore.is_null(request.response_rule_name):
+            body['ResponseRuleName'] = request.response_rule_name
+        if not DaraCore.is_null(request.response_rule_priority):
+            body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_trigger_type):
+            body['ResponseTriggerType'] = request.response_trigger_type
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateResponseRule',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateResponseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_response_rule(
+        self,
+        request: main_models.CreateResponseRuleRequest,
+    ) -> main_models.CreateResponseRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_response_rule_with_options(request, runtime)
+
+    async def create_response_rule_async(
+        self,
+        request: main_models.CreateResponseRuleRequest,
+    ) -> main_models.CreateResponseRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_response_rule_with_options_async(request, runtime)
+
     def create_vendor_with_options(
         self,
         request: main_models.CreateVendorRequest,
@@ -2068,6 +2182,92 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteProductResponse:
         runtime = RuntimeOptions()
         return await self.delete_product_with_options_async(request, runtime)
+
+    def delete_response_rule_with_options(
+        self,
+        request: main_models.DeleteResponseRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResponseRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_rule_id):
+            body['ResponseRuleId'] = request.response_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteResponseRule',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteResponseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_response_rule_with_options_async(
+        self,
+        request: main_models.DeleteResponseRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResponseRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_rule_id):
+            body['ResponseRuleId'] = request.response_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteResponseRule',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteResponseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_response_rule(
+        self,
+        request: main_models.DeleteResponseRuleRequest,
+    ) -> main_models.DeleteResponseRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_response_rule_with_options(request, runtime)
+
+    async def delete_response_rule_async(
+        self,
+        request: main_models.DeleteResponseRuleRequest,
+    ) -> main_models.DeleteResponseRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_response_rule_with_options_async(request, runtime)
 
     def delete_vendor_with_options(
         self,
@@ -5331,6 +5531,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_products_with_options_async(request, runtime)
 
+    def list_response_rules_with_options(
+        self,
+        request: main_models.ListResponseRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResponseRulesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_action_type):
+            body['ResponseActionType'] = request.response_action_type
+        if not DaraCore.is_null(request.response_rule_name):
+            body['ResponseRuleName'] = request.response_rule_name
+        if not DaraCore.is_null(request.response_rule_status):
+            body['ResponseRuleStatus'] = request.response_rule_status
+        if not DaraCore.is_null(request.response_rule_type):
+            body['ResponseRuleType'] = request.response_rule_type
+        if not DaraCore.is_null(request.response_trigger_type):
+            body['ResponseTriggerType'] = request.response_trigger_type
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResponseRules',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResponseRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_response_rules_with_options_async(
+        self,
+        request: main_models.ListResponseRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResponseRulesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_action_type):
+            body['ResponseActionType'] = request.response_action_type
+        if not DaraCore.is_null(request.response_rule_name):
+            body['ResponseRuleName'] = request.response_rule_name
+        if not DaraCore.is_null(request.response_rule_status):
+            body['ResponseRuleStatus'] = request.response_rule_status
+        if not DaraCore.is_null(request.response_rule_type):
+            body['ResponseRuleType'] = request.response_rule_type
+        if not DaraCore.is_null(request.response_trigger_type):
+            body['ResponseTriggerType'] = request.response_trigger_type
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResponseRules',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResponseRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_response_rules(
+        self,
+        request: main_models.ListResponseRulesRequest,
+    ) -> main_models.ListResponseRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_response_rules_with_options(request, runtime)
+
+    async def list_response_rules_async(
+        self,
+        request: main_models.ListResponseRulesRequest,
+    ) -> main_models.ListResponseRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_response_rules_with_options_async(request, runtime)
+
     def list_traffic_statistics_with_options(
         self,
         tmp_req: main_models.ListTrafficStatisticsRequest,
@@ -7414,6 +7732,120 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateProductResponse:
         runtime = RuntimeOptions()
         return await self.update_product_with_options_async(request, runtime)
+
+    def update_response_rule_with_options(
+        self,
+        request: main_models.UpdateResponseRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResponseRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_action_config):
+            body['ResponseActionConfig'] = request.response_action_config
+        if not DaraCore.is_null(request.response_action_type):
+            body['ResponseActionType'] = request.response_action_type
+        if not DaraCore.is_null(request.response_execution_condition):
+            body['ResponseExecutionCondition'] = request.response_execution_condition
+        if not DaraCore.is_null(request.response_rule_id):
+            body['ResponseRuleId'] = request.response_rule_id
+        if not DaraCore.is_null(request.response_rule_name):
+            body['ResponseRuleName'] = request.response_rule_name
+        if not DaraCore.is_null(request.response_rule_priority):
+            body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_rule_status):
+            body['ResponseRuleStatus'] = request.response_rule_status
+        if not DaraCore.is_null(request.response_trigger_type):
+            body['ResponseTriggerType'] = request.response_trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateResponseRule',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateResponseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_response_rule_with_options_async(
+        self,
+        request: main_models.UpdateResponseRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResponseRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_action_config):
+            body['ResponseActionConfig'] = request.response_action_config
+        if not DaraCore.is_null(request.response_action_type):
+            body['ResponseActionType'] = request.response_action_type
+        if not DaraCore.is_null(request.response_execution_condition):
+            body['ResponseExecutionCondition'] = request.response_execution_condition
+        if not DaraCore.is_null(request.response_rule_id):
+            body['ResponseRuleId'] = request.response_rule_id
+        if not DaraCore.is_null(request.response_rule_name):
+            body['ResponseRuleName'] = request.response_rule_name
+        if not DaraCore.is_null(request.response_rule_priority):
+            body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_rule_status):
+            body['ResponseRuleStatus'] = request.response_rule_status
+        if not DaraCore.is_null(request.response_trigger_type):
+            body['ResponseTriggerType'] = request.response_trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateResponseRule',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateResponseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_response_rule(
+        self,
+        request: main_models.UpdateResponseRuleRequest,
+    ) -> main_models.UpdateResponseRuleResponse:
+        runtime = RuntimeOptions()
+        return self.update_response_rule_with_options(request, runtime)
+
+    async def update_response_rule_async(
+        self,
+        request: main_models.UpdateResponseRuleRequest,
+    ) -> main_models.UpdateResponseRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_response_rule_with_options_async(request, runtime)
 
     def update_vendor_with_options(
         self,

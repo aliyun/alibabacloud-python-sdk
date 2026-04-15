@@ -34,6 +34,9 @@ from ._create_normalization_schema_response import CreateNormalizationSchemaResp
 from ._create_product_request import CreateProductRequest
 from ._create_product_response_body import CreateProductResponseBody
 from ._create_product_response import CreateProductResponse
+from ._create_response_rule_request import CreateResponseRuleRequest
+from ._create_response_rule_response_body import CreateResponseRuleResponseBody
+from ._create_response_rule_response import CreateResponseRuleResponse
 from ._create_vendor_request import CreateVendorRequest
 from ._create_vendor_response_body import CreateVendorResponseBody
 from ._create_vendor_response import CreateVendorResponse
@@ -64,6 +67,9 @@ from ._delete_normalization_rule_version_response import DeleteNormalizationRule
 from ._delete_product_request import DeleteProductRequest
 from ._delete_product_response_body import DeleteProductResponseBody
 from ._delete_product_response import DeleteProductResponse
+from ._delete_response_rule_request import DeleteResponseRuleRequest
+from ._delete_response_rule_response_body import DeleteResponseRuleResponseBody
+from ._delete_response_rule_response import DeleteResponseRuleResponse
 from ._delete_vendor_request import DeleteVendorRequest
 from ._delete_vendor_response_body import DeleteVendorResponseBody
 from ._delete_vendor_response import DeleteVendorResponse
@@ -172,6 +178,9 @@ from ._list_products_request import ListProductsRequest
 from ._list_products_shrink_request import ListProductsShrinkRequest
 from ._list_products_response_body import ListProductsResponseBody
 from ._list_products_response import ListProductsResponse
+from ._list_response_rules_request import ListResponseRulesRequest
+from ._list_response_rules_response_body import ListResponseRulesResponseBody
+from ._list_response_rules_response import ListResponseRulesResponse
 from ._list_traffic_statistics_request import ListTrafficStatisticsRequest
 from ._list_traffic_statistics_shrink_request import ListTrafficStatisticsShrinkRequest
 from ._list_traffic_statistics_response_body import ListTrafficStatisticsResponseBody
@@ -237,6 +246,9 @@ from ._update_normalization_schema_response import UpdateNormalizationSchemaResp
 from ._update_product_request import UpdateProductRequest
 from ._update_product_response_body import UpdateProductResponseBody
 from ._update_product_response import UpdateProductResponse
+from ._update_response_rule_request import UpdateResponseRuleRequest
+from ._update_response_rule_response_body import UpdateResponseRuleResponseBody
+from ._update_response_rule_response import UpdateResponseRuleResponse
 from ._update_vendor_request import UpdateVendorRequest
 from ._update_vendor_response_body import UpdateVendorResponseBody
 from ._update_vendor_response import UpdateVendorResponse
@@ -292,6 +304,7 @@ from ._list_normalization_rules_response_body import ListNormalizationRulesRespo
 from ._list_normalization_rules_response_body import ListNormalizationRulesResponseBodyNormalizationRules
 from ._list_normalization_schemas_response_body import ListNormalizationSchemasResponseBodyNormalizationSchemas
 from ._list_products_response_body import ListProductsResponseBodyProducts
+from ._list_response_rules_response_body import ListResponseRulesResponseBodyResponseRules
 from ._list_traffic_statistics_response_body import ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData
 from ._list_traffic_statistics_response_body import ListTrafficStatisticsResponseBodyTrafficStatistics
 from ._list_upgrade_items_response_body import ListUpgradeItemsResponseBodyUpgradeItems
@@ -337,6 +350,9 @@ __all__ = [
     CreateProductRequest,
     CreateProductResponseBody,
     CreateProductResponse,
+    CreateResponseRuleRequest,
+    CreateResponseRuleResponseBody,
+    CreateResponseRuleResponse,
     CreateVendorRequest,
     CreateVendorResponseBody,
     CreateVendorResponse,
@@ -367,6 +383,9 @@ __all__ = [
     DeleteProductRequest,
     DeleteProductResponseBody,
     DeleteProductResponse,
+    DeleteResponseRuleRequest,
+    DeleteResponseRuleResponseBody,
+    DeleteResponseRuleResponse,
     DeleteVendorRequest,
     DeleteVendorResponseBody,
     DeleteVendorResponse,
@@ -475,6 +494,9 @@ __all__ = [
     ListProductsShrinkRequest,
     ListProductsResponseBody,
     ListProductsResponse,
+    ListResponseRulesRequest,
+    ListResponseRulesResponseBody,
+    ListResponseRulesResponse,
     ListTrafficStatisticsRequest,
     ListTrafficStatisticsShrinkRequest,
     ListTrafficStatisticsResponseBody,
@@ -540,6 +562,9 @@ __all__ = [
     UpdateProductRequest,
     UpdateProductResponseBody,
     UpdateProductResponse,
+    UpdateResponseRuleRequest,
+    UpdateResponseRuleResponseBody,
+    UpdateResponseRuleResponse,
     UpdateVendorRequest,
     UpdateVendorResponseBody,
     UpdateVendorResponse,
@@ -595,6 +620,7 @@ __all__ = [
     ListNormalizationRulesResponseBodyNormalizationRules,
     ListNormalizationSchemasResponseBodyNormalizationSchemas,
     ListProductsResponseBodyProducts,
+    ListResponseRulesResponseBodyResponseRules,
     ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData,
     ListTrafficStatisticsResponseBodyTrafficStatistics,
     ListUpgradeItemsResponseBodyUpgradeItems,
