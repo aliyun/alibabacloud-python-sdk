@@ -83,6 +83,7 @@ class ListCertResponseBodyCertList(DaraModel):
     def __init__(
         self,
         after_date: int = None,
+        algorithm: str = None,
         before_date: int = None,
         cert_type: str = None,
         common_name: str = None,
@@ -90,6 +91,8 @@ class ListCertResponseBodyCertList(DaraModel):
         identifier: str = None,
         issuer: str = None,
         sans: str = None,
+        serial_no: str = None,
+        sign_algorithm: str = None,
         source_type: str = None,
         status: str = None,
         wh_id: int = None,
@@ -97,6 +100,7 @@ class ListCertResponseBodyCertList(DaraModel):
     ):
         # The expiration time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
+        self.algorithm = algorithm
         # The issuance time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
         # 证书的类型 。取值：
@@ -117,6 +121,8 @@ class ListCertResponseBodyCertList(DaraModel):
         self.issuer = issuer
         # The domain names that are bound to the certificate. Multiple domain names are separated by commas.
         self.sans = sans
+        self.serial_no = serial_no
+        self.sign_algorithm = sign_algorithm
         # The source of the certificate. Valid values:
         # 
         # *   **upload**: uploaded certificate
@@ -143,6 +149,9 @@ class ListCertResponseBodyCertList(DaraModel):
         if self.after_date is not None:
             result['AfterDate'] = self.after_date
 
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+
         if self.before_date is not None:
             result['BeforeDate'] = self.before_date
 
@@ -164,6 +173,12 @@ class ListCertResponseBodyCertList(DaraModel):
         if self.sans is not None:
             result['Sans'] = self.sans
 
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+
+        if self.sign_algorithm is not None:
+            result['SignAlgorithm'] = self.sign_algorithm
+
         if self.source_type is not None:
             result['SourceType'] = self.source_type
 
@@ -182,6 +197,9 @@ class ListCertResponseBodyCertList(DaraModel):
         m = m or dict()
         if m.get('AfterDate') is not None:
             self.after_date = m.get('AfterDate')
+
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
 
         if m.get('BeforeDate') is not None:
             self.before_date = m.get('BeforeDate')
@@ -203,6 +221,12 @@ class ListCertResponseBodyCertList(DaraModel):
 
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
+
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+
+        if m.get('SignAlgorithm') is not None:
+            self.sign_algorithm = m.get('SignAlgorithm')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')

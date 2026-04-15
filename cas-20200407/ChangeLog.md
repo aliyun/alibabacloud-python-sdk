@@ -1,3 +1,9 @@
+2026-04-15 Version: 3.3.2
+- Update API ListCert: add response parameters Body.CertList.$.Algorithm.
+- Update API ListCert: add response parameters Body.CertList.$.SerialNo.
+- Update API ListCert: add response parameters Body.CertList.$.SignAlgorithm.
+
+
 2026-04-01 Version: 3.3.1
 - Update API ListCert: add request parameters Identifiers.
 
