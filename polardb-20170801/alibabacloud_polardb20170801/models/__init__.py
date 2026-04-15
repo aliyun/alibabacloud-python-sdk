@@ -294,6 +294,9 @@ from ._describe_auto_renew_attribute_response import DescribeAutoRenewAttributeR
 from ._describe_available_cross_regions_request import DescribeAvailableCrossRegionsRequest
 from ._describe_available_cross_regions_response_body import DescribeAvailableCrossRegionsResponseBody
 from ._describe_available_cross_regions_response import DescribeAvailableCrossRegionsResponse
+from ._describe_available_models_request import DescribeAvailableModelsRequest
+from ._describe_available_models_response_body import DescribeAvailableModelsResponseBody
+from ._describe_available_models_response import DescribeAvailableModelsResponse
 from ._describe_backup_logs_request import DescribeBackupLogsRequest
 from ._describe_backup_logs_response_body import DescribeBackupLogsResponseBody
 from ._describe_backup_logs_response import DescribeBackupLogsResponse
@@ -966,6 +969,8 @@ from ._describe_applications_response_body import DescribeApplicationsResponseBo
 from ._describe_applications_response_body import DescribeApplicationsResponseBodyItems
 from ._describe_auto_renew_attribute_response_body import DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute
 from ._describe_auto_renew_attribute_response_body import DescribeAutoRenewAttributeResponseBodyItems
+from ._describe_available_models_response_body import DescribeAvailableModelsResponseBodyItemsGpuRequired
+from ._describe_available_models_response_body import DescribeAvailableModelsResponseBodyItems
 from ._describe_backup_logs_response_body import DescribeBackupLogsResponseBodyItemsBackupLog
 from ._describe_backup_logs_response_body import DescribeBackupLogsResponseBodyItems
 from ._describe_backup_policy_response_body import DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy
@@ -1457,6 +1462,9 @@ __all__ = [
     DescribeAvailableCrossRegionsRequest,
     DescribeAvailableCrossRegionsResponseBody,
     DescribeAvailableCrossRegionsResponse,
+    DescribeAvailableModelsRequest,
+    DescribeAvailableModelsResponseBody,
+    DescribeAvailableModelsResponse,
     DescribeBackupLogsRequest,
     DescribeBackupLogsResponseBody,
     DescribeBackupLogsResponse,
@@ -2129,6 +2137,8 @@ __all__ = [
     DescribeApplicationsResponseBodyItems,
     DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute,
     DescribeAutoRenewAttributeResponseBodyItems,
+    DescribeAvailableModelsResponseBodyItemsGpuRequired,
+    DescribeAvailableModelsResponseBodyItems,
     DescribeBackupLogsResponseBodyItemsBackupLog,
     DescribeBackupLogsResponseBodyItems,
     DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy,

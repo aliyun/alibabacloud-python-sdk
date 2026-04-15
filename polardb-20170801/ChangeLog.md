@@ -1,3 +1,7 @@
+2026-04-15 Version: 6.11.0
+- Support API DescribeAvailableModels.
+
+
 2026-04-14 Version: 6.10.2
 - Update API CreateApplication: add request parameters KnowledgeApplicationSpec.
 

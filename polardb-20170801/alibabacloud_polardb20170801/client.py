@@ -9579,6 +9579,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_available_cross_regions_with_options_async(request, runtime)
 
+    def describe_available_models_with_options(
+        self,
+        request: main_models.DescribeAvailableModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAvailableModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAvailableModels',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAvailableModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_available_models_with_options_async(
+        self,
+        request: main_models.DescribeAvailableModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAvailableModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAvailableModels',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAvailableModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_available_models(
+        self,
+        request: main_models.DescribeAvailableModelsRequest,
+    ) -> main_models.DescribeAvailableModelsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_available_models_with_options(request, runtime)
+
+    async def describe_available_models_async(
+        self,
+        request: main_models.DescribeAvailableModelsRequest,
+    ) -> main_models.DescribeAvailableModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_available_models_with_options_async(request, runtime)
+
     def describe_backup_logs_with_options(
         self,
         request: main_models.DescribeBackupLogsRequest,
