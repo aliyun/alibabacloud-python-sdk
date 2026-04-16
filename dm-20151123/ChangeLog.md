@@ -5,6 +5,13 @@
 - Update API ConfigSetUpdate: add request parameters IsPublicChannelBackoff.
 
 
+2026-04-16 Version: 1.9.2
+- Update API ConfigSetCreate: add request parameters IsPublicChannelBackoff.
+- Update API ConfigSetDetail: add response parameters Body.Detail.IsPublicChannelBackoff.
+- Update API ConfigSetList: add response parameters Body.ConfigSets.$.IsPublicChannelBackoff.
+- Update API ConfigSetUpdate: add request parameters IsPublicChannelBackoff.
+
+
 2026-04-14 Version: 1.9.1
 - Update API DescDomain: add response parameters Body.DomainVersion.
 
