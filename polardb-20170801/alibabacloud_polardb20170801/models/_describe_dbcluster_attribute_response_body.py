@@ -19,6 +19,7 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         branch: main_models.DescribeDBClusterAttributeResponseBodyBranch = None,
         bursting_enabled: str = None,
         category: str = None,
+        column_table: str = None,
         compress_storage_mode: str = None,
         compress_storage_used: int = None,
         creation_time: str = None,
@@ -114,6 +115,7 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         # >* PolarDB MySQL versions 8.0 and 5.7, and PolarDB PostgreSQL version 14 support the Standard Edition.
         # >* PolarDB MySQL version 8.0 supports High Compression Engine (X-Engine) and Multi-Master Cluster Edition.
         self.category = category
+        self.column_table = column_table
         # Whether storage compression is enabled. Values are as follows:
         # - ON: Enabled
         # - OFF: Disabled
@@ -354,6 +356,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         if self.category is not None:
             result['Category'] = self.category
 
+        if self.column_table is not None:
+            result['ColumnTable'] = self.column_table
+
         if self.compress_storage_mode is not None:
             result['CompressStorageMode'] = self.compress_storage_mode
 
@@ -572,6 +577,9 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('ColumnTable') is not None:
+            self.column_table = m.get('ColumnTable')
 
         if m.get('CompressStorageMode') is not None:
             self.compress_storage_mode = m.get('CompressStorageMode')

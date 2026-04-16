@@ -1,3 +1,7 @@
+2026-04-16 Version: 6.11.2
+- Update API DescribeDBClusterAttribute: add response parameters Body.ColumnTable.
+
+
 2026-04-16 Version: 6.11.1
 - Generated python 2017-08-01 for polardb.
 
