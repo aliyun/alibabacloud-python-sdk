@@ -33,6 +33,8 @@ class ChatWithDesensitizeSSERequest(DaraModel):
         stream: bool = None,
         temperature: str = None,
         thinking_budget: int = None,
+        tool_choice: str = None,
+        tools: str = None,
         top_k: int = None,
         top_logprobs: int = None,
         top_p: str = None,
@@ -89,6 +91,8 @@ class ChatWithDesensitizeSSERequest(DaraModel):
         self.temperature = temperature
         # The maximum number of tokens allowed for the model\\"s internal reasoning process.
         self.thinking_budget = thinking_budget
+        self.tool_choice = tool_choice
+        self.tools = tools
         # Specifies the number of candidate tokens to consider during sampling. Higher values increase randomness, while lower values make the output more deterministic. Set to null or a value greater than 100 to disable.
         self.top_k = top_k
         # Specifies the number of most likely candidate tokens to return at each generation step. Valid values: [0, 5].
@@ -180,6 +184,12 @@ class ChatWithDesensitizeSSERequest(DaraModel):
         if self.thinking_budget is not None:
             result['ThinkingBudget'] = self.thinking_budget
 
+        if self.tool_choice is not None:
+            result['ToolChoice'] = self.tool_choice
+
+        if self.tools is not None:
+            result['Tools'] = self.tools
+
         if self.top_k is not None:
             result['TopK'] = self.top_k
 
@@ -270,6 +280,12 @@ class ChatWithDesensitizeSSERequest(DaraModel):
 
         if m.get('ThinkingBudget') is not None:
             self.thinking_budget = m.get('ThinkingBudget')
+
+        if m.get('ToolChoice') is not None:
+            self.tool_choice = m.get('ToolChoice')
+
+        if m.get('Tools') is not None:
+            self.tools = m.get('Tools')
 
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')

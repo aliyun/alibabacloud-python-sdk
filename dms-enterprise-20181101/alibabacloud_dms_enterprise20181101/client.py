@@ -2056,6 +2056,10 @@ class Client(OpenApiClient):
             query['Temperature'] = request.temperature
         if not DaraCore.is_null(request.thinking_budget):
             query['ThinkingBudget'] = request.thinking_budget
+        if not DaraCore.is_null(request.tool_choice):
+            query['ToolChoice'] = request.tool_choice
+        if not DaraCore.is_null(request.tools):
+            query['Tools'] = request.tools
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         if not DaraCore.is_null(request.top_logprobs):
@@ -2161,6 +2165,10 @@ class Client(OpenApiClient):
             query['Temperature'] = request.temperature
         if not DaraCore.is_null(request.thinking_budget):
             query['ThinkingBudget'] = request.thinking_budget
+        if not DaraCore.is_null(request.tool_choice):
+            query['ToolChoice'] = request.tool_choice
+        if not DaraCore.is_null(request.tools):
+            query['Tools'] = request.tools
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         if not DaraCore.is_null(request.top_logprobs):
@@ -2266,6 +2274,10 @@ class Client(OpenApiClient):
             query['Temperature'] = request.temperature
         if not DaraCore.is_null(request.thinking_budget):
             query['ThinkingBudget'] = request.thinking_budget
+        if not DaraCore.is_null(request.tool_choice):
+            query['ToolChoice'] = request.tool_choice
+        if not DaraCore.is_null(request.tools):
+            query['Tools'] = request.tools
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         if not DaraCore.is_null(request.top_logprobs):
@@ -2362,6 +2374,10 @@ class Client(OpenApiClient):
             query['Temperature'] = request.temperature
         if not DaraCore.is_null(request.thinking_budget):
             query['ThinkingBudget'] = request.thinking_budget
+        if not DaraCore.is_null(request.tool_choice):
+            query['ToolChoice'] = request.tool_choice
+        if not DaraCore.is_null(request.tools):
+            query['Tools'] = request.tools
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         if not DaraCore.is_null(request.top_logprobs):
