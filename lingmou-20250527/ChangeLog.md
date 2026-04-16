@@ -1,3 +1,6 @@
+2026-04-16 Version: 1.7.2
+- Generated python 2025-05-27 for LingMou.
+
 2026-04-14 Version: 1.7.1
 - Update API CreateChatSession: add request parameters appId.
 - Update API CreateChatSession: add request parameters deviceId.

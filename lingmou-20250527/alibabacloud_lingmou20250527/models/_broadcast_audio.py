@@ -9,6 +9,7 @@ class BroadcastAudio(DaraModel):
         self,
         audio_length: int = None,
         create_time: str = None,
+        error_code: str = None,
         id: str = None,
         modified_time: str = None,
         name: str = None,
@@ -16,6 +17,7 @@ class BroadcastAudio(DaraModel):
     ):
         self.audio_length = audio_length
         self.create_time = create_time
+        self.error_code = error_code
         self.id = id
         self.modified_time = modified_time
         self.name = name
@@ -34,6 +36,9 @@ class BroadcastAudio(DaraModel):
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
+
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
 
         if self.id is not None:
             result['id'] = self.id
@@ -56,6 +61,9 @@ class BroadcastAudio(DaraModel):
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
 
         if m.get('id') is not None:
             self.id = m.get('id')
