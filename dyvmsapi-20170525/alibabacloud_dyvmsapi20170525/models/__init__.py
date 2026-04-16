@@ -20,6 +20,19 @@ from ._cancel_robot_task_response import CancelRobotTaskResponse
 from ._change_media_type_request import ChangeMediaTypeRequest
 from ._change_media_type_response_body import ChangeMediaTypeResponseBody
 from ._change_media_type_response import ChangeMediaTypeResponse
+from ._cloud_create_task_request import CloudCreateTaskRequest
+from ._cloud_create_task_response_body import CloudCreateTaskResponseBody
+from ._cloud_create_task_response import CloudCreateTaskResponse
+from ._cloud_import_task_tel_request import CloudImportTaskTelRequest
+from ._cloud_import_task_tel_shrink_request import CloudImportTaskTelShrinkRequest
+from ._cloud_import_task_tel_response_body import CloudImportTaskTelResponseBody
+from ._cloud_import_task_tel_response import CloudImportTaskTelResponse
+from ._cloud_start_task_request import CloudStartTaskRequest
+from ._cloud_start_task_response_body import CloudStartTaskResponseBody
+from ._cloud_start_task_response import CloudStartTaskResponse
+from ._cloud_update_task_request import CloudUpdateTaskRequest
+from ._cloud_update_task_response_body import CloudUpdateTaskResponseBody
+from ._cloud_update_task_response import CloudUpdateTaskResponse
 from ._create_call_task_request import CreateCallTaskRequest
 from ._create_call_task_response_body import CreateCallTaskResponseBody
 from ._create_call_task_response import CreateCallTaskResponse
@@ -108,9 +121,6 @@ from ._query_robotv_2all_list_response import QueryRobotv2AllListResponse
 from ._query_video_play_progress_request import QueryVideoPlayProgressRequest
 from ._query_video_play_progress_response_body import QueryVideoPlayProgressResponseBody
 from ._query_video_play_progress_response import QueryVideoPlayProgressResponse
-from ._query_virtual_number_request import QueryVirtualNumberRequest
-from ._query_virtual_number_response_body import QueryVirtualNumberResponseBody
-from ._query_virtual_number_response import QueryVirtualNumberResponse
 from ._query_virtual_number_relation_request import QueryVirtualNumberRelationRequest
 from ._query_virtual_number_relation_response_body import QueryVirtualNumberRelationResponseBody
 from ._query_virtual_number_relation_response import QueryVirtualNumberRelationResponse
@@ -174,6 +184,11 @@ from ._upgrade_video_file_response import UpgradeVideoFileResponse
 from ._upload_robot_task_called_file_request import UploadRobotTaskCalledFileRequest
 from ._upload_robot_task_called_file_response_body import UploadRobotTaskCalledFileResponseBody
 from ._upload_robot_task_called_file_response import UploadRobotTaskCalledFileResponse
+from ._cloud_create_task_response_body import CloudCreateTaskResponseBodyData
+from ._cloud_import_task_tel_request import CloudImportTaskTelRequestTaskTelList
+from ._cloud_import_task_tel_response_body import CloudImportTaskTelResponseBodyData
+from ._cloud_start_task_response_body import CloudStartTaskResponseBodyData
+from ._cloud_update_task_response_body import CloudUpdateTaskResponseBodyData
 from ._get_hotline_qualification_by_order_response_body import GetHotlineQualificationByOrderResponseBodyData
 from ._ivr_call_request import IvrCallRequestMenuKeyMap
 from ._list_call_task_response_body import ListCallTaskResponseBodyData
@@ -213,6 +228,19 @@ __all__ = [
     ChangeMediaTypeRequest,
     ChangeMediaTypeResponseBody,
     ChangeMediaTypeResponse,
+    CloudCreateTaskRequest,
+    CloudCreateTaskResponseBody,
+    CloudCreateTaskResponse,
+    CloudImportTaskTelRequest,
+    CloudImportTaskTelShrinkRequest,
+    CloudImportTaskTelResponseBody,
+    CloudImportTaskTelResponse,
+    CloudStartTaskRequest,
+    CloudStartTaskResponseBody,
+    CloudStartTaskResponse,
+    CloudUpdateTaskRequest,
+    CloudUpdateTaskResponseBody,
+    CloudUpdateTaskResponse,
     CreateCallTaskRequest,
     CreateCallTaskResponseBody,
     CreateCallTaskResponse,
@@ -301,9 +329,6 @@ __all__ = [
     QueryVideoPlayProgressRequest,
     QueryVideoPlayProgressResponseBody,
     QueryVideoPlayProgressResponse,
-    QueryVirtualNumberRequest,
-    QueryVirtualNumberResponseBody,
-    QueryVirtualNumberResponse,
     QueryVirtualNumberRelationRequest,
     QueryVirtualNumberRelationResponseBody,
     QueryVirtualNumberRelationResponse,
@@ -367,6 +392,11 @@ __all__ = [
     UploadRobotTaskCalledFileRequest,
     UploadRobotTaskCalledFileResponseBody,
     UploadRobotTaskCalledFileResponse,
+    CloudCreateTaskResponseBodyData,
+    CloudImportTaskTelRequestTaskTelList,
+    CloudImportTaskTelResponseBodyData,
+    CloudStartTaskResponseBodyData,
+    CloudUpdateTaskResponseBodyData,
     GetHotlineQualificationByOrderResponseBodyData,
     IvrCallRequestMenuKeyMap,
     ListCallTaskResponseBodyData,

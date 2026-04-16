@@ -4,31 +4,26 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class QueryVirtualNumberRequest(DaraModel):
+class CloudStartTaskRequest(DaraModel):
     def __init__(
         self,
+        enterprise_id: int = None,
         owner_id: int = None,
-        page_no: int = None,
-        page_size: int = None,
-        prod_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        route_type: int = None,
+        task_id: int = None,
     ):
+        # 呼叫中心 id
+        # 
+        # This parameter is required.
+        self.enterprise_id = enterprise_id
         self.owner_id = owner_id
-        # The page number.
-        self.page_no = page_no
-        # The number of entries per page.
-        self.page_size = page_size
-        # The service name. Default value: **dyvms**.
-        self.prod_code = prod_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The route type. Valid values:
+        # 外呼任务id
         # 
-        # *   **0**: number location first.
-        # *   **1**: random.
-        self.route_type = route_type
+        # This parameter is required.
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -38,17 +33,11 @@ class QueryVirtualNumberRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enterprise_id is not None:
+            result['EnterpriseId'] = self.enterprise_id
+
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-
-        if self.prod_code is not None:
-            result['ProdCode'] = self.prod_code
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -56,24 +45,18 @@ class QueryVirtualNumberRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
-        if self.route_type is not None:
-            result['RouteType'] = self.route_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnterpriseId') is not None:
+            self.enterprise_id = m.get('EnterpriseId')
+
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-
-        if m.get('ProdCode') is not None:
-            self.prod_code = m.get('ProdCode')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
@@ -81,8 +64,8 @@ class QueryVirtualNumberRequest(DaraModel):
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
 
-        if m.get('RouteType') is not None:
-            self.route_type = m.get('RouteType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         return self
 

@@ -1,3 +1,11 @@
+2026-04-16 Version: 5.0.0
+- Support API CloudCreateTask.
+- Support API CloudImportTaskTel.
+- Support API CloudStartTask.
+- Support API CloudUpdateTask.
+- Delete API QueryVirtualNumber.
+
+
 2025-12-29 Version: 4.2.0
 - Support API ListServiceInstanceForPage.
 

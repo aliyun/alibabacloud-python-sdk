@@ -5,24 +5,19 @@ from __future__ import annotations
 from alibabacloud_dyvmsapi20170525 import models as main_models
 from darabonba.model import DaraModel
 
-class GetHotlineQualificationByOrderResponseBody(DaraModel):
+class CloudStartTaskResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
-        data: main_models.GetHotlineQualificationByOrderResponseBodyData = None,
+        data: main_models.CloudStartTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
-        # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+        self.access_denied_detail = access_denied_detail
         self.code = code
-        # The response parameters.
         self.data = data
-        # The returned message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34,6 +29,9 @@ class GetHotlineQualificationByOrderResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.code is not None:
             result['Code'] = self.code
 
@@ -50,11 +48,14 @@ class GetHotlineQualificationByOrderResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetHotlineQualificationByOrderResponseBodyData()
+            temp_model = main_models.CloudStartTaskResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -65,22 +66,13 @@ class GetHotlineQualificationByOrderResponseBody(DaraModel):
 
         return self
 
-class GetHotlineQualificationByOrderResponseBodyData(DaraModel):
+class CloudStartTaskResponseBodyData(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
-        qualification_id: str = None,
-        status: str = None,
+        result: int = None,
     ):
-        # The ID of the qualification application ticket.
-        self.order_id = order_id
-        # The qualification ID.
-        self.qualification_id = qualification_id
-        # The qualification state. Valid values:
-        # 
-        # *   **NORMAL**
-        # *   **OTHER**
-        self.status = status
+        # 结果
+        self.result = result
 
     def validate(self):
         pass
@@ -90,27 +82,15 @@ class GetHotlineQualificationByOrderResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
-        if self.qualification_id is not None:
-            result['QualificationId'] = self.qualification_id
-
-        if self.status is not None:
-            result['Status'] = self.status
+        if self.result is not None:
+            result['Result'] = self.result
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
-        if m.get('QualificationId') is not None:
-            self.qualification_id = m.get('QualificationId')
-
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
 
         return self
 

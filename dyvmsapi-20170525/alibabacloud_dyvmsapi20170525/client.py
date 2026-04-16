@@ -600,6 +600,770 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_media_type_with_options_async(request, runtime)
 
+    def cloud_create_task_with_options(
+        self,
+        request: main_models.CloudCreateTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudCreateTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_group):
+            query['AgentGroup'] = request.agent_group
+        if not DaraCore.is_null(request.agent_timeout):
+            query['AgentTimeout'] = request.agent_timeout
+        if not DaraCore.is_null(request.answer_rate):
+            query['AnswerRate'] = request.answer_rate
+        if not DaraCore.is_null(request.auto_complete):
+            query['AutoComplete'] = request.auto_complete
+        if not DaraCore.is_null(request.auto_delete):
+            query['AutoDelete'] = request.auto_delete
+        if not DaraCore.is_null(request.auto_start):
+            query['AutoStart'] = request.auto_start
+        if not DaraCore.is_null(request.auto_start_day):
+            query['AutoStartDay'] = request.auto_start_day
+        if not DaraCore.is_null(request.auto_start_time):
+            query['AutoStartTime'] = request.auto_start_time
+        if not DaraCore.is_null(request.auto_stop):
+            query['AutoStop'] = request.auto_stop
+        if not DaraCore.is_null(request.auto_stop_day):
+            query['AutoStopDay'] = request.auto_stop_day
+        if not DaraCore.is_null(request.auto_stop_time):
+            query['AutoStopTime'] = request.auto_stop_time
+        if not DaraCore.is_null(request.auto_task_type):
+            query['AutoTaskType'] = request.auto_task_type
+        if not DaraCore.is_null(request.auto_trigger_time_strategy):
+            query['AutoTriggerTimeStrategy'] = request.auto_trigger_time_strategy
+        if not DaraCore.is_null(request.call_group_type):
+            query['CallGroupType'] = request.call_group_type
+        if not DaraCore.is_null(request.call_limit_strategy):
+            query['CallLimitStrategy'] = request.call_limit_strategy
+        if not DaraCore.is_null(request.call_priority_strategy):
+            query['CallPriorityStrategy'] = request.call_priority_strategy
+        if not DaraCore.is_null(request.call_route_strategy):
+            query['CallRouteStrategy'] = request.call_route_strategy
+        if not DaraCore.is_null(request.call_strategy):
+            query['CallStrategy'] = request.call_strategy
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.clid_property):
+            query['ClidProperty'] = request.clid_property
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.concurrency):
+            query['Concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.customer_clid_type):
+            query['CustomerClidType'] = request.customer_clid_type
+        if not DaraCore.is_null(request.customer_clid_weight):
+            query['CustomerClidWeight'] = request.customer_clid_weight
+        if not DaraCore.is_null(request.customer_clid_weight_flag):
+            query['CustomerClidWeightFlag'] = request.customer_clid_weight_flag
+        if not DaraCore.is_null(request.customer_clids):
+            query['CustomerClids'] = request.customer_clids
+        if not DaraCore.is_null(request.customer_clids_category):
+            query['CustomerClidsCategory'] = request.customer_clids_category
+        if not DaraCore.is_null(request.customer_clids_group):
+            query['CustomerClidsGroup'] = request.customer_clids_group
+        if not DaraCore.is_null(request.customer_moh):
+            query['CustomerMoh'] = request.customer_moh
+        if not DaraCore.is_null(request.customer_timeout):
+            query['CustomerTimeout'] = request.customer_timeout
+        if not DaraCore.is_null(request.customer_voice):
+            query['CustomerVoice'] = request.customer_voice
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.force_end_flag):
+            query['ForceEndFlag'] = request.force_end_flag
+        if not DaraCore.is_null(request.is_rewarm):
+            query['IsRewarm'] = request.is_rewarm
+        if not DaraCore.is_null(request.ivr_id):
+            query['IvrId'] = request.ivr_id
+        if not DaraCore.is_null(request.ivr_name):
+            query['IvrName'] = request.ivr_name
+        if not DaraCore.is_null(request.max_wait_time):
+            query['MaxWaitTime'] = request.max_wait_time
+        if not DaraCore.is_null(request.min_available_agent_count):
+            query['MinAvailableAgentCount'] = request.min_available_agent_count
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.predict_adjust):
+            query['PredictAdjust'] = request.predict_adjust
+        if not DaraCore.is_null(request.quotiety):
+            query['Quotiety'] = request.quotiety
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.retry_strategy):
+            query['RetryStrategy'] = request.retry_strategy
+        if not DaraCore.is_null(request.retry_strategy_only_today):
+            query['RetryStrategyOnlyToday'] = request.retry_strategy_only_today
+        if not DaraCore.is_null(request.retry_strategy_time_type):
+            query['RetryStrategyTimeType'] = request.retry_strategy_time_type
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.time_strategy):
+            query['TimeStrategy'] = request.time_strategy
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.user_fields):
+            query['UserFields'] = request.user_fields
+        if not DaraCore.is_null(request.warm_up_duration):
+            query['WarmUpDuration'] = request.warm_up_duration
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudCreateTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudCreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_create_task_with_options_async(
+        self,
+        request: main_models.CloudCreateTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudCreateTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_group):
+            query['AgentGroup'] = request.agent_group
+        if not DaraCore.is_null(request.agent_timeout):
+            query['AgentTimeout'] = request.agent_timeout
+        if not DaraCore.is_null(request.answer_rate):
+            query['AnswerRate'] = request.answer_rate
+        if not DaraCore.is_null(request.auto_complete):
+            query['AutoComplete'] = request.auto_complete
+        if not DaraCore.is_null(request.auto_delete):
+            query['AutoDelete'] = request.auto_delete
+        if not DaraCore.is_null(request.auto_start):
+            query['AutoStart'] = request.auto_start
+        if not DaraCore.is_null(request.auto_start_day):
+            query['AutoStartDay'] = request.auto_start_day
+        if not DaraCore.is_null(request.auto_start_time):
+            query['AutoStartTime'] = request.auto_start_time
+        if not DaraCore.is_null(request.auto_stop):
+            query['AutoStop'] = request.auto_stop
+        if not DaraCore.is_null(request.auto_stop_day):
+            query['AutoStopDay'] = request.auto_stop_day
+        if not DaraCore.is_null(request.auto_stop_time):
+            query['AutoStopTime'] = request.auto_stop_time
+        if not DaraCore.is_null(request.auto_task_type):
+            query['AutoTaskType'] = request.auto_task_type
+        if not DaraCore.is_null(request.auto_trigger_time_strategy):
+            query['AutoTriggerTimeStrategy'] = request.auto_trigger_time_strategy
+        if not DaraCore.is_null(request.call_group_type):
+            query['CallGroupType'] = request.call_group_type
+        if not DaraCore.is_null(request.call_limit_strategy):
+            query['CallLimitStrategy'] = request.call_limit_strategy
+        if not DaraCore.is_null(request.call_priority_strategy):
+            query['CallPriorityStrategy'] = request.call_priority_strategy
+        if not DaraCore.is_null(request.call_route_strategy):
+            query['CallRouteStrategy'] = request.call_route_strategy
+        if not DaraCore.is_null(request.call_strategy):
+            query['CallStrategy'] = request.call_strategy
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.clid_property):
+            query['ClidProperty'] = request.clid_property
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.concurrency):
+            query['Concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.customer_clid_type):
+            query['CustomerClidType'] = request.customer_clid_type
+        if not DaraCore.is_null(request.customer_clid_weight):
+            query['CustomerClidWeight'] = request.customer_clid_weight
+        if not DaraCore.is_null(request.customer_clid_weight_flag):
+            query['CustomerClidWeightFlag'] = request.customer_clid_weight_flag
+        if not DaraCore.is_null(request.customer_clids):
+            query['CustomerClids'] = request.customer_clids
+        if not DaraCore.is_null(request.customer_clids_category):
+            query['CustomerClidsCategory'] = request.customer_clids_category
+        if not DaraCore.is_null(request.customer_clids_group):
+            query['CustomerClidsGroup'] = request.customer_clids_group
+        if not DaraCore.is_null(request.customer_moh):
+            query['CustomerMoh'] = request.customer_moh
+        if not DaraCore.is_null(request.customer_timeout):
+            query['CustomerTimeout'] = request.customer_timeout
+        if not DaraCore.is_null(request.customer_voice):
+            query['CustomerVoice'] = request.customer_voice
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.force_end_flag):
+            query['ForceEndFlag'] = request.force_end_flag
+        if not DaraCore.is_null(request.is_rewarm):
+            query['IsRewarm'] = request.is_rewarm
+        if not DaraCore.is_null(request.ivr_id):
+            query['IvrId'] = request.ivr_id
+        if not DaraCore.is_null(request.ivr_name):
+            query['IvrName'] = request.ivr_name
+        if not DaraCore.is_null(request.max_wait_time):
+            query['MaxWaitTime'] = request.max_wait_time
+        if not DaraCore.is_null(request.min_available_agent_count):
+            query['MinAvailableAgentCount'] = request.min_available_agent_count
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.predict_adjust):
+            query['PredictAdjust'] = request.predict_adjust
+        if not DaraCore.is_null(request.quotiety):
+            query['Quotiety'] = request.quotiety
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.retry_strategy):
+            query['RetryStrategy'] = request.retry_strategy
+        if not DaraCore.is_null(request.retry_strategy_only_today):
+            query['RetryStrategyOnlyToday'] = request.retry_strategy_only_today
+        if not DaraCore.is_null(request.retry_strategy_time_type):
+            query['RetryStrategyTimeType'] = request.retry_strategy_time_type
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.time_strategy):
+            query['TimeStrategy'] = request.time_strategy
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.user_fields):
+            query['UserFields'] = request.user_fields
+        if not DaraCore.is_null(request.warm_up_duration):
+            query['WarmUpDuration'] = request.warm_up_duration
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudCreateTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudCreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_create_task(
+        self,
+        request: main_models.CloudCreateTaskRequest,
+    ) -> main_models.CloudCreateTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_create_task_with_options(request, runtime)
+
+    async def cloud_create_task_async(
+        self,
+        request: main_models.CloudCreateTaskRequest,
+    ) -> main_models.CloudCreateTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_create_task_with_options_async(request, runtime)
+
+    def cloud_import_task_tel_with_options(
+        self,
+        tmp_req: main_models.CloudImportTaskTelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudImportTaskTelResponse:
+        tmp_req.validate()
+        request = main_models.CloudImportTaskTelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_tel_list):
+            request.task_tel_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_tel_list, 'TaskTelList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bridge_voice_path):
+            query['BridgeVoicePath'] = request.bridge_voice_path
+        if not DaraCore.is_null(request.bridge_voice_type):
+            query['BridgeVoiceType'] = request.bridge_voice_type
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.import_tel_auto_start):
+            query['ImportTelAutoStart'] = request.import_tel_auto_start
+        if not DaraCore.is_null(request.is_repeat):
+            query['IsRepeat'] = request.is_repeat
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_tel_list_shrink):
+            query['TaskTelList'] = request.task_tel_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudImportTaskTel',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudImportTaskTelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_import_task_tel_with_options_async(
+        self,
+        tmp_req: main_models.CloudImportTaskTelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudImportTaskTelResponse:
+        tmp_req.validate()
+        request = main_models.CloudImportTaskTelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_tel_list):
+            request.task_tel_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_tel_list, 'TaskTelList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bridge_voice_path):
+            query['BridgeVoicePath'] = request.bridge_voice_path
+        if not DaraCore.is_null(request.bridge_voice_type):
+            query['BridgeVoiceType'] = request.bridge_voice_type
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.import_tel_auto_start):
+            query['ImportTelAutoStart'] = request.import_tel_auto_start
+        if not DaraCore.is_null(request.is_repeat):
+            query['IsRepeat'] = request.is_repeat
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_tel_list_shrink):
+            query['TaskTelList'] = request.task_tel_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudImportTaskTel',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudImportTaskTelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_import_task_tel(
+        self,
+        request: main_models.CloudImportTaskTelRequest,
+    ) -> main_models.CloudImportTaskTelResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_import_task_tel_with_options(request, runtime)
+
+    async def cloud_import_task_tel_async(
+        self,
+        request: main_models.CloudImportTaskTelRequest,
+    ) -> main_models.CloudImportTaskTelResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_import_task_tel_with_options_async(request, runtime)
+
+    def cloud_start_task_with_options(
+        self,
+        request: main_models.CloudStartTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudStartTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudStartTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudStartTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_start_task_with_options_async(
+        self,
+        request: main_models.CloudStartTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudStartTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudStartTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudStartTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_start_task(
+        self,
+        request: main_models.CloudStartTaskRequest,
+    ) -> main_models.CloudStartTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_start_task_with_options(request, runtime)
+
+    async def cloud_start_task_async(
+        self,
+        request: main_models.CloudStartTaskRequest,
+    ) -> main_models.CloudStartTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_start_task_with_options_async(request, runtime)
+
+    def cloud_update_task_with_options(
+        self,
+        request: main_models.CloudUpdateTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudUpdateTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_group):
+            query['AgentGroup'] = request.agent_group
+        if not DaraCore.is_null(request.agent_timeout):
+            query['AgentTimeout'] = request.agent_timeout
+        if not DaraCore.is_null(request.answer_rate):
+            query['AnswerRate'] = request.answer_rate
+        if not DaraCore.is_null(request.auto_complete):
+            query['AutoComplete'] = request.auto_complete
+        if not DaraCore.is_null(request.auto_start):
+            query['AutoStart'] = request.auto_start
+        if not DaraCore.is_null(request.auto_start_day):
+            query['AutoStartDay'] = request.auto_start_day
+        if not DaraCore.is_null(request.auto_start_time):
+            query['AutoStartTime'] = request.auto_start_time
+        if not DaraCore.is_null(request.auto_stop):
+            query['AutoStop'] = request.auto_stop
+        if not DaraCore.is_null(request.auto_stop_day):
+            query['AutoStopDay'] = request.auto_stop_day
+        if not DaraCore.is_null(request.auto_stop_time):
+            query['AutoStopTime'] = request.auto_stop_time
+        if not DaraCore.is_null(request.auto_task_type):
+            query['AutoTaskType'] = request.auto_task_type
+        if not DaraCore.is_null(request.auto_trigger_time_strategy):
+            query['AutoTriggerTimeStrategy'] = request.auto_trigger_time_strategy
+        if not DaraCore.is_null(request.call_limit_strategy):
+            query['CallLimitStrategy'] = request.call_limit_strategy
+        if not DaraCore.is_null(request.call_priority_strategy):
+            query['CallPriorityStrategy'] = request.call_priority_strategy
+        if not DaraCore.is_null(request.call_route_strategy):
+            query['CallRouteStrategy'] = request.call_route_strategy
+        if not DaraCore.is_null(request.call_strategy):
+            query['CallStrategy'] = request.call_strategy
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.clid_property):
+            query['ClidProperty'] = request.clid_property
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.concurrency):
+            query['Concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.customer_clid_type):
+            query['CustomerClidType'] = request.customer_clid_type
+        if not DaraCore.is_null(request.customer_clid_weight):
+            query['CustomerClidWeight'] = request.customer_clid_weight
+        if not DaraCore.is_null(request.customer_clid_weight_flag):
+            query['CustomerClidWeightFlag'] = request.customer_clid_weight_flag
+        if not DaraCore.is_null(request.customer_clids):
+            query['CustomerClids'] = request.customer_clids
+        if not DaraCore.is_null(request.customer_clids_category):
+            query['CustomerClidsCategory'] = request.customer_clids_category
+        if not DaraCore.is_null(request.customer_clids_group):
+            query['CustomerClidsGroup'] = request.customer_clids_group
+        if not DaraCore.is_null(request.customer_moh):
+            query['CustomerMoh'] = request.customer_moh
+        if not DaraCore.is_null(request.customer_timeout):
+            query['CustomerTimeout'] = request.customer_timeout
+        if not DaraCore.is_null(request.customer_voice):
+            query['CustomerVoice'] = request.customer_voice
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.force_end_flag):
+            query['ForceEndFlag'] = request.force_end_flag
+        if not DaraCore.is_null(request.is_rewarm):
+            query['IsRewarm'] = request.is_rewarm
+        if not DaraCore.is_null(request.ivr_id):
+            query['IvrId'] = request.ivr_id
+        if not DaraCore.is_null(request.ivr_name):
+            query['IvrName'] = request.ivr_name
+        if not DaraCore.is_null(request.max_wait_time):
+            query['MaxWaitTime'] = request.max_wait_time
+        if not DaraCore.is_null(request.min_available_agent_count):
+            query['MinAvailableAgentCount'] = request.min_available_agent_count
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.predict_adjust):
+            query['PredictAdjust'] = request.predict_adjust
+        if not DaraCore.is_null(request.quotiety):
+            query['Quotiety'] = request.quotiety
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.retry_strategy):
+            query['RetryStrategy'] = request.retry_strategy
+        if not DaraCore.is_null(request.retry_strategy_only_today):
+            query['RetryStrategyOnlyToday'] = request.retry_strategy_only_today
+        if not DaraCore.is_null(request.retry_strategy_time_type):
+            query['RetryStrategyTimeType'] = request.retry_strategy_time_type
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.time_strategy):
+            query['TimeStrategy'] = request.time_strategy
+        if not DaraCore.is_null(request.user_fields):
+            query['UserFields'] = request.user_fields
+        if not DaraCore.is_null(request.warm_up_duration):
+            query['WarmUpDuration'] = request.warm_up_duration
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudUpdateTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudUpdateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_update_task_with_options_async(
+        self,
+        request: main_models.CloudUpdateTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudUpdateTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_group):
+            query['AgentGroup'] = request.agent_group
+        if not DaraCore.is_null(request.agent_timeout):
+            query['AgentTimeout'] = request.agent_timeout
+        if not DaraCore.is_null(request.answer_rate):
+            query['AnswerRate'] = request.answer_rate
+        if not DaraCore.is_null(request.auto_complete):
+            query['AutoComplete'] = request.auto_complete
+        if not DaraCore.is_null(request.auto_start):
+            query['AutoStart'] = request.auto_start
+        if not DaraCore.is_null(request.auto_start_day):
+            query['AutoStartDay'] = request.auto_start_day
+        if not DaraCore.is_null(request.auto_start_time):
+            query['AutoStartTime'] = request.auto_start_time
+        if not DaraCore.is_null(request.auto_stop):
+            query['AutoStop'] = request.auto_stop
+        if not DaraCore.is_null(request.auto_stop_day):
+            query['AutoStopDay'] = request.auto_stop_day
+        if not DaraCore.is_null(request.auto_stop_time):
+            query['AutoStopTime'] = request.auto_stop_time
+        if not DaraCore.is_null(request.auto_task_type):
+            query['AutoTaskType'] = request.auto_task_type
+        if not DaraCore.is_null(request.auto_trigger_time_strategy):
+            query['AutoTriggerTimeStrategy'] = request.auto_trigger_time_strategy
+        if not DaraCore.is_null(request.call_limit_strategy):
+            query['CallLimitStrategy'] = request.call_limit_strategy
+        if not DaraCore.is_null(request.call_priority_strategy):
+            query['CallPriorityStrategy'] = request.call_priority_strategy
+        if not DaraCore.is_null(request.call_route_strategy):
+            query['CallRouteStrategy'] = request.call_route_strategy
+        if not DaraCore.is_null(request.call_strategy):
+            query['CallStrategy'] = request.call_strategy
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.clid_property):
+            query['ClidProperty'] = request.clid_property
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.concurrency):
+            query['Concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.customer_clid_type):
+            query['CustomerClidType'] = request.customer_clid_type
+        if not DaraCore.is_null(request.customer_clid_weight):
+            query['CustomerClidWeight'] = request.customer_clid_weight
+        if not DaraCore.is_null(request.customer_clid_weight_flag):
+            query['CustomerClidWeightFlag'] = request.customer_clid_weight_flag
+        if not DaraCore.is_null(request.customer_clids):
+            query['CustomerClids'] = request.customer_clids
+        if not DaraCore.is_null(request.customer_clids_category):
+            query['CustomerClidsCategory'] = request.customer_clids_category
+        if not DaraCore.is_null(request.customer_clids_group):
+            query['CustomerClidsGroup'] = request.customer_clids_group
+        if not DaraCore.is_null(request.customer_moh):
+            query['CustomerMoh'] = request.customer_moh
+        if not DaraCore.is_null(request.customer_timeout):
+            query['CustomerTimeout'] = request.customer_timeout
+        if not DaraCore.is_null(request.customer_voice):
+            query['CustomerVoice'] = request.customer_voice
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.force_end_flag):
+            query['ForceEndFlag'] = request.force_end_flag
+        if not DaraCore.is_null(request.is_rewarm):
+            query['IsRewarm'] = request.is_rewarm
+        if not DaraCore.is_null(request.ivr_id):
+            query['IvrId'] = request.ivr_id
+        if not DaraCore.is_null(request.ivr_name):
+            query['IvrName'] = request.ivr_name
+        if not DaraCore.is_null(request.max_wait_time):
+            query['MaxWaitTime'] = request.max_wait_time
+        if not DaraCore.is_null(request.min_available_agent_count):
+            query['MinAvailableAgentCount'] = request.min_available_agent_count
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.predict_adjust):
+            query['PredictAdjust'] = request.predict_adjust
+        if not DaraCore.is_null(request.quotiety):
+            query['Quotiety'] = request.quotiety
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.retry_strategy):
+            query['RetryStrategy'] = request.retry_strategy
+        if not DaraCore.is_null(request.retry_strategy_only_today):
+            query['RetryStrategyOnlyToday'] = request.retry_strategy_only_today
+        if not DaraCore.is_null(request.retry_strategy_time_type):
+            query['RetryStrategyTimeType'] = request.retry_strategy_time_type
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.time_strategy):
+            query['TimeStrategy'] = request.time_strategy
+        if not DaraCore.is_null(request.user_fields):
+            query['UserFields'] = request.user_fields
+        if not DaraCore.is_null(request.warm_up_duration):
+            query['WarmUpDuration'] = request.warm_up_duration
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudUpdateTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudUpdateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_update_task(
+        self,
+        request: main_models.CloudUpdateTaskRequest,
+    ) -> main_models.CloudUpdateTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_update_task_with_options(request, runtime)
+
+    async def cloud_update_task_async(
+        self,
+        request: main_models.CloudUpdateTaskRequest,
+    ) -> main_models.CloudUpdateTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_update_task_with_options_async(request, runtime)
+
     def create_call_task_with_options(
         self,
         request: main_models.CreateCallTaskRequest,
@@ -3305,100 +4069,6 @@ class Client(OpenApiClient):
     ) -> main_models.QueryVideoPlayProgressResponse:
         runtime = RuntimeOptions()
         return await self.query_video_play_progress_with_options_async(request, runtime)
-
-    def query_virtual_number_with_options(
-        self,
-        request: main_models.QueryVirtualNumberRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.QueryVirtualNumberResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.page_no):
-            query['PageNo'] = request.page_no
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.prod_code):
-            query['ProdCode'] = request.prod_code
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not DaraCore.is_null(request.route_type):
-            query['RouteType'] = request.route_type
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'QueryVirtualNumber',
-            version = '2017-05-25',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.QueryVirtualNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_virtual_number_with_options_async(
-        self,
-        request: main_models.QueryVirtualNumberRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.QueryVirtualNumberResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.page_no):
-            query['PageNo'] = request.page_no
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.prod_code):
-            query['ProdCode'] = request.prod_code
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not DaraCore.is_null(request.route_type):
-            query['RouteType'] = request.route_type
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'QueryVirtualNumber',
-            version = '2017-05-25',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.QueryVirtualNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_virtual_number(
-        self,
-        request: main_models.QueryVirtualNumberRequest,
-    ) -> main_models.QueryVirtualNumberResponse:
-        runtime = RuntimeOptions()
-        return self.query_virtual_number_with_options(request, runtime)
-
-    async def query_virtual_number_async(
-        self,
-        request: main_models.QueryVirtualNumberRequest,
-    ) -> main_models.QueryVirtualNumberResponse:
-        runtime = RuntimeOptions()
-        return await self.query_virtual_number_with_options_async(request, runtime)
 
     def query_virtual_number_relation_with_options(
         self,
