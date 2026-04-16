@@ -48,11 +48,13 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         description: str = None,
         id: str = None,
         ip_pool: main_models.ConfigSetDetailResponseBodyDetailIpPool = None,
+        is_public_channel_backoff: bool = None,
         name: str = None,
     ):
         self.description = description
         self.id = id
         self.ip_pool = ip_pool
+        self.is_public_channel_backoff = is_public_channel_backoff
         self.name = name
 
     def validate(self):
@@ -73,6 +75,9 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         if self.ip_pool is not None:
             result['IpPool'] = self.ip_pool.to_map()
 
+        if self.is_public_channel_backoff is not None:
+            result['IsPublicChannelBackoff'] = self.is_public_channel_backoff
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -89,6 +94,9 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         if m.get('IpPool') is not None:
             temp_model = main_models.ConfigSetDetailResponseBodyDetailIpPool()
             self.ip_pool = temp_model.from_map(m.get('IpPool'))
+
+        if m.get('IsPublicChannelBackoff') is not None:
+            self.is_public_channel_backoff = m.get('IsPublicChannelBackoff')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

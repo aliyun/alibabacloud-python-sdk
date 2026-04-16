@@ -912,6 +912,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.ip_pool_id):
             query['IpPoolId'] = request.ip_pool_id
+        if not DaraCore.is_null(request.is_public_channel_backoff):
+            query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -944,6 +946,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.ip_pool_id):
             query['IpPoolId'] = request.ip_pool_id
+        if not DaraCore.is_null(request.is_public_channel_backoff):
+            query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -1292,6 +1296,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.ip_pool_id):
             query['IpPoolId'] = request.ip_pool_id
+        if not DaraCore.is_null(request.is_public_channel_backoff):
+            query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -1326,6 +1332,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.ip_pool_id):
             query['IpPoolId'] = request.ip_pool_id
+        if not DaraCore.is_null(request.is_public_channel_backoff):
+            query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(

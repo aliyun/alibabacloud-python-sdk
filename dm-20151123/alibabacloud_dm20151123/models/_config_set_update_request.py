@@ -10,11 +10,13 @@ class ConfigSetUpdateRequest(DaraModel):
         description: str = None,
         id: str = None,
         ip_pool_id: str = None,
+        is_public_channel_backoff: bool = None,
         name: str = None,
     ):
         self.description = description
         self.id = id
         self.ip_pool_id = ip_pool_id
+        self.is_public_channel_backoff = is_public_channel_backoff
         self.name = name
 
     def validate(self):
@@ -34,6 +36,9 @@ class ConfigSetUpdateRequest(DaraModel):
         if self.ip_pool_id is not None:
             result['IpPoolId'] = self.ip_pool_id
 
+        if self.is_public_channel_backoff is not None:
+            result['IsPublicChannelBackoff'] = self.is_public_channel_backoff
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -49,6 +54,9 @@ class ConfigSetUpdateRequest(DaraModel):
 
         if m.get('IpPoolId') is not None:
             self.ip_pool_id = m.get('IpPoolId')
+
+        if m.get('IsPublicChannelBackoff') is not None:
+            self.is_public_channel_backoff = m.get('IsPublicChannelBackoff')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
