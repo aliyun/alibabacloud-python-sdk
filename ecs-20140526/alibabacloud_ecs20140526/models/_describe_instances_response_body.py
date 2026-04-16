@@ -1800,6 +1800,7 @@ class DescribeInstancesResponseBodyInstancesInstanceCpuOptions(DaraModel):
         core_count: int = None,
         enable_visst: bool = None,
         enable_vrdt: bool = None,
+        nested_virtualization: str = None,
         numa: str = None,
         threads_per_core: int = None,
         topology_type: str = None,
@@ -1808,6 +1809,7 @@ class DescribeInstancesResponseBodyInstancesInstanceCpuOptions(DaraModel):
         self.core_count = core_count
         self.enable_visst = enable_visst
         self.enable_vrdt = enable_vrdt
+        self.nested_virtualization = nested_virtualization
         self.numa = numa
         self.threads_per_core = threads_per_core
         self.topology_type = topology_type
@@ -1829,6 +1831,9 @@ class DescribeInstancesResponseBodyInstancesInstanceCpuOptions(DaraModel):
 
         if self.enable_vrdt is not None:
             result['EnableVRDT'] = self.enable_vrdt
+
+        if self.nested_virtualization is not None:
+            result['NestedVirtualization'] = self.nested_virtualization
 
         if self.numa is not None:
             result['Numa'] = self.numa
@@ -1854,6 +1859,9 @@ class DescribeInstancesResponseBodyInstancesInstanceCpuOptions(DaraModel):
 
         if m.get('EnableVRDT') is not None:
             self.enable_vrdt = m.get('EnableVRDT')
+
+        if m.get('NestedVirtualization') is not None:
+            self.nested_virtualization = m.get('NestedVirtualization')
 
         if m.get('Numa') is not None:
             self.numa = m.get('Numa')
@@ -1900,8 +1908,10 @@ class DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo(DaraModel):
     def __init__(
         self,
         enable_high_density_mode: bool = None,
+        node_serial_number: str = None,
     ):
         self.enable_high_density_mode = enable_high_density_mode
+        self.node_serial_number = node_serial_number
 
     def validate(self):
         pass
@@ -1914,12 +1924,18 @@ class DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo(DaraModel):
         if self.enable_high_density_mode is not None:
             result['EnableHighDensityMode'] = self.enable_high_density_mode
 
+        if self.node_serial_number is not None:
+            result['NodeSerialNumber'] = self.node_serial_number
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnableHighDensityMode') is not None:
             self.enable_high_density_mode = m.get('EnableHighDensityMode')
+
+        if m.get('NodeSerialNumber') is not None:
+            self.node_serial_number = m.get('NodeSerialNumber')
 
         return self
 

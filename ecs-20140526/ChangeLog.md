@@ -1,3 +1,8 @@
+2026-04-16 Version: 7.7.2
+- Update API DescribeInstances: add response parameters Body.Instances.$.AdditionalInfo.NodeSerialNumber.
+- Update API DescribeInstances: add response parameters Body.Instances.$.CpuOptions.NestedVirtualization.
+
+
 2026-04-10 Version: 7.7.1
 - Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.AllocatedResources.$.FailedAmount.
 - Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.AllocatedResources.$.LockedAmount.
