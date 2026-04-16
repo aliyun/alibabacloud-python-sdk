@@ -1,3 +1,11 @@
+2026-04-16 Version: 4.7.13
+- Update API ModifyBrowserInstanceGroup: add request parameters MaxAmount.
+- Update API ModifyBrowserInstanceGroup: add request parameters StoragePolicy.
+- Update API ModifyBrowserInstanceGroup: add request parameters BrowserConfig.BookmarksFilePath.
+- Update API ModifyBrowserInstanceGroup: add request parameters BrowserConfig.CookiesSync.
+- Update API ModifyBrowserInstanceGroup: add request parameters Network.RestrictedURLsFilePath.
+
+
 2026-03-27 Version: 4.7.12
 - Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardLimit.
 - Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardSizeUnit.

@@ -247,6 +247,8 @@ from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRe
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyVideoPolicy
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestStoragePolicy
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestTimers
 from ._modify_node_pool_amount_request import ModifyNodePoolAmountRequestNodePool
 from ._modify_node_pool_amount_response_body import ModifyNodePoolAmountResponseBodyData
@@ -505,6 +507,8 @@ __all__ = [
     ModifyBrowserInstanceGroupRequestPolicyVideoPolicy,
     ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy,
     ModifyBrowserInstanceGroupRequestPolicy,
+    ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile,
+    ModifyBrowserInstanceGroupRequestStoragePolicy,
     ModifyBrowserInstanceGroupRequestTimers,
     ModifyNodePoolAmountRequestNodePool,
     ModifyNodePoolAmountResponseBodyData,

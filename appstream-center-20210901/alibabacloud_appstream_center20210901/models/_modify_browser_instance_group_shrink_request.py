@@ -10,8 +10,10 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         browser_config_shrink: str = None,
         browser_instance_group_id: str = None,
         cloud_browser_name: str = None,
+        max_amount: int = None,
         network_shrink: str = None,
         policy_shrink: str = None,
+        storage_policy_shrink: str = None,
         timers_shrink: str = None,
     ):
         # The browser settings.
@@ -22,10 +24,12 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
+        self.max_amount = max_amount
         # The network configurations.
         self.network_shrink = network_shrink
         # The access policy.
         self.policy_shrink = policy_shrink
+        self.storage_policy_shrink = storage_policy_shrink
         # The timer.
         self.timers_shrink = timers_shrink
 
@@ -46,11 +50,17 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         if self.cloud_browser_name is not None:
             result['CloudBrowserName'] = self.cloud_browser_name
 
+        if self.max_amount is not None:
+            result['MaxAmount'] = self.max_amount
+
         if self.network_shrink is not None:
             result['Network'] = self.network_shrink
 
         if self.policy_shrink is not None:
             result['Policy'] = self.policy_shrink
+
+        if self.storage_policy_shrink is not None:
+            result['StoragePolicy'] = self.storage_policy_shrink
 
         if self.timers_shrink is not None:
             result['Timers'] = self.timers_shrink
@@ -68,11 +78,17 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         if m.get('CloudBrowserName') is not None:
             self.cloud_browser_name = m.get('CloudBrowserName')
 
+        if m.get('MaxAmount') is not None:
+            self.max_amount = m.get('MaxAmount')
+
         if m.get('Network') is not None:
             self.network_shrink = m.get('Network')
 
         if m.get('Policy') is not None:
             self.policy_shrink = m.get('Policy')
+
+        if m.get('StoragePolicy') is not None:
+            self.storage_policy_shrink = m.get('StoragePolicy')
 
         if m.get('Timers') is not None:
             self.timers_shrink = m.get('Timers')

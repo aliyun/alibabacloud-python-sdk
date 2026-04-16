@@ -13,8 +13,10 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         browser_config: main_models.ModifyBrowserInstanceGroupRequestBrowserConfig = None,
         browser_instance_group_id: str = None,
         cloud_browser_name: str = None,
+        max_amount: int = None,
         network: main_models.ModifyBrowserInstanceGroupRequestNetwork = None,
         policy: main_models.ModifyBrowserInstanceGroupRequestPolicy = None,
+        storage_policy: main_models.ModifyBrowserInstanceGroupRequestStoragePolicy = None,
         timers: List[main_models.ModifyBrowserInstanceGroupRequestTimers] = None,
     ):
         # The browser settings.
@@ -25,10 +27,12 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
+        self.max_amount = max_amount
         # The network configurations.
         self.network = network
         # The access policy.
         self.policy = policy
+        self.storage_policy = storage_policy
         # The timer.
         self.timers = timers
 
@@ -39,6 +43,8 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
             self.network.validate()
         if self.policy:
             self.policy.validate()
+        if self.storage_policy:
+            self.storage_policy.validate()
         if self.timers:
             for v1 in self.timers:
                  if v1:
@@ -58,11 +64,17 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         if self.cloud_browser_name is not None:
             result['CloudBrowserName'] = self.cloud_browser_name
 
+        if self.max_amount is not None:
+            result['MaxAmount'] = self.max_amount
+
         if self.network is not None:
             result['Network'] = self.network.to_map()
 
         if self.policy is not None:
             result['Policy'] = self.policy.to_map()
+
+        if self.storage_policy is not None:
+            result['StoragePolicy'] = self.storage_policy.to_map()
 
         result['Timers'] = []
         if self.timers is not None:
@@ -83,6 +95,9 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         if m.get('CloudBrowserName') is not None:
             self.cloud_browser_name = m.get('CloudBrowserName')
 
+        if m.get('MaxAmount') is not None:
+            self.max_amount = m.get('MaxAmount')
+
         if m.get('Network') is not None:
             temp_model = main_models.ModifyBrowserInstanceGroupRequestNetwork()
             self.network = temp_model.from_map(m.get('Network'))
@@ -90,6 +105,10 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         if m.get('Policy') is not None:
             temp_model = main_models.ModifyBrowserInstanceGroupRequestPolicy()
             self.policy = temp_model.from_map(m.get('Policy'))
+
+        if m.get('StoragePolicy') is not None:
+            temp_model = main_models.ModifyBrowserInstanceGroupRequestStoragePolicy()
+            self.storage_policy = temp_model.from_map(m.get('StoragePolicy'))
 
         self.timers = []
         if m.get('Timers') is not None:
@@ -137,6 +156,62 @@ class ModifyBrowserInstanceGroupRequestTimers(DaraModel):
 
         if m.get('TimerType') is not None:
             self.timer_type = m.get('TimerType')
+
+        return self
+
+class ModifyBrowserInstanceGroupRequestStoragePolicy(DaraModel):
+    def __init__(
+        self,
+        user_profile: main_models.ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile = None,
+    ):
+        self.user_profile = user_profile
+
+    def validate(self):
+        if self.user_profile:
+            self.user_profile.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.user_profile is not None:
+            result['UserProfile'] = self.user_profile.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserProfile') is not None:
+            temp_model = main_models.ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile()
+            self.user_profile = temp_model.from_map(m.get('UserProfile'))
+
+        return self
+
+class ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile(DaraModel):
+    def __init__(
+        self,
+        user_profile_switch: bool = None,
+    ):
+        self.user_profile_switch = user_profile_switch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.user_profile_switch is not None:
+            result['UserProfileSwitch'] = self.user_profile_switch
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserProfileSwitch') is not None:
+            self.user_profile_switch = m.get('UserProfileSwitch')
 
         return self
 
@@ -479,6 +554,7 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         access_restriction: str = None,
         remove_restricted_urlids: List[str] = None,
         restricted_urls: List[main_models.ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs] = None,
+        restricted_urls_file_path: str = None,
     ):
         # The type of the access control list.
         # 
@@ -490,6 +566,7 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         self.remove_restricted_urlids = remove_restricted_urlids
         # The domain restriction configurations.
         self.restricted_urls = restricted_urls
+        self.restricted_urls_file_path = restricted_urls_file_path
 
     def validate(self):
         if self.restricted_urls:
@@ -513,6 +590,9 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
             for k1 in self.restricted_urls:
                 result['RestrictedURLs'].append(k1.to_map() if k1 else None)
 
+        if self.restricted_urls_file_path is not None:
+            result['RestrictedURLsFilePath'] = self.restricted_urls_file_path
+
         return result
 
     def from_map(self, m: dict = None):
@@ -528,6 +608,9 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
             for k1 in m.get('RestrictedURLs'):
                 temp_model = main_models.ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs()
                 self.restricted_urls.append(temp_model.from_map(k1))
+
+        if m.get('RestrictedURLsFilePath') is not None:
+            self.restricted_urls_file_path = m.get('RestrictedURLsFilePath')
 
         return self
 
@@ -572,14 +655,18 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
     def __init__(
         self,
         bookmarks: List[main_models.ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks] = None,
+        bookmarks_file_path: str = None,
         browser_param: str = None,
+        cookies_sync: str = None,
         homepage: str = None,
         remove_bookmarks: List[str] = None,
     ):
         # The bookmark.
         self.bookmarks = bookmarks
+        self.bookmarks_file_path = bookmarks_file_path
         # The startup parameter.
         self.browser_param = browser_param
+        self.cookies_sync = cookies_sync
         # The home page.
         self.homepage = homepage
         # The removed bookmarks.
@@ -601,8 +688,14 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
             for k1 in self.bookmarks:
                 result['Bookmarks'].append(k1.to_map() if k1 else None)
 
+        if self.bookmarks_file_path is not None:
+            result['BookmarksFilePath'] = self.bookmarks_file_path
+
         if self.browser_param is not None:
             result['BrowserParam'] = self.browser_param
+
+        if self.cookies_sync is not None:
+            result['CookiesSync'] = self.cookies_sync
 
         if self.homepage is not None:
             result['Homepage'] = self.homepage
@@ -620,8 +713,14 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
                 temp_model = main_models.ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks()
                 self.bookmarks.append(temp_model.from_map(k1))
 
+        if m.get('BookmarksFilePath') is not None:
+            self.bookmarks_file_path = m.get('BookmarksFilePath')
+
         if m.get('BrowserParam') is not None:
             self.browser_param = m.get('BrowserParam')
+
+        if m.get('CookiesSync') is not None:
+            self.cookies_sync = m.get('CookiesSync')
 
         if m.get('Homepage') is not None:
             self.homepage = m.get('Homepage')

@@ -3301,6 +3301,8 @@ class Client(OpenApiClient):
             request.network_shrink = Utils.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
         if not DaraCore.is_null(tmp_req.policy):
             request.policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        if not DaraCore.is_null(tmp_req.storage_policy):
+            request.storage_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
         if not DaraCore.is_null(tmp_req.timers):
             request.timers_shrink = Utils.array_to_string_with_specified_style(tmp_req.timers, 'Timers', 'json')
         query = {}
@@ -3315,8 +3317,12 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.cloud_browser_name):
             body['CloudBrowserName'] = request.cloud_browser_name
+        if not DaraCore.is_null(request.max_amount):
+            body['MaxAmount'] = request.max_amount
         if not DaraCore.is_null(request.network_shrink):
             body['Network'] = request.network_shrink
+        if not DaraCore.is_null(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -3351,6 +3357,8 @@ class Client(OpenApiClient):
             request.network_shrink = Utils.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
         if not DaraCore.is_null(tmp_req.policy):
             request.policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        if not DaraCore.is_null(tmp_req.storage_policy):
+            request.storage_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
         if not DaraCore.is_null(tmp_req.timers):
             request.timers_shrink = Utils.array_to_string_with_specified_style(tmp_req.timers, 'Timers', 'json')
         query = {}
@@ -3365,8 +3373,12 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.cloud_browser_name):
             body['CloudBrowserName'] = request.cloud_browser_name
+        if not DaraCore.is_null(request.max_amount):
+            body['MaxAmount'] = request.max_amount
         if not DaraCore.is_null(request.network_shrink):
             body['Network'] = request.network_shrink
+        if not DaraCore.is_null(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
