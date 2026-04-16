@@ -127,11 +127,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -203,11 +205,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -656,7 +660,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -737,7 +741,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -2410,7 +2414,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -2491,7 +2495,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9278,7 +9282,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9359,7 +9363,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),

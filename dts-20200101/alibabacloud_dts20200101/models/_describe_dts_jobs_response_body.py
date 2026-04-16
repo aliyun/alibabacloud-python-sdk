@@ -2361,6 +2361,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(DaraModel):
         expire_time: str = None,
         full_data_check_status: main_models.DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus = None,
         inc_data_check_status: main_models.DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus = None,
+        insight_module: bool = None,
         job_type: str = None,
         max_du: float = None,
         mem_usage: str = None,
@@ -2458,6 +2459,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(DaraModel):
         self.full_data_check_status = full_data_check_status
         # The state information about the incremental data verification task.
         self.inc_data_check_status = inc_data_check_status
+        self.insight_module = insight_module
         # The type of the DTS task. Valid values:
         # 
         # - **MIGRATION**: data migration task 
@@ -2662,6 +2664,9 @@ class DescribeDtsJobsResponseBodyDtsJobList(DaraModel):
         if self.inc_data_check_status is not None:
             result['IncDataCheckStatus'] = self.inc_data_check_status.to_map()
 
+        if self.insight_module is not None:
+            result['InsightModule'] = self.insight_module
+
         if self.job_type is not None:
             result['JobType'] = self.job_type
 
@@ -2842,6 +2847,9 @@ class DescribeDtsJobsResponseBodyDtsJobList(DaraModel):
         if m.get('IncDataCheckStatus') is not None:
             temp_model = main_models.DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus()
             self.inc_data_check_status = temp_model.from_map(m.get('IncDataCheckStatus'))
+
+        if m.get('InsightModule') is not None:
+            self.insight_module = m.get('InsightModule')
 
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
