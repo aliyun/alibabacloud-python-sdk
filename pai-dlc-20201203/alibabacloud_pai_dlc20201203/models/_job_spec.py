@@ -12,6 +12,7 @@ class JobSpec(DaraModel):
         self,
         assign_node_spec: main_models.AssignNodeSpec = None,
         auto_scaling_spec: main_models.AutoScalingSpec = None,
+        consider_in_success_policy: bool = None,
         ecs_spec: str = None,
         extra_pod_spec: main_models.ExtraPodSpec = None,
         image: str = None,
@@ -34,6 +35,7 @@ class JobSpec(DaraModel):
         self.assign_node_spec = assign_node_spec
         # The auto scaling configurations.
         self.auto_scaling_spec = auto_scaling_spec
+        self.consider_in_success_policy = consider_in_success_policy
         # The hardware specifications of the worker. For more information, see [Billing of DLC](https://help.aliyun.com/document_detail/171758.html) of PAI.
         # 
         # >  The price varies based on instance types.
@@ -113,6 +115,9 @@ class JobSpec(DaraModel):
         if self.auto_scaling_spec is not None:
             result['AutoScalingSpec'] = self.auto_scaling_spec.to_map()
 
+        if self.consider_in_success_policy is not None:
+            result['ConsiderInSuccessPolicy'] = self.consider_in_success_policy
+
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
 
@@ -179,6 +184,9 @@ class JobSpec(DaraModel):
         if m.get('AutoScalingSpec') is not None:
             temp_model = main_models.AutoScalingSpec()
             self.auto_scaling_spec = temp_model.from_map(m.get('AutoScalingSpec'))
+
+        if m.get('ConsiderInSuccessPolicy') is not None:
+            self.consider_in_success_policy = m.get('ConsiderInSuccessPolicy')
 
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')

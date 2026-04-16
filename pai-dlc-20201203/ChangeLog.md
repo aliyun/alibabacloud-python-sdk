@@ -1,3 +1,6 @@
+2026-04-16 Version: 1.6.13
+- Generated python 2020-12-03 for pai-dlc.
+
 2026-04-09 Version: 1.6.12
 - Update API CreateJob: add request parameters body.Description.
 - Update API GetJob: add response parameters Body.Description.
