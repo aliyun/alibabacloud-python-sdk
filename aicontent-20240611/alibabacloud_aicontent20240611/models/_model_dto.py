@@ -11,9 +11,12 @@ class ModelDTO(DaraModel):
         base_url: str = None,
         delete_tag: int = None,
         description: str = None,
+        extensions: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        has_billing_rule: bool = None,
         id: int = None,
+        in_out: str = None,
         is_custom: bool = None,
         max_input_length: str = None,
         max_output_length: str = None,
@@ -30,10 +33,13 @@ class ModelDTO(DaraModel):
         self.base_url = base_url
         self.delete_tag = delete_tag
         self.description = description
+        self.extensions = extensions
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        self.has_billing_rule = has_billing_rule
         # ID
         self.id = id
+        self.in_out = in_out
         self.is_custom = is_custom
         self.max_input_length = max_input_length
         self.max_output_length = max_output_length
@@ -65,14 +71,23 @@ class ModelDTO(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.extensions is not None:
+            result['extensions'] = self.extensions
+
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
 
         if self.gmt_modified is not None:
             result['gmtModified'] = self.gmt_modified
 
+        if self.has_billing_rule is not None:
+            result['hasBillingRule'] = self.has_billing_rule
+
         if self.id is not None:
             result['id'] = self.id
+
+        if self.in_out is not None:
+            result['inOut'] = self.in_out
 
         if self.is_custom is not None:
             result['isCustom'] = self.is_custom
@@ -120,14 +135,23 @@ class ModelDTO(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('extensions') is not None:
+            self.extensions = m.get('extensions')
+
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
 
         if m.get('gmtModified') is not None:
             self.gmt_modified = m.get('gmtModified')
 
+        if m.get('hasBillingRule') is not None:
+            self.has_billing_rule = m.get('hasBillingRule')
+
         if m.get('id') is not None:
             self.id = m.get('id')
+
+        if m.get('inOut') is not None:
+            self.in_out = m.get('inOut')
 
         if m.get('isCustom') is not None:
             self.is_custom = m.get('isCustom')

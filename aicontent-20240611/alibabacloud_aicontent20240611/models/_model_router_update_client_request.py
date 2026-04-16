@@ -10,6 +10,7 @@ class ModelRouterUpdateClientRequest(DaraModel):
         address: str = None,
         allowed_models: str = None,
         contact: str = None,
+        discount: float = None,
         name: str = None,
         remark: str = None,
         status: int = None,
@@ -17,6 +18,7 @@ class ModelRouterUpdateClientRequest(DaraModel):
         self.address = address
         self.allowed_models = allowed_models
         self.contact = contact
+        self.discount = discount
         self.name = name
         self.remark = remark
         self.status = status
@@ -37,6 +39,9 @@ class ModelRouterUpdateClientRequest(DaraModel):
 
         if self.contact is not None:
             result['contact'] = self.contact
+
+        if self.discount is not None:
+            result['discount'] = self.discount
 
         if self.name is not None:
             result['name'] = self.name
@@ -59,6 +64,9 @@ class ModelRouterUpdateClientRequest(DaraModel):
 
         if m.get('contact') is not None:
             self.contact = m.get('contact')
+
+        if m.get('discount') is not None:
+            self.discount = m.get('discount')
 
         if m.get('name') is not None:
             self.name = m.get('name')

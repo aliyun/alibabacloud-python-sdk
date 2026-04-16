@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_aicontent20240611 import models as main_models
 from darabonba.model import DaraModel
 
 class RequestLogDTO(DaraModel):
@@ -18,6 +19,7 @@ class RequestLogDTO(DaraModel):
         model_code: str = None,
         model_id: int = None,
         model_name: str = None,
+        model_type: str = None,
         prompt_tokens: int = None,
         request_body: str = None,
         request_id: str = None,
@@ -28,6 +30,7 @@ class RequestLogDTO(DaraModel):
         status_code: int = None,
         symbol: str = None,
         total_tokens: int = None,
+        usage: main_models.UsageInfoDTO = None,
     ):
         self.api_key_id = api_key_id
         self.client_id = client_id
@@ -40,6 +43,7 @@ class RequestLogDTO(DaraModel):
         self.model_code = model_code
         self.model_id = model_id
         self.model_name = model_name
+        self.model_type = model_type
         self.prompt_tokens = prompt_tokens
         self.request_body = request_body
         self.request_id = request_id
@@ -50,9 +54,11 @@ class RequestLogDTO(DaraModel):
         self.status_code = status_code
         self.symbol = symbol
         self.total_tokens = total_tokens
+        self.usage = usage
 
     def validate(self):
-        pass
+        if self.usage:
+            self.usage.validate()
 
     def to_map(self):
         result = dict()
@@ -92,6 +98,9 @@ class RequestLogDTO(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+
         if self.prompt_tokens is not None:
             result['promptTokens'] = self.prompt_tokens
 
@@ -121,6 +130,9 @@ class RequestLogDTO(DaraModel):
 
         if self.total_tokens is not None:
             result['totalTokens'] = self.total_tokens
+
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
 
         return result
 
@@ -159,6 +171,9 @@ class RequestLogDTO(DaraModel):
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
 
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+
         if m.get('promptTokens') is not None:
             self.prompt_tokens = m.get('promptTokens')
 
@@ -188,6 +203,10 @@ class RequestLogDTO(DaraModel):
 
         if m.get('totalTokens') is not None:
             self.total_tokens = m.get('totalTokens')
+
+        if m.get('usage') is not None:
+            temp_model = main_models.UsageInfoDTO()
+            self.usage = temp_model.from_map(m.get('usage'))
 
         return self
 

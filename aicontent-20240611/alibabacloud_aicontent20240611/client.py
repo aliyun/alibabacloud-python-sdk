@@ -4007,8 +4007,12 @@ class Client(OpenApiClient):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
             body['contact'] = request.contact
+        if not DaraCore.is_null(request.discount):
+            body['discount'] = request.discount
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
         if not DaraCore.is_null(request.remark):
             body['remark'] = request.remark
         req = open_api_util_models.OpenApiRequest(
@@ -4045,8 +4049,12 @@ class Client(OpenApiClient):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
             body['contact'] = request.contact
+        if not DaraCore.is_null(request.discount):
+            body['discount'] = request.discount
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
         if not DaraCore.is_null(request.remark):
             body['remark'] = request.remark
         req = open_api_util_models.OpenApiRequest(
@@ -4183,6 +4191,10 @@ class Client(OpenApiClient):
             body['baseUrl'] = request.base_url
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.extensions):
+            body['extensions'] = request.extensions
+        if not DaraCore.is_null(request.in_out):
+            body['inOut'] = request.in_out
         if not DaraCore.is_null(request.max_input_length):
             body['maxInputLength'] = request.max_input_length
         if not DaraCore.is_null(request.max_output_length):
@@ -4231,6 +4243,10 @@ class Client(OpenApiClient):
             body['baseUrl'] = request.base_url
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.extensions):
+            body['extensions'] = request.extensions
+        if not DaraCore.is_null(request.in_out):
+            body['inOut'] = request.in_out
         if not DaraCore.is_null(request.max_input_length):
             body['maxInputLength'] = request.max_input_length
         if not DaraCore.is_null(request.max_output_length):
@@ -5097,6 +5113,8 @@ class Client(OpenApiClient):
             query['keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model_type):
+            query['modelType'] = request.model_type
         if not DaraCore.is_null(request.need_total_count):
             query['needTotalCount'] = request.need_total_count
         if not DaraCore.is_null(request.next_token):
@@ -5145,6 +5163,8 @@ class Client(OpenApiClient):
             query['keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model_type):
+            query['modelType'] = request.model_type
         if not DaraCore.is_null(request.need_total_count):
             query['needTotalCount'] = request.need_total_count
         if not DaraCore.is_null(request.next_token):
@@ -5307,6 +5327,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryNacosTagsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config_type):
+            query['configType'] = request.config_type
         if not DaraCore.is_null(request.group_by):
             query['groupBy'] = request.group_by
         if not DaraCore.is_null(request.max_results):
@@ -5351,6 +5373,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryNacosTagsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config_type):
+            query['configType'] = request.config_type
         if not DaraCore.is_null(request.group_by):
             query['groupBy'] = request.group_by
         if not DaraCore.is_null(request.max_results):
@@ -5770,6 +5794,8 @@ class Client(OpenApiClient):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
             body['contact'] = request.contact
+        if not DaraCore.is_null(request.discount):
+            body['discount'] = request.discount
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
         if not DaraCore.is_null(request.remark):
@@ -5811,6 +5837,8 @@ class Client(OpenApiClient):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
             body['contact'] = request.contact
+        if not DaraCore.is_null(request.discount):
+            body['discount'] = request.discount
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
         if not DaraCore.is_null(request.remark):

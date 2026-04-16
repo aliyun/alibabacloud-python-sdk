@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModelRouterQueryNacosTagsRequest(DaraModel):
     def __init__(
         self,
+        config_type: str = None,
         group_by: str = None,
         max_results: int = None,
         need_total_count: bool = None,
@@ -16,6 +17,7 @@ class ModelRouterQueryNacosTagsRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        self.config_type = config_type
         self.group_by = group_by
         self.max_results = max_results
         self.need_total_count = need_total_count
@@ -33,6 +35,9 @@ class ModelRouterQueryNacosTagsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+
         if self.group_by is not None:
             result['groupBy'] = self.group_by
 
@@ -61,6 +66,9 @@ class ModelRouterQueryNacosTagsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+
         if m.get('groupBy') is not None:
             self.group_by = m.get('groupBy')
 

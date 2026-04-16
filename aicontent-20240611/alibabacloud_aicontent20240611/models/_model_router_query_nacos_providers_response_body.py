@@ -144,13 +144,78 @@ class ModelRouterQueryNacosProvidersResponseBodyData(DaraModel):
 class ModelRouterQueryNacosProvidersResponseBodyDataModels(DaraModel):
     def __init__(
         self,
+        extensions: main_models.ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions = None,
         identifier: str = None,
+        in_out: str = None,
         input_token: str = None,
         output_token: str = None,
+        type: str = None,
     ):
+        self.extensions = extensions
         self.identifier = identifier
+        self.in_out = in_out
         self.input_token = input_token
         self.output_token = output_token
+        self.type = type
+
+    def validate(self):
+        if self.extensions:
+            self.extensions.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.extensions is not None:
+            result['extensions'] = self.extensions.to_map()
+
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+
+        if self.in_out is not None:
+            result['inOut'] = self.in_out
+
+        if self.input_token is not None:
+            result['inputToken'] = self.input_token
+
+        if self.output_token is not None:
+            result['outputToken'] = self.output_token
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extensions') is not None:
+            temp_model = main_models.ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions()
+            self.extensions = temp_model.from_map(m.get('extensions'))
+
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+
+        if m.get('inOut') is not None:
+            self.in_out = m.get('inOut')
+
+        if m.get('inputToken') is not None:
+            self.input_token = m.get('inputToken')
+
+        if m.get('outputToken') is not None:
+            self.output_token = m.get('outputToken')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions(DaraModel):
+    def __init__(
+        self,
+        async_: bool = None,
+    ):
+        self.async_ = async_
 
     def validate(self):
         pass
@@ -160,27 +225,15 @@ class ModelRouterQueryNacosProvidersResponseBodyDataModels(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.identifier is not None:
-            result['identifier'] = self.identifier
-
-        if self.input_token is not None:
-            result['inputToken'] = self.input_token
-
-        if self.output_token is not None:
-            result['outputToken'] = self.output_token
+        if self.async_ is not None:
+            result['async'] = self.async_
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('identifier') is not None:
-            self.identifier = m.get('identifier')
-
-        if m.get('inputToken') is not None:
-            self.input_token = m.get('inputToken')
-
-        if m.get('outputToken') is not None:
-            self.output_token = m.get('outputToken')
+        if m.get('async') is not None:
+            self.async_ = m.get('async')
 
         return self
 

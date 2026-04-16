@@ -85,11 +85,15 @@ class ModelRouterQueryNacosTagsResponseBody(DaraModel):
 class ModelRouterQueryNacosTagsResponseBodyData(DaraModel):
     def __init__(
         self,
+        label: str = None,
         tag: str = None,
         tag_name: str = None,
+        value: str = None,
     ):
+        self.label = label
         self.tag = tag
         self.tag_name = tag_name
+        self.value = value
 
     def validate(self):
         pass
@@ -99,21 +103,33 @@ class ModelRouterQueryNacosTagsResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.label is not None:
+            result['label'] = self.label
+
         if self.tag is not None:
             result['tag'] = self.tag
 
         if self.tag_name is not None:
             result['tagName'] = self.tag_name
 
+        if self.value is not None:
+            result['value'] = self.value
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('label') is not None:
+            self.label = m.get('label')
+
         if m.get('tag') is not None:
             self.tag = m.get('tag')
 
         if m.get('tagName') is not None:
             self.tag_name = m.get('tagName')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

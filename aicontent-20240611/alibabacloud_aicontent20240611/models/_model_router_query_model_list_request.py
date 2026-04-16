@@ -10,6 +10,7 @@ class ModelRouterQueryModelListRequest(DaraModel):
         group_by: str = None,
         keyword: str = None,
         max_results: int = None,
+        model_type: str = None,
         need_total_count: bool = None,
         next_token: str = None,
         order_by: str = None,
@@ -21,6 +22,7 @@ class ModelRouterQueryModelListRequest(DaraModel):
         self.group_by = group_by
         self.keyword = keyword
         self.max_results = max_results
+        self.model_type = model_type
         self.need_total_count = need_total_count
         self.next_token = next_token
         self.order_by = order_by
@@ -45,6 +47,9 @@ class ModelRouterQueryModelListRequest(DaraModel):
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
 
         if self.need_total_count is not None:
             result['needTotalCount'] = self.need_total_count
@@ -79,6 +84,9 @@ class ModelRouterQueryModelListRequest(DaraModel):
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
 
         if m.get('needTotalCount') is not None:
             self.need_total_count = m.get('needTotalCount')

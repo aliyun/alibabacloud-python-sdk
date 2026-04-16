@@ -14,6 +14,7 @@ class ModelRouterQueryModelListResponseBody(DaraModel):
         err_code: str = None,
         err_message: str = None,
         http_status_code: int = None,
+        max_results: int = None,
         request_id: str = None,
         success: bool = None,
     ):
@@ -21,6 +22,8 @@ class ModelRouterQueryModelListResponseBody(DaraModel):
         self.err_code = err_code
         self.err_message = err_message
         self.http_status_code = http_status_code
+        # maxResults
+        self.max_results = max_results
         self.request_id = request_id
         self.success = success
 
@@ -45,6 +48,9 @@ class ModelRouterQueryModelListResponseBody(DaraModel):
         if self.http_status_code is not None:
             result['httpStatusCode'] = self.http_status_code
 
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
@@ -67,6 +73,9 @@ class ModelRouterQueryModelListResponseBody(DaraModel):
 
         if m.get('httpStatusCode') is not None:
             self.http_status_code = m.get('httpStatusCode')
+
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
