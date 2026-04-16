@@ -73,6 +73,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         resource_server_source_type: str = None,
         resource_server_status: str = None,
         service_managed: bool = None,
+        smart_config_capabilities: List[str] = None,
         sso_type: str = None,
         status: str = None,
         update_time: int = None,
@@ -132,6 +133,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
+        self.smart_config_capabilities = smart_config_capabilities
         # The type of the single sign-on (SSO) protocol. Valid values:
         # 
         # *   saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
@@ -232,6 +234,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
         if self.service_managed is not None:
             result['ServiceManaged'] = self.service_managed
 
+        if self.smart_config_capabilities is not None:
+            result['SmartConfigCapabilities'] = self.smart_config_capabilities
+
         if self.sso_type is not None:
             result['SsoType'] = self.sso_type
 
@@ -320,6 +325,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if m.get('ServiceManaged') is not None:
             self.service_managed = m.get('ServiceManaged')
+
+        if m.get('SmartConfigCapabilities') is not None:
+            self.smart_config_capabilities = m.get('SmartConfigCapabilities')
 
         if m.get('SsoType') is not None:
             self.sso_type = m.get('SsoType')

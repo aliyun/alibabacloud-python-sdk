@@ -1,3 +1,7 @@
+2026-04-16 Version: 2.15.7
+- Update API GetApplication: add response parameters Body.Application.SmartConfigCapabilities.
+
+
 2026-04-15 Version: 2.15.6
 - Update API CreateIdentityProvider: add request parameters SamlConfig.
 - Update API ExecIdentityProviderMetadataUrlResolution: add request parameters SamlMetadataUrl.
