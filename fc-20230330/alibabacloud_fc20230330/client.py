@@ -634,11 +634,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.DeleteAliasRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteAliasResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -662,11 +660,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.DeleteAliasRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteAliasResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -690,21 +686,19 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.DeleteAliasRequest,
     ) -> main_models.DeleteAliasResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_alias_with_options(function_name, alias_name, request, headers, runtime)
+        return self.delete_alias_with_options(function_name, alias_name, headers, runtime)
 
     async def delete_alias_async(
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.DeleteAliasRequest,
     ) -> main_models.DeleteAliasResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_alias_with_options_async(function_name, alias_name, request, headers, runtime)
+        return await self.delete_alias_with_options_async(function_name, alias_name, headers, runtime)
 
     def delete_async_invoke_config_with_options(
         self,
@@ -789,11 +783,9 @@ class Client(OpenApiClient):
     def delete_concurrency_config_with_options(
         self,
         function_name: str,
-        request: main_models.DeleteConcurrencyConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteConcurrencyConfigResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -816,11 +808,9 @@ class Client(OpenApiClient):
     async def delete_concurrency_config_with_options_async(
         self,
         function_name: str,
-        request: main_models.DeleteConcurrencyConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteConcurrencyConfigResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -843,29 +833,25 @@ class Client(OpenApiClient):
     def delete_concurrency_config(
         self,
         function_name: str,
-        request: main_models.DeleteConcurrencyConfigRequest,
     ) -> main_models.DeleteConcurrencyConfigResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_concurrency_config_with_options(function_name, request, headers, runtime)
+        return self.delete_concurrency_config_with_options(function_name, headers, runtime)
 
     async def delete_concurrency_config_async(
         self,
         function_name: str,
-        request: main_models.DeleteConcurrencyConfigRequest,
     ) -> main_models.DeleteConcurrencyConfigResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_concurrency_config_with_options_async(function_name, request, headers, runtime)
+        return await self.delete_concurrency_config_with_options_async(function_name, headers, runtime)
 
     def delete_custom_domain_with_options(
         self,
         domain_name: str,
-        request: main_models.DeleteCustomDomainRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteCustomDomainResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -888,11 +874,9 @@ class Client(OpenApiClient):
     async def delete_custom_domain_with_options_async(
         self,
         domain_name: str,
-        request: main_models.DeleteCustomDomainRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteCustomDomainResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -915,29 +899,25 @@ class Client(OpenApiClient):
     def delete_custom_domain(
         self,
         domain_name: str,
-        request: main_models.DeleteCustomDomainRequest,
     ) -> main_models.DeleteCustomDomainResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_custom_domain_with_options(domain_name, request, headers, runtime)
+        return self.delete_custom_domain_with_options(domain_name, headers, runtime)
 
     async def delete_custom_domain_async(
         self,
         domain_name: str,
-        request: main_models.DeleteCustomDomainRequest,
     ) -> main_models.DeleteCustomDomainResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_custom_domain_with_options_async(domain_name, request, headers, runtime)
+        return await self.delete_custom_domain_with_options_async(domain_name, headers, runtime)
 
     def delete_function_with_options(
         self,
         function_name: str,
-        request: main_models.DeleteFunctionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFunctionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -960,11 +940,9 @@ class Client(OpenApiClient):
     async def delete_function_with_options_async(
         self,
         function_name: str,
-        request: main_models.DeleteFunctionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFunctionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -987,30 +965,26 @@ class Client(OpenApiClient):
     def delete_function(
         self,
         function_name: str,
-        request: main_models.DeleteFunctionRequest,
     ) -> main_models.DeleteFunctionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_function_with_options(function_name, request, headers, runtime)
+        return self.delete_function_with_options(function_name, headers, runtime)
 
     async def delete_function_async(
         self,
         function_name: str,
-        request: main_models.DeleteFunctionRequest,
     ) -> main_models.DeleteFunctionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_function_with_options_async(function_name, request, headers, runtime)
+        return await self.delete_function_with_options_async(function_name, headers, runtime)
 
     def delete_function_version_with_options(
         self,
         function_name: str,
         version_id: str,
-        request: main_models.DeleteFunctionVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFunctionVersionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1034,11 +1008,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         version_id: str,
-        request: main_models.DeleteFunctionVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteFunctionVersionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1062,31 +1034,27 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         version_id: str,
-        request: main_models.DeleteFunctionVersionRequest,
     ) -> main_models.DeleteFunctionVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_function_version_with_options(function_name, version_id, request, headers, runtime)
+        return self.delete_function_version_with_options(function_name, version_id, headers, runtime)
 
     async def delete_function_version_async(
         self,
         function_name: str,
         version_id: str,
-        request: main_models.DeleteFunctionVersionRequest,
     ) -> main_models.DeleteFunctionVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_function_version_with_options_async(function_name, version_id, request, headers, runtime)
+        return await self.delete_function_version_with_options_async(function_name, version_id, headers, runtime)
 
     def delete_layer_version_with_options(
         self,
         layer_name: str,
         version: str,
-        request: main_models.DeleteLayerVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteLayerVersionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1110,11 +1078,9 @@ class Client(OpenApiClient):
         self,
         layer_name: str,
         version: str,
-        request: main_models.DeleteLayerVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteLayerVersionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1138,21 +1104,19 @@ class Client(OpenApiClient):
         self,
         layer_name: str,
         version: str,
-        request: main_models.DeleteLayerVersionRequest,
     ) -> main_models.DeleteLayerVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_layer_version_with_options(layer_name, version, request, headers, runtime)
+        return self.delete_layer_version_with_options(layer_name, version, headers, runtime)
 
     async def delete_layer_version_async(
         self,
         layer_name: str,
         version: str,
-        request: main_models.DeleteLayerVersionRequest,
     ) -> main_models.DeleteLayerVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_layer_version_with_options_async(layer_name, version, request, headers, runtime)
+        return await self.delete_layer_version_with_options_async(layer_name, version, headers, runtime)
 
     def delete_provision_config_with_options(
         self,
@@ -1402,11 +1366,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.DeleteTriggerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteTriggerResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1430,11 +1392,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.DeleteTriggerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteTriggerResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1458,31 +1418,27 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.DeleteTriggerRequest,
     ) -> main_models.DeleteTriggerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_trigger_with_options(function_name, trigger_name, request, headers, runtime)
+        return self.delete_trigger_with_options(function_name, trigger_name, headers, runtime)
 
     async def delete_trigger_async(
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.DeleteTriggerRequest,
     ) -> main_models.DeleteTriggerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_trigger_with_options_async(function_name, trigger_name, request, headers, runtime)
+        return await self.delete_trigger_with_options_async(function_name, trigger_name, headers, runtime)
 
     def delete_vpc_binding_with_options(
         self,
         function_name: str,
         vpc_id: str,
-        request: main_models.DeleteVpcBindingRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteVpcBindingResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1506,11 +1462,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         vpc_id: str,
-        request: main_models.DeleteVpcBindingRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteVpcBindingResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1534,21 +1488,19 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         vpc_id: str,
-        request: main_models.DeleteVpcBindingRequest,
     ) -> main_models.DeleteVpcBindingResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_vpc_binding_with_options(function_name, vpc_id, request, headers, runtime)
+        return self.delete_vpc_binding_with_options(function_name, vpc_id, headers, runtime)
 
     async def delete_vpc_binding_async(
         self,
         function_name: str,
         vpc_id: str,
-        request: main_models.DeleteVpcBindingRequest,
     ) -> main_models.DeleteVpcBindingResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_vpc_binding_with_options_async(function_name, vpc_id, request, headers, runtime)
+        return await self.delete_vpc_binding_with_options_async(function_name, vpc_id, headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -1713,11 +1665,9 @@ class Client(OpenApiClient):
     def enable_function_invocation_with_options(
         self,
         function_name: str,
-        request: main_models.EnableFunctionInvocationRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.EnableFunctionInvocationResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1740,11 +1690,9 @@ class Client(OpenApiClient):
     async def enable_function_invocation_with_options_async(
         self,
         function_name: str,
-        request: main_models.EnableFunctionInvocationRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.EnableFunctionInvocationResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1767,30 +1715,26 @@ class Client(OpenApiClient):
     def enable_function_invocation(
         self,
         function_name: str,
-        request: main_models.EnableFunctionInvocationRequest,
     ) -> main_models.EnableFunctionInvocationResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.enable_function_invocation_with_options(function_name, request, headers, runtime)
+        return self.enable_function_invocation_with_options(function_name, headers, runtime)
 
     async def enable_function_invocation_async(
         self,
         function_name: str,
-        request: main_models.EnableFunctionInvocationRequest,
     ) -> main_models.EnableFunctionInvocationResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.enable_function_invocation_with_options_async(function_name, request, headers, runtime)
+        return await self.enable_function_invocation_with_options_async(function_name, headers, runtime)
 
     def get_alias_with_options(
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.GetAliasRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAliasResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1814,11 +1758,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.GetAliasRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetAliasResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -1842,21 +1784,19 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.GetAliasRequest,
     ) -> main_models.GetAliasResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_alias_with_options(function_name, alias_name, request, headers, runtime)
+        return self.get_alias_with_options(function_name, alias_name, headers, runtime)
 
     async def get_alias_async(
         self,
         function_name: str,
         alias_name: str,
-        request: main_models.GetAliasRequest,
     ) -> main_models.GetAliasResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_alias_with_options_async(function_name, alias_name, request, headers, runtime)
+        return await self.get_alias_with_options_async(function_name, alias_name, headers, runtime)
 
     def get_async_invoke_config_with_options(
         self,
@@ -2025,11 +1965,9 @@ class Client(OpenApiClient):
     def get_concurrency_config_with_options(
         self,
         function_name: str,
-        request: main_models.GetConcurrencyConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetConcurrencyConfigResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2052,11 +1990,9 @@ class Client(OpenApiClient):
     async def get_concurrency_config_with_options_async(
         self,
         function_name: str,
-        request: main_models.GetConcurrencyConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetConcurrencyConfigResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2079,29 +2015,25 @@ class Client(OpenApiClient):
     def get_concurrency_config(
         self,
         function_name: str,
-        request: main_models.GetConcurrencyConfigRequest,
     ) -> main_models.GetConcurrencyConfigResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_concurrency_config_with_options(function_name, request, headers, runtime)
+        return self.get_concurrency_config_with_options(function_name, headers, runtime)
 
     async def get_concurrency_config_async(
         self,
         function_name: str,
-        request: main_models.GetConcurrencyConfigRequest,
     ) -> main_models.GetConcurrencyConfigResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_concurrency_config_with_options_async(function_name, request, headers, runtime)
+        return await self.get_concurrency_config_with_options_async(function_name, headers, runtime)
 
     def get_custom_domain_with_options(
         self,
         domain_name: str,
-        request: main_models.GetCustomDomainRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetCustomDomainResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2124,11 +2056,9 @@ class Client(OpenApiClient):
     async def get_custom_domain_with_options_async(
         self,
         domain_name: str,
-        request: main_models.GetCustomDomainRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetCustomDomainResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2151,20 +2081,18 @@ class Client(OpenApiClient):
     def get_custom_domain(
         self,
         domain_name: str,
-        request: main_models.GetCustomDomainRequest,
     ) -> main_models.GetCustomDomainResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_custom_domain_with_options(domain_name, request, headers, runtime)
+        return self.get_custom_domain_with_options(domain_name, headers, runtime)
 
     async def get_custom_domain_async(
         self,
         domain_name: str,
-        request: main_models.GetCustomDomainRequest,
     ) -> main_models.GetCustomDomainResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_custom_domain_with_options_async(domain_name, request, headers, runtime)
+        return await self.get_custom_domain_with_options_async(domain_name, headers, runtime)
 
     def get_function_with_options(
         self,
@@ -2330,11 +2258,9 @@ class Client(OpenApiClient):
         self,
         layer_name: str,
         version: str,
-        request: main_models.GetLayerVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetLayerVersionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2358,11 +2284,9 @@ class Client(OpenApiClient):
         self,
         layer_name: str,
         version: str,
-        request: main_models.GetLayerVersionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetLayerVersionResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2386,30 +2310,26 @@ class Client(OpenApiClient):
         self,
         layer_name: str,
         version: str,
-        request: main_models.GetLayerVersionRequest,
     ) -> main_models.GetLayerVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_layer_version_with_options(layer_name, version, request, headers, runtime)
+        return self.get_layer_version_with_options(layer_name, version, headers, runtime)
 
     async def get_layer_version_async(
         self,
         layer_name: str,
         version: str,
-        request: main_models.GetLayerVersionRequest,
     ) -> main_models.GetLayerVersionResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_layer_version_with_options_async(layer_name, version, request, headers, runtime)
+        return await self.get_layer_version_with_options_async(layer_name, version, headers, runtime)
 
     def get_layer_version_by_arn_with_options(
         self,
         arn: str,
-        request: main_models.GetLayerVersionByArnRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetLayerVersionByArnResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2432,11 +2352,9 @@ class Client(OpenApiClient):
     async def get_layer_version_by_arn_with_options_async(
         self,
         arn: str,
-        request: main_models.GetLayerVersionByArnRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetLayerVersionByArnResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2459,20 +2377,18 @@ class Client(OpenApiClient):
     def get_layer_version_by_arn(
         self,
         arn: str,
-        request: main_models.GetLayerVersionByArnRequest,
     ) -> main_models.GetLayerVersionByArnResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_layer_version_by_arn_with_options(arn, request, headers, runtime)
+        return self.get_layer_version_by_arn_with_options(arn, headers, runtime)
 
     async def get_layer_version_by_arn_async(
         self,
         arn: str,
-        request: main_models.GetLayerVersionByArnRequest,
     ) -> main_models.GetLayerVersionByArnResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_layer_version_by_arn_with_options_async(arn, request, headers, runtime)
+        return await self.get_layer_version_by_arn_with_options_async(arn, headers, runtime)
 
     def get_provision_config_with_options(
         self,
@@ -2722,11 +2638,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.GetTriggerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetTriggerResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2750,11 +2664,9 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.GetTriggerRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetTriggerResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2778,21 +2690,19 @@ class Client(OpenApiClient):
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.GetTriggerRequest,
     ) -> main_models.GetTriggerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_trigger_with_options(function_name, trigger_name, request, headers, runtime)
+        return self.get_trigger_with_options(function_name, trigger_name, headers, runtime)
 
     async def get_trigger_async(
         self,
         function_name: str,
         trigger_name: str,
-        request: main_models.GetTriggerRequest,
     ) -> main_models.GetTriggerResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_trigger_with_options_async(function_name, trigger_name, request, headers, runtime)
+        return await self.get_trigger_with_options_async(function_name, trigger_name, headers, runtime)
 
     def invoke_function_with_options(
         self,
@@ -4327,11 +4237,9 @@ class Client(OpenApiClient):
     def list_vpc_bindings_with_options(
         self,
         function_name: str,
-        request: main_models.ListVpcBindingsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListVpcBindingsResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4354,11 +4262,9 @@ class Client(OpenApiClient):
     async def list_vpc_bindings_with_options_async(
         self,
         function_name: str,
-        request: main_models.ListVpcBindingsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListVpcBindingsResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -4381,20 +4287,18 @@ class Client(OpenApiClient):
     def list_vpc_bindings(
         self,
         function_name: str,
-        request: main_models.ListVpcBindingsRequest,
     ) -> main_models.ListVpcBindingsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_vpc_bindings_with_options(function_name, request, headers, runtime)
+        return self.list_vpc_bindings_with_options(function_name, headers, runtime)
 
     async def list_vpc_bindings_async(
         self,
         function_name: str,
-        request: main_models.ListVpcBindingsRequest,
     ) -> main_models.ListVpcBindingsResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_vpc_bindings_with_options_async(function_name, request, headers, runtime)
+        return await self.list_vpc_bindings_with_options_async(function_name, headers, runtime)
 
     def pause_session_with_options(
         self,
