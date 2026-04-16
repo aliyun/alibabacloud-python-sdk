@@ -1,3 +1,7 @@
+2026-04-16 Version: 1.5.3
+- Update API DescribeResourceConstraints: add response parameters Body.Data.zoneSupportCompactionService.
+
+
 2026-04-08 Version: 1.5.2
 - Update API CreateInstanceV1: add request parameters body.EnableMultiAz.
 - Update API DescribeInstances: add response parameters Body.Data.$.EnableMultiAz.

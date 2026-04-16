@@ -108,6 +108,7 @@ class DescribeResourceConstraintsResponseBodyData(DaraModel):
         zone_supported_eed_types: Dict[str, List[str]] = None,
         zone_supported_spec_types: Dict[str, List[str]] = None,
         compaction_service_cu_constraint: main_models.DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint = None,
+        zone_support_compaction_service: Dict[str, List[main_models.DataZoneSupportCompactionServiceValue]] = None,
     ):
         self.agent_cu = agent_cu
         self.be_cu = be_cu
@@ -129,6 +130,7 @@ class DescribeResourceConstraintsResponseBodyData(DaraModel):
         self.zone_supported_eed_types = zone_supported_eed_types
         self.zone_supported_spec_types = zone_supported_spec_types
         self.compaction_service_cu_constraint = compaction_service_cu_constraint
+        self.zone_support_compaction_service = zone_support_compaction_service
 
     def validate(self):
         if self.be_number:
@@ -165,6 +167,11 @@ class DescribeResourceConstraintsResponseBodyData(DaraModel):
             self.version_constraint.validate()
         if self.compaction_service_cu_constraint:
             self.compaction_service_cu_constraint.validate()
+        if self.zone_support_compaction_service:
+            for v1 in self.zone_support_compaction_service.values():
+                for v2 in v1:
+                     if v2:
+                        v2.validate()
 
     def to_map(self):
         result = dict()
@@ -240,6 +247,14 @@ class DescribeResourceConstraintsResponseBodyData(DaraModel):
 
         if self.compaction_service_cu_constraint is not None:
             result['compactionServiceCuConstraint'] = self.compaction_service_cu_constraint.to_map()
+
+        result['zoneSupportCompactionService'] = {}
+        if self.zone_support_compaction_service is not None:
+            for k1, v1 in self.zone_support_compaction_service.items():
+                l1 = []
+                for k2 in v1:
+                    l1.append(k2.to_map() if k2 else None)
+                result['zoneSupportCompactionService'][k1] = l1
 
         return result
 
@@ -326,6 +341,15 @@ class DescribeResourceConstraintsResponseBodyData(DaraModel):
         if m.get('compactionServiceCuConstraint') is not None:
             temp_model = main_models.DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint()
             self.compaction_service_cu_constraint = temp_model.from_map(m.get('compactionServiceCuConstraint'))
+
+        self.zone_support_compaction_service = {}
+        if m.get('zoneSupportCompactionService') is not None:
+            for k1, v1 in m.get('zoneSupportCompactionService').items():
+                l1 = []
+                for k2 in v1:
+                    temp_model = main_models.DataZoneSupportCompactionServiceValue()
+                    l1.append(temp_model.from_map(k2))
+                self.zone_support_compaction_service[k1] = l1
 
         return self
 

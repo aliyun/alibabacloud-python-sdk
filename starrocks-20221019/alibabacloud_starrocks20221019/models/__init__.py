@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ._instance_config_dto import InstanceConfigDto
 from ._resource_spec import ResourceSpec
+from ._data_zone_support_compaction_service_value import DataZoneSupportCompactionServiceValue
 from ._add_backup_policy_request import AddBackupPolicyRequest
 from ._add_backup_policy_response_body import AddBackupPolicyResponseBody
 from ._add_backup_policy_response import AddBackupPolicyResponse
@@ -411,6 +412,7 @@ from ._tag_resources_request import TagResourcesRequestTag
 __all__ = [
     InstanceConfigDto,
     ResourceSpec,
+    DataZoneSupportCompactionServiceValue,
     AddBackupPolicyRequest,
     AddBackupPolicyResponseBody,
     AddBackupPolicyResponse,
