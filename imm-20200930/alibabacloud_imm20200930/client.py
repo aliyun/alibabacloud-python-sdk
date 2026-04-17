@@ -7750,6 +7750,8 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.project_name):
@@ -7784,6 +7786,8 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.project_name):

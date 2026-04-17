@@ -1,3 +1,7 @@
+2026-04-17 Version: 4.8.2
+- Update API ListBindings: add request parameters Name.
+
+
 2026-03-24 Version: 4.8.1
 - Update API CreateMediaConvertTask: add request parameters TargetGroups.
 - Update API CreateMediaConvertTask: add request parameters Targets.$.AttachedPicture.

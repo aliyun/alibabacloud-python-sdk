@@ -9,6 +9,7 @@ class ListBindingsRequest(DaraModel):
         self,
         dataset_name: str = None,
         max_results: int = None,
+        name: str = None,
         next_token: str = None,
         project_name: str = None,
     ):
@@ -17,6 +18,7 @@ class ListBindingsRequest(DaraModel):
         # *   The maximum number of bindings to return. Valid values: 0 to 200.
         # *   If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        self.name = name
         # *   The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
         # *   The next call to the operation returns results lexicographically after the NextToken parameter value.
         # *   You do not need to specify this parameter in your initial request.
@@ -40,6 +42,9 @@ class ListBindingsRequest(DaraModel):
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
+        if self.name is not None:
+            result['Name'] = self.name
+
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
@@ -55,6 +60,9 @@ class ListBindingsRequest(DaraModel):
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
