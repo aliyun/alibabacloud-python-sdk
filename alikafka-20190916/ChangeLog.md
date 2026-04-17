@@ -1,3 +1,11 @@
+2026-04-17 Version: 2.15.1
+- Update API CreatePrePayInstance: add request parameters ConfluentConfig.KsqlList.
+- Update API CreatePrePayOrder: add request parameters ConfluentConfig.KsqlList.
+- Update API GetInstanceList: add response parameters Body.InstanceList.$.ConfluentConfig.KsqlList.
+- Update API GetInstanceList: add response parameters Body.InstanceList.$.ConfluentInstanceComponents.$.internalId.
+- Update API UpgradePrePayOrder: add request parameters ConfluentConfig.KsqlList.
+
+
 2025-12-22 Version: 2.15.0
 - Support API AddUserDefinedSg.
 - Support API DeleteUserDefinedSg.

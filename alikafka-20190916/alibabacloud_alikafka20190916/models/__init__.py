@@ -1,0 +1,557 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_user_defined_sg_request import AddUserDefinedSgRequest
+from ._add_user_defined_sg_shrink_request import AddUserDefinedSgShrinkRequest
+from ._add_user_defined_sg_response_body import AddUserDefinedSgResponseBody
+from ._add_user_defined_sg_response import AddUserDefinedSgResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._convert_post_pay_order_request import ConvertPostPayOrderRequest
+from ._convert_post_pay_order_response_body import ConvertPostPayOrderResponseBody
+from ._convert_post_pay_order_response import ConvertPostPayOrderResponse
+from ._create_acl_request import CreateAclRequest
+from ._create_acl_response_body import CreateAclResponseBody
+from ._create_acl_response import CreateAclResponse
+from ._create_consumer_group_request import CreateConsumerGroupRequest
+from ._create_consumer_group_response_body import CreateConsumerGroupResponseBody
+from ._create_consumer_group_response import CreateConsumerGroupResponse
+from ._create_post_pay_instance_request import CreatePostPayInstanceRequest
+from ._create_post_pay_instance_shrink_request import CreatePostPayInstanceShrinkRequest
+from ._create_post_pay_instance_response_body import CreatePostPayInstanceResponseBody
+from ._create_post_pay_instance_response import CreatePostPayInstanceResponse
+from ._create_post_pay_order_request import CreatePostPayOrderRequest
+from ._create_post_pay_order_shrink_request import CreatePostPayOrderShrinkRequest
+from ._create_post_pay_order_response_body import CreatePostPayOrderResponseBody
+from ._create_post_pay_order_response import CreatePostPayOrderResponse
+from ._create_pre_pay_instance_request import CreatePrePayInstanceRequest
+from ._create_pre_pay_instance_shrink_request import CreatePrePayInstanceShrinkRequest
+from ._create_pre_pay_instance_response_body import CreatePrePayInstanceResponseBody
+from ._create_pre_pay_instance_response import CreatePrePayInstanceResponse
+from ._create_pre_pay_order_request import CreatePrePayOrderRequest
+from ._create_pre_pay_order_shrink_request import CreatePrePayOrderShrinkRequest
+from ._create_pre_pay_order_response_body import CreatePrePayOrderResponseBody
+from ._create_pre_pay_order_response import CreatePrePayOrderResponse
+from ._create_sasl_user_request import CreateSaslUserRequest
+from ._create_sasl_user_response_body import CreateSaslUserResponseBody
+from ._create_sasl_user_response import CreateSaslUserResponse
+from ._create_scheduled_scaling_rule_request import CreateScheduledScalingRuleRequest
+from ._create_scheduled_scaling_rule_shrink_request import CreateScheduledScalingRuleShrinkRequest
+from ._create_scheduled_scaling_rule_response_body import CreateScheduledScalingRuleResponseBody
+from ._create_scheduled_scaling_rule_response import CreateScheduledScalingRuleResponse
+from ._create_topic_request import CreateTopicRequest
+from ._create_topic_response_body import CreateTopicResponseBody
+from ._create_topic_response import CreateTopicResponse
+from ._delete_acl_request import DeleteAclRequest
+from ._delete_acl_response_body import DeleteAclResponseBody
+from ._delete_acl_response import DeleteAclResponse
+from ._delete_consumer_group_request import DeleteConsumerGroupRequest
+from ._delete_consumer_group_response_body import DeleteConsumerGroupResponseBody
+from ._delete_consumer_group_response import DeleteConsumerGroupResponse
+from ._delete_instance_request import DeleteInstanceRequest
+from ._delete_instance_response_body import DeleteInstanceResponseBody
+from ._delete_instance_response import DeleteInstanceResponse
+from ._delete_sasl_user_request import DeleteSaslUserRequest
+from ._delete_sasl_user_response_body import DeleteSaslUserResponseBody
+from ._delete_sasl_user_response import DeleteSaslUserResponse
+from ._delete_scheduled_scaling_rule_request import DeleteScheduledScalingRuleRequest
+from ._delete_scheduled_scaling_rule_response_body import DeleteScheduledScalingRuleResponseBody
+from ._delete_scheduled_scaling_rule_response import DeleteScheduledScalingRuleResponse
+from ._delete_topic_request import DeleteTopicRequest
+from ._delete_topic_response_body import DeleteTopicResponseBody
+from ._delete_topic_response import DeleteTopicResponse
+from ._delete_user_defined_sg_request import DeleteUserDefinedSgRequest
+from ._delete_user_defined_sg_shrink_request import DeleteUserDefinedSgShrinkRequest
+from ._delete_user_defined_sg_response_body import DeleteUserDefinedSgResponseBody
+from ._delete_user_defined_sg_response import DeleteUserDefinedSgResponse
+from ._describe_acl_resource_name_request import DescribeAclResourceNameRequest
+from ._describe_acl_resource_name_response_body import DescribeAclResourceNameResponseBody
+from ._describe_acl_resource_name_response import DescribeAclResourceNameResponse
+from ._describe_acls_request import DescribeAclsRequest
+from ._describe_acls_response_body import DescribeAclsResponseBody
+from ._describe_acls_response import DescribeAclsResponse
+from ._describe_sasl_users_request import DescribeSaslUsersRequest
+from ._describe_sasl_users_response_body import DescribeSaslUsersResponseBody
+from ._describe_sasl_users_response import DescribeSaslUsersResponse
+from ._downgrade_post_pay_order_request import DowngradePostPayOrderRequest
+from ._downgrade_post_pay_order_shrink_request import DowngradePostPayOrderShrinkRequest
+from ._downgrade_post_pay_order_response_body import DowngradePostPayOrderResponseBody
+from ._downgrade_post_pay_order_response import DowngradePostPayOrderResponse
+from ._downgrade_pre_pay_order_request import DowngradePrePayOrderRequest
+from ._downgrade_pre_pay_order_shrink_request import DowngradePrePayOrderShrinkRequest
+from ._downgrade_pre_pay_order_response_body import DowngradePrePayOrderResponseBody
+from ._downgrade_pre_pay_order_response import DowngradePrePayOrderResponse
+from ._enable_auto_group_creation_request import EnableAutoGroupCreationRequest
+from ._enable_auto_group_creation_response_body import EnableAutoGroupCreationResponseBody
+from ._enable_auto_group_creation_response import EnableAutoGroupCreationResponse
+from ._enable_auto_topic_creation_request import EnableAutoTopicCreationRequest
+from ._enable_auto_topic_creation_response_body import EnableAutoTopicCreationResponseBody
+from ._enable_auto_topic_creation_response import EnableAutoTopicCreationResponse
+from ._failover_test_request import FailoverTestRequest
+from ._failover_test_response_body import FailoverTestResponseBody
+from ._failover_test_response import FailoverTestResponse
+from ._get_all_instance_id_list_request import GetAllInstanceIdListRequest
+from ._get_all_instance_id_list_response_body import GetAllInstanceIdListResponseBody
+from ._get_all_instance_id_list_response import GetAllInstanceIdListResponse
+from ._get_allowed_ip_list_request import GetAllowedIpListRequest
+from ._get_allowed_ip_list_response_body import GetAllowedIpListResponseBody
+from ._get_allowed_ip_list_response import GetAllowedIpListResponse
+from ._get_auto_scaling_configuration_request import GetAutoScalingConfigurationRequest
+from ._get_auto_scaling_configuration_response_body import GetAutoScalingConfigurationResponseBody
+from ._get_auto_scaling_configuration_response import GetAutoScalingConfigurationResponse
+from ._get_consumer_list_request import GetConsumerListRequest
+from ._get_consumer_list_response_body import GetConsumerListResponseBody
+from ._get_consumer_list_response import GetConsumerListResponse
+from ._get_consumer_progress_request import GetConsumerProgressRequest
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBody
+from ._get_consumer_progress_response import GetConsumerProgressResponse
+from ._get_instance_list_request import GetInstanceListRequest
+from ._get_instance_list_response_body import GetInstanceListResponseBody
+from ._get_instance_list_response import GetInstanceListResponse
+from ._get_kafka_client_ip_request import GetKafkaClientIpRequest
+from ._get_kafka_client_ip_response_body import GetKafkaClientIpResponseBody
+from ._get_kafka_client_ip_response import GetKafkaClientIpResponse
+from ._get_quota_tip_request import GetQuotaTipRequest
+from ._get_quota_tip_response_body import GetQuotaTipResponseBody
+from ._get_quota_tip_response import GetQuotaTipResponse
+from ._get_risk_list_request import GetRiskListRequest
+from ._get_risk_list_response_body import GetRiskListResponseBody
+from ._get_risk_list_response import GetRiskListResponse
+from ._get_topic_list_request import GetTopicListRequest
+from ._get_topic_list_response_body import GetTopicListResponseBody
+from ._get_topic_list_response import GetTopicListResponse
+from ._get_topic_status_request import GetTopicStatusRequest
+from ._get_topic_status_response_body import GetTopicStatusResponseBody
+from ._get_topic_status_response import GetTopicStatusResponse
+from ._get_topic_subscribe_status_request import GetTopicSubscribeStatusRequest
+from ._get_topic_subscribe_status_response_body import GetTopicSubscribeStatusResponseBody
+from ._get_topic_subscribe_status_response import GetTopicSubscribeStatusResponse
+from ._list_rebalance_info_request import ListRebalanceInfoRequest
+from ._list_rebalance_info_response_body import ListRebalanceInfoResponseBody
+from ._list_rebalance_info_response import ListRebalanceInfoResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_instance_name_request import ModifyInstanceNameRequest
+from ._modify_instance_name_response_body import ModifyInstanceNameResponseBody
+from ._modify_instance_name_response import ModifyInstanceNameResponse
+from ._modify_partition_num_request import ModifyPartitionNumRequest
+from ._modify_partition_num_response_body import ModifyPartitionNumResponseBody
+from ._modify_partition_num_response import ModifyPartitionNumResponse
+from ._modify_scheduled_scaling_rule_request import ModifyScheduledScalingRuleRequest
+from ._modify_scheduled_scaling_rule_response_body import ModifyScheduledScalingRuleResponseBody
+from ._modify_scheduled_scaling_rule_response import ModifyScheduledScalingRuleResponse
+from ._modify_topic_remark_request import ModifyTopicRemarkRequest
+from ._modify_topic_remark_response_body import ModifyTopicRemarkResponseBody
+from ._modify_topic_remark_response import ModifyTopicRemarkResponse
+from ._modify_user_defined_sg_request import ModifyUserDefinedSgRequest
+from ._modify_user_defined_sg_shrink_request import ModifyUserDefinedSgShrinkRequest
+from ._modify_user_defined_sg_response_body import ModifyUserDefinedSgResponseBody
+from ._modify_user_defined_sg_response import ModifyUserDefinedSgResponse
+from ._query_message_request import QueryMessageRequest
+from ._query_message_response_body import QueryMessageResponseBody
+from ._query_message_response import QueryMessageResponse
+from ._release_instance_request import ReleaseInstanceRequest
+from ._release_instance_response_body import ReleaseInstanceResponseBody
+from ._release_instance_response import ReleaseInstanceResponse
+from ._reopen_instance_request import ReopenInstanceRequest
+from ._reopen_instance_response_body import ReopenInstanceResponseBody
+from ._reopen_instance_response import ReopenInstanceResponse
+from ._start_instance_request import StartInstanceRequest
+from ._start_instance_response_body import StartInstanceResponseBody
+from ._start_instance_response import StartInstanceResponse
+from ._stop_instance_request import StopInstanceRequest
+from ._stop_instance_response_body import StopInstanceResponseBody
+from ._stop_instance_response import StopInstanceResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_allowed_ip_request import UpdateAllowedIpRequest
+from ._update_allowed_ip_response_body import UpdateAllowedIpResponseBody
+from ._update_allowed_ip_response import UpdateAllowedIpResponse
+from ._update_consumer_offset_request import UpdateConsumerOffsetRequest
+from ._update_consumer_offset_shrink_request import UpdateConsumerOffsetShrinkRequest
+from ._update_consumer_offset_response_body import UpdateConsumerOffsetResponseBody
+from ._update_consumer_offset_response import UpdateConsumerOffsetResponse
+from ._update_instance_config_request import UpdateInstanceConfigRequest
+from ._update_instance_config_response_body import UpdateInstanceConfigResponseBody
+from ._update_instance_config_response import UpdateInstanceConfigResponse
+from ._update_topic_config_request import UpdateTopicConfigRequest
+from ._update_topic_config_response_body import UpdateTopicConfigResponseBody
+from ._update_topic_config_response import UpdateTopicConfigResponse
+from ._upgrade_instance_version_request import UpgradeInstanceVersionRequest
+from ._upgrade_instance_version_response_body import UpgradeInstanceVersionResponseBody
+from ._upgrade_instance_version_response import UpgradeInstanceVersionResponse
+from ._upgrade_post_pay_order_request import UpgradePostPayOrderRequest
+from ._upgrade_post_pay_order_shrink_request import UpgradePostPayOrderShrinkRequest
+from ._upgrade_post_pay_order_response_body import UpgradePostPayOrderResponseBody
+from ._upgrade_post_pay_order_response import UpgradePostPayOrderResponse
+from ._upgrade_pre_pay_order_request import UpgradePrePayOrderRequest
+from ._upgrade_pre_pay_order_shrink_request import UpgradePrePayOrderShrinkRequest
+from ._upgrade_pre_pay_order_response_body import UpgradePrePayOrderResponseBody
+from ._upgrade_pre_pay_order_response import UpgradePrePayOrderResponse
+from ._create_consumer_group_request import CreateConsumerGroupRequestTag
+from ._create_post_pay_instance_request import CreatePostPayInstanceRequestServerlessConfig
+from ._create_post_pay_instance_request import CreatePostPayInstanceRequestTag
+from ._create_post_pay_instance_shrink_request import CreatePostPayInstanceShrinkRequestTag
+from ._create_post_pay_instance_response_body import CreatePostPayInstanceResponseBodyData
+from ._create_post_pay_order_request import CreatePostPayOrderRequestServerlessConfig
+from ._create_post_pay_order_request import CreatePostPayOrderRequestTag
+from ._create_post_pay_order_shrink_request import CreatePostPayOrderShrinkRequestTag
+from ._create_pre_pay_instance_request import CreatePrePayInstanceRequestConfluentConfigKsqlList
+from ._create_pre_pay_instance_request import CreatePrePayInstanceRequestConfluentConfig
+from ._create_pre_pay_instance_request import CreatePrePayInstanceRequestTag
+from ._create_pre_pay_instance_shrink_request import CreatePrePayInstanceShrinkRequestTag
+from ._create_pre_pay_instance_response_body import CreatePrePayInstanceResponseBodyData
+from ._create_pre_pay_order_request import CreatePrePayOrderRequestConfluentConfigKsqlList
+from ._create_pre_pay_order_request import CreatePrePayOrderRequestConfluentConfig
+from ._create_pre_pay_order_request import CreatePrePayOrderRequestTag
+from ._create_pre_pay_order_shrink_request import CreatePrePayOrderShrinkRequestTag
+from ._create_topic_request import CreateTopicRequestTag
+from ._describe_acl_resource_name_response_body import DescribeAclResourceNameResponseBodyData
+from ._describe_acls_response_body import DescribeAclsResponseBodyKafkaAclListKafkaAclVO
+from ._describe_acls_response_body import DescribeAclsResponseBodyKafkaAclList
+from ._describe_sasl_users_response_body import DescribeSaslUsersResponseBodySaslUserListSaslUserVO
+from ._describe_sasl_users_response_body import DescribeSaslUsersResponseBodySaslUserList
+from ._downgrade_post_pay_order_request import DowngradePostPayOrderRequestServerlessConfig
+from ._downgrade_pre_pay_order_request import DowngradePrePayOrderRequestConfluentConfig
+from ._get_allowed_ip_list_response_body import GetAllowedIpListResponseBodyAllowedListInternetList
+from ._get_allowed_ip_list_response_body import GetAllowedIpListResponseBodyAllowedListVpcList
+from ._get_allowed_ip_list_response_body import GetAllowedIpListResponseBodyAllowedList
+from ._get_auto_scaling_configuration_response_body import GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes
+from ._get_auto_scaling_configuration_response_body import GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules
+from ._get_auto_scaling_configuration_response_body import GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules
+from ._get_auto_scaling_configuration_response_body import GetAutoScalingConfigurationResponseBodyData
+from ._get_consumer_list_response_body import GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO
+from ._get_consumer_list_response_body import GetConsumerListResponseBodyConsumerListConsumerVOTags
+from ._get_consumer_list_response_body import GetConsumerListResponseBodyConsumerListConsumerVO
+from ._get_consumer_list_response_body import GetConsumerListResponseBodyConsumerList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgressTopicList
+from ._get_consumer_progress_response_body import GetConsumerProgressResponseBodyConsumerProgress
+from ._get_instance_list_request import GetInstanceListRequestTag
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOTags
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceListInstanceVO
+from ._get_instance_list_response_body import GetInstanceListResponseBodyInstanceList
+from ._get_kafka_client_ip_response_body import GetKafkaClientIpResponseBodyDataDataDataDataData
+from ._get_kafka_client_ip_response_body import GetKafkaClientIpResponseBodyDataDataDataData
+from ._get_kafka_client_ip_response_body import GetKafkaClientIpResponseBodyDataDataData
+from ._get_kafka_client_ip_response_body import GetKafkaClientIpResponseBodyDataData
+from ._get_kafka_client_ip_response_body import GetKafkaClientIpResponseBodyData
+from ._get_quota_tip_response_body import GetQuotaTipResponseBodyQuotaData
+from ._get_risk_list_response_body import GetRiskListResponseBodyDataRiskList
+from ._get_risk_list_response_body import GetRiskListResponseBodyData
+from ._get_topic_list_response_body import GetTopicListResponseBodyTopicListTopicVOTagsTagVO
+from ._get_topic_list_response_body import GetTopicListResponseBodyTopicListTopicVOTags
+from ._get_topic_list_response_body import GetTopicListResponseBodyTopicListTopicVO
+from ._get_topic_list_response_body import GetTopicListResponseBodyTopicList
+from ._get_topic_status_response_body import GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable
+from ._get_topic_status_response_body import GetTopicStatusResponseBodyTopicStatusOffsetTable
+from ._get_topic_status_response_body import GetTopicStatusResponseBodyTopicStatus
+from ._get_topic_subscribe_status_response_body import GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus
+from ._list_rebalance_info_response_body import ListRebalanceInfoResponseBodyDataRebalanceInfoList
+from ._list_rebalance_info_response_body import ListRebalanceInfoResponseBodyData
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._query_message_response_body import QueryMessageResponseBodyMessageList
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_consumer_offset_request import UpdateConsumerOffsetRequestOffsets
+from ._upgrade_post_pay_order_request import UpgradePostPayOrderRequestServerlessConfig
+from ._upgrade_pre_pay_order_request import UpgradePrePayOrderRequestConfluentConfigKsqlList
+from ._upgrade_pre_pay_order_request import UpgradePrePayOrderRequestConfluentConfig
+
+__all__ = [
+    AddUserDefinedSgRequest,
+    AddUserDefinedSgShrinkRequest,
+    AddUserDefinedSgResponseBody,
+    AddUserDefinedSgResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    ConvertPostPayOrderRequest,
+    ConvertPostPayOrderResponseBody,
+    ConvertPostPayOrderResponse,
+    CreateAclRequest,
+    CreateAclResponseBody,
+    CreateAclResponse,
+    CreateConsumerGroupRequest,
+    CreateConsumerGroupResponseBody,
+    CreateConsumerGroupResponse,
+    CreatePostPayInstanceRequest,
+    CreatePostPayInstanceShrinkRequest,
+    CreatePostPayInstanceResponseBody,
+    CreatePostPayInstanceResponse,
+    CreatePostPayOrderRequest,
+    CreatePostPayOrderShrinkRequest,
+    CreatePostPayOrderResponseBody,
+    CreatePostPayOrderResponse,
+    CreatePrePayInstanceRequest,
+    CreatePrePayInstanceShrinkRequest,
+    CreatePrePayInstanceResponseBody,
+    CreatePrePayInstanceResponse,
+    CreatePrePayOrderRequest,
+    CreatePrePayOrderShrinkRequest,
+    CreatePrePayOrderResponseBody,
+    CreatePrePayOrderResponse,
+    CreateSaslUserRequest,
+    CreateSaslUserResponseBody,
+    CreateSaslUserResponse,
+    CreateScheduledScalingRuleRequest,
+    CreateScheduledScalingRuleShrinkRequest,
+    CreateScheduledScalingRuleResponseBody,
+    CreateScheduledScalingRuleResponse,
+    CreateTopicRequest,
+    CreateTopicResponseBody,
+    CreateTopicResponse,
+    DeleteAclRequest,
+    DeleteAclResponseBody,
+    DeleteAclResponse,
+    DeleteConsumerGroupRequest,
+    DeleteConsumerGroupResponseBody,
+    DeleteConsumerGroupResponse,
+    DeleteInstanceRequest,
+    DeleteInstanceResponseBody,
+    DeleteInstanceResponse,
+    DeleteSaslUserRequest,
+    DeleteSaslUserResponseBody,
+    DeleteSaslUserResponse,
+    DeleteScheduledScalingRuleRequest,
+    DeleteScheduledScalingRuleResponseBody,
+    DeleteScheduledScalingRuleResponse,
+    DeleteTopicRequest,
+    DeleteTopicResponseBody,
+    DeleteTopicResponse,
+    DeleteUserDefinedSgRequest,
+    DeleteUserDefinedSgShrinkRequest,
+    DeleteUserDefinedSgResponseBody,
+    DeleteUserDefinedSgResponse,
+    DescribeAclResourceNameRequest,
+    DescribeAclResourceNameResponseBody,
+    DescribeAclResourceNameResponse,
+    DescribeAclsRequest,
+    DescribeAclsResponseBody,
+    DescribeAclsResponse,
+    DescribeSaslUsersRequest,
+    DescribeSaslUsersResponseBody,
+    DescribeSaslUsersResponse,
+    DowngradePostPayOrderRequest,
+    DowngradePostPayOrderShrinkRequest,
+    DowngradePostPayOrderResponseBody,
+    DowngradePostPayOrderResponse,
+    DowngradePrePayOrderRequest,
+    DowngradePrePayOrderShrinkRequest,
+    DowngradePrePayOrderResponseBody,
+    DowngradePrePayOrderResponse,
+    EnableAutoGroupCreationRequest,
+    EnableAutoGroupCreationResponseBody,
+    EnableAutoGroupCreationResponse,
+    EnableAutoTopicCreationRequest,
+    EnableAutoTopicCreationResponseBody,
+    EnableAutoTopicCreationResponse,
+    FailoverTestRequest,
+    FailoverTestResponseBody,
+    FailoverTestResponse,
+    GetAllInstanceIdListRequest,
+    GetAllInstanceIdListResponseBody,
+    GetAllInstanceIdListResponse,
+    GetAllowedIpListRequest,
+    GetAllowedIpListResponseBody,
+    GetAllowedIpListResponse,
+    GetAutoScalingConfigurationRequest,
+    GetAutoScalingConfigurationResponseBody,
+    GetAutoScalingConfigurationResponse,
+    GetConsumerListRequest,
+    GetConsumerListResponseBody,
+    GetConsumerListResponse,
+    GetConsumerProgressRequest,
+    GetConsumerProgressResponseBody,
+    GetConsumerProgressResponse,
+    GetInstanceListRequest,
+    GetInstanceListResponseBody,
+    GetInstanceListResponse,
+    GetKafkaClientIpRequest,
+    GetKafkaClientIpResponseBody,
+    GetKafkaClientIpResponse,
+    GetQuotaTipRequest,
+    GetQuotaTipResponseBody,
+    GetQuotaTipResponse,
+    GetRiskListRequest,
+    GetRiskListResponseBody,
+    GetRiskListResponse,
+    GetTopicListRequest,
+    GetTopicListResponseBody,
+    GetTopicListResponse,
+    GetTopicStatusRequest,
+    GetTopicStatusResponseBody,
+    GetTopicStatusResponse,
+    GetTopicSubscribeStatusRequest,
+    GetTopicSubscribeStatusResponseBody,
+    GetTopicSubscribeStatusResponse,
+    ListRebalanceInfoRequest,
+    ListRebalanceInfoResponseBody,
+    ListRebalanceInfoResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ModifyInstanceNameRequest,
+    ModifyInstanceNameResponseBody,
+    ModifyInstanceNameResponse,
+    ModifyPartitionNumRequest,
+    ModifyPartitionNumResponseBody,
+    ModifyPartitionNumResponse,
+    ModifyScheduledScalingRuleRequest,
+    ModifyScheduledScalingRuleResponseBody,
+    ModifyScheduledScalingRuleResponse,
+    ModifyTopicRemarkRequest,
+    ModifyTopicRemarkResponseBody,
+    ModifyTopicRemarkResponse,
+    ModifyUserDefinedSgRequest,
+    ModifyUserDefinedSgShrinkRequest,
+    ModifyUserDefinedSgResponseBody,
+    ModifyUserDefinedSgResponse,
+    QueryMessageRequest,
+    QueryMessageResponseBody,
+    QueryMessageResponse,
+    ReleaseInstanceRequest,
+    ReleaseInstanceResponseBody,
+    ReleaseInstanceResponse,
+    ReopenInstanceRequest,
+    ReopenInstanceResponseBody,
+    ReopenInstanceResponse,
+    StartInstanceRequest,
+    StartInstanceResponseBody,
+    StartInstanceResponse,
+    StopInstanceRequest,
+    StopInstanceResponseBody,
+    StopInstanceResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateAllowedIpRequest,
+    UpdateAllowedIpResponseBody,
+    UpdateAllowedIpResponse,
+    UpdateConsumerOffsetRequest,
+    UpdateConsumerOffsetShrinkRequest,
+    UpdateConsumerOffsetResponseBody,
+    UpdateConsumerOffsetResponse,
+    UpdateInstanceConfigRequest,
+    UpdateInstanceConfigResponseBody,
+    UpdateInstanceConfigResponse,
+    UpdateTopicConfigRequest,
+    UpdateTopicConfigResponseBody,
+    UpdateTopicConfigResponse,
+    UpgradeInstanceVersionRequest,
+    UpgradeInstanceVersionResponseBody,
+    UpgradeInstanceVersionResponse,
+    UpgradePostPayOrderRequest,
+    UpgradePostPayOrderShrinkRequest,
+    UpgradePostPayOrderResponseBody,
+    UpgradePostPayOrderResponse,
+    UpgradePrePayOrderRequest,
+    UpgradePrePayOrderShrinkRequest,
+    UpgradePrePayOrderResponseBody,
+    UpgradePrePayOrderResponse,
+    CreateConsumerGroupRequestTag,
+    CreatePostPayInstanceRequestServerlessConfig,
+    CreatePostPayInstanceRequestTag,
+    CreatePostPayInstanceShrinkRequestTag,
+    CreatePostPayInstanceResponseBodyData,
+    CreatePostPayOrderRequestServerlessConfig,
+    CreatePostPayOrderRequestTag,
+    CreatePostPayOrderShrinkRequestTag,
+    CreatePrePayInstanceRequestConfluentConfigKsqlList,
+    CreatePrePayInstanceRequestConfluentConfig,
+    CreatePrePayInstanceRequestTag,
+    CreatePrePayInstanceShrinkRequestTag,
+    CreatePrePayInstanceResponseBodyData,
+    CreatePrePayOrderRequestConfluentConfigKsqlList,
+    CreatePrePayOrderRequestConfluentConfig,
+    CreatePrePayOrderRequestTag,
+    CreatePrePayOrderShrinkRequestTag,
+    CreateTopicRequestTag,
+    DescribeAclResourceNameResponseBodyData,
+    DescribeAclsResponseBodyKafkaAclListKafkaAclVO,
+    DescribeAclsResponseBodyKafkaAclList,
+    DescribeSaslUsersResponseBodySaslUserListSaslUserVO,
+    DescribeSaslUsersResponseBodySaslUserList,
+    DowngradePostPayOrderRequestServerlessConfig,
+    DowngradePrePayOrderRequestConfluentConfig,
+    GetAllowedIpListResponseBodyAllowedListInternetList,
+    GetAllowedIpListResponseBodyAllowedListVpcList,
+    GetAllowedIpListResponseBodyAllowedList,
+    GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes,
+    GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules,
+    GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules,
+    GetAutoScalingConfigurationResponseBodyData,
+    GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO,
+    GetConsumerListResponseBodyConsumerListConsumerVOTags,
+    GetConsumerListResponseBodyConsumerListConsumerVO,
+    GetConsumerListResponseBodyConsumerList,
+    GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList,
+    GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList,
+    GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList,
+    GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList,
+    GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList,
+    GetConsumerProgressResponseBodyConsumerProgressTopicList,
+    GetConsumerProgressResponseBodyConsumerProgress,
+    GetInstanceListRequestTag,
+    GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO,
+    GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList,
+    GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig,
+    GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO,
+    GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents,
+    GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO,
+    GetInstanceListResponseBodyInstanceListInstanceVOTags,
+    GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo,
+    GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds,
+    GetInstanceListResponseBodyInstanceListInstanceVO,
+    GetInstanceListResponseBodyInstanceList,
+    GetKafkaClientIpResponseBodyDataDataDataDataData,
+    GetKafkaClientIpResponseBodyDataDataDataData,
+    GetKafkaClientIpResponseBodyDataDataData,
+    GetKafkaClientIpResponseBodyDataData,
+    GetKafkaClientIpResponseBodyData,
+    GetQuotaTipResponseBodyQuotaData,
+    GetRiskListResponseBodyDataRiskList,
+    GetRiskListResponseBodyData,
+    GetTopicListResponseBodyTopicListTopicVOTagsTagVO,
+    GetTopicListResponseBodyTopicListTopicVOTags,
+    GetTopicListResponseBodyTopicListTopicVO,
+    GetTopicListResponseBodyTopicList,
+    GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable,
+    GetTopicStatusResponseBodyTopicStatusOffsetTable,
+    GetTopicStatusResponseBodyTopicStatus,
+    GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus,
+    ListRebalanceInfoResponseBodyDataRebalanceInfoList,
+    ListRebalanceInfoResponseBodyData,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResourcesTagResource,
+    ListTagResourcesResponseBodyTagResources,
+    QueryMessageResponseBodyMessageList,
+    TagResourcesRequestTag,
+    UpdateConsumerOffsetRequestOffsets,
+    UpgradePostPayOrderRequestServerlessConfig,
+    UpgradePrePayOrderRequestConfluentConfigKsqlList,
+    UpgradePrePayOrderRequestConfluentConfig
+]
