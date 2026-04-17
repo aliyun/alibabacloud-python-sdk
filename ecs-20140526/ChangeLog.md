@@ -1,3 +1,7 @@
+2026-04-17 Version: 7.7.3
+- Update API CreateDiagnosticReport: add request parameters AdditionalOptions.
+
+
 2026-04-16 Version: 7.7.2
 - Update API DescribeInstances: add response parameters Body.Instances.$.AdditionalInfo.NodeSerialNumber.
 - Update API DescribeInstances: add response parameters Body.Instances.$.CpuOptions.NestedVirtualization.

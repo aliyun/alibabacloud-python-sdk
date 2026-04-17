@@ -118,6 +118,7 @@ from ._create_diagnostic_metric_set_request import CreateDiagnosticMetricSetRequ
 from ._create_diagnostic_metric_set_response_body import CreateDiagnosticMetricSetResponseBody
 from ._create_diagnostic_metric_set_response import CreateDiagnosticMetricSetResponse
 from ._create_diagnostic_report_request import CreateDiagnosticReportRequest
+from ._create_diagnostic_report_shrink_request import CreateDiagnosticReportShrinkRequest
 from ._create_diagnostic_report_response_body import CreateDiagnosticReportResponseBody
 from ._create_diagnostic_report_response import CreateDiagnosticReportResponse
 from ._create_disk_request import CreateDiskRequest
@@ -2158,6 +2159,7 @@ __all__ = [
     CreateDiagnosticMetricSetResponseBody,
     CreateDiagnosticMetricSetResponse,
     CreateDiagnosticReportRequest,
+    CreateDiagnosticReportShrinkRequest,
     CreateDiagnosticReportResponseBody,
     CreateDiagnosticReportResponse,
     CreateDiskRequest,

@@ -4363,11 +4363,17 @@ class Client(OpenApiClient):
 
     def create_diagnostic_report_with_options(
         self,
-        request: main_models.CreateDiagnosticReportRequest,
+        tmp_req: main_models.CreateDiagnosticReportRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateDiagnosticReportResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateDiagnosticReportShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.additional_options):
+            request.additional_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.additional_options, 'AdditionalOptions', 'json')
         query = {}
+        if not DaraCore.is_null(request.additional_options_shrink):
+            query['AdditionalOptions'] = request.additional_options_shrink
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.metric_set_id):
@@ -4399,11 +4405,17 @@ class Client(OpenApiClient):
 
     async def create_diagnostic_report_with_options_async(
         self,
-        request: main_models.CreateDiagnosticReportRequest,
+        tmp_req: main_models.CreateDiagnosticReportRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateDiagnosticReportResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateDiagnosticReportShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.additional_options):
+            request.additional_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.additional_options, 'AdditionalOptions', 'json')
         query = {}
+        if not DaraCore.is_null(request.additional_options_shrink):
+            query['AdditionalOptions'] = request.additional_options_shrink
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.metric_set_id):
