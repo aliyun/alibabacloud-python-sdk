@@ -19328,8 +19328,12 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_member_ip):
+            query['TargetMemberIp'] = request.target_member_ip
         if not DaraCore.is_null(request.target_office_site_id):
             query['TargetOfficeSiteId'] = request.target_office_site_id
+        if not DaraCore.is_null(request.target_subnet_id):
+            query['TargetSubnetId'] = request.target_subnet_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -19360,8 +19364,12 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_member_ip):
+            query['TargetMemberIp'] = request.target_member_ip
         if not DaraCore.is_null(request.target_office_site_id):
             query['TargetOfficeSiteId'] = request.target_office_site_id
+        if not DaraCore.is_null(request.target_subnet_id):
+            query['TargetSubnetId'] = request.target_subnet_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

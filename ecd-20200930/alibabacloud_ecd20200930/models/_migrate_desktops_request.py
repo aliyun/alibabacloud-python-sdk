@@ -11,7 +11,9 @@ class MigrateDesktopsRequest(DaraModel):
         self,
         desktop_id: List[str] = None,
         region_id: str = None,
+        target_member_ip: str = None,
         target_office_site_id: str = None,
+        target_subnet_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
         # 
@@ -21,10 +23,13 @@ class MigrateDesktopsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.target_member_ip = target_member_ip
         # The ID of the destination office network.
         # 
         # This parameter is required.
         self.target_office_site_id = target_office_site_id
+        # > This parameter is for internal use only.
+        self.target_subnet_id = target_subnet_id
 
     def validate(self):
         pass
@@ -40,8 +45,14 @@ class MigrateDesktopsRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.target_member_ip is not None:
+            result['TargetMemberIp'] = self.target_member_ip
+
         if self.target_office_site_id is not None:
             result['TargetOfficeSiteId'] = self.target_office_site_id
+
+        if self.target_subnet_id is not None:
+            result['TargetSubnetId'] = self.target_subnet_id
 
         return result
 
@@ -53,8 +64,14 @@ class MigrateDesktopsRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('TargetMemberIp') is not None:
+            self.target_member_ip = m.get('TargetMemberIp')
+
         if m.get('TargetOfficeSiteId') is not None:
             self.target_office_site_id = m.get('TargetOfficeSiteId')
+
+        if m.get('TargetSubnetId') is not None:
+            self.target_subnet_id = m.get('TargetSubnetId')
 
         return self
 

@@ -1,3 +1,8 @@
+2026-04-17 Version: 4.23.5
+- Update API MigrateDesktops: add request parameters TargetMemberIp.
+- Update API MigrateDesktops: add request parameters TargetSubnetId.
+
+
 2026-04-03 Version: 4.23.4
 - Update API CreateCenterPolicy: add request parameters AdminKeyboardOnFullScreen.
 - Update API CreateCenterPolicy: add request parameters AdminKeyboardOnWindows.
