@@ -7221,6 +7221,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
 
+    def list_alert_robots_with_options(
+        self,
+        tmp_req: main_models.ListAlertRobotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertRobotsResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertRobotsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.robot_ids):
+            request.robot_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.robot_ids, 'robotIds', 'json')
+        if not DaraCore.is_null(tmp_req.types):
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'types', 'json')
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.robot_ids_shrink):
+            query['robotIds'] = request.robot_ids_shrink
+        if not DaraCore.is_null(request.types_shrink):
+            query['types'] = request.types_shrink
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertRobots',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertRobotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_robots_with_options_async(
+        self,
+        tmp_req: main_models.ListAlertRobotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertRobotsResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertRobotsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.robot_ids):
+            request.robot_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.robot_ids, 'robotIds', 'json')
+        if not DaraCore.is_null(tmp_req.types):
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'types', 'json')
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.robot_ids_shrink):
+            query['robotIds'] = request.robot_ids_shrink
+        if not DaraCore.is_null(request.types_shrink):
+            query['types'] = request.types_shrink
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertRobots',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertRobotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_robots(
+        self,
+        request: main_models.ListAlertRobotsRequest,
+    ) -> main_models.ListAlertRobotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_alert_robots_with_options(request, headers, runtime)
+
+    async def list_alert_robots_async(
+        self,
+        request: main_models.ListAlertRobotsRequest,
+    ) -> main_models.ListAlertRobotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_alert_robots_with_options_async(request, headers, runtime)
+
     def list_alert_webhooks_with_options(
         self,
         tmp_req: main_models.ListAlertWebhooksRequest,
@@ -7404,6 +7512,222 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_biz_traces_with_options_async(request, headers, runtime)
+
+    def list_contact_groups_with_options(
+        self,
+        tmp_req: main_models.ListContactGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactGroupsResponse:
+        tmp_req.validate()
+        request = main_models.ListContactGroupsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_group_ids):
+            request.contact_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'contactGroupIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_group_ids_shrink):
+            query['contactGroupIds'] = request.contact_group_ids_shrink
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContactGroups',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_contact_groups_with_options_async(
+        self,
+        tmp_req: main_models.ListContactGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactGroupsResponse:
+        tmp_req.validate()
+        request = main_models.ListContactGroupsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_group_ids):
+            request.contact_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'contactGroupIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_group_ids_shrink):
+            query['contactGroupIds'] = request.contact_group_ids_shrink
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContactGroups',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_contact_groups(
+        self,
+        request: main_models.ListContactGroupsRequest,
+    ) -> main_models.ListContactGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_contact_groups_with_options(request, headers, runtime)
+
+    async def list_contact_groups_async(
+        self,
+        request: main_models.ListContactGroupsRequest,
+    ) -> main_models.ListContactGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_contact_groups_with_options_async(request, headers, runtime)
+
+    def list_contacts_with_options(
+        self,
+        tmp_req: main_models.ListContactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactsResponse:
+        tmp_req.validate()
+        request = main_models.ListContactsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_ids):
+            request.contact_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_ids, 'contactIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_ids_shrink):
+            query['contactIds'] = request.contact_ids_shrink
+        if not DaraCore.is_null(request.email):
+            query['email'] = request.email
+        if not DaraCore.is_null(request.group_id):
+            query['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone):
+            query['phone'] = request.phone
+        if not DaraCore.is_null(request.query_ungrouped_contacts):
+            query['queryUngroupedContacts'] = request.query_ungrouped_contacts
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContacts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_contacts_with_options_async(
+        self,
+        tmp_req: main_models.ListContactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactsResponse:
+        tmp_req.validate()
+        request = main_models.ListContactsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_ids):
+            request.contact_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_ids, 'contactIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_ids_shrink):
+            query['contactIds'] = request.contact_ids_shrink
+        if not DaraCore.is_null(request.email):
+            query['email'] = request.email
+        if not DaraCore.is_null(request.group_id):
+            query['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone):
+            query['phone'] = request.phone
+        if not DaraCore.is_null(request.query_ungrouped_contacts):
+            query['queryUngroupedContacts'] = request.query_ungrouped_contacts
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContacts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_contacts(
+        self,
+        request: main_models.ListContactsRequest,
+    ) -> main_models.ListContactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_contacts_with_options(request, headers, runtime)
+
+    async def list_contacts_async(
+        self,
+        request: main_models.ListContactsRequest,
+    ) -> main_models.ListContactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_contacts_with_options_async(request, headers, runtime)
 
     def list_datasets_with_options(
         self,

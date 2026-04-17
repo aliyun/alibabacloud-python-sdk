@@ -1,3 +1,9 @@
+2026-04-17 Version: 7.1.0
+- Support API ListAlertRobots.
+- Support API ListContactGroups.
+- Support API ListContacts.
+
+
 2026-04-17 Version: 7.0.2
 - Update API SearchMemories: add request parameters body.searchType.
 
