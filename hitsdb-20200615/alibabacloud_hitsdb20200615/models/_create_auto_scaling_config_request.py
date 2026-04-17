@@ -175,8 +175,6 @@ class CreateAutoScalingConfigRequest(DaraModel):
 
         return self
 
-
-
 class CreateAutoScalingConfigRequestScaleRuleList(DaraModel):
     def __init__(
         self,

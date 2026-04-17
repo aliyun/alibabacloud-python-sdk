@@ -118,6 +118,160 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def check_create_lindorm_v2instance_with_options(
+        self,
+        request: main_models.CheckCreateLindormV2InstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckCreateLindormV2InstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not DaraCore.is_null(request.arbiter_zone_id):
+            query['ArbiterZoneId'] = request.arbiter_zone_id
+        if not DaraCore.is_null(request.arch_version):
+            query['ArchVersion'] = request.arch_version
+        if not DaraCore.is_null(request.cloud_storage_size):
+            query['CloudStorageSize'] = request.cloud_storage_size
+        if not DaraCore.is_null(request.cloud_storage_type):
+            query['CloudStorageType'] = request.cloud_storage_type
+        if not DaraCore.is_null(request.cluster_pattern):
+            query['ClusterPattern'] = request.cluster_pattern
+        if not DaraCore.is_null(request.engine_list):
+            query['EngineList'] = request.engine_list
+        if not DaraCore.is_null(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not DaraCore.is_null(request.primary_zone_id):
+            query['PrimaryZoneId'] = request.primary_zone_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not DaraCore.is_null(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckCreateLindormV2Instance',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckCreateLindormV2InstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_create_lindorm_v2instance_with_options_async(
+        self,
+        request: main_models.CheckCreateLindormV2InstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckCreateLindormV2InstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not DaraCore.is_null(request.arbiter_zone_id):
+            query['ArbiterZoneId'] = request.arbiter_zone_id
+        if not DaraCore.is_null(request.arch_version):
+            query['ArchVersion'] = request.arch_version
+        if not DaraCore.is_null(request.cloud_storage_size):
+            query['CloudStorageSize'] = request.cloud_storage_size
+        if not DaraCore.is_null(request.cloud_storage_type):
+            query['CloudStorageType'] = request.cloud_storage_type
+        if not DaraCore.is_null(request.cluster_pattern):
+            query['ClusterPattern'] = request.cluster_pattern
+        if not DaraCore.is_null(request.engine_list):
+            query['EngineList'] = request.engine_list
+        if not DaraCore.is_null(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not DaraCore.is_null(request.primary_zone_id):
+            query['PrimaryZoneId'] = request.primary_zone_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not DaraCore.is_null(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckCreateLindormV2Instance',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckCreateLindormV2InstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_create_lindorm_v2instance(
+        self,
+        request: main_models.CheckCreateLindormV2InstanceRequest,
+    ) -> main_models.CheckCreateLindormV2InstanceResponse:
+        runtime = RuntimeOptions()
+        return self.check_create_lindorm_v2instance_with_options(request, runtime)
+
+    async def check_create_lindorm_v2instance_async(
+        self,
+        request: main_models.CheckCreateLindormV2InstanceRequest,
+    ) -> main_models.CheckCreateLindormV2InstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.check_create_lindorm_v2instance_with_options_async(request, runtime)
+
     def check_ldps_columnar_index_status_with_options(
         self,
         request: main_models.CheckLdpsColumnarIndexStatusRequest,
@@ -207,6 +361,92 @@ class Client(OpenApiClient):
     ) -> main_models.CheckLdpsColumnarIndexStatusResponse:
         runtime = RuntimeOptions()
         return await self.check_ldps_columnar_index_status_with_options_async(request, runtime)
+
+    def create_additional_vpc_link_with_options(
+        self,
+        request: main_models.CreateAdditionalVpcLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAdditionalVpcLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.additional_vpc_id):
+            query['AdditionalVpcId'] = request.additional_vpc_id
+        if not DaraCore.is_null(request.additional_vswitch_id):
+            query['AdditionalVswitchId'] = request.additional_vswitch_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAdditionalVpcLink',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAdditionalVpcLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_additional_vpc_link_with_options_async(
+        self,
+        request: main_models.CreateAdditionalVpcLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAdditionalVpcLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.additional_vpc_id):
+            query['AdditionalVpcId'] = request.additional_vpc_id
+        if not DaraCore.is_null(request.additional_vswitch_id):
+            query['AdditionalVswitchId'] = request.additional_vswitch_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAdditionalVpcLink',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAdditionalVpcLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_additional_vpc_link(
+        self,
+        request: main_models.CreateAdditionalVpcLinkRequest,
+    ) -> main_models.CreateAdditionalVpcLinkResponse:
+        runtime = RuntimeOptions()
+        return self.create_additional_vpc_link_with_options(request, runtime)
+
+    async def create_additional_vpc_link_async(
+        self,
+        request: main_models.CreateAdditionalVpcLinkRequest,
+    ) -> main_models.CreateAdditionalVpcLinkResponse:
+        runtime = RuntimeOptions()
+        return await self.create_additional_vpc_link_with_options_async(request, runtime)
 
     def create_auto_scaling_config_with_options(
         self,

@@ -1,3 +1,9 @@
+2026-04-17 Version: 4.16.0
+- Support API CheckCreateLindormV2Instance.
+- Support API CreateAdditionalVpcLink.
+- Update API GetLindormV2Instance: add response parameters Body.EngineList.$.EnableMaaS.
+
+
 2026-02-04 Version: 4.15.3
 - Update API GetLindormInstance: add response parameters Body.BackupInstance.
 

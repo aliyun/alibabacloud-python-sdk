@@ -5,9 +5,15 @@ from __future__ import annotations
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._check_create_lindorm_v2instance_request import CheckCreateLindormV2InstanceRequest
+from ._check_create_lindorm_v2instance_response_body import CheckCreateLindormV2InstanceResponseBody
+from ._check_create_lindorm_v2instance_response import CheckCreateLindormV2InstanceResponse
 from ._check_ldps_columnar_index_status_request import CheckLdpsColumnarIndexStatusRequest
 from ._check_ldps_columnar_index_status_response_body import CheckLdpsColumnarIndexStatusResponseBody
 from ._check_ldps_columnar_index_status_response import CheckLdpsColumnarIndexStatusResponse
+from ._create_additional_vpc_link_request import CreateAdditionalVpcLinkRequest
+from ._create_additional_vpc_link_response_body import CreateAdditionalVpcLinkResponseBody
+from ._create_additional_vpc_link_response import CreateAdditionalVpcLinkResponse
 from ._create_auto_scaling_config_request import CreateAutoScalingConfigRequest
 from ._create_auto_scaling_config_shrink_request import CreateAutoScalingConfigShrinkRequest
 from ._create_auto_scaling_config_response_body import CreateAutoScalingConfigResponseBody
@@ -207,6 +213,8 @@ from ._upgrade_lindorm_instance_response import UpgradeLindormInstanceResponse
 from ._upgrade_lindorm_v2stream_engine_request import UpgradeLindormV2StreamEngineRequest
 from ._upgrade_lindorm_v2stream_engine_response_body import UpgradeLindormV2StreamEngineResponseBody
 from ._upgrade_lindorm_v2stream_engine_response import UpgradeLindormV2StreamEngineResponse
+from ._check_create_lindorm_v2instance_request import CheckCreateLindormV2InstanceRequestEngineListNodeGroupList
+from ._check_create_lindorm_v2instance_request import CheckCreateLindormV2InstanceRequestEngineList
 from ._create_auto_scaling_config_request import CreateAutoScalingConfigRequestScaleRuleList
 from ._create_lindorm_instance_request import CreateLindormInstanceRequestTag
 from ._create_lindorm_v2instance_request import CreateLindormV2InstanceRequestEngineListNodeGroupList
@@ -269,9 +277,15 @@ __all__ = [
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    CheckCreateLindormV2InstanceRequest,
+    CheckCreateLindormV2InstanceResponseBody,
+    CheckCreateLindormV2InstanceResponse,
     CheckLdpsColumnarIndexStatusRequest,
     CheckLdpsColumnarIndexStatusResponseBody,
     CheckLdpsColumnarIndexStatusResponse,
+    CreateAdditionalVpcLinkRequest,
+    CreateAdditionalVpcLinkResponseBody,
+    CreateAdditionalVpcLinkResponse,
     CreateAutoScalingConfigRequest,
     CreateAutoScalingConfigShrinkRequest,
     CreateAutoScalingConfigResponseBody,
@@ -471,6 +485,8 @@ __all__ = [
     UpgradeLindormV2StreamEngineRequest,
     UpgradeLindormV2StreamEngineResponseBody,
     UpgradeLindormV2StreamEngineResponse,
+    CheckCreateLindormV2InstanceRequestEngineListNodeGroupList,
+    CheckCreateLindormV2InstanceRequestEngineList,
     CreateAutoScalingConfigRequestScaleRuleList,
     CreateLindormInstanceRequestTag,
     CreateLindormV2InstanceRequestEngineListNodeGroupList,

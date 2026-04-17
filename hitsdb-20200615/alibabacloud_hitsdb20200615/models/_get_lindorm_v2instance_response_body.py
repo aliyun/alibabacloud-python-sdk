@@ -434,6 +434,7 @@ class GetLindormV2InstanceResponseBodyEngineList(DaraModel):
         connect_address_list: List[main_models.GetLindormV2InstanceResponseBodyEngineListConnectAddressList] = None,
         enable_backup: str = None,
         enable_cdc: str = None,
+        enable_maa_s: str = None,
         engine: str = None,
         is_last_version: bool = None,
         latest_version: str = None,
@@ -443,6 +444,7 @@ class GetLindormV2InstanceResponseBodyEngineList(DaraModel):
         self.connect_address_list = connect_address_list
         self.enable_backup = enable_backup
         self.enable_cdc = enable_cdc
+        self.enable_maa_s = enable_maa_s
         self.engine = engine
         self.is_last_version = is_last_version
         self.latest_version = latest_version
@@ -474,6 +476,9 @@ class GetLindormV2InstanceResponseBodyEngineList(DaraModel):
 
         if self.enable_cdc is not None:
             result['EnableCDC'] = self.enable_cdc
+
+        if self.enable_maa_s is not None:
+            result['EnableMaaS'] = self.enable_maa_s
 
         if self.engine is not None:
             result['Engine'] = self.engine
@@ -507,6 +512,9 @@ class GetLindormV2InstanceResponseBodyEngineList(DaraModel):
 
         if m.get('EnableCDC') is not None:
             self.enable_cdc = m.get('EnableCDC')
+
+        if m.get('EnableMaaS') is not None:
+            self.enable_maa_s = m.get('EnableMaaS')
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
