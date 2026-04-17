@@ -9805,6 +9805,8 @@ class Client(OpenApiClient):
             body['retrieveLevel'] = request.retrieve_level
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
+        if not DaraCore.is_null(request.search_type):
+            body['searchType'] = request.search_type
         if not DaraCore.is_null(request.threshold):
             body['threshold'] = request.threshold
         if not DaraCore.is_null(request.top_k):
@@ -9855,6 +9857,8 @@ class Client(OpenApiClient):
             body['retrieveLevel'] = request.retrieve_level
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
+        if not DaraCore.is_null(request.search_type):
+            body['searchType'] = request.search_type
         if not DaraCore.is_null(request.threshold):
             body['threshold'] = request.threshold
         if not DaraCore.is_null(request.top_k):
