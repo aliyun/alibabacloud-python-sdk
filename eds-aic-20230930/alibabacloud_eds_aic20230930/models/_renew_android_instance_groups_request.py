@@ -11,6 +11,7 @@ class RenewAndroidInstanceGroupsRequest(DaraModel):
         self,
         auto_pay: bool = None,
         instance_group_ids: List[str] = None,
+        paid_call_back_url: str = None,
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
@@ -24,6 +25,7 @@ class RenewAndroidInstanceGroupsRequest(DaraModel):
         self.auto_pay = auto_pay
         # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
+        self.paid_call_back_url = paid_call_back_url
         # The duration of the renewal, measured in units defined by PeriodUnit.
         self.period = period
         # The unit of the renewal duration. Default value: Month.
@@ -49,6 +51,9 @@ class RenewAndroidInstanceGroupsRequest(DaraModel):
         if self.instance_group_ids is not None:
             result['InstanceGroupIds'] = self.instance_group_ids
 
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
+
         if self.period is not None:
             result['Period'] = self.period
 
@@ -67,6 +72,9 @@ class RenewAndroidInstanceGroupsRequest(DaraModel):
 
         if m.get('InstanceGroupIds') is not None:
             self.instance_group_ids = m.get('InstanceGroupIds')
+
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')

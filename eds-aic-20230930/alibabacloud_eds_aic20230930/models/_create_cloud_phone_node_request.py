@@ -26,6 +26,7 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         network_info: main_models.CreateCloudPhoneNodeRequestNetworkInfo = None,
         network_type: str = None,
         node_name: str = None,
+        paid_call_back_url: str = None,
         period: int = None,
         period_unit: str = None,
         phone_count: int = None,
@@ -84,6 +85,7 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         self.network_type = network_type
         # The name of the cloud phone matrix.
         self.node_name = node_name
+        self.paid_call_back_url = paid_call_back_url
         # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
         # 
         # *   When `PeriodUnit` is set to **year**: 1.
@@ -186,6 +188,9 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         if self.node_name is not None:
             result['NodeName'] = self.node_name
 
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
+
         if self.period is not None:
             result['Period'] = self.period
 
@@ -286,6 +291,9 @@ class CreateCloudPhoneNodeRequest(DaraModel):
 
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')

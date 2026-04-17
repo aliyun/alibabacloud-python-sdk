@@ -564,6 +564,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_get_acp_connection_ticket_with_options_async(request, runtime)
 
+    def cancel_agent_task_with_options(
+        self,
+        request: main_models.CancelAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_agent_task_with_options_async(
+        self,
+        request: main_models.CancelAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_agent_task(
+        self,
+        request: main_models.CancelAgentTaskRequest,
+    ) -> main_models.CancelAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_agent_task_with_options(request, runtime)
+
+    async def cancel_agent_task_async(
+        self,
+        request: main_models.CancelAgentTaskRequest,
+    ) -> main_models.CancelAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_agent_task_with_options_async(request, runtime)
+
     def change_cloud_phone_node_with_options(
         self,
         request: main_models.ChangeCloudPhoneNodeRequest,
@@ -1107,6 +1177,8 @@ class Client(OpenApiClient):
             query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.node_name):
             query['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -1203,6 +1275,8 @@ class Client(OpenApiClient):
             query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.node_name):
             query['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -4435,6 +4509,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.node_ids):
             query['NodeIds'] = request.node_ids
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
         if not DaraCore.is_null(request.promotion_id):
@@ -4473,6 +4549,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.node_ids):
             query['NodeIds'] = request.node_ids
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
         if not DaraCore.is_null(request.promotion_id):
@@ -4525,6 +4603,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
         if not DaraCore.is_null(request.promotion_id):
@@ -4561,6 +4641,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
         if not DaraCore.is_null(request.promotion_id):
@@ -6781,6 +6863,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_group_ids):
             query['InstanceGroupIds'] = request.instance_group_ids
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -6817,6 +6901,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_group_ids):
             query['InstanceGroupIds'] = request.instance_group_ids
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -6865,6 +6951,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
         body = {}
@@ -6905,6 +6993,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
         body = {}
@@ -8461,6 +8551,8 @@ class Client(OpenApiClient):
             query['IncreaseNumberOfInstance'] = request.increase_number_of_instance
         if not DaraCore.is_null(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
         req = open_api_util_models.OpenApiRequest(
@@ -8495,6 +8587,8 @@ class Client(OpenApiClient):
             query['IncreaseNumberOfInstance'] = request.increase_number_of_instance
         if not DaraCore.is_null(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
         req = open_api_util_models.OpenApiRequest(

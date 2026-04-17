@@ -12,6 +12,7 @@ class ExpandDataVolumeRequest(DaraModel):
         auto_pay: bool = None,
         biz_region_id: str = None,
         node_ids: List[str] = None,
+        paid_call_back_url: str = None,
         phone_data_volume: int = None,
         promotion_id: str = None,
         share_data_volume: int = None,
@@ -19,6 +20,7 @@ class ExpandDataVolumeRequest(DaraModel):
         self.auto_pay = auto_pay
         self.biz_region_id = biz_region_id
         self.node_ids = node_ids
+        self.paid_call_back_url = paid_call_back_url
         self.phone_data_volume = phone_data_volume
         self.promotion_id = promotion_id
         self.share_data_volume = share_data_volume
@@ -39,6 +41,9 @@ class ExpandDataVolumeRequest(DaraModel):
 
         if self.node_ids is not None:
             result['NodeIds'] = self.node_ids
+
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
 
         if self.phone_data_volume is not None:
             result['PhoneDataVolume'] = self.phone_data_volume
@@ -61,6 +66,9 @@ class ExpandDataVolumeRequest(DaraModel):
 
         if m.get('NodeIds') is not None:
             self.node_ids = m.get('NodeIds')
+
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
 
         if m.get('PhoneDataVolume') is not None:
             self.phone_data_volume = m.get('PhoneDataVolume')

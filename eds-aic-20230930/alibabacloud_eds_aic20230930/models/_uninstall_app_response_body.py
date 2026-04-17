@@ -63,9 +63,11 @@ class UninstallAppResponseBody(DaraModel):
 class UninstallAppResponseBodyChildTaskInfo(DaraModel):
     def __init__(
         self,
+        app_id: str = None,
         child_task_id: str = None,
         instance_id: str = None,
     ):
+        self.app_id = app_id
         self.child_task_id = child_task_id
         self.instance_id = instance_id
 
@@ -77,6 +79,9 @@ class UninstallAppResponseBodyChildTaskInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+
         if self.child_task_id is not None:
             result['ChildTaskId'] = self.child_task_id
 
@@ -87,6 +92,9 @@ class UninstallAppResponseBodyChildTaskInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+
         if m.get('ChildTaskId') is not None:
             self.child_task_id = m.get('ChildTaskId')
 

@@ -13,12 +13,14 @@ class RunCommandResponseBody(DaraModel):
         invoke_id: str = None,
         request_id: str = None,
         run_command_infos: List[main_models.RunCommandResponseBodyRunCommandInfos] = None,
+        task_id: str = None,
     ):
         # The ID of the command execution. You can use the command execution ID to query the output of a command.
         self.invoke_id = invoke_id
         # The ID of the request.
         self.request_id = request_id
         self.run_command_infos = run_command_infos
+        self.task_id = task_id
 
     def validate(self):
         if self.run_command_infos:
@@ -42,6 +44,9 @@ class RunCommandResponseBody(DaraModel):
             for k1 in self.run_command_infos:
                 result['RunCommandInfos'].append(k1.to_map() if k1 else None)
 
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,14 +63,19 @@ class RunCommandResponseBody(DaraModel):
                 temp_model = main_models.RunCommandResponseBodyRunCommandInfos()
                 self.run_command_infos.append(temp_model.from_map(k1))
 
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+
         return self
 
 class RunCommandResponseBodyRunCommandInfos(DaraModel):
     def __init__(
         self,
+        child_task_id: str = None,
         instance_id: str = None,
         invoke_id: str = None,
     ):
+        self.child_task_id = child_task_id
         self.instance_id = instance_id
         self.invoke_id = invoke_id
 
@@ -77,6 +87,9 @@ class RunCommandResponseBodyRunCommandInfos(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.child_task_id is not None:
+            result['ChildTaskId'] = self.child_task_id
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -87,6 +100,9 @@ class RunCommandResponseBodyRunCommandInfos(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChildTaskId') is not None:
+            self.child_task_id = m.get('ChildTaskId')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 

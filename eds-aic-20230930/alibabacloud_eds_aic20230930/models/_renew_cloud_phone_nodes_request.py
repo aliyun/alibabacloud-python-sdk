@@ -12,6 +12,7 @@ class RenewCloudPhoneNodesRequest(DaraModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         node_ids: List[str] = None,
+        paid_call_back_url: str = None,
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
@@ -26,6 +27,7 @@ class RenewCloudPhoneNodesRequest(DaraModel):
         self.auto_renew = auto_renew
         # The cloud phone matrix IDs.
         self.node_ids = node_ids
+        self.paid_call_back_url = paid_call_back_url
         # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
         # 
         # *   When `PeriodUnit` is set to **year**: 1.
@@ -57,6 +59,9 @@ class RenewCloudPhoneNodesRequest(DaraModel):
         if self.node_ids is not None:
             result['NodeIds'] = self.node_ids
 
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
+
         if self.period is not None:
             result['Period'] = self.period
 
@@ -78,6 +83,9 @@ class RenewCloudPhoneNodesRequest(DaraModel):
 
         if m.get('NodeIds') is not None:
             self.node_ids = m.get('NodeIds')
+
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')

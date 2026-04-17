@@ -21,6 +21,9 @@ from ._backup_file_response import BackupFileResponse
 from ._batch_get_acp_connection_ticket_request import BatchGetAcpConnectionTicketRequest
 from ._batch_get_acp_connection_ticket_response_body import BatchGetAcpConnectionTicketResponseBody
 from ._batch_get_acp_connection_ticket_response import BatchGetAcpConnectionTicketResponse
+from ._cancel_agent_task_request import CancelAgentTaskRequest
+from ._cancel_agent_task_response_body import CancelAgentTaskResponseBody
+from ._cancel_agent_task_response import CancelAgentTaskResponse
 from ._change_cloud_phone_node_request import ChangeCloudPhoneNodeRequest
 from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBody
 from ._change_cloud_phone_node_response import ChangeCloudPhoneNodeResponse
@@ -309,6 +312,7 @@ from ._backup_app_response_body import BackupAppResponseBodyData
 from ._backup_file_response_body import BackupFileResponseBodyData
 from ._batch_get_acp_connection_ticket_request import BatchGetAcpConnectionTicketRequestInstanceTasks
 from ._batch_get_acp_connection_ticket_response_body import BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels
+from ._cancel_agent_task_response_body import CancelAgentTaskResponseBodyTasks
 from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos
 from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfos
 from ._check_resource_stock_response_body import CheckResourceStockResponseBodyResourceStockModels
@@ -439,6 +443,9 @@ __all__ = [
     BatchGetAcpConnectionTicketRequest,
     BatchGetAcpConnectionTicketResponseBody,
     BatchGetAcpConnectionTicketResponse,
+    CancelAgentTaskRequest,
+    CancelAgentTaskResponseBody,
+    CancelAgentTaskResponse,
     ChangeCloudPhoneNodeRequest,
     ChangeCloudPhoneNodeResponseBody,
     ChangeCloudPhoneNodeResponse,
@@ -727,6 +734,7 @@ __all__ = [
     BackupFileResponseBodyData,
     BatchGetAcpConnectionTicketRequestInstanceTasks,
     BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels,
+    CancelAgentTaskResponseBodyTasks,
     ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos,
     ChangeCloudPhoneNodeResponseBodyNodeInfos,
     CheckResourceStockResponseBodyResourceStockModels,

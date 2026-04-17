@@ -1,3 +1,17 @@
+2026-04-17 Version: 4.24.0
+- Support API CancelAgentTask.
+- Update API CreateCloudPhoneNode: add request parameters PaidCallBackUrl.
+- Update API ExpandDataVolume: add request parameters PaidCallBackUrl.
+- Update API ExpandPhoneDataVolume: add request parameters PaidCallBackUrl.
+- Update API InstallApp: add response parameters Body.ChildTaskInfo.$.AppId.
+- Update API RenewAndroidInstanceGroups: add request parameters PaidCallBackUrl.
+- Update API RenewCloudPhoneNodes: add request parameters PaidCallBackUrl.
+- Update API RunCommand: add response parameters Body.TaskId.
+- Update API RunCommand: add response parameters Body.RunCommandInfos.$.ChildTaskId.
+- Update API UninstallApp: add response parameters Body.ChildTaskInfo.$.AppId.
+- Update API UpgradeAndroidInstanceGroup: add request parameters PaidCallBackUrl.
+
+
 2026-04-13 Version: 4.23.0
 - Support API DescribeAgentTask.
 - Support API RunAgentTask.

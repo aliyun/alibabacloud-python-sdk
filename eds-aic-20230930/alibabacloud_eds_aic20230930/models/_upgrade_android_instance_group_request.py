@@ -10,6 +10,7 @@ class UpgradeAndroidInstanceGroupRequest(DaraModel):
         auto_pay: bool = None,
         increase_number_of_instance: int = None,
         instance_group_id: str = None,
+        paid_call_back_url: str = None,
         promotion_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
@@ -23,6 +24,7 @@ class UpgradeAndroidInstanceGroupRequest(DaraModel):
         self.increase_number_of_instance = increase_number_of_instance
         # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        self.paid_call_back_url = paid_call_back_url
         self.promotion_id = promotion_id
 
     def validate(self):
@@ -42,6 +44,9 @@ class UpgradeAndroidInstanceGroupRequest(DaraModel):
         if self.instance_group_id is not None:
             result['InstanceGroupId'] = self.instance_group_id
 
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
+
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
 
@@ -57,6 +62,9 @@ class UpgradeAndroidInstanceGroupRequest(DaraModel):
 
         if m.get('InstanceGroupId') is not None:
             self.instance_group_id = m.get('InstanceGroupId')
+
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
 
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
