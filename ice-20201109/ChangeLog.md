@@ -1,3 +1,9 @@
+2026-04-17 Version: 6.18.2
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.FileInfoList.$.AudioStreamInfoList.
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.FileInfoList.$.SubtitleStreamInfoList.
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.FileInfoList.$.VideoStreamInfoList.
+
+
 2026-04-13 Version: 6.18.1
 - Update API QueryVideoCognitionJob: add response parameters Body.Input.
 - Update API QueryVideoCognitionJob: add response parameters Body.Params.
