@@ -1,3 +1,8 @@
+2026-04-18 Version: 4.24.0
+- Support API QueryHistoryActiveUserCount.
+- Support API QueryHistoryMetricDistribution.
+
+
 2026-04-17 Version: 4.23.5
 - Update API MigrateDesktops: add request parameters TargetMemberIp.
 - Update API MigrateDesktops: add request parameters TargetSubnetId.

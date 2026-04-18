@@ -746,6 +746,12 @@ from ._modify_user_to_desktop_group_response import ModifyUserToDesktopGroupResp
 from ._move_cds_file_request import MoveCdsFileRequest
 from ._move_cds_file_response_body import MoveCdsFileResponseBody
 from ._move_cds_file_response import MoveCdsFileResponse
+from ._query_history_active_user_count_request import QueryHistoryActiveUserCountRequest
+from ._query_history_active_user_count_response_body import QueryHistoryActiveUserCountResponseBody
+from ._query_history_active_user_count_response import QueryHistoryActiveUserCountResponse
+from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequest
+from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBody
+from ._query_history_metric_distribution_response import QueryHistoryMetricDistributionResponse
 from ._reboot_desktops_request import RebootDesktopsRequest
 from ._reboot_desktops_response_body import RebootDesktopsResponseBody
 from ._reboot_desktops_response import RebootDesktopsResponse
@@ -1128,6 +1134,9 @@ from ._modify_template_request import ModifyTemplateRequestSiteConfigList
 from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimersSegmentTimers
 from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimers
 from ._move_cds_file_response_body import MoveCdsFileResponseBodyMoveCdsFileModel
+from ._query_history_active_user_count_response_body import QueryHistoryActiveUserCountResponseBodyActiveUserCount
+from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequestRanges
+from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBodyDistributionList
 from ._rebuild_desktops_response_body import RebuildDesktopsResponseBodyRebuildResults
 from ._remove_file_permission_request import RemoveFilePermissionRequestMemberListCdsIdentity
 from ._remove_file_permission_request import RemoveFilePermissionRequestMemberList
@@ -1885,6 +1894,12 @@ __all__ = [
     MoveCdsFileRequest,
     MoveCdsFileResponseBody,
     MoveCdsFileResponse,
+    QueryHistoryActiveUserCountRequest,
+    QueryHistoryActiveUserCountResponseBody,
+    QueryHistoryActiveUserCountResponse,
+    QueryHistoryMetricDistributionRequest,
+    QueryHistoryMetricDistributionResponseBody,
+    QueryHistoryMetricDistributionResponse,
     RebootDesktopsRequest,
     RebootDesktopsResponseBody,
     RebootDesktopsResponse,
@@ -2267,6 +2282,9 @@ __all__ = [
     ModifyTimerGroupRequestConfigTimersSegmentTimers,
     ModifyTimerGroupRequestConfigTimers,
     MoveCdsFileResponseBodyMoveCdsFileModel,
+    QueryHistoryActiveUserCountResponseBodyActiveUserCount,
+    QueryHistoryMetricDistributionRequestRanges,
+    QueryHistoryMetricDistributionResponseBodyDistributionList,
     RebuildDesktopsResponseBodyRebuildResults,
     RemoveFilePermissionRequestMemberListCdsIdentity,
     RemoveFilePermissionRequestMemberList,

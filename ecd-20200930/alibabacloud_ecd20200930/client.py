@@ -24457,6 +24457,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.move_cds_file_with_options_async(request, runtime)
 
+    def query_history_active_user_count_with_options(
+        self,
+        request: main_models.QueryHistoryActiveUserCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryActiveUserCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_date):
+            query['DataDate'] = request.data_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryActiveUserCount',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryActiveUserCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_history_active_user_count_with_options_async(
+        self,
+        request: main_models.QueryHistoryActiveUserCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryActiveUserCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_date):
+            query['DataDate'] = request.data_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryActiveUserCount',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryActiveUserCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_history_active_user_count(
+        self,
+        request: main_models.QueryHistoryActiveUserCountRequest,
+    ) -> main_models.QueryHistoryActiveUserCountResponse:
+        runtime = RuntimeOptions()
+        return self.query_history_active_user_count_with_options(request, runtime)
+
+    async def query_history_active_user_count_async(
+        self,
+        request: main_models.QueryHistoryActiveUserCountRequest,
+    ) -> main_models.QueryHistoryActiveUserCountResponse:
+        runtime = RuntimeOptions()
+        return await self.query_history_active_user_count_with_options_async(request, runtime)
+
+    def query_history_metric_distribution_with_options(
+        self,
+        request: main_models.QueryHistoryMetricDistributionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryMetricDistributionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.ranges):
+            query['Ranges'] = request.ranges
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryMetricDistribution',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryMetricDistributionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_history_metric_distribution_with_options_async(
+        self,
+        request: main_models.QueryHistoryMetricDistributionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryMetricDistributionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.ranges):
+            query['Ranges'] = request.ranges
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryMetricDistribution',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryMetricDistributionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_history_metric_distribution(
+        self,
+        request: main_models.QueryHistoryMetricDistributionRequest,
+    ) -> main_models.QueryHistoryMetricDistributionResponse:
+        runtime = RuntimeOptions()
+        return self.query_history_metric_distribution_with_options(request, runtime)
+
+    async def query_history_metric_distribution_async(
+        self,
+        request: main_models.QueryHistoryMetricDistributionRequest,
+    ) -> main_models.QueryHistoryMetricDistributionResponse:
+        runtime = RuntimeOptions()
+        return await self.query_history_metric_distribution_with_options_async(request, runtime)
+
     def reboot_desktops_with_options(
         self,
         request: main_models.RebootDesktopsRequest,
