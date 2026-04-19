@@ -301,6 +301,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cancel_kyuubi_spark_application_with_options_async(workspace_id, kyuubi_service_id, application_id, request, headers, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/changeResourceGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/changeResourceGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.change_resource_group_with_options(request, headers, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.change_resource_group_with_options_async(request, headers, runtime)
+
     def create_kyuubi_service_with_options(
         self,
         workspace_id: str,

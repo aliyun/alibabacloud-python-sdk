@@ -30,6 +30,9 @@ from ._cancel_job_run_response import CancelJobRunResponse
 from ._cancel_kyuubi_spark_application_request import CancelKyuubiSparkApplicationRequest
 from ._cancel_kyuubi_spark_application_response_body import CancelKyuubiSparkApplicationResponseBody
 from ._cancel_kyuubi_spark_application_response import CancelKyuubiSparkApplicationResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
 from ._create_kyuubi_service_request import CreateKyuubiServiceRequest
 from ._create_kyuubi_service_response_body import CreateKyuubiServiceResponseBody
 from ._create_kyuubi_service_response import CreateKyuubiServiceResponse
@@ -380,6 +383,9 @@ __all__ = [
     CancelKyuubiSparkApplicationRequest,
     CancelKyuubiSparkApplicationResponseBody,
     CancelKyuubiSparkApplicationResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
     CreateKyuubiServiceRequest,
     CreateKyuubiServiceResponseBody,
     CreateKyuubiServiceResponse,

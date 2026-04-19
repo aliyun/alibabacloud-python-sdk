@@ -1,3 +1,7 @@
+2026-04-19 Version: 1.21.0
+- Support API ChangeResourceGroup.
+
+
 2026-04-15 Version: 1.20.1
 - Generated python 2023-08-08 for emr-serverless-spark.
 
