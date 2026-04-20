@@ -1,3 +1,8 @@
+2026-04-20 Version: 1.8.0
+- Support API CreateUser.
+- Support API DropUser.
+
+
 2026-02-27 Version: 1.7.2
 - Generated python 2022-06-01 for Hologram.
 

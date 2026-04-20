@@ -361,6 +361,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
 
+    def create_user_with_options(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.super_user):
+            body['superUser'] = request.super_user
+        if not DaraCore.is_null(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUser',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/createUser',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.super_user):
+            body['superUser'] = request.super_user
+        if not DaraCore.is_null(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUser',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/createUser',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserRequest,
+    ) -> main_models.CreateUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_user_with_options(instance_id, request, headers, runtime)
+
+    async def create_user_async(
+        self,
+        instance_id: str,
+        request: main_models.CreateUserRequest,
+    ) -> main_models.CreateUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_user_with_options_async(instance_id, request, headers, runtime)
+
     def delete_holo_warehouse_with_options(
         self,
         instance_id: str,
@@ -666,6 +750,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.disable_sslwith_options_async(instance_id, headers, runtime)
+
+    def drop_user_with_options(
+        self,
+        instance_id: str,
+        request: main_models.DropUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DropUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.super_user):
+            body['superUser'] = request.super_user
+        if not DaraCore.is_null(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DropUser',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/dropUser',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DropUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def drop_user_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.DropUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DropUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.super_user):
+            body['superUser'] = request.super_user
+        if not DaraCore.is_null(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DropUser',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/dropUser',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DropUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def drop_user(
+        self,
+        instance_id: str,
+        request: main_models.DropUserRequest,
+    ) -> main_models.DropUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.drop_user_with_options(instance_id, request, headers, runtime)
+
+    async def drop_user_async(
+        self,
+        instance_id: str,
+        request: main_models.DropUserRequest,
+    ) -> main_models.DropUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.drop_user_with_options_async(instance_id, request, headers, runtime)
 
     def enable_hive_access_with_options(
         self,

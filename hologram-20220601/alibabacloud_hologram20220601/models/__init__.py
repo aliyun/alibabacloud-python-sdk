@@ -11,6 +11,9 @@ from ._create_holo_warehouse_response import CreateHoloWarehouseResponse
 from ._create_instance_request import CreateInstanceRequest
 from ._create_instance_response_body import CreateInstanceResponseBody
 from ._create_instance_response import CreateInstanceResponse
+from ._create_user_request import CreateUserRequest
+from ._create_user_response_body import CreateUserResponseBody
+from ._create_user_response import CreateUserResponse
 from ._delete_holo_warehouse_request import DeleteHoloWarehouseRequest
 from ._delete_holo_warehouse_response_body import DeleteHoloWarehouseResponseBody
 from ._delete_holo_warehouse_response import DeleteHoloWarehouseResponse
@@ -22,6 +25,9 @@ from ._disable_hive_access_response_body import DisableHiveAccessResponseBody
 from ._disable_hive_access_response import DisableHiveAccessResponse
 from ._disable_sslresponse_body import DisableSSLResponseBody
 from ._disable_sslresponse import DisableSSLResponse
+from ._drop_user_request import DropUserRequest
+from ._drop_user_response_body import DropUserResponseBody
+from ._drop_user_response import DropUserResponse
 from ._enable_hive_access_request import EnableHiveAccessRequest
 from ._enable_hive_access_response_body import EnableHiveAccessResponseBody
 from ._enable_hive_access_response import EnableHiveAccessResponse
@@ -129,6 +135,9 @@ __all__ = [
     CreateInstanceRequest,
     CreateInstanceResponseBody,
     CreateInstanceResponse,
+    CreateUserRequest,
+    CreateUserResponseBody,
+    CreateUserResponse,
     DeleteHoloWarehouseRequest,
     DeleteHoloWarehouseResponseBody,
     DeleteHoloWarehouseResponse,
@@ -140,6 +149,9 @@ __all__ = [
     DisableHiveAccessResponse,
     DisableSSLResponseBody,
     DisableSSLResponse,
+    DropUserRequest,
+    DropUserResponseBody,
+    DropUserResponse,
     EnableHiveAccessRequest,
     EnableHiveAccessResponseBody,
     EnableHiveAccessResponse,
