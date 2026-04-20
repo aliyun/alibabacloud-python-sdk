@@ -24616,10 +24616,14 @@ class Client(OpenApiClient):
     ) -> main_models.RebootDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.create_snapshot):
+            query['CreateSnapshot'] = request.create_snapshot
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.os_update):
             query['OsUpdate'] = request.os_update
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -24648,10 +24652,14 @@ class Client(OpenApiClient):
     ) -> main_models.RebootDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.create_snapshot):
+            query['CreateSnapshot'] = request.create_snapshot
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.os_update):
             query['OsUpdate'] = request.os_update
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -26750,10 +26758,14 @@ class Client(OpenApiClient):
     ) -> main_models.StopDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.create_snapshot):
+            query['CreateSnapshot'] = request.create_snapshot
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.os_update):
             query['OsUpdate'] = request.os_update
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.stopped_mode):
@@ -26784,10 +26796,14 @@ class Client(OpenApiClient):
     ) -> main_models.StopDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.create_snapshot):
+            query['CreateSnapshot'] = request.create_snapshot
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.os_update):
             query['OsUpdate'] = request.os_update
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.stopped_mode):

@@ -357,6 +357,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
     def __init__(
         self,
         appointment_timer: int = None,
+        create_snapshot: bool = None,
         end_cron_expression: str = None,
         enforce: bool = None,
         image_id: str = None,
@@ -364,6 +365,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
+        patch_id: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
         start_cron_expression: str = None,
@@ -372,6 +374,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         trigger_type: str = None,
     ):
         self.appointment_timer = appointment_timer
+        self.create_snapshot = create_snapshot
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
         self.image_id = image_id
@@ -379,6 +382,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
+        self.patch_id = patch_id
         self.process_whitelist = process_whitelist
         self.reset_type = reset_type
         self.start_cron_expression = start_cron_expression
@@ -396,6 +400,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
             result = _map
         if self.appointment_timer is not None:
             result['AppointmentTimer'] = self.appointment_timer
+
+        if self.create_snapshot is not None:
+            result['CreateSnapshot'] = self.create_snapshot
 
         if self.end_cron_expression is not None:
             result['EndCronExpression'] = self.end_cron_expression
@@ -417,6 +424,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
 
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
+
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
 
         if self.process_whitelist is not None:
             result['ProcessWhitelist'] = self.process_whitelist
@@ -443,6 +453,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         if m.get('AppointmentTimer') is not None:
             self.appointment_timer = m.get('AppointmentTimer')
 
+        if m.get('CreateSnapshot') is not None:
+            self.create_snapshot = m.get('CreateSnapshot')
+
         if m.get('EndCronExpression') is not None:
             self.end_cron_expression = m.get('EndCronExpression')
 
@@ -463,6 +476,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
 
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
+
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
 
         if m.get('ProcessWhitelist') is not None:
             self.process_whitelist = m.get('ProcessWhitelist')
