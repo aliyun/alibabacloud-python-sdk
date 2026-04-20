@@ -742,6 +742,7 @@ class GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile(DaraM
         template_id: str = None,
         text_list: str = None,
         thumbnail: str = None,
+        upgrade_status: str = None,
     ):
         self.admin_url = admin_url
         self.application_type = application_type
@@ -773,6 +774,7 @@ class GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile(DaraM
         self.template_id = template_id
         self.text_list = text_list
         self.thumbnail = thumbnail
+        self.upgrade_status = upgrade_status
 
     def validate(self):
         pass
@@ -872,6 +874,9 @@ class GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile(DaraM
         if self.thumbnail is not None:
             result['Thumbnail'] = self.thumbnail
 
+        if self.upgrade_status is not None:
+            result['UpgradeStatus'] = self.upgrade_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -965,6 +970,9 @@ class GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile(DaraM
 
         if m.get('Thumbnail') is not None:
             self.thumbnail = m.get('Thumbnail')
+
+        if m.get('UpgradeStatus') is not None:
+            self.upgrade_status = m.get('UpgradeStatus')
 
         return self
 
@@ -1001,6 +1009,7 @@ class GetAppInstanceForPartnerResponseBodyModuleProfile(DaraModel):
         template_id: str = None,
         text_list: str = None,
         thumbnail: str = None,
+        upgrade_status: str = None,
     ):
         self.admin_url = admin_url
         self.application_type = application_type
@@ -1032,6 +1041,7 @@ class GetAppInstanceForPartnerResponseBodyModuleProfile(DaraModel):
         self.template_id = template_id
         self.text_list = text_list
         self.thumbnail = thumbnail
+        self.upgrade_status = upgrade_status
 
     def validate(self):
         pass
@@ -1131,6 +1141,9 @@ class GetAppInstanceForPartnerResponseBodyModuleProfile(DaraModel):
         if self.thumbnail is not None:
             result['Thumbnail'] = self.thumbnail
 
+        if self.upgrade_status is not None:
+            result['UpgradeStatus'] = self.upgrade_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1224,6 +1237,9 @@ class GetAppInstanceForPartnerResponseBodyModuleProfile(DaraModel):
 
         if m.get('Thumbnail') is not None:
             self.thumbnail = m.get('Thumbnail')
+
+        if m.get('UpgradeStatus') is not None:
+            self.upgrade_status = m.get('UpgradeStatus')
 
         return self
 
@@ -1568,6 +1584,7 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile(DaraModel)
         order_id: str = None,
         service_spec: str = None,
         service_spec_text: str = None,
+        upgrade_status: str = None,
     ):
         self.biz_id = biz_id
         self.design_type = design_type
@@ -1579,6 +1596,7 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile(DaraModel)
         self.order_id = order_id
         self.service_spec = service_spec
         self.service_spec_text = service_spec_text
+        self.upgrade_status = upgrade_status
 
     def validate(self):
         pass
@@ -1618,6 +1636,9 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile(DaraModel)
         if self.service_spec_text is not None:
             result['ServiceSpecText'] = self.service_spec_text
 
+        if self.upgrade_status is not None:
+            result['UpgradeStatus'] = self.upgrade_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1651,6 +1672,9 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile(DaraModel)
 
         if m.get('ServiceSpecText') is not None:
             self.service_spec_text = m.get('ServiceSpecText')
+
+        if m.get('UpgradeStatus') is not None:
+            self.upgrade_status = m.get('UpgradeStatus')
 
         return self
 
