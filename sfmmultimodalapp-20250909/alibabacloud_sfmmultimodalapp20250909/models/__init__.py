@@ -45,6 +45,14 @@ from ._list_mm_app_response import ListMmAppResponse
 from ._list_published_mm_app_request import ListPublishedMmAppRequest
 from ._list_published_mm_app_response_body import ListPublishedMmAppResponseBody
 from ._list_published_mm_app_response import ListPublishedMmAppResponse
+from ._mm_app_binding_mcp_request import MmAppBindingMcpRequest
+from ._mm_app_binding_mcp_shrink_request import MmAppBindingMcpShrinkRequest
+from ._mm_app_binding_mcp_response_body import MmAppBindingMcpResponseBody
+from ._mm_app_binding_mcp_response import MmAppBindingMcpResponse
+from ._mm_app_binding_rag_request import MmAppBindingRagRequest
+from ._mm_app_binding_rag_shrink_request import MmAppBindingRagShrinkRequest
+from ._mm_app_binding_rag_response_body import MmAppBindingRagResponseBody
+from ._mm_app_binding_rag_response import MmAppBindingRagResponse
 from ._patch_memory_config_request import PatchMemoryConfigRequest
 from ._patch_memory_config_response_body import PatchMemoryConfigResponseBody
 from ._patch_memory_config_response import PatchMemoryConfigResponse
@@ -75,6 +83,22 @@ from ._update_mm_app_request import UpdateMmAppRequest
 from ._update_mm_app_shrink_request import UpdateMmAppShrinkRequest
 from ._update_mm_app_response_body import UpdateMmAppResponseBody
 from ._update_mm_app_response import UpdateMmAppResponse
+from ._update_mm_app_memory_request import UpdateMmAppMemoryRequest
+from ._update_mm_app_memory_response_body import UpdateMmAppMemoryResponseBody
+from ._update_mm_app_memory_response import UpdateMmAppMemoryResponse
+from ._update_mm_app_rag_request import UpdateMmAppRagRequest
+from ._update_mm_app_rag_response_body import UpdateMmAppRagResponseBody
+from ._update_mm_app_rag_response import UpdateMmAppRagResponse
+from ._update_mm_app_rag_config_request import UpdateMmAppRagConfigRequest
+from ._update_mm_app_rag_config_response_body import UpdateMmAppRagConfigResponseBody
+from ._update_mm_app_rag_config_response import UpdateMmAppRagConfigResponse
+from ._update_mm_app_rag_weight_request import UpdateMmAppRagWeightRequest
+from ._update_mm_app_rag_weight_shrink_request import UpdateMmAppRagWeightShrinkRequest
+from ._update_mm_app_rag_weight_response_body import UpdateMmAppRagWeightResponseBody
+from ._update_mm_app_rag_weight_response import UpdateMmAppRagWeightResponse
+from ._update_mm_app_transition_request import UpdateMmAppTransitionRequest
+from ._update_mm_app_transition_response_body import UpdateMmAppTransitionResponseBody
+from ._update_mm_app_transition_response import UpdateMmAppTransitionResponse
 from ._update_profile_request import UpdateProfileRequest
 from ._update_profile_shrink_request import UpdateProfileShrinkRequest
 from ._update_profile_response_body import UpdateProfileResponseBody
@@ -94,6 +118,11 @@ from ._delete_memory_response_body import DeleteMemoryResponseBodyData
 from ._delete_profile_response_body import DeleteProfileResponseBodyData
 from ._describe_command_response_body import DescribeCommandResponseBodyToolExamples
 from ._describe_command_response_body import DescribeCommandResponseBodyToolParams
+from ._describe_mm_app_response_body import DescribeMmAppResponseBodyAppConfig
+from ._describe_mm_app_response_body import DescribeMmAppResponseBodyBindingConfigCommands
+from ._describe_mm_app_response_body import DescribeMmAppResponseBodyBindingConfigMcps
+from ._describe_mm_app_response_body import DescribeMmAppResponseBodyBindingConfigRagConfig
+from ._describe_mm_app_response_body import DescribeMmAppResponseBodyBindingConfig
 from ._describe_mm_app_response_body import DescribeMmAppResponseBodyConversationConfig
 from ._describe_mm_app_response_body import DescribeMmAppResponseBodyModelConfig
 from ._list_command_response_body import ListCommandResponseBodyToolInfoListToolExamples
@@ -103,6 +132,9 @@ from ._list_mm_app_response_body import ListMmAppResponseBodyAppInfoListConversa
 from ._list_mm_app_response_body import ListMmAppResponseBodyAppInfoListModelConfig
 from ._list_mm_app_response_body import ListMmAppResponseBodyAppInfoList
 from ._list_published_mm_app_response_body import ListPublishedMmAppResponseBodyPublishedVersionInfoList
+from ._mm_app_binding_mcp_request import MmAppBindingMcpRequestMcps
+from ._mm_app_binding_mcp_response_body import MmAppBindingMcpResponseBodyData
+from ._mm_app_binding_rag_response_body import MmAppBindingRagResponseBodyData
 from ._patch_memory_config_response_body import PatchMemoryConfigResponseBodyData
 from ._query_memory_config_response_body import QueryMemoryConfigResponseBodyData
 from ._query_memory_list_response_body import QueryMemoryListResponseBodyDataMemoryNodes
@@ -119,6 +151,11 @@ from ._update_mm_app_request import UpdateMmAppRequestBindingConfigCommands
 from ._update_mm_app_request import UpdateMmAppRequestBindingConfig
 from ._update_mm_app_request import UpdateMmAppRequestConversationConfig
 from ._update_mm_app_request import UpdateMmAppRequestModelConfig
+from ._update_mm_app_memory_response_body import UpdateMmAppMemoryResponseBodyData
+from ._update_mm_app_rag_response_body import UpdateMmAppRagResponseBodyData
+from ._update_mm_app_rag_config_response_body import UpdateMmAppRagConfigResponseBodyData
+from ._update_mm_app_rag_weight_response_body import UpdateMmAppRagWeightResponseBodyData
+from ._update_mm_app_transition_response_body import UpdateMmAppTransitionResponseBodyData
 from ._update_profile_request import UpdateProfileRequestAttributesOperations
 from ._update_profile_response_body import UpdateProfileResponseBodyData
 
@@ -166,6 +203,14 @@ __all__ = [
     ListPublishedMmAppRequest,
     ListPublishedMmAppResponseBody,
     ListPublishedMmAppResponse,
+    MmAppBindingMcpRequest,
+    MmAppBindingMcpShrinkRequest,
+    MmAppBindingMcpResponseBody,
+    MmAppBindingMcpResponse,
+    MmAppBindingRagRequest,
+    MmAppBindingRagShrinkRequest,
+    MmAppBindingRagResponseBody,
+    MmAppBindingRagResponse,
     PatchMemoryConfigRequest,
     PatchMemoryConfigResponseBody,
     PatchMemoryConfigResponse,
@@ -196,6 +241,22 @@ __all__ = [
     UpdateMmAppShrinkRequest,
     UpdateMmAppResponseBody,
     UpdateMmAppResponse,
+    UpdateMmAppMemoryRequest,
+    UpdateMmAppMemoryResponseBody,
+    UpdateMmAppMemoryResponse,
+    UpdateMmAppRagRequest,
+    UpdateMmAppRagResponseBody,
+    UpdateMmAppRagResponse,
+    UpdateMmAppRagConfigRequest,
+    UpdateMmAppRagConfigResponseBody,
+    UpdateMmAppRagConfigResponse,
+    UpdateMmAppRagWeightRequest,
+    UpdateMmAppRagWeightShrinkRequest,
+    UpdateMmAppRagWeightResponseBody,
+    UpdateMmAppRagWeightResponse,
+    UpdateMmAppTransitionRequest,
+    UpdateMmAppTransitionResponseBody,
+    UpdateMmAppTransitionResponse,
     UpdateProfileRequest,
     UpdateProfileShrinkRequest,
     UpdateProfileResponseBody,
@@ -215,6 +276,11 @@ __all__ = [
     DeleteProfileResponseBodyData,
     DescribeCommandResponseBodyToolExamples,
     DescribeCommandResponseBodyToolParams,
+    DescribeMmAppResponseBodyAppConfig,
+    DescribeMmAppResponseBodyBindingConfigCommands,
+    DescribeMmAppResponseBodyBindingConfigMcps,
+    DescribeMmAppResponseBodyBindingConfigRagConfig,
+    DescribeMmAppResponseBodyBindingConfig,
     DescribeMmAppResponseBodyConversationConfig,
     DescribeMmAppResponseBodyModelConfig,
     ListCommandResponseBodyToolInfoListToolExamples,
@@ -224,6 +290,9 @@ __all__ = [
     ListMmAppResponseBodyAppInfoListModelConfig,
     ListMmAppResponseBodyAppInfoList,
     ListPublishedMmAppResponseBodyPublishedVersionInfoList,
+    MmAppBindingMcpRequestMcps,
+    MmAppBindingMcpResponseBodyData,
+    MmAppBindingRagResponseBodyData,
     PatchMemoryConfigResponseBodyData,
     QueryMemoryConfigResponseBodyData,
     QueryMemoryListResponseBodyDataMemoryNodes,
@@ -240,6 +309,11 @@ __all__ = [
     UpdateMmAppRequestBindingConfig,
     UpdateMmAppRequestConversationConfig,
     UpdateMmAppRequestModelConfig,
+    UpdateMmAppMemoryResponseBodyData,
+    UpdateMmAppRagResponseBodyData,
+    UpdateMmAppRagConfigResponseBodyData,
+    UpdateMmAppRagWeightResponseBodyData,
+    UpdateMmAppTransitionResponseBodyData,
     UpdateProfileRequestAttributesOperations,
     UpdateProfileResponseBodyData
 ]

@@ -1198,6 +1198,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_published_mm_app_with_options_async(request, runtime)
 
+    def mm_app_binding_mcp_with_options(
+        self,
+        tmp_req: main_models.MmAppBindingMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MmAppBindingMcpResponse:
+        tmp_req.validate()
+        request = main_models.MmAppBindingMcpShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.mcps):
+            request.mcps_shrink = Utils.array_to_string_with_specified_style(tmp_req.mcps, 'Mcps', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mcps_shrink):
+            query['Mcps'] = request.mcps_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MmAppBindingMcp',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MmAppBindingMcpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mm_app_binding_mcp_with_options_async(
+        self,
+        tmp_req: main_models.MmAppBindingMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MmAppBindingMcpResponse:
+        tmp_req.validate()
+        request = main_models.MmAppBindingMcpShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.mcps):
+            request.mcps_shrink = Utils.array_to_string_with_specified_style(tmp_req.mcps, 'Mcps', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mcps_shrink):
+            query['Mcps'] = request.mcps_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MmAppBindingMcp',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MmAppBindingMcpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mm_app_binding_mcp(
+        self,
+        request: main_models.MmAppBindingMcpRequest,
+    ) -> main_models.MmAppBindingMcpResponse:
+        runtime = RuntimeOptions()
+        return self.mm_app_binding_mcp_with_options(request, runtime)
+
+    async def mm_app_binding_mcp_async(
+        self,
+        request: main_models.MmAppBindingMcpRequest,
+    ) -> main_models.MmAppBindingMcpResponse:
+        runtime = RuntimeOptions()
+        return await self.mm_app_binding_mcp_with_options_async(request, runtime)
+
+    def mm_app_binding_rag_with_options(
+        self,
+        tmp_req: main_models.MmAppBindingRagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MmAppBindingRagResponse:
+        tmp_req.validate()
+        request = main_models.MmAppBindingRagShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_code_list):
+            request.knowledge_base_code_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_code_list, 'KnowledgeBaseCodeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.knowledge_base_code_list_shrink):
+            query['KnowledgeBaseCodeList'] = request.knowledge_base_code_list_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MmAppBindingRag',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MmAppBindingRagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mm_app_binding_rag_with_options_async(
+        self,
+        tmp_req: main_models.MmAppBindingRagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MmAppBindingRagResponse:
+        tmp_req.validate()
+        request = main_models.MmAppBindingRagShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_code_list):
+            request.knowledge_base_code_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_code_list, 'KnowledgeBaseCodeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.knowledge_base_code_list_shrink):
+            query['KnowledgeBaseCodeList'] = request.knowledge_base_code_list_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MmAppBindingRag',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MmAppBindingRagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mm_app_binding_rag(
+        self,
+        request: main_models.MmAppBindingRagRequest,
+    ) -> main_models.MmAppBindingRagResponse:
+        runtime = RuntimeOptions()
+        return self.mm_app_binding_rag_with_options(request, runtime)
+
+    async def mm_app_binding_rag_async(
+        self,
+        request: main_models.MmAppBindingRagRequest,
+    ) -> main_models.MmAppBindingRagResponse:
+        runtime = RuntimeOptions()
+        return await self.mm_app_binding_rag_with_options_async(request, runtime)
+
     def patch_memory_config_with_options(
         self,
         request: main_models.PatchMemoryConfigRequest,
@@ -2023,6 +2195,412 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateMmAppResponse:
         runtime = RuntimeOptions()
         return await self.update_mm_app_with_options_async(request, runtime)
+
+    def update_mm_app_memory_with_options(
+        self,
+        request: main_models.UpdateMmAppMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppMemory',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mm_app_memory_with_options_async(
+        self,
+        request: main_models.UpdateMmAppMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppMemory',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mm_app_memory(
+        self,
+        request: main_models.UpdateMmAppMemoryRequest,
+    ) -> main_models.UpdateMmAppMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.update_mm_app_memory_with_options(request, runtime)
+
+    async def update_mm_app_memory_async(
+        self,
+        request: main_models.UpdateMmAppMemoryRequest,
+    ) -> main_models.UpdateMmAppMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mm_app_memory_with_options_async(request, runtime)
+
+    def update_mm_app_rag_with_options(
+        self,
+        request: main_models.UpdateMmAppRagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppRagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppRag',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppRagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mm_app_rag_with_options_async(
+        self,
+        request: main_models.UpdateMmAppRagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppRagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppRag',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppRagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mm_app_rag(
+        self,
+        request: main_models.UpdateMmAppRagRequest,
+    ) -> main_models.UpdateMmAppRagResponse:
+        runtime = RuntimeOptions()
+        return self.update_mm_app_rag_with_options(request, runtime)
+
+    async def update_mm_app_rag_async(
+        self,
+        request: main_models.UpdateMmAppRagRequest,
+    ) -> main_models.UpdateMmAppRagResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mm_app_rag_with_options_async(request, runtime)
+
+    def update_mm_app_rag_config_with_options(
+        self,
+        request: main_models.UpdateMmAppRagConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppRagConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.prompt_strategy):
+            query['PromptStrategy'] = request.prompt_strategy
+        if not DaraCore.is_null(request.retrieve_max_length):
+            query['RetrieveMaxLength'] = request.retrieve_max_length
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppRagConfig',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppRagConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mm_app_rag_config_with_options_async(
+        self,
+        request: main_models.UpdateMmAppRagConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppRagConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.prompt_strategy):
+            query['PromptStrategy'] = request.prompt_strategy
+        if not DaraCore.is_null(request.retrieve_max_length):
+            query['RetrieveMaxLength'] = request.retrieve_max_length
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppRagConfig',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppRagConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mm_app_rag_config(
+        self,
+        request: main_models.UpdateMmAppRagConfigRequest,
+    ) -> main_models.UpdateMmAppRagConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_mm_app_rag_config_with_options(request, runtime)
+
+    async def update_mm_app_rag_config_async(
+        self,
+        request: main_models.UpdateMmAppRagConfigRequest,
+    ) -> main_models.UpdateMmAppRagConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mm_app_rag_config_with_options_async(request, runtime)
+
+    def update_mm_app_rag_weight_with_options(
+        self,
+        tmp_req: main_models.UpdateMmAppRagWeightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppRagWeightResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMmAppRagWeightShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rank_weights):
+            request.rank_weights_shrink = Utils.array_to_string_with_specified_style(tmp_req.rank_weights, 'RankWeights', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.rank_weights_shrink):
+            query['RankWeights'] = request.rank_weights_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppRagWeight',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppRagWeightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mm_app_rag_weight_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMmAppRagWeightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppRagWeightResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMmAppRagWeightShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rank_weights):
+            request.rank_weights_shrink = Utils.array_to_string_with_specified_style(tmp_req.rank_weights, 'RankWeights', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.rank_weights_shrink):
+            query['RankWeights'] = request.rank_weights_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppRagWeight',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppRagWeightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mm_app_rag_weight(
+        self,
+        request: main_models.UpdateMmAppRagWeightRequest,
+    ) -> main_models.UpdateMmAppRagWeightResponse:
+        runtime = RuntimeOptions()
+        return self.update_mm_app_rag_weight_with_options(request, runtime)
+
+    async def update_mm_app_rag_weight_async(
+        self,
+        request: main_models.UpdateMmAppRagWeightRequest,
+    ) -> main_models.UpdateMmAppRagWeightResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mm_app_rag_weight_with_options_async(request, runtime)
+
+    def update_mm_app_transition_with_options(
+        self,
+        request: main_models.UpdateMmAppTransitionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppTransitionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppTransition',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppTransitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mm_app_transition_with_options_async(
+        self,
+        request: main_models.UpdateMmAppTransitionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppTransitionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppTransition',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppTransitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mm_app_transition(
+        self,
+        request: main_models.UpdateMmAppTransitionRequest,
+    ) -> main_models.UpdateMmAppTransitionResponse:
+        runtime = RuntimeOptions()
+        return self.update_mm_app_transition_with_options(request, runtime)
+
+    async def update_mm_app_transition_async(
+        self,
+        request: main_models.UpdateMmAppTransitionRequest,
+    ) -> main_models.UpdateMmAppTransitionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mm_app_transition_with_options_async(request, runtime)
 
     def update_profile_with_options(
         self,
