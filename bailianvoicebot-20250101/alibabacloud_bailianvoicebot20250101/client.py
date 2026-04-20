@@ -49,6 +49,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.audio_codec):
+            query['AudioCodec'] = request.audio_codec
         if not DaraCore.is_null(request.business_unit_id):
             query['BusinessUnitId'] = request.business_unit_id
         if not DaraCore.is_null(request.caller):
@@ -91,6 +93,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.audio_codec):
+            query['AudioCodec'] = request.audio_codec
         if not DaraCore.is_null(request.business_unit_id):
             query['BusinessUnitId'] = request.business_unit_id
         if not DaraCore.is_null(request.caller):
@@ -338,6 +342,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_application_version_with_options_async(request, runtime)
 
+    def create_clone_voice_with_options(
+        self,
+        request: main_models.CreateCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.file_key):
+            body['FileKey'] = request.file_key
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloneVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_clone_voice_with_options_async(
+        self,
+        request: main_models.CreateCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.file_key):
+            body['FileKey'] = request.file_key
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloneVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_clone_voice(
+        self,
+        request: main_models.CreateCloneVoiceRequest,
+    ) -> main_models.CreateCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return self.create_clone_voice_with_options(request, runtime)
+
+    async def create_clone_voice_async(
+        self,
+        request: main_models.CreateCloneVoiceRequest,
+    ) -> main_models.CreateCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_clone_voice_with_options_async(request, runtime)
+
+    def create_variable_with_options(
+        self,
+        request: main_models.CreateVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVariableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_variable_with_options_async(
+        self,
+        request: main_models.CreateVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVariableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_variable(
+        self,
+        request: main_models.CreateVariableRequest,
+    ) -> main_models.CreateVariableResponse:
+        runtime = RuntimeOptions()
+        return self.create_variable_with_options(request, runtime)
+
+    async def create_variable_async(
+        self,
+        request: main_models.CreateVariableRequest,
+    ) -> main_models.CreateVariableResponse:
+        runtime = RuntimeOptions()
+        return await self.create_variable_with_options_async(request, runtime)
+
     def delete_application_with_options(
         self,
         request: main_models.DeleteApplicationRequest,
@@ -411,6 +575,232 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteApplicationResponse:
         runtime = RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
+
+    def delete_clone_voice_with_options(
+        self,
+        request: main_models.DeleteCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.clone_voice_id):
+            body['CloneVoiceId'] = request.clone_voice_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloneVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_clone_voice_with_options_async(
+        self,
+        request: main_models.DeleteCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.clone_voice_id):
+            body['CloneVoiceId'] = request.clone_voice_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloneVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_clone_voice(
+        self,
+        request: main_models.DeleteCloneVoiceRequest,
+    ) -> main_models.DeleteCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_clone_voice_with_options(request, runtime)
+
+    async def delete_clone_voice_async(
+        self,
+        request: main_models.DeleteCloneVoiceRequest,
+    ) -> main_models.DeleteCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_clone_voice_with_options_async(request, runtime)
+
+    def delete_variable_with_options(
+        self,
+        request: main_models.DeleteVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.variable_id):
+            body['VariableId'] = request.variable_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVariableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_variable_with_options_async(
+        self,
+        request: main_models.DeleteVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.variable_id):
+            body['VariableId'] = request.variable_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVariableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_variable(
+        self,
+        request: main_models.DeleteVariableRequest,
+    ) -> main_models.DeleteVariableResponse:
+        runtime = RuntimeOptions()
+        return self.delete_variable_with_options(request, runtime)
+
+    async def delete_variable_async(
+        self,
+        request: main_models.DeleteVariableRequest,
+    ) -> main_models.DeleteVariableResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_variable_with_options_async(request, runtime)
+
+    def generate_file_upload_params_with_options(
+        self,
+        request: main_models.GenerateFileUploadParamsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateFileUploadParamsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_type):
+            body['BusinessType'] = request.business_type
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.file_name):
+            body['FileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateFileUploadParams',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateFileUploadParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_file_upload_params_with_options_async(
+        self,
+        request: main_models.GenerateFileUploadParamsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateFileUploadParamsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_type):
+            body['BusinessType'] = request.business_type
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.file_name):
+            body['FileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateFileUploadParams',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateFileUploadParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_file_upload_params(
+        self,
+        request: main_models.GenerateFileUploadParamsRequest,
+    ) -> main_models.GenerateFileUploadParamsResponse:
+        runtime = RuntimeOptions()
+        return self.generate_file_upload_params_with_options(request, runtime)
+
+    async def generate_file_upload_params_async(
+        self,
+        request: main_models.GenerateFileUploadParamsRequest,
+    ) -> main_models.GenerateFileUploadParamsResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_file_upload_params_with_options_async(request, runtime)
 
     def get_application_with_options(
         self,
@@ -641,6 +1031,170 @@ class Client(OpenApiClient):
     ) -> main_models.ListApplicationsResponse:
         runtime = RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
+
+    def list_clone_voice_with_options(
+        self,
+        request: main_models.ListCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloneVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_clone_voice_with_options_async(
+        self,
+        request: main_models.ListCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloneVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_clone_voice(
+        self,
+        request: main_models.ListCloneVoiceRequest,
+    ) -> main_models.ListCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return self.list_clone_voice_with_options(request, runtime)
+
+    async def list_clone_voice_async(
+        self,
+        request: main_models.ListCloneVoiceRequest,
+    ) -> main_models.ListCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_clone_voice_with_options_async(request, runtime)
+
+    def list_variable_with_options(
+        self,
+        request: main_models.ListVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_pattern):
+            body['SearchPattern'] = request.search_pattern
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVariableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_variable_with_options_async(
+        self,
+        request: main_models.ListVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_pattern):
+            body['SearchPattern'] = request.search_pattern
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVariableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_variable(
+        self,
+        request: main_models.ListVariableRequest,
+    ) -> main_models.ListVariableResponse:
+        runtime = RuntimeOptions()
+        return self.list_variable_with_options(request, runtime)
+
+    async def list_variable_async(
+        self,
+        request: main_models.ListVariableRequest,
+    ) -> main_models.ListVariableResponse:
+        runtime = RuntimeOptions()
+        return await self.list_variable_with_options_async(request, runtime)
 
     def publish_application_version_with_options(
         self,
@@ -919,3 +1473,163 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateApplicationVersionResponse:
         runtime = RuntimeOptions()
         return await self.update_application_version_with_options_async(request, runtime)
+
+    def update_clone_voice_with_options(
+        self,
+        request: main_models.UpdateCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.clone_voice_id):
+            body['CloneVoiceId'] = request.clone_voice_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCloneVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_clone_voice_with_options_async(
+        self,
+        request: main_models.UpdateCloneVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCloneVoiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.clone_voice_id):
+            body['CloneVoiceId'] = request.clone_voice_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCloneVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCloneVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_clone_voice(
+        self,
+        request: main_models.UpdateCloneVoiceRequest,
+    ) -> main_models.UpdateCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return self.update_clone_voice_with_options(request, runtime)
+
+    async def update_clone_voice_async(
+        self,
+        request: main_models.UpdateCloneVoiceRequest,
+    ) -> main_models.UpdateCloneVoiceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_clone_voice_with_options_async(request, runtime)
+
+    def update_variable_with_options(
+        self,
+        request: main_models.UpdateVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.variable_id):
+            body['VariableId'] = request.variable_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVariableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_variable_with_options_async(
+        self,
+        request: main_models.UpdateVariableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVariableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.variable_id):
+            body['VariableId'] = request.variable_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVariable',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVariableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_variable(
+        self,
+        request: main_models.UpdateVariableRequest,
+    ) -> main_models.UpdateVariableResponse:
+        runtime = RuntimeOptions()
+        return self.update_variable_with_options(request, runtime)
+
+    async def update_variable_async(
+        self,
+        request: main_models.UpdateVariableRequest,
+    ) -> main_models.UpdateVariableResponse:
+        runtime = RuntimeOptions()
+        return await self.update_variable_with_options_async(request, runtime)

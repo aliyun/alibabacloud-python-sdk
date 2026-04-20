@@ -12,9 +12,24 @@ from ._create_application_version_request import CreateApplicationVersionRequest
 from ._create_application_version_shrink_request import CreateApplicationVersionShrinkRequest
 from ._create_application_version_response_body import CreateApplicationVersionResponseBody
 from ._create_application_version_response import CreateApplicationVersionResponse
+from ._create_clone_voice_request import CreateCloneVoiceRequest
+from ._create_clone_voice_response_body import CreateCloneVoiceResponseBody
+from ._create_clone_voice_response import CreateCloneVoiceResponse
+from ._create_variable_request import CreateVariableRequest
+from ._create_variable_response_body import CreateVariableResponseBody
+from ._create_variable_response import CreateVariableResponse
 from ._delete_application_request import DeleteApplicationRequest
 from ._delete_application_response_body import DeleteApplicationResponseBody
 from ._delete_application_response import DeleteApplicationResponse
+from ._delete_clone_voice_request import DeleteCloneVoiceRequest
+from ._delete_clone_voice_response_body import DeleteCloneVoiceResponseBody
+from ._delete_clone_voice_response import DeleteCloneVoiceResponse
+from ._delete_variable_request import DeleteVariableRequest
+from ._delete_variable_response_body import DeleteVariableResponseBody
+from ._delete_variable_response import DeleteVariableResponse
+from ._generate_file_upload_params_request import GenerateFileUploadParamsRequest
+from ._generate_file_upload_params_response_body import GenerateFileUploadParamsResponseBody
+from ._generate_file_upload_params_response import GenerateFileUploadParamsResponse
 from ._get_application_request import GetApplicationRequest
 from ._get_application_response_body import GetApplicationResponseBody
 from ._get_application_response import GetApplicationResponse
@@ -24,6 +39,12 @@ from ._get_data_channel_credential_response import GetDataChannelCredentialRespo
 from ._list_applications_request import ListApplicationsRequest
 from ._list_applications_response_body import ListApplicationsResponseBody
 from ._list_applications_response import ListApplicationsResponse
+from ._list_clone_voice_request import ListCloneVoiceRequest
+from ._list_clone_voice_response_body import ListCloneVoiceResponseBody
+from ._list_clone_voice_response import ListCloneVoiceResponse
+from ._list_variable_request import ListVariableRequest
+from ._list_variable_response_body import ListVariableResponseBody
+from ._list_variable_response import ListVariableResponse
 from ._publish_application_version_request import PublishApplicationVersionRequest
 from ._publish_application_version_response_body import PublishApplicationVersionResponseBody
 from ._publish_application_version_response import PublishApplicationVersionResponse
@@ -34,6 +55,12 @@ from ._update_application_version_request import UpdateApplicationVersionRequest
 from ._update_application_version_shrink_request import UpdateApplicationVersionShrinkRequest
 from ._update_application_version_response_body import UpdateApplicationVersionResponseBody
 from ._update_application_version_response import UpdateApplicationVersionResponse
+from ._update_clone_voice_request import UpdateCloneVoiceRequest
+from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
+from ._update_clone_voice_response import UpdateCloneVoiceResponse
+from ._update_variable_request import UpdateVariableRequest
+from ._update_variable_response_body import UpdateVariableResponseBody
+from ._update_variable_response import UpdateVariableResponse
 from ._bridge_web_call_response_body import BridgeWebCallResponseBodyData
 from ._create_application_version_request import CreateApplicationVersionRequestInteractionConfigSilenceDetectionConfig
 from ._create_application_version_request import CreateApplicationVersionRequestInteractionConfig
@@ -41,6 +68,8 @@ from ._create_application_version_request import CreateApplicationVersionRequest
 from ._create_application_version_request import CreateApplicationVersionRequestScriptProfile
 from ._create_application_version_request import CreateApplicationVersionRequestSynthesizerConfig
 from ._create_application_version_request import CreateApplicationVersionRequestTranscriberConfig
+from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
+from ._generate_file_upload_params_response_body import GenerateFileUploadParamsResponseBodyData
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionInteractionConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile
@@ -59,6 +88,10 @@ from ._get_application_response_body import GetApplicationResponseBodyData
 from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBodyData
 from ._list_applications_response_body import ListApplicationsResponseBodyDataApplications
 from ._list_applications_response_body import ListApplicationsResponseBodyData
+from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataCloneVoices
+from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
+from ._list_variable_response_body import ListVariableResponseBodyDataVariables
+from ._list_variable_response_body import ListVariableResponseBodyData
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestScriptProfileAgentProfile
@@ -77,9 +110,24 @@ __all__ = [
     CreateApplicationVersionShrinkRequest,
     CreateApplicationVersionResponseBody,
     CreateApplicationVersionResponse,
+    CreateCloneVoiceRequest,
+    CreateCloneVoiceResponseBody,
+    CreateCloneVoiceResponse,
+    CreateVariableRequest,
+    CreateVariableResponseBody,
+    CreateVariableResponse,
     DeleteApplicationRequest,
     DeleteApplicationResponseBody,
     DeleteApplicationResponse,
+    DeleteCloneVoiceRequest,
+    DeleteCloneVoiceResponseBody,
+    DeleteCloneVoiceResponse,
+    DeleteVariableRequest,
+    DeleteVariableResponseBody,
+    DeleteVariableResponse,
+    GenerateFileUploadParamsRequest,
+    GenerateFileUploadParamsResponseBody,
+    GenerateFileUploadParamsResponse,
     GetApplicationRequest,
     GetApplicationResponseBody,
     GetApplicationResponse,
@@ -89,6 +137,12 @@ __all__ = [
     ListApplicationsRequest,
     ListApplicationsResponseBody,
     ListApplicationsResponse,
+    ListCloneVoiceRequest,
+    ListCloneVoiceResponseBody,
+    ListCloneVoiceResponse,
+    ListVariableRequest,
+    ListVariableResponseBody,
+    ListVariableResponse,
     PublishApplicationVersionRequest,
     PublishApplicationVersionResponseBody,
     PublishApplicationVersionResponse,
@@ -99,6 +153,12 @@ __all__ = [
     UpdateApplicationVersionShrinkRequest,
     UpdateApplicationVersionResponseBody,
     UpdateApplicationVersionResponse,
+    UpdateCloneVoiceRequest,
+    UpdateCloneVoiceResponseBody,
+    UpdateCloneVoiceResponse,
+    UpdateVariableRequest,
+    UpdateVariableResponseBody,
+    UpdateVariableResponse,
     BridgeWebCallResponseBodyData,
     CreateApplicationVersionRequestInteractionConfigSilenceDetectionConfig,
     CreateApplicationVersionRequestInteractionConfig,
@@ -106,6 +166,8 @@ __all__ = [
     CreateApplicationVersionRequestScriptProfile,
     CreateApplicationVersionRequestSynthesizerConfig,
     CreateApplicationVersionRequestTranscriberConfig,
+    CreateCloneVoiceResponseBodyData,
+    GenerateFileUploadParamsResponseBodyData,
     GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig,
     GetApplicationResponseBodyDataDraftVersionInteractionConfig,
     GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile,
@@ -124,6 +186,10 @@ __all__ = [
     GetDataChannelCredentialResponseBodyData,
     ListApplicationsResponseBodyDataApplications,
     ListApplicationsResponseBodyData,
+    ListCloneVoiceResponseBodyDataCloneVoices,
+    ListCloneVoiceResponseBodyData,
+    ListVariableResponseBodyDataVariables,
+    ListVariableResponseBodyData,
     UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig,
     UpdateApplicationVersionRequestInteractionConfig,
     UpdateApplicationVersionRequestScriptProfileAgentProfile,

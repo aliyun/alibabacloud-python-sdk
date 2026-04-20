@@ -8,6 +8,7 @@ class BridgeWebCallRequest(DaraModel):
     def __init__(
         self,
         application_id: str = None,
+        audio_codec: str = None,
         business_unit_id: str = None,
         caller: str = None,
         device_id: str = None,
@@ -18,6 +19,7 @@ class BridgeWebCallRequest(DaraModel):
     ):
         # This parameter is required.
         self.application_id = application_id
+        self.audio_codec = audio_codec
         # This parameter is required.
         self.business_unit_id = business_unit_id
         self.caller = caller
@@ -38,6 +40,9 @@ class BridgeWebCallRequest(DaraModel):
             result = _map
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+
+        if self.audio_codec is not None:
+            result['AudioCodec'] = self.audio_codec
 
         if self.business_unit_id is not None:
             result['BusinessUnitId'] = self.business_unit_id
@@ -66,6 +71,9 @@ class BridgeWebCallRequest(DaraModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+
+        if m.get('AudioCodec') is not None:
+            self.audio_codec = m.get('AudioCodec')
 
         if m.get('BusinessUnitId') is not None:
             self.business_unit_id = m.get('BusinessUnitId')
