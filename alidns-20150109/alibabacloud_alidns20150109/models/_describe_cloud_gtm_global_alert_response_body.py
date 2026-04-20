@@ -124,12 +124,14 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
         dingtalk_notice: bool = None,
         email_notice: bool = None,
         notice_type: str = None,
+        qps_threshold: int = None,
         sms_notice: bool = None,
         threshold: int = None,
     ):
         self.dingtalk_notice = dingtalk_notice
         self.email_notice = email_notice
         self.notice_type = notice_type
+        self.qps_threshold = qps_threshold
         self.sms_notice = sms_notice
         self.threshold = threshold
 
@@ -150,6 +152,9 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
         if self.notice_type is not None:
             result['NoticeType'] = self.notice_type
 
+        if self.qps_threshold is not None:
+            result['QpsThreshold'] = self.qps_threshold
+
         if self.sms_notice is not None:
             result['SmsNotice'] = self.sms_notice
 
@@ -168,6 +173,9 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
 
         if m.get('NoticeType') is not None:
             self.notice_type = m.get('NoticeType')
+
+        if m.get('QpsThreshold') is not None:
+            self.qps_threshold = m.get('QpsThreshold')
 
         if m.get('SmsNotice') is not None:
             self.sms_notice = m.get('SmsNotice')

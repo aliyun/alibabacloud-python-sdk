@@ -79,6 +79,7 @@ class UpdateCloudGtmGlobalAlertRequestAlertConfig(DaraModel):
         dingtalk_notice: bool = None,
         email_notice: bool = None,
         notice_type: str = None,
+        qps_threshold: int = None,
         sms_notice: bool = None,
         threshold: int = None,
     ):
@@ -99,6 +100,7 @@ class UpdateCloudGtmGlobalAlertRequestAlertConfig(DaraModel):
         # *   addr_pool_unavailable: The address pool is unavailable.
         # *   addr_pool_available: The address pool becomes available.
         self.notice_type = notice_type
+        self.qps_threshold = qps_threshold
         # Specifies whether to configure text message notifications. Valid values:
         # 
         # *   true: configures text message notifications. Text messages are sent when alerts are triggered.
@@ -125,6 +127,9 @@ class UpdateCloudGtmGlobalAlertRequestAlertConfig(DaraModel):
         if self.notice_type is not None:
             result['NoticeType'] = self.notice_type
 
+        if self.qps_threshold is not None:
+            result['QpsThreshold'] = self.qps_threshold
+
         if self.sms_notice is not None:
             result['SmsNotice'] = self.sms_notice
 
@@ -143,6 +148,9 @@ class UpdateCloudGtmGlobalAlertRequestAlertConfig(DaraModel):
 
         if m.get('NoticeType') is not None:
             self.notice_type = m.get('NoticeType')
+
+        if m.get('QpsThreshold') is not None:
+            self.qps_threshold = m.get('QpsThreshold')
 
         if m.get('SmsNotice') is not None:
             self.sms_notice = m.get('SmsNotice')
