@@ -1,0 +1,309 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_ipam_members_request import AddIpamMembersRequest
+from ._add_ipam_members_response_body import AddIpamMembersResponseBody
+from ._add_ipam_members_response import AddIpamMembersResponse
+from ._add_ipam_pool_cidr_request import AddIpamPoolCidrRequest
+from ._add_ipam_pool_cidr_response_body import AddIpamPoolCidrResponseBody
+from ._add_ipam_pool_cidr_response import AddIpamPoolCidrResponse
+from ._associate_ipam_resource_discovery_request import AssociateIpamResourceDiscoveryRequest
+from ._associate_ipam_resource_discovery_response_body import AssociateIpamResourceDiscoveryResponseBody
+from ._associate_ipam_resource_discovery_response import AssociateIpamResourceDiscoveryResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_ipam_request import CreateIpamRequest
+from ._create_ipam_response_body import CreateIpamResponseBody
+from ._create_ipam_response import CreateIpamResponse
+from ._create_ipam_pool_request import CreateIpamPoolRequest
+from ._create_ipam_pool_response_body import CreateIpamPoolResponseBody
+from ._create_ipam_pool_response import CreateIpamPoolResponse
+from ._create_ipam_pool_allocation_request import CreateIpamPoolAllocationRequest
+from ._create_ipam_pool_allocation_response_body import CreateIpamPoolAllocationResponseBody
+from ._create_ipam_pool_allocation_response import CreateIpamPoolAllocationResponse
+from ._create_ipam_resource_discovery_request import CreateIpamResourceDiscoveryRequest
+from ._create_ipam_resource_discovery_response_body import CreateIpamResourceDiscoveryResponseBody
+from ._create_ipam_resource_discovery_response import CreateIpamResourceDiscoveryResponse
+from ._create_ipam_scope_request import CreateIpamScopeRequest
+from ._create_ipam_scope_response_body import CreateIpamScopeResponseBody
+from ._create_ipam_scope_response import CreateIpamScopeResponse
+from ._delete_ipam_request import DeleteIpamRequest
+from ._delete_ipam_response_body import DeleteIpamResponseBody
+from ._delete_ipam_response import DeleteIpamResponse
+from ._delete_ipam_pool_request import DeleteIpamPoolRequest
+from ._delete_ipam_pool_response_body import DeleteIpamPoolResponseBody
+from ._delete_ipam_pool_response import DeleteIpamPoolResponse
+from ._delete_ipam_pool_allocation_request import DeleteIpamPoolAllocationRequest
+from ._delete_ipam_pool_allocation_response_body import DeleteIpamPoolAllocationResponseBody
+from ._delete_ipam_pool_allocation_response import DeleteIpamPoolAllocationResponse
+from ._delete_ipam_pool_cidr_request import DeleteIpamPoolCidrRequest
+from ._delete_ipam_pool_cidr_response_body import DeleteIpamPoolCidrResponseBody
+from ._delete_ipam_pool_cidr_response import DeleteIpamPoolCidrResponse
+from ._delete_ipam_resource_discovery_request import DeleteIpamResourceDiscoveryRequest
+from ._delete_ipam_resource_discovery_response_body import DeleteIpamResourceDiscoveryResponseBody
+from ._delete_ipam_resource_discovery_response import DeleteIpamResourceDiscoveryResponse
+from ._delete_ipam_scope_request import DeleteIpamScopeRequest
+from ._delete_ipam_scope_response_body import DeleteIpamScopeResponseBody
+from ._delete_ipam_scope_response import DeleteIpamScopeResponse
+from ._dissociate_ipam_resource_discovery_request import DissociateIpamResourceDiscoveryRequest
+from ._dissociate_ipam_resource_discovery_response_body import DissociateIpamResourceDiscoveryResponseBody
+from ._dissociate_ipam_resource_discovery_response import DissociateIpamResourceDiscoveryResponse
+from ._get_ipam_pool_allocation_request import GetIpamPoolAllocationRequest
+from ._get_ipam_pool_allocation_response_body import GetIpamPoolAllocationResponseBody
+from ._get_ipam_pool_allocation_response import GetIpamPoolAllocationResponse
+from ._get_ipam_pool_next_available_cidr_request import GetIpamPoolNextAvailableCidrRequest
+from ._get_ipam_pool_next_available_cidr_response_body import GetIpamPoolNextAvailableCidrResponseBody
+from ._get_ipam_pool_next_available_cidr_response import GetIpamPoolNextAvailableCidrResponse
+from ._get_vpc_ipam_service_status_request import GetVpcIpamServiceStatusRequest
+from ._get_vpc_ipam_service_status_response_body import GetVpcIpamServiceStatusResponseBody
+from ._get_vpc_ipam_service_status_response import GetVpcIpamServiceStatusResponse
+from ._list_ipam_discovered_ip_addresses_request import ListIpamDiscoveredIpAddressesRequest
+from ._list_ipam_discovered_ip_addresses_response_body import ListIpamDiscoveredIpAddressesResponseBody
+from ._list_ipam_discovered_ip_addresses_response import ListIpamDiscoveredIpAddressesResponse
+from ._list_ipam_discovered_resource_request import ListIpamDiscoveredResourceRequest
+from ._list_ipam_discovered_resource_response_body import ListIpamDiscoveredResourceResponseBody
+from ._list_ipam_discovered_resource_response import ListIpamDiscoveredResourceResponse
+from ._list_ipam_members_request import ListIpamMembersRequest
+from ._list_ipam_members_response_body import ListIpamMembersResponseBody
+from ._list_ipam_members_response import ListIpamMembersResponse
+from ._list_ipam_pool_allocations_request import ListIpamPoolAllocationsRequest
+from ._list_ipam_pool_allocations_response_body import ListIpamPoolAllocationsResponseBody
+from ._list_ipam_pool_allocations_response import ListIpamPoolAllocationsResponse
+from ._list_ipam_pool_cidrs_request import ListIpamPoolCidrsRequest
+from ._list_ipam_pool_cidrs_response_body import ListIpamPoolCidrsResponseBody
+from ._list_ipam_pool_cidrs_response import ListIpamPoolCidrsResponse
+from ._list_ipam_pools_request import ListIpamPoolsRequest
+from ._list_ipam_pools_response_body import ListIpamPoolsResponseBody
+from ._list_ipam_pools_response import ListIpamPoolsResponse
+from ._list_ipam_resource_cidrs_request import ListIpamResourceCidrsRequest
+from ._list_ipam_resource_cidrs_response_body import ListIpamResourceCidrsResponseBody
+from ._list_ipam_resource_cidrs_response import ListIpamResourceCidrsResponse
+from ._list_ipam_resource_discoveries_request import ListIpamResourceDiscoveriesRequest
+from ._list_ipam_resource_discoveries_response_body import ListIpamResourceDiscoveriesResponseBody
+from ._list_ipam_resource_discoveries_response import ListIpamResourceDiscoveriesResponse
+from ._list_ipam_resource_discovery_associations_request import ListIpamResourceDiscoveryAssociationsRequest
+from ._list_ipam_resource_discovery_associations_response_body import ListIpamResourceDiscoveryAssociationsResponseBody
+from ._list_ipam_resource_discovery_associations_response import ListIpamResourceDiscoveryAssociationsResponse
+from ._list_ipam_scopes_request import ListIpamScopesRequest
+from ._list_ipam_scopes_response_body import ListIpamScopesResponseBody
+from ._list_ipam_scopes_response import ListIpamScopesResponse
+from ._list_ipams_request import ListIpamsRequest
+from ._list_ipams_response_body import ListIpamsResponseBody
+from ._list_ipams_response import ListIpamsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._open_vpc_ipam_service_request import OpenVpcIpamServiceRequest
+from ._open_vpc_ipam_service_response_body import OpenVpcIpamServiceResponseBody
+from ._open_vpc_ipam_service_response import OpenVpcIpamServiceResponse
+from ._remove_ipam_members_request import RemoveIpamMembersRequest
+from ._remove_ipam_members_response_body import RemoveIpamMembersResponseBody
+from ._remove_ipam_members_response import RemoveIpamMembersResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_ipam_request import UpdateIpamRequest
+from ._update_ipam_response_body import UpdateIpamResponseBody
+from ._update_ipam_response import UpdateIpamResponse
+from ._update_ipam_pool_request import UpdateIpamPoolRequest
+from ._update_ipam_pool_response_body import UpdateIpamPoolResponseBody
+from ._update_ipam_pool_response import UpdateIpamPoolResponse
+from ._update_ipam_pool_allocation_request import UpdateIpamPoolAllocationRequest
+from ._update_ipam_pool_allocation_response_body import UpdateIpamPoolAllocationResponseBody
+from ._update_ipam_pool_allocation_response import UpdateIpamPoolAllocationResponse
+from ._update_ipam_resource_discovery_request import UpdateIpamResourceDiscoveryRequest
+from ._update_ipam_resource_discovery_response_body import UpdateIpamResourceDiscoveryResponseBody
+from ._update_ipam_resource_discovery_response import UpdateIpamResourceDiscoveryResponse
+from ._update_ipam_scope_request import UpdateIpamScopeRequest
+from ._update_ipam_scope_response_body import UpdateIpamScopeResponseBody
+from ._update_ipam_scope_response import UpdateIpamScopeResponse
+from ._add_ipam_members_request import AddIpamMembersRequestMembers
+from ._create_ipam_request import CreateIpamRequestTag
+from ._create_ipam_pool_request import CreateIpamPoolRequestTag
+from ._create_ipam_resource_discovery_request import CreateIpamResourceDiscoveryRequestTag
+from ._create_ipam_scope_request import CreateIpamScopeRequestTag
+from ._list_ipam_discovered_ip_addresses_response_body import ListIpamDiscoveredIpAddressesResponseBodyIpamDiscoveredIpAddresses
+from ._list_ipam_discovered_resource_response_body import ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail
+from ._list_ipam_discovered_resource_response_body import ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources
+from ._list_ipam_members_response_body import ListIpamMembersResponseBodyMemberInfos
+from ._list_ipam_pool_allocations_response_body import ListIpamPoolAllocationsResponseBodyIpamPoolAllocations
+from ._list_ipam_pool_cidrs_response_body import ListIpamPoolCidrsResponseBodyIpamPoolCidrs
+from ._list_ipam_pools_request import ListIpamPoolsRequestTags
+from ._list_ipam_pools_response_body import ListIpamPoolsResponseBodyIpamPoolsTags
+from ._list_ipam_pools_response_body import ListIpamPoolsResponseBodyIpamPools
+from ._list_ipam_resource_cidrs_response_body import ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail
+from ._list_ipam_resource_cidrs_response_body import ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail
+from ._list_ipam_resource_cidrs_response_body import ListIpamResourceCidrsResponseBodyIpamResourceCidrs
+from ._list_ipam_resource_discoveries_request import ListIpamResourceDiscoveriesRequestTags
+from ._list_ipam_resource_discoveries_response_body import ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags
+from ._list_ipam_resource_discoveries_response_body import ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries
+from ._list_ipam_resource_discovery_associations_response_body import ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations
+from ._list_ipam_scopes_request import ListIpamScopesRequestTags
+from ._list_ipam_scopes_response_body import ListIpamScopesResponseBodyIpamScopesTags
+from ._list_ipam_scopes_response_body import ListIpamScopesResponseBodyIpamScopes
+from ._list_ipams_request import ListIpamsRequestTags
+from ._list_ipams_response_body import ListIpamsResponseBodyIpamsTags
+from ._list_ipams_response_body import ListIpamsResponseBodyIpams
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._remove_ipam_members_request import RemoveIpamMembersRequestMembers
+from ._tag_resources_request import TagResourcesRequestTag
+
+__all__ = [
+    AddIpamMembersRequest,
+    AddIpamMembersResponseBody,
+    AddIpamMembersResponse,
+    AddIpamPoolCidrRequest,
+    AddIpamPoolCidrResponseBody,
+    AddIpamPoolCidrResponse,
+    AssociateIpamResourceDiscoveryRequest,
+    AssociateIpamResourceDiscoveryResponseBody,
+    AssociateIpamResourceDiscoveryResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CreateIpamRequest,
+    CreateIpamResponseBody,
+    CreateIpamResponse,
+    CreateIpamPoolRequest,
+    CreateIpamPoolResponseBody,
+    CreateIpamPoolResponse,
+    CreateIpamPoolAllocationRequest,
+    CreateIpamPoolAllocationResponseBody,
+    CreateIpamPoolAllocationResponse,
+    CreateIpamResourceDiscoveryRequest,
+    CreateIpamResourceDiscoveryResponseBody,
+    CreateIpamResourceDiscoveryResponse,
+    CreateIpamScopeRequest,
+    CreateIpamScopeResponseBody,
+    CreateIpamScopeResponse,
+    DeleteIpamRequest,
+    DeleteIpamResponseBody,
+    DeleteIpamResponse,
+    DeleteIpamPoolRequest,
+    DeleteIpamPoolResponseBody,
+    DeleteIpamPoolResponse,
+    DeleteIpamPoolAllocationRequest,
+    DeleteIpamPoolAllocationResponseBody,
+    DeleteIpamPoolAllocationResponse,
+    DeleteIpamPoolCidrRequest,
+    DeleteIpamPoolCidrResponseBody,
+    DeleteIpamPoolCidrResponse,
+    DeleteIpamResourceDiscoveryRequest,
+    DeleteIpamResourceDiscoveryResponseBody,
+    DeleteIpamResourceDiscoveryResponse,
+    DeleteIpamScopeRequest,
+    DeleteIpamScopeResponseBody,
+    DeleteIpamScopeResponse,
+    DissociateIpamResourceDiscoveryRequest,
+    DissociateIpamResourceDiscoveryResponseBody,
+    DissociateIpamResourceDiscoveryResponse,
+    GetIpamPoolAllocationRequest,
+    GetIpamPoolAllocationResponseBody,
+    GetIpamPoolAllocationResponse,
+    GetIpamPoolNextAvailableCidrRequest,
+    GetIpamPoolNextAvailableCidrResponseBody,
+    GetIpamPoolNextAvailableCidrResponse,
+    GetVpcIpamServiceStatusRequest,
+    GetVpcIpamServiceStatusResponseBody,
+    GetVpcIpamServiceStatusResponse,
+    ListIpamDiscoveredIpAddressesRequest,
+    ListIpamDiscoveredIpAddressesResponseBody,
+    ListIpamDiscoveredIpAddressesResponse,
+    ListIpamDiscoveredResourceRequest,
+    ListIpamDiscoveredResourceResponseBody,
+    ListIpamDiscoveredResourceResponse,
+    ListIpamMembersRequest,
+    ListIpamMembersResponseBody,
+    ListIpamMembersResponse,
+    ListIpamPoolAllocationsRequest,
+    ListIpamPoolAllocationsResponseBody,
+    ListIpamPoolAllocationsResponse,
+    ListIpamPoolCidrsRequest,
+    ListIpamPoolCidrsResponseBody,
+    ListIpamPoolCidrsResponse,
+    ListIpamPoolsRequest,
+    ListIpamPoolsResponseBody,
+    ListIpamPoolsResponse,
+    ListIpamResourceCidrsRequest,
+    ListIpamResourceCidrsResponseBody,
+    ListIpamResourceCidrsResponse,
+    ListIpamResourceDiscoveriesRequest,
+    ListIpamResourceDiscoveriesResponseBody,
+    ListIpamResourceDiscoveriesResponse,
+    ListIpamResourceDiscoveryAssociationsRequest,
+    ListIpamResourceDiscoveryAssociationsResponseBody,
+    ListIpamResourceDiscoveryAssociationsResponse,
+    ListIpamScopesRequest,
+    ListIpamScopesResponseBody,
+    ListIpamScopesResponse,
+    ListIpamsRequest,
+    ListIpamsResponseBody,
+    ListIpamsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    OpenVpcIpamServiceRequest,
+    OpenVpcIpamServiceResponseBody,
+    OpenVpcIpamServiceResponse,
+    RemoveIpamMembersRequest,
+    RemoveIpamMembersResponseBody,
+    RemoveIpamMembersResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateIpamRequest,
+    UpdateIpamResponseBody,
+    UpdateIpamResponse,
+    UpdateIpamPoolRequest,
+    UpdateIpamPoolResponseBody,
+    UpdateIpamPoolResponse,
+    UpdateIpamPoolAllocationRequest,
+    UpdateIpamPoolAllocationResponseBody,
+    UpdateIpamPoolAllocationResponse,
+    UpdateIpamResourceDiscoveryRequest,
+    UpdateIpamResourceDiscoveryResponseBody,
+    UpdateIpamResourceDiscoveryResponse,
+    UpdateIpamScopeRequest,
+    UpdateIpamScopeResponseBody,
+    UpdateIpamScopeResponse,
+    AddIpamMembersRequestMembers,
+    CreateIpamRequestTag,
+    CreateIpamPoolRequestTag,
+    CreateIpamResourceDiscoveryRequestTag,
+    CreateIpamScopeRequestTag,
+    ListIpamDiscoveredIpAddressesResponseBodyIpamDiscoveredIpAddresses,
+    ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail,
+    ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources,
+    ListIpamMembersResponseBodyMemberInfos,
+    ListIpamPoolAllocationsResponseBodyIpamPoolAllocations,
+    ListIpamPoolCidrsResponseBodyIpamPoolCidrs,
+    ListIpamPoolsRequestTags,
+    ListIpamPoolsResponseBodyIpamPoolsTags,
+    ListIpamPoolsResponseBodyIpamPools,
+    ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail,
+    ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail,
+    ListIpamResourceCidrsResponseBodyIpamResourceCidrs,
+    ListIpamResourceDiscoveriesRequestTags,
+    ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags,
+    ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries,
+    ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations,
+    ListIpamScopesRequestTags,
+    ListIpamScopesResponseBodyIpamScopesTags,
+    ListIpamScopesResponseBodyIpamScopes,
+    ListIpamsRequestTags,
+    ListIpamsResponseBodyIpamsTags,
+    ListIpamsResponseBodyIpams,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    RemoveIpamMembersRequestMembers,
+    TagResourcesRequestTag
+]

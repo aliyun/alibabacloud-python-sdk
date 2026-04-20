@@ -1,3 +1,7 @@
+2026-04-20 Version: 2.4.0
+- Support API ListIpamDiscoveredIpAddresses.
+
+
 2025-12-23 Version: 2.3.0
 - Support API AddIpamMembers.
 - Support API ListIpamMembers.
