@@ -9,6 +9,17 @@
 - Update API StopDesktops: add request parameters PatchId.
 
 
+2026-04-20 Version: 4.24.1
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.CreateSnapshot.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.PatchId.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.CreateSnapshot.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.PatchId.
+- Update API RebootDesktops: add request parameters CreateSnapshot.
+- Update API RebootDesktops: add request parameters PatchId.
+- Update API StopDesktops: add request parameters CreateSnapshot.
+- Update API StopDesktops: add request parameters PatchId.
+
+
 2026-04-18 Version: 4.24.0
 - Support API QueryHistoryActiveUserCount.
 - Support API QueryHistoryMetricDistribution.
