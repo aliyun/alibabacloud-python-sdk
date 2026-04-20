@@ -65,6 +65,7 @@ class QueryUserInfoByAccountResponseBodyResult(DaraModel):
         account_name: str = None,
         admin_user: bool = None,
         auth_admin_user: bool = None,
+        copilot_modules: List[str] = None,
         email: str = None,
         nick_name: str = None,
         phone: str = None,
@@ -86,6 +87,7 @@ class QueryUserInfoByAccountResponseBodyResult(DaraModel):
         # *   true
         # *   false
         self.auth_admin_user = auth_admin_user
+        self.copilot_modules = copilot_modules
         # The email address of the user.
         self.email = email
         # The nickname of the account.
@@ -123,6 +125,9 @@ class QueryUserInfoByAccountResponseBodyResult(DaraModel):
         if self.auth_admin_user is not None:
             result['AuthAdminUser'] = self.auth_admin_user
 
+        if self.copilot_modules is not None:
+            result['CopilotModules'] = self.copilot_modules
+
         if self.email is not None:
             result['Email'] = self.email
 
@@ -156,6 +161,9 @@ class QueryUserInfoByAccountResponseBodyResult(DaraModel):
 
         if m.get('AuthAdminUser') is not None:
             self.auth_admin_user = m.get('AuthAdminUser')
+
+        if m.get('CopilotModules') is not None:
+            self.copilot_modules = m.get('CopilotModules')
 
         if m.get('Email') is not None:
             self.email = m.get('Email')

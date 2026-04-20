@@ -367,6 +367,8 @@ class Client(OpenApiClient):
             query['AdminUser'] = request.admin_user
         if not DaraCore.is_null(request.auth_admin_user):
             query['AuthAdminUser'] = request.auth_admin_user
+        if not DaraCore.is_null(request.copilot_modules):
+            query['CopilotModules'] = request.copilot_modules
         if not DaraCore.is_null(request.nick_name):
             query['NickName'] = request.nick_name
         if not DaraCore.is_null(request.user_type):
@@ -409,6 +411,8 @@ class Client(OpenApiClient):
             query['AdminUser'] = request.admin_user
         if not DaraCore.is_null(request.auth_admin_user):
             query['AuthAdminUser'] = request.auth_admin_user
+        if not DaraCore.is_null(request.copilot_modules):
+            query['CopilotModules'] = request.copilot_modules
         if not DaraCore.is_null(request.nick_name):
             query['NickName'] = request.nick_name
         if not DaraCore.is_null(request.user_type):
@@ -749,6 +753,96 @@ class Client(OpenApiClient):
     ) -> main_models.AddUserToWorkspaceResponse:
         runtime = RuntimeOptions()
         return await self.add_user_to_workspace_with_options_async(request, runtime)
+
+    def add_works_authorization_with_options(
+        self,
+        request: main_models.AddWorksAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddWorksAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_points):
+            query['AuthPoints'] = request.auth_points
+        if not DaraCore.is_null(request.authorize_scope):
+            query['AuthorizeScope'] = request.authorize_scope
+        if not DaraCore.is_null(request.authorized_id):
+            query['AuthorizedId'] = request.authorized_id
+        if not DaraCore.is_null(request.expire_day):
+            query['ExpireDay'] = request.expire_day
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddWorksAuthorization',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddWorksAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_works_authorization_with_options_async(
+        self,
+        request: main_models.AddWorksAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddWorksAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_points):
+            query['AuthPoints'] = request.auth_points
+        if not DaraCore.is_null(request.authorize_scope):
+            query['AuthorizeScope'] = request.authorize_scope
+        if not DaraCore.is_null(request.authorized_id):
+            query['AuthorizedId'] = request.authorized_id
+        if not DaraCore.is_null(request.expire_day):
+            query['ExpireDay'] = request.expire_day
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddWorksAuthorization',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddWorksAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_works_authorization(
+        self,
+        request: main_models.AddWorksAuthorizationRequest,
+    ) -> main_models.AddWorksAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.add_works_authorization_with_options(request, runtime)
+
+    async def add_works_authorization_async(
+        self,
+        request: main_models.AddWorksAuthorizationRequest,
+    ) -> main_models.AddWorksAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.add_works_authorization_with_options_async(request, runtime)
 
     def add_workspace_users_with_options(
         self,
@@ -9601,6 +9695,8 @@ class Client(OpenApiClient):
             query['AdminUser'] = request.admin_user
         if not DaraCore.is_null(request.auth_admin_user):
             query['AuthAdminUser'] = request.auth_admin_user
+        if not DaraCore.is_null(request.copilot_modules):
+            query['CopilotModules'] = request.copilot_modules
         if not DaraCore.is_null(request.is_deleted):
             query['IsDeleted'] = request.is_deleted
         if not DaraCore.is_null(request.nick_name):
@@ -9641,6 +9737,8 @@ class Client(OpenApiClient):
             query['AdminUser'] = request.admin_user
         if not DaraCore.is_null(request.auth_admin_user):
             query['AuthAdminUser'] = request.auth_admin_user
+        if not DaraCore.is_null(request.copilot_modules):
+            query['CopilotModules'] = request.copilot_modules
         if not DaraCore.is_null(request.is_deleted):
             query['IsDeleted'] = request.is_deleted
         if not DaraCore.is_null(request.nick_name):

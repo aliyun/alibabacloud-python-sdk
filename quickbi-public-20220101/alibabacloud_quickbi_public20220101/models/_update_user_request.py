@@ -9,6 +9,7 @@ class UpdateUserRequest(DaraModel):
         self,
         admin_user: bool = None,
         auth_admin_user: bool = None,
+        copilot_modules: str = None,
         is_deleted: bool = None,
         nick_name: str = None,
         role_ids: str = None,
@@ -25,6 +26,7 @@ class UpdateUserRequest(DaraModel):
         # *   true
         # *   false
         self.auth_admin_user = auth_admin_user
+        self.copilot_modules = copilot_modules
         # User status: 
         # * **false**: Active
         #  * **true**: Inactive
@@ -61,6 +63,9 @@ class UpdateUserRequest(DaraModel):
         if self.auth_admin_user is not None:
             result['AuthAdminUser'] = self.auth_admin_user
 
+        if self.copilot_modules is not None:
+            result['CopilotModules'] = self.copilot_modules
+
         if self.is_deleted is not None:
             result['IsDeleted'] = self.is_deleted
 
@@ -85,6 +90,9 @@ class UpdateUserRequest(DaraModel):
 
         if m.get('AuthAdminUser') is not None:
             self.auth_admin_user = m.get('AuthAdminUser')
+
+        if m.get('CopilotModules') is not None:
+            self.copilot_modules = m.get('CopilotModules')
 
         if m.get('IsDeleted') is not None:
             self.is_deleted = m.get('IsDeleted')

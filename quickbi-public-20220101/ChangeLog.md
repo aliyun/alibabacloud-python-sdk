@@ -1,3 +1,13 @@
+2026-04-20 Version: 1.15.0
+- Support API AddWorksAuthorization.
+- Update API AddUser: add request parameters CopilotModules.
+- Update API AddUser: add response parameters Body.Result.CopilotModules.
+- Update API QueryUserInfoByAccount: add response parameters Body.Result.CopilotModules.
+- Update API QueryUserInfoByUserId: add response parameters Body.Result.CopilotModules.
+- Update API QueryUserList: add response parameters Body.Result.Data.$.CopilotModules.
+- Update API UpdateUser: add request parameters CopilotModules.
+
+
 2026-01-14 Version: 1.15.0
 - Support API GetMailTaskList.
 - Support API ListWhitePortalMenu.

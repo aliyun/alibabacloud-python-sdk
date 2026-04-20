@@ -66,6 +66,7 @@ class AddUserResponseBodyResult(DaraModel):
         account_name: str = None,
         admin_user: bool = None,
         auth_admin_user: bool = None,
+        copilot_modules: List[str] = None,
         nick_name: str = None,
         role_id_list: List[int] = None,
         user_id: str = None,
@@ -87,6 +88,7 @@ class AddUserResponseBodyResult(DaraModel):
         # 
         # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
         self.auth_admin_user = auth_admin_user
+        self.copilot_modules = copilot_modules
         # Aliyun account nickname.
         self.nick_name = nick_name
         # List of organization role IDs bound to the user.
@@ -116,6 +118,9 @@ class AddUserResponseBodyResult(DaraModel):
         if self.auth_admin_user is not None:
             result['AuthAdminUser'] = self.auth_admin_user
 
+        if self.copilot_modules is not None:
+            result['CopilotModules'] = self.copilot_modules
+
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
 
@@ -140,6 +145,9 @@ class AddUserResponseBodyResult(DaraModel):
 
         if m.get('AuthAdminUser') is not None:
             self.auth_admin_user = m.get('AuthAdminUser')
+
+        if m.get('CopilotModules') is not None:
+            self.copilot_modules = m.get('CopilotModules')
 
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')

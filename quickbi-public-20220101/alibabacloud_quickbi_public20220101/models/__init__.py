@@ -29,6 +29,9 @@ from ._add_user_tag_meta_response import AddUserTagMetaResponse
 from ._add_user_to_workspace_request import AddUserToWorkspaceRequest
 from ._add_user_to_workspace_response_body import AddUserToWorkspaceResponseBody
 from ._add_user_to_workspace_response import AddUserToWorkspaceResponse
+from ._add_works_authorization_request import AddWorksAuthorizationRequest
+from ._add_works_authorization_response_body import AddWorksAuthorizationResponseBody
+from ._add_works_authorization_response import AddWorksAuthorizationResponse
 from ._add_workspace_users_request import AddWorkspaceUsersRequest
 from ._add_workspace_users_response_body import AddWorkspaceUsersResponseBody
 from ._add_workspace_users_response import AddWorkspaceUsersResponse
@@ -551,6 +554,9 @@ __all__ = [
     AddUserToWorkspaceRequest,
     AddUserToWorkspaceResponseBody,
     AddUserToWorkspaceResponse,
+    AddWorksAuthorizationRequest,
+    AddWorksAuthorizationResponseBody,
+    AddWorksAuthorizationResponse,
     AddWorkspaceUsersRequest,
     AddWorkspaceUsersResponseBody,
     AddWorkspaceUsersResponse,
