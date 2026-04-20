@@ -2,6 +2,10 @@
 - Update API CreateCenInterRegionTrafficQosPolicy: add request parameters ConsoleDryRun.
 
 
+2026-04-20 Version: 1.3.7
+- Update API CreateCenInterRegionTrafficQosPolicy: add request parameters ConsoleDryRun.
+
+
 2026-03-25 Version: 1.3.5
 - Update API DescribeGrantRulesToCen: add response parameters Body.GrantRules.$.EffectiveOrderType.
 - Update API DescribeGrantRulesToResource: add response parameters Body.GrantRules.$.EffectiveOrderType.
