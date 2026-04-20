@@ -1275,6 +1275,8 @@ class Client(OpenApiClient):
             query['BandwidthGuaranteeMode'] = request.bandwidth_guarantee_mode
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.console_dry_run):
+            query['ConsoleDryRun'] = request.console_dry_run
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.owner_account):
@@ -1325,6 +1327,8 @@ class Client(OpenApiClient):
             query['BandwidthGuaranteeMode'] = request.bandwidth_guarantee_mode
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.console_dry_run):
+            query['ConsoleDryRun'] = request.console_dry_run
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.owner_account):
@@ -12471,6 +12475,108 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyFlowLogAttributeResponse:
         runtime = RuntimeOptions()
         return await self.modify_flow_log_attribute_with_options_async(request, runtime)
+
+    def modify_grant_instance_to_transit_router_with_options(
+        self,
+        request: main_models.ModifyGrantInstanceToTransitRouterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyGrantInstanceToTransitRouterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyGrantInstanceToTransitRouter',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyGrantInstanceToTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_grant_instance_to_transit_router_with_options_async(
+        self,
+        request: main_models.ModifyGrantInstanceToTransitRouterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyGrantInstanceToTransitRouterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyGrantInstanceToTransitRouter',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyGrantInstanceToTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_grant_instance_to_transit_router(
+        self,
+        request: main_models.ModifyGrantInstanceToTransitRouterRequest,
+    ) -> main_models.ModifyGrantInstanceToTransitRouterResponse:
+        runtime = RuntimeOptions()
+        return self.modify_grant_instance_to_transit_router_with_options(request, runtime)
+
+    async def modify_grant_instance_to_transit_router_async(
+        self,
+        request: main_models.ModifyGrantInstanceToTransitRouterRequest,
+    ) -> main_models.ModifyGrantInstanceToTransitRouterResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_grant_instance_to_transit_router_with_options_async(request, runtime)
 
     def modify_traffic_match_rule_to_traffic_marking_policy_with_options(
         self,

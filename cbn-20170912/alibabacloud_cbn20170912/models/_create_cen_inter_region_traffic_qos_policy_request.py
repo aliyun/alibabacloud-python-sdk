@@ -12,6 +12,7 @@ class CreateCenInterRegionTrafficQosPolicyRequest(DaraModel):
         self,
         bandwidth_guarantee_mode: str = None,
         client_token: str = None,
+        console_dry_run: bool = None,
         dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -32,6 +33,7 @@ class CreateCenInterRegionTrafficQosPolicyRequest(DaraModel):
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.console_dry_run = console_dry_run
         # Specifies whether only to precheck the API request. Valid values:
         # 
         # *   **true**: prechecks the request but does not create the QoS policy. The system checks the required parameters, the request format, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
@@ -79,6 +81,9 @@ class CreateCenInterRegionTrafficQosPolicyRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.console_dry_run is not None:
+            result['ConsoleDryRun'] = self.console_dry_run
+
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
@@ -120,6 +125,9 @@ class CreateCenInterRegionTrafficQosPolicyRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('ConsoleDryRun') is not None:
+            self.console_dry_run = m.get('ConsoleDryRun')
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
