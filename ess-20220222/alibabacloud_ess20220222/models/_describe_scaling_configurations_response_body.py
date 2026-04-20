@@ -84,6 +84,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
         self,
         affinity: str = None,
         cpu: int = None,
+        cpu_options: main_models.DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions = None,
         creation_time: str = None,
         credit_specification: str = None,
         custom_priorities: List[main_models.DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities] = None,
@@ -168,6 +169,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
         # 
         # >  You can specify CPU and Memory to define instance types only when you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
         self.cpu = cpu
+        self.cpu_options = cpu_options
         # The time at which the scaling configuration was created.
         self.creation_time = creation_time
         # The performance mode of the burstable instances. Valid values:
@@ -400,6 +402,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.cpu_options:
+            self.cpu_options.validate()
         if self.custom_priorities:
             for v1 in self.custom_priorities:
                  if v1:
@@ -443,6 +447,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
 
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+
+        if self.cpu_options is not None:
+            result['CpuOptions'] = self.cpu_options.to_map()
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -681,6 +688,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(DaraModel):
 
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+
+        if m.get('CpuOptions') is not None:
+            temp_model = main_models.DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions()
+            self.cpu_options = temp_model.from_map(m.get('CpuOptions'))
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
@@ -1703,6 +1714,33 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriori
 
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
+
+        return self
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions(DaraModel):
+    def __init__(
+        self,
+        nested_virtualization: str = None,
+    ):
+        self.nested_virtualization = nested_virtualization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.nested_virtualization is not None:
+            result['NestedVirtualization'] = self.nested_virtualization
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NestedVirtualization') is not None:
+            self.nested_virtualization = m.get('NestedVirtualization')
 
         return self
 

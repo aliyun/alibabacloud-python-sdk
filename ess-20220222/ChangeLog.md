@@ -1,3 +1,7 @@
+2026-04-20 Version: 1.13.1
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.CpuOptions.
+
+
 2026-04-13 Version: 1.13.0
 - Support API DescribeCandidateInstanceType.
 - Update API DescribeElasticStrength: add response parameters Body.ElasticStrengthModels.$.ResourcePools.$.ElasticStrength.
