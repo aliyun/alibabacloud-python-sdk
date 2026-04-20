@@ -3,6 +3,11 @@
 - Update API UpdateCloudGtmGlobalAlert: add request parameters AlertConfig.$.QpsThreshold.
 
 
+2026-04-20 Version: 4.3.5
+- Update API DescribeCloudGtmGlobalAlert: add response parameters Body.AlertConfig.$.QpsThreshold.
+- Update API UpdateCloudGtmGlobalAlert: add request parameters AlertConfig.$.QpsThreshold.
+
+
 2026-04-08 Version: 4.3.4
 - Update API DescribeInstanceDomains: add request parameters DomainKeywords.
 
