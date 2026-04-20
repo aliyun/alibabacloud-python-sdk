@@ -2,9 +2,21 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._begin_session_request import BeginSessionRequest
+from ._begin_session_response_body import BeginSessionResponseBody
+from ._begin_session_response import BeginSessionResponse
+from ._bridge_web_call_request import BridgeWebCallRequest
+from ._bridge_web_call_response_body import BridgeWebCallResponseBody
+from ._bridge_web_call_response import BridgeWebCallResponse
+from ._create_call_center_provider_request import CreateCallCenterProviderRequest
+from ._create_call_center_provider_response_body import CreateCallCenterProviderResponseBody
+from ._create_call_center_provider_response import CreateCallCenterProviderResponse
 from ._create_clone_voice_request import CreateCloneVoiceRequest
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBody
 from ._create_clone_voice_response import CreateCloneVoiceResponse
+from ._create_instruction_request import CreateInstructionRequest
+from ._create_instruction_response_body import CreateInstructionResponseBody
+from ._create_instruction_response import CreateInstructionResponse
 from ._create_llm_access_profile_request import CreateLlmAccessProfileRequest
 from ._create_llm_access_profile_shrink_request import CreateLlmAccessProfileShrinkRequest
 from ._create_llm_access_profile_response_body import CreateLlmAccessProfileResponseBody
@@ -27,9 +39,15 @@ from ._create_voice_access_profile_request import CreateVoiceAccessProfileReques
 from ._create_voice_access_profile_shrink_request import CreateVoiceAccessProfileShrinkRequest
 from ._create_voice_access_profile_response_body import CreateVoiceAccessProfileResponseBody
 from ._create_voice_access_profile_response import CreateVoiceAccessProfileResponse
+from ._delete_call_center_provider_request import DeleteCallCenterProviderRequest
+from ._delete_call_center_provider_response_body import DeleteCallCenterProviderResponseBody
+from ._delete_call_center_provider_response import DeleteCallCenterProviderResponse
 from ._delete_clone_voice_request import DeleteCloneVoiceRequest
 from ._delete_clone_voice_response_body import DeleteCloneVoiceResponseBody
 from ._delete_clone_voice_response import DeleteCloneVoiceResponse
+from ._delete_instruction_request import DeleteInstructionRequest
+from ._delete_instruction_response_body import DeleteInstructionResponseBody
+from ._delete_instruction_response import DeleteInstructionResponse
 from ._delete_llm_access_profile_request import DeleteLlmAccessProfileRequest
 from ._delete_llm_access_profile_response_body import DeleteLlmAccessProfileResponseBody
 from ._delete_llm_access_profile_response import DeleteLlmAccessProfileResponse
@@ -45,9 +63,15 @@ from ._delete_vocabulary_response import DeleteVocabularyResponse
 from ._delete_voice_access_profile_request import DeleteVoiceAccessProfileRequest
 from ._delete_voice_access_profile_response_body import DeleteVoiceAccessProfileResponseBody
 from ._delete_voice_access_profile_response import DeleteVoiceAccessProfileResponse
+from ._dialogue_request import DialogueRequest
+from ._dialogue_response_body import DialogueResponseBody
+from ._dialogue_response import DialogueResponse
 from ._disable_subscription_request import DisableSubscriptionRequest
 from ._disable_subscription_response_body import DisableSubscriptionResponseBody
 from ._disable_subscription_response import DisableSubscriptionResponse
+from ._end_session_request import EndSessionRequest
+from ._end_session_response_body import EndSessionResponseBody
+from ._end_session_response import EndSessionResponse
 from ._export_script_request import ExportScriptRequest
 from ._export_script_response_body import ExportScriptResponseBody
 from ._export_script_response import ExportScriptResponse
@@ -61,6 +85,9 @@ from ._generate_file_upload_params_response import GenerateFileUploadParamsRespo
 from ._get_call_detail_record_request import GetCallDetailRecordRequest
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBody
 from ._get_call_detail_record_response import GetCallDetailRecordResponse
+from ._get_data_channel_credential_request import GetDataChannelCredentialRequest
+from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBody
+from ._get_data_channel_credential_response import GetDataChannelCredentialResponse
 from ._get_realtime_instance_stats_request import GetRealtimeInstanceStatsRequest
 from ._get_realtime_instance_stats_response_body import GetRealtimeInstanceStatsResponseBody
 from ._get_realtime_instance_stats_response import GetRealtimeInstanceStatsResponse
@@ -82,6 +109,9 @@ from ._import_vocabulary_response import ImportVocabularyResponse
 from ._list_background_musics_request import ListBackgroundMusicsRequest
 from ._list_background_musics_response_body import ListBackgroundMusicsResponseBody
 from ._list_background_musics_response import ListBackgroundMusicsResponse
+from ._list_call_center_providers_request import ListCallCenterProvidersRequest
+from ._list_call_center_providers_response_body import ListCallCenterProvidersResponseBody
+from ._list_call_center_providers_response import ListCallCenterProvidersResponse
 from ._list_call_detail_records_request import ListCallDetailRecordsRequest
 from ._list_call_detail_records_shrink_request import ListCallDetailRecordsShrinkRequest
 from ._list_call_detail_records_response_body import ListCallDetailRecordsResponseBody
@@ -92,6 +122,9 @@ from ._list_clone_voice_response import ListCloneVoiceResponse
 from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
 from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
+from ._list_instructions_request import ListInstructionsRequest
+from ._list_instructions_response_body import ListInstructionsResponseBody
+from ._list_instructions_response import ListInstructionsResponse
 from ._list_llm_access_profiles_request import ListLlmAccessProfilesRequest
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBody
 from ._list_llm_access_profiles_response import ListLlmAccessProfilesResponse
@@ -127,9 +160,15 @@ from ._preview_voice_response import PreviewVoiceResponse
 from ._publish_script_request import PublishScriptRequest
 from ._publish_script_response_body import PublishScriptResponseBody
 from ._publish_script_response import PublishScriptResponse
+from ._update_call_center_provider_request import UpdateCallCenterProviderRequest
+from ._update_call_center_provider_response_body import UpdateCallCenterProviderResponseBody
+from ._update_call_center_provider_response import UpdateCallCenterProviderResponse
 from ._update_clone_voice_request import UpdateCloneVoiceRequest
 from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
 from ._update_clone_voice_response import UpdateCloneVoiceResponse
+from ._update_instruction_request import UpdateInstructionRequest
+from ._update_instruction_response_body import UpdateInstructionResponseBody
+from ._update_instruction_response import UpdateInstructionResponse
 from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequest
 from ._update_llm_access_profile_shrink_request import UpdateLlmAccessProfileShrinkRequest
 from ._update_llm_access_profile_response_body import UpdateLlmAccessProfileResponseBody
@@ -152,6 +191,9 @@ from ._update_voice_access_profile_request import UpdateVoiceAccessProfileReques
 from ._update_voice_access_profile_shrink_request import UpdateVoiceAccessProfileShrinkRequest
 from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfileResponseBody
 from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
+from ._begin_session_response_body import BeginSessionResponseBodyDataControlParamsList
+from ._begin_session_response_body import BeginSessionResponseBodyData
+from ._bridge_web_call_response_body import BridgeWebCallResponseBodyData
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
 from ._create_llm_access_profile_request import CreateLlmAccessProfileRequestProfile
 from ._create_script_version_request import CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers
@@ -169,9 +211,12 @@ from ._create_script_version_request import CreateScriptVersionRequestSynthesize
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfigNlsAccessProfile
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfig
 from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequestProfile
+from ._dialogue_response_body import DialogueResponseBodyDataControlParamsList
+from ._dialogue_response_body import DialogueResponseBodyData
 from ._generate_file_upload_params_response_body import GenerateFileUploadParamsResponseBodyData
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataTranscripts
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyData
+from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBodyData
 from ._get_realtime_instance_stats_response_body import GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList
 from ._get_realtime_instance_stats_response_body import GetRealtimeInstanceStatsResponseBodyData
 from ._get_recording_response_body import GetRecordingResponseBodyData
@@ -211,12 +256,16 @@ from ._get_subscription_response_body import GetSubscriptionResponseBodyData
 from ._get_vocabulary_response_body import GetVocabularyResponseBodyData
 from ._list_background_musics_response_body import ListBackgroundMusicsResponseBodyDataBackgroundMusics
 from ._list_background_musics_response_body import ListBackgroundMusicsResponseBodyData
+from ._list_call_center_providers_response_body import ListCallCenterProvidersResponseBodyDataProviders
+from ._list_call_center_providers_response_body import ListCallCenterProvidersResponseBodyData
 from ._list_call_detail_records_response_body import ListCallDetailRecordsResponseBodyDataCallDetailRecords
 from ._list_call_detail_records_response_body import ListCallDetailRecordsResponseBodyData
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataCloneVoices
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
+from ._list_instructions_response_body import ListInstructionsResponseBodyDataInstructions
+from ._list_instructions_response_body import ListInstructionsResponseBodyData
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyData
@@ -240,9 +289,21 @@ from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequestPro
 from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequestProfile
 
 __all__ = [
+    BeginSessionRequest,
+    BeginSessionResponseBody,
+    BeginSessionResponse,
+    BridgeWebCallRequest,
+    BridgeWebCallResponseBody,
+    BridgeWebCallResponse,
+    CreateCallCenterProviderRequest,
+    CreateCallCenterProviderResponseBody,
+    CreateCallCenterProviderResponse,
     CreateCloneVoiceRequest,
     CreateCloneVoiceResponseBody,
     CreateCloneVoiceResponse,
+    CreateInstructionRequest,
+    CreateInstructionResponseBody,
+    CreateInstructionResponse,
     CreateLlmAccessProfileRequest,
     CreateLlmAccessProfileShrinkRequest,
     CreateLlmAccessProfileResponseBody,
@@ -265,9 +326,15 @@ __all__ = [
     CreateVoiceAccessProfileShrinkRequest,
     CreateVoiceAccessProfileResponseBody,
     CreateVoiceAccessProfileResponse,
+    DeleteCallCenterProviderRequest,
+    DeleteCallCenterProviderResponseBody,
+    DeleteCallCenterProviderResponse,
     DeleteCloneVoiceRequest,
     DeleteCloneVoiceResponseBody,
     DeleteCloneVoiceResponse,
+    DeleteInstructionRequest,
+    DeleteInstructionResponseBody,
+    DeleteInstructionResponse,
     DeleteLlmAccessProfileRequest,
     DeleteLlmAccessProfileResponseBody,
     DeleteLlmAccessProfileResponse,
@@ -283,9 +350,15 @@ __all__ = [
     DeleteVoiceAccessProfileRequest,
     DeleteVoiceAccessProfileResponseBody,
     DeleteVoiceAccessProfileResponse,
+    DialogueRequest,
+    DialogueResponseBody,
+    DialogueResponse,
     DisableSubscriptionRequest,
     DisableSubscriptionResponseBody,
     DisableSubscriptionResponse,
+    EndSessionRequest,
+    EndSessionResponseBody,
+    EndSessionResponse,
     ExportScriptRequest,
     ExportScriptResponseBody,
     ExportScriptResponse,
@@ -299,6 +372,9 @@ __all__ = [
     GetCallDetailRecordRequest,
     GetCallDetailRecordResponseBody,
     GetCallDetailRecordResponse,
+    GetDataChannelCredentialRequest,
+    GetDataChannelCredentialResponseBody,
+    GetDataChannelCredentialResponse,
     GetRealtimeInstanceStatsRequest,
     GetRealtimeInstanceStatsResponseBody,
     GetRealtimeInstanceStatsResponse,
@@ -320,6 +396,9 @@ __all__ = [
     ListBackgroundMusicsRequest,
     ListBackgroundMusicsResponseBody,
     ListBackgroundMusicsResponse,
+    ListCallCenterProvidersRequest,
+    ListCallCenterProvidersResponseBody,
+    ListCallCenterProvidersResponse,
     ListCallDetailRecordsRequest,
     ListCallDetailRecordsShrinkRequest,
     ListCallDetailRecordsResponseBody,
@@ -330,6 +409,9 @@ __all__ = [
     ListCloneVoiceModelsRequest,
     ListCloneVoiceModelsResponseBody,
     ListCloneVoiceModelsResponse,
+    ListInstructionsRequest,
+    ListInstructionsResponseBody,
+    ListInstructionsResponse,
     ListLlmAccessProfilesRequest,
     ListLlmAccessProfilesResponseBody,
     ListLlmAccessProfilesResponse,
@@ -365,9 +447,15 @@ __all__ = [
     PublishScriptRequest,
     PublishScriptResponseBody,
     PublishScriptResponse,
+    UpdateCallCenterProviderRequest,
+    UpdateCallCenterProviderResponseBody,
+    UpdateCallCenterProviderResponse,
     UpdateCloneVoiceRequest,
     UpdateCloneVoiceResponseBody,
     UpdateCloneVoiceResponse,
+    UpdateInstructionRequest,
+    UpdateInstructionResponseBody,
+    UpdateInstructionResponse,
     UpdateLlmAccessProfileRequest,
     UpdateLlmAccessProfileShrinkRequest,
     UpdateLlmAccessProfileResponseBody,
@@ -390,6 +478,9 @@ __all__ = [
     UpdateVoiceAccessProfileShrinkRequest,
     UpdateVoiceAccessProfileResponseBody,
     UpdateVoiceAccessProfileResponse,
+    BeginSessionResponseBodyDataControlParamsList,
+    BeginSessionResponseBodyData,
+    BridgeWebCallResponseBodyData,
     CreateCloneVoiceResponseBodyData,
     CreateLlmAccessProfileRequestProfile,
     CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers,
@@ -407,9 +498,12 @@ __all__ = [
     CreateScriptVersionRequestTranscriberConfigNlsAccessProfile,
     CreateScriptVersionRequestTranscriberConfig,
     CreateVoiceAccessProfileRequestProfile,
+    DialogueResponseBodyDataControlParamsList,
+    DialogueResponseBodyData,
     GenerateFileUploadParamsResponseBodyData,
     GetCallDetailRecordResponseBodyDataTranscripts,
     GetCallDetailRecordResponseBodyData,
+    GetDataChannelCredentialResponseBodyData,
     GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList,
     GetRealtimeInstanceStatsResponseBodyData,
     GetRecordingResponseBodyData,
@@ -449,12 +543,16 @@ __all__ = [
     GetVocabularyResponseBodyData,
     ListBackgroundMusicsResponseBodyDataBackgroundMusics,
     ListBackgroundMusicsResponseBodyData,
+    ListCallCenterProvidersResponseBodyDataProviders,
+    ListCallCenterProvidersResponseBodyData,
     ListCallDetailRecordsResponseBodyDataCallDetailRecords,
     ListCallDetailRecordsResponseBodyData,
     ListCloneVoiceResponseBodyDataCloneVoices,
     ListCloneVoiceResponseBodyData,
     ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
     ListCloneVoiceModelsResponseBodyData,
+    ListInstructionsResponseBodyDataInstructions,
+    ListInstructionsResponseBodyData,
     ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile,
     ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles,
     ListLlmAccessProfilesResponseBodyData,

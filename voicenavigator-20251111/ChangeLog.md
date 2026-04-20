@@ -1,3 +1,19 @@
+2026-04-20 Version: 1.3.0
+- Support API BeginSession.
+- Support API BridgeWebCall.
+- Support API CreateCallCenterProvider.
+- Support API CreateInstruction.
+- Support API DeleteCallCenterProvider.
+- Support API DeleteInstruction.
+- Support API Dialogue.
+- Support API EndSession.
+- Support API GetDataChannelCredential.
+- Support API ListCallCenterProviders.
+- Support API ListInstructions.
+- Support API UpdateCallCenterProvider.
+- Support API UpdateInstruction.
+
+
 2026-04-15 Version: 1.2.0
 - Support API CreateLlmAccessProfile.
 - Support API DeleteLlmAccessProfile.

@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -39,6 +41,386 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def begin_session_with_sse(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.BeginSessionResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.BeginSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def begin_session_with_sse_async(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.BeginSessionResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.BeginSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def begin_session_with_options(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BeginSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BeginSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def begin_session_with_options_async(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BeginSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BeginSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def begin_session(
+        self,
+        request: main_models.BeginSessionRequest,
+    ) -> main_models.BeginSessionResponse:
+        runtime = RuntimeOptions()
+        return self.begin_session_with_options(request, runtime)
+
+    async def begin_session_async(
+        self,
+        request: main_models.BeginSessionRequest,
+    ) -> main_models.BeginSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.begin_session_with_options_async(request, runtime)
+
+    def bridge_web_call_with_options(
+        self,
+        request: main_models.BridgeWebCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BridgeWebCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_channel_id):
+            query['AccessChannelId'] = request.access_channel_id
+        if not DaraCore.is_null(request.access_channel_type):
+            query['AccessChannelType'] = request.access_channel_type
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BridgeWebCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BridgeWebCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bridge_web_call_with_options_async(
+        self,
+        request: main_models.BridgeWebCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BridgeWebCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_channel_id):
+            query['AccessChannelId'] = request.access_channel_id
+        if not DaraCore.is_null(request.access_channel_type):
+            query['AccessChannelType'] = request.access_channel_type
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BridgeWebCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BridgeWebCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bridge_web_call(
+        self,
+        request: main_models.BridgeWebCallRequest,
+    ) -> main_models.BridgeWebCallResponse:
+        runtime = RuntimeOptions()
+        return self.bridge_web_call_with_options(request, runtime)
+
+    async def bridge_web_call_async(
+        self,
+        request: main_models.BridgeWebCallRequest,
+    ) -> main_models.BridgeWebCallResponse:
+        runtime = RuntimeOptions()
+        return await self.bridge_web_call_with_options_async(request, runtime)
+
+    def create_call_center_provider_with_options(
+        self,
+        request: main_models.CreateCallCenterProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCallCenterProviderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        body = {}
+        if not DaraCore.is_null(request.destination):
+            body['Destination'] = request.destination
+        if not DaraCore.is_null(request.extras):
+            body['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.originator):
+            body['Originator'] = request.originator
+        if not DaraCore.is_null(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not DaraCore.is_null(request.refer_to):
+            body['ReferTo'] = request.refer_to
+        if not DaraCore.is_null(request.trunk_id):
+            body['TrunkId'] = request.trunk_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCallCenterProvider',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCallCenterProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_call_center_provider_with_options_async(
+        self,
+        request: main_models.CreateCallCenterProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCallCenterProviderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        body = {}
+        if not DaraCore.is_null(request.destination):
+            body['Destination'] = request.destination
+        if not DaraCore.is_null(request.extras):
+            body['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.originator):
+            body['Originator'] = request.originator
+        if not DaraCore.is_null(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not DaraCore.is_null(request.refer_to):
+            body['ReferTo'] = request.refer_to
+        if not DaraCore.is_null(request.trunk_id):
+            body['TrunkId'] = request.trunk_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCallCenterProvider',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCallCenterProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_call_center_provider(
+        self,
+        request: main_models.CreateCallCenterProviderRequest,
+    ) -> main_models.CreateCallCenterProviderResponse:
+        runtime = RuntimeOptions()
+        return self.create_call_center_provider_with_options(request, runtime)
+
+    async def create_call_center_provider_async(
+        self,
+        request: main_models.CreateCallCenterProviderRequest,
+    ) -> main_models.CreateCallCenterProviderResponse:
+        runtime = RuntimeOptions()
+        return await self.create_call_center_provider_with_options_async(request, runtime)
 
     def create_clone_voice_with_options(
         self,
@@ -117,6 +499,92 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCloneVoiceResponse:
         runtime = RuntimeOptions()
         return await self.create_clone_voice_with_options_async(request, runtime)
+
+    def create_instruction_with_options(
+        self,
+        request: main_models.CreateInstructionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstructionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstruction',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstructionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instruction_with_options_async(
+        self,
+        request: main_models.CreateInstructionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstructionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstruction',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstructionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instruction(
+        self,
+        request: main_models.CreateInstructionRequest,
+    ) -> main_models.CreateInstructionResponse:
+        runtime = RuntimeOptions()
+        return self.create_instruction_with_options(request, runtime)
+
+    async def create_instruction_async(
+        self,
+        request: main_models.CreateInstructionRequest,
+    ) -> main_models.CreateInstructionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_instruction_with_options_async(request, runtime)
 
     def create_llm_access_profile_with_options(
         self,
@@ -666,6 +1134,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_voice_access_profile_with_options_async(request, runtime)
 
+    def delete_call_center_provider_with_options(
+        self,
+        request: main_models.DeleteCallCenterProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCallCenterProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCallCenterProvider',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCallCenterProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_call_center_provider_with_options_async(
+        self,
+        request: main_models.DeleteCallCenterProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCallCenterProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCallCenterProvider',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCallCenterProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_call_center_provider(
+        self,
+        request: main_models.DeleteCallCenterProviderRequest,
+    ) -> main_models.DeleteCallCenterProviderResponse:
+        runtime = RuntimeOptions()
+        return self.delete_call_center_provider_with_options(request, runtime)
+
+    async def delete_call_center_provider_async(
+        self,
+        request: main_models.DeleteCallCenterProviderRequest,
+    ) -> main_models.DeleteCallCenterProviderResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_call_center_provider_with_options_async(request, runtime)
+
     def delete_clone_voice_with_options(
         self,
         request: main_models.DeleteCloneVoiceRequest,
@@ -739,6 +1281,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCloneVoiceResponse:
         runtime = RuntimeOptions()
         return await self.delete_clone_voice_with_options_async(request, runtime)
+
+    def delete_instruction_with_options(
+        self,
+        request: main_models.DeleteInstructionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstructionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstruction',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstructionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instruction_with_options_async(
+        self,
+        request: main_models.DeleteInstructionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstructionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstruction',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstructionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instruction(
+        self,
+        request: main_models.DeleteInstructionRequest,
+    ) -> main_models.DeleteInstructionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_instruction_with_options(request, runtime)
+
+    async def delete_instruction_async(
+        self,
+        request: main_models.DeleteInstructionRequest,
+    ) -> main_models.DeleteInstructionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_instruction_with_options_async(request, runtime)
 
     def delete_llm_access_profile_with_options(
         self,
@@ -1110,6 +1726,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_voice_access_profile_with_options_async(request, runtime)
 
+    def dialogue_with_sse(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.DialogueResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.DialogueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def dialogue_with_sse_async(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.DialogueResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.DialogueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def dialogue_with_options(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DialogueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DialogueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dialogue_with_options_async(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DialogueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DialogueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dialogue(
+        self,
+        request: main_models.DialogueRequest,
+    ) -> main_models.DialogueResponse:
+        runtime = RuntimeOptions()
+        return self.dialogue_with_options(request, runtime)
+
+    async def dialogue_async(
+        self,
+        request: main_models.DialogueRequest,
+    ) -> main_models.DialogueResponse:
+        runtime = RuntimeOptions()
+        return await self.dialogue_with_options_async(request, runtime)
+
     def disable_subscription_with_options(
         self,
         request: main_models.DisableSubscriptionRequest,
@@ -1179,6 +1971,84 @@ class Client(OpenApiClient):
     ) -> main_models.DisableSubscriptionResponse:
         runtime = RuntimeOptions()
         return await self.disable_subscription_with_options_async(request, runtime)
+
+    def end_session_with_options(
+        self,
+        request: main_models.EndSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def end_session_with_options_async(
+        self,
+        request: main_models.EndSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def end_session(
+        self,
+        request: main_models.EndSessionRequest,
+    ) -> main_models.EndSessionResponse:
+        runtime = RuntimeOptions()
+        return self.end_session_with_options(request, runtime)
+
+    async def end_session_async(
+        self,
+        request: main_models.EndSessionRequest,
+    ) -> main_models.EndSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.end_session_with_options_async(request, runtime)
 
     def export_script_with_options(
         self,
@@ -1487,6 +2357,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetCallDetailRecordResponse:
         runtime = RuntimeOptions()
         return await self.get_call_detail_record_with_options_async(request, runtime)
+
+    def get_data_channel_credential_with_options(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataChannelCredential',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataChannelCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_channel_credential_with_options_async(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataChannelCredential',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataChannelCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_channel_credential(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_channel_credential_with_options(request, runtime)
+
+    async def get_data_channel_credential_async(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_channel_credential_with_options_async(request, runtime)
 
     def get_realtime_instance_stats_with_options(
         self,
@@ -2002,6 +2946,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_background_musics_with_options_async(request, runtime)
 
+    def list_call_center_providers_with_options(
+        self,
+        request: main_models.ListCallCenterProvidersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCallCenterProvidersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCallCenterProviders',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCallCenterProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_call_center_providers_with_options_async(
+        self,
+        request: main_models.ListCallCenterProvidersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCallCenterProvidersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCallCenterProviders',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCallCenterProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_call_center_providers(
+        self,
+        request: main_models.ListCallCenterProvidersRequest,
+    ) -> main_models.ListCallCenterProvidersResponse:
+        runtime = RuntimeOptions()
+        return self.list_call_center_providers_with_options(request, runtime)
+
+    async def list_call_center_providers_async(
+        self,
+        request: main_models.ListCallCenterProvidersRequest,
+    ) -> main_models.ListCallCenterProvidersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_call_center_providers_with_options_async(request, runtime)
+
     def list_call_detail_records_with_options(
         self,
         tmp_req: main_models.ListCallDetailRecordsRequest,
@@ -2311,6 +3337,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListCloneVoiceModelsResponse:
         runtime = RuntimeOptions()
         return await self.list_clone_voice_models_with_options_async(request, runtime)
+
+    def list_instructions_with_options(
+        self,
+        request: main_models.ListInstructionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstructionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstructions',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstructionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instructions_with_options_async(
+        self,
+        request: main_models.ListInstructionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstructionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstructions',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstructionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instructions(
+        self,
+        request: main_models.ListInstructionsRequest,
+    ) -> main_models.ListInstructionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_instructions_with_options(request, runtime)
+
+    async def list_instructions_async(
+        self,
+        request: main_models.ListInstructionsRequest,
+    ) -> main_models.ListInstructionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instructions_with_options_async(request, runtime)
 
     def list_llm_access_profiles_with_options(
         self,
@@ -3214,6 +4322,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.publish_script_with_options_async(request, runtime)
 
+    def update_call_center_provider_with_options(
+        self,
+        request: main_models.UpdateCallCenterProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCallCenterProviderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        body = {}
+        if not DaraCore.is_null(request.destination):
+            body['Destination'] = request.destination
+        if not DaraCore.is_null(request.extras):
+            body['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.originator):
+            body['Originator'] = request.originator
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        if not DaraCore.is_null(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not DaraCore.is_null(request.refer_to):
+            body['ReferTo'] = request.refer_to
+        if not DaraCore.is_null(request.trunk_id):
+            body['TrunkId'] = request.trunk_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCallCenterProvider',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCallCenterProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_call_center_provider_with_options_async(
+        self,
+        request: main_models.UpdateCallCenterProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCallCenterProviderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        body = {}
+        if not DaraCore.is_null(request.destination):
+            body['Destination'] = request.destination
+        if not DaraCore.is_null(request.extras):
+            body['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.originator):
+            body['Originator'] = request.originator
+        if not DaraCore.is_null(request.provider_id):
+            body['ProviderId'] = request.provider_id
+        if not DaraCore.is_null(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not DaraCore.is_null(request.refer_to):
+            body['ReferTo'] = request.refer_to
+        if not DaraCore.is_null(request.trunk_id):
+            body['TrunkId'] = request.trunk_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCallCenterProvider',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCallCenterProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_call_center_provider(
+        self,
+        request: main_models.UpdateCallCenterProviderRequest,
+    ) -> main_models.UpdateCallCenterProviderResponse:
+        runtime = RuntimeOptions()
+        return self.update_call_center_provider_with_options(request, runtime)
+
+    async def update_call_center_provider_async(
+        self,
+        request: main_models.UpdateCallCenterProviderRequest,
+    ) -> main_models.UpdateCallCenterProviderResponse:
+        runtime = RuntimeOptions()
+        return await self.update_call_center_provider_with_options_async(request, runtime)
+
     def update_clone_voice_with_options(
         self,
         request: main_models.UpdateCloneVoiceRequest,
@@ -3291,6 +4509,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCloneVoiceResponse:
         runtime = RuntimeOptions()
         return await self.update_clone_voice_with_options_async(request, runtime)
+
+    def update_instruction_with_options(
+        self,
+        request: main_models.UpdateInstructionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstructionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstruction',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstructionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instruction_with_options_async(
+        self,
+        request: main_models.UpdateInstructionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstructionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstruction',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstructionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instruction(
+        self,
+        request: main_models.UpdateInstructionRequest,
+    ) -> main_models.UpdateInstructionResponse:
+        runtime = RuntimeOptions()
+        return self.update_instruction_with_options(request, runtime)
+
+    async def update_instruction_async(
+        self,
+        request: main_models.UpdateInstructionRequest,
+    ) -> main_models.UpdateInstructionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_instruction_with_options_async(request, runtime)
 
     def update_llm_access_profile_with_options(
         self,

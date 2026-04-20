@@ -7,11 +7,11 @@ from typing import List
 from alibabacloud_voicenavigator20251111 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateCloneVoiceResponseBody(DaraModel):
+class BridgeWebCallResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.CreateCloneVoiceResponseBodyData = None,
+        data: main_models.BridgeWebCallResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
@@ -59,7 +59,7 @@ class CreateCloneVoiceResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.CreateCloneVoiceResponseBodyData()
+            temp_model = main_models.BridgeWebCallResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('HttpStatusCode') is not None:
@@ -76,14 +76,23 @@ class CreateCloneVoiceResponseBody(DaraModel):
 
         return self
 
-class CreateCloneVoiceResponseBodyData(DaraModel):
+class BridgeWebCallResponseBodyData(DaraModel):
     def __init__(
         self,
-        clone_voice_id: str = None,
-        voice: str = None,
+        channel_id: str = None,
+        expiration_time: str = None,
+        instance_id: str = None,
+        server_url: str = None,
+        session_id: str = None,
+        token: str = None,
     ):
-        self.clone_voice_id = clone_voice_id
-        self.voice = voice
+        self.channel_id = channel_id
+        self.expiration_time = expiration_time
+        self.instance_id = instance_id
+        self.server_url = server_url
+        self.session_id = session_id
+        # token
+        self.token = token
 
     def validate(self):
         pass
@@ -93,21 +102,45 @@ class CreateCloneVoiceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.clone_voice_id is not None:
-            result['CloneVoiceId'] = self.clone_voice_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
 
-        if self.voice is not None:
-            result['Voice'] = self.voice
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.server_url is not None:
+            result['ServerUrl'] = self.server_url
+
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+
+        if self.token is not None:
+            result['Token'] = self.token
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CloneVoiceId') is not None:
-            self.clone_voice_id = m.get('CloneVoiceId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
 
-        if m.get('Voice') is not None:
-            self.voice = m.get('Voice')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('ServerUrl') is not None:
+            self.server_url = m.get('ServerUrl')
+
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
 
         return self
 
