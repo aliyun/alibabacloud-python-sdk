@@ -757,6 +757,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_task_flow_edges_with_options_async(request, runtime)
 
+    def add_workspace_user_with_options(
+        self,
+        request: main_models.AddWorkspaceUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddWorkspaceUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_user_ids):
+            query['DmsUserIds'] = request.dms_user_ids
+        if not DaraCore.is_null(request.role_id):
+            query['RoleId'] = request.role_id
+        if not DaraCore.is_null(request.role_source):
+            query['RoleSource'] = request.role_source
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddWorkspaceUser',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddWorkspaceUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_workspace_user_with_options_async(
+        self,
+        request: main_models.AddWorkspaceUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddWorkspaceUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_user_ids):
+            query['DmsUserIds'] = request.dms_user_ids
+        if not DaraCore.is_null(request.role_id):
+            query['RoleId'] = request.role_id
+        if not DaraCore.is_null(request.role_source):
+            query['RoleSource'] = request.role_source
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddWorkspaceUser',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddWorkspaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_workspace_user(
+        self,
+        request: main_models.AddWorkspaceUserRequest,
+    ) -> main_models.AddWorkspaceUserResponse:
+        runtime = RuntimeOptions()
+        return self.add_workspace_user_with_options(request, runtime)
+
+    async def add_workspace_user_async(
+        self,
+        request: main_models.AddWorkspaceUserRequest,
+    ) -> main_models.AddWorkspaceUserResponse:
+        runtime = RuntimeOptions()
+        return await self.add_workspace_user_with_options_async(request, runtime)
+
     def analyze_sqllineage_with_options(
         self,
         request: main_models.AnalyzeSQLLineageRequest,
@@ -21081,6 +21163,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_work_flow_templates_with_options_async(request, runtime)
 
+    def list_workspace_users_with_options(
+        self,
+        request: main_models.ListWorkspaceUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceUsers',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_users_with_options_async(
+        self,
+        request: main_models.ListWorkspaceUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceUsers',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_users(
+        self,
+        request: main_models.ListWorkspaceUsersRequest,
+    ) -> main_models.ListWorkspaceUsersResponse:
+        runtime = RuntimeOptions()
+        return self.list_workspace_users_with_options(request, runtime)
+
+    async def list_workspace_users_async(
+        self,
+        request: main_models.ListWorkspaceUsersRequest,
+    ) -> main_models.ListWorkspaceUsersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workspace_users_with_options_async(request, runtime)
+
     def list_workspaces_with_options(
         self,
         request: main_models.ListWorkspacesRequest,
@@ -22999,6 +23163,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.remove_table_from_category_with_options_async(request, runtime)
 
+    def remove_workspace_user_with_options(
+        self,
+        request: main_models.RemoveWorkspaceUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveWorkspaceUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_user_ids):
+            query['DmsUserIds'] = request.dms_user_ids
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveWorkspaceUser',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveWorkspaceUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_workspace_user_with_options_async(
+        self,
+        request: main_models.RemoveWorkspaceUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveWorkspaceUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_user_ids):
+            query['DmsUserIds'] = request.dms_user_ids
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveWorkspaceUser',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveWorkspaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_workspace_user(
+        self,
+        request: main_models.RemoveWorkspaceUserRequest,
+    ) -> main_models.RemoveWorkspaceUserResponse:
+        runtime = RuntimeOptions()
+        return self.remove_workspace_user_with_options(request, runtime)
+
+    async def remove_workspace_user_async(
+        self,
+        request: main_models.RemoveWorkspaceUserRequest,
+    ) -> main_models.RemoveWorkspaceUserResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_workspace_user_with_options_async(request, runtime)
+
     def restart_data_correct_sqljob_with_options(
         self,
         request: main_models.RestartDataCorrectSQLJobRequest,
@@ -23898,6 +24136,96 @@ class Client(OpenApiClient):
     ) -> main_models.SearchTableKnowledgeResponse:
         runtime = RuntimeOptions()
         return await self.search_table_knowledge_with_options_async(request, runtime)
+
+    def search_workspace_roles_with_options(
+        self,
+        request: main_models.SearchWorkspaceRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchWorkspaceRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchWorkspaceRoles',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchWorkspaceRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_workspace_roles_with_options_async(
+        self,
+        request: main_models.SearchWorkspaceRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchWorkspaceRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchWorkspaceRoles',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchWorkspaceRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_workspace_roles(
+        self,
+        request: main_models.SearchWorkspaceRolesRequest,
+    ) -> main_models.SearchWorkspaceRolesResponse:
+        runtime = RuntimeOptions()
+        return self.search_workspace_roles_with_options(request, runtime)
+
+    async def search_workspace_roles_async(
+        self,
+        request: main_models.SearchWorkspaceRolesRequest,
+    ) -> main_models.SearchWorkspaceRolesResponse:
+        runtime = RuntimeOptions()
+        return await self.search_workspace_roles_with_options_async(request, runtime)
 
     def set_owners_with_options(
         self,
@@ -27402,3 +27730,81 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateWorkspaceResponse:
         runtime = RuntimeOptions()
         return await self.update_workspace_with_options_async(request, runtime)
+
+    def update_workspace_user_with_options(
+        self,
+        request: main_models.UpdateWorkspaceUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_user_id):
+            query['DmsUserId'] = request.dms_user_id
+        if not DaraCore.is_null(request.role_ids):
+            query['RoleIds'] = request.role_ids
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspaceUser',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_user_with_options_async(
+        self,
+        request: main_models.UpdateWorkspaceUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_user_id):
+            query['DmsUserId'] = request.dms_user_id
+        if not DaraCore.is_null(request.role_ids):
+            query['RoleIds'] = request.role_ids
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspaceUser',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace_user(
+        self,
+        request: main_models.UpdateWorkspaceUserRequest,
+    ) -> main_models.UpdateWorkspaceUserResponse:
+        runtime = RuntimeOptions()
+        return self.update_workspace_user_with_options(request, runtime)
+
+    async def update_workspace_user_async(
+        self,
+        request: main_models.UpdateWorkspaceUserRequest,
+    ) -> main_models.UpdateWorkspaceUserResponse:
+        runtime = RuntimeOptions()
+        return await self.update_workspace_user_with_options_async(request, runtime)

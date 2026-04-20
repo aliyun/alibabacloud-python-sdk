@@ -1,3 +1,11 @@
+2026-04-20 Version: 2.5.0
+- Support API AddWorkspaceUser.
+- Support API ListWorkspaceUsers.
+- Support API RemoveWorkspaceUser.
+- Support API SearchWorkspaceRoles.
+- Support API UpdateWorkspaceUser.
+
+
 2026-04-16 Version: 2.4.2
 - Update API ChatWithDesensitizeSSE: add request parameters ToolChoice.
 - Update API ChatWithDesensitizeSSE: add request parameters Tools.

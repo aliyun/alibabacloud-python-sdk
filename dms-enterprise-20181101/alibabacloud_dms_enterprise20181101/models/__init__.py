@@ -56,6 +56,9 @@ from ._add_task_flow_edges_request import AddTaskFlowEdgesRequest
 from ._add_task_flow_edges_shrink_request import AddTaskFlowEdgesShrinkRequest
 from ._add_task_flow_edges_response_body import AddTaskFlowEdgesResponseBody
 from ._add_task_flow_edges_response import AddTaskFlowEdgesResponse
+from ._add_workspace_user_request import AddWorkspaceUserRequest
+from ._add_workspace_user_response_body import AddWorkspaceUserResponseBody
+from ._add_workspace_user_response import AddWorkspaceUserResponse
 from ._analyze_sqllineage_request import AnalyzeSQLLineageRequest
 from ._analyze_sqllineage_response_body import AnalyzeSQLLineageResponseBody
 from ._analyze_sqllineage_response import AnalyzeSQLLineageResponse
@@ -788,6 +791,9 @@ from ._list_work_flow_nodes_response import ListWorkFlowNodesResponse
 from ._list_work_flow_templates_request import ListWorkFlowTemplatesRequest
 from ._list_work_flow_templates_response_body import ListWorkFlowTemplatesResponseBody
 from ._list_work_flow_templates_response import ListWorkFlowTemplatesResponse
+from ._list_workspace_users_request import ListWorkspaceUsersRequest
+from ._list_workspace_users_response_body import ListWorkspaceUsersResponseBody
+from ._list_workspace_users_response import ListWorkspaceUsersResponse
 from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_response_body import ListWorkspacesResponseBody
 from ._list_workspaces_response import ListWorkspacesResponse
@@ -851,6 +857,9 @@ from ._remove_data_export_job_response import RemoveDataExportJobResponse
 from ._remove_table_from_category_request import RemoveTableFromCategoryRequest
 from ._remove_table_from_category_response_body import RemoveTableFromCategoryResponseBody
 from ._remove_table_from_category_response import RemoveTableFromCategoryResponse
+from ._remove_workspace_user_request import RemoveWorkspaceUserRequest
+from ._remove_workspace_user_response_body import RemoveWorkspaceUserResponseBody
+from ._remove_workspace_user_response import RemoveWorkspaceUserResponse
 from ._restart_data_correct_sqljob_request import RestartDataCorrectSQLJobRequest
 from ._restart_data_correct_sqljob_response_body import RestartDataCorrectSQLJobResponseBody
 from ._restart_data_correct_sqljob_response import RestartDataCorrectSQLJobResponse
@@ -882,6 +891,9 @@ from ._search_table_response import SearchTableResponse
 from ._search_table_knowledge_request import SearchTableKnowledgeRequest
 from ._search_table_knowledge_response_body import SearchTableKnowledgeResponseBody
 from ._search_table_knowledge_response import SearchTableKnowledgeResponse
+from ._search_workspace_roles_request import SearchWorkspaceRolesRequest
+from ._search_workspace_roles_response_body import SearchWorkspaceRolesResponseBody
+from ._search_workspace_roles_response import SearchWorkspaceRolesResponse
 from ._set_owners_request import SetOwnersRequest
 from ._set_owners_response_body import SetOwnersResponseBody
 from ._set_owners_response import SetOwnersResponse
@@ -1012,6 +1024,9 @@ from ._update_user_response import UpdateUserResponse
 from ._update_workspace_request import UpdateWorkspaceRequest
 from ._update_workspace_response_body import UpdateWorkspaceResponseBody
 from ._update_workspace_response import UpdateWorkspaceResponse
+from ._update_workspace_user_request import UpdateWorkspaceUserRequest
+from ._update_workspace_user_response_body import UpdateWorkspaceUserResponseBody
+from ._update_workspace_user_response import UpdateWorkspaceUserResponse
 from ._add_authority_template_items_request import AddAuthorityTemplateItemsRequestItems
 from ._add_lh_members_request import AddLhMembersRequestMembers
 from ._add_task_flow_edges_request import AddTaskFlowEdgesRequestEdges
@@ -1355,6 +1370,7 @@ from ._list_work_flow_templates_response_body import ListWorkFlowTemplatesRespon
 from ._list_work_flow_templates_response_body import ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes
 from ._list_work_flow_templates_response_body import ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate
 from ._list_work_flow_templates_response_body import ListWorkFlowTemplatesResponseBodyWorkFlowTemplates
+from ._list_workspace_users_response_body import ListWorkspaceUsersResponseBodyData
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyDataBaseWorkspaces
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyData
 from ._optimize_sql_by_meta_agent_response_body import OptimizeSqlByMetaAgentResponseBodyData
@@ -1379,6 +1395,7 @@ from ._search_table_response_body import SearchTableResponseBodySearchTableListS
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTable
 from ._search_table_response_body import SearchTableResponseBodySearchTableList
 from ._search_table_knowledge_response_body import SearchTableKnowledgeResponseBodyData
+from ._search_workspace_roles_response_body import SearchWorkspaceRolesResponseBodyData
 from ._simply_add_instance_response_body import SimplyAddInstanceResponseBodyInstance
 from ._update_authority_template_response_body import UpdateAuthorityTemplateResponseBodyAuthorityTemplateView
 from ._update_slarules_request import UpdateSLARulesRequestSlaRuleList
@@ -1442,6 +1459,9 @@ __all__ = [
     AddTaskFlowEdgesShrinkRequest,
     AddTaskFlowEdgesResponseBody,
     AddTaskFlowEdgesResponse,
+    AddWorkspaceUserRequest,
+    AddWorkspaceUserResponseBody,
+    AddWorkspaceUserResponse,
     AnalyzeSQLLineageRequest,
     AnalyzeSQLLineageResponseBody,
     AnalyzeSQLLineageResponse,
@@ -2174,6 +2194,9 @@ __all__ = [
     ListWorkFlowTemplatesRequest,
     ListWorkFlowTemplatesResponseBody,
     ListWorkFlowTemplatesResponse,
+    ListWorkspaceUsersRequest,
+    ListWorkspaceUsersResponseBody,
+    ListWorkspaceUsersResponse,
     ListWorkspacesRequest,
     ListWorkspacesResponseBody,
     ListWorkspacesResponse,
@@ -2237,6 +2260,9 @@ __all__ = [
     RemoveTableFromCategoryRequest,
     RemoveTableFromCategoryResponseBody,
     RemoveTableFromCategoryResponse,
+    RemoveWorkspaceUserRequest,
+    RemoveWorkspaceUserResponseBody,
+    RemoveWorkspaceUserResponse,
     RestartDataCorrectSQLJobRequest,
     RestartDataCorrectSQLJobResponseBody,
     RestartDataCorrectSQLJobResponse,
@@ -2268,6 +2294,9 @@ __all__ = [
     SearchTableKnowledgeRequest,
     SearchTableKnowledgeResponseBody,
     SearchTableKnowledgeResponse,
+    SearchWorkspaceRolesRequest,
+    SearchWorkspaceRolesResponseBody,
+    SearchWorkspaceRolesResponse,
     SetOwnersRequest,
     SetOwnersResponseBody,
     SetOwnersResponse,
@@ -2398,6 +2427,9 @@ __all__ = [
     UpdateWorkspaceRequest,
     UpdateWorkspaceResponseBody,
     UpdateWorkspaceResponse,
+    UpdateWorkspaceUserRequest,
+    UpdateWorkspaceUserResponseBody,
+    UpdateWorkspaceUserResponse,
     AddAuthorityTemplateItemsRequestItems,
     AddLhMembersRequestMembers,
     AddTaskFlowEdgesRequestEdges,
@@ -2741,6 +2773,7 @@ __all__ = [
     ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes,
     ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate,
     ListWorkFlowTemplatesResponseBodyWorkFlowTemplates,
+    ListWorkspaceUsersResponseBodyData,
     ListWorkspacesResponseBodyDataBaseWorkspaces,
     ListWorkspacesResponseBodyData,
     OptimizeSqlByMetaAgentResponseBodyData,
@@ -2765,6 +2798,7 @@ __all__ = [
     SearchTableResponseBodySearchTableListSearchTable,
     SearchTableResponseBodySearchTableList,
     SearchTableKnowledgeResponseBodyData,
+    SearchWorkspaceRolesResponseBodyData,
     SimplyAddInstanceResponseBodyInstance,
     UpdateAuthorityTemplateResponseBodyAuthorityTemplateView,
     UpdateSLARulesRequestSlaRuleList,
