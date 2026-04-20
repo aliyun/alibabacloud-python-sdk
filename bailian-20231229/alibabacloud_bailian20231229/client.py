@@ -54,6 +54,8 @@ class Client(OpenApiClient):
             body['CategoryName'] = request.category_name
         if not DaraCore.is_null(request.category_type):
             body['CategoryType'] = request.category_type
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.parent_category_id):
             body['ParentCategoryId'] = request.parent_category_id
         req = open_api_util_models.OpenApiRequest(
@@ -89,6 +91,8 @@ class Client(OpenApiClient):
             body['CategoryName'] = request.category_name
         if not DaraCore.is_null(request.category_type):
             body['CategoryType'] = request.category_type
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.parent_category_id):
             body['ParentCategoryId'] = request.parent_category_id
         req = open_api_util_models.OpenApiRequest(

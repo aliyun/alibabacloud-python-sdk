@@ -9,12 +9,14 @@ class AddCategoryRequest(DaraModel):
         self,
         category_name: str = None,
         category_type: str = None,
+        connector_id: str = None,
         parent_category_id: str = None,
     ):
         # This parameter is required.
         self.category_name = category_name
         # This parameter is required.
         self.category_type = category_type
+        self.connector_id = connector_id
         self.parent_category_id = parent_category_id
 
     def validate(self):
@@ -31,6 +33,9 @@ class AddCategoryRequest(DaraModel):
         if self.category_type is not None:
             result['CategoryType'] = self.category_type
 
+        if self.connector_id is not None:
+            result['ConnectorId'] = self.connector_id
+
         if self.parent_category_id is not None:
             result['ParentCategoryId'] = self.parent_category_id
 
@@ -43,6 +48,9 @@ class AddCategoryRequest(DaraModel):
 
         if m.get('CategoryType') is not None:
             self.category_type = m.get('CategoryType')
+
+        if m.get('ConnectorId') is not None:
+            self.connector_id = m.get('ConnectorId')
 
         if m.get('ParentCategoryId') is not None:
             self.parent_category_id = m.get('ParentCategoryId')

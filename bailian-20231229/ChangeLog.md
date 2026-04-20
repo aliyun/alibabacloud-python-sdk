@@ -1,3 +1,7 @@
+2026-04-20 Version: 2.9.1
+- Update API AddCategory: add request parameters ConnectorId.
+
+
 2026-04-13 Version: 2.9.0
 - Support API AddTable.
 - Support API UpdateTableFromAuthorizedOss.
