@@ -53,9 +53,15 @@ class ConvertFlowDSLInputOptions(DaraModel):
     def __init__(
         self,
         compatibility_check: bool = None,
+        credential_name: str = None,
+        flow_name: str = None,
+        vpc_endpoint_name: str = None,
     ):
         # 是否执行兼容性检查，默认为true
         self.compatibility_check = compatibility_check
+        self.credential_name = credential_name
+        self.flow_name = flow_name
+        self.vpc_endpoint_name = vpc_endpoint_name
 
     def validate(self):
         pass
@@ -68,12 +74,30 @@ class ConvertFlowDSLInputOptions(DaraModel):
         if self.compatibility_check is not None:
             result['compatibilityCheck'] = self.compatibility_check
 
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+
+        if self.flow_name is not None:
+            result['flowName'] = self.flow_name
+
+        if self.vpc_endpoint_name is not None:
+            result['vpcEndpointName'] = self.vpc_endpoint_name
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('compatibilityCheck') is not None:
             self.compatibility_check = m.get('compatibilityCheck')
+
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+
+        if m.get('flowName') is not None:
+            self.flow_name = m.get('flowName')
+
+        if m.get('vpcEndpointName') is not None:
+            self.vpc_endpoint_name = m.get('vpcEndpointName')
 
         return self
 
