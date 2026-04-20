@@ -1,3 +1,7 @@
+2026-04-20 Version: 1.7.0
+- Support API DescribeChatMessage.
+
+
 2026-03-24 Version: 1.6.0
 - Support API ModifyAgentPlatform.
 - Support API ModifyEmbodiedAIPlatform.

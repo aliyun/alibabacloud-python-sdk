@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_adbai20250812 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -379,6 +381,174 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEmbodiedAIPlatformResponse:
         runtime = RuntimeOptions()
         return await self.delete_embodied_aiplatform_with_options_async(request, runtime)
+
+    def describe_chat_message_with_sse(
+        self,
+        request: main_models.DescribeChatMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.DescribeChatMessageResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeChatMessage',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.DescribeChatMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def describe_chat_message_with_sse_async(
+        self,
+        request: main_models.DescribeChatMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.DescribeChatMessageResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeChatMessage',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.DescribeChatMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def describe_chat_message_with_options(
+        self,
+        request: main_models.DescribeChatMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeChatMessageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeChatMessage',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeChatMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_chat_message_with_options_async(
+        self,
+        request: main_models.DescribeChatMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeChatMessageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeChatMessage',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeChatMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_chat_message(
+        self,
+        request: main_models.DescribeChatMessageRequest,
+    ) -> main_models.DescribeChatMessageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_chat_message_with_options(request, runtime)
+
+    async def describe_chat_message_async(
+        self,
+        request: main_models.DescribeChatMessageRequest,
+    ) -> main_models.DescribeChatMessageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_chat_message_with_options_async(request, runtime)
 
     def describe_embodied_aiplatforms_with_options(
         self,

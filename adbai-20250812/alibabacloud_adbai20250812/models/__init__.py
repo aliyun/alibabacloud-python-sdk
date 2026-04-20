@@ -16,6 +16,9 @@ from ._delete_agent_platform_response import DeleteAgentPlatformResponse
 from ._delete_embodied_aiplatform_request import DeleteEmbodiedAIPlatformRequest
 from ._delete_embodied_aiplatform_response_body import DeleteEmbodiedAIPlatformResponseBody
 from ._delete_embodied_aiplatform_response import DeleteEmbodiedAIPlatformResponse
+from ._describe_chat_message_request import DescribeChatMessageRequest
+from ._describe_chat_message_response_body import DescribeChatMessageResponseBody
+from ._describe_chat_message_response import DescribeChatMessageResponse
 from ._describe_embodied_aiplatforms_request import DescribeEmbodiedAIPlatformsRequest
 from ._describe_embodied_aiplatforms_response_body import DescribeEmbodiedAIPlatformsResponseBody
 from ._describe_embodied_aiplatforms_response import DescribeEmbodiedAIPlatformsResponse
@@ -42,6 +45,9 @@ from ._unlock_embodied_aiplatform_response import UnlockEmbodiedAIPlatformRespon
 from ._create_agent_platform_request import CreateAgentPlatformRequestAiPlatformConfig
 from ._create_embodied_aiplatform_request import CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups
 from ._create_embodied_aiplatform_request import CreateEmbodiedAIPlatformRequestRayConfig
+from ._describe_chat_message_response_body import DescribeChatMessageResponseBodyContentData
+from ._describe_chat_message_response_body import DescribeChatMessageResponseBodyContent
+from ._describe_chat_message_response_body import DescribeChatMessageResponseBodyData
 from ._describe_embodied_aiplatforms_response_body import DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig
 from ._describe_embodied_aiplatforms_response_body import DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups
 from ._describe_embodied_aiplatforms_response_body import DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig
@@ -70,6 +76,9 @@ __all__ = [
     DeleteEmbodiedAIPlatformRequest,
     DeleteEmbodiedAIPlatformResponseBody,
     DeleteEmbodiedAIPlatformResponse,
+    DescribeChatMessageRequest,
+    DescribeChatMessageResponseBody,
+    DescribeChatMessageResponse,
     DescribeEmbodiedAIPlatformsRequest,
     DescribeEmbodiedAIPlatformsResponseBody,
     DescribeEmbodiedAIPlatformsResponse,
@@ -96,6 +105,9 @@ __all__ = [
     CreateAgentPlatformRequestAiPlatformConfig,
     CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups,
     CreateEmbodiedAIPlatformRequestRayConfig,
+    DescribeChatMessageResponseBodyContentData,
+    DescribeChatMessageResponseBodyContent,
+    DescribeChatMessageResponseBodyData,
     DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig,
     DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups,
     DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig,
