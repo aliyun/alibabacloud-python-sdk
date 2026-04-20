@@ -2063,6 +2063,254 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.continue_dbcluster_migration_with_options_async(request, runtime)
 
+    def create_aidbcluster_dataset_with_options(
+        self,
+        request: main_models.CreateAIDBClusterDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.dataset_type):
+            query['DatasetType'] = request.dataset_type
+        if not DaraCore.is_null(request.import_mode):
+            query['ImportMode'] = request.import_mode
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.train_mode):
+            query['TrainMode'] = request.train_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBClusterDataset',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aidbcluster_dataset_with_options_async(
+        self,
+        request: main_models.CreateAIDBClusterDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.dataset_type):
+            query['DatasetType'] = request.dataset_type
+        if not DaraCore.is_null(request.import_mode):
+            query['ImportMode'] = request.import_mode
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.train_mode):
+            query['TrainMode'] = request.train_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBClusterDataset',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aidbcluster_dataset(
+        self,
+        request: main_models.CreateAIDBClusterDatasetRequest,
+    ) -> main_models.CreateAIDBClusterDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.create_aidbcluster_dataset_with_options(request, runtime)
+
+    async def create_aidbcluster_dataset_async(
+        self,
+        request: main_models.CreateAIDBClusterDatasetRequest,
+    ) -> main_models.CreateAIDBClusterDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aidbcluster_dataset_with_options_async(request, runtime)
+
+    def create_aidbcluster_task_with_options(
+        self,
+        request: main_models.CreateAIDBClusterTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dataset_path):
+            query['DatasetPath'] = request.dataset_path
+        if not DaraCore.is_null(request.eval_dataset_path):
+            query['EvalDatasetPath'] = request.eval_dataset_path
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_source):
+            query['ModelSource'] = request.model_source
+        if not DaraCore.is_null(request.model_type):
+            query['ModelType'] = request.model_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.running_parameter):
+            query['RunningParameter'] = request.running_parameter
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBClusterTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aidbcluster_task_with_options_async(
+        self,
+        request: main_models.CreateAIDBClusterTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dataset_path):
+            query['DatasetPath'] = request.dataset_path
+        if not DaraCore.is_null(request.eval_dataset_path):
+            query['EvalDatasetPath'] = request.eval_dataset_path
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_source):
+            query['ModelSource'] = request.model_source
+        if not DaraCore.is_null(request.model_type):
+            query['ModelType'] = request.model_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.running_parameter):
+            query['RunningParameter'] = request.running_parameter
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBClusterTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aidbcluster_task(
+        self,
+        request: main_models.CreateAIDBClusterTaskRequest,
+    ) -> main_models.CreateAIDBClusterTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_aidbcluster_task_with_options(request, runtime)
+
+    async def create_aidbcluster_task_async(
+        self,
+        request: main_models.CreateAIDBClusterTaskRequest,
+    ) -> main_models.CreateAIDBClusterTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aidbcluster_task_with_options_async(request, runtime)
+
     def create_ainodes_with_options(
         self,
         request: main_models.CreateAINodesRequest,
@@ -5419,6 +5667,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_aidbcluster_with_options_async(request, runtime)
 
+    def delete_aidbcluster_dataset_with_options(
+        self,
+        request: main_models.DeleteAIDBClusterDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterDataset',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aidbcluster_dataset_with_options_async(
+        self,
+        request: main_models.DeleteAIDBClusterDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterDataset',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aidbcluster_dataset(
+        self,
+        request: main_models.DeleteAIDBClusterDatasetRequest,
+    ) -> main_models.DeleteAIDBClusterDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.delete_aidbcluster_dataset_with_options(request, runtime)
+
+    async def delete_aidbcluster_dataset_async(
+        self,
+        request: main_models.DeleteAIDBClusterDatasetRequest,
+    ) -> main_models.DeleteAIDBClusterDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_aidbcluster_dataset_with_options_async(request, runtime)
+
+    def delete_aidbcluster_task_with_options(
+        self,
+        request: main_models.DeleteAIDBClusterTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aidbcluster_task_with_options_async(
+        self,
+        request: main_models.DeleteAIDBClusterTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aidbcluster_task(
+        self,
+        request: main_models.DeleteAIDBClusterTaskRequest,
+    ) -> main_models.DeleteAIDBClusterTaskResponse:
+        runtime = RuntimeOptions()
+        return self.delete_aidbcluster_task_with_options(request, runtime)
+
+    async def delete_aidbcluster_task_async(
+        self,
+        request: main_models.DeleteAIDBClusterTaskRequest,
+    ) -> main_models.DeleteAIDBClusterTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_aidbcluster_task_with_options_async(request, runtime)
+
     def delete_ainodes_with_options(
         self,
         request: main_models.DeleteAINodesRequest,
@@ -7903,6 +8339,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_aidbcluster_attribute_with_options_async(request, runtime)
 
+    def describe_aidbcluster_datasets_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterDatasetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterDatasetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.continuation_token):
+            query['ContinuationToken'] = request.continuation_token
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.dataset_type):
+            query['DatasetType'] = request.dataset_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.train_mode):
+            query['TrainMode'] = request.train_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterDatasets',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterDatasetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_datasets_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterDatasetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterDatasetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.continuation_token):
+            query['ContinuationToken'] = request.continuation_token
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.dataset_type):
+            query['DatasetType'] = request.dataset_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.train_mode):
+            query['TrainMode'] = request.train_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterDatasets',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterDatasetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_datasets(
+        self,
+        request: main_models.DescribeAIDBClusterDatasetsRequest,
+    ) -> main_models.DescribeAIDBClusterDatasetsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_datasets_with_options(request, runtime)
+
+    async def describe_aidbcluster_datasets_async(
+        self,
+        request: main_models.DescribeAIDBClusterDatasetsRequest,
+    ) -> main_models.DescribeAIDBClusterDatasetsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_datasets_with_options_async(request, runtime)
+
     def describe_aidbcluster_performance_with_options(
         self,
         request: main_models.DescribeAIDBClusterPerformanceRequest,
@@ -7988,6 +8538,100 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAIDBClusterPerformanceResponse:
         runtime = RuntimeOptions()
         return await self.describe_aidbcluster_performance_with_options_async(request, runtime)
+
+    def describe_aidbcluster_task_attribute_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterTaskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTaskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.describe_type):
+            query['DescribeType'] = request.describe_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTaskAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTaskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_task_attribute_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterTaskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTaskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.describe_type):
+            query['DescribeType'] = request.describe_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTaskAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTaskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_task_attribute(
+        self,
+        request: main_models.DescribeAIDBClusterTaskAttributeRequest,
+    ) -> main_models.DescribeAIDBClusterTaskAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_task_attribute_with_options(request, runtime)
+
+    async def describe_aidbcluster_task_attribute_async(
+        self,
+        request: main_models.DescribeAIDBClusterTaskAttributeRequest,
+    ) -> main_models.DescribeAIDBClusterTaskAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_task_attribute_with_options_async(request, runtime)
 
     def describe_aidbcluster_task_log_files_with_options(
         self,
@@ -8184,6 +8828,100 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAIDBClusterTaskMetricsResponse:
         runtime = RuntimeOptions()
         return await self.describe_aidbcluster_task_metrics_with_options_async(request, runtime)
+
+    def describe_aidbcluster_tasks_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTasks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_tasks_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTasks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_tasks(
+        self,
+        request: main_models.DescribeAIDBClusterTasksRequest,
+    ) -> main_models.DescribeAIDBClusterTasksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_tasks_with_options(request, runtime)
+
+    async def describe_aidbcluster_tasks_async(
+        self,
+        request: main_models.DescribeAIDBClusterTasksRequest,
+    ) -> main_models.DescribeAIDBClusterTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_tasks_with_options_async(request, runtime)
 
     def describe_aidbclusters_with_options(
         self,

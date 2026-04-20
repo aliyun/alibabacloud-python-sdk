@@ -1,3 +1,13 @@
+2026-04-20 Version: 6.12.0
+- Support API CreateAIDBClusterDataset.
+- Support API CreateAIDBClusterTask.
+- Support API DeleteAIDBClusterDataset.
+- Support API DeleteAIDBClusterTask.
+- Support API DescribeAIDBClusterDatasets.
+- Support API DescribeAIDBClusterTaskAttribute.
+- Support API DescribeAIDBClusterTasks.
+
+
 2026-04-16 Version: 6.11.2
 - Update API DescribeDBClusterAttribute: add response parameters Body.ColumnTable.
 

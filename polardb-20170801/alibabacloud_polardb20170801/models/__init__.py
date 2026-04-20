@@ -69,6 +69,12 @@ from ._close_dbcluster_migration_response import CloseDBClusterMigrationResponse
 from ._continue_dbcluster_migration_request import ContinueDBClusterMigrationRequest
 from ._continue_dbcluster_migration_response_body import ContinueDBClusterMigrationResponseBody
 from ._continue_dbcluster_migration_response import ContinueDBClusterMigrationResponse
+from ._create_aidbcluster_dataset_request import CreateAIDBClusterDatasetRequest
+from ._create_aidbcluster_dataset_response_body import CreateAIDBClusterDatasetResponseBody
+from ._create_aidbcluster_dataset_response import CreateAIDBClusterDatasetResponse
+from ._create_aidbcluster_task_request import CreateAIDBClusterTaskRequest
+from ._create_aidbcluster_task_response_body import CreateAIDBClusterTaskResponseBody
+from ._create_aidbcluster_task_response import CreateAIDBClusterTaskResponse
 from ._create_ainodes_request import CreateAINodesRequest
 from ._create_ainodes_response_body import CreateAINodesResponseBody
 from ._create_ainodes_response import CreateAINodesResponse
@@ -154,6 +160,12 @@ from ._create_storage_plan_response import CreateStoragePlanResponse
 from ._delete_aidbcluster_request import DeleteAIDBClusterRequest
 from ._delete_aidbcluster_response_body import DeleteAIDBClusterResponseBody
 from ._delete_aidbcluster_response import DeleteAIDBClusterResponse
+from ._delete_aidbcluster_dataset_request import DeleteAIDBClusterDatasetRequest
+from ._delete_aidbcluster_dataset_response_body import DeleteAIDBClusterDatasetResponseBody
+from ._delete_aidbcluster_dataset_response import DeleteAIDBClusterDatasetResponse
+from ._delete_aidbcluster_task_request import DeleteAIDBClusterTaskRequest
+from ._delete_aidbcluster_task_response_body import DeleteAIDBClusterTaskResponseBody
+from ._delete_aidbcluster_task_response import DeleteAIDBClusterTaskResponse
 from ._delete_ainodes_request import DeleteAINodesRequest
 from ._delete_ainodes_response_body import DeleteAINodesResponseBody
 from ._delete_ainodes_response import DeleteAINodesResponse
@@ -239,15 +251,24 @@ from ._delete_sqlrate_limiting_rules_response import DeleteSQLRateLimitingRulesR
 from ._describe_aidbcluster_attribute_request import DescribeAIDBClusterAttributeRequest
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBody
 from ._describe_aidbcluster_attribute_response import DescribeAIDBClusterAttributeResponse
+from ._describe_aidbcluster_datasets_request import DescribeAIDBClusterDatasetsRequest
+from ._describe_aidbcluster_datasets_response_body import DescribeAIDBClusterDatasetsResponseBody
+from ._describe_aidbcluster_datasets_response import DescribeAIDBClusterDatasetsResponse
 from ._describe_aidbcluster_performance_request import DescribeAIDBClusterPerformanceRequest
 from ._describe_aidbcluster_performance_response_body import DescribeAIDBClusterPerformanceResponseBody
 from ._describe_aidbcluster_performance_response import DescribeAIDBClusterPerformanceResponse
+from ._describe_aidbcluster_task_attribute_request import DescribeAIDBClusterTaskAttributeRequest
+from ._describe_aidbcluster_task_attribute_response_body import DescribeAIDBClusterTaskAttributeResponseBody
+from ._describe_aidbcluster_task_attribute_response import DescribeAIDBClusterTaskAttributeResponse
 from ._describe_aidbcluster_task_log_files_request import DescribeAIDBClusterTaskLogFilesRequest
 from ._describe_aidbcluster_task_log_files_response_body import DescribeAIDBClusterTaskLogFilesResponseBody
 from ._describe_aidbcluster_task_log_files_response import DescribeAIDBClusterTaskLogFilesResponse
 from ._describe_aidbcluster_task_metrics_request import DescribeAIDBClusterTaskMetricsRequest
 from ._describe_aidbcluster_task_metrics_response_body import DescribeAIDBClusterTaskMetricsResponseBody
 from ._describe_aidbcluster_task_metrics_response import DescribeAIDBClusterTaskMetricsResponse
+from ._describe_aidbcluster_tasks_request import DescribeAIDBClusterTasksRequest
+from ._describe_aidbcluster_tasks_response_body import DescribeAIDBClusterTasksResponseBody
+from ._describe_aidbcluster_tasks_response import DescribeAIDBClusterTasksResponse
 from ._describe_aidbclusters_request import DescribeAIDBClustersRequest
 from ._describe_aidbclusters_response_body import DescribeAIDBClustersResponseBody
 from ._describe_aidbclusters_response import DescribeAIDBClustersResponse
@@ -924,12 +945,16 @@ from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAt
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyEndpointList
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyVolumes
+from ._describe_aidbcluster_datasets_response_body import DescribeAIDBClusterDatasetsResponseBodyDatasets
 from ._describe_aidbcluster_performance_response_body import DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints
 from ._describe_aidbcluster_performance_response_body import DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys
+from ._describe_aidbcluster_task_attribute_response_body import DescribeAIDBClusterTaskAttributeResponseBodyDataSets
+from ._describe_aidbcluster_task_attribute_response_body import DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo
 from ._describe_aidbcluster_task_log_files_response_body import DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems
 from ._describe_aidbcluster_task_log_files_response_body import DescribeAIDBClusterTaskLogFilesResponseBodyItems
 from ._describe_aidbcluster_task_metrics_response_body import DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems
 from ._describe_aidbcluster_task_metrics_response_body import DescribeAIDBClusterTaskMetricsResponseBodyItems
+from ._describe_aidbcluster_tasks_response_body import DescribeAIDBClusterTasksResponseBodyItems
 from ._describe_aidbclusters_request import DescribeAIDBClustersRequestTag
 from ._describe_aidbclusters_response_body import DescribeAIDBClustersResponseBodyItemsDBClusterTagsTag
 from ._describe_aidbclusters_response_body import DescribeAIDBClustersResponseBodyItemsDBClusterTags
@@ -1237,6 +1262,12 @@ __all__ = [
     ContinueDBClusterMigrationRequest,
     ContinueDBClusterMigrationResponseBody,
     ContinueDBClusterMigrationResponse,
+    CreateAIDBClusterDatasetRequest,
+    CreateAIDBClusterDatasetResponseBody,
+    CreateAIDBClusterDatasetResponse,
+    CreateAIDBClusterTaskRequest,
+    CreateAIDBClusterTaskResponseBody,
+    CreateAIDBClusterTaskResponse,
     CreateAINodesRequest,
     CreateAINodesResponseBody,
     CreateAINodesResponse,
@@ -1322,6 +1353,12 @@ __all__ = [
     DeleteAIDBClusterRequest,
     DeleteAIDBClusterResponseBody,
     DeleteAIDBClusterResponse,
+    DeleteAIDBClusterDatasetRequest,
+    DeleteAIDBClusterDatasetResponseBody,
+    DeleteAIDBClusterDatasetResponse,
+    DeleteAIDBClusterTaskRequest,
+    DeleteAIDBClusterTaskResponseBody,
+    DeleteAIDBClusterTaskResponse,
     DeleteAINodesRequest,
     DeleteAINodesResponseBody,
     DeleteAINodesResponse,
@@ -1407,15 +1444,24 @@ __all__ = [
     DescribeAIDBClusterAttributeRequest,
     DescribeAIDBClusterAttributeResponseBody,
     DescribeAIDBClusterAttributeResponse,
+    DescribeAIDBClusterDatasetsRequest,
+    DescribeAIDBClusterDatasetsResponseBody,
+    DescribeAIDBClusterDatasetsResponse,
     DescribeAIDBClusterPerformanceRequest,
     DescribeAIDBClusterPerformanceResponseBody,
     DescribeAIDBClusterPerformanceResponse,
+    DescribeAIDBClusterTaskAttributeRequest,
+    DescribeAIDBClusterTaskAttributeResponseBody,
+    DescribeAIDBClusterTaskAttributeResponse,
     DescribeAIDBClusterTaskLogFilesRequest,
     DescribeAIDBClusterTaskLogFilesResponseBody,
     DescribeAIDBClusterTaskLogFilesResponse,
     DescribeAIDBClusterTaskMetricsRequest,
     DescribeAIDBClusterTaskMetricsResponseBody,
     DescribeAIDBClusterTaskMetricsResponse,
+    DescribeAIDBClusterTasksRequest,
+    DescribeAIDBClusterTasksResponseBody,
+    DescribeAIDBClusterTasksResponse,
     DescribeAIDBClustersRequest,
     DescribeAIDBClustersResponseBody,
     DescribeAIDBClustersResponse,
@@ -2092,12 +2138,16 @@ __all__ = [
     DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems,
     DescribeAIDBClusterAttributeResponseBodyEndpointList,
     DescribeAIDBClusterAttributeResponseBodyVolumes,
+    DescribeAIDBClusterDatasetsResponseBodyDatasets,
     DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints,
     DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys,
+    DescribeAIDBClusterTaskAttributeResponseBodyDataSets,
+    DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo,
     DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems,
     DescribeAIDBClusterTaskLogFilesResponseBodyItems,
     DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems,
     DescribeAIDBClusterTaskMetricsResponseBodyItems,
+    DescribeAIDBClusterTasksResponseBodyItems,
     DescribeAIDBClustersRequestTag,
     DescribeAIDBClustersResponseBodyItemsDBClusterTagsTag,
     DescribeAIDBClustersResponseBodyItemsDBClusterTags,
