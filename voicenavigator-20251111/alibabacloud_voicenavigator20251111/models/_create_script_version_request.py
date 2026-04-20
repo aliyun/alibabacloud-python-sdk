@@ -113,6 +113,7 @@ class CreateScriptVersionRequest(DaraModel):
 class CreateScriptVersionRequestTranscriberConfig(DaraModel):
     def __init__(
         self,
+        correction_rules: List[main_models.CreateScriptVersionRequestTranscriberConfigCorrectionRules] = None,
         customization_id: str = None,
         end_silence_timeout: int = None,
         model: str = None,
@@ -122,6 +123,7 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
         speech_noise_threshold: int = None,
         vocabulary_id: str = None,
     ):
+        self.correction_rules = correction_rules
         self.customization_id = customization_id
         self.end_silence_timeout = end_silence_timeout
         self.model = model
@@ -132,6 +134,10 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
         self.vocabulary_id = vocabulary_id
 
     def validate(self):
+        if self.correction_rules:
+            for v1 in self.correction_rules:
+                 if v1:
+                    v1.validate()
         if self.nls_access_profile:
             self.nls_access_profile.validate()
 
@@ -140,6 +146,11 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['CorrectionRules'] = []
+        if self.correction_rules is not None:
+            for k1 in self.correction_rules:
+                result['CorrectionRules'].append(k1.to_map() if k1 else None)
+
         if self.customization_id is not None:
             result['CustomizationId'] = self.customization_id
 
@@ -168,6 +179,12 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.correction_rules = []
+        if m.get('CorrectionRules') is not None:
+            for k1 in m.get('CorrectionRules'):
+                temp_model = main_models.CreateScriptVersionRequestTranscriberConfigCorrectionRules()
+                self.correction_rules.append(temp_model.from_map(k1))
+
         if m.get('CustomizationId') is not None:
             self.customization_id = m.get('CustomizationId')
 
@@ -219,6 +236,41 @@ class CreateScriptVersionRequestTranscriberConfigNlsAccessProfile(DaraModel):
         m = m or dict()
         if m.get('AccessProfileId') is not None:
             self.access_profile_id = m.get('AccessProfileId')
+
+        return self
+
+class CreateScriptVersionRequestTranscriberConfigCorrectionRules(DaraModel):
+    def __init__(
+        self,
+        pattern: str = None,
+        replacement: str = None,
+    ):
+        self.pattern = pattern
+        self.replacement = replacement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+
+        if self.replacement is not None:
+            result['Replacement'] = self.replacement
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+
+        if m.get('Replacement') is not None:
+            self.replacement = m.get('Replacement')
 
         return self
 

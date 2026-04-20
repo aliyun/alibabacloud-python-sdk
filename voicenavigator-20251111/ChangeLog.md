@@ -1,3 +1,9 @@
+2026-04-20 Version: 1.3.1
+- Update API CreateScriptVersion: add request parameters TranscriberConfig.CorrectionRules.
+- Update API GetScript: add response parameters Body.Data.DraftVersion.TranscriberConfig.CorrectionRules.
+- Update API GetScript: add response parameters Body.Data.PublishedVersion.TranscriberConfig.CorrectionRules.
+
+
 2026-04-20 Version: 1.3.0
 - Support API BeginSession.
 - Support API BridgeWebCall.
