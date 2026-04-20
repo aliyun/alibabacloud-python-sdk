@@ -19420,6 +19420,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_streaming_job_with_options_async(request, runtime)
 
+    def modify_supabase_auto_scale_policy_with_options(
+        self,
+        request: main_models.ModifySupabaseAutoScalePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseAutoScalePolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_scale):
+            query['AutoScale'] = request.auto_scale
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseAutoScalePolicy',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseAutoScalePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_supabase_auto_scale_policy_with_options_async(
+        self,
+        request: main_models.ModifySupabaseAutoScalePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseAutoScalePolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_scale):
+            query['AutoScale'] = request.auto_scale
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseAutoScalePolicy',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseAutoScalePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_supabase_auto_scale_policy(
+        self,
+        request: main_models.ModifySupabaseAutoScalePolicyRequest,
+    ) -> main_models.ModifySupabaseAutoScalePolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_supabase_auto_scale_policy_with_options(request, runtime)
+
+    async def modify_supabase_auto_scale_policy_async(
+        self,
+        request: main_models.ModifySupabaseAutoScalePolicyRequest,
+    ) -> main_models.ModifySupabaseAutoScalePolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_supabase_auto_scale_policy_with_options_async(request, runtime)
+
     def modify_supabase_project_security_ips_with_options(
         self,
         request: main_models.ModifySupabaseProjectSecurityIpsRequest,
