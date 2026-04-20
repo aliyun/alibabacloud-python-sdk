@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
@@ -40,6 +40,7 @@ class AgentRuntime(DaraModel):
         session_idle_timeout_seconds: int = None,
         status: str = None,
         status_reason: str = None,
+        system_tags: List[str] = None,
         workspace_id: str = None,
     ):
         # 智能体运行时的全局唯一资源名称
@@ -100,6 +101,8 @@ class AgentRuntime(DaraModel):
         self.status = status
         # 当前状态的原因说明（如适用）
         self.status_reason = status_reason
+        # 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+        self.system_tags = system_tags
         # 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
         self.workspace_id = workspace_id
 
@@ -216,6 +219,9 @@ class AgentRuntime(DaraModel):
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
 
+        if self.system_tags is not None:
+            result['systemTags'] = self.system_tags
+
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
@@ -320,6 +326,9 @@ class AgentRuntime(DaraModel):
 
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')
+
+        if m.get('systemTags') is not None:
+            self.system_tags = m.get('systemTags')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')

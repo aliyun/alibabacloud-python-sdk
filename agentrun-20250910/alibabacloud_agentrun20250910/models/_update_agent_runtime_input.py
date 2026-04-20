@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
@@ -33,6 +33,7 @@ class UpdateAgentRuntimeInput(DaraModel):
         protocol_configuration: main_models.ProtocolConfiguration = None,
         session_concurrency_limit_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
+        system_tags: List[str] = None,
         workspace_id: str = None,
     ):
         self.agent_runtime_name = agent_runtime_name
@@ -75,6 +76,8 @@ class UpdateAgentRuntimeInput(DaraModel):
         self.session_concurrency_limit_per_instance = session_concurrency_limit_per_instance
         # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
+        # 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+        self.system_tags = system_tags
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -171,6 +174,9 @@ class UpdateAgentRuntimeInput(DaraModel):
         if self.session_idle_timeout_seconds is not None:
             result['sessionIdleTimeoutSeconds'] = self.session_idle_timeout_seconds
 
+        if self.system_tags is not None:
+            result['systemTags'] = self.system_tags
+
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
@@ -255,6 +261,9 @@ class UpdateAgentRuntimeInput(DaraModel):
 
         if m.get('sessionIdleTimeoutSeconds') is not None:
             self.session_idle_timeout_seconds = m.get('sessionIdleTimeoutSeconds')
+
+        if m.get('systemTags') is not None:
+            self.system_tags = m.get('systemTags')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
