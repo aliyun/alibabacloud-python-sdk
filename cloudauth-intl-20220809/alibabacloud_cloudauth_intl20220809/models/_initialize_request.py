@@ -59,6 +59,9 @@ class InitializeRequest(DaraModel):
         style_config: str = None,
         target_face_picture: str = None,
         target_face_picture_url: str = None,
+        template_config: str = None,
+        template_ran_count: str = None,
+        template_type: str = None,
         use_nfc: str = None,
         verify_model: str = None,
     ):
@@ -249,6 +252,9 @@ class InitializeRequest(DaraModel):
         self.target_face_picture = target_face_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.target_face_picture_url = target_face_picture_url
+        self.template_config = template_config
+        self.template_ran_count = template_ran_count
+        self.template_type = template_type
         # Optional to enable NFC verification when **DocType**=01000000 (global passport).
         # - **Y** (Enabled)
         # - **N** (Disabled)
@@ -414,6 +420,15 @@ class InitializeRequest(DaraModel):
         if self.target_face_picture_url is not None:
             result['TargetFacePictureUrl'] = self.target_face_picture_url
 
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
+
+        if self.template_ran_count is not None:
+            result['TemplateRanCount'] = self.template_ran_count
+
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+
         if self.use_nfc is not None:
             result['UseNFC'] = self.use_nfc
 
@@ -573,6 +588,15 @@ class InitializeRequest(DaraModel):
 
         if m.get('TargetFacePictureUrl') is not None:
             self.target_face_picture_url = m.get('TargetFacePictureUrl')
+
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
+
+        if m.get('TemplateRanCount') is not None:
+            self.template_ran_count = m.get('TemplateRanCount')
+
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
 
         if m.get('UseNFC') is not None:
             self.use_nfc = m.get('UseNFC')

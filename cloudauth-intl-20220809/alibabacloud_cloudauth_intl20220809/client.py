@@ -4474,6 +4474,12 @@ class Client(OpenApiClient):
             query['TargetFacePicture'] = request.target_face_picture
         if not DaraCore.is_null(request.target_face_picture_url):
             query['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not DaraCore.is_null(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not DaraCore.is_null(request.template_ran_count):
+            query['TemplateRanCount'] = request.template_ran_count
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
         if not DaraCore.is_null(request.use_nfc):
             query['UseNFC'] = request.use_nfc
         if not DaraCore.is_null(request.verify_model):
@@ -4610,6 +4616,12 @@ class Client(OpenApiClient):
             query['TargetFacePicture'] = request.target_face_picture
         if not DaraCore.is_null(request.target_face_picture_url):
             query['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not DaraCore.is_null(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not DaraCore.is_null(request.template_ran_count):
+            query['TemplateRanCount'] = request.template_ran_count
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
         if not DaraCore.is_null(request.use_nfc):
             query['UseNFC'] = request.use_nfc
         if not DaraCore.is_null(request.verify_model):
