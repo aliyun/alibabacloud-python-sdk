@@ -4576,6 +4576,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters(
         self,
         acks: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks = None,
         compression_type: str = None,
+        dynamic_topic: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic = None,
         instance_id: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId = None,
         key: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersKey = None,
         topic: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersTopic = None,
@@ -4588,6 +4589,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters(
         # *   If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
         self.acks = acks
         self.compression_type = compression_type
+        self.dynamic_topic = dynamic_topic
         # The ID of the ApsaraMQ for Kafka instance.
         self.instance_id = instance_id
         # The message key.
@@ -4600,6 +4602,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters(
     def validate(self):
         if self.acks:
             self.acks.validate()
+        if self.dynamic_topic:
+            self.dynamic_topic.validate()
         if self.instance_id:
             self.instance_id.validate()
         if self.key:
@@ -4619,6 +4623,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters(
 
         if self.compression_type is not None:
             result['CompressionType'] = self.compression_type
+
+        if self.dynamic_topic is not None:
+            result['DynamicTopic'] = self.dynamic_topic.to_map()
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id.to_map()
@@ -4642,6 +4649,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters(
 
         if m.get('CompressionType') is not None:
             self.compression_type = m.get('CompressionType')
+
+        if m.get('DynamicTopic') is not None:
+            temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic()
+            self.dynamic_topic = temp_model.from_map(m.get('DynamicTopic'))
 
         if m.get('InstanceId') is not None:
             temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId()
@@ -4811,6 +4822,49 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersI
         # None.
         self.template = template
         # The ID of the ApsaraMQ for Kafka instance.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.form is not None:
+            result['Form'] = self.form
+
+        if self.template is not None:
+            result['Template'] = self.template
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic(DaraModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
         self.value = value
 
     def validate(self):

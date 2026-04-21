@@ -1,3 +1,31 @@
+2026-04-21 Version: 8.0.9
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.DynamicTopic.
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeyPassword.
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeystoreCertificateChain.
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeystoreKey.
+- Update API CreateEventStreaming: add request parameters Sink.SinkKafkaParameters.DynamicTopic.
+- Update API CreateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslKeyPassword.
+- Update API CreateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslKeystoreCertificateChain.
+- Update API CreateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslKeystoreKey.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.DynamicTopic.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.SslKeyPassword.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.SslKeystoreCertificateChain.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.SslKeystoreKey.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkKafkaParameters.DynamicTopic.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceApacheKafkaParameters.SslKeyPassword.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceApacheKafkaParameters.SslKeystoreCertificateChain.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceApacheKafkaParameters.SslKeystoreKey.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkKafkaParameters.DynamicTopic.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.DynamicTopic.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeyPassword.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeystoreCertificateChain.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeystoreKey.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkKafkaParameters.DynamicTopic.
+- Update API UpdateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslKeyPassword.
+- Update API UpdateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslKeystoreCertificateChain.
+- Update API UpdateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslKeystoreKey.
+
+
 2026-04-13 Version: 8.0.8
 - Update API CreateEventStreaming: add request parameters Source.SourceMQTTParameters.NetworkType.
 - Update API CreateEventStreaming: add request parameters Source.SourceMQTTParameters.SecurityGroupId.

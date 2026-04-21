@@ -1685,6 +1685,9 @@ class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(DaraMod
         sasl_user: str = None,
         security_group_id: str = None,
         security_protocol: str = None,
+        ssl_key_password: str = None,
+        ssl_keystore_certificate_chain: str = None,
+        ssl_keystore_key: main_models.GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParametersSslKeystoreKey = None,
         ssl_truststore_certificates: str = None,
         topic: str = None,
         v_switch_ids: str = None,
@@ -1700,6 +1703,9 @@ class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(DaraMod
         self.sasl_user = sasl_user
         self.security_group_id = security_group_id
         self.security_protocol = security_protocol
+        self.ssl_key_password = ssl_key_password
+        self.ssl_keystore_certificate_chain = ssl_keystore_certificate_chain
+        self.ssl_keystore_key = ssl_keystore_key
         self.ssl_truststore_certificates = ssl_truststore_certificates
         self.topic = topic
         self.v_switch_ids = v_switch_ids
@@ -1707,7 +1713,8 @@ class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(DaraMod
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.ssl_keystore_key:
+            self.ssl_keystore_key.validate()
 
     def to_map(self):
         result = dict()
@@ -1740,6 +1747,15 @@ class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(DaraMod
 
         if self.security_protocol is not None:
             result['SecurityProtocol'] = self.security_protocol
+
+        if self.ssl_key_password is not None:
+            result['SslKeyPassword'] = self.ssl_key_password
+
+        if self.ssl_keystore_certificate_chain is not None:
+            result['SslKeystoreCertificateChain'] = self.ssl_keystore_certificate_chain
+
+        if self.ssl_keystore_key is not None:
+            result['SslKeystoreKey'] = self.ssl_keystore_key.to_map()
 
         if self.ssl_truststore_certificates is not None:
             result['SslTruststoreCertificates'] = self.ssl_truststore_certificates
@@ -1787,6 +1803,16 @@ class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(DaraMod
         if m.get('SecurityProtocol') is not None:
             self.security_protocol = m.get('SecurityProtocol')
 
+        if m.get('SslKeyPassword') is not None:
+            self.ssl_key_password = m.get('SslKeyPassword')
+
+        if m.get('SslKeystoreCertificateChain') is not None:
+            self.ssl_keystore_certificate_chain = m.get('SslKeystoreCertificateChain')
+
+        if m.get('SslKeystoreKey') is not None:
+            temp_model = main_models.GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParametersSslKeystoreKey()
+            self.ssl_keystore_key = temp_model.from_map(m.get('SslKeystoreKey'))
+
         if m.get('SslTruststoreCertificates') is not None:
             self.ssl_truststore_certificates = m.get('SslTruststoreCertificates')
 
@@ -1801,6 +1827,41 @@ class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(DaraMod
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+
+        return self
+
+class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParametersSslKeystoreKey(DaraModel):
+    def __init__(
+        self,
+        kms_arn: str = None,
+        kms_secret_value_key: str = None,
+    ):
+        self.kms_arn = kms_arn
+        self.kms_secret_value_key = kms_secret_value_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.kms_arn is not None:
+            result['KmsArn'] = self.kms_arn
+
+        if self.kms_secret_value_key is not None:
+            result['KmsSecretValueKey'] = self.kms_secret_value_key
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KmsArn') is not None:
+            self.kms_arn = m.get('KmsArn')
+
+        if m.get('KmsSecretValueKey') is not None:
+            self.kms_secret_value_key = m.get('KmsSecretValueKey')
 
         return self
 
@@ -4683,6 +4744,7 @@ class GetEventStreamingResponseBodyDataSinkSinkKafkaParameters(DaraModel):
         self,
         acks: main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks = None,
         compression_type: str = None,
+        dynamic_topic: main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersDynamicTopic = None,
         headers: main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders = None,
         instance_id: main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersInstanceId = None,
         key: main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersKey = None,
@@ -4692,6 +4754,7 @@ class GetEventStreamingResponseBodyDataSinkSinkKafkaParameters(DaraModel):
         # The acknowledgment information.
         self.acks = acks
         self.compression_type = compression_type
+        self.dynamic_topic = dynamic_topic
         self.headers = headers
         # The target service type is Message Queue for Apache Kafka.
         self.instance_id = instance_id
@@ -4705,6 +4768,8 @@ class GetEventStreamingResponseBodyDataSinkSinkKafkaParameters(DaraModel):
     def validate(self):
         if self.acks:
             self.acks.validate()
+        if self.dynamic_topic:
+            self.dynamic_topic.validate()
         if self.headers:
             self.headers.validate()
         if self.instance_id:
@@ -4726,6 +4791,9 @@ class GetEventStreamingResponseBodyDataSinkSinkKafkaParameters(DaraModel):
 
         if self.compression_type is not None:
             result['CompressionType'] = self.compression_type
+
+        if self.dynamic_topic is not None:
+            result['DynamicTopic'] = self.dynamic_topic.to_map()
 
         if self.headers is not None:
             result['Headers'] = self.headers.to_map()
@@ -4752,6 +4820,10 @@ class GetEventStreamingResponseBodyDataSinkSinkKafkaParameters(DaraModel):
 
         if m.get('CompressionType') is not None:
             self.compression_type = m.get('CompressionType')
+
+        if m.get('DynamicTopic') is not None:
+            temp_model = main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersDynamicTopic()
+            self.dynamic_topic = temp_model.from_map(m.get('DynamicTopic'))
 
         if m.get('Headers') is not None:
             temp_model = main_models.GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders()
@@ -4960,6 +5032,49 @@ class GetEventStreamingResponseBodyDataSinkSinkKafkaParametersInstanceId(DaraMod
         return self
 
 class GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders(DaraModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.form is not None:
+            result['Form'] = self.form
+
+        if self.template is not None:
+            result['Template'] = self.template
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class GetEventStreamingResponseBodyDataSinkSinkKafkaParametersDynamicTopic(DaraModel):
     def __init__(
         self,
         form: str = None,
@@ -7493,6 +7608,7 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
         acks: str = None,
         bootstraps: str = None,
         compression_type: str = None,
+        dynamic_topic: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersDynamicTopic = None,
         headers: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersHeaders = None,
         key: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersKey = None,
         network_type: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersNetworkType = None,
@@ -7501,6 +7617,9 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
         sasl_user: str = None,
         security_group_id: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersSecurityGroupId = None,
         security_protocol: str = None,
+        ssl_key_password: str = None,
+        ssl_keystore_certificate_chain: str = None,
+        ssl_keystore_key: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersSslKeystoreKey = None,
         ssl_truststore_certificates: str = None,
         topic: str = None,
         v_switch_ids: main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersVSwitchIds = None,
@@ -7510,6 +7629,7 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
         self.acks = acks
         self.bootstraps = bootstraps
         self.compression_type = compression_type
+        self.dynamic_topic = dynamic_topic
         self.headers = headers
         self.key = key
         self.network_type = network_type
@@ -7518,6 +7638,9 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
         self.sasl_user = sasl_user
         self.security_group_id = security_group_id
         self.security_protocol = security_protocol
+        self.ssl_key_password = ssl_key_password
+        self.ssl_keystore_certificate_chain = ssl_keystore_certificate_chain
+        self.ssl_keystore_key = ssl_keystore_key
         self.ssl_truststore_certificates = ssl_truststore_certificates
         self.topic = topic
         self.v_switch_ids = v_switch_ids
@@ -7525,6 +7648,8 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.dynamic_topic:
+            self.dynamic_topic.validate()
         if self.headers:
             self.headers.validate()
         if self.key:
@@ -7533,6 +7658,8 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
             self.network_type.validate()
         if self.security_group_id:
             self.security_group_id.validate()
+        if self.ssl_keystore_key:
+            self.ssl_keystore_key.validate()
         if self.v_switch_ids:
             self.v_switch_ids.validate()
         if self.value:
@@ -7553,6 +7680,9 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
 
         if self.compression_type is not None:
             result['CompressionType'] = self.compression_type
+
+        if self.dynamic_topic is not None:
+            result['DynamicTopic'] = self.dynamic_topic.to_map()
 
         if self.headers is not None:
             result['Headers'] = self.headers.to_map()
@@ -7577,6 +7707,15 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
 
         if self.security_protocol is not None:
             result['SecurityProtocol'] = self.security_protocol
+
+        if self.ssl_key_password is not None:
+            result['SslKeyPassword'] = self.ssl_key_password
+
+        if self.ssl_keystore_certificate_chain is not None:
+            result['SslKeystoreCertificateChain'] = self.ssl_keystore_certificate_chain
+
+        if self.ssl_keystore_key is not None:
+            result['SslKeystoreKey'] = self.ssl_keystore_key.to_map()
 
         if self.ssl_truststore_certificates is not None:
             result['SslTruststoreCertificates'] = self.ssl_truststore_certificates
@@ -7606,6 +7745,10 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
         if m.get('CompressionType') is not None:
             self.compression_type = m.get('CompressionType')
 
+        if m.get('DynamicTopic') is not None:
+            temp_model = main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersDynamicTopic()
+            self.dynamic_topic = temp_model.from_map(m.get('DynamicTopic'))
+
         if m.get('Headers') is not None:
             temp_model = main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersHeaders()
             self.headers = temp_model.from_map(m.get('Headers'))
@@ -7633,6 +7776,16 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters(DaraModel):
 
         if m.get('SecurityProtocol') is not None:
             self.security_protocol = m.get('SecurityProtocol')
+
+        if m.get('SslKeyPassword') is not None:
+            self.ssl_key_password = m.get('SslKeyPassword')
+
+        if m.get('SslKeystoreCertificateChain') is not None:
+            self.ssl_keystore_certificate_chain = m.get('SslKeystoreCertificateChain')
+
+        if m.get('SslKeystoreKey') is not None:
+            temp_model = main_models.GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersSslKeystoreKey()
+            self.ssl_keystore_key = temp_model.from_map(m.get('SslKeystoreKey'))
 
         if m.get('SslTruststoreCertificates') is not None:
             self.ssl_truststore_certificates = m.get('SslTruststoreCertificates')
@@ -7783,6 +7936,41 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersVSwitchIds(D
 
         return self
 
+class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersSslKeystoreKey(DaraModel):
+    def __init__(
+        self,
+        kms_arn: str = None,
+        kms_secret_value_key: str = None,
+    ):
+        self.kms_arn = kms_arn
+        self.kms_secret_value_key = kms_secret_value_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.kms_arn is not None:
+            result['KmsArn'] = self.kms_arn
+
+        if self.kms_secret_value_key is not None:
+            result['KmsSecretValueKey'] = self.kms_secret_value_key
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KmsArn') is not None:
+            self.kms_arn = m.get('KmsArn')
+
+        if m.get('KmsSecretValueKey') is not None:
+            self.kms_secret_value_key = m.get('KmsSecretValueKey')
+
+        return self
+
 class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersSecurityGroupId(DaraModel):
     def __init__(
         self,
@@ -7913,6 +8101,49 @@ class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersKey(DaraMode
         return self
 
 class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersHeaders(DaraModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.form is not None:
+            result['Form'] = self.form
+
+        if self.template is not None:
+            result['Template'] = self.template
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParametersDynamicTopic(DaraModel):
     def __init__(
         self,
         form: str = None,
