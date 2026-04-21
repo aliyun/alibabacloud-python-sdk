@@ -82,6 +82,7 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
         product_name: str = None,
         resource_detail_page_url: str = None,
         resource_list_page_url: str = None,
+        resource_type: str = None,
         status: str = None,
         status_start_version: str = None,
         subcategory: str = None,
@@ -95,6 +96,7 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
         self.product_name = product_name
         self.resource_detail_page_url = resource_detail_page_url
         self.resource_list_page_url = resource_list_page_url
+        self.resource_type = resource_type
         self.status = status
         self.status_start_version = status_start_version
         self.subcategory = subcategory
@@ -125,6 +127,9 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
 
         if self.resource_list_page_url is not None:
             result['resourceListPageUrl'] = self.resource_list_page_url
+
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
 
         if self.status is not None:
             result['status'] = self.status
@@ -165,6 +170,9 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
 
         if m.get('resourceListPageUrl') is not None:
             self.resource_list_page_url = m.get('resourceListPageUrl')
+
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
 
         if m.get('status') is not None:
             self.status = m.get('status')

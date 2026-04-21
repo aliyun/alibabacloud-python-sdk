@@ -1,3 +1,7 @@
+2026-04-21 Version: 2.8.2
+- Update API ListResourceTypes: add response parameters Body.resourceTypes.$.resourceType.
+
+
 2026-04-15 Version: 2.8.1
 - Update API ListStackConfigs: add response parameters Body.configs.$.failedReason.
 
