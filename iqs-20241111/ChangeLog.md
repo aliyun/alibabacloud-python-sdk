@@ -4,6 +4,12 @@
 - Support API OmniAnswer.
 
 
+2026-04-21 Version: 1.8.0
+- Support API MedicalAnswer.
+- Support API MedicalKnowledge.
+- Support API OmniAnswer.
+
+
 2026-03-19 Version: 1.7.3
 - Generated python 2024-11-11 for IQS.
 
