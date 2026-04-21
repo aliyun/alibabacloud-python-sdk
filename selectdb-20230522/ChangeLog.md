@@ -1,3 +1,7 @@
+2026-04-21 Version: 5.0.4
+- Update API DescribeDBInstanceAttribute: add response parameters Body.LangfuseInstanceIds.
+
+
 2026-04-08 Version: 5.0.3
 - Update API DescribeDBInstanceAttribute: add response parameters Body.OTelBearerToken.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.OTelGrafanaServiceStatus.

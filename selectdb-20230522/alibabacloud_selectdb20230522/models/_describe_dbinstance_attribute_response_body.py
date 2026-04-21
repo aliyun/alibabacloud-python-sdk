@@ -23,6 +23,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         engine_version: str = None,
         expire_time: str = None,
         gmt_modified: str = None,
+        langfuse_instance_ids: List[str] = None,
         lock_mode: int = None,
         lock_reason: str = None,
         maintain_endtime: str = None,
@@ -73,6 +74,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         self.expire_time = expire_time
         # The time when the instance was last modified, such as when you restarted the instance or applied for a public endpoint for the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         self.gmt_modified = gmt_modified
+        self.langfuse_instance_ids = langfuse_instance_ids
         # The lock mode of the instance. Set the value to **lock**, which specifies that the instance is locked when it automatically expires or has an overdue payment.
         self.lock_mode = lock_mode
         # The reason why the instance is locked.
@@ -181,6 +183,9 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
 
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+
+        if self.langfuse_instance_ids is not None:
+            result['LangfuseInstanceIds'] = self.langfuse_instance_ids
 
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
@@ -299,6 +304,9 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
 
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+
+        if m.get('LangfuseInstanceIds') is not None:
+            self.langfuse_instance_ids = m.get('LangfuseInstanceIds')
 
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
