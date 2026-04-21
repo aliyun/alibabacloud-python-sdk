@@ -30,6 +30,7 @@ class EditTaskShrinkRequest(DaraModel):
         task_id: int = None,
         template_id: int = None,
         template_type: int = None,
+        week_tag_shrink: str = None,
     ):
         # 外呼时间
         self.call_time_list_shrink = call_time_list_shrink
@@ -76,6 +77,8 @@ class EditTaskShrinkRequest(DaraModel):
         self.template_id = template_id
         # 话术模板类型
         self.template_type = template_type
+        # 外呼时间需要的按星期几进行外呼，例：“1,2,3,4,5,6,7”，代表周一到周日都外呼
+        self.week_tag_shrink = week_tag_shrink
 
     def validate(self):
         pass
@@ -154,6 +157,9 @@ class EditTaskShrinkRequest(DaraModel):
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
 
+        if self.week_tag_shrink is not None:
+            result['WeekTag'] = self.week_tag_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -226,6 +232,9 @@ class EditTaskShrinkRequest(DaraModel):
 
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+
+        if m.get('WeekTag') is not None:
+            self.week_tag_shrink = m.get('WeekTag')
 
         return self
 

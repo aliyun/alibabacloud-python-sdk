@@ -33,6 +33,7 @@ class EditTaskRequest(DaraModel):
         task_id: int = None,
         template_id: int = None,
         template_type: int = None,
+        week_tag: List[str] = None,
     ):
         # 外呼时间
         self.call_time_list = call_time_list
@@ -79,6 +80,8 @@ class EditTaskRequest(DaraModel):
         self.template_id = template_id
         # 话术模板类型
         self.template_type = template_type
+        # 外呼时间需要的按星期几进行外呼，例：“1,2,3,4,5,6,7”，代表周一到周日都外呼
+        self.week_tag = week_tag
 
     def validate(self):
         if self.call_time_list:
@@ -174,6 +177,9 @@ class EditTaskRequest(DaraModel):
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
 
+        if self.week_tag is not None:
+            result['WeekTag'] = self.week_tag
+
         return result
 
     def from_map(self, m: dict = None):
@@ -255,6 +261,9 @@ class EditTaskRequest(DaraModel):
 
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+
+        if m.get('WeekTag') is not None:
+            self.week_tag = m.get('WeekTag')
 
         return self
 

@@ -1,3 +1,8 @@
+2026-04-21 Version: 1.2.3
+- Update API AddTask: add request parameters WeekTag.
+- Update API EditTask: add request parameters WeekTag.
+
+
 2026-03-16 Version: 1.2.2
 - Update API AddTask: add request parameters CallTimeStrList.
 - Update API EditTask: add request parameters CallTimeStrList.

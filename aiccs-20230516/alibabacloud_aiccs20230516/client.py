@@ -336,6 +336,8 @@ class Client(OpenApiClient):
             request.repeat_times_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_times, 'RepeatTimes', 'json')
         if not DaraCore.is_null(tmp_req.send_sms_plan):
             request.send_sms_plan_shrink = Utils.array_to_string_with_specified_style(tmp_req.send_sms_plan, 'SendSmsPlan', 'json')
+        if not DaraCore.is_null(tmp_req.week_tag):
+            request.week_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.week_tag, 'WeekTag', 'json')
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
@@ -383,6 +385,8 @@ class Client(OpenApiClient):
             query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.week_tag_shrink):
+            query['WeekTag'] = request.week_tag_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -420,6 +424,8 @@ class Client(OpenApiClient):
             request.repeat_times_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_times, 'RepeatTimes', 'json')
         if not DaraCore.is_null(tmp_req.send_sms_plan):
             request.send_sms_plan_shrink = Utils.array_to_string_with_specified_style(tmp_req.send_sms_plan, 'SendSmsPlan', 'json')
+        if not DaraCore.is_null(tmp_req.week_tag):
+            request.week_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.week_tag, 'WeekTag', 'json')
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
@@ -467,6 +473,8 @@ class Client(OpenApiClient):
             query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.week_tag_shrink):
+            query['WeekTag'] = request.week_tag_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1362,6 +1370,8 @@ class Client(OpenApiClient):
             request.repeat_times_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_times, 'RepeatTimes', 'json')
         if not DaraCore.is_null(tmp_req.send_sms_plan):
             request.send_sms_plan_shrink = Utils.array_to_string_with_specified_style(tmp_req.send_sms_plan, 'SendSmsPlan', 'json')
+        if not DaraCore.is_null(tmp_req.week_tag):
+            request.week_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.week_tag, 'WeekTag', 'json')
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
@@ -1409,6 +1419,8 @@ class Client(OpenApiClient):
             query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.week_tag_shrink):
+            query['WeekTag'] = request.week_tag_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1446,6 +1458,8 @@ class Client(OpenApiClient):
             request.repeat_times_shrink = Utils.array_to_string_with_specified_style(tmp_req.repeat_times, 'RepeatTimes', 'json')
         if not DaraCore.is_null(tmp_req.send_sms_plan):
             request.send_sms_plan_shrink = Utils.array_to_string_with_specified_style(tmp_req.send_sms_plan, 'SendSmsPlan', 'json')
+        if not DaraCore.is_null(tmp_req.week_tag):
+            request.week_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.week_tag, 'WeekTag', 'json')
         query = {}
         if not DaraCore.is_null(request.call_time_list_shrink):
             query['CallTimeList'] = request.call_time_list_shrink
@@ -1493,6 +1507,8 @@ class Client(OpenApiClient):
             query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.week_tag_shrink):
+            query['WeekTag'] = request.week_tag_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
