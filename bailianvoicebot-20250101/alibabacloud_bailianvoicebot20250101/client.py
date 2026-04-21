@@ -1196,6 +1196,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_variable_with_options_async(request, runtime)
 
+    def list_voices_with_options(
+        self,
+        request: main_models.ListVoicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoicesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.nls_access_type):
+            body['NlsAccessType'] = request.nls_access_type
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoices',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_voices_with_options_async(
+        self,
+        request: main_models.ListVoicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoicesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.nls_access_type):
+            body['NlsAccessType'] = request.nls_access_type
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoices',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_voices(
+        self,
+        request: main_models.ListVoicesRequest,
+    ) -> main_models.ListVoicesResponse:
+        runtime = RuntimeOptions()
+        return self.list_voices_with_options(request, runtime)
+
+    async def list_voices_async(
+        self,
+        request: main_models.ListVoicesRequest,
+    ) -> main_models.ListVoicesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_voices_with_options_async(request, runtime)
+
     def publish_application_version_with_options(
         self,
         request: main_models.PublishApplicationVersionRequest,

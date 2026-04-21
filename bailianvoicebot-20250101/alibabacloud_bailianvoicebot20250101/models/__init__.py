@@ -45,6 +45,9 @@ from ._list_clone_voice_response import ListCloneVoiceResponse
 from ._list_variable_request import ListVariableRequest
 from ._list_variable_response_body import ListVariableResponseBody
 from ._list_variable_response import ListVariableResponse
+from ._list_voices_request import ListVoicesRequest
+from ._list_voices_response_body import ListVoicesResponseBody
+from ._list_voices_response import ListVoicesResponse
 from ._publish_application_version_request import PublishApplicationVersionRequest
 from ._publish_application_version_response_body import PublishApplicationVersionResponseBody
 from ._publish_application_version_response import PublishApplicationVersionResponse
@@ -92,6 +95,8 @@ from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataClone
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
 from ._list_variable_response_body import ListVariableResponseBodyDataVariables
 from ._list_variable_response_body import ListVariableResponseBodyData
+from ._list_voices_response_body import ListVoicesResponseBodyDataVoices
+from ._list_voices_response_body import ListVoicesResponseBodyData
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestScriptProfileAgentProfile
@@ -143,6 +148,9 @@ __all__ = [
     ListVariableRequest,
     ListVariableResponseBody,
     ListVariableResponse,
+    ListVoicesRequest,
+    ListVoicesResponseBody,
+    ListVoicesResponse,
     PublishApplicationVersionRequest,
     PublishApplicationVersionResponseBody,
     PublishApplicationVersionResponse,
@@ -190,6 +198,8 @@ __all__ = [
     ListCloneVoiceResponseBodyData,
     ListVariableResponseBodyDataVariables,
     ListVariableResponseBodyData,
+    ListVoicesResponseBodyDataVoices,
+    ListVoicesResponseBodyData,
     UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig,
     UpdateApplicationVersionRequestInteractionConfig,
     UpdateApplicationVersionRequestScriptProfileAgentProfile,
