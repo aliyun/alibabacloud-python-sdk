@@ -586,6 +586,74 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_metering_summary_with_options_async(request, headers, runtime)
 
+    def get_normal_service_config_with_options(
+        self,
+        request: main_models.GetNormalServiceConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNormalServiceConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNormalServiceConfig',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/console/v1/services/commands/normalServiceConfig',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNormalServiceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_normal_service_config_with_options_async(
+        self,
+        request: main_models.GetNormalServiceConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNormalServiceConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNormalServiceConfig',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/console/v1/services/commands/normalServiceConfig',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNormalServiceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_normal_service_config(
+        self,
+        request: main_models.GetNormalServiceConfigRequest,
+    ) -> main_models.GetNormalServiceConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_normal_service_config_with_options(request, headers, runtime)
+
+    async def get_normal_service_config_async(
+        self,
+        request: main_models.GetNormalServiceConfigRequest,
+    ) -> main_models.GetNormalServiceConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_normal_service_config_with_options_async(request, headers, runtime)
+
     def get_service_config_with_options(
         self,
         headers: Dict[str, str],
@@ -740,6 +808,74 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_api_call_daily_detail_with_options_async(request, headers, runtime)
 
+    def list_api_infos_with_options(
+        self,
+        request: main_models.ListApiInfosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiInfosResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiInfos',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/console/v1/monitors/commands/apiInfos',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_infos_with_options_async(
+        self,
+        request: main_models.ListApiInfosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiInfosResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiInfos',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/console/v1/monitors/commands/apiInfos',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_infos(
+        self,
+        request: main_models.ListApiInfosRequest,
+    ) -> main_models.ListApiInfosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_api_infos_with_options(request, headers, runtime)
+
+    async def list_api_infos_async(
+        self,
+        request: main_models.ListApiInfosRequest,
+    ) -> main_models.ListApiInfosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_api_infos_with_options_async(request, headers, runtime)
+
     def list_api_names_with_options(
         self,
         headers: Dict[str, str],
@@ -797,6 +933,74 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_api_names_with_options_async(headers, runtime)
+
+    def list_limitations_with_options(
+        self,
+        request: main_models.ListLimitationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLimitationsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLimitations',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/openService/v1/console/limitation/commands/list/account',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLimitationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_limitations_with_options_async(
+        self,
+        request: main_models.ListLimitationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLimitationsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLimitations',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/openService/v1/console/limitation/commands/list/account',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLimitationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_limitations(
+        self,
+        request: main_models.ListLimitationsRequest,
+    ) -> main_models.ListLimitationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_limitations_with_options(request, headers, runtime)
+
+    async def list_limitations_async(
+        self,
+        request: main_models.ListLimitationsRequest,
+    ) -> main_models.ListLimitationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_limitations_with_options_async(request, headers, runtime)
 
     def list_metering_daily_detail_with_options(
         self,
@@ -1025,3 +1229,139 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.manage_search_account_info_with_options_async(request, headers, runtime)
+
+    def open_auto_normal_review_with_options(
+        self,
+        request: main_models.OpenAutoNormalReviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenAutoNormalReviewResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenAutoNormalReview',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/openService/v1/account/commands/openAutoNormalReview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenAutoNormalReviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_auto_normal_review_with_options_async(
+        self,
+        request: main_models.OpenAutoNormalReviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenAutoNormalReviewResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenAutoNormalReview',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/openService/v1/account/commands/openAutoNormalReview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenAutoNormalReviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_auto_normal_review(
+        self,
+        request: main_models.OpenAutoNormalReviewRequest,
+    ) -> main_models.OpenAutoNormalReviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.open_auto_normal_review_with_options(request, headers, runtime)
+
+    async def open_auto_normal_review_async(
+        self,
+        request: main_models.OpenAutoNormalReviewRequest,
+    ) -> main_models.OpenAutoNormalReviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.open_auto_normal_review_with_options_async(request, headers, runtime)
+
+    def stop_auto_normal_review_with_options(
+        self,
+        request: main_models.StopAutoNormalReviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopAutoNormalReviewResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopAutoNormalReview',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/openService/v1/account/commands/stopAutoNormalReview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopAutoNormalReviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_auto_normal_review_with_options_async(
+        self,
+        request: main_models.StopAutoNormalReviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopAutoNormalReviewResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopAutoNormalReview',
+            version = '2024-11-21',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/openService/v1/account/commands/stopAutoNormalReview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopAutoNormalReviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_auto_normal_review(
+        self,
+        request: main_models.StopAutoNormalReviewRequest,
+    ) -> main_models.StopAutoNormalReviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.stop_auto_normal_review_with_options(request, headers, runtime)
+
+    async def stop_auto_normal_review_async(
+        self,
+        request: main_models.StopAutoNormalReviewRequest,
+    ) -> main_models.StopAutoNormalReviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.stop_auto_normal_review_with_options_async(request, headers, runtime)
