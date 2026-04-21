@@ -12,10 +12,20 @@ from ._global_search_information import GlobalSearchInformation
 from ._global_search_result import GlobalSearchResult
 from ._include_image import IncludeImage
 from ._location_info import LocationInfo
+from ._medical_answer_input import MedicalAnswerInput
+from ._medical_answer_message import MedicalAnswerMessage
+from ._medical_answer_meta_data import MedicalAnswerMetaData
+from ._medical_answer_ra_doc import MedicalAnswerRaDoc
+from ._medical_answer_result import MedicalAnswerResult
+from ._medical_know_input import MedicalKnowInput
+from ._medical_know_result import MedicalKnowResult
+from ._medical_knowledge_info import MedicalKnowledgeInfo
 from ._multimodal_original_query import MultimodalOriginalQuery
 from ._multimodal_query_context import MultimodalQueryContext
 from ._multimodal_search_body import MultimodalSearchBody
 from ._multimodal_search_output import MultimodalSearchOutput
+from ._omni_search_query import OmniSearchQuery
+from ._omni_search_result import OmniSearchResult
 from ._query_context import QueryContext
 from ._read_page_body import ReadPageBody
 from ._read_page_item import ReadPageItem
@@ -49,8 +59,14 @@ from ._get_iqs_usage_request import GetIqsUsageRequest
 from ._get_iqs_usage_response import GetIqsUsageResponse
 from ._global_search_request import GlobalSearchRequest
 from ._global_search_response import GlobalSearchResponse
+from ._medical_answer_request import MedicalAnswerRequest
+from ._medical_answer_response import MedicalAnswerResponse
+from ._medical_knowledge_request import MedicalKnowledgeRequest
+from ._medical_knowledge_response import MedicalKnowledgeResponse
 from ._multimodal_search_request import MultimodalSearchRequest
 from ._multimodal_search_response import MultimodalSearchResponse
+from ._omni_answer_request import OmniAnswerRequest
+from ._omni_answer_response import OmniAnswerResponse
 from ._read_page_basic_request import ReadPageBasicRequest
 from ._read_page_basic_response_body import ReadPageBasicResponseBody
 from ._read_page_basic_response import ReadPageBasicResponse
@@ -81,10 +97,20 @@ __all__ = [
     GlobalSearchResult,
     IncludeImage,
     LocationInfo,
+    MedicalAnswerInput,
+    MedicalAnswerMessage,
+    MedicalAnswerMetaData,
+    MedicalAnswerRaDoc,
+    MedicalAnswerResult,
+    MedicalKnowInput,
+    MedicalKnowResult,
+    MedicalKnowledgeInfo,
     MultimodalOriginalQuery,
     MultimodalQueryContext,
     MultimodalSearchBody,
     MultimodalSearchOutput,
+    OmniSearchQuery,
+    OmniSearchResult,
     QueryContext,
     ReadPageBody,
     ReadPageItem,
@@ -118,8 +144,14 @@ __all__ = [
     GetIqsUsageResponse,
     GlobalSearchRequest,
     GlobalSearchResponse,
+    MedicalAnswerRequest,
+    MedicalAnswerResponse,
+    MedicalKnowledgeRequest,
+    MedicalKnowledgeResponse,
     MultimodalSearchRequest,
     MultimodalSearchResponse,
+    OmniAnswerRequest,
+    OmniAnswerResponse,
     ReadPageBasicRequest,
     ReadPageBasicResponseBody,
     ReadPageBasicResponse,

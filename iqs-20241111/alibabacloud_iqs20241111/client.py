@@ -612,6 +612,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.global_search_with_options_async(request, headers, runtime)
 
+    def medical_answer_with_options(
+        self,
+        request: main_models.MedicalAnswerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MedicalAnswerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MedicalAnswer',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/medical/answer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MedicalAnswerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def medical_answer_with_options_async(
+        self,
+        request: main_models.MedicalAnswerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MedicalAnswerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MedicalAnswer',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/medical/answer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MedicalAnswerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def medical_answer(
+        self,
+        request: main_models.MedicalAnswerRequest,
+    ) -> main_models.MedicalAnswerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.medical_answer_with_options(request, headers, runtime)
+
+    async def medical_answer_async(
+        self,
+        request: main_models.MedicalAnswerRequest,
+    ) -> main_models.MedicalAnswerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.medical_answer_with_options_async(request, headers, runtime)
+
+    def medical_knowledge_with_options(
+        self,
+        request: main_models.MedicalKnowledgeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MedicalKnowledgeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MedicalKnowledge',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/medical/know',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MedicalKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def medical_knowledge_with_options_async(
+        self,
+        request: main_models.MedicalKnowledgeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MedicalKnowledgeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MedicalKnowledge',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/medical/know',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MedicalKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def medical_knowledge(
+        self,
+        request: main_models.MedicalKnowledgeRequest,
+    ) -> main_models.MedicalKnowledgeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.medical_knowledge_with_options(request, headers, runtime)
+
+    async def medical_knowledge_async(
+        self,
+        request: main_models.MedicalKnowledgeRequest,
+    ) -> main_models.MedicalKnowledgeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.medical_knowledge_with_options_async(request, headers, runtime)
+
     def multimodal_search_with_options(
         self,
         request: main_models.MultimodalSearchRequest,
@@ -681,6 +821,148 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.multimodal_search_with_options_async(request, headers, runtime)
+
+    def omni_answer_with_sse(
+        self,
+        request: main_models.OmniAnswerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.OmniAnswerResponse, None, None]:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OmniAnswer',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/answer/omni/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.OmniAnswerResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def omni_answer_with_sse_async(
+        self,
+        request: main_models.OmniAnswerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.OmniAnswerResponse, None, None]:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OmniAnswer',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/answer/omni/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.OmniAnswerResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def omni_answer_with_options(
+        self,
+        request: main_models.OmniAnswerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OmniAnswerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OmniAnswer',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/answer/omni/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.OmniAnswerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def omni_answer_with_options_async(
+        self,
+        request: main_models.OmniAnswerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OmniAnswerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OmniAnswer',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/answer/omni/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.OmniAnswerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def omni_answer(
+        self,
+        request: main_models.OmniAnswerRequest,
+    ) -> main_models.OmniAnswerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.omni_answer_with_options(request, headers, runtime)
+
+    async def omni_answer_async(
+        self,
+        request: main_models.OmniAnswerRequest,
+    ) -> main_models.OmniAnswerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.omni_answer_with_options_async(request, headers, runtime)
 
     def read_page_basic_with_options(
         self,

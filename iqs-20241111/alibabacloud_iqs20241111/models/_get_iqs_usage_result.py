@@ -56,6 +56,7 @@ class GetIqsUsageResultRecords(DaraModel):
         main_account_id: str = None,
         sub_account_id: str = None,
         success_calls: int = None,
+        total_bill_stat_calls: int = None,
         total_calls: int = None,
         value_added_advanced: int = None,
         value_added_summary: int = None,
@@ -69,6 +70,7 @@ class GetIqsUsageResultRecords(DaraModel):
         self.main_account_id = main_account_id
         self.sub_account_id = sub_account_id
         self.success_calls = success_calls
+        self.total_bill_stat_calls = total_bill_stat_calls
         self.total_calls = total_calls
         self.value_added_advanced = value_added_advanced
         self.value_added_summary = value_added_summary
@@ -107,6 +109,9 @@ class GetIqsUsageResultRecords(DaraModel):
 
         if self.success_calls is not None:
             result['successCalls'] = self.success_calls
+
+        if self.total_bill_stat_calls is not None:
+            result['totalBillStatCalls'] = self.total_bill_stat_calls
 
         if self.total_calls is not None:
             result['totalCalls'] = self.total_calls
@@ -147,6 +152,9 @@ class GetIqsUsageResultRecords(DaraModel):
 
         if m.get('successCalls') is not None:
             self.success_calls = m.get('successCalls')
+
+        if m.get('totalBillStatCalls') is not None:
+            self.total_bill_stat_calls = m.get('totalBillStatCalls')
 
         if m.get('totalCalls') is not None:
             self.total_calls = m.get('totalCalls')
