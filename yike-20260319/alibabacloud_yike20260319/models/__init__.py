@@ -2,18 +2,66 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_yike_user_credit_request import AddYikeUserCreditRequest
+from ._add_yike_user_credit_response_body import AddYikeUserCreditResponseBody
+from ._add_yike_user_credit_response import AddYikeUserCreditResponse
 from ._batch_get_yike_aiapp_job_request import BatchGetYikeAIAppJobRequest
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBody
 from ._batch_get_yike_aiapp_job_response import BatchGetYikeAIAppJobResponse
+from ._batch_get_yike_asset_media_infos_request import BatchGetYikeAssetMediaInfosRequest
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBody
+from ._batch_get_yike_asset_media_infos_response import BatchGetYikeAssetMediaInfosResponse
 from ._create_yike_asset_upload_request import CreateYikeAssetUploadRequest
 from ._create_yike_asset_upload_response_body import CreateYikeAssetUploadResponseBody
 from ._create_yike_asset_upload_response import CreateYikeAssetUploadResponse
+from ._create_yike_production_request import CreateYikeProductionRequest
+from ._create_yike_production_response_body import CreateYikeProductionResponseBody
+from ._create_yike_production_response import CreateYikeProductionResponse
+from ._create_yike_user_request import CreateYikeUserRequest
+from ._create_yike_user_response_body import CreateYikeUserResponseBody
+from ._create_yike_user_response import CreateYikeUserResponse
+from ._create_yike_workspace_request import CreateYikeWorkspaceRequest
+from ._create_yike_workspace_response_body import CreateYikeWorkspaceResponseBody
+from ._create_yike_workspace_response import CreateYikeWorkspaceResponse
+from ._delete_yike_asset_media_infos_request import DeleteYikeAssetMediaInfosRequest
+from ._delete_yike_asset_media_infos_response_body import DeleteYikeAssetMediaInfosResponseBody
+from ._delete_yike_asset_media_infos_response import DeleteYikeAssetMediaInfosResponse
 from ._get_yike_aiapp_job_request import GetYikeAIAppJobRequest
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBody
 from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
+from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
+from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
 from ._get_yike_storyboard_job_request import GetYikeStoryboardJobRequest
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBody
 from ._get_yike_storyboard_job_response import GetYikeStoryboardJobResponse
+from ._get_yike_user_request import GetYikeUserRequest
+from ._get_yike_user_response_body import GetYikeUserResponseBody
+from ._get_yike_user_response import GetYikeUserResponse
+from ._get_yike_user_credit_request import GetYikeUserCreditRequest
+from ._get_yike_user_credit_response_body import GetYikeUserCreditResponseBody
+from ._get_yike_user_credit_response import GetYikeUserCreditResponse
+from ._list_yike_asset_folders_request import ListYikeAssetFoldersRequest
+from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBody
+from ._list_yike_asset_folders_response import ListYikeAssetFoldersResponse
+from ._list_yike_productions_request import ListYikeProductionsRequest
+from ._list_yike_productions_response_body import ListYikeProductionsResponseBody
+from ._list_yike_productions_response import ListYikeProductionsResponse
+from ._precheck_yike_aiapp_job_request import PrecheckYikeAIAppJobRequest
+from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBody
+from ._precheck_yike_aiapp_job_response import PrecheckYikeAIAppJobResponse
+from ._register_yike_asset_media_info_request import RegisterYikeAssetMediaInfoRequest
+from ._register_yike_asset_media_info_response_body import RegisterYikeAssetMediaInfoResponseBody
+from ._register_yike_asset_media_info_response import RegisterYikeAssetMediaInfoResponse
+from ._resume_yike_storyboard_job_request import ResumeYikeStoryboardJobRequest
+from ._resume_yike_storyboard_job_response_body import ResumeYikeStoryboardJobResponseBody
+from ._resume_yike_storyboard_job_response import ResumeYikeStoryboardJobResponse
+from ._set_yike_user_role_request import SetYikeUserRoleRequest
+from ._set_yike_user_role_response_body import SetYikeUserRoleResponseBody
+from ._set_yike_user_role_response import SetYikeUserRoleResponse
+from ._sub_yike_user_credit_request import SubYikeUserCreditRequest
+from ._sub_yike_user_credit_response_body import SubYikeUserCreditResponseBody
+from ._sub_yike_user_credit_response import SubYikeUserCreditResponse
 from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
 from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
 from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
@@ -25,26 +73,92 @@ from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobRespons
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResult
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobList
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo
+from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfos
+from ._create_yike_user_response_body import CreateYikeUserResponseBodyUserInfo
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultAudioResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultVideoResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResult
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoBizData
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
+from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
+from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
+from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBodyFolderList
+from ._list_yike_productions_response_body import ListYikeProductionsResponseBodyProductionList
+from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBodyResult
 
 __all__ = [
+    AddYikeUserCreditRequest,
+    AddYikeUserCreditResponseBody,
+    AddYikeUserCreditResponse,
     BatchGetYikeAIAppJobRequest,
     BatchGetYikeAIAppJobResponseBody,
     BatchGetYikeAIAppJobResponse,
+    BatchGetYikeAssetMediaInfosRequest,
+    BatchGetYikeAssetMediaInfosResponseBody,
+    BatchGetYikeAssetMediaInfosResponse,
     CreateYikeAssetUploadRequest,
     CreateYikeAssetUploadResponseBody,
     CreateYikeAssetUploadResponse,
+    CreateYikeProductionRequest,
+    CreateYikeProductionResponseBody,
+    CreateYikeProductionResponse,
+    CreateYikeUserRequest,
+    CreateYikeUserResponseBody,
+    CreateYikeUserResponse,
+    CreateYikeWorkspaceRequest,
+    CreateYikeWorkspaceResponseBody,
+    CreateYikeWorkspaceResponse,
+    DeleteYikeAssetMediaInfosRequest,
+    DeleteYikeAssetMediaInfosResponseBody,
+    DeleteYikeAssetMediaInfosResponse,
     GetYikeAIAppJobRequest,
     GetYikeAIAppJobResponseBody,
     GetYikeAIAppJobResponse,
+    GetYikeAssetMediaInfoRequest,
+    GetYikeAssetMediaInfoResponseBody,
+    GetYikeAssetMediaInfoResponse,
     GetYikeStoryboardJobRequest,
     GetYikeStoryboardJobResponseBody,
     GetYikeStoryboardJobResponse,
+    GetYikeUserRequest,
+    GetYikeUserResponseBody,
+    GetYikeUserResponse,
+    GetYikeUserCreditRequest,
+    GetYikeUserCreditResponseBody,
+    GetYikeUserCreditResponse,
+    ListYikeAssetFoldersRequest,
+    ListYikeAssetFoldersResponseBody,
+    ListYikeAssetFoldersResponse,
+    ListYikeProductionsRequest,
+    ListYikeProductionsResponseBody,
+    ListYikeProductionsResponse,
+    PrecheckYikeAIAppJobRequest,
+    PrecheckYikeAIAppJobResponseBody,
+    PrecheckYikeAIAppJobResponse,
+    RegisterYikeAssetMediaInfoRequest,
+    RegisterYikeAssetMediaInfoResponseBody,
+    RegisterYikeAssetMediaInfoResponse,
+    ResumeYikeStoryboardJobRequest,
+    ResumeYikeStoryboardJobResponseBody,
+    ResumeYikeStoryboardJobResponse,
+    SetYikeUserRoleRequest,
+    SetYikeUserRoleResponseBody,
+    SetYikeUserRoleResponse,
+    SubYikeUserCreditRequest,
+    SubYikeUserCreditResponseBody,
+    SubYikeUserCreditResponse,
     SubmitYikeAIAppJobRequest,
     SubmitYikeAIAppJobResponseBody,
     SubmitYikeAIAppJobResponse,
@@ -56,10 +170,28 @@ __all__ = [
     BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult,
     BatchGetYikeAIAppJobResponseBodyJobListResult,
     BatchGetYikeAIAppJobResponseBodyJobList,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo,
+    BatchGetYikeAssetMediaInfosResponseBodyMediaInfos,
+    CreateYikeUserResponseBodyUserInfo,
     GetYikeAIAppJobResponseBodyResultAudioResult,
     GetYikeAIAppJobResponseBodyResultImageResult,
     GetYikeAIAppJobResponseBodyResultVideoResult,
     GetYikeAIAppJobResponseBodyResult,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoBizData,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList,
+    GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
+    GetYikeAssetMediaInfoResponseBodyMediaInfo,
     GetYikeStoryboardJobResponseBodyJobParams,
-    GetYikeStoryboardJobResponseBodyJobResult
+    GetYikeStoryboardJobResponseBodyJobResult,
+    GetYikeUserResponseBodyUserInfo,
+    ListYikeAssetFoldersResponseBodyFolderList,
+    ListYikeProductionsResponseBodyProductionList,
+    PrecheckYikeAIAppJobResponseBodyResult
 ]

@@ -40,6 +40,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_yike_user_credit_with_options(
+        self,
+        request: main_models.AddYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit):
+            query['Credit'] = request.credit
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddYikeUserCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddYikeUserCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_yike_user_credit_with_options_async(
+        self,
+        request: main_models.AddYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit):
+            query['Credit'] = request.credit
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddYikeUserCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddYikeUserCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_yike_user_credit(
+        self,
+        request: main_models.AddYikeUserCreditRequest,
+    ) -> main_models.AddYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return self.add_yike_user_credit_with_options(request, runtime)
+
+    async def add_yike_user_credit_async(
+        self,
+        request: main_models.AddYikeUserCreditRequest,
+    ) -> main_models.AddYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.add_yike_user_credit_with_options_async(request, runtime)
+
     def batch_get_yike_aiapp_job_with_options(
         self,
         request: main_models.BatchGetYikeAIAppJobRequest,
@@ -109,6 +183,76 @@ class Client(OpenApiClient):
     ) -> main_models.BatchGetYikeAIAppJobResponse:
         runtime = RuntimeOptions()
         return await self.batch_get_yike_aiapp_job_with_options_async(request, runtime)
+
+    def batch_get_yike_asset_media_infos_with_options(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetYikeAssetMediaInfos',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetYikeAssetMediaInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_yike_asset_media_infos_with_options_async(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetYikeAssetMediaInfos',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetYikeAssetMediaInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_yike_asset_media_infos(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return self.batch_get_yike_asset_media_infos_with_options(request, runtime)
+
+    async def batch_get_yike_asset_media_infos_async(
+        self,
+        request: main_models.BatchGetYikeAssetMediaInfosRequest,
+    ) -> main_models.BatchGetYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_get_yike_asset_media_infos_with_options_async(request, runtime)
 
     def create_yike_asset_upload_with_options(
         self,
@@ -184,6 +328,314 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_yike_asset_upload_with_options_async(request, runtime)
 
+    def create_yike_production_with_options(
+        self,
+        request: main_models.CreateYikeProductionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeProductionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeProduction',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeProductionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_yike_production_with_options_async(
+        self,
+        request: main_models.CreateYikeProductionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeProductionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeProduction',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeProductionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_yike_production(
+        self,
+        request: main_models.CreateYikeProductionRequest,
+    ) -> main_models.CreateYikeProductionResponse:
+        runtime = RuntimeOptions()
+        return self.create_yike_production_with_options(request, runtime)
+
+    async def create_yike_production_async(
+        self,
+        request: main_models.CreateYikeProductionRequest,
+    ) -> main_models.CreateYikeProductionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_yike_production_with_options_async(request, runtime)
+
+    def create_yike_user_with_options(
+        self,
+        request: main_models.CreateYikeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nickname):
+            query['Nickname'] = request.nickname
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.production_ids):
+            query['ProductionIds'] = request.production_ids
+        if not DaraCore.is_null(request.user_name_prefix):
+            query['UserNamePrefix'] = request.user_name_prefix
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeUser',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_yike_user_with_options_async(
+        self,
+        request: main_models.CreateYikeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nickname):
+            query['Nickname'] = request.nickname
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.production_ids):
+            query['ProductionIds'] = request.production_ids
+        if not DaraCore.is_null(request.user_name_prefix):
+            query['UserNamePrefix'] = request.user_name_prefix
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeUser',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_yike_user(
+        self,
+        request: main_models.CreateYikeUserRequest,
+    ) -> main_models.CreateYikeUserResponse:
+        runtime = RuntimeOptions()
+        return self.create_yike_user_with_options(request, runtime)
+
+    async def create_yike_user_async(
+        self,
+        request: main_models.CreateYikeUserRequest,
+    ) -> main_models.CreateYikeUserResponse:
+        runtime = RuntimeOptions()
+        return await self.create_yike_user_with_options_async(request, runtime)
+
+    def create_yike_workspace_with_options(
+        self,
+        request: main_models.CreateYikeWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.user_count_limit):
+            query['UserCountLimit'] = request.user_count_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeWorkspace',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_yike_workspace_with_options_async(
+        self,
+        request: main_models.CreateYikeWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.user_count_limit):
+            query['UserCountLimit'] = request.user_count_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeWorkspace',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_yike_workspace(
+        self,
+        request: main_models.CreateYikeWorkspaceRequest,
+    ) -> main_models.CreateYikeWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_yike_workspace_with_options(request, runtime)
+
+    async def create_yike_workspace_async(
+        self,
+        request: main_models.CreateYikeWorkspaceRequest,
+    ) -> main_models.CreateYikeWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_yike_workspace_with_options_async(request, runtime)
+
+    def delete_yike_asset_media_infos_with_options(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.logic_delete):
+            query['LogicDelete'] = request.logic_delete
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteYikeAssetMediaInfos',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteYikeAssetMediaInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_yike_asset_media_infos_with_options_async(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.logic_delete):
+            query['LogicDelete'] = request.logic_delete
+        if not DaraCore.is_null(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteYikeAssetMediaInfos',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteYikeAssetMediaInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_yike_asset_media_infos(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return self.delete_yike_asset_media_infos_with_options(request, runtime)
+
+    async def delete_yike_asset_media_infos_async(
+        self,
+        request: main_models.DeleteYikeAssetMediaInfosRequest,
+    ) -> main_models.DeleteYikeAssetMediaInfosResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_yike_asset_media_infos_with_options_async(request, runtime)
+
     def get_yike_aiapp_job_with_options(
         self,
         request: main_models.GetYikeAIAppJobRequest,
@@ -254,6 +706,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_yike_aiapp_job_with_options_async(request, runtime)
 
+    def get_yike_asset_media_info_with_options(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAssetMediaInfo',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAssetMediaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_asset_media_info_with_options_async(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAssetMediaInfo',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAssetMediaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_asset_media_info(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_asset_media_info_with_options(request, runtime)
+
+    async def get_yike_asset_media_info_async(
+        self,
+        request: main_models.GetYikeAssetMediaInfoRequest,
+    ) -> main_models.GetYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_asset_media_info_with_options_async(request, runtime)
+
     def get_yike_storyboard_job_with_options(
         self,
         request: main_models.GetYikeStoryboardJobRequest,
@@ -323,6 +845,684 @@ class Client(OpenApiClient):
     ) -> main_models.GetYikeStoryboardJobResponse:
         runtime = RuntimeOptions()
         return await self.get_yike_storyboard_job_with_options_async(request, runtime)
+
+    def get_yike_user_with_options(
+        self,
+        request: main_models.GetYikeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeUser',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_user_with_options_async(
+        self,
+        request: main_models.GetYikeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeUser',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_user(
+        self,
+        request: main_models.GetYikeUserRequest,
+    ) -> main_models.GetYikeUserResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_user_with_options(request, runtime)
+
+    async def get_yike_user_async(
+        self,
+        request: main_models.GetYikeUserRequest,
+    ) -> main_models.GetYikeUserResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_user_with_options_async(request, runtime)
+
+    def get_yike_user_credit_with_options(
+        self,
+        request: main_models.GetYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeUserCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeUserCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_user_credit_with_options_async(
+        self,
+        request: main_models.GetYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeUserCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeUserCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_user_credit(
+        self,
+        request: main_models.GetYikeUserCreditRequest,
+    ) -> main_models.GetYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_user_credit_with_options(request, runtime)
+
+    async def get_yike_user_credit_async(
+        self,
+        request: main_models.GetYikeUserCreditRequest,
+    ) -> main_models.GetYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_user_credit_with_options_async(request, runtime)
+
+    def list_yike_asset_folders_with_options(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeAssetFolders',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeAssetFoldersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_yike_asset_folders_with_options_async(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeAssetFolders',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeAssetFoldersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_yike_asset_folders(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        runtime = RuntimeOptions()
+        return self.list_yike_asset_folders_with_options(request, runtime)
+
+    async def list_yike_asset_folders_async(
+        self,
+        request: main_models.ListYikeAssetFoldersRequest,
+    ) -> main_models.ListYikeAssetFoldersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_yike_asset_folders_with_options_async(request, runtime)
+
+    def list_yike_productions_with_options(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeProductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeProductions',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeProductionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_yike_productions_with_options_async(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListYikeProductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListYikeProductions',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListYikeProductionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_yike_productions(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+    ) -> main_models.ListYikeProductionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_yike_productions_with_options(request, runtime)
+
+    async def list_yike_productions_async(
+        self,
+        request: main_models.ListYikeProductionsRequest,
+    ) -> main_models.ListYikeProductionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_yike_productions_with_options_async(request, runtime)
+
+    def precheck_yike_aiapp_job_with_options(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            query['AppParams'] = request.app_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckYikeAIAppJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckYikeAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def precheck_yike_aiapp_job_with_options_async(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            query['AppParams'] = request.app_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckYikeAIAppJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckYikeAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def precheck_yike_aiapp_job(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.precheck_yike_aiapp_job_with_options(request, runtime)
+
+    async def precheck_yike_aiapp_job_async(
+        self,
+        request: main_models.PrecheckYikeAIAppJobRequest,
+    ) -> main_models.PrecheckYikeAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.precheck_yike_aiapp_job_with_options_async(request, runtime)
+
+    def register_yike_asset_media_info_with_options(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.folder_id):
+            query['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.input_url):
+            query['InputURL'] = request.input_url
+        if not DaraCore.is_null(request.media_type):
+            query['MediaType'] = request.media_type
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterYikeAssetMediaInfo',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterYikeAssetMediaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_yike_asset_media_info_with_options_async(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.folder_id):
+            query['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.input_url):
+            query['InputURL'] = request.input_url
+        if not DaraCore.is_null(request.media_type):
+            query['MediaType'] = request.media_type
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterYikeAssetMediaInfo',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterYikeAssetMediaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_yike_asset_media_info(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return self.register_yike_asset_media_info_with_options(request, runtime)
+
+    async def register_yike_asset_media_info_async(
+        self,
+        request: main_models.RegisterYikeAssetMediaInfoRequest,
+    ) -> main_models.RegisterYikeAssetMediaInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.register_yike_asset_media_info_with_options_async(request, runtime)
+
+    def resume_yike_storyboard_job_with_options(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeYikeStoryboardJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeYikeStoryboardJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_yike_storyboard_job_with_options_async(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeYikeStoryboardJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeYikeStoryboardJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_yike_storyboard_job(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        runtime = RuntimeOptions()
+        return self.resume_yike_storyboard_job_with_options(request, runtime)
+
+    async def resume_yike_storyboard_job_async(
+        self,
+        request: main_models.ResumeYikeStoryboardJobRequest,
+    ) -> main_models.ResumeYikeStoryboardJobResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_yike_storyboard_job_with_options_async(request, runtime)
+
+    def set_yike_user_role_with_options(
+        self,
+        request: main_models.SetYikeUserRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetYikeUserRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetYikeUserRole',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetYikeUserRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_yike_user_role_with_options_async(
+        self,
+        request: main_models.SetYikeUserRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetYikeUserRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetYikeUserRole',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetYikeUserRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_yike_user_role(
+        self,
+        request: main_models.SetYikeUserRoleRequest,
+    ) -> main_models.SetYikeUserRoleResponse:
+        runtime = RuntimeOptions()
+        return self.set_yike_user_role_with_options(request, runtime)
+
+    async def set_yike_user_role_async(
+        self,
+        request: main_models.SetYikeUserRoleRequest,
+    ) -> main_models.SetYikeUserRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.set_yike_user_role_with_options_async(request, runtime)
+
+    def sub_yike_user_credit_with_options(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit):
+            query['Credit'] = request.credit
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubYikeUserCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubYikeUserCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sub_yike_user_credit_with_options_async(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubYikeUserCreditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit):
+            query['Credit'] = request.credit
+        if not DaraCore.is_null(request.yike_user_id):
+            query['YikeUserId'] = request.yike_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubYikeUserCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubYikeUserCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sub_yike_user_credit(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+    ) -> main_models.SubYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return self.sub_yike_user_credit_with_options(request, runtime)
+
+    async def sub_yike_user_credit_async(
+        self,
+        request: main_models.SubYikeUserCreditRequest,
+    ) -> main_models.SubYikeUserCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.sub_yike_user_credit_with_options_async(request, runtime)
 
     def submit_yike_aiapp_job_with_options(
         self,
