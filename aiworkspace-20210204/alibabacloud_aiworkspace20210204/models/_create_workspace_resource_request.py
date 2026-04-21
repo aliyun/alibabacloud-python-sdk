@@ -212,8 +212,6 @@ class CreateWorkspaceResourceRequestResourcesQuotas(DaraModel):
         id: str = None,
     ):
         # The quota ID. You can call [ListQuotas](https://help.aliyun.com/document_detail/449144.html) to obtain the quota ID.
-        # 
-        # This parameter is required.
         self.id = id
 
     def validate(self):
