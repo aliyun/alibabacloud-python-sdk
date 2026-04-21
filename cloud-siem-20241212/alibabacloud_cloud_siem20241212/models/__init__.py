@@ -5,6 +5,9 @@ from __future__ import annotations
 from ._check_upgrade_item_request import CheckUpgradeItemRequest
 from ._check_upgrade_item_response_body import CheckUpgradeItemResponseBody
 from ._check_upgrade_item_response import CheckUpgradeItemResponse
+from ._create_auto_dispose_config_request import CreateAutoDisposeConfigRequest
+from ._create_auto_dispose_config_response_body import CreateAutoDisposeConfigResponseBody
+from ._create_auto_dispose_config_response import CreateAutoDisposeConfigResponse
 from ._create_data_ingestion_request import CreateDataIngestionRequest
 from ._create_data_ingestion_response_body import CreateDataIngestionResponseBody
 from ._create_data_ingestion_response import CreateDataIngestionResponse
@@ -79,12 +82,18 @@ from ._disable_data_ingestion_response import DisableDataIngestionResponse
 from ._enable_data_ingestion_request import EnableDataIngestionRequest
 from ._enable_data_ingestion_response_body import EnableDataIngestionResponseBody
 from ._enable_data_ingestion_response import EnableDataIngestionResponse
+from ._execute_auto_dispose_records_request import ExecuteAutoDisposeRecordsRequest
+from ._execute_auto_dispose_records_response_body import ExecuteAutoDisposeRecordsResponseBody
+from ._execute_auto_dispose_records_response import ExecuteAutoDisposeRecordsResponse
 from ._execute_log_query_request import ExecuteLogQueryRequest
 from ._execute_log_query_response_body import ExecuteLogQueryResponseBody
 from ._execute_log_query_response import ExecuteLogQueryResponse
 from ._execute_upgrade_request import ExecuteUpgradeRequest
 from ._execute_upgrade_response_body import ExecuteUpgradeResponseBody
 from ._execute_upgrade_response import ExecuteUpgradeResponse
+from ._get_auto_dispose_config_request import GetAutoDisposeConfigRequest
+from ._get_auto_dispose_config_response_body import GetAutoDisposeConfigResponseBody
+from ._get_auto_dispose_config_response import GetAutoDisposeConfigResponse
 from ._get_data_batch_ingestion_request import GetDataBatchIngestionRequest
 from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionResponseBody
 from ._get_data_batch_ingestion_response import GetDataBatchIngestionResponse
@@ -115,6 +124,10 @@ from ._get_normalization_schema_response import GetNormalizationSchemaResponse
 from ._get_user_config_request import GetUserConfigRequest
 from ._get_user_config_response_body import GetUserConfigResponseBody
 from ._get_user_config_response import GetUserConfigResponse
+from ._list_auto_dispose_entities_request import ListAutoDisposeEntitiesRequest
+from ._list_auto_dispose_entities_shrink_request import ListAutoDisposeEntitiesShrinkRequest
+from ._list_auto_dispose_entities_response_body import ListAutoDisposeEntitiesResponseBody
+from ._list_auto_dispose_entities_response import ListAutoDisposeEntitiesResponse
 from ._list_data_ingestion_templates_request import ListDataIngestionTemplatesRequest
 from ._list_data_ingestion_templates_response_body import ListDataIngestionTemplatesResponseBody
 from ._list_data_ingestion_templates_response import ListDataIngestionTemplatesResponse
@@ -201,6 +214,12 @@ from ._reset_data_storage_response import ResetDataStorageResponse
 from ._set_default_normalization_rule_version_request import SetDefaultNormalizationRuleVersionRequest
 from ._set_default_normalization_rule_version_response_body import SetDefaultNormalizationRuleVersionResponseBody
 from ._set_default_normalization_rule_version_response import SetDefaultNormalizationRuleVersionResponse
+from ._update_auto_dispose_config_request import UpdateAutoDisposeConfigRequest
+from ._update_auto_dispose_config_response_body import UpdateAutoDisposeConfigResponseBody
+from ._update_auto_dispose_config_response import UpdateAutoDisposeConfigResponse
+from ._update_auto_dispose_record_request import UpdateAutoDisposeRecordRequest
+from ._update_auto_dispose_record_response_body import UpdateAutoDisposeRecordResponseBody
+from ._update_auto_dispose_record_response import UpdateAutoDisposeRecordResponse
 from ._update_data_batch_ingestion_request import UpdateDataBatchIngestionRequest
 from ._update_data_batch_ingestion_shrink_request import UpdateDataBatchIngestionShrinkRequest
 from ._update_data_batch_ingestion_response_body import UpdateDataBatchIngestionResponseBody
@@ -265,6 +284,9 @@ from ._create_data_source_request import CreateDataSourceRequestDataSourceStores
 from ._create_data_source_shrink_request import CreateDataSourceShrinkRequestDataSourceStores
 from ._create_normalization_schema_request import CreateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys
 from ._create_normalization_schema_request import CreateNormalizationSchemaRequestNormalizationFields
+from ._execute_auto_dispose_records_request import ExecuteAutoDisposeRecordsRequestSelectedEntityList
+from ._execute_auto_dispose_records_request import ExecuteAutoDisposeRecordsRequestUnSelectedEntityList
+from ._get_auto_dispose_config_response_body import GetAutoDisposeConfigResponseBodyAutoDisposeConfig
 from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions
 from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionResponseBodyDataBatchIngestion
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogStores
@@ -280,6 +302,7 @@ from ._get_normalization_schema_response_body import GetNormalizationSchemaRespo
 from ._get_normalization_schema_response_body import GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationSchemaReferences
 from ._get_normalization_schema_response_body import GetNormalizationSchemaResponseBodyNormalizationSchema
 from ._get_user_config_response_body import GetUserConfigResponseBodyUser
+from ._list_auto_dispose_entities_response_body import ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities
 from ._list_data_ingestion_templates_response_body import ListDataIngestionTemplatesResponseBodyDataIngestionTemplates
 from ._list_data_ingestions_response_body import ListDataIngestionsResponseBodyDataIngestions
 from ._list_data_set_records_response_body import ListDataSetRecordsResponseBodyDataSetRecords
@@ -321,6 +344,9 @@ __all__ = [
     CheckUpgradeItemRequest,
     CheckUpgradeItemResponseBody,
     CheckUpgradeItemResponse,
+    CreateAutoDisposeConfigRequest,
+    CreateAutoDisposeConfigResponseBody,
+    CreateAutoDisposeConfigResponse,
     CreateDataIngestionRequest,
     CreateDataIngestionResponseBody,
     CreateDataIngestionResponse,
@@ -395,12 +421,18 @@ __all__ = [
     EnableDataIngestionRequest,
     EnableDataIngestionResponseBody,
     EnableDataIngestionResponse,
+    ExecuteAutoDisposeRecordsRequest,
+    ExecuteAutoDisposeRecordsResponseBody,
+    ExecuteAutoDisposeRecordsResponse,
     ExecuteLogQueryRequest,
     ExecuteLogQueryResponseBody,
     ExecuteLogQueryResponse,
     ExecuteUpgradeRequest,
     ExecuteUpgradeResponseBody,
     ExecuteUpgradeResponse,
+    GetAutoDisposeConfigRequest,
+    GetAutoDisposeConfigResponseBody,
+    GetAutoDisposeConfigResponse,
     GetDataBatchIngestionRequest,
     GetDataBatchIngestionResponseBody,
     GetDataBatchIngestionResponse,
@@ -431,6 +463,10 @@ __all__ = [
     GetUserConfigRequest,
     GetUserConfigResponseBody,
     GetUserConfigResponse,
+    ListAutoDisposeEntitiesRequest,
+    ListAutoDisposeEntitiesShrinkRequest,
+    ListAutoDisposeEntitiesResponseBody,
+    ListAutoDisposeEntitiesResponse,
     ListDataIngestionTemplatesRequest,
     ListDataIngestionTemplatesResponseBody,
     ListDataIngestionTemplatesResponse,
@@ -517,6 +553,12 @@ __all__ = [
     SetDefaultNormalizationRuleVersionRequest,
     SetDefaultNormalizationRuleVersionResponseBody,
     SetDefaultNormalizationRuleVersionResponse,
+    UpdateAutoDisposeConfigRequest,
+    UpdateAutoDisposeConfigResponseBody,
+    UpdateAutoDisposeConfigResponse,
+    UpdateAutoDisposeRecordRequest,
+    UpdateAutoDisposeRecordResponseBody,
+    UpdateAutoDisposeRecordResponse,
     UpdateDataBatchIngestionRequest,
     UpdateDataBatchIngestionShrinkRequest,
     UpdateDataBatchIngestionResponseBody,
@@ -581,6 +623,9 @@ __all__ = [
     CreateDataSourceShrinkRequestDataSourceStores,
     CreateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys,
     CreateNormalizationSchemaRequestNormalizationFields,
+    ExecuteAutoDisposeRecordsRequestSelectedEntityList,
+    ExecuteAutoDisposeRecordsRequestUnSelectedEntityList,
+    GetAutoDisposeConfigResponseBodyAutoDisposeConfig,
     GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions,
     GetDataBatchIngestionResponseBodyDataBatchIngestion,
     GetDataStorageResponseBodyDataNormalizationLogStores,
@@ -596,6 +641,7 @@ __all__ = [
     GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationSchemaReferences,
     GetNormalizationSchemaResponseBodyNormalizationSchema,
     GetUserConfigResponseBodyUser,
+    ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities,
     ListDataIngestionTemplatesResponseBodyDataIngestionTemplates,
     ListDataIngestionsResponseBodyDataIngestions,
     ListDataSetRecordsResponseBodyDataSetRecords,

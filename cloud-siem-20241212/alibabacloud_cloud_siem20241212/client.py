@@ -123,6 +123,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_upgrade_item_with_options_async(request, runtime)
 
+    def create_auto_dispose_config_with_options(
+        self,
+        request: main_models.CreateAutoDisposeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAutoDisposeConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_decision_status):
+            body['AutoDecisionStatus'] = request.auto_decision_status
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAutoDisposeConfig',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAutoDisposeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_auto_dispose_config_with_options_async(
+        self,
+        request: main_models.CreateAutoDisposeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAutoDisposeConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_decision_status):
+            body['AutoDecisionStatus'] = request.auto_decision_status
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAutoDisposeConfig',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAutoDisposeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_auto_dispose_config(
+        self,
+        request: main_models.CreateAutoDisposeConfigRequest,
+    ) -> main_models.CreateAutoDisposeConfigResponse:
+        runtime = RuntimeOptions()
+        return self.create_auto_dispose_config_with_options(request, runtime)
+
+    async def create_auto_dispose_config_async(
+        self,
+        request: main_models.CreateAutoDisposeConfigRequest,
+    ) -> main_models.CreateAutoDisposeConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.create_auto_dispose_config_with_options_async(request, runtime)
+
     def create_data_ingestion_with_options(
         self,
         request: main_models.CreateDataIngestionRequest,
@@ -2523,6 +2601,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_data_ingestion_with_options_async(request, runtime)
 
+    def execute_auto_dispose_records_with_options(
+        self,
+        request: main_models.ExecuteAutoDisposeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteAutoDisposeRecordsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        body_flat = {}
+        if not DaraCore.is_null(request.selected_entity_list):
+            body_flat['SelectedEntityList'] = request.selected_entity_list
+        if not DaraCore.is_null(request.un_selected_entity_list):
+            body_flat['UnSelectedEntityList'] = request.un_selected_entity_list
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteAutoDisposeRecords',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteAutoDisposeRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_auto_dispose_records_with_options_async(
+        self,
+        request: main_models.ExecuteAutoDisposeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteAutoDisposeRecordsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        body_flat = {}
+        if not DaraCore.is_null(request.selected_entity_list):
+            body_flat['SelectedEntityList'] = request.selected_entity_list
+        if not DaraCore.is_null(request.un_selected_entity_list):
+            body_flat['UnSelectedEntityList'] = request.un_selected_entity_list
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteAutoDisposeRecords',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteAutoDisposeRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_auto_dispose_records(
+        self,
+        request: main_models.ExecuteAutoDisposeRecordsRequest,
+    ) -> main_models.ExecuteAutoDisposeRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.execute_auto_dispose_records_with_options(request, runtime)
+
+    async def execute_auto_dispose_records_async(
+        self,
+        request: main_models.ExecuteAutoDisposeRecordsRequest,
+    ) -> main_models.ExecuteAutoDisposeRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.execute_auto_dispose_records_with_options_async(request, runtime)
+
     def execute_log_query_with_options(
         self,
         request: main_models.ExecuteLogQueryRequest,
@@ -2714,6 +2874,80 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteUpgradeResponse:
         runtime = RuntimeOptions()
         return await self.execute_upgrade_with_options_async(request, runtime)
+
+    def get_auto_dispose_config_with_options(
+        self,
+        request: main_models.GetAutoDisposeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoDisposeConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutoDisposeConfig',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutoDisposeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_dispose_config_with_options_async(
+        self,
+        request: main_models.GetAutoDisposeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoDisposeConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutoDisposeConfig',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutoDisposeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_dispose_config(
+        self,
+        request: main_models.GetAutoDisposeConfigRequest,
+    ) -> main_models.GetAutoDisposeConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_auto_dispose_config_with_options(request, runtime)
+
+    async def get_auto_dispose_config_async(
+        self,
+        request: main_models.GetAutoDisposeConfigRequest,
+    ) -> main_models.GetAutoDisposeConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_auto_dispose_config_with_options_async(request, runtime)
 
     def get_data_batch_ingestion_with_options(
         self,
@@ -3526,6 +3760,112 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserConfigResponse:
         runtime = RuntimeOptions()
         return await self.get_user_config_with_options_async(request, runtime)
+
+    def list_auto_dispose_entities_with_options(
+        self,
+        tmp_req: main_models.ListAutoDisposeEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoDisposeEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.ListAutoDisposeEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.auto_dispose_record_ids):
+            request.auto_dispose_record_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.auto_dispose_record_ids, 'AutoDisposeRecordIds', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.auto_dispose_record_ids_shrink):
+            body['AutoDisposeRecordIds'] = request.auto_dispose_record_ids_shrink
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAutoDisposeEntities',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAutoDisposeEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_dispose_entities_with_options_async(
+        self,
+        tmp_req: main_models.ListAutoDisposeEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoDisposeEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.ListAutoDisposeEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.auto_dispose_record_ids):
+            request.auto_dispose_record_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.auto_dispose_record_ids, 'AutoDisposeRecordIds', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.auto_dispose_record_ids_shrink):
+            body['AutoDisposeRecordIds'] = request.auto_dispose_record_ids_shrink
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAutoDisposeEntities',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAutoDisposeEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_dispose_entities(
+        self,
+        request: main_models.ListAutoDisposeEntitiesRequest,
+    ) -> main_models.ListAutoDisposeEntitiesResponse:
+        runtime = RuntimeOptions()
+        return self.list_auto_dispose_entities_with_options(request, runtime)
+
+    async def list_auto_dispose_entities_async(
+        self,
+        request: main_models.ListAutoDisposeEntitiesRequest,
+    ) -> main_models.ListAutoDisposeEntitiesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_auto_dispose_entities_with_options_async(request, runtime)
 
     def list_data_ingestion_templates_with_options(
         self,
@@ -6200,6 +6540,170 @@ class Client(OpenApiClient):
     ) -> main_models.SetDefaultNormalizationRuleVersionResponse:
         runtime = RuntimeOptions()
         return await self.set_default_normalization_rule_version_with_options_async(request, runtime)
+
+    def update_auto_dispose_config_with_options(
+        self,
+        request: main_models.UpdateAutoDisposeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoDisposeConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_decision_status):
+            body['AutoDecisionStatus'] = request.auto_decision_status
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoDisposeConfig',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAutoDisposeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_auto_dispose_config_with_options_async(
+        self,
+        request: main_models.UpdateAutoDisposeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoDisposeConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_decision_status):
+            body['AutoDecisionStatus'] = request.auto_decision_status
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoDisposeConfig',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAutoDisposeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_auto_dispose_config(
+        self,
+        request: main_models.UpdateAutoDisposeConfigRequest,
+    ) -> main_models.UpdateAutoDisposeConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_auto_dispose_config_with_options(request, runtime)
+
+    async def update_auto_dispose_config_async(
+        self,
+        request: main_models.UpdateAutoDisposeConfigRequest,
+    ) -> main_models.UpdateAutoDisposeConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_auto_dispose_config_with_options_async(request, runtime)
+
+    def update_auto_dispose_record_with_options(
+        self,
+        request: main_models.UpdateAutoDisposeRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoDisposeRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_decision_conclusion):
+            body['AutoDecisionConclusion'] = request.auto_decision_conclusion
+        if not DaraCore.is_null(request.auto_decision_entity_list):
+            body['AutoDecisionEntityList'] = request.auto_decision_entity_list
+        if not DaraCore.is_null(request.auto_decision_result):
+            body['AutoDecisionResult'] = request.auto_decision_result
+        if not DaraCore.is_null(request.auto_dispose_record_id):
+            body['AutoDisposeRecordId'] = request.auto_dispose_record_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoDisposeRecord',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAutoDisposeRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_auto_dispose_record_with_options_async(
+        self,
+        request: main_models.UpdateAutoDisposeRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoDisposeRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_decision_conclusion):
+            body['AutoDecisionConclusion'] = request.auto_decision_conclusion
+        if not DaraCore.is_null(request.auto_decision_entity_list):
+            body['AutoDecisionEntityList'] = request.auto_decision_entity_list
+        if not DaraCore.is_null(request.auto_decision_result):
+            body['AutoDecisionResult'] = request.auto_decision_result
+        if not DaraCore.is_null(request.auto_dispose_record_id):
+            body['AutoDisposeRecordId'] = request.auto_dispose_record_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoDisposeRecord',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAutoDisposeRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_auto_dispose_record(
+        self,
+        request: main_models.UpdateAutoDisposeRecordRequest,
+    ) -> main_models.UpdateAutoDisposeRecordResponse:
+        runtime = RuntimeOptions()
+        return self.update_auto_dispose_record_with_options(request, runtime)
+
+    async def update_auto_dispose_record_async(
+        self,
+        request: main_models.UpdateAutoDisposeRecordRequest,
+    ) -> main_models.UpdateAutoDisposeRecordResponse:
+        runtime = RuntimeOptions()
+        return await self.update_auto_dispose_record_with_options_async(request, runtime)
 
     def update_data_batch_ingestion_with_options(
         self,

@@ -1,3 +1,12 @@
+2026-04-21 Version: 2.2.0
+- Support API CreateAutoDisposeConfig.
+- Support API ExecuteAutoDisposeRecords.
+- Support API GetAutoDisposeConfig.
+- Support API ListAutoDisposeEntities.
+- Support API UpdateAutoDisposeConfig.
+- Support API UpdateAutoDisposeRecord.
+
+
 2026-04-15 Version: 2.1.0
 - Support API CreateResponseRule.
 - Support API DeleteResponseRule.
