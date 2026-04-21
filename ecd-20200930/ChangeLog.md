@@ -1,3 +1,12 @@
+2026-04-21 Version: 4.24.2
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.VerificationNotificationTime.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.VerificationTime.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.VerificationNotificationTime.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.VerificationTime.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.VerificationNotificationTime.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.VerificationTime.
+
+
 2026-04-20 Version: 4.24.1
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.CreateSnapshot.
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.PatchId.

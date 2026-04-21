@@ -277,6 +277,8 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
         timer_order: int = None,
         timezone: str = None,
         trigger_type: str = None,
+        verification_notification_time: int = None,
+        verification_time: int = None,
     ):
         self.appointment_timer = appointment_timer
         self.create_snapshot = create_snapshot
@@ -294,6 +296,8 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
         self.timer_order = timer_order
         self.timezone = timezone
         self.trigger_type = trigger_type
+        self.verification_notification_time = verification_notification_time
+        self.verification_time = verification_time
 
     def validate(self):
         pass
@@ -351,6 +355,12 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
 
+        if self.verification_notification_time is not None:
+            result['VerificationNotificationTime'] = self.verification_notification_time
+
+        if self.verification_time is not None:
+            result['VerificationTime'] = self.verification_time
+
         return result
 
     def from_map(self, m: dict = None):
@@ -402,6 +412,12 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
 
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+
+        if m.get('VerificationNotificationTime') is not None:
+            self.verification_notification_time = m.get('VerificationNotificationTime')
+
+        if m.get('VerificationTime') is not None:
+            self.verification_time = m.get('VerificationTime')
 
         return self
 
