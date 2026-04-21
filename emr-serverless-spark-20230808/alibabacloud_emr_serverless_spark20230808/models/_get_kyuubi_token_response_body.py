@@ -54,6 +54,7 @@ class GetKyuubiTokenResponseBodyData(DaraModel):
         last_used_time: int = None,
         member_arns: List[str] = None,
         name: str = None,
+        spark_role: List[str] = None,
         token: str = None,
         token_id: str = None,
     ):
@@ -64,6 +65,7 @@ class GetKyuubiTokenResponseBodyData(DaraModel):
         self.last_used_time = last_used_time
         self.member_arns = member_arns
         self.name = name
+        self.spark_role = spark_role
         self.token = token
         # Token ID。
         self.token_id = token_id
@@ -98,6 +100,9 @@ class GetKyuubiTokenResponseBodyData(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.spark_role is not None:
+            result['sparkRole'] = self.spark_role
+
         if self.token is not None:
             result['token'] = self.token
 
@@ -129,6 +134,9 @@ class GetKyuubiTokenResponseBodyData(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('sparkRole') is not None:
+            self.spark_role = m.get('sparkRole')
 
         if m.get('token') is not None:
             self.token = m.get('token')

@@ -1,3 +1,10 @@
+2026-04-21 Version: 1.21.1
+- Update API CreateKyuubiToken: add request parameters body.sparkRole.
+- Update API GetKyuubiToken: add response parameters Body.data.sparkRole.
+- Update API ListKyuubiToken: add response parameters Body.data.tokens.$.sparkRole.
+- Update API UpdateKyuubiToken: add request parameters body.sparkRole.
+
+
 2026-04-19 Version: 1.21.0
 - Support API ChangeResourceGroup.
 

@@ -520,6 +520,8 @@ class Client(OpenApiClient):
             body['memberArns'] = request.member_arns
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.spark_role):
+            body['sparkRole'] = request.spark_role
         if not DaraCore.is_null(request.token):
             body['token'] = request.token
         req = open_api_util_models.OpenApiRequest(
@@ -562,6 +564,8 @@ class Client(OpenApiClient):
             body['memberArns'] = request.member_arns
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.spark_role):
+            body['sparkRole'] = request.spark_role
         if not DaraCore.is_null(request.token):
             body['token'] = request.token
         req = open_api_util_models.OpenApiRequest(
@@ -6343,6 +6347,8 @@ class Client(OpenApiClient):
             body['memberArns'] = request.member_arns
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.spark_role):
+            body['sparkRole'] = request.spark_role
         if not DaraCore.is_null(request.token):
             body['token'] = request.token
         req = open_api_util_models.OpenApiRequest(
@@ -6386,6 +6392,8 @@ class Client(OpenApiClient):
             body['memberArns'] = request.member_arns
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.spark_role):
+            body['sparkRole'] = request.spark_role
         if not DaraCore.is_null(request.token):
             body['token'] = request.token
         req = open_api_util_models.OpenApiRequest(
