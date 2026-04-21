@@ -1,3 +1,7 @@
+2026-04-21 Version: 7.0.1
+- Update API DeployHttpApi: add response parameters Body.data.
+
+
 2026-04-08 Version: 7.0.0
 - Support API ListExternalServices.
 - Update API ExportHttpApi: add request parameters body.

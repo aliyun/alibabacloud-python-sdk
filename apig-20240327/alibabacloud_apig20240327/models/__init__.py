@@ -31,6 +31,27 @@ from ._domain_info import DomainInfo
 from ._environment_info import EnvironmentInfo
 from ._gateway_info import GatewayInfo
 from ._gateway_log_config import GatewayLogConfig
+from ._hi_market_agent_config import HiMarketAgentConfig
+from ._hi_market_api_key_config import HiMarketApiKeyConfig
+from ._hi_market_auth_code_config import HiMarketAuthCodeConfig
+from ._hi_market_domain import HiMarketDomain
+from ._hi_market_hmac_config import HiMarketHmacConfig
+from ._hi_market_http_route import HiMarketHttpRoute
+from ._hi_market_icon import HiMarketIcon
+from ._hi_market_identity_mapping import HiMarketIdentityMapping
+from ._hi_market_jwt_config import HiMarketJwtConfig
+from ._hi_market_mcp_config import HiMarketMcpConfig
+from ._hi_market_model_config import HiMarketModelConfig
+from ._hi_market_model_feature import HiMarketModelFeature
+from ._hi_market_oidc_config import HiMarketOidcConfig
+from ._hi_market_portal_deploy_config import HiMarketPortalDeployConfig
+from ._hi_market_portal_domain_config import HiMarketPortalDomainConfig
+from ._hi_market_portal_setting_config import HiMarketPortalSettingConfig
+from ._hi_market_product_category import HiMarketProductCategory
+from ._hi_market_product_feature import HiMarketProductFeature
+from ._hi_market_product_publication_conifg import HiMarketProductPublicationConifg
+from ._hi_market_product_publication_detail import HiMarketProductPublicationDetail
+from ._hi_market_product_ref_config import HiMarketProductRefConfig
 from ._http_api_api_info import HttpApiApiInfo
 from ._http_api_backend_match_condition import HttpApiBackendMatchCondition
 from ._http_api_backend_match_conditions import HttpApiBackendMatchConditions
@@ -395,6 +416,21 @@ from ._api_route_conflict_info import ApiRouteConflictInfoDomainInfo
 from ._backend import BackendServices
 from ._gateway_info import GatewayInfoVpcInfo
 from ._gateway_log_config import GatewayLogConfigSlsConfig
+from ._hi_market_agent_config import HiMarketAgentConfigAgentAPIConfig
+from ._hi_market_api_key_config import HiMarketApiKeyConfigCredentials
+from ._hi_market_hmac_config import HiMarketHmacConfigCredentials
+from ._hi_market_http_route import HiMarketHttpRouteMatchHeaders
+from ._hi_market_http_route import HiMarketHttpRouteMatchModelMatches
+from ._hi_market_http_route import HiMarketHttpRouteMatchPath
+from ._hi_market_http_route import HiMarketHttpRouteMatchQueryParams
+from ._hi_market_http_route import HiMarketHttpRouteMatch
+from ._hi_market_mcp_config import HiMarketMcpConfigMcpServerConfig
+from ._hi_market_mcp_config import HiMarketMcpConfigMeta
+from ._hi_market_model_config import HiMarketModelConfigModelAPIConfig
+from ._hi_market_oidc_config import HiMarketOidcConfigAuthCodeConfig
+from ._hi_market_oidc_config import HiMarketOidcConfigIdentityMapping
+from ._hi_market_portal_deploy_config import HiMarketPortalDeployConfigSaeConfig
+from ._hi_market_product_ref_config import HiMarketProductRefConfigApigRefConfig
 from ._http_api_api_info import HttpApiApiInfoEnvironmentsGatewayInfo
 from ._http_api_api_info import HttpApiApiInfoEnvironmentsServiceConfigs
 from ._http_api_api_info import HttpApiApiInfoEnvironmentsSubDomains
@@ -485,6 +521,7 @@ from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigEnvironme
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigEnvironment
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigOperationDeployments
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfig
+from ._deploy_http_api_response_body import DeployHttpApiResponseBodyData
 from ._export_http_api_request import ExportHttpApiRequestExtensionConfig
 from ._export_http_api_response_body import ExportHttpApiResponseBodyData
 from ._get_consumer_response_body import GetConsumerResponseBodyData
@@ -642,6 +679,27 @@ __all__ = [
     EnvironmentInfo,
     GatewayInfo,
     GatewayLogConfig,
+    HiMarketAgentConfig,
+    HiMarketApiKeyConfig,
+    HiMarketAuthCodeConfig,
+    HiMarketDomain,
+    HiMarketHmacConfig,
+    HiMarketHttpRoute,
+    HiMarketIcon,
+    HiMarketIdentityMapping,
+    HiMarketJwtConfig,
+    HiMarketMcpConfig,
+    HiMarketModelConfig,
+    HiMarketModelFeature,
+    HiMarketOidcConfig,
+    HiMarketPortalDeployConfig,
+    HiMarketPortalDomainConfig,
+    HiMarketPortalSettingConfig,
+    HiMarketProductCategory,
+    HiMarketProductFeature,
+    HiMarketProductPublicationConifg,
+    HiMarketProductPublicationDetail,
+    HiMarketProductRefConfig,
     HttpApiApiInfo,
     HttpApiBackendMatchCondition,
     HttpApiBackendMatchConditions,
@@ -1006,6 +1064,21 @@ __all__ = [
     BackendServices,
     GatewayInfoVpcInfo,
     GatewayLogConfigSlsConfig,
+    HiMarketAgentConfigAgentAPIConfig,
+    HiMarketApiKeyConfigCredentials,
+    HiMarketHmacConfigCredentials,
+    HiMarketHttpRouteMatchHeaders,
+    HiMarketHttpRouteMatchModelMatches,
+    HiMarketHttpRouteMatchPath,
+    HiMarketHttpRouteMatchQueryParams,
+    HiMarketHttpRouteMatch,
+    HiMarketMcpConfigMcpServerConfig,
+    HiMarketMcpConfigMeta,
+    HiMarketModelConfigModelAPIConfig,
+    HiMarketOidcConfigAuthCodeConfig,
+    HiMarketOidcConfigIdentityMapping,
+    HiMarketPortalDeployConfigSaeConfig,
+    HiMarketProductRefConfigApigRefConfig,
     HttpApiApiInfoEnvironmentsGatewayInfo,
     HttpApiApiInfoEnvironmentsServiceConfigs,
     HttpApiApiInfoEnvironmentsSubDomains,
@@ -1096,6 +1169,7 @@ __all__ = [
     DeployHttpApiRequestRestApiConfigEnvironment,
     DeployHttpApiRequestRestApiConfigOperationDeployments,
     DeployHttpApiRequestRestApiConfig,
+    DeployHttpApiResponseBodyData,
     ExportHttpApiRequestExtensionConfig,
     ExportHttpApiResponseBodyData,
     GetConsumerResponseBodyData,
