@@ -1,3 +1,6 @@
+2026-04-21 Version: 3.3.4
+- Generated python 2020-04-07 for cas.
+
 2026-04-21 Version: 3.3.3
 - Update API GetCertificateDetail: add response parameters Body.CompanyId.
 - Update API GetCertificateDetail: add response parameters Body.ContactId.
