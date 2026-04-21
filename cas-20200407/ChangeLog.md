@@ -1,3 +1,8 @@
+2026-04-21 Version: 3.3.3
+- Update API GetCertificateDetail: add response parameters Body.CompanyId.
+- Update API GetCertificateDetail: add response parameters Body.ContactId.
+
+
 2026-04-15 Version: 3.3.2
 - Update API ListCert: add response parameters Body.CertList.$.Algorithm.
 - Update API ListCert: add response parameters Body.CertList.$.SerialNo.
