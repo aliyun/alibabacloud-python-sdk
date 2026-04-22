@@ -2432,6 +2432,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_data_channel_credential_with_options_async(request, runtime)
 
+    def get_instance_trending_report_with_options(
+        self,
+        request: main_models.GetInstanceTrendingReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceTrendingReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceTrendingReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceTrendingReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_trending_report_with_options_async(
+        self,
+        request: main_models.GetInstanceTrendingReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceTrendingReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceTrendingReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceTrendingReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_trending_report(
+        self,
+        request: main_models.GetInstanceTrendingReportRequest,
+    ) -> main_models.GetInstanceTrendingReportResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_trending_report_with_options(request, runtime)
+
+    async def get_instance_trending_report_async(
+        self,
+        request: main_models.GetInstanceTrendingReportRequest,
+    ) -> main_models.GetInstanceTrendingReportResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_trending_report_with_options_async(request, runtime)
+
     def get_realtime_instance_stats_with_options(
         self,
         request: main_models.GetRealtimeInstanceStatsRequest,
@@ -2501,6 +2583,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetRealtimeInstanceStatsResponse:
         runtime = RuntimeOptions()
         return await self.get_realtime_instance_stats_with_options_async(request, runtime)
+
+    def get_realtime_script_stats_with_options(
+        self,
+        request: main_models.GetRealtimeScriptStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRealtimeScriptStatsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRealtimeScriptStats',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRealtimeScriptStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_realtime_script_stats_with_options_async(
+        self,
+        request: main_models.GetRealtimeScriptStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRealtimeScriptStatsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRealtimeScriptStats',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRealtimeScriptStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_realtime_script_stats(
+        self,
+        request: main_models.GetRealtimeScriptStatsRequest,
+    ) -> main_models.GetRealtimeScriptStatsResponse:
+        runtime = RuntimeOptions()
+        return self.get_realtime_script_stats_with_options(request, runtime)
+
+    async def get_realtime_script_stats_async(
+        self,
+        request: main_models.GetRealtimeScriptStatsRequest,
+    ) -> main_models.GetRealtimeScriptStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_realtime_script_stats_with_options_async(request, runtime)
 
     def get_recording_with_options(
         self,
@@ -2649,6 +2805,92 @@ class Client(OpenApiClient):
     ) -> main_models.GetScriptResponse:
         runtime = RuntimeOptions()
         return await self.get_script_with_options_async(request, runtime)
+
+    def get_script_trending_report_with_options(
+        self,
+        request: main_models.GetScriptTrendingReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScriptTrendingReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScriptTrendingReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScriptTrendingReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_script_trending_report_with_options_async(
+        self,
+        request: main_models.GetScriptTrendingReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScriptTrendingReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScriptTrendingReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScriptTrendingReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_script_trending_report(
+        self,
+        request: main_models.GetScriptTrendingReportRequest,
+    ) -> main_models.GetScriptTrendingReportResponse:
+        runtime = RuntimeOptions()
+        return self.get_script_trending_report_with_options(request, runtime)
+
+    async def get_script_trending_report_async(
+        self,
+        request: main_models.GetScriptTrendingReportRequest,
+    ) -> main_models.GetScriptTrendingReportResponse:
+        runtime = RuntimeOptions()
+        return await self.get_script_trending_report_with_options_async(request, runtime)
 
     def get_subscription_with_options(
         self,
@@ -3338,6 +3580,198 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_clone_voice_models_with_options_async(request, runtime)
 
+    def list_historical_instance_report_with_options(
+        self,
+        tmp_req: main_models.ListHistoricalInstanceReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHistoricalInstanceReportResponse:
+        tmp_req.validate()
+        request = main_models.ListHistoricalInstanceReportShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            body['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHistoricalInstanceReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHistoricalInstanceReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_historical_instance_report_with_options_async(
+        self,
+        tmp_req: main_models.ListHistoricalInstanceReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHistoricalInstanceReportResponse:
+        tmp_req.validate()
+        request = main_models.ListHistoricalInstanceReportShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            body['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHistoricalInstanceReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHistoricalInstanceReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_historical_instance_report(
+        self,
+        request: main_models.ListHistoricalInstanceReportRequest,
+    ) -> main_models.ListHistoricalInstanceReportResponse:
+        runtime = RuntimeOptions()
+        return self.list_historical_instance_report_with_options(request, runtime)
+
+    async def list_historical_instance_report_async(
+        self,
+        request: main_models.ListHistoricalInstanceReportRequest,
+    ) -> main_models.ListHistoricalInstanceReportResponse:
+        runtime = RuntimeOptions()
+        return await self.list_historical_instance_report_with_options_async(request, runtime)
+
+    def list_historical_script_report_with_options(
+        self,
+        tmp_req: main_models.ListHistoricalScriptReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHistoricalScriptReportResponse:
+        tmp_req.validate()
+        request = main_models.ListHistoricalScriptReportShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.script_ids):
+            request.script_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_ids, 'ScriptIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.script_ids_shrink):
+            body['ScriptIds'] = request.script_ids_shrink
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHistoricalScriptReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHistoricalScriptReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_historical_script_report_with_options_async(
+        self,
+        tmp_req: main_models.ListHistoricalScriptReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHistoricalScriptReportResponse:
+        tmp_req.validate()
+        request = main_models.ListHistoricalScriptReportShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.script_ids):
+            request.script_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_ids, 'ScriptIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.script_ids_shrink):
+            body['ScriptIds'] = request.script_ids_shrink
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHistoricalScriptReport',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHistoricalScriptReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_historical_script_report(
+        self,
+        request: main_models.ListHistoricalScriptReportRequest,
+    ) -> main_models.ListHistoricalScriptReportResponse:
+        runtime = RuntimeOptions()
+        return self.list_historical_script_report_with_options(request, runtime)
+
+    async def list_historical_script_report_async(
+        self,
+        request: main_models.ListHistoricalScriptReportRequest,
+    ) -> main_models.ListHistoricalScriptReportResponse:
+        runtime = RuntimeOptions()
+        return await self.list_historical_script_report_with_options_async(request, runtime)
+
     def list_instructions_with_options(
         self,
         request: main_models.ListInstructionsRequest,
@@ -3567,6 +4001,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListNluModelsResponse:
         runtime = RuntimeOptions()
         return await self.list_nlu_models_with_options_async(request, runtime)
+
+    def list_realtime_instance_stats_with_options(
+        self,
+        tmp_req: main_models.ListRealtimeInstanceStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRealtimeInstanceStatsResponse:
+        tmp_req.validate()
+        request = main_models.ListRealtimeInstanceStatsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            body['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRealtimeInstanceStats',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRealtimeInstanceStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_realtime_instance_stats_with_options_async(
+        self,
+        tmp_req: main_models.ListRealtimeInstanceStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRealtimeInstanceStatsResponse:
+        tmp_req.validate()
+        request = main_models.ListRealtimeInstanceStatsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            body['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRealtimeInstanceStats',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRealtimeInstanceStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_realtime_instance_stats(
+        self,
+        request: main_models.ListRealtimeInstanceStatsRequest,
+    ) -> main_models.ListRealtimeInstanceStatsResponse:
+        runtime = RuntimeOptions()
+        return self.list_realtime_instance_stats_with_options(request, runtime)
+
+    async def list_realtime_instance_stats_async(
+        self,
+        request: main_models.ListRealtimeInstanceStatsRequest,
+    ) -> main_models.ListRealtimeInstanceStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_realtime_instance_stats_with_options_async(request, runtime)
 
     def list_script_profile_templates_with_options(
         self,

@@ -88,15 +88,24 @@ from ._get_call_detail_record_response import GetCallDetailRecordResponse
 from ._get_data_channel_credential_request import GetDataChannelCredentialRequest
 from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBody
 from ._get_data_channel_credential_response import GetDataChannelCredentialResponse
+from ._get_instance_trending_report_request import GetInstanceTrendingReportRequest
+from ._get_instance_trending_report_response_body import GetInstanceTrendingReportResponseBody
+from ._get_instance_trending_report_response import GetInstanceTrendingReportResponse
 from ._get_realtime_instance_stats_request import GetRealtimeInstanceStatsRequest
 from ._get_realtime_instance_stats_response_body import GetRealtimeInstanceStatsResponseBody
 from ._get_realtime_instance_stats_response import GetRealtimeInstanceStatsResponse
+from ._get_realtime_script_stats_request import GetRealtimeScriptStatsRequest
+from ._get_realtime_script_stats_response_body import GetRealtimeScriptStatsResponseBody
+from ._get_realtime_script_stats_response import GetRealtimeScriptStatsResponse
 from ._get_recording_request import GetRecordingRequest
 from ._get_recording_response_body import GetRecordingResponseBody
 from ._get_recording_response import GetRecordingResponse
 from ._get_script_request import GetScriptRequest
 from ._get_script_response_body import GetScriptResponseBody
 from ._get_script_response import GetScriptResponse
+from ._get_script_trending_report_request import GetScriptTrendingReportRequest
+from ._get_script_trending_report_response_body import GetScriptTrendingReportResponseBody
+from ._get_script_trending_report_response import GetScriptTrendingReportResponse
 from ._get_subscription_request import GetSubscriptionRequest
 from ._get_subscription_response_body import GetSubscriptionResponseBody
 from ._get_subscription_response import GetSubscriptionResponse
@@ -122,6 +131,14 @@ from ._list_clone_voice_response import ListCloneVoiceResponse
 from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
 from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
+from ._list_historical_instance_report_request import ListHistoricalInstanceReportRequest
+from ._list_historical_instance_report_shrink_request import ListHistoricalInstanceReportShrinkRequest
+from ._list_historical_instance_report_response_body import ListHistoricalInstanceReportResponseBody
+from ._list_historical_instance_report_response import ListHistoricalInstanceReportResponse
+from ._list_historical_script_report_request import ListHistoricalScriptReportRequest
+from ._list_historical_script_report_shrink_request import ListHistoricalScriptReportShrinkRequest
+from ._list_historical_script_report_response_body import ListHistoricalScriptReportResponseBody
+from ._list_historical_script_report_response import ListHistoricalScriptReportResponse
 from ._list_instructions_request import ListInstructionsRequest
 from ._list_instructions_response_body import ListInstructionsResponseBody
 from ._list_instructions_response import ListInstructionsResponse
@@ -131,6 +148,10 @@ from ._list_llm_access_profiles_response import ListLlmAccessProfilesResponse
 from ._list_nlu_models_request import ListNluModelsRequest
 from ._list_nlu_models_response_body import ListNluModelsResponseBody
 from ._list_nlu_models_response import ListNluModelsResponse
+from ._list_realtime_instance_stats_request import ListRealtimeInstanceStatsRequest
+from ._list_realtime_instance_stats_shrink_request import ListRealtimeInstanceStatsShrinkRequest
+from ._list_realtime_instance_stats_response_body import ListRealtimeInstanceStatsResponseBody
+from ._list_realtime_instance_stats_response import ListRealtimeInstanceStatsResponse
 from ._list_script_profile_templates_request import ListScriptProfileTemplatesRequest
 from ._list_script_profile_templates_response_body import ListScriptProfileTemplatesResponseBody
 from ._list_script_profile_templates_response import ListScriptProfileTemplatesResponse
@@ -218,8 +239,10 @@ from ._generate_file_upload_params_response_body import GenerateFileUploadParams
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataTranscripts
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyData
 from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBodyData
+from ._get_instance_trending_report_response_body import GetInstanceTrendingReportResponseBodyData
 from ._get_realtime_instance_stats_response_body import GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList
 from ._get_realtime_instance_stats_response_body import GetRealtimeInstanceStatsResponseBodyData
+from ._get_realtime_script_stats_response_body import GetRealtimeScriptStatsResponseBodyData
 from ._get_recording_response_body import GetRecordingResponseBodyData
 from ._get_script_response_body import GetScriptResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers
 from ._get_script_response_body import GetScriptResponseBodyDataDraftVersionInteractionConfigEndConversationConfig
@@ -254,6 +277,7 @@ from ._get_script_response_body import GetScriptResponseBodyDataPublishedVersion
 from ._get_script_response_body import GetScriptResponseBodyDataPublishedVersionTranscriberConfig
 from ._get_script_response_body import GetScriptResponseBodyDataPublishedVersion
 from ._get_script_response_body import GetScriptResponseBodyData
+from ._get_script_trending_report_response_body import GetScriptTrendingReportResponseBodyData
 from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
 from ._get_subscription_response_body import GetSubscriptionResponseBodyData
 from ._get_vocabulary_response_body import GetVocabularyResponseBodyData
@@ -267,12 +291,18 @@ from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataClone
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
+from ._list_historical_instance_report_response_body import ListHistoricalInstanceReportResponseBodyDataList
+from ._list_historical_instance_report_response_body import ListHistoricalInstanceReportResponseBodyData
+from ._list_historical_script_report_response_body import ListHistoricalScriptReportResponseBodyDataList
+from ._list_historical_script_report_response_body import ListHistoricalScriptReportResponseBodyData
 from ._list_instructions_response_body import ListInstructionsResponseBodyDataInstructions
 from ._list_instructions_response_body import ListInstructionsResponseBodyData
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles
 from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyData
 from ._list_nlu_models_response_body import ListNluModelsResponseBodyData
+from ._list_realtime_instance_stats_response_body import ListRealtimeInstanceStatsResponseBodyDataList
+from ._list_realtime_instance_stats_response_body import ListRealtimeInstanceStatsResponseBodyData
 from ._list_script_profile_templates_response_body import ListScriptProfileTemplatesResponseBodyData
 from ._list_scripts_response_body import ListScriptsResponseBodyDataScripts
 from ._list_scripts_response_body import ListScriptsResponseBodyData
@@ -378,15 +408,24 @@ __all__ = [
     GetDataChannelCredentialRequest,
     GetDataChannelCredentialResponseBody,
     GetDataChannelCredentialResponse,
+    GetInstanceTrendingReportRequest,
+    GetInstanceTrendingReportResponseBody,
+    GetInstanceTrendingReportResponse,
     GetRealtimeInstanceStatsRequest,
     GetRealtimeInstanceStatsResponseBody,
     GetRealtimeInstanceStatsResponse,
+    GetRealtimeScriptStatsRequest,
+    GetRealtimeScriptStatsResponseBody,
+    GetRealtimeScriptStatsResponse,
     GetRecordingRequest,
     GetRecordingResponseBody,
     GetRecordingResponse,
     GetScriptRequest,
     GetScriptResponseBody,
     GetScriptResponse,
+    GetScriptTrendingReportRequest,
+    GetScriptTrendingReportResponseBody,
+    GetScriptTrendingReportResponse,
     GetSubscriptionRequest,
     GetSubscriptionResponseBody,
     GetSubscriptionResponse,
@@ -412,6 +451,14 @@ __all__ = [
     ListCloneVoiceModelsRequest,
     ListCloneVoiceModelsResponseBody,
     ListCloneVoiceModelsResponse,
+    ListHistoricalInstanceReportRequest,
+    ListHistoricalInstanceReportShrinkRequest,
+    ListHistoricalInstanceReportResponseBody,
+    ListHistoricalInstanceReportResponse,
+    ListHistoricalScriptReportRequest,
+    ListHistoricalScriptReportShrinkRequest,
+    ListHistoricalScriptReportResponseBody,
+    ListHistoricalScriptReportResponse,
     ListInstructionsRequest,
     ListInstructionsResponseBody,
     ListInstructionsResponse,
@@ -421,6 +468,10 @@ __all__ = [
     ListNluModelsRequest,
     ListNluModelsResponseBody,
     ListNluModelsResponse,
+    ListRealtimeInstanceStatsRequest,
+    ListRealtimeInstanceStatsShrinkRequest,
+    ListRealtimeInstanceStatsResponseBody,
+    ListRealtimeInstanceStatsResponse,
     ListScriptProfileTemplatesRequest,
     ListScriptProfileTemplatesResponseBody,
     ListScriptProfileTemplatesResponse,
@@ -508,8 +559,10 @@ __all__ = [
     GetCallDetailRecordResponseBodyDataTranscripts,
     GetCallDetailRecordResponseBodyData,
     GetDataChannelCredentialResponseBodyData,
+    GetInstanceTrendingReportResponseBodyData,
     GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList,
     GetRealtimeInstanceStatsResponseBodyData,
+    GetRealtimeScriptStatsResponseBodyData,
     GetRecordingResponseBodyData,
     GetScriptResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers,
     GetScriptResponseBodyDataDraftVersionInteractionConfigEndConversationConfig,
@@ -544,6 +597,7 @@ __all__ = [
     GetScriptResponseBodyDataPublishedVersionTranscriberConfig,
     GetScriptResponseBodyDataPublishedVersion,
     GetScriptResponseBodyData,
+    GetScriptTrendingReportResponseBodyData,
     GetSubscriptionResponseBodyDataEventList,
     GetSubscriptionResponseBodyData,
     GetVocabularyResponseBodyData,
@@ -557,12 +611,18 @@ __all__ = [
     ListCloneVoiceResponseBodyData,
     ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
     ListCloneVoiceModelsResponseBodyData,
+    ListHistoricalInstanceReportResponseBodyDataList,
+    ListHistoricalInstanceReportResponseBodyData,
+    ListHistoricalScriptReportResponseBodyDataList,
+    ListHistoricalScriptReportResponseBodyData,
     ListInstructionsResponseBodyDataInstructions,
     ListInstructionsResponseBodyData,
     ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile,
     ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles,
     ListLlmAccessProfilesResponseBodyData,
     ListNluModelsResponseBodyData,
+    ListRealtimeInstanceStatsResponseBodyDataList,
+    ListRealtimeInstanceStatsResponseBodyData,
     ListScriptProfileTemplatesResponseBodyData,
     ListScriptsResponseBodyDataScripts,
     ListScriptsResponseBodyData,

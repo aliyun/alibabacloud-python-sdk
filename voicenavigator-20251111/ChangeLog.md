@@ -1,3 +1,12 @@
+2026-04-22 Version: 1.4.0
+- Support API GetInstanceTrendingReport.
+- Support API GetRealtimeScriptStats.
+- Support API GetScriptTrendingReport.
+- Support API ListHistoricalInstanceReport.
+- Support API ListHistoricalScriptReport.
+- Support API ListRealtimeInstanceStats.
+
+
 2026-04-20 Version: 1.3.1
 - Update API CreateScriptVersion: add request parameters TranscriberConfig.CorrectionRules.
 - Update API GetScript: add response parameters Body.Data.DraftVersion.TranscriberConfig.CorrectionRules.
