@@ -13,6 +13,7 @@ class GetChatContentResponseBody(DaraModel):
         content_type: str = None,
         event_type: str = None,
         level: int = None,
+        timestamp: str = None,
     ):
         self.category = category
         self.checkpoint = checkpoint
@@ -20,6 +21,7 @@ class GetChatContentResponseBody(DaraModel):
         self.content_type = content_type
         self.event_type = event_type
         self.level = level
+        self.timestamp = timestamp
 
     def validate(self):
         pass
@@ -47,6 +49,9 @@ class GetChatContentResponseBody(DaraModel):
         if self.level is not None:
             result['level'] = self.level
 
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+
         return result
 
     def from_map(self, m: dict = None):
@@ -68,6 +73,9 @@ class GetChatContentResponseBody(DaraModel):
 
         if m.get('level') is not None:
             self.level = m.get('level')
+
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
 
         return self
 

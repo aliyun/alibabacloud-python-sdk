@@ -34,6 +34,7 @@ from ._one_meta_table_index import OneMetaTableIndex
 from ._open_claw_instance_quota_vo import OpenClawInstanceQuotaVO
 from ._open_claw_instance_vo import OpenClawInstanceVO
 from ._partition_error import PartitionError
+from ._trial_order_eligibility_vo import TrialOrderEligibilityVO
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
 from ._add_user_to_data_agent_workspace_response import AddUserToDataAgentWorkspaceResponse
@@ -350,6 +351,7 @@ __all__ = [
     OpenClawInstanceQuotaVO,
     OpenClawInstanceVO,
     PartitionError,
+    TrialOrderEligibilityVO,
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,
     AddUserToDataAgentWorkspaceResponse,
