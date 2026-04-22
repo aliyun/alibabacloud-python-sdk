@@ -8286,6 +8286,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.initiate_ppt_creation_with_options_async(request, runtime)
 
+    def initiate_ppt_creation_v2with_options(
+        self,
+        request: main_models.InitiatePptCreationV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitiatePptCreationV2Response:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.is_mobile):
+            body['IsMobile'] = request.is_mobile
+        if not DaraCore.is_null(request.outline):
+            body['Outline'] = request.outline
+        if not DaraCore.is_null(request.ppt_template_id):
+            body['PptTemplateId'] = request.ppt_template_id
+        if not DaraCore.is_null(request.ppt_template_type):
+            body['PptTemplateType'] = request.ppt_template_type
+        if not DaraCore.is_null(request.process_type):
+            body['ProcessType'] = request.process_type
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitiatePptCreationV2',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitiatePptCreationV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initiate_ppt_creation_v2with_options_async(
+        self,
+        request: main_models.InitiatePptCreationV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitiatePptCreationV2Response:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
+        if not DaraCore.is_null(request.is_mobile):
+            body['IsMobile'] = request.is_mobile
+        if not DaraCore.is_null(request.outline):
+            body['Outline'] = request.outline
+        if not DaraCore.is_null(request.ppt_template_id):
+            body['PptTemplateId'] = request.ppt_template_id
+        if not DaraCore.is_null(request.ppt_template_type):
+            body['PptTemplateType'] = request.ppt_template_type
+        if not DaraCore.is_null(request.process_type):
+            body['ProcessType'] = request.process_type
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitiatePptCreationV2',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitiatePptCreationV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initiate_ppt_creation_v2(
+        self,
+        request: main_models.InitiatePptCreationV2Request,
+    ) -> main_models.InitiatePptCreationV2Response:
+        runtime = RuntimeOptions()
+        return self.initiate_ppt_creation_v2with_options(request, runtime)
+
+    async def initiate_ppt_creation_v2_async(
+        self,
+        request: main_models.InitiatePptCreationV2Request,
+    ) -> main_models.InitiatePptCreationV2Response:
+        runtime = RuntimeOptions()
+        return await self.initiate_ppt_creation_v2with_options_async(request, runtime)
+
     def insert_intervene_global_reply_with_options(
         self,
         tmp_req: main_models.InsertInterveneGlobalReplyRequest,
@@ -10051,6 +10149,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListDocumentRetrieveResponse:
         runtime = RuntimeOptions()
         return await self.list_document_retrieve_with_options_async(request, runtime)
+
+    def list_enterprise_ppt_templates_with_options(
+        self,
+        request: main_models.ListEnterprisePptTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEnterprisePptTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        body = {}
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEnterprisePptTemplates',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEnterprisePptTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_enterprise_ppt_templates_with_options_async(
+        self,
+        request: main_models.ListEnterprisePptTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEnterprisePptTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        body = {}
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEnterprisePptTemplates',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEnterprisePptTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_enterprise_ppt_templates(
+        self,
+        request: main_models.ListEnterprisePptTemplatesRequest,
+    ) -> main_models.ListEnterprisePptTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_enterprise_ppt_templates_with_options(request, runtime)
+
+    async def list_enterprise_ppt_templates_async(
+        self,
+        request: main_models.ListEnterprisePptTemplatesRequest,
+    ) -> main_models.ListEnterprisePptTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_enterprise_ppt_templates_with_options_async(request, runtime)
 
     def list_fresh_view_points_with_options(
         self,

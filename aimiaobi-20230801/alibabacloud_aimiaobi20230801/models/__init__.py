@@ -332,6 +332,9 @@ from ._import_intervene_file_async_response import ImportInterveneFileAsyncRespo
 from ._initiate_ppt_creation_request import InitiatePptCreationRequest
 from ._initiate_ppt_creation_response_body import InitiatePptCreationResponseBody
 from ._initiate_ppt_creation_response import InitiatePptCreationResponse
+from ._initiate_ppt_creation_v2request import InitiatePptCreationV2Request
+from ._initiate_ppt_creation_v2response_body import InitiatePptCreationV2ResponseBody
+from ._initiate_ppt_creation_v2response import InitiatePptCreationV2Response
 from ._insert_intervene_global_reply_request import InsertInterveneGlobalReplyRequest
 from ._insert_intervene_global_reply_shrink_request import InsertInterveneGlobalReplyShrinkRequest
 from ._insert_intervene_global_reply_response_body import InsertInterveneGlobalReplyResponseBody
@@ -390,6 +393,9 @@ from ._list_docs_response import ListDocsResponse
 from ._list_document_retrieve_request import ListDocumentRetrieveRequest
 from ._list_document_retrieve_response_body import ListDocumentRetrieveResponseBody
 from ._list_document_retrieve_response import ListDocumentRetrieveResponse
+from ._list_enterprise_ppt_templates_request import ListEnterprisePptTemplatesRequest
+from ._list_enterprise_ppt_templates_response_body import ListEnterprisePptTemplatesResponseBody
+from ._list_enterprise_ppt_templates_response import ListEnterprisePptTemplatesResponse
 from ._list_fresh_view_points_request import ListFreshViewPointsRequest
 from ._list_fresh_view_points_response_body import ListFreshViewPointsResponseBody
 from ._list_fresh_view_points_response import ListFreshViewPointsResponse
@@ -934,6 +940,7 @@ from ._get_topic_selection_perspective_analysis_task_response_body import GetTop
 from ._import_intervene_file_response_body import ImportInterveneFileResponseBodyData
 from ._import_intervene_file_async_response_body import ImportInterveneFileAsyncResponseBodyData
 from ._initiate_ppt_creation_response_body import InitiatePptCreationResponseBodyData
+from ._initiate_ppt_creation_v2response_body import InitiatePptCreationV2ResponseBodyData
 from ._insert_intervene_global_reply_request import InsertInterveneGlobalReplyRequestReplyMessagList
 from ._insert_intervene_global_reply_response_body import InsertInterveneGlobalReplyResponseBodyData
 from ._insert_intervene_rule_request import InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig
@@ -965,6 +972,7 @@ from ._list_datasets_response_body import ListDatasetsResponseBodyThirdSearchCon
 from ._list_dialogues_response_body import ListDialoguesResponseBodyData
 from ._list_docs_response_body import ListDocsResponseBodyData
 from ._list_document_retrieve_response_body import ListDocumentRetrieveResponseBodyData
+from ._list_enterprise_ppt_templates_response_body import ListEnterprisePptTemplatesResponseBodyData
 from ._list_fresh_view_points_response_body import ListFreshViewPointsResponseBodyDataOutlines
 from ._list_fresh_view_points_response_body import ListFreshViewPointsResponseBodyData
 from ._list_general_configs_response_body import ListGeneralConfigsResponseBodyData
@@ -1708,6 +1716,9 @@ __all__ = [
     InitiatePptCreationRequest,
     InitiatePptCreationResponseBody,
     InitiatePptCreationResponse,
+    InitiatePptCreationV2Request,
+    InitiatePptCreationV2ResponseBody,
+    InitiatePptCreationV2Response,
     InsertInterveneGlobalReplyRequest,
     InsertInterveneGlobalReplyShrinkRequest,
     InsertInterveneGlobalReplyResponseBody,
@@ -1766,6 +1777,9 @@ __all__ = [
     ListDocumentRetrieveRequest,
     ListDocumentRetrieveResponseBody,
     ListDocumentRetrieveResponse,
+    ListEnterprisePptTemplatesRequest,
+    ListEnterprisePptTemplatesResponseBody,
+    ListEnterprisePptTemplatesResponse,
     ListFreshViewPointsRequest,
     ListFreshViewPointsResponseBody,
     ListFreshViewPointsResponse,
@@ -2310,6 +2324,7 @@ __all__ = [
     ImportInterveneFileResponseBodyData,
     ImportInterveneFileAsyncResponseBodyData,
     InitiatePptCreationResponseBodyData,
+    InitiatePptCreationV2ResponseBodyData,
     InsertInterveneGlobalReplyRequestReplyMessagList,
     InsertInterveneGlobalReplyResponseBodyData,
     InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig,
@@ -2341,6 +2356,7 @@ __all__ = [
     ListDialoguesResponseBodyData,
     ListDocsResponseBodyData,
     ListDocumentRetrieveResponseBodyData,
+    ListEnterprisePptTemplatesResponseBodyData,
     ListFreshViewPointsResponseBodyDataOutlines,
     ListFreshViewPointsResponseBodyData,
     ListGeneralConfigsResponseBodyData,

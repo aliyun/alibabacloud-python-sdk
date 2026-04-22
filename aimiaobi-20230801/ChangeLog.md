@@ -1,3 +1,8 @@
+2026-04-22 Version: 1.43.0
+- Support API InitiatePptCreationV2.
+- Support API ListEnterprisePptTemplates.
+
+
 2026-04-09 Version: 1.42.0
 - Support API CreateDataPermissions.
 - Support API DeleteDataPermissions.
