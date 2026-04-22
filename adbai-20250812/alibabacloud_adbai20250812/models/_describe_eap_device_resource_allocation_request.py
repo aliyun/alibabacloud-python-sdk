@@ -4,25 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ModifyEmbodiedAIPlatformShrinkRequest(DaraModel):
+class DescribeEapDeviceResourceAllocationRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
-        device_count: str = None,
-        platform_name: str = None,
-        ray_config_shrink: str = None,
+        device_count: int = None,
         region_id: str = None,
-        webserver_spec_name: str = None,
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.device_count = device_count
         # This parameter is required.
-        self.platform_name = platform_name
-        self.ray_config_shrink = ray_config_shrink
-        # This parameter is required.
         self.region_id = region_id
-        self.webserver_spec_name = webserver_spec_name
 
     def validate(self):
         pass
@@ -38,17 +31,8 @@ class ModifyEmbodiedAIPlatformShrinkRequest(DaraModel):
         if self.device_count is not None:
             result['DeviceCount'] = self.device_count
 
-        if self.platform_name is not None:
-            result['PlatformName'] = self.platform_name
-
-        if self.ray_config_shrink is not None:
-            result['RayConfig'] = self.ray_config_shrink
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-
-        if self.webserver_spec_name is not None:
-            result['WebserverSpecName'] = self.webserver_spec_name
 
         return result
 
@@ -60,17 +44,8 @@ class ModifyEmbodiedAIPlatformShrinkRequest(DaraModel):
         if m.get('DeviceCount') is not None:
             self.device_count = m.get('DeviceCount')
 
-        if m.get('PlatformName') is not None:
-            self.platform_name = m.get('PlatformName')
-
-        if m.get('RayConfig') is not None:
-            self.ray_config_shrink = m.get('RayConfig')
-
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-
-        if m.get('WebserverSpecName') is not None:
-            self.webserver_spec_name = m.get('WebserverSpecName')
 
         return self
 

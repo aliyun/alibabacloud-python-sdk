@@ -1,3 +1,10 @@
+2026-04-22 Version: 1.8.0
+- Support API DescribeEapDeviceResourceAllocation.
+- Update API CreateEmbodiedAIPlatform: add request parameters DeviceCount.
+- Update API GetEmbodiedAIPlatformResourceUsageInfo: add response parameters Body.AcuDetails.
+- Update API ModifyEmbodiedAIPlatform: add request parameters DeviceCount.
+
+
 2026-04-20 Version: 1.7.0
 - Support API DescribeChatMessage.
 

@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class GetEmbodiedAIPlatformResourceUsageInfoResponseBody(DaraModel):
     def __init__(
         self,
+        acu_details: main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails = None,
         gpu_details: List[main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails] = None,
         max_registered_devices: int = None,
         registered_device_count: int = None,
@@ -17,6 +18,7 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBody(DaraModel):
         slb_traffic: main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic = None,
         storage_usage: main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage = None,
     ):
+        self.acu_details = acu_details
         self.gpu_details = gpu_details
         self.max_registered_devices = max_registered_devices
         self.registered_device_count = registered_device_count
@@ -26,6 +28,8 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBody(DaraModel):
         self.storage_usage = storage_usage
 
     def validate(self):
+        if self.acu_details:
+            self.acu_details.validate()
         if self.gpu_details:
             for v1 in self.gpu_details:
                  if v1:
@@ -40,6 +44,9 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.acu_details is not None:
+            result['AcuDetails'] = self.acu_details.to_map()
+
         result['GpuDetails'] = []
         if self.gpu_details is not None:
             for k1 in self.gpu_details:
@@ -64,6 +71,10 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcuDetails') is not None:
+            temp_model = main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails()
+            self.acu_details = temp_model.from_map(m.get('AcuDetails'))
+
         self.gpu_details = []
         if m.get('GpuDetails') is not None:
             for k1 in m.get('GpuDetails'):
@@ -258,6 +269,57 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails(DaraModel):
 
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+
+        return self
+
+class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails(DaraModel):
+    def __init__(
+        self,
+        eap_webserver_acucount: float = None,
+        ray_head_acucount: float = None,
+        ray_worker_acucount: float = None,
+        total_acucount: float = None,
+    ):
+        self.eap_webserver_acucount = eap_webserver_acucount
+        self.ray_head_acucount = ray_head_acucount
+        self.ray_worker_acucount = ray_worker_acucount
+        self.total_acucount = total_acucount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.eap_webserver_acucount is not None:
+            result['EapWebserverACUCount'] = self.eap_webserver_acucount
+
+        if self.ray_head_acucount is not None:
+            result['RayHeadACUCount'] = self.ray_head_acucount
+
+        if self.ray_worker_acucount is not None:
+            result['RayWorkerACUCount'] = self.ray_worker_acucount
+
+        if self.total_acucount is not None:
+            result['TotalACUCount'] = self.total_acucount
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapWebserverACUCount') is not None:
+            self.eap_webserver_acucount = m.get('EapWebserverACUCount')
+
+        if m.get('RayHeadACUCount') is not None:
+            self.ray_head_acucount = m.get('RayHeadACUCount')
+
+        if m.get('RayWorkerACUCount') is not None:
+            self.ray_worker_acucount = m.get('RayWorkerACUCount')
+
+        if m.get('TotalACUCount') is not None:
+            self.total_acucount = m.get('TotalACUCount')
 
         return self
 

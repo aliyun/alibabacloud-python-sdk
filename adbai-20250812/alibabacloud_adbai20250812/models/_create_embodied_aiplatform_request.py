@@ -11,6 +11,7 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        device_count: int = None,
         platform_name: str = None,
         ray_config: main_models.CreateEmbodiedAIPlatformRequestRayConfig = None,
         region_id: str = None,
@@ -18,6 +19,7 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.device_count = device_count
         # This parameter is required.
         self.platform_name = platform_name
         self.ray_config = ray_config
@@ -37,6 +39,9 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.device_count is not None:
+            result['DeviceCount'] = self.device_count
+
         if self.platform_name is not None:
             result['PlatformName'] = self.platform_name
 
@@ -55,6 +60,9 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('DeviceCount') is not None:
+            self.device_count = m.get('DeviceCount')
 
         if m.get('PlatformName') is not None:
             self.platform_name = m.get('PlatformName')

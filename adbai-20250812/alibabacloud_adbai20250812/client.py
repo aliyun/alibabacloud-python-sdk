@@ -145,6 +145,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.device_count):
+            query['DeviceCount'] = request.device_count
         if not DaraCore.is_null(request.platform_name):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
@@ -185,6 +187,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.device_count):
+            query['DeviceCount'] = request.device_count
         if not DaraCore.is_null(request.platform_name):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
@@ -549,6 +553,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeChatMessageResponse:
         runtime = RuntimeOptions()
         return await self.describe_chat_message_with_options_async(request, runtime)
+
+    def describe_eap_device_resource_allocation_with_options(
+        self,
+        request: main_models.DescribeEapDeviceResourceAllocationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEapDeviceResourceAllocationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.device_count):
+            query['DeviceCount'] = request.device_count
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEapDeviceResourceAllocation',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEapDeviceResourceAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_eap_device_resource_allocation_with_options_async(
+        self,
+        request: main_models.DescribeEapDeviceResourceAllocationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEapDeviceResourceAllocationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.device_count):
+            query['DeviceCount'] = request.device_count
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEapDeviceResourceAllocation',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEapDeviceResourceAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_eap_device_resource_allocation(
+        self,
+        request: main_models.DescribeEapDeviceResourceAllocationRequest,
+    ) -> main_models.DescribeEapDeviceResourceAllocationResponse:
+        runtime = RuntimeOptions()
+        return self.describe_eap_device_resource_allocation_with_options(request, runtime)
+
+    async def describe_eap_device_resource_allocation_async(
+        self,
+        request: main_models.DescribeEapDeviceResourceAllocationRequest,
+    ) -> main_models.DescribeEapDeviceResourceAllocationResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_eap_device_resource_allocation_with_options_async(request, runtime)
 
     def describe_embodied_aiplatforms_with_options(
         self,
@@ -923,6 +1005,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.device_count):
+            query['DeviceCount'] = request.device_count
         if not DaraCore.is_null(request.platform_name):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
@@ -963,6 +1047,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.device_count):
+            query['DeviceCount'] = request.device_count
         if not DaraCore.is_null(request.platform_name):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
