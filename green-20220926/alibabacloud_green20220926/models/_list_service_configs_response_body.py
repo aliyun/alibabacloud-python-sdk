@@ -88,6 +88,7 @@ class ListServiceConfigsResponseBodyData(DaraModel):
         gmt_modified: str = None,
         option: Dict[str, Any] = None,
         resource_type: str = None,
+        scene_type: str = None,
         service_code: str = None,
         service_desc: str = None,
         service_name: str = None,
@@ -107,6 +108,7 @@ class ListServiceConfigsResponseBodyData(DaraModel):
         self.option = option
         # Resource type.
         self.resource_type = resource_type
+        self.scene_type = scene_type
         # Service code.
         self.service_code = service_code
         # Service description.
@@ -146,6 +148,9 @@ class ListServiceConfigsResponseBodyData(DaraModel):
 
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+
+        if self.scene_type is not None:
+            result['SceneType'] = self.scene_type
 
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
@@ -187,6 +192,9 @@ class ListServiceConfigsResponseBodyData(DaraModel):
 
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+
+        if m.get('SceneType') is not None:
+            self.scene_type = m.get('SceneType')
 
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')

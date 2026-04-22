@@ -2026,6 +2026,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_online_test_result_with_options_async(request, runtime)
 
+    def describe_oss_v2result_with_options(
+        self,
+        request: main_models.DescribeOssV2ResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssV2ResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOssV2Result',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOssV2ResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_oss_v2result_with_options_async(
+        self,
+        request: main_models.DescribeOssV2ResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssV2ResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOssV2Result',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOssV2ResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_oss_v2result(
+        self,
+        request: main_models.DescribeOssV2ResultRequest,
+    ) -> main_models.DescribeOssV2ResultResponse:
+        runtime = RuntimeOptions()
+        return self.describe_oss_v2result_with_options(request, runtime)
+
+    async def describe_oss_v2result_async(
+        self,
+        request: main_models.DescribeOssV2ResultRequest,
+    ) -> main_models.DescribeOssV2ResultResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_oss_v2result_with_options_async(request, runtime)
+
     def export_answer_sample_with_options(
         self,
         request: main_models.ExportAnswerSampleRequest,
@@ -6009,6 +6103,96 @@ class Client(OpenApiClient):
     ) -> main_models.LlmStreamChatResponse:
         runtime = RuntimeOptions()
         return await self.llm_stream_chat_with_options_async(request, runtime)
+
+    def mark_oss_v2result_with_options(
+        self,
+        request: main_models.MarkOssV2ResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MarkOssV2ResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.freeze_type):
+            query['FreezeType'] = request.freeze_type
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.request_ids):
+            query['RequestIds'] = request.request_ids
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MarkOssV2Result',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MarkOssV2ResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mark_oss_v2result_with_options_async(
+        self,
+        request: main_models.MarkOssV2ResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MarkOssV2ResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.freeze_type):
+            query['FreezeType'] = request.freeze_type
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.request_ids):
+            query['RequestIds'] = request.request_ids
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MarkOssV2Result',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MarkOssV2ResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mark_oss_v2result(
+        self,
+        request: main_models.MarkOssV2ResultRequest,
+    ) -> main_models.MarkOssV2ResultResponse:
+        runtime = RuntimeOptions()
+        return self.mark_oss_v2result_with_options(request, runtime)
+
+    async def mark_oss_v2result_async(
+        self,
+        request: main_models.MarkOssV2ResultRequest,
+    ) -> main_models.MarkOssV2ResultResponse:
+        runtime = RuntimeOptions()
+        return await self.mark_oss_v2result_with_options_async(request, runtime)
 
     def modify_answer_lib_with_options(
         self,

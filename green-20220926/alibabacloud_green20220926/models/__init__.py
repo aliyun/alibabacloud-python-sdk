@@ -69,6 +69,9 @@ from ._delete_online_test_response import DeleteOnlineTestResponse
 from ._describe_online_test_result_request import DescribeOnlineTestResultRequest
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBody
 from ._describe_online_test_result_response import DescribeOnlineTestResultResponse
+from ._describe_oss_v2result_request import DescribeOssV2ResultRequest
+from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBody
+from ._describe_oss_v2result_response import DescribeOssV2ResultResponse
 from ._export_answer_sample_request import ExportAnswerSampleRequest
 from ._export_answer_sample_response_body import ExportAnswerSampleResponseBody
 from ._export_answer_sample_response import ExportAnswerSampleResponse
@@ -215,6 +218,9 @@ from ._list_service_configs_response import ListServiceConfigsResponse
 from ._llm_stream_chat_request import LlmStreamChatRequest
 from ._llm_stream_chat_response_body import LlmStreamChatResponseBody
 from ._llm_stream_chat_response import LlmStreamChatResponse
+from ._mark_oss_v2result_request import MarkOssV2ResultRequest
+from ._mark_oss_v2result_response_body import MarkOssV2ResultResponseBody
+from ._mark_oss_v2result_response import MarkOssV2ResultResponse
 from ._modify_answer_lib_request import ModifyAnswerLibRequest
 from ._modify_answer_lib_response_body import ModifyAnswerLibResponseBody
 from ._modify_answer_lib_response import ModifyAnswerLibResponse
@@ -287,6 +293,9 @@ from ._create_answer_lib_response_body import CreateAnswerLibResponseBodyResult
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBodyAudioData
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBodyFrameData
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBodySummaryList
+from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItemsLabelDetails
+from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItemsLabelDetails2
+from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItems
 from ._get_backup_buckets_list_response_body import GetBackupBucketsListResponseBodyData
 from ._get_buckets_list_response_body import GetBucketsListResponseBodyData
 from ._get_cip_stats_response_body import GetCipStatsResponseBodyDataLabelStatChartImageTreeChar
@@ -418,6 +427,9 @@ __all__ = [
     DescribeOnlineTestResultRequest,
     DescribeOnlineTestResultResponseBody,
     DescribeOnlineTestResultResponse,
+    DescribeOssV2ResultRequest,
+    DescribeOssV2ResultResponseBody,
+    DescribeOssV2ResultResponse,
     ExportAnswerSampleRequest,
     ExportAnswerSampleResponseBody,
     ExportAnswerSampleResponse,
@@ -564,6 +576,9 @@ __all__ = [
     LlmStreamChatRequest,
     LlmStreamChatResponseBody,
     LlmStreamChatResponse,
+    MarkOssV2ResultRequest,
+    MarkOssV2ResultResponseBody,
+    MarkOssV2ResultResponse,
     ModifyAnswerLibRequest,
     ModifyAnswerLibResponseBody,
     ModifyAnswerLibResponse,
@@ -636,6 +651,9 @@ __all__ = [
     DescribeOnlineTestResultResponseBodyAudioData,
     DescribeOnlineTestResultResponseBodyFrameData,
     DescribeOnlineTestResultResponseBodySummaryList,
+    DescribeOssV2ResultResponseBodyItemsLabelDetails,
+    DescribeOssV2ResultResponseBodyItemsLabelDetails2,
+    DescribeOssV2ResultResponseBodyItems,
     GetBackupBucketsListResponseBodyData,
     GetBucketsListResponseBodyData,
     GetCipStatsResponseBodyDataLabelStatChartImageTreeChar,
