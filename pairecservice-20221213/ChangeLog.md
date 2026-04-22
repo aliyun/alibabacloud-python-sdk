@@ -1,3 +1,11 @@
+2026-04-22 Version: 6.1.2
+- Update API CreateRecallManagementServiceVersion: add request parameters body.Configs.RecallConfigs.$.SortFields.
+- Update API CreateRecallManagementServiceVersionConfig: add request parameters body.RecallConfig.SortFields.
+- Update API GetRecallManagementServiceVersion: add response parameters Body.Configs.RecallConfigs.$.SortFields.
+- Update API GetRecallManagementServiceVersionConfig: add response parameters Body.RecallConfig.SortFields.
+- Update API UpdateRecallManagementServiceVersionConfig: add request parameters body.RecallConfig.SortFields.
+
+
 2026-04-09 Version: 6.1.1
 - Update API CreateABMetric: add request parameters body.AggregationByUser.
 - Update API CreateABMetric: add request parameters body.Denominator.

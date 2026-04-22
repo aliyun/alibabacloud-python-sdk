@@ -85,6 +85,7 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfig(DaraModel):
         priority: int = None,
         recall_management_table_id: str = None,
         recall_type: str = None,
+        sort_fields: str = None,
         user_vector_field: str = None,
         user_vector_recall_management_table_id: str = None,
     ):
@@ -99,6 +100,7 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfig(DaraModel):
         self.priority = priority
         self.recall_management_table_id = recall_management_table_id
         self.recall_type = recall_type
+        self.sort_fields = sort_fields
         self.user_vector_field = user_vector_field
         self.user_vector_recall_management_table_id = user_vector_recall_management_table_id
 
@@ -148,6 +150,9 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfig(DaraModel):
         if self.recall_type is not None:
             result['RecallType'] = self.recall_type
 
+        if self.sort_fields is not None:
+            result['SortFields'] = self.sort_fields
+
         if self.user_vector_field is not None:
             result['UserVectorField'] = self.user_vector_field
 
@@ -193,6 +198,9 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfig(DaraModel):
 
         if m.get('RecallType') is not None:
             self.recall_type = m.get('RecallType')
+
+        if m.get('SortFields') is not None:
+            self.sort_fields = m.get('SortFields')
 
         if m.get('UserVectorField') is not None:
             self.user_vector_field = m.get('UserVectorField')
