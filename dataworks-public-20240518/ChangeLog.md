@@ -1,3 +1,15 @@
+2026-04-22 Version: 8.2.0
+- Support API CancelAgentSession.
+- Support API CreateAgentSession.
+- Support API GetAgentSessionArtifactMeta.
+- Support API GetAgentSessionTokenUsage.
+- Support API ListAgentSessionArtifacts.
+- Support API ListAgentSessions.
+- Support API ListAgents.
+- Support API LoadAgentSession.
+- Support API PromptAgentSession.
+
+
 2026-04-09 Version: 8.1.0
 - Support API CreateParameter.
 - Support API DeleteParameter.

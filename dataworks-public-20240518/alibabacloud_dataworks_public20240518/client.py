@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_dataworks_public20240518 import models as main_models
 from alibabacloud_tea_openapi import exceptions as open_api_exceptions
@@ -658,6 +660,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_update_tasks_with_options_async(request, runtime)
 
+    def cancel_agent_session_with_options(
+        self,
+        tmp_req: main_models.CancelAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.CancelAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.CancelAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.CancelAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_agent_session(
+        self,
+        request: main_models.CancelAgentSessionRequest,
+    ) -> main_models.CancelAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_agent_session_with_options(request, runtime)
+
+    async def cancel_agent_session_async(
+        self,
+        request: main_models.CancelAgentSessionRequest,
+    ) -> main_models.CancelAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_agent_session_with_options_async(request, runtime)
+
     def clone_data_source_with_options(
         self,
         request: main_models.CloneDataSourceRequest,
@@ -731,6 +819,92 @@ class Client(OpenApiClient):
     ) -> main_models.CloneDataSourceResponse:
         runtime = RuntimeOptions()
         return await self.clone_data_source_with_options_async(request, runtime)
+
+    def create_agent_session_with_options(
+        self,
+        tmp_req: main_models.CreateAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.CreateAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.CreateAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.CreateAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent_session(
+        self,
+        request: main_models.CreateAgentSessionRequest,
+    ) -> main_models.CreateAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.create_agent_session_with_options(request, runtime)
+
+    async def create_agent_session_async(
+        self,
+        request: main_models.CreateAgentSessionRequest,
+    ) -> main_models.CreateAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agent_session_with_options_async(request, runtime)
 
     def create_alert_rule_with_options(
         self,
@@ -7820,6 +7994,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.execute_adhoc_workflow_instance_with_options_async(request, runtime)
 
+    def get_agent_session_artifact_meta_with_options(
+        self,
+        tmp_req: main_models.GetAgentSessionArtifactMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentSessionArtifactMetaResponse:
+        tmp_req.validate()
+        request = main_models.GetAgentSessionArtifactMetaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionArtifactMeta',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentSessionArtifactMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_session_artifact_meta_with_options_async(
+        self,
+        tmp_req: main_models.GetAgentSessionArtifactMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentSessionArtifactMetaResponse:
+        tmp_req.validate()
+        request = main_models.GetAgentSessionArtifactMetaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionArtifactMeta',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentSessionArtifactMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_session_artifact_meta(
+        self,
+        request: main_models.GetAgentSessionArtifactMetaRequest,
+    ) -> main_models.GetAgentSessionArtifactMetaResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_session_artifact_meta_with_options(request, runtime)
+
+    async def get_agent_session_artifact_meta_async(
+        self,
+        request: main_models.GetAgentSessionArtifactMetaRequest,
+    ) -> main_models.GetAgentSessionArtifactMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_session_artifact_meta_with_options_async(request, runtime)
+
+    def get_agent_session_token_usage_with_options(
+        self,
+        tmp_req: main_models.GetAgentSessionTokenUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentSessionTokenUsageResponse:
+        tmp_req.validate()
+        request = main_models.GetAgentSessionTokenUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionTokenUsage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentSessionTokenUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_session_token_usage_with_options_async(
+        self,
+        tmp_req: main_models.GetAgentSessionTokenUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentSessionTokenUsageResponse:
+        tmp_req.validate()
+        request = main_models.GetAgentSessionTokenUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionTokenUsage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentSessionTokenUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_session_token_usage(
+        self,
+        request: main_models.GetAgentSessionTokenUsageRequest,
+    ) -> main_models.GetAgentSessionTokenUsageResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_session_token_usage_with_options(request, runtime)
+
+    async def get_agent_session_token_usage_async(
+        self,
+        request: main_models.GetAgentSessionTokenUsageRequest,
+    ) -> main_models.GetAgentSessionTokenUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_session_token_usage_with_options_async(request, runtime)
+
     def get_alert_rule_with_options(
         self,
         request: main_models.GetAlertRuleRequest,
@@ -11807,6 +12153,264 @@ class Client(OpenApiClient):
     ) -> main_models.ImportWorkflowDefinitionResponse:
         runtime = RuntimeOptions()
         return await self.import_workflow_definition_with_options_async(request, runtime)
+
+    def list_agent_session_artifacts_with_options(
+        self,
+        tmp_req: main_models.ListAgentSessionArtifactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentSessionArtifactsResponse:
+        tmp_req.validate()
+        request = main_models.ListAgentSessionArtifactsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentSessionArtifacts',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentSessionArtifactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_session_artifacts_with_options_async(
+        self,
+        tmp_req: main_models.ListAgentSessionArtifactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentSessionArtifactsResponse:
+        tmp_req.validate()
+        request = main_models.ListAgentSessionArtifactsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentSessionArtifacts',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentSessionArtifactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_session_artifacts(
+        self,
+        request: main_models.ListAgentSessionArtifactsRequest,
+    ) -> main_models.ListAgentSessionArtifactsResponse:
+        runtime = RuntimeOptions()
+        return self.list_agent_session_artifacts_with_options(request, runtime)
+
+    async def list_agent_session_artifacts_async(
+        self,
+        request: main_models.ListAgentSessionArtifactsRequest,
+    ) -> main_models.ListAgentSessionArtifactsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agent_session_artifacts_with_options_async(request, runtime)
+
+    def list_agent_sessions_with_options(
+        self,
+        tmp_req: main_models.ListAgentSessionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentSessionsResponse:
+        tmp_req.validate()
+        request = main_models.ListAgentSessionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentSessions',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_sessions_with_options_async(
+        self,
+        tmp_req: main_models.ListAgentSessionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentSessionsResponse:
+        tmp_req.validate()
+        request = main_models.ListAgentSessionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentSessions',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_sessions(
+        self,
+        request: main_models.ListAgentSessionsRequest,
+    ) -> main_models.ListAgentSessionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_agent_sessions_with_options(request, runtime)
+
+    async def list_agent_sessions_async(
+        self,
+        request: main_models.ListAgentSessionsRequest,
+    ) -> main_models.ListAgentSessionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agent_sessions_with_options_async(request, runtime)
+
+    def list_agents_with_options(
+        self,
+        tmp_req: main_models.ListAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentsResponse:
+        tmp_req.validate()
+        request = main_models.ListAgentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agents_with_options_async(
+        self,
+        tmp_req: main_models.ListAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentsResponse:
+        tmp_req.validate()
+        request = main_models.ListAgentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agents(
+        self,
+        request: main_models.ListAgentsRequest,
+    ) -> main_models.ListAgentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_agents_with_options(request, runtime)
+
+    async def list_agents_async(
+        self,
+        request: main_models.ListAgentsRequest,
+    ) -> main_models.ListAgentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agents_with_options_async(request, runtime)
 
     def list_alert_rules_with_options(
         self,
@@ -17344,6 +17948,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_workflows_with_options_async(request, runtime)
 
+    def load_agent_session_with_sse(
+        self,
+        tmp_req: main_models.LoadAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.LoadAgentSessionResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.LoadAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'LoadAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.LoadAgentSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def load_agent_session_with_sse_async(
+        self,
+        tmp_req: main_models.LoadAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.LoadAgentSessionResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.LoadAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'LoadAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.LoadAgentSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def load_agent_session_with_options(
+        self,
+        tmp_req: main_models.LoadAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LoadAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.LoadAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'LoadAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LoadAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def load_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.LoadAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LoadAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.LoadAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'LoadAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LoadAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def load_agent_session(
+        self,
+        request: main_models.LoadAgentSessionRequest,
+    ) -> main_models.LoadAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.load_agent_session_with_options(request, runtime)
+
+    async def load_agent_session_async(
+        self,
+        request: main_models.LoadAgentSessionRequest,
+    ) -> main_models.LoadAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.load_agent_session_with_options_async(request, runtime)
+
     def move_function_with_options(
         self,
         request: main_models.MoveFunctionRequest,
@@ -17725,6 +18505,182 @@ class Client(OpenApiClient):
     ) -> main_models.PreviewDatasetVersionResponse:
         runtime = RuntimeOptions()
         return await self.preview_dataset_version_with_options_async(request, runtime)
+
+    def prompt_agent_session_with_sse(
+        self,
+        tmp_req: main_models.PromptAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.PromptAgentSessionResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.PromptAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PromptAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.PromptAgentSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def prompt_agent_session_with_sse_async(
+        self,
+        tmp_req: main_models.PromptAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.PromptAgentSessionResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.PromptAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PromptAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.PromptAgentSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def prompt_agent_session_with_options(
+        self,
+        tmp_req: main_models.PromptAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PromptAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.PromptAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PromptAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PromptAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def prompt_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.PromptAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PromptAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.PromptAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PromptAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PromptAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def prompt_agent_session(
+        self,
+        request: main_models.PromptAgentSessionRequest,
+    ) -> main_models.PromptAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.prompt_agent_session_with_options(request, runtime)
+
+    async def prompt_agent_session_async(
+        self,
+        request: main_models.PromptAgentSessionRequest,
+    ) -> main_models.PromptAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.prompt_agent_session_with_options_async(request, runtime)
 
     def remove_entity_from_meta_collection_with_options(
         self,

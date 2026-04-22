@@ -39,9 +39,17 @@ from ._batch_update_tasks_request import BatchUpdateTasksRequest
 from ._batch_update_tasks_shrink_request import BatchUpdateTasksShrinkRequest
 from ._batch_update_tasks_response_body import BatchUpdateTasksResponseBody
 from ._batch_update_tasks_response import BatchUpdateTasksResponse
+from ._cancel_agent_session_request import CancelAgentSessionRequest
+from ._cancel_agent_session_shrink_request import CancelAgentSessionShrinkRequest
+from ._cancel_agent_session_response_body import CancelAgentSessionResponseBody
+from ._cancel_agent_session_response import CancelAgentSessionResponse
 from ._clone_data_source_request import CloneDataSourceRequest
 from ._clone_data_source_response_body import CloneDataSourceResponseBody
 from ._clone_data_source_response import CloneDataSourceResponse
+from ._create_agent_session_request import CreateAgentSessionRequest
+from ._create_agent_session_shrink_request import CreateAgentSessionShrinkRequest
+from ._create_agent_session_response_body import CreateAgentSessionResponseBody
+from ._create_agent_session_response import CreateAgentSessionResponse
 from ._create_alert_rule_request import CreateAlertRuleRequest
 from ._create_alert_rule_shrink_request import CreateAlertRuleShrinkRequest
 from ._create_alert_rule_response_body import CreateAlertRuleResponseBody
@@ -302,6 +310,14 @@ from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstan
 from ._execute_adhoc_workflow_instance_shrink_request import ExecuteAdhocWorkflowInstanceShrinkRequest
 from ._execute_adhoc_workflow_instance_response_body import ExecuteAdhocWorkflowInstanceResponseBody
 from ._execute_adhoc_workflow_instance_response import ExecuteAdhocWorkflowInstanceResponse
+from ._get_agent_session_artifact_meta_request import GetAgentSessionArtifactMetaRequest
+from ._get_agent_session_artifact_meta_shrink_request import GetAgentSessionArtifactMetaShrinkRequest
+from ._get_agent_session_artifact_meta_response_body import GetAgentSessionArtifactMetaResponseBody
+from ._get_agent_session_artifact_meta_response import GetAgentSessionArtifactMetaResponse
+from ._get_agent_session_token_usage_request import GetAgentSessionTokenUsageRequest
+from ._get_agent_session_token_usage_shrink_request import GetAgentSessionTokenUsageShrinkRequest
+from ._get_agent_session_token_usage_response_body import GetAgentSessionTokenUsageResponseBody
+from ._get_agent_session_token_usage_response import GetAgentSessionTokenUsageResponse
 from ._get_alert_rule_request import GetAlertRuleRequest
 from ._get_alert_rule_response_body import GetAlertRuleResponseBody
 from ._get_alert_rule_response import GetAlertRuleResponse
@@ -469,6 +485,18 @@ from ._import_certificate_response import ImportCertificateResponse
 from ._import_workflow_definition_request import ImportWorkflowDefinitionRequest
 from ._import_workflow_definition_response_body import ImportWorkflowDefinitionResponseBody
 from ._import_workflow_definition_response import ImportWorkflowDefinitionResponse
+from ._list_agent_session_artifacts_request import ListAgentSessionArtifactsRequest
+from ._list_agent_session_artifacts_shrink_request import ListAgentSessionArtifactsShrinkRequest
+from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBody
+from ._list_agent_session_artifacts_response import ListAgentSessionArtifactsResponse
+from ._list_agent_sessions_request import ListAgentSessionsRequest
+from ._list_agent_sessions_shrink_request import ListAgentSessionsShrinkRequest
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBody
+from ._list_agent_sessions_response import ListAgentSessionsResponse
+from ._list_agents_request import ListAgentsRequest
+from ._list_agents_shrink_request import ListAgentsShrinkRequest
+from ._list_agents_response_body import ListAgentsResponseBody
+from ._list_agents_response import ListAgentsResponse
 from ._list_alert_rules_request import ListAlertRulesRequest
 from ._list_alert_rules_shrink_request import ListAlertRulesShrinkRequest
 from ._list_alert_rules_response_body import ListAlertRulesResponseBody
@@ -692,6 +720,10 @@ from ._list_workflows_request import ListWorkflowsRequest
 from ._list_workflows_shrink_request import ListWorkflowsShrinkRequest
 from ._list_workflows_response_body import ListWorkflowsResponseBody
 from ._list_workflows_response import ListWorkflowsResponse
+from ._load_agent_session_request import LoadAgentSessionRequest
+from ._load_agent_session_shrink_request import LoadAgentSessionShrinkRequest
+from ._load_agent_session_response_body import LoadAgentSessionResponseBody
+from ._load_agent_session_response import LoadAgentSessionResponse
 from ._move_function_request import MoveFunctionRequest
 from ._move_function_response_body import MoveFunctionResponseBody
 from ._move_function_response import MoveFunctionResponse
@@ -707,6 +739,10 @@ from ._move_workflow_definition_response import MoveWorkflowDefinitionResponse
 from ._preview_dataset_version_request import PreviewDatasetVersionRequest
 from ._preview_dataset_version_response_body import PreviewDatasetVersionResponseBody
 from ._preview_dataset_version_response import PreviewDatasetVersionResponse
+from ._prompt_agent_session_request import PromptAgentSessionRequest
+from ._prompt_agent_session_shrink_request import PromptAgentSessionShrinkRequest
+from ._prompt_agent_session_response_body import PromptAgentSessionResponseBody
+from ._prompt_agent_session_response import PromptAgentSessionResponse
 from ._remove_entity_from_meta_collection_request import RemoveEntityFromMetaCollectionRequest
 from ._remove_entity_from_meta_collection_response_body import RemoveEntityFromMetaCollectionResponseBody
 from ._remove_entity_from_meta_collection_response import RemoveEntityFromMetaCollectionResponse
@@ -955,6 +991,16 @@ from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksRuntimeReso
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksTags
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksTrigger
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasks
+from ._cancel_agent_session_request import CancelAgentSessionRequestParams
+from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponseResult
+from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponse
+from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaAgent
+from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaConfigSessionTags
+from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaConfig
+from ._create_agent_session_request import CreateAgentSessionRequestParamsMeta
+from ._create_agent_session_request import CreateAgentSessionRequestParams
+from ._create_agent_session_response_body import CreateAgentSessionResponseBodyJsonRpcResponseResult
+from ._create_agent_session_response_body import CreateAgentSessionResponseBodyJsonRpcResponse
 from ._create_alert_rule_request import CreateAlertRuleRequestNotificationReceivers
 from ._create_alert_rule_request import CreateAlertRuleRequestNotification
 from ._create_alert_rule_request import CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime
@@ -1048,6 +1094,12 @@ from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstan
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksScript
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasks
+from ._get_agent_session_artifact_meta_request import GetAgentSessionArtifactMetaRequestParams
+from ._get_agent_session_artifact_meta_response_body import GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult
+from ._get_agent_session_artifact_meta_response_body import GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse
+from ._get_agent_session_token_usage_request import GetAgentSessionTokenUsageRequestParams
+from ._get_agent_session_token_usage_response_body import GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult
+from ._get_agent_session_token_usage_response_body import GetAgentSessionTokenUsageResponseBodyJsonRpcResponse
 from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRuleNotificationReceivers
 from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRuleNotification
 from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime
@@ -1233,6 +1285,20 @@ from ._get_workflow_definition_response_body import GetWorkflowDefinitionRespons
 from ._get_workflow_instance_response_body import GetWorkflowInstanceResponseBodyWorkflowInstanceTags
 from ._get_workflow_instance_response_body import GetWorkflowInstanceResponseBodyWorkflowInstance
 from ._import_workflow_definition_response_body import ImportWorkflowDefinitionResponseBodyAsyncJob
+from ._list_agent_session_artifacts_request import ListAgentSessionArtifactsRequestParams
+from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts
+from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult
+from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBodyJsonRpcResponse
+from ._list_agent_sessions_request import ListAgentSessionsRequestParams
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResult
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponse
+from ._list_agents_request import ListAgentsRequestParams
+from ._list_agents_response_body import ListAgentsResponseBodyJsonRpcResponseResultAgents
+from ._list_agents_response_body import ListAgentsResponseBodyJsonRpcResponseResult
+from ._list_agents_response_body import ListAgentsResponseBodyJsonRpcResponse
 from ._list_alert_rules_response_body import ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime
 from ._list_alert_rules_response_body import ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished
 from ._list_alert_rules_response_body import ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError
@@ -1517,7 +1583,13 @@ from ._list_workflows_response_body import ListWorkflowsResponseBodyPagingInfoWo
 from ._list_workflows_response_body import ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger
 from ._list_workflows_response_body import ListWorkflowsResponseBodyPagingInfoWorkflows
 from ._list_workflows_response_body import ListWorkflowsResponseBodyPagingInfo
+from ._load_agent_session_request import LoadAgentSessionRequestParamsMeta
+from ._load_agent_session_request import LoadAgentSessionRequestParams
 from ._preview_dataset_version_response_body import PreviewDatasetVersionResponseBodyPreviewResult
+from ._prompt_agent_session_request import PromptAgentSessionRequestParamsMeta
+from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPromptMeta
+from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
+from ._prompt_agent_session_request import PromptAgentSessionRequestParams
 from ._rerun_workflow_instances_request import RerunWorkflowInstancesRequestFilter
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettingsFailoverSettings
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettings
@@ -1658,9 +1730,17 @@ __all__ = [
     BatchUpdateTasksShrinkRequest,
     BatchUpdateTasksResponseBody,
     BatchUpdateTasksResponse,
+    CancelAgentSessionRequest,
+    CancelAgentSessionShrinkRequest,
+    CancelAgentSessionResponseBody,
+    CancelAgentSessionResponse,
     CloneDataSourceRequest,
     CloneDataSourceResponseBody,
     CloneDataSourceResponse,
+    CreateAgentSessionRequest,
+    CreateAgentSessionShrinkRequest,
+    CreateAgentSessionResponseBody,
+    CreateAgentSessionResponse,
     CreateAlertRuleRequest,
     CreateAlertRuleShrinkRequest,
     CreateAlertRuleResponseBody,
@@ -1921,6 +2001,14 @@ __all__ = [
     ExecuteAdhocWorkflowInstanceShrinkRequest,
     ExecuteAdhocWorkflowInstanceResponseBody,
     ExecuteAdhocWorkflowInstanceResponse,
+    GetAgentSessionArtifactMetaRequest,
+    GetAgentSessionArtifactMetaShrinkRequest,
+    GetAgentSessionArtifactMetaResponseBody,
+    GetAgentSessionArtifactMetaResponse,
+    GetAgentSessionTokenUsageRequest,
+    GetAgentSessionTokenUsageShrinkRequest,
+    GetAgentSessionTokenUsageResponseBody,
+    GetAgentSessionTokenUsageResponse,
     GetAlertRuleRequest,
     GetAlertRuleResponseBody,
     GetAlertRuleResponse,
@@ -2088,6 +2176,18 @@ __all__ = [
     ImportWorkflowDefinitionRequest,
     ImportWorkflowDefinitionResponseBody,
     ImportWorkflowDefinitionResponse,
+    ListAgentSessionArtifactsRequest,
+    ListAgentSessionArtifactsShrinkRequest,
+    ListAgentSessionArtifactsResponseBody,
+    ListAgentSessionArtifactsResponse,
+    ListAgentSessionsRequest,
+    ListAgentSessionsShrinkRequest,
+    ListAgentSessionsResponseBody,
+    ListAgentSessionsResponse,
+    ListAgentsRequest,
+    ListAgentsShrinkRequest,
+    ListAgentsResponseBody,
+    ListAgentsResponse,
     ListAlertRulesRequest,
     ListAlertRulesShrinkRequest,
     ListAlertRulesResponseBody,
@@ -2311,6 +2411,10 @@ __all__ = [
     ListWorkflowsShrinkRequest,
     ListWorkflowsResponseBody,
     ListWorkflowsResponse,
+    LoadAgentSessionRequest,
+    LoadAgentSessionShrinkRequest,
+    LoadAgentSessionResponseBody,
+    LoadAgentSessionResponse,
     MoveFunctionRequest,
     MoveFunctionResponseBody,
     MoveFunctionResponse,
@@ -2326,6 +2430,10 @@ __all__ = [
     PreviewDatasetVersionRequest,
     PreviewDatasetVersionResponseBody,
     PreviewDatasetVersionResponse,
+    PromptAgentSessionRequest,
+    PromptAgentSessionShrinkRequest,
+    PromptAgentSessionResponseBody,
+    PromptAgentSessionResponse,
     RemoveEntityFromMetaCollectionRequest,
     RemoveEntityFromMetaCollectionResponseBody,
     RemoveEntityFromMetaCollectionResponse,
@@ -2574,6 +2682,16 @@ __all__ = [
     BatchUpdateTasksRequestTasksTags,
     BatchUpdateTasksRequestTasksTrigger,
     BatchUpdateTasksRequestTasks,
+    CancelAgentSessionRequestParams,
+    CancelAgentSessionResponseBodyJsonRpcResponseResult,
+    CancelAgentSessionResponseBodyJsonRpcResponse,
+    CreateAgentSessionRequestParamsMetaAgent,
+    CreateAgentSessionRequestParamsMetaConfigSessionTags,
+    CreateAgentSessionRequestParamsMetaConfig,
+    CreateAgentSessionRequestParamsMeta,
+    CreateAgentSessionRequestParams,
+    CreateAgentSessionResponseBodyJsonRpcResponseResult,
+    CreateAgentSessionResponseBodyJsonRpcResponse,
     CreateAlertRuleRequestNotificationReceivers,
     CreateAlertRuleRequestNotification,
     CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime,
@@ -2667,6 +2785,12 @@ __all__ = [
     ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource,
     ExecuteAdhocWorkflowInstanceRequestTasksScript,
     ExecuteAdhocWorkflowInstanceRequestTasks,
+    GetAgentSessionArtifactMetaRequestParams,
+    GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult,
+    GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse,
+    GetAgentSessionTokenUsageRequestParams,
+    GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult,
+    GetAgentSessionTokenUsageResponseBodyJsonRpcResponse,
     GetAlertRuleResponseBodyAlertRuleNotificationReceivers,
     GetAlertRuleResponseBodyAlertRuleNotification,
     GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime,
@@ -2852,6 +2976,20 @@ __all__ = [
     GetWorkflowInstanceResponseBodyWorkflowInstanceTags,
     GetWorkflowInstanceResponseBodyWorkflowInstance,
     ImportWorkflowDefinitionResponseBodyAsyncJob,
+    ListAgentSessionArtifactsRequestParams,
+    ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts,
+    ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult,
+    ListAgentSessionArtifactsResponseBodyJsonRpcResponse,
+    ListAgentSessionsRequestParams,
+    ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList,
+    ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta,
+    ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions,
+    ListAgentSessionsResponseBodyJsonRpcResponseResult,
+    ListAgentSessionsResponseBodyJsonRpcResponse,
+    ListAgentsRequestParams,
+    ListAgentsResponseBodyJsonRpcResponseResultAgents,
+    ListAgentsResponseBodyJsonRpcResponseResult,
+    ListAgentsResponseBodyJsonRpcResponse,
     ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime,
     ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished,
     ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError,
@@ -3136,7 +3274,13 @@ __all__ = [
     ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger,
     ListWorkflowsResponseBodyPagingInfoWorkflows,
     ListWorkflowsResponseBodyPagingInfo,
+    LoadAgentSessionRequestParamsMeta,
+    LoadAgentSessionRequestParams,
     PreviewDatasetVersionResponseBodyPreviewResult,
+    PromptAgentSessionRequestParamsMeta,
+    PromptAgentSessionRequestParamsPromptMeta,
+    PromptAgentSessionRequestParamsPrompt,
+    PromptAgentSessionRequestParams,
     RerunWorkflowInstancesRequestFilter,
     StartDIJobRequestRealtimeStartSettingsFailoverSettings,
     StartDIJobRequestRealtimeStartSettings,
