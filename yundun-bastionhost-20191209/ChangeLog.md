@@ -1,3 +1,12 @@
+2026-04-22 Version: 1.5.1
+- Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.RDP.DiskRedirectionDownload.
+- Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.RDP.DiskRedirectionUpload.
+- Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.SSH.AllowDirectTcp.
+- Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.SSH.AllowTcpForwarding.
+- Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.SSH.TcpForwarding.
+- Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.SSH.TcpForwarding.
+
+
 2026-03-25 Version: 1.5.0
 - Support API ImportKMSSecretsForHost.
 - Support API ListImportableKMSSecretsForHost.

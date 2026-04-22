@@ -205,6 +205,8 @@ class GetPolicyResponseBodyPolicyProtocolConfig(DaraModel):
 class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
     def __init__(
         self,
+        allow_direct_tcp: str = None,
+        allow_tcp_forwarding: str = None,
         exec_command: str = None,
         sftpchannel: str = None,
         sftpdownload_file: str = None,
@@ -214,8 +216,11 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
         sftprmdir: str = None,
         sftpupload_file: str = None,
         sshchannel: str = None,
+        tcp_forwarding: str = None,
         x_11forwarding: str = None,
     ):
+        self.allow_direct_tcp = allow_direct_tcp
+        self.allow_tcp_forwarding = allow_tcp_forwarding
         # Indicates whether remote command execution is enabled. Valid values:
         # 
         # *   Enable
@@ -261,6 +266,7 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
         # *   Enable
         # *   Disable
         self.sshchannel = sshchannel
+        self.tcp_forwarding = tcp_forwarding
         # Indicates whether X11 forwarding is enabled. Valid values:
         # 
         # *   Enable
@@ -275,6 +281,12 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_direct_tcp is not None:
+            result['AllowDirectTcp'] = self.allow_direct_tcp
+
+        if self.allow_tcp_forwarding is not None:
+            result['AllowTcpForwarding'] = self.allow_tcp_forwarding
+
         if self.exec_command is not None:
             result['ExecCommand'] = self.exec_command
 
@@ -302,6 +314,9 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
         if self.sshchannel is not None:
             result['SSHChannel'] = self.sshchannel
 
+        if self.tcp_forwarding is not None:
+            result['TcpForwarding'] = self.tcp_forwarding
+
         if self.x_11forwarding is not None:
             result['X11Forwarding'] = self.x_11forwarding
 
@@ -309,6 +324,12 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowDirectTcp') is not None:
+            self.allow_direct_tcp = m.get('AllowDirectTcp')
+
+        if m.get('AllowTcpForwarding') is not None:
+            self.allow_tcp_forwarding = m.get('AllowTcpForwarding')
+
         if m.get('ExecCommand') is not None:
             self.exec_command = m.get('ExecCommand')
 
@@ -336,6 +357,9 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
         if m.get('SSHChannel') is not None:
             self.sshchannel = m.get('SSHChannel')
 
+        if m.get('TcpForwarding') is not None:
+            self.tcp_forwarding = m.get('TcpForwarding')
+
         if m.get('X11Forwarding') is not None:
             self.x_11forwarding = m.get('X11Forwarding')
 
@@ -347,6 +371,8 @@ class GetPolicyResponseBodyPolicyProtocolConfigRDP(DaraModel):
         clipboard_download: str = None,
         clipboard_upload: str = None,
         disk_redirection: str = None,
+        disk_redirection_download: str = None,
+        disk_redirection_upload: str = None,
         record_keyboard: str = None,
     ):
         # Indicates whether downloading from the clipboard is enabled. Valid values:
@@ -364,6 +390,8 @@ class GetPolicyResponseBodyPolicyProtocolConfigRDP(DaraModel):
         # *   Enable
         # *   Disable
         self.disk_redirection = disk_redirection
+        self.disk_redirection_download = disk_redirection_download
+        self.disk_redirection_upload = disk_redirection_upload
         # Indicates whether keyboard recording is enabled. Valid values:
         # 
         # *   Enable
@@ -387,6 +415,12 @@ class GetPolicyResponseBodyPolicyProtocolConfigRDP(DaraModel):
         if self.disk_redirection is not None:
             result['DiskRedirection'] = self.disk_redirection
 
+        if self.disk_redirection_download is not None:
+            result['DiskRedirectionDownload'] = self.disk_redirection_download
+
+        if self.disk_redirection_upload is not None:
+            result['DiskRedirectionUpload'] = self.disk_redirection_upload
+
         if self.record_keyboard is not None:
             result['RecordKeyboard'] = self.record_keyboard
 
@@ -402,6 +436,12 @@ class GetPolicyResponseBodyPolicyProtocolConfigRDP(DaraModel):
 
         if m.get('DiskRedirection') is not None:
             self.disk_redirection = m.get('DiskRedirection')
+
+        if m.get('DiskRedirectionDownload') is not None:
+            self.disk_redirection_download = m.get('DiskRedirectionDownload')
+
+        if m.get('DiskRedirectionUpload') is not None:
+            self.disk_redirection_upload = m.get('DiskRedirectionUpload')
 
         if m.get('RecordKeyboard') is not None:
             self.record_keyboard = m.get('RecordKeyboard')

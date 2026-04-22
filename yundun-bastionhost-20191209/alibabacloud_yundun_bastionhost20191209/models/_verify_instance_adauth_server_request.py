@@ -30,7 +30,6 @@ class VerifyInstanceADAuthServerRequest(DaraModel):
         self.instance_id = instance_id
         # This parameter is required.
         self.is_ssl = is_ssl
-        # This parameter is required.
         self.password = password
         # This parameter is required.
         self.port = port

@@ -130,6 +130,7 @@ class SetPolicyProtocolConfigRequestProtocolConfigSSH(DaraModel):
         sftprmdir: str = None,
         sftpupload_file: str = None,
         sshchannel: str = None,
+        tcp_forwarding: str = None,
         x_11forwarding: str = None,
     ):
         self.allow_direct_tcp = allow_direct_tcp
@@ -209,6 +210,7 @@ class SetPolicyProtocolConfigRequestProtocolConfigSSH(DaraModel):
         # 
         # *   If you select Enable Only SFTP Permission for a host account, do not set SSHChannel and SFTPChannel to Disable for the account. Otherwise, users of the bastion host cannot use the account to access the host.
         self.sshchannel = sshchannel
+        self.tcp_forwarding = tcp_forwarding
         # Specifies whether to enable X11 forwarding. Valid values:
         # 
         # *   Enable
@@ -258,6 +260,9 @@ class SetPolicyProtocolConfigRequestProtocolConfigSSH(DaraModel):
         if self.sshchannel is not None:
             result['SSHChannel'] = self.sshchannel
 
+        if self.tcp_forwarding is not None:
+            result['TcpForwarding'] = self.tcp_forwarding
+
         if self.x_11forwarding is not None:
             result['X11Forwarding'] = self.x_11forwarding
 
@@ -297,6 +302,9 @@ class SetPolicyProtocolConfigRequestProtocolConfigSSH(DaraModel):
 
         if m.get('SSHChannel') is not None:
             self.sshchannel = m.get('SSHChannel')
+
+        if m.get('TcpForwarding') is not None:
+            self.tcp_forwarding = m.get('TcpForwarding')
 
         if m.get('X11Forwarding') is not None:
             self.x_11forwarding = m.get('X11Forwarding')
