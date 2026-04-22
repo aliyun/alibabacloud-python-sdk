@@ -9801,6 +9801,128 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_application_attribute_with_options_async(request, runtime)
 
+    def describe_application_logs_with_options(
+        self,
+        request: main_models.DescribeApplicationLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.component_name):
+            query['ComponentName'] = request.component_name
+        if not DaraCore.is_null(request.container_name):
+            query['ContainerName'] = request.container_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.level):
+            query['Level'] = request.level
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationLogs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_logs_with_options_async(
+        self,
+        request: main_models.DescribeApplicationLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.component_name):
+            query['ComponentName'] = request.component_name
+        if not DaraCore.is_null(request.container_name):
+            query['ContainerName'] = request.container_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.level):
+            query['Level'] = request.level
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationLogs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_logs(
+        self,
+        request: main_models.DescribeApplicationLogsRequest,
+    ) -> main_models.DescribeApplicationLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_logs_with_options(request, runtime)
+
+    async def describe_application_logs_async(
+        self,
+        request: main_models.DescribeApplicationLogsRequest,
+    ) -> main_models.DescribeApplicationLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_logs_with_options_async(request, runtime)
+
     def describe_application_parameters_with_options(
         self,
         tmp_req: main_models.DescribeApplicationParametersRequest,
