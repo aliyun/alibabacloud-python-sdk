@@ -12,6 +12,9 @@ from ._scaling_rule import ScalingRule
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_acl_group_request import CreateAclGroupRequest
+from ._create_acl_group_response_body import CreateAclGroupResponseBody
+from ._create_acl_group_response import CreateAclGroupResponse
 from ._create_default_role_response_body import CreateDefaultRoleResponseBody
 from ._create_default_role_response import CreateDefaultRoleResponse
 from ._create_instance_request import CreateInstanceRequest
@@ -32,6 +35,9 @@ from ._get_instance_response import GetInstanceResponse
 from ._get_instance_detail_request import GetInstanceDetailRequest
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBody
 from ._get_instance_detail_response import GetInstanceDetailResponse
+from ._list_acl_groups_request import ListAclGroupsRequest
+from ._list_acl_groups_response_body import ListAclGroupsResponseBody
+from ._list_acl_groups_response import ListAclGroupsResponse
 from ._list_instances_request import ListInstancesRequest
 from ._list_instances_shrink_request import ListInstancesShrinkRequest
 from ._list_instances_response_body import ListInstancesResponseBody
@@ -53,6 +59,9 @@ from ._un_tag_resources_response import UnTagResourcesResponse
 from ._update_access_control_list_request import UpdateAccessControlListRequest
 from ._update_access_control_list_response_body import UpdateAccessControlListResponseBody
 from ._update_access_control_list_response import UpdateAccessControlListResponse
+from ._update_acl_group_cidrs_request import UpdateAclGroupCidrsRequest
+from ._update_acl_group_cidrs_response_body import UpdateAclGroupCidrsResponseBody
+from ._update_acl_group_cidrs_response import UpdateAclGroupCidrsResponse
 from ._update_instance_request import UpdateInstanceRequest
 from ._update_instance_response_body import UpdateInstanceResponseBody
 from ._update_instance_response import UpdateInstanceResponse
@@ -85,6 +94,7 @@ from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDat
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDataTags
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDataVSwitches
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyData
+from ._list_acl_groups_response_body import ListAclGroupsResponseBodyData
 from ._list_instances_request import ListInstancesRequestTag
 from ._list_instances_response_body import ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList
 from ._list_instances_response_body import ListInstancesResponseBodyDataClusterInfo
@@ -105,6 +115,9 @@ __all__ = [
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    CreateAclGroupRequest,
+    CreateAclGroupResponseBody,
+    CreateAclGroupResponse,
     CreateDefaultRoleResponseBody,
     CreateDefaultRoleResponse,
     CreateInstanceRequest,
@@ -125,6 +138,9 @@ __all__ = [
     GetInstanceDetailRequest,
     GetInstanceDetailResponseBody,
     GetInstanceDetailResponse,
+    ListAclGroupsRequest,
+    ListAclGroupsResponseBody,
+    ListAclGroupsResponse,
     ListInstancesRequest,
     ListInstancesShrinkRequest,
     ListInstancesResponseBody,
@@ -146,6 +162,9 @@ __all__ = [
     UpdateAccessControlListRequest,
     UpdateAccessControlListResponseBody,
     UpdateAccessControlListResponse,
+    UpdateAclGroupCidrsRequest,
+    UpdateAclGroupCidrsResponseBody,
+    UpdateAclGroupCidrsResponse,
     UpdateInstanceRequest,
     UpdateInstanceResponseBody,
     UpdateInstanceResponse,
@@ -178,6 +197,7 @@ __all__ = [
     GetInstanceDetailResponseBodyDataTags,
     GetInstanceDetailResponseBodyDataVSwitches,
     GetInstanceDetailResponseBodyData,
+    ListAclGroupsResponseBodyData,
     ListInstancesRequestTag,
     ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList,
     ListInstancesResponseBodyDataClusterInfo,

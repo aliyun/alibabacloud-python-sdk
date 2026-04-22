@@ -132,6 +132,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
+    def create_acl_group_with_options(
+        self,
+        request: main_models.CreateAclGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAclGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cidrs):
+            query['cidrs'] = request.cidrs
+        if not DaraCore.is_null(request.group_name):
+            query['groupName'] = request.group_name
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAclGroup',
+            version = '2023-10-12',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/milvus/createAclGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAclGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_acl_group_with_options_async(
+        self,
+        request: main_models.CreateAclGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAclGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cidrs):
+            query['cidrs'] = request.cidrs
+        if not DaraCore.is_null(request.group_name):
+            query['groupName'] = request.group_name
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAclGroup',
+            version = '2023-10-12',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/milvus/createAclGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAclGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_acl_group(
+        self,
+        request: main_models.CreateAclGroupRequest,
+    ) -> main_models.CreateAclGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_acl_group_with_options(request, headers, runtime)
+
+    async def create_acl_group_async(
+        self,
+        request: main_models.CreateAclGroupRequest,
+    ) -> main_models.CreateAclGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_acl_group_with_options_async(request, headers, runtime)
+
     def create_default_role_with_options(
         self,
         headers: Dict[str, str],
@@ -762,6 +850,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_detail_with_options_async(request, headers, runtime)
 
+    def list_acl_groups_with_options(
+        self,
+        request: main_models.ListAclGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAclGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAclGroups',
+            version = '2023-10-12',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/milvus/listAclGroups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAclGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_acl_groups_with_options_async(
+        self,
+        request: main_models.ListAclGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAclGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAclGroups',
+            version = '2023-10-12',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/milvus/listAclGroups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAclGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_acl_groups(
+        self,
+        request: main_models.ListAclGroupsRequest,
+    ) -> main_models.ListAclGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_acl_groups_with_options(request, headers, runtime)
+
+    async def list_acl_groups_async(
+        self,
+        request: main_models.ListAclGroupsRequest,
+    ) -> main_models.ListAclGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_acl_groups_with_options_async(request, headers, runtime)
+
     def list_instances_with_options(
         self,
         tmp_req: main_models.ListInstancesRequest,
@@ -1345,6 +1513,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_access_control_list_with_options_async(request, headers, runtime)
+
+    def update_acl_group_cidrs_with_options(
+        self,
+        request: main_models.UpdateAclGroupCidrsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAclGroupCidrsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.group_name):
+            query['groupName'] = request.group_name
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.new_cidrs):
+            query['newCidrs'] = request.new_cidrs
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAclGroupCidrs',
+            version = '2023-10-12',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/milvus/updateAclGroupCidrs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAclGroupCidrsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_acl_group_cidrs_with_options_async(
+        self,
+        request: main_models.UpdateAclGroupCidrsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAclGroupCidrsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.group_name):
+            query['groupName'] = request.group_name
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.new_cidrs):
+            query['newCidrs'] = request.new_cidrs
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAclGroupCidrs',
+            version = '2023-10-12',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/milvus/updateAclGroupCidrs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAclGroupCidrsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_acl_group_cidrs(
+        self,
+        request: main_models.UpdateAclGroupCidrsRequest,
+    ) -> main_models.UpdateAclGroupCidrsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_acl_group_cidrs_with_options(request, headers, runtime)
+
+    async def update_acl_group_cidrs_async(
+        self,
+        request: main_models.UpdateAclGroupCidrsRequest,
+    ) -> main_models.UpdateAclGroupCidrsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_acl_group_cidrs_with_options_async(request, headers, runtime)
 
     def update_instance_with_options(
         self,

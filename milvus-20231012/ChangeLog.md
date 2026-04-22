@@ -1,3 +1,9 @@
+2026-04-22 Version: 1.3.0
+- Support API CreateAclGroup.
+- Support API ListAclGroups.
+- Support API UpdateAclGroupCidrs.
+
+
 2026-04-13 Version: 1.2.2
 - Update API CreateInstance: add request parameters body.aiFunction.
 - Update API CreateInstance: add request parameters body.autoPay.
