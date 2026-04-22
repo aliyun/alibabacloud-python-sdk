@@ -564,6 +564,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.password):
             body['password'] = request.password
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
         if not DaraCore.is_null(request.username):
             body['username'] = request.username
         req = open_api_util_models.OpenApiRequest(
@@ -597,6 +599,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.password):
             body['password'] = request.password
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
         if not DaraCore.is_null(request.username):
             body['username'] = request.username
         req = open_api_util_models.OpenApiRequest(
@@ -4031,16 +4035,26 @@ class Client(OpenApiClient):
         self,
         migration_id: str,
         stage_type: str,
-        request: main_models.ListMigrationOperationsRequest,
+        tmp_req: main_models.ListMigrationOperationsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListMigrationOperationsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListMigrationOperationsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.business_status):
+            request.business_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_status, 'businessStatus', 'simple')
+        if not DaraCore.is_null(tmp_req.operation_status):
+            request.operation_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.operation_status, 'operationStatus', 'simple')
         query = {}
+        if not DaraCore.is_null(request.business_status_shrink):
+            query['businessStatus'] = request.business_status_shrink
         if not DaraCore.is_null(request.filter):
             query['filter'] = request.filter
         if not DaraCore.is_null(request.instance_id):
             query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_status_shrink):
+            query['operationStatus'] = request.operation_status_shrink
         if not DaraCore.is_null(request.operation_type):
             query['operationType'] = request.operation_type
         if not DaraCore.is_null(request.page_number):
@@ -4071,16 +4085,26 @@ class Client(OpenApiClient):
         self,
         migration_id: str,
         stage_type: str,
-        request: main_models.ListMigrationOperationsRequest,
+        tmp_req: main_models.ListMigrationOperationsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListMigrationOperationsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListMigrationOperationsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.business_status):
+            request.business_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_status, 'businessStatus', 'simple')
+        if not DaraCore.is_null(tmp_req.operation_status):
+            request.operation_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.operation_status, 'operationStatus', 'simple')
         query = {}
+        if not DaraCore.is_null(request.business_status_shrink):
+            query['businessStatus'] = request.business_status_shrink
         if not DaraCore.is_null(request.filter):
             query['filter'] = request.filter
         if not DaraCore.is_null(request.instance_id):
             query['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_status_shrink):
+            query['operationStatus'] = request.operation_status_shrink
         if not DaraCore.is_null(request.operation_type):
             query['operationType'] = request.operation_type
         if not DaraCore.is_null(request.page_number):
@@ -5531,6 +5555,8 @@ class Client(OpenApiClient):
             query['accountStatus'] = request.account_status
         if not DaraCore.is_null(request.password):
             query['password'] = request.password
+        if not DaraCore.is_null(request.remark):
+            query['remark'] = request.remark
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5565,6 +5591,8 @@ class Client(OpenApiClient):
             query['accountStatus'] = request.account_status
         if not DaraCore.is_null(request.password):
             query['password'] = request.password
+        if not DaraCore.is_null(request.remark):
+            query['remark'] = request.remark
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

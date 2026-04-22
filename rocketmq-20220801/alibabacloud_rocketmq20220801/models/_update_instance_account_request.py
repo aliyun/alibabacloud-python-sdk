@@ -9,6 +9,7 @@ class UpdateInstanceAccountRequest(DaraModel):
         self,
         account_status: str = None,
         password: str = None,
+        remark: str = None,
     ):
         # The status of the account.
         # 
@@ -19,6 +20,7 @@ class UpdateInstanceAccountRequest(DaraModel):
         self.account_status = account_status
         # The password of the account.
         self.password = password
+        self.remark = remark
 
     def validate(self):
         pass
@@ -34,6 +36,9 @@ class UpdateInstanceAccountRequest(DaraModel):
         if self.password is not None:
             result['password'] = self.password
 
+        if self.remark is not None:
+            result['remark'] = self.remark
+
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +48,9 @@ class UpdateInstanceAccountRequest(DaraModel):
 
         if m.get('password') is not None:
             self.password = m.get('password')
+
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
 
         return self
 

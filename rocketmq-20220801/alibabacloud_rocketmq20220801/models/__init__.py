@@ -134,6 +134,7 @@ from ._list_metric_meta_request import ListMetricMetaRequest
 from ._list_metric_meta_response_body import ListMetricMetaResponseBody
 from ._list_metric_meta_response import ListMetricMetaResponse
 from ._list_migration_operations_request import ListMigrationOperationsRequest
+from ._list_migration_operations_shrink_request import ListMigrationOperationsShrinkRequest
 from ._list_migration_operations_response_body import ListMigrationOperationsResponseBody
 from ._list_migration_operations_response import ListMigrationOperationsResponse
 from ._list_migrations_request import ListMigrationsRequest
@@ -445,6 +446,7 @@ __all__ = [
     ListMetricMetaResponseBody,
     ListMetricMetaResponse,
     ListMigrationOperationsRequest,
+    ListMigrationOperationsShrinkRequest,
     ListMigrationOperationsResponseBody,
     ListMigrationOperationsResponse,
     ListMigrationsRequest,

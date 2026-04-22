@@ -1,3 +1,10 @@
+2026-04-22 Version: 5.0.6
+- Update API CreateInstanceAccount: add request parameters body.remark.
+- Update API GetInstanceAccount: add response parameters Body.data.remark.
+- Update API ListInstanceAccount: add response parameters Body.data.list.$.remark.
+- Update API UpdateInstanceAccount: add request parameters remark.
+
+
 2026-04-01 Version: 5.0.4
 - Update API CreateInstance: add request parameters body.productInfo.drReplicationMode.
 - Update API GetInstance: add response parameters Body.data.productInfo.drReplicationMode.

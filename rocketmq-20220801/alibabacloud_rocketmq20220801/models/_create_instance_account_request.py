@@ -8,12 +8,14 @@ class CreateInstanceAccountRequest(DaraModel):
     def __init__(
         self,
         password: str = None,
+        remark: str = None,
         username: str = None,
     ):
         # The password of the account.
         # 
         # This parameter is required.
         self.password = password
+        self.remark = remark
         # The username of the account.
         # 
         # This parameter is required.
@@ -30,6 +32,9 @@ class CreateInstanceAccountRequest(DaraModel):
         if self.password is not None:
             result['password'] = self.password
 
+        if self.remark is not None:
+            result['remark'] = self.remark
+
         if self.username is not None:
             result['username'] = self.username
 
@@ -39,6 +44,9 @@ class CreateInstanceAccountRequest(DaraModel):
         m = m or dict()
         if m.get('password') is not None:
             self.password = m.get('password')
+
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
 
         if m.get('username') is not None:
             self.username = m.get('username')

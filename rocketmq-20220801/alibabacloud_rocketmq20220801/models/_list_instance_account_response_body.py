@@ -179,6 +179,7 @@ class ListInstanceAccountResponseBodyDataList(DaraModel):
         account_type: str = None,
         instance_id: str = None,
         region_id: str = None,
+        remark: str = None,
         username: str = None,
     ):
         # The status of the account.
@@ -194,6 +195,7 @@ class ListInstanceAccountResponseBodyDataList(DaraModel):
         self.instance_id = instance_id
         # The region ID.
         self.region_id = region_id
+        self.remark = remark
         # The username of the account.
         self.username = username
 
@@ -217,6 +219,9 @@ class ListInstanceAccountResponseBodyDataList(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
+        if self.remark is not None:
+            result['remark'] = self.remark
+
         if self.username is not None:
             result['username'] = self.username
 
@@ -235,6 +240,9 @@ class ListInstanceAccountResponseBodyDataList(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
 
         if m.get('username') is not None:
             self.username = m.get('username')

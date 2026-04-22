@@ -2,25 +2,23 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ListMigrationOperationsRequest(DaraModel):
+class ListMigrationOperationsShrinkRequest(DaraModel):
     def __init__(
         self,
-        business_status: List[str] = None,
+        business_status_shrink: str = None,
         filter: str = None,
         instance_id: str = None,
-        operation_status: List[str] = None,
+        operation_status_shrink: str = None,
         operation_type: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
-        self.business_status = business_status
+        self.business_status_shrink = business_status_shrink
         self.filter = filter
         self.instance_id = instance_id
-        self.operation_status = operation_status
+        self.operation_status_shrink = operation_status_shrink
         # This parameter is required.
         self.operation_type = operation_type
         # This parameter is required.
@@ -36,8 +34,8 @@ class ListMigrationOperationsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.business_status is not None:
-            result['businessStatus'] = self.business_status
+        if self.business_status_shrink is not None:
+            result['businessStatus'] = self.business_status_shrink
 
         if self.filter is not None:
             result['filter'] = self.filter
@@ -45,8 +43,8 @@ class ListMigrationOperationsRequest(DaraModel):
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
 
-        if self.operation_status is not None:
-            result['operationStatus'] = self.operation_status
+        if self.operation_status_shrink is not None:
+            result['operationStatus'] = self.operation_status_shrink
 
         if self.operation_type is not None:
             result['operationType'] = self.operation_type
@@ -62,7 +60,7 @@ class ListMigrationOperationsRequest(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('businessStatus') is not None:
-            self.business_status = m.get('businessStatus')
+            self.business_status_shrink = m.get('businessStatus')
 
         if m.get('filter') is not None:
             self.filter = m.get('filter')
@@ -71,7 +69,7 @@ class ListMigrationOperationsRequest(DaraModel):
             self.instance_id = m.get('instanceId')
 
         if m.get('operationStatus') is not None:
-            self.operation_status = m.get('operationStatus')
+            self.operation_status_shrink = m.get('operationStatus')
 
         if m.get('operationType') is not None:
             self.operation_type = m.get('operationType')

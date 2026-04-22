@@ -103,6 +103,7 @@ class GetInstanceAccountResponseBodyData(DaraModel):
         self,
         account_status: str = None,
         password: str = None,
+        remark: str = None,
         username: str = None,
     ):
         # The status of the account.
@@ -114,6 +115,7 @@ class GetInstanceAccountResponseBodyData(DaraModel):
         self.account_status = account_status
         # The password of the account.
         self.password = password
+        self.remark = remark
         # The username of the account.
         self.username = username
 
@@ -131,6 +133,9 @@ class GetInstanceAccountResponseBodyData(DaraModel):
         if self.password is not None:
             result['password'] = self.password
 
+        if self.remark is not None:
+            result['remark'] = self.remark
+
         if self.username is not None:
             result['username'] = self.username
 
@@ -143,6 +148,9 @@ class GetInstanceAccountResponseBodyData(DaraModel):
 
         if m.get('password') is not None:
             self.password = m.get('password')
+
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
 
         if m.get('username') is not None:
             self.username = m.get('username')
