@@ -1,3 +1,11 @@
+2026-04-22 Version: 1.4.0
+- Support API DescribeIntranetUserCanAnalysisVpcs.
+- Support API DescribePvtzStatisticsGlobalOverview.
+- Support API DescribePvtzStatisticsHistory.
+- Support API DescribePvtzStatisticsSummary.
+- Support API DescribePvtzStatisticsZoneOverview.
+
+
 2026-04-09 Version: 1.3.4
 - Generated python 2018-01-01 for pvtz.
 

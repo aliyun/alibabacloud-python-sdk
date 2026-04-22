@@ -1642,6 +1642,496 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_custom_lines_with_options_async(request, runtime)
 
+    def describe_intranet_user_can_analysis_vpcs_with_options(
+        self,
+        request: main_models.DescribeIntranetUserCanAnalysisVpcsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeIntranetUserCanAnalysisVpcsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_tree_level):
+            query['QueryTreeLevel'] = request.query_tree_level
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.vpc_owner):
+            query['VpcOwner'] = request.vpc_owner
+        if not DaraCore.is_null(request.vpc_type):
+            query['VpcType'] = request.vpc_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeIntranetUserCanAnalysisVpcs',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeIntranetUserCanAnalysisVpcsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_intranet_user_can_analysis_vpcs_with_options_async(
+        self,
+        request: main_models.DescribeIntranetUserCanAnalysisVpcsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeIntranetUserCanAnalysisVpcsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_tree_level):
+            query['QueryTreeLevel'] = request.query_tree_level
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.vpc_owner):
+            query['VpcOwner'] = request.vpc_owner
+        if not DaraCore.is_null(request.vpc_type):
+            query['VpcType'] = request.vpc_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeIntranetUserCanAnalysisVpcs',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeIntranetUserCanAnalysisVpcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_intranet_user_can_analysis_vpcs(
+        self,
+        request: main_models.DescribeIntranetUserCanAnalysisVpcsRequest,
+    ) -> main_models.DescribeIntranetUserCanAnalysisVpcsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_intranet_user_can_analysis_vpcs_with_options(request, runtime)
+
+    async def describe_intranet_user_can_analysis_vpcs_async(
+        self,
+        request: main_models.DescribeIntranetUserCanAnalysisVpcsRequest,
+    ) -> main_models.DescribeIntranetUserCanAnalysisVpcsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_intranet_user_can_analysis_vpcs_with_options_async(request, runtime)
+
+    def describe_pvtz_statistics_global_overview_with_options(
+        self,
+        request: main_models.DescribePvtzStatisticsGlobalOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsGlobalOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsGlobalOverview',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsGlobalOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pvtz_statistics_global_overview_with_options_async(
+        self,
+        request: main_models.DescribePvtzStatisticsGlobalOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsGlobalOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsGlobalOverview',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsGlobalOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pvtz_statistics_global_overview(
+        self,
+        request: main_models.DescribePvtzStatisticsGlobalOverviewRequest,
+    ) -> main_models.DescribePvtzStatisticsGlobalOverviewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pvtz_statistics_global_overview_with_options(request, runtime)
+
+    async def describe_pvtz_statistics_global_overview_async(
+        self,
+        request: main_models.DescribePvtzStatisticsGlobalOverviewRequest,
+    ) -> main_models.DescribePvtzStatisticsGlobalOverviewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pvtz_statistics_global_overview_with_options_async(request, runtime)
+
+    def describe_pvtz_statistics_history_with_options(
+        self,
+        request: main_models.DescribePvtzStatisticsHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.module):
+            query['Module'] = request.module
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsHistory',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pvtz_statistics_history_with_options_async(
+        self,
+        request: main_models.DescribePvtzStatisticsHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.module):
+            query['Module'] = request.module
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsHistory',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pvtz_statistics_history(
+        self,
+        request: main_models.DescribePvtzStatisticsHistoryRequest,
+    ) -> main_models.DescribePvtzStatisticsHistoryResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pvtz_statistics_history_with_options(request, runtime)
+
+    async def describe_pvtz_statistics_history_async(
+        self,
+        request: main_models.DescribePvtzStatisticsHistoryRequest,
+    ) -> main_models.DescribePvtzStatisticsHistoryResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pvtz_statistics_history_with_options_async(request, runtime)
+
+    def describe_pvtz_statistics_summary_with_options(
+        self,
+        request: main_models.DescribePvtzStatisticsSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.grow_type):
+            query['GrowType'] = request.grow_type
+        if not DaraCore.is_null(request.module):
+            query['Module'] = request.module
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsSummary',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pvtz_statistics_summary_with_options_async(
+        self,
+        request: main_models.DescribePvtzStatisticsSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.grow_type):
+            query['GrowType'] = request.grow_type
+        if not DaraCore.is_null(request.module):
+            query['Module'] = request.module
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsSummary',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pvtz_statistics_summary(
+        self,
+        request: main_models.DescribePvtzStatisticsSummaryRequest,
+    ) -> main_models.DescribePvtzStatisticsSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pvtz_statistics_summary_with_options(request, runtime)
+
+    async def describe_pvtz_statistics_summary_async(
+        self,
+        request: main_models.DescribePvtzStatisticsSummaryRequest,
+    ) -> main_models.DescribePvtzStatisticsSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pvtz_statistics_summary_with_options_async(request, runtime)
+
+    def describe_pvtz_statistics_zone_overview_with_options(
+        self,
+        request: main_models.DescribePvtzStatisticsZoneOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsZoneOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.module):
+            query['Module'] = request.module
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsZoneOverview',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsZoneOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pvtz_statistics_zone_overview_with_options_async(
+        self,
+        request: main_models.DescribePvtzStatisticsZoneOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePvtzStatisticsZoneOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.module):
+            query['Module'] = request.module
+        if not DaraCore.is_null(request.network_params):
+            query['NetworkParams'] = request.network_params
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePvtzStatisticsZoneOverview',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePvtzStatisticsZoneOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pvtz_statistics_zone_overview(
+        self,
+        request: main_models.DescribePvtzStatisticsZoneOverviewRequest,
+    ) -> main_models.DescribePvtzStatisticsZoneOverviewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pvtz_statistics_zone_overview_with_options(request, runtime)
+
+    async def describe_pvtz_statistics_zone_overview_async(
+        self,
+        request: main_models.DescribePvtzStatisticsZoneOverviewRequest,
+    ) -> main_models.DescribePvtzStatisticsZoneOverviewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pvtz_statistics_zone_overview_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: main_models.DescribeRegionsRequest,
