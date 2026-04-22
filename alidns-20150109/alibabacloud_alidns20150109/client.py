@@ -9254,6 +9254,382 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_instance_domains_with_options_async(request, runtime)
 
+    def describe_inter_auth_statistics_global_overview_with_options(
+        self,
+        request: main_models.DescribeInterAuthStatisticsGlobalOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsGlobalOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsGlobalOverview',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsGlobalOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inter_auth_statistics_global_overview_with_options_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsGlobalOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsGlobalOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsGlobalOverview',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsGlobalOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inter_auth_statistics_global_overview(
+        self,
+        request: main_models.DescribeInterAuthStatisticsGlobalOverviewRequest,
+    ) -> main_models.DescribeInterAuthStatisticsGlobalOverviewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inter_auth_statistics_global_overview_with_options(request, runtime)
+
+    async def describe_inter_auth_statistics_global_overview_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsGlobalOverviewRequest,
+    ) -> main_models.DescribeInterAuthStatisticsGlobalOverviewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inter_auth_statistics_global_overview_with_options_async(request, runtime)
+
+    def describe_inter_auth_statistics_history_with_options(
+        self,
+        request: main_models.DescribeInterAuthStatisticsHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsHistory',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inter_auth_statistics_history_with_options_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsHistory',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inter_auth_statistics_history(
+        self,
+        request: main_models.DescribeInterAuthStatisticsHistoryRequest,
+    ) -> main_models.DescribeInterAuthStatisticsHistoryResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inter_auth_statistics_history_with_options(request, runtime)
+
+    async def describe_inter_auth_statistics_history_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsHistoryRequest,
+    ) -> main_models.DescribeInterAuthStatisticsHistoryResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inter_auth_statistics_history_with_options_async(request, runtime)
+
+    def describe_inter_auth_statistics_summary_with_options(
+        self,
+        request: main_models.DescribeInterAuthStatisticsSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.grow_type):
+            query['GrowType'] = request.grow_type
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsSummary',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inter_auth_statistics_summary_with_options_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.grow_type):
+            query['GrowType'] = request.grow_type
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.rcode):
+            query['Rcode'] = request.rcode
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.statistical_type):
+            query['StatisticalType'] = request.statistical_type
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsSummary',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inter_auth_statistics_summary(
+        self,
+        request: main_models.DescribeInterAuthStatisticsSummaryRequest,
+    ) -> main_models.DescribeInterAuthStatisticsSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inter_auth_statistics_summary_with_options(request, runtime)
+
+    async def describe_inter_auth_statistics_summary_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsSummaryRequest,
+    ) -> main_models.DescribeInterAuthStatisticsSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inter_auth_statistics_summary_with_options_async(request, runtime)
+
+    def describe_inter_auth_statistics_zone_overview_with_options(
+        self,
+        request: main_models.DescribeInterAuthStatisticsZoneOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsZoneOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsZoneOverview',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsZoneOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inter_auth_statistics_zone_overview_with_options_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsZoneOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInterAuthStatisticsZoneOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.overview_period):
+            query['OverviewPeriod'] = request.overview_period
+        if not DaraCore.is_null(request.server_region):
+            query['ServerRegion'] = request.server_region
+        if not DaraCore.is_null(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInterAuthStatisticsZoneOverview',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInterAuthStatisticsZoneOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inter_auth_statistics_zone_overview(
+        self,
+        request: main_models.DescribeInterAuthStatisticsZoneOverviewRequest,
+    ) -> main_models.DescribeInterAuthStatisticsZoneOverviewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inter_auth_statistics_zone_overview_with_options(request, runtime)
+
+    async def describe_inter_auth_statistics_zone_overview_async(
+        self,
+        request: main_models.DescribeInterAuthStatisticsZoneOverviewRequest,
+    ) -> main_models.DescribeInterAuthStatisticsZoneOverviewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inter_auth_statistics_zone_overview_with_options_async(request, runtime)
+
     def describe_internet_dns_logs_with_options(
         self,
         request: main_models.DescribeInternetDnsLogsRequest,
