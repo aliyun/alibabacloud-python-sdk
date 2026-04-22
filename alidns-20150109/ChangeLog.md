@@ -5,6 +5,13 @@
 - Support API DescribeInterAuthStatisticsZoneOverview.
 
 
+2026-04-22 Version: 4.4.0
+- Support API DescribeInterAuthStatisticsGlobalOverview.
+- Support API DescribeInterAuthStatisticsHistory.
+- Support API DescribeInterAuthStatisticsSummary.
+- Support API DescribeInterAuthStatisticsZoneOverview.
+
+
 2026-04-20 Version: 4.3.5
 - Update API DescribeCloudGtmGlobalAlert: add response parameters Body.AlertConfig.$.QpsThreshold.
 - Update API UpdateCloudGtmGlobalAlert: add request parameters AlertConfig.$.QpsThreshold.
