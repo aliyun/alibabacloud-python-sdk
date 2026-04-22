@@ -85,9 +85,11 @@ class DescribeAlertSourceResponseBody(DaraModel):
 class DescribeAlertSourceResponseBodyData(DaraModel):
     def __init__(
         self,
+        modules: List[str] = None,
         source: str = None,
         source_name: str = None,
     ):
+        self.modules = modules
         # The internal code of the alert data source.
         self.source = source
         # The name of the alert data source.
@@ -101,6 +103,9 @@ class DescribeAlertSourceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.modules is not None:
+            result['Modules'] = self.modules
+
         if self.source is not None:
             result['Source'] = self.source
 
@@ -111,6 +116,9 @@ class DescribeAlertSourceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Modules') is not None:
+            self.modules = m.get('Modules')
+
         if m.get('Source') is not None:
             self.source = m.get('Source')
 

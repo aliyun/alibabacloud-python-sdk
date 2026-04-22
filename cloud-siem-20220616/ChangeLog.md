@@ -1,3 +1,7 @@
+2026-04-22 Version: 6.0.2
+- Update API DescribeAlertSource: add response parameters Body.Data.$.Modules.
+
+
 2026-03-31 Version: 6.0.1
 - Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.InvestigationReport.
 - Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.InvestigationReport.
