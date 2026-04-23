@@ -1,3 +1,7 @@
+2026-04-23 Version: 1.6.0
+- Support API ListSSLDetails.
+
+
 2026-04-16 Version: 1.5.3
 - Update API DescribeResourceConstraints: add response parameters Body.Data.zoneSupportCompactionService.
 

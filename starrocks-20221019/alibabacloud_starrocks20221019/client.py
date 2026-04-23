@@ -3388,6 +3388,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_operation_history_with_options_async(request, headers, runtime)
 
+    def list_ssldetails_with_options(
+        self,
+        request: main_models.ListSSLDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSSLDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSSLDetails',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/listSSLDetails',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSSLDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ssldetails_with_options_async(
+        self,
+        request: main_models.ListSSLDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSSLDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSSLDetails',
+            version = '2022-10-19',
+            protocol = 'HTTPS',
+            pathname = f'/webapi/starrocks/listSSLDetails',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSSLDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ssldetails(
+        self,
+        request: main_models.ListSSLDetailsRequest,
+    ) -> main_models.ListSSLDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ssldetails_with_options(request, headers, runtime)
+
+    async def list_ssldetails_async(
+        self,
+        request: main_models.ListSSLDetailsRequest,
+    ) -> main_models.ListSSLDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ssldetails_with_options_async(request, headers, runtime)
+
     def modify_charge_type_with_options(
         self,
         request: main_models.ModifyChargeTypeRequest,
