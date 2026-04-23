@@ -434,6 +434,9 @@ from ._generate_kmsdata_key_response import GenerateKMSDataKeyResponse
 from ._generate_message_chat_token_request import GenerateMessageChatTokenRequest
 from ._generate_message_chat_token_response_body import GenerateMessageChatTokenResponseBody
 from ._generate_message_chat_token_response import GenerateMessageChatTokenResponse
+from ._get_aiagent_concurrency_request import GetAIAgentConcurrencyRequest
+from ._get_aiagent_concurrency_response_body import GetAIAgentConcurrencyResponseBody
+from ._get_aiagent_concurrency_response import GetAIAgentConcurrencyResponse
 from ._get_aiworkflow_task_request import GetAIWorkflowTaskRequest
 from ._get_aiworkflow_task_response_body import GetAIWorkflowTaskResponseBody
 from ._get_aiworkflow_task_response import GetAIWorkflowTaskResponse
@@ -2557,6 +2560,9 @@ __all__ = [
     GenerateMessageChatTokenRequest,
     GenerateMessageChatTokenResponseBody,
     GenerateMessageChatTokenResponse,
+    GetAIAgentConcurrencyRequest,
+    GetAIAgentConcurrencyResponseBody,
+    GetAIAgentConcurrencyResponse,
     GetAIWorkflowTaskRequest,
     GetAIWorkflowTaskResponseBody,
     GetAIWorkflowTaskResponse,

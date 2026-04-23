@@ -10012,6 +10012,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.generate_message_chat_token_with_options_async(request, runtime)
 
+    def get_aiagent_concurrency_with_options(
+        self,
+        request: main_models.GetAIAgentConcurrencyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIAgentConcurrencyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIAgentConcurrency',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIAgentConcurrencyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aiagent_concurrency_with_options_async(
+        self,
+        request: main_models.GetAIAgentConcurrencyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIAgentConcurrencyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIAgentConcurrency',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIAgentConcurrencyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aiagent_concurrency(
+        self,
+        request: main_models.GetAIAgentConcurrencyRequest,
+    ) -> main_models.GetAIAgentConcurrencyResponse:
+        runtime = RuntimeOptions()
+        return self.get_aiagent_concurrency_with_options(request, runtime)
+
+    async def get_aiagent_concurrency_async(
+        self,
+        request: main_models.GetAIAgentConcurrencyRequest,
+    ) -> main_models.GetAIAgentConcurrencyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_aiagent_concurrency_with_options_async(request, runtime)
+
     def get_aiworkflow_task_with_options(
         self,
         request: main_models.GetAIWorkflowTaskRequest,

@@ -1,3 +1,7 @@
+2026-04-23 Version: 6.19.0
+- Support API GetAIAgentConcurrency.
+
+
 2026-04-17 Version: 6.18.2
 - Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.FileInfoList.$.AudioStreamInfoList.
 - Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.FileInfoList.$.SubtitleStreamInfoList.
