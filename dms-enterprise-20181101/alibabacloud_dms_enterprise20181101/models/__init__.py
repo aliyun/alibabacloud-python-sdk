@@ -21,6 +21,10 @@ from ._dltablebase_info import DLTablebaseInfo
 from ._dataset_item_vo import DatasetItemVO
 from ._get_table_data_key_vo import GetTableDataKeyVO
 from ._import_master_key_vo import ImportMasterKeyVO
+from ._knowledge_base_vo import KnowledgeBaseVO
+from ._knowledge_job_info_vo import KnowledgeJobInfoVO
+from ._knowledge_sub_job_info_vo import KnowledgeSubJobInfoVO
+from ._meta_agent_pre_check_param import MetaAgentPreCheckParam
 from ._meta_category import MetaCategory
 from ._meta_category_table_entity import MetaCategoryTableEntity
 from ._partition_error import PartitionError
@@ -107,9 +111,15 @@ from ._check_batch_table_access_permission_request import CheckBatchTableAccessP
 from ._check_batch_table_access_permission_shrink_request import CheckBatchTableAccessPermissionShrinkRequest
 from ._check_batch_table_access_permission_response_body import CheckBatchTableAccessPermissionResponseBody
 from ._check_batch_table_access_permission_response import CheckBatchTableAccessPermissionResponse
+from ._check_inventory_job_request import CheckInventoryJobRequest
+from ._check_inventory_job_response_body import CheckInventoryJobResponseBody
+from ._check_inventory_job_response import CheckInventoryJobResponse
 from ._close_order_request import CloseOrderRequest
 from ._close_order_response_body import CloseOrderResponseBody
 from ._close_order_response import CloseOrderResponse
+from ._confirm_inventory_knowledge_request import ConfirmInventoryKnowledgeRequest
+from ._confirm_inventory_knowledge_response_body import ConfirmInventoryKnowledgeResponseBody
+from ._confirm_inventory_knowledge_response import ConfirmInventoryKnowledgeResponse
 from ._create_abac_authorization_request import CreateAbacAuthorizationRequest
 from ._create_abac_authorization_response_body import CreateAbacAuthorizationResponseBody
 from ._create_abac_authorization_response import CreateAbacAuthorizationResponse
@@ -170,6 +180,9 @@ from ._create_free_lock_correct_order_request import CreateFreeLockCorrectOrderR
 from ._create_free_lock_correct_order_shrink_request import CreateFreeLockCorrectOrderShrinkRequest
 from ._create_free_lock_correct_order_response_body import CreateFreeLockCorrectOrderResponseBody
 from ._create_free_lock_correct_order_response import CreateFreeLockCorrectOrderResponse
+from ._create_inventory_job_request import CreateInventoryJobRequest
+from ._create_inventory_job_response_body import CreateInventoryJobResponseBody
+from ._create_inventory_job_response import CreateInventoryJobResponse
 from ._create_lake_house_space_request import CreateLakeHouseSpaceRequest
 from ._create_lake_house_space_response_body import CreateLakeHouseSpaceResponseBody
 from ._create_lake_house_space_response import CreateLakeHouseSpaceResponse
@@ -885,6 +898,9 @@ from ._search_data_track_result_response import SearchDataTrackResultResponse
 from ._search_database_request import SearchDatabaseRequest
 from ._search_database_response_body import SearchDatabaseResponseBody
 from ._search_database_response import SearchDatabaseResponse
+from ._search_inventory_knowledge_request import SearchInventoryKnowledgeRequest
+from ._search_inventory_knowledge_response_body import SearchInventoryKnowledgeResponseBody
+from ._search_inventory_knowledge_response import SearchInventoryKnowledgeResponse
 from ._search_table_request import SearchTableRequest
 from ._search_table_response_body import SearchTableResponseBody
 from ._search_table_response import SearchTableResponse
@@ -1390,6 +1406,7 @@ from ._search_database_response_body import SearchDatabaseResponseBodySearchData
 from ._search_database_response_body import SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList
 from ._search_database_response_body import SearchDatabaseResponseBodySearchDatabaseListSearchDatabase
 from ._search_database_response_body import SearchDatabaseResponseBodySearchDatabaseList
+from ._search_inventory_knowledge_response_body import SearchInventoryKnowledgeResponseBodyData
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTableOwnerIdList
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTableOwnerNameList
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTable
@@ -1424,6 +1441,10 @@ __all__ = [
     DatasetItemVO,
     GetTableDataKeyVO,
     ImportMasterKeyVO,
+    KnowledgeBaseVO,
+    KnowledgeJobInfoVO,
+    KnowledgeSubJobInfoVO,
+    MetaAgentPreCheckParam,
     MetaCategory,
     MetaCategoryTableEntity,
     PartitionError,
@@ -1510,9 +1531,15 @@ __all__ = [
     CheckBatchTableAccessPermissionShrinkRequest,
     CheckBatchTableAccessPermissionResponseBody,
     CheckBatchTableAccessPermissionResponse,
+    CheckInventoryJobRequest,
+    CheckInventoryJobResponseBody,
+    CheckInventoryJobResponse,
     CloseOrderRequest,
     CloseOrderResponseBody,
     CloseOrderResponse,
+    ConfirmInventoryKnowledgeRequest,
+    ConfirmInventoryKnowledgeResponseBody,
+    ConfirmInventoryKnowledgeResponse,
     CreateAbacAuthorizationRequest,
     CreateAbacAuthorizationResponseBody,
     CreateAbacAuthorizationResponse,
@@ -1573,6 +1600,9 @@ __all__ = [
     CreateFreeLockCorrectOrderShrinkRequest,
     CreateFreeLockCorrectOrderResponseBody,
     CreateFreeLockCorrectOrderResponse,
+    CreateInventoryJobRequest,
+    CreateInventoryJobResponseBody,
+    CreateInventoryJobResponse,
     CreateLakeHouseSpaceRequest,
     CreateLakeHouseSpaceResponseBody,
     CreateLakeHouseSpaceResponse,
@@ -2288,6 +2318,9 @@ __all__ = [
     SearchDatabaseRequest,
     SearchDatabaseResponseBody,
     SearchDatabaseResponse,
+    SearchInventoryKnowledgeRequest,
+    SearchInventoryKnowledgeResponseBody,
+    SearchInventoryKnowledgeResponse,
     SearchTableRequest,
     SearchTableResponseBody,
     SearchTableResponse,
@@ -2793,6 +2826,7 @@ __all__ = [
     SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList,
     SearchDatabaseResponseBodySearchDatabaseListSearchDatabase,
     SearchDatabaseResponseBodySearchDatabaseList,
+    SearchInventoryKnowledgeResponseBodyData,
     SearchTableResponseBodySearchTableListSearchTableOwnerIdList,
     SearchTableResponseBodySearchTableListSearchTableOwnerNameList,
     SearchTableResponseBodySearchTableListSearchTable,

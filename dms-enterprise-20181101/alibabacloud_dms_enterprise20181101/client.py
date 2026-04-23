@@ -2601,6 +2601,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_batch_table_access_permission_with_options_async(request, runtime)
 
+    def check_inventory_job_with_options(
+        self,
+        request: main_models.CheckInventoryJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInventoryJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInventoryJob',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInventoryJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_inventory_job_with_options_async(
+        self,
+        request: main_models.CheckInventoryJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInventoryJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInventoryJob',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInventoryJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_inventory_job(
+        self,
+        request: main_models.CheckInventoryJobRequest,
+    ) -> main_models.CheckInventoryJobResponse:
+        runtime = RuntimeOptions()
+        return self.check_inventory_job_with_options(request, runtime)
+
+    async def check_inventory_job_async(
+        self,
+        request: main_models.CheckInventoryJobRequest,
+    ) -> main_models.CheckInventoryJobResponse:
+        runtime = RuntimeOptions()
+        return await self.check_inventory_job_with_options_async(request, runtime)
+
     def close_order_with_options(
         self,
         request: main_models.CloseOrderRequest,
@@ -2678,6 +2748,84 @@ class Client(OpenApiClient):
     ) -> main_models.CloseOrderResponse:
         runtime = RuntimeOptions()
         return await self.close_order_with_options_async(request, runtime)
+
+    def confirm_inventory_knowledge_with_options(
+        self,
+        request: main_models.ConfirmInventoryKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfirmInventoryKnowledgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.knowledge_type):
+            query['KnowledgeType'] = request.knowledge_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfirmInventoryKnowledge',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfirmInventoryKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_inventory_knowledge_with_options_async(
+        self,
+        request: main_models.ConfirmInventoryKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfirmInventoryKnowledgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.knowledge_type):
+            query['KnowledgeType'] = request.knowledge_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfirmInventoryKnowledge',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfirmInventoryKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_inventory_knowledge(
+        self,
+        request: main_models.ConfirmInventoryKnowledgeRequest,
+    ) -> main_models.ConfirmInventoryKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.confirm_inventory_knowledge_with_options(request, runtime)
+
+    async def confirm_inventory_knowledge_async(
+        self,
+        request: main_models.ConfirmInventoryKnowledgeRequest,
+    ) -> main_models.ConfirmInventoryKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.confirm_inventory_knowledge_with_options_async(request, runtime)
 
     def create_abac_authorization_with_options(
         self,
@@ -4470,6 +4618,76 @@ class Client(OpenApiClient):
     ) -> main_models.CreateFreeLockCorrectOrderResponse:
         runtime = RuntimeOptions()
         return await self.create_free_lock_correct_order_with_options_async(request, runtime)
+
+    def create_inventory_job_with_options(
+        self,
+        request: main_models.CreateInventoryJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInventoryJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInventoryJob',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInventoryJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_inventory_job_with_options_async(
+        self,
+        request: main_models.CreateInventoryJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInventoryJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInventoryJob',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInventoryJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_inventory_job(
+        self,
+        request: main_models.CreateInventoryJobRequest,
+    ) -> main_models.CreateInventoryJobResponse:
+        runtime = RuntimeOptions()
+        return self.create_inventory_job_with_options(request, runtime)
+
+    async def create_inventory_job_async(
+        self,
+        request: main_models.CreateInventoryJobRequest,
+    ) -> main_models.CreateInventoryJobResponse:
+        runtime = RuntimeOptions()
+        return await self.create_inventory_job_with_options_async(request, runtime)
 
     def create_lake_house_space_with_options(
         self,
@@ -23956,6 +24174,100 @@ class Client(OpenApiClient):
     ) -> main_models.SearchDatabaseResponse:
         runtime = RuntimeOptions()
         return await self.search_database_with_options_async(request, runtime)
+
+    def search_inventory_knowledge_with_options(
+        self,
+        request: main_models.SearchInventoryKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchInventoryKnowledgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.show_type):
+            query['ShowType'] = request.show_type
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchInventoryKnowledge',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchInventoryKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_inventory_knowledge_with_options_async(
+        self,
+        request: main_models.SearchInventoryKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchInventoryKnowledgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.show_type):
+            query['ShowType'] = request.show_type
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchInventoryKnowledge',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchInventoryKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_inventory_knowledge(
+        self,
+        request: main_models.SearchInventoryKnowledgeRequest,
+    ) -> main_models.SearchInventoryKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.search_inventory_knowledge_with_options(request, runtime)
+
+    async def search_inventory_knowledge_async(
+        self,
+        request: main_models.SearchInventoryKnowledgeRequest,
+    ) -> main_models.SearchInventoryKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.search_inventory_knowledge_with_options_async(request, runtime)
 
     def search_table_with_options(
         self,
