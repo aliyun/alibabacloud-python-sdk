@@ -1,3 +1,16 @@
+2026-04-23 Version: 7.1.0
+- Support API ModelRouterBillingCostTabs.
+- Support API ModelRouterCreateBillingRule.
+- Support API ModelRouterQueryBillingRuleList.
+- Support API ModelRouterQueryClientDiscountLogs.
+- Support API ModelRouterQueryClientTree.
+- Support API ModelRouterQueryCostModelDetail.
+- Support API ModelRouterQueryCostModelList.
+- Support API ModelRouterQueryCostOverviewMetrics.
+- Support API ModelRouterQueryCostTrendMetrics.
+- Support API ModelRouterUpdateBillingRule.
+
+
 2026-04-16 Version: 7.0.2
 - Update API ModelRouterCreateClient: add request parameters body.discount.
 - Update API ModelRouterQueryModelList: add response parameters Body.maxResults.
