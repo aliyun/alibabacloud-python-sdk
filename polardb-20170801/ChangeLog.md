@@ -1,3 +1,8 @@
+2026-04-23 Version: 6.13.1
+- Update API CreateDBClusterEndpoint: add request parameters VPCId.
+- Update API CreateDBClusterEndpoint: add request parameters VSwitchId.
+
+
 2026-04-22 Version: 6.13.0
 - Support API DescribeApplicationLogs.
 

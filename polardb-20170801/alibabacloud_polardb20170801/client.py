@@ -3828,6 +3828,10 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.scc_mode):
             query['SccMode'] = request.scc_mode
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3886,6 +3890,10 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.scc_mode):
             query['SccMode'] = request.scc_mode
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

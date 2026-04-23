@@ -23,6 +23,8 @@ class CreateDBClusterEndpointRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scc_mode: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
     ):
         # Specifies whether to enable automatic association of newly added nodes with the cluster endpoint. Valid values:
         # 
@@ -103,6 +105,8 @@ class CreateDBClusterEndpointRequest(DaraModel):
         # *   **ON**
         # *   **OFF**
         self.scc_mode = scc_mode
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
 
     def validate(self):
         pass
@@ -160,6 +164,12 @@ class CreateDBClusterEndpointRequest(DaraModel):
         if self.scc_mode is not None:
             result['SccMode'] = self.scc_mode
 
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -211,6 +221,12 @@ class CreateDBClusterEndpointRequest(DaraModel):
 
         if m.get('SccMode') is not None:
             self.scc_mode = m.get('SccMode')
+
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
 
         return self
 
