@@ -123,6 +123,9 @@ from ._grant_role_to_users_response import GrantRoleToUsersResponse
 from ._list_catalogs_request import ListCatalogsRequest
 from ._list_catalogs_response_body import ListCatalogsResponseBody
 from ._list_catalogs_response import ListCatalogsResponse
+from ._list_executor_logs_request import ListExecutorLogsRequest
+from ._list_executor_logs_response_body import ListExecutorLogsResponseBody
+from ._list_executor_logs_response import ListExecutorLogsResponse
 from ._list_job_executors_request import ListJobExecutorsRequest
 from ._list_job_executors_response_body import ListJobExecutorsResponseBody
 from ._list_job_executors_response import ListJobExecutorsResponse
@@ -291,6 +294,7 @@ from ._get_session_cluster_response_body import GetSessionClusterResponseBodySes
 from ._get_sql_statement_response_body import GetSqlStatementResponseBodyDataSqlOutputs
 from ._get_sql_statement_response_body import GetSqlStatementResponseBodyData
 from ._list_catalogs_response_body import ListCatalogsResponseBodyCatalogs
+from ._list_executor_logs_response_body import ListExecutorLogsResponseBodyLogs
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExexutors
 from ._list_job_runs_request import ListJobRunsRequestEndTime
 from ._list_job_runs_request import ListJobRunsRequestStartTime
@@ -476,6 +480,9 @@ __all__ = [
     ListCatalogsRequest,
     ListCatalogsResponseBody,
     ListCatalogsResponse,
+    ListExecutorLogsRequest,
+    ListExecutorLogsResponseBody,
+    ListExecutorLogsResponse,
     ListJobExecutorsRequest,
     ListJobExecutorsResponseBody,
     ListJobExecutorsResponse,
@@ -644,6 +651,7 @@ __all__ = [
     GetSqlStatementResponseBodyDataSqlOutputs,
     GetSqlStatementResponseBodyData,
     ListCatalogsResponseBodyCatalogs,
+    ListExecutorLogsResponseBodyLogs,
     ListJobExecutorsResponseBodyExexutors,
     ListJobRunsRequestEndTime,
     ListJobRunsRequestStartTime,

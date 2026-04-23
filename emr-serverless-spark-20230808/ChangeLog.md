@@ -1,3 +1,7 @@
+2026-04-23 Version: 1.22.0
+- Support API ListExecutorLogs.
+
+
 2026-04-21 Version: 1.21.1
 - Update API CreateKyuubiToken: add request parameters body.sparkRole.
 - Update API GetKyuubiToken: add response parameters Body.data.sparkRole.

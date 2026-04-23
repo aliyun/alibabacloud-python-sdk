@@ -3393,6 +3393,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_catalogs_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_executor_logs_with_options(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        executor_id: str,
+        request: main_models.ListExecutorLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExecutorLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.log_type):
+            query['logType'] = request.log_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExecutorLogs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/jobRuns/{DaraURL.percent_encode(job_run_id)}/executors/{DaraURL.percent_encode(executor_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExecutorLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_executor_logs_with_options_async(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        executor_id: str,
+        request: main_models.ListExecutorLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExecutorLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.log_type):
+            query['logType'] = request.log_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExecutorLogs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/jobRuns/{DaraURL.percent_encode(job_run_id)}/executors/{DaraURL.percent_encode(executor_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExecutorLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_executor_logs(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        executor_id: str,
+        request: main_models.ListExecutorLogsRequest,
+    ) -> main_models.ListExecutorLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_executor_logs_with_options(workspace_id, job_run_id, executor_id, request, headers, runtime)
+
+    async def list_executor_logs_async(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        executor_id: str,
+        request: main_models.ListExecutorLogsRequest,
+    ) -> main_models.ListExecutorLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_executor_logs_with_options_async(workspace_id, job_run_id, executor_id, request, headers, runtime)
+
     def list_job_executors_with_options(
         self,
         workspace_id: str,
