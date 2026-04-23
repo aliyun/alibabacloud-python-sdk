@@ -25,7 +25,6 @@ class DescribeVodDomainRealTimeTrafficDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range.
         self.end_time = end_time
-        # The details of traffic data in each time interval.
         self.real_time_traffic_data_per_interval = real_time_traffic_data_per_interval
         # The ID of the request.
         self.request_id = request_id
@@ -125,9 +124,7 @@ class DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInte
         time_stamp: str = None,
         value: str = None,
     ):
-        # The timestamp of the data returned. The time follows the ISO 8601 standard. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The traffic data. Unit: bytes.
         self.value = value
 
     def validate(self):

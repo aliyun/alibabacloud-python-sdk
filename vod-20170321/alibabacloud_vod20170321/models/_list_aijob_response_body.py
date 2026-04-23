@@ -14,9 +14,7 @@ class ListAIJobResponseBody(DaraModel):
         non_exist_aijob_ids: main_models.ListAIJobResponseBodyNonExistAIJobIds = None,
         request_id: str = None,
     ):
-        # The list of jobs.
         self.aijob_list = aijob_list
-        # The IDs of the jobs that do not exist.
         self.non_exist_aijob_ids = non_exist_aijob_ids
         # The ID of the request.
         self.request_id = request_id
@@ -133,31 +131,14 @@ class ListAIJobResponseBodyAIJobListAIJob(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The error code. This parameter is returned if the value of Status is fail.
         self.code = code
-        # The time when the job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.complete_time = complete_time
-        # The time when the job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The returned data. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html).
         self.data = data
-        # The job ID.
         self.job_id = job_id
-        # The ID of the video file.
         self.media_id = media_id
-        # The error message. This parameter is returned if the value of Status is fail.
         self.message = message
-        # The status of the job. Valid values:
-        # 
-        # *   **success**: The job is successful.
-        # *   **fail**: The job failed.
-        # *   **init**: The job is being initialized.
-        # *   **Processing**: The job is in progress.
         self.status = status
-        # The type of the job. Valid values:
-        # 
-        # *   **AIMediaDNA**: video fingerprinting
-        # *   **AIVideoTag**: smart tagging
         self.type = type
 
     def validate(self):

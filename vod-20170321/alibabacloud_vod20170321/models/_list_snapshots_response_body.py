@@ -61,7 +61,6 @@ class ListSnapshotsResponseBodyMediaSnapshot(DaraModel):
         self.job_id = job_id
         # The rule used to generate snapshot URLs.
         self.regular = regular
-        # The details of the snapshot.
         self.snapshots = snapshots
         # The total number of snapshots.
         self.total = total
@@ -153,9 +152,7 @@ class ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot(DaraModel):
         index: int = None,
         url: str = None,
     ):
-        # The index of the snapshot.
         self.index = index
-        # The URL of the snapshot.
         self.url = url
 
     def validate(self):

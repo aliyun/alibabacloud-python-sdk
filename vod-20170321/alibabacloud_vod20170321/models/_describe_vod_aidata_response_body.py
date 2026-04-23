@@ -14,7 +14,6 @@ class DescribeVodAIDataResponseBody(DaraModel):
         data_interval: str = None,
         request_id: str = None,
     ):
-        # The statistics on video AI.
         self.aidata = aidata
         # The time granularity at which the data was queried. Valid values:
         # 
@@ -99,9 +98,7 @@ class DescribeVodAIDataResponseBodyAIDataAIDataItem(DaraModel):
         data: main_models.DescribeVodAIDataResponseBodyAIDataAIDataItemData = None,
         time_stamp: str = None,
     ):
-        # The statistics on video AI of each type.
         self.data = data
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -173,13 +170,7 @@ class DescribeVodAIDataResponseBodyAIDataAIDataItemDataDataItem(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The type of video AI. Valid values:
-        # 
-        # *   **AIVideoCensor**: automated review
-        # *   **AIVideoFPShot**: media fingerprinting
-        # *   **AIVideoTag**: smart tagging
         self.name = name
-        # The processing duration. Unit: seconds.
         self.value = value
 
     def validate(self):

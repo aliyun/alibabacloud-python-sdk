@@ -18,7 +18,6 @@ class GetVideoListResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of media files returned.
         self.total = total
-        # The information about the audio or video files. Information about a maximum of 5,000 audio or video files can be returned.
         self.video_list = video_list
 
     def validate(self):
@@ -114,69 +113,25 @@ class GetVideoListResponseBodyVideoListVideo(DaraModel):
         user_data: str = None,
         video_id: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**.
         self.app_id = app_id
-        # The category ID of the audio or video file.
         self.cate_id = cate_id
-        # The name of the category.
         self.cate_name = cate_name
-        # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the audio or video file.
         self.description = description
-        # The duration of the audio or video file. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
         self.duration = duration
-        # The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         self.reference_id = reference_id
-        # The period of time in which the audio or video file remains in the restored state.
         self.restore_expiration = restore_expiration
-        # The restoration status of the audio or video file. Valid values:
-        # 
-        # *   **Processing**
-        # *   **Success**
-        # *   **Failed**
         self.restore_status = restore_status
-        # The size of the source file. Unit: bytes.
         self.size = size
-        # The URL array of video snapshots.
         self.snapshots = snapshots
-        # The status of the audio or video file. Valid values:
-        # 
-        # *   **Uploading**: The video is being uploaded.
-        # *   **UploadFail**: The video failed to be uploaded.
-        # *   **UploadSucc**: The video is uploaded.
-        # *   **Transcoding**: The video is being transcoded.
-        # *   **TranscodeFail**: The video failed to be transcoded.
-        # *   **checking**: The video is being reviewed.
-        # *   **Blocked**: The video is blocked.
-        # *   **Normal**: The video is normal.
-        # *   **ProduceFail**: The video failed to be produced.
-        # 
-        # For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
         self.status = status
-        # The storage class of the audio or video file. Valid values:
-        # 
-        # *   **Standard**: All media resources are stored as Standard objects.
-        # *   **IA**: All media resources are stored as IA objects.
-        # *   **Archive**: All media resources are stored as Archive objects.
-        # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
-        # *   **SourceIA**: Only the source files are IA objects.
-        # *   **SourceArchive**: Only the source files are Archive objects.
-        # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # *   **Changing**: The storage class of the audio or video file is being changed.
-        # *   **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
-        # The storage address of the audio or video file.
         self.storage_location = storage_location
-        # The tags of the audio or video file. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The title of the audio or video file.
         self.title = title
         self.user_data = user_data
-        # The ID of the audio or video file.
         self.video_id = video_id
 
     def validate(self):

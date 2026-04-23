@@ -15,7 +15,6 @@ class DescribePlayUserAvgResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The statistics on average playback each day.
         self.user_play_statis_avgs = user_play_statis_avgs
 
     def validate(self):
@@ -88,11 +87,8 @@ class DescribePlayUserAvgResponseBodyUserPlayStatisAvgsUserPlayStatisAvg(DaraMod
         avg_play_duration: str = None,
         date: str = None,
     ):
-        # The average number of video views.
         self.avg_play_count = avg_play_count
-        # The average playback duration. Unit: milliseconds.
         self.avg_play_duration = avg_play_duration
-        # The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
         self.date = date
 
     def validate(self):

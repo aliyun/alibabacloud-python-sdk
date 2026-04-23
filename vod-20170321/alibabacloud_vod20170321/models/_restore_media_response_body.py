@@ -15,9 +15,7 @@ class RestoreMediaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The IDs of the media asset that failed to be processed.
         self.forbidden_list = forbidden_list
-        # The IDs of the media assets that failed to be obtained.
         self.ignored_list = ignored_list
         # The ID of the request.
         self.request_id = request_id
@@ -135,9 +133,7 @@ class RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO(DaraModel):
         media_id: str = None,
         reason: str = None,
     ):
-        # The ID of the media asset.
         self.media_id = media_id
-        # The reason for the failure.
         self.reason = reason
 
     def validate(self):

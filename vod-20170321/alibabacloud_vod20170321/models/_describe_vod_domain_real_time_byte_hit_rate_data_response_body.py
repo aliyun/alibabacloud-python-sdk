@@ -13,7 +13,6 @@ class DescribeVodDomainRealTimeByteHitRateDataResponseBody(DaraModel):
         data: main_models.DescribeVodDomainRealTimeByteHitRateDataResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataMod
         byte_hit_rate: float = None,
         time_stamp: str = None,
     ):
-        # The byte hit ratio in percentage.
         self.byte_hit_rate = byte_hit_rate
-        # The timestamp of the data returned. The time follows the ISO 8601 standard. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

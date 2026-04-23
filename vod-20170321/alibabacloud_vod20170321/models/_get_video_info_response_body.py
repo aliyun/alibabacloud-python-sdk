@@ -116,7 +116,6 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
         self.restore_status = restore_status
         # The size of the source file. Unit: bytes.
         self.size = size
-        # The video snapshot URLs.
         self.snapshots = snapshots
         # The status of the media file. For more information about the operations that you can perform on files in different statuses and usage limits, see [Status: the status of a video](~~52839#title-vqg-8cz-7p8~~). Valid values:
         # 

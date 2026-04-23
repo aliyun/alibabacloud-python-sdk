@@ -23,7 +23,6 @@ class DescribeVodDomainQpsDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
         self.end_time = end_time
-        # The list of QPS records at each interval.
         self.qps_data_interval = qps_data_interval
         # The ID of the request.
         self.request_id = request_id
@@ -134,31 +133,18 @@ class DescribeVodDomainQpsDataResponseBodyQpsDataIntervalDataModule(DaraModel):
         time_stamp: str = None,
         value: str = None,
     ):
-        # The number of requests in the Chinese mainland.
         self.acc_domestic_value = acc_domestic_value
-        # The number of requests outside the Chinese mainland.
         self.acc_overseas_value = acc_overseas_value
-        # The total number of requests.
         self.acc_value = acc_value
-        # The QPS data in the Chinese mainland.
         self.domestic_value = domestic_value
-        # The QPS that is calculated based on the HTTPS requests sent to POPs in the Chinese mainland.
         self.https_acc_domestic_value = https_acc_domestic_value
-        # The number of HTTPS requests sent to POPs outside the Chinese mainland.
         self.https_acc_overseas_value = https_acc_overseas_value
-        # The number of HTTPS requests sent to POPs.
         self.https_acc_value = https_acc_value
-        # The QPS that is calculated based on the HTTPS requests sent to POPs in the Chinese mainland.
         self.https_domestic_value = https_domestic_value
-        # The QPS that is calculated based on the HTTPS requests sent to POPs outside the Chinese mainland.
         self.https_overseas_value = https_overseas_value
-        # The QPS that is calculated based on the HTTPS requests sent to points of presence (POPs).
         self.https_value = https_value
-        # The QPS data outside the Chinese mainland.
         self.overseas_value = overseas_value
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The total QPS.
         self.value = value
 
     def validate(self):

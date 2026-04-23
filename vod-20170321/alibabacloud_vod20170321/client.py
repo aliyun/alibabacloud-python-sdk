@@ -4211,6 +4211,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.hera_api_auto_version):
+            query['HeraApiAutoVersion'] = request.hera_api_auto_version
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         req = open_api_util_models.OpenApiRequest(
@@ -4241,6 +4243,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.hera_api_auto_version):
+            query['HeraApiAutoVersion'] = request.hera_api_auto_version
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         req = open_api_util_models.OpenApiRequest(

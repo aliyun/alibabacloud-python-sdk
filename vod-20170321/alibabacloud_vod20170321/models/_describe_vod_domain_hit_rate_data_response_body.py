@@ -23,7 +23,6 @@ class DescribeVodDomainHitRateDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range.
         self.end_time = end_time
-        # The byte hit rate data at each time interval.
         self.hit_rate_interval = hit_rate_interval
         # The ID of the request.
         self.request_id = request_id
@@ -124,11 +123,8 @@ class DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule(DaraMode
         time_stamp: str = None,
         value: str = None,
     ):
-        # The HTTPS byte hit rate.
         self.https_value = https_value
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The total byte hit rate.
         self.value = value
 
     def validate(self):

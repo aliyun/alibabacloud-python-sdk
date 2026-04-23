@@ -14,7 +14,6 @@ class ListLiveRecordVideoResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of videos.
         self.live_record_video_list = live_record_video_list
         # The ID of the request.
         self.request_id = request_id
@@ -101,19 +100,12 @@ class ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo(DaraMode
         stream_name: str = None,
         video: main_models.ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo = None,
     ):
-        # The name of the app.
         self.app_name = app_name
-        # The domain name.
         self.domain_name = domain_name
-        # The ID of the playlist.
         self.playlist_id = playlist_id
-        # The recording end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.record_end_time = record_end_time
-        # The recording start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.record_start_time = record_start_time
-        # The name of the live-to-VOD file.
         self.stream_name = stream_name
-        # The information about the live-to-VOD file.
         self.video = video
 
     def validate(self):
@@ -192,41 +184,19 @@ class ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo(Dar
         title: str = None,
         video_id: str = None,
     ):
-        # The ID of the video category.
         self.cate_id = cate_id
-        # The category of the video.
         self.cate_name = cate_name
-        # The URL of the video thumbnail.
         self.cover_url = cover_url
-        # The time when the audio or video file was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the video file.
         self.description = description
-        # The duration of the video file. Unit: seconds.
         self.duration = duration
-        # The time when the video was updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The size of the source video file. Unit: bytes.
         self.size = size
-        # The array of video snapshot URLs.
         self.snapshots = snapshots
-        # The status of the video. Valid values:
-        # 
-        # *   **Uploading**
-        # *   **UploadFail**
-        # *   **UploadSuccess**
-        # *   **Transcoding**
-        # *   **TranscodeFail**
-        # *   **Blocked**
-        # *   **Normal**: The video is normal.
         self.status = status
-        # The tags of the video. Multiple tags are separated with commas (,).
         self.tags = tags
-        # The ID of the transcoding template group.
         self.template_group_id = template_group_id
-        # The title of the video.
         self.title = title
-        # The ID of the video.
         self.video_id = video_id
 
     def validate(self):

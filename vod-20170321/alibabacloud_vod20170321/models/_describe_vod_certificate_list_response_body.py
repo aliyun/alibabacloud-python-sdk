@@ -52,7 +52,6 @@ class DescribeVodCertificateListResponseBodyCertificateListModel(DaraModel):
         cert_list: main_models.DescribeVodCertificateListResponseBodyCertificateListModelCertList = None,
         count: int = None,
     ):
-        # The list of certificates.
         self.cert_list = cert_list
         # The number of certificates that are returned.
         self.count = count
@@ -137,31 +136,18 @@ class DescribeVodCertificateListResponseBodyCertificateListModelCertListCert(Dar
         last_time: int = None,
         sign_algorithm: str = None,
     ):
-        # The algorithm.
         self.algorithm = algorithm
-        # The ID of the certificate.
         self.cert_id = cert_id
-        # The ID of the certificate.
         self.cert_identifier = cert_identifier
-        # The name of the certificate.
         self.cert_name = cert_name
-        # The common name of the certificate.
         self.common = common
-        # The time when the certificate was created.
         self.create_time = create_time
-        # DomainMatchCert.
         self.domain_match_cert = domain_match_cert
-        # The time when the certificate expired.
         self.end_time = end_time
-        # The fingerprint of the certificate.
         self.fingerprint = fingerprint
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
-        # The time when the certificate was issued. Unit: seconds.
         self.last_time = last_time
-        # The signAlgorithm.
         self.sign_algorithm = sign_algorithm
 
     def validate(self):

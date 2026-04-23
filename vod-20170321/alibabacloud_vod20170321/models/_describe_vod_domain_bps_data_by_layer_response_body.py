@@ -14,7 +14,6 @@ class DescribeVodDomainBpsDataByLayerResponseBody(DaraModel):
         data_interval: int = None,
         request_id: str = None,
     ):
-        # The bandwidth returned at each time interval. Unit: bit/s.
         self.bps_data_interval = bps_data_interval
         # The time interval between the entries returned. Unit: seconds.
         self.data_interval = data_interval
@@ -97,11 +96,8 @@ class DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule(DaraM
         traffic_value: int = None,
         value: float = None,
     ):
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The total traffic. Unit: bytes.
         self.traffic_value = traffic_value
-        # The peak bandwidth. Unit: bit/s.
         self.value = value
 
     def validate(self):

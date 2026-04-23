@@ -13,7 +13,6 @@ class DescribeVodDomainCertificateInfoResponseBody(DaraModel):
         cert_infos: main_models.DescribeVodDomainCertificateInfoResponseBodyCertInfos = None,
         request_id: str = None,
     ):
-        # The certificate information.
         self.cert_infos = cert_infos
         # The ID of the request.
         self.request_id = request_id
@@ -100,57 +99,20 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(DaraModel):
         server_certificate_status: str = None,
         status: str = None,
     ):
-        # The domain name that matches the certificate.
         self.cert_domain_name = cert_domain_name
-        # The time at which the certificate expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.cert_expire_time = cert_expire_time
-        # The ID of the certificate.
         self.cert_id = cert_id
-        # The validity period of the certificate. Unit: months or years.
         self.cert_life = cert_life
-        # The certificate name.
         self.cert_name = cert_name
-        # The certificate authority (CA) that issued the certificate.
         self.cert_org = cert_org
-        # The region where the certificate is used.
         self.cert_region = cert_region
-        # The time when the certificate became effective.
         self.cert_start_time = cert_start_time
-        # The type of the certificate. Valid values:
-        # 
-        # *   **free**: a free certificate.
-        # *   **cas**: a certificate that is purchased from Certificate Management Service.
-        # *   **upload**: a user-uploaded certificate.
         self.cert_type = cert_type
-        # The time at which the certificate was updated.
         self.cert_update_time = cert_update_time
-        # The CNAME status of the domain name.
-        # 
-        # *   **ok**: The domain name points to the CNAME assigned by Alibaba Cloud CDN.
-        # *   **cname_error**: An error occurred and the domain name cannot point to the CNAME.
-        # *   **op_domain_cname_error** : An error occurred to the CNAME of the top-level domain. The domain name cannot point to the CNAME.
-        # *   **unsupport_wildcard**: The wildcard domain name is not supported.
         self.domain_cname_status = domain_cname_status
-        # The accelerated domain name whose ICP filing status you want to update.
         self.domain_name = domain_name
-        # The public key of the certificate.
         self.server_certificate = server_certificate
-        # The status of the SSL certificate.
-        # 
-        # *   **on**
-        # *   **off**
         self.server_certificate_status = server_certificate_status
-        # The status of the certificate.
-        # 
-        # *   **success**: The certificate is in effect.
-        # *   **checking**: The system is checking whether the domain name is added to ApsaraVideo VOD.
-        # *   **cname_error**: The domain name is not added to ApsaraVideo VOD.
-        # *   **domain_invalid**: The domain name contains invalid characters.
-        # *   **unsupport_wildcard**: The domain name is a wildcard domain name. Wildcard domain names are not supported.
-        # *   **applying**: The certificate application is in progress.
-        # *   **failed**: The certificate application failed.
-        # 
-        # >  A value is returned for this parameter only when you set `CertType` to `free`. Otherwise, an empty value is returned for this parameter.
         self.status = status
 
     def validate(self):

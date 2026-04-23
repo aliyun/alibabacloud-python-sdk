@@ -14,7 +14,6 @@ class GetPlayInfoResponseBody(DaraModel):
         request_id: str = None,
         video_base: main_models.GetPlayInfoResponseBodyVideoBase = None,
     ):
-        # The information about the audio or video stream.
         self.play_info_list = play_info_list
         # The ID of the request.
         self.request_id = request_id
@@ -235,102 +234,30 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(DaraModel):
         watermark_id: str = None,
         width: int = None,
     ):
-        # The color depth. This value is an integer.
         self.bit_depth = bit_depth
-        # The bitrate of the media stream. Unit: Kbit/s.
         self.bitrate = bitrate
-        # The encoding type. The possible values are:
-        # 
-        # - H264
-        # 
-        # - H265
         self.codec_name = codec_name
-        # The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The quality of the video stream. Valid values:
-        # 
-        # *   **FD**: low definition
-        # *   **LD**: standard definition
-        # *   **SD**: high definition
-        # *   **HD**: ultra-high definition
-        # *   **OD**: original definition
-        # *   **2K**
-        # *   **4K**
-        # *   **SQ**: standard sound quality
-        # *   **HQ**: high sound quality
-        # *   **AUTO**: adaptive bitrate
         self.definition = definition
-        # The duration of the media stream. Unit: seconds.
         self.duration = duration
-        # Indicates whether the media stream is encrypted. Valid values:
-        # 
-        # *   **0**: The media stream is not encrypted.
-        # *   **1**: The media stream is encrypted.
         self.encrypt = encrypt
-        # The encryption type of the media stream. Valid values:
-        # 
-        # *   **License**: decryption on local devices
-        # 
-        # >  If the encryption type is **License**, only ApsaraVideo Player SDK can be used to play videos.
         self.encrypt_mode = encrypt_mode
-        # The encryption type of the media stream. Valid values:
-        # 
-        # *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
-        # *   **HLSEncryption**: HTTP-Live-Streaming (HLS) encryption
-        # 
-        # >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
         self.encrypt_type = encrypt_type
-        # The format of the media stream.
-        # 
-        # *   If the media file is a video file, the valid values are **mp4** and **m3u8**.
-        # *   If the media asset is an audio-only file, the value is **mp3**.
         self.format = format
-        # The frame rate of the media stream. Unit: frames per second.
         self.fps = fps
-        # The HDR type of the media stream. Valid values:
-        # 
-        # *   HDR
-        # *   HDR10
-        # *   HLG
-        # *   DolbyVision
-        # *   HDRVivid
-        # *   SDR+
         self.hdrtype = hdrtype
-        # The height of the media stream. Unit: pixels.
         self.height = height
-        # The custom watermark information of the copyright watermark. This parameter is returned if you set `JobType` to `2`.
         self.job_ext = job_ext
-        # The job ID for transcoding the media stream. This ID uniquely identifies a media stream.
         self.job_id = job_id
-        # The type of the digital watermark. Valid values:
-        # 
-        # *   **1**: user-tracing watermark
-        # *   **2**: copyright watermark
         self.job_type = job_type
-        # The time when the audio or video file was last updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The transcoding type. Valid values:
-        # 
-        # *   **0**: regular transcoding
-        # *   **1.0**: Narrowband HD™ 1.0 transcoding
-        # *   **2.0**: Narrowband HD™ 2.0 transcoding
         self.narrow_band_type = narrow_band_type
-        # The playback URL of the video stream.
         self.play_url = play_url
-        # The size of the media stream. Unit: bytes.
         self.size = size
-        # The specifications of transcoded audio and video streams. For more information about the valid values, see [Output specifications](~~124671#section-6bv-l0g-opq~~).
         self.specification = specification
-        # The status of the audio or video stream. Valid values:
-        # 
-        # *   **Normal**: The latest transcoded stream in each quality and format is in the Normal status.
-        # *   **Invisible**: If multiple streams are transcoded in the same quality and format, the latest transcoded stream is in the Normal status and other streams are in the Invisible status.
         self.status = status
-        # The type of the media stream. If the media stream is a video stream, the value is **video**. If the media stream is an audio-only stream, the value is **audio**.
         self.stream_type = stream_type
-        # The ID of the watermark that is associated with the media stream.
         self.watermark_id = watermark_id
-        # The width of the media stream. Unit: pixels.
         self.width = width
 
     def validate(self):

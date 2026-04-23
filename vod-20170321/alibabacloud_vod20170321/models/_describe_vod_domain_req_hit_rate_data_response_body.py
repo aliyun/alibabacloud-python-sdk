@@ -17,7 +17,6 @@ class DescribeVodDomainReqHitRateDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The request hit rate data at each time interval.
         self.data = data
         # The time interval at which data is returned, which is the time granularity. Unit: seconds.
         self.data_interval = data_interval
@@ -124,11 +123,8 @@ class DescribeVodDomainReqHitRateDataResponseBodyDataDataModule(DaraModel):
         time_stamp: str = None,
         value: str = None,
     ):
-        # The HTTPS request hit rate.
         self.https_value = https_value
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The total request hit rate.
         self.value = value
 
     def validate(self):

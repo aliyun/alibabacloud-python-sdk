@@ -19,7 +19,6 @@ class DescribeVodDomainMax95BpsDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # Details of the 95th percentile bandwidth.
         self.detail_data = detail_data
         # The domain name for CDN.
         self.domain_name = domain_name
@@ -149,13 +148,9 @@ class DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail(DaraModel):
         max_95bps_peak_time: str = None,
         time_stamp: str = None,
     ):
-        # The billable region where the peak 95 data was collected.
         self.area = area
-        # The 95th percentile bandwidth.
         self.max_95bps = max_95bps
-        # The time corresponding to the 95th percentile bandwidth peak.
         self.max_95bps_peak_time = max_95bps_peak_time
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):

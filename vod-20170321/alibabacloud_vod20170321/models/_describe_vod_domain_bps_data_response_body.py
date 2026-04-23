@@ -19,7 +19,6 @@ class DescribeVodDomainBpsDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The bandwidth data that is collected for each interval.
         self.bps_data_per_interval = bps_data_per_interval
         # The time interval between the returned entries. Unit: seconds.
         self.data_interval = data_interval
@@ -146,19 +145,12 @@ class DescribeVodDomainBpsDataResponseBodyBpsDataPerIntervalDataModule(DaraModel
         time_stamp: str = None,
         value: str = None,
     ):
-        # The bandwidth in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.domestic_value = domestic_value
-        # The HTTPS bandwidth on L1 nodes in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.https_domestic_value = https_domestic_value
-        # The HTTPS bandwidth on L1 nodes outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.https_overseas_value = https_overseas_value
-        # The total HTTPS bandwidth on L1 nodes. Unit: bit/s.
         self.https_value = https_value
-        # The bandwidth outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.overseas_value = overseas_value
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The bandwidth. Unit: bit/s.
         self.value = value
 
     def validate(self):

@@ -21,7 +21,6 @@ class DescribeVodStorageDataResponseBody(DaraModel):
         self.data_interval = data_interval
         # The ID of the request.
         self.request_id = request_id
-        # The storage usage data returned.
         self.storage_data = storage_data
 
     def validate(self):
@@ -100,11 +99,8 @@ class DescribeVodStorageDataResponseBodyStorageDataStorageDataItem(DaraModel):
         storage_utilization: str = None,
         time_stamp: str = None,
     ):
-        # The outbound traffic. Unit: bytes. The outbound traffic is generated when videos are directly downloaded or played from OSS buckets without Alibaba Cloud CDN acceleration.
         self.network_out = network_out
-        # The detailed usage data of storage-related resources. Unit: bytes.
         self.storage_utilization = storage_utilization
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

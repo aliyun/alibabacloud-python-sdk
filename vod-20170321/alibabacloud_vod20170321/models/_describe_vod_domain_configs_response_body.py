@@ -13,7 +13,6 @@ class DescribeVodDomainConfigsResponseBody(DaraModel):
         domain_configs: main_models.DescribeVodDomainConfigsResponseBodyDomainConfigs = None,
         request_id: str = None,
     ):
-        # The configurations of the domain name.
         self.domain_configs = domain_configs
         # The request ID.
         self.request_id = request_id
@@ -89,18 +88,9 @@ class DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfig(DaraModel):
         function_name: str = None,
         status: str = None,
     ):
-        # The configuration ID.
         self.config_id = config_id
-        # The feature parameters.
         self.function_args = function_args
-        # The feature name.
         self.function_name = function_name
-        # The configuration status. Valid values:
-        # 
-        # *   **success**
-        # *   **testing**
-        # *   **failed**
-        # *   **configuring**
         self.status = status
 
     def validate(self):
@@ -184,9 +174,7 @@ class DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgsF
         arg_name: str = None,
         arg_value: str = None,
     ):
-        # The parameter name.
         self.arg_name = arg_name
-        # The parameter value.
         self.arg_value = arg_value
 
     def validate(self):

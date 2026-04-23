@@ -13,7 +13,6 @@ class GetEditingProjectMaterialsResponseBody(DaraModel):
         material_list: main_models.GetEditingProjectMaterialsResponseBodyMaterialList = None,
         request_id: str = None,
     ):
-        # The materials.
         self.material_list = material_list
         # The ID of the request.
         self.request_id = request_id
@@ -102,48 +101,22 @@ class GetEditingProjectMaterialsResponseBodyMaterialListMaterial(DaraModel):
         tags: str = None,
         title: str = None,
     ):
-        # The category ID of the material.
         self.cate_id = cate_id
-        # The category name of the material.
         self.cate_name = cate_name
-        # The thumbnail URL of the material.
         self.cover_url = cover_url
-        # The time when the material was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the material.
         self.description = description
-        # The duration of the material. The value is rounded to four decimal places. Unit: seconds.
         self.duration = duration
-        # The ID of the material.
         self.material_id = material_id
-        # The type of the material. Valid values:
-        # 
-        # *   **video**
-        # *   **audio**
-        # *   **image**
         self.material_type = material_type
-        # The time when the material was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The size of the mezzanine file. Unit: byte.
         self.size = size
-        # The URLs of material snapshots. The value is an array.
         self.snapshots = snapshots
-        # The source of the sprite.
         self.source = source
-        # The configuration of the sprite.
         self.sprite_config = sprite_config
-        # The URLs of material sprites. The value is an array.
         self.sprites = sprites
-        # The status of the material. Valid values:
-        # 
-        # *   **Normal**: The material is in draft.
-        # *   **Producing**: The material is being produced.
-        # *   **Produced**: The material was produced.
-        # *   **ProduceFailed**: The material failed to be produced.
         self.status = status
-        # The tag of the material. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The title of the material.
         self.title = title
 
     def validate(self):

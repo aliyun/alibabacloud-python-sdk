@@ -25,7 +25,6 @@ class DescribeVodDomainRealTimeHttpCodeDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range.
         self.end_time = end_time
-        # The proportion of each HTTP status code in each time interval.
         self.real_time_http_code_data = real_time_http_code_data
         # The ID of the request.
         self.request_id = request_id
@@ -125,9 +124,7 @@ class DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsage
         time_stamp: str = None,
         value: main_models.DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue = None,
     ):
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The proportion of each HTTP status code is displayed in a data list.
         self.value = value
 
     def validate(self):
@@ -200,11 +197,8 @@ class DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsage
         count: str = None,
         proportion: str = None,
     ):
-        # The HTTP status code.
         self.code = code
-        # The number of the HTTP status codes.
         self.count = count
-        # The proportion of the HTTP status code in percentage.
         self.proportion = proportion
 
     def validate(self):

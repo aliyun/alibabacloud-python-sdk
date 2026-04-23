@@ -13,7 +13,6 @@ class UpdateImageInfosResponseBody(DaraModel):
         non_exist_image_ids: main_models.UpdateImageInfosResponseBodyNonExistImageIds = None,
         request_id: str = None,
     ):
-        # The IDs of the images that do not exist.
         self.non_exist_image_ids = non_exist_image_ids
         # The ID of the request.
         self.request_id = request_id

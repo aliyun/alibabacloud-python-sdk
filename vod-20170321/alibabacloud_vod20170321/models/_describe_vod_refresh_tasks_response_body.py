@@ -22,7 +22,6 @@ class DescribeVodRefreshTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The information about the returned tasks.
         self.tasks = tasks
         # The total number of entries returned.
         self.total_count = total_count
@@ -119,32 +118,12 @@ class DescribeVodRefreshTasksResponseBodyTasksTask(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The type of error returned when the refresh or prefetch task failed. Valid values: Valid values:
-        # 
-        # *   **Internal Error**: An internal error occurred.
-        # *   **Origin Timeout**: The response from the origin server timed out.
-        # *   **Origin Return StatusCode 5XX**: The origin server returned an HTTP status code 5xx.
         self.description = description
-        # The URL of the object refreshed.
         self.object_path = object_path
-        # The type of the task. Default value: file. Valid values:
-        # 
-        # *   **file**: refreshes one or more files.
-        # *   **directory**: refreshes files in the specified directory.
-        # *   **preload**: prefetches one or more files.
         self.object_type = object_type
-        # The progress of the task in percentage.
         self.process = process
-        # The status of the task. Valid values:
-        # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
-        # *   **Pending**: The task is pending.
         self.status = status
-        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

@@ -13,7 +13,6 @@ class DescribeVodDomainRealTimeReqHitRateDataResponseBody(DaraModel):
         data: main_models.DescribeVodDomainRealTimeReqHitRateDataResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned results.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel
         req_hit_rate: float = None,
         time_stamp: str = None,
     ):
-        # The cache hit ratio that is calculated based on requests. The cache hit ratio is measured in percentage.
         self.req_hit_rate = req_hit_rate
-        # The timestamp of the data returned. The time follows the ISO 8601 standard. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

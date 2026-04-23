@@ -93,7 +93,6 @@ class DescribeVodDomainDetailResponseBodyDomainDetail(DaraModel):
         # *   **overseas**: outside mainland China.
         # *   **global**: regions in and outside mainland China.
         self.scope = scope
-        # The information about the origin server.
         self.sources = sources
         # The weight of the origin server.
         self.weight = weight
@@ -231,22 +230,11 @@ class DescribeVodDomainDetailResponseBodyDomainDetailSourcesSource(DaraModel):
         type: str = None,
         weight: str = None,
     ):
-        # The address of the origin server.
         self.content = content
-        # The status of the origin server. Valid values:
-        # *   **online**: indicates that the origin server is enabled.
-        # *   **offline**: indicates that the origin server is disabled.
         self.enabled = enabled
-        # The port number. Valid values: 443 and 80.
         self.port = port
-        # The priority of the origin server.
         self.priority = priority
-        # The type of the origin server. Valid values:
-        # *   **ipaddr**: a server that you can access by using an IP address.
-        # *   **domain**: a server that you can access by using a domain name.
-        # *   **oss**: the URL of an Object Storage Service (OSS) bucket.
         self.type = type
-        # The weight of the origin server if multiple origin servers have been specified.
         self.weight = weight
 
     def validate(self):

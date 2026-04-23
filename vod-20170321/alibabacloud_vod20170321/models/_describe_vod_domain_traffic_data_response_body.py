@@ -30,7 +30,6 @@ class DescribeVodDomainTrafficDataResponseBody(DaraModel):
         self.start_time = start_time
         # The total amount of network traffic.
         self.total_traffic = total_traffic
-        # The amount of network traffic at each time interval.
         self.traffic_data_per_interval = traffic_data_per_interval
 
     def validate(self):
@@ -137,19 +136,12 @@ class DescribeVodDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule(D
         time_stamp: str = None,
         value: str = None,
     ):
-        # The amount of network traffic in the Chinese mainland. Unit: bytes.
         self.domestic_value = domestic_value
-        # The amount of HTTPS network traffic on points of presence (POPs) in the Chinese mainland. Unit: bytes.
         self.https_domestic_value = https_domestic_value
-        # The amount of HTTPS network traffic on POPs outside the Chinese mainland. Unit: bytes.
         self.https_overseas_value = https_overseas_value
-        # The total amount of HTTPS network traffic on POPs. Unit: bytes.
         self.https_value = https_value
-        # The amount of network traffic outside the Chinese mainland. Unit: bytes.
         self.overseas_value = overseas_value
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The total traffic. Unit: bytes.
         self.value = value
 
     def validate(self):

@@ -15,7 +15,6 @@ class DescribePlayVideoStatisResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The daily playback statistics on the video.
         self.video_play_statis_details = video_play_statis_details
 
     def validate(self):
@@ -91,17 +90,11 @@ class DescribePlayVideoStatisResponseBodyVideoPlayStatisDetailsVideoPlayStatisDe
         uv: str = None,
         vv: str = None,
     ):
-        # The date. The time follows the ISO 8601 standard in the *YYYY-MM-DD*T*hh:mm:ss* format. The time is displayed in UTC.
         self.date = date
-        # The total playback duration. Unit: milliseconds.
         self.play_duration = play_duration
-        # The distribution of the playback duration.
         self.play_range = play_range
-        # The video title.
         self.title = title
-        # The number of unique visitors.
         self.uv = uv
-        # The number of video views.
         self.vv = vv
 
     def validate(self):

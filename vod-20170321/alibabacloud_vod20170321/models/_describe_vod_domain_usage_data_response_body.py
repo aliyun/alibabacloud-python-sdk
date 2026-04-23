@@ -36,7 +36,6 @@ class DescribeVodDomainUsageDataResponseBody(DaraModel):
         # *   **bps**: bandwidth
         # *   **traf**: traffic
         self.type = type
-        # The traffic or bandwidth data returned at each interval.
         self.usage_data_per_interval = usage_data_per_interval
 
     def validate(self):
@@ -144,9 +143,7 @@ class DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule(DaraM
         time_stamp: str = None,
         value: str = None,
     ):
-        # The timestamp of the returned data. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The traffic or bandwidth data. Unit: bit/s.
         self.value = value
 
     def validate(self):

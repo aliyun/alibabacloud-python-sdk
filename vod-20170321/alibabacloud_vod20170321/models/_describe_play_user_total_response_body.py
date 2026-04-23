@@ -15,7 +15,6 @@ class DescribePlayUserTotalResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The daily playback statistics.
         self.user_play_statis_totals = user_play_statis_totals
 
     def validate(self):
@@ -90,15 +89,10 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal(D
         uv: main_models.DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV = None,
         vv: main_models.DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV = None,
     ):
-        # The date. The date is displayed in the yyyy-MM-dd format.
         self.date = date
-        # The total playback duration. Unit: milliseconds.
         self.play_duration = play_duration
-        # The distribution of the playback duration.
         self.play_range = play_range
-        # The total number of unique visitors.
         self.uv = uv
-        # The total number of video views.
         self.vv = vv
 
     def validate(self):
@@ -158,13 +152,9 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV
         html5: str = None,
         i_os: str = None,
     ):
-        # The total number of video views played by using ApsaraVideo Player SDK for Android.
         self.android = android
-        # The total number of video views played by using the Flash player.
         self.flash = flash
-        # The total number of video views played by using the HTML5 player.
         self.html5 = html5
-        # The total number of video views played by using ApsaraVideo Player SDK for iOS.
         self.i_os = i_os
 
     def validate(self):
@@ -213,13 +203,9 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV
         html5: str = None,
         i_os: str = None,
     ):
-        # The total number of unique visitors who use ApsaraVideo Player SDK for Android.
         self.android = android
-        # The total number of unique visitors who use the Flash player.
         self.flash = flash
-        # The total number of unique visitors who use the HTML5 player.
         self.html5 = html5
-        # The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
         self.i_os = i_os
 
     def validate(self):

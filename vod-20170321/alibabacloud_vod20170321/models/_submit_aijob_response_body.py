@@ -13,7 +13,6 @@ class SubmitAIJobResponseBody(DaraModel):
         aijob_list: main_models.SubmitAIJobResponseBodyAIJobList = None,
         request_id: str = None,
     ):
-        # The information about the AI jobs.
         self.aijob_list = aijob_list
         # The ID of the request.
         self.request_id = request_id
@@ -88,14 +87,8 @@ class SubmitAIJobResponseBodyAIJobListAIJob(DaraModel):
         media_id: str = None,
         type: str = None,
     ):
-        # The ID of the AI job.
         self.job_id = job_id
-        # The ID of the video.
         self.media_id = media_id
-        # The type of the AI job. Valid values:
-        # 
-        # *   **AIMediaDNA**: The media fingerprinting job.
-        # *   **AIVideoTag**: The smart tagging job.
         self.type = type
 
     def validate(self):

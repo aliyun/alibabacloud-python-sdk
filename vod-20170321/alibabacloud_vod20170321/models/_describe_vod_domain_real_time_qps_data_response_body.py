@@ -13,7 +13,6 @@ class DescribeVodDomainRealTimeQpsDataResponseBody(DaraModel):
         data: main_models.DescribeVodDomainRealTimeQpsDataResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel(DaraModel):
         qps: float = None,
         time_stamp: str = None,
     ):
-        # The number of queries per second.
         self.qps = qps
-        # The timestamp of the returned data. The time follows the ISO 8601 standard. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

@@ -16,9 +16,6 @@ class SubmitTranscodeJobsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The information about the transcoding job.
-        # 
-        # >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
         self.transcode_jobs = transcode_jobs
         # The ID of the transcoding task that was submitted.
         self.transcode_task_id = transcode_task_id
@@ -97,9 +94,6 @@ class SubmitTranscodeJobsResponseBodyTranscodeJobsTranscodeJob(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the transcoding job.
-        # 
-        # >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
         self.job_id = job_id
 
     def validate(self):

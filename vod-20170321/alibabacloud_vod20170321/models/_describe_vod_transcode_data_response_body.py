@@ -21,7 +21,6 @@ class DescribeVodTranscodeDataResponseBody(DaraModel):
         self.data_interval = data_interval
         # The ID of the request.
         self.request_id = request_id
-        # The transcoding statistics returned.
         self.transcode_data = transcode_data
 
     def validate(self):
@@ -99,9 +98,7 @@ class DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItem(DaraMod
         data: main_models.DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData = None,
         time_stamp: str = None,
     ):
-        # The statistics on transcoding of different specifications.
         self.data = data
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -173,13 +170,7 @@ class DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemDataData
         name: str = None,
         value: str = None,
     ):
-        # The transcoding specification. Valid values:
-        # 
-        # *   **Audio**: audio transcoding
-        # *   **Segmentation**: container format conversion
-        # *   **H264.LD, H264.SD, H264.HD, H264.2K, H264.4K, and more**
         self.name = name
-        # The transcoding duration. Unit: seconds.
         self.value = value
 
     def validate(self):

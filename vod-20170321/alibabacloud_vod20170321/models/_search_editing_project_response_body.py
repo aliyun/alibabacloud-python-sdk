@@ -14,7 +14,6 @@ class SearchEditingProjectResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of online editing projects.
         self.project_list = project_list
         # The ID of the request.
         self.request_id = request_id
@@ -104,31 +103,15 @@ class SearchEditingProjectResponseBodyProjectListProject(DaraModel):
         storage_location: str = None,
         title: str = None,
     ):
-        # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
-        # The time when the online editing project was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the online editing project.
         self.description = description
-        # The duration of the online editing project, which must be consistent with the duration of the timeline.
-        # > The Timeline parameter is not included in response parameters.
         self.duration = duration
-        # The last time when the online editing project was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The ID of the online editing project.
         self.project_id = project_id
-        # The region where the online editing project was created.
         self.region_id = region_id
-        # The status of the online editing project. Separate multiple states with commas (,). By default, all online editing projects were queried. Valid values:
-        # *   **Normal**: indicates that the online editing project is in draft.
-        # *   **Producing**: indicates that the video is being produced.
-        # *   **Produced**: indicates that the video was produced.
-        # *   **ProduceFailed**: indicates that the video failed to be produced.
         self.status = status
-        # The path of the Object Storage Service (OSS) bucket where the produced video is stored.
-        # > To view the path of the OSS bucket, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.15.6948257eaZ4m54#/vod/settings/censored), and choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, you can view the path of the OSS bucket.
         self.storage_location = storage_location
-        # The title of the online editing project.
         self.title = title
 
     def validate(self):

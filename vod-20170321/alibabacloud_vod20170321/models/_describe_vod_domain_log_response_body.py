@@ -13,7 +13,6 @@ class DescribeVodDomainLogResponseBody(DaraModel):
         domain_log_details: main_models.DescribeVodDomainLogResponseBodyDomainLogDetails = None,
         request_id: str = None,
     ):
-        # The details of CDN logs.
         self.domain_log_details = domain_log_details
         # The request ID.
         self.request_id = request_id
@@ -89,13 +88,9 @@ class DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetail(DaraModel)
         log_infos: main_models.DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos = None,
         page_infos: main_models.DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos = None,
     ):
-        # The domain name.
         self.domain_name = domain_name
-        # The total number of entries returned on the current page.
         self.log_count = log_count
-        # The queried CDN logs.
         self.log_infos = log_infos
-        # The pagination information.
         self.page_infos = page_infos
 
     def validate(self):
@@ -148,11 +143,8 @@ class DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos(D
         page_size: int = None,
         total: int = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -231,15 +223,10 @@ class DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLog
         log_size: int = None,
         start_time: str = None,
     ):
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
-        # The name of the log file.
         self.log_name = log_name
-        # The path of the log file.
         self.log_path = log_path
-        # The size of the log file.
         self.log_size = log_size
-        # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-04-23 Version: 3.10.2
+- Update API DescribeVodDomainCertificateInfo: add request parameters HeraApiAutoVersion.
+
+
 2026-02-06 Version: 3.10.1
 - Update API GetPlayInfo: add request parameters CodecName.
 - Update API GetURLUploadInfos: add response parameters Body.URLUploadInfoList.$.RegisteredMediaId.

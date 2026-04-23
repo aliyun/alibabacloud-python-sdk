@@ -13,7 +13,6 @@ class SubmitPreprocessJobsResponseBody(DaraModel):
         preprocess_jobs: main_models.SubmitPreprocessJobsResponseBodyPreprocessJobs = None,
         request_id: str = None,
     ):
-        # The information about the job.
         self.preprocess_jobs = preprocess_jobs
         # The ID of the request.
         self.request_id = request_id
@@ -86,7 +85,6 @@ class SubmitPreprocessJobsResponseBodyPreprocessJobsPreprocessJob(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the job.
         self.job_id = job_id
 
     def validate(self):

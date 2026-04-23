@@ -54,7 +54,6 @@ class DescribeVodSSLCertificateListResponseBodyCertificateListModel(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The list of certificates.
         self.cert_list = cert_list
         # The number of certificates that are returned.
         self.count = count
@@ -149,19 +148,12 @@ class DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert(
         issuer: str = None,
         last_time: int = None,
     ):
-        # The ID of the certificate.
         self.cert_id = cert_id
-        # The name of the certificate.
         self.cert_name = cert_name
-        # The region of the certificate. Valid values: **cn-hangzhou** and **ap-southeast-1**. Default value: **cn-hangzhou**.
         self.cert_region = cert_region
-        # The Common Name (CN) attribute of the certificate. In most cases, the CN is a domain name.
         self.common = common
-        # The fingerprint of the certificate.
         self.fingerprint = fingerprint
-        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
-        # The time when the certificate was last modified. Unit: milliseconds.
         self.last_time = last_time
 
     def validate(self):

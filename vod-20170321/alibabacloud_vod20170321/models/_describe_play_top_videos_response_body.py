@@ -22,7 +22,6 @@ class DescribePlayTopVideosResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The daily playback statistics on each top video.
         self.top_play_videos = top_play_videos
         # The total number of entries that were collected in playback statistics on top videos.
         self.total_num = total_num
@@ -117,15 +116,10 @@ class DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis(DaraModel
         vv: str = None,
         video_id: str = None,
     ):
-        # The total playback duration. Unit: milliseconds.
         self.play_duration = play_duration
-        # The title of the video.
         self.title = title
-        # The number of unique visitors.
         self.uv = uv
-        # The number of video views.
         self.vv = vv
-        # The ID of the video.
         self.video_id = video_id
 
     def validate(self):
