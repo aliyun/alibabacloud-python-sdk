@@ -1,3 +1,24 @@
+2026-04-23 Version: 8.0.0
+- Delete API CreateChat.
+- Delete API CreateDigitalEmployee.
+- Delete API CreateDigitalEmployeeSkill.
+- Delete API CreateThread.
+- Delete API DeleteDigitalEmployee.
+- Delete API DeleteDigitalEmployeeSkill.
+- Delete API DeleteThread.
+- Delete API GetDigitalEmployee.
+- Delete API GetDigitalEmployeeSkill.
+- Delete API GetThread.
+- Delete API GetThreadData.
+- Delete API ListDigitalEmployeeSkillVersions.
+- Delete API ListDigitalEmployeeSkills.
+- Delete API ListDigitalEmployees.
+- Delete API ListThreads.
+- Delete API UpdateDigitalEmployee.
+- Delete API UpdateDigitalEmployeeSkill.
+- Delete API UpdateThread.
+
+
 2026-04-17 Version: 7.1.0
 - Support API ListAlertRobots.
 - Support API ListContactGroups.
