@@ -9,6 +9,8 @@ class OneMetaKnowledgeBase(DaraModel):
         self,
         creator: str = None,
         description: str = None,
+        domain: str = None,
+        extra_info: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         kb_uuid: str = None,
@@ -18,6 +20,8 @@ class OneMetaKnowledgeBase(DaraModel):
     ):
         self.creator = creator
         self.description = description
+        self.domain = domain
+        self.extra_info = extra_info
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.kb_uuid = kb_uuid
@@ -38,6 +42,12 @@ class OneMetaKnowledgeBase(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.domain is not None:
+            result['Domain'] = self.domain
+
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
 
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
@@ -66,6 +76,12 @@ class OneMetaKnowledgeBase(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
 
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')

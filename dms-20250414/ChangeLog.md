@@ -1,3 +1,7 @@
+2026-04-23 Version: 1.10.5
+- Update API SendChatMessage: add request parameters SessionConfig.Mode.
+
+
 2026-04-22 Version: 1.10.4
 - Update API GetChatContent: add response parameters Body.timestamp.
 
