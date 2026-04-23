@@ -32,6 +32,7 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         registrant_organization: str = None,
         registrant_type: str = None,
         registrant_updating_status: str = None,
+        registrar: str = None,
         registration_date: str = None,
         registration_date_long: int = None,
         remark: str = None,
@@ -45,7 +46,6 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
-        # The Domain Name System (DNS) servers of the domain name.
         self.dns_list = dns_list
         # The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
         self.domain_group_id = domain_group_id
@@ -119,6 +119,7 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         # *   **PENDING**: The information about the domain name registrant is being modified.
         # *   **NORMAL**: normal.
         self.registrant_updating_status = registrant_updating_status
+        self.registrar = registrar
         # The time when the domain name was registered.
         self.registration_date = registration_date
         # The timestamp generated when the domain name was registered.
@@ -129,7 +130,6 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags.
         self.tag = tag
         # The transfer status of the domain name. Valid values:
         # 
@@ -231,6 +231,9 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
 
         if self.registrant_updating_status is not None:
             result['RegistrantUpdatingStatus'] = self.registrant_updating_status
+
+        if self.registrar is not None:
+            result['Registrar'] = self.registrar
 
         if self.registration_date is not None:
             result['RegistrationDate'] = self.registration_date
@@ -339,6 +342,9 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         if m.get('RegistrantUpdatingStatus') is not None:
             self.registrant_updating_status = m.get('RegistrantUpdatingStatus')
 
+        if m.get('Registrar') is not None:
+            self.registrar = m.get('Registrar')
+
         if m.get('RegistrationDate') is not None:
             self.registration_date = m.get('RegistrationDate')
 
@@ -419,9 +425,7 @@ class QueryDomainByDomainNameResponseBodyTagTag(DaraModel):
         key: str = None,
         vaue: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.vaue = vaue
 
     def validate(self):

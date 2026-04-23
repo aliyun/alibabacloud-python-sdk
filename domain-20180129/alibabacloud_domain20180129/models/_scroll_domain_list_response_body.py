@@ -16,7 +16,6 @@ class ScrollDomainListResponseBody(DaraModel):
         scroll_id: str = None,
         total_item_num: int = None,
     ):
-        # The domain names.
         self.data = data
         # The number of entries per page.
         self.page_size = page_size
@@ -135,75 +134,28 @@ class ScrollDomainListResponseBodyDataDomain(DaraModel):
         tag: main_models.ScrollDomainListResponseBodyDataDomainTag = None,
         zh_registrant_organization: str = None,
     ):
-        # The Domain Name System (DNS) servers of the domain name.
         self.dns_list = dns_list
-        # The status of real-name verification for the domain name. Valid values:
-        # 
-        # *   **FAILED**: Real-name verification for the domain name fails.
-        # *   **SUCCEED**: Real-name verification for the domain name is successful.
-        # *   **NONAUDIT**: Real-name verification for the domain name is not performed.
-        # *   **AUDITING**: Real-name verification for the domain name is in progress.
         self.domain_audit_status = domain_audit_status
-        # The ID of the domain name group.
         self.domain_group_id = domain_group_id
-        # The name of the domain name group.
         self.domain_group_name = domain_group_name
-        # The domain name.
         self.domain_name = domain_name
-        # The status of the domain name. Valid values:
-        # 
-        # *   **1**: The domain name needs to be renewed.
-        # *   **2**: The domain name needs to be redeemed.
-        # *   **3**: The domain name is normal.
-        # *   **4**: The domain name is being transferred out.
-        # *   **5**: The information about the domain name registrant is being modified.
-        # *   **6**: Real-name verification is not performed on the domain name.
-        # *   **7**: Real-name verification for the domain name fails.
-        # *   **8**: The real-name verification is being reviewed.
         self.domain_status = domain_status
-        # The type of the domain name. Valid values:
-        # 
-        # *   **New gTLD**
-        # *   **gTLD**
-        # *   **ccTLD**
         self.domain_type = domain_type
-        # The email address.
         self.email = email
-        # The number of days from the expiration date of the domain name to the current date.
         self.expiration_curr_date_diff = expiration_curr_date_diff
-        # The time when the domain name expires.
         self.expiration_date = expiration_date
-        # The time when the domain name expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expiration_date_long = expiration_date_long
-        # Indicates whether the domain name expires. Valid values:
-        # 
-        # *   **1**: The domain name does not expire.
-        # *   **2**: The domain name expires.
         self.expiration_date_status = expiration_date_status
-        # The instance ID of the domain name.
         self.instance_id = instance_id
-        # Indicates whether the domain name is a premium domain name.
         self.premium = premium
-        # The service ID.
         self.product_id = product_id
-        # The registrant of the domain name.
         self.registrant_organization = registrant_organization
-        # The registration type of the domain name. Valid values:
-        # 
-        # *   **1**: individual.
-        # *   **2**: enterprise.
         self.registrant_type = registrant_type
-        # The time when the domain name was registered.
         self.registration_date = registration_date
-        # The time when the domain name was registered. This value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.registration_date_long = registration_date_long
-        # The remarks on the domain name.
         self.remark = remark
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource tag.
         self.tag = tag
-        # The Chinese name of the domain name registrant.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
@@ -404,9 +356,7 @@ class ScrollDomainListResponseBodyDataDomainTagTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

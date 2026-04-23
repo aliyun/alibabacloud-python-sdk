@@ -3313,6 +3313,8 @@ class Client(OpenApiClient):
     ) -> main_models.QueryDomainListResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_renew_enabled):
+            query['AutoRenewEnabled'] = request.auto_renew_enabled
         if not DaraCore.is_null(request.ccompany):
             query['Ccompany'] = request.ccompany
         if not DaraCore.is_null(request.dns):
@@ -3377,6 +3379,8 @@ class Client(OpenApiClient):
     ) -> main_models.QueryDomainListResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_renew_enabled):
+            query['AutoRenewEnabled'] = request.auto_renew_enabled
         if not DaraCore.is_null(request.ccompany):
             query['Ccompany'] = request.ccompany
         if not DaraCore.is_null(request.dns):

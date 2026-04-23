@@ -21,7 +21,6 @@ class QueryTaskDetailListResponseBody(DaraModel):
     ):
         # The page number returned.
         self.current_page_num = current_page_num
-        # The tasks.
         self.data = data
         # Indicates whether the current page is followed by a page.
         self.next_page = next_page
@@ -153,58 +152,19 @@ class QueryTaskDetailListResponseBodyDataTaskDetail(DaraModel):
         try_count: int = None,
         update_time: str = None,
     ):
-        # The time when the task was created.
         self.create_time = create_time
-        # The domain name.
         self.domain_name = domain_name
-        # The error message returned when the task failed.
         self.error_msg = error_msg
-        # The cause of a domain name task failure.
         self.fail_reason = fail_reason
-        # The instance ID of the domain name.
         self.instance_id = instance_id
-        # The ID of the task details.
         self.task_detail_no = task_detail_no
-        # The task ID.
         self.task_no = task_no
-        # The result of the task.
         self.task_result = task_result
-        # The task status. Valid values:
-        # 
-        # *   **WAITING_EXECUTE**: To be executed
-        # *   **EXECUTING**: being executed
-        # *   **EXECUTE_SUCCESS**: successful
-        # *   **EXECUTE_FAILURE**: failed
         self.task_status = task_status
-        # The status code of the task. Valid values:
-        # 
-        # *   **0**: waiting for execution
-        # *   **1**: being executed
-        # *   **2**: successful
-        # *   **3**: failed
         self.task_status_code = task_status_code
-        # The task type. Valid values:
-        # 
-        # *   **CHG_HOLDER**: The task is run to modify the domain name registrant.
-        # *   **CHG_DNS**: The task is run to change the Domain Name System (DNS) servers.
-        # *   **SET_WHOIS_PROTECT**: The task is run to configure privacy protection for the domain name.
-        # *   **UPDATE_ADMIN_CONTACT**: The task is run to modify the information about the administrator of the domain name.
-        # *   **UPDATE_BILLING_CONTACT**: The task is run to modify the information about the payer for the domain name.
-        # *   **UPDATE_TECH_CONTACT**: The task is run to modify the information about the technical support for the domain name.
-        # *   **SET_UPDATE_PROHIBITED**: The task is run to configure the security lock for the domain name.
-        # *   **SET_TRANSFER_PROHIBITED**: The task is run to configure the transfer lock for the domain name.
-        # *   **ORDER_ACTIVATE**: The task is run to create a registration order for the domain name.
-        # *   **ORDER_RENEW**: The task is run to create a renewal order for the domain name.
-        # *   **ORDER_REDEEM**: The task is run to create a redemption order for the domain name.
-        # *   **CREATE_DNSHOST**: The task is run to create a DNS server for the domain name.
-        # *   **UPDATE_DNSHOST**: The task is run to update the information about a DNS server for the domain name.
-        # *   **SYNC_DNSHOST**: The task is run to synchronize a DNS server for the domain name.
         self.task_type = task_type
-        # The description of the task type.
         self.task_type_description = task_type_description
-        # The number of times the task was retried.
         self.try_count = try_count
-        # The last time when the task was run.
         self.update_time = update_time
 
     def validate(self):

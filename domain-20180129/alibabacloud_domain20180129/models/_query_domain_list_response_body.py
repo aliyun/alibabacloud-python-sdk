@@ -21,7 +21,6 @@ class QueryDomainListResponseBody(DaraModel):
     ):
         # The page number.
         self.current_page_num = current_page_num
-        # The domain names.
         self.data = data
         # Indicates whether the current page is followed by a page.
         self.next_page = next_page
@@ -138,6 +137,7 @@ class QueryDomainListResponseBodyData(DaraModel):
 class QueryDomainListResponseBodyDataDomain(DaraModel):
     def __init__(
         self,
+        auto_renew_enabled: bool = None,
         ccompany: str = None,
         chgholder_status: str = None,
         dns_list: main_models.QueryDomainListResponseBodyDataDomainDnsList = None,
@@ -162,71 +162,29 @@ class QueryDomainListResponseBodyDataDomain(DaraModel):
         resource_group_id: str = None,
         tag: main_models.QueryDomainListResponseBodyDataDomainTag = None,
     ):
-        # The name of the domain name registrant.
+        self.auto_renew_enabled = auto_renew_enabled
         self.ccompany = ccompany
-        # domain transfer status. value:
-        # - 0: domain status normal.
-        # - 1: domain is pending change holder.
-        # - 2: change holder failed.
         self.chgholder_status = chgholder_status
         self.dns_list = dns_list
-        # The state of real-name verification for the domain name. Valid values:
-        # 
-        # *   **FAILED**: Real-name verification for the domain name fails.
-        # *   **SUCCEED**: Real-name verification for the domain name is successful.
-        # *   **NONAUDIT**: Real-name verification for the domain name is not performed.
-        # *   **AUDITING**: Real-name verification for the domain name is in progress.
         self.domain_audit_status = domain_audit_status
-        # The ID of the domain name group.
         self.domain_group_id = domain_group_id
-        # The name of the domain name group.
         self.domain_group_name = domain_group_name
-        # The domain name.
         self.domain_name = domain_name
-        # The state of the domain name. Valid values:
-        # 
-        # *   **1**: The domain name needs to be renewed.
-        # *   **2**: The domain name needs to be redeemed.
-        # *   **3**: The domain name is normal.
         self.domain_status = domain_status
-        # The type of the domain name. Valid values:
-        # 
-        # *   **New gTLD**
-        # *   **gTLD**
-        # *   **ccTLD**
         self.domain_type = domain_type
-        # The number of days from the expiration date of the domain name to the current date.
         self.expiration_curr_date_diff = expiration_curr_date_diff
-        # The time when the domain name expires.
         self.expiration_date = expiration_date
-        # The validity period of the domain name. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expiration_date_long = expiration_date_long
-        # Indicates whether the domain name expires. Valid values:
-        # 
-        # *   **1**: The domain name does not expire.
-        # *   **2**: The domain name expires.
         self.expiration_date_status = expiration_date_status
-        # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the domain name is a premium domain name.
         self.premium = premium
-        # The service ID.
         self.product_id = product_id
-        # The registration type of the domain name. Valid values:
-        # 
-        # *   **1**: individual
-        # *   **2**: enterprise
         self.registrant_type = registrant_type
         self.registrar = registrar
-        # The time when the domain name was registered.
         self.registration_date = registration_date
-        # Indicates how long the domain name has been registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.registration_date_long = registration_date_long
-        # The remarks of the domain name.
         self.remark = remark
-        # The ID of the resource group to which the domain name belongs.
         self.resource_group_id = resource_group_id
-        # The tags added to the resource.
         self.tag = tag
 
     def validate(self):
@@ -240,6 +198,9 @@ class QueryDomainListResponseBodyDataDomain(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_renew_enabled is not None:
+            result['AutoRenewEnabled'] = self.auto_renew_enabled
+
         if self.ccompany is not None:
             result['Ccompany'] = self.ccompany
 
@@ -313,6 +274,9 @@ class QueryDomainListResponseBodyDataDomain(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenewEnabled') is not None:
+            self.auto_renew_enabled = m.get('AutoRenewEnabled')
+
         if m.get('Ccompany') is not None:
             self.ccompany = m.get('Ccompany')
 
@@ -427,9 +391,7 @@ class QueryDomainListResponseBodyDataDomainTagTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag added to the resource.
         self.key = key
-        # The value of the tag added to the resource.
         self.value = value
 
     def validate(self):

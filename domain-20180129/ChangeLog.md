@@ -1,3 +1,9 @@
+2026-04-23 Version: 5.0.2
+- Update API QueryDomainByDomainName: add response parameters Body.Registrar.
+- Update API QueryDomainList: add request parameters AutoRenewEnabled.
+- Update API QueryDomainList: add response parameters Body.Data.$.AutoRenewEnabled.
+
+
 2026-01-28 Version: 5.0.1
 - Update API QueryDomainGroupList: add request parameters OrderByType.
 - Update API QueryDomainGroupList: add request parameters OrderKeyType.

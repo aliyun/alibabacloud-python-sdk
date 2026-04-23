@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class QueryDomainListRequest(DaraModel):
     def __init__(
         self,
+        auto_renew_enabled: bool = None,
         ccompany: str = None,
         dns: str = None,
         domain_group_id: str = None,
@@ -30,6 +31,7 @@ class QueryDomainListRequest(DaraModel):
         tag: List[main_models.QueryDomainListRequestTag] = None,
         user_client_ip: str = None,
     ):
+        self.auto_renew_enabled = auto_renew_enabled
         # The name of the domain name registrant.
         self.ccompany = ccompany
         self.dns = dns
@@ -104,6 +106,9 @@ class QueryDomainListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_renew_enabled is not None:
+            result['AutoRenewEnabled'] = self.auto_renew_enabled
+
         if self.ccompany is not None:
             result['Ccompany'] = self.ccompany
 
@@ -167,6 +172,9 @@ class QueryDomainListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenewEnabled') is not None:
+            self.auto_renew_enabled = m.get('AutoRenewEnabled')
+
         if m.get('Ccompany') is not None:
             self.ccompany = m.get('Ccompany')
 

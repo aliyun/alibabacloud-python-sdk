@@ -33,7 +33,6 @@ class QueryRegistrantProfilesResponseBody(DaraModel):
         # *   **true**
         # *   **false**
         self.pre_page = pre_page
-        # The list of registrant profiles.
         self.registrant_profiles = registrant_profiles
         # The request ID.
         self.request_id = request_id
@@ -175,83 +174,33 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Dar
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
-        # The address of the domain name registrant.
         self.address = address
-        # The city where the domain name registrant is located, in English.
         self.city = city
-        # The code of the country or region where the domain name registrant is located, such as **CN** or **US**.
         self.country = country
-        # The time when the registrant profile was created.
         self.create_time = create_time
-        # The certificate number.
         self.credential_no = credential_no
-        # The certificate type.
         self.credential_type = credential_type
-        # Indicates whether the template is the default template. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # Default value: **false**.
         self.default_registrant_profile = default_registrant_profile
-        # The email address of the domain name registrant.
         self.email = email
-        # The status of the verification for the email address. Valid values:
-        # 
-        # *   **0**: not verified
-        # *   **1**: verified
         self.email_verification_status = email_verification_status
         self.params = params
-        # The postal code of the region where the domain name registrant is located.
         self.postal_code = postal_code
-        # The province where the domain name registrant is located.
         self.province = province
-        # The state of real-name verification for the domain name registrant. Valid values:
-        # 
-        # *   **FAILED**: Real-name verification for the domain name fails.
-        # *   **SUCCEED**: Real-name verification for the domain name is successful.
-        # *   **NONAUDIT**: Real-name verification for the domain name is not performed.
-        # *   **AUDITING**: Real-name verification for the domain name is in progress.
         self.real_name_status = real_name_status
-        # The name of the domain name contact.
         self.registrant_name = registrant_name
-        # The name of the domain name registrant.
         self.registrant_organization = registrant_organization
-        # The ID of the registrant profile.
         self.registrant_profile_id = registrant_profile_id
-        # The type of the registrant profile. Valid values:
-        # 
-        # *   **common**: common profile.
-        # *   **cnnic**: CNNIC profile.
-        # 
-        # >  Only the Alibaba Cloud international site (alibabacloud.com) supports CNNIC profiles. To register domain names provided by CNNIC such as the .cn and . domain names on the Alibaba Cloud international site, you must use a CNNIC profile. To register other domain names, use a common profile.
         self.registrant_profile_type = registrant_profile_type
-        # The type of the domain name registrant. Valid values:
-        # 
-        # *   **1**: individual.
-        # *   **2**: enterprise.
-        # 
-        # Default value: **1**.
         self.registrant_type = registrant_type
-        # The remarks.
         self.remark = remark
-        # The international dialing code of the country or region where the domain name contact is located. For example, the international dialing code of China is **86**.
         self.tel_area = tel_area
-        # The extension of the phone number.
         self.tel_ext = tel_ext
-        # The phone number.
         self.telephone = telephone
-        # The time when the registrant profile was updated.
         self.update_time = update_time
-        # The address of the domain name registrant, in Chinese.
         self.zh_address = zh_address
-        # The city where the domain name registrant is located, in Chinese.
         self.zh_city = zh_city
-        # The province where the domain name registrant is located, in Chinese.
         self.zh_province = zh_province
-        # The Chinese name of the domain name contact.
         self.zh_registrant_name = zh_registrant_name
-        # The Chinese name of the domain name registrant.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
