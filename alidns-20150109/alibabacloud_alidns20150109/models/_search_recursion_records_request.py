@@ -39,6 +39,7 @@ class SearchRecursionRecordsRequest(DaraModel):
         self.type = type
         self.value = value
         self.weight = weight
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

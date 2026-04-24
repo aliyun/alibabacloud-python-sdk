@@ -9,6 +9,7 @@ class DescribeRecursionZoneRequest(DaraModel):
         self,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

@@ -11,6 +11,7 @@ class DeleteRecursionRecordRequest(DaraModel):
         record_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):

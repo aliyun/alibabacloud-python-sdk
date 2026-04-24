@@ -9,6 +9,7 @@ class DescribeRecursionRecordRequest(DaraModel):
         self,
         record_id: str = None,
     ):
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):

@@ -19,6 +19,7 @@ class UpdateRecursionRecordWeightEnableStatusRequest(DaraModel):
         self.request_source = request_source
         self.rr = rr
         self.type = type
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

@@ -13,6 +13,7 @@ class UpdateRecursionZoneEffectiveScopeShrinkRequest(DaraModel):
     ):
         self.client_token = client_token
         self.effective_scopes_shrink = effective_scopes_shrink
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

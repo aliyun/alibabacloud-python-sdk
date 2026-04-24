@@ -16,6 +16,7 @@ class UpdateRecursionZoneEffectiveScopeRequest(DaraModel):
     ):
         self.client_token = client_token
         self.effective_scopes = effective_scopes
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

@@ -13,6 +13,7 @@ class UpdateRecursionRecordEnableStatusRequest(DaraModel):
     ):
         self.client_token = client_token
         self.enable_status = enable_status
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):

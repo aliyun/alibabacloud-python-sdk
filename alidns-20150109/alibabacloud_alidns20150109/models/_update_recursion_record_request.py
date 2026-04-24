@@ -19,6 +19,7 @@ class UpdateRecursionRecordRequest(DaraModel):
     ):
         self.client_token = client_token
         self.priority = priority
+        # This parameter is required.
         self.record_id = record_id
         self.request_source = request_source
         self.rr = rr

@@ -33,6 +33,7 @@ class ListRecursionRecordsRequest(DaraModel):
         self.ttl = ttl
         self.type = type
         self.weight = weight
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

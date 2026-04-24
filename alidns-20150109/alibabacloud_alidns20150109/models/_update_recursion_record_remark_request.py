@@ -13,6 +13,8 @@ class UpdateRecursionRecordRemarkRequest(DaraModel):
     ):
         self.client_token = client_token
         # record id
+        # 
+        # This parameter is required.
         self.record_id = record_id
         self.remark = remark
 

@@ -12,6 +12,7 @@ class UpdateRecursionRecordWeightRequest(DaraModel):
         weight: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.record_id = record_id
         self.weight = weight
 
