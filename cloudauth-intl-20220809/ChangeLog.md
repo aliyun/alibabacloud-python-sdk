@@ -1,3 +1,17 @@
+2026-04-24 Version: 3.18.3
+- Update API FaceCompare: add request parameters FaceQualityCheck.
+- Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.
+- Update API FaceCompareV2: add request parameters FaceQualityCheck.
+- Update API FaceCompareV2: add response parameters Body.Result.ExtFaceInfo.
+- Update API FaceDuplicationCheckIntl: add request parameters FaceQualityCheck.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.
+- Update API FaceLiveness: add request parameters FaceQualityCheck.
+- Update API FaceLiveness: add response parameters Body.Result.ExtFaceInfo.IlluminationScore.
+- Update API FaceLiveness: add response parameters Body.Result.ExtFaceInfo.KaOcclusionScore.
+- Update API FaceLiveness: add response parameters Body.Result.ExtFaceInfo.OcclusionScore.
+- Update API FaceLiveness: add response parameters Body.Result.ExtFaceInfo.SharpnessScore.
+
+
 2026-04-20 Version: 3.18.2
 - Update API Initialize: add request parameters TemplateConfig.
 - Update API Initialize: add request parameters TemplateRanCount.

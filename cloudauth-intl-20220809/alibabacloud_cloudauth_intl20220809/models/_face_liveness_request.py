@@ -11,6 +11,7 @@ class FaceLivenessRequest(DaraModel):
         face_picture_base_64: str = None,
         face_picture_url: str = None,
         face_quality: str = None,
+        face_quality_check: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         occlusion: str = None,
@@ -32,6 +33,7 @@ class FaceLivenessRequest(DaraModel):
         # 
         # - **F**: does not return the score.
         self.face_quality = face_quality
+        self.face_quality_check = face_quality_check
         # A custom unique business identifier. You can use this identifier to track and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure the identifier is unique.
         # 
         # > Alibaba Cloud servers do not check the uniqueness of this value. For better tracking, ensure this value is unique.
@@ -67,6 +69,9 @@ class FaceLivenessRequest(DaraModel):
         if self.face_quality is not None:
             result['FaceQuality'] = self.face_quality
 
+        if self.face_quality_check is not None:
+            result['FaceQualityCheck'] = self.face_quality_check
+
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
 
@@ -94,6 +99,9 @@ class FaceLivenessRequest(DaraModel):
 
         if m.get('FaceQuality') is not None:
             self.face_quality = m.get('FaceQuality')
+
+        if m.get('FaceQualityCheck') is not None:
+            self.face_quality_check = m.get('FaceQualityCheck')
 
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')

@@ -8,6 +8,7 @@ class FaceCompareRequest(DaraModel):
     def __init__(
         self,
         face_picture_quality_check: str = None,
+        face_quality_check: str = None,
         merchant_biz_id: str = None,
         source_face_picture: str = None,
         source_face_picture_url: str = None,
@@ -16,6 +17,7 @@ class FaceCompareRequest(DaraModel):
     ):
         # 是否开启传入人脸图片质量检测
         self.face_picture_quality_check = face_picture_quality_check
+        self.face_quality_check = face_quality_check
         # A custom unique business ID used for troubleshooting. It can be a combination of up to 32 letters and digits. Make sure that the ID is unique.
         self.merchant_biz_id = merchant_biz_id
         # The Base64 encoding of the portrait photo.
@@ -48,6 +50,9 @@ class FaceCompareRequest(DaraModel):
         if self.face_picture_quality_check is not None:
             result['FacePictureQualityCheck'] = self.face_picture_quality_check
 
+        if self.face_quality_check is not None:
+            result['FaceQualityCheck'] = self.face_quality_check
+
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
 
@@ -69,6 +74,9 @@ class FaceCompareRequest(DaraModel):
         m = m or dict()
         if m.get('FacePictureQualityCheck') is not None:
             self.face_picture_quality_check = m.get('FacePictureQualityCheck')
+
+        if m.get('FaceQualityCheck') is not None:
+            self.face_quality_check = m.get('FaceQualityCheck')
 
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')

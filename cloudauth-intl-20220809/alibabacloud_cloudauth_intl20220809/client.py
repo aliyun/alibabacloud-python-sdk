@@ -3272,6 +3272,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.face_picture_quality_check):
             query['FacePictureQualityCheck'] = request.face_picture_quality_check
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.source_face_picture_url):
@@ -3312,6 +3314,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.face_picture_quality_check):
             query['FacePictureQualityCheck'] = request.face_picture_quality_check
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.source_face_picture_url):
@@ -3366,6 +3370,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.face_picture_quality_check):
             query['FacePictureQualityCheck'] = request.face_picture_quality_check
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.source_face_picture_url):
@@ -3410,6 +3416,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.face_picture_quality_check):
             query['FacePictureQualityCheck'] = request.face_picture_quality_check
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.source_face_picture_url):
@@ -3791,6 +3799,8 @@ class Client(OpenApiClient):
             body['AutoRegistration'] = request.auto_registration
         if not DaraCore.is_null(request.face_group_codes):
             body['FaceGroupCodes'] = request.face_group_codes
+        if not DaraCore.is_null(request.face_quality_check):
+            body['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.face_register_group_code):
             body['FaceRegisterGroupCode'] = request.face_register_group_code
         if not DaraCore.is_null(request.face_verify_threshold):
@@ -3851,6 +3861,8 @@ class Client(OpenApiClient):
             body['AutoRegistration'] = request.auto_registration
         if not DaraCore.is_null(request.face_group_codes):
             body['FaceGroupCodes'] = request.face_group_codes
+        if not DaraCore.is_null(request.face_quality_check):
+            body['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.face_register_group_code):
             body['FaceRegisterGroupCode'] = request.face_register_group_code
         if not DaraCore.is_null(request.face_verify_threshold):
@@ -4010,6 +4022,8 @@ class Client(OpenApiClient):
             query['FacePictureUrl'] = request.face_picture_url
         if not DaraCore.is_null(request.face_quality):
             query['FaceQuality'] = request.face_quality
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.merchant_user_id):
@@ -4054,6 +4068,8 @@ class Client(OpenApiClient):
             query['FacePictureUrl'] = request.face_picture_url
         if not DaraCore.is_null(request.face_quality):
             query['FaceQuality'] = request.face_quality
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.merchant_user_id):

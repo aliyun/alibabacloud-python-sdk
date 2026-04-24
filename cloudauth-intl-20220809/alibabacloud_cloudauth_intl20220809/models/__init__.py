@@ -155,9 +155,12 @@ from ._doc_ocr_v2response_body import DocOcrV2ResponseBodyResult
 from ._download_verify_record_intl_response_body import DownloadVerifyRecordIntlResponseBodyData
 from ._ekyc_verify_response_body import EkycVerifyResponseBodyResult
 from ._ekyc_verify_v2response_body import EkycVerifyV2ResponseBodyResult
+from ._face_compare_response_body import FaceCompareResponseBodyResultExtFaceInfo
 from ._face_compare_response_body import FaceCompareResponseBodyResult
+from ._face_compare_v2response_body import FaceCompareV2ResponseBodyResultExtFaceInfo
 from ._face_compare_v2response_body import FaceCompareV2ResponseBodyResult
 from ._face_cross_compare_intl_response_body import FaceCrossCompareIntlResponseBodyResult
+from ._face_duplication_check_intl_response_body import FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo
 from ._face_duplication_check_intl_response_body import FaceDuplicationCheckIntlResponseBodyResult
 from ._face_guard_risk_response_body import FaceGuardRiskResponseBodyResult
 from ._face_liveness_response_body import FaceLivenessResponseBodyResultExtFaceInfo
@@ -327,9 +330,12 @@ __all__ = [
     DownloadVerifyRecordIntlResponseBodyData,
     EkycVerifyResponseBodyResult,
     EkycVerifyV2ResponseBodyResult,
+    FaceCompareResponseBodyResultExtFaceInfo,
     FaceCompareResponseBodyResult,
+    FaceCompareV2ResponseBodyResultExtFaceInfo,
     FaceCompareV2ResponseBodyResult,
     FaceCrossCompareIntlResponseBodyResult,
+    FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo,
     FaceDuplicationCheckIntlResponseBodyResult,
     FaceGuardRiskResponseBodyResult,
     FaceLivenessResponseBodyResultExtFaceInfo,

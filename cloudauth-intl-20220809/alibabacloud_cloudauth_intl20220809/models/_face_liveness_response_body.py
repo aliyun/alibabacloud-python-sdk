@@ -130,7 +130,11 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         face_attack: str = None,
         face_gender: str = None,
         face_quality_score: float = None,
+        illumination_score: float = None,
+        ka_occlusion_score: float = None,
         occlusion_result: str = None,
+        occlusion_score: float = None,
+        sharpness_score: float = None,
     ):
         # The predicted age of the person in the image. The prediction may fail, resulting in an empty value.
         self.face_age = face_age
@@ -144,8 +148,12 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         self.face_gender = face_gender
         # Optional. The quality score of the live face. The value ranges from 0 to 100.
         self.face_quality_score = face_quality_score
+        self.illumination_score = illumination_score
+        self.ka_occlusion_score = ka_occlusion_score
         # Optional. Indicates whether the face is occluded. Y means the face is occluded. N means the face is not occluded.
         self.occlusion_result = occlusion_result
+        self.occlusion_score = occlusion_score
+        self.sharpness_score = sharpness_score
 
     def validate(self):
         pass
@@ -167,8 +175,20 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         if self.face_quality_score is not None:
             result['FaceQualityScore'] = self.face_quality_score
 
+        if self.illumination_score is not None:
+            result['IlluminationScore'] = self.illumination_score
+
+        if self.ka_occlusion_score is not None:
+            result['KaOcclusionScore'] = self.ka_occlusion_score
+
         if self.occlusion_result is not None:
             result['OcclusionResult'] = self.occlusion_result
+
+        if self.occlusion_score is not None:
+            result['OcclusionScore'] = self.occlusion_score
+
+        if self.sharpness_score is not None:
+            result['SharpnessScore'] = self.sharpness_score
 
         return result
 
@@ -186,8 +206,20 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         if m.get('FaceQualityScore') is not None:
             self.face_quality_score = m.get('FaceQualityScore')
 
+        if m.get('IlluminationScore') is not None:
+            self.illumination_score = m.get('IlluminationScore')
+
+        if m.get('KaOcclusionScore') is not None:
+            self.ka_occlusion_score = m.get('KaOcclusionScore')
+
         if m.get('OcclusionResult') is not None:
             self.occlusion_result = m.get('OcclusionResult')
+
+        if m.get('OcclusionScore') is not None:
+            self.occlusion_score = m.get('OcclusionScore')
+
+        if m.get('SharpnessScore') is not None:
+            self.sharpness_score = m.get('SharpnessScore')
 
         return self
 

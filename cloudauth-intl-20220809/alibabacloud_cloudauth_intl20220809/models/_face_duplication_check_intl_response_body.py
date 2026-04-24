@@ -66,6 +66,7 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
     def __init__(
         self,
         duplicate_face: str = None,
+        ext_face_info: main_models.FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo = None,
         face_age: str = None,
         face_attack: str = None,
         face_attack_score: str = None,
@@ -79,6 +80,7 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
     ):
         # Returns the face library face ID and UserID when a duplicate face is detected.
         self.duplicate_face = duplicate_face
+        self.ext_face_info = ext_face_info
         # The estimated age of the face, which may not be returned if the prediction fails.
         self.face_age = face_age
         # Indicates whether the captured face involves a liveness attack, Y for an attack, N for no attack.
@@ -110,7 +112,8 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
         self.transaction_id = transaction_id
 
     def validate(self):
-        pass
+        if self.ext_face_info:
+            self.ext_face_info.validate()
 
     def to_map(self):
         result = dict()
@@ -119,6 +122,9 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
             result = _map
         if self.duplicate_face is not None:
             result['DuplicateFace'] = self.duplicate_face
+
+        if self.ext_face_info is not None:
+            result['ExtFaceInfo'] = self.ext_face_info.to_map()
 
         if self.face_age is not None:
             result['FaceAge'] = self.face_age
@@ -157,6 +163,10 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
         if m.get('DuplicateFace') is not None:
             self.duplicate_face = m.get('DuplicateFace')
 
+        if m.get('ExtFaceInfo') is not None:
+            temp_model = main_models.FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo()
+            self.ext_face_info = temp_model.from_map(m.get('ExtFaceInfo'))
+
         if m.get('FaceAge') is not None:
             self.face_age = m.get('FaceAge')
 
@@ -186,6 +196,65 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
 
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
+
+        return self
+
+class FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo(DaraModel):
+    def __init__(
+        self,
+        face_quality_score: float = None,
+        illumination_score: float = None,
+        ka_occlusion_score: float = None,
+        occlusion_score: float = None,
+        sharpness_score: float = None,
+    ):
+        self.face_quality_score = face_quality_score
+        self.illumination_score = illumination_score
+        self.ka_occlusion_score = ka_occlusion_score
+        self.occlusion_score = occlusion_score
+        self.sharpness_score = sharpness_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.face_quality_score is not None:
+            result['FaceQualityScore'] = self.face_quality_score
+
+        if self.illumination_score is not None:
+            result['IlluminationScore'] = self.illumination_score
+
+        if self.ka_occlusion_score is not None:
+            result['KaOcclusionScore'] = self.ka_occlusion_score
+
+        if self.occlusion_score is not None:
+            result['OcclusionScore'] = self.occlusion_score
+
+        if self.sharpness_score is not None:
+            result['SharpnessScore'] = self.sharpness_score
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceQualityScore') is not None:
+            self.face_quality_score = m.get('FaceQualityScore')
+
+        if m.get('IlluminationScore') is not None:
+            self.illumination_score = m.get('IlluminationScore')
+
+        if m.get('KaOcclusionScore') is not None:
+            self.ka_occlusion_score = m.get('KaOcclusionScore')
+
+        if m.get('OcclusionScore') is not None:
+            self.occlusion_score = m.get('OcclusionScore')
+
+        if m.get('SharpnessScore') is not None:
+            self.sharpness_score = m.get('SharpnessScore')
 
         return self
 

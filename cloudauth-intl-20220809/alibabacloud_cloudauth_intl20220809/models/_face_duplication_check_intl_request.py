@@ -9,6 +9,7 @@ class FaceDuplicationCheckIntlRequest(DaraModel):
         self,
         auto_registration: str = None,
         face_group_codes: str = None,
+        face_quality_check: str = None,
         face_register_group_code: str = None,
         face_verify_threshold: str = None,
         liveness: str = None,
@@ -30,6 +31,7 @@ class FaceDuplicationCheckIntlRequest(DaraModel):
         self.auto_registration = auto_registration
         # The face library code created through the console, supporting up to 10 face libraries simultaneously. When multiple face library codes are passed, they should be separated by commas.
         self.face_group_codes = face_group_codes
+        self.face_quality_check = face_quality_check
         # Face registration library.
         self.face_register_group_code = face_register_group_code
         # Face matching threshold.
@@ -90,6 +92,9 @@ class FaceDuplicationCheckIntlRequest(DaraModel):
         if self.face_group_codes is not None:
             result['FaceGroupCodes'] = self.face_group_codes
 
+        if self.face_quality_check is not None:
+            result['FaceQualityCheck'] = self.face_quality_check
+
         if self.face_register_group_code is not None:
             result['FaceRegisterGroupCode'] = self.face_register_group_code
 
@@ -141,6 +146,9 @@ class FaceDuplicationCheckIntlRequest(DaraModel):
 
         if m.get('FaceGroupCodes') is not None:
             self.face_group_codes = m.get('FaceGroupCodes')
+
+        if m.get('FaceQualityCheck') is not None:
+            self.face_quality_check = m.get('FaceQualityCheck')
 
         if m.get('FaceRegisterGroupCode') is not None:
             self.face_register_group_code = m.get('FaceRegisterGroupCode')
