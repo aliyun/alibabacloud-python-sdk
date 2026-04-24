@@ -1376,6 +1376,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.resume_yike_storyboard_job_with_options_async(request, runtime)
 
+    def set_yike_callback_config_with_options(
+        self,
+        request: main_models.SetYikeCallbackConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetYikeCallbackConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.callback_config):
+            query['CallbackConfig'] = request.callback_config
+        if not DaraCore.is_null(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetYikeCallbackConfig',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetYikeCallbackConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_yike_callback_config_with_options_async(
+        self,
+        request: main_models.SetYikeCallbackConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetYikeCallbackConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.callback_config):
+            query['CallbackConfig'] = request.callback_config
+        if not DaraCore.is_null(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetYikeCallbackConfig',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetYikeCallbackConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_yike_callback_config(
+        self,
+        request: main_models.SetYikeCallbackConfigRequest,
+    ) -> main_models.SetYikeCallbackConfigResponse:
+        runtime = RuntimeOptions()
+        return self.set_yike_callback_config_with_options(request, runtime)
+
+    async def set_yike_callback_config_async(
+        self,
+        request: main_models.SetYikeCallbackConfigRequest,
+    ) -> main_models.SetYikeCallbackConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.set_yike_callback_config_with_options_async(request, runtime)
+
     def set_yike_user_role_with_options(
         self,
         request: main_models.SetYikeUserRoleRequest,

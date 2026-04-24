@@ -56,6 +56,9 @@ from ._register_yike_asset_media_info_response import RegisterYikeAssetMediaInfo
 from ._resume_yike_storyboard_job_request import ResumeYikeStoryboardJobRequest
 from ._resume_yike_storyboard_job_response_body import ResumeYikeStoryboardJobResponseBody
 from ._resume_yike_storyboard_job_response import ResumeYikeStoryboardJobResponse
+from ._set_yike_callback_config_request import SetYikeCallbackConfigRequest
+from ._set_yike_callback_config_response_body import SetYikeCallbackConfigResponseBody
+from ._set_yike_callback_config_response import SetYikeCallbackConfigResponse
 from ._set_yike_user_role_request import SetYikeUserRoleRequest
 from ._set_yike_user_role_response_body import SetYikeUserRoleResponseBody
 from ._set_yike_user_role_response import SetYikeUserRoleResponse
@@ -153,6 +156,9 @@ __all__ = [
     ResumeYikeStoryboardJobRequest,
     ResumeYikeStoryboardJobResponseBody,
     ResumeYikeStoryboardJobResponse,
+    SetYikeCallbackConfigRequest,
+    SetYikeCallbackConfigResponseBody,
+    SetYikeCallbackConfigResponse,
     SetYikeUserRoleRequest,
     SetYikeUserRoleResponseBody,
     SetYikeUserRoleResponse,

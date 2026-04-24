@@ -1,3 +1,7 @@
+2026-04-24 Version: 1.2.0
+- Support API SetYikeCallbackConfig.
+
+
 2026-04-21 Version: 1.1.0
 - Support API AddYikeUserCredit.
 - Support API BatchGetYikeAssetMediaInfos.
