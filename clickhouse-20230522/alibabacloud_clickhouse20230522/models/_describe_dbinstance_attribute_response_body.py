@@ -87,6 +87,7 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         tags: List[main_models.DescribeDBInstanceAttributeResponseBodyDataTags] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
+        web_uisnat_status: str = None,
         zone_id: str = None,
     ):
         # The ID of the Alibaba Cloud account.
@@ -165,6 +166,7 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        self.web_uisnat_status = web_uisnat_status
         # The zone ID.
         self.zone_id = zone_id
 
@@ -307,6 +309,9 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
 
+        if self.web_uisnat_status is not None:
+            result['WebUISnatStatus'] = self.web_uisnat_status
+
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
@@ -436,6 +441,9 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+
+        if m.get('WebUISnatStatus') is not None:
+            self.web_uisnat_status = m.get('WebUISnatStatus')
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')

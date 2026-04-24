@@ -1,3 +1,7 @@
+2026-04-24 Version: 2.5.2
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.WebUISnatStatus.
+
+
 2026-04-14 Version: 2.5.1
 - Update API DescribeDBInstanceAttribute: add response parameters Body.Data.LangfuseInstanceIds.
 - Update API DescribeDBInstances: add request parameters VpcIds.
