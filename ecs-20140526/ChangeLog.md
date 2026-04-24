@@ -1,3 +1,8 @@
+2026-04-24 Version: 7.7.4
+- Update API DescribeImagePipelineExecutions: add response parameters Body.ImagePipelineExecution.$.ErrorCode.
+- Update API DescribeImagePipelineExecutions: add response parameters Body.ImagePipelineExecution.$.ErrorInfo.
+
+
 2026-04-17 Version: 7.7.3
 - Update API CreateDiagnosticReport: add request parameters AdditionalOptions.
 

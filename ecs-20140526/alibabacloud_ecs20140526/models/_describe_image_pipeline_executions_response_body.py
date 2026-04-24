@@ -113,6 +113,8 @@ class DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipe
     def __init__(
         self,
         creation_time: str = None,
+        error_code: str = None,
+        error_info: str = None,
         execution_id: str = None,
         image_id: str = None,
         image_pipeline_id: str = None,
@@ -123,6 +125,8 @@ class DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipe
         tags: main_models.DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTags = None,
     ):
         self.creation_time = creation_time
+        self.error_code = error_code
+        self.error_info = error_info
         self.execution_id = execution_id
         self.image_id = image_id
         self.image_pipeline_id = image_pipeline_id
@@ -143,6 +147,12 @@ class DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipe
             result = _map
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info
 
         if self.execution_id is not None:
             result['ExecutionId'] = self.execution_id
@@ -174,6 +184,12 @@ class DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipe
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorInfo') is not None:
+            self.error_info = m.get('ErrorInfo')
 
         if m.get('ExecutionId') is not None:
             self.execution_id = m.get('ExecutionId')
