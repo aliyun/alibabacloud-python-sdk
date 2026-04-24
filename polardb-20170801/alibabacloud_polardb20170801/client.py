@@ -369,6 +369,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_firewall_rules_with_options_async(request, runtime)
 
+    def add_polar_fs_path_mapping_with_options(
+        self,
+        request: main_models.AddPolarFsPathMappingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddPolarFsPathMappingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_bucket_path_list):
+            query['CustomBucketPathList'] = request.custom_bucket_path_list
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddPolarFsPathMapping',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddPolarFsPathMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_polar_fs_path_mapping_with_options_async(
+        self,
+        request: main_models.AddPolarFsPathMappingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddPolarFsPathMappingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_bucket_path_list):
+            query['CustomBucketPathList'] = request.custom_bucket_path_list
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddPolarFsPathMapping',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddPolarFsPathMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_polar_fs_path_mapping(
+        self,
+        request: main_models.AddPolarFsPathMappingRequest,
+    ) -> main_models.AddPolarFsPathMappingResponse:
+        runtime = RuntimeOptions()
+        return self.add_polar_fs_path_mapping_with_options(request, runtime)
+
+    async def add_polar_fs_path_mapping_async(
+        self,
+        request: main_models.AddPolarFsPathMappingRequest,
+    ) -> main_models.AddPolarFsPathMappingResponse:
+        runtime = RuntimeOptions()
+        return await self.add_polar_fs_path_mapping_with_options_async(request, runtime)
+
     def add_polar_fs_quota_with_options(
         self,
         request: main_models.AddPolarFsQuotaRequest,
@@ -8092,6 +8170,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolarFsObjectsResponse:
         runtime = RuntimeOptions()
         return await self.delete_polar_fs_objects_with_options_async(request, runtime)
+
+    def delete_polar_fs_path_mapping_with_options(
+        self,
+        request: main_models.DeletePolarFsPathMappingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarFsPathMappingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_bucket_path_list):
+            query['CustomBucketPathList'] = request.custom_bucket_path_list
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarFsPathMapping',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarFsPathMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_fs_path_mapping_with_options_async(
+        self,
+        request: main_models.DeletePolarFsPathMappingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarFsPathMappingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_bucket_path_list):
+            query['CustomBucketPathList'] = request.custom_bucket_path_list
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarFsPathMapping',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarFsPathMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_fs_path_mapping(
+        self,
+        request: main_models.DeletePolarFsPathMappingRequest,
+    ) -> main_models.DeletePolarFsPathMappingResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_fs_path_mapping_with_options(request, runtime)
+
+    async def delete_polar_fs_path_mapping_async(
+        self,
+        request: main_models.DeletePolarFsPathMappingRequest,
+    ) -> main_models.DeletePolarFsPathMappingResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_fs_path_mapping_with_options_async(request, runtime)
 
     def delete_polar_fs_quota_with_options(
         self,
@@ -17948,8 +18104,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
         if not DaraCore.is_null(request.polar_fs_instance_id):
             query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.quota_type):
+            query['QuotaType'] = request.quota_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -17980,8 +18140,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
         if not DaraCore.is_null(request.polar_fs_instance_id):
             query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.quota_type):
+            query['QuotaType'] = request.quota_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(

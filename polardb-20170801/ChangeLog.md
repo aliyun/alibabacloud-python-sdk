@@ -1,3 +1,14 @@
+2026-04-24 Version: 6.14.0
+- Support API AddPolarFsPathMapping.
+- Support API DeletePolarFsPathMapping.
+- Update API DescribePolarFsQuota: add request parameters Path.
+- Update API DescribePolarFsQuota: add request parameters QuotaType.
+- Update API DescribePolarFsQuota: add response parameters Body.Path.
+- Update API DescribePolarFsQuota: add response parameters Body.QuotaItems.
+- Update API SetPolarFsFileQuota: add request parameters FilePathQuotas.$.Capacity.
+- Update API SetPolarFsFileQuota: add request parameters FilePathQuotas.$.Inodes.
+
+
 2026-04-23 Version: 6.13.1
 - Update API CreateDBClusterEndpoint: add request parameters VPCId.
 - Update API CreateDBClusterEndpoint: add request parameters VSwitchId.

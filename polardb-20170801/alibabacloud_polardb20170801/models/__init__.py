@@ -11,6 +11,9 @@ from ._add_encryption_dbrole_privilege_response import AddEncryptionDBRolePrivil
 from ._add_firewall_rules_request import AddFirewallRulesRequest
 from ._add_firewall_rules_response_body import AddFirewallRulesResponseBody
 from ._add_firewall_rules_response import AddFirewallRulesResponse
+from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequest
+from ._add_polar_fs_path_mapping_response_body import AddPolarFsPathMappingResponseBody
+from ._add_polar_fs_path_mapping_response import AddPolarFsPathMappingResponse
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequest
 from ._add_polar_fs_quota_response_body import AddPolarFsQuotaResponseBody
 from ._add_polar_fs_quota_response import AddPolarFsQuotaResponse
@@ -242,6 +245,9 @@ from ._delete_polar_fs_objects_request import DeletePolarFsObjectsRequest
 from ._delete_polar_fs_objects_shrink_request import DeletePolarFsObjectsShrinkRequest
 from ._delete_polar_fs_objects_response_body import DeletePolarFsObjectsResponseBody
 from ._delete_polar_fs_objects_response import DeletePolarFsObjectsResponse
+from ._delete_polar_fs_path_mapping_request import DeletePolarFsPathMappingRequest
+from ._delete_polar_fs_path_mapping_response_body import DeletePolarFsPathMappingResponseBody
+from ._delete_polar_fs_path_mapping_response import DeletePolarFsPathMappingResponse
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequest
 from ._delete_polar_fs_quota_response_body import DeletePolarFsQuotaResponseBody
 from ._delete_polar_fs_quota_response import DeletePolarFsQuotaResponse
@@ -926,6 +932,7 @@ from ._upgrade_dbcluster_version_zonal_response import UpgradeDBClusterVersionZo
 from ._upgrade_polar_claw_skills_request import UpgradePolarClawSkillsRequest
 from ._upgrade_polar_claw_skills_response_body import UpgradePolarClawSkillsResponseBody
 from ._upgrade_polar_claw_skills_response import UpgradePolarClawSkillsResponse
+from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequestCustomBucketPathList
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
@@ -942,6 +949,7 @@ from ._create_dbnodes_request import CreateDBNodesRequestDBNode
 from ._create_dbnodes_response_body import CreateDBNodesResponseBodyDBNodeIds
 from ._create_global_security_ipgroup_response_body import CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
+from ._delete_polar_fs_path_mapping_request import DeletePolarFsPathMappingRequestCustomBucketPathList
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequestQuotas
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodes
@@ -1150,6 +1158,7 @@ from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgen
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyCustomBucketPathList
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyMountInfo
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyPolicyItems
+from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyQuotaItems
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitches
 from ._describe_rds_vpcs_response_body import DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs
@@ -1209,6 +1218,9 @@ __all__ = [
     AddFirewallRulesRequest,
     AddFirewallRulesResponseBody,
     AddFirewallRulesResponse,
+    AddPolarFsPathMappingRequest,
+    AddPolarFsPathMappingResponseBody,
+    AddPolarFsPathMappingResponse,
     AddPolarFsQuotaRequest,
     AddPolarFsQuotaResponseBody,
     AddPolarFsQuotaResponse,
@@ -1440,6 +1452,9 @@ __all__ = [
     DeletePolarFsObjectsShrinkRequest,
     DeletePolarFsObjectsResponseBody,
     DeletePolarFsObjectsResponse,
+    DeletePolarFsPathMappingRequest,
+    DeletePolarFsPathMappingResponseBody,
+    DeletePolarFsPathMappingResponse,
     DeletePolarFsQuotaRequest,
     DeletePolarFsQuotaResponseBody,
     DeletePolarFsQuotaResponse,
@@ -2124,6 +2139,7 @@ __all__ = [
     UpgradePolarClawSkillsRequest,
     UpgradePolarClawSkillsResponseBody,
     UpgradePolarClawSkillsResponse,
+    AddPolarFsPathMappingRequestCustomBucketPathList,
     AddPolarFsQuotaRequestQuotas,
     CreateAINodesRequestDBNodes,
     CreateApplicationRequestComponents,
@@ -2140,6 +2156,7 @@ __all__ = [
     CreateDBNodesResponseBodyDBNodeIds,
     CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
     DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
+    DeletePolarFsPathMappingRequestCustomBucketPathList,
     DeletePolarFsQuotaRequestQuotas,
     DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes,
     DescribeAIDBClusterAttributeResponseBodyDBNodes,
@@ -2348,6 +2365,7 @@ __all__ = [
     DescribePolarFsAttributeResponseBodyCustomBucketPathList,
     DescribePolarFsAttributeResponseBodyMountInfo,
     DescribePolarFsQuotaResponseBodyPolicyItems,
+    DescribePolarFsQuotaResponseBodyQuotaItems,
     DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch,
     DescribeRdsVSwitchsResponseBodyVSwitches,
     DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs,

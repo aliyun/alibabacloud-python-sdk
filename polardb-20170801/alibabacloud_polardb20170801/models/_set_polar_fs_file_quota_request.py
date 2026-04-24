@@ -63,12 +63,16 @@ class SetPolarFsFileQuotaRequest(DaraModel):
 class SetPolarFsFileQuotaRequestFilePathQuotas(DaraModel):
     def __init__(
         self,
+        capacity: int = None,
         file_path_id: str = None,
+        inodes: int = None,
         max_depth: int = None,
         quota_ids: str = None,
         strategy: str = None,
     ):
+        self.capacity = capacity
         self.file_path_id = file_path_id
+        self.inodes = inodes
         self.max_depth = max_depth
         self.quota_ids = quota_ids
         self.strategy = strategy
@@ -81,8 +85,14 @@ class SetPolarFsFileQuotaRequestFilePathQuotas(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+
         if self.file_path_id is not None:
             result['FilePathId'] = self.file_path_id
+
+        if self.inodes is not None:
+            result['Inodes'] = self.inodes
 
         if self.max_depth is not None:
             result['MaxDepth'] = self.max_depth
@@ -97,8 +107,14 @@ class SetPolarFsFileQuotaRequestFilePathQuotas(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+
         if m.get('FilePathId') is not None:
             self.file_path_id = m.get('FilePathId')
+
+        if m.get('Inodes') is not None:
+            self.inodes = m.get('Inodes')
 
         if m.get('MaxDepth') is not None:
             self.max_depth = m.get('MaxDepth')
