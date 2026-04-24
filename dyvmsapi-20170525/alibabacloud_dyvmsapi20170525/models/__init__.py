@@ -20,6 +20,9 @@ from ._cancel_robot_task_response import CancelRobotTaskResponse
 from ._change_media_type_request import ChangeMediaTypeRequest
 from ._change_media_type_response_body import ChangeMediaTypeResponseBody
 from ._change_media_type_response import ChangeMediaTypeResponse
+from ._cloud_create_agent_request import CloudCreateAgentRequest
+from ._cloud_create_agent_response_body import CloudCreateAgentResponseBody
+from ._cloud_create_agent_response import CloudCreateAgentResponse
 from ._cloud_create_task_request import CloudCreateTaskRequest
 from ._cloud_create_task_response_body import CloudCreateTaskResponseBody
 from ._cloud_create_task_response import CloudCreateTaskResponse
@@ -184,6 +187,9 @@ from ._upgrade_video_file_response import UpgradeVideoFileResponse
 from ._upload_robot_task_called_file_request import UploadRobotTaskCalledFileRequest
 from ._upload_robot_task_called_file_response_body import UploadRobotTaskCalledFileResponseBody
 from ._upload_robot_task_called_file_response import UploadRobotTaskCalledFileResponse
+from ._cloud_create_agent_response_body import CloudCreateAgentResponseBodyDataAgent
+from ._cloud_create_agent_response_body import CloudCreateAgentResponseBodyDataAgentSkills
+from ._cloud_create_agent_response_body import CloudCreateAgentResponseBodyData
 from ._cloud_create_task_response_body import CloudCreateTaskResponseBodyData
 from ._cloud_import_task_tel_request import CloudImportTaskTelRequestTaskTelList
 from ._cloud_import_task_tel_response_body import CloudImportTaskTelResponseBodyData
@@ -228,6 +234,9 @@ __all__ = [
     ChangeMediaTypeRequest,
     ChangeMediaTypeResponseBody,
     ChangeMediaTypeResponse,
+    CloudCreateAgentRequest,
+    CloudCreateAgentResponseBody,
+    CloudCreateAgentResponse,
     CloudCreateTaskRequest,
     CloudCreateTaskResponseBody,
     CloudCreateTaskResponse,
@@ -392,6 +401,9 @@ __all__ = [
     UploadRobotTaskCalledFileRequest,
     UploadRobotTaskCalledFileResponseBody,
     UploadRobotTaskCalledFileResponse,
+    CloudCreateAgentResponseBodyDataAgent,
+    CloudCreateAgentResponseBodyDataAgentSkills,
+    CloudCreateAgentResponseBodyData,
     CloudCreateTaskResponseBodyData,
     CloudImportTaskTelRequestTaskTelList,
     CloudImportTaskTelResponseBodyData,

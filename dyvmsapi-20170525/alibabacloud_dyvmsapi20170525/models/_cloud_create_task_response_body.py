@@ -66,8 +66,6 @@ class CloudCreateTaskResponseBody(DaraModel):
 
         return self
 
-
-
 class CloudCreateTaskResponseBodyData(DaraModel):
     def __init__(
         self,

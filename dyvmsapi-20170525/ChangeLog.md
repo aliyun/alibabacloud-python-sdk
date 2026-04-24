@@ -1,3 +1,7 @@
+2026-04-24 Version: 5.1.0
+- Support API CloudCreateAgent.
+
+
 2026-04-16 Version: 5.0.0
 - Support API CloudCreateTask.
 - Support API CloudImportTaskTel.
