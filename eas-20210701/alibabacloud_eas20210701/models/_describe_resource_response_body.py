@@ -31,6 +31,7 @@ class DescribeResourceResponseBody(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
         resource_type: str = None,
+        service_count: str = None,
         status: str = None,
         update_time: str = None,
         usage_mode: str = None,
@@ -78,6 +79,7 @@ class DescribeResourceResponseBody(DaraModel):
         # *   Dedicated: the dedicated resource group.
         # *   SelfManaged: the self-managed resource group.
         self.resource_type = resource_type
+        self.service_count = service_count
         # The state of the resource group.
         self.status = status
         # The time when the resource group was last updated.
@@ -158,6 +160,9 @@ class DescribeResourceResponseBody(DaraModel):
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
 
+        if self.service_count is not None:
+            result['ServiceCount'] = self.service_count
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -236,6 +241,9 @@ class DescribeResourceResponseBody(DaraModel):
 
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+
+        if m.get('ServiceCount') is not None:
+            self.service_count = m.get('ServiceCount')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

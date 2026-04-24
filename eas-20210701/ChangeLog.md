@@ -1,3 +1,7 @@
+2026-04-24 Version: 6.13.4
+- Update API DescribeResource: add response parameters Body.ServiceCount.
+
+
 2026-04-14 Version: 6.13.3
 - Generated python 2021-07-01 for eas.
 
