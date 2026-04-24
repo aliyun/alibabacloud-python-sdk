@@ -41,6 +41,9 @@ from ._get_yike_user_response import GetYikeUserResponse
 from ._get_yike_user_credit_request import GetYikeUserCreditRequest
 from ._get_yike_user_credit_response_body import GetYikeUserCreditResponseBody
 from ._get_yike_user_credit_response import GetYikeUserCreditResponse
+from ._get_yike_voice_narrator_job_request import GetYikeVoiceNarratorJobRequest
+from ._get_yike_voice_narrator_job_response_body import GetYikeVoiceNarratorJobResponseBody
+from ._get_yike_voice_narrator_job_response import GetYikeVoiceNarratorJobResponse
 from ._list_yike_asset_folders_request import ListYikeAssetFoldersRequest
 from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBody
 from ._list_yike_asset_folders_response import ListYikeAssetFoldersResponse
@@ -71,6 +74,9 @@ from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
 from ._submit_yike_storyboard_job_request import SubmitYikeStoryboardJobRequest
 from ._submit_yike_storyboard_job_response_body import SubmitYikeStoryboardJobResponseBody
 from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobResponse
+from ._submit_yike_voice_narrator_job_request import SubmitYikeVoiceNarratorJobRequest
+from ._submit_yike_voice_narrator_job_response_body import SubmitYikeVoiceNarratorJobResponseBody
+from ._submit_yike_voice_narrator_job_response import SubmitYikeVoiceNarratorJobResponse
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultImageResult
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult
@@ -97,6 +103,7 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
 from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
+from ._get_yike_voice_narrator_job_response_body import GetYikeVoiceNarratorJobResponseBodyJobResult
 from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBodyFolderList
 from ._list_yike_productions_response_body import ListYikeProductionsResponseBodyProductionList
 from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBodyResult
@@ -141,6 +148,9 @@ __all__ = [
     GetYikeUserCreditRequest,
     GetYikeUserCreditResponseBody,
     GetYikeUserCreditResponse,
+    GetYikeVoiceNarratorJobRequest,
+    GetYikeVoiceNarratorJobResponseBody,
+    GetYikeVoiceNarratorJobResponse,
     ListYikeAssetFoldersRequest,
     ListYikeAssetFoldersResponseBody,
     ListYikeAssetFoldersResponse,
@@ -171,6 +181,9 @@ __all__ = [
     SubmitYikeStoryboardJobRequest,
     SubmitYikeStoryboardJobResponseBody,
     SubmitYikeStoryboardJobResponse,
+    SubmitYikeVoiceNarratorJobRequest,
+    SubmitYikeVoiceNarratorJobResponseBody,
+    SubmitYikeVoiceNarratorJobResponse,
     BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult,
     BatchGetYikeAIAppJobResponseBodyJobListResultImageResult,
     BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult,
@@ -197,6 +210,7 @@ __all__ = [
     GetYikeStoryboardJobResponseBodyJobParams,
     GetYikeStoryboardJobResponseBodyJobResult,
     GetYikeUserResponseBodyUserInfo,
+    GetYikeVoiceNarratorJobResponseBodyJobResult,
     ListYikeAssetFoldersResponseBodyFolderList,
     ListYikeProductionsResponseBodyProductionList,
     PrecheckYikeAIAppJobResponseBodyResult

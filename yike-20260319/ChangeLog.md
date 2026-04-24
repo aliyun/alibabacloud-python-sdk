@@ -1,3 +1,8 @@
+2026-04-24 Version: 1.3.0
+- Support API GetYikeVoiceNarratorJob.
+- Support API SubmitYikeVoiceNarratorJob.
+
+
 2026-04-24 Version: 1.2.0
 - Support API SetYikeCallbackConfig.
 

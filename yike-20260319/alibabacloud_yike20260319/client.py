@@ -986,6 +986,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_yike_user_credit_with_options_async(request, runtime)
 
+    def get_yike_voice_narrator_job_with_options(
+        self,
+        request: main_models.GetYikeVoiceNarratorJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeVoiceNarratorJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeVoiceNarratorJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeVoiceNarratorJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_voice_narrator_job_with_options_async(
+        self,
+        request: main_models.GetYikeVoiceNarratorJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeVoiceNarratorJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeVoiceNarratorJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeVoiceNarratorJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_voice_narrator_job(
+        self,
+        request: main_models.GetYikeVoiceNarratorJobRequest,
+    ) -> main_models.GetYikeVoiceNarratorJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_voice_narrator_job_with_options(request, runtime)
+
+    async def get_yike_voice_narrator_job_async(
+        self,
+        request: main_models.GetYikeVoiceNarratorJobRequest,
+    ) -> main_models.GetYikeVoiceNarratorJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_voice_narrator_job_with_options_async(request, runtime)
+
     def list_yike_asset_folders_with_options(
         self,
         request: main_models.ListYikeAssetFoldersRequest,
@@ -1805,3 +1875,77 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitYikeStoryboardJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_yike_storyboard_job_with_options_async(request, runtime)
+
+    def submit_yike_voice_narrator_job_with_options(
+        self,
+        request: main_models.SubmitYikeVoiceNarratorJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeVoiceNarratorJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeVoiceNarratorJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeVoiceNarratorJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_voice_narrator_job_with_options_async(
+        self,
+        request: main_models.SubmitYikeVoiceNarratorJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeVoiceNarratorJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeVoiceNarratorJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeVoiceNarratorJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_voice_narrator_job(
+        self,
+        request: main_models.SubmitYikeVoiceNarratorJobRequest,
+    ) -> main_models.SubmitYikeVoiceNarratorJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_voice_narrator_job_with_options(request, runtime)
+
+    async def submit_yike_voice_narrator_job_async(
+        self,
+        request: main_models.SubmitYikeVoiceNarratorJobRequest,
+    ) -> main_models.SubmitYikeVoiceNarratorJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_voice_narrator_job_with_options_async(request, runtime)
