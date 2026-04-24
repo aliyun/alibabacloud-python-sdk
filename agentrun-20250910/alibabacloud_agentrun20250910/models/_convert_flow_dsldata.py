@@ -387,7 +387,7 @@ class ConvertFlowDSLDataConversionPlanIssues(DaraModel):
     def __init__(
         self,
         description: str = None,
-        details: Dict[str, str] = None,
+        details: Dict[str, Any] = None,
         issue_type: str = None,
         level: str = None,
         node_id: str = None,

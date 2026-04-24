@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from alibabacloud_agentrun20250910 import models as main_models
 from darabonba.model import DaraModel
 
@@ -56,12 +58,16 @@ class ConvertFlowDSLInputOptions(DaraModel):
         credential_name: str = None,
         flow_name: str = None,
         vpc_endpoint_name: str = None,
+        vpc_endpoints: Dict[str, str] = None,
     ):
         # 是否执行兼容性检查，默认为true
         self.compatibility_check = compatibility_check
         self.credential_name = credential_name
         self.flow_name = flow_name
+        # 全局VPC端点名称，对所有节点统一生效。如果指定了vpcEndpoints映射，则映射中的节点优先使用映射值
         self.vpc_endpoint_name = vpc_endpoint_name
+        # 按节点名称指定VPC端点，key为节点名称(stateName)，value为该节点使用的VPC端点名称。优先级高于vpcEndpointName
+        self.vpc_endpoints = vpc_endpoints
 
     def validate(self):
         pass
@@ -83,6 +89,9 @@ class ConvertFlowDSLInputOptions(DaraModel):
         if self.vpc_endpoint_name is not None:
             result['vpcEndpointName'] = self.vpc_endpoint_name
 
+        if self.vpc_endpoints is not None:
+            result['vpcEndpoints'] = self.vpc_endpoints
+
         return result
 
     def from_map(self, m: dict = None):
@@ -98,6 +107,9 @@ class ConvertFlowDSLInputOptions(DaraModel):
 
         if m.get('vpcEndpointName') is not None:
             self.vpc_endpoint_name = m.get('vpcEndpointName')
+
+        if m.get('vpcEndpoints') is not None:
+            self.vpc_endpoints = m.get('vpcEndpoints')
 
         return self
 
