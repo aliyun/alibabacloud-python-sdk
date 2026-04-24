@@ -1,3 +1,7 @@
+2026-04-24 Version: 8.1.0
+- Support API DescribeMetricMetaList.
+
+
 2026-04-24 Version: 8.0.1
 - Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.httpApiInternalUrl.
 - Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.pushGatewayInternalUrl.

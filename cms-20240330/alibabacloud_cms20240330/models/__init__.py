@@ -227,6 +227,10 @@ from ._delete_umodel_data_response import DeleteUmodelDataResponse
 from ._delete_workspace_request import DeleteWorkspaceRequest
 from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
 from ._delete_workspace_response import DeleteWorkspaceResponse
+from ._describe_metric_meta_list_request import DescribeMetricMetaListRequest
+from ._describe_metric_meta_list_shrink_request import DescribeMetricMetaListShrinkRequest
+from ._describe_metric_meta_list_response_body import DescribeMetricMetaListResponseBody
+from ._describe_metric_meta_list_response import DescribeMetricMetaListResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
@@ -565,6 +569,9 @@ from ._create_prometheus_view_request import CreatePrometheusViewRequestPromethe
 from ._create_prometheus_view_request import CreatePrometheusViewRequestTags
 from ._create_prometheus_virtual_instance_response_body import CreatePrometheusVirtualInstanceResponseBodyInstance
 from ._create_service_request import CreateServiceRequestTags
+from ._describe_metric_meta_list_request import DescribeMetricMetaListRequestLabels
+from ._describe_metric_meta_list_response_body import DescribeMetricMetaListResponseBodyResourcesDimensionDescription
+from ._describe_metric_meta_list_response_body import DescribeMetricMetaListResponseBodyResources
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_addon_response_body import GetAddonResponseBodyDataDashboards
@@ -929,6 +936,10 @@ __all__ = [
     DeleteWorkspaceRequest,
     DeleteWorkspaceResponseBody,
     DeleteWorkspaceResponse,
+    DescribeMetricMetaListRequest,
+    DescribeMetricMetaListShrinkRequest,
+    DescribeMetricMetaListResponseBody,
+    DescribeMetricMetaListResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
@@ -1267,6 +1278,9 @@ __all__ = [
     CreatePrometheusViewRequestTags,
     CreatePrometheusVirtualInstanceResponseBodyInstance,
     CreateServiceRequestTags,
+    DescribeMetricMetaListRequestLabels,
+    DescribeMetricMetaListResponseBodyResourcesDimensionDescription,
+    DescribeMetricMetaListResponseBodyResources,
     DescribeRegionsResponseBodyRegions,
     ExecuteQueryResponseBodyMeta,
     GetAddonResponseBodyDataDashboards,

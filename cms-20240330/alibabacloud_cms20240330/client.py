@@ -3425,6 +3425,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_workspace_with_options_async(workspace_name, request, headers, runtime)
 
+    def describe_metric_meta_list_with_options(
+        self,
+        tmp_req: main_models.DescribeMetricMetaListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetricMetaListResponse:
+        tmp_req.validate()
+        request = main_models.DescribeMetricMetaListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
+        query = {}
+        if not DaraCore.is_null(request.labels_shrink):
+            query['labels'] = request.labels_shrink
+        if not DaraCore.is_null(request.meta_format):
+            query['metaFormat'] = request.meta_format
+        if not DaraCore.is_null(request.metric_name):
+            query['metricName'] = request.metric_name
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMetricMetaList',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/describe-metric-meta-list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMetricMetaListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_meta_list_with_options_async(
+        self,
+        tmp_req: main_models.DescribeMetricMetaListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetricMetaListResponse:
+        tmp_req.validate()
+        request = main_models.DescribeMetricMetaListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
+        query = {}
+        if not DaraCore.is_null(request.labels_shrink):
+            query['labels'] = request.labels_shrink
+        if not DaraCore.is_null(request.meta_format):
+            query['metaFormat'] = request.meta_format
+        if not DaraCore.is_null(request.metric_name):
+            query['metricName'] = request.metric_name
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMetricMetaList',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/describe-metric-meta-list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMetricMetaListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_meta_list(
+        self,
+        request: main_models.DescribeMetricMetaListRequest,
+    ) -> main_models.DescribeMetricMetaListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_metric_meta_list_with_options(request, headers, runtime)
+
+    async def describe_metric_meta_list_async(
+        self,
+        request: main_models.DescribeMetricMetaListRequest,
+    ) -> main_models.DescribeMetricMetaListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_metric_meta_list_with_options_async(request, headers, runtime)
+
     def describe_regions_with_options(
         self,
         request: main_models.DescribeRegionsRequest,
