@@ -28,6 +28,9 @@ from ._abolish_pipeline_run_response import AbolishPipelineRunResponse
 from ._add_entity_into_meta_collection_request import AddEntityIntoMetaCollectionRequest
 from ._add_entity_into_meta_collection_response_body import AddEntityIntoMetaCollectionResponseBody
 from ._add_entity_into_meta_collection_response import AddEntityIntoMetaCollectionResponse
+from ._associate_project_to_image_request import AssociateProjectToImageRequest
+from ._associate_project_to_image_response_body import AssociateProjectToImageResponseBody
+from ._associate_project_to_image_response import AssociateProjectToImageResponse
 from ._associate_project_to_resource_group_request import AssociateProjectToResourceGroupRequest
 from ._associate_project_to_resource_group_response_body import AssociateProjectToResourceGroupResponseBody
 from ._associate_project_to_resource_group_response import AssociateProjectToResourceGroupResponse
@@ -297,6 +300,9 @@ from ._detach_data_quality_rules_from_evaluation_task_request import DetachDataQ
 from ._detach_data_quality_rules_from_evaluation_task_shrink_request import DetachDataQualityRulesFromEvaluationTaskShrinkRequest
 from ._detach_data_quality_rules_from_evaluation_task_response_body import DetachDataQualityRulesFromEvaluationTaskResponseBody
 from ._detach_data_quality_rules_from_evaluation_task_response import DetachDataQualityRulesFromEvaluationTaskResponse
+from ._dissociate_project_from_image_request import DissociateProjectFromImageRequest
+from ._dissociate_project_from_image_response_body import DissociateProjectFromImageResponseBody
+from ._dissociate_project_from_image_response import DissociateProjectFromImageResponse
 from ._dissociate_project_from_resource_group_request import DissociateProjectFromResourceGroupRequest
 from ._dissociate_project_from_resource_group_response_body import DissociateProjectFromResourceGroupResponseBody
 from ._dissociate_project_from_resource_group_response import DissociateProjectFromResourceGroupResponse
@@ -405,6 +411,9 @@ from ._get_function_response import GetFunctionResponse
 from ._get_ideevent_detail_request import GetIDEEventDetailRequest
 from ._get_ideevent_detail_response_body import GetIDEEventDetailResponseBody
 from ._get_ideevent_detail_response import GetIDEEventDetailResponse
+from ._get_image_request import GetImageRequest
+from ._get_image_response_body import GetImageResponseBody
+from ._get_image_response import GetImageResponse
 from ._get_job_status_request import GetJobStatusRequest
 from ._get_job_status_response_body import GetJobStatusResponseBody
 from ._get_job_status_response import GetJobStatusResponse
@@ -619,6 +628,16 @@ from ._list_folders_response import ListFoldersResponse
 from ._list_functions_request import ListFunctionsRequest
 from ._list_functions_response_body import ListFunctionsResponseBody
 from ._list_functions_response import ListFunctionsResponse
+from ._list_image_associated_projects_request import ListImageAssociatedProjectsRequest
+from ._list_image_associated_projects_response_body import ListImageAssociatedProjectsResponseBody
+from ._list_image_associated_projects_response import ListImageAssociatedProjectsResponse
+from ._list_image_versions_request import ListImageVersionsRequest
+from ._list_image_versions_response_body import ListImageVersionsResponseBody
+from ._list_image_versions_response import ListImageVersionsResponse
+from ._list_images_request import ListImagesRequest
+from ._list_images_shrink_request import ListImagesShrinkRequest
+from ._list_images_response_body import ListImagesResponseBody
+from ._list_images_response import ListImagesResponse
 from ._list_lineage_relationships_request import ListLineageRelationshipsRequest
 from ._list_lineage_relationships_response_body import ListLineageRelationshipsResponseBody
 from ._list_lineage_relationships_response import ListLineageRelationshipsResponse
@@ -1225,6 +1244,10 @@ from ._get_ideevent_detail_response_body import GetIDEEventDetailResponseBodyEve
 from ._get_ideevent_detail_response_body import GetIDEEventDetailResponseBodyEventDetailTableModelColumns
 from ._get_ideevent_detail_response_body import GetIDEEventDetailResponseBodyEventDetailTableModel
 from ._get_ideevent_detail_response_body import GetIDEEventDetailResponseBodyEventDetail
+from ._get_image_response_body import GetImageResponseBodyImageBuildConfigPackageInstallationScripts
+from ._get_image_response_body import GetImageResponseBodyImageBuildConfig
+from ._get_image_response_body import GetImageResponseBodyImageSupported
+from ._get_image_response_body import GetImageResponseBodyImage
 from ._get_job_status_response_body import GetJobStatusResponseBodyJobStatus
 from ._get_meta_collection_response_body import GetMetaCollectionResponseBodyMetaCollection
 from ._get_network_response_body import GetNetworkResponseBodyNetwork
@@ -1456,6 +1479,16 @@ from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfoFu
 from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfoFunctionsScript
 from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfoFunctions
 from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfo
+from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageInstallationScripts
+from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig
+from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersionsSupported
+from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersions
+from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfo
+from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallationScripts
+from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageListBuildConfig
+from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageListSupported
+from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageList
+from ._list_images_response_body import ListImagesResponseBodyPagingInfo
 from ._list_lineage_relationships_response_body import ListLineageRelationshipsResponseBodyPagingInfo
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfoLineages
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfo
@@ -1719,6 +1752,9 @@ __all__ = [
     AddEntityIntoMetaCollectionRequest,
     AddEntityIntoMetaCollectionResponseBody,
     AddEntityIntoMetaCollectionResponse,
+    AssociateProjectToImageRequest,
+    AssociateProjectToImageResponseBody,
+    AssociateProjectToImageResponse,
     AssociateProjectToResourceGroupRequest,
     AssociateProjectToResourceGroupResponseBody,
     AssociateProjectToResourceGroupResponse,
@@ -1988,6 +2024,9 @@ __all__ = [
     DetachDataQualityRulesFromEvaluationTaskShrinkRequest,
     DetachDataQualityRulesFromEvaluationTaskResponseBody,
     DetachDataQualityRulesFromEvaluationTaskResponse,
+    DissociateProjectFromImageRequest,
+    DissociateProjectFromImageResponseBody,
+    DissociateProjectFromImageResponse,
     DissociateProjectFromResourceGroupRequest,
     DissociateProjectFromResourceGroupResponseBody,
     DissociateProjectFromResourceGroupResponse,
@@ -2096,6 +2135,9 @@ __all__ = [
     GetIDEEventDetailRequest,
     GetIDEEventDetailResponseBody,
     GetIDEEventDetailResponse,
+    GetImageRequest,
+    GetImageResponseBody,
+    GetImageResponse,
     GetJobStatusRequest,
     GetJobStatusResponseBody,
     GetJobStatusResponse,
@@ -2310,6 +2352,16 @@ __all__ = [
     ListFunctionsRequest,
     ListFunctionsResponseBody,
     ListFunctionsResponse,
+    ListImageAssociatedProjectsRequest,
+    ListImageAssociatedProjectsResponseBody,
+    ListImageAssociatedProjectsResponse,
+    ListImageVersionsRequest,
+    ListImageVersionsResponseBody,
+    ListImageVersionsResponse,
+    ListImagesRequest,
+    ListImagesShrinkRequest,
+    ListImagesResponseBody,
+    ListImagesResponse,
     ListLineageRelationshipsRequest,
     ListLineageRelationshipsResponseBody,
     ListLineageRelationshipsResponse,
@@ -2916,6 +2968,10 @@ __all__ = [
     GetIDEEventDetailResponseBodyEventDetailTableModelColumns,
     GetIDEEventDetailResponseBodyEventDetailTableModel,
     GetIDEEventDetailResponseBodyEventDetail,
+    GetImageResponseBodyImageBuildConfigPackageInstallationScripts,
+    GetImageResponseBodyImageBuildConfig,
+    GetImageResponseBodyImageSupported,
+    GetImageResponseBodyImage,
     GetJobStatusResponseBodyJobStatus,
     GetMetaCollectionResponseBodyMetaCollection,
     GetNetworkResponseBodyNetwork,
@@ -3147,6 +3203,16 @@ __all__ = [
     ListFunctionsResponseBodyPagingInfoFunctionsScript,
     ListFunctionsResponseBodyPagingInfoFunctions,
     ListFunctionsResponseBodyPagingInfo,
+    ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageInstallationScripts,
+    ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig,
+    ListImageVersionsResponseBodyPagingInfoImageVersionsSupported,
+    ListImageVersionsResponseBodyPagingInfoImageVersions,
+    ListImageVersionsResponseBodyPagingInfo,
+    ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallationScripts,
+    ListImagesResponseBodyPagingInfoImageListBuildConfig,
+    ListImagesResponseBodyPagingInfoImageListSupported,
+    ListImagesResponseBodyPagingInfoImageList,
+    ListImagesResponseBodyPagingInfo,
     ListLineageRelationshipsResponseBodyPagingInfo,
     ListLineagesResponseBodyPagingInfoLineages,
     ListLineagesResponseBodyPagingInfo,

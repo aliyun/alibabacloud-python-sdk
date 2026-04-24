@@ -851,9 +851,11 @@ class ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs(DaraModel):
     def __init__(
         self,
         data: str = None,
+        ref_table_name: str = None,
     ):
         # The output of the node.
         self.data = data
+        self.ref_table_name = ref_table_name
 
     def validate(self):
         pass
@@ -866,12 +868,18 @@ class ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs(DaraModel):
         if self.data is not None:
             result['Data'] = self.data
 
+        if self.ref_table_name is not None:
+            result['RefTableName'] = self.ref_table_name
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
             self.data = m.get('Data')
+
+        if m.get('RefTableName') is not None:
+            self.ref_table_name = m.get('RefTableName')
 
         return self
 
@@ -1104,9 +1112,11 @@ class ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs(DaraModel):
     def __init__(
         self,
         data: str = None,
+        ref_table_name: str = None,
     ):
         # The output of the node.
         self.data = data
+        self.ref_table_name = ref_table_name
 
     def validate(self):
         pass
@@ -1119,12 +1129,18 @@ class ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs(DaraModel):
         if self.data is not None:
             result['Data'] = self.data
 
+        if self.ref_table_name is not None:
+            result['RefTableName'] = self.ref_table_name
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
             self.data = m.get('Data')
+
+        if m.get('RefTableName') is not None:
+            self.ref_table_name = m.get('RefTableName')
 
         return self
 

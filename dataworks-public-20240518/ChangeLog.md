@@ -1,3 +1,16 @@
+2026-04-24 Version: 8.3.0
+- Support API AssociateProjectToImage.
+- Support API DissociateProjectFromImage.
+- Support API GetImage.
+- Support API ListImageAssociatedProjects.
+- Support API ListImageVersions.
+- Support API ListImages.
+- Update API ListNodeDependencies: add response parameters Body.PagingInfo.Nodes.$.Inputs.NodeOutputs.$.RefTableName.
+- Update API ListNodeDependencies: add response parameters Body.PagingInfo.Nodes.$.Outputs.NodeOutputs.$.RefTableName.
+- Update API ListNodes: add response parameters Body.PagingInfo.Nodes.$.Inputs.NodeOutputs.$.RefTableName.
+- Update API ListNodes: add response parameters Body.PagingInfo.Nodes.$.Outputs.NodeOutputs.$.RefTableName.
+
+
 2026-04-22 Version: 8.2.0
 - Support API CancelAgentSession.
 - Support API CreateAgentSession.
