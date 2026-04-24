@@ -103,6 +103,7 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         create_time: str = None,
         description: str = None,
         frequency: str = None,
+        inspection_items: str = None,
         instance_count: int = None,
         name: str = None,
         region_id: str = None,
@@ -129,6 +130,7 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         # 
         # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you set this parameter to DAILY,Monday, the backend will use DAILY as the inspection frequency.
         self.frequency = frequency
+        self.inspection_items = inspection_items
         # The number of instances covered by the task.
         self.instance_count = instance_count
         # The name of the task.
@@ -159,6 +161,9 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
 
         if self.frequency is not None:
             result['Frequency'] = self.frequency
+
+        if self.inspection_items is not None:
+            result['InspectionItems'] = self.inspection_items
 
         if self.instance_count is not None:
             result['InstanceCount'] = self.instance_count
@@ -196,6 +201,9 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
 
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
+
+        if m.get('InspectionItems') is not None:
+            self.inspection_items = m.get('InspectionItems')
 
         if m.get('InstanceCount') is not None:
             self.instance_count = m.get('InstanceCount')

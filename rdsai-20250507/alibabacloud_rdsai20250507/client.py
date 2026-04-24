@@ -304,6 +304,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.chat_messages_task_stop_with_options_async(request, runtime)
 
+    def create_api_key_with_options(
+        self,
+        request: main_models.CreateApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.limit_rate):
+            query['LimitRate'] = request.limit_rate
+        if not DaraCore.is_null(request.limit_type):
+            query['LimitType'] = request.limit_type
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.token_quota):
+            query['TokenQuota'] = request.token_quota
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_api_key_with_options_async(
+        self,
+        request: main_models.CreateApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.limit_rate):
+            query['LimitRate'] = request.limit_rate
+        if not DaraCore.is_null(request.limit_type):
+            query['LimitType'] = request.limit_type
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.token_quota):
+            query['TokenQuota'] = request.token_quota
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_api_key(
+        self,
+        request: main_models.CreateApiKeyRequest,
+    ) -> main_models.CreateApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.create_api_key_with_options(request, runtime)
+
+    async def create_api_key_async(
+        self,
+        request: main_models.CreateApiKeyRequest,
+    ) -> main_models.CreateApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_api_key_with_options_async(request, runtime)
+
     def create_app_instance_with_options(
         self,
         tmp_req: main_models.CreateAppInstanceRequest,
@@ -544,116 +634,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_custom_agent_with_options_async(request, runtime)
 
-    def create_edge_function_with_options(
-        self,
-        tmp_req: main_models.CreateEdgeFunctionRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CreateEdgeFunctionResponse:
-        tmp_req.validate()
-        request = main_models.CreateEdgeFunctionShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.code):
-            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
-        if not DaraCore.is_null(tmp_req.custom_config):
-            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
-        if not DaraCore.is_null(tmp_req.envs):
-            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.code_shrink):
-            query['Code'] = request.code_shrink
-        if not DaraCore.is_null(request.custom_config_shrink):
-            query['CustomConfig'] = request.custom_config_shrink
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.envs_shrink):
-            query['Envs'] = request.envs_shrink
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'CreateEdgeFunction',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CreateEdgeFunctionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_edge_function_with_options_async(
-        self,
-        tmp_req: main_models.CreateEdgeFunctionRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CreateEdgeFunctionResponse:
-        tmp_req.validate()
-        request = main_models.CreateEdgeFunctionShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.code):
-            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
-        if not DaraCore.is_null(tmp_req.custom_config):
-            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
-        if not DaraCore.is_null(tmp_req.envs):
-            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.code_shrink):
-            query['Code'] = request.code_shrink
-        if not DaraCore.is_null(request.custom_config_shrink):
-            query['CustomConfig'] = request.custom_config_shrink
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.envs_shrink):
-            query['Envs'] = request.envs_shrink
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'CreateEdgeFunction',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CreateEdgeFunctionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_edge_function(
-        self,
-        request: main_models.CreateEdgeFunctionRequest,
-    ) -> main_models.CreateEdgeFunctionResponse:
-        runtime = RuntimeOptions()
-        return self.create_edge_function_with_options(request, runtime)
-
-    async def create_edge_function_async(
-        self,
-        request: main_models.CreateEdgeFunctionRequest,
-    ) -> main_models.CreateEdgeFunctionResponse:
-        runtime = RuntimeOptions()
-        return await self.create_edge_function_with_options_async(request, runtime)
-
     def create_inspection_task_with_options(
         self,
         request: main_models.CreateInspectionTaskRequest,
@@ -763,6 +743,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.frequency):
             query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
@@ -809,6 +791,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.frequency):
             query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
@@ -951,6 +935,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSkillResponse:
         runtime = RuntimeOptions()
         return await self.create_skill_with_options_async(request, runtime)
+
+    def delete_api_key_with_options(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_api_key_with_options_async(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_api_key(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+    ) -> main_models.DeleteApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_api_key_with_options(request, runtime)
+
+    async def delete_api_key_async(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+    ) -> main_models.DeleteApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_api_key_with_options_async(request, runtime)
 
     def delete_app_instance_with_options(
         self,
@@ -1099,88 +1157,6 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
-
-    def delete_edge_function_with_options(
-        self,
-        request: main_models.DeleteEdgeFunctionRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteEdgeFunctionResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteEdgeFunction',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteEdgeFunctionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_edge_function_with_options_async(
-        self,
-        request: main_models.DeleteEdgeFunctionRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteEdgeFunctionResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteEdgeFunction',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteEdgeFunctionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_edge_function(
-        self,
-        request: main_models.DeleteEdgeFunctionRequest,
-    ) -> main_models.DeleteEdgeFunctionResponse:
-        runtime = RuntimeOptions()
-        return self.delete_edge_function_with_options(request, runtime)
-
-    async def delete_edge_function_async(
-        self,
-        request: main_models.DeleteEdgeFunctionRequest,
-    ) -> main_models.DeleteEdgeFunctionResponse:
-        runtime = RuntimeOptions()
-        return await self.delete_edge_function_with_options_async(request, runtime)
 
     def delete_scheduled_task_with_options(
         self,
@@ -1481,88 +1457,6 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAppInstancesResponse:
         runtime = RuntimeOptions()
         return await self.describe_app_instances_with_options_async(request, runtime)
-
-    def describe_edge_functions_with_options(
-        self,
-        request: main_models.DescribeEdgeFunctionsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeEdgeFunctionsResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeEdgeFunctions',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeEdgeFunctionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_edge_functions_with_options_async(
-        self,
-        request: main_models.DescribeEdgeFunctionsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeEdgeFunctionsResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeEdgeFunctions',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeEdgeFunctionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_edge_functions(
-        self,
-        request: main_models.DescribeEdgeFunctionsRequest,
-    ) -> main_models.DescribeEdgeFunctionsResponse:
-        runtime = RuntimeOptions()
-        return self.describe_edge_functions_with_options(request, runtime)
-
-    async def describe_edge_functions_async(
-        self,
-        request: main_models.DescribeEdgeFunctionsRequest,
-    ) -> main_models.DescribeEdgeFunctionsResponse:
-        runtime = RuntimeOptions()
-        return await self.describe_edge_functions_with_options_async(request, runtime)
 
     def describe_events_list_with_options(
         self,
@@ -2102,6 +1996,272 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_instance_storage_config_with_options_async(request, runtime)
 
+    def describe_motoken_usage_detail_with_options(
+        self,
+        request: main_models.DescribeMOTokenUsageDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMOTokenUsageDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_name):
+            query['ConsumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMOTokenUsageDetail',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMOTokenUsageDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_motoken_usage_detail_with_options_async(
+        self,
+        request: main_models.DescribeMOTokenUsageDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMOTokenUsageDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_name):
+            query['ConsumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMOTokenUsageDetail',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMOTokenUsageDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_motoken_usage_detail(
+        self,
+        request: main_models.DescribeMOTokenUsageDetailRequest,
+    ) -> main_models.DescribeMOTokenUsageDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_motoken_usage_detail_with_options(request, runtime)
+
+    async def describe_motoken_usage_detail_async(
+        self,
+        request: main_models.DescribeMOTokenUsageDetailRequest,
+    ) -> main_models.DescribeMOTokenUsageDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_motoken_usage_detail_with_options_async(request, runtime)
+
+    def describe_model_operator_with_options(
+        self,
+        request: main_models.DescribeModelOperatorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelOperatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelOperator',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelOperatorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_operator_with_options_async(
+        self,
+        request: main_models.DescribeModelOperatorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelOperatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelOperator',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelOperatorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_operator(
+        self,
+        request: main_models.DescribeModelOperatorRequest,
+    ) -> main_models.DescribeModelOperatorResponse:
+        runtime = RuntimeOptions()
+        return self.describe_model_operator_with_options(request, runtime)
+
+    async def describe_model_operator_async(
+        self,
+        request: main_models.DescribeModelOperatorRequest,
+    ) -> main_models.DescribeModelOperatorResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_model_operator_with_options_async(request, runtime)
+
+    def describe_monitor_data_with_options(
+        self,
+        tmp_req: main_models.DescribeMonitorDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMonitorDataResponse:
+        tmp_req.validate()
+        request = main_models.DescribeMonitorDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_key_name):
+            request.api_key_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_key_name, 'ApiKeyName', 'json')
+        query = {}
+        if not DaraCore.is_null(request.api_key_name_shrink):
+            query['ApiKeyName'] = request.api_key_name_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.metric):
+            query['Metric'] = request.metric
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMonitorData',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_monitor_data_with_options_async(
+        self,
+        tmp_req: main_models.DescribeMonitorDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMonitorDataResponse:
+        tmp_req.validate()
+        request = main_models.DescribeMonitorDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_key_name):
+            request.api_key_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_key_name, 'ApiKeyName', 'json')
+        query = {}
+        if not DaraCore.is_null(request.api_key_name_shrink):
+            query['ApiKeyName'] = request.api_key_name_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.metric):
+            query['Metric'] = request.metric
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMonitorData',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_monitor_data(
+        self,
+        request: main_models.DescribeMonitorDataRequest,
+    ) -> main_models.DescribeMonitorDataResponse:
+        runtime = RuntimeOptions()
+        return self.describe_monitor_data_with_options(request, runtime)
+
+    async def describe_monitor_data_async(
+        self,
+        request: main_models.DescribeMonitorDataRequest,
+    ) -> main_models.DescribeMonitorDataResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_monitor_data_with_options_async(request, runtime)
+
     def describe_sandbox_templates_with_options(
         self,
         request: main_models.DescribeSandboxTemplatesRequest,
@@ -2195,6 +2355,162 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSandboxTemplatesResponse:
         runtime = RuntimeOptions()
         return await self.describe_sandbox_templates_with_options_async(request, runtime)
+
+    def describe_whitelist_ips_with_options(
+        self,
+        request: main_models.DescribeWhitelistIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWhitelistIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWhitelistIps',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWhitelistIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_whitelist_ips_with_options_async(
+        self,
+        request: main_models.DescribeWhitelistIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWhitelistIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWhitelistIps',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWhitelistIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_whitelist_ips(
+        self,
+        request: main_models.DescribeWhitelistIpsRequest,
+    ) -> main_models.DescribeWhitelistIpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_whitelist_ips_with_options(request, runtime)
+
+    async def describe_whitelist_ips_async(
+        self,
+        request: main_models.DescribeWhitelistIpsRequest,
+    ) -> main_models.DescribeWhitelistIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_whitelist_ips_with_options_async(request, runtime)
+
+    def enable_agent_runtime_with_options(
+        self,
+        request: main_models.EnableAgentRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAgentRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableAgentRuntime',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableAgentRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_agent_runtime_with_options_async(
+        self,
+        request: main_models.EnableAgentRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAgentRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableAgentRuntime',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableAgentRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_agent_runtime(
+        self,
+        request: main_models.EnableAgentRuntimeRequest,
+    ) -> main_models.EnableAgentRuntimeResponse:
+        runtime = RuntimeOptions()
+        return self.enable_agent_runtime_with_options(request, runtime)
+
+    async def enable_agent_runtime_async(
+        self,
+        request: main_models.EnableAgentRuntimeRequest,
+    ) -> main_models.EnableAgentRuntimeResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_agent_runtime_with_options_async(request, runtime)
 
     def get_conversations_with_options(
         self,
@@ -2507,6 +2823,66 @@ class Client(OpenApiClient):
     ) -> main_models.GetMessagesResponse:
         runtime = RuntimeOptions()
         return await self.get_messages_with_options_async(request, runtime)
+
+    def get_model_operator_order_with_options(
+        self,
+        request: main_models.GetModelOperatorOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetModelOperatorOrderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetModelOperatorOrder',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetModelOperatorOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_operator_order_with_options_async(
+        self,
+        request: main_models.GetModelOperatorOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetModelOperatorOrderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetModelOperatorOrder',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetModelOperatorOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_operator_order(
+        self,
+        request: main_models.GetModelOperatorOrderRequest,
+    ) -> main_models.GetModelOperatorOrderResponse:
+        runtime = RuntimeOptions()
+        return self.get_model_operator_order_with_options(request, runtime)
+
+    async def get_model_operator_order_async(
+        self,
+        request: main_models.GetModelOperatorOrderRequest,
+    ) -> main_models.GetModelOperatorOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.get_model_operator_order_with_options_async(request, runtime)
 
     def get_scheduled_instances_with_options(
         self,
@@ -2831,6 +3207,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetStandAloneReportsResponse:
         runtime = RuntimeOptions()
         return await self.get_stand_alone_reports_with_options_async(request, runtime)
+
+    def list_api_keys_with_options(
+        self,
+        request: main_models.ListApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiKeys',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_keys_with_options_async(
+        self,
+        request: main_models.ListApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiKeys',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_keys(
+        self,
+        request: main_models.ListApiKeysRequest,
+    ) -> main_models.ListApiKeysResponse:
+        runtime = RuntimeOptions()
+        return self.list_api_keys_with_options(request, runtime)
+
+    async def list_api_keys_async(
+        self,
+        request: main_models.ListApiKeysRequest,
+    ) -> main_models.ListApiKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.list_api_keys_with_options_async(request, runtime)
 
     def list_custom_agent_with_options(
         self,
@@ -3835,6 +4289,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.frequency):
             query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
@@ -3877,6 +4333,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.frequency):
             query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.name):
@@ -3921,6 +4379,232 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyScheduledTaskResponse:
         runtime = RuntimeOptions()
         return await self.modify_scheduled_task_with_options_async(request, runtime)
+
+    def modify_whitelist_ips_with_options(
+        self,
+        request: main_models.ModifyWhitelistIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyWhitelistIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip_whitelist):
+            query['IpWhitelist'] = request.ip_whitelist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyWhitelistIps',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyWhitelistIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_whitelist_ips_with_options_async(
+        self,
+        request: main_models.ModifyWhitelistIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyWhitelistIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip_whitelist):
+            query['IpWhitelist'] = request.ip_whitelist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyWhitelistIps',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyWhitelistIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_whitelist_ips(
+        self,
+        request: main_models.ModifyWhitelistIpsRequest,
+    ) -> main_models.ModifyWhitelistIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_whitelist_ips_with_options(request, runtime)
+
+    async def modify_whitelist_ips_async(
+        self,
+        request: main_models.ModifyWhitelistIpsRequest,
+    ) -> main_models.ModifyWhitelistIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_whitelist_ips_with_options_async(request, runtime)
+
+    def rename_api_key_with_options(
+        self,
+        request: main_models.RenameApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenameApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenameApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenameApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rename_api_key_with_options_async(
+        self,
+        request: main_models.RenameApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenameApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenameApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenameApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rename_api_key(
+        self,
+        request: main_models.RenameApiKeyRequest,
+    ) -> main_models.RenameApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.rename_api_key_with_options(request, runtime)
+
+    async def rename_api_key_async(
+        self,
+        request: main_models.RenameApiKeyRequest,
+    ) -> main_models.RenameApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.rename_api_key_with_options_async(request, runtime)
+
+    def reset_api_key_with_options(
+        self,
+        request: main_models.ResetApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_api_key_with_options_async(
+        self,
+        request: main_models.ResetApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_api_key(
+        self,
+        request: main_models.ResetApiKeyRequest,
+    ) -> main_models.ResetApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.reset_api_key_with_options(request, runtime)
+
+    async def reset_api_key_async(
+        self,
+        request: main_models.ResetApiKeyRequest,
+    ) -> main_models.ResetApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_api_key_with_options_async(request, runtime)
 
     def reset_instance_password_with_options(
         self,
@@ -4226,6 +4910,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
+    def update_api_key_quota_with_options(
+        self,
+        tmp_req: main_models.UpdateApiKeyQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApiKeyQuotaResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApiKeyQuotaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.keys):
+            request.keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApiKeyQuota',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApiKeyQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_api_key_quota_with_options_async(
+        self,
+        tmp_req: main_models.UpdateApiKeyQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApiKeyQuotaResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApiKeyQuotaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.keys):
+            request.keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApiKeyQuota',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApiKeyQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_api_key_quota(
+        self,
+        request: main_models.UpdateApiKeyQuotaRequest,
+    ) -> main_models.UpdateApiKeyQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.update_api_key_quota_with_options(request, runtime)
+
+    async def update_api_key_quota_async(
+        self,
+        request: main_models.UpdateApiKeyQuotaRequest,
+    ) -> main_models.UpdateApiKeyQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.update_api_key_quota_with_options_async(request, runtime)
+
     def update_custom_agent_with_options(
         self,
         tmp_req: main_models.UpdateCustomAgentRequest,
@@ -4327,116 +5093,6 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.update_custom_agent_with_options_async(request, runtime)
-
-    def update_edge_function_with_options(
-        self,
-        tmp_req: main_models.UpdateEdgeFunctionRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.UpdateEdgeFunctionResponse:
-        tmp_req.validate()
-        request = main_models.UpdateEdgeFunctionShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.code):
-            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
-        if not DaraCore.is_null(tmp_req.custom_config):
-            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
-        if not DaraCore.is_null(tmp_req.envs):
-            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.code_shrink):
-            query['Code'] = request.code_shrink
-        if not DaraCore.is_null(request.custom_config_shrink):
-            query['CustomConfig'] = request.custom_config_shrink
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.envs_shrink):
-            query['Envs'] = request.envs_shrink
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'UpdateEdgeFunction',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.UpdateEdgeFunctionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_edge_function_with_options_async(
-        self,
-        tmp_req: main_models.UpdateEdgeFunctionRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.UpdateEdgeFunctionResponse:
-        tmp_req.validate()
-        request = main_models.UpdateEdgeFunctionShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.code):
-            request.code_shrink = Utils.array_to_string_with_specified_style(tmp_req.code, 'Code', 'json')
-        if not DaraCore.is_null(tmp_req.custom_config):
-            request.custom_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_config, 'CustomConfig', 'json')
-        if not DaraCore.is_null(tmp_req.envs):
-            request.envs_shrink = Utils.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.code_shrink):
-            query['Code'] = request.code_shrink
-        if not DaraCore.is_null(request.custom_config_shrink):
-            query['CustomConfig'] = request.custom_config_shrink
-        if not DaraCore.is_null(request.edge_function_name):
-            query['EdgeFunctionName'] = request.edge_function_name
-        if not DaraCore.is_null(request.envs_shrink):
-            query['Envs'] = request.envs_shrink
-        if not DaraCore.is_null(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'UpdateEdgeFunction',
-            version = '2025-05-07',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.UpdateEdgeFunctionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_edge_function(
-        self,
-        request: main_models.UpdateEdgeFunctionRequest,
-    ) -> main_models.UpdateEdgeFunctionResponse:
-        runtime = RuntimeOptions()
-        return self.update_edge_function_with_options(request, runtime)
-
-    async def update_edge_function_async(
-        self,
-        request: main_models.UpdateEdgeFunctionRequest,
-    ) -> main_models.UpdateEdgeFunctionResponse:
-        runtime = RuntimeOptions()
-        return await self.update_edge_function_with_options_async(request, runtime)
 
     def update_skill_with_options(
         self,

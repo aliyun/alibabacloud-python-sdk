@@ -4,19 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteEdgeFunctionResponseBody(DaraModel):
+class ModifyWhitelistIpsResponseBody(DaraModel):
     def __init__(
         self,
-        edge_function_name: str = None,
-        instance_name: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
-        # fc-xxxx
-        self.edge_function_name = edge_function_name
-        # The ID of the RDS Supabase instance.
-        self.instance_name = instance_name
+        self.message = message
         # Id of the request
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -26,27 +24,27 @@ class DeleteEdgeFunctionResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.edge_function_name is not None:
-            result['EdgeFunctionName'] = self.edge_function_name
-
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
+        if self.message is not None:
+            result['Message'] = self.message
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EdgeFunctionName') is not None:
-            self.edge_function_name = m.get('EdgeFunctionName')
-
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
 
         return self
 

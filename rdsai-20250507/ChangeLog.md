@@ -1,3 +1,28 @@
+2026-04-24 Version: 3.0.0
+- Support API CreateApiKey.
+- Support API DeleteApiKey.
+- Support API DescribeMOTokenUsageDetail.
+- Support API DescribeModelOperator.
+- Support API DescribeMonitorData.
+- Support API DescribeWhitelistIps.
+- Support API EnableAgentRuntime.
+- Support API GetModelOperatorOrder.
+- Support API ListApiKeys.
+- Support API ModifyWhitelistIps.
+- Support API RenameApiKey.
+- Support API ResetApiKey.
+- Support API UpdateApiKeyQuota.
+- Delete API CreateEdgeFunction.
+- Delete API DeleteEdgeFunction.
+- Delete API DescribeEdgeFunctions.
+- Delete API UpdateEdgeFunction.
+- Update API CreateScheduledTask: add request parameters InspectionItems.
+- Update API GetScheduledReports: add response parameters Body.Reports.$.InspectionItems.
+- Update API GetStandAloneReports: add response parameters Body.Reports.$.InspectionItems.
+- Update API ListScheduledTasks: add response parameters Body.Schedules.$.InspectionItems.
+- Update API ModifyScheduledTask: add request parameters InspectionItems.
+
+
 2026-04-10 Version: 2.5.0
 - Support API DescribeSandboxTemplates.
 

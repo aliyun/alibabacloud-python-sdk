@@ -9,6 +9,7 @@ class ModifyScheduledTaskRequest(DaraModel):
         self,
         description: str = None,
         frequency: str = None,
+        inspection_items: str = None,
         instance_ids: str = None,
         name: str = None,
         report_language: str = None,
@@ -31,6 +32,7 @@ class ModifyScheduledTaskRequest(DaraModel):
         # 
         # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend will use DAILY as the inspection frequency.
         self.frequency = frequency
+        self.inspection_items = inspection_items
         # The new list of related instances. Separate multiple instances with commas (,).
         self.instance_ids = instance_ids
         # The name of the new inspection configuration.
@@ -59,6 +61,9 @@ class ModifyScheduledTaskRequest(DaraModel):
         if self.frequency is not None:
             result['Frequency'] = self.frequency
 
+        if self.inspection_items is not None:
+            result['InspectionItems'] = self.inspection_items
+
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
@@ -86,6 +91,9 @@ class ModifyScheduledTaskRequest(DaraModel):
 
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
+
+        if m.get('InspectionItems') is not None:
+            self.inspection_items = m.get('InspectionItems')
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')

@@ -102,6 +102,7 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
         self,
         created_time: str = None,
         end_time: str = None,
+        inspection_items: str = None,
         region_id: str = None,
         report_language: str = None,
         report_type: str = None,
@@ -113,6 +114,7 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
         self.created_time = created_time
         # The end time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
+        self.inspection_items = inspection_items
         self.region_id = region_id
         self.report_language = report_language
         self.report_type = report_type
@@ -136,6 +138,9 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.inspection_items is not None:
+            result['InspectionItems'] = self.inspection_items
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -164,6 +169,9 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('InspectionItems') is not None:
+            self.inspection_items = m.get('InspectionItems')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -7,12 +7,12 @@ from typing import Dict
 from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
 
-class DeleteEdgeFunctionResponse(DaraModel):
+class UpdateApiKeyQuotaResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: main_models.DeleteEdgeFunctionResponseBody = None,
+        body: main_models.UpdateApiKeyQuotaResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -47,7 +47,7 @@ class DeleteEdgeFunctionResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            temp_model = main_models.DeleteEdgeFunctionResponseBody()
+            temp_model = main_models.UpdateApiKeyQuotaResponseBody()
             self.body = temp_model.from_map(m.get('body'))
 
         return self
