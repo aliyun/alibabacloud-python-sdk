@@ -63,6 +63,7 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         grafana_instance_id: str = None,
         grafana_instance_name: str = None,
         http_api_inter_url: str = None,
+        http_api_internal_url: str = None,
         http_api_intra_url: str = None,
         instance_type: str = None,
         payment_type: str = None,
@@ -71,11 +72,14 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         prometheus_instance_id: str = None,
         prometheus_instance_name: str = None,
         push_gateway_inter_url: str = None,
+        push_gateway_internal_url: str = None,
         push_gateway_intra_url: str = None,
         region_id: str = None,
         remote_read_inter_url: str = None,
+        remote_read_internal_url: str = None,
         remote_read_intra_url: str = None,
         remote_write_inter_url: str = None,
+        remote_write_internal_url: str = None,
         remote_write_intra_url: str = None,
         resource_group_id: str = None,
         resource_type: str = None,
@@ -116,6 +120,7 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         self.grafana_instance_name = grafana_instance_name
         # HTTP public network address.
         self.http_api_inter_url = http_api_inter_url
+        self.http_api_internal_url = http_api_internal_url
         # HTTP intranet address.
         self.http_api_intra_url = http_api_intra_url
         # Prometheus instance type.
@@ -134,16 +139,19 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         self.prometheus_instance_name = prometheus_instance_name
         # Public network address of PushGateway.
         self.push_gateway_inter_url = push_gateway_inter_url
+        self.push_gateway_internal_url = push_gateway_internal_url
         # Intranet address of PushGateway.
         self.push_gateway_intra_url = push_gateway_intra_url
         # Region ID.
         self.region_id = region_id
         # Public network read address.
         self.remote_read_inter_url = remote_read_inter_url
+        self.remote_read_internal_url = remote_read_internal_url
         # Intranet read address.
         self.remote_read_intra_url = remote_read_intra_url
         # Public network write address.
         self.remote_write_inter_url = remote_write_inter_url
+        self.remote_write_internal_url = remote_write_internal_url
         # Intranet write address.
         self.remote_write_intra_url = remote_write_intra_url
         # Resource group ID.
@@ -218,6 +226,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         if self.http_api_inter_url is not None:
             result['httpApiInterUrl'] = self.http_api_inter_url
 
+        if self.http_api_internal_url is not None:
+            result['httpApiInternalUrl'] = self.http_api_internal_url
+
         if self.http_api_intra_url is not None:
             result['httpApiIntraUrl'] = self.http_api_intra_url
 
@@ -242,6 +253,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         if self.push_gateway_inter_url is not None:
             result['pushGatewayInterUrl'] = self.push_gateway_inter_url
 
+        if self.push_gateway_internal_url is not None:
+            result['pushGatewayInternalUrl'] = self.push_gateway_internal_url
+
         if self.push_gateway_intra_url is not None:
             result['pushGatewayIntraUrl'] = self.push_gateway_intra_url
 
@@ -251,11 +265,17 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         if self.remote_read_inter_url is not None:
             result['remoteReadInterUrl'] = self.remote_read_inter_url
 
+        if self.remote_read_internal_url is not None:
+            result['remoteReadInternalUrl'] = self.remote_read_internal_url
+
         if self.remote_read_intra_url is not None:
             result['remoteReadIntraUrl'] = self.remote_read_intra_url
 
         if self.remote_write_inter_url is not None:
             result['remoteWriteInterUrl'] = self.remote_write_inter_url
+
+        if self.remote_write_internal_url is not None:
+            result['remoteWriteInternalUrl'] = self.remote_write_internal_url
 
         if self.remote_write_intra_url is not None:
             result['remoteWriteIntraUrl'] = self.remote_write_intra_url
@@ -335,6 +355,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         if m.get('httpApiInterUrl') is not None:
             self.http_api_inter_url = m.get('httpApiInterUrl')
 
+        if m.get('httpApiInternalUrl') is not None:
+            self.http_api_internal_url = m.get('httpApiInternalUrl')
+
         if m.get('httpApiIntraUrl') is not None:
             self.http_api_intra_url = m.get('httpApiIntraUrl')
 
@@ -359,6 +382,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         if m.get('pushGatewayInterUrl') is not None:
             self.push_gateway_inter_url = m.get('pushGatewayInterUrl')
 
+        if m.get('pushGatewayInternalUrl') is not None:
+            self.push_gateway_internal_url = m.get('pushGatewayInternalUrl')
+
         if m.get('pushGatewayIntraUrl') is not None:
             self.push_gateway_intra_url = m.get('pushGatewayIntraUrl')
 
@@ -368,11 +394,17 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         if m.get('remoteReadInterUrl') is not None:
             self.remote_read_inter_url = m.get('remoteReadInterUrl')
 
+        if m.get('remoteReadInternalUrl') is not None:
+            self.remote_read_internal_url = m.get('remoteReadInternalUrl')
+
         if m.get('remoteReadIntraUrl') is not None:
             self.remote_read_intra_url = m.get('remoteReadIntraUrl')
 
         if m.get('remoteWriteInterUrl') is not None:
             self.remote_write_inter_url = m.get('remoteWriteInterUrl')
+
+        if m.get('remoteWriteInternalUrl') is not None:
+            self.remote_write_internal_url = m.get('remoteWriteInternalUrl')
 
         if m.get('remoteWriteIntraUrl') is not None:
             self.remote_write_intra_url = m.get('remoteWriteIntraUrl')

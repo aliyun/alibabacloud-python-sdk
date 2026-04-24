@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -17,6 +17,7 @@ class AlertRuleNotification(DaraModel):
         fs_webhooks: List[str] = None,
         groups: List[str] = None,
         notify_time: main_models.AlertRuleTimeSpan = None,
+        qwencloud_contacts: Dict[str, dict] = None,
         silence_time: int = None,
         slack_webhooks: List[str] = None,
         wx_webhooks: List[str] = None,
@@ -34,6 +35,7 @@ class AlertRuleNotification(DaraModel):
         self.groups = groups
         # Notification time window; notifications are sent only during this period.
         self.notify_time = notify_time
+        self.qwencloud_contacts = qwencloud_contacts
         # Notification silence duration, in seconds.
         self.silence_time = silence_time
         # List of Slack webhook notification object IDs.
@@ -71,6 +73,9 @@ class AlertRuleNotification(DaraModel):
         if self.notify_time is not None:
             result['notifyTime'] = self.notify_time.to_map()
 
+        if self.qwencloud_contacts is not None:
+            result['qwencloudContacts'] = self.qwencloud_contacts
+
         if self.silence_time is not None:
             result['silenceTime'] = self.silence_time
 
@@ -105,6 +110,9 @@ class AlertRuleNotification(DaraModel):
         if m.get('notifyTime') is not None:
             temp_model = main_models.AlertRuleTimeSpan()
             self.notify_time = temp_model.from_map(m.get('notifyTime'))
+
+        if m.get('qwencloudContacts') is not None:
+            self.qwencloud_contacts = m.get('qwencloudContacts')
 
         if m.get('silenceTime') is not None:
             self.silence_time = m.get('silenceTime')

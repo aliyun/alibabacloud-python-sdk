@@ -1,3 +1,17 @@
+2026-04-24 Version: 8.0.1
+- Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.httpApiInternalUrl.
+- Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.pushGatewayInternalUrl.
+- Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.remoteReadInternalUrl.
+- Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.remoteWriteInternalUrl.
+- Update API GetPrometheusView: add response parameters Body.prometheusView.httpApiInternalUrl.
+- Update API GetPrometheusView: add response parameters Body.prometheusView.remoteReadInternalUrl.
+- Update API ListPrometheusVirtualInstances: add request parameters maxResults.
+- Update API ListPrometheusVirtualInstances: add request parameters nextToken.
+- Update API ListPrometheusVirtualInstances: add response parameters Body.maxResults.
+- Update API ListPrometheusVirtualInstances: add response parameters Body.nextToken.
+- Update API ListPrometheusVirtualInstances: add response parameters Body.totalCount.
+
+
 2026-04-23 Version: 8.0.0
 - Delete API CreateChat.
 - Delete API CreateDigitalEmployee.

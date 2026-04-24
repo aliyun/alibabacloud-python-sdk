@@ -304,6 +304,8 @@ class AlertRuleQueryQueries(DaraModel):
         duration: int = None,
         end: int = None,
         expr: str = None,
+        name: str = None,
+        prom_ql: str = None,
         start: int = None,
         time_unit: str = None,
         window: int = None,
@@ -330,6 +332,8 @@ class AlertRuleQueryQueries(DaraModel):
         # - For APM_MULTI_QUERY, this field is optional and contains the PromQL generated for predefined metrics (used for data preview).
         # - For SLS_MULTI_QUERY, this field contains the SQL query statement.
         self.expr = expr
+        self.name = name
+        self.prom_ql = prom_ql
         # Applicable query type: SLS_MULTI_QUERY.
         # SLS query time offset start time (relative).
         # If start and end are specified, do not specify window. For example: start=15, timeUnit=minute, which means 15 minutes ago.
@@ -372,6 +376,12 @@ class AlertRuleQueryQueries(DaraModel):
         if self.expr is not None:
             result['expr'] = self.expr
 
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.prom_ql is not None:
+            result['promQl'] = self.prom_ql
+
         if self.start is not None:
             result['start'] = self.start
 
@@ -405,6 +415,12 @@ class AlertRuleQueryQueries(DaraModel):
 
         if m.get('expr') is not None:
             self.expr = m.get('expr')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('promQl') is not None:
+            self.prom_ql = m.get('promQl')
 
         if m.get('start') is not None:
             self.start = m.get('start')

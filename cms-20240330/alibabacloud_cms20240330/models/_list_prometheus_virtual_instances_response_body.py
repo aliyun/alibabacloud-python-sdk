@@ -11,12 +11,18 @@ class ListPrometheusVirtualInstancesResponseBody(DaraModel):
     def __init__(
         self,
         instances: List[main_models.ListPrometheusVirtualInstancesResponseBodyInstances] = None,
+        max_results: str = None,
+        next_token: str = None,
         request_id: str = None,
+        total_count: str = None,
     ):
         # Instance information.
         self.instances = instances
+        self.max_results = max_results
+        self.next_token = next_token
         # ID of the request
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.instances:
@@ -34,8 +40,17 @@ class ListPrometheusVirtualInstancesResponseBody(DaraModel):
             for k1 in self.instances:
                 result['instances'].append(k1.to_map() if k1 else None)
 
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+
         if self.request_id is not None:
             result['requestId'] = self.request_id
+
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
 
         return result
 
@@ -47,8 +62,17 @@ class ListPrometheusVirtualInstancesResponseBody(DaraModel):
                 temp_model = main_models.ListPrometheusVirtualInstancesResponseBodyInstances()
                 self.instances.append(temp_model.from_map(k1))
 
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
 
         return self
 

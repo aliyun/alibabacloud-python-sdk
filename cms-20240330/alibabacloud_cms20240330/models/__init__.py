@@ -505,6 +505,9 @@ from ._alert_rule_condition import AlertRuleConditionCompositeEscalation
 from ._alert_rule_condition import AlertRuleConditionExpressEscalation
 from ._alert_rule_condition import AlertRuleConditionSimpleEscalationEscalations
 from ._alert_rule_condition import AlertRuleConditionSimpleEscalation
+from ._alert_rule_condition import AlertRuleConditionTriggersExpressionConditions
+from ._alert_rule_condition import AlertRuleConditionTriggersExpression
+from ._alert_rule_condition import AlertRuleConditionTriggers
 from ._alert_rule_data_source import AlertRuleDataSourceDsList
 from ._alert_rule_query import AlertRuleQueryEntityFields
 from ._alert_rule_query import AlertRuleQueryEntityFilterFilters
@@ -1204,6 +1207,9 @@ __all__ = [
     AlertRuleConditionExpressEscalation,
     AlertRuleConditionSimpleEscalationEscalations,
     AlertRuleConditionSimpleEscalation,
+    AlertRuleConditionTriggersExpressionConditions,
+    AlertRuleConditionTriggersExpression,
+    AlertRuleConditionTriggers,
     AlertRuleDataSourceDsList,
     AlertRuleQueryEntityFields,
     AlertRuleQueryEntityFilterFilters,

@@ -58,6 +58,7 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         grafana_instance_id: str = None,
         grafana_instance_name: str = None,
         http_api_inter_url: str = None,
+        http_api_internal_url: str = None,
         http_api_intra_url: str = None,
         instance_type: str = None,
         payment_type: str = None,
@@ -67,6 +68,7 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         prometheus_view_name: str = None,
         region_id: str = None,
         remote_read_inter_url: str = None,
+        remote_read_internal_url: str = None,
         remote_read_intra_url: str = None,
         resource_group_id: str = None,
         resource_type: str = None,
@@ -95,6 +97,7 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         self.grafana_instance_name = grafana_instance_name
         # Public HTTP address.
         self.http_api_inter_url = http_api_inter_url
+        self.http_api_internal_url = http_api_internal_url
         # Private HTTP address.
         self.http_api_intra_url = http_api_intra_url
         # Instance type, fixed value prom-view.
@@ -113,6 +116,7 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         self.region_id = region_id
         # Remote read public URL.
         self.remote_read_inter_url = remote_read_inter_url
+        self.remote_read_internal_url = remote_read_internal_url
         # Remote read intranet URL.
         self.remote_read_intra_url = remote_read_intra_url
         # Resource group ID.
@@ -174,6 +178,9 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         if self.http_api_inter_url is not None:
             result['httpApiInterUrl'] = self.http_api_inter_url
 
+        if self.http_api_internal_url is not None:
+            result['httpApiInternalUrl'] = self.http_api_internal_url
+
         if self.http_api_intra_url is not None:
             result['httpApiIntraUrl'] = self.http_api_intra_url
 
@@ -202,6 +209,9 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
 
         if self.remote_read_inter_url is not None:
             result['remoteReadInterUrl'] = self.remote_read_inter_url
+
+        if self.remote_read_internal_url is not None:
+            result['remoteReadInternalUrl'] = self.remote_read_internal_url
 
         if self.remote_read_intra_url is not None:
             result['remoteReadIntraUrl'] = self.remote_read_intra_url
@@ -263,6 +273,9 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         if m.get('httpApiInterUrl') is not None:
             self.http_api_inter_url = m.get('httpApiInterUrl')
 
+        if m.get('httpApiInternalUrl') is not None:
+            self.http_api_internal_url = m.get('httpApiInternalUrl')
+
         if m.get('httpApiIntraUrl') is not None:
             self.http_api_intra_url = m.get('httpApiIntraUrl')
 
@@ -292,6 +305,9 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
 
         if m.get('remoteReadInterUrl') is not None:
             self.remote_read_inter_url = m.get('remoteReadInterUrl')
+
+        if m.get('remoteReadInternalUrl') is not None:
+            self.remote_read_internal_url = m.get('remoteReadInternalUrl')
 
         if m.get('remoteReadIntraUrl') is not None:
             self.remote_read_intra_url = m.get('remoteReadIntraUrl')

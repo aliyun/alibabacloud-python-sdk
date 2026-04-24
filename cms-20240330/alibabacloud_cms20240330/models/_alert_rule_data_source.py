@@ -15,6 +15,7 @@ class AlertRuleDataSource(DaraModel):
         instance_id: str = None,
         namespace: str = None,
         region_id: str = None,
+        tenant_id: str = None,
         type: str = None,
     ):
         # Applicable data source type: APM_DS.
@@ -34,6 +35,7 @@ class AlertRuleDataSource(DaraModel):
         # Applicable data source types: APM_DS, PROMETHEUS_DS.
         # The regionId to which the data source belongs.
         self.region_id = region_id
+        self.tenant_id = tenant_id
         # Data source type.
         # Valid values:
         # - PROMETHEUS_DS: Prometheus data source.
@@ -73,6 +75,9 @@ class AlertRuleDataSource(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
         if self.type is not None:
             result['type'] = self.type
 
@@ -97,6 +102,9 @@ class AlertRuleDataSource(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
 
         if m.get('type') is not None:
             self.type = m.get('type')

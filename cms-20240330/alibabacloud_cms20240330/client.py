@@ -8049,8 +8049,12 @@ class Client(OpenApiClient):
     ) -> main_models.ListPrometheusVirtualInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
@@ -8081,8 +8085,12 @@ class Client(OpenApiClient):
     ) -> main_models.ListPrometheusVirtualInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(

@@ -14,6 +14,7 @@ class AlertRuleCondition(DaraModel):
         case_list: List[main_models.AlertRuleConditionCaseList] = None,
         compare_list: List[main_models.AlertRuleConditionCompareList] = None,
         composite_escalation: main_models.AlertRuleConditionCompositeEscalation = None,
+        enable_severity_suppression: bool = None,
         escalation_type: str = None,
         express_escalation: main_models.AlertRuleConditionExpressEscalation = None,
         no_data_alert_level: str = None,
@@ -22,6 +23,7 @@ class AlertRuleCondition(DaraModel):
         oper: str = None,
         relation: str = None,
         simple_escalation: main_models.AlertRuleConditionSimpleEscalation = None,
+        triggers: List[main_models.AlertRuleConditionTriggers] = None,
         type: str = None,
         value: float = None,
     ):
@@ -37,6 +39,7 @@ class AlertRuleCondition(DaraModel):
         # Applicable condition type: CMS_BASIC_CONDITION.
         # Valid only when escalationType=composite; composite metric alert condition.
         self.composite_escalation = composite_escalation
+        self.enable_severity_suppression = enable_severity_suppression
         # Applicable condition type: CMS_BASIC_CONDITION.
         # Valid values:
         # - simple: Simple metric condition,
@@ -76,6 +79,7 @@ class AlertRuleCondition(DaraModel):
         # Applicable condition type: CMS_BASIC_CONDITION.
         # Only valid when escalationType=simple; specifies the alert condition for a single metric.
         self.simple_escalation = simple_escalation
+        self.triggers = triggers
         # Rule condition type, valid values:
         # 
         # SLS_CONDITION (SLS alert condition),
@@ -102,6 +106,10 @@ class AlertRuleCondition(DaraModel):
             self.express_escalation.validate()
         if self.simple_escalation:
             self.simple_escalation.validate()
+        if self.triggers:
+            for v1 in self.triggers:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -123,6 +131,9 @@ class AlertRuleCondition(DaraModel):
 
         if self.composite_escalation is not None:
             result['compositeEscalation'] = self.composite_escalation.to_map()
+
+        if self.enable_severity_suppression is not None:
+            result['enableSeveritySuppression'] = self.enable_severity_suppression
 
         if self.escalation_type is not None:
             result['escalationType'] = self.escalation_type
@@ -147,6 +158,11 @@ class AlertRuleCondition(DaraModel):
 
         if self.simple_escalation is not None:
             result['simpleEscalation'] = self.simple_escalation.to_map()
+
+        result['triggers'] = []
+        if self.triggers is not None:
+            for k1 in self.triggers:
+                result['triggers'].append(k1.to_map() if k1 else None)
 
         if self.type is not None:
             result['type'] = self.type
@@ -177,6 +193,9 @@ class AlertRuleCondition(DaraModel):
             temp_model = main_models.AlertRuleConditionCompositeEscalation()
             self.composite_escalation = temp_model.from_map(m.get('compositeEscalation'))
 
+        if m.get('enableSeveritySuppression') is not None:
+            self.enable_severity_suppression = m.get('enableSeveritySuppression')
+
         if m.get('escalationType') is not None:
             self.escalation_type = m.get('escalationType')
 
@@ -203,11 +222,164 @@ class AlertRuleCondition(DaraModel):
             temp_model = main_models.AlertRuleConditionSimpleEscalation()
             self.simple_escalation = temp_model.from_map(m.get('simpleEscalation'))
 
+        self.triggers = []
+        if m.get('triggers') is not None:
+            for k1 in m.get('triggers'):
+                temp_model = main_models.AlertRuleConditionTriggers()
+                self.triggers.append(temp_model.from_map(k1))
+
         if m.get('type') is not None:
             self.type = m.get('type')
 
         if m.get('value') is not None:
             self.value = m.get('value')
+
+        return self
+
+class AlertRuleConditionTriggers(DaraModel):
+    def __init__(
+        self,
+        duration_secs: int = None,
+        expression: main_models.AlertRuleConditionTriggersExpression = None,
+        severity: str = None,
+    ):
+        self.duration_secs = duration_secs
+        self.expression = expression
+        self.severity = severity
+
+    def validate(self):
+        if self.expression:
+            self.expression.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.duration_secs is not None:
+            result['durationSecs'] = self.duration_secs
+
+        if self.expression is not None:
+            result['expression'] = self.expression.to_map()
+
+        if self.severity is not None:
+            result['severity'] = self.severity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecs') is not None:
+            self.duration_secs = m.get('durationSecs')
+
+        if m.get('expression') is not None:
+            temp_model = main_models.AlertRuleConditionTriggersExpression()
+            self.expression = temp_model.from_map(m.get('expression'))
+
+        if m.get('severity') is not None:
+            self.severity = m.get('severity')
+
+        return self
+
+class AlertRuleConditionTriggersExpression(DaraModel):
+    def __init__(
+        self,
+        conditions: List[main_models.AlertRuleConditionTriggersExpressionConditions] = None,
+        expression_type: str = None,
+        logic_operator: str = None,
+    ):
+        self.conditions = conditions
+        self.expression_type = expression_type
+        self.logic_operator = logic_operator
+
+    def validate(self):
+        if self.conditions:
+            for v1 in self.conditions:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k1 in self.conditions:
+                result['conditions'].append(k1.to_map() if k1 else None)
+
+        if self.expression_type is not None:
+            result['expressionType'] = self.expression_type
+
+        if self.logic_operator is not None:
+            result['logicOperator'] = self.logic_operator
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k1 in m.get('conditions'):
+                temp_model = main_models.AlertRuleConditionTriggersExpressionConditions()
+                self.conditions.append(temp_model.from_map(k1))
+
+        if m.get('expressionType') is not None:
+            self.expression_type = m.get('expressionType')
+
+        if m.get('logicOperator') is not None:
+            self.logic_operator = m.get('logicOperator')
+
+        return self
+
+class AlertRuleConditionTriggersExpressionConditions(DaraModel):
+    def __init__(
+        self,
+        expression_type: str = None,
+        operator: str = None,
+        query_name: str = None,
+        threshold: float = None,
+    ):
+        self.expression_type = expression_type
+        self.operator = operator
+        self.query_name = query_name
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expression_type is not None:
+            result['expressionType'] = self.expression_type
+
+        if self.operator is not None:
+            result['operator'] = self.operator
+
+        if self.query_name is not None:
+            result['queryName'] = self.query_name
+
+        if self.threshold is not None:
+            result['threshold'] = self.threshold
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expressionType') is not None:
+            self.expression_type = m.get('expressionType')
+
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+
+        if m.get('queryName') is not None:
+            self.query_name = m.get('queryName')
+
+        if m.get('threshold') is not None:
+            self.threshold = m.get('threshold')
 
         return self
 
