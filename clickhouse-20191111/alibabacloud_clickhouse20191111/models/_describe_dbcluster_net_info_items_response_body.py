@@ -24,7 +24,6 @@ class DescribeDBClusterNetInfoItemsResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.enable_slb = enable_slb
-        # The network information about the cluster.
         self.net_info_items = net_info_items
         # The request ID.
         self.request_id = request_id
@@ -117,30 +116,14 @@ class DescribeDBClusterNetInfoItemsResponseBodyNetInfoItemsNetInfoItem(DaraModel
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The endpoint that is used to connect to the database.
         self.connection_string = connection_string
-        # The HTTP port number.
         self.http_port = http_port
-        # The HTTPS port number.
         self.https_port = https_port
-        # The IP address.
         self.ipaddress = ipaddress
-        # The port number that is used in Java Database Connectivity (JDBC).
         self.jdbc_port = jdbc_port
-        # The port of the MySQL instance.
         self.my_sqlport = my_sqlport
-        # The network type of the endpoint. Valid values:
-        # 
-        # *   Public: public endpoint
-        # *   VPC: VPC
         self.net_type = net_type
-        # The vSwitch ID.
-        # 
-        # >  If the value of the NetType parameter is set to Public, an empty string is returned.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
-        # 
-        # >  If the value of the NetType parameter is set to Public, an empty string is returned.
         self.vpc_id = vpc_id
 
     def validate(self):

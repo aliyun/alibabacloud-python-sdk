@@ -16,7 +16,6 @@ class DescribeAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The database accounts.
         self.accounts = accounts
         # The page number.
         self.page_number = page_number
@@ -117,25 +116,10 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
         account_type: str = None,
         config_type: str = None,
     ):
-        # The description of the database account.
         self.account_description = account_description
-        # The name of the database account.
         self.account_name = account_name
-        # The state of the database account. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Available**
-        # *   **AuthorityModifying**
-        # *   **Deleting**
-        # 
-        # >  Only XML-configured database accounts can be in the **AuthorityModifying** state.
         self.account_status = account_status
-        # The type of the database account. Valid values:
-        # 
-        # *   **Super**: privileged account
-        # *   **Normal**: standard account
         self.account_type = account_type
-        # The configuration mode of the database account.
         self.config_type = config_type
 
     def validate(self):

@@ -55,7 +55,6 @@ class DescribeProcessListResponseBodyProcessList(DaraModel):
         statistics: main_models.DescribeProcessListResponseBodyProcessListStatistics = None,
         table_schema: main_models.DescribeProcessListResponseBodyProcessListTableSchema = None,
     ):
-        # The details of the query.
         self.data = data
         # The number of rows returned for the query.
         self.rows = rows
@@ -63,7 +62,6 @@ class DescribeProcessListResponseBodyProcessList(DaraModel):
         self.rows_before_limit_at_least = rows_before_limit_at_least
         # The statistics of the results.
         self.statistics = statistics
-        # Details of the columns.
         self.table_schema = table_schema
 
     def validate(self):
@@ -159,9 +157,7 @@ class DescribeProcessListResponseBodyProcessListTableSchemaResultSet(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The column name.
         self.name = name
-        # The column type.
         self.type = type
 
     def validate(self):
@@ -281,17 +277,11 @@ class DescribeProcessListResponseBodyProcessListDataResultSet(DaraModel):
         query_duration_ms: str = None,
         query_start_time: str = None,
     ):
-        # The IP address of the client that initiates the query.
         self.initial_address = initial_address
-        # The query ID.
         self.initial_query_id = initial_query_id
-        # The database account.
         self.initial_user = initial_user
-        # The SQL statement that is executed in the query.
         self.query = query
-        # The execution duration of the query. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
-        # The beginning of the time range to query. The value is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
         self.query_start_time = query_start_time
 
     def validate(self):

@@ -33,7 +33,6 @@ class CheckScaleOutBalancedResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The error information returned for a check failure.
         self.table_details = table_details
         # The amount of time that is required for the migration and scale-out. Unit: minutes.
         self.time_duration = time_duration
@@ -143,16 +142,9 @@ class CheckScaleOutBalancedResponseBodyTableDetailsTableDetail(DaraModel):
         detail: int = None,
         table_name: str = None,
     ):
-        # The cluster. The value is fixed as **default**.
         self.cluster = cluster
-        # The database name.
         self.database = database
-        # The error details. Valid values:
-        # 
-        # *   **1**: The unique distributed table is missing.
-        # *   **2**: More than one distributed table exists for the local table.
         self.detail = detail
-        # The name of the local table.
         self.table_name = table_name
 
     def validate(self):

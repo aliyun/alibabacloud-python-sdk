@@ -16,7 +16,6 @@ class DescribeDBClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The clusters.
         self.dbclusters = dbclusters
         # The total number of returned pages.
         self.page_number = page_number
@@ -149,127 +148,38 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The site ID. Valid values:
-        # 
-        # *   **26842**: the China site (aliyun.com)
-        # *   **26888**: the international site (alibabacloud.com)
         self.bid = bid
-        # The edition of the cluster. Valid values:
-        # 
-        # *   **Basic**: Single-replica Edition
-        # *   **HighAvailability**: Double-replica Edition
         self.category = category
-        # The commodity code of the cluster.
         self.commodity_code = commodity_code
-        # The VPC endpoint of the cluster.
         self.connection_string = connection_string
-        # The version number of the backend management system of ApsaraDB for ClickHouse. Valid values:
-        # 
-        # *   **v1**
-        # *   **v2**
         self.control_version = control_version
-        # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
-        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster. Only VPC is supported.
         self.dbcluster_network_type = dbcluster_network_type
-        # The state of the cluster. Valid values:
-        # 
-        # *   **Preparing**: The cluster is being prepared.
-        # *   **Creating**: The cluster is being created.
-        # *   **Running**: The cluster is running.
-        # *   **Deleting**: The cluster is being deleted.
-        # *   **SCALING_OUT**: The storage capacity of the cluster is being expanded.
         self.dbcluster_status = dbcluster_status
-        # The specifications of the cluster.
-        # 
-        # *   Valid values when the cluster is of Single-replica Edition: -**S4**: 4 CPU cores and 16 GB of memory -**S8**: 8 CPU cores and 32 GB of memory
-        # 
-        #     *   **S16**: 16 CPU cores and 64 GB of memory
-        #     *   **S32**: 32 CPU cores and 128 GB of memory
-        #     *   **S64**: 64 CPU cores and 256 GB of memory
-        #     *   **S104**: 104 CPU cores and 384 GB of memory
-        # 
-        # *   Valid values when the cluster is of Double-replica Edition: -**C4**: 4 CPU cores and 16 GB of memory -**C8**: 8 CPU cores and 32 GB of memory -**C16**: 16 CPU cores and 64 GB of memory -**C32**: 32 CPU cores and 128 GB of memory -**C64**: 64 CPU cores and 256 GB of memory -**C104**: 104 CPU cores and 384 GB of memory
         self.dbnode_class = dbnode_class
-        # The number of nodes.
-        # 
-        # *   Valid values when the cluster is of Single-replica Edition: 1 to 48.
-        # *   Valid values when the cluster is of Double-replica Edition: 1 to 24.
         self.dbnode_count = dbnode_count
-        # The storage capacity of each node. Valid values: 100 to 32000. Unit: GB.
-        # 
-        # >  This value is a multiple of 100.
         self.dbnode_storage = dbnode_storage
-        # The engine version of the cluster.
         self.db_version = db_version
-        # The time when the cluster expired. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
-        # 
-        # >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
         self.expire_time = expire_time
-        # The extended storage space.
         self.ext_storage_size = ext_storage_size
-        # The extended storage type. Valid values:
-        # 
-        # *   **CloudSSD**: standard SSD.
-        # *   **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
-        # *   **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
-        # *   **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
-        # *   **CloudEfficiency**: The cluster uses an ultra disk.
         self.ext_storage_type = ext_storage_type
-        # Indicates whether the cluster has expired. Valid values:
-        # 
-        # *   **true**: The cluster has expired.
-        # *   **false**: The cluster has not expired.
         self.is_expired = is_expired
-        # The lock mode of the cluster. Valid values:
-        # 
-        # *   **Unlock**: The cluster is not locked.
-        # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
-        # *   **LockByRestoration**: The cluster is automatically locked because the cluster is about to be rolled back.
-        # *   **LockByDiskQuota**: The cluster is automatically locked because the disk space is exhausted.
         self.lock_mode = lock_mode
-        # The cause why the cluster was locked.
-        # 
-        # >  If the value of the LockMode parameter is Unlock, an empty string is returned for this parameter.
         self.lock_reason = lock_reason
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: The cluster uses the pay-as-you-go billing method.
-        # *   **Prepaid**: The cluster uses the subscription billing method.
         self.pay_type = pay_type
-        # The HTTP port number.
         self.port = port
-        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
-        # The time window during which write operations are stopped for specification changes.
         self.scale_out_disable_write_windows = scale_out_disable_write_windows
-        # The status of a data migration task.
         self.scale_out_status = scale_out_status
-        # The storage type of the cluster. Valid values:
-        # 
-        # *   **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
-        # *   **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
-        # *   **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
-        # *   **CloudEfficiency**: The cluster uses an ultra disk.
         self.storage_type = storage_type
-        # The tags.
         self.tags = tags
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC in which the cluster is deployed.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The ID of the virtual private cloud (VPC) in which the cluster is deployed.
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -530,9 +440,7 @@ class DescribeDBClustersResponseBodyDBClustersDBClusterTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag name.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -567,13 +475,7 @@ class DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus(DaraModel)
         progress: str = None,
         ratio: str = None,
     ):
-        # The progress of the data migration task in percentage.
-        # 
-        # >  This parameter is returned only when the cluster is in the SCALING_OUT state.
         self.progress = progress
-        # The progress of the data migration task. This value is displayed in the following format: Data volume that has been migrated/Total data volume.
-        # 
-        # >  This parameter is returned only when the cluster is in the SCALING_OUT state.
         self.ratio = ratio
 
     def validate(self):

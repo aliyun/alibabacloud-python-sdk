@@ -15,13 +15,10 @@ class DescribeAllDataSourceResponseBody(DaraModel):
         schemas: main_models.DescribeAllDataSourceResponseBodySchemas = None,
         tables: main_models.DescribeAllDataSourceResponseBodyTables = None,
     ):
-        # The information about the columns.
         self.columns = columns
         # The request ID.
         self.request_id = request_id
-        # The information about the databases.
         self.schemas = schemas
-        # The information about the tables.
         self.tables = tables
 
     def validate(self):
@@ -112,11 +109,8 @@ class DescribeAllDataSourceResponseBodyTablesTable(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The database name.
         self.schema_name = schema_name
-        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -192,9 +186,7 @@ class DescribeAllDataSourceResponseBodySchemasSchema(DaraModel):
         dbcluster_id: str = None,
         schema_name: str = None,
     ):
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The database name.
         self.schema_name = schema_name
 
     def validate(self):
@@ -269,25 +261,12 @@ class DescribeAllDataSourceResponseBodyColumnsColumn(DaraModel):
         table_name: str = None,
         type: str = None,
     ):
-        # Indicates whether the column is an auto-increment column. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.auto_increment_column = auto_increment_column
-        # The column name.
         self.column_name = column_name
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether the column is the primary key of the table. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.primary_key = primary_key
-        # The database name.
         self.schema_name = schema_name
-        # The table name.
         self.table_name = table_name
-        # The type of the column.
         self.type = type
 
     def validate(self):

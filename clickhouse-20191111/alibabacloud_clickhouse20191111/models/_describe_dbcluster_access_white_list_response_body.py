@@ -13,7 +13,6 @@ class DescribeDBClusterAccessWhiteListResponseBody(DaraModel):
         dbcluster_access_white_list: main_models.DescribeDBClusterAccessWhiteListResponseBodyDBClusterAccessWhiteList = None,
         request_id: str = None,
     ):
-        # The details about the IP address whitelist.
         self.dbcluster_access_white_list = dbcluster_access_white_list
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeDBClusterAccessWhiteListResponseBodyDBClusterAccessWhiteListIPArra
         dbcluster_iparray_name: str = None,
         security_iplist: str = None,
     ):
-        # The attribute of the IP address whitelist.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP address whitelist.
         self.dbcluster_iparray_name = dbcluster_iparray_name
-        # The IP addresses in the IP address whitelist.
         self.security_iplist = security_iplist
 
     def validate(self):

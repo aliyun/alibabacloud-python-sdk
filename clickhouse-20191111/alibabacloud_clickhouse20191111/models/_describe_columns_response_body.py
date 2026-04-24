@@ -13,7 +13,6 @@ class DescribeColumnsResponseBody(DaraModel):
         items: main_models.DescribeColumnsResponseBodyItems = None,
         request_id: str = None,
     ):
-        # Details of the columns.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -92,25 +91,12 @@ class DescribeColumnsResponseBodyItemsColumn(DaraModel):
         table_name: str = None,
         type: str = None,
     ):
-        # Indicates whether the column is an auto-increment column. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.auto_increment_column = auto_increment_column
-        # The column name.
         self.column_name = column_name
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether the column is the primary key of the table. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.primary_key = primary_key
-        # The database name.
         self.schema_name = schema_name
-        # The table name.
         self.table_name = table_name
-        # The column type.
         self.type = type
 
     def validate(self):

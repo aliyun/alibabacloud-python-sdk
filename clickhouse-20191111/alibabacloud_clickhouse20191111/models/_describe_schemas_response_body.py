@@ -13,7 +13,6 @@ class DescribeSchemasResponseBody(DaraModel):
         items: main_models.DescribeSchemasResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The information about the databases of the cluster.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeSchemasResponseBodyItemsSchema(DaraModel):
         dbcluster_id: str = None,
         schema_name: str = None,
     ):
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The database name.
         self.schema_name = schema_name
 
     def validate(self):

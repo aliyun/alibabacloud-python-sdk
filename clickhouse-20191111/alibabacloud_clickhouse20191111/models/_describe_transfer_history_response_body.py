@@ -13,7 +13,6 @@ class DescribeTransferHistoryResponseBody(DaraModel):
         history_details: main_models.DescribeTransferHistoryResponseBodyHistoryDetails = None,
         request_id: str = None,
     ):
-        # The migration information.
         self.history_details = history_details
         # The request ID.
         self.request_id = request_id
@@ -99,35 +98,19 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(DaraModel):
         unsynced_bytes: int = None,
         unsynced_parts: int = None,
     ):
-        # The amount of data that is migrated per minute.
         self.bytes_per_minute = bytes_per_minute
-        # The time window during which write operations are stopped.
         self.disable_write_windows = disable_write_windows
-        # The number of parts that are migrated per minute.
         self.parts_per_minute = parts_per_minute
-        # The progress of the data migration.
         self.progress = progress
-        # The control version of the source cluster.
         self.source_control_version = source_control_version
-        # The ID of the source cluster.
         self.source_dbcluster = source_dbcluster
-        # The status of the data migration task. Valid values:
-        # 
-        # *   **Finished**: The data migration task is complete.
-        # *   **Processing**: The data migration task is in progress.
         self.status = status
-        # The running subtask.
         self.sub_job = sub_job
         self.sub_job_message = sub_job_message
-        # The subtask status.
         self.sub_job_status = sub_job_status
-        # The control version of the destination cluster.
         self.target_control_version = target_control_version
-        # The ID of the destination cluster.
         self.target_dbcluster = target_dbcluster
-        # The amount of data that is not migrated.
         self.unsynced_bytes = unsynced_bytes
-        # The number of parts that are not migrated.
         self.unsynced_parts = unsynced_parts
 
     def validate(self):

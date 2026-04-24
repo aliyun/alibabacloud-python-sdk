@@ -55,7 +55,6 @@ class DescribeSlowLogRecordsResponseBodySlowLogRecords(DaraModel):
         statistics: main_models.DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics = None,
         table_schema: main_models.DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchema = None,
     ):
-        # Details about the slow query logs.
         self.data = data
         # The number of rows in the result set.
         self.rows = rows
@@ -63,7 +62,6 @@ class DescribeSlowLogRecordsResponseBodySlowLogRecords(DaraModel):
         self.rows_before_limit_at_least = rows_before_limit_at_least
         # The statistics of the results.
         self.statistics = statistics
-        # The schema of the table in the database.
         self.table_schema = table_schema
 
     def validate(self):
@@ -159,9 +157,7 @@ class DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchemaResultSet(DaraM
         name: str = None,
         type: str = None,
     ):
-        # The name of the column.
         self.name = name
-        # The type of the column.
         self.type = type
 
     def validate(self):
@@ -286,30 +282,16 @@ class DescribeSlowLogRecordsResponseBodySlowLogRecordsDataResultSet(DaraModel):
         result_bytes: str = None,
         type: str = None,
     ):
-        # The IP address of the client that initiated the query.
         self.initial_address = initial_address
-        # The query ID.
         self.initial_query_id = initial_query_id
-        # The username that is used to initiate the query.
         self.initial_user = initial_user
-        # The peak memory usage for the query. Unit: bytes.
         self.memory_usage = memory_usage
-        # The statement that was executed in the query.
         self.query = query
-        # The duration of the query. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
-        # The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
         self.query_start_time = query_start_time
-        # The size of the data read by executing the statement. Unit: bytes.
         self.read_bytes = read_bytes
-        # The number of rows read by executing the statement.
         self.read_rows = read_rows
-        # The size of the result data. Unit: bytes.
         self.result_bytes = result_bytes
-        # The query status. Valid values:
-        # 
-        # *   **QueryFinish**: The query is complete.
-        # *   **Processing**: The query is running.
         self.type = type
 
     def validate(self):

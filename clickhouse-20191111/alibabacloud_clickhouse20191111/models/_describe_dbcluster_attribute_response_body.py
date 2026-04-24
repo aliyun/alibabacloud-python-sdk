@@ -103,6 +103,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         vpc_cloud_instance_id: str = None,
         vpc_id: str = None,
         vpc_ip_addr: str = None,
+        web_uisnat_status: str = None,
+        web_uistatus: str = None,
         zone_id: str = None,
         zone_id_vswitch_map: Dict[str, Any] = None,
         zookeeper_class: str = None,
@@ -289,7 +291,6 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         # *   **1**: Tiered storage of hot data and cold data is supported.
         # *   **2**: Tiered storage of hot data and cold data is not supported.
         self.support_oss = support_oss
-        # The tags.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -299,6 +300,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         self.vpc_id = vpc_id
         # The IP address that is used to connect to the cluster over the VPC.
         self.vpc_ip_addr = vpc_ip_addr
+        self.web_uisnat_status = web_uisnat_status
+        self.web_uistatus = web_uistatus
         # The zone ID.
         self.zone_id = zone_id
         # The list of vSwitch IDs in multi-zone clusters.
@@ -479,6 +482,12 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         if self.vpc_ip_addr is not None:
             result['VpcIpAddr'] = self.vpc_ip_addr
 
+        if self.web_uisnat_status is not None:
+            result['WebUISnatStatus'] = self.web_uisnat_status
+
+        if self.web_uistatus is not None:
+            result['WebUIStatus'] = self.web_uistatus
+
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
@@ -656,6 +665,12 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         if m.get('VpcIpAddr') is not None:
             self.vpc_ip_addr = m.get('VpcIpAddr')
 
+        if m.get('WebUISnatStatus') is not None:
+            self.web_uisnat_status = m.get('WebUISnatStatus')
+
+        if m.get('WebUIStatus') is not None:
+            self.web_uistatus = m.get('WebUIStatus')
+
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
 
@@ -708,9 +723,7 @@ class DescribeDBClusterAttributeResponseBodyDBClusterTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag name.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
