@@ -4843,6 +4843,8 @@ class Client(OpenApiClient):
     ) -> main_models.StopInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -4873,6 +4875,8 @@ class Client(OpenApiClient):
     ) -> main_models.StopInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):

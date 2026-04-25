@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class StopInstanceRequest(DaraModel):
     def __init__(
         self,
+        force: bool = None,
         instance_name: str = None,
         region_id: str = None,
     ):
+        self.force = force
         # The region ID of the instance.
         # 
         # This parameter is required.
@@ -25,6 +27,9 @@ class StopInstanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.force is not None:
+            result['Force'] = self.force
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -35,6 +40,9 @@ class StopInstanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
