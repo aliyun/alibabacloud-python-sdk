@@ -657,7 +657,7 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
         bookmarks: List[main_models.ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks] = None,
         bookmarks_file_path: str = None,
         browser_param: str = None,
-        cookies_sync: str = None,
+        cookies_sync: bool = None,
         homepage: str = None,
         remove_bookmarks: List[str] = None,
     ):

@@ -1,3 +1,7 @@
+2026-04-25 Version: 5.0.0
+- Update API ModifyBrowserInstanceGroup: update request parameters BrowserConfig.CookiesSync' type has changed.
+
+
 2026-04-16 Version: 4.7.13
 - Update API ModifyBrowserInstanceGroup: add request parameters MaxAmount.
 - Update API ModifyBrowserInstanceGroup: add request parameters StoragePolicy.
