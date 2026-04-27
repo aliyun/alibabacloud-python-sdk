@@ -4919,6 +4919,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_query_api_key_list_with_options_async(request, headers, runtime)
 
+    def model_router_query_billing_cost_breakdown_with_options(
+        self,
+        request: main_models.ModelRouterQueryBillingCostBreakdownRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryBillingCostBreakdown',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/billing/cost/breakdown',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryBillingCostBreakdownResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_billing_cost_breakdown_with_options_async(
+        self,
+        request: main_models.ModelRouterQueryBillingCostBreakdownRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryBillingCostBreakdown',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/billing/cost/breakdown',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryBillingCostBreakdownResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_billing_cost_breakdown(
+        self,
+        request: main_models.ModelRouterQueryBillingCostBreakdownRequest,
+    ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_billing_cost_breakdown_with_options(request, headers, runtime)
+
+    async def model_router_query_billing_cost_breakdown_async(
+        self,
+        request: main_models.ModelRouterQueryBillingCostBreakdownRequest,
+    ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_billing_cost_breakdown_with_options_async(request, headers, runtime)
+
     def model_router_query_billing_rule_list_with_options(
         self,
         request: main_models.ModelRouterQueryBillingRuleListRequest,
@@ -6638,6 +6738,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_query_observation_metrics_with_options_async(request, headers, runtime)
+
+    def model_router_query_usage_breakdown_with_options(
+        self,
+        request: main_models.ModelRouterQueryUsageBreakdownRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryUsageBreakdownResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryUsageBreakdown',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/usage/breakdown',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryUsageBreakdownResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_usage_breakdown_with_options_async(
+        self,
+        request: main_models.ModelRouterQueryUsageBreakdownRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryUsageBreakdownResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryUsageBreakdown',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/usage/breakdown',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryUsageBreakdownResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_usage_breakdown(
+        self,
+        request: main_models.ModelRouterQueryUsageBreakdownRequest,
+    ) -> main_models.ModelRouterQueryUsageBreakdownResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_usage_breakdown_with_options(request, headers, runtime)
+
+    async def model_router_query_usage_breakdown_async(
+        self,
+        request: main_models.ModelRouterQueryUsageBreakdownRequest,
+    ) -> main_models.ModelRouterQueryUsageBreakdownResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_usage_breakdown_with_options_async(request, headers, runtime)
 
     def model_router_update_billing_rule_with_options(
         self,
