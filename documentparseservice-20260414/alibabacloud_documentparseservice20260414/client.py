@@ -40,6 +40,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def document_parse_online_api_with_options(
+        self,
+        request: main_models.DocumentParseOnlineApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DocumentParseOnlineApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DocumentParseOnlineApi',
+            version = '2026-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DocumentParseOnlineApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def document_parse_online_api_with_options_async(
+        self,
+        request: main_models.DocumentParseOnlineApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DocumentParseOnlineApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DocumentParseOnlineApi',
+            version = '2026-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DocumentParseOnlineApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def document_parse_online_api(
+        self,
+        request: main_models.DocumentParseOnlineApiRequest,
+    ) -> main_models.DocumentParseOnlineApiResponse:
+        runtime = RuntimeOptions()
+        return self.document_parse_online_api_with_options(request, runtime)
+
+    async def document_parse_online_api_async(
+        self,
+        request: main_models.DocumentParseOnlineApiRequest,
+    ) -> main_models.DocumentParseOnlineApiResponse:
+        runtime = RuntimeOptions()
+        return await self.document_parse_online_api_with_options_async(request, runtime)
+
     def document_parse_test_api_with_options(
         self,
         request: main_models.DocumentParseTestApiRequest,

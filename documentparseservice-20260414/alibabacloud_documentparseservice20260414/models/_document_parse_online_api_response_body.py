@@ -5,11 +5,11 @@ from __future__ import annotations
 from alibabacloud_documentparseservice20260414 import models as main_models
 from darabonba.model import DaraModel
 
-class DocumentParseTestApiResponseBody(DaraModel):
+class DocumentParseOnlineApiResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.DocumentParseTestApiResponseBodyData = None,
+        data: main_models.DocumentParseOnlineApiResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -17,7 +17,6 @@ class DocumentParseTestApiResponseBody(DaraModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -53,7 +52,7 @@ class DocumentParseTestApiResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.DocumentParseTestApiResponseBodyData()
+            temp_model = main_models.DocumentParseOnlineApiResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -67,12 +66,12 @@ class DocumentParseTestApiResponseBody(DaraModel):
 
         return self
 
-class DocumentParseTestApiResponseBodyData(DaraModel):
+class DocumentParseOnlineApiResponseBodyData(DaraModel):
     def __init__(
         self,
         content: str = None,
         request_id: str = None,
-        usage: main_models.DocumentParseTestApiResponseBodyDataUsage = None,
+        usage: main_models.DocumentParseOnlineApiResponseBodyDataUsage = None,
     ):
         self.content = content
         self.request_id = request_id
@@ -107,12 +106,14 @@ class DocumentParseTestApiResponseBodyData(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Usage') is not None:
-            temp_model = main_models.DocumentParseTestApiResponseBodyDataUsage()
+            temp_model = main_models.DocumentParseOnlineApiResponseBodyDataUsage()
             self.usage = temp_model.from_map(m.get('Usage'))
 
         return self
 
-class DocumentParseTestApiResponseBodyDataUsage(DaraModel):
+
+
+class DocumentParseOnlineApiResponseBodyDataUsage(DaraModel):
     def __init__(
         self,
         input_tokens: int = None,
