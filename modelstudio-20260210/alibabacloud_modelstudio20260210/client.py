@@ -129,6 +129,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.service_site):
+            query['serviceSite'] = request.service_site
         if not DaraCore.is_null(request.workspace_name):
             query['workspaceName'] = request.workspace_name
         req = open_api_util_models.OpenApiRequest(
@@ -159,6 +161,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.service_site):
+            query['serviceSite'] = request.service_site
         if not DaraCore.is_null(request.workspace_name):
             query['workspaceName'] = request.workspace_name
         req = open_api_util_models.OpenApiRequest(
@@ -433,6 +437,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         if not DaraCore.is_null(request.workspace_name):
             query['workspaceName'] = request.workspace_name
         req = open_api_util_models.OpenApiRequest(
@@ -467,6 +473,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         if not DaraCore.is_null(request.workspace_name):
             query['workspaceName'] = request.workspace_name
         req = open_api_util_models.OpenApiRequest(

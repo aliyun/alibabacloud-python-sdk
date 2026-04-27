@@ -9,10 +9,12 @@ class ListWorkspacesRequest(DaraModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        workspace_id: str = None,
         workspace_name: str = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
+        self.workspace_id = workspace_id
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -29,6 +31,9 @@ class ListWorkspacesRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         if self.workspace_name is not None:
             result['workspaceName'] = self.workspace_name
 
@@ -41,6 +46,9 @@ class ListWorkspacesRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         if m.get('workspaceName') is not None:
             self.workspace_name = m.get('workspaceName')
