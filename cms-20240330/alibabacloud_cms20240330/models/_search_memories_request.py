@@ -14,7 +14,7 @@ class SearchMemoriesRequest(DaraModel):
         filters: Dict[str, Any] = None,
         query: str = None,
         rerank: bool = None,
-        retrieve_level: str = None,
+        retrieval_option: str = None,
         run_id: str = None,
         search_type: str = None,
         threshold: float = None,
@@ -26,7 +26,7 @@ class SearchMemoriesRequest(DaraModel):
         self.filters = filters
         self.query = query
         self.rerank = rerank
-        self.retrieve_level = retrieve_level
+        self.retrieval_option = retrieval_option
         self.run_id = run_id
         self.search_type = search_type
         self.threshold = threshold
@@ -56,8 +56,8 @@ class SearchMemoriesRequest(DaraModel):
         if self.rerank is not None:
             result['rerank'] = self.rerank
 
-        if self.retrieve_level is not None:
-            result['retrieveLevel'] = self.retrieve_level
+        if self.retrieval_option is not None:
+            result['retrievalOption'] = self.retrieval_option
 
         if self.run_id is not None:
             result['runId'] = self.run_id
@@ -93,8 +93,8 @@ class SearchMemoriesRequest(DaraModel):
         if m.get('rerank') is not None:
             self.rerank = m.get('rerank')
 
-        if m.get('retrieveLevel') is not None:
-            self.retrieve_level = m.get('retrieveLevel')
+        if m.get('retrievalOption') is not None:
+            self.retrieval_option = m.get('retrievalOption')
 
         if m.get('runId') is not None:
             self.run_id = m.get('runId')

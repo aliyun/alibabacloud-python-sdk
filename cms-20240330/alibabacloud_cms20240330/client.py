@@ -8837,8 +8837,8 @@ class Client(OpenApiClient):
             body['query'] = request.query
         if not DaraCore.is_null(request.rerank):
             body['rerank'] = request.rerank
-        if not DaraCore.is_null(request.retrieve_level):
-            body['retrieveLevel'] = request.retrieve_level
+        if not DaraCore.is_null(request.retrieval_option):
+            body['retrievalOption'] = request.retrieval_option
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
         if not DaraCore.is_null(request.search_type):
@@ -8889,8 +8889,8 @@ class Client(OpenApiClient):
             body['query'] = request.query
         if not DaraCore.is_null(request.rerank):
             body['rerank'] = request.rerank
-        if not DaraCore.is_null(request.retrieve_level):
-            body['retrieveLevel'] = request.retrieve_level
+        if not DaraCore.is_null(request.retrieval_option):
+            body['retrievalOption'] = request.retrieval_option
         if not DaraCore.is_null(request.run_id):
             body['runId'] = request.run_id
         if not DaraCore.is_null(request.search_type):

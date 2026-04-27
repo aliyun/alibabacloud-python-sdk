@@ -1,3 +1,8 @@
+2026-04-27 Version: 9.0.0
+- Update API SearchMemories: add request parameters body.retrievalOption.
+- Update API SearchMemories: delete request parameters body.retrieveLevel.
+
+
 2026-04-24 Version: 8.1.0
 - Support API DescribeMetricMetaList.
 

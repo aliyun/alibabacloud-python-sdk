@@ -14,7 +14,7 @@ class EntityDiscoverRule(DaraModel):
         entity_types: List[str] = None,
         field_rules: List[main_models.EntityDiscoverRuleFieldRules] = None,
         instance_ids: List[str] = None,
-        ip_match_rule: List[main_models.EntityDiscoverRuleIpMatchRule] = None,
+        ip_match_rule: main_models.EntityDiscoverRuleIpMatchRule = None,
         labels: List[main_models.EntityDiscoverRuleLabels] = None,
         region_ids: List[str] = None,
         resource_group_id: str = None,
@@ -40,9 +40,7 @@ class EntityDiscoverRule(DaraModel):
                  if v1:
                     v1.validate()
         if self.ip_match_rule:
-            for v1 in self.ip_match_rule:
-                 if v1:
-                    v1.validate()
+            self.ip_match_rule.validate()
         if self.labels:
             for v1 in self.labels:
                  if v1:
@@ -73,10 +71,8 @@ class EntityDiscoverRule(DaraModel):
         if self.instance_ids is not None:
             result['instanceIds'] = self.instance_ids
 
-        result['ipMatchRule'] = []
         if self.ip_match_rule is not None:
-            for k1 in self.ip_match_rule:
-                result['ipMatchRule'].append(k1.to_map() if k1 else None)
+            result['ipMatchRule'] = self.ip_match_rule.to_map()
 
         result['labels'] = []
         if self.labels is not None:
@@ -116,11 +112,9 @@ class EntityDiscoverRule(DaraModel):
         if m.get('instanceIds') is not None:
             self.instance_ids = m.get('instanceIds')
 
-        self.ip_match_rule = []
         if m.get('ipMatchRule') is not None:
-            for k1 in m.get('ipMatchRule'):
-                temp_model = main_models.EntityDiscoverRuleIpMatchRule()
-                self.ip_match_rule.append(temp_model.from_map(k1))
+            temp_model = main_models.EntityDiscoverRuleIpMatchRule()
+            self.ip_match_rule = temp_model.from_map(m.get('ipMatchRule'))
 
         self.labels = []
         if m.get('labels') is not None:
