@@ -3753,6 +3753,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.console_session_id):
             query['ConsoleSessionId'] = request.console_session_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
@@ -3783,6 +3785,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.console_session_id):
             query['ConsoleSessionId'] = request.console_session_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
