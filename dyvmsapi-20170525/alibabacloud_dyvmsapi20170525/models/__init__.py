@@ -20,22 +20,112 @@ from ._cancel_robot_task_response import CancelRobotTaskResponse
 from ._change_media_type_request import ChangeMediaTypeRequest
 from ._change_media_type_response_body import ChangeMediaTypeResponseBody
 from ._change_media_type_response import ChangeMediaTypeResponse
+from ._cloud_agent_login_request import CloudAgentLoginRequest
+from ._cloud_agent_login_response_body import CloudAgentLoginResponseBody
+from ._cloud_agent_login_response import CloudAgentLoginResponse
+from ._cloud_agent_logout_request import CloudAgentLogoutRequest
+from ._cloud_agent_logout_response_body import CloudAgentLogoutResponseBody
+from ._cloud_agent_logout_response import CloudAgentLogoutResponse
+from ._cloud_agent_set_user_data_request import CloudAgentSetUserDataRequest
+from ._cloud_agent_set_user_data_response_body import CloudAgentSetUserDataResponseBody
+from ._cloud_agent_set_user_data_response import CloudAgentSetUserDataResponse
+from ._cloud_agent_unlink_request import CloudAgentUnlinkRequest
+from ._cloud_agent_unlink_response_body import CloudAgentUnlinkResponseBody
+from ._cloud_agent_unlink_response import CloudAgentUnlinkResponse
+from ._cloud_batch_create_agent_request import CloudBatchCreateAgentRequest
+from ._cloud_batch_create_agent_response_body import CloudBatchCreateAgentResponseBody
+from ._cloud_batch_create_agent_response import CloudBatchCreateAgentResponse
+from ._cloud_batch_get_agent_status_request import CloudBatchGetAgentStatusRequest
+from ._cloud_batch_get_agent_status_response_body import CloudBatchGetAgentStatusResponseBody
+from ._cloud_batch_get_agent_status_response import CloudBatchGetAgentStatusResponse
+from ._cloud_batch_update_agent_request import CloudBatchUpdateAgentRequest
+from ._cloud_batch_update_agent_response_body import CloudBatchUpdateAgentResponseBody
+from ._cloud_batch_update_agent_response import CloudBatchUpdateAgentResponse
 from ._cloud_create_agent_request import CloudCreateAgentRequest
 from ._cloud_create_agent_response_body import CloudCreateAgentResponseBody
 from ._cloud_create_agent_response import CloudCreateAgentResponse
 from ._cloud_create_task_request import CloudCreateTaskRequest
 from ._cloud_create_task_response_body import CloudCreateTaskResponseBody
 from ._cloud_create_task_response import CloudCreateTaskResponse
+from ._cloud_delete_agent_request import CloudDeleteAgentRequest
+from ._cloud_delete_agent_response_body import CloudDeleteAgentResponseBody
+from ._cloud_delete_agent_response import CloudDeleteAgentResponse
+from ._cloud_delete_agent_tel_request import CloudDeleteAgentTelRequest
+from ._cloud_delete_agent_tel_response_body import CloudDeleteAgentTelResponseBody
+from ._cloud_delete_agent_tel_response import CloudDeleteAgentTelResponse
+from ._cloud_get_agent_request import CloudGetAgentRequest
+from ._cloud_get_agent_response_body import CloudGetAgentResponseBody
+from ._cloud_get_agent_response import CloudGetAgentResponse
+from ._cloud_get_agent_status_request import CloudGetAgentStatusRequest
+from ._cloud_get_agent_status_response_body import CloudGetAgentStatusResponseBody
+from ._cloud_get_agent_status_response import CloudGetAgentStatusResponse
+from ._cloud_get_ob_cdr_request import CloudGetObCdrRequest
+from ._cloud_get_ob_cdr_response_body import CloudGetObCdrResponseBody
+from ._cloud_get_ob_cdr_response import CloudGetObCdrResponse
+from ._cloud_get_record_url_request import CloudGetRecordUrlRequest
+from ._cloud_get_record_url_response_body import CloudGetRecordUrlResponseBody
+from ._cloud_get_record_url_response import CloudGetRecordUrlResponse
 from ._cloud_import_task_tel_request import CloudImportTaskTelRequest
 from ._cloud_import_task_tel_shrink_request import CloudImportTaskTelShrinkRequest
 from ._cloud_import_task_tel_response_body import CloudImportTaskTelResponseBody
 from ._cloud_import_task_tel_response import CloudImportTaskTelResponse
+from ._cloud_interrupt_ivr_request import CloudInterruptIvrRequest
+from ._cloud_interrupt_ivr_response_body import CloudInterruptIvrResponseBody
+from ._cloud_interrupt_ivr_response import CloudInterruptIvrResponse
+from ._cloud_list_agent_tel_request import CloudListAgentTelRequest
+from ._cloud_list_agent_tel_response_body import CloudListAgentTelResponseBody
+from ._cloud_list_agent_tel_response import CloudListAgentTelResponse
+from ._cloud_list_free_agent_request import CloudListFreeAgentRequest
+from ._cloud_list_free_agent_response_body import CloudListFreeAgentResponseBody
+from ._cloud_list_free_agent_response import CloudListFreeAgentResponse
+from ._cloud_list_online_agent_request import CloudListOnlineAgentRequest
+from ._cloud_list_online_agent_response_body import CloudListOnlineAgentResponseBody
+from ._cloud_list_online_agent_response import CloudListOnlineAgentResponse
+from ._cloud_outbound_ob_clid_report_request import CloudOutboundObClidReportRequest
+from ._cloud_outbound_ob_clid_report_response_body import CloudOutboundObClidReportResponseBody
+from ._cloud_outbound_ob_clid_report_response import CloudOutboundObClidReportResponse
+from ._cloud_outbound_preview_ob_report_request import CloudOutboundPreviewObReportRequest
+from ._cloud_outbound_preview_ob_report_response_body import CloudOutboundPreviewObReportResponseBody
+from ._cloud_outbound_preview_ob_report_response import CloudOutboundPreviewObReportResponse
+from ._cloud_previewoutcall_request import CloudPreviewoutcallRequest
+from ._cloud_previewoutcall_response_body import CloudPreviewoutcallResponseBody
+from ._cloud_previewoutcall_response import CloudPreviewoutcallResponse
+from ._cloud_query_agent_request import CloudQueryAgentRequest
+from ._cloud_query_agent_response_body import CloudQueryAgentResponseBody
+from ._cloud_query_agent_response import CloudQueryAgentResponse
+from ._cloud_query_agent_cno_and_name_request import CloudQueryAgentCnoAndNameRequest
+from ._cloud_query_agent_cno_and_name_response_body import CloudQueryAgentCnoAndNameResponseBody
+from ._cloud_query_agent_cno_and_name_response import CloudQueryAgentCnoAndNameResponse
+from ._cloud_query_agent_group_request import CloudQueryAgentGroupRequest
+from ._cloud_query_agent_group_response_body import CloudQueryAgentGroupResponseBody
+from ._cloud_query_agent_group_response import CloudQueryAgentGroupResponse
+from ._cloud_query_agent_skill_request import CloudQueryAgentSkillRequest
+from ._cloud_query_agent_skill_response_body import CloudQueryAgentSkillResponseBody
+from ._cloud_query_agent_skill_response import CloudQueryAgentSkillResponse
+from ._cloud_query_ib_cdr_request import CloudQueryIbCdrRequest
+from ._cloud_query_ib_cdr_response_body import CloudQueryIbCdrResponseBody
+from ._cloud_query_ib_cdr_response import CloudQueryIbCdrResponse
+from ._cloud_query_ob_cdr_request import CloudQueryObCdrRequest
+from ._cloud_query_ob_cdr_response_body import CloudQueryObCdrResponseBody
+from ._cloud_query_ob_cdr_response import CloudQueryObCdrResponse
+from ._cloud_query_predictive_call_cdr_request import CloudQueryPredictiveCallCdrRequest
+from ._cloud_query_predictive_call_cdr_response_body import CloudQueryPredictiveCallCdrResponseBody
+from ._cloud_query_predictive_call_cdr_response import CloudQueryPredictiveCallCdrResponse
+from ._cloud_query_webcall_cdr_request import CloudQueryWebcallCdrRequest
+from ._cloud_query_webcall_cdr_response_body import CloudQueryWebcallCdrResponseBody
+from ._cloud_query_webcall_cdr_response import CloudQueryWebcallCdrResponse
 from ._cloud_start_task_request import CloudStartTaskRequest
 from ._cloud_start_task_response_body import CloudStartTaskResponseBody
 from ._cloud_start_task_response import CloudStartTaskResponse
+from ._cloud_update_agent_request import CloudUpdateAgentRequest
+from ._cloud_update_agent_response_body import CloudUpdateAgentResponseBody
+from ._cloud_update_agent_response import CloudUpdateAgentResponse
 from ._cloud_update_task_request import CloudUpdateTaskRequest
 from ._cloud_update_task_response_body import CloudUpdateTaskResponseBody
 from ._cloud_update_task_response import CloudUpdateTaskResponse
+from ._cloud_webcall_request import CloudWebcallRequest
+from ._cloud_webcall_response_body import CloudWebcallResponseBody
+from ._cloud_webcall_response import CloudWebcallResponse
 from ._create_call_task_request import CreateCallTaskRequest
 from ._create_call_task_response_body import CreateCallTaskResponseBody
 from ._create_call_task_response import CreateCallTaskResponse
@@ -187,14 +277,66 @@ from ._upgrade_video_file_response import UpgradeVideoFileResponse
 from ._upload_robot_task_called_file_request import UploadRobotTaskCalledFileRequest
 from ._upload_robot_task_called_file_response_body import UploadRobotTaskCalledFileResponseBody
 from ._upload_robot_task_called_file_response import UploadRobotTaskCalledFileResponse
+from ._cloud_agent_login_response_body import CloudAgentLoginResponseBodyData
+from ._cloud_agent_logout_response_body import CloudAgentLogoutResponseBodyData
+from ._cloud_agent_set_user_data_response_body import CloudAgentSetUserDataResponseBodyData
+from ._cloud_agent_unlink_response_body import CloudAgentUnlinkResponseBodyData
+from ._cloud_batch_create_agent_response_body import CloudBatchCreateAgentResponseBodyData
+from ._cloud_batch_get_agent_status_response_body import CloudBatchGetAgentStatusResponseBodyData
+from ._cloud_batch_update_agent_response_body import CloudBatchUpdateAgentResponseBodyData
 from ._cloud_create_agent_response_body import CloudCreateAgentResponseBodyDataAgent
 from ._cloud_create_agent_response_body import CloudCreateAgentResponseBodyDataAgentSkills
 from ._cloud_create_agent_response_body import CloudCreateAgentResponseBodyData
 from ._cloud_create_task_response_body import CloudCreateTaskResponseBodyData
+from ._cloud_delete_agent_response_body import CloudDeleteAgentResponseBodyData
+from ._cloud_delete_agent_tel_response_body import CloudDeleteAgentTelResponseBodyData
+from ._cloud_get_agent_response_body import CloudGetAgentResponseBodyDataAgent
+from ._cloud_get_agent_response_body import CloudGetAgentResponseBodyData
+from ._cloud_get_agent_status_response_body import CloudGetAgentStatusResponseBodyData
+from ._cloud_get_ob_cdr_response_body import CloudGetObCdrResponseBodyDataList
+from ._cloud_get_ob_cdr_response_body import CloudGetObCdrResponseBodyData
+from ._cloud_get_record_url_response_body import CloudGetRecordUrlResponseBodyData
 from ._cloud_import_task_tel_request import CloudImportTaskTelRequestTaskTelList
 from ._cloud_import_task_tel_response_body import CloudImportTaskTelResponseBodyData
+from ._cloud_interrupt_ivr_response_body import CloudInterruptIvrResponseBodyData
+from ._cloud_list_agent_tel_response_body import CloudListAgentTelResponseBodyDataList
+from ._cloud_list_agent_tel_response_body import CloudListAgentTelResponseBodyData
+from ._cloud_list_free_agent_response_body import CloudListFreeAgentResponseBodyDataList
+from ._cloud_list_free_agent_response_body import CloudListFreeAgentResponseBodyData
+from ._cloud_list_online_agent_response_body import CloudListOnlineAgentResponseBodyDataAgentStatuses
+from ._cloud_list_online_agent_response_body import CloudListOnlineAgentResponseBodyData
+from ._cloud_outbound_ob_clid_report_response_body import CloudOutboundObClidReportResponseBodyDataList
+from ._cloud_outbound_ob_clid_report_response_body import CloudOutboundObClidReportResponseBodyData
+from ._cloud_outbound_preview_ob_report_response_body import CloudOutboundPreviewObReportResponseBodyDataList
+from ._cloud_outbound_preview_ob_report_response_body import CloudOutboundPreviewObReportResponseBodyData
+from ._cloud_previewoutcall_response_body import CloudPreviewoutcallResponseBodyData
+from ._cloud_query_agent_response_body import CloudQueryAgentResponseBodyDataAgentsAgent
+from ._cloud_query_agent_response_body import CloudQueryAgentResponseBodyDataAgentsQueueList
+from ._cloud_query_agent_response_body import CloudQueryAgentResponseBodyDataAgents
+from ._cloud_query_agent_response_body import CloudQueryAgentResponseBodyData
+from ._cloud_query_agent_cno_and_name_response_body import CloudQueryAgentCnoAndNameResponseBodyDataList
+from ._cloud_query_agent_cno_and_name_response_body import CloudQueryAgentCnoAndNameResponseBodyData
+from ._cloud_query_agent_group_response_body import CloudQueryAgentGroupResponseBodyData
+from ._cloud_query_agent_skill_response_body import CloudQueryAgentSkillResponseBodyDataList
+from ._cloud_query_agent_skill_response_body import CloudQueryAgentSkillResponseBodyData
+from ._cloud_query_ib_cdr_response_body import CloudQueryIbCdrResponseBodyDataListRecordFile
+from ._cloud_query_ib_cdr_response_body import CloudQueryIbCdrResponseBodyDataList
+from ._cloud_query_ib_cdr_response_body import CloudQueryIbCdrResponseBodyData
+from ._cloud_query_ob_cdr_response_body import CloudQueryObCdrResponseBodyDataListRecordFile
+from ._cloud_query_ob_cdr_response_body import CloudQueryObCdrResponseBodyDataList
+from ._cloud_query_ob_cdr_response_body import CloudQueryObCdrResponseBodyData
+from ._cloud_query_predictive_call_cdr_response_body import CloudQueryPredictiveCallCdrResponseBodyDataListRecordFile
+from ._cloud_query_predictive_call_cdr_response_body import CloudQueryPredictiveCallCdrResponseBodyDataList
+from ._cloud_query_predictive_call_cdr_response_body import CloudQueryPredictiveCallCdrResponseBodyData
+from ._cloud_query_webcall_cdr_response_body import CloudQueryWebcallCdrResponseBodyDataListRecordFile
+from ._cloud_query_webcall_cdr_response_body import CloudQueryWebcallCdrResponseBodyDataList
+from ._cloud_query_webcall_cdr_response_body import CloudQueryWebcallCdrResponseBodyData
 from ._cloud_start_task_response_body import CloudStartTaskResponseBodyData
+from ._cloud_update_agent_response_body import CloudUpdateAgentResponseBodyDataAgent
+from ._cloud_update_agent_response_body import CloudUpdateAgentResponseBodyDataAgentSkills
+from ._cloud_update_agent_response_body import CloudUpdateAgentResponseBodyData
 from ._cloud_update_task_response_body import CloudUpdateTaskResponseBodyData
+from ._cloud_webcall_response_body import CloudWebcallResponseBodyData
 from ._get_hotline_qualification_by_order_response_body import GetHotlineQualificationByOrderResponseBodyData
 from ._ivr_call_request import IvrCallRequestMenuKeyMap
 from ._list_call_task_response_body import ListCallTaskResponseBodyData
@@ -234,22 +376,112 @@ __all__ = [
     ChangeMediaTypeRequest,
     ChangeMediaTypeResponseBody,
     ChangeMediaTypeResponse,
+    CloudAgentLoginRequest,
+    CloudAgentLoginResponseBody,
+    CloudAgentLoginResponse,
+    CloudAgentLogoutRequest,
+    CloudAgentLogoutResponseBody,
+    CloudAgentLogoutResponse,
+    CloudAgentSetUserDataRequest,
+    CloudAgentSetUserDataResponseBody,
+    CloudAgentSetUserDataResponse,
+    CloudAgentUnlinkRequest,
+    CloudAgentUnlinkResponseBody,
+    CloudAgentUnlinkResponse,
+    CloudBatchCreateAgentRequest,
+    CloudBatchCreateAgentResponseBody,
+    CloudBatchCreateAgentResponse,
+    CloudBatchGetAgentStatusRequest,
+    CloudBatchGetAgentStatusResponseBody,
+    CloudBatchGetAgentStatusResponse,
+    CloudBatchUpdateAgentRequest,
+    CloudBatchUpdateAgentResponseBody,
+    CloudBatchUpdateAgentResponse,
     CloudCreateAgentRequest,
     CloudCreateAgentResponseBody,
     CloudCreateAgentResponse,
     CloudCreateTaskRequest,
     CloudCreateTaskResponseBody,
     CloudCreateTaskResponse,
+    CloudDeleteAgentRequest,
+    CloudDeleteAgentResponseBody,
+    CloudDeleteAgentResponse,
+    CloudDeleteAgentTelRequest,
+    CloudDeleteAgentTelResponseBody,
+    CloudDeleteAgentTelResponse,
+    CloudGetAgentRequest,
+    CloudGetAgentResponseBody,
+    CloudGetAgentResponse,
+    CloudGetAgentStatusRequest,
+    CloudGetAgentStatusResponseBody,
+    CloudGetAgentStatusResponse,
+    CloudGetObCdrRequest,
+    CloudGetObCdrResponseBody,
+    CloudGetObCdrResponse,
+    CloudGetRecordUrlRequest,
+    CloudGetRecordUrlResponseBody,
+    CloudGetRecordUrlResponse,
     CloudImportTaskTelRequest,
     CloudImportTaskTelShrinkRequest,
     CloudImportTaskTelResponseBody,
     CloudImportTaskTelResponse,
+    CloudInterruptIvrRequest,
+    CloudInterruptIvrResponseBody,
+    CloudInterruptIvrResponse,
+    CloudListAgentTelRequest,
+    CloudListAgentTelResponseBody,
+    CloudListAgentTelResponse,
+    CloudListFreeAgentRequest,
+    CloudListFreeAgentResponseBody,
+    CloudListFreeAgentResponse,
+    CloudListOnlineAgentRequest,
+    CloudListOnlineAgentResponseBody,
+    CloudListOnlineAgentResponse,
+    CloudOutboundObClidReportRequest,
+    CloudOutboundObClidReportResponseBody,
+    CloudOutboundObClidReportResponse,
+    CloudOutboundPreviewObReportRequest,
+    CloudOutboundPreviewObReportResponseBody,
+    CloudOutboundPreviewObReportResponse,
+    CloudPreviewoutcallRequest,
+    CloudPreviewoutcallResponseBody,
+    CloudPreviewoutcallResponse,
+    CloudQueryAgentRequest,
+    CloudQueryAgentResponseBody,
+    CloudQueryAgentResponse,
+    CloudQueryAgentCnoAndNameRequest,
+    CloudQueryAgentCnoAndNameResponseBody,
+    CloudQueryAgentCnoAndNameResponse,
+    CloudQueryAgentGroupRequest,
+    CloudQueryAgentGroupResponseBody,
+    CloudQueryAgentGroupResponse,
+    CloudQueryAgentSkillRequest,
+    CloudQueryAgentSkillResponseBody,
+    CloudQueryAgentSkillResponse,
+    CloudQueryIbCdrRequest,
+    CloudQueryIbCdrResponseBody,
+    CloudQueryIbCdrResponse,
+    CloudQueryObCdrRequest,
+    CloudQueryObCdrResponseBody,
+    CloudQueryObCdrResponse,
+    CloudQueryPredictiveCallCdrRequest,
+    CloudQueryPredictiveCallCdrResponseBody,
+    CloudQueryPredictiveCallCdrResponse,
+    CloudQueryWebcallCdrRequest,
+    CloudQueryWebcallCdrResponseBody,
+    CloudQueryWebcallCdrResponse,
     CloudStartTaskRequest,
     CloudStartTaskResponseBody,
     CloudStartTaskResponse,
+    CloudUpdateAgentRequest,
+    CloudUpdateAgentResponseBody,
+    CloudUpdateAgentResponse,
     CloudUpdateTaskRequest,
     CloudUpdateTaskResponseBody,
     CloudUpdateTaskResponse,
+    CloudWebcallRequest,
+    CloudWebcallResponseBody,
+    CloudWebcallResponse,
     CreateCallTaskRequest,
     CreateCallTaskResponseBody,
     CreateCallTaskResponse,
@@ -401,14 +633,66 @@ __all__ = [
     UploadRobotTaskCalledFileRequest,
     UploadRobotTaskCalledFileResponseBody,
     UploadRobotTaskCalledFileResponse,
+    CloudAgentLoginResponseBodyData,
+    CloudAgentLogoutResponseBodyData,
+    CloudAgentSetUserDataResponseBodyData,
+    CloudAgentUnlinkResponseBodyData,
+    CloudBatchCreateAgentResponseBodyData,
+    CloudBatchGetAgentStatusResponseBodyData,
+    CloudBatchUpdateAgentResponseBodyData,
     CloudCreateAgentResponseBodyDataAgent,
     CloudCreateAgentResponseBodyDataAgentSkills,
     CloudCreateAgentResponseBodyData,
     CloudCreateTaskResponseBodyData,
+    CloudDeleteAgentResponseBodyData,
+    CloudDeleteAgentTelResponseBodyData,
+    CloudGetAgentResponseBodyDataAgent,
+    CloudGetAgentResponseBodyData,
+    CloudGetAgentStatusResponseBodyData,
+    CloudGetObCdrResponseBodyDataList,
+    CloudGetObCdrResponseBodyData,
+    CloudGetRecordUrlResponseBodyData,
     CloudImportTaskTelRequestTaskTelList,
     CloudImportTaskTelResponseBodyData,
+    CloudInterruptIvrResponseBodyData,
+    CloudListAgentTelResponseBodyDataList,
+    CloudListAgentTelResponseBodyData,
+    CloudListFreeAgentResponseBodyDataList,
+    CloudListFreeAgentResponseBodyData,
+    CloudListOnlineAgentResponseBodyDataAgentStatuses,
+    CloudListOnlineAgentResponseBodyData,
+    CloudOutboundObClidReportResponseBodyDataList,
+    CloudOutboundObClidReportResponseBodyData,
+    CloudOutboundPreviewObReportResponseBodyDataList,
+    CloudOutboundPreviewObReportResponseBodyData,
+    CloudPreviewoutcallResponseBodyData,
+    CloudQueryAgentResponseBodyDataAgentsAgent,
+    CloudQueryAgentResponseBodyDataAgentsQueueList,
+    CloudQueryAgentResponseBodyDataAgents,
+    CloudQueryAgentResponseBodyData,
+    CloudQueryAgentCnoAndNameResponseBodyDataList,
+    CloudQueryAgentCnoAndNameResponseBodyData,
+    CloudQueryAgentGroupResponseBodyData,
+    CloudQueryAgentSkillResponseBodyDataList,
+    CloudQueryAgentSkillResponseBodyData,
+    CloudQueryIbCdrResponseBodyDataListRecordFile,
+    CloudQueryIbCdrResponseBodyDataList,
+    CloudQueryIbCdrResponseBodyData,
+    CloudQueryObCdrResponseBodyDataListRecordFile,
+    CloudQueryObCdrResponseBodyDataList,
+    CloudQueryObCdrResponseBodyData,
+    CloudQueryPredictiveCallCdrResponseBodyDataListRecordFile,
+    CloudQueryPredictiveCallCdrResponseBodyDataList,
+    CloudQueryPredictiveCallCdrResponseBodyData,
+    CloudQueryWebcallCdrResponseBodyDataListRecordFile,
+    CloudQueryWebcallCdrResponseBodyDataList,
+    CloudQueryWebcallCdrResponseBodyData,
     CloudStartTaskResponseBodyData,
+    CloudUpdateAgentResponseBodyDataAgent,
+    CloudUpdateAgentResponseBodyDataAgentSkills,
+    CloudUpdateAgentResponseBodyData,
     CloudUpdateTaskResponseBodyData,
+    CloudWebcallResponseBodyData,
     GetHotlineQualificationByOrderResponseBodyData,
     IvrCallRequestMenuKeyMap,
     ListCallTaskResponseBodyData,

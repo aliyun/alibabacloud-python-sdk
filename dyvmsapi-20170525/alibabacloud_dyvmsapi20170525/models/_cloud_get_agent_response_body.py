@@ -7,12 +7,12 @@ from typing import List
 from alibabacloud_dyvmsapi20170525 import models as main_models
 from darabonba.model import DaraModel
 
-class CloudCreateAgentResponseBody(DaraModel):
+class CloudGetAgentResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: main_models.CloudCreateAgentResponseBodyData = None,
+        data: main_models.CloudGetAgentResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -57,7 +57,7 @@ class CloudCreateAgentResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.CloudCreateAgentResponseBodyData()
+            temp_model = main_models.CloudGetAgentResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -68,22 +68,17 @@ class CloudCreateAgentResponseBody(DaraModel):
 
         return self
 
-class CloudCreateAgentResponseBodyData(DaraModel):
+class CloudGetAgentResponseBodyData(DaraModel):
     def __init__(
         self,
-        agent: main_models.CloudCreateAgentResponseBodyDataAgent = None,
-        agent_skills: List[main_models.CloudCreateAgentResponseBodyDataAgentSkills] = None,
+        agent: List[main_models.CloudGetAgentResponseBodyDataAgent] = None,
     ):
-        # 座席配置信息
+        # 座席列表数组
         self.agent = agent
-        # 座席所需技能数组
-        self.agent_skills = agent_skills
 
     def validate(self):
         if self.agent:
-            self.agent.validate()
-        if self.agent_skills:
-            for v1 in self.agent_skills:
+            for v1 in self.agent:
                  if v1:
                     v1.validate()
 
@@ -92,141 +87,67 @@ class CloudCreateAgentResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Agent'] = []
         if self.agent is not None:
-            result['Agent'] = self.agent.to_map()
-
-        result['AgentSkills'] = []
-        if self.agent_skills is not None:
-            for k1 in self.agent_skills:
-                result['AgentSkills'].append(k1.to_map() if k1 else None)
+            for k1 in self.agent:
+                result['Agent'].append(k1.to_map() if k1 else None)
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.agent = []
         if m.get('Agent') is not None:
-            temp_model = main_models.CloudCreateAgentResponseBodyDataAgent()
-            self.agent = temp_model.from_map(m.get('Agent'))
-
-        self.agent_skills = []
-        if m.get('AgentSkills') is not None:
-            for k1 in m.get('AgentSkills'):
-                temp_model = main_models.CloudCreateAgentResponseBodyDataAgentSkills()
-                self.agent_skills.append(temp_model.from_map(k1))
+            for k1 in m.get('Agent'):
+                temp_model = main_models.CloudGetAgentResponseBodyDataAgent()
+                self.agent.append(temp_model.from_map(k1))
 
         return self
 
-class CloudCreateAgentResponseBodyDataAgentSkills(DaraModel):
+class CloudGetAgentResponseBodyDataAgent(DaraModel):
     def __init__(
         self,
-        agent_id: str = None,
-        cno: str = None,
-        create_time: str = None,
-        enterprise_id: str = None,
-        id: str = None,
-        skill_id: str = None,
-        skill_level: str = None,
-    ):
-        # 座席id
-        self.agent_id = agent_id
-        self.cno = cno
-        # 创建时间，格式: yyyy-MM-dd HH:mm:ss
-        self.create_time = create_time
-        # 企业编号
-        self.enterprise_id = enterprise_id
-        # queueSkill关系表中id
-        self.id = id
-        # skill的id
-        self.skill_id = skill_id
-        # 技能值
-        self.skill_level = skill_level
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.agent_id is not None:
-            result['AgentId'] = self.agent_id
-
-        if self.cno is not None:
-            result['Cno'] = self.cno
-
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-
-        if self.enterprise_id is not None:
-            result['EnterpriseId'] = self.enterprise_id
-
-        if self.id is not None:
-            result['Id'] = self.id
-
-        if self.skill_id is not None:
-            result['SkillId'] = self.skill_id
-
-        if self.skill_level is not None:
-            result['SkillLevel'] = self.skill_level
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AgentId') is not None:
-            self.agent_id = m.get('AgentId')
-
-        if m.get('Cno') is not None:
-            self.cno = m.get('Cno')
-
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-
-        if m.get('EnterpriseId') is not None:
-            self.enterprise_id = m.get('EnterpriseId')
-
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-
-        if m.get('SkillId') is not None:
-            self.skill_id = m.get('SkillId')
-
-        if m.get('SkillLevel') is not None:
-            self.skill_level = m.get('SkillLevel')
-
-        return self
-
-class CloudCreateAgentResponseBodyDataAgent(DaraModel):
-    def __init__(
-        self,
-        active: str = None,
+        active: int = None,
+        agent_type: int = None,
         area_code: str = None,
+        asr_call_type: str = None,
         bind_tel: str = None,
-        bind_tel_type: str = None,
-        call_power: str = None,
+        bind_tel_type: int = None,
+        call_power: int = None,
         cno: str = None,
+        comment: str = None,
         create_time: str = None,
-        enterprise_id: str = None,
-        ib_record: str = None,
-        id: str = None,
-        is_asr: str = None,
-        is_ob: str = None,
-        is_quality_check: str = None,
+        enterprise_id: int = None,
+        ib_record: int = None,
+        id: int = None,
+        is_asr: int = None,
+        is_axb_call: str = None,
+        is_ob: int = None,
+        is_ob_remember: str = None,
+        login_time: str = None,
+        mrcp_property: str = None,
         name: str = None,
         ob_clid: str = None,
         ob_clid_property: str = None,
-        ob_clid_type: str = None,
-        ob_record: str = None,
-        power: str = None,
-        status: str = None,
+        ob_clid_type: int = None,
+        ob_record: int = None,
+        permit_ob_preview_time: str = None,
+        power: int = None,
+        property: str = None,
+        queue_list: List[str] = None,
+        status: int = None,
+        update_time: str = None,
         webrtc_url_type: str = None,
-        wrapup: str = None,
+        wrapup: int = None,
     ):
         # 是否启用，0：停用，1：启用，默认启用
         self.active = active
+        # 座席类型，1：电话座席，2：电脑座席，默认电话座席
+        self.agent_type = agent_type
         # 区号格式
         self.area_code = area_code
+        # 允许语音识别的通话类型，1:呼入 4：预览外呼 9：主叫外呼 5：预测外呼 2：webcall
+        self.asr_call_type = asr_call_type
         # 座席绑定电话
         self.bind_tel = bind_tel
         # 电话类型，1:固话 2:手机 3:分机 4:软电话
@@ -235,6 +156,8 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         self.call_power = call_power
         # 座席工号
         self.cno = cno
+        # 备注
+        self.comment = comment
         # 创建时间，格式: yyyy-MM-dd HH:mm:ss
         self.create_time = create_time
         # 企业编号
@@ -245,9 +168,16 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         self.id = id
         # 是否开启ASR转写：0：不开启，1：开启，默认不开启
         self.is_asr = is_asr
+        # 是否允许axb外呼，默认1开启 0关闭
+        self.is_axb_call = is_axb_call
         # 是否允许外呼，0：不允许，1：可以，默认允许
         self.is_ob = is_ob
-        self.is_quality_check = is_quality_check
+        # 外呼主叫记忆 1：开启 0：关闭
+        self.is_ob_remember = is_ob_remember
+        # 坐席最后一次登陆的时间
+        self.login_time = login_time
+        # 座席axb外呼是否使用mrcp方式推送语音流配置JSON Str格式数据
+        self.mrcp_property = mrcp_property
         # 座席姓名
         self.name = name
         # 外显号码
@@ -258,10 +188,18 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         self.ob_clid_type = ob_clid_type
         # 外呼是否录音，0：不录音，1：录音，默认录音
         self.ob_record = ob_record
+        # 可外呼时间段用,号分割
+        self.permit_ob_preview_time = permit_ob_preview_time
         # 1：班长席，0：普通座席，默认普通座席
         self.power = power
+        # 座席主动挂机配置Json Str 格式数据 unLink 是否允许主动挂断, 0:关, 1:开，prohibitDuration禁止时长
+        self.property = property
+        # 坐席所属队列
+        self.queue_list = queue_list
         # 座席状态，0:离线，1：在线
         self.status = status
+        # 更新时间，格式: yyyy-MM-dd HH:mm:ss
+        self.update_time = update_time
         # webrtc软电话返回地址，0：企业默认 1：公网域名 2：专线域名 3：公网IP 4：专线IP
         self.webrtc_url_type = webrtc_url_type
         # 整理时间，秒数，默认10秒
@@ -278,8 +216,14 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         if self.active is not None:
             result['Active'] = self.active
 
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.area_code is not None:
             result['AreaCode'] = self.area_code
+
+        if self.asr_call_type is not None:
+            result['AsrCallType'] = self.asr_call_type
 
         if self.bind_tel is not None:
             result['BindTel'] = self.bind_tel
@@ -292,6 +236,9 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
 
         if self.cno is not None:
             result['Cno'] = self.cno
+
+        if self.comment is not None:
+            result['Comment'] = self.comment
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -308,11 +255,20 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         if self.is_asr is not None:
             result['IsAsr'] = self.is_asr
 
+        if self.is_axb_call is not None:
+            result['IsAxbCall'] = self.is_axb_call
+
         if self.is_ob is not None:
             result['IsOb'] = self.is_ob
 
-        if self.is_quality_check is not None:
-            result['IsQualityCheck'] = self.is_quality_check
+        if self.is_ob_remember is not None:
+            result['IsObRemember'] = self.is_ob_remember
+
+        if self.login_time is not None:
+            result['LoginTime'] = self.login_time
+
+        if self.mrcp_property is not None:
+            result['MrcpProperty'] = self.mrcp_property
 
         if self.name is not None:
             result['Name'] = self.name
@@ -329,11 +285,23 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         if self.ob_record is not None:
             result['ObRecord'] = self.ob_record
 
+        if self.permit_ob_preview_time is not None:
+            result['PermitObPreviewTime'] = self.permit_ob_preview_time
+
         if self.power is not None:
             result['Power'] = self.power
 
+        if self.property is not None:
+            result['Property'] = self.property
+
+        if self.queue_list is not None:
+            result['QueueList'] = self.queue_list
+
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
 
         if self.webrtc_url_type is not None:
             result['WebrtcUrlType'] = self.webrtc_url_type
@@ -348,8 +316,14 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         if m.get('Active') is not None:
             self.active = m.get('Active')
 
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('AreaCode') is not None:
             self.area_code = m.get('AreaCode')
+
+        if m.get('AsrCallType') is not None:
+            self.asr_call_type = m.get('AsrCallType')
 
         if m.get('BindTel') is not None:
             self.bind_tel = m.get('BindTel')
@@ -362,6 +336,9 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
 
         if m.get('Cno') is not None:
             self.cno = m.get('Cno')
+
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
@@ -378,11 +355,20 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         if m.get('IsAsr') is not None:
             self.is_asr = m.get('IsAsr')
 
+        if m.get('IsAxbCall') is not None:
+            self.is_axb_call = m.get('IsAxbCall')
+
         if m.get('IsOb') is not None:
             self.is_ob = m.get('IsOb')
 
-        if m.get('IsQualityCheck') is not None:
-            self.is_quality_check = m.get('IsQualityCheck')
+        if m.get('IsObRemember') is not None:
+            self.is_ob_remember = m.get('IsObRemember')
+
+        if m.get('LoginTime') is not None:
+            self.login_time = m.get('LoginTime')
+
+        if m.get('MrcpProperty') is not None:
+            self.mrcp_property = m.get('MrcpProperty')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -399,11 +385,23 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         if m.get('ObRecord') is not None:
             self.ob_record = m.get('ObRecord')
 
+        if m.get('PermitObPreviewTime') is not None:
+            self.permit_ob_preview_time = m.get('PermitObPreviewTime')
+
         if m.get('Power') is not None:
             self.power = m.get('Power')
 
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+
+        if m.get('QueueList') is not None:
+            self.queue_list = m.get('QueueList')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
 
         if m.get('WebrtcUrlType') is not None:
             self.webrtc_url_type = m.get('WebrtcUrlType')

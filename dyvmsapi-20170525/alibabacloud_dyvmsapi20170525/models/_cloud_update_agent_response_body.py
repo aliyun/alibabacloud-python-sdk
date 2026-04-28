@@ -7,12 +7,12 @@ from typing import List
 from alibabacloud_dyvmsapi20170525 import models as main_models
 from darabonba.model import DaraModel
 
-class CloudCreateAgentResponseBody(DaraModel):
+class CloudUpdateAgentResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: main_models.CloudCreateAgentResponseBodyData = None,
+        data: main_models.CloudUpdateAgentResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -57,7 +57,7 @@ class CloudCreateAgentResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.CloudCreateAgentResponseBodyData()
+            temp_model = main_models.CloudUpdateAgentResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -68,11 +68,11 @@ class CloudCreateAgentResponseBody(DaraModel):
 
         return self
 
-class CloudCreateAgentResponseBodyData(DaraModel):
+class CloudUpdateAgentResponseBodyData(DaraModel):
     def __init__(
         self,
-        agent: main_models.CloudCreateAgentResponseBodyDataAgent = None,
-        agent_skills: List[main_models.CloudCreateAgentResponseBodyDataAgentSkills] = None,
+        agent: main_models.CloudUpdateAgentResponseBodyDataAgent = None,
+        agent_skills: List[main_models.CloudUpdateAgentResponseBodyDataAgentSkills] = None,
     ):
         # 座席配置信息
         self.agent = agent
@@ -105,18 +105,18 @@ class CloudCreateAgentResponseBodyData(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Agent') is not None:
-            temp_model = main_models.CloudCreateAgentResponseBodyDataAgent()
+            temp_model = main_models.CloudUpdateAgentResponseBodyDataAgent()
             self.agent = temp_model.from_map(m.get('Agent'))
 
         self.agent_skills = []
         if m.get('AgentSkills') is not None:
             for k1 in m.get('AgentSkills'):
-                temp_model = main_models.CloudCreateAgentResponseBodyDataAgentSkills()
+                temp_model = main_models.CloudUpdateAgentResponseBodyDataAgentSkills()
                 self.agent_skills.append(temp_model.from_map(k1))
 
         return self
 
-class CloudCreateAgentResponseBodyDataAgentSkills(DaraModel):
+class CloudUpdateAgentResponseBodyDataAgentSkills(DaraModel):
     def __init__(
         self,
         agent_id: str = None,
@@ -197,10 +197,11 @@ class CloudCreateAgentResponseBodyDataAgentSkills(DaraModel):
 
         return self
 
-class CloudCreateAgentResponseBodyDataAgent(DaraModel):
+class CloudUpdateAgentResponseBodyDataAgent(DaraModel):
     def __init__(
         self,
         active: str = None,
+        agent_type: str = None,
         area_code: str = None,
         bind_tel: str = None,
         bind_tel_type: str = None,
@@ -225,6 +226,8 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
     ):
         # 是否启用，0：停用，1：启用，默认启用
         self.active = active
+        # 座席类型，1：电话座席，2：电脑座席，默认电话座席
+        self.agent_type = agent_type
         # 区号格式
         self.area_code = area_code
         # 座席绑定电话
@@ -277,6 +280,9 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
             result = _map
         if self.active is not None:
             result['Active'] = self.active
+
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
 
         if self.area_code is not None:
             result['AreaCode'] = self.area_code
@@ -347,6 +353,9 @@ class CloudCreateAgentResponseBodyDataAgent(DaraModel):
         m = m or dict()
         if m.get('Active') is not None:
             self.active = m.get('Active')
+
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
 
         if m.get('AreaCode') is not None:
             self.area_code = m.get('AreaCode')

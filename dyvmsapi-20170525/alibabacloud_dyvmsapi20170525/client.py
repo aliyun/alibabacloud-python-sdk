@@ -600,6 +600,764 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_media_type_with_options_async(request, runtime)
 
+    def cloud_agent_login_with_options(
+        self,
+        request: main_models.CloudAgentLoginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentLoginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bind_tel):
+            query['BindTel'] = request.bind_tel
+        if not DaraCore.is_null(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.login_status):
+            query['LoginStatus'] = request.login_status
+        if not DaraCore.is_null(request.pause_description):
+            query['PauseDescription'] = request.pause_description
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentLogin',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentLoginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_agent_login_with_options_async(
+        self,
+        request: main_models.CloudAgentLoginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentLoginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bind_tel):
+            query['BindTel'] = request.bind_tel
+        if not DaraCore.is_null(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.login_status):
+            query['LoginStatus'] = request.login_status
+        if not DaraCore.is_null(request.pause_description):
+            query['PauseDescription'] = request.pause_description
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentLogin',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentLoginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_agent_login(
+        self,
+        request: main_models.CloudAgentLoginRequest,
+    ) -> main_models.CloudAgentLoginResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_agent_login_with_options(request, runtime)
+
+    async def cloud_agent_login_async(
+        self,
+        request: main_models.CloudAgentLoginRequest,
+    ) -> main_models.CloudAgentLoginResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_agent_login_with_options_async(request, runtime)
+
+    def cloud_agent_logout_with_options(
+        self,
+        request: main_models.CloudAgentLogoutRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentLogoutResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ignore_offline):
+            query['IgnoreOffline'] = request.ignore_offline
+        if not DaraCore.is_null(request.is_kickout):
+            query['IsKickout'] = request.is_kickout
+        if not DaraCore.is_null(request.remove_binding):
+            query['RemoveBinding'] = request.remove_binding
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentLogout',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentLogoutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_agent_logout_with_options_async(
+        self,
+        request: main_models.CloudAgentLogoutRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentLogoutResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ignore_offline):
+            query['IgnoreOffline'] = request.ignore_offline
+        if not DaraCore.is_null(request.is_kickout):
+            query['IsKickout'] = request.is_kickout
+        if not DaraCore.is_null(request.remove_binding):
+            query['RemoveBinding'] = request.remove_binding
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentLogout',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentLogoutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_agent_logout(
+        self,
+        request: main_models.CloudAgentLogoutRequest,
+    ) -> main_models.CloudAgentLogoutResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_agent_logout_with_options(request, runtime)
+
+    async def cloud_agent_logout_async(
+        self,
+        request: main_models.CloudAgentLogoutRequest,
+    ) -> main_models.CloudAgentLogoutResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_agent_logout_with_options_async(request, runtime)
+
+    def cloud_agent_set_user_data_with_options(
+        self,
+        request: main_models.CloudAgentSetUserDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentSetUserDataResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentSetUserData',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentSetUserDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_agent_set_user_data_with_options_async(
+        self,
+        request: main_models.CloudAgentSetUserDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentSetUserDataResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentSetUserData',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentSetUserDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_agent_set_user_data(
+        self,
+        request: main_models.CloudAgentSetUserDataRequest,
+    ) -> main_models.CloudAgentSetUserDataResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_agent_set_user_data_with_options(request, runtime)
+
+    async def cloud_agent_set_user_data_async(
+        self,
+        request: main_models.CloudAgentSetUserDataRequest,
+    ) -> main_models.CloudAgentSetUserDataResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_agent_set_user_data_with_options_async(request, runtime)
+
+    def cloud_agent_unlink_with_options(
+        self,
+        request: main_models.CloudAgentUnlinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentUnlinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.side):
+            query['Side'] = request.side
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentUnlink',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentUnlinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_agent_unlink_with_options_async(
+        self,
+        request: main_models.CloudAgentUnlinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudAgentUnlinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.side):
+            query['Side'] = request.side
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudAgentUnlink',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudAgentUnlinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_agent_unlink(
+        self,
+        request: main_models.CloudAgentUnlinkRequest,
+    ) -> main_models.CloudAgentUnlinkResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_agent_unlink_with_options(request, runtime)
+
+    async def cloud_agent_unlink_async(
+        self,
+        request: main_models.CloudAgentUnlinkRequest,
+    ) -> main_models.CloudAgentUnlinkResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_agent_unlink_with_options_async(request, runtime)
+
+    def cloud_batch_create_agent_with_options(
+        self,
+        request: main_models.CloudBatchCreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudBatchCreateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.area_code):
+            query['AreaCode'] = request.area_code
+        if not DaraCore.is_null(request.call_power):
+            query['CallPower'] = request.call_power
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.end_cno):
+            query['EndCno'] = request.end_cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ib_record):
+            query['IbRecord'] = request.ib_record
+        if not DaraCore.is_null(request.is_asr):
+            query['IsAsr'] = request.is_asr
+        if not DaraCore.is_null(request.is_ob):
+            query['IsOb'] = request.is_ob
+        if not DaraCore.is_null(request.is_quality_check):
+            query['IsQualityCheck'] = request.is_quality_check
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_property):
+            query['ObClidProperty'] = request.ob_clid_property
+        if not DaraCore.is_null(request.ob_clid_type):
+            query['ObClidType'] = request.ob_clid_type
+        if not DaraCore.is_null(request.ob_record):
+            query['ObRecord'] = request.ob_record
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.power):
+            query['Power'] = request.power
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.skill_ids):
+            query['SkillIds'] = request.skill_ids
+        if not DaraCore.is_null(request.skill_levels):
+            query['SkillLevels'] = request.skill_levels
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudBatchCreateAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudBatchCreateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_batch_create_agent_with_options_async(
+        self,
+        request: main_models.CloudBatchCreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudBatchCreateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.area_code):
+            query['AreaCode'] = request.area_code
+        if not DaraCore.is_null(request.call_power):
+            query['CallPower'] = request.call_power
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.end_cno):
+            query['EndCno'] = request.end_cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ib_record):
+            query['IbRecord'] = request.ib_record
+        if not DaraCore.is_null(request.is_asr):
+            query['IsAsr'] = request.is_asr
+        if not DaraCore.is_null(request.is_ob):
+            query['IsOb'] = request.is_ob
+        if not DaraCore.is_null(request.is_quality_check):
+            query['IsQualityCheck'] = request.is_quality_check
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_property):
+            query['ObClidProperty'] = request.ob_clid_property
+        if not DaraCore.is_null(request.ob_clid_type):
+            query['ObClidType'] = request.ob_clid_type
+        if not DaraCore.is_null(request.ob_record):
+            query['ObRecord'] = request.ob_record
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.power):
+            query['Power'] = request.power
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.skill_ids):
+            query['SkillIds'] = request.skill_ids
+        if not DaraCore.is_null(request.skill_levels):
+            query['SkillLevels'] = request.skill_levels
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudBatchCreateAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudBatchCreateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_batch_create_agent(
+        self,
+        request: main_models.CloudBatchCreateAgentRequest,
+    ) -> main_models.CloudBatchCreateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_batch_create_agent_with_options(request, runtime)
+
+    async def cloud_batch_create_agent_async(
+        self,
+        request: main_models.CloudBatchCreateAgentRequest,
+    ) -> main_models.CloudBatchCreateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_batch_create_agent_with_options_async(request, runtime)
+
+    def cloud_batch_get_agent_status_with_options(
+        self,
+        request: main_models.CloudBatchGetAgentStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudBatchGetAgentStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudBatchGetAgentStatus',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudBatchGetAgentStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_batch_get_agent_status_with_options_async(
+        self,
+        request: main_models.CloudBatchGetAgentStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudBatchGetAgentStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudBatchGetAgentStatus',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudBatchGetAgentStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_batch_get_agent_status(
+        self,
+        request: main_models.CloudBatchGetAgentStatusRequest,
+    ) -> main_models.CloudBatchGetAgentStatusResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_batch_get_agent_status_with_options(request, runtime)
+
+    async def cloud_batch_get_agent_status_async(
+        self,
+        request: main_models.CloudBatchGetAgentStatusRequest,
+    ) -> main_models.CloudBatchGetAgentStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_batch_get_agent_status_with_options_async(request, runtime)
+
+    def cloud_batch_update_agent_with_options(
+        self,
+        request: main_models.CloudBatchUpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudBatchUpdateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.area_code):
+            query['AreaCode'] = request.area_code
+        if not DaraCore.is_null(request.call_power):
+            query['CallPower'] = request.call_power
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ib_record):
+            query['IbRecord'] = request.ib_record
+        if not DaraCore.is_null(request.is_asr):
+            query['IsAsr'] = request.is_asr
+        if not DaraCore.is_null(request.is_ob):
+            query['IsOb'] = request.is_ob
+        if not DaraCore.is_null(request.is_ob_remember):
+            query['IsObRemember'] = request.is_ob_remember
+        if not DaraCore.is_null(request.is_quality_check):
+            query['IsQualityCheck'] = request.is_quality_check
+        if not DaraCore.is_null(request.is_random):
+            query['IsRandom'] = request.is_random
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_property):
+            query['ObClidProperty'] = request.ob_clid_property
+        if not DaraCore.is_null(request.ob_clid_type):
+            query['ObClidType'] = request.ob_clid_type
+        if not DaraCore.is_null(request.ob_record):
+            query['ObRecord'] = request.ob_record
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.permit_ob_preview_time):
+            query['PermitObPreviewTime'] = request.permit_ob_preview_time
+        if not DaraCore.is_null(request.power):
+            query['Power'] = request.power
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudBatchUpdateAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudBatchUpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_batch_update_agent_with_options_async(
+        self,
+        request: main_models.CloudBatchUpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudBatchUpdateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.area_code):
+            query['AreaCode'] = request.area_code
+        if not DaraCore.is_null(request.call_power):
+            query['CallPower'] = request.call_power
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ib_record):
+            query['IbRecord'] = request.ib_record
+        if not DaraCore.is_null(request.is_asr):
+            query['IsAsr'] = request.is_asr
+        if not DaraCore.is_null(request.is_ob):
+            query['IsOb'] = request.is_ob
+        if not DaraCore.is_null(request.is_ob_remember):
+            query['IsObRemember'] = request.is_ob_remember
+        if not DaraCore.is_null(request.is_quality_check):
+            query['IsQualityCheck'] = request.is_quality_check
+        if not DaraCore.is_null(request.is_random):
+            query['IsRandom'] = request.is_random
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_property):
+            query['ObClidProperty'] = request.ob_clid_property
+        if not DaraCore.is_null(request.ob_clid_type):
+            query['ObClidType'] = request.ob_clid_type
+        if not DaraCore.is_null(request.ob_record):
+            query['ObRecord'] = request.ob_record
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.permit_ob_preview_time):
+            query['PermitObPreviewTime'] = request.permit_ob_preview_time
+        if not DaraCore.is_null(request.power):
+            query['Power'] = request.power
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudBatchUpdateAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudBatchUpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_batch_update_agent(
+        self,
+        request: main_models.CloudBatchUpdateAgentRequest,
+    ) -> main_models.CloudBatchUpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_batch_update_agent_with_options(request, runtime)
+
+    async def cloud_batch_update_agent_async(
+        self,
+        request: main_models.CloudBatchUpdateAgentRequest,
+    ) -> main_models.CloudBatchUpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_batch_update_agent_with_options_async(request, runtime)
+
     def cloud_create_agent_with_options(
         self,
         request: main_models.CloudCreateAgentRequest,
@@ -1048,6 +1806,522 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.cloud_create_task_with_options_async(request, runtime)
 
+    def cloud_delete_agent_with_options(
+        self,
+        request: main_models.CloudDeleteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudDeleteAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudDeleteAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudDeleteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_delete_agent_with_options_async(
+        self,
+        request: main_models.CloudDeleteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudDeleteAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudDeleteAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudDeleteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_delete_agent(
+        self,
+        request: main_models.CloudDeleteAgentRequest,
+    ) -> main_models.CloudDeleteAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_delete_agent_with_options(request, runtime)
+
+    async def cloud_delete_agent_async(
+        self,
+        request: main_models.CloudDeleteAgentRequest,
+    ) -> main_models.CloudDeleteAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_delete_agent_with_options_async(request, runtime)
+
+    def cloud_delete_agent_tel_with_options(
+        self,
+        request: main_models.CloudDeleteAgentTelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudDeleteAgentTelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudDeleteAgentTel',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudDeleteAgentTelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_delete_agent_tel_with_options_async(
+        self,
+        request: main_models.CloudDeleteAgentTelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudDeleteAgentTelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudDeleteAgentTel',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudDeleteAgentTelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_delete_agent_tel(
+        self,
+        request: main_models.CloudDeleteAgentTelRequest,
+    ) -> main_models.CloudDeleteAgentTelResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_delete_agent_tel_with_options(request, runtime)
+
+    async def cloud_delete_agent_tel_async(
+        self,
+        request: main_models.CloudDeleteAgentTelRequest,
+    ) -> main_models.CloudDeleteAgentTelResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_delete_agent_tel_with_options_async(request, runtime)
+
+    def cloud_get_agent_with_options(
+        self,
+        request: main_models.CloudGetAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_get_agent_with_options_async(
+        self,
+        request: main_models.CloudGetAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_get_agent(
+        self,
+        request: main_models.CloudGetAgentRequest,
+    ) -> main_models.CloudGetAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_get_agent_with_options(request, runtime)
+
+    async def cloud_get_agent_async(
+        self,
+        request: main_models.CloudGetAgentRequest,
+    ) -> main_models.CloudGetAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_get_agent_with_options_async(request, runtime)
+
+    def cloud_get_agent_status_with_options(
+        self,
+        request: main_models.CloudGetAgentStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetAgentStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetAgentStatus',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetAgentStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_get_agent_status_with_options_async(
+        self,
+        request: main_models.CloudGetAgentStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetAgentStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetAgentStatus',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetAgentStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_get_agent_status(
+        self,
+        request: main_models.CloudGetAgentStatusRequest,
+    ) -> main_models.CloudGetAgentStatusResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_get_agent_status_with_options(request, runtime)
+
+    async def cloud_get_agent_status_async(
+        self,
+        request: main_models.CloudGetAgentStatusRequest,
+    ) -> main_models.CloudGetAgentStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_get_agent_status_with_options_async(request, runtime)
+
+    def cloud_get_ob_cdr_with_options(
+        self,
+        request: main_models.CloudGetObCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetObCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetObCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetObCdrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_get_ob_cdr_with_options_async(
+        self,
+        request: main_models.CloudGetObCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetObCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetObCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetObCdrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_get_ob_cdr(
+        self,
+        request: main_models.CloudGetObCdrRequest,
+    ) -> main_models.CloudGetObCdrResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_get_ob_cdr_with_options(request, runtime)
+
+    async def cloud_get_ob_cdr_async(
+        self,
+        request: main_models.CloudGetObCdrRequest,
+    ) -> main_models.CloudGetObCdrResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_get_ob_cdr_with_options_async(request, runtime)
+
+    def cloud_get_record_url_with_options(
+        self,
+        request: main_models.CloudGetRecordUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetRecordUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_type):
+            query['CallType'] = request.call_type
+        if not DaraCore.is_null(request.download):
+            query['Download'] = request.download
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.record_file):
+            query['RecordFile'] = request.record_file
+        if not DaraCore.is_null(request.record_format):
+            query['RecordFormat'] = request.record_format
+        if not DaraCore.is_null(request.record_side):
+            query['RecordSide'] = request.record_side
+        if not DaraCore.is_null(request.record_type):
+            query['RecordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetRecordUrl',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetRecordUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_get_record_url_with_options_async(
+        self,
+        request: main_models.CloudGetRecordUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudGetRecordUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_type):
+            query['CallType'] = request.call_type
+        if not DaraCore.is_null(request.download):
+            query['Download'] = request.download
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.record_file):
+            query['RecordFile'] = request.record_file
+        if not DaraCore.is_null(request.record_format):
+            query['RecordFormat'] = request.record_format
+        if not DaraCore.is_null(request.record_side):
+            query['RecordSide'] = request.record_side
+        if not DaraCore.is_null(request.record_type):
+            query['RecordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudGetRecordUrl',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudGetRecordUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_get_record_url(
+        self,
+        request: main_models.CloudGetRecordUrlRequest,
+    ) -> main_models.CloudGetRecordUrlResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_get_record_url_with_options(request, runtime)
+
+    async def cloud_get_record_url_async(
+        self,
+        request: main_models.CloudGetRecordUrlRequest,
+    ) -> main_models.CloudGetRecordUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_get_record_url_with_options_async(request, runtime)
+
     def cloud_import_task_tel_with_options(
         self,
         tmp_req: main_models.CloudImportTaskTelRequest,
@@ -1174,6 +2448,1720 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.cloud_import_task_tel_with_options_async(request, runtime)
 
+    def cloud_interrupt_ivr_with_options(
+        self,
+        request: main_models.CloudInterruptIvrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudInterruptIvrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.check_name):
+            query['CheckName'] = request.check_name
+        if not DaraCore.is_null(request.check_value):
+            query['CheckValue'] = request.check_value
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field):
+            query['UserField'] = request.user_field
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudInterruptIvr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudInterruptIvrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_interrupt_ivr_with_options_async(
+        self,
+        request: main_models.CloudInterruptIvrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudInterruptIvrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.check_name):
+            query['CheckName'] = request.check_name
+        if not DaraCore.is_null(request.check_value):
+            query['CheckValue'] = request.check_value
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field):
+            query['UserField'] = request.user_field
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudInterruptIvr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudInterruptIvrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_interrupt_ivr(
+        self,
+        request: main_models.CloudInterruptIvrRequest,
+    ) -> main_models.CloudInterruptIvrResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_interrupt_ivr_with_options(request, runtime)
+
+    async def cloud_interrupt_ivr_async(
+        self,
+        request: main_models.CloudInterruptIvrRequest,
+    ) -> main_models.CloudInterruptIvrResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_interrupt_ivr_with_options_async(request, runtime)
+
+    def cloud_list_agent_tel_with_options(
+        self,
+        request: main_models.CloudListAgentTelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudListAgentTelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudListAgentTel',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudListAgentTelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_list_agent_tel_with_options_async(
+        self,
+        request: main_models.CloudListAgentTelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudListAgentTelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudListAgentTel',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudListAgentTelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_list_agent_tel(
+        self,
+        request: main_models.CloudListAgentTelRequest,
+    ) -> main_models.CloudListAgentTelResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_list_agent_tel_with_options(request, runtime)
+
+    async def cloud_list_agent_tel_async(
+        self,
+        request: main_models.CloudListAgentTelRequest,
+    ) -> main_models.CloudListAgentTelResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_list_agent_tel_with_options_async(request, runtime)
+
+    def cloud_list_free_agent_with_options(
+        self,
+        request: main_models.CloudListFreeAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudListFreeAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudListFreeAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudListFreeAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_list_free_agent_with_options_async(
+        self,
+        request: main_models.CloudListFreeAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudListFreeAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudListFreeAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudListFreeAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_list_free_agent(
+        self,
+        request: main_models.CloudListFreeAgentRequest,
+    ) -> main_models.CloudListFreeAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_list_free_agent_with_options(request, runtime)
+
+    async def cloud_list_free_agent_async(
+        self,
+        request: main_models.CloudListFreeAgentRequest,
+    ) -> main_models.CloudListFreeAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_list_free_agent_with_options_async(request, runtime)
+
+    def cloud_list_online_agent_with_options(
+        self,
+        request: main_models.CloudListOnlineAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudListOnlineAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pause_description):
+            query['PauseDescription'] = request.pause_description
+        if not DaraCore.is_null(request.pause_type):
+            query['PauseType'] = request.pause_type
+        if not DaraCore.is_null(request.qnos):
+            query['Qnos'] = request.qnos
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.state_code):
+            query['StateCode'] = request.state_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudListOnlineAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudListOnlineAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_list_online_agent_with_options_async(
+        self,
+        request: main_models.CloudListOnlineAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudListOnlineAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pause_description):
+            query['PauseDescription'] = request.pause_description
+        if not DaraCore.is_null(request.pause_type):
+            query['PauseType'] = request.pause_type
+        if not DaraCore.is_null(request.qnos):
+            query['Qnos'] = request.qnos
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.state_code):
+            query['StateCode'] = request.state_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudListOnlineAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudListOnlineAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_list_online_agent(
+        self,
+        request: main_models.CloudListOnlineAgentRequest,
+    ) -> main_models.CloudListOnlineAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_list_online_agent_with_options(request, runtime)
+
+    async def cloud_list_online_agent_async(
+        self,
+        request: main_models.CloudListOnlineAgentRequest,
+    ) -> main_models.CloudListOnlineAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_list_online_agent_with_options_async(request, runtime)
+
+    def cloud_outbound_ob_clid_report_with_options(
+        self,
+        request: main_models.CloudOutboundObClidReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudOutboundObClidReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.area_codes):
+            query['AreaCodes'] = request.area_codes
+        if not DaraCore.is_null(request.end_hour):
+            query['EndHour'] = request.end_hour
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_hour):
+            query['StartHour'] = request.start_hour
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.statistic_method):
+            query['StatisticMethod'] = request.statistic_method
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudOutboundObClidReport',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudOutboundObClidReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_outbound_ob_clid_report_with_options_async(
+        self,
+        request: main_models.CloudOutboundObClidReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudOutboundObClidReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.area_codes):
+            query['AreaCodes'] = request.area_codes
+        if not DaraCore.is_null(request.end_hour):
+            query['EndHour'] = request.end_hour
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_hour):
+            query['StartHour'] = request.start_hour
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.statistic_method):
+            query['StatisticMethod'] = request.statistic_method
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudOutboundObClidReport',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudOutboundObClidReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_outbound_ob_clid_report(
+        self,
+        request: main_models.CloudOutboundObClidReportRequest,
+    ) -> main_models.CloudOutboundObClidReportResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_outbound_ob_clid_report_with_options(request, runtime)
+
+    async def cloud_outbound_ob_clid_report_async(
+        self,
+        request: main_models.CloudOutboundObClidReportRequest,
+    ) -> main_models.CloudOutboundObClidReportResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_outbound_ob_clid_report_with_options_async(request, runtime)
+
+    def cloud_outbound_preview_ob_report_with_options(
+        self,
+        request: main_models.CloudOutboundPreviewObReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudOutboundPreviewObReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.end_hour):
+            query['EndHour'] = request.end_hour
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_hour):
+            query['StartHour'] = request.start_hour
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.statistic_method):
+            query['StatisticMethod'] = request.statistic_method
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudOutboundPreviewObReport',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudOutboundPreviewObReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_outbound_preview_ob_report_with_options_async(
+        self,
+        request: main_models.CloudOutboundPreviewObReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudOutboundPreviewObReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.end_hour):
+            query['EndHour'] = request.end_hour
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_hour):
+            query['StartHour'] = request.start_hour
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.statistic_method):
+            query['StatisticMethod'] = request.statistic_method
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudOutboundPreviewObReport',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudOutboundPreviewObReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_outbound_preview_ob_report(
+        self,
+        request: main_models.CloudOutboundPreviewObReportRequest,
+    ) -> main_models.CloudOutboundPreviewObReportResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_outbound_preview_ob_report_with_options(request, runtime)
+
+    async def cloud_outbound_preview_ob_report_async(
+        self,
+        request: main_models.CloudOutboundPreviewObReportRequest,
+    ) -> main_models.CloudOutboundPreviewObReportResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_outbound_preview_ob_report_with_options_async(request, runtime)
+
+    def cloud_previewoutcall_with_options(
+        self,
+        request: main_models.CloudPreviewoutcallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudPreviewoutcallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_tels):
+            query['BackupTels'] = request.backup_tels
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.cdr_is_asr):
+            query['CdrIsAsr'] = request.cdr_is_asr
+        if not DaraCore.is_null(request.clid_list):
+            query['ClidList'] = request.clid_list
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.crn_id):
+            query['CrnId'] = request.crn_id
+        if not DaraCore.is_null(request.dial_tel_timeout):
+            query['DialTelTimeout'] = request.dial_tel_timeout
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.is_investigation):
+            query['IsInvestigation'] = request.is_investigation
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_area_code):
+            query['ObClidAreaCode'] = request.ob_clid_area_code
+        if not DaraCore.is_null(request.ob_clid_group):
+            query['ObClidGroup'] = request.ob_clid_group
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        if not DaraCore.is_null(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudPreviewoutcall',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudPreviewoutcallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_previewoutcall_with_options_async(
+        self,
+        request: main_models.CloudPreviewoutcallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudPreviewoutcallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_tels):
+            query['BackupTels'] = request.backup_tels
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.cdr_is_asr):
+            query['CdrIsAsr'] = request.cdr_is_asr
+        if not DaraCore.is_null(request.clid_list):
+            query['ClidList'] = request.clid_list
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.crn_id):
+            query['CrnId'] = request.crn_id
+        if not DaraCore.is_null(request.dial_tel_timeout):
+            query['DialTelTimeout'] = request.dial_tel_timeout
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.is_investigation):
+            query['IsInvestigation'] = request.is_investigation
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_area_code):
+            query['ObClidAreaCode'] = request.ob_clid_area_code
+        if not DaraCore.is_null(request.ob_clid_group):
+            query['ObClidGroup'] = request.ob_clid_group
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        if not DaraCore.is_null(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudPreviewoutcall',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudPreviewoutcallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_previewoutcall(
+        self,
+        request: main_models.CloudPreviewoutcallRequest,
+    ) -> main_models.CloudPreviewoutcallResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_previewoutcall_with_options(request, runtime)
+
+    async def cloud_previewoutcall_async(
+        self,
+        request: main_models.CloudPreviewoutcallRequest,
+    ) -> main_models.CloudPreviewoutcallResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_previewoutcall_with_options_async(request, runtime)
+
+    def cloud_query_agent_with_options(
+        self,
+        request: main_models.CloudQueryAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.qno):
+            query['Qno'] = request.qno
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.return_queue):
+            query['ReturnQueue'] = request.return_queue
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_agent_with_options_async(
+        self,
+        request: main_models.CloudQueryAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.qno):
+            query['Qno'] = request.qno
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.return_queue):
+            query['ReturnQueue'] = request.return_queue
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_agent(
+        self,
+        request: main_models.CloudQueryAgentRequest,
+    ) -> main_models.CloudQueryAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_agent_with_options(request, runtime)
+
+    async def cloud_query_agent_async(
+        self,
+        request: main_models.CloudQueryAgentRequest,
+    ) -> main_models.CloudQueryAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_agent_with_options_async(request, runtime)
+
+    def cloud_query_agent_cno_and_name_with_options(
+        self,
+        request: main_models.CloudQueryAgentCnoAndNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentCnoAndNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgentCnoAndName',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentCnoAndNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_agent_cno_and_name_with_options_async(
+        self,
+        request: main_models.CloudQueryAgentCnoAndNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentCnoAndNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgentCnoAndName',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentCnoAndNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_agent_cno_and_name(
+        self,
+        request: main_models.CloudQueryAgentCnoAndNameRequest,
+    ) -> main_models.CloudQueryAgentCnoAndNameResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_agent_cno_and_name_with_options(request, runtime)
+
+    async def cloud_query_agent_cno_and_name_async(
+        self,
+        request: main_models.CloudQueryAgentCnoAndNameRequest,
+    ) -> main_models.CloudQueryAgentCnoAndNameResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_agent_cno_and_name_with_options_async(request, runtime)
+
+    def cloud_query_agent_group_with_options(
+        self,
+        request: main_models.CloudQueryAgentGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgentGroup',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_agent_group_with_options_async(
+        self,
+        request: main_models.CloudQueryAgentGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgentGroup',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_agent_group(
+        self,
+        request: main_models.CloudQueryAgentGroupRequest,
+    ) -> main_models.CloudQueryAgentGroupResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_agent_group_with_options(request, runtime)
+
+    async def cloud_query_agent_group_async(
+        self,
+        request: main_models.CloudQueryAgentGroupRequest,
+    ) -> main_models.CloudQueryAgentGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_agent_group_with_options_async(request, runtime)
+
+    def cloud_query_agent_skill_with_options(
+        self,
+        request: main_models.CloudQueryAgentSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgentSkill',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_agent_skill_with_options_async(
+        self,
+        request: main_models.CloudQueryAgentSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryAgentSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cnos):
+            query['Cnos'] = request.cnos
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryAgentSkill',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryAgentSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_agent_skill(
+        self,
+        request: main_models.CloudQueryAgentSkillRequest,
+    ) -> main_models.CloudQueryAgentSkillResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_agent_skill_with_options(request, runtime)
+
+    async def cloud_query_agent_skill_async(
+        self,
+        request: main_models.CloudQueryAgentSkillRequest,
+    ) -> main_models.CloudQueryAgentSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_agent_skill_with_options_async(request, runtime)
+
+    def cloud_query_ib_cdr_with_options(
+        self,
+        request: main_models.CloudQueryIbCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryIbCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.callee_number):
+            query['CalleeNumber'] = request.callee_number
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.hotline):
+            query['Hotline'] = request.hotline
+        if not DaraCore.is_null(request.join_queue_code):
+            query['JoinQueueCode'] = request.join_queue_code
+        if not DaraCore.is_null(request.leave_queue_code):
+            query['LeaveQueueCode'] = request.leave_queue_code
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.qno):
+            query['Qno'] = request.qno
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryIbCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryIbCdrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_ib_cdr_with_options_async(
+        self,
+        request: main_models.CloudQueryIbCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryIbCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.callee_number):
+            query['CalleeNumber'] = request.callee_number
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.hotline):
+            query['Hotline'] = request.hotline
+        if not DaraCore.is_null(request.join_queue_code):
+            query['JoinQueueCode'] = request.join_queue_code
+        if not DaraCore.is_null(request.leave_queue_code):
+            query['LeaveQueueCode'] = request.leave_queue_code
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.qno):
+            query['Qno'] = request.qno
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryIbCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryIbCdrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_ib_cdr(
+        self,
+        request: main_models.CloudQueryIbCdrRequest,
+    ) -> main_models.CloudQueryIbCdrResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_ib_cdr_with_options(request, runtime)
+
+    async def cloud_query_ib_cdr_async(
+        self,
+        request: main_models.CloudQueryIbCdrRequest,
+    ) -> main_models.CloudQueryIbCdrResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_ib_cdr_with_options_async(request, runtime)
+
+    def cloud_query_ob_cdr_with_options(
+        self,
+        request: main_models.CloudQueryObCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryObCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.agent_number):
+            query['AgentNumber'] = request.agent_number
+        if not DaraCore.is_null(request.call_type):
+            query['CallType'] = request.call_type
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.down_grade):
+            query['DownGrade'] = request.down_grade
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.gno):
+            query['Gno'] = request.gno
+        if not DaraCore.is_null(request.is_real_answer):
+            query['IsRealAnswer'] = request.is_real_answer
+        if not DaraCore.is_null(request.left_display_number):
+            query['LeftDisplayNumber'] = request.left_display_number
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.return_count):
+            query['ReturnCount'] = request.return_count
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryObCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryObCdrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_ob_cdr_with_options_async(
+        self,
+        request: main_models.CloudQueryObCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryObCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.agent_number):
+            query['AgentNumber'] = request.agent_number
+        if not DaraCore.is_null(request.call_type):
+            query['CallType'] = request.call_type
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.down_grade):
+            query['DownGrade'] = request.down_grade
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.gno):
+            query['Gno'] = request.gno
+        if not DaraCore.is_null(request.is_real_answer):
+            query['IsRealAnswer'] = request.is_real_answer
+        if not DaraCore.is_null(request.left_display_number):
+            query['LeftDisplayNumber'] = request.left_display_number
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.return_count):
+            query['ReturnCount'] = request.return_count
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryObCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryObCdrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_ob_cdr(
+        self,
+        request: main_models.CloudQueryObCdrRequest,
+    ) -> main_models.CloudQueryObCdrResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_ob_cdr_with_options(request, runtime)
+
+    async def cloud_query_ob_cdr_async(
+        self,
+        request: main_models.CloudQueryObCdrRequest,
+    ) -> main_models.CloudQueryObCdrResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_ob_cdr_with_options_async(request, runtime)
+
+    def cloud_query_predictive_call_cdr_with_options(
+        self,
+        request: main_models.CloudQueryPredictiveCallCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryPredictiveCallCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.display_number):
+            query['DisplayNumber'] = request.display_number
+        if not DaraCore.is_null(request.down_grade):
+            query['DownGrade'] = request.down_grade
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.gno):
+            query['Gno'] = request.gno
+        if not DaraCore.is_null(request.is_real_answer):
+            query['IsRealAnswer'] = request.is_real_answer
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.task_file_id):
+            query['TaskFileId'] = request.task_file_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryPredictiveCallCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryPredictiveCallCdrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_predictive_call_cdr_with_options_async(
+        self,
+        request: main_models.CloudQueryPredictiveCallCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryPredictiveCallCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.display_number):
+            query['DisplayNumber'] = request.display_number
+        if not DaraCore.is_null(request.down_grade):
+            query['DownGrade'] = request.down_grade
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.gno):
+            query['Gno'] = request.gno
+        if not DaraCore.is_null(request.is_real_answer):
+            query['IsRealAnswer'] = request.is_real_answer
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.task_file_id):
+            query['TaskFileId'] = request.task_file_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryPredictiveCallCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryPredictiveCallCdrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_predictive_call_cdr(
+        self,
+        request: main_models.CloudQueryPredictiveCallCdrRequest,
+    ) -> main_models.CloudQueryPredictiveCallCdrResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_predictive_call_cdr_with_options(request, runtime)
+
+    async def cloud_query_predictive_call_cdr_async(
+        self,
+        request: main_models.CloudQueryPredictiveCallCdrRequest,
+    ) -> main_models.CloudQueryPredictiveCallCdrResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_predictive_call_cdr_with_options_async(request, runtime)
+
+    def cloud_query_webcall_cdr_with_options(
+        self,
+        request: main_models.CloudQueryWebcallCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryWebcallCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.callee_clid):
+            query['CalleeClid'] = request.callee_clid
+        if not DaraCore.is_null(request.callee_display_number):
+            query['CalleeDisplayNumber'] = request.callee_display_number
+        if not DaraCore.is_null(request.callee_number):
+            query['CalleeNumber'] = request.callee_number
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.display_number):
+            query['DisplayNumber'] = request.display_number
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.gno):
+            query['Gno'] = request.gno
+        if not DaraCore.is_null(request.is_real_answer):
+            query['IsRealAnswer'] = request.is_real_answer
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.return_count):
+            query['ReturnCount'] = request.return_count
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryWebcallCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryWebcallCdrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_query_webcall_cdr_with_options_async(
+        self,
+        request: main_models.CloudQueryWebcallCdrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudQueryWebcallCdrResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.callee_clid):
+            query['CalleeClid'] = request.callee_clid
+        if not DaraCore.is_null(request.callee_display_number):
+            query['CalleeDisplayNumber'] = request.callee_display_number
+        if not DaraCore.is_null(request.callee_number):
+            query['CalleeNumber'] = request.callee_number
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.customer_number):
+            query['CustomerNumber'] = request.customer_number
+        if not DaraCore.is_null(request.display_number):
+            query['DisplayNumber'] = request.display_number
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.gno):
+            query['Gno'] = request.gno
+        if not DaraCore.is_null(request.is_real_answer):
+            query['IsRealAnswer'] = request.is_real_answer
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.return_count):
+            query['ReturnCount'] = request.return_count
+        if not DaraCore.is_null(request.start):
+            query['Start'] = request.start
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_range_type):
+            query['TimeRangeType'] = request.time_range_type
+        if not DaraCore.is_null(request.unique_id):
+            query['UniqueId'] = request.unique_id
+        if not DaraCore.is_null(request.user_field_value):
+            query['UserFieldValue'] = request.user_field_value
+        if not DaraCore.is_null(request.user_fieldkey):
+            query['UserFieldkey'] = request.user_fieldkey
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudQueryWebcallCdr',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudQueryWebcallCdrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_query_webcall_cdr(
+        self,
+        request: main_models.CloudQueryWebcallCdrRequest,
+    ) -> main_models.CloudQueryWebcallCdrResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_query_webcall_cdr_with_options(request, runtime)
+
+    async def cloud_query_webcall_cdr_async(
+        self,
+        request: main_models.CloudQueryWebcallCdrRequest,
+    ) -> main_models.CloudQueryWebcallCdrResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_query_webcall_cdr_with_options_async(request, runtime)
+
     def cloud_start_task_with_options(
         self,
         request: main_models.CloudStartTaskRequest,
@@ -1259,6 +4247,180 @@ class Client(OpenApiClient):
     ) -> main_models.CloudStartTaskResponse:
         runtime = RuntimeOptions()
         return await self.cloud_start_task_with_options_async(request, runtime)
+
+    def cloud_update_agent_with_options(
+        self,
+        request: main_models.CloudUpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudUpdateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.area_code):
+            query['AreaCode'] = request.area_code
+        if not DaraCore.is_null(request.call_power):
+            query['CallPower'] = request.call_power
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ib_record):
+            query['IbRecord'] = request.ib_record
+        if not DaraCore.is_null(request.is_asr):
+            query['IsAsr'] = request.is_asr
+        if not DaraCore.is_null(request.is_ob):
+            query['IsOb'] = request.is_ob
+        if not DaraCore.is_null(request.is_ob_remember):
+            query['IsObRemember'] = request.is_ob_remember
+        if not DaraCore.is_null(request.is_quality_check):
+            query['IsQualityCheck'] = request.is_quality_check
+        if not DaraCore.is_null(request.is_random):
+            query['IsRandom'] = request.is_random
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_property):
+            query['ObClidProperty'] = request.ob_clid_property
+        if not DaraCore.is_null(request.ob_clid_type):
+            query['ObClidType'] = request.ob_clid_type
+        if not DaraCore.is_null(request.ob_record):
+            query['ObRecord'] = request.ob_record
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.permit_ob_preview_time):
+            query['PermitObPreviewTime'] = request.permit_ob_preview_time
+        if not DaraCore.is_null(request.power):
+            query['Power'] = request.power
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.skill_ids):
+            query['SkillIds'] = request.skill_ids
+        if not DaraCore.is_null(request.skill_levels):
+            query['SkillLevels'] = request.skill_levels
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudUpdateAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudUpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_update_agent_with_options_async(
+        self,
+        request: main_models.CloudUpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudUpdateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active):
+            query['Active'] = request.active
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.area_code):
+            query['AreaCode'] = request.area_code
+        if not DaraCore.is_null(request.call_power):
+            query['CallPower'] = request.call_power
+        if not DaraCore.is_null(request.cno):
+            query['Cno'] = request.cno
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.ib_record):
+            query['IbRecord'] = request.ib_record
+        if not DaraCore.is_null(request.is_asr):
+            query['IsAsr'] = request.is_asr
+        if not DaraCore.is_null(request.is_ob):
+            query['IsOb'] = request.is_ob
+        if not DaraCore.is_null(request.is_ob_remember):
+            query['IsObRemember'] = request.is_ob_remember
+        if not DaraCore.is_null(request.is_quality_check):
+            query['IsQualityCheck'] = request.is_quality_check
+        if not DaraCore.is_null(request.is_random):
+            query['IsRandom'] = request.is_random
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ob_clid):
+            query['ObClid'] = request.ob_clid
+        if not DaraCore.is_null(request.ob_clid_property):
+            query['ObClidProperty'] = request.ob_clid_property
+        if not DaraCore.is_null(request.ob_clid_type):
+            query['ObClidType'] = request.ob_clid_type
+        if not DaraCore.is_null(request.ob_record):
+            query['ObRecord'] = request.ob_record
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.permit_ob_preview_time):
+            query['PermitObPreviewTime'] = request.permit_ob_preview_time
+        if not DaraCore.is_null(request.power):
+            query['Power'] = request.power
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.skill_ids):
+            query['SkillIds'] = request.skill_ids
+        if not DaraCore.is_null(request.skill_levels):
+            query['SkillLevels'] = request.skill_levels
+        if not DaraCore.is_null(request.webrtc_url_type):
+            query['WebrtcUrlType'] = request.webrtc_url_type
+        if not DaraCore.is_null(request.wrapup):
+            query['Wrapup'] = request.wrapup
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudUpdateAgent',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudUpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_update_agent(
+        self,
+        request: main_models.CloudUpdateAgentRequest,
+    ) -> main_models.CloudUpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_update_agent_with_options(request, runtime)
+
+    async def cloud_update_agent_async(
+        self,
+        request: main_models.CloudUpdateAgentRequest,
+    ) -> main_models.CloudUpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_update_agent_with_options_async(request, runtime)
 
     def cloud_update_task_with_options(
         self,
@@ -1529,6 +4691,148 @@ class Client(OpenApiClient):
     ) -> main_models.CloudUpdateTaskResponse:
         runtime = RuntimeOptions()
         return await self.cloud_update_task_with_options_async(request, runtime)
+
+    def cloud_webcall_with_options(
+        self,
+        request: main_models.CloudWebcallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudWebcallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amd):
+            query['Amd'] = request.amd
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.clid_area_code):
+            query['ClidAreaCode'] = request.clid_area_code
+        if not DaraCore.is_null(request.clid_group):
+            query['ClidGroup'] = request.clid_group
+        if not DaraCore.is_null(request.clid_list):
+            query['ClidList'] = request.clid_list
+        if not DaraCore.is_null(request.crn_id):
+            query['CrnId'] = request.crn_id
+        if not DaraCore.is_null(request.delay):
+            query['Delay'] = request.delay
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.expir_time):
+            query['ExpirTime'] = request.expir_time
+        if not DaraCore.is_null(request.ivr_id):
+            query['IvrId'] = request.ivr_id
+        if not DaraCore.is_null(request.multi_tel_delay):
+            query['MultiTelDelay'] = request.multi_tel_delay
+        if not DaraCore.is_null(request.multi_tel_push):
+            query['MultiTelPush'] = request.multi_tel_push
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.retry):
+            query['Retry'] = request.retry
+        if not DaraCore.is_null(request.retry_interval):
+            query['RetryInterval'] = request.retry_interval
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        if not DaraCore.is_null(request.timeout):
+            query['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.user_field):
+            query['UserField'] = request.user_field
+        if not DaraCore.is_null(request.vid):
+            query['Vid'] = request.vid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudWebcall',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudWebcallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_webcall_with_options_async(
+        self,
+        request: main_models.CloudWebcallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloudWebcallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amd):
+            query['Amd'] = request.amd
+        if not DaraCore.is_null(request.clid):
+            query['Clid'] = request.clid
+        if not DaraCore.is_null(request.clid_area_code):
+            query['ClidAreaCode'] = request.clid_area_code
+        if not DaraCore.is_null(request.clid_group):
+            query['ClidGroup'] = request.clid_group
+        if not DaraCore.is_null(request.clid_list):
+            query['ClidList'] = request.clid_list
+        if not DaraCore.is_null(request.crn_id):
+            query['CrnId'] = request.crn_id
+        if not DaraCore.is_null(request.delay):
+            query['Delay'] = request.delay
+        if not DaraCore.is_null(request.enterprise_id):
+            query['EnterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.expir_time):
+            query['ExpirTime'] = request.expir_time
+        if not DaraCore.is_null(request.ivr_id):
+            query['IvrId'] = request.ivr_id
+        if not DaraCore.is_null(request.multi_tel_delay):
+            query['MultiTelDelay'] = request.multi_tel_delay
+        if not DaraCore.is_null(request.multi_tel_push):
+            query['MultiTelPush'] = request.multi_tel_push
+        if not DaraCore.is_null(request.request_unique_id):
+            query['RequestUniqueId'] = request.request_unique_id
+        if not DaraCore.is_null(request.retry):
+            query['Retry'] = request.retry
+        if not DaraCore.is_null(request.retry_interval):
+            query['RetryInterval'] = request.retry_interval
+        if not DaraCore.is_null(request.tel):
+            query['Tel'] = request.tel
+        if not DaraCore.is_null(request.timeout):
+            query['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.user_field):
+            query['UserField'] = request.user_field
+        if not DaraCore.is_null(request.vid):
+            query['Vid'] = request.vid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloudWebcall',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloudWebcallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_webcall(
+        self,
+        request: main_models.CloudWebcallRequest,
+    ) -> main_models.CloudWebcallResponse:
+        runtime = RuntimeOptions()
+        return self.cloud_webcall_with_options(request, runtime)
+
+    async def cloud_webcall_async(
+        self,
+        request: main_models.CloudWebcallRequest,
+    ) -> main_models.CloudWebcallResponse:
+        runtime = RuntimeOptions()
+        return await self.cloud_webcall_with_options_async(request, runtime)
 
     def create_call_task_with_options(
         self,

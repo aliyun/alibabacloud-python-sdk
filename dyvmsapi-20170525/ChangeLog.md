@@ -1,3 +1,14 @@
+2026-04-28 Version: 5.2.0
+- Support API CloudGetObCdr.
+- Support API CloudGetRecordUrl.
+- Support API CloudOutboundObClidReport.
+- Support API CloudOutboundPreviewObReport.
+- Support API CloudQueryIbCdr.
+- Support API CloudQueryObCdr.
+- Support API CloudQueryPredictiveCallCdr.
+- Support API CloudQueryWebcallCdr.
+
+
 2026-04-24 Version: 5.1.0
 - Support API CloudCreateAgent.
 
