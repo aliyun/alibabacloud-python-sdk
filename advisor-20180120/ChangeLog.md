@@ -1,3 +1,9 @@
+2026-04-28 Version: 1.6.3
+- Update API DescribeAdvisorChecksFoPages: add request parameters Language.
+- Update API DescribeCostCheckResults: add request parameters Language.
+- Update API GetProductList: add request parameters Language.
+
+
 2025-04-23 Version: 1.6.2
 - Update API DescribeCostCheckAdvices: add request parameters CheckPlanId.
 - Update API DescribeCostCheckAdvices: add request parameters ResourceGroupIdList.
