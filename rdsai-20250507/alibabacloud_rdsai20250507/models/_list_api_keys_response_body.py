@@ -70,6 +70,7 @@ class ListApiKeysResponseBodyData(DaraModel):
         page: int = None,
         page_size: int = None,
         system_api_key: str = None,
+        threshold_percent: int = None,
         total: int = None,
     ):
         self.base_url = base_url
@@ -78,6 +79,7 @@ class ListApiKeysResponseBodyData(DaraModel):
         self.page = page
         self.page_size = page_size
         self.system_api_key = system_api_key
+        self.threshold_percent = threshold_percent
         self.total = total
 
     def validate(self):
@@ -111,6 +113,9 @@ class ListApiKeysResponseBodyData(DaraModel):
         if self.system_api_key is not None:
             result['SystemApiKey'] = self.system_api_key
 
+        if self.threshold_percent is not None:
+            result['ThresholdPercent'] = self.threshold_percent
+
         if self.total is not None:
             result['Total'] = self.total
 
@@ -139,6 +144,9 @@ class ListApiKeysResponseBodyData(DaraModel):
         if m.get('SystemApiKey') is not None:
             self.system_api_key = m.get('SystemApiKey')
 
+        if m.get('ThresholdPercent') is not None:
+            self.threshold_percent = m.get('ThresholdPercent')
+
         if m.get('Total') is not None:
             self.total = m.get('Total')
 
@@ -152,6 +160,7 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         key_name: str = None,
         limit_rate: float = None,
         limit_type: str = None,
+        threshold_percent: int = None,
         token_quota: int = None,
     ):
         # API Key
@@ -160,6 +169,7 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         self.key_name = key_name
         self.limit_rate = limit_rate
         self.limit_type = limit_type
+        self.threshold_percent = threshold_percent
         self.token_quota = token_quota
 
     def validate(self):
@@ -185,6 +195,9 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         if self.limit_type is not None:
             result['LimitType'] = self.limit_type
 
+        if self.threshold_percent is not None:
+            result['ThresholdPercent'] = self.threshold_percent
+
         if self.token_quota is not None:
             result['TokenQuota'] = self.token_quota
 
@@ -206,6 +219,9 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
 
         if m.get('LimitType') is not None:
             self.limit_type = m.get('LimitType')
+
+        if m.get('ThresholdPercent') is not None:
+            self.threshold_percent = m.get('ThresholdPercent')
 
         if m.get('TokenQuota') is not None:
             self.token_quota = m.get('TokenQuota')

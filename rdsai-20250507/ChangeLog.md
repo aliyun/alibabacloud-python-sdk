@@ -1,3 +1,9 @@
+2026-04-28 Version: 3.1.0
+- Support API DisableAgentRuntime.
+- Update API ListApiKeys: add response parameters Body.Data.ThresholdPercent.
+- Update API ListApiKeys: add response parameters Body.Data.CustomKeyList.$.ThresholdPercent.
+
+
 2026-04-25 Version: 3.0.1
 - Update API StopInstance: add request parameters Force.
 

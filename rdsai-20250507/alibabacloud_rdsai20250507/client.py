@@ -2426,6 +2426,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_whitelist_ips_with_options_async(request, runtime)
 
+    def disable_agent_runtime_with_options(
+        self,
+        request: main_models.DisableAgentRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAgentRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableAgentRuntime',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableAgentRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_agent_runtime_with_options_async(
+        self,
+        request: main_models.DisableAgentRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAgentRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableAgentRuntime',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableAgentRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_agent_runtime(
+        self,
+        request: main_models.DisableAgentRuntimeRequest,
+    ) -> main_models.DisableAgentRuntimeResponse:
+        runtime = RuntimeOptions()
+        return self.disable_agent_runtime_with_options(request, runtime)
+
+    async def disable_agent_runtime_async(
+        self,
+        request: main_models.DisableAgentRuntimeRequest,
+    ) -> main_models.DisableAgentRuntimeResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_agent_runtime_with_options_async(request, runtime)
+
     def enable_agent_runtime_with_options(
         self,
         request: main_models.EnableAgentRuntimeRequest,

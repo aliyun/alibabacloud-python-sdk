@@ -88,6 +88,9 @@ from ._describe_sandbox_templates_response import DescribeSandboxTemplatesRespon
 from ._describe_whitelist_ips_request import DescribeWhitelistIpsRequest
 from ._describe_whitelist_ips_response_body import DescribeWhitelistIpsResponseBody
 from ._describe_whitelist_ips_response import DescribeWhitelistIpsResponse
+from ._disable_agent_runtime_request import DisableAgentRuntimeRequest
+from ._disable_agent_runtime_response_body import DisableAgentRuntimeResponseBody
+from ._disable_agent_runtime_response import DisableAgentRuntimeResponse
 from ._enable_agent_runtime_request import EnableAgentRuntimeRequest
 from ._enable_agent_runtime_response_body import EnableAgentRuntimeResponseBody
 from ._enable_agent_runtime_response import EnableAgentRuntimeResponse
@@ -341,6 +344,9 @@ __all__ = [
     DescribeWhitelistIpsRequest,
     DescribeWhitelistIpsResponseBody,
     DescribeWhitelistIpsResponse,
+    DisableAgentRuntimeRequest,
+    DisableAgentRuntimeResponseBody,
+    DisableAgentRuntimeResponse,
     EnableAgentRuntimeRequest,
     EnableAgentRuntimeResponseBody,
     EnableAgentRuntimeResponse,
