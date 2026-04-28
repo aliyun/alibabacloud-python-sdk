@@ -13495,6 +13495,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstanceControlConfigurationResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.element_name):
+            query['ElementName'] = request.element_name
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -13523,6 +13525,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstanceControlConfigurationResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.element_name):
+            query['ElementName'] = request.element_name
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
