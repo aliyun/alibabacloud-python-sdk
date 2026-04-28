@@ -1,3 +1,7 @@
+2026-04-28 Version: 1.23.0
+- Support API UpdateWorkspace.
+
+
 2026-04-23 Version: 1.22.0
 - Support API ListExecutorLogs.
 

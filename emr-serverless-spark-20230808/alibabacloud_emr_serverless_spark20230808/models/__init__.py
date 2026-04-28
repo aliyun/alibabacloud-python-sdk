@@ -21,6 +21,9 @@ from ._task_instance import TaskInstance
 from ._task_snapshot import TaskSnapshot
 from ._template import Template
 from ._time_range import TimeRange
+from ._activate_aicenter_request import ActivateAICenterRequest
+from ._activate_aicenter_response_body import ActivateAICenterResponseBody
+from ._activate_aicenter_response import ActivateAICenterResponse
 from ._add_members_request import AddMembersRequest
 from ._add_members_response_body import AddMembersResponseBody
 from ._add_members_response import AddMembersResponse
@@ -83,6 +86,9 @@ from ._edit_workspace_queue_response import EditWorkspaceQueueResponse
 from ._generate_task_codes_request import GenerateTaskCodesRequest
 from ._generate_task_codes_response_body import GenerateTaskCodesResponseBody
 from ._generate_task_codes_response import GenerateTaskCodesResponse
+from ._get_aicenter_state_request import GetAICenterStateRequest
+from ._get_aicenter_state_response_body import GetAICenterStateResponseBody
+from ._get_aicenter_state_response import GetAICenterStateResponse
 from ._get_cu_hours_request import GetCuHoursRequest
 from ._get_cu_hours_response_body import GetCuHoursResponseBody
 from ._get_cu_hours_response import GetCuHoursResponse
@@ -232,6 +238,9 @@ from ._update_process_definition_with_schedule_response import UpdateProcessDefi
 from ._update_ray_cluster_request import UpdateRayClusterRequest
 from ._update_ray_cluster_response_body import UpdateRayClusterResponseBody
 from ._update_ray_cluster_response import UpdateRayClusterResponse
+from ._update_workspace_request import UpdateWorkspaceRequest
+from ._update_workspace_response_body import UpdateWorkspaceResponseBody
+from ._update_workspace_response import UpdateWorkspaceResponse
 from ._cache_cluster import CacheClusterCachesets
 from ._cache_cluster import CacheClusterConfigurations
 from ._cache_cluster import CacheClusterResourceSpec
@@ -357,6 +366,8 @@ from ._update_process_definition_with_schedule_request import UpdateProcessDefin
 from ._update_process_definition_with_schedule_response_body import UpdateProcessDefinitionWithScheduleResponseBodyData
 from ._update_ray_cluster_request import UpdateRayClusterRequestHeadSpec
 from ._update_ray_cluster_request import UpdateRayClusterRequestWorkerSpec
+from ._update_workspace_request import UpdateWorkspaceRequestSubscription
+from ._update_workspace_response_body import UpdateWorkspaceResponseBodyData
 
 __all__ = [
     Artifact,
@@ -378,6 +389,9 @@ __all__ = [
     TaskSnapshot,
     Template,
     TimeRange,
+    ActivateAICenterRequest,
+    ActivateAICenterResponseBody,
+    ActivateAICenterResponse,
     AddMembersRequest,
     AddMembersResponseBody,
     AddMembersResponse,
@@ -440,6 +454,9 @@ __all__ = [
     GenerateTaskCodesRequest,
     GenerateTaskCodesResponseBody,
     GenerateTaskCodesResponse,
+    GetAICenterStateRequest,
+    GetAICenterStateResponseBody,
+    GetAICenterStateResponse,
     GetCuHoursRequest,
     GetCuHoursResponseBody,
     GetCuHoursResponse,
@@ -589,6 +606,9 @@ __all__ = [
     UpdateRayClusterRequest,
     UpdateRayClusterResponseBody,
     UpdateRayClusterResponse,
+    UpdateWorkspaceRequest,
+    UpdateWorkspaceResponseBody,
+    UpdateWorkspaceResponse,
     CacheClusterCachesets,
     CacheClusterConfigurations,
     CacheClusterResourceSpec,
@@ -713,5 +733,7 @@ __all__ = [
     UpdateProcessDefinitionWithScheduleRequestTaskRelationJson,
     UpdateProcessDefinitionWithScheduleResponseBodyData,
     UpdateRayClusterRequestHeadSpec,
-    UpdateRayClusterRequestWorkerSpec
+    UpdateRayClusterRequestWorkerSpec,
+    UpdateWorkspaceRequestSubscription,
+    UpdateWorkspaceResponseBodyData
 ]

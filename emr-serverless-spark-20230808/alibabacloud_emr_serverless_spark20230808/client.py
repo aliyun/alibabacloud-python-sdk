@@ -41,6 +41,78 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def activate_aicenter_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ActivateAICenterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ActivateAICenterResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ActivateAICenter',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/activateaicenter',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActivateAICenterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def activate_aicenter_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ActivateAICenterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ActivateAICenterResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ActivateAICenter',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/activateaicenter',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActivateAICenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def activate_aicenter(
+        self,
+        workspace_id: str,
+        request: main_models.ActivateAICenterRequest,
+    ) -> main_models.ActivateAICenterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.activate_aicenter_with_options(workspace_id, request, headers, runtime)
+
+    async def activate_aicenter_async(
+        self,
+        workspace_id: str,
+        request: main_models.ActivateAICenterRequest,
+    ) -> main_models.ActivateAICenterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.activate_aicenter_with_options_async(workspace_id, request, headers, runtime)
+
     def add_members_with_options(
         self,
         request: main_models.AddMembersRequest,
@@ -2216,6 +2288,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.generate_task_codes_with_options_async(biz_id, request, headers, runtime)
+
+    def get_aicenter_state_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetAICenterStateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAICenterStateResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAICenterState',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/aicenter',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAICenterStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicenter_state_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetAICenterStateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAICenterStateResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAICenterState',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/aicenter',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAICenterStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicenter_state(
+        self,
+        workspace_id: str,
+        request: main_models.GetAICenterStateRequest,
+    ) -> main_models.GetAICenterStateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_aicenter_state_with_options(workspace_id, request, headers, runtime)
+
+    async def get_aicenter_state_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetAICenterStateRequest,
+    ) -> main_models.GetAICenterStateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_aicenter_state_with_options_async(workspace_id, request, headers, runtime)
 
     def get_cu_hours_with_options(
         self,
@@ -6974,3 +7118,111 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_ray_cluster_with_options_async(workspace_id, cluster_id, request, headers, runtime)
+
+    def update_workspace_with_options(
+        self,
+        request: main_models.UpdateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.cu):
+            body['cu'] = request.cu
+        if not DaraCore.is_null(request.gpu):
+            body['gpu'] = request.gpu
+        if not DaraCore.is_null(request.gpu_spec):
+            body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.subscription):
+            body['subscription'] = request.subscription
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_name):
+            body['workspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspace',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_with_options_async(
+        self,
+        request: main_models.UpdateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.cu):
+            body['cu'] = request.cu
+        if not DaraCore.is_null(request.gpu):
+            body['gpu'] = request.gpu
+        if not DaraCore.is_null(request.gpu_spec):
+            body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.subscription):
+            body['subscription'] = request.subscription
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_name):
+            body['workspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspace',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace(
+        self,
+        request: main_models.UpdateWorkspaceRequest,
+    ) -> main_models.UpdateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_workspace_with_options(request, headers, runtime)
+
+    async def update_workspace_async(
+        self,
+        request: main_models.UpdateWorkspaceRequest,
+    ) -> main_models.UpdateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_workspace_with_options_async(request, headers, runtime)
