@@ -1,3 +1,15 @@
+2026-04-28 Version: 5.0.0
+- Support API PunishFile.
+- Update API CreateDomain: add request parameters body.store_redundancy_type.
+- Update API CreateFile: add request parameters body.part_info_list.$.content_type.
+- Update API CreateFile: delete request parameters body.image_media_metadata.
+- Update API CreateFile: delete request parameters body.video_media_metadata.
+- Update API GetAsyncTask: add response parameters Body.task_type.
+- Update API MoveFile: add response parameters Body.file_name.
+- Update API MoveFile: add response parameters Body.revision_id.
+- Update API MoveFile: add response parameters Body.updated_at.
+
+
 2025-05-20 Version: 4.2.6
 - Update API CompleteFile: add request parameters body.crc64_hash.
 

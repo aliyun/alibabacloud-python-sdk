@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class RemoveFaceGroupFileRequest(DaraModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        face_group_id: str = None,
+        file_id: str = None,
+    ):
+        # This parameter is required.
+        self.drive_id = drive_id
+        # This parameter is required.
+        self.face_group_id = face_group_id
+        # This parameter is required.
+        self.file_id = file_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+
+        if self.face_group_id is not None:
+            result['face_group_id'] = self.face_group_id
+
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+
+        if m.get('face_group_id') is not None:
+            self.face_group_id = m.get('face_group_id')
+
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+
+        return self
+
