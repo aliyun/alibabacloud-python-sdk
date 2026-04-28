@@ -1,3 +1,9 @@
+2026-04-28 Version: 2.2.2
+- Update API GetDataStorage: add response parameters Body.Data.UnusedLogStores.
+- Update API GetDataStorage: add response parameters Body.Data.NormalizationLogStores.$.UsedCapacity.
+- Update API GetDataStorage: add response parameters Body.Data.SasLogStores.$.UsedCapacity.
+
+
 2026-04-28 Version: 2.2.1
 - Update API CreateDetectionRule: add request parameters AlertAttCkMapping.
 - Update API CreateDetectionRule: add request parameters AlertLevelMapping.

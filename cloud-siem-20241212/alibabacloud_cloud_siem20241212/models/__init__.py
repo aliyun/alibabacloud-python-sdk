@@ -292,6 +292,7 @@ from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionRespon
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogStores
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogViews
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataSasLogStores
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataUnusedLogStores
 from ._get_data_storage_response_body import GetDataStorageResponseBodyData
 from ._get_detection_statistic_response_body import GetDetectionStatisticResponseBodyDetectionStatistic
 from ._get_incident_response_body import GetIncidentResponseBodyIncident
@@ -631,6 +632,7 @@ __all__ = [
     GetDataStorageResponseBodyDataNormalizationLogStores,
     GetDataStorageResponseBodyDataNormalizationLogViews,
     GetDataStorageResponseBodyDataSasLogStores,
+    GetDataStorageResponseBodyDataUnusedLogStores,
     GetDataStorageResponseBodyData,
     GetDetectionStatisticResponseBodyDetectionStatistic,
     GetIncidentResponseBodyIncident,

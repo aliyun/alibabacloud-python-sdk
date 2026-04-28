@@ -57,6 +57,7 @@ class GetDataStorageResponseBodyData(DaraModel):
         normalization_log_stores: List[main_models.GetDataStorageResponseBodyDataNormalizationLogStores] = None,
         normalization_log_views: List[main_models.GetDataStorageResponseBodyDataNormalizationLogViews] = None,
         sas_log_stores: List[main_models.GetDataStorageResponseBodyDataSasLogStores] = None,
+        unused_log_stores: List[main_models.GetDataStorageResponseBodyDataUnusedLogStores] = None,
     ):
         self.cold_storage_used_capacity = cold_storage_used_capacity
         self.data_storage_region_id = data_storage_region_id
@@ -68,6 +69,7 @@ class GetDataStorageResponseBodyData(DaraModel):
         self.normalization_log_stores = normalization_log_stores
         self.normalization_log_views = normalization_log_views
         self.sas_log_stores = sas_log_stores
+        self.unused_log_stores = unused_log_stores
 
     def validate(self):
         if self.normalization_log_stores:
@@ -80,6 +82,10 @@ class GetDataStorageResponseBodyData(DaraModel):
                     v1.validate()
         if self.sas_log_stores:
             for v1 in self.sas_log_stores:
+                 if v1:
+                    v1.validate()
+        if self.unused_log_stores:
+            for v1 in self.unused_log_stores:
                  if v1:
                     v1.validate()
 
@@ -124,6 +130,11 @@ class GetDataStorageResponseBodyData(DaraModel):
             for k1 in self.sas_log_stores:
                 result['SasLogStores'].append(k1.to_map() if k1 else None)
 
+        result['UnusedLogStores'] = []
+        if self.unused_log_stores is not None:
+            for k1 in self.unused_log_stores:
+                result['UnusedLogStores'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -167,6 +178,55 @@ class GetDataStorageResponseBodyData(DaraModel):
                 temp_model = main_models.GetDataStorageResponseBodyDataSasLogStores()
                 self.sas_log_stores.append(temp_model.from_map(k1))
 
+        self.unused_log_stores = []
+        if m.get('UnusedLogStores') is not None:
+            for k1 in m.get('UnusedLogStores'):
+                temp_model = main_models.GetDataStorageResponseBodyDataUnusedLogStores()
+                self.unused_log_stores.append(temp_model.from_map(k1))
+
+        return self
+
+class GetDataStorageResponseBodyDataUnusedLogStores(DaraModel):
+    def __init__(
+        self,
+        log_store_name: str = None,
+        log_store_ttl: int = None,
+        used_capacity: float = None,
+    ):
+        self.log_store_name = log_store_name
+        self.log_store_ttl = log_store_ttl
+        self.used_capacity = used_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.log_store_name is not None:
+            result['LogStoreName'] = self.log_store_name
+
+        if self.log_store_ttl is not None:
+            result['LogStoreTtl'] = self.log_store_ttl
+
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogStoreName') is not None:
+            self.log_store_name = m.get('LogStoreName')
+
+        if m.get('LogStoreTtl') is not None:
+            self.log_store_ttl = m.get('LogStoreTtl')
+
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
+
         return self
 
 class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
@@ -182,6 +242,7 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         log_store_existed: bool = None,
         log_store_name: str = None,
         log_store_ttl: int = None,
+        used_capacity: float = None,
     ):
         self.log_code = log_code
         self.log_delivery_group = log_delivery_group
@@ -193,6 +254,7 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         self.log_store_existed = log_store_existed
         self.log_store_name = log_store_name
         self.log_store_ttl = log_store_ttl
+        self.used_capacity = used_capacity
 
     def validate(self):
         pass
@@ -232,6 +294,9 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         if self.log_store_ttl is not None:
             result['LogStoreTtl'] = self.log_store_ttl
 
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+
         return result
 
     def from_map(self, m: dict = None):
@@ -265,6 +330,9 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
 
         if m.get('LogStoreTtl') is not None:
             self.log_store_ttl = m.get('LogStoreTtl')
+
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
 
         return self
 
@@ -356,9 +424,11 @@ class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
         self,
         log_store_name: str = None,
         log_store_ttl: int = None,
+        used_capacity: float = None,
     ):
         self.log_store_name = log_store_name
         self.log_store_ttl = log_store_ttl
+        self.used_capacity = used_capacity
 
     def validate(self):
         pass
@@ -374,6 +444,9 @@ class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
         if self.log_store_ttl is not None:
             result['LogStoreTtl'] = self.log_store_ttl
 
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+
         return result
 
     def from_map(self, m: dict = None):
@@ -383,6 +456,9 @@ class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
 
         if m.get('LogStoreTtl') is not None:
             self.log_store_ttl = m.get('LogStoreTtl')
+
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
 
         return self
 
