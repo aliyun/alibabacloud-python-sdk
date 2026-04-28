@@ -85,11 +85,15 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         desc_update_time: str = None,
         dms_db_id: int = None,
         dms_instance_id: int = None,
+        download_link: str = None,
         gmt_created: str = None,
         import_type: str = None,
         instance_name: str = None,
+        intranet_download_link: str = None,
         is_internal: str = None,
+        oss_bucket: str = None,
         size: int = None,
+        use_user_oss_bucket: bool = None,
     ):
         self.database_desc = database_desc
         self.database_name = database_name
@@ -98,11 +102,15 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         self.desc_update_time = desc_update_time
         self.dms_db_id = dms_db_id
         self.dms_instance_id = dms_instance_id
+        self.download_link = download_link
         self.gmt_created = gmt_created
         self.import_type = import_type
         self.instance_name = instance_name
+        self.intranet_download_link = intranet_download_link
         self.is_internal = is_internal
+        self.oss_bucket = oss_bucket
         self.size = size
+        self.use_user_oss_bucket = use_user_oss_bucket
 
     def validate(self):
         pass
@@ -133,6 +141,9 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         if self.dms_instance_id is not None:
             result['DmsInstanceId'] = self.dms_instance_id
 
+        if self.download_link is not None:
+            result['DownloadLink'] = self.download_link
+
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
 
@@ -142,11 +153,20 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
+        if self.intranet_download_link is not None:
+            result['IntranetDownloadLink'] = self.intranet_download_link
+
         if self.is_internal is not None:
             result['IsInternal'] = self.is_internal
 
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+
         if self.size is not None:
             result['Size'] = self.size
+
+        if self.use_user_oss_bucket is not None:
+            result['UseUserOssBucket'] = self.use_user_oss_bucket
 
         return result
 
@@ -173,6 +193,9 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         if m.get('DmsInstanceId') is not None:
             self.dms_instance_id = m.get('DmsInstanceId')
 
+        if m.get('DownloadLink') is not None:
+            self.download_link = m.get('DownloadLink')
+
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
 
@@ -182,11 +205,20 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
+        if m.get('IntranetDownloadLink') is not None:
+            self.intranet_download_link = m.get('IntranetDownloadLink')
+
         if m.get('IsInternal') is not None:
             self.is_internal = m.get('IsInternal')
 
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+
         if m.get('Size') is not None:
             self.size = m.get('Size')
+
+        if m.get('UseUserOssBucket') is not None:
+            self.use_user_oss_bucket = m.get('UseUserOssBucket')
 
         return self
 

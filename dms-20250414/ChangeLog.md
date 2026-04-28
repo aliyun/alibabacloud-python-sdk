@@ -1,3 +1,10 @@
+2026-04-28 Version: 1.10.6
+- Update API ListDataCenterDatabase: add response parameters Body.Data.$.DownloadLink.
+- Update API ListDataCenterDatabase: add response parameters Body.Data.$.IntranetDownloadLink.
+- Update API ListDataCenterDatabase: add response parameters Body.Data.$.OssBucket.
+- Update API ListDataCenterDatabase: add response parameters Body.Data.$.UseUserOssBucket.
+
+
 2026-04-23 Version: 1.10.5
 - Update API SendChatMessage: add request parameters SessionConfig.Mode.
 
