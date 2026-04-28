@@ -17,9 +17,11 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         ens_region_id: str = None,
         ens_region_ids: List[str] = None,
         icmp_reply_enabled: bool = None,
+        lock_reason: str = None,
         page_number: int = None,
         page_size: int = None,
         standby: str = None,
+        status: str = None,
     ):
         # The ID of the EIP that you want to query. You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
         self.allocation_id = allocation_id
@@ -39,6 +41,7 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         self.icmp_reply_enabled = icmp_reply_enabled
+        self.lock_reason = lock_reason
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100. Default value: 10.
@@ -48,6 +51,7 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         # *   **true**
         # *   **false**
         self.standby = standby
+        self.status = status
 
     def validate(self):
         pass
@@ -81,6 +85,9 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         if self.icmp_reply_enabled is not None:
             result['IcmpReplyEnabled'] = self.icmp_reply_enabled
 
+        if self.lock_reason is not None:
+            result['LockReason'] = self.lock_reason
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -89,6 +96,9 @@ class DescribeEnsEipAddressesRequest(DaraModel):
 
         if self.standby is not None:
             result['Standby'] = self.standby
+
+        if self.status is not None:
+            result['Status'] = self.status
 
         return result
 
@@ -118,6 +128,9 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         if m.get('IcmpReplyEnabled') is not None:
             self.icmp_reply_enabled = m.get('IcmpReplyEnabled')
 
+        if m.get('LockReason') is not None:
+            self.lock_reason = m.get('LockReason')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -126,6 +139,9 @@ class DescribeEnsEipAddressesRequest(DaraModel):
 
         if m.get('Standby') is not None:
             self.standby = m.get('Standby')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

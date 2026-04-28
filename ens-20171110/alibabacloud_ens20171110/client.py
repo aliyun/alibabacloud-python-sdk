@@ -10347,12 +10347,16 @@ class Client(OpenApiClient):
             query['EnsRegionIds'] = request.ens_region_ids
         if not DaraCore.is_null(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
+        if not DaraCore.is_null(request.lock_reason):
+            query['LockReason'] = request.lock_reason
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.standby):
             query['Standby'] = request.standby
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10395,12 +10399,16 @@ class Client(OpenApiClient):
             query['EnsRegionIds'] = request.ens_region_ids
         if not DaraCore.is_null(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
+        if not DaraCore.is_null(request.lock_reason):
+            query['LockReason'] = request.lock_reason
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.standby):
             query['Standby'] = request.standby
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

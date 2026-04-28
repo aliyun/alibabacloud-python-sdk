@@ -114,6 +114,8 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         allocation_id: str = None,
         allocation_time: str = None,
         bandwidth: int = None,
+        bandwidth_package_bandwidth: int = None,
+        bandwidth_package_id: str = None,
         charge_type: str = None,
         description: str = None,
         ens_region_id: str = None,
@@ -125,6 +127,7 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         ip_status: str = None,
         isp: str = None,
         name: str = None,
+        operation_locks: main_models.DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks = None,
         standby: bool = None,
         status: str = None,
         tags: main_models.DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags = None,
@@ -135,6 +138,8 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         self.allocation_time = allocation_time
         # EIP的带宽峰值，默认值为5。取值范围：**5**~**10000**，单位：Mbps。
         self.bandwidth = bandwidth
+        self.bandwidth_package_bandwidth = bandwidth_package_bandwidth
+        self.bandwidth_package_id = bandwidth_package_id
         # EIP的计费模式。
         # 
         # - **PrePaid**：包年包月。
@@ -176,6 +181,7 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         self.isp = isp
         # EIP实例名称。
         self.name = name
+        self.operation_locks = operation_locks
         # 该EIP是否是备用。
         self.standby = standby
         # EIP的状态。
@@ -192,6 +198,8 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         self.tags = tags
 
     def validate(self):
+        if self.operation_locks:
+            self.operation_locks.validate()
         if self.tags:
             self.tags.validate()
 
@@ -208,6 +216,12 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
 
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
+
+        if self.bandwidth_package_bandwidth is not None:
+            result['BandwidthPackageBandwidth'] = self.bandwidth_package_bandwidth
+
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
@@ -242,6 +256,9 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.operation_locks is not None:
+            result['OperationLocks'] = self.operation_locks.to_map()
+
         if self.standby is not None:
             result['Standby'] = self.standby
 
@@ -263,6 +280,12 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
 
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
+
+        if m.get('BandwidthPackageBandwidth') is not None:
+            self.bandwidth_package_bandwidth = m.get('BandwidthPackageBandwidth')
+
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
@@ -296,6 +319,10 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('OperationLocks') is not None:
+            temp_model = main_models.DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks()
+            self.operation_locks = temp_model.from_map(m.get('OperationLocks'))
 
         if m.get('Standby') is not None:
             self.standby = m.get('Standby')
@@ -396,6 +423,68 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(DaraModel
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks(DaraModel):
+    def __init__(
+        self,
+        lock: List[main_models.DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock] = None,
+    ):
+        self.lock = lock
+
+    def validate(self):
+        if self.lock:
+            for v1 in self.lock:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Lock'] = []
+        if self.lock is not None:
+            for k1 in self.lock:
+                result['Lock'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lock = []
+        if m.get('Lock') is not None:
+            for k1 in m.get('Lock'):
+                temp_model = main_models.DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock()
+                self.lock.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock(DaraModel):
+    def __init__(
+        self,
+        lock_reason: str = None,
+    ):
+        self.lock_reason = lock_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.lock_reason is not None:
+            result['LockReason'] = self.lock_reason
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LockReason') is not None:
+            self.lock_reason = m.get('LockReason')
 
         return self
 

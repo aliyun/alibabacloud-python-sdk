@@ -1,3 +1,11 @@
+2026-04-28 Version: 11.1.2
+- Update API DescribeEnsEipAddresses: add request parameters LockReason.
+- Update API DescribeEnsEipAddresses: add request parameters Status.
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.BandwidthPackageBandwidth.
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.BandwidthPackageId.
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.OperationLocks.
+
+
 2026-04-09 Version: 11.1.1
 - Update API DescribeInstances: add request parameters VpdId.
 - Update API DescribeInstances: add request parameters VpdVSwitchId.
