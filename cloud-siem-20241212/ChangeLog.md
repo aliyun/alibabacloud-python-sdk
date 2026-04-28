@@ -1,3 +1,18 @@
+2026-04-28 Version: 2.2.1
+- Update API CreateDetectionRule: add request parameters AlertAttCkMapping.
+- Update API CreateDetectionRule: add request parameters AlertLevelMapping.
+- Update API CreateDetectionRule: add request parameters AlertTypeMapping.
+- Update API ListDataSetRecords: add request parameters Filter.
+- Update API ListDataSetRecords: add request parameters Order.
+- Update API ListDataSetRecords: add request parameters OrderField.
+- Update API ListDetectionRules: add response parameters Body.DetectionRules.$.AlertAttCkMapping.
+- Update API ListDetectionRules: add response parameters Body.DetectionRules.$.AlertLevelMapping.
+- Update API ListDetectionRules: add response parameters Body.DetectionRules.$.AlertTypeMapping.
+- Update API UpdateDetectionRule: add request parameters AlertAttCkMapping.
+- Update API UpdateDetectionRule: add request parameters AlertLevelMapping.
+- Update API UpdateDetectionRule: add request parameters AlertTypeMapping.
+
+
 2026-04-21 Version: 2.2.0
 - Support API CreateAutoDisposeConfig.
 - Support API ExecuteAutoDisposeRecords.

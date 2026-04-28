@@ -8,8 +8,10 @@ class CreateDetectionRuleRequest(DaraModel):
     def __init__(
         self,
         alert_att_ck: str = None,
+        alert_att_ck_mapping: str = None,
         alert_description: str = None,
         alert_level: str = None,
+        alert_level_mapping: str = None,
         alert_name: str = None,
         alert_schema_id: str = None,
         alert_tactic_id: str = None,
@@ -17,6 +19,7 @@ class CreateDetectionRuleRequest(DaraModel):
         alert_threshold_group: str = None,
         alert_threshold_period: str = None,
         alert_type: str = None,
+        alert_type_mapping: str = None,
         detection_expression_content: str = None,
         detection_expression_type: str = None,
         detection_rule_description: str = None,
@@ -43,9 +46,11 @@ class CreateDetectionRuleRequest(DaraModel):
         schedule_window: str = None,
     ):
         self.alert_att_ck = alert_att_ck
+        self.alert_att_ck_mapping = alert_att_ck_mapping
         self.alert_description = alert_description
         # This parameter is required.
         self.alert_level = alert_level
+        self.alert_level_mapping = alert_level_mapping
         self.alert_name = alert_name
         # This parameter is required.
         self.alert_schema_id = alert_schema_id
@@ -55,6 +60,7 @@ class CreateDetectionRuleRequest(DaraModel):
         self.alert_threshold_period = alert_threshold_period
         # This parameter is required.
         self.alert_type = alert_type
+        self.alert_type_mapping = alert_type_mapping
         self.detection_expression_content = detection_expression_content
         self.detection_expression_type = detection_expression_type
         self.detection_rule_description = detection_rule_description
@@ -94,11 +100,17 @@ class CreateDetectionRuleRequest(DaraModel):
         if self.alert_att_ck is not None:
             result['AlertAttCk'] = self.alert_att_ck
 
+        if self.alert_att_ck_mapping is not None:
+            result['AlertAttCkMapping'] = self.alert_att_ck_mapping
+
         if self.alert_description is not None:
             result['AlertDescription'] = self.alert_description
 
         if self.alert_level is not None:
             result['AlertLevel'] = self.alert_level
+
+        if self.alert_level_mapping is not None:
+            result['AlertLevelMapping'] = self.alert_level_mapping
 
         if self.alert_name is not None:
             result['AlertName'] = self.alert_name
@@ -120,6 +132,9 @@ class CreateDetectionRuleRequest(DaraModel):
 
         if self.alert_type is not None:
             result['AlertType'] = self.alert_type
+
+        if self.alert_type_mapping is not None:
+            result['AlertTypeMapping'] = self.alert_type_mapping
 
         if self.detection_expression_content is not None:
             result['DetectionExpressionContent'] = self.detection_expression_content
@@ -200,11 +215,17 @@ class CreateDetectionRuleRequest(DaraModel):
         if m.get('AlertAttCk') is not None:
             self.alert_att_ck = m.get('AlertAttCk')
 
+        if m.get('AlertAttCkMapping') is not None:
+            self.alert_att_ck_mapping = m.get('AlertAttCkMapping')
+
         if m.get('AlertDescription') is not None:
             self.alert_description = m.get('AlertDescription')
 
         if m.get('AlertLevel') is not None:
             self.alert_level = m.get('AlertLevel')
+
+        if m.get('AlertLevelMapping') is not None:
+            self.alert_level_mapping = m.get('AlertLevelMapping')
 
         if m.get('AlertName') is not None:
             self.alert_name = m.get('AlertName')
@@ -226,6 +247,9 @@ class CreateDetectionRuleRequest(DaraModel):
 
         if m.get('AlertType') is not None:
             self.alert_type = m.get('AlertType')
+
+        if m.get('AlertTypeMapping') is not None:
+            self.alert_type_mapping = m.get('AlertTypeMapping')
 
         if m.get('DetectionExpressionContent') is not None:
             self.detection_expression_content = m.get('DetectionExpressionContent')

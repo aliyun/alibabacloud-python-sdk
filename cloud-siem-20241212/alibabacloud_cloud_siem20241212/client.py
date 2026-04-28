@@ -596,10 +596,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.alert_att_ck):
             body['AlertAttCk'] = request.alert_att_ck
+        if not DaraCore.is_null(request.alert_att_ck_mapping):
+            body['AlertAttCkMapping'] = request.alert_att_ck_mapping
         if not DaraCore.is_null(request.alert_description):
             body['AlertDescription'] = request.alert_description
         if not DaraCore.is_null(request.alert_level):
             body['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.alert_level_mapping):
+            body['AlertLevelMapping'] = request.alert_level_mapping
         if not DaraCore.is_null(request.alert_name):
             body['AlertName'] = request.alert_name
         if not DaraCore.is_null(request.alert_schema_id):
@@ -614,6 +618,8 @@ class Client(OpenApiClient):
             body['AlertThresholdPeriod'] = request.alert_threshold_period
         if not DaraCore.is_null(request.alert_type):
             body['AlertType'] = request.alert_type
+        if not DaraCore.is_null(request.alert_type_mapping):
+            body['AlertTypeMapping'] = request.alert_type_mapping
         if not DaraCore.is_null(request.detection_expression_content):
             body['DetectionExpressionContent'] = request.detection_expression_content
         if not DaraCore.is_null(request.detection_expression_type):
@@ -690,10 +696,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.alert_att_ck):
             body['AlertAttCk'] = request.alert_att_ck
+        if not DaraCore.is_null(request.alert_att_ck_mapping):
+            body['AlertAttCkMapping'] = request.alert_att_ck_mapping
         if not DaraCore.is_null(request.alert_description):
             body['AlertDescription'] = request.alert_description
         if not DaraCore.is_null(request.alert_level):
             body['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.alert_level_mapping):
+            body['AlertLevelMapping'] = request.alert_level_mapping
         if not DaraCore.is_null(request.alert_name):
             body['AlertName'] = request.alert_name
         if not DaraCore.is_null(request.alert_schema_id):
@@ -708,6 +718,8 @@ class Client(OpenApiClient):
             body['AlertThresholdPeriod'] = request.alert_threshold_period
         if not DaraCore.is_null(request.alert_type):
             body['AlertType'] = request.alert_type
+        if not DaraCore.is_null(request.alert_type_mapping):
+            body['AlertTypeMapping'] = request.alert_type_mapping
         if not DaraCore.is_null(request.detection_expression_content):
             body['DetectionExpressionContent'] = request.detection_expression_content
         if not DaraCore.is_null(request.detection_expression_type):
@@ -4088,12 +4100,18 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.data_set_id):
             body['DataSetId'] = request.data_set_id
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        if not DaraCore.is_null(request.order_field):
+            body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4130,12 +4148,18 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.data_set_id):
             body['DataSetId'] = request.data_set_id
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        if not DaraCore.is_null(request.order_field):
+            body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -7718,10 +7742,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.alert_att_ck):
             body['AlertAttCk'] = request.alert_att_ck
+        if not DaraCore.is_null(request.alert_att_ck_mapping):
+            body['AlertAttCkMapping'] = request.alert_att_ck_mapping
         if not DaraCore.is_null(request.alert_description):
             body['AlertDescription'] = request.alert_description
         if not DaraCore.is_null(request.alert_level):
             body['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.alert_level_mapping):
+            body['AlertLevelMapping'] = request.alert_level_mapping
         if not DaraCore.is_null(request.alert_name):
             body['AlertName'] = request.alert_name
         if not DaraCore.is_null(request.alert_schema_id):
@@ -7736,6 +7764,8 @@ class Client(OpenApiClient):
             body['AlertThresholdPeriod'] = request.alert_threshold_period
         if not DaraCore.is_null(request.alert_type):
             body['AlertType'] = request.alert_type
+        if not DaraCore.is_null(request.alert_type_mapping):
+            body['AlertTypeMapping'] = request.alert_type_mapping
         if not DaraCore.is_null(request.detection_expression_content):
             body['DetectionExpressionContent'] = request.detection_expression_content
         if not DaraCore.is_null(request.detection_expression_type):
@@ -7808,10 +7838,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.alert_att_ck):
             body['AlertAttCk'] = request.alert_att_ck
+        if not DaraCore.is_null(request.alert_att_ck_mapping):
+            body['AlertAttCkMapping'] = request.alert_att_ck_mapping
         if not DaraCore.is_null(request.alert_description):
             body['AlertDescription'] = request.alert_description
         if not DaraCore.is_null(request.alert_level):
             body['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.alert_level_mapping):
+            body['AlertLevelMapping'] = request.alert_level_mapping
         if not DaraCore.is_null(request.alert_name):
             body['AlertName'] = request.alert_name
         if not DaraCore.is_null(request.alert_schema_id):
@@ -7826,6 +7860,8 @@ class Client(OpenApiClient):
             body['AlertThresholdPeriod'] = request.alert_threshold_period
         if not DaraCore.is_null(request.alert_type):
             body['AlertType'] = request.alert_type
+        if not DaraCore.is_null(request.alert_type_mapping):
+            body['AlertTypeMapping'] = request.alert_type_mapping
         if not DaraCore.is_null(request.detection_expression_content):
             body['DetectionExpressionContent'] = request.detection_expression_content
         if not DaraCore.is_null(request.detection_expression_type):
