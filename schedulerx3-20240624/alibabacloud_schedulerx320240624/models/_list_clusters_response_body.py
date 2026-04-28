@@ -137,6 +137,7 @@ class ListClustersResponseBodyDataRecords(DaraModel):
         cluster_id: str = None,
         cluster_name: str = None,
         cluster_spec: str = None,
+        cluster_type: int = None,
         create_time: str = None,
         end_time: str = None,
         engine_type: str = None,
@@ -155,6 +156,7 @@ class ListClustersResponseBodyDataRecords(DaraModel):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
         self.cluster_spec = cluster_spec
+        self.cluster_type = cluster_type
         self.create_time = create_time
         self.end_time = end_time
         self.engine_type = engine_type
@@ -192,6 +194,9 @@ class ListClustersResponseBodyDataRecords(DaraModel):
 
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
+
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -249,6 +254,9 @@ class ListClustersResponseBodyDataRecords(DaraModel):
 
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
+
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')

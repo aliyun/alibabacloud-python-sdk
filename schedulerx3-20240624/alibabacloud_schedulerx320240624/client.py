@@ -244,6 +244,8 @@ class Client(OpenApiClient):
             body['ClusterName'] = request.cluster_name
         if not DaraCore.is_null(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
+        if not DaraCore.is_null(request.cluster_type):
+            body['ClusterType'] = request.cluster_type
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
         if not DaraCore.is_null(request.engine_type):
@@ -294,6 +296,8 @@ class Client(OpenApiClient):
             body['ClusterName'] = request.cluster_name
         if not DaraCore.is_null(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
+        if not DaraCore.is_null(request.cluster_type):
+            body['ClusterType'] = request.cluster_type
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
         if not DaraCore.is_null(request.engine_type):
@@ -427,6 +431,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDatasourceResponse:
         runtime = RuntimeOptions()
         return await self.create_datasource_with_options_async(request, runtime)
+
+    def create_executor_group_with_options(
+        self,
+        request: main_models.CreateExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExecutorGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.auth_type):
+            body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.network):
+            body['Network'] = request.network
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.worker_type):
+            body['WorkerType'] = request.worker_type
+        if not DaraCore.is_null(request.workers):
+            body['Workers'] = request.workers
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExecutorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_executor_group_with_options_async(
+        self,
+        request: main_models.CreateExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExecutorGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.auth_type):
+            body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.network):
+            body['Network'] = request.network
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.worker_type):
+            body['WorkerType'] = request.worker_type
+        if not DaraCore.is_null(request.workers):
+            body['Workers'] = request.workers
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExecutorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_executor_group(
+        self,
+        request: main_models.CreateExecutorGroupRequest,
+    ) -> main_models.CreateExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_executor_group_with_options(request, runtime)
+
+    async def create_executor_group_async(
+        self,
+        request: main_models.CreateExecutorGroupRequest,
+    ) -> main_models.CreateExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_executor_group_with_options_async(request, runtime)
 
     def create_executors_with_options(
         self,
@@ -579,6 +685,8 @@ class Client(OpenApiClient):
             body['Timezone'] = request.timezone
         if not DaraCore.is_null(request.weight):
             body['Weight'] = request.weight
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -667,6 +775,8 @@ class Client(OpenApiClient):
             body['Timezone'] = request.timezone
         if not DaraCore.is_null(request.weight):
             body['Weight'] = request.weight
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1105,6 +1215,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDatasourceResponse:
         runtime = RuntimeOptions()
         return await self.delete_datasource_with_options_async(request, runtime)
+
+    def delete_executor_group_with_options(
+        self,
+        request: main_models.DeleteExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteExecutorGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteExecutorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_executor_group_with_options_async(
+        self,
+        request: main_models.DeleteExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteExecutorGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteExecutorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_executor_group(
+        self,
+        request: main_models.DeleteExecutorGroupRequest,
+    ) -> main_models.DeleteExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return self.delete_executor_group_with_options(request, runtime)
+
+    async def delete_executor_group_async(
+        self,
+        request: main_models.DeleteExecutorGroupRequest,
+    ) -> main_models.DeleteExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_executor_group_with_options_async(request, runtime)
 
     def delete_jobs_with_options(
         self,
@@ -2244,6 +2428,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_log_event_with_options_async(request, runtime)
 
+    def get_page_log_with_options(
+        self,
+        request: main_models.GetPageLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPageLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        if not DaraCore.is_null(request.job_name):
+            query['JobName'] = request.job_name
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.worker_addr):
+            query['WorkerAddr'] = request.worker_addr
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPageLog',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPageLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_page_log_with_options_async(
+        self,
+        request: main_models.GetPageLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPageLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        if not DaraCore.is_null(request.job_name):
+            query['JobName'] = request.job_name
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.worker_addr):
+            query['WorkerAddr'] = request.worker_addr
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPageLog',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPageLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_page_log(
+        self,
+        request: main_models.GetPageLogRequest,
+    ) -> main_models.GetPageLogResponse:
+        runtime = RuntimeOptions()
+        return self.get_page_log_with_options(request, runtime)
+
+    async def get_page_log_async(
+        self,
+        request: main_models.GetPageLogRequest,
+    ) -> main_models.GetPageLogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_page_log_with_options_async(request, runtime)
+
     def get_workflow_with_options(
         self,
         request: main_models.GetWorkflowRequest,
@@ -3319,6 +3613,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListDatasourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_datasources_with_options_async(request, runtime)
+
+    def list_executor_group_with_options(
+        self,
+        request: main_models.ListExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExecutorGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.worker_type):
+            query['WorkerType'] = request.worker_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExecutorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_executor_group_with_options_async(
+        self,
+        request: main_models.ListExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExecutorGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.worker_type):
+            query['WorkerType'] = request.worker_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExecutorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_executor_group(
+        self,
+        request: main_models.ListExecutorGroupRequest,
+    ) -> main_models.ListExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return self.list_executor_group_with_options(request, runtime)
+
+    async def list_executor_group_async(
+        self,
+        request: main_models.ListExecutorGroupRequest,
+    ) -> main_models.ListExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.list_executor_group_with_options_async(request, runtime)
 
     def list_executors_with_options(
         self,
@@ -6329,6 +6717,8 @@ class Client(OpenApiClient):
             body['MaxConcurrency'] = request.max_concurrency
         if not DaraCore.is_null(request.title):
             body['Title'] = request.title
+        if not DaraCore.is_null(request.worker_id):
+            body['WorkerId'] = request.worker_id
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -6369,6 +6759,8 @@ class Client(OpenApiClient):
             body['MaxConcurrency'] = request.max_concurrency
         if not DaraCore.is_null(request.title):
             body['Title'] = request.title
+        if not DaraCore.is_null(request.worker_id):
+            body['WorkerId'] = request.worker_id
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -6660,6 +7052,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_datasource_with_options_async(request, runtime)
 
+    def update_executor_group_with_options(
+        self,
+        request: main_models.UpdateExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateExecutorGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.auth_type):
+            body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.network):
+            body['Network'] = request.network
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.worker_type):
+            body['WorkerType'] = request.worker_type
+        if not DaraCore.is_null(request.workers):
+            body['Workers'] = request.workers
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateExecutorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_executor_group_with_options_async(
+        self,
+        request: main_models.UpdateExecutorGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateExecutorGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.auth_type):
+            body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.network):
+            body['Network'] = request.network
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.worker_type):
+            body['WorkerType'] = request.worker_type
+        if not DaraCore.is_null(request.workers):
+            body['Workers'] = request.workers
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateExecutorGroup',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateExecutorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_executor_group(
+        self,
+        request: main_models.UpdateExecutorGroupRequest,
+    ) -> main_models.UpdateExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return self.update_executor_group_with_options(request, runtime)
+
+    async def update_executor_group_async(
+        self,
+        request: main_models.UpdateExecutorGroupRequest,
+    ) -> main_models.UpdateExecutorGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.update_executor_group_with_options_async(request, runtime)
+
     def update_executors_with_options(
         self,
         request: main_models.UpdateExecutorsRequest,
@@ -6805,6 +7299,8 @@ class Client(OpenApiClient):
             body['Timezone'] = request.timezone
         if not DaraCore.is_null(request.weight):
             body['Weight'] = request.weight
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -6887,6 +7383,8 @@ class Client(OpenApiClient):
             body['Timezone'] = request.timezone
         if not DaraCore.is_null(request.weight):
             body['Weight'] = request.weight
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

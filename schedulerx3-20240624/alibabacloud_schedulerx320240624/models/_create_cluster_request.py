@@ -13,6 +13,7 @@ class CreateClusterRequest(DaraModel):
         charge_type: str = None,
         cluster_name: str = None,
         cluster_spec: str = None,
+        cluster_type: int = None,
         duration: int = None,
         engine_type: str = None,
         pricing_cycle: str = None,
@@ -23,18 +24,14 @@ class CreateClusterRequest(DaraModel):
         self.charge_type = charge_type
         # This parameter is required.
         self.cluster_name = cluster_name
-        # This parameter is required.
         self.cluster_spec = cluster_spec
+        self.cluster_type = cluster_type
         self.duration = duration
-        # This parameter is required.
         self.engine_type = engine_type
         self.pricing_cycle = pricing_cycle
         self.tag = tag
-        # This parameter is required.
         self.v_switches = v_switches
         # VPC id
-        # 
-        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -60,6 +57,9 @@ class CreateClusterRequest(DaraModel):
 
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
+
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
 
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -96,6 +96,9 @@ class CreateClusterRequest(DaraModel):
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
 
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
 
@@ -128,9 +131,7 @@ class CreateClusterRequestVSwitches(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # This parameter is required.
         self.v_switch_id = v_switch_id
-        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

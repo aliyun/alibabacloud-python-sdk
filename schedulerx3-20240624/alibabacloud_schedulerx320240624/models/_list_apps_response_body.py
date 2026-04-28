@@ -146,7 +146,9 @@ class ListAppsResponseBodyDataRecords(DaraModel):
         max_jobs: int = None,
         title: str = None,
         updater: str = None,
+        worker_id: int = None,
         worker_registry: str = None,
+        worker_type: str = None,
         workflow_num: int = None,
     ):
         # AccessToken
@@ -164,7 +166,9 @@ class ListAppsResponseBodyDataRecords(DaraModel):
         self.max_jobs = max_jobs
         self.title = title
         self.updater = updater
+        self.worker_id = worker_id
         self.worker_registry = worker_registry
+        self.worker_type = worker_type
         self.workflow_num = workflow_num
 
     def validate(self):
@@ -217,8 +221,14 @@ class ListAppsResponseBodyDataRecords(DaraModel):
         if self.updater is not None:
             result['Updater'] = self.updater
 
+        if self.worker_id is not None:
+            result['WorkerId'] = self.worker_id
+
         if self.worker_registry is not None:
             result['WorkerRegistry'] = self.worker_registry
+
+        if self.worker_type is not None:
+            result['WorkerType'] = self.worker_type
 
         if self.workflow_num is not None:
             result['WorkflowNum'] = self.workflow_num
@@ -269,8 +279,14 @@ class ListAppsResponseBodyDataRecords(DaraModel):
         if m.get('Updater') is not None:
             self.updater = m.get('Updater')
 
+        if m.get('WorkerId') is not None:
+            self.worker_id = m.get('WorkerId')
+
         if m.get('WorkerRegistry') is not None:
             self.worker_registry = m.get('WorkerRegistry')
+
+        if m.get('WorkerType') is not None:
+            self.worker_type = m.get('WorkerType')
 
         if m.get('WorkflowNum') is not None:
             self.workflow_num = m.get('WorkflowNum')

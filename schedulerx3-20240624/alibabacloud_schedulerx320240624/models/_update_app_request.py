@@ -14,6 +14,7 @@ class UpdateAppRequest(DaraModel):
         label_route_strategy: int = None,
         max_concurrency: int = None,
         title: str = None,
+        worker_id: int = None,
     ):
         self.access_token = access_token
         # This parameter is required.
@@ -25,6 +26,7 @@ class UpdateAppRequest(DaraModel):
         self.max_concurrency = max_concurrency
         # This parameter is required.
         self.title = title
+        self.worker_id = worker_id
 
     def validate(self):
         pass
@@ -55,6 +57,9 @@ class UpdateAppRequest(DaraModel):
         if self.title is not None:
             result['Title'] = self.title
 
+        if self.worker_id is not None:
+            result['WorkerId'] = self.worker_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -79,6 +84,9 @@ class UpdateAppRequest(DaraModel):
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
+
+        if m.get('WorkerId') is not None:
+            self.worker_id = m.get('WorkerId')
 
         return self
 

@@ -1,3 +1,7 @@
+2026-04-28 Version: 1.7.0
+- Support API ListExecutorGroup.
+
+
 2026-01-28 Version: 1.6.0
 - Support API CreateDatasource.
 - Support API DeleteDatasource.

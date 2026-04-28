@@ -12,12 +12,14 @@ class ListClustersRequest(DaraModel):
         self,
         cluster_id: str = None,
         cluster_name: str = None,
+        cluster_type: int = None,
         page_num: int = None,
         page_size: int = None,
         tag: List[main_models.ListClustersRequestTag] = None,
     ):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
+        self.cluster_type = cluster_type
         self.page_num = page_num
         self.page_size = page_size
         self.tag = tag
@@ -39,6 +41,9 @@ class ListClustersRequest(DaraModel):
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
 
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+
         if self.page_num is not None:
             result['PageNum'] = self.page_num
 
@@ -59,6 +64,9 @@ class ListClustersRequest(DaraModel):
 
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
+
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
 
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')

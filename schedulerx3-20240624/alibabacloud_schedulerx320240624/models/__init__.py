@@ -15,6 +15,9 @@ from ._create_cluster_response import CreateClusterResponse
 from ._create_datasource_request import CreateDatasourceRequest
 from ._create_datasource_response_body import CreateDatasourceResponseBody
 from ._create_datasource_response import CreateDatasourceResponse
+from ._create_executor_group_request import CreateExecutorGroupRequest
+from ._create_executor_group_response_body import CreateExecutorGroupResponseBody
+from ._create_executor_group_response import CreateExecutorGroupResponse
 from ._create_executors_request import CreateExecutorsRequest
 from ._create_executors_response_body import CreateExecutorsResponseBody
 from ._create_executors_response import CreateExecutorsResponse
@@ -37,6 +40,9 @@ from ._delete_cluster_response import DeleteClusterResponse
 from ._delete_datasource_request import DeleteDatasourceRequest
 from ._delete_datasource_response_body import DeleteDatasourceResponseBody
 from ._delete_datasource_response import DeleteDatasourceResponse
+from ._delete_executor_group_request import DeleteExecutorGroupRequest
+from ._delete_executor_group_response_body import DeleteExecutorGroupResponseBody
+from ._delete_executor_group_response import DeleteExecutorGroupResponse
 from ._delete_jobs_request import DeleteJobsRequest
 from ._delete_jobs_shrink_request import DeleteJobsShrinkRequest
 from ._delete_jobs_response_body import DeleteJobsResponseBody
@@ -84,6 +90,9 @@ from ._get_log_response import GetLogResponse
 from ._get_log_event_request import GetLogEventRequest
 from ._get_log_event_response_body import GetLogEventResponseBody
 from ._get_log_event_response import GetLogEventResponse
+from ._get_page_log_request import GetPageLogRequest
+from ._get_page_log_response_body import GetPageLogResponseBody
+from ._get_page_log_response import GetPageLogResponse
 from ._get_workflow_request import GetWorkflowRequest
 from ._get_workflow_response_body import GetWorkflowResponseBody
 from ._get_workflow_response import GetWorkflowResponse
@@ -126,6 +135,9 @@ from ._list_clusters_response import ListClustersResponse
 from ._list_datasources_request import ListDatasourcesRequest
 from ._list_datasources_response_body import ListDatasourcesResponseBody
 from ._list_datasources_response import ListDatasourcesResponse
+from ._list_executor_group_request import ListExecutorGroupRequest
+from ._list_executor_group_response_body import ListExecutorGroupResponseBody
+from ._list_executor_group_response import ListExecutorGroupResponse
 from ._list_executors_request import ListExecutorsRequest
 from ._list_executors_response_body import ListExecutorsResponseBody
 from ._list_executors_response import ListExecutorsResponse
@@ -252,6 +264,9 @@ from ._update_cluster_response import UpdateClusterResponse
 from ._update_datasource_request import UpdateDatasourceRequest
 from ._update_datasource_response_body import UpdateDatasourceResponseBody
 from ._update_datasource_response import UpdateDatasourceResponse
+from ._update_executor_group_request import UpdateExecutorGroupRequest
+from ._update_executor_group_response_body import UpdateExecutorGroupResponseBody
+from ._update_executor_group_response import UpdateExecutorGroupResponse
 from ._update_executors_request import UpdateExecutorsRequest
 from ._update_executors_response_body import UpdateExecutorsResponseBody
 from ._update_executors_response import UpdateExecutorsResponse
@@ -281,6 +296,7 @@ from ._create_cluster_request import CreateClusterRequestVSwitches
 from ._create_cluster_shrink_request import CreateClusterShrinkRequestTag
 from ._create_cluster_response_body import CreateClusterResponseBodyData
 from ._create_datasource_response_body import CreateDatasourceResponseBodyData
+from ._create_executor_group_response_body import CreateExecutorGroupResponseBodyData
 from ._create_executors_response_body import CreateExecutorsResponseBodyData
 from ._create_job_request import CreateJobRequestCoordinate
 from ._create_job_request import CreateJobRequestNoticeConfig
@@ -304,6 +320,8 @@ from ._get_job_execution_progress_response_body import GetJobExecutionProgressRe
 from ._get_job_execution_thread_dump_response_body import GetJobExecutionThreadDumpResponseBodyData
 from ._get_log_event_response_body import GetLogEventResponseBodyDataRecords
 from ._get_log_event_response_body import GetLogEventResponseBodyData
+from ._get_page_log_response_body import GetPageLogResponseBodyDataRecords
+from ._get_page_log_response_body import GetPageLogResponseBodyData
 from ._get_workflow_response_body import GetWorkflowResponseBodyData
 from ._get_workflow_dagresponse_body import GetWorkflowDAGResponseBodyDataEdges
 from ._get_workflow_dagresponse_body import GetWorkflowDAGResponseBodyDataNodesCoordinate
@@ -330,6 +348,9 @@ from ._list_clusters_response_body import ListClustersResponseBodyDataRecords
 from ._list_clusters_response_body import ListClustersResponseBodyData
 from ._list_datasources_response_body import ListDatasourcesResponseBodyDataRecords
 from ._list_datasources_response_body import ListDatasourcesResponseBodyData
+from ._list_executor_group_response_body import ListExecutorGroupResponseBodyDataRecordsCiteList
+from ._list_executor_group_response_body import ListExecutorGroupResponseBodyDataRecords
+from ._list_executor_group_response_body import ListExecutorGroupResponseBodyData
 from ._list_executors_response_body import ListExecutorsResponseBodyData
 from ._list_job_executions_response_body import ListJobExecutionsResponseBodyDataRecords
 from ._list_job_executions_response_body import ListJobExecutionsResponseBodyData
@@ -350,6 +371,7 @@ from ._list_workflows_response_body import ListWorkflowsResponseBodyDataRecords
 from ._list_workflows_response_body import ListWorkflowsResponseBodyData
 from ._operate_execute_job_response_body import OperateExecuteJobResponseBodyData
 from ._operate_execute_workflow_response_body import OperateExecuteWorkflowResponseBodyData
+from ._update_executor_group_response_body import UpdateExecutorGroupResponseBodyData
 from ._update_executors_response_body import UpdateExecutorsResponseBodyData
 from ._update_job_request import UpdateJobRequestNoticeConfig
 from ._update_job_request import UpdateJobRequestNoticeContacts
@@ -372,6 +394,9 @@ __all__ = [
     CreateDatasourceRequest,
     CreateDatasourceResponseBody,
     CreateDatasourceResponse,
+    CreateExecutorGroupRequest,
+    CreateExecutorGroupResponseBody,
+    CreateExecutorGroupResponse,
     CreateExecutorsRequest,
     CreateExecutorsResponseBody,
     CreateExecutorsResponse,
@@ -394,6 +419,9 @@ __all__ = [
     DeleteDatasourceRequest,
     DeleteDatasourceResponseBody,
     DeleteDatasourceResponse,
+    DeleteExecutorGroupRequest,
+    DeleteExecutorGroupResponseBody,
+    DeleteExecutorGroupResponse,
     DeleteJobsRequest,
     DeleteJobsShrinkRequest,
     DeleteJobsResponseBody,
@@ -441,6 +469,9 @@ __all__ = [
     GetLogEventRequest,
     GetLogEventResponseBody,
     GetLogEventResponse,
+    GetPageLogRequest,
+    GetPageLogResponseBody,
+    GetPageLogResponse,
     GetWorkflowRequest,
     GetWorkflowResponseBody,
     GetWorkflowResponse,
@@ -483,6 +514,9 @@ __all__ = [
     ListDatasourcesRequest,
     ListDatasourcesResponseBody,
     ListDatasourcesResponse,
+    ListExecutorGroupRequest,
+    ListExecutorGroupResponseBody,
+    ListExecutorGroupResponse,
     ListExecutorsRequest,
     ListExecutorsResponseBody,
     ListExecutorsResponse,
@@ -609,6 +643,9 @@ __all__ = [
     UpdateDatasourceRequest,
     UpdateDatasourceResponseBody,
     UpdateDatasourceResponse,
+    UpdateExecutorGroupRequest,
+    UpdateExecutorGroupResponseBody,
+    UpdateExecutorGroupResponse,
     UpdateExecutorsRequest,
     UpdateExecutorsResponseBody,
     UpdateExecutorsResponse,
@@ -638,6 +675,7 @@ __all__ = [
     CreateClusterShrinkRequestTag,
     CreateClusterResponseBodyData,
     CreateDatasourceResponseBodyData,
+    CreateExecutorGroupResponseBodyData,
     CreateExecutorsResponseBodyData,
     CreateJobRequestCoordinate,
     CreateJobRequestNoticeConfig,
@@ -661,6 +699,8 @@ __all__ = [
     GetJobExecutionThreadDumpResponseBodyData,
     GetLogEventResponseBodyDataRecords,
     GetLogEventResponseBodyData,
+    GetPageLogResponseBodyDataRecords,
+    GetPageLogResponseBodyData,
     GetWorkflowResponseBodyData,
     GetWorkflowDAGResponseBodyDataEdges,
     GetWorkflowDAGResponseBodyDataNodesCoordinate,
@@ -687,6 +727,9 @@ __all__ = [
     ListClustersResponseBodyData,
     ListDatasourcesResponseBodyDataRecords,
     ListDatasourcesResponseBodyData,
+    ListExecutorGroupResponseBodyDataRecordsCiteList,
+    ListExecutorGroupResponseBodyDataRecords,
+    ListExecutorGroupResponseBodyData,
     ListExecutorsResponseBodyData,
     ListJobExecutionsResponseBodyDataRecords,
     ListJobExecutionsResponseBodyData,
@@ -707,6 +750,7 @@ __all__ = [
     ListWorkflowsResponseBodyData,
     OperateExecuteJobResponseBodyData,
     OperateExecuteWorkflowResponseBodyData,
+    UpdateExecutorGroupResponseBodyData,
     UpdateExecutorsResponseBodyData,
     UpdateJobRequestNoticeConfig,
     UpdateJobRequestNoticeContacts,

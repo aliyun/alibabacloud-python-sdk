@@ -32,6 +32,7 @@ class UpdateJobShrinkRequest(DaraModel):
         time_type: int = None,
         timezone: str = None,
         weight: int = None,
+        xattrs: str = None,
     ):
         # This parameter is required.
         self.app_name = app_name
@@ -61,6 +62,7 @@ class UpdateJobShrinkRequest(DaraModel):
         self.time_type = time_type
         self.timezone = timezone
         self.weight = weight
+        self.xattrs = xattrs
 
     def validate(self):
         pass
@@ -145,6 +147,9 @@ class UpdateJobShrinkRequest(DaraModel):
         if self.weight is not None:
             result['Weight'] = self.weight
 
+        if self.xattrs is not None:
+            result['XAttrs'] = self.xattrs
+
         return result
 
     def from_map(self, m: dict = None):
@@ -223,6 +228,9 @@ class UpdateJobShrinkRequest(DaraModel):
 
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
+
+        if m.get('XAttrs') is not None:
+            self.xattrs = m.get('XAttrs')
 
         return self
 

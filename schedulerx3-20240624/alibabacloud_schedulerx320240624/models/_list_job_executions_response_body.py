@@ -156,6 +156,7 @@ class ListJobExecutionsResponseBodyDataRecords(DaraModel):
         workflow_execution_id: str = None,
         workflow_id: int = None,
         workflow_name: str = None,
+        xattrs: str = None,
     ):
         self.app_name = app_name
         self.attempt = attempt
@@ -180,6 +181,7 @@ class ListJobExecutionsResponseBodyDataRecords(DaraModel):
         self.workflow_execution_id = workflow_execution_id
         self.workflow_id = workflow_id
         self.workflow_name = workflow_name
+        self.xattrs = xattrs
 
     def validate(self):
         pass
@@ -258,6 +260,9 @@ class ListJobExecutionsResponseBodyDataRecords(DaraModel):
         if self.workflow_name is not None:
             result['WorkflowName'] = self.workflow_name
 
+        if self.xattrs is not None:
+            result['XAttrs'] = self.xattrs
+
         return result
 
     def from_map(self, m: dict = None):
@@ -330,6 +335,9 @@ class ListJobExecutionsResponseBodyDataRecords(DaraModel):
 
         if m.get('WorkflowName') is not None:
             self.workflow_name = m.get('WorkflowName')
+
+        if m.get('XAttrs') is not None:
+            self.xattrs = m.get('XAttrs')
 
         return self
 
