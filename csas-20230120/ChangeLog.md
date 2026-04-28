@@ -1,3 +1,7 @@
+2026-04-28 Version: 1.12.0
+- Support API RevokeUserDeviceSession.
+
+
 2026-04-08 Version: 1.11.0
 - Support API CreatePADiagnosisTask.
 - Support API GetPADiagnosisTask.

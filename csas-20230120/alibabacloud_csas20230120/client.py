@@ -5403,6 +5403,138 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_excessive_device_registration_applications_with_options_async(request, runtime)
 
+    def list_forward_strategies_with_options(
+        self,
+        request: main_models.ListForwardStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListForwardStrategiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListForwardStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListForwardStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_forward_strategies_with_options_async(
+        self,
+        request: main_models.ListForwardStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListForwardStrategiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListForwardStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListForwardStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_forward_strategies(
+        self,
+        request: main_models.ListForwardStrategiesRequest,
+    ) -> main_models.ListForwardStrategiesResponse:
+        runtime = RuntimeOptions()
+        return self.list_forward_strategies_with_options(request, runtime)
+
+    async def list_forward_strategies_async(
+        self,
+        request: main_models.ListForwardStrategiesRequest,
+    ) -> main_models.ListForwardStrategiesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_forward_strategies_with_options_async(request, runtime)
+
+    def list_forward_strategy_binding_items_with_options(
+        self,
+        request: main_models.ListForwardStrategyBindingItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListForwardStrategyBindingItemsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListForwardStrategyBindingItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListForwardStrategyBindingItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_forward_strategy_binding_items_with_options_async(
+        self,
+        request: main_models.ListForwardStrategyBindingItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListForwardStrategyBindingItemsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListForwardStrategyBindingItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListForwardStrategyBindingItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_forward_strategy_binding_items(
+        self,
+        request: main_models.ListForwardStrategyBindingItemsRequest,
+    ) -> main_models.ListForwardStrategyBindingItemsResponse:
+        runtime = RuntimeOptions()
+        return self.list_forward_strategy_binding_items_with_options(request, runtime)
+
+    async def list_forward_strategy_binding_items_async(
+        self,
+        request: main_models.ListForwardStrategyBindingItemsRequest,
+    ) -> main_models.ListForwardStrategyBindingItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_forward_strategy_binding_items_with_options_async(request, runtime)
+
     def list_idp_configs_with_options(
         self,
         request: main_models.ListIdpConfigsRequest,
@@ -7300,6 +7432,80 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyEnterpriseAcceleratePolicyResponse:
         runtime = RuntimeOptions()
         return await self.modify_enterprise_accelerate_policy_with_options_async(request, runtime)
+
+    def revoke_user_device_session_with_options(
+        self,
+        request: main_models.RevokeUserDeviceSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeUserDeviceSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.sase_user_id):
+            body['SaseUserId'] = request.sase_user_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeUserDeviceSession',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeUserDeviceSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_user_device_session_with_options_async(
+        self,
+        request: main_models.RevokeUserDeviceSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeUserDeviceSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.sase_user_id):
+            body['SaseUserId'] = request.sase_user_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeUserDeviceSession',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeUserDeviceSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_user_device_session(
+        self,
+        request: main_models.RevokeUserDeviceSessionRequest,
+    ) -> main_models.RevokeUserDeviceSessionResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_user_device_session_with_options(request, runtime)
+
+    async def revoke_user_device_session_async(
+        self,
+        request: main_models.RevokeUserDeviceSessionRequest,
+    ) -> main_models.RevokeUserDeviceSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_user_device_session_with_options_async(request, runtime)
 
     def revoke_user_session_with_options(
         self,

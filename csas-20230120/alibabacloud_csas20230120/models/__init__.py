@@ -249,6 +249,12 @@ from ._list_enterprise_accelerate_targets_response import ListEnterpriseAccelera
 from ._list_excessive_device_registration_applications_request import ListExcessiveDeviceRegistrationApplicationsRequest
 from ._list_excessive_device_registration_applications_response_body import ListExcessiveDeviceRegistrationApplicationsResponseBody
 from ._list_excessive_device_registration_applications_response import ListExcessiveDeviceRegistrationApplicationsResponse
+from ._list_forward_strategies_request import ListForwardStrategiesRequest
+from ._list_forward_strategies_response_body import ListForwardStrategiesResponseBody
+from ._list_forward_strategies_response import ListForwardStrategiesResponse
+from ._list_forward_strategy_binding_items_request import ListForwardStrategyBindingItemsRequest
+from ._list_forward_strategy_binding_items_response_body import ListForwardStrategyBindingItemsResponseBody
+from ._list_forward_strategy_binding_items_response import ListForwardStrategyBindingItemsResponse
 from ._list_idp_configs_request import ListIdpConfigsRequest
 from ._list_idp_configs_response_body import ListIdpConfigsResponseBody
 from ._list_idp_configs_response import ListIdpConfigsResponse
@@ -330,6 +336,9 @@ from ._lookup_wm_info_mapping_response import LookupWmInfoMappingResponse
 from ._modify_enterprise_accelerate_policy_request import ModifyEnterpriseAcceleratePolicyRequest
 from ._modify_enterprise_accelerate_policy_response_body import ModifyEnterpriseAcceleratePolicyResponseBody
 from ._modify_enterprise_accelerate_policy_response import ModifyEnterpriseAcceleratePolicyResponse
+from ._revoke_user_device_session_request import RevokeUserDeviceSessionRequest
+from ._revoke_user_device_session_response_body import RevokeUserDeviceSessionResponseBody
+from ._revoke_user_device_session_response import RevokeUserDeviceSessionResponse
 from ._revoke_user_session_request import RevokeUserSessionRequest
 from ._revoke_user_session_response_body import RevokeUserSessionResponseBody
 from ._revoke_user_session_response import RevokeUserSessionResponse
@@ -568,6 +577,9 @@ from ._list_dynamic_routes_response_body import ListDynamicRoutesResponseBodyDyn
 from ._list_enterprise_accelerate_logs_response_body import ListEnterpriseAccelerateLogsResponseBodyLogs
 from ._list_enterprise_accelerate_policies_response_body import ListEnterpriseAcceleratePoliciesResponseBodyPolicies
 from ._list_excessive_device_registration_applications_response_body import ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications
+from ._list_forward_strategies_response_body import ListForwardStrategiesResponseBodyForwardStrategies
+from ._list_forward_strategy_binding_items_response_body import ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsListItems
+from ._list_forward_strategy_binding_items_response_body import ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsList
 from ._list_idp_configs_response_body import ListIdpConfigsResponseBodyDataDataList
 from ._list_idp_configs_response_body import ListIdpConfigsResponseBodyData
 from ._list_idp_departments_response_body import ListIdpDepartmentsResponseBodyDataDataList
@@ -937,6 +949,12 @@ __all__ = [
     ListExcessiveDeviceRegistrationApplicationsRequest,
     ListExcessiveDeviceRegistrationApplicationsResponseBody,
     ListExcessiveDeviceRegistrationApplicationsResponse,
+    ListForwardStrategiesRequest,
+    ListForwardStrategiesResponseBody,
+    ListForwardStrategiesResponse,
+    ListForwardStrategyBindingItemsRequest,
+    ListForwardStrategyBindingItemsResponseBody,
+    ListForwardStrategyBindingItemsResponse,
     ListIdpConfigsRequest,
     ListIdpConfigsResponseBody,
     ListIdpConfigsResponse,
@@ -1018,6 +1036,9 @@ __all__ = [
     ModifyEnterpriseAcceleratePolicyRequest,
     ModifyEnterpriseAcceleratePolicyResponseBody,
     ModifyEnterpriseAcceleratePolicyResponse,
+    RevokeUserDeviceSessionRequest,
+    RevokeUserDeviceSessionResponseBody,
+    RevokeUserDeviceSessionResponse,
     RevokeUserSessionRequest,
     RevokeUserSessionResponseBody,
     RevokeUserSessionResponse,
@@ -1256,6 +1277,9 @@ __all__ = [
     ListEnterpriseAccelerateLogsResponseBodyLogs,
     ListEnterpriseAcceleratePoliciesResponseBodyPolicies,
     ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications,
+    ListForwardStrategiesResponseBodyForwardStrategies,
+    ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsListItems,
+    ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsList,
     ListIdpConfigsResponseBodyDataDataList,
     ListIdpConfigsResponseBodyData,
     ListIdpDepartmentsResponseBodyDataDataList,
