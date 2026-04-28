@@ -97,6 +97,7 @@ class QueryChatappBindWabaResponseBodyData(DaraModel):
         business_name: str = None,
         currency: str = None,
         id: str = None,
+        is_on_biz_app: str = None,
         marketing_message_lite_status: str = None,
         message_template_namespace: str = None,
         name: str = None,
@@ -124,6 +125,7 @@ class QueryChatappBindWabaResponseBodyData(DaraModel):
         self.currency = currency
         # The ID of the WhatsApp Business account.
         self.id = id
+        self.is_on_biz_app = is_on_biz_app
         # The Marketing Messaging Lite status.
         self.marketing_message_lite_status = marketing_message_lite_status
         # The namespace of the message template.
@@ -159,6 +161,9 @@ class QueryChatappBindWabaResponseBodyData(DaraModel):
         if self.id is not None:
             result['Id'] = self.id
 
+        if self.is_on_biz_app is not None:
+            result['IsOnBizApp'] = self.is_on_biz_app
+
         if self.marketing_message_lite_status is not None:
             result['MarketingMessageLiteStatus'] = self.marketing_message_lite_status
 
@@ -192,6 +197,9 @@ class QueryChatappBindWabaResponseBodyData(DaraModel):
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('IsOnBizApp') is not None:
+            self.is_on_biz_app = m.get('IsOnBizApp')
 
         if m.get('MarketingMessageLiteStatus') is not None:
             self.marketing_message_lite_status = m.get('MarketingMessageLiteStatus')

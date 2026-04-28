@@ -13874,6 +13874,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.send_chatapp_message_with_options_async(request, runtime)
 
+    def sync_business_app_history_with_options(
+        self,
+        request: main_models.SyncBusinessAppHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SyncBusinessAppHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SyncBusinessAppHistory',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SyncBusinessAppHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_business_app_history_with_options_async(
+        self,
+        request: main_models.SyncBusinessAppHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SyncBusinessAppHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SyncBusinessAppHistory',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SyncBusinessAppHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_business_app_history(
+        self,
+        request: main_models.SyncBusinessAppHistoryRequest,
+    ) -> main_models.SyncBusinessAppHistoryResponse:
+        runtime = RuntimeOptions()
+        return self.sync_business_app_history_with_options(request, runtime)
+
+    async def sync_business_app_history_async(
+        self,
+        request: main_models.SyncBusinessAppHistoryRequest,
+    ) -> main_models.SyncBusinessAppHistoryResponse:
+        runtime = RuntimeOptions()
+        return await self.sync_business_app_history_with_options_async(request, runtime)
+
     def sync_flow_with_options(
         self,
         request: main_models.SyncFlowRequest,
