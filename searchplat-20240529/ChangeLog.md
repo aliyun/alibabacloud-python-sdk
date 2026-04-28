@@ -1,3 +1,17 @@
+2026-04-28 Version: 2.5.0
+- Support API CreateMemory.
+- Support API CreateMemorySkill.
+- Support API DeleteMemory.
+- Support API DeleteMemorySkill.
+- Support API GetMemory.
+- Support API GetMemoryHealth.
+- Support API GetMemorySkill.
+- Support API GetMemoryTask.
+- Support API SearchMemory.
+- Support API UpdateMemory.
+- Support API UpdateMemorySkill.
+
+
 2026-03-13 Version: 2.4.0
 - Support API CreateVideoSegmentationTask.
 - Support API CreateVideoSummarizationTask.

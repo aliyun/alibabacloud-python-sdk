@@ -11,6 +11,12 @@ from ._create_document_analyze_task_response import CreateDocumentAnalyzeTaskRes
 from ._create_image_analyze_task_request import CreateImageAnalyzeTaskRequest
 from ._create_image_analyze_task_response_body import CreateImageAnalyzeTaskResponseBody
 from ._create_image_analyze_task_response import CreateImageAnalyzeTaskResponse
+from ._create_memory_request import CreateMemoryRequest
+from ._create_memory_response_body import CreateMemoryResponseBody
+from ._create_memory_response import CreateMemoryResponse
+from ._create_memory_skill_request import CreateMemorySkillRequest
+from ._create_memory_skill_response_body import CreateMemorySkillResponseBody
+from ._create_memory_skill_response import CreateMemorySkillResponse
 from ._create_video_segmentation_task_request import CreateVideoSegmentationTaskRequest
 from ._create_video_segmentation_task_response_body import CreateVideoSegmentationTaskResponseBody
 from ._create_video_segmentation_task_response import CreateVideoSegmentationTaskResponse
@@ -20,6 +26,12 @@ from ._create_video_snapshot_task_response import CreateVideoSnapshotTaskRespons
 from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequest
 from ._create_video_summarization_task_response_body import CreateVideoSummarizationTaskResponseBody
 from ._create_video_summarization_task_response import CreateVideoSummarizationTaskResponse
+from ._delete_memory_request import DeleteMemoryRequest
+from ._delete_memory_response_body import DeleteMemoryResponseBody
+from ._delete_memory_response import DeleteMemoryResponse
+from ._delete_memory_skill_request import DeleteMemorySkillRequest
+from ._delete_memory_skill_response_body import DeleteMemorySkillResponseBody
+from ._delete_memory_skill_response import DeleteMemorySkillResponse
 from ._get_audio_asr_task_status_request import GetAudioAsrTaskStatusRequest
 from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBody
 from ._get_audio_asr_task_status_response import GetAudioAsrTaskStatusResponse
@@ -41,6 +53,18 @@ from ._get_image_analyze_task_status_response import GetImageAnalyzeTaskStatusRe
 from ._get_image_object_detection_request import GetImageObjectDetectionRequest
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBody
 from ._get_image_object_detection_response import GetImageObjectDetectionResponse
+from ._get_memory_request import GetMemoryRequest
+from ._get_memory_response_body import GetMemoryResponseBody
+from ._get_memory_response import GetMemoryResponse
+from ._get_memory_health_request import GetMemoryHealthRequest
+from ._get_memory_health_response_body import GetMemoryHealthResponseBody
+from ._get_memory_health_response import GetMemoryHealthResponse
+from ._get_memory_skill_request import GetMemorySkillRequest
+from ._get_memory_skill_response_body import GetMemorySkillResponseBody
+from ._get_memory_skill_response import GetMemorySkillResponse
+from ._get_memory_task_request import GetMemoryTaskRequest
+from ._get_memory_task_response_body import GetMemoryTaskResponseBody
+from ._get_memory_task_response import GetMemoryTaskResponse
 from ._get_multi_modal_embedding_request import GetMultiModalEmbeddingRequest
 from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBody
 from ._get_multi_modal_embedding_response import GetMultiModalEmbeddingResponse
@@ -74,6 +98,15 @@ from ._get_video_summarization_task_status_response import GetVideoSummarization
 from ._get_web_search_request import GetWebSearchRequest
 from ._get_web_search_response_body import GetWebSearchResponseBody
 from ._get_web_search_response import GetWebSearchResponse
+from ._search_memory_request import SearchMemoryRequest
+from ._search_memory_response_body import SearchMemoryResponseBody
+from ._search_memory_response import SearchMemoryResponse
+from ._update_memory_request import UpdateMemoryRequest
+from ._update_memory_response_body import UpdateMemoryResponseBody
+from ._update_memory_response import UpdateMemoryResponse
+from ._update_memory_skill_request import UpdateMemorySkillRequest
+from ._update_memory_skill_response_body import UpdateMemorySkillResponseBody
+from ._update_memory_skill_response import UpdateMemorySkillResponse
 from ._create_audio_asr_task_request import CreateAudioAsrTaskRequestInput
 from ._create_audio_asr_task_request import CreateAudioAsrTaskRequestOutput
 from ._create_audio_asr_task_response_body import CreateAudioAsrTaskResponseBodyResult
@@ -83,6 +116,11 @@ from ._create_document_analyze_task_request import CreateDocumentAnalyzeTaskRequ
 from ._create_document_analyze_task_response_body import CreateDocumentAnalyzeTaskResponseBodyResult
 from ._create_image_analyze_task_request import CreateImageAnalyzeTaskRequestDocument
 from ._create_image_analyze_task_response_body import CreateImageAnalyzeTaskResponseBodyResult
+from ._create_memory_response_body import CreateMemoryResponseBodyResultMemory
+from ._create_memory_response_body import CreateMemoryResponseBodyResultSkill
+from ._create_memory_response_body import CreateMemoryResponseBodyResult
+from ._create_memory_skill_response_body import CreateMemorySkillResponseBodyResultData
+from ._create_memory_skill_response_body import CreateMemorySkillResponseBodyResult
 from ._create_video_segmentation_task_request import CreateVideoSegmentationTaskRequestInput
 from ._create_video_segmentation_task_request import CreateVideoSegmentationTaskRequestOutput
 from ._create_video_segmentation_task_response_body import CreateVideoSegmentationTaskResponseBodyResult
@@ -94,6 +132,8 @@ from ._create_video_summarization_task_request import CreateVideoSummarizationTa
 from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequestInput
 from ._create_video_summarization_task_request import CreateVideoSummarizationTaskRequestOutput
 from ._create_video_summarization_task_response_body import CreateVideoSummarizationTaskResponseBodyResult
+from ._delete_memory_response_body import DeleteMemoryResponseBodyResult
+from ._delete_memory_skill_response_body import DeleteMemorySkillResponseBodyResult
 from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBodyResultData
 from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBodyResult
 from ._get_audio_asr_task_status_response_body import GetAudioAsrTaskStatusResponseBodyUsage
@@ -120,6 +160,10 @@ from ._get_image_object_detection_response_body import GetImageObjectDetectionRe
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResultObjects
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResult
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyUsage
+from ._get_memory_response_body import GetMemoryResponseBodyResult
+from ._get_memory_health_response_body import GetMemoryHealthResponseBodyResult
+from ._get_memory_skill_response_body import GetMemorySkillResponseBodyResult
+from ._get_memory_task_response_body import GetMemoryTaskResponseBodyResult
 from ._get_multi_modal_embedding_request import GetMultiModalEmbeddingRequestInput
 from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBodyResultEmbeddings
 from ._get_multi_modal_embedding_response_body import GetMultiModalEmbeddingResponseBodyResult
@@ -163,6 +207,13 @@ from ._get_web_search_response_body import GetWebSearchResponseBodyResult
 from ._get_web_search_response_body import GetWebSearchResponseBodyUsageFilterModel
 from ._get_web_search_response_body import GetWebSearchResponseBodyUsageRewriteModel
 from ._get_web_search_response_body import GetWebSearchResponseBodyUsage
+from ._search_memory_response_body import SearchMemoryResponseBodyResultMemoryResults
+from ._search_memory_response_body import SearchMemoryResponseBodyResultMemory
+from ._search_memory_response_body import SearchMemoryResponseBodyResultSkillResults
+from ._search_memory_response_body import SearchMemoryResponseBodyResultSkill
+from ._search_memory_response_body import SearchMemoryResponseBodyResult
+from ._update_memory_response_body import UpdateMemoryResponseBodyResult
+from ._update_memory_skill_response_body import UpdateMemorySkillResponseBodyResult
 
 __all__ = [
     CreateAudioAsrTaskRequest,
@@ -174,6 +225,12 @@ __all__ = [
     CreateImageAnalyzeTaskRequest,
     CreateImageAnalyzeTaskResponseBody,
     CreateImageAnalyzeTaskResponse,
+    CreateMemoryRequest,
+    CreateMemoryResponseBody,
+    CreateMemoryResponse,
+    CreateMemorySkillRequest,
+    CreateMemorySkillResponseBody,
+    CreateMemorySkillResponse,
     CreateVideoSegmentationTaskRequest,
     CreateVideoSegmentationTaskResponseBody,
     CreateVideoSegmentationTaskResponse,
@@ -183,6 +240,12 @@ __all__ = [
     CreateVideoSummarizationTaskRequest,
     CreateVideoSummarizationTaskResponseBody,
     CreateVideoSummarizationTaskResponse,
+    DeleteMemoryRequest,
+    DeleteMemoryResponseBody,
+    DeleteMemoryResponse,
+    DeleteMemorySkillRequest,
+    DeleteMemorySkillResponseBody,
+    DeleteMemorySkillResponse,
     GetAudioAsrTaskStatusRequest,
     GetAudioAsrTaskStatusResponseBody,
     GetAudioAsrTaskStatusResponse,
@@ -204,6 +267,18 @@ __all__ = [
     GetImageObjectDetectionRequest,
     GetImageObjectDetectionResponseBody,
     GetImageObjectDetectionResponse,
+    GetMemoryRequest,
+    GetMemoryResponseBody,
+    GetMemoryResponse,
+    GetMemoryHealthRequest,
+    GetMemoryHealthResponseBody,
+    GetMemoryHealthResponse,
+    GetMemorySkillRequest,
+    GetMemorySkillResponseBody,
+    GetMemorySkillResponse,
+    GetMemoryTaskRequest,
+    GetMemoryTaskResponseBody,
+    GetMemoryTaskResponse,
     GetMultiModalEmbeddingRequest,
     GetMultiModalEmbeddingResponseBody,
     GetMultiModalEmbeddingResponse,
@@ -237,6 +312,15 @@ __all__ = [
     GetWebSearchRequest,
     GetWebSearchResponseBody,
     GetWebSearchResponse,
+    SearchMemoryRequest,
+    SearchMemoryResponseBody,
+    SearchMemoryResponse,
+    UpdateMemoryRequest,
+    UpdateMemoryResponseBody,
+    UpdateMemoryResponse,
+    UpdateMemorySkillRequest,
+    UpdateMemorySkillResponseBody,
+    UpdateMemorySkillResponse,
     CreateAudioAsrTaskRequestInput,
     CreateAudioAsrTaskRequestOutput,
     CreateAudioAsrTaskResponseBodyResult,
@@ -246,6 +330,11 @@ __all__ = [
     CreateDocumentAnalyzeTaskResponseBodyResult,
     CreateImageAnalyzeTaskRequestDocument,
     CreateImageAnalyzeTaskResponseBodyResult,
+    CreateMemoryResponseBodyResultMemory,
+    CreateMemoryResponseBodyResultSkill,
+    CreateMemoryResponseBodyResult,
+    CreateMemorySkillResponseBodyResultData,
+    CreateMemorySkillResponseBodyResult,
     CreateVideoSegmentationTaskRequestInput,
     CreateVideoSegmentationTaskRequestOutput,
     CreateVideoSegmentationTaskResponseBodyResult,
@@ -257,6 +346,8 @@ __all__ = [
     CreateVideoSummarizationTaskRequestInput,
     CreateVideoSummarizationTaskRequestOutput,
     CreateVideoSummarizationTaskResponseBodyResult,
+    DeleteMemoryResponseBodyResult,
+    DeleteMemorySkillResponseBodyResult,
     GetAudioAsrTaskStatusResponseBodyResultData,
     GetAudioAsrTaskStatusResponseBodyResult,
     GetAudioAsrTaskStatusResponseBodyUsage,
@@ -283,6 +374,10 @@ __all__ = [
     GetImageObjectDetectionResponseBodyResultObjects,
     GetImageObjectDetectionResponseBodyResult,
     GetImageObjectDetectionResponseBodyUsage,
+    GetMemoryResponseBodyResult,
+    GetMemoryHealthResponseBodyResult,
+    GetMemorySkillResponseBodyResult,
+    GetMemoryTaskResponseBodyResult,
     GetMultiModalEmbeddingRequestInput,
     GetMultiModalEmbeddingResponseBodyResultEmbeddings,
     GetMultiModalEmbeddingResponseBodyResult,
@@ -325,5 +420,12 @@ __all__ = [
     GetWebSearchResponseBodyResult,
     GetWebSearchResponseBodyUsageFilterModel,
     GetWebSearchResponseBodyUsageRewriteModel,
-    GetWebSearchResponseBodyUsage
+    GetWebSearchResponseBodyUsage,
+    SearchMemoryResponseBodyResultMemoryResults,
+    SearchMemoryResponseBodyResultMemory,
+    SearchMemoryResponseBodyResultSkillResults,
+    SearchMemoryResponseBodyResultSkill,
+    SearchMemoryResponseBodyResult,
+    UpdateMemoryResponseBodyResult,
+    UpdateMemorySkillResponseBodyResult
 ]
