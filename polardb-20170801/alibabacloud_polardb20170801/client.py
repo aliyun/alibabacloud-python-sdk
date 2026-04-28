@@ -1695,6 +1695,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_kmsauthorized_with_options_async(request, runtime)
 
+    def check_polar_fs_quota_consistency_with_options(
+        self,
+        request: main_models.CheckPolarFsQuotaConsistencyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckPolarFsQuotaConsistencyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enable_repair):
+            query['EnableRepair'] = request.enable_repair
+        if not DaraCore.is_null(request.enable_strict_calculate):
+            query['EnableStrictCalculate'] = request.enable_strict_calculate
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckPolarFsQuotaConsistency',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckPolarFsQuotaConsistencyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_polar_fs_quota_consistency_with_options_async(
+        self,
+        request: main_models.CheckPolarFsQuotaConsistencyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckPolarFsQuotaConsistencyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enable_repair):
+            query['EnableRepair'] = request.enable_repair
+        if not DaraCore.is_null(request.enable_strict_calculate):
+            query['EnableStrictCalculate'] = request.enable_strict_calculate
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckPolarFsQuotaConsistency',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckPolarFsQuotaConsistencyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_polar_fs_quota_consistency(
+        self,
+        request: main_models.CheckPolarFsQuotaConsistencyRequest,
+    ) -> main_models.CheckPolarFsQuotaConsistencyResponse:
+        runtime = RuntimeOptions()
+        return self.check_polar_fs_quota_consistency_with_options(request, runtime)
+
+    async def check_polar_fs_quota_consistency_async(
+        self,
+        request: main_models.CheckPolarFsQuotaConsistencyRequest,
+    ) -> main_models.CheckPolarFsQuotaConsistencyResponse:
+        runtime = RuntimeOptions()
+        return await self.check_polar_fs_quota_consistency_with_options_async(request, runtime)
+
     def check_service_linked_role_with_options(
         self,
         request: main_models.CheckServiceLinkedRoleRequest,
@@ -3305,6 +3387,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
+    def create_budget_policy_with_options(
+        self,
+        request: main_models.CreateBudgetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBudgetPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_threshold_pct):
+            query['AlertThresholdPct'] = request.alert_threshold_pct
+        if not DaraCore.is_null(request.budget_dimension_ref_id):
+            query['BudgetDimensionRefId'] = request.budget_dimension_ref_id
+        if not DaraCore.is_null(request.budget_points):
+            query['BudgetPoints'] = request.budget_points
+        if not DaraCore.is_null(request.budget_type):
+            query['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.reset_day_of_month):
+            query['ResetDayOfMonth'] = request.reset_day_of_month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBudgetPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBudgetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_budget_policy_with_options_async(
+        self,
+        request: main_models.CreateBudgetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBudgetPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_threshold_pct):
+            query['AlertThresholdPct'] = request.alert_threshold_pct
+        if not DaraCore.is_null(request.budget_dimension_ref_id):
+            query['BudgetDimensionRefId'] = request.budget_dimension_ref_id
+        if not DaraCore.is_null(request.budget_points):
+            query['BudgetPoints'] = request.budget_points
+        if not DaraCore.is_null(request.budget_type):
+            query['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.reset_day_of_month):
+            query['ResetDayOfMonth'] = request.reset_day_of_month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBudgetPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBudgetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_budget_policy(
+        self,
+        request: main_models.CreateBudgetPolicyRequest,
+    ) -> main_models.CreateBudgetPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.create_budget_policy_with_options(request, runtime)
+
+    async def create_budget_policy_async(
+        self,
+        request: main_models.CreateBudgetPolicyRequest,
+    ) -> main_models.CreateBudgetPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_budget_policy_with_options_async(request, runtime)
+
     def create_cold_storage_instance_with_options(
         self,
         request: main_models.CreateColdStorageInstanceRequest,
@@ -3402,6 +3578,276 @@ class Client(OpenApiClient):
     ) -> main_models.CreateColdStorageInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_cold_storage_instance_with_options_async(request, runtime)
+
+    def create_consumer_with_options(
+        self,
+        request: main_models.CreateConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.key_type):
+            query['KeyType'] = request.key_type
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_consumer_with_options_async(
+        self,
+        request: main_models.CreateConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.key_type):
+            query['KeyType'] = request.key_type
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_consumer(
+        self,
+        request: main_models.CreateConsumerRequest,
+    ) -> main_models.CreateConsumerResponse:
+        runtime = RuntimeOptions()
+        return self.create_consumer_with_options(request, runtime)
+
+    async def create_consumer_async(
+        self,
+        request: main_models.CreateConsumerRequest,
+    ) -> main_models.CreateConsumerResponse:
+        runtime = RuntimeOptions()
+        return await self.create_consumer_with_options_async(request, runtime)
+
+    def create_consumer_group_with_options(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConsumerGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConsumerGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_consumer_group_with_options_async(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConsumerGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConsumerGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_consumer_group(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+    ) -> main_models.CreateConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_consumer_group_with_options(request, runtime)
+
+    async def create_consumer_group_async(
+        self,
+        request: main_models.CreateConsumerGroupRequest,
+    ) -> main_models.CreateConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_consumer_group_with_options_async(request, runtime)
+
+    def create_cost_rule_with_options(
+        self,
+        request: main_models.CreateCostRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCostRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cache_cost_points_per_million):
+            query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCostRule',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCostRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cost_rule_with_options_async(
+        self,
+        request: main_models.CreateCostRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCostRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cache_cost_points_per_million):
+            query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCostRule',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCostRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cost_rule(
+        self,
+        request: main_models.CreateCostRuleRequest,
+    ) -> main_models.CreateCostRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_cost_rule_with_options(request, runtime)
+
+    async def create_cost_rule_async(
+        self,
+        request: main_models.CreateCostRuleRequest,
+    ) -> main_models.CreateCostRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_cost_rule_with_options_async(request, runtime)
 
     def create_cron_job_policy_serverless_with_options(
         self,
@@ -4859,6 +5305,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_extensions_with_options_async(request, runtime)
 
+    def create_gateway_with_options(
+        self,
+        request: main_models.CreateGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.dbcluster_class):
+            query['DBClusterClass'] = request.dbcluster_class
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGateway',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_with_options_async(
+        self,
+        request: main_models.CreateGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.dbcluster_class):
+            query['DBClusterClass'] = request.dbcluster_class
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGateway',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway(
+        self,
+        request: main_models.CreateGatewayRequest,
+    ) -> main_models.CreateGatewayResponse:
+        runtime = RuntimeOptions()
+        return self.create_gateway_with_options(request, runtime)
+
+    async def create_gateway_async(
+        self,
+        request: main_models.CreateGatewayRequest,
+    ) -> main_models.CreateGatewayResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gateway_with_options_async(request, runtime)
+
     def create_global_data_network_with_options(
         self,
         request: main_models.CreateGlobalDataNetworkRequest,
@@ -5172,6 +5728,222 @@ class Client(OpenApiClient):
     ) -> main_models.CreateGlobalSecurityIPGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_global_security_ipgroup_with_options_async(request, runtime)
+
+    def create_model_api_with_options(
+        self,
+        request: main_models.CreateModelApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.force_model):
+            query['ForceModel'] = request.force_model
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.path_prefix):
+            query['PathPrefix'] = request.path_prefix
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.record_input):
+            query['RecordInput'] = request.record_input
+        if not DaraCore.is_null(request.record_output):
+            query['RecordOutput'] = request.record_output
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.route_rules):
+            query['RouteRules'] = request.route_rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelApi',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_api_with_options_async(
+        self,
+        request: main_models.CreateModelApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.force_model):
+            query['ForceModel'] = request.force_model
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.path_prefix):
+            query['PathPrefix'] = request.path_prefix
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.record_input):
+            query['RecordInput'] = request.record_input
+        if not DaraCore.is_null(request.record_output):
+            query['RecordOutput'] = request.record_output
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.route_rules):
+            query['RouteRules'] = request.route_rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelApi',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_api(
+        self,
+        request: main_models.CreateModelApiRequest,
+    ) -> main_models.CreateModelApiResponse:
+        runtime = RuntimeOptions()
+        return self.create_model_api_with_options(request, runtime)
+
+    async def create_model_api_async(
+        self,
+        request: main_models.CreateModelApiRequest,
+    ) -> main_models.CreateModelApiResponse:
+        runtime = RuntimeOptions()
+        return await self.create_model_api_with_options_async(request, runtime)
+
+    def create_model_service_with_options(
+        self,
+        request: main_models.CreateModelServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.base_url):
+            query['BaseUrl'] = request.base_url
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.request_cost_points):
+            query['RequestCostPoints'] = request.request_cost_points
+        if not DaraCore.is_null(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_service_with_options_async(
+        self,
+        request: main_models.CreateModelServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.base_url):
+            query['BaseUrl'] = request.base_url
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.request_cost_points):
+            query['RequestCostPoints'] = request.request_cost_points
+        if not DaraCore.is_null(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_service(
+        self,
+        request: main_models.CreateModelServiceRequest,
+    ) -> main_models.CreateModelServiceResponse:
+        runtime = RuntimeOptions()
+        return self.create_model_service_with_options(request, runtime)
+
+    async def create_model_service_async(
+        self,
+        request: main_models.CreateModelServiceRequest,
+    ) -> main_models.CreateModelServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_model_service_with_options_async(request, runtime)
 
     def create_network_channel_with_options(
         self,
@@ -5490,6 +6262,170 @@ class Client(OpenApiClient):
     ) -> main_models.CreateParameterGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_parameter_group_with_options_async(request, runtime)
+
+    def create_polar_fs_object_with_options(
+        self,
+        request: main_models.CreatePolarFsObjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarFsObjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarFsObject',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarFsObjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_fs_object_with_options_async(
+        self,
+        request: main_models.CreatePolarFsObjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarFsObjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarFsObject',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarFsObjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_fs_object(
+        self,
+        request: main_models.CreatePolarFsObjectRequest,
+    ) -> main_models.CreatePolarFsObjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_fs_object_with_options(request, runtime)
+
+    async def create_polar_fs_object_async(
+        self,
+        request: main_models.CreatePolarFsObjectRequest,
+    ) -> main_models.CreatePolarFsObjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_fs_object_with_options_async(request, runtime)
+
+    def create_rate_limit_policy_with_options(
+        self,
+        request: main_models.CreateRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.rate_limit_rpm):
+            query['RateLimitRpm'] = request.rate_limit_rpm
+        if not DaraCore.is_null(request.rate_limit_tpm):
+            query['RateLimitTpm'] = request.rate_limit_tpm
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_ref_id):
+            query['ScopeRefId'] = request.scope_ref_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRateLimitPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rate_limit_policy_with_options_async(
+        self,
+        request: main_models.CreateRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.rate_limit_rpm):
+            query['RateLimitRpm'] = request.rate_limit_rpm
+        if not DaraCore.is_null(request.rate_limit_tpm):
+            query['RateLimitTpm'] = request.rate_limit_tpm
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_ref_id):
+            query['ScopeRefId'] = request.scope_ref_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRateLimitPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rate_limit_policy(
+        self,
+        request: main_models.CreateRateLimitPolicyRequest,
+    ) -> main_models.CreateRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.create_rate_limit_policy_with_options(request, runtime)
+
+    async def create_rate_limit_policy_async(
+        self,
+        request: main_models.CreateRateLimitPolicyRequest,
+    ) -> main_models.CreateRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rate_limit_policy_with_options_async(request, runtime)
 
     def create_service_linked_role_with_options(
         self,
@@ -6506,6 +7442,318 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteBackupResponse:
         runtime = RuntimeOptions()
         return await self.delete_backup_with_options_async(request, runtime)
+
+    def delete_budget_policy_with_options(
+        self,
+        request: main_models.DeleteBudgetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBudgetPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.budget_policy_id):
+            query['BudgetPolicyId'] = request.budget_policy_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBudgetPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBudgetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_budget_policy_with_options_async(
+        self,
+        request: main_models.DeleteBudgetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBudgetPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.budget_policy_id):
+            query['BudgetPolicyId'] = request.budget_policy_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBudgetPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBudgetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_budget_policy(
+        self,
+        request: main_models.DeleteBudgetPolicyRequest,
+    ) -> main_models.DeleteBudgetPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_budget_policy_with_options(request, runtime)
+
+    async def delete_budget_policy_async(
+        self,
+        request: main_models.DeleteBudgetPolicyRequest,
+    ) -> main_models.DeleteBudgetPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_budget_policy_with_options_async(request, runtime)
+
+    def delete_consumer_with_options(
+        self,
+        request: main_models.DeleteConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_consumer_with_options_async(
+        self,
+        request: main_models.DeleteConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_consumer(
+        self,
+        request: main_models.DeleteConsumerRequest,
+    ) -> main_models.DeleteConsumerResponse:
+        runtime = RuntimeOptions()
+        return self.delete_consumer_with_options(request, runtime)
+
+    async def delete_consumer_async(
+        self,
+        request: main_models.DeleteConsumerRequest,
+    ) -> main_models.DeleteConsumerResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_consumer_with_options_async(request, runtime)
+
+    def delete_consumer_group_with_options(
+        self,
+        request: main_models.DeleteConsumerGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConsumerGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_consumer_group_with_options_async(
+        self,
+        request: main_models.DeleteConsumerGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConsumerGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_consumer_group(
+        self,
+        request: main_models.DeleteConsumerGroupRequest,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        return self.delete_consumer_group_with_options(request, runtime)
+
+    async def delete_consumer_group_async(
+        self,
+        request: main_models.DeleteConsumerGroupRequest,
+    ) -> main_models.DeleteConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_consumer_group_with_options_async(request, runtime)
+
+    def delete_cost_rule_with_options(
+        self,
+        request: main_models.DeleteCostRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCostRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cost_rule_id):
+            query['CostRuleId'] = request.cost_rule_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCostRule',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCostRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cost_rule_with_options_async(
+        self,
+        request: main_models.DeleteCostRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCostRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cost_rule_id):
+            query['CostRuleId'] = request.cost_rule_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCostRule',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCostRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cost_rule(
+        self,
+        request: main_models.DeleteCostRuleRequest,
+    ) -> main_models.DeleteCostRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cost_rule_with_options(request, runtime)
+
+    async def delete_cost_rule_async(
+        self,
+        request: main_models.DeleteCostRuleRequest,
+    ) -> main_models.DeleteCostRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cost_rule_with_options_async(request, runtime)
 
     def delete_dbcluster_with_options(
         self,
@@ -7541,6 +8789,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_firewall_rules_with_options_async(request, runtime)
 
+    def delete_gateway_with_options(
+        self,
+        request: main_models.DeleteGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGateway',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_with_options_async(
+        self,
+        request: main_models.DeleteGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGateway',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway(
+        self,
+        request: main_models.DeleteGatewayRequest,
+    ) -> main_models.DeleteGatewayResponse:
+        runtime = RuntimeOptions()
+        return self.delete_gateway_with_options(request, runtime)
+
+    async def delete_gateway_async(
+        self,
+        request: main_models.DeleteGatewayRequest,
+    ) -> main_models.DeleteGatewayResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_gateway_with_options_async(request, runtime)
+
     def delete_global_data_network_with_options(
         self,
         request: main_models.DeleteGlobalDataNetworkRequest,
@@ -7884,6 +9206,162 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMaskingRulesResponse:
         runtime = RuntimeOptions()
         return await self.delete_masking_rules_with_options_async(request, runtime)
+
+    def delete_model_api_with_options(
+        self,
+        request: main_models.DeleteModelApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_api_id):
+            query['ModelApiId'] = request.model_api_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelApi',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_api_with_options_async(
+        self,
+        request: main_models.DeleteModelApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_api_id):
+            query['ModelApiId'] = request.model_api_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelApi',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_api(
+        self,
+        request: main_models.DeleteModelApiRequest,
+    ) -> main_models.DeleteModelApiResponse:
+        runtime = RuntimeOptions()
+        return self.delete_model_api_with_options(request, runtime)
+
+    async def delete_model_api_async(
+        self,
+        request: main_models.DeleteModelApiRequest,
+    ) -> main_models.DeleteModelApiResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_model_api_with_options_async(request, runtime)
+
+    def delete_model_service_with_options(
+        self,
+        request: main_models.DeleteModelServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_service_with_options_async(
+        self,
+        request: main_models.DeleteModelServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_service(
+        self,
+        request: main_models.DeleteModelServiceRequest,
+    ) -> main_models.DeleteModelServiceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_model_service_with_options(request, runtime)
+
+    async def delete_model_service_async(
+        self,
+        request: main_models.DeleteModelServiceRequest,
+    ) -> main_models.DeleteModelServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_model_service_with_options_async(request, runtime)
 
     def delete_network_channel_with_options(
         self,
@@ -8326,6 +9804,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolarFsQuotaResponse:
         runtime = RuntimeOptions()
         return await self.delete_polar_fs_quota_with_options_async(request, runtime)
+
+    def delete_rate_limit_policy_with_options(
+        self,
+        request: main_models.DeleteRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRateLimitPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rate_limit_policy_with_options_async(
+        self,
+        request: main_models.DeleteRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRateLimitPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rate_limit_policy(
+        self,
+        request: main_models.DeleteRateLimitPolicyRequest,
+    ) -> main_models.DeleteRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_rate_limit_policy_with_options(request, runtime)
+
+    async def delete_rate_limit_policy_async(
+        self,
+        request: main_models.DeleteRateLimitPolicyRequest,
+    ) -> main_models.DeleteRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_rate_limit_policy_with_options_async(request, runtime)
 
     def delete_sqlrate_limiting_rules_with_options(
         self,
@@ -11167,6 +12723,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
+    def describe_budget_policies_with_options(
+        self,
+        request: main_models.DescribeBudgetPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.budget_dimension_ref_id):
+            query['BudgetDimensionRefId'] = request.budget_dimension_ref_id
+        if not DaraCore.is_null(request.budget_dimension_type):
+            query['BudgetDimensionType'] = request.budget_dimension_type
+        if not DaraCore.is_null(request.budget_policy_id):
+            query['BudgetPolicyId'] = request.budget_policy_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudgetPolicies',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_budget_policies_with_options_async(
+        self,
+        request: main_models.DescribeBudgetPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.budget_dimension_ref_id):
+            query['BudgetDimensionRefId'] = request.budget_dimension_ref_id
+        if not DaraCore.is_null(request.budget_dimension_type):
+            query['BudgetDimensionType'] = request.budget_dimension_type
+        if not DaraCore.is_null(request.budget_policy_id):
+            query['BudgetPolicyId'] = request.budget_policy_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudgetPolicies',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_budget_policies(
+        self,
+        request: main_models.DescribeBudgetPoliciesRequest,
+    ) -> main_models.DescribeBudgetPoliciesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_budget_policies_with_options(request, runtime)
+
+    async def describe_budget_policies_async(
+        self,
+        request: main_models.DescribeBudgetPoliciesRequest,
+    ) -> main_models.DescribeBudgetPoliciesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_budget_policies_with_options_async(request, runtime)
+
     def describe_character_set_name_with_options(
         self,
         request: main_models.DescribeCharacterSetNameRequest,
@@ -11484,6 +13138,272 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeColdStorageInstanceResponse:
         runtime = RuntimeOptions()
         return await self.describe_cold_storage_instance_with_options_async(request, runtime)
+
+    def describe_consumer_groups_with_options(
+        self,
+        request: main_models.DescribeConsumerGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConsumerGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConsumerGroups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConsumerGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_consumer_groups_with_options_async(
+        self,
+        request: main_models.DescribeConsumerGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConsumerGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConsumerGroups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConsumerGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_consumer_groups(
+        self,
+        request: main_models.DescribeConsumerGroupsRequest,
+    ) -> main_models.DescribeConsumerGroupsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_consumer_groups_with_options(request, runtime)
+
+    async def describe_consumer_groups_async(
+        self,
+        request: main_models.DescribeConsumerGroupsRequest,
+    ) -> main_models.DescribeConsumerGroupsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_consumer_groups_with_options_async(request, runtime)
+
+    def describe_consumers_with_options(
+        self,
+        request: main_models.DescribeConsumersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConsumersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConsumers',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConsumersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_consumers_with_options_async(
+        self,
+        request: main_models.DescribeConsumersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConsumersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConsumers',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_consumers(
+        self,
+        request: main_models.DescribeConsumersRequest,
+    ) -> main_models.DescribeConsumersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_consumers_with_options(request, runtime)
+
+    async def describe_consumers_async(
+        self,
+        request: main_models.DescribeConsumersRequest,
+    ) -> main_models.DescribeConsumersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_consumers_with_options_async(request, runtime)
+
+    def describe_cost_rules_with_options(
+        self,
+        request: main_models.DescribeCostRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCostRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCostRules',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCostRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cost_rules_with_options_async(
+        self,
+        request: main_models.DescribeCostRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCostRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCostRules',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCostRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cost_rules(
+        self,
+        request: main_models.DescribeCostRulesRequest,
+    ) -> main_models.DescribeCostRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cost_rules_with_options(request, runtime)
+
+    async def describe_cost_rules_async(
+        self,
+        request: main_models.DescribeCostRulesRequest,
+    ) -> main_models.DescribeCostRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cost_rules_with_options_async(request, runtime)
 
     def describe_cron_job_policy_serverless_with_options(
         self,
@@ -15583,6 +17503,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_firewall_rules_with_options_async(request, runtime)
 
+    def describe_gateway_attribute_with_options(
+        self,
+        request: main_models.DescribeGatewayAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGatewayAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGatewayAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGatewayAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gateway_attribute_with_options_async(
+        self,
+        request: main_models.DescribeGatewayAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGatewayAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGatewayAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGatewayAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gateway_attribute(
+        self,
+        request: main_models.DescribeGatewayAttributeRequest,
+    ) -> main_models.DescribeGatewayAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_gateway_attribute_with_options(request, runtime)
+
+    async def describe_gateway_attribute_async(
+        self,
+        request: main_models.DescribeGatewayAttributeRequest,
+    ) -> main_models.DescribeGatewayAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_gateway_attribute_with_options_async(request, runtime)
+
+    def describe_gateway_list_with_options(
+        self,
+        request: main_models.DescribeGatewayListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGatewayListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.gw_description):
+            query['GwDescription'] = request.gw_description
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGatewayList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGatewayListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gateway_list_with_options_async(
+        self,
+        request: main_models.DescribeGatewayListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGatewayListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.gw_description):
+            query['GwDescription'] = request.gw_description
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGatewayList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGatewayListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gateway_list(
+        self,
+        request: main_models.DescribeGatewayListRequest,
+    ) -> main_models.DescribeGatewayListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_gateway_list_with_options(request, runtime)
+
+    async def describe_gateway_list_async(
+        self,
+        request: main_models.DescribeGatewayListRequest,
+    ) -> main_models.DescribeGatewayListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_gateway_list_with_options_async(request, runtime)
+
     def describe_global_data_network_list_with_options(
         self,
         request: main_models.DescribeGlobalDataNetworkListRequest,
@@ -17097,6 +19177,214 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_meta_list_with_options_async(request, runtime)
 
+    def describe_model_apis_with_options(
+        self,
+        request: main_models.DescribeModelApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelApisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_api_ids):
+            query['ModelApiIds'] = request.model_api_ids
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.path_prefix):
+            query['PathPrefix'] = request.path_prefix
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelApis',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_apis_with_options_async(
+        self,
+        request: main_models.DescribeModelApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelApisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_api_ids):
+            query['ModelApiIds'] = request.model_api_ids
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.path_prefix):
+            query['PathPrefix'] = request.path_prefix
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelApis',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_apis(
+        self,
+        request: main_models.DescribeModelApisRequest,
+    ) -> main_models.DescribeModelApisResponse:
+        runtime = RuntimeOptions()
+        return self.describe_model_apis_with_options(request, runtime)
+
+    async def describe_model_apis_async(
+        self,
+        request: main_models.DescribeModelApisRequest,
+    ) -> main_models.DescribeModelApisResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_model_apis_with_options_async(request, runtime)
+
+    def describe_model_services_with_options(
+        self,
+        request: main_models.DescribeModelServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_service_ids):
+            query['ModelServiceIds'] = request.model_service_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelServices',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_services_with_options_async(
+        self,
+        request: main_models.DescribeModelServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_service_ids):
+            query['ModelServiceIds'] = request.model_service_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelServices',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_services(
+        self,
+        request: main_models.DescribeModelServicesRequest,
+    ) -> main_models.DescribeModelServicesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_model_services_with_options(request, runtime)
+
+    async def describe_model_services_async(
+        self,
+        request: main_models.DescribeModelServicesRequest,
+    ) -> main_models.DescribeModelServicesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_model_services_with_options_async(request, runtime)
+
     def describe_modify_parameter_log_with_options(
         self,
         request: main_models.DescribeModifyParameterLogRequest,
@@ -18095,6 +20383,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_polar_fs_attribute_with_options_async(request, runtime)
 
+    def describe_polar_fs_objects_with_options(
+        self,
+        request: main_models.DescribePolarFsObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsObjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFsObjects',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_fs_objects_with_options_async(
+        self,
+        request: main_models.DescribePolarFsObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsObjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFsObjects',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_fs_objects(
+        self,
+        request: main_models.DescribePolarFsObjectsRequest,
+    ) -> main_models.DescribePolarFsObjectsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_fs_objects_with_options(request, runtime)
+
+    async def describe_polar_fs_objects_async(
+        self,
+        request: main_models.DescribePolarFsObjectsRequest,
+    ) -> main_models.DescribePolarFsObjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_fs_objects_with_options_async(request, runtime)
+
     def describe_polar_fs_quota_with_options(
         self,
         request: main_models.DescribePolarFsQuotaRequest,
@@ -18246,6 +20608,100 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePolarSQLCollectorPolicyResponse:
         runtime = RuntimeOptions()
         return await self.describe_polar_sqlcollector_policy_with_options_async(request, runtime)
+
+    def describe_rate_limit_policy_with_options(
+        self,
+        request: main_models.DescribeRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_ref_id):
+            query['ScopeRefId'] = request.scope_ref_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRateLimitPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rate_limit_policy_with_options_async(
+        self,
+        request: main_models.DescribeRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_ref_id):
+            query['ScopeRefId'] = request.scope_ref_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRateLimitPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rate_limit_policy(
+        self,
+        request: main_models.DescribeRateLimitPolicyRequest,
+    ) -> main_models.DescribeRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_rate_limit_policy_with_options(request, runtime)
+
+    async def describe_rate_limit_policy_async(
+        self,
+        request: main_models.DescribeRateLimitPolicyRequest,
+    ) -> main_models.DescribeRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_rate_limit_policy_with_options_async(request, runtime)
 
     def describe_rds_vswitchs_with_options(
         self,
@@ -23217,6 +25673,370 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
 
+    def modify_budget_policy_with_options(
+        self,
+        request: main_models.ModifyBudgetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyBudgetPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_threshold_pct):
+            query['AlertThresholdPct'] = request.alert_threshold_pct
+        if not DaraCore.is_null(request.budget_points):
+            query['BudgetPoints'] = request.budget_points
+        if not DaraCore.is_null(request.budget_policy_id):
+            query['BudgetPolicyId'] = request.budget_policy_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.reset_day_of_month):
+            query['ResetDayOfMonth'] = request.reset_day_of_month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyBudgetPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyBudgetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_budget_policy_with_options_async(
+        self,
+        request: main_models.ModifyBudgetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyBudgetPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_threshold_pct):
+            query['AlertThresholdPct'] = request.alert_threshold_pct
+        if not DaraCore.is_null(request.budget_points):
+            query['BudgetPoints'] = request.budget_points
+        if not DaraCore.is_null(request.budget_policy_id):
+            query['BudgetPolicyId'] = request.budget_policy_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.reset_day_of_month):
+            query['ResetDayOfMonth'] = request.reset_day_of_month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyBudgetPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyBudgetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_budget_policy(
+        self,
+        request: main_models.ModifyBudgetPolicyRequest,
+    ) -> main_models.ModifyBudgetPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_budget_policy_with_options(request, runtime)
+
+    async def modify_budget_policy_async(
+        self,
+        request: main_models.ModifyBudgetPolicyRequest,
+    ) -> main_models.ModifyBudgetPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_budget_policy_with_options_async(request, runtime)
+
+    def modify_consumer_with_options(
+        self,
+        request: main_models.ModifyConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_consumer_with_options_async(
+        self,
+        request: main_models.ModifyConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_consumer(
+        self,
+        request: main_models.ModifyConsumerRequest,
+    ) -> main_models.ModifyConsumerResponse:
+        runtime = RuntimeOptions()
+        return self.modify_consumer_with_options(request, runtime)
+
+    async def modify_consumer_async(
+        self,
+        request: main_models.ModifyConsumerRequest,
+    ) -> main_models.ModifyConsumerResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_consumer_with_options_async(request, runtime)
+
+    def modify_consumer_group_with_options(
+        self,
+        request: main_models.ModifyConsumerGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyConsumerGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyConsumerGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_consumer_group_with_options_async(
+        self,
+        request: main_models.ModifyConsumerGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyConsumerGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyConsumerGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_consumer_group(
+        self,
+        request: main_models.ModifyConsumerGroupRequest,
+    ) -> main_models.ModifyConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        return self.modify_consumer_group_with_options(request, runtime)
+
+    async def modify_consumer_group_async(
+        self,
+        request: main_models.ModifyConsumerGroupRequest,
+    ) -> main_models.ModifyConsumerGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_consumer_group_with_options_async(request, runtime)
+
+    def modify_cost_rule_with_options(
+        self,
+        request: main_models.ModifyCostRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCostRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cache_cost_points_per_million):
+            query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.cost_rule_id):
+            query['CostRuleId'] = request.cost_rule_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCostRule',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCostRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cost_rule_with_options_async(
+        self,
+        request: main_models.ModifyCostRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCostRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cache_cost_points_per_million):
+            query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.cost_rule_id):
+            query['CostRuleId'] = request.cost_rule_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCostRule',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCostRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cost_rule(
+        self,
+        request: main_models.ModifyCostRuleRequest,
+    ) -> main_models.ModifyCostRuleResponse:
+        runtime = RuntimeOptions()
+        return self.modify_cost_rule_with_options(request, runtime)
+
+    async def modify_cost_rule_async(
+        self,
+        request: main_models.ModifyCostRuleRequest,
+    ) -> main_models.ModifyCostRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_cost_rule_with_options_async(request, runtime)
+
     def modify_cron_job_policy_serverless_with_options(
         self,
         request: main_models.ModifyCronJobPolicyServerlessRequest,
@@ -27763,6 +30583,218 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_masking_rules_with_options_async(request, runtime)
 
+    def modify_model_api_with_options(
+        self,
+        request: main_models.ModifyModelApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyModelApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_api_id):
+            query['ModelApiId'] = request.model_api_id
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.path_prefix):
+            query['PathPrefix'] = request.path_prefix
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.record_input):
+            query['RecordInput'] = request.record_input
+        if not DaraCore.is_null(request.record_output):
+            query['RecordOutput'] = request.record_output
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.route_rules):
+            query['RouteRules'] = request.route_rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyModelApi',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyModelApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_model_api_with_options_async(
+        self,
+        request: main_models.ModifyModelApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyModelApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.model_api_id):
+            query['ModelApiId'] = request.model_api_id
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.path_prefix):
+            query['PathPrefix'] = request.path_prefix
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.record_input):
+            query['RecordInput'] = request.record_input
+        if not DaraCore.is_null(request.record_output):
+            query['RecordOutput'] = request.record_output
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.route_rules):
+            query['RouteRules'] = request.route_rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyModelApi',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyModelApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_model_api(
+        self,
+        request: main_models.ModifyModelApiRequest,
+    ) -> main_models.ModifyModelApiResponse:
+        runtime = RuntimeOptions()
+        return self.modify_model_api_with_options(request, runtime)
+
+    async def modify_model_api_async(
+        self,
+        request: main_models.ModifyModelApiRequest,
+    ) -> main_models.ModifyModelApiResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_model_api_with_options_async(request, runtime)
+
+    def modify_model_service_with_options(
+        self,
+        request: main_models.ModifyModelServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyModelServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.base_url):
+            query['BaseUrl'] = request.base_url
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.request_cost_points):
+            query['RequestCostPoints'] = request.request_cost_points
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyModelService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyModelServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_model_service_with_options_async(
+        self,
+        request: main_models.ModifyModelServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyModelServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.base_url):
+            query['BaseUrl'] = request.base_url
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_cost_points_per_million):
+            query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.model_category):
+            query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.output_cost_points_per_million):
+            query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.request_cost_points):
+            query['RequestCostPoints'] = request.request_cost_points
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyModelService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyModelServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_model_service(
+        self,
+        request: main_models.ModifyModelServiceRequest,
+    ) -> main_models.ModifyModelServiceResponse:
+        runtime = RuntimeOptions()
+        return self.modify_model_service_with_options(request, runtime)
+
+    async def modify_model_service_async(
+        self,
+        request: main_models.ModifyModelServiceRequest,
+    ) -> main_models.ModifyModelServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_model_service_with_options_async(request, runtime)
+
     def modify_pending_maintenance_action_with_options(
         self,
         request: main_models.ModifyPendingMaintenanceActionRequest,
@@ -27864,6 +30896,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPendingMaintenanceActionResponse:
         runtime = RuntimeOptions()
         return await self.modify_pending_maintenance_action_with_options_async(request, runtime)
+
+    def modify_rate_limit_policy_with_options(
+        self,
+        request: main_models.ModifyRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.rate_limit_rpm):
+            query['RateLimitRpm'] = request.rate_limit_rpm
+        if not DaraCore.is_null(request.rate_limit_tpm):
+            query['RateLimitTpm'] = request.rate_limit_tpm
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRateLimitPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rate_limit_policy_with_options_async(
+        self,
+        request: main_models.ModifyRateLimitPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRateLimitPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.rate_limit_rpm):
+            query['RateLimitRpm'] = request.rate_limit_rpm
+        if not DaraCore.is_null(request.rate_limit_tpm):
+            query['RateLimitTpm'] = request.rate_limit_tpm
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRateLimitPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRateLimitPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rate_limit_policy(
+        self,
+        request: main_models.ModifyRateLimitPolicyRequest,
+    ) -> main_models.ModifyRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_rate_limit_policy_with_options(request, runtime)
+
+    async def modify_rate_limit_policy_async(
+        self,
+        request: main_models.ModifyRateLimitPolicyRequest,
+    ) -> main_models.ModifyRateLimitPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_rate_limit_policy_with_options_async(request, runtime)
 
     def modify_resource_package_with_options(
         self,
@@ -28134,6 +31252,80 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyScheduleTaskResponse:
         runtime = RuntimeOptions()
         return await self.modify_schedule_task_with_options_async(request, runtime)
+
+    def move_polar_fs_objects_with_options(
+        self,
+        request: main_models.MovePolarFsObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MovePolarFsObjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.objects_to_move):
+            query['ObjectsToMove'] = request.objects_to_move
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MovePolarFsObjects',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MovePolarFsObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_polar_fs_objects_with_options_async(
+        self,
+        request: main_models.MovePolarFsObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MovePolarFsObjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.objects_to_move):
+            query['ObjectsToMove'] = request.objects_to_move
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MovePolarFsObjects',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MovePolarFsObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_polar_fs_objects(
+        self,
+        request: main_models.MovePolarFsObjectsRequest,
+    ) -> main_models.MovePolarFsObjectsResponse:
+        runtime = RuntimeOptions()
+        return self.move_polar_fs_objects_with_options(request, runtime)
+
+    async def move_polar_fs_objects_async(
+        self,
+        request: main_models.MovePolarFsObjectsRequest,
+    ) -> main_models.MovePolarFsObjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.move_polar_fs_objects_with_options_async(request, runtime)
 
     def open_aitask_with_options(
         self,
@@ -28784,6 +31976,84 @@ class Client(OpenApiClient):
     ) -> main_models.ResetAccountZonalResponse:
         runtime = RuntimeOptions()
         return await self.reset_account_zonal_with_options_async(request, runtime)
+
+    def reset_consumer_api_key_with_options(
+        self,
+        request: main_models.ResetConsumerApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetConsumerApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetConsumerApiKey',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetConsumerApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_consumer_api_key_with_options_async(
+        self,
+        request: main_models.ResetConsumerApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetConsumerApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_id):
+            query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetConsumerApiKey',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetConsumerApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_consumer_api_key(
+        self,
+        request: main_models.ResetConsumerApiKeyRequest,
+    ) -> main_models.ResetConsumerApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.reset_consumer_api_key_with_options(request, runtime)
+
+    async def reset_consumer_api_key_async(
+        self,
+        request: main_models.ResetConsumerApiKeyRequest,
+    ) -> main_models.ResetConsumerApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_consumer_api_key_with_options_async(request, runtime)
 
     def reset_global_database_network_with_options(
         self,

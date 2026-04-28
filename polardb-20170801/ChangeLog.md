@@ -1,3 +1,39 @@
+2026-04-28 Version: 6.15.0
+- Support API CreateBudgetPolicy.
+- Support API CreateConsumer.
+- Support API CreateConsumerGroup.
+- Support API CreateCostRule.
+- Support API CreateGateway.
+- Support API CreateModelApi.
+- Support API CreateModelService.
+- Support API CreateRateLimitPolicy.
+- Support API DeleteBudgetPolicy.
+- Support API DeleteConsumer.
+- Support API DeleteConsumerGroup.
+- Support API DeleteCostRule.
+- Support API DeleteGateway.
+- Support API DeleteModelApi.
+- Support API DeleteModelService.
+- Support API DeleteRateLimitPolicy.
+- Support API DescribeBudgetPolicies.
+- Support API DescribeConsumerGroups.
+- Support API DescribeConsumers.
+- Support API DescribeCostRules.
+- Support API DescribeGatewayAttribute.
+- Support API DescribeGatewayList.
+- Support API DescribeModelApis.
+- Support API DescribeModelServices.
+- Support API DescribeRateLimitPolicy.
+- Support API ModifyBudgetPolicy.
+- Support API ModifyConsumer.
+- Support API ModifyConsumerGroup.
+- Support API ModifyCostRule.
+- Support API ModifyModelApi.
+- Support API ModifyModelService.
+- Support API ModifyRateLimitPolicy.
+- Support API ResetConsumerApiKey.
+
+
 2026-04-24 Version: 6.14.0
 - Support API AddPolarFsPathMapping.
 - Support API DeletePolarFsPathMapping.
