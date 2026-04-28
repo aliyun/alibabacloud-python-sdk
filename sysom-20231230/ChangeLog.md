@@ -1,3 +1,8 @@
+2026-04-28 Version: 1.17.0
+- Support API CreateInstanceInspection.
+- Support API GetInspectionReport.
+
+
 2026-04-15 Version: 1.16.0
 - Support API CreateAlertDestination.
 - Support API DeleteAlertDestination.

@@ -536,6 +536,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_alert_strategy_with_options_async(request, headers, runtime)
 
+    def create_instance_inspection_with_options(
+        self,
+        request: main_models.CreateInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance):
+            body['instance'] = request.instance
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.region):
+            body['region'] = request.region
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceInspection',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/inspection/createInstanceInspection',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_inspection_with_options_async(
+        self,
+        request: main_models.CreateInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance):
+            body['instance'] = request.instance
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.region):
+            body['region'] = request.region
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceInspection',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/inspection/createInstanceInspection',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_inspection(
+        self,
+        request: main_models.CreateInstanceInspectionRequest,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_instance_inspection_with_options(request, headers, runtime)
+
+    async def create_instance_inspection_async(
+        self,
+        request: main_models.CreateInstanceInspectionRequest,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_instance_inspection_with_options_async(request, headers, runtime)
+
     def create_vmcore_diagnosis_task_with_options(
         self,
         request: main_models.CreateVmcoreDiagnosisTaskRequest,
@@ -2481,6 +2569,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_hotspot_tracking_with_options_async(request, headers, runtime)
+
+    def get_inspection_report_with_options(
+        self,
+        request: main_models.GetInspectionReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInspectionReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.report_id):
+            query['reportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInspectionReport',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/inspection/getInspectionReport',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInspectionReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_inspection_report_with_options_async(
+        self,
+        request: main_models.GetInspectionReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInspectionReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.report_id):
+            query['reportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInspectionReport',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/inspection/getInspectionReport',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInspectionReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_inspection_report(
+        self,
+        request: main_models.GetInspectionReportRequest,
+    ) -> main_models.GetInspectionReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_inspection_report_with_options(request, headers, runtime)
+
+    async def get_inspection_report_async(
+        self,
+        request: main_models.GetInspectionReportRequest,
+    ) -> main_models.GetInspectionReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_inspection_report_with_options_async(request, headers, runtime)
 
     def get_instant_score_with_options(
         self,

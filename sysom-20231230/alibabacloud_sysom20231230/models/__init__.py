@@ -17,6 +17,9 @@ from ._create_alert_destination_response import CreateAlertDestinationResponse
 from ._create_alert_strategy_request import CreateAlertStrategyRequest
 from ._create_alert_strategy_response_body import CreateAlertStrategyResponseBody
 from ._create_alert_strategy_response import CreateAlertStrategyResponse
+from ._create_instance_inspection_request import CreateInstanceInspectionRequest
+from ._create_instance_inspection_response_body import CreateInstanceInspectionResponseBody
+from ._create_instance_inspection_response import CreateInstanceInspectionResponse
 from ._create_vmcore_diagnosis_task_request import CreateVmcoreDiagnosisTaskRequest
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBody
 from ._create_vmcore_diagnosis_task_response import CreateVmcoreDiagnosisTaskResponse
@@ -83,6 +86,9 @@ from ._get_hotspot_pid_list_response import GetHotspotPidListResponse
 from ._get_hotspot_tracking_request import GetHotspotTrackingRequest
 from ._get_hotspot_tracking_response_body import GetHotspotTrackingResponseBody
 from ._get_hotspot_tracking_response import GetHotspotTrackingResponse
+from ._get_inspection_report_request import GetInspectionReportRequest
+from ._get_inspection_report_response_body import GetInspectionReportResponseBody
+from ._get_inspection_report_response import GetInspectionReportResponse
 from ._get_instant_score_request import GetInstantScoreRequest
 from ._get_instant_score_response_body import GetInstantScoreResponseBody
 from ._get_instant_score_response import GetInstantScoreResponse
@@ -312,6 +318,9 @@ __all__ = [
     CreateAlertStrategyRequest,
     CreateAlertStrategyResponseBody,
     CreateAlertStrategyResponse,
+    CreateInstanceInspectionRequest,
+    CreateInstanceInspectionResponseBody,
+    CreateInstanceInspectionResponse,
     CreateVmcoreDiagnosisTaskRequest,
     CreateVmcoreDiagnosisTaskResponseBody,
     CreateVmcoreDiagnosisTaskResponse,
@@ -378,6 +387,9 @@ __all__ = [
     GetHotspotTrackingRequest,
     GetHotspotTrackingResponseBody,
     GetHotspotTrackingResponse,
+    GetInspectionReportRequest,
+    GetInspectionReportResponseBody,
+    GetInspectionReportResponse,
     GetInstantScoreRequest,
     GetInstantScoreResponseBody,
     GetInstantScoreResponse,
