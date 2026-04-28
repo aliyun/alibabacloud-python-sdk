@@ -12,6 +12,7 @@ class ExtraPodSpec(DaraModel):
         self,
         init_containers: List[main_models.ContainerSpec] = None,
         lifecycle: main_models.Lifecycle = None,
+        main_container_security_context: main_models.SecurityContext = None,
         pod_annotations: Dict[str, str] = None,
         pod_labels: Dict[str, str] = None,
         shared_volume_mount_paths: List[str] = None,
@@ -21,6 +22,7 @@ class ExtraPodSpec(DaraModel):
         self.init_containers = init_containers
         # The lifecycle object.
         self.lifecycle = lifecycle
+        self.main_container_security_context = main_container_security_context
         # The pod annotations.
         self.pod_annotations = pod_annotations
         # The pod labels.
@@ -37,6 +39,8 @@ class ExtraPodSpec(DaraModel):
                     v1.validate()
         if self.lifecycle:
             self.lifecycle.validate()
+        if self.main_container_security_context:
+            self.main_container_security_context.validate()
         if self.side_car_containers:
             for v1 in self.side_car_containers:
                  if v1:
@@ -54,6 +58,9 @@ class ExtraPodSpec(DaraModel):
 
         if self.lifecycle is not None:
             result['Lifecycle'] = self.lifecycle.to_map()
+
+        if self.main_container_security_context is not None:
+            result['MainContainerSecurityContext'] = self.main_container_security_context.to_map()
 
         if self.pod_annotations is not None:
             result['PodAnnotations'] = self.pod_annotations
@@ -82,6 +89,10 @@ class ExtraPodSpec(DaraModel):
         if m.get('Lifecycle') is not None:
             temp_model = main_models.Lifecycle()
             self.lifecycle = temp_model.from_map(m.get('Lifecycle'))
+
+        if m.get('MainContainerSecurityContext') is not None:
+            temp_model = main_models.SecurityContext()
+            self.main_container_security_context = temp_model.from_map(m.get('MainContainerSecurityContext'))
 
         if m.get('PodAnnotations') is not None:
             self.pod_annotations = m.get('PodAnnotations')
