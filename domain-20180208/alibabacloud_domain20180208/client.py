@@ -2914,6 +2914,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_partner_reserve_price_with_options_async(request, runtime)
 
+    def update_proxy_price_with_options(
+        self,
+        request: main_models.UpdateProxyPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProxyPriceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auction_id):
+            body['AuctionId'] = request.auction_id
+        if not DaraCore.is_null(request.currency):
+            body['Currency'] = request.currency
+        if not DaraCore.is_null(request.price):
+            body['Price'] = request.price
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProxyPrice',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProxyPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_proxy_price_with_options_async(
+        self,
+        request: main_models.UpdateProxyPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProxyPriceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auction_id):
+            body['AuctionId'] = request.auction_id
+        if not DaraCore.is_null(request.currency):
+            body['Currency'] = request.currency
+        if not DaraCore.is_null(request.price):
+            body['Price'] = request.price
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProxyPrice',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProxyPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_proxy_price(
+        self,
+        request: main_models.UpdateProxyPriceRequest,
+    ) -> main_models.UpdateProxyPriceResponse:
+        runtime = RuntimeOptions()
+        return self.update_proxy_price_with_options(request, runtime)
+
+    async def update_proxy_price_async(
+        self,
+        request: main_models.UpdateProxyPriceRequest,
+    ) -> main_models.UpdateProxyPriceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_proxy_price_with_options_async(request, runtime)
+
     def website_add_dns_record_with_options(
         self,
         request: main_models.WebsiteAddDnsRecordRequest,

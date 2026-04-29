@@ -1,3 +1,7 @@
+2026-04-29 Version: 1.9.0
+- Support API UpdateProxyPrice.
+
+
 2026-04-29 Version: 1.8.2
 - Generated python 2018-02-08 for Domain.
 

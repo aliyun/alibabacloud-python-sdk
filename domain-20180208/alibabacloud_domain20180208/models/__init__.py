@@ -116,6 +116,9 @@ from ._submit_purchase_info_response import SubmitPurchaseInfoResponse
 from ._update_partner_reserve_price_request import UpdatePartnerReservePriceRequest
 from ._update_partner_reserve_price_response_body import UpdatePartnerReservePriceResponseBody
 from ._update_partner_reserve_price_response import UpdatePartnerReservePriceResponse
+from ._update_proxy_price_request import UpdateProxyPriceRequest
+from ._update_proxy_price_response_body import UpdateProxyPriceResponseBody
+from ._update_proxy_price_response import UpdateProxyPriceResponse
 from ._website_add_dns_record_request import WebsiteAddDnsRecordRequest
 from ._website_add_dns_record_response_body import WebsiteAddDnsRecordResponseBody
 from ._website_add_dns_record_response import WebsiteAddDnsRecordResponse
@@ -265,6 +268,9 @@ __all__ = [
     UpdatePartnerReservePriceRequest,
     UpdatePartnerReservePriceResponseBody,
     UpdatePartnerReservePriceResponse,
+    UpdateProxyPriceRequest,
+    UpdateProxyPriceResponseBody,
+    UpdateProxyPriceResponse,
     WebsiteAddDnsRecordRequest,
     WebsiteAddDnsRecordResponseBody,
     WebsiteAddDnsRecordResponse,
