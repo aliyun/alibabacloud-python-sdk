@@ -347,9 +347,11 @@ class GetFeatureViewResponseBodyFieldsTransform(DaraModel):
 class GetFeatureViewResponseBodyFieldsTransformInput(DaraModel):
     def __init__(
         self,
+        modality: str = None,
         name: str = None,
         type: str = None,
     ):
+        self.modality = modality
         self.name = name
         self.type = type
 
@@ -361,6 +363,9 @@ class GetFeatureViewResponseBodyFieldsTransformInput(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.modality is not None:
+            result['Modality'] = self.modality
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -371,6 +376,9 @@ class GetFeatureViewResponseBodyFieldsTransformInput(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Modality') is not None:
+            self.modality = m.get('Modality')
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 

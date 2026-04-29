@@ -1,3 +1,17 @@
+2026-04-29 Version: 6.1.0
+- Support API UpdateFeatureView.
+- Update API CreateFeatureView: add request parameters body.Fields.$.Transform.$.Input.$.Modality.
+- Update API CreateLLMConfig: add request parameters body.EnableFusion.
+- Update API CreateLLMConfig: add request parameters body.ModelType.
+- Update API GetFeatureView: add response parameters Body.Fields.$.Transform.$.Input.$.Modality.
+- Update API GetLLMConfig: add response parameters Body.EnableFusion.
+- Update API GetLLMConfig: add response parameters Body.ModelType.
+- Update API ListLLMConfigs: add response parameters Body.LLMConfigs.$.EnableFusion.
+- Update API ListLLMConfigs: add response parameters Body.LLMConfigs.$.ModelType.
+- Update API UpdateLLMConfig: add request parameters body.EnableFusion.
+- Update API UpdateLLMConfig: add request parameters body.ModelType.
+
+
 2026-03-12 Version: 6.0.8
 - Update API ExportModelFeatureTrainingSetTable: add request parameters body.FeatureViewConfig.SecondJoinKey.
 

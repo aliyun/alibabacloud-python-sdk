@@ -608,10 +608,14 @@ class Client(OpenApiClient):
             body['BatchSize'] = request.batch_size
         if not DaraCore.is_null(request.embedding_dimension):
             body['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.enable_fusion):
+            body['EnableFusion'] = request.enable_fusion
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
             body['Model'] = request.model
+        if not DaraCore.is_null(request.model_type):
+            body['ModelType'] = request.model_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.rps):
@@ -655,10 +659,14 @@ class Client(OpenApiClient):
             body['BatchSize'] = request.batch_size
         if not DaraCore.is_null(request.embedding_dimension):
             body['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.enable_fusion):
+            body['EnableFusion'] = request.enable_fusion
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
             body['Model'] = request.model
+        if not DaraCore.is_null(request.model_type):
+            body['ModelType'] = request.model_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.rps):
@@ -4729,6 +4737,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_datasource_with_options_async(instance_id, datasource_id, request, headers, runtime)
 
+    def update_feature_view_with_options(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        request: main_models.UpdateFeatureViewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFeatureViewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.fields):
+            body['Fields'] = request.fields
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFeatureView',
+            version = '2023-06-21',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/featureviews/{DaraURL.percent_encode(feature_view_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFeatureViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_feature_view_with_options_async(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        request: main_models.UpdateFeatureViewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFeatureViewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.fields):
+            body['Fields'] = request.fields
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFeatureView',
+            version = '2023-06-21',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/featureviews/{DaraURL.percent_encode(feature_view_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFeatureViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_feature_view(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        request: main_models.UpdateFeatureViewRequest,
+    ) -> main_models.UpdateFeatureViewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_feature_view_with_options(instance_id, feature_view_id, request, headers, runtime)
+
+    async def update_feature_view_async(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        request: main_models.UpdateFeatureViewRequest,
+    ) -> main_models.UpdateFeatureViewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_feature_view_with_options_async(instance_id, feature_view_id, request, headers, runtime)
+
     def update_llmconfig_with_options(
         self,
         instance_id: str,
@@ -4747,10 +4839,14 @@ class Client(OpenApiClient):
             body['BatchSize'] = request.batch_size
         if not DaraCore.is_null(request.embedding_dimension):
             body['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.enable_fusion):
+            body['EnableFusion'] = request.enable_fusion
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
             body['Model'] = request.model
+        if not DaraCore.is_null(request.model_type):
+            body['ModelType'] = request.model_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.rps):
@@ -4793,10 +4889,14 @@ class Client(OpenApiClient):
             body['BatchSize'] = request.batch_size
         if not DaraCore.is_null(request.embedding_dimension):
             body['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.enable_fusion):
+            body['EnableFusion'] = request.enable_fusion
         if not DaraCore.is_null(request.max_tokens):
             body['MaxTokens'] = request.max_tokens
         if not DaraCore.is_null(request.model):
             body['Model'] = request.model
+        if not DaraCore.is_null(request.model_type):
+            body['ModelType'] = request.model_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.rps):

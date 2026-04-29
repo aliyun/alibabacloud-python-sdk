@@ -148,6 +148,9 @@ from ._stop_task_response import StopTaskResponse
 from ._update_datasource_request import UpdateDatasourceRequest
 from ._update_datasource_response_body import UpdateDatasourceResponseBody
 from ._update_datasource_response import UpdateDatasourceResponse
+from ._update_feature_view_request import UpdateFeatureViewRequest
+from ._update_feature_view_response_body import UpdateFeatureViewResponseBody
+from ._update_feature_view_response import UpdateFeatureViewResponse
 from ._update_llmconfig_request import UpdateLLMConfigRequest
 from ._update_llmconfig_response_body import UpdateLLMConfigResponseBody
 from ._update_llmconfig_response import UpdateLLMConfigResponse
@@ -214,6 +217,9 @@ from ._list_project_feature_views_response_body import ListProjectFeatureViewsRe
 from ._list_project_features_response_body import ListProjectFeaturesResponseBodyFeatures
 from ._list_projects_response_body import ListProjectsResponseBodyProjects
 from ._list_tasks_response_body import ListTasksResponseBodyTasks
+from ._update_feature_view_request import UpdateFeatureViewRequestFieldsTransformInput
+from ._update_feature_view_request import UpdateFeatureViewRequestFieldsTransform
+from ._update_feature_view_request import UpdateFeatureViewRequestFields
 from ._update_label_table_request import UpdateLabelTableRequestFields
 from ._update_model_feature_request import UpdateModelFeatureRequestFeatures
 from ._update_model_feature_fgfeature_request import UpdateModelFeatureFGFeatureRequestLookupFeatures
@@ -369,6 +375,9 @@ __all__ = [
     UpdateDatasourceRequest,
     UpdateDatasourceResponseBody,
     UpdateDatasourceResponse,
+    UpdateFeatureViewRequest,
+    UpdateFeatureViewResponseBody,
+    UpdateFeatureViewResponse,
     UpdateLLMConfigRequest,
     UpdateLLMConfigResponseBody,
     UpdateLLMConfigResponse,
@@ -435,6 +444,9 @@ __all__ = [
     ListProjectFeaturesResponseBodyFeatures,
     ListProjectsResponseBodyProjects,
     ListTasksResponseBodyTasks,
+    UpdateFeatureViewRequestFieldsTransformInput,
+    UpdateFeatureViewRequestFieldsTransform,
+    UpdateFeatureViewRequestFields,
     UpdateLabelTableRequestFields,
     UpdateModelFeatureRequestFeatures,
     UpdateModelFeatureFGFeatureRequestLookupFeatures,

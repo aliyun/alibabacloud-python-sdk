@@ -11,11 +11,13 @@ class GetLLMConfigResponseBody(DaraModel):
         base_url: str = None,
         batch_size: int = None,
         embedding_dimension: int = None,
+        enable_fusion: bool = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         llmconfig_id: str = None,
         max_tokens: int = None,
         model: str = None,
+        model_type: str = None,
         name: str = None,
         request_id: str = None,
         rps: int = None,
@@ -25,11 +27,13 @@ class GetLLMConfigResponseBody(DaraModel):
         self.base_url = base_url
         self.batch_size = batch_size
         self.embedding_dimension = embedding_dimension
+        self.enable_fusion = enable_fusion
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.llmconfig_id = llmconfig_id
         self.max_tokens = max_tokens
         self.model = model
+        self.model_type = model_type
         self.name = name
         # Id of the request
         self.request_id = request_id
@@ -56,6 +60,9 @@ class GetLLMConfigResponseBody(DaraModel):
         if self.embedding_dimension is not None:
             result['EmbeddingDimension'] = self.embedding_dimension
 
+        if self.enable_fusion is not None:
+            result['EnableFusion'] = self.enable_fusion
+
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
 
@@ -70,6 +77,9 @@ class GetLLMConfigResponseBody(DaraModel):
 
         if self.model is not None:
             result['Model'] = self.model
+
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
 
         if self.name is not None:
             result['Name'] = self.name
@@ -99,6 +109,9 @@ class GetLLMConfigResponseBody(DaraModel):
         if m.get('EmbeddingDimension') is not None:
             self.embedding_dimension = m.get('EmbeddingDimension')
 
+        if m.get('EnableFusion') is not None:
+            self.enable_fusion = m.get('EnableFusion')
+
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
 
@@ -113,6 +126,9 @@ class GetLLMConfigResponseBody(DaraModel):
 
         if m.get('Model') is not None:
             self.model = m.get('Model')
+
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
