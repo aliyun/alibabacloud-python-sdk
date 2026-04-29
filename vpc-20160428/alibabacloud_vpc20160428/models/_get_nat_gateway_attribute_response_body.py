@@ -11,6 +11,7 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
     def __init__(
         self,
         access_mode: main_models.GetNatGatewayAttributeResponseBodyAccessMode = None,
+        availability_mode: str = None,
         billing_config: main_models.GetNatGatewayAttributeResponseBodyBillingConfig = None,
         business_status: str = None,
         creation_time: str = None,
@@ -39,6 +40,7 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
     ):
         # Access mode for reverse access to VPC NAT gateway.
         self.access_mode = access_mode
+        self.availability_mode = availability_mode
         # The billing information.
         self.billing_config = billing_config
         # The service status of the NAT gateway. Valid values:
@@ -143,6 +145,9 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         if self.access_mode is not None:
             result['AccessMode'] = self.access_mode.to_map()
 
+        if self.availability_mode is not None:
+            result['AvailabilityMode'] = self.availability_mode
+
         if self.billing_config is not None:
             result['BillingConfig'] = self.billing_config.to_map()
 
@@ -227,6 +232,9 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         if m.get('AccessMode') is not None:
             temp_model = main_models.GetNatGatewayAttributeResponseBodyAccessMode()
             self.access_mode = temp_model.from_map(m.get('AccessMode'))
+
+        if m.get('AvailabilityMode') is not None:
+            self.availability_mode = m.get('AvailabilityMode')
 
         if m.get('BillingConfig') is not None:
             temp_model = main_models.GetNatGatewayAttributeResponseBodyBillingConfig()

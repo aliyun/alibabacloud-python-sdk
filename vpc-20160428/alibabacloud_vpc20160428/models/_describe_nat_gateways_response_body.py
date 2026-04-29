@@ -112,6 +112,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
         self,
         access_mode: main_models.DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode = None,
         auto_pay: bool = None,
+        availability_mode: str = None,
         business_status: str = None,
         creation_time: str = None,
         deletion_protection: bool = None,
@@ -145,6 +146,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
     ):
         self.access_mode = access_mode
         self.auto_pay = auto_pay
+        self.availability_mode = availability_mode
         self.business_status = business_status
         self.creation_time = creation_time
         self.deletion_protection = deletion_protection
@@ -204,6 +206,9 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
 
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+
+        if self.availability_mode is not None:
+            result['AvailabilityMode'] = self.availability_mode
 
         if self.business_status is not None:
             result['BusinessStatus'] = self.business_status
@@ -305,6 +310,9 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
 
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+
+        if m.get('AvailabilityMode') is not None:
+            self.availability_mode = m.get('AvailabilityMode')
 
         if m.get('BusinessStatus') is not None:
             self.business_status = m.get('BusinessStatus')

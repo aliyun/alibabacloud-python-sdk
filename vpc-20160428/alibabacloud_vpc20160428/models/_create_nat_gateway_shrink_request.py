@@ -12,6 +12,7 @@ class CreateNatGatewayShrinkRequest(DaraModel):
         self,
         access_mode_shrink: str = None,
         auto_pay: bool = None,
+        availability_mode: str = None,
         client_token: str = None,
         description: str = None,
         duration: str = None,
@@ -41,6 +42,7 @@ class CreateNatGatewayShrinkRequest(DaraModel):
         self.access_mode_shrink = access_mode_shrink
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.auto_pay = auto_pay
+        self.availability_mode = availability_mode
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
@@ -144,6 +146,9 @@ class CreateNatGatewayShrinkRequest(DaraModel):
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
 
+        if self.availability_mode is not None:
+            result['AvailabilityMode'] = self.availability_mode
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -227,6 +232,9 @@ class CreateNatGatewayShrinkRequest(DaraModel):
 
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+
+        if m.get('AvailabilityMode') is not None:
+            self.availability_mode = m.get('AvailabilityMode')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')

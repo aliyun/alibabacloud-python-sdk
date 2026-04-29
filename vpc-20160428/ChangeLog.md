@@ -1,3 +1,10 @@
+2026-04-29 Version: 7.1.1
+- Update API CreateNatGateway: add request parameters AvailabilityMode.
+- Update API DescribeNatGateways: add request parameters AvailabilityMode.
+- Update API DescribeNatGateways: add response parameters Body.NatGateways.$.AvailabilityMode.
+- Update API GetNatGatewayAttribute: add response parameters Body.AvailabilityMode.
+
+
 2026-04-13 Version: 7.1.0
 - Support API AssociateMacSecKey.
 - Support API DisassociateMacSecKey.

@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeNatGatewaysRequest(DaraModel):
     def __init__(
         self,
+        availability_mode: str = None,
         dry_run: bool = None,
         instance_charge_type: str = None,
         name: str = None,
@@ -30,6 +31,7 @@ class DescribeNatGatewaysRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.availability_mode = availability_mode
         # Specifies whether to perform a dry run. Valid values:
         # 
         # - **true**: performs a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -96,6 +98,9 @@ class DescribeNatGatewaysRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.availability_mode is not None:
+            result['AvailabilityMode'] = self.availability_mode
+
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
@@ -159,6 +164,9 @@ class DescribeNatGatewaysRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailabilityMode') is not None:
+            self.availability_mode = m.get('AvailabilityMode')
+
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 

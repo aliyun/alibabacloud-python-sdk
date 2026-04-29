@@ -7202,6 +7202,8 @@ class Client(OpenApiClient):
             query['AccessMode'] = request.access_mode_shrink
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.availability_mode):
+            query['AvailabilityMode'] = request.availability_mode
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
@@ -7284,6 +7286,8 @@ class Client(OpenApiClient):
             query['AccessMode'] = request.access_mode_shrink
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.availability_mode):
+            query['AvailabilityMode'] = request.availability_mode
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
@@ -21048,6 +21052,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeNatGatewaysResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.availability_mode):
+            query['AvailabilityMode'] = request.availability_mode
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_charge_type):
@@ -21112,6 +21118,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeNatGatewaysResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.availability_mode):
+            query['AvailabilityMode'] = request.availability_mode
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_charge_type):
