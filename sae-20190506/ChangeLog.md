@@ -1,3 +1,7 @@
+2026-04-29 Version: 2.10.16
+- Update API UpdateApplicationScalingRule: add request parameters ScalingRuleType.
+
+
 2026-03-27 Version: 2.10.14
 - Generated python 2019-05-06 for sae.
 

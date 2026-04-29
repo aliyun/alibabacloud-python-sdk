@@ -18,6 +18,8 @@ class SidecarContainerConfig(DaraModel):
         liveness: str = None,
         memory: int = None,
         name: str = None,
+        post_start: str = None,
+        pre_stop: str = None,
         readiness: str = None,
         secret_mount_desc: str = None,
     ):
@@ -42,6 +44,8 @@ class SidecarContainerConfig(DaraModel):
         self.memory = memory
         # The container name.
         self.name = name
+        self.post_start = post_start
+        self.pre_stop = pre_stop
         self.readiness = readiness
         self.secret_mount_desc = secret_mount_desc
 
@@ -86,6 +90,12 @@ class SidecarContainerConfig(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+
         if self.readiness is not None:
             result['Readiness'] = self.readiness
 
@@ -128,6 +138,12 @@ class SidecarContainerConfig(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
 
         if m.get('Readiness') is not None:
             self.readiness = m.get('Readiness')

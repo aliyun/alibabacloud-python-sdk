@@ -14,6 +14,7 @@ class UpdateApplicationScalingRuleRequest(DaraModel):
         scaling_rule_metric: str = None,
         scaling_rule_name: str = None,
         scaling_rule_timer: str = None,
+        scaling_rule_type: str = None,
     ):
         # The application ID.
         # 
@@ -120,6 +121,7 @@ class UpdateApplicationScalingRuleRequest(DaraModel):
         # 
         #         **Note**Make sure that at least **one** instance is available during the application deployment and rollback to prevent your business from being interrupted. If you set the value to **0**, business interruptions occur when the application is updated.
         self.scaling_rule_timer = scaling_rule_timer
+        self.scaling_rule_type = scaling_rule_type
 
     def validate(self):
         pass
@@ -150,6 +152,9 @@ class UpdateApplicationScalingRuleRequest(DaraModel):
         if self.scaling_rule_timer is not None:
             result['ScalingRuleTimer'] = self.scaling_rule_timer
 
+        if self.scaling_rule_type is not None:
+            result['ScalingRuleType'] = self.scaling_rule_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -174,6 +179,9 @@ class UpdateApplicationScalingRuleRequest(DaraModel):
 
         if m.get('ScalingRuleTimer') is not None:
             self.scaling_rule_timer = m.get('ScalingRuleTimer')
+
+        if m.get('ScalingRuleType') is not None:
+            self.scaling_rule_type = m.get('ScalingRuleType')
 
         return self
 

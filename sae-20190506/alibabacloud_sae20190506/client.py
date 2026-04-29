@@ -12565,6 +12565,8 @@ class Client(OpenApiClient):
             query['ScalingRuleName'] = request.scaling_rule_name
         if not DaraCore.is_null(request.scaling_rule_timer):
             query['ScalingRuleTimer'] = request.scaling_rule_timer
+        if not DaraCore.is_null(request.scaling_rule_type):
+            query['ScalingRuleType'] = request.scaling_rule_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -12607,6 +12609,8 @@ class Client(OpenApiClient):
             query['ScalingRuleName'] = request.scaling_rule_name
         if not DaraCore.is_null(request.scaling_rule_timer):
             query['ScalingRuleTimer'] = request.scaling_rule_timer
+        if not DaraCore.is_null(request.scaling_rule_type):
+            query['ScalingRuleType'] = request.scaling_rule_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
