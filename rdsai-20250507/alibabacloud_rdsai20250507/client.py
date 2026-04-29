@@ -5176,6 +5176,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_custom_agent_with_options_async(request, runtime)
 
+    def update_moquota_alert_threshold_with_options(
+        self,
+        tmp_req: main_models.UpdateMOQuotaAlertThresholdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMOQuotaAlertThresholdResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMOQuotaAlertThresholdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.apikey):
+            request.apikey_shrink = Utils.array_to_string_with_specified_style(tmp_req.apikey, 'Apikey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.apikey_shrink):
+            query['Apikey'] = request.apikey_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMOQuotaAlertThreshold',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMOQuotaAlertThresholdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_moquota_alert_threshold_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMOQuotaAlertThresholdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMOQuotaAlertThresholdResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMOQuotaAlertThresholdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.apikey):
+            request.apikey_shrink = Utils.array_to_string_with_specified_style(tmp_req.apikey, 'Apikey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.apikey_shrink):
+            query['Apikey'] = request.apikey_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMOQuotaAlertThreshold',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMOQuotaAlertThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_moquota_alert_threshold(
+        self,
+        request: main_models.UpdateMOQuotaAlertThresholdRequest,
+    ) -> main_models.UpdateMOQuotaAlertThresholdResponse:
+        runtime = RuntimeOptions()
+        return self.update_moquota_alert_threshold_with_options(request, runtime)
+
+    async def update_moquota_alert_threshold_async(
+        self,
+        request: main_models.UpdateMOQuotaAlertThresholdRequest,
+    ) -> main_models.UpdateMOQuotaAlertThresholdResponse:
+        runtime = RuntimeOptions()
+        return await self.update_moquota_alert_threshold_with_options_async(request, runtime)
+
     def update_skill_with_options(
         self,
         tmp_req: main_models.UpdateSkillRequest,

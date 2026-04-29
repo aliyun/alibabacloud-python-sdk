@@ -195,6 +195,10 @@ from ._update_custom_agent_request import UpdateCustomAgentRequest
 from ._update_custom_agent_shrink_request import UpdateCustomAgentShrinkRequest
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBody
 from ._update_custom_agent_response import UpdateCustomAgentResponse
+from ._update_moquota_alert_threshold_request import UpdateMOQuotaAlertThresholdRequest
+from ._update_moquota_alert_threshold_shrink_request import UpdateMOQuotaAlertThresholdShrinkRequest
+from ._update_moquota_alert_threshold_response_body import UpdateMOQuotaAlertThresholdResponseBody
+from ._update_moquota_alert_threshold_response import UpdateMOQuotaAlertThresholdResponse
 from ._update_skill_request import UpdateSkillRequest
 from ._update_skill_shrink_request import UpdateSkillShrinkRequest
 from ._update_skill_response_body import UpdateSkillResponseBody
@@ -256,6 +260,8 @@ from ._update_api_key_quota_request import UpdateApiKeyQuotaRequestKeys
 from ._update_api_key_quota_response_body import UpdateApiKeyQuotaResponseBodyDataCustomKeyList
 from ._update_api_key_quota_response_body import UpdateApiKeyQuotaResponseBodyData
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodySkills
+from ._update_moquota_alert_threshold_request import UpdateMOQuotaAlertThresholdRequestApikey
+from ._update_moquota_alert_threshold_response_body import UpdateMOQuotaAlertThresholdResponseBodyResults
 
 __all__ = [
     ChatMessagesRequest,
@@ -451,6 +457,10 @@ __all__ = [
     UpdateCustomAgentShrinkRequest,
     UpdateCustomAgentResponseBody,
     UpdateCustomAgentResponse,
+    UpdateMOQuotaAlertThresholdRequest,
+    UpdateMOQuotaAlertThresholdShrinkRequest,
+    UpdateMOQuotaAlertThresholdResponseBody,
+    UpdateMOQuotaAlertThresholdResponse,
     UpdateSkillRequest,
     UpdateSkillShrinkRequest,
     UpdateSkillResponseBody,
@@ -511,5 +521,7 @@ __all__ = [
     UpdateApiKeyQuotaRequestKeys,
     UpdateApiKeyQuotaResponseBodyDataCustomKeyList,
     UpdateApiKeyQuotaResponseBodyData,
-    UpdateCustomAgentResponseBodySkills
+    UpdateCustomAgentResponseBodySkills,
+    UpdateMOQuotaAlertThresholdRequestApikey,
+    UpdateMOQuotaAlertThresholdResponseBodyResults
 ]

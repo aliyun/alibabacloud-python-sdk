@@ -1,3 +1,8 @@
+2026-04-29 Version: 3.2.0
+- Support API UpdateMOQuotaAlertThreshold.
+- Update API DescribeModelOperator: add response parameters Body.Data.PrefixCacheEnabled.
+
+
 2026-04-28 Version: 3.1.0
 - Support API DisableAgentRuntime.
 - Update API ListApiKeys: add response parameters Body.Data.ThresholdPercent.

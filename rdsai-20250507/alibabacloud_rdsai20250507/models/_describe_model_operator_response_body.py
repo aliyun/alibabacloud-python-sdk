@@ -73,6 +73,7 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
         instance_class: str = None,
         instance_id: str = None,
         key_usage_list: List[main_models.DescribeModelOperatorResponseBodyDataKeyUsageList] = None,
+        prefix_cache_enabled: bool = None,
         start_time: int = None,
         status: str = None,
         total_quota: int = None,
@@ -87,6 +88,7 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
         self.instance_class = instance_class
         self.instance_id = instance_id
         self.key_usage_list = key_usage_list
+        self.prefix_cache_enabled = prefix_cache_enabled
         self.start_time = start_time
         self.status = status
         self.total_quota = total_quota
@@ -138,6 +140,9 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
             for k1 in self.key_usage_list:
                 result['KeyUsageList'].append(k1.to_map() if k1 else None)
 
+        if self.prefix_cache_enabled is not None:
+            result['PrefixCacheEnabled'] = self.prefix_cache_enabled
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -186,6 +191,9 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
             for k1 in m.get('KeyUsageList'):
                 temp_model = main_models.DescribeModelOperatorResponseBodyDataKeyUsageList()
                 self.key_usage_list.append(temp_model.from_map(k1))
+
+        if m.get('PrefixCacheEnabled') is not None:
+            self.prefix_cache_enabled = m.get('PrefixCacheEnabled')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
