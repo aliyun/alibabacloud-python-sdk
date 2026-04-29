@@ -369,6 +369,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_firewall_rules_with_options_async(request, runtime)
 
+    def add_polar_claw_mcpserver_with_options(
+        self,
+        tmp_req: main_models.AddPolarClawMCPServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddPolarClawMCPServerResponse:
+        tmp_req.validate()
+        request = main_models.AddPolarClawMCPServerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.server_config):
+            request.server_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.server_config, 'ServerConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.server_config_shrink):
+            query['ServerConfig'] = request.server_config_shrink
+        if not DaraCore.is_null(request.server_name):
+            query['ServerName'] = request.server_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddPolarClawMCPServer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddPolarClawMCPServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_polar_claw_mcpserver_with_options_async(
+        self,
+        tmp_req: main_models.AddPolarClawMCPServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddPolarClawMCPServerResponse:
+        tmp_req.validate()
+        request = main_models.AddPolarClawMCPServerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.server_config):
+            request.server_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.server_config, 'ServerConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.server_config_shrink):
+            query['ServerConfig'] = request.server_config_shrink
+        if not DaraCore.is_null(request.server_name):
+            query['ServerName'] = request.server_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddPolarClawMCPServer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddPolarClawMCPServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_polar_claw_mcpserver(
+        self,
+        request: main_models.AddPolarClawMCPServerRequest,
+    ) -> main_models.AddPolarClawMCPServerResponse:
+        runtime = RuntimeOptions()
+        return self.add_polar_claw_mcpserver_with_options(request, runtime)
+
+    async def add_polar_claw_mcpserver_async(
+        self,
+        request: main_models.AddPolarClawMCPServerRequest,
+    ) -> main_models.AddPolarClawMCPServerResponse:
+        runtime = RuntimeOptions()
+        return await self.add_polar_claw_mcpserver_with_options_async(request, runtime)
+
     def add_polar_fs_path_mapping_with_options(
         self,
         request: main_models.AddPolarFsPathMappingRequest,
@@ -790,6 +876,88 @@ class Client(OpenApiClient):
     ) -> main_models.AttachApplicationPolarFSResponse:
         runtime = RuntimeOptions()
         return await self.attach_application_polar_fswith_options_async(request, runtime)
+
+    def bind_polar_claw_agent_with_options(
+        self,
+        request: main_models.BindPolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindPolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.channel_account_id):
+            query['ChannelAccountId'] = request.channel_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindPolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindPolarClawAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_polar_claw_agent_with_options_async(
+        self,
+        request: main_models.BindPolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindPolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.channel_account_id):
+            query['ChannelAccountId'] = request.channel_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindPolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindPolarClawAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_polar_claw_agent(
+        self,
+        request: main_models.BindPolarClawAgentRequest,
+    ) -> main_models.BindPolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return self.bind_polar_claw_agent_with_options(request, runtime)
+
+    async def bind_polar_claw_agent_async(
+        self,
+        request: main_models.BindPolarClawAgentRequest,
+    ) -> main_models.BindPolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.bind_polar_claw_agent_with_options_async(request, runtime)
 
     def cancel_active_operation_tasks_with_options(
         self,
@@ -6263,6 +6431,340 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_parameter_group_with_options_async(request, runtime)
 
+    def create_polar_claw_agent_with_options(
+        self,
+        request: main_models.CreatePolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.avatar):
+            query['Avatar'] = request.avatar
+        if not DaraCore.is_null(request.emoji):
+            query['Emoji'] = request.emoji
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.workspace):
+            query['Workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_claw_agent_with_options_async(
+        self,
+        request: main_models.CreatePolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.avatar):
+            query['Avatar'] = request.avatar
+        if not DaraCore.is_null(request.emoji):
+            query['Emoji'] = request.emoji
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.workspace):
+            query['Workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_claw_agent(
+        self,
+        request: main_models.CreatePolarClawAgentRequest,
+    ) -> main_models.CreatePolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_claw_agent_with_options(request, runtime)
+
+    async def create_polar_claw_agent_async(
+        self,
+        request: main_models.CreatePolarClawAgentRequest,
+    ) -> main_models.CreatePolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_claw_agent_with_options_async(request, runtime)
+
+    def create_polar_claw_channel_with_options(
+        self,
+        tmp_req: main_models.CreatePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawChannelResponse:
+        tmp_req.validate()
+        request = main_models.CreatePolarClawChannelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channel_config):
+            request.channel_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.channel_config, 'ChannelConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_config_shrink):
+            query['ChannelConfig'] = request.channel_config_shrink
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_claw_channel_with_options_async(
+        self,
+        tmp_req: main_models.CreatePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawChannelResponse:
+        tmp_req.validate()
+        request = main_models.CreatePolarClawChannelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channel_config):
+            request.channel_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.channel_config, 'ChannelConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_config_shrink):
+            query['ChannelConfig'] = request.channel_config_shrink
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_claw_channel(
+        self,
+        request: main_models.CreatePolarClawChannelRequest,
+    ) -> main_models.CreatePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_claw_channel_with_options(request, runtime)
+
+    async def create_polar_claw_channel_async(
+        self,
+        request: main_models.CreatePolarClawChannelRequest,
+    ) -> main_models.CreatePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_claw_channel_with_options_async(request, runtime)
+
+    def create_polar_claw_cron_job_with_options(
+        self,
+        tmp_req: main_models.CreatePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawCronJobResponse:
+        tmp_req.validate()
+        request = main_models.CreatePolarClawCronJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.delivery):
+            request.delivery_shrink = Utils.array_to_string_with_specified_style(tmp_req.delivery, 'Delivery', 'json')
+        if not DaraCore.is_null(tmp_req.failure_alert):
+            request.failure_alert_shrink = Utils.array_to_string_with_specified_style(tmp_req.failure_alert, 'FailureAlert', 'json')
+        if not DaraCore.is_null(tmp_req.payload):
+            request.payload_shrink = Utils.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not DaraCore.is_null(tmp_req.schedule):
+            request.schedule_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.delete_after_run):
+            query['DeleteAfterRun'] = request.delete_after_run
+        if not DaraCore.is_null(request.delivery_shrink):
+            query['Delivery'] = request.delivery_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.failure_alert_shrink):
+            query['FailureAlert'] = request.failure_alert_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.run_immediately):
+            query['RunImmediately'] = request.run_immediately
+        if not DaraCore.is_null(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not DaraCore.is_null(request.session_key):
+            query['SessionKey'] = request.session_key
+        if not DaraCore.is_null(request.session_target):
+            query['SessionTarget'] = request.session_target
+        if not DaraCore.is_null(request.wake_mode):
+            query['WakeMode'] = request.wake_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawCronJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_claw_cron_job_with_options_async(
+        self,
+        tmp_req: main_models.CreatePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawCronJobResponse:
+        tmp_req.validate()
+        request = main_models.CreatePolarClawCronJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.delivery):
+            request.delivery_shrink = Utils.array_to_string_with_specified_style(tmp_req.delivery, 'Delivery', 'json')
+        if not DaraCore.is_null(tmp_req.failure_alert):
+            request.failure_alert_shrink = Utils.array_to_string_with_specified_style(tmp_req.failure_alert, 'FailureAlert', 'json')
+        if not DaraCore.is_null(tmp_req.payload):
+            request.payload_shrink = Utils.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not DaraCore.is_null(tmp_req.schedule):
+            request.schedule_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.delete_after_run):
+            query['DeleteAfterRun'] = request.delete_after_run
+        if not DaraCore.is_null(request.delivery_shrink):
+            query['Delivery'] = request.delivery_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.failure_alert_shrink):
+            query['FailureAlert'] = request.failure_alert_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.run_immediately):
+            query['RunImmediately'] = request.run_immediately
+        if not DaraCore.is_null(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not DaraCore.is_null(request.session_key):
+            query['SessionKey'] = request.session_key
+        if not DaraCore.is_null(request.session_target):
+            query['SessionTarget'] = request.session_target
+        if not DaraCore.is_null(request.wake_mode):
+            query['WakeMode'] = request.wake_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawCronJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_claw_cron_job(
+        self,
+        request: main_models.CreatePolarClawCronJobRequest,
+    ) -> main_models.CreatePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_claw_cron_job_with_options(request, runtime)
+
+    async def create_polar_claw_cron_job_async(
+        self,
+        request: main_models.CreatePolarClawCronJobRequest,
+    ) -> main_models.CreatePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_claw_cron_job_with_options_async(request, runtime)
+
     def create_polar_fs_object_with_options(
         self,
         request: main_models.CreatePolarFsObjectRequest,
@@ -9562,6 +10064,248 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteParameterGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
+
+    def delete_polar_claw_agent_with_options(
+        self,
+        request: main_models.DeletePolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.delete_files):
+            query['DeleteFiles'] = request.delete_files
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_claw_agent_with_options_async(
+        self,
+        request: main_models.DeletePolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.delete_files):
+            query['DeleteFiles'] = request.delete_files
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_claw_agent(
+        self,
+        request: main_models.DeletePolarClawAgentRequest,
+    ) -> main_models.DeletePolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_claw_agent_with_options(request, runtime)
+
+    async def delete_polar_claw_agent_async(
+        self,
+        request: main_models.DeletePolarClawAgentRequest,
+    ) -> main_models.DeletePolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_claw_agent_with_options_async(request, runtime)
+
+    def delete_polar_claw_channel_with_options(
+        self,
+        request: main_models.DeletePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.uninstall_plugin):
+            query['UninstallPlugin'] = request.uninstall_plugin
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_claw_channel_with_options_async(
+        self,
+        request: main_models.DeletePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.uninstall_plugin):
+            query['UninstallPlugin'] = request.uninstall_plugin
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_claw_channel(
+        self,
+        request: main_models.DeletePolarClawChannelRequest,
+    ) -> main_models.DeletePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_claw_channel_with_options(request, runtime)
+
+    async def delete_polar_claw_channel_async(
+        self,
+        request: main_models.DeletePolarClawChannelRequest,
+    ) -> main_models.DeletePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_claw_channel_with_options_async(request, runtime)
+
+    def delete_polar_claw_cron_job_with_options(
+        self,
+        request: main_models.DeletePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawCronJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_claw_cron_job_with_options_async(
+        self,
+        request: main_models.DeletePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawCronJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_claw_cron_job(
+        self,
+        request: main_models.DeletePolarClawCronJobRequest,
+    ) -> main_models.DeletePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_claw_cron_job_with_options(request, runtime)
+
+    async def delete_polar_claw_cron_job_async(
+        self,
+        request: main_models.DeletePolarClawCronJobRequest,
+    ) -> main_models.DeletePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_claw_cron_job_with_options_async(request, runtime)
 
     def delete_polar_fs_objects_with_options(
         self,
@@ -20305,6 +21049,412 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_polar_agent_user_sessions_with_options_async(request, runtime)
 
+    def describe_polar_claw_agents_with_options(
+        self,
+        tmp_req: main_models.DescribePolarClawAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawAgentsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePolarClawAgentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.agent_list):
+            request.agent_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.agent_list, 'AgentList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_list_shrink):
+            query['AgentList'] = request.agent_list_shrink
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawAgents',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_agents_with_options_async(
+        self,
+        tmp_req: main_models.DescribePolarClawAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawAgentsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePolarClawAgentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.agent_list):
+            request.agent_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.agent_list, 'AgentList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_list_shrink):
+            query['AgentList'] = request.agent_list_shrink
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawAgents',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_agents(
+        self,
+        request: main_models.DescribePolarClawAgentsRequest,
+    ) -> main_models.DescribePolarClawAgentsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_agents_with_options(request, runtime)
+
+    async def describe_polar_claw_agents_async(
+        self,
+        request: main_models.DescribePolarClawAgentsRequest,
+    ) -> main_models.DescribePolarClawAgentsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_agents_with_options_async(request, runtime)
+
+    def describe_polar_claw_channels_with_options(
+        self,
+        tmp_req: main_models.DescribePolarClawChannelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawChannelsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePolarClawChannelsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channel_list):
+            request.channel_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.channel_list, 'ChannelList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_list_shrink):
+            query['ChannelList'] = request.channel_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawChannels',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawChannelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_channels_with_options_async(
+        self,
+        tmp_req: main_models.DescribePolarClawChannelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawChannelsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePolarClawChannelsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channel_list):
+            request.channel_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.channel_list, 'ChannelList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_list_shrink):
+            query['ChannelList'] = request.channel_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawChannels',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawChannelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_channels(
+        self,
+        request: main_models.DescribePolarClawChannelsRequest,
+    ) -> main_models.DescribePolarClawChannelsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_channels_with_options(request, runtime)
+
+    async def describe_polar_claw_channels_async(
+        self,
+        request: main_models.DescribePolarClawChannelsRequest,
+    ) -> main_models.DescribePolarClawChannelsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_channels_with_options_async(request, runtime)
+
+    def describe_polar_claw_cron_jobs_with_options(
+        self,
+        tmp_req: main_models.DescribePolarClawCronJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawCronJobsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePolarClawCronJobsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.job_id_list):
+            request.job_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.include_disabled):
+            query['IncludeDisabled'] = request.include_disabled
+        if not DaraCore.is_null(request.include_runs):
+            query['IncludeRuns'] = request.include_runs
+        if not DaraCore.is_null(request.job_id_list_shrink):
+            query['JobIdList'] = request.job_id_list_shrink
+        if not DaraCore.is_null(request.run_limit):
+            query['RunLimit'] = request.run_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawCronJobs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawCronJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_cron_jobs_with_options_async(
+        self,
+        tmp_req: main_models.DescribePolarClawCronJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawCronJobsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePolarClawCronJobsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.job_id_list):
+            request.job_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.include_disabled):
+            query['IncludeDisabled'] = request.include_disabled
+        if not DaraCore.is_null(request.include_runs):
+            query['IncludeRuns'] = request.include_runs
+        if not DaraCore.is_null(request.job_id_list_shrink):
+            query['JobIdList'] = request.job_id_list_shrink
+        if not DaraCore.is_null(request.run_limit):
+            query['RunLimit'] = request.run_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawCronJobs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawCronJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_cron_jobs(
+        self,
+        request: main_models.DescribePolarClawCronJobsRequest,
+    ) -> main_models.DescribePolarClawCronJobsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_cron_jobs_with_options(request, runtime)
+
+    async def describe_polar_claw_cron_jobs_async(
+        self,
+        request: main_models.DescribePolarClawCronJobsRequest,
+    ) -> main_models.DescribePolarClawCronJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_cron_jobs_with_options_async(request, runtime)
+
+    def describe_polar_claw_mcpservers_with_options(
+        self,
+        request: main_models.DescribePolarClawMCPServersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawMCPServersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.server_list):
+            query['ServerList'] = request.server_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawMCPServers',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawMCPServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_mcpservers_with_options_async(
+        self,
+        request: main_models.DescribePolarClawMCPServersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawMCPServersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.server_list):
+            query['ServerList'] = request.server_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawMCPServers',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawMCPServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_mcpservers(
+        self,
+        request: main_models.DescribePolarClawMCPServersRequest,
+    ) -> main_models.DescribePolarClawMCPServersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_mcpservers_with_options(request, runtime)
+
+    async def describe_polar_claw_mcpservers_async(
+        self,
+        request: main_models.DescribePolarClawMCPServersRequest,
+    ) -> main_models.DescribePolarClawMCPServersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_mcpservers_with_options_async(request, runtime)
+
+    def describe_polar_claw_plugins_with_options(
+        self,
+        request: main_models.DescribePolarClawPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_list):
+            query['PluginList'] = request.plugin_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawPlugins',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawPluginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_plugins_with_options_async(
+        self,
+        request: main_models.DescribePolarClawPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_list):
+            query['PluginList'] = request.plugin_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawPlugins',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawPluginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_plugins(
+        self,
+        request: main_models.DescribePolarClawPluginsRequest,
+    ) -> main_models.DescribePolarClawPluginsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_plugins_with_options(request, runtime)
+
+    async def describe_polar_claw_plugins_async(
+        self,
+        request: main_models.DescribePolarClawPluginsRequest,
+    ) -> main_models.DescribePolarClawPluginsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_plugins_with_options_async(request, runtime)
+
     def describe_polar_fs_attribute_with_options(
         self,
         request: main_models.DescribePolarFsAttributeRequest,
@@ -22479,6 +23629,240 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_dbcluster_serverless_with_options_async(request, runtime)
 
+    def disable_polar_claw_channel_with_options(
+        self,
+        request: main_models.DisablePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisablePolarClawChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisablePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisablePolarClawChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_polar_claw_channel_with_options_async(
+        self,
+        request: main_models.DisablePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisablePolarClawChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisablePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisablePolarClawChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_polar_claw_channel(
+        self,
+        request: main_models.DisablePolarClawChannelRequest,
+    ) -> main_models.DisablePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return self.disable_polar_claw_channel_with_options(request, runtime)
+
+    async def disable_polar_claw_channel_async(
+        self,
+        request: main_models.DisablePolarClawChannelRequest,
+    ) -> main_models.DisablePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_polar_claw_channel_with_options_async(request, runtime)
+
+    def disable_polar_claw_cron_job_with_options(
+        self,
+        request: main_models.DisablePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisablePolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisablePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisablePolarClawCronJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_polar_claw_cron_job_with_options_async(
+        self,
+        request: main_models.DisablePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisablePolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisablePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisablePolarClawCronJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_polar_claw_cron_job(
+        self,
+        request: main_models.DisablePolarClawCronJobRequest,
+    ) -> main_models.DisablePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return self.disable_polar_claw_cron_job_with_options(request, runtime)
+
+    async def disable_polar_claw_cron_job_async(
+        self,
+        request: main_models.DisablePolarClawCronJobRequest,
+    ) -> main_models.DisablePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_polar_claw_cron_job_with_options_async(request, runtime)
+
+    def disable_polar_claw_plugin_with_options(
+        self,
+        request: main_models.DisablePolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisablePolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisablePolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisablePolarClawPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_polar_claw_plugin_with_options_async(
+        self,
+        request: main_models.DisablePolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisablePolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisablePolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisablePolarClawPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_polar_claw_plugin(
+        self,
+        request: main_models.DisablePolarClawPluginRequest,
+    ) -> main_models.DisablePolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return self.disable_polar_claw_plugin_with_options(request, runtime)
+
+    async def disable_polar_claw_plugin_async(
+        self,
+        request: main_models.DisablePolarClawPluginRequest,
+    ) -> main_models.DisablePolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_polar_claw_plugin_with_options_async(request, runtime)
+
     def enable_dbcluster_dynamo_dbwith_options(
         self,
         request: main_models.EnableDBClusterDynamoDBRequest,
@@ -22838,6 +24222,240 @@ class Client(OpenApiClient):
     ) -> main_models.EnableFirewallRulesResponse:
         runtime = RuntimeOptions()
         return await self.enable_firewall_rules_with_options_async(request, runtime)
+
+    def enable_polar_claw_channel_with_options(
+        self,
+        request: main_models.EnablePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnablePolarClawChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnablePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnablePolarClawChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_polar_claw_channel_with_options_async(
+        self,
+        request: main_models.EnablePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnablePolarClawChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnablePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnablePolarClawChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_polar_claw_channel(
+        self,
+        request: main_models.EnablePolarClawChannelRequest,
+    ) -> main_models.EnablePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return self.enable_polar_claw_channel_with_options(request, runtime)
+
+    async def enable_polar_claw_channel_async(
+        self,
+        request: main_models.EnablePolarClawChannelRequest,
+    ) -> main_models.EnablePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_polar_claw_channel_with_options_async(request, runtime)
+
+    def enable_polar_claw_cron_job_with_options(
+        self,
+        request: main_models.EnablePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnablePolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnablePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnablePolarClawCronJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_polar_claw_cron_job_with_options_async(
+        self,
+        request: main_models.EnablePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnablePolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnablePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnablePolarClawCronJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_polar_claw_cron_job(
+        self,
+        request: main_models.EnablePolarClawCronJobRequest,
+    ) -> main_models.EnablePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return self.enable_polar_claw_cron_job_with_options(request, runtime)
+
+    async def enable_polar_claw_cron_job_async(
+        self,
+        request: main_models.EnablePolarClawCronJobRequest,
+    ) -> main_models.EnablePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_polar_claw_cron_job_with_options_async(request, runtime)
+
+    def enable_polar_claw_plugin_with_options(
+        self,
+        request: main_models.EnablePolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnablePolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnablePolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnablePolarClawPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_polar_claw_plugin_with_options_async(
+        self,
+        request: main_models.EnablePolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnablePolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnablePolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnablePolarClawPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_polar_claw_plugin(
+        self,
+        request: main_models.EnablePolarClawPluginRequest,
+    ) -> main_models.EnablePolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return self.enable_polar_claw_plugin_with_options(request, runtime)
+
+    async def enable_polar_claw_plugin_async(
+        self,
+        request: main_models.EnablePolarClawPluginRequest,
+    ) -> main_models.EnablePolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_polar_claw_plugin_with_options_async(request, runtime)
 
     def enable_sqlrate_limiting_rules_with_options(
         self,
@@ -23611,6 +25229,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_polar_agent_with_options_async(request, runtime)
 
+    def get_polar_claw_config_with_options(
+        self,
+        request: main_models.GetPolarClawConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolarClawConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.config_path):
+            query['ConfigPath'] = request.config_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarClawConfig',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPolarClawConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_polar_claw_config_with_options_async(
+        self,
+        request: main_models.GetPolarClawConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolarClawConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.config_path):
+            query['ConfigPath'] = request.config_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarClawConfig',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPolarClawConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_polar_claw_config(
+        self,
+        request: main_models.GetPolarClawConfigRequest,
+    ) -> main_models.GetPolarClawConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_polar_claw_config_with_options(request, runtime)
+
+    async def get_polar_claw_config_async(
+        self,
+        request: main_models.GetPolarClawConfigRequest,
+    ) -> main_models.GetPolarClawConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_polar_claw_config_with_options_async(request, runtime)
+
     def grant_account_privilege_with_options(
         self,
         request: main_models.GrantAccountPrivilegeRequest,
@@ -23811,6 +25503,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.grant_account_privilege_zonal_with_options_async(request, runtime)
 
+    def install_polar_claw_plugin_with_options(
+        self,
+        request: main_models.InstallPolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallPolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallPolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallPolarClawPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_polar_claw_plugin_with_options_async(
+        self,
+        request: main_models.InstallPolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallPolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallPolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallPolarClawPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_polar_claw_plugin(
+        self,
+        request: main_models.InstallPolarClawPluginRequest,
+    ) -> main_models.InstallPolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return self.install_polar_claw_plugin_with_options(request, runtime)
+
+    async def install_polar_claw_plugin_async(
+        self,
+        request: main_models.InstallPolarClawPluginRequest,
+    ) -> main_models.InstallPolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.install_polar_claw_plugin_with_options_async(request, runtime)
+
     def list_orders_with_options(
         self,
         request: main_models.ListOrdersRequest,
@@ -23916,6 +25690,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListOrdersResponse:
         runtime = RuntimeOptions()
         return await self.list_orders_with_options_async(request, runtime)
+
+    def list_polar_claw_bindings_with_options(
+        self,
+        tmp_req: main_models.ListPolarClawBindingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPolarClawBindingsResponse:
+        tmp_req.validate()
+        request = main_models.ListPolarClawBindingsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.agent_list):
+            request.agent_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.agent_list, 'AgentList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_list_shrink):
+            query['AgentList'] = request.agent_list_shrink
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPolarClawBindings',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPolarClawBindingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_polar_claw_bindings_with_options_async(
+        self,
+        tmp_req: main_models.ListPolarClawBindingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPolarClawBindingsResponse:
+        tmp_req.validate()
+        request = main_models.ListPolarClawBindingsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.agent_list):
+            request.agent_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.agent_list, 'AgentList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_list_shrink):
+            query['AgentList'] = request.agent_list_shrink
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPolarClawBindings',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPolarClawBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_polar_claw_bindings(
+        self,
+        request: main_models.ListPolarClawBindingsRequest,
+    ) -> main_models.ListPolarClawBindingsResponse:
+        runtime = RuntimeOptions()
+        return self.list_polar_claw_bindings_with_options(request, runtime)
+
+    async def list_polar_claw_bindings_async(
+        self,
+        request: main_models.ListPolarClawBindingsRequest,
+    ) -> main_models.ListPolarClawBindingsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_polar_claw_bindings_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -31433,6 +33289,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.open_aitask_with_options_async(request, runtime)
 
+    def patch_polar_claw_config_with_options(
+        self,
+        tmp_req: main_models.PatchPolarClawConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PatchPolarClawConfigResponse:
+        tmp_req.validate()
+        request = main_models.PatchPolarClawConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.config_patch):
+            request.config_patch_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_patch, 'ConfigPatch', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.config_patch_shrink):
+            query['ConfigPatch'] = request.config_patch_shrink
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PatchPolarClawConfig',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PatchPolarClawConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def patch_polar_claw_config_with_options_async(
+        self,
+        tmp_req: main_models.PatchPolarClawConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PatchPolarClawConfigResponse:
+        tmp_req.validate()
+        request = main_models.PatchPolarClawConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.config_patch):
+            request.config_patch_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_patch, 'ConfigPatch', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.config_patch_shrink):
+            query['ConfigPatch'] = request.config_patch_shrink
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PatchPolarClawConfig',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PatchPolarClawConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def patch_polar_claw_config(
+        self,
+        request: main_models.PatchPolarClawConfigRequest,
+    ) -> main_models.PatchPolarClawConfigResponse:
+        runtime = RuntimeOptions()
+        return self.patch_polar_claw_config_with_options(request, runtime)
+
+    async def patch_polar_claw_config_async(
+        self,
+        request: main_models.PatchPolarClawConfigRequest,
+    ) -> main_models.PatchPolarClawConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.patch_polar_claw_config_with_options_async(request, runtime)
+
     def reactivate_dbcluster_backup_with_options(
         self,
         request: main_models.ReactivateDBClusterBackupRequest,
@@ -31589,6 +33531,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.refresh_dbcluster_storage_usage_with_options_async(request, runtime)
 
+    def remove_application_environment_variables_with_options(
+        self,
+        tmp_req: main_models.RemoveApplicationEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveApplicationEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.RemoveApplicationEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.variable_names):
+            request.variable_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.variable_names, 'VariableNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.variable_names_shrink):
+            query['VariableNames'] = request.variable_names_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveApplicationEnvironmentVariables',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveApplicationEnvironmentVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_application_environment_variables_with_options_async(
+        self,
+        tmp_req: main_models.RemoveApplicationEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveApplicationEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.RemoveApplicationEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.variable_names):
+            request.variable_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.variable_names, 'VariableNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.variable_names_shrink):
+            query['VariableNames'] = request.variable_names_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveApplicationEnvironmentVariables',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveApplicationEnvironmentVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_application_environment_variables(
+        self,
+        request: main_models.RemoveApplicationEnvironmentVariablesRequest,
+    ) -> main_models.RemoveApplicationEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return self.remove_application_environment_variables_with_options(request, runtime)
+
+    async def remove_application_environment_variables_async(
+        self,
+        request: main_models.RemoveApplicationEnvironmentVariablesRequest,
+    ) -> main_models.RemoveApplicationEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_application_environment_variables_with_options_async(request, runtime)
+
     def remove_dbcluster_from_gdnwith_options(
         self,
         request: main_models.RemoveDBClusterFromGDNRequest,
@@ -31690,6 +33718,80 @@ class Client(OpenApiClient):
     ) -> main_models.RemoveDBClusterFromGDNResponse:
         runtime = RuntimeOptions()
         return await self.remove_dbcluster_from_gdnwith_options_async(request, runtime)
+
+    def remove_polar_claw_mcpserver_with_options(
+        self,
+        request: main_models.RemovePolarClawMCPServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemovePolarClawMCPServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.server_name):
+            query['ServerName'] = request.server_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemovePolarClawMCPServer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemovePolarClawMCPServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_polar_claw_mcpserver_with_options_async(
+        self,
+        request: main_models.RemovePolarClawMCPServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemovePolarClawMCPServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.server_name):
+            query['ServerName'] = request.server_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemovePolarClawMCPServer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemovePolarClawMCPServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_polar_claw_mcpserver(
+        self,
+        request: main_models.RemovePolarClawMCPServerRequest,
+    ) -> main_models.RemovePolarClawMCPServerResponse:
+        runtime = RuntimeOptions()
+        return self.remove_polar_claw_mcpserver_with_options(request, runtime)
+
+    async def remove_polar_claw_mcpserver_async(
+        self,
+        request: main_models.RemovePolarClawMCPServerRequest,
+    ) -> main_models.RemovePolarClawMCPServerResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_polar_claw_mcpserver_with_options_async(request, runtime)
 
     def reset_account_with_options(
         self,
@@ -32733,6 +34835,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.revoke_account_privilege_zonal_with_options_async(request, runtime)
 
+    def run_polar_claw_cron_job_with_options(
+        self,
+        request: main_models.RunPolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunPolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunPolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunPolarClawCronJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_polar_claw_cron_job_with_options_async(
+        self,
+        request: main_models.RunPolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunPolarClawCronJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunPolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunPolarClawCronJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_polar_claw_cron_job(
+        self,
+        request: main_models.RunPolarClawCronJobRequest,
+    ) -> main_models.RunPolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return self.run_polar_claw_cron_job_with_options(request, runtime)
+
+    async def run_polar_claw_cron_job_async(
+        self,
+        request: main_models.RunPolarClawCronJobRequest,
+    ) -> main_models.RunPolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return await self.run_polar_claw_cron_job_with_options_async(request, runtime)
+
     def search_memories_with_options(
         self,
         request: main_models.SearchMemoriesRequest,
@@ -33341,6 +35525,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.transform_dbcluster_pay_type_with_options_async(request, runtime)
 
+    def unbind_polar_claw_agent_with_options(
+        self,
+        request: main_models.UnbindPolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindPolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.channel_account_id):
+            query['ChannelAccountId'] = request.channel_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindPolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindPolarClawAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_polar_claw_agent_with_options_async(
+        self,
+        request: main_models.UnbindPolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindPolarClawAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.channel_account_id):
+            query['ChannelAccountId'] = request.channel_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindPolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindPolarClawAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_polar_claw_agent(
+        self,
+        request: main_models.UnbindPolarClawAgentRequest,
+    ) -> main_models.UnbindPolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return self.unbind_polar_claw_agent_with_options(request, runtime)
+
+    async def unbind_polar_claw_agent_async(
+        self,
+        request: main_models.UnbindPolarClawAgentRequest,
+    ) -> main_models.UnbindPolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.unbind_polar_claw_agent_with_options_async(request, runtime)
+
+    def uninstall_polar_claw_plugin_with_options(
+        self,
+        request: main_models.UninstallPolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallPolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallPolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallPolarClawPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_polar_claw_plugin_with_options_async(
+        self,
+        request: main_models.UninstallPolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallPolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallPolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallPolarClawPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_polar_claw_plugin(
+        self,
+        request: main_models.UninstallPolarClawPluginRequest,
+    ) -> main_models.UninstallPolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return self.uninstall_polar_claw_plugin_with_options(request, runtime)
+
+    async def uninstall_polar_claw_plugin_async(
+        self,
+        request: main_models.UninstallPolarClawPluginRequest,
+    ) -> main_models.UninstallPolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.uninstall_polar_claw_plugin_with_options_async(request, runtime)
+
     def untag_resources_with_options(
         self,
         request: main_models.UntagResourcesRequest,
@@ -33442,6 +35786,92 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_application_environment_variables_with_options(
+        self,
+        tmp_req: main_models.UpdateApplicationEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApplicationEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApplicationEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.variables):
+            request.variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.variables_shrink):
+            query['Variables'] = request.variables_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApplicationEnvironmentVariables',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApplicationEnvironmentVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_environment_variables_with_options_async(
+        self,
+        tmp_req: main_models.UpdateApplicationEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApplicationEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApplicationEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.variables):
+            request.variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.variables_shrink):
+            query['Variables'] = request.variables_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApplicationEnvironmentVariables',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApplicationEnvironmentVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_environment_variables(
+        self,
+        request: main_models.UpdateApplicationEnvironmentVariablesRequest,
+    ) -> main_models.UpdateApplicationEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return self.update_application_environment_variables_with_options(request, runtime)
+
+    async def update_application_environment_variables_async(
+        self,
+        request: main_models.UpdateApplicationEnvironmentVariablesRequest,
+    ) -> main_models.UpdateApplicationEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_application_environment_variables_with_options_async(request, runtime)
 
     def update_extensions_with_options(
         self,
@@ -33556,6 +35986,258 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateExtensionsResponse:
         runtime = RuntimeOptions()
         return await self.update_extensions_with_options_async(request, runtime)
+
+    def update_polar_claw_agent_with_options(
+        self,
+        tmp_req: main_models.UpdatePolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePolarClawAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdatePolarClawAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.files):
+            request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.avatar):
+            query['Avatar'] = request.avatar
+        if not DaraCore.is_null(request.files_shrink):
+            query['Files'] = request.files_shrink
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.workspace):
+            query['Workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePolarClawAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_polar_claw_agent_with_options_async(
+        self,
+        tmp_req: main_models.UpdatePolarClawAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePolarClawAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdatePolarClawAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.files):
+            request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.avatar):
+            query['Avatar'] = request.avatar
+        if not DaraCore.is_null(request.files_shrink):
+            query['Files'] = request.files_shrink
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.workspace):
+            query['Workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePolarClawAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePolarClawAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_polar_claw_agent(
+        self,
+        request: main_models.UpdatePolarClawAgentRequest,
+    ) -> main_models.UpdatePolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return self.update_polar_claw_agent_with_options(request, runtime)
+
+    async def update_polar_claw_agent_async(
+        self,
+        request: main_models.UpdatePolarClawAgentRequest,
+    ) -> main_models.UpdatePolarClawAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_polar_claw_agent_with_options_async(request, runtime)
+
+    def update_polar_claw_cron_job_with_options(
+        self,
+        tmp_req: main_models.UpdatePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePolarClawCronJobResponse:
+        tmp_req.validate()
+        request = main_models.UpdatePolarClawCronJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.delivery):
+            request.delivery_shrink = Utils.array_to_string_with_specified_style(tmp_req.delivery, 'Delivery', 'json')
+        if not DaraCore.is_null(tmp_req.failure_alert):
+            request.failure_alert_shrink = Utils.array_to_string_with_specified_style(tmp_req.failure_alert, 'FailureAlert', 'json')
+        if not DaraCore.is_null(tmp_req.payload):
+            request.payload_shrink = Utils.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not DaraCore.is_null(tmp_req.schedule):
+            request.schedule_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.delete_after_run):
+            query['DeleteAfterRun'] = request.delete_after_run
+        if not DaraCore.is_null(request.delivery_shrink):
+            query['Delivery'] = request.delivery_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.failure_alert_shrink):
+            query['FailureAlert'] = request.failure_alert_shrink
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not DaraCore.is_null(request.session_key):
+            query['SessionKey'] = request.session_key
+        if not DaraCore.is_null(request.session_target):
+            query['SessionTarget'] = request.session_target
+        if not DaraCore.is_null(request.wake_mode):
+            query['WakeMode'] = request.wake_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePolarClawCronJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_polar_claw_cron_job_with_options_async(
+        self,
+        tmp_req: main_models.UpdatePolarClawCronJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePolarClawCronJobResponse:
+        tmp_req.validate()
+        request = main_models.UpdatePolarClawCronJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.delivery):
+            request.delivery_shrink = Utils.array_to_string_with_specified_style(tmp_req.delivery, 'Delivery', 'json')
+        if not DaraCore.is_null(tmp_req.failure_alert):
+            request.failure_alert_shrink = Utils.array_to_string_with_specified_style(tmp_req.failure_alert, 'FailureAlert', 'json')
+        if not DaraCore.is_null(tmp_req.payload):
+            request.payload_shrink = Utils.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not DaraCore.is_null(tmp_req.schedule):
+            request.schedule_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.delete_after_run):
+            query['DeleteAfterRun'] = request.delete_after_run
+        if not DaraCore.is_null(request.delivery_shrink):
+            query['Delivery'] = request.delivery_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.failure_alert_shrink):
+            query['FailureAlert'] = request.failure_alert_shrink
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        if not DaraCore.is_null(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not DaraCore.is_null(request.session_key):
+            query['SessionKey'] = request.session_key
+        if not DaraCore.is_null(request.session_target):
+            query['SessionTarget'] = request.session_target
+        if not DaraCore.is_null(request.wake_mode):
+            query['WakeMode'] = request.wake_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePolarClawCronJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePolarClawCronJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_polar_claw_cron_job(
+        self,
+        request: main_models.UpdatePolarClawCronJobRequest,
+    ) -> main_models.UpdatePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return self.update_polar_claw_cron_job_with_options(request, runtime)
+
+    async def update_polar_claw_cron_job_async(
+        self,
+        request: main_models.UpdatePolarClawCronJobRequest,
+    ) -> main_models.UpdatePolarClawCronJobResponse:
+        runtime = RuntimeOptions()
+        return await self.update_polar_claw_cron_job_with_options_async(request, runtime)
 
     def upgrade_dbcluster_version_with_options(
         self,
@@ -33796,6 +36478,186 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeDBClusterVersionZonalResponse:
         runtime = RuntimeOptions()
         return await self.upgrade_dbcluster_version_zonal_with_options_async(request, runtime)
+
+    def upgrade_polar_claw_channel_with_options(
+        self,
+        tmp_req: main_models.UpgradePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePolarClawChannelResponse:
+        tmp_req.validate()
+        request = main_models.UpgradePolarClawChannelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channel_config):
+            request.channel_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.channel_config, 'ChannelConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_config_shrink):
+            query['ChannelConfig'] = request.channel_config_shrink
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePolarClawChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_polar_claw_channel_with_options_async(
+        self,
+        tmp_req: main_models.UpgradePolarClawChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePolarClawChannelResponse:
+        tmp_req.validate()
+        request = main_models.UpgradePolarClawChannelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channel_config):
+            request.channel_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.channel_config, 'ChannelConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.channel_config_shrink):
+            query['ChannelConfig'] = request.channel_config_shrink
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePolarClawChannel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePolarClawChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_polar_claw_channel(
+        self,
+        request: main_models.UpgradePolarClawChannelRequest,
+    ) -> main_models.UpgradePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_polar_claw_channel_with_options(request, runtime)
+
+    async def upgrade_polar_claw_channel_async(
+        self,
+        request: main_models.UpgradePolarClawChannelRequest,
+    ) -> main_models.UpgradePolarClawChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_polar_claw_channel_with_options_async(request, runtime)
+
+    def upgrade_polar_claw_plugin_with_options(
+        self,
+        request: main_models.UpgradePolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePolarClawPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_polar_claw_plugin_with_options_async(
+        self,
+        request: main_models.UpgradePolarClawPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePolarClawPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.npm_package):
+            query['NpmPackage'] = request.npm_package
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.restart):
+            query['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePolarClawPlugin',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePolarClawPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_polar_claw_plugin(
+        self,
+        request: main_models.UpgradePolarClawPluginRequest,
+    ) -> main_models.UpgradePolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_polar_claw_plugin_with_options(request, runtime)
+
+    async def upgrade_polar_claw_plugin_async(
+        self,
+        request: main_models.UpgradePolarClawPluginRequest,
+    ) -> main_models.UpgradePolarClawPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_polar_claw_plugin_with_options_async(request, runtime)
 
     def upgrade_polar_claw_skills_with_options(
         self,

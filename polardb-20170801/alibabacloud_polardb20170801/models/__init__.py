@@ -11,6 +11,10 @@ from ._add_encryption_dbrole_privilege_response import AddEncryptionDBRolePrivil
 from ._add_firewall_rules_request import AddFirewallRulesRequest
 from ._add_firewall_rules_response_body import AddFirewallRulesResponseBody
 from ._add_firewall_rules_response import AddFirewallRulesResponse
+from ._add_polar_claw_mcpserver_request import AddPolarClawMCPServerRequest
+from ._add_polar_claw_mcpserver_shrink_request import AddPolarClawMCPServerShrinkRequest
+from ._add_polar_claw_mcpserver_response_body import AddPolarClawMCPServerResponseBody
+from ._add_polar_claw_mcpserver_response import AddPolarClawMCPServerResponse
 from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequest
 from ._add_polar_fs_path_mapping_response_body import AddPolarFsPathMappingResponseBody
 from ._add_polar_fs_path_mapping_response import AddPolarFsPathMappingResponse
@@ -27,6 +31,9 @@ from ._apply_application_prompts_response import ApplyApplicationPromptsResponse
 from ._attach_application_polar_fsrequest import AttachApplicationPolarFSRequest
 from ._attach_application_polar_fsresponse_body import AttachApplicationPolarFSResponseBody
 from ._attach_application_polar_fsresponse import AttachApplicationPolarFSResponse
+from ._bind_polar_claw_agent_request import BindPolarClawAgentRequest
+from ._bind_polar_claw_agent_response_body import BindPolarClawAgentResponseBody
+from ._bind_polar_claw_agent_response import BindPolarClawAgentResponse
 from ._cancel_active_operation_tasks_request import CancelActiveOperationTasksRequest
 from ._cancel_active_operation_tasks_response_body import CancelActiveOperationTasksResponseBody
 from ._cancel_active_operation_tasks_response import CancelActiveOperationTasksResponse
@@ -178,6 +185,17 @@ from ._create_or_get_virtual_license_order_response import CreateOrGetVirtualLic
 from ._create_parameter_group_request import CreateParameterGroupRequest
 from ._create_parameter_group_response_body import CreateParameterGroupResponseBody
 from ._create_parameter_group_response import CreateParameterGroupResponse
+from ._create_polar_claw_agent_request import CreatePolarClawAgentRequest
+from ._create_polar_claw_agent_response_body import CreatePolarClawAgentResponseBody
+from ._create_polar_claw_agent_response import CreatePolarClawAgentResponse
+from ._create_polar_claw_channel_request import CreatePolarClawChannelRequest
+from ._create_polar_claw_channel_shrink_request import CreatePolarClawChannelShrinkRequest
+from ._create_polar_claw_channel_response_body import CreatePolarClawChannelResponseBody
+from ._create_polar_claw_channel_response import CreatePolarClawChannelResponse
+from ._create_polar_claw_cron_job_request import CreatePolarClawCronJobRequest
+from ._create_polar_claw_cron_job_shrink_request import CreatePolarClawCronJobShrinkRequest
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBody
+from ._create_polar_claw_cron_job_response import CreatePolarClawCronJobResponse
 from ._create_polar_fs_object_request import CreatePolarFsObjectRequest
 from ._create_polar_fs_object_response_body import CreatePolarFsObjectResponseBody
 from ._create_polar_fs_object_response import CreatePolarFsObjectResponse
@@ -292,6 +310,15 @@ from ._delete_network_channel_response import DeleteNetworkChannelResponse
 from ._delete_parameter_group_request import DeleteParameterGroupRequest
 from ._delete_parameter_group_response_body import DeleteParameterGroupResponseBody
 from ._delete_parameter_group_response import DeleteParameterGroupResponse
+from ._delete_polar_claw_agent_request import DeletePolarClawAgentRequest
+from ._delete_polar_claw_agent_response_body import DeletePolarClawAgentResponseBody
+from ._delete_polar_claw_agent_response import DeletePolarClawAgentResponse
+from ._delete_polar_claw_channel_request import DeletePolarClawChannelRequest
+from ._delete_polar_claw_channel_response_body import DeletePolarClawChannelResponseBody
+from ._delete_polar_claw_channel_response import DeletePolarClawChannelResponse
+from ._delete_polar_claw_cron_job_request import DeletePolarClawCronJobRequest
+from ._delete_polar_claw_cron_job_response_body import DeletePolarClawCronJobResponseBody
+from ._delete_polar_claw_cron_job_response import DeletePolarClawCronJobResponse
 from ._delete_polar_fs_objects_request import DeletePolarFsObjectsRequest
 from ._delete_polar_fs_objects_shrink_request import DeletePolarFsObjectsShrinkRequest
 from ._delete_polar_fs_objects_response_body import DeletePolarFsObjectsResponseBody
@@ -633,6 +660,24 @@ from ._describe_polar_agent_session_status_response import DescribePolarAgentSes
 from ._describe_polar_agent_user_sessions_request import DescribePolarAgentUserSessionsRequest
 from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBody
 from ._describe_polar_agent_user_sessions_response import DescribePolarAgentUserSessionsResponse
+from ._describe_polar_claw_agents_request import DescribePolarClawAgentsRequest
+from ._describe_polar_claw_agents_shrink_request import DescribePolarClawAgentsShrinkRequest
+from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBody
+from ._describe_polar_claw_agents_response import DescribePolarClawAgentsResponse
+from ._describe_polar_claw_channels_request import DescribePolarClawChannelsRequest
+from ._describe_polar_claw_channels_shrink_request import DescribePolarClawChannelsShrinkRequest
+from ._describe_polar_claw_channels_response_body import DescribePolarClawChannelsResponseBody
+from ._describe_polar_claw_channels_response import DescribePolarClawChannelsResponse
+from ._describe_polar_claw_cron_jobs_request import DescribePolarClawCronJobsRequest
+from ._describe_polar_claw_cron_jobs_shrink_request import DescribePolarClawCronJobsShrinkRequest
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBody
+from ._describe_polar_claw_cron_jobs_response import DescribePolarClawCronJobsResponse
+from ._describe_polar_claw_mcpservers_request import DescribePolarClawMCPServersRequest
+from ._describe_polar_claw_mcpservers_response_body import DescribePolarClawMCPServersResponseBody
+from ._describe_polar_claw_mcpservers_response import DescribePolarClawMCPServersResponse
+from ._describe_polar_claw_plugins_request import DescribePolarClawPluginsRequest
+from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBody
+from ._describe_polar_claw_plugins_response import DescribePolarClawPluginsResponse
 from ._describe_polar_fs_attribute_request import DescribePolarFsAttributeRequest
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBody
 from ._describe_polar_fs_attribute_response import DescribePolarFsAttributeResponse
@@ -701,6 +746,15 @@ from ._disable_dbcluster_orca_response import DisableDBClusterOrcaResponse
 from ._disable_dbcluster_serverless_request import DisableDBClusterServerlessRequest
 from ._disable_dbcluster_serverless_response_body import DisableDBClusterServerlessResponseBody
 from ._disable_dbcluster_serverless_response import DisableDBClusterServerlessResponse
+from ._disable_polar_claw_channel_request import DisablePolarClawChannelRequest
+from ._disable_polar_claw_channel_response_body import DisablePolarClawChannelResponseBody
+from ._disable_polar_claw_channel_response import DisablePolarClawChannelResponse
+from ._disable_polar_claw_cron_job_request import DisablePolarClawCronJobRequest
+from ._disable_polar_claw_cron_job_response_body import DisablePolarClawCronJobResponseBody
+from ._disable_polar_claw_cron_job_response import DisablePolarClawCronJobResponse
+from ._disable_polar_claw_plugin_request import DisablePolarClawPluginRequest
+from ._disable_polar_claw_plugin_response_body import DisablePolarClawPluginResponseBody
+from ._disable_polar_claw_plugin_response import DisablePolarClawPluginResponse
 from ._enable_dbcluster_dynamo_dbrequest import EnableDBClusterDynamoDBRequest
 from ._enable_dbcluster_dynamo_dbresponse_body import EnableDBClusterDynamoDBResponseBody
 from ._enable_dbcluster_dynamo_dbresponse import EnableDBClusterDynamoDBResponse
@@ -713,6 +767,15 @@ from ._enable_dbcluster_serverless_response import EnableDBClusterServerlessResp
 from ._enable_firewall_rules_request import EnableFirewallRulesRequest
 from ._enable_firewall_rules_response_body import EnableFirewallRulesResponseBody
 from ._enable_firewall_rules_response import EnableFirewallRulesResponse
+from ._enable_polar_claw_channel_request import EnablePolarClawChannelRequest
+from ._enable_polar_claw_channel_response_body import EnablePolarClawChannelResponseBody
+from ._enable_polar_claw_channel_response import EnablePolarClawChannelResponse
+from ._enable_polar_claw_cron_job_request import EnablePolarClawCronJobRequest
+from ._enable_polar_claw_cron_job_response_body import EnablePolarClawCronJobResponseBody
+from ._enable_polar_claw_cron_job_response import EnablePolarClawCronJobResponse
+from ._enable_polar_claw_plugin_request import EnablePolarClawPluginRequest
+from ._enable_polar_claw_plugin_response_body import EnablePolarClawPluginResponseBody
+from ._enable_polar_claw_plugin_response import EnablePolarClawPluginResponse
 from ._enable_sqlrate_limiting_rules_request import EnableSQLRateLimitingRulesRequest
 from ._enable_sqlrate_limiting_rules_response_body import EnableSQLRateLimitingRulesResponseBody
 from ._enable_sqlrate_limiting_rules_response import EnableSQLRateLimitingRulesResponse
@@ -734,15 +797,25 @@ from ._generate_upgrade_report_for_sync_clone_response import GenerateUpgradeRep
 from ._get_polar_agent_request import GetPolarAgentRequest
 from ._get_polar_agent_response_body import GetPolarAgentResponseBody
 from ._get_polar_agent_response import GetPolarAgentResponse
+from ._get_polar_claw_config_request import GetPolarClawConfigRequest
+from ._get_polar_claw_config_response_body import GetPolarClawConfigResponseBody
+from ._get_polar_claw_config_response import GetPolarClawConfigResponse
 from ._grant_account_privilege_request import GrantAccountPrivilegeRequest
 from ._grant_account_privilege_response_body import GrantAccountPrivilegeResponseBody
 from ._grant_account_privilege_response import GrantAccountPrivilegeResponse
 from ._grant_account_privilege_zonal_request import GrantAccountPrivilegeZonalRequest
 from ._grant_account_privilege_zonal_response_body import GrantAccountPrivilegeZonalResponseBody
 from ._grant_account_privilege_zonal_response import GrantAccountPrivilegeZonalResponse
+from ._install_polar_claw_plugin_request import InstallPolarClawPluginRequest
+from ._install_polar_claw_plugin_response_body import InstallPolarClawPluginResponseBody
+from ._install_polar_claw_plugin_response import InstallPolarClawPluginResponse
 from ._list_orders_request import ListOrdersRequest
 from ._list_orders_response_body import ListOrdersResponseBody
 from ._list_orders_response import ListOrdersResponse
+from ._list_polar_claw_bindings_request import ListPolarClawBindingsRequest
+from ._list_polar_claw_bindings_shrink_request import ListPolarClawBindingsShrinkRequest
+from ._list_polar_claw_bindings_response_body import ListPolarClawBindingsResponseBody
+from ._list_polar_claw_bindings_response import ListPolarClawBindingsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -968,15 +1041,26 @@ from ._move_polar_fs_objects_response import MovePolarFsObjectsResponse
 from ._open_aitask_request import OpenAITaskRequest
 from ._open_aitask_response_body import OpenAITaskResponseBody
 from ._open_aitask_response import OpenAITaskResponse
+from ._patch_polar_claw_config_request import PatchPolarClawConfigRequest
+from ._patch_polar_claw_config_shrink_request import PatchPolarClawConfigShrinkRequest
+from ._patch_polar_claw_config_response_body import PatchPolarClawConfigResponseBody
+from ._patch_polar_claw_config_response import PatchPolarClawConfigResponse
 from ._reactivate_dbcluster_backup_request import ReactivateDBClusterBackupRequest
 from ._reactivate_dbcluster_backup_response_body import ReactivateDBClusterBackupResponseBody
 from ._reactivate_dbcluster_backup_response import ReactivateDBClusterBackupResponse
 from ._refresh_dbcluster_storage_usage_request import RefreshDBClusterStorageUsageRequest
 from ._refresh_dbcluster_storage_usage_response_body import RefreshDBClusterStorageUsageResponseBody
 from ._refresh_dbcluster_storage_usage_response import RefreshDBClusterStorageUsageResponse
+from ._remove_application_environment_variables_request import RemoveApplicationEnvironmentVariablesRequest
+from ._remove_application_environment_variables_shrink_request import RemoveApplicationEnvironmentVariablesShrinkRequest
+from ._remove_application_environment_variables_response_body import RemoveApplicationEnvironmentVariablesResponseBody
+from ._remove_application_environment_variables_response import RemoveApplicationEnvironmentVariablesResponse
 from ._remove_dbcluster_from_gdnrequest import RemoveDBClusterFromGDNRequest
 from ._remove_dbcluster_from_gdnresponse_body import RemoveDBClusterFromGDNResponseBody
 from ._remove_dbcluster_from_gdnresponse import RemoveDBClusterFromGDNResponse
+from ._remove_polar_claw_mcpserver_request import RemovePolarClawMCPServerRequest
+from ._remove_polar_claw_mcpserver_response_body import RemovePolarClawMCPServerResponseBody
+from ._remove_polar_claw_mcpserver_response import RemovePolarClawMCPServerResponse
 from ._reset_account_request import ResetAccountRequest
 from ._reset_account_response_body import ResetAccountResponseBody
 from ._reset_account_response import ResetAccountResponse
@@ -1010,6 +1094,9 @@ from ._revoke_account_privilege_response import RevokeAccountPrivilegeResponse
 from ._revoke_account_privilege_zonal_request import RevokeAccountPrivilegeZonalRequest
 from ._revoke_account_privilege_zonal_response_body import RevokeAccountPrivilegeZonalResponseBody
 from ._revoke_account_privilege_zonal_response import RevokeAccountPrivilegeZonalResponse
+from ._run_polar_claw_cron_job_request import RunPolarClawCronJobRequest
+from ._run_polar_claw_cron_job_response_body import RunPolarClawCronJobResponseBody
+from ._run_polar_claw_cron_job_response import RunPolarClawCronJobResponse
 from ._search_memories_request import SearchMemoriesRequest
 from ._search_memories_response_body import SearchMemoriesResponseBody
 from ._search_memories_response import SearchMemoriesResponse
@@ -1028,23 +1115,49 @@ from ._temp_modify_dbnode_response import TempModifyDBNodeResponse
 from ._transform_dbcluster_pay_type_request import TransformDBClusterPayTypeRequest
 from ._transform_dbcluster_pay_type_response_body import TransformDBClusterPayTypeResponseBody
 from ._transform_dbcluster_pay_type_response import TransformDBClusterPayTypeResponse
+from ._unbind_polar_claw_agent_request import UnbindPolarClawAgentRequest
+from ._unbind_polar_claw_agent_response_body import UnbindPolarClawAgentResponseBody
+from ._unbind_polar_claw_agent_response import UnbindPolarClawAgentResponse
+from ._uninstall_polar_claw_plugin_request import UninstallPolarClawPluginRequest
+from ._uninstall_polar_claw_plugin_response_body import UninstallPolarClawPluginResponseBody
+from ._uninstall_polar_claw_plugin_response import UninstallPolarClawPluginResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_application_environment_variables_request import UpdateApplicationEnvironmentVariablesRequest
+from ._update_application_environment_variables_shrink_request import UpdateApplicationEnvironmentVariablesShrinkRequest
+from ._update_application_environment_variables_response_body import UpdateApplicationEnvironmentVariablesResponseBody
+from ._update_application_environment_variables_response import UpdateApplicationEnvironmentVariablesResponse
 from ._update_extensions_request import UpdateExtensionsRequest
 from ._update_extensions_response_body import UpdateExtensionsResponseBody
 from ._update_extensions_response import UpdateExtensionsResponse
+from ._update_polar_claw_agent_request import UpdatePolarClawAgentRequest
+from ._update_polar_claw_agent_shrink_request import UpdatePolarClawAgentShrinkRequest
+from ._update_polar_claw_agent_response_body import UpdatePolarClawAgentResponseBody
+from ._update_polar_claw_agent_response import UpdatePolarClawAgentResponse
+from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequest
+from ._update_polar_claw_cron_job_shrink_request import UpdatePolarClawCronJobShrinkRequest
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBody
+from ._update_polar_claw_cron_job_response import UpdatePolarClawCronJobResponse
 from ._upgrade_dbcluster_version_request import UpgradeDBClusterVersionRequest
 from ._upgrade_dbcluster_version_response_body import UpgradeDBClusterVersionResponseBody
 from ._upgrade_dbcluster_version_response import UpgradeDBClusterVersionResponse
 from ._upgrade_dbcluster_version_zonal_request import UpgradeDBClusterVersionZonalRequest
 from ._upgrade_dbcluster_version_zonal_response_body import UpgradeDBClusterVersionZonalResponseBody
 from ._upgrade_dbcluster_version_zonal_response import UpgradeDBClusterVersionZonalResponse
+from ._upgrade_polar_claw_channel_request import UpgradePolarClawChannelRequest
+from ._upgrade_polar_claw_channel_shrink_request import UpgradePolarClawChannelShrinkRequest
+from ._upgrade_polar_claw_channel_response_body import UpgradePolarClawChannelResponseBody
+from ._upgrade_polar_claw_channel_response import UpgradePolarClawChannelResponse
+from ._upgrade_polar_claw_plugin_request import UpgradePolarClawPluginRequest
+from ._upgrade_polar_claw_plugin_response_body import UpgradePolarClawPluginResponseBody
+from ._upgrade_polar_claw_plugin_response import UpgradePolarClawPluginResponse
 from ._upgrade_polar_claw_skills_request import UpgradePolarClawSkillsRequest
 from ._upgrade_polar_claw_skills_response_body import UpgradePolarClawSkillsResponseBody
 from ._upgrade_polar_claw_skills_response import UpgradePolarClawSkillsResponse
 from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequestCustomBucketPathList
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
+from ._bind_polar_claw_agent_response_body import BindPolarClawAgentResponseBodyBinding
 from ._check_polar_fs_quota_consistency_response_body import CheckPolarFsQuotaConsistencyResponseBodyQuotaItem
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
@@ -1060,6 +1173,19 @@ from ._create_dbendpoint_address_request import CreateDBEndpointAddressRequestZo
 from ._create_dbnodes_request import CreateDBNodesRequestDBNode
 from ._create_dbnodes_response_body import CreateDBNodesResponseBodyDBNodeIds
 from ._create_global_security_ipgroup_response_body import CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
+from ._create_polar_claw_agent_response_body import CreatePolarClawAgentResponseBodyAgentIdentity
+from ._create_polar_claw_agent_response_body import CreatePolarClawAgentResponseBodyAgent
+from ._create_polar_claw_cron_job_request import CreatePolarClawCronJobRequestDelivery
+from ._create_polar_claw_cron_job_request import CreatePolarClawCronJobRequestFailureAlert
+from ._create_polar_claw_cron_job_request import CreatePolarClawCronJobRequestPayload
+from ._create_polar_claw_cron_job_request import CreatePolarClawCronJobRequestSchedule
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobDelivery
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobPayload
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobRunsUsage
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobRuns
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobSchedule
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobState
+from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJob
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
 from ._delete_polar_fs_path_mapping_request import DeletePolarFsPathMappingRequestCustomBucketPathList
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequestQuotas
@@ -1276,6 +1402,19 @@ from ._describe_pending_maintenance_action_response_body import DescribePendingM
 from ._describe_pending_maintenance_actions_response_body import DescribePendingMaintenanceActionsResponseBodyTypeList
 from ._describe_polar_agent_chat_records_response_body import DescribePolarAgentChatRecordsResponseBodyData
 from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBodyData
+from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsIdentity
+from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgents
+from ._describe_polar_claw_channels_response_body import DescribePolarClawChannelsResponseBodyChannelsAccounts
+from ._describe_polar_claw_channels_response_body import DescribePolarClawChannelsResponseBodyChannels
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobsDelivery
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobsPayload
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobsRunsUsage
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobsRuns
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobsSchedule
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobsState
+from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobs
+from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBodyDiagnostics
+from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBodyPlugins
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyCustomBucketPathList
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyMountInfo
 from ._describe_polar_fs_objects_response_body import DescribePolarFsObjectsResponseBodyItems
@@ -1313,6 +1452,7 @@ from ._describe_zones_response_body import DescribeZonesResponseBodyZones
 from ._get_polar_agent_response_body import GetPolarAgentResponseBodyFunctionCall
 from ._get_polar_agent_response_body import GetPolarAgentResponseBodyUiFunctionCall
 from ._list_orders_response_body import ListOrdersResponseBodyOrderList
+from ._list_polar_claw_bindings_response_body import ListPolarClawBindingsResponseBodyBindings
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -1331,6 +1471,20 @@ from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._set_polar_fs_file_quota_request import SetPolarFsFileQuotaRequestFilePathQuotas
 from ._tag_resources_request import TagResourcesRequestTag
 from ._temp_modify_dbnode_request import TempModifyDBNodeRequestDBNode
+from ._update_polar_claw_agent_request import UpdatePolarClawAgentRequestFiles
+from ._update_polar_claw_agent_response_body import UpdatePolarClawAgentResponseBodyAgentIdentity
+from ._update_polar_claw_agent_response_body import UpdatePolarClawAgentResponseBodyAgent
+from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestDelivery
+from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestFailureAlert
+from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestPayload
+from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestSchedule
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobDelivery
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobPayload
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobRunsUsage
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobRuns
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobSchedule
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobState
+from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJob
 
 __all__ = [
     AbortDBClusterMigrationRequest,
@@ -1342,6 +1496,10 @@ __all__ = [
     AddFirewallRulesRequest,
     AddFirewallRulesResponseBody,
     AddFirewallRulesResponse,
+    AddPolarClawMCPServerRequest,
+    AddPolarClawMCPServerShrinkRequest,
+    AddPolarClawMCPServerResponseBody,
+    AddPolarClawMCPServerResponse,
     AddPolarFsPathMappingRequest,
     AddPolarFsPathMappingResponseBody,
     AddPolarFsPathMappingResponse,
@@ -1358,6 +1516,9 @@ __all__ = [
     AttachApplicationPolarFSRequest,
     AttachApplicationPolarFSResponseBody,
     AttachApplicationPolarFSResponse,
+    BindPolarClawAgentRequest,
+    BindPolarClawAgentResponseBody,
+    BindPolarClawAgentResponse,
     CancelActiveOperationTasksRequest,
     CancelActiveOperationTasksResponseBody,
     CancelActiveOperationTasksResponse,
@@ -1509,6 +1670,17 @@ __all__ = [
     CreateParameterGroupRequest,
     CreateParameterGroupResponseBody,
     CreateParameterGroupResponse,
+    CreatePolarClawAgentRequest,
+    CreatePolarClawAgentResponseBody,
+    CreatePolarClawAgentResponse,
+    CreatePolarClawChannelRequest,
+    CreatePolarClawChannelShrinkRequest,
+    CreatePolarClawChannelResponseBody,
+    CreatePolarClawChannelResponse,
+    CreatePolarClawCronJobRequest,
+    CreatePolarClawCronJobShrinkRequest,
+    CreatePolarClawCronJobResponseBody,
+    CreatePolarClawCronJobResponse,
     CreatePolarFsObjectRequest,
     CreatePolarFsObjectResponseBody,
     CreatePolarFsObjectResponse,
@@ -1623,6 +1795,15 @@ __all__ = [
     DeleteParameterGroupRequest,
     DeleteParameterGroupResponseBody,
     DeleteParameterGroupResponse,
+    DeletePolarClawAgentRequest,
+    DeletePolarClawAgentResponseBody,
+    DeletePolarClawAgentResponse,
+    DeletePolarClawChannelRequest,
+    DeletePolarClawChannelResponseBody,
+    DeletePolarClawChannelResponse,
+    DeletePolarClawCronJobRequest,
+    DeletePolarClawCronJobResponseBody,
+    DeletePolarClawCronJobResponse,
     DeletePolarFsObjectsRequest,
     DeletePolarFsObjectsShrinkRequest,
     DeletePolarFsObjectsResponseBody,
@@ -1964,6 +2145,24 @@ __all__ = [
     DescribePolarAgentUserSessionsRequest,
     DescribePolarAgentUserSessionsResponseBody,
     DescribePolarAgentUserSessionsResponse,
+    DescribePolarClawAgentsRequest,
+    DescribePolarClawAgentsShrinkRequest,
+    DescribePolarClawAgentsResponseBody,
+    DescribePolarClawAgentsResponse,
+    DescribePolarClawChannelsRequest,
+    DescribePolarClawChannelsShrinkRequest,
+    DescribePolarClawChannelsResponseBody,
+    DescribePolarClawChannelsResponse,
+    DescribePolarClawCronJobsRequest,
+    DescribePolarClawCronJobsShrinkRequest,
+    DescribePolarClawCronJobsResponseBody,
+    DescribePolarClawCronJobsResponse,
+    DescribePolarClawMCPServersRequest,
+    DescribePolarClawMCPServersResponseBody,
+    DescribePolarClawMCPServersResponse,
+    DescribePolarClawPluginsRequest,
+    DescribePolarClawPluginsResponseBody,
+    DescribePolarClawPluginsResponse,
     DescribePolarFsAttributeRequest,
     DescribePolarFsAttributeResponseBody,
     DescribePolarFsAttributeResponse,
@@ -2032,6 +2231,15 @@ __all__ = [
     DisableDBClusterServerlessRequest,
     DisableDBClusterServerlessResponseBody,
     DisableDBClusterServerlessResponse,
+    DisablePolarClawChannelRequest,
+    DisablePolarClawChannelResponseBody,
+    DisablePolarClawChannelResponse,
+    DisablePolarClawCronJobRequest,
+    DisablePolarClawCronJobResponseBody,
+    DisablePolarClawCronJobResponse,
+    DisablePolarClawPluginRequest,
+    DisablePolarClawPluginResponseBody,
+    DisablePolarClawPluginResponse,
     EnableDBClusterDynamoDBRequest,
     EnableDBClusterDynamoDBResponseBody,
     EnableDBClusterDynamoDBResponse,
@@ -2044,6 +2252,15 @@ __all__ = [
     EnableFirewallRulesRequest,
     EnableFirewallRulesResponseBody,
     EnableFirewallRulesResponse,
+    EnablePolarClawChannelRequest,
+    EnablePolarClawChannelResponseBody,
+    EnablePolarClawChannelResponse,
+    EnablePolarClawCronJobRequest,
+    EnablePolarClawCronJobResponseBody,
+    EnablePolarClawCronJobResponse,
+    EnablePolarClawPluginRequest,
+    EnablePolarClawPluginResponseBody,
+    EnablePolarClawPluginResponse,
     EnableSQLRateLimitingRulesRequest,
     EnableSQLRateLimitingRulesResponseBody,
     EnableSQLRateLimitingRulesResponse,
@@ -2065,15 +2282,25 @@ __all__ = [
     GetPolarAgentRequest,
     GetPolarAgentResponseBody,
     GetPolarAgentResponse,
+    GetPolarClawConfigRequest,
+    GetPolarClawConfigResponseBody,
+    GetPolarClawConfigResponse,
     GrantAccountPrivilegeRequest,
     GrantAccountPrivilegeResponseBody,
     GrantAccountPrivilegeResponse,
     GrantAccountPrivilegeZonalRequest,
     GrantAccountPrivilegeZonalResponseBody,
     GrantAccountPrivilegeZonalResponse,
+    InstallPolarClawPluginRequest,
+    InstallPolarClawPluginResponseBody,
+    InstallPolarClawPluginResponse,
     ListOrdersRequest,
     ListOrdersResponseBody,
     ListOrdersResponse,
+    ListPolarClawBindingsRequest,
+    ListPolarClawBindingsShrinkRequest,
+    ListPolarClawBindingsResponseBody,
+    ListPolarClawBindingsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -2299,15 +2526,26 @@ __all__ = [
     OpenAITaskRequest,
     OpenAITaskResponseBody,
     OpenAITaskResponse,
+    PatchPolarClawConfigRequest,
+    PatchPolarClawConfigShrinkRequest,
+    PatchPolarClawConfigResponseBody,
+    PatchPolarClawConfigResponse,
     ReactivateDBClusterBackupRequest,
     ReactivateDBClusterBackupResponseBody,
     ReactivateDBClusterBackupResponse,
     RefreshDBClusterStorageUsageRequest,
     RefreshDBClusterStorageUsageResponseBody,
     RefreshDBClusterStorageUsageResponse,
+    RemoveApplicationEnvironmentVariablesRequest,
+    RemoveApplicationEnvironmentVariablesShrinkRequest,
+    RemoveApplicationEnvironmentVariablesResponseBody,
+    RemoveApplicationEnvironmentVariablesResponse,
     RemoveDBClusterFromGDNRequest,
     RemoveDBClusterFromGDNResponseBody,
     RemoveDBClusterFromGDNResponse,
+    RemovePolarClawMCPServerRequest,
+    RemovePolarClawMCPServerResponseBody,
+    RemovePolarClawMCPServerResponse,
     ResetAccountRequest,
     ResetAccountResponseBody,
     ResetAccountResponse,
@@ -2341,6 +2579,9 @@ __all__ = [
     RevokeAccountPrivilegeZonalRequest,
     RevokeAccountPrivilegeZonalResponseBody,
     RevokeAccountPrivilegeZonalResponse,
+    RunPolarClawCronJobRequest,
+    RunPolarClawCronJobResponseBody,
+    RunPolarClawCronJobResponse,
     SearchMemoriesRequest,
     SearchMemoriesResponseBody,
     SearchMemoriesResponse,
@@ -2359,23 +2600,49 @@ __all__ = [
     TransformDBClusterPayTypeRequest,
     TransformDBClusterPayTypeResponseBody,
     TransformDBClusterPayTypeResponse,
+    UnbindPolarClawAgentRequest,
+    UnbindPolarClawAgentResponseBody,
+    UnbindPolarClawAgentResponse,
+    UninstallPolarClawPluginRequest,
+    UninstallPolarClawPluginResponseBody,
+    UninstallPolarClawPluginResponse,
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateApplicationEnvironmentVariablesRequest,
+    UpdateApplicationEnvironmentVariablesShrinkRequest,
+    UpdateApplicationEnvironmentVariablesResponseBody,
+    UpdateApplicationEnvironmentVariablesResponse,
     UpdateExtensionsRequest,
     UpdateExtensionsResponseBody,
     UpdateExtensionsResponse,
+    UpdatePolarClawAgentRequest,
+    UpdatePolarClawAgentShrinkRequest,
+    UpdatePolarClawAgentResponseBody,
+    UpdatePolarClawAgentResponse,
+    UpdatePolarClawCronJobRequest,
+    UpdatePolarClawCronJobShrinkRequest,
+    UpdatePolarClawCronJobResponseBody,
+    UpdatePolarClawCronJobResponse,
     UpgradeDBClusterVersionRequest,
     UpgradeDBClusterVersionResponseBody,
     UpgradeDBClusterVersionResponse,
     UpgradeDBClusterVersionZonalRequest,
     UpgradeDBClusterVersionZonalResponseBody,
     UpgradeDBClusterVersionZonalResponse,
+    UpgradePolarClawChannelRequest,
+    UpgradePolarClawChannelShrinkRequest,
+    UpgradePolarClawChannelResponseBody,
+    UpgradePolarClawChannelResponse,
+    UpgradePolarClawPluginRequest,
+    UpgradePolarClawPluginResponseBody,
+    UpgradePolarClawPluginResponse,
     UpgradePolarClawSkillsRequest,
     UpgradePolarClawSkillsResponseBody,
     UpgradePolarClawSkillsResponse,
     AddPolarFsPathMappingRequestCustomBucketPathList,
     AddPolarFsQuotaRequestQuotas,
+    BindPolarClawAgentResponseBodyBinding,
     CheckPolarFsQuotaConsistencyResponseBodyQuotaItem,
     CreateAINodesRequestDBNodes,
     CreateApplicationRequestComponents,
@@ -2391,6 +2658,19 @@ __all__ = [
     CreateDBNodesRequestDBNode,
     CreateDBNodesResponseBodyDBNodeIds,
     CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
+    CreatePolarClawAgentResponseBodyAgentIdentity,
+    CreatePolarClawAgentResponseBodyAgent,
+    CreatePolarClawCronJobRequestDelivery,
+    CreatePolarClawCronJobRequestFailureAlert,
+    CreatePolarClawCronJobRequestPayload,
+    CreatePolarClawCronJobRequestSchedule,
+    CreatePolarClawCronJobResponseBodyJobDelivery,
+    CreatePolarClawCronJobResponseBodyJobPayload,
+    CreatePolarClawCronJobResponseBodyJobRunsUsage,
+    CreatePolarClawCronJobResponseBodyJobRuns,
+    CreatePolarClawCronJobResponseBodyJobSchedule,
+    CreatePolarClawCronJobResponseBodyJobState,
+    CreatePolarClawCronJobResponseBodyJob,
     DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
     DeletePolarFsPathMappingRequestCustomBucketPathList,
     DeletePolarFsQuotaRequestQuotas,
@@ -2607,6 +2887,19 @@ __all__ = [
     DescribePendingMaintenanceActionsResponseBodyTypeList,
     DescribePolarAgentChatRecordsResponseBodyData,
     DescribePolarAgentUserSessionsResponseBodyData,
+    DescribePolarClawAgentsResponseBodyAgentsIdentity,
+    DescribePolarClawAgentsResponseBodyAgents,
+    DescribePolarClawChannelsResponseBodyChannelsAccounts,
+    DescribePolarClawChannelsResponseBodyChannels,
+    DescribePolarClawCronJobsResponseBodyJobsDelivery,
+    DescribePolarClawCronJobsResponseBodyJobsPayload,
+    DescribePolarClawCronJobsResponseBodyJobsRunsUsage,
+    DescribePolarClawCronJobsResponseBodyJobsRuns,
+    DescribePolarClawCronJobsResponseBodyJobsSchedule,
+    DescribePolarClawCronJobsResponseBodyJobsState,
+    DescribePolarClawCronJobsResponseBodyJobs,
+    DescribePolarClawPluginsResponseBodyDiagnostics,
+    DescribePolarClawPluginsResponseBodyPlugins,
     DescribePolarFsAttributeResponseBodyCustomBucketPathList,
     DescribePolarFsAttributeResponseBodyMountInfo,
     DescribePolarFsObjectsResponseBodyItems,
@@ -2644,6 +2937,7 @@ __all__ = [
     GetPolarAgentResponseBodyFunctionCall,
     GetPolarAgentResponseBodyUiFunctionCall,
     ListOrdersResponseBodyOrderList,
+    ListPolarClawBindingsResponseBodyBindings,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
@@ -2661,5 +2955,19 @@ __all__ = [
     SearchMemoriesResponseBodyResults,
     SetPolarFsFileQuotaRequestFilePathQuotas,
     TagResourcesRequestTag,
-    TempModifyDBNodeRequestDBNode
+    TempModifyDBNodeRequestDBNode,
+    UpdatePolarClawAgentRequestFiles,
+    UpdatePolarClawAgentResponseBodyAgentIdentity,
+    UpdatePolarClawAgentResponseBodyAgent,
+    UpdatePolarClawCronJobRequestDelivery,
+    UpdatePolarClawCronJobRequestFailureAlert,
+    UpdatePolarClawCronJobRequestPayload,
+    UpdatePolarClawCronJobRequestSchedule,
+    UpdatePolarClawCronJobResponseBodyJobDelivery,
+    UpdatePolarClawCronJobResponseBodyJobPayload,
+    UpdatePolarClawCronJobResponseBodyJobRunsUsage,
+    UpdatePolarClawCronJobResponseBodyJobRuns,
+    UpdatePolarClawCronJobResponseBodyJobSchedule,
+    UpdatePolarClawCronJobResponseBodyJobState,
+    UpdatePolarClawCronJobResponseBodyJob
 ]

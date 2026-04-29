@@ -1,0 +1,44 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class DescribePolarClawChannelsRequest(DaraModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        channel_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.application_id = application_id
+        self.channel_list = channel_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+
+        if self.channel_list is not None:
+            result['ChannelList'] = self.channel_list
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+
+        if m.get('ChannelList') is not None:
+            self.channel_list = m.get('ChannelList')
+
+        return self
+

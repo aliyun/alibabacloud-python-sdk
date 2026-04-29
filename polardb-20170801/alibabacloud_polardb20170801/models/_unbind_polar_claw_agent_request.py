@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class UnbindPolarClawAgentRequest(DaraModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        application_id: str = None,
+        channel: str = None,
+        channel_account_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_id = agent_id
+        # This parameter is required.
+        self.application_id = application_id
+        # This parameter is required.
+        self.channel = channel
+        self.channel_account_id = channel_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+
+        if self.channel is not None:
+            result['Channel'] = self.channel
+
+        if self.channel_account_id is not None:
+            result['ChannelAccountId'] = self.channel_account_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+
+        if m.get('ChannelAccountId') is not None:
+            self.channel_account_id = m.get('ChannelAccountId')
+
+        return self
+

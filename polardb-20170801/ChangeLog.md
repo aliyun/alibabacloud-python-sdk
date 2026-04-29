@@ -1,3 +1,39 @@
+2026-04-29 Version: 6.16.0
+- Support API AddPolarClawMCPServer.
+- Support API BindPolarClawAgent.
+- Support API CreatePolarClawAgent.
+- Support API CreatePolarClawChannel.
+- Support API CreatePolarClawCronJob.
+- Support API DeletePolarClawAgent.
+- Support API DeletePolarClawChannel.
+- Support API DeletePolarClawCronJob.
+- Support API DescribePolarClawAgents.
+- Support API DescribePolarClawChannels.
+- Support API DescribePolarClawCronJobs.
+- Support API DescribePolarClawMCPServers.
+- Support API DescribePolarClawPlugins.
+- Support API DisablePolarClawChannel.
+- Support API DisablePolarClawCronJob.
+- Support API DisablePolarClawPlugin.
+- Support API EnablePolarClawChannel.
+- Support API EnablePolarClawCronJob.
+- Support API EnablePolarClawPlugin.
+- Support API GetPolarClawConfig.
+- Support API InstallPolarClawPlugin.
+- Support API ListPolarClawBindings.
+- Support API PatchPolarClawConfig.
+- Support API RemoveApplicationEnvironmentVariables.
+- Support API RemovePolarClawMCPServer.
+- Support API RunPolarClawCronJob.
+- Support API UnbindPolarClawAgent.
+- Support API UninstallPolarClawPlugin.
+- Support API UpdateApplicationEnvironmentVariables.
+- Support API UpdatePolarClawAgent.
+- Support API UpdatePolarClawCronJob.
+- Support API UpgradePolarClawChannel.
+- Support API UpgradePolarClawPlugin.
+
+
 2026-04-28 Version: 6.15.0
 - Support API CreateBudgetPolicy.
 - Support API CreateConsumer.

@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class DescribePolarClawCronJobsShrinkRequest(DaraModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        include_disabled: bool = None,
+        include_runs: bool = None,
+        job_id_list_shrink: str = None,
+        run_limit: int = None,
+    ):
+        # This parameter is required.
+        self.application_id = application_id
+        self.include_disabled = include_disabled
+        self.include_runs = include_runs
+        self.job_id_list_shrink = job_id_list_shrink
+        self.run_limit = run_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+
+        if self.include_disabled is not None:
+            result['IncludeDisabled'] = self.include_disabled
+
+        if self.include_runs is not None:
+            result['IncludeRuns'] = self.include_runs
+
+        if self.job_id_list_shrink is not None:
+            result['JobIdList'] = self.job_id_list_shrink
+
+        if self.run_limit is not None:
+            result['RunLimit'] = self.run_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+
+        if m.get('IncludeDisabled') is not None:
+            self.include_disabled = m.get('IncludeDisabled')
+
+        if m.get('IncludeRuns') is not None:
+            self.include_runs = m.get('IncludeRuns')
+
+        if m.get('JobIdList') is not None:
+            self.job_id_list_shrink = m.get('JobIdList')
+
+        if m.get('RunLimit') is not None:
+            self.run_limit = m.get('RunLimit')
+
+        return self
+
