@@ -1,3 +1,6 @@
+2026-04-29 Version: 1.8.2
+- Generated python 2018-02-08 for Domain.
+
 2025-12-30 Version: 1.8.1
 - Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.IcpNumber.
 - Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.IcpStatus.
